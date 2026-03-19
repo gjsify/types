@@ -26,6 +26,7 @@ export namespace PackageKitGlib {
 
     /**
      * The authorization result
+     * @gir-type Enum
      */
     enum AuthorizeEnum {
         /**
@@ -49,6 +50,7 @@ export namespace PackageKitGlib {
 
     /**
      * Errors that can be thrown
+     * @gir-type Struct
      */
     class ClientError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -108,13 +110,14 @@ export namespace PackageKitGlib {
         // Static methods
 
         /**
-         * An error quark for #PkClientError.
+         * An error quark for {@link PackageKitGlib.ClientError}.
          */
         static quark(): GLib.Quark;
     }
 
     /**
      * Errors that can be thrown
+     * @gir-type Struct
      */
     class ControlError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -148,6 +151,7 @@ export namespace PackageKitGlib {
 
     /**
      * The distro upgrade status
+     * @gir-type Enum
      */
     enum DistroUpgradeEnum {
         /**
@@ -171,6 +175,7 @@ export namespace PackageKitGlib {
 
     /**
      * The error type
+     * @gir-type Enum
      */
     enum ErrorEnum {
         UNKNOWN,
@@ -419,6 +424,7 @@ export namespace PackageKitGlib {
 
     /**
      * How the backend exited
+     * @gir-type Enum
      */
     enum ExitEnum {
         /**
@@ -472,6 +478,7 @@ export namespace PackageKitGlib {
 
     /**
      * The filter types
+     * @gir-type Enum
      */
     enum FilterEnum {
         /**
@@ -595,6 +602,7 @@ export namespace PackageKitGlib {
 
     /**
      * The group type
+     * @gir-type Enum
      */
     enum GroupEnum {
         /**
@@ -742,6 +750,7 @@ export namespace PackageKitGlib {
     /**
      * The enumerated types used in Package() - these have to refer to a specific
      * package action, rather than a general state
+     * @gir-type Enum
      */
     enum InfoEnum {
         /**
@@ -825,6 +834,7 @@ export namespace PackageKitGlib {
 
     /**
      * The media type
+     * @gir-type Enum
      */
     enum MediaTypeEnum {
         /**
@@ -852,6 +862,7 @@ export namespace PackageKitGlib {
 
     /**
      * Network type
+     * @gir-type Enum
      */
     enum NetworkEnum {
         /**
@@ -887,6 +898,7 @@ export namespace PackageKitGlib {
 
     /**
      * Actions that can be taken after an offline operation.
+     * @gir-type Enum
      */
     enum OfflineAction {
         /**
@@ -909,6 +921,7 @@ export namespace PackageKitGlib {
 
     /**
      * Errors that can be thrown
+     * @gir-type Struct
      */
     class OfflineError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -935,7 +948,7 @@ export namespace PackageKitGlib {
         // Static methods
 
         /**
-         * An error quark for #PkOfflineError.
+         * An error quark for {@link PackageKitGlib.OfflineError}.
          */
         static quark(): GLib.Quark;
     }
@@ -946,6 +959,7 @@ export namespace PackageKitGlib {
 
     /**
      * Type of sort to perform.
+     * @gir-type Enum
      */
     enum PackageSackSortType {
         /**
@@ -973,6 +987,7 @@ export namespace PackageKitGlib {
 
     /**
      * Flag to show which progress field has been updated.
+     * @gir-type Enum
      */
     enum ProgressType {
         /**
@@ -1048,6 +1063,7 @@ export namespace PackageKitGlib {
 
     /**
      * What restart we need to after a transaction, ordered by severity
+     * @gir-type Enum
      */
     enum RestartEnum {
         /**
@@ -1084,6 +1100,7 @@ export namespace PackageKitGlib {
      * transaction.
      * Icons that have to represent the whole "aim" of the transaction will use
      * these constants
+     * @gir-type Enum
      */
     enum RoleEnum {
         /**
@@ -1225,6 +1242,7 @@ export namespace PackageKitGlib {
 
     /**
      * The signature type type
+     * @gir-type Enum
      */
     enum SigTypeEnum {
         /**
@@ -1259,6 +1277,7 @@ export namespace PackageKitGlib {
      *
      * This means that backends should run pk_backend_set_status (backend, PK_STATUS_ENUM_RUNNING)
      * when they are ready to start running the transaction and after a lock has been got.
+     * @gir-type Enum
      */
     enum StatusEnum {
         /**
@@ -1406,6 +1425,7 @@ export namespace PackageKitGlib {
 
     /**
      * The transaction flags that alter how the transaction is handled
+     * @gir-type Enum
      */
     enum TransactionFlagEnum {
         /**
@@ -1445,6 +1465,7 @@ export namespace PackageKitGlib {
 
     /**
      * What state the update is in
+     * @gir-type Enum
      */
     enum UpdateStateEnum {
         /**
@@ -1472,6 +1493,7 @@ export namespace PackageKitGlib {
 
     /**
      * The type of distribution upgrade to perform
+     * @gir-type Enum
      */
     enum UpgradeKindEnum {
         UNKNOWN,
@@ -1541,23 +1563,27 @@ export namespace PackageKitGlib {
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param authorize_type Text describing the enumerated type
-     * @returns the enumerated constant value, e.g. %PK_AUTHORIZE_ENUM_YES
+     * @returns the enumerated constant value, e.g. {@link PackageKitGlib.AuthorizeEnum.YES}
+     * @since 0.5.0
      */
     function authorize_type_enum_from_string(authorize_type: string): AuthorizeEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param authorize_type The enumerated type value
      * @returns the enumerated constant value, e.g. "yes"
+     * @since 0.5.0
      */
     function authorize_type_enum_to_string(authorize_type: AuthorizeEnum | null): string;
     /**
-     * An error quark for #PkClientError.
+     * An error quark for {@link PackageKitGlib.ClientError}.
      * @returns an error quark.
+     * @since 0.5.2
      */
     function client_error_quark(): GLib.Quark;
     /**
      * We are a GObject that sets errors
      * @returns Our personal error quark.
+     * @since 0.5.2
      */
     function control_error_quark(): GLib.Quark;
     /**
@@ -1567,36 +1593,38 @@ export namespace PackageKitGlib {
     function debug_add_log_domain(log_domain: string): void;
     /**
      * Check if verbose debugging is enabled.
-     * @returns %TRUE if we have debugging enabled
+     * @returns `true` if we have debugging enabled
      */
     function debug_is_verbose(): boolean;
     /**
      * Set if verbose debugging is enabled.
-     * @param verbose %TRUE if verbose debugging should be enabled.
+     * @param verbose `true` if verbose debugging should be enabled.
      */
     function debug_set_verbose(verbose: boolean): void;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param upgrade Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_DISTRO_UPGRADE_ENUM_STABLE
+     * @since 0.5.0
      */
     function distro_upgrade_enum_from_string(upgrade: string): DistroUpgradeEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param upgrade The enumerated type value
      * @returns the enumerated constant value, e.g. "stable"
+     * @since 0.5.0
      */
     function distro_upgrade_enum_to_string(upgrade: DistroUpgradeEnum | null): string;
     /**
      * Search for a enum value in a table of constants.
-     * @param table A #PkEnumMatch enum table of values
+     * @param table A {@link PackageKitGlib.EnumMatch} enum table of values
      * @param value the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
      * @returns the string constant, e.g. "desktop-gnome"
      */
     function enum_find_string(table: EnumMatch, value: number): string;
     /**
      * Search for a string value in a table of constants.
-     * @param table A #PkEnumMatch enum table of values
+     * @param table A {@link PackageKitGlib.EnumMatch} enum table of values
      * @param string the string constant to search for, e.g. "desktop-gnome"
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
      */
@@ -1605,48 +1633,56 @@ export namespace PackageKitGlib {
      * Converts a text enumerated type to its unsigned integer representation
      * @param code Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function error_enum_from_string(code: string): ErrorEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param code The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function error_enum_to_string(code: ErrorEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param exit Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function exit_enum_from_string(exit: string): ExitEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param exit The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function exit_enum_to_string(exit: ExitEnum | null): string;
     /**
      * Converts text representation to its enumerated type bitfield, or 0 for invalid
      * @param filters the enumerated constant value, e.g. "available;~gui"
      * @returns The enumerated type values
+     * @since 0.5.2
      */
     function filter_bitfield_from_string(filters: string): Bitfield;
     /**
      * Converts a enumerated type bitfield to its text representation
      * @param filters The enumerated type values
      * @returns the enumerated constant value, e.g. "available;~gui"
+     * @since 0.5.2
      */
     function filter_bitfield_to_string(filters: Bitfield): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param filter Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function filter_enum_from_string(filter: string): FilterEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param filter The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function filter_enum_to_string(filter: FilterEnum | null): string;
     /**
@@ -1658,231 +1694,288 @@ export namespace PackageKitGlib {
      * Converts text representation to its enumerated type bitfield
      * @param groups the enumerated constant value, e.g. "available;~gui"
      * @returns The enumerated type values, or 0 for invalid
+     * @since 0.5.2
      */
     function group_bitfield_from_string(groups: string): Bitfield;
     /**
      * Converts a enumerated type bitfield to its text representation
      * @param groups The enumerated type values
      * @returns the enumerated constant value, e.g. "gnome;kde"
+     * @since 0.5.2
      */
     function group_bitfield_to_string(groups: Bitfield): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param group Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function group_enum_from_string(group: string): GroupEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param group The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function group_enum_to_string(group: GroupEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param info Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function info_enum_from_string(info: string): InfoEnum;
     /**
      * Converts a enumerated type to its localized description
      * @param info The enumerated type value
      * @returns the translated text
+     * @since 0.7.2
      */
     function info_enum_to_localised_past(info: InfoEnum | null): string;
     /**
      * Converts a enumerated type to its localized description
      * @param info The enumerated type value
      * @returns the translated text
+     * @since 0.7.2
      */
     function info_enum_to_localised_present(info: InfoEnum | null): string;
     /**
      * Converts a enumerated type to its text representation
      * @param info The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function info_enum_to_string(info: InfoEnum | null): string;
     /**
      * Convert a date into an ISO8601 data string.
-     * @param date a #GDate to convert
-     * @returns If valid then a new ISO8601 date, else %NULL
+     * @param date a {@link GLib.Date} to convert
+     * @returns If valid then a new ISO8601 date, else `null`
+     * @since 0.5.2
      */
     function iso8601_from_date(date: GLib.Date): string;
     /**
      * Get the current date / time as an ISO8601 string.
      * @returns The current iso8601 date and time
+     * @since 0.5.2
      */
     function iso8601_present(): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param media_type Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_MEDIA_TYPE_ENUM_CD
+     * @since 0.5.0
      */
     function media_type_enum_from_string(media_type: string): MediaTypeEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param media_type The enumerated type value
      * @returns the enumerated constant value, e.g. "dvd"
+     * @since 0.5.0
      */
     function media_type_enum_to_string(media_type: MediaTypeEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param network Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function network_enum_from_string(network: string): NetworkEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param network The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function network_enum_to_string(network: NetworkEnum | null): string;
     /**
      * Converts the string to the enumerated value.
-     * @param action a string representation of a #PkOfflineAction, e.g. "reboot"
-     * @returns A #PkOfflineAction, or %PK_OFFLINE_ACTION_UNKNOWN for invalid
+     * @param action a string representation of a {@link PackageKitGlib.OfflineAction}, e.g. "reboot"
+     * @returns A {@link PackageKitGlib.OfflineAction}, or {@link PackageKitGlib.OfflineAction.UNKNOWN} for invalid
+     * @since 0.9.6
      */
     function offline_action_from_string(action: string): OfflineAction;
     /**
      * Converts the enumerated value to a string.
-     * @param action a #PkOfflineAction, e.g. %PK_OFFLINE_ACTION_REBOOT
-     * @returns string value, or %NULL for invalid
+     * @param action a {@link PackageKitGlib.OfflineAction}, e.g. {@link PackageKitGlib.OfflineAction.REBOOT}
+     * @returns string value, or `null` for invalid
+     * @since 0.9.6
      */
     function offline_action_to_string(action: OfflineAction | null): string;
     function offline_auth_cancel(): boolean;
     function offline_auth_clear_results(): boolean;
     function offline_auth_invalidate(): boolean;
+    /**
+     * @param action
+     */
     function offline_auth_set_action(action: OfflineAction | null): boolean;
+    /**
+     * @param package_ids
+     */
     function offline_auth_set_prepared_ids(package_ids: string): boolean;
+    /**
+     * @param name
+     * @param release_ver
+     */
     function offline_auth_set_prepared_upgrade(name: string, release_ver: string): boolean;
+    /**
+     * @param results
+     */
     function offline_auth_set_results(results: Results): boolean;
+    /**
+     * @param action
+     */
     function offline_auth_trigger(action: OfflineAction | null): boolean;
+    /**
+     * @param action
+     */
     function offline_auth_trigger_upgrade(action: OfflineAction | null): boolean;
     /**
      * Cancels the offline operation that has been scheduled. If there is no
      * scheduled offline operation then this method returns with success.
      * The function always allows user interaction. To change the behavior,
-     * use pk_offline_cancel_with_flags().
-     * @param cancellable A #GCancellable or %NULL
-     * @returns %TRUE for success, else %FALSE and @error set
+     * use `pk_offline_cancel_with_flags()`.
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns `true` for success, else `false` and `error` set
+     * @since 0.9.6
      */
     function offline_cancel(cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Cancels the offline operation that has been scheduled. If there is no
      * scheduled offline operation then this method returns with success.
-     * @param flags bit-or of #PkOfflineFlags
-     * @param cancellable A #GCancellable or %NULL
-     * @returns %TRUE for success, else %FALSE and @error set
+     * @param flags bit-or of {@link PackageKitGlib.OfflineFlags}
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns `true` for success, else `false` and `error` set
+     * @since 1.2.5
      */
     function offline_cancel_with_flags(flags: OfflineFlags | null, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Clears the last offline operation report, which may be success or failure.
      * If the report does not exist then this method returns success.
      * The function always allows user interaction. To change the behavior,
-     * use pk_offline_clear_results_with_flags().
-     * @param cancellable A #GCancellable or %NULL
-     * @returns %TRUE for success, else %FALSE and @error set
+     * use `pk_offline_clear_results_with_flags()`.
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns `true` for success, else `false` and `error` set
+     * @since 0.9.6
      */
     function offline_clear_results(cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Clears the last offline operation report, which may be success or failure.
      * If the report does not exist then this method returns success.
-     * @param flags bit-or of #PkOfflineFlags
-     * @param cancellable A #GCancellable or %NULL
-     * @returns %TRUE for success, else %FALSE and @error set
+     * @param flags bit-or of {@link PackageKitGlib.OfflineFlags}
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns `true` for success, else `false` and `error` set
+     * @since 1.2.5
      */
     function offline_clear_results_with_flags(
         flags: OfflineFlags | null,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
-     * An error quark for #PkOfflineError.
+     * An error quark for {@link PackageKitGlib.OfflineError}.
      * @returns an error quark.
+     * @since 0.9.6
      */
     function offline_error_quark(): GLib.Quark;
     /**
      * Gets the action that will be taken after the offline action has completed.
      *
-     * An error is set if the the value %PK_OFFLINE_ACTION_UNKNOWN is returned.
-     * @returns a #PkOfflineAction, e.g. %PK_OFFLINE_ACTION_REBOOT
+     * An error is set if the the value {@link PackageKitGlib.OfflineAction.UNKNOWN} is returned.
+     * @returns a {@link PackageKitGlib.OfflineAction}, e.g. {@link PackageKitGlib.OfflineAction.REBOOT}
+     * @since 0.9.6
      */
     function offline_get_action(): OfflineAction;
     /**
      * Gets a file monitor for the trigger.
-     * @param cancellable A #GCancellable or %NULL
-     * @returns A #GFileMonitor, or %NULL
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns A {@link Gio.FileMonitor}, or `null`
+     * @since 0.9.6
      */
     function offline_get_action_monitor(cancellable?: Gio.Cancellable | null): Gio.FileMonitor;
     /**
      * Gets the package-ids in the prepared transaction.
-     * @returns array of package-ids, or %NULL
+     * @returns array of package-ids, or `null`
+     * @since 0.9.6
      */
     function offline_get_prepared_ids(): string[];
     /**
      * Gets a file monitor for the prepared transaction.
-     * @param cancellable A #GCancellable or %NULL
-     * @returns A #GFileMonitor, or %NULL
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns A {@link Gio.FileMonitor}, or `null`
+     * @since 0.9.6
      */
     function offline_get_prepared_monitor(cancellable?: Gio.Cancellable | null): Gio.FileMonitor;
     /**
      * Gets a package sack of the packages in the prepared transaction.
-     * @returns A new #PkPackageSack, or %NULL
+     * @returns A new {@link PackageKitGlib.PackageSack}, or `null`
+     * @since 0.9.6
      */
     function offline_get_prepared_sack(): PackageSack;
+    /**
+     * @param name
+     * @param release_ver
+     */
     function offline_get_prepared_upgrade(name: string, release_ver: string): boolean;
     /**
      * Gets a file monitor for the prepared system upgrade transaction.
-     * @param cancellable A #GCancellable or %NULL
-     * @returns A #GFileMonitor, or %NULL
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns A {@link Gio.FileMonitor}, or `null`
+     * @since 1.0.12
      */
     function offline_get_prepared_upgrade_monitor(cancellable?: Gio.Cancellable | null): Gio.FileMonitor;
     /**
      * Gets the name of the prepared system upgrade in the prepared transaction.
-     * @returns the name, or %NULL if unset, free with g_free()
+     * @returns the name, or `null` if unset, free with `g_free()`
+     * @since 1.1.2
      */
     function offline_get_prepared_upgrade_name(): string;
     /**
      * Gets the version of the prepared system upgrade in the prepared transaction.
-     * @returns the version, or %NULL if unset, free with g_free()
+     * @returns the version, or `null` if unset, free with `g_free()`
+     * @since 1.0.12
      */
     function offline_get_prepared_upgrade_version(): string;
     /**
      * Gets the last result of the offline transaction.
-     * @returns A #PkResults, or %NULL
+     * @returns A {@link PackageKitGlib.Results}, or `null`
+     * @since 0.9.6
      */
     function offline_get_results(): Results;
     /**
      * Gets the modification time of the prepared transaction.
      * @returns a unix time, or 0 for error.
+     * @since 0.9.6
      */
     function offline_get_results_mtime(): number;
     /**
      * Triggers the offline update so that the next reboot will perform the
      * pending transaction.
      * The function always allows user interaction. To change the behavior,
-     * use pk_offline_trigger_with_flags().
-     * @param action a #PkOfflineAction, e.g. %PK_OFFLINE_ACTION_REBOOT
-     * @param cancellable A #GCancellable or %NULL
-     * @returns %TRUE for success, else %FALSE and @error set
+     * use `pk_offline_trigger_with_flags()`.
+     * @param action a {@link PackageKitGlib.OfflineAction}, e.g. {@link PackageKitGlib.OfflineAction.REBOOT}
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns `true` for success, else `false` and `error` set
+     * @since 0.9.6
      */
     function offline_trigger(action: OfflineAction | null, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Triggers the offline system upgrade so that the next reboot will perform the
      * pending transaction.
      * The function always allows user interaction. To change the behavior,
-     * use pk_offline_trigger_upgrade_with_flags().
-     * @param action a #PkOfflineAction, e.g. %PK_OFFLINE_ACTION_REBOOT
-     * @param cancellable A #GCancellable or %NULL
-     * @returns %TRUE for success, else %FALSE and @error set
+     * use `pk_offline_trigger_upgrade_with_flags()`.
+     * @param action a {@link PackageKitGlib.OfflineAction}, e.g. {@link PackageKitGlib.OfflineAction.REBOOT}
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns `true` for success, else `false` and `error` set
+     * @since 1.0.12
      */
     function offline_trigger_upgrade(action: OfflineAction | null, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Triggers the offline system upgrade so that the next reboot will perform the
      * pending transaction.
-     * @param action a #PkOfflineAction, e.g. %PK_OFFLINE_ACTION_REBOOT
-     * @param flags bit-or of #PkOfflineFlags
-     * @param cancellable A #GCancellable or %NULL
-     * @returns %TRUE for success, else %FALSE and @error set
+     * @param action a {@link PackageKitGlib.OfflineAction}, e.g. {@link PackageKitGlib.OfflineAction.REBOOT}
+     * @param flags bit-or of {@link PackageKitGlib.OfflineFlags}
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns `true` for success, else `false` and `error` set
+     * @since 1.2.5
      */
     function offline_trigger_upgrade_with_flags(
         action: OfflineAction | null,
@@ -1892,10 +1985,11 @@ export namespace PackageKitGlib {
     /**
      * Triggers the offline update so that the next reboot will perform the
      * pending transaction.
-     * @param action a #PkOfflineAction, e.g. %PK_OFFLINE_ACTION_REBOOT
-     * @param flags bit-or of #PkOfflineFlags
-     * @param cancellable A #GCancellable or %NULL
-     * @returns %TRUE for success, else %FALSE and @error set
+     * @param action a {@link PackageKitGlib.OfflineAction}, e.g. {@link PackageKitGlib.OfflineAction.REBOOT}
+     * @param flags bit-or of {@link PackageKitGlib.OfflineFlags}
+     * @param cancellable A {@link Gio.Cancellable} or `null`
+     * @returns `true` for success, else `false` and `error` set
+     * @since 1.2.5
      */
     function offline_trigger_with_flags(
         action: OfflineAction | null,
@@ -1908,49 +2002,57 @@ export namespace PackageKitGlib {
      * Form a composite string array of strings.
      * The data in the GPtrArray is copied.
      * @param array the GPtrArray of strings
-     * @returns the string array, or %NULL if invalid
+     * @returns the string array, or `null` if invalid
+     * @since 0.5.2
      */
     function ptr_array_to_strv(array: string[]): string[];
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param restart Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function restart_enum_from_string(restart: string): RestartEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param restart The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function restart_enum_to_string(restart: RestartEnum | null): string;
     /**
      * Converts text representation to its enumerated type bitfield
      * @param roles the enumerated constant value, e.g. "search-file;update-system"
      * @returns The enumerated type values, or 0 for invalid
+     * @since 0.5.2
      */
     function role_bitfield_from_string(roles: string): Bitfield;
     /**
      * Converts a enumerated type bitfield to its text representation
      * @param roles The enumerated type values
      * @returns the enumerated constant value, e.g. "install-file;update-system"
+     * @since 0.5.2
      */
     function role_bitfield_to_string(roles: Bitfield): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param role Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function role_enum_from_string(role: string): RoleEnum;
     /**
      * Converts a enumerated type to its localized description
      * @param role The enumerated type value
      * @returns the translated text
+     * @since 0.7.2
      */
     function role_enum_to_localised_present(role: RoleEnum | null): string;
     /**
      * Converts a enumerated type to its text representation
      * @param role The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function role_enum_to_string(role: RoleEnum | null): string;
     /**
@@ -1963,72 +2065,92 @@ export namespace PackageKitGlib {
      * Converts a enumerated type to its text representation
      * @param sig_type The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function sig_type_enum_to_string(sig_type: SigTypeEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param status Text describing the enumerated type
      * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
+     * @since 0.5.0
      */
     function status_enum_from_string(status: string): StatusEnum;
+    /**
+     * @param status
+     */
     function status_enum_to_localised_text(status: StatusEnum | null): string;
     /**
      * Converts a enumerated type to its text representation
      * @param status The enumerated type value
      * @returns the enumerated constant value, e.g. "available"
+     * @since 0.5.0
      */
     function status_enum_to_string(status: StatusEnum | null): string;
     /**
      * Converts text representation to its enumerated type bitfield, or 0 for invalid
      * @param transaction_flags the enumerated constant value, e.g. "only-trusted;simulate"
      * @returns The enumerated type values
+     * @since 0.8.1
      */
     function transaction_flag_bitfield_from_string(transaction_flags: string): Bitfield;
     /**
      * Converts a enumerated type bitfield to its text representation
      * @param transaction_flags The enumerated type values
      * @returns the enumerated constant value, e.g. "only-trusted;simulate"
+     * @since 0.8.1
      */
     function transaction_flag_bitfield_to_string(transaction_flags: Bitfield): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param transaction_flag Text describing the enumerated type
-     * @returns the enumerated constant value, e.g. %PK_TRANSACTION_FLAG_ENUM_SIMULATE
+     * @returns the enumerated constant value, e.g. {@link PackageKitGlib.TransactionFlagEnum.SIMULATE}
+     * @since 0.8.1
      */
     function transaction_flag_enum_from_string(transaction_flag: string): TransactionFlagEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param transaction_flag The enumerated type value
      * @returns the enumerated constant value, e.g. "simulate"
+     * @since 0.8.1
      */
     function transaction_flag_enum_to_string(transaction_flag: TransactionFlagEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param update_state Text describing the enumerated type
-     * @returns the enumerated constant value, e.g. %PK_UPDATE_STATE_ENUM_STABLE
+     * @returns the enumerated constant value, e.g. {@link PackageKitGlib.UpdateStateEnum.STABLE}
+     * @since 0.5.0
      */
     function update_state_enum_from_string(update_state: string): UpdateStateEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param update_state The enumerated type value
      * @returns the enumerated constant value, e.g. "testing"
+     * @since 0.5.0
      */
     function update_state_enum_to_string(update_state: UpdateStateEnum | null): string;
     /**
      * Converts a text enumerated type to its unsigned integer representation
      * @param upgrade_kind Text describing the enumerated type
-     * @returns the enumerated constant value, e.g. %PK_UPGRADE_KIND_ENUM_MINIMAL
+     * @returns the enumerated constant value, e.g. {@link PackageKitGlib.UpgradeKindEnum.MINIMAL}
+     * @since 0.6.11
      */
     function upgrade_kind_enum_from_string(upgrade_kind: string): UpgradeKindEnum;
     /**
      * Converts a enumerated type to its text representation
      * @param upgrade_kind The enumerated type value
      * @returns the enumerated constant value, e.g. "minimal"
+     * @since 0.6.11
      */
     function upgrade_kind_enum_to_string(upgrade_kind: UpgradeKindEnum | null): string;
+    /**
+     * @gir-type Callback
+     */
     interface PackageSackFilterFunc {
         (_package: Package): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProgressCallback {
         (progress: Progress, type: ProgressType): void;
     }
@@ -2038,6 +2160,8 @@ export namespace PackageKitGlib {
 
     /**
      * Flags to be used for the method invocations.
+     * @gir-type Flags
+     * @since 1.2.5
      */
     enum OfflineFlags {
         /**
@@ -2075,23 +2199,47 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Category extends Source {
         static $gtype: GObject.GType<Category>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get cat_id(): string;
         set cat_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get catId(): string;
         set catId(val: string);
+        /**
+         * @since 0.5.4
+         */
         get icon(): string;
         set icon(val: string);
+        /**
+         * @since 0.5.4
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @since 0.5.4
+         */
         get parent_id(): string;
         set parent_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get parentId(): string;
         set parentId(val: string);
+        /**
+         * @since 0.5.4
+         */
         get summary(): string;
         set summary(val: string);
 
@@ -2114,16 +2262,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Category.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Category.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Category.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Category.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2134,27 +2285,27 @@ export namespace PackageKitGlib {
 
         /**
          * Gets the icon filename.
-         * @returns the string value, or %NULL for unset.
+         * @returns the string value, or `null` for unset.
          */
         get_icon(): string;
         /**
          * Gets the id specific to this category.
-         * @returns the string value, or %NULL for unset.
+         * @returns the string value, or `null` for unset.
          */
         get_id(): string;
         /**
          * Gets the name.
-         * @returns the string value, or %NULL for unset.
+         * @returns the string value, or `null` for unset.
          */
         get_name(): string;
         /**
          * Gets the parent category id.
-         * @returns the string value, or %NULL for unset.
+         * @returns the string value, or `null` for unset.
          */
         get_parent_id(): string;
         /**
          * Gets the summary.
-         * @returns the string value, or %NULL for unset.
+         * @returns the string value, or `null` for unset.
          */
         get_summary(): string;
         /**
@@ -2209,32 +2360,55 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
         // Properties
 
+        /**
+         * @since 0.5.3
+         */
         get background(): boolean;
         set background(val: boolean);
         /**
-         * The cache age in seconds, where %G_MAXUINT means cache
+         * The cache age in seconds, where `G_MAXUINT` means cache
          * "never expires"
+         * @since 0.6.10
          */
         get cache_age(): number;
         set cache_age(val: number);
         /**
-         * The cache age in seconds, where %G_MAXUINT means cache
+         * The cache age in seconds, where `G_MAXUINT` means cache
          * "never expires"
+         * @since 0.6.10
          */
         get cacheAge(): number;
         set cacheAge(val: number);
+        /**
+         * @since 1.2.7
+         */
         get details_with_deps_size(): boolean;
         set details_with_deps_size(val: boolean);
+        /**
+         * @since 1.2.7
+         */
         get detailsWithDepsSize(): boolean;
         set detailsWithDepsSize(val: boolean);
+        /**
+         * @since 0.5.4
+         */
         get idle(): boolean;
+        /**
+         * @since 0.5.4
+         */
         get interactive(): boolean;
         set interactive(val: boolean);
+        /**
+         * @since 0.5.3
+         */
         get locale(): string;
         set locale(val: string);
 
@@ -2257,16 +2431,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2275,10 +2452,17 @@ export namespace PackageKitGlib {
 
         // Static methods
 
+        /**
+         * @param argv
+         * @param envp_out
+         */
         static create_helper_argv_envp(argv: string, envp_out: string): boolean;
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_changed(): void;
 
         // Methods
@@ -2289,15 +2473,15 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param eula_id the <literal>eula_id</literal> we are agreeing to
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         accept_eula(eula_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
         /**
          * We may want to agree to a EULA dialog if one is presented.
          * @param eula_id the <literal>eula_id</literal> we are agreeing to
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2313,9 +2497,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and will block. Do not use it in GUI
          * applications.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         adopt(
             transaction_id: string,
@@ -2325,7 +2509,7 @@ export namespace PackageKitGlib {
         /**
          * Adopt a transaction which allows the caller to monitor the state or cancel it.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2340,12 +2524,12 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive If we should search recursively for depends
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         depends_on(
             filters: Bitfield,
@@ -2356,10 +2540,10 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Get the packages that depend this one, i.e. child->parent.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive If we should search recursively for depends
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2378,9 +2562,9 @@ export namespace PackageKitGlib {
          * applications.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param directory the location where packages are to be downloaded
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         download_packages(
             package_ids: string[],
@@ -2392,7 +2576,7 @@ export namespace PackageKitGlib {
          * Downloads package files to a specified location.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param directory the location where packages are to be downloaded
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2405,8 +2589,8 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns the #PkResults, or %NULL. Free with g_object_unref()
+         * @param res the {@link Gio.AsyncResult}
+         * @returns the {@link PackageKitGlib.Results}, or `null`. Free with `g_object_unref()`
          */
         generic_finish(res: Gio.AsyncResult): Results;
         /**
@@ -2424,14 +2608,14 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_categories(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
         /**
          * Get a list of all categories supported.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2447,9 +2631,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_details(
             package_ids: string[],
@@ -2460,7 +2644,7 @@ export namespace PackageKitGlib {
          * Get details of a package, so more information can be obtained for GUI
          * or command line tools.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2477,9 +2661,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param files a null terminated array of filenames
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_details_local(
             files: string[],
@@ -2490,7 +2674,7 @@ export namespace PackageKitGlib {
          * Get details of a package, so more information can be obtained for GUI
          * or command line tools.
          * @param files a null terminated array of filenames
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2502,7 +2686,7 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Gets the client details-with-deps-size value.
-         * @returns whether the pk_client_get_details_async() should include dependencies    download sizes for packages, which are not installed.
+         * @returns whether the `pk_client_get_details_async()` should include dependencies    download sizes for packages, which are not installed.
          */
         get_details_with_deps_size(): boolean;
         /**
@@ -2511,15 +2695,15 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_distro_upgrades(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
         /**
          * This method should return a list of distribution upgrades that are available.
          * It should not return updates, only major upgrades.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2534,9 +2718,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_files(
             package_ids: string[],
@@ -2546,7 +2730,7 @@ export namespace PackageKitGlib {
         /**
          * Get the file list (i.e. a list of files installed) for the specified package.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2563,9 +2747,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param files a null terminated array of filenames
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_files_local(
             files: string[],
@@ -2576,7 +2760,7 @@ export namespace PackageKitGlib {
          * Get file list of a package, so more information can be obtained for GUI
          * or command line tools.
          * @param files a null terminated array of filenames
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2607,9 +2791,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param number the number of past transactions to return, or 0 for all
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_old_transactions(
             number: number,
@@ -2619,7 +2803,7 @@ export namespace PackageKitGlib {
         /**
          * Get the old transaction list, mainly used for the transaction viewer.
          * @param number the number of past transactions to return, or 0 for all
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2634,10 +2818,10 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
-         * @param cancellable a #GCancellable or %NULL
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_packages(
             filters: Bitfield,
@@ -2646,8 +2830,8 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Get the list of packages from the backend
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
-         * @param cancellable a #GCancellable or %NULL
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2663,20 +2847,20 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and will block. Do not use it in GUI
          * applications.
          * @param transaction_id The transaction id
-         * @param cancellable a #GCancellable or %NULL
-         * @returns a #PkResults object, or %NULL for error
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_progress(transaction_id: string, cancellable?: Gio.Cancellable | null): Progress;
         /**
          * Find the current state of a transaction.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         get_progress_async(transaction_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Progress>;
         /**
          * Find the current state of a transaction.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback_ready the function to run on completion
          */
         get_progress_async(
@@ -2687,7 +2871,7 @@ export namespace PackageKitGlib {
         /**
          * Find the current state of a transaction.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback_ready the function to run on completion
          */
         get_progress_async(
@@ -2697,8 +2881,8 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<Progress> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns the #PkProgress, or %NULL. Free with g_object_unref()
+         * @param res the {@link Gio.AsyncResult}
+         * @returns the {@link PackageKitGlib.Progress}, or `null`. Free with `g_object_unref()`
          */
         get_progress_finish(res: Gio.AsyncResult): Progress;
         /**
@@ -2706,10 +2890,10 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
-         * @param cancellable a #GCancellable or %NULL
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.DEVELOPMENT} or {@link PackageKitGlib.FilterEnum.NONE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_repo_list(
             filters: Bitfield,
@@ -2718,8 +2902,8 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Get the list of repositories installed on the system.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
-         * @param cancellable a #GCancellable or %NULL
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.DEVELOPMENT} or {@link PackageKitGlib.FilterEnum.NONE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2736,9 +2920,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_update_detail(
             package_ids: string[],
@@ -2749,7 +2933,7 @@ export namespace PackageKitGlib {
          * Get details about the specific update, for instance any CVE urls and
          * severity information.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2764,10 +2948,10 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
-         * @param cancellable a #GCancellable or %NULL
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.DEVELOPMENT} or {@link PackageKitGlib.FilterEnum.NONE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_updates(
             filters: Bitfield,
@@ -2776,8 +2960,8 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Get a list of all the packages that can be updated for all repositories.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_DEVELOPMENT or %PK_FILTER_ENUM_NONE
-         * @param cancellable a #GCancellable or %NULL
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.DEVELOPMENT} or {@link PackageKitGlib.FilterEnum.NONE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2795,9 +2979,9 @@ export namespace PackageKitGlib {
          * applications.
          * @param transaction_flags a transaction type bitfield
          * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         install_files(
             transaction_flags: Bitfield,
@@ -2810,7 +2994,7 @@ export namespace PackageKitGlib {
          * This is useful for double clicking on a .rpm or .deb file.
          * @param transaction_flags a transaction type bitfield
          * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2828,9 +3012,9 @@ export namespace PackageKitGlib {
          * applications.
          * @param transaction_flags a transaction type bitfield
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         install_packages(
             transaction_flags: Bitfield,
@@ -2842,7 +3026,7 @@ export namespace PackageKitGlib {
          * Install a package of the newest and most correct version.
          * @param transaction_flags a transaction type bitfield
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2858,12 +3042,12 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param type the signature type, e.g. %PK_SIGTYPE_ENUM_GPG
+         * @param type the signature type, e.g. {@link PackageKitGlib.SigTypeEnum.GPG}
          * @param key_id a key ID such as "0df23df"
          * @param package_id a signature_id structure such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         install_signature(
             type: SigTypeEnum | null,
@@ -2874,10 +3058,10 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Install a software repository signature of the newest and most correct version.
-         * @param type the signature type, e.g. %PK_SIGTYPE_ENUM_GPG
+         * @param type the signature type, e.g. {@link PackageKitGlib.SigTypeEnum.GPG}
          * @param key_id a key ID such as "0df23df"
          * @param package_id a signature_id structure such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2898,9 +3082,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param force if we should aggressively drop caches
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         refresh_cache(
             force: boolean,
@@ -2913,7 +3097,7 @@ export namespace PackageKitGlib {
          * This action may take a few minutes and should be done when the session and
          * system are idle.
          * @param force if we should aggressively drop caches
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2925,7 +3109,7 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Remove a package (optionally with dependancies) from the system.
-         * If `allow_deps` is set to %FALSE, and other packages would have to be removed,
+         * If `allow_deps` is set to `false`, and other packages would have to be removed,
          * then the transaction would fail.
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
@@ -2934,9 +3118,9 @@ export namespace PackageKitGlib {
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param allow_deps if other dependent packages are allowed to be removed from the computer
          * @param autoremove if other packages installed at the same time should be tried to remove
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         remove_packages(
             transaction_flags: Bitfield,
@@ -2948,13 +3132,13 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Remove a package (optionally with dependancies) from the system.
-         * If `allow_deps` is set to %FALSE, and other packages would have to be removed,
+         * If `allow_deps` is set to `false`, and other packages would have to be removed,
          * then the transaction would fail.
          * @param transaction_flags a transaction type bitfield
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param allow_deps if other dependent packages are allowed to be removed from the computer
          * @param autoremove if other packages installed at the same time should be tried to remove
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -2978,9 +3162,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param transaction_flags if only trusted packages should be installed
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         repair_system(
             transaction_flags: Bitfield,
@@ -2995,7 +3179,7 @@ export namespace PackageKitGlib {
          *
          * The backend will decide what is best to do.
          * @param transaction_flags a transaction type bitfield
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3012,9 +3196,9 @@ export namespace PackageKitGlib {
          * applications.
          * @param repo_id a repo_id structure such as "livna-devel"
          * @param enabled if we should enable the repository
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         repo_enable(
             repo_id: string,
@@ -3026,7 +3210,7 @@ export namespace PackageKitGlib {
          * Enable or disable the repository.
          * @param repo_id a repo_id structure such as "livna-devel"
          * @param enabled if we should enable the repository
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3045,9 +3229,9 @@ export namespace PackageKitGlib {
          * @param transaction_flags transaction flags
          * @param repo_id a repo_id structure such as "livna-devel"
          * @param autoremove If packages should be auto-removed
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         repo_remove(
             transaction_flags: Bitfield,
@@ -3061,7 +3245,7 @@ export namespace PackageKitGlib {
          * @param transaction_flags transaction flags
          * @param repo_id a repo_id structure such as "livna-devel"
          * @param autoremove If packages should be auto-removed
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3082,9 +3266,9 @@ export namespace PackageKitGlib {
          * @param repo_id a repo_id structure such as "livna-devel"
          * @param parameter the parameter to change
          * @param value what we should change it to
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         repo_set_data(
             repo_id: string,
@@ -3099,7 +3283,7 @@ export namespace PackageKitGlib {
          * @param repo_id a repo_id structure such as "livna-devel"
          * @param parameter the parameter to change
          * @param value what we should change it to
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3116,12 +3300,12 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive If we should search recursively for requires
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         required_by(
             filters: Bitfield,
@@ -3132,10 +3316,10 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Get the packages that require this one, i.e. parent->child.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive If we should search recursively for requires
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3154,11 +3338,11 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param packages an array of package names to resolve, e.g. "gnome-system-tools"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         resolve(
             filters: Bitfield,
@@ -3170,9 +3354,9 @@ export namespace PackageKitGlib {
          * Resolve a package name into a `package_id`. This can return installed and
          * available packages and allows you find out if a package is installed locally
          * or is available in a repository.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param packages an array of package names to resolve, e.g. "gnome-system-tools"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3185,16 +3369,16 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Search all detailed summary information to try and find a keyword.
-         * Think of this as pk_client_search_names(), but trying much harder and
+         * Think of this as `pk_client_search_names()`, but trying much harder and
          * taking longer.
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values free text to search for, for instance, "power"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         search_details(
             filters: Bitfield,
@@ -3204,11 +3388,11 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Search all detailed summary information to try and find a keyword.
-         * Think of this as pk_client_search_names(), but trying much harder and
+         * Think of this as `pk_client_search_names()`, but trying much harder and
          * taking longer.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values free text to search for, for instance, "power"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3224,11 +3408,11 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values file to search for, for instance, "/sbin/service"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         search_files(
             filters: Bitfield,
@@ -3238,9 +3422,9 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Search for packages that provide a specific file.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values file to search for, for instance, "/sbin/service"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3256,11 +3440,11 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values a group enum to search for, for instance, "system-tools"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         search_groups(
             filters: Bitfield,
@@ -3270,9 +3454,9 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Return all packages in a specific group.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values a group enum to search for, for instance, "system-tools"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3289,11 +3473,11 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values free text to search for, for instance, "power"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         search_names(
             filters: Bitfield,
@@ -3304,9 +3488,9 @@ export namespace PackageKitGlib {
         /**
          * Search all the locally installed files and remote repositories for a package
          * that matches a specific name.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values free text to search for, for instance, "power"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3326,11 +3510,11 @@ export namespace PackageKitGlib {
         set_background(background: boolean): void;
         /**
          * Sets the maximum cache age value for the client.
-         * @param cache_age the cache age to set in seconds, where %G_MAXUINT means cache "never expires"
+         * @param cache_age the cache age to set in seconds, where `G_MAXUINT` means cache "never expires"
          */
         set_cache_age(cache_age: number): void;
         /**
-         * Sets whether the pk_client_get_details_async() should include dependencies
+         * Sets whether the `pk_client_get_details_async()` should include dependencies
          * download sizes for packages, which are not installed.
          * @param details_with_deps_size the value to set
          */
@@ -3354,9 +3538,9 @@ export namespace PackageKitGlib {
          * applications.
          * @param transaction_flags a transaction type bitfield
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         update_packages(
             transaction_flags: Bitfield,
@@ -3368,7 +3552,7 @@ export namespace PackageKitGlib {
          * Update specific packages to the newest available versions.
          * @param transaction_flags a transaction type bitfield
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3390,10 +3574,10 @@ export namespace PackageKitGlib {
          * applications.
          * @param transaction_flags transaction flags
          * @param distro_id a distro ID such as "fedora-14"
-         * @param upgrade_kind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
-         * @param cancellable a #GCancellable or %NULL
+         * @param upgrade_kind a {@link PackageKitGlib.UpgradeKindEnum} such as {@link PackageKitGlib.UpgradeKindEnum.COMPLETE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         upgrade_system(
             transaction_flags: Bitfield,
@@ -3410,8 +3594,8 @@ export namespace PackageKitGlib {
          * The backend will decide what is best to do.
          * @param transaction_flags a transaction type bitfield
          * @param distro_id a distro ID such as "fedora-14"
-         * @param upgrade_kind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
-         * @param cancellable a #GCancellable or %NULL
+         * @param upgrade_kind a {@link PackageKitGlib.UpgradeKindEnum} such as {@link PackageKitGlib.UpgradeKindEnum.COMPLETE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3430,11 +3614,11 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values a search term such as "sound/mp3"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         what_provides(
             filters: Bitfield,
@@ -3446,9 +3630,9 @@ export namespace PackageKitGlib {
          * This should return packages that provide the supplied attributes.
          * This method is useful for finding out what package(s) provide a modalias
          * or GStreamer codec string.
-         * @param filters a #PkBitfield such as %PK_FILTER_ENUM_GUI | %PK_FILTER_ENUM_FREE or %PK_FILTER_ENUM_NONE
+         * @param filters a {@link PackageKitGlib.Bitfield} such as {@link PackageKitGlib.FilterEnum.GUI} | {@link PackageKitGlib.FilterEnum.FREE} or {@link PackageKitGlib.FilterEnum.NONE}
          * @param values a search term such as "sound/mp3"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -3470,6 +3654,9 @@ export namespace PackageKitGlib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientHelper extends GObject.Object {
         static $gtype: GObject.GType<ClientHelper>;
 
@@ -3492,16 +3679,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientHelper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientHelper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientHelper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientHelper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientHelper.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientHelper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3510,6 +3700,9 @@ export namespace PackageKitGlib {
 
         // Methods
 
+        /**
+         * @returns TRUE if there is an accepted connection, FALSE               otherwise.
+         */
         is_active(): boolean;
         /**
          * Starts the helper process, by running the helper process and setting
@@ -3517,22 +3710,22 @@ export namespace PackageKitGlib {
          * @param socket_filename a socket filename that does not already exist
          * @param argv the executable, along with any arguments
          * @param envp the environment
-         * @returns %TRUE for success
+         * @returns `true` for success
          */
         start(socket_filename: string, argv: string, envp: string): boolean;
         /**
          * Starts the helper process, by running the helper process and setting
          * up the socket for use.
-         * @param socket the (bound and listening) #GSocket instance to use
+         * @param socket the (bound and listening) {@link Gio.Socket} instance to use
          * @param argv the executable, along with any arguments
          * @param envp the environment
-         * @returns %TRUE for success
+         * @returns `true` for success
          */
         start_with_socket(socket: Gio.Socket, argv: string, envp: string): boolean;
         /**
          * Stops the helper process, by killing the helper process and deleting
          * the socket.
-         * @returns %TRUE for success
+         * @returns `true` for success
          */
         stop(): boolean;
     }
@@ -3540,9 +3733,31 @@ export namespace PackageKitGlib {
     namespace Control {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::repo-list-changed signal is emitted when the repo list may have
+             * changed and the control program may have to update some UI.
+             * @signal
+             */
             'repo-list-changed': () => void;
+            /**
+             * The ::restart_schedule signal is emitted when the packagekitd service
+             * has been restarted because it has been upgraded.
+             * Client programs should reload themselves when it is convenient to
+             * do so, as old client tools may not be compatable with the new daemon.
+             * @signal
+             */
             'restart-schedule': () => void;
+            /**
+             * The ::transaction-list-changed signal is emitted when the list
+             * of transactions handled by the daemon is changed.
+             * @signal
+             */
             'transaction-list-changed': (arg0: string[]) => void;
+            /**
+             * The ::updates-changed signal is emitted when the update list may have
+             * changed and the control program may have to update some UI.
+             * @signal
+             */
             'updates-changed': () => void;
             'notify::backend-author': (pspec: GObject.ParamSpec) => void;
             'notify::backend-description': (pspec: GObject.ParamSpec) => void;
@@ -3591,52 +3806,127 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
 
         // Properties
 
+        /**
+         * @since 0.5.2
+         */
         get backend_author(): string;
         set backend_author(val: string);
+        /**
+         * @since 0.5.2
+         */
         get backendAuthor(): string;
         set backendAuthor(val: string);
+        /**
+         * @since 0.5.2
+         */
         get backend_description(): string;
         set backend_description(val: string);
+        /**
+         * @since 0.5.2
+         */
         get backendDescription(): string;
         set backendDescription(val: string);
+        /**
+         * @since 0.5.2
+         */
         get backend_name(): string;
         set backend_name(val: string);
+        /**
+         * @since 0.5.2
+         */
         get backendName(): string;
         set backendName(val: string);
+        /**
+         * @since 0.5.3
+         */
         get connected(): boolean;
         set connected(val: boolean);
+        /**
+         * @since 0.5.5
+         */
         get distro_id(): string;
         set distro_id(val: string);
+        /**
+         * @since 0.5.5
+         */
         get distroId(): string;
         set distroId(val: string);
+        /**
+         * @since 0.5.2
+         */
         get filters(): number;
         set filters(val: number);
+        /**
+         * @since 0.5.2
+         */
         get groups(): number;
         set groups(val: number);
+        /**
+         * @since 0.5.3
+         */
         get locked(): boolean;
         set locked(val: boolean);
+        /**
+         * @since 0.8.1
+         */
         get mime_types(): string[];
         set mime_types(val: string[]);
+        /**
+         * @since 0.8.1
+         */
         get mimeTypes(): string[];
         set mimeTypes(val: string[]);
+        /**
+         * @since 0.5.3
+         */
         get network_state(): NetworkEnum;
         set network_state(val: NetworkEnum);
+        /**
+         * @since 0.5.3
+         */
         get networkState(): NetworkEnum;
         set networkState(val: NetworkEnum);
+        /**
+         * @since 0.8.8
+         */
         get provides(): number;
         set provides(val: number);
+        /**
+         * @since 0.5.2
+         */
         get roles(): number;
         set roles(val: number);
+        /**
+         * @since 0.5.2
+         */
         get version_major(): number;
+        /**
+         * @since 0.5.2
+         */
         get versionMajor(): number;
+        /**
+         * @since 0.5.2
+         */
         get version_micro(): number;
+        /**
+         * @since 0.5.2
+         */
         get versionMicro(): number;
+        /**
+         * @since 0.5.2
+         */
         get version_minor(): number;
+        /**
+         * @since 0.5.2
+         */
         get versionMinor(): number;
 
         /**
@@ -3658,16 +3948,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Control.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Control.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Control.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Control.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3676,12 +3969,36 @@ export namespace PackageKitGlib {
 
         // Virtual methods
 
+        /**
+         * @param connected
+         * @virtual
+         */
         vfunc_connection_changed(connected: boolean): void;
+        /**
+         * @param is_locked
+         * @virtual
+         */
         vfunc_locked(is_locked: boolean): void;
+        /**
+         * @virtual
+         */
         vfunc_network_state_changed(): void;
+        /**
+         * @virtual
+         */
         vfunc_repo_list_changed(): void;
+        /**
+         * @virtual
+         */
         vfunc_restart_schedule(): void;
+        /**
+         * @param transaction_ids
+         * @virtual
+         */
         vfunc_transaction_list_changed(transaction_ids: string): void;
+        /**
+         * @virtual
+         */
         vfunc_updates_changed(): void;
 
         // Methods
@@ -3690,14 +4007,14 @@ export namespace PackageKitGlib {
          * We may want to know before we run a method if we are going to be denied,
          * accepted or challenged for authentication.
          * @param action_id The action ID, for instance "org.freedesktop.PackageKit.install-untrusted"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         can_authorize_async(action_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<AuthorizeEnum>;
         /**
          * We may want to know before we run a method if we are going to be denied,
          * accepted or challenged for authentication.
          * @param action_id The action ID, for instance "org.freedesktop.PackageKit.install-untrusted"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         can_authorize_async(
@@ -3709,7 +4026,7 @@ export namespace PackageKitGlib {
          * We may want to know before we run a method if we are going to be denied,
          * accepted or challenged for authentication.
          * @param action_id The action ID, for instance "org.freedesktop.PackageKit.install-untrusted"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         can_authorize_async(
@@ -3719,18 +4036,18 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<AuthorizeEnum> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns the #PkAuthorizeEnum or %PK_AUTHORIZE_ENUM_UNKNOWN if the method failed
+         * @param res the {@link Gio.AsyncResult}
+         * @returns the {@link PackageKitGlib.AuthorizeEnum} or {@link PackageKitGlib.AuthorizeEnum.UNKNOWN} if the method failed
          */
         can_authorize_finish(res: Gio.AsyncResult): AuthorizeEnum;
         /**
          * Gets the debugging state from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         get_daemon_state_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Gets the debugging state from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_daemon_state_async(
@@ -3739,7 +4056,7 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Gets the debugging state from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_daemon_state_async(
@@ -3748,32 +4065,32 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<string> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns the ID, or %NULL if unset, free with g_free()
+         * @param res the {@link Gio.AsyncResult}
+         * @returns the ID, or `null` if unset, free with `g_free()`
          */
         get_daemon_state_finish(res: Gio.AsyncResult): string;
         /**
          * Gets the properties the daemon supports.
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns %TRUE if the properties were set correctly
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` if the properties were set correctly
          */
         get_properties(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Gets global properties from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         get_properties_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Gets global properties from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_properties_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Gets global properties from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_properties_async(
@@ -3782,24 +4099,24 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns %TRUE if we set the proxy successfully
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` if we set the proxy successfully
          */
         get_properties_finish(res: Gio.AsyncResult): boolean;
         /**
          * Gets a transacton ID from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         get_tid_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Gets a transacton ID from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_tid_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Gets a transacton ID from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_tid_async(
@@ -3808,15 +4125,15 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<string> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns the ID, or %NULL if unset, free with g_free()
+         * @param res the {@link Gio.AsyncResult}
+         * @returns the ID, or `null` if unset, free with `g_free()`
          */
         get_tid_finish(res: Gio.AsyncResult): string;
         /**
          * We may want to know how long it has been since we refreshed the cache or
          * retrieved the update list.
-         * @param role the role enum, e.g. %PK_ROLE_ENUM_GET_UPDATES
-         * @param cancellable a #GCancellable or %NULL
+         * @param role the role enum, e.g. {@link PackageKitGlib.RoleEnum.GET_UPDATES}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         get_time_since_action_async(
             role: RoleEnum | null,
@@ -3825,8 +4142,8 @@ export namespace PackageKitGlib {
         /**
          * We may want to know how long it has been since we refreshed the cache or
          * retrieved the update list.
-         * @param role the role enum, e.g. %PK_ROLE_ENUM_GET_UPDATES
-         * @param cancellable a #GCancellable or %NULL
+         * @param role the role enum, e.g. {@link PackageKitGlib.RoleEnum.GET_UPDATES}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_time_since_action_async(
@@ -3837,8 +4154,8 @@ export namespace PackageKitGlib {
         /**
          * We may want to know how long it has been since we refreshed the cache or
          * retrieved the update list.
-         * @param role the role enum, e.g. %PK_ROLE_ENUM_GET_UPDATES
-         * @param cancellable a #GCancellable or %NULL
+         * @param role the role enum, e.g. {@link PackageKitGlib.RoleEnum.GET_UPDATES}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_time_since_action_async(
@@ -3848,26 +4165,26 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<number> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns %TRUE if the daemon serviced the request
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` if the daemon serviced the request
          */
         get_time_since_action_finish(res: Gio.AsyncResult): number;
         /**
          * Gets the transaction list in progress.
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns The list of transaction id's, or %NULL, free with g_strfreev()
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns The list of transaction id's, or `null`, free with `g_strfreev()`
          */
         get_transaction_list(cancellable?: Gio.Cancellable | null): string[];
         /**
          * Gets the transactions currently running in the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         get_transaction_list_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Gets the transactions currently running in the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_transaction_list_async(
@@ -3876,7 +4193,7 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Gets the transactions currently running in the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         get_transaction_list_async(
@@ -3885,8 +4202,8 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<string[]> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns A GStrv list of transaction ID's, free with g_strfreev()
+         * @param res the {@link Gio.AsyncResult}
+         * @returns A GStrv list of transaction ID's, free with `g_strfreev()`
          */
         get_transaction_list_finish(res: Gio.AsyncResult): string[];
         /**
@@ -3895,8 +4212,8 @@ export namespace PackageKitGlib {
          * applications.
          * @param proxy_http the HTTP proxy server
          * @param proxy_ftp the FTP proxy server
-         * @param cancellable a #GCancellable or %NULL
-         * @returns %TRUE if the proxy was set correctly NOTE: This is just provided for backwards compatibility. Clients should really be using pk_control_set_proxy2().
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` if the proxy was set correctly NOTE: This is just provided for backwards compatibility. Clients should really be using `pk_control_set_proxy2()`.
          */
         set_proxy(proxy_http: string, proxy_ftp: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -3909,8 +4226,8 @@ export namespace PackageKitGlib {
          * @param proxy_socks the SOCKS proxy server
          * @param no_proxy the list of download IPs that shouldn't go through the proxy
          * @param pac the PAC string
-         * @param cancellable a #GCancellable or %NULL
-         * @returns %TRUE if the proxy was set correctly
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` if the proxy was set correctly
          */
         set_proxy2(
             proxy_http: string,
@@ -3923,13 +4240,13 @@ export namespace PackageKitGlib {
         ): boolean;
         /**
          * Set a proxy on the PK daemon
-         * @param proxy_http a HTTP proxy string such as "username:password@server.lan:8080", or %NULL
-         * @param proxy_https a HTTPS proxy string such as "username:password@server.lan:8080", or %NULL
-         * @param proxy_ftp a FTP proxy string such as "server.lan:8080", or %NULL
-         * @param proxy_socks a SOCKS proxy string such as "server.lan:8080", or %NULL
-         * @param no_proxy a list of download IPs that shouldn't go through the proxy, or %NULL
-         * @param pac a PAC string, or %NULL
-         * @param cancellable a #GCancellable or %NULL
+         * @param proxy_http a HTTP proxy string such as "username:password@server.lan:8080", or `null`
+         * @param proxy_https a HTTPS proxy string such as "username:password@server.lan:8080", or `null`
+         * @param proxy_ftp a FTP proxy string such as "server.lan:8080", or `null`
+         * @param proxy_socks a SOCKS proxy string such as "server.lan:8080", or `null`
+         * @param no_proxy a list of download IPs that shouldn't go through the proxy, or `null`
+         * @param pac a PAC string, or `null`
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         set_proxy2_async(
@@ -3946,10 +4263,10 @@ export namespace PackageKitGlib {
          * Set a proxy on the PK daemon
          *
          * NOTE: This is just provided for backwards compatibility.
-         * Clients should really be using pk_control_set_proxy2_async().
+         * Clients should really be using `pk_control_set_proxy2_async()`.
          * @param proxy_http a HTTP proxy string such as "username:password@server.lan:8080"
          * @param proxy_ftp a FTP proxy string such as "server.lan:8080"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         set_proxy_async(
             proxy_http: string,
@@ -3960,10 +4277,10 @@ export namespace PackageKitGlib {
          * Set a proxy on the PK daemon
          *
          * NOTE: This is just provided for backwards compatibility.
-         * Clients should really be using pk_control_set_proxy2_async().
+         * Clients should really be using `pk_control_set_proxy2_async()`.
          * @param proxy_http a HTTP proxy string such as "username:password@server.lan:8080"
          * @param proxy_ftp a FTP proxy string such as "server.lan:8080"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         set_proxy_async(
@@ -3976,10 +4293,10 @@ export namespace PackageKitGlib {
          * Set a proxy on the PK daemon
          *
          * NOTE: This is just provided for backwards compatibility.
-         * Clients should really be using pk_control_set_proxy2_async().
+         * Clients should really be using `pk_control_set_proxy2_async()`.
          * @param proxy_http a HTTP proxy string such as "username:password@server.lan:8080"
          * @param proxy_ftp a FTP proxy string such as "server.lan:8080"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         set_proxy_async(
@@ -3990,26 +4307,26 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns %TRUE if we set the proxy successfully
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` if we set the proxy successfully
          */
         set_proxy_finish(res: Gio.AsyncResult): boolean;
         /**
          * Suggests to the daemon that it should quit as soon as possible.
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns %TRUE if the suggestion was sent
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` if the suggestion was sent
          */
         suggest_daemon_quit(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Suggests to the daemon that it should quit as soon as possible.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         suggest_daemon_quit_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Suggests to the daemon that it should quit as soon as possible.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         suggest_daemon_quit_async(
@@ -4018,7 +4335,7 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Suggests to the daemon that it should quit as soon as possible.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
         suggest_daemon_quit_async(
@@ -4027,8 +4344,8 @@ export namespace PackageKitGlib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns %TRUE if the suggestion was sent
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` if the suggestion was sent
          */
         suggest_daemon_quit_finish(res: Gio.AsyncResult): boolean;
     }
@@ -4042,6 +4359,9 @@ export namespace PackageKitGlib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Desktop extends GObject.Object {
         static $gtype: GObject.GType<Desktop>;
 
@@ -4064,16 +4384,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Desktop.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Desktop.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Desktop.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Desktop.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Desktop.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Desktop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4086,26 +4409,26 @@ export namespace PackageKitGlib {
          * Return all desktop files owned by a package, regardless if they are shown
          * in the main menu or not.
          * @param _package the package name, e.g. "gnome-power-manager"
-         * @returns string array of results, free with g_ptr_array_unref() NOTE: This method is unused and will be removed next time the library soname changes!
+         * @returns string array of results, free with `g_ptr_array_unref()` NOTE: This method is unused and will be removed next time the library soname changes!
          */
         get_files_for_package(_package: string): string[];
         /**
          * Returns the package name that owns the desktop file. Fast.
          * @param filename a fully qualified filename
-         * @returns package name, or %NULL NOTE: This method is unused and will be removed next time the library soname changes!
+         * @returns package name, or `null` NOTE: This method is unused and will be removed next time the library soname changes!
          */
         get_package_for_file(filename: string): string;
         /**
          * Return all desktop files owned by a package that would be shown in a menu,
          * i.e are an application
          * @param _package the package name, e.g. "gnome-power-manager"
-         * @returns string array of results, free with g_ptr_array_unref() NOTE: This method is unused and will be removed next time the library soname changes!
+         * @returns string array of results, free with `g_ptr_array_unref()` NOTE: This method is unused and will be removed next time the library soname changes!
          */
         get_shown_for_package(_package: string): string[];
         /**
          * This method is unused and will be removed next time the library
          * soname changes!
-         * @returns %TRUE if opened correctly
+         * @returns `true` if opened correctly
          */
         open_database(): boolean;
     }
@@ -4141,29 +4464,62 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Details extends Source {
         static $gtype: GObject.GType<Details>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get description(): string;
         set description(val: string);
+        /**
+         * @since 1.2.4
+         */
         get download_size(): number;
         set download_size(val: number);
+        /**
+         * @since 1.2.4
+         */
         get downloadSize(): number;
         set downloadSize(val: number);
+        /**
+         * @since 0.5.4
+         */
         get group(): GroupEnum;
         set group(val: GroupEnum);
+        /**
+         * @since 0.5.4
+         */
         get license(): string;
         set license(val: string);
+        /**
+         * @since 0.5.4
+         */
         get package_id(): string;
         set package_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get packageId(): string;
         set packageId(val: string);
+        /**
+         * @since 0.5.4
+         */
         get size(): number;
         set size(val: number);
+        /**
+         * @since 0.9.1
+         */
         get summary(): string;
         set summary(val: string);
+        /**
+         * @since 0.5.4
+         */
         get url(): string;
         set url(val: string);
 
@@ -4186,16 +4542,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Details.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Details.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Details.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Details.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Details.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Details.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4266,15 +4625,27 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DistroUpgrade extends Source {
         static $gtype: GObject.GType<DistroUpgrade>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get name(): string;
         set name(val: string);
+        /**
+         * @since 0.5.4
+         */
         get state(): DistroUpgradeEnum;
         set state(val: DistroUpgradeEnum);
+        /**
+         * @since 0.5.4
+         */
         get summary(): string;
         set summary(val: string);
 
@@ -4297,16 +4668,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DistroUpgrade.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DistroUpgrade.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DistroUpgrade.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DistroUpgrade.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DistroUpgrade.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DistroUpgrade.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4323,7 +4697,7 @@ export namespace PackageKitGlib {
         get_id(): string;
         /**
          * Gets the status of the distribution upgrade.
-         * @returns the printable name, e.g. %PK_DISTRO_UPGRADE_ENUM_UNSTABLE
+         * @returns the printable name, e.g. {@link PackageKitGlib.DistroUpgradeEnum.UNSTABLE}
          */
         get_state(): DistroUpgradeEnum;
         /**
@@ -4350,13 +4724,22 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Error extends Source {
         static $gtype: GObject.GType<Error>;
 
         // Properties
 
+        /**
+         * @since 0.5.5
+         */
         get code(): ErrorEnum;
         set code(val: ErrorEnum);
+        /**
+         * @since 0.5.5
+         */
         get details(): string;
         set details(val: string);
 
@@ -4379,16 +4762,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Error.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Error.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Error.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Error.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Error.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Error.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4399,7 +4785,7 @@ export namespace PackageKitGlib {
 
         /**
          * Get the error code for this error.
-         * @returns a #PkErrorEnum
+         * @returns a {@link PackageKitGlib.ErrorEnum}
          */
         get_code(): ErrorEnum;
         /**
@@ -4434,6 +4820,9 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class EulaRequired extends Source {
         static $gtype: GObject.GType<EulaRequired>;
 
@@ -4441,41 +4830,49 @@ export namespace PackageKitGlib {
 
         /**
          * ID for this EULA.
+         * @since 0.5.4
          */
         get eula_id(): string;
         set eula_id(val: string);
         /**
          * ID for this EULA.
+         * @since 0.5.4
          */
         get eulaId(): string;
         set eulaId(val: string);
         /**
          * The text of the license agreement.
+         * @since 0.5.4
          */
         get license_agreement(): string;
         set license_agreement(val: string);
         /**
          * The text of the license agreement.
+         * @since 0.5.4
          */
         get licenseAgreement(): string;
         set licenseAgreement(val: string);
         /**
          * PackageID this EULA is for.
+         * @since 0.5.4
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * PackageID this EULA is for.
+         * @since 0.5.4
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * Vendor this EULA is from.
+         * @since 0.5.4
          */
         get vendor_name(): string;
         set vendor_name(val: string);
         /**
          * Vendor this EULA is from.
+         * @since 0.5.4
          */
         get vendorName(): string;
         set vendorName(val: string);
@@ -4499,16 +4896,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EulaRequired.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EulaRequired.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EulaRequired.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EulaRequired.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EulaRequired.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EulaRequired.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4557,15 +4957,27 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Files extends Source {
         static $gtype: GObject.GType<Files>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get files(): string[];
         set files(val: string[]);
+        /**
+         * @since 0.5.4
+         */
         get package_id(): string;
         set package_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get packageId(): string;
         set packageId(val: string);
 
@@ -4588,16 +5000,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Files.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Files.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Files.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Files.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Files.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Files.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4638,17 +5053,32 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ItemProgress extends Source {
         static $gtype: GObject.GType<ItemProgress>;
 
         // Properties
 
+        /**
+         * @since 0.8.1
+         */
         get package_id(): string;
         set package_id(val: string);
+        /**
+         * @since 0.8.1
+         */
         get packageId(): string;
         set packageId(val: string);
+        /**
+         * @since 0.8.1
+         */
         get percentage(): number;
         set percentage(val: number);
+        /**
+         * @since 0.8.2
+         */
         get status(): number;
         set status(val: number);
 
@@ -4671,16 +5101,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ItemProgress.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ItemProgress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ItemProgress.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ItemProgress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ItemProgress.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ItemProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4701,7 +5134,7 @@ export namespace PackageKitGlib {
         get_percentage(): number;
         /**
          * Get the status of this item.
-         * @returns a #PkStatusEnum
+         * @returns a {@link PackageKitGlib.StatusEnum}
          */
         get_status(): StatusEnum;
     }
@@ -4728,21 +5161,42 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MediaChangeRequired extends Source {
         static $gtype: GObject.GType<MediaChangeRequired>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get media_id(): string;
         set media_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get mediaId(): string;
         set mediaId(val: string);
+        /**
+         * @since 0.5.4
+         */
         get media_text(): string;
         set media_text(val: string);
+        /**
+         * @since 0.5.4
+         */
         get mediaText(): string;
         set mediaText(val: string);
+        /**
+         * @since 0.5.4
+         */
         get media_type(): MediaTypeEnum;
         set media_type(val: MediaTypeEnum);
+        /**
+         * @since 0.5.4
+         */
         get mediaType(): MediaTypeEnum;
         set mediaType(val: MediaTypeEnum);
 
@@ -4765,16 +5219,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaChangeRequired.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaChangeRequired.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaChangeRequired.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaChangeRequired.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaChangeRequired.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaChangeRequired.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4787,6 +5244,10 @@ export namespace PackageKitGlib {
     namespace Package {
         // Signal signatures
         interface SignalSignatures extends Source.SignalSignatures {
+            /**
+             * The ::changed signal is emitted when the package data may have changed.
+             * @signal
+             */
             changed: () => void;
             'notify::description': (pspec: GObject.ParamSpec) => void;
             'notify::group': (pspec: GObject.ParamSpec) => void;
@@ -4851,81 +5312,179 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Package extends Source {
         static $gtype: GObject.GType<Package>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get description(): string;
         set description(val: string);
+        /**
+         * @since 0.5.4
+         */
         get group(): GroupEnum;
         set group(val: GroupEnum);
+        /**
+         * @since 0.5.4
+         */
         get info(): InfoEnum;
         set info(val: InfoEnum);
+        /**
+         * @since 0.5.4
+         */
         get license(): string;
         set license(val: string);
+        /**
+         * @since 0.5.4
+         */
         get package_id(): string;
+        /**
+         * @since 0.5.4
+         */
         get packageId(): string;
+        /**
+         * @since 0.5.4
+         */
         get size(): number;
         set size(val: number);
+        /**
+         * @since 0.5.4
+         */
         get summary(): string;
         set summary(val: string);
+        /**
+         * @since 0.8.1
+         */
         get update_bugzilla_urls(): string[];
         set update_bugzilla_urls(val: string[]);
+        /**
+         * @since 0.8.1
+         */
         get updateBugzillaUrls(): string[];
         set updateBugzillaUrls(val: string[]);
+        /**
+         * @since 0.5.4
+         */
         get update_changelog(): string;
         set update_changelog(val: string);
+        /**
+         * @since 0.5.4
+         */
         get updateChangelog(): string;
         set updateChangelog(val: string);
+        /**
+         * @since 0.8.1
+         */
         get update_cve_urls(): string[];
         set update_cve_urls(val: string[]);
+        /**
+         * @since 0.8.1
+         */
         get updateCveUrls(): string[];
         set updateCveUrls(val: string[]);
+        /**
+         * @since 0.5.4
+         */
         get update_issued(): string;
         set update_issued(val: string);
+        /**
+         * @since 0.5.4
+         */
         get updateIssued(): string;
         set updateIssued(val: string);
+        /**
+         * @since 0.5.4
+         */
         get update_obsoletes(): string;
         set update_obsoletes(val: string);
+        /**
+         * @since 0.5.4
+         */
         get updateObsoletes(): string;
         set updateObsoletes(val: string);
+        /**
+         * @since 0.5.4
+         */
         get update_restart(): RestartEnum;
         set update_restart(val: RestartEnum);
+        /**
+         * @since 0.5.4
+         */
         get updateRestart(): RestartEnum;
         set updateRestart(val: RestartEnum);
         /**
-         * Can be one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
-         * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
+         * Can be one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW}, {@link PackageKitGlib.InfoEnum.NORMAL},
+         * {@link PackageKitGlib.InfoEnum.IMPORTANT} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
+         * @since 1.2.4
          */
         get update_severity(): InfoEnum;
         set update_severity(val: InfoEnum);
         /**
-         * Can be one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
-         * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
+         * Can be one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW}, {@link PackageKitGlib.InfoEnum.NORMAL},
+         * {@link PackageKitGlib.InfoEnum.IMPORTANT} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
+         * @since 1.2.4
          */
         get updateSeverity(): InfoEnum;
         set updateSeverity(val: InfoEnum);
+        /**
+         * @since 0.5.4
+         */
         get update_state(): UpdateStateEnum;
         set update_state(val: UpdateStateEnum);
+        /**
+         * @since 0.5.4
+         */
         get updateState(): UpdateStateEnum;
         set updateState(val: UpdateStateEnum);
+        /**
+         * @since 0.5.4
+         */
         get update_text(): string;
         set update_text(val: string);
+        /**
+         * @since 0.5.4
+         */
         get updateText(): string;
         set updateText(val: string);
+        /**
+         * @since 0.5.4
+         */
         get update_updated(): string;
         set update_updated(val: string);
+        /**
+         * @since 0.5.4
+         */
         get updateUpdated(): string;
         set updateUpdated(val: string);
+        /**
+         * @since 0.5.4
+         */
         get update_updates(): string;
         set update_updates(val: string);
+        /**
+         * @since 0.5.4
+         */
         get updateUpdates(): string;
         set updateUpdates(val: string);
+        /**
+         * @since 0.8.1
+         */
         get update_vendor_urls(): string[];
         set update_vendor_urls(val: string[]);
+        /**
+         * @since 0.8.1
+         */
         get updateVendorUrls(): string[];
         set updateVendorUrls(val: string[]);
+        /**
+         * @since 0.5.4
+         */
         get url(): string;
         set url(val: string);
 
@@ -4948,16 +5507,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Package.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5046,72 +5608,78 @@ export namespace PackageKitGlib {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_changed(): void;
 
         // Methods
 
         /**
-         * Do the #PkPackage's have the same ID.
-         * @param package2 a valid #PkPackage instance
-         * @returns %TRUE if the packages have the same package_id, info and summary.
+         * Do the {@link PackageKitGlib.Package}'s have the same ID.
+         * @param package2 a valid {@link PackageKitGlib.Package} instance
+         * @returns `true` if the packages have the same package_id, info and summary.
          */
         equal(package2: Package): boolean;
         /**
-         * Do the #PkPackage's have the same ID.
-         * @param package2 a valid #PkPackage instance
-         * @returns %TRUE if the packages have the same package_id.
+         * Do the {@link PackageKitGlib.Package}'s have the same ID.
+         * @param package2 a valid {@link PackageKitGlib.Package} instance
+         * @returns `true` if the packages have the same package_id.
          */
         equal_id(package2: Package): boolean;
         /**
          * Gets the package arch.
-         * @returns the arch, or %NULL if unset
+         * @returns the arch, or `null` if unset
          */
         get_arch(): string;
         /**
          * Gets the package data, which is usually the repository ID that contains the
          * package. Special ID's include "installed" for installed packages, and "local"
          * for local packages that exist on disk but not in a repository.
-         * @returns the data, or %NULL if unset
+         * @returns the data, or `null` if unset
          */
         get_data(): string;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Gets the package object ID
-         * @returns the ID, or %NULL if unset
+         * @returns the ID, or `null` if unset
          */
         get_id(): string;
         /**
          * Gets the package object ID
-         * @returns the #PkInfoEnum
+         * @returns the {@link PackageKitGlib.InfoEnum}
          */
         get_info(): InfoEnum;
         /**
          * Gets the package name.
-         * @returns the name, or %NULL if unset
+         * @returns the name, or `null` if unset
          */
         get_name(): string;
         /**
          * Gets the package object ID
-         * @returns the summary, or %NULL if unset
+         * @returns the summary, or `null` if unset
          */
         get_summary(): string;
         /**
-         * Returns the `package` update severity. Can be one of %PK_INFO_ENUM_UNKNOWN,
-         * %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL, %PK_INFO_ENUM_IMPORTANT or
-         * %PK_INFO_ENUM_CRITICAL.
-         * @returns the @package update severity, if known.
+         * Returns the `package` update severity. Can be one of {@link PackageKitGlib.InfoEnum.UNKNOWN},
+         * {@link PackageKitGlib.InfoEnum.LOW}, {@link PackageKitGlib.InfoEnum.NORMAL}, {@link PackageKitGlib.InfoEnum.IMPORTANT} or
+         * {@link PackageKitGlib.InfoEnum.CRITICAL}.
+         * @returns the `package` update severity, if known.
          */
         get_update_severity(): InfoEnum;
         /**
          * Gets the package version.
-         * @returns the version, or %NULL if unset
+         * @returns the version, or `null` if unset
          */
         get_version(): string;
         /**
-         * Parses the data to populate the #PkPackage.
+         * Parses the data to populate the {@link PackageKitGlib.Package}.
          * @param data the data describing the package
-         * @returns %TRUE if the data was parsed correcty
+         * @returns `true` if the data was parsed correcty
          */
         parse(data: string): boolean;
         /**
@@ -5121,12 +5689,12 @@ export namespace PackageKitGlib {
         /**
          * Sets the package object to have the given ID
          * @param package_id the valid package_id
-         * @returns %TRUE if the package_id was set
+         * @returns `true` if the package_id was set
          */
         set_id(package_id: string): boolean;
         /**
          * Sets the package info enum.
-         * @param info the #PkInfoEnum
+         * @param info the {@link PackageKitGlib.InfoEnum}
          */
         set_info(info: InfoEnum | null): void;
         /**
@@ -5136,9 +5704,9 @@ export namespace PackageKitGlib {
         set_summary(summary: string): void;
         /**
          * Set an update severity for the `package`. The `update_severity` can be
-         * one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
-         * %PK_INFO_ENUM_IMPORTANT or %PK_INFO_ENUM_CRITICAL.
-         * @param update_severity a #PkInfoEnum
+         * one of {@link PackageKitGlib.InfoEnum.UNKNOWN}, {@link PackageKitGlib.InfoEnum.LOW}, {@link PackageKitGlib.InfoEnum.NORMAL},
+         * {@link PackageKitGlib.InfoEnum.IMPORTANT} or {@link PackageKitGlib.InfoEnum.CRITICAL}.
+         * @param update_severity a {@link PackageKitGlib.InfoEnum}
          */
         set_update_severity(update_severity: InfoEnum | null): void;
     }
@@ -5152,6 +5720,9 @@ export namespace PackageKitGlib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PackageSack extends GObject.Object {
         static $gtype: GObject.GType<PackageSack>;
 
@@ -5174,16 +5745,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PackageSack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PackageSack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PackageSack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PackageSack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PackageSack.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PackageSack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5192,26 +5766,29 @@ export namespace PackageKitGlib {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_changed(): void;
 
         // Methods
 
         /**
          * Adds a package to the sack.
-         * @param _package a valid #PkPackage instance
-         * @returns %TRUE if the package was added to the sack
+         * @param _package a valid {@link PackageKitGlib.Package} instance
+         * @returns `true` if the package was added to the sack
          */
         add_package(_package: Package): boolean;
         /**
          * Adds a package reference to the sack.
          * @param package_id a package_id descriptor
-         * @returns %TRUE if the package was added to the sack
+         * @returns `true` if the package was added to the sack
          */
         add_package_by_id(package_id: string): boolean;
         /**
-         * Adds packages from package-list file to a #PkPackageSack.
+         * Adds packages from package-list file to a {@link PackageKitGlib.PackageSack}.
          * @param file a valid package-list file
-         * @returns %TRUE if there were no errors.
+         * @returns `true` if there were no errors.
          */
         add_packages_from_file(file: Gio.File): boolean;
         /**
@@ -5219,49 +5796,49 @@ export namespace PackageKitGlib {
          */
         clear(): void;
         /**
-         * Returns a new package sack which only matches packages that return %TRUE
+         * Returns a new package sack which only matches packages that return `true`
          * from the filter function.
-         * @param filter_cb a #PkPackageSackFilterFunc, which returns %TRUE for the #PkPackage's to add
-         * @returns a new #PkPackageSack, free with g_object_unref()
+         * @param filter_cb a {@link PackageKitGlib.PackageSackFilterFunc}, which returns `true` for the {@link PackageKitGlib.Package}'s to add
+         * @returns a new {@link PackageKitGlib.PackageSack}, free with `g_object_unref()`
          */
         filter(filter_cb: PackageSackFilterFunc): PackageSack;
         /**
          * Returns a new package sack which only matches packages that match the
          * specified info enum value.
-         * @param info a #PkInfoEnum value to match
-         * @returns a new #PkPackageSack, free with g_object_unref()
+         * @param info a {@link PackageKitGlib.InfoEnum} value to match
+         * @returns a new {@link PackageKitGlib.PackageSack}, free with `g_object_unref()`
          */
         filter_by_info(info: InfoEnum | null): PackageSack;
         /**
          * Finds a package in a sack from reference. As soon as one package is found
          * the search is stopped.
          * @param package_id a package_id descriptor
-         * @returns the #PkPackage object, or %NULL if unfound. Free with g_object_unref()
+         * @returns the {@link PackageKitGlib.Package} object, or `null` if unfound. Free with `g_object_unref()`
          */
         find_by_id(package_id: string): Package;
         /**
          * Finds a package in a sack by package name and architecture. As soon as one
          * package is found the search is stopped.
          * @param package_id a package_id descriptor
-         * @returns the #PkPackage object, or %NULL if not found.
+         * @returns the {@link PackageKitGlib.Package} object, or `null` if not found.
          */
         find_by_id_name_arch(package_id: string): Package;
         /**
          * Gets the package array from the sack
-         * @returns A #GPtrArray, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray}, free with `g_ptr_array_unref()`.
          */
         get_array(): Package[];
         /**
          * Gets the properties the daemon supports.
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns %TRUE if the properties were set correctly
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` if the properties were set correctly
          */
         get_details(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Merges in details about packages.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback the function to run on completion
          */
@@ -5272,7 +5849,7 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Returns all the Package IDs in the sack
-         * @returns the number of packages in the sack, free with g_strfreev()
+         * @returns the number of packages in the sack, free with `g_strfreev()`
          */
         get_ids(): string[];
         /**
@@ -5289,13 +5866,13 @@ export namespace PackageKitGlib {
          * Gets the properties the daemon supports.
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns %TRUE if the properties were set correctly
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` if the properties were set correctly
          */
         get_update_detail(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Merges in update details about packages.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback the function to run on completion
          */
@@ -5306,41 +5883,41 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         merge_generic_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Removes from the package sack any packages that return %FALSE from the filter
+         * Removes from the package sack any packages that return `false` from the filter
          * function.
-         * @param filter_cb a #PkPackageSackFilterFunc, which returns %TRUE for the #PkPackage's to retain
-         * @returns %TRUE if a package was removed from the sack
+         * @param filter_cb a {@link PackageKitGlib.PackageSackFilterFunc}, which returns `true` for the {@link PackageKitGlib.Package}'s to retain
+         * @returns `true` if a package was removed from the sack
          */
         remove_by_filter(filter_cb: PackageSackFilterFunc): boolean;
         /**
          * Removes a package reference from the sack. The pointers have to match exactly.
-         * @param _package a valid #PkPackage instance
-         * @returns %TRUE if the package was removed from the sack
+         * @param _package a valid {@link PackageKitGlib.Package} instance
+         * @returns `true` if the package was removed from the sack
          */
         remove_package(_package: Package): boolean;
         /**
          * Removes a package reference from the sack. As soon as one package is removed
          * the search is stopped.
          * @param package_id a package_id descriptor
-         * @returns %TRUE if the package was removed from the sack
+         * @returns `true` if the package was removed from the sack
          */
         remove_package_by_id(package_id: string): boolean;
         /**
          * Gets the properties the daemon supports.
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns %TRUE if the properties were set correctly
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` if the properties were set correctly
          */
         resolve(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Merges in details about packages using resolve.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback the function to run on completion
          */
@@ -5355,9 +5932,9 @@ export namespace PackageKitGlib {
          */
         sort(type: PackageSackSortType | null): void;
         /**
-         * Write the contents of a #PkPackageSack to a package-list file.
+         * Write the contents of a {@link PackageKitGlib.PackageSack} to a package-list file.
          * @param file a valid package-list file
-         * @returns %TRUE if there were no errors.
+         * @returns `true` if there were no errors.
          */
         to_file(file: Gio.File): boolean;
     }
@@ -5414,133 +5991,161 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Progress extends GObject.Object {
         static $gtype: GObject.GType<Progress>;
 
         // Properties
 
         /**
-         * %TRUE if this transaction can be cancelled.
+         * `true` if this transaction can be cancelled.
+         * @since 0.5.2
          */
         get allow_cancel(): boolean;
         set allow_cancel(val: boolean);
         /**
-         * %TRUE if this transaction can be cancelled.
+         * `true` if this transaction can be cancelled.
+         * @since 0.5.2
          */
         get allowCancel(): boolean;
         set allowCancel(val: boolean);
         /**
-         * %TRUE if the transaction caller is still connected.
+         * `true` if the transaction caller is still connected.
+         * @since 0.5.2
          */
         get caller_active(): boolean;
         set caller_active(val: boolean);
         /**
-         * %TRUE if the transaction caller is still connected.
+         * `true` if the transaction caller is still connected.
+         * @since 0.5.2
          */
         get callerActive(): boolean;
         set callerActive(val: boolean);
         /**
          * Number of bytes remaining to download.
+         * @since 0.8.0
          */
         get download_size_remaining(): number;
         set download_size_remaining(val: number);
         /**
          * Number of bytes remaining to download.
+         * @since 0.8.0
          */
         get downloadSizeRemaining(): number;
         set downloadSizeRemaining(val: number);
         /**
          * Amount of time the transaction has taken in seconds.
+         * @since 0.5.2
          */
         get elapsed_time(): number;
         set elapsed_time(val: number);
         /**
          * Amount of time the transaction has taken in seconds.
+         * @since 0.5.2
          */
         get elapsedTime(): number;
         set elapsedTime(val: number);
         /**
          * Item progress associated with this transaction.
+         * @since 0.8.1
          */
         get item_progress(): ItemProgress;
         set item_progress(val: ItemProgress);
         /**
          * Item progress associated with this transaction.
+         * @since 0.8.1
          */
         get itemProgress(): ItemProgress;
         set itemProgress(val: ItemProgress);
         /**
          * The package this transaction is acting on.
+         * @since 0.5.3
          */
         get package(): Package;
         set package(val: Package);
         /**
          * Package ID this transaction is acting on.
+         * @since 0.5.2
          */
         get package_id(): string;
         set package_id(val: string);
         /**
          * Package ID this transaction is acting on.
+         * @since 0.5.2
          */
         get packageId(): string;
         set packageId(val: string);
         /**
          * Percentage complete of this transaction.
+         * @since 0.5.2
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * Amount of time the transaction will take to complete in seconds or 0 if unknown.
+         * @since 0.5.2
          */
         get remaining_time(): number;
         set remaining_time(val: number);
         /**
          * Amount of time the transaction will take to complete in seconds or 0 if unknown.
+         * @since 0.5.2
          */
         get remainingTime(): number;
         set remainingTime(val: number);
         /**
          * Role of this transaction.
+         * @since 0.5.2
          */
         get role(): number;
         set role(val: number);
         /**
          * The D-Bus name of the client that started this transaction.
+         * @since 1.2.6
          */
         get sender(): string;
         set sender(val: string);
         /**
          * Transaction speed in bits per second or 0 if unknown.
+         * @since 0.5.2
          */
         get speed(): number;
         set speed(val: number);
         /**
          * Status of this transaction.
+         * @since 0.5.2
          */
         get status(): number;
         set status(val: number);
         /**
-         * A #PkBitfield containing #PkTransactionFlagEnum associated with this transaction.
+         * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} associated with this transaction.
+         * @since 0.8.8
          */
         get transaction_flags(): number;
         set transaction_flags(val: number);
         /**
-         * A #PkBitfield containing #PkTransactionFlagEnum associated with this transaction.
+         * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} associated with this transaction.
+         * @since 0.8.8
          */
         get transactionFlags(): number;
         set transactionFlags(val: number);
         /**
          * ID used by this transaction.
+         * @since 0.5.2
          */
         get transaction_id(): string;
         set transaction_id(val: string);
         /**
          * ID used by this transaction.
+         * @since 0.5.2
          */
         get transactionId(): string;
         set transactionId(val: string);
         /**
          * The UID that started this transaction.
+         * @since 0.5.2
          */
         get uid(): number;
         set uid(val: number);
@@ -5564,16 +6169,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Progress.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Progress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Progress.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Progress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Progress.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Progress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5584,12 +6192,12 @@ export namespace PackageKitGlib {
 
         /**
          * Get if this transaction can be cancelled.
-         * @returns %TRUE if progress can be cancelled.
+         * @returns `true` if progress can be cancelled.
          */
         get_allow_cancel(): boolean;
         /**
          * Get if the transaction caller is connected.
-         * @returns %TRUE if the transaction caller is still connected.
+         * @returns `true` if the transaction caller is still connected.
          */
         get_caller_active(): boolean;
         /**
@@ -5604,12 +6212,12 @@ export namespace PackageKitGlib {
         get_elapsed_time(): number;
         /**
          * Get the item progress associated with this transaction.
-         * @returns a #PkItemProgress
+         * @returns a {@link PackageKitGlib.ItemProgress}
          */
         get_item_progress(): ItemProgress;
         /**
          * Get the package this transaction is acting on.
-         * @returns a #PkPackage
+         * @returns a {@link PackageKitGlib.Package}
          */
         get_package(): Package;
         /**
@@ -5629,7 +6237,7 @@ export namespace PackageKitGlib {
         get_remaining_time(): number;
         /**
          * Get the role of this transaction.
-         * @returns a #PkRoleEnum
+         * @returns a {@link PackageKitGlib.RoleEnum}
          */
         get_role(): RoleEnum;
         /**
@@ -5649,7 +6257,7 @@ export namespace PackageKitGlib {
         get_status(): StatusEnum;
         /**
          * Get the flags associated with this transaction.
-         * @returns a #PkBitfield containing #PkTransactionFlagEnum values.
+         * @returns a {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} values.
          */
         get_transaction_flags(): number;
         /**
@@ -5664,98 +6272,98 @@ export namespace PackageKitGlib {
         get_uid(): number;
         /**
          * Set if this transaction can be cancelled.
-         * @param allow_cancel %TRUE if this transaction can be cancelled.
-         * @returns %TRUE if value changed.
+         * @param allow_cancel `true` if this transaction can be cancelled.
+         * @returns `true` if value changed.
          */
         set_allow_cancel(allow_cancel: boolean): boolean;
         /**
          * Set if the transaction caller is connected.
-         * @param caller_active %TRUE if the transaction caller is still connected.
-         * @returns %TRUE if value changed.
+         * @param caller_active `true` if the transaction caller is still connected.
+         * @returns `true` if value changed.
          */
         set_caller_active(caller_active: boolean): boolean;
         /**
          * Set the number of bytes remaining to download.
          * @param download_size_remaining number of bytes remaining to download.
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_download_size_remaining(download_size_remaining: number): boolean;
         /**
          * Set the amount of time the transaction has taken.
          * @param elapsed_time time in seconds
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_elapsed_time(elapsed_time: number): boolean;
         /**
          * Set the item progress associated with this transaction.
-         * @param item_progress a #PkItemProgress
-         * @returns %TRUE if value changed.
+         * @param item_progress a {@link PackageKitGlib.ItemProgress}
+         * @returns `true` if value changed.
          */
         set_item_progress(item_progress: ItemProgress): boolean;
         /**
          * Set the package this transaction is acting on.
-         * @param _package a #PkPackage
-         * @returns %TRUE if value changed.
+         * @param _package a {@link PackageKitGlib.Package}
+         * @returns `true` if value changed.
          */
         set_package(_package: Package): boolean;
         /**
          * Set the package ID this transaction is acting on.
          * @param package_id a PackageID
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_package_id(package_id: string): boolean;
         /**
          * Set the percentage complete of this transaction.
          * @param percentage a percentage value (0-100)
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_percentage(percentage: number): boolean;
         /**
          * Set the amount of time the transaction will take to complete.
          * @param remaining_time time in seconds or 0 if unknown.
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_remaining_time(remaining_time: number): boolean;
         /**
          * Set the role of this transaction.
-         * @param role a #PkRoleEnum
-         * @returns %TRUE if value changed.
+         * @param role a {@link PackageKitGlib.RoleEnum}
+         * @returns `true` if value changed.
          */
         set_role(role: RoleEnum | null): boolean;
         /**
          * Set the D-Bus name of the client that started this transaction.
          * @param bus_name a D-Bus name
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_sender(bus_name: string): boolean;
         /**
          * Set the speed of this transaction.
          * @param speed speed in bits per second or 0 if unknown
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_speed(speed: number): boolean;
         /**
          * Set the status of this transaction.
-         * @param status a #PkStatusEnum
-         * @returns %TRUE if value changed.
+         * @param status a {@link PackageKitGlib.StatusEnum}
+         * @returns `true` if value changed.
          */
         set_status(status: StatusEnum | null): boolean;
         /**
          * Set the flags associated with this transaction.
-         * @param transaction_flags a #PkBitfield containing #PkTransactionFlagEnum values.
-         * @returns %TRUE if value changed.
+         * @param transaction_flags a {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} values.
+         * @returns `true` if value changed.
          */
         set_transaction_flags(transaction_flags: number): boolean;
         /**
          * Set the ID used by this transaction.
          * @param transaction_id a transaction ID.
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_transaction_id(transaction_id: string): boolean;
         /**
          * Set the UID that started this transaction.
          * @param uid a UID
-         * @returns %TRUE if value changed.
+         * @returns `true` if value changed.
          */
         set_uid(uid: number): boolean;
     }
@@ -5780,17 +6388,32 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RepoDetail extends Source {
         static $gtype: GObject.GType<RepoDetail>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get description(): string;
         set description(val: string);
+        /**
+         * @since 0.5.4
+         */
         get enabled(): boolean;
         set enabled(val: boolean);
+        /**
+         * @since 0.5.4
+         */
         get repo_id(): string;
         set repo_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get repoId(): string;
         set repoId(val: string);
 
@@ -5813,16 +6436,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RepoDetail.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepoDetail.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RepoDetail.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepoDetail.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RepoDetail.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RepoDetail.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5838,7 +6464,7 @@ export namespace PackageKitGlib {
         get_description(): string;
         /**
          * Gets the repository enabled status.
-         * @returns %TRUE for enabled
+         * @returns `true` for enabled
          */
         get_enabled(): boolean;
         /**
@@ -5884,39 +6510,87 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RepoSignatureRequired extends Source {
         static $gtype: GObject.GType<RepoSignatureRequired>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get key_fingerprint(): string;
         set key_fingerprint(val: string);
+        /**
+         * @since 0.5.4
+         */
         get keyFingerprint(): string;
         set keyFingerprint(val: string);
+        /**
+         * @since 0.5.4
+         */
         get key_id(): string;
         set key_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get keyId(): string;
         set keyId(val: string);
+        /**
+         * @since 0.5.4
+         */
         get key_timestamp(): string;
         set key_timestamp(val: string);
+        /**
+         * @since 0.5.4
+         */
         get keyTimestamp(): string;
         set keyTimestamp(val: string);
+        /**
+         * @since 0.5.4
+         */
         get key_url(): string;
         set key_url(val: string);
+        /**
+         * @since 0.5.4
+         */
         get keyUrl(): string;
         set keyUrl(val: string);
+        /**
+         * @since 0.5.4
+         */
         get key_userid(): string;
         set key_userid(val: string);
+        /**
+         * @since 0.5.4
+         */
         get keyUserid(): string;
         set keyUserid(val: string);
+        /**
+         * @since 0.5.4
+         */
         get package_id(): string;
         set package_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get packageId(): string;
         set packageId(val: string);
+        /**
+         * @since 0.5.4
+         */
         get repository_name(): string;
         set repository_name(val: string);
+        /**
+         * @since 0.5.4
+         */
         get repositoryName(): string;
         set repositoryName(val: string);
+        /**
+         * @since 0.5.4
+         */
         get type(): SigTypeEnum;
         set type(val: SigTypeEnum);
 
@@ -5939,16 +6613,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RepoSignatureRequired.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepoSignatureRequired.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RepoSignatureRequired.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepoSignatureRequired.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RepoSignatureRequired.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RepoSignatureRequired.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5976,15 +6653,27 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RequireRestart extends Source {
         static $gtype: GObject.GType<RequireRestart>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get package_id(): string;
         set package_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get packageId(): string;
         set packageId(val: string);
+        /**
+         * @since 0.5.4
+         */
         get restart(): RestartEnum;
         set restart(val: RestartEnum);
 
@@ -6007,16 +6696,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RequireRestart.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RequireRestart.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RequireRestart.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RequireRestart.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RequireRestart.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RequireRestart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6044,27 +6736,39 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Results extends GObject.Object {
         static $gtype: GObject.GType<Results>;
 
         // Properties
 
+        /**
+         * @since 0.5.3
+         */
         get inputs(): number;
         set inputs(val: number);
+        /**
+         * @since 0.5.3
+         */
         get progress(): Progress;
         set progress(val: Progress);
         /**
-         * The #PkRoleEnum or %PK_ROLE_ENUM_UNKNOWN if not set
+         * The {@link PackageKitGlib.RoleEnum} or {@link PackageKitGlib.RoleEnum.UNKNOWN} if not set
+         * @since 0.5.2
          */
         get role(): RoleEnum;
         set role(val: RoleEnum);
         /**
-         * A #PkBitfield containing #PkTransactionFlagEnum for this result.
+         * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} for this result.
+         * @since 0.8.1
          */
         get transaction_flags(): number;
         set transaction_flags(val: number);
         /**
-         * A #PkBitfield containing #PkTransactionFlagEnum for this result.
+         * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} for this result.
+         * @since 0.8.1
          */
         get transactionFlags(): number;
         set transactionFlags(val: number);
@@ -6088,16 +6792,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Results.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Results.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Results.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Results.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Results.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Results.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6109,139 +6816,139 @@ export namespace PackageKitGlib {
         /**
          * Adds a category item to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_category(item: Category): boolean;
         /**
          * Adds some package details to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_details(item: Details): boolean;
         /**
          * Adds a distribution upgrade item to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_distro_upgrade(item: DistroUpgrade): boolean;
         /**
          * Adds some EULA details to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_eula_required(item: EulaRequired): boolean;
         /**
          * Adds some files details to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_files(item: Files): boolean;
         /**
          * Adds some media change details to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_media_change_required(item: MediaChangeRequired): boolean;
         /**
          * Adds a package to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_package(item: Package): boolean;
         /**
          * Adds some repository details to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_repo_detail(item: RepoDetail): boolean;
         /**
          * Adds some repository signature details to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_repo_signature_required(item: RepoSignatureRequired): boolean;
         /**
          * Adds a require restart item to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_require_restart(item: RequireRestart): boolean;
         /**
          * Adds a transaction item to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_transaction(item: TransactionPast): boolean;
         /**
          * Adds some update details to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         add_update_detail(item: UpdateDetail): boolean;
         /**
          * Gets the categories from the transaction.
-         * @returns A #GPtrArray array of #PkCategory's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.Category}'s, free with `g_ptr_array_unref()`.
          */
         get_category_array(): Category[];
         /**
          * Gets the package details from the transaction.
-         * @returns A #GPtrArray array of #PkDetails's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.Details}'s, free with `g_ptr_array_unref()`.
          */
         get_details_array(): Details[];
         /**
          * Gets the distribution upgrades from the transaction.
-         * @returns A #GPtrArray array of #PkDistroUpgrade's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.DistroUpgrade}'s, free with `g_ptr_array_unref()`.
          */
         get_distro_upgrade_array(): DistroUpgrade[];
         /**
          * Gets the last error code from the transaction.
-         * @returns A #PkError, or %NULL, free with g_object_unref()
+         * @returns A {@link PackageKitGlib.Error}, or `null`, free with `g_object_unref()`
          */
         get_error_code(): Error;
         /**
          * Gets the eulas required from the transaction.
-         * @returns A #GPtrArray array of #PkEulaRequired's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.EulaRequired}'s, free with `g_ptr_array_unref()`.
          */
         get_eula_required_array(): EulaRequired[];
         /**
          * Gets the exit enum. You probably don't want to be using this function, and
-         * instead using the much more useful pk_results_get_error_code() function.
-         * @returns The #PkExitEnum or %PK_EXIT_ENUM_UNKNOWN for error or if it was not set
+         * instead using the much more useful `pk_results_get_error_code()` function.
+         * @returns The {@link PackageKitGlib.ExitEnum} or {@link PackageKitGlib.ExitEnum.UNKNOWN} for error or if it was not set
          */
         get_exit_code(): ExitEnum;
         /**
          * Gets the files from the transaction.
-         * @returns A #GPtrArray array of #PkFiles's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.Files}'s, free with `g_ptr_array_unref()`.
          */
         get_files_array(): Files[];
         /**
          * Gets the media changes required from the transaction.
-         * @returns A #GPtrArray array of #PkMediaChangeRequired's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.MediaChangeRequired}'s, free with `g_ptr_array_unref()`.
          */
         get_media_change_required_array(): MediaChangeRequired[];
         /**
          * Gets the packages from the transaction.
-         * @returns A #GPtrArray array of #PkPackage's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.Package}'s, free with `g_ptr_array_unref()`.
          */
         get_package_array(): Package[];
         /**
          * Gets a package sack from the transaction.
-         * @returns A #PkPackageSack of data, g_object_unref() to free.
+         * @returns A {@link PackageKitGlib.PackageSack} of data, `g_object_unref()` to free.
          */
         get_package_sack(): PackageSack;
         /**
          * Gets the repository details from the transaction.
-         * @returns A #GPtrArray array of #PkRepoDetail's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.RepoDetail}'s, free with `g_ptr_array_unref()`.
          */
         get_repo_detail_array(): RepoDetail[];
         /**
          * Gets the repository signatures required from the transaction.
-         * @returns A #GPtrArray array of #PkRepoSignatureRequired's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.RepoSignatureRequired}'s, free with `g_ptr_array_unref()`.
          */
         get_repo_signature_required_array(): RepoSignatureRequired[];
         /**
          * Gets the require restarts from the transaction.
-         * @returns A #GPtrArray array of #PkRequireRestart's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.RequireRestart}'s, free with `g_ptr_array_unref()`.
          */
         get_require_restart_array(): RequireRestart[];
         /**
@@ -6252,45 +6959,45 @@ export namespace PackageKitGlib {
          * For instance, if a transaction emits RequireRestart(system) and then
          * RequireRestart(session) then pk_client_get_require_restart will return
          * system as a session restart is implied with a system restart.
-         * @returns a #PkRestartEnum value, e.g. PK_RESTART_ENUM_SYSTEM
+         * @returns a {@link PackageKitGlib.RestartEnum} value, e.g. PK_RESTART_ENUM_SYSTEM
          */
         get_require_restart_worst(): RestartEnum;
         /**
          * Gets the role that produced these results.
-         * @returns The #PkRoleEnum or %PK_ROLE_ENUM_UNKNOWN if not set
+         * @returns The {@link PackageKitGlib.RoleEnum} or {@link PackageKitGlib.RoleEnum.UNKNOWN} if not set
          */
         get_role(): RoleEnum;
         /**
          * Gets the transactions from the transaction.
-         * @returns A #GPtrArray array of #PkTransactionPast's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.TransactionPast}'s, free with `g_ptr_array_unref()`.
          */
         get_transaction_array(): TransactionPast[];
         /**
          * Gets the transaction flag for these results.
-         * @returns a #PkBitfield containing #PkTransactionFlagEnum 0 if not set
+         * @returns a {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} 0 if not set
          */
         get_transaction_flags(): Bitfield;
         /**
          * Gets the update details from the transaction.
-         * @returns A #GPtrArray array of #PkUpdateDetail's, free with g_ptr_array_unref().
+         * @returns A {@link GLib.PtrArray} array of {@link PackageKitGlib.UpdateDetail}'s, free with `g_ptr_array_unref()`.
          */
         get_update_detail_array(): UpdateDetail[];
         /**
          * Adds some error details to the results set.
          * @param item the object to add to the array
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         set_error_code(item: Error): boolean;
         /**
          * Sets the results object to have the given exit code.
          * @param exit_enum the exit code
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         set_exit_code(exit_enum: ExitEnum | null): boolean;
         /**
          * Sets the results object to have the given role enum.
          * @param role the role enum
-         * @returns %TRUE if the value was set
+         * @returns `true` if the value was set
          */
         set_role(role: RoleEnum | null): boolean;
     }
@@ -6311,15 +7018,27 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Source extends GObject.Object {
         static $gtype: GObject.GType<Source>;
 
         // Properties
 
+        /**
+         * @since 0.6.0
+         */
         get role(): RoleEnum;
         set role(val: RoleEnum);
+        /**
+         * @since 0.6.0
+         */
         get transaction_id(): string;
         set transaction_id(val: string);
+        /**
+         * @since 0.6.0
+         */
         get transactionId(): string;
         set transactionId(val: string);
 
@@ -6342,16 +7061,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Source.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Source.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Source.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Source.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6390,53 +7112,65 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Task extends Client {
         static $gtype: GObject.GType<Task>;
 
         // Properties
 
         /**
-         * %TRUE if package downgrades are allowed.
+         * `true` if package downgrades are allowed.
+         * @since 1.0.2
          */
         get allow_downgrade(): boolean;
         set allow_downgrade(val: boolean);
         /**
-         * %TRUE if package downgrades are allowed.
+         * `true` if package downgrades are allowed.
+         * @since 1.0.2
          */
         get allowDowngrade(): boolean;
         set allowDowngrade(val: boolean);
         /**
-         * %TRUE if package reinstallation shall be allowed during transaction.
+         * `true` if package reinstallation shall be allowed during transaction.
+         * @since 1.0.2
          */
         get allow_reinstall(): boolean;
         set allow_reinstall(val: boolean);
         /**
-         * %TRUE if package reinstallation shall be allowed during transaction.
+         * `true` if package reinstallation shall be allowed during transaction.
+         * @since 1.0.2
          */
         get allowReinstall(): boolean;
         set allowReinstall(val: boolean);
         /**
-         * %TRUE if we are just preparing the transaction for later.
+         * `true` if we are just preparing the transaction for later.
+         * @since 0.8.1
          */
         get only_download(): boolean;
         set only_download(val: boolean);
         /**
-         * %TRUE if we are just preparing the transaction for later.
+         * `true` if we are just preparing the transaction for later.
+         * @since 0.8.1
          */
         get onlyDownload(): boolean;
         set onlyDownload(val: boolean);
         /**
-         * %TRUE if only authenticated packages should be allowed in the transaction.
+         * `true` if only authenticated packages should be allowed in the transaction.
+         * @since 0.9.5
          */
         get only_trusted(): boolean;
         set only_trusted(val: boolean);
         /**
-         * %TRUE if only authenticated packages should be allowed in the transaction.
+         * `true` if only authenticated packages should be allowed in the transaction.
+         * @since 0.9.5
          */
         get onlyTrusted(): boolean;
         set onlyTrusted(val: boolean);
         /**
-         * %TRUE if we are simulating.
+         * `true` if we are simulating.
+         * @since 0.5.2
          */
         get simulate(): boolean;
         set simulate(val: boolean);
@@ -6460,16 +7194,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Task.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Task.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Task.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Task.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6478,11 +7215,41 @@ export namespace PackageKitGlib {
 
         // Virtual methods
 
+        /**
+         * @param request
+         * @param results
+         * @virtual
+         */
         vfunc_eula_question(request: number, results: Results): void;
+        /**
+         * @param request
+         * @param results
+         * @virtual
+         */
         vfunc_key_question(request: number, results: Results): void;
+        /**
+         * @param request
+         * @param results
+         * @virtual
+         */
         vfunc_media_change_question(request: number, results: Results): void;
+        /**
+         * @param request
+         * @param results
+         * @virtual
+         */
         vfunc_repair_question(request: number, results: Results): void;
+        /**
+         * @param request
+         * @param results
+         * @virtual
+         */
         vfunc_simulate_question(request: number, results: Results): void;
+        /**
+         * @param request
+         * @param results
+         * @virtual
+         */
         vfunc_untrusted_question(request: number, results: Results): void;
 
         // Methods
@@ -6492,7 +7259,7 @@ export namespace PackageKitGlib {
          * @param filters a bitfield of filters that can be used to limit the results
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive if we should recurse to packages that depend on other packages
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6509,9 +7276,9 @@ export namespace PackageKitGlib {
          * @param filters a bitfield of filters that can be used to limit the results
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive if we should recurse to packages that depend on other packages
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         depends_on_sync(
             filters: Bitfield,
@@ -6524,7 +7291,7 @@ export namespace PackageKitGlib {
          * Downloads packages
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param directory the destination directory
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6539,9 +7306,9 @@ export namespace PackageKitGlib {
          * Downloads packages
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param directory the destination directory
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         download_packages_sync(
             package_ids: string[],
@@ -6551,23 +7318,23 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Gets the result from the asynchronous function.
-         * @param res the #GAsyncResult
-         * @returns The #PkResults of the transaction.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns The {@link PackageKitGlib.Results} of the transaction.
          */
         generic_finish(res: Gio.AsyncResult): Results;
         /**
          * Gets if we are allow packages to be downgraded.
-         * @returns %TRUE if package downgrades are allowed
+         * @returns `true` if package downgrades are allowed
          */
         get_allow_downgrade(): boolean;
         /**
          * Gets if we allow packages to be reinstalled.
-         * @returns %TRUE if package reinstallation is allowed
+         * @returns `true` if package reinstallation is allowed
          */
         get_allow_reinstall(): boolean;
         /**
          * Get the categories available.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6578,15 +7345,15 @@ export namespace PackageKitGlib {
         ): void;
         /**
          * Get the categories available.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_categories_sync(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
         /**
          * Gets details about packages.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6599,9 +7366,9 @@ export namespace PackageKitGlib {
         /**
          * Gets details about packages.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_details_sync(
             package_ids: string[],
@@ -6611,7 +7378,7 @@ export namespace PackageKitGlib {
         /**
          * Get the files in a package.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6624,9 +7391,9 @@ export namespace PackageKitGlib {
         /**
          * Get the files in a package.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_files_sync(
             package_ids: string[],
@@ -6635,18 +7402,18 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Gets if we are just preparing the transaction for later.
-         * @returns %TRUE if only downloading
+         * @returns `true` if only downloading
          */
         get_only_download(): boolean;
         /**
          * Gets if we allow only authenticated packages in the transactoin.
-         * @returns %TRUE if we allow only authenticated packages
+         * @returns `true` if we allow only authenticated packages
          */
         get_only_trusted(): boolean;
         /**
          * Gets the list of packages.
          * @param filters a bitfield of filters that can be used to limit the results
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6659,9 +7426,9 @@ export namespace PackageKitGlib {
         /**
          * Gets the list of packages.
          * @param filters a bitfield of filters that can be used to limit the results
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_packages_sync(
             filters: Bitfield,
@@ -6671,7 +7438,7 @@ export namespace PackageKitGlib {
         /**
          * Get the list of available repositories.
          * @param filters a bitfield of filters that can be used to limit the results
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6684,9 +7451,9 @@ export namespace PackageKitGlib {
         /**
          * Get the list of available repositories.
          * @param filters a bitfield of filters that can be used to limit the results
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_repo_list_sync(
             filters: Bitfield,
@@ -6695,13 +7462,13 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Gets if we are simulating.
-         * @returns %TRUE if we are simulating
+         * @returns `true` if we are simulating
          */
         get_simulate(): boolean;
         /**
          * Gets details about updates.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6714,9 +7481,9 @@ export namespace PackageKitGlib {
         /**
          * Gets details about updates.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_update_detail_sync(
             package_ids: string[],
@@ -6726,7 +7493,7 @@ export namespace PackageKitGlib {
         /**
          * Gets the update lists.
          * @param filters a bitfield of filters that can be used to limit the results
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6739,9 +7506,9 @@ export namespace PackageKitGlib {
         /**
          * Gets the update lists.
          * @param filters a bitfield of filters that can be used to limit the results
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         get_updates_sync(
             filters: Bitfield,
@@ -6752,7 +7519,7 @@ export namespace PackageKitGlib {
          * Install a file locally, and get the deps from the repositories.
          * This is useful for double clicking on a .rpm or .deb file.
          * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6762,6 +7529,9 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with PackageKitGlib.Client.install_files_async
         install_files_async(...args: never[]): any;
         /**
@@ -6771,9 +7541,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param files a file such as "/home/hughsie/Desktop/hal-devel-0.10.0.rpm"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         install_files_sync(
             files: string[],
@@ -6783,7 +7553,7 @@ export namespace PackageKitGlib {
         /**
          * Merges in details about packages using resolve.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6793,6 +7563,9 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with PackageKitGlib.Client.install_packages_async
         install_packages_async(...args: never[]): any;
         /**
@@ -6801,9 +7574,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         install_packages_sync(
             package_ids: string[],
@@ -6813,7 +7586,7 @@ export namespace PackageKitGlib {
         /**
          * Refresh the package cache.
          * @param force if the metadata should be deleted and re-downloaded even if it is correct
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6826,9 +7599,9 @@ export namespace PackageKitGlib {
         /**
          * Refresh the package cache.
          * @param force if the metadata should be deleted and re-downloaded even if it is correct
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         refresh_cache_sync(
             force: boolean,
@@ -6837,12 +7610,12 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Remove a package (optionally with dependancies) from the system.
-         * If `allow_deps` is set to %FALSE, and other packages would have to be removed,
+         * If `allow_deps` is set to `false`, and other packages would have to be removed,
          * then the transaction would fail.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param allow_deps if other dependent packages are allowed to be removed from the computer
          * @param autoremove if other packages installed at the same time should be tried to remove
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6854,11 +7627,14 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with PackageKitGlib.Client.remove_packages_async
         remove_packages_async(...args: never[]): any;
         /**
          * Remove a package (optionally with dependancies) from the system.
-         * If `allow_deps` is set to %FALSE, and other packages would have to be removed,
+         * If `allow_deps` is set to `false`, and other packages would have to be removed,
          * then the transaction would fail.
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
@@ -6866,9 +7642,9 @@ export namespace PackageKitGlib {
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param allow_deps if other dependent packages are allowed to be removed from the computer
          * @param autoremove if other packages installed at the same time should be tried to remove
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         remove_packages_sync(
             package_ids: string[],
@@ -6879,7 +7655,7 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * Recover the system from broken dependencies and aborted installations.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6888,6 +7664,9 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with PackageKitGlib.Client.repair_system_async
         repair_system_async(...args: never[]): any;
         /**
@@ -6896,16 +7675,16 @@ export namespace PackageKitGlib {
          *
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         repair_system_sync(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
         /**
          * Enable or disable a specific repo.
          * @param repo_id The software repository ID
-         * @param enabled %TRUE or %FALSE
-         * @param cancellable a #GCancellable or %NULL
+         * @param enabled `true` or `false`
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6919,10 +7698,10 @@ export namespace PackageKitGlib {
         /**
          * Enable or disable a specific repo.
          * @param repo_id The software repository ID
-         * @param enabled %TRUE or %FALSE
-         * @param cancellable a #GCancellable or %NULL
+         * @param enabled `true` or `false`
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         repo_enable_sync(
             repo_id: string,
@@ -6935,7 +7714,7 @@ export namespace PackageKitGlib {
          * @param filters a bitfield of filters that can be used to limit the results
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive if we should return packages that depend on the ones we do
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6952,9 +7731,9 @@ export namespace PackageKitGlib {
          * @param filters a bitfield of filters that can be used to limit the results
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
          * @param recursive if we should return packages that depend on the ones we do
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         required_by_sync(
             filters: Bitfield,
@@ -6967,7 +7746,7 @@ export namespace PackageKitGlib {
          * Resolves a package name to a package-id.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param packages package names to find
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -6982,9 +7761,9 @@ export namespace PackageKitGlib {
          * Resolves a package name to a package-id.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param packages package names to find
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         resolve_sync(
             filters: Bitfield,
@@ -6996,7 +7775,7 @@ export namespace PackageKitGlib {
          * Searches for some package details.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values search values
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -7011,9 +7790,9 @@ export namespace PackageKitGlib {
          * Searches for some package details.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values search values
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         search_details_sync(
             filters: Bitfield,
@@ -7025,7 +7804,7 @@ export namespace PackageKitGlib {
          * Searches for specific files.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values search values
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -7040,9 +7819,9 @@ export namespace PackageKitGlib {
          * Searches for specific files.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values search values
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         search_files_sync(
             filters: Bitfield,
@@ -7054,7 +7833,7 @@ export namespace PackageKitGlib {
          * Searches the group lists.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values search values
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -7069,9 +7848,9 @@ export namespace PackageKitGlib {
          * Searches the group lists.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values search values
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         search_groups_sync(
             filters: Bitfield,
@@ -7083,7 +7862,7 @@ export namespace PackageKitGlib {
          * Searches for a package name.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values search values
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -7098,9 +7877,9 @@ export namespace PackageKitGlib {
          * Searches for a package name.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values search values
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         search_names_sync(
             filters: Bitfield,
@@ -7110,24 +7889,24 @@ export namespace PackageKitGlib {
         ): Results;
         /**
          * If package downgrades shall be allowed during transaction.
-         * @param allow_downgrade %TRUE to allow packages to be downgraded.
+         * @param allow_downgrade `true` to allow packages to be downgraded.
          */
         set_allow_downgrade(allow_downgrade: boolean): void;
         /**
          * If package reinstallation shall be allowed during transaction.
-         * @param allow_reinstall %TRUE to allow packages to be reinstalled.
+         * @param allow_reinstall `true` to allow packages to be reinstalled.
          */
         set_allow_reinstall(allow_reinstall: boolean): void;
         /**
          * If the transaction should be prepared (depsolved, packages
          * downloaded, etc) but not committed.
-         * @param only_download %FALSE to actually commit the transaction
+         * @param only_download `false` to actually commit the transaction
          */
         set_only_download(only_download: boolean): void;
         /**
          * If only authenticated packages should be allowed in the
          * transaction.
-         * @param only_trusted %TRUE to allow only authenticated packages
+         * @param only_trusted `true` to allow only authenticated packages
          */
         set_only_trusted(only_trusted: boolean): void;
         /**
@@ -7138,7 +7917,7 @@ export namespace PackageKitGlib {
         /**
          * Update specific packages to the newest available versions.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -7148,6 +7927,9 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with PackageKitGlib.Client.update_packages_async
         update_packages_async(...args: never[]): any;
         /**
@@ -7156,9 +7938,9 @@ export namespace PackageKitGlib {
          * Warning: this function is synchronous, and may block. Do not use it in GUI
          * applications.
          * @param package_ids a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         update_packages_sync(
             package_ids: string[],
@@ -7172,8 +7954,8 @@ export namespace PackageKitGlib {
          *
          * The backend will decide what is best to do.
          * @param distro_id a distro ID such as "fedora-14"
-         * @param upgrade_kind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
-         * @param cancellable a #GCancellable or %NULL
+         * @param upgrade_kind a {@link PackageKitGlib.UpgradeKindEnum} such as {@link PackageKitGlib.UpgradeKindEnum.COMPLETE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -7184,6 +7966,9 @@ export namespace PackageKitGlib {
             progress_callback: ProgressCallback,
             callback_ready?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with PackageKitGlib.Client.upgrade_system_async
         upgrade_system_async(...args: never[]): any;
         /**
@@ -7193,10 +7978,10 @@ export namespace PackageKitGlib {
          *
          * The backend will decide what is best to do.
          * @param distro_id a distro ID such as "fedora-14"
-         * @param upgrade_kind a #PkUpgradeKindEnum such as %PK_UPGRADE_KIND_ENUM_COMPLETE
-         * @param cancellable a #GCancellable or %NULL
+         * @param upgrade_kind a {@link PackageKitGlib.UpgradeKindEnum} such as {@link PackageKitGlib.UpgradeKindEnum.COMPLETE}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         upgrade_system_sync(
             distro_id: string,
@@ -7207,20 +7992,20 @@ export namespace PackageKitGlib {
         /**
          * Mark a EULA as accepted by the user.
          * @param request request ID for EULA.
-         * @returns %TRUE if @request is valid.
+         * @returns `true` if `request` is valid.
          */
         user_accepted(request: number): boolean;
         /**
          * Mark a EULA as declined by the user.
          * @param request request ID for EULA.
-         * @returns %TRUE if @request is valid.
+         * @returns `true` if `request` is valid.
          */
         user_declined(request: number): boolean;
         /**
          * Find the package that provides some resource.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values values to search for
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
@@ -7235,9 +8020,9 @@ export namespace PackageKitGlib {
          * Find the package that provides some resource.
          * @param filters a bitfield of filters that can be used to limit the results
          * @param values values to search for
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param progress_callback the function to run when the progress changes
-         * @returns a #PkResults object, or %NULL for error
+         * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
         what_provides_sync(
             filters: Bitfield,
@@ -7250,7 +8035,15 @@ export namespace PackageKitGlib {
     namespace TransactionList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::added signal is emitted when a tid has been added to the transaction list
+             * @signal
+             */
             added: (arg0: string) => void;
+            /**
+             * The ::removed signal is emitted when a tid has been removed from the transaction list
+             * @signal
+             */
             removed: (arg0: string) => void;
         }
 
@@ -7259,6 +8052,9 @@ export namespace PackageKitGlib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TransactionList extends GObject.Object {
         static $gtype: GObject.GType<TransactionList>;
 
@@ -7281,16 +8077,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TransactionList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TransactionList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TransactionList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TransactionList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TransactionList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TransactionList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7299,14 +8098,22 @@ export namespace PackageKitGlib {
 
         // Virtual methods
 
+        /**
+         * @param tid
+         * @virtual
+         */
         vfunc_added(tid: string): void;
+        /**
+         * @param tid
+         * @virtual
+         */
         vfunc_removed(tid: string): void;
 
         // Methods
 
         /**
          * Gets the string lists of transaction IDs recognised as pending, running or finished by the daemon.
-         * @returns the array of strings, free with g_strfreev()
+         * @returns the array of strings, free with `g_strfreev()`
          */
         get_ids(): string[];
     }
@@ -7339,25 +8146,52 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TransactionPast extends Source {
         static $gtype: GObject.GType<TransactionPast>;
 
         // Properties
 
+        /**
+         * @since 0.5.4
+         */
         get cmdline(): string;
         set cmdline(val: string);
+        /**
+         * @since 0.5.4
+         */
         get data(): string;
         set data(val: string);
+        /**
+         * @since 0.5.4
+         */
         get duration(): number;
         set duration(val: number);
+        /**
+         * @since 0.5.4
+         */
         get role(): RoleEnum;
         set role(val: RoleEnum);
+        /**
+         * @since 0.5.4
+         */
         get succeeded(): boolean;
         set succeeded(val: boolean);
+        /**
+         * @since 0.5.4
+         */
         get tid(): string;
         set tid(val: string);
+        /**
+         * @since 0.5.4
+         */
         get timespec(): string;
         set timespec(val: string);
+        /**
+         * @since 0.5.4
+         */
         get uid(): number;
         set uid(val: number);
 
@@ -7380,16 +8214,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TransactionPast.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TransactionPast.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TransactionPast.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TransactionPast.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TransactionPast.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TransactionPast.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7408,11 +8245,14 @@ export namespace PackageKitGlib {
          * @returns The transaction data
          */
         get_data(): string;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
          * Gets the past transaction date & time value;
-         * @returns The transaction data, or %NULL if it's not available
+         * @returns The transaction data, or `null` if it's not available
          */
         get_datetime(): GLib.DateTime;
         /**
@@ -7494,43 +8334,97 @@ export namespace PackageKitGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class UpdateDetail extends Source {
         static $gtype: GObject.GType<UpdateDetail>;
 
         // Properties
 
+        /**
+         * @since 0.8.1
+         */
         get bugzilla_urls(): string[];
         set bugzilla_urls(val: string[]);
+        /**
+         * @since 0.8.1
+         */
         get bugzillaUrls(): string[];
         set bugzillaUrls(val: string[]);
+        /**
+         * @since 0.5.4
+         */
         get changelog(): string;
         set changelog(val: string);
+        /**
+         * @since 0.8.1
+         */
         get cve_urls(): string[];
         set cve_urls(val: string[]);
+        /**
+         * @since 0.8.1
+         */
         get cveUrls(): string[];
         set cveUrls(val: string[]);
+        /**
+         * @since 0.5.4
+         */
         get issued(): string;
         set issued(val: string);
+        /**
+         * @since 0.8.1
+         */
         get obsoletes(): string[];
         set obsoletes(val: string[]);
+        /**
+         * @since 0.5.4
+         */
         get package_id(): string;
         set package_id(val: string);
+        /**
+         * @since 0.5.4
+         */
         get packageId(): string;
         set packageId(val: string);
+        /**
+         * @since 0.5.4
+         */
         get restart(): RestartEnum;
         set restart(val: RestartEnum);
+        /**
+         * @since 0.5.4
+         */
         get state(): UpdateStateEnum;
         set state(val: UpdateStateEnum);
+        /**
+         * @since 0.5.4
+         */
         get update_text(): string;
         set update_text(val: string);
+        /**
+         * @since 0.5.4
+         */
         get updateText(): string;
         set updateText(val: string);
+        /**
+         * @since 0.5.4
+         */
         get updated(): string;
         set updated(val: string);
+        /**
+         * @since 0.8.1
+         */
         get updates(): string[];
         set updates(val: string[]);
+        /**
+         * @since 0.8.1
+         */
         get vendor_urls(): string[];
         set vendor_urls(val: string[]);
+        /**
+         * @since 0.8.1
+         */
         get vendorUrls(): string[];
         set vendorUrls(val: string[]);
 
@@ -7553,16 +8447,19 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UpdateDetail.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UpdateDetail.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UpdateDetail.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UpdateDetail.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UpdateDetail.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UpdateDetail.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7633,57 +8530,85 @@ export namespace PackageKitGlib {
         get_vendor_urls(): string[];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CategoryClass = typeof Category;
     /**
-     * Private #PkCategory data
+     * Private {@link PackageKitGlib.Category} data
+     * @gir-type Struct
      */
     abstract class CategoryPrivate {
         static $gtype: GObject.GType<CategoryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type ClientHelperClass = typeof ClientHelper;
     /**
-     * Private #PkClientHelper data
+     * Private {@link PackageKitGlib.ClientHelper} data
+     * @gir-type Struct
      */
     abstract class ClientHelperPrivate {
         static $gtype: GObject.GType<ClientHelperPrivate>;
     }
 
     /**
-     * Private #PkClient data
+     * Private {@link PackageKitGlib.Client} data
+     * @gir-type Struct
      */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ControlClass = typeof Control;
     /**
-     * Private #PkControl data
+     * Private {@link PackageKitGlib.Control} data
+     * @gir-type Struct
      */
     abstract class ControlPrivate {
         static $gtype: GObject.GType<ControlPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DesktopClass = typeof Desktop;
     /**
-     * Private #PkDesktop data
+     * Private {@link PackageKitGlib.Desktop} data
+     * @gir-type Struct
      */
     abstract class DesktopPrivate {
         static $gtype: GObject.GType<DesktopPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DetailsClass = typeof Details;
     /**
-     * Private #PkDetails data
+     * Private {@link PackageKitGlib.Details} data
+     * @gir-type Struct
      */
     abstract class DetailsPrivate {
         static $gtype: GObject.GType<DetailsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DistroUpgradeClass = typeof DistroUpgrade;
     /**
-     * Private #PkDistroUpgrade data
+     * Private {@link PackageKitGlib.DistroUpgrade} data
+     * @gir-type Struct
      */
     abstract class DistroUpgradePrivate {
         static $gtype: GObject.GType<DistroUpgradePrivate>;
@@ -7691,6 +8616,7 @@ export namespace PackageKitGlib {
 
     /**
      * Matching an enumerated type to a string
+     * @gir-type Struct
      */
     class EnumMatch {
         static $gtype: GObject.GType<EnumMatch>;
@@ -7710,146 +8636,221 @@ export namespace PackageKitGlib {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ErrorClass = typeof Error;
     /**
-     * Private #PkError data
+     * Private {@link PackageKitGlib.Error} data
+     * @gir-type Struct
      */
     abstract class ErrorPrivate {
         static $gtype: GObject.GType<ErrorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EulaRequiredClass = typeof EulaRequired;
     /**
-     * Private #PkEulaRequired data
+     * Private {@link PackageKitGlib.EulaRequired} data
+     * @gir-type Struct
      */
     abstract class EulaRequiredPrivate {
         static $gtype: GObject.GType<EulaRequiredPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FilesClass = typeof Files;
     /**
-     * Private #PkFiles data
+     * Private {@link PackageKitGlib.Files} data
+     * @gir-type Struct
      */
     abstract class FilesPrivate {
         static $gtype: GObject.GType<FilesPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ItemProgressClass = typeof ItemProgress;
     /**
-     * Private #PkItemProgress data
+     * Private {@link PackageKitGlib.ItemProgress} data
+     * @gir-type Struct
      */
     abstract class ItemProgressPrivate {
         static $gtype: GObject.GType<ItemProgressPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaChangeRequiredClass = typeof MediaChangeRequired;
     /**
-     * Private #PkMediaChangeRequired data
+     * Private {@link PackageKitGlib.MediaChangeRequired} data
+     * @gir-type Struct
      */
     abstract class MediaChangeRequiredPrivate {
         static $gtype: GObject.GType<MediaChangeRequiredPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PackageClass = typeof Package;
     /**
-     * Private #PkPackage data
+     * Private {@link PackageKitGlib.Package} data
+     * @gir-type Struct
      */
     abstract class PackagePrivate {
         static $gtype: GObject.GType<PackagePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PackageSackClass = typeof PackageSack;
     /**
-     * Private #PkPackageSack data
+     * Private {@link PackageKitGlib.PackageSack} data
+     * @gir-type Struct
      */
     abstract class PackageSackPrivate {
         static $gtype: GObject.GType<PackageSackPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class PackageSackResults {
         static $gtype: GObject.GType<PackageSackResults>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProgressClass = typeof Progress;
     /**
-     * Private #PkProgress data
+     * Private {@link PackageKitGlib.Progress} data
+     * @gir-type Struct
      */
     abstract class ProgressPrivate {
         static $gtype: GObject.GType<ProgressPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RepoDetailClass = typeof RepoDetail;
     /**
-     * Private #PkRepoDetail data
+     * Private {@link PackageKitGlib.RepoDetail} data
+     * @gir-type Struct
      */
     abstract class RepoDetailPrivate {
         static $gtype: GObject.GType<RepoDetailPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RepoSignatureRequiredClass = typeof RepoSignatureRequired;
     /**
-     * Private #PkRepoSignatureRequired data
+     * Private {@link PackageKitGlib.RepoSignatureRequired} data
+     * @gir-type Struct
      */
     abstract class RepoSignatureRequiredPrivate {
         static $gtype: GObject.GType<RepoSignatureRequiredPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RequireRestartClass = typeof RequireRestart;
     /**
-     * Private #PkRequireRestart data
+     * Private {@link PackageKitGlib.RequireRestart} data
+     * @gir-type Struct
      */
     abstract class RequireRestartPrivate {
         static $gtype: GObject.GType<RequireRestartPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ResultsClass = typeof Results;
     /**
-     * Private #PkResults data
+     * Private {@link PackageKitGlib.Results} data
+     * @gir-type Struct
      */
     abstract class ResultsPrivate {
         static $gtype: GObject.GType<ResultsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SourceClass = typeof Source;
     /**
-     * Private #PkSource data
+     * Private {@link PackageKitGlib.Source} data
+     * @gir-type Struct
      */
     abstract class SourcePrivate {
         static $gtype: GObject.GType<SourcePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TaskClass = typeof Task;
     /**
-     * Private #PkTask data
+     * Private {@link PackageKitGlib.Task} data
+     * @gir-type Struct
      */
     abstract class TaskPrivate {
         static $gtype: GObject.GType<TaskPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TransactionListClass = typeof TransactionList;
     /**
-     * Private #PkTransactionList data
+     * Private {@link PackageKitGlib.TransactionList} data
+     * @gir-type Struct
      */
     abstract class TransactionListPrivate {
         static $gtype: GObject.GType<TransactionListPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TransactionPastClass = typeof TransactionPast;
     /**
-     * Private #PkTransactionPast data
+     * Private {@link PackageKitGlib.TransactionPast} data
+     * @gir-type Struct
      */
     abstract class TransactionPastPrivate {
         static $gtype: GObject.GType<TransactionPastPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UpdateDetailClass = typeof UpdateDetail;
     /**
-     * Private #PkUpdateDetail data
+     * Private {@link PackageKitGlib.UpdateDetail} data
+     * @gir-type Struct
      */
     abstract class UpdateDetailPrivate {
         static $gtype: GObject.GType<UpdateDetailPrivate>;
     }
 
+    /**
+     * A bitfield capable of storing enumerations with up to 64 values.
+     * @gir-type Alias
+     */
     type Bitfield = number;
     /**
      * Name of the imported GIR library

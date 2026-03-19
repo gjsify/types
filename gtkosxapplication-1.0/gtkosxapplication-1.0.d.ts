@@ -29,6 +29,9 @@ export namespace GtkosxApplication {
      * GtkosxApplication-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum ApplicationAttentionType {
         /**
          * Bounce the icon until the app is activated.
@@ -43,10 +46,25 @@ export namespace GtkosxApplication {
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             NSApplicationBlockTermination: () => boolean | void;
+            /**
+             * @signal
+             */
             NSApplicationDidBecomeActive: () => void;
+            /**
+             * @signal
+             */
             NSApplicationOpenFile: (arg0: string) => boolean | void;
+            /**
+             * @signal
+             */
             NSApplicationWillResignActive: () => void;
+            /**
+             * @signal
+             */
             NSApplicationWillTerminate: () => void;
         }
 
@@ -73,7 +91,7 @@ export namespace GtkosxApplication {
      * Do this early in your program, shortly after you run
      *
      * ```
-     * gtk_init()
+     * `gtk_init()`
      * ```
      *
      * Don't forget to guard it, and all other calls into the library, with
@@ -102,13 +120,13 @@ export namespace GtkosxApplication {
      * around because you needed it to add the menus to. With GtkBuilder,
      * you need to ask the GtkUIManager for a pointer. Once everything is
      * more-or-less set up on the Gtk+ side, you need only hide the menu
-     * and call gtkosx_application_set_main_menu(). Here's an example with
+     * and call `gtkosx_application_set_main_menu()`. Here's an example with
      * GtkBuilder:
      *
      * ## Setting the MenuBar
      *
      * ```c
-     *   GtkUIManager *mgr = gtk_ui_manager_new();
+     *   GtkUIManager *mgr = `gtk_ui_manager_new()`;
      *   GtkosxApplication *theApp = g_object_new(GTKOSX_TYPE_APPLICATION, NULL);
      *   ...
      *   mergeid = gtk_ui_manager_add_ui_from_file(mgr, "src/testui.xml", &err);
@@ -125,8 +143,8 @@ export namespace GtkosxApplication {
      * the menu item action event is placed on the event queue by OS X, or
      * Gtk, where the accelerator key event is passed through to Gtk to
      * recognize. This is controlled by
-     * gtkosx_application_set_use_quartz_accelerators() (you can test the
-     * value with gtkosx_application_use_quartz_accelerators()), and the
+     * `gtkosx_application_set_use_quartz_accelerators()` (you can test the
+     * value with `gtkosx_application_use_quartz_accelerators()`), and the
      * default is to use Quartz handling. This has two advantages:
      * - It works without any extra steps
      * - It changes stock accelerators (like Ctrl-O for open file) to
@@ -187,7 +205,7 @@ export namespace GtkosxApplication {
      * ```
      *
      * Once we have everything set up for as many windows as we're going
-     * to open before we call gtk_main_loop(), we need to tell OS X that
+     * to open before we call `gtk_main_loop()`, we need to tell OS X that
      * we're ready:
      *
      * ```
@@ -207,10 +225,10 @@ export namespace GtkosxApplication {
      * ```
      *
      *
-     * N.B.: One GtkMenu function, gtk_menu_reorder_child(), changes the
+     * N.B.: One GtkMenu function, `gtk_menu_reorder_child()`, changes the
      * menu appearance without emitting a signal, so if you use that
      * function in your code you'll need to call
-     * gtkosx_application_sync_menubar() afterwards.
+     * `gtkosx_application_sync_menubar()` afterwards.
      *
      * ## Dock Support
      * The dock is that bar of icons that normally lives at the bottom of
@@ -228,11 +246,11 @@ export namespace GtkosxApplication {
      * task so that the user will know that it's finished if she's
      * switched to another application while she waits for yours.
      * They're all pretty simple, so you can just read the details below.
-     * - gtkosx_application_set_doc_menu()
-     * - gtkosx_application_set_doc_icon_pixbuf()
-     * - gtkosx_application_set_dock_icon_resource()
-     * - gtkosx_application_attention_request()
-     * - gtkosx_application_cancel_attention_request()
+     * - `gtkosx_application_set_doc_menu()`
+     * - `gtkosx_application_set_doc_icon_pixbuf()`
+     * - `gtkosx_application_set_dock_icon_resource()`
+     * - `gtkosx_application_attention_request()`
+     * - `gtkosx_application_cancel_attention_request()`
      *
      * ## Bundle Support
      * The last feature to which GtkosxApplication provides an interface
@@ -246,17 +264,17 @@ export namespace GtkosxApplication {
      * OS X provides a variety of functions pertaining to bundles, most of
      * which are not likely to interest someone porting a Gtk+
      * application. GtkosxApplication has wrapped a few that might be:
-     * - gtkosx_application_get_bundle_path()
-     * - gtkosx_application_get_resource_path()
-     * - gtkosx_application_get_executable_path()
-     * - gtkosx_application_get_bundle_id()
-     * - gtkosx_application_get_bundle_info()
+     * - `gtkosx_application_get_bundle_path()`
+     * - `gtkosx_application_get_resource_path()`
+     * - `gtkosx_application_get_executable_path()`
+     * - `gtkosx_application_get_bundle_id()`
+     * - `gtkosx_application_get_bundle_info()`
      *
      * The first three just get a UTF8-encoded path. An interesting note
      * is that they'll return the path to the executable or the folder
      * it's in regardless of whether it's actually in a bundle. To find
      * out if one is actually dealing with a bundle,
-     * gtkosx_application_get_bundle_id() will return "" if it can't find
+     * `gtkosx_application_get_bundle_id()` will return "" if it can't find
      * the key %CFBundleIdentifier from the bundle's Info.plist -- which it
      * won't if the application isn't in a bundle or wasn't launched by
      * opening the bundle. (In other words, even if you have your
@@ -268,11 +286,11 @@ export namespace GtkosxApplication {
      * ```
      *
      * the Info.plist won't have been opened and
-     * gtkosx_application_get_bundle_id() will return "". Of course, it
+     * `gtkosx_application_get_bundle_id()` will return "". Of course, it
      * will also return "" if you didn't set %CFBundleIdentifier in the
      * Info.plist, so make sure that you do!
      *
-     * The last function, gtkosx_application_get_bundle_info(), will
+     * The last function, `gtkosx_application_get_bundle_info()`, will
      * return the value associated with an arbitrary key from Info.plist
      * as long as that value is a string. If it isn't, then the function
      * returns a null string ("").
@@ -280,14 +298,15 @@ export namespace GtkosxApplication {
      * ## Notifications
      * Finally, notice the signals. These are emitted in response to the
      * indicated OS X notifications. Except for
-     * #GtkosxApplication::NSApplicationBlockTermination, most programs
+     * {@link GtkosxApplication.Application}::NSApplicationBlockTermination, most programs
      * won't need to do anything with
-     * them. #GtkosxApplication::NSApplicationBlockTermination is telling
+     * them. {@link GtkosxApplication.Application}::NSApplicationBlockTermination is telling
      * you that OS X is planning to shut down your program. If you have any
      * cleanup to do (like saving open files), or if you want to ask the
      * user if it's OK, you should connect to the signal and do your
-     * cleanup. Your handler can return %TRUE to prevent the application
+     * cleanup. Your handler can return `true` to prevent the application
      * from quitting.
+     * @gir-type Class
      */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
@@ -309,16 +328,19 @@ export namespace GtkosxApplication {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -329,6 +351,9 @@ export namespace GtkosxApplication {
 
         static get(): Application;
         static get_bundle_id(): string;
+        /**
+         * @param key
+         */
         static get_bundle_info(key: string): string;
         static get_bundle_path(): string;
         static get_executable_path(): string;
@@ -336,14 +361,41 @@ export namespace GtkosxApplication {
 
         // Methods
 
+        /**
+         * @param type
+         */
         attention_request(type: ApplicationAttentionType | null): number;
+        /**
+         * @param id
+         */
         cancel_attention_request(id: number): void;
+        /**
+         * @param menu_item
+         * @param index
+         */
         insert_app_menu_item(menu_item: Gtk.Widget, index: number): void;
         ready(): void;
+        /**
+         * @param pixbuf
+         */
         set_dock_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
+        /**
+         * @param name
+         * @param type
+         * @param subdir
+         */
         set_dock_icon_resource(name: string, type: string, subdir: string): void;
+        /**
+         * @param menu_shell
+         */
         set_dock_menu(menu_shell: Gtk.MenuShell): void;
+        /**
+         * @param menu_item
+         */
         set_help_menu(menu_item: Gtk.MenuItem): void;
+        /**
+         * @param menu_shell
+         */
         set_menu_bar(menu_shell: Gtk.MenuShell): void;
         /**
          * Set quartz accelerator handling; TRUE (default) uses quartz; FALSE
@@ -352,6 +404,9 @@ export namespace GtkosxApplication {
          * @param use_quartz_accelerators Gboolean
          */
         set_use_quartz_accelerators(use_quartz_accelerators: boolean): void;
+        /**
+         * @param menu_item
+         */
         set_window_menu(menu_item: Gtk.MenuItem): void;
         sync_menubar(): void;
         /**
@@ -361,10 +416,14 @@ export namespace GtkosxApplication {
         use_quartz_accelerators(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationClass = typeof Application;
     /**
      * A menu group is used to collect menu items between separators in
      * the Application menu.
+     * @gir-type Struct
      */
     class ApplicationMenuGroup {
         static $gtype: GObject.GType<ApplicationMenuGroup>;
@@ -378,6 +437,9 @@ export namespace GtkosxApplication {
         constructor(properties?: Partial<{}>);
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
     }

@@ -31,6 +31,9 @@ export namespace RygelServer {
         export const $gtype: GObject.GType<LogicalOperator>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LogicalOperator {
         AND,
         OR,
@@ -40,6 +43,9 @@ export namespace RygelServer {
         export const $gtype: GObject.GType<ObjectEventType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ObjectEventType {
         ADDED,
         MODIFIED,
@@ -50,12 +56,18 @@ export namespace RygelServer {
         export const $gtype: GObject.GType<SerializerType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SerializerType {
         GENERIC_DIDL,
         DIDL_S,
         M3UEXT,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class WritableContainerError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -68,6 +80,9 @@ export namespace RygelServer {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MediaEngineError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -80,6 +95,9 @@ export namespace RygelServer {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class HTTPSeekRequestError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -94,6 +112,9 @@ export namespace RygelServer {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DataSourceError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -108,6 +129,9 @@ export namespace RygelServer {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class HTTPRequestError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -123,6 +147,9 @@ export namespace RygelServer {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PlaySpeedError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -179,6 +206,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AudioItem extends MediaFileItem {
         static $gtype: GObject.GType<AudioItem>;
 
@@ -220,16 +250,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -239,16 +272,34 @@ export namespace RygelServer {
         // Methods
 
         get_duration(): number;
+        /**
+         * @param value
+         */
         set_duration(value: number): void;
         get_bitrate(): number;
+        /**
+         * @param value
+         */
         set_bitrate(value: number): void;
         get_sample_freq(): number;
+        /**
+         * @param value
+         */
         set_sample_freq(value: number): void;
         get_bits_per_sample(): number;
+        /**
+         * @param value
+         */
         set_bits_per_sample(value: number): void;
         get_channels(): number;
+        /**
+         * @param value
+         */
         set_channels(value: number): void;
         get_album(): string;
+        /**
+         * @param value
+         */
         set_album(value: string): void;
     }
 
@@ -284,6 +335,9 @@ export namespace RygelServer {
         interface ConstructorProps extends MediaFileItem.ConstructorProps, VisualItem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ImageItem extends MediaFileItem implements VisualItem {
         static $gtype: GObject.GType<ImageItem>;
 
@@ -306,85 +360,181 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ImageItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ImageItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ImageItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ImageItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
+        /** @category Inherited from RygelServer.VisualItem */
         get width(): number;
         set width(val: number);
+        /** @category Inherited from RygelServer.VisualItem */
         get height(): number;
         set height(val: number);
+        /** @category Inherited from RygelServer.VisualItem */
         get color_depth(): number;
         set color_depth(val: number);
+        /** @category Inherited from RygelServer.VisualItem */
         get colorDepth(): number;
         set colorDepth(val: number);
+        /** @category Inherited from RygelServer.VisualItem */
         get thumbnails(): Gee.ArrayList;
         set thumbnails(val: Gee.ArrayList);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get mime_type(): string;
         set mime_type(val: string);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get mimeType(): string;
         set mimeType(val: string);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get dlna_profile(): string;
         set dlna_profile(val: string);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get dlnaProfile(): string;
         set dlnaProfile(val: string);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get size(): number;
         set size(val: number);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get place_holder(): boolean;
         set place_holder(val: boolean);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get placeHolder(): boolean;
         set placeHolder(val: boolean);
-
-        // Inherited methods
         get_width(): number;
+        /**
+         * @param value
+         */
         set_width(value: number): void;
         get_height(): number;
+        /**
+         * @param value
+         */
         set_height(value: number): void;
         get_color_depth(): number;
+        /**
+         * @param value
+         */
         set_color_depth(value: number): void;
         get_thumbnails(): Gee.ArrayList;
+        /**
+         * @param value
+         */
         set_thumbnails(value: Gee.ArrayList): void;
+        /**
+         * @virtual
+         */
         vfunc_get_width(): number;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_width(value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_height(): number;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_height(value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_color_depth(): number;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_color_depth(value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_thumbnails(): Gee.ArrayList;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_thumbnails(value: Gee.ArrayList): void;
         get_primary_resource(): MediaResource;
         get_extension(): string;
+        /**
+         * @param mime_type
+         */
         ext_from_mime_type(mime_type: string): string;
         add_engine_resources(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         add_engine_resources_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param server
+         */
         add_additional_resources(server: HTTPServer): void;
         get_mime_type(): string;
+        /**
+         * @param value
+         */
         set_mime_type(value: string): void;
         get_dlna_profile(): string;
+        /**
+         * @param value
+         */
         set_dlna_profile(value: string): void;
         get_size(): number;
+        /**
+         * @param value
+         */
         set_size(value: number): void;
         get_place_holder(): boolean;
+        /**
+         * @param value
+         */
         set_place_holder(value: boolean): void;
+        /**
+         * @virtual
+         */
         vfunc_get_primary_resource(): MediaResource;
+        /**
+         * @virtual
+         */
         vfunc_get_extension(): string;
+        /**
+         * @param _callback_
+         * @virtual
+         */
         vfunc_add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_add_engine_resources_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param server
+         * @virtual
+         */
         vfunc_add_additional_resources(server: HTTPServer): void;
     }
 
@@ -393,6 +543,9 @@ export namespace RygelServer {
         interface SignalSignatures extends SearchExpression.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LogicalExpression extends SearchExpression {
         static $gtype: GObject.GType<LogicalExpression>;
 
@@ -404,16 +557,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LogicalExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LogicalExpression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LogicalExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LogicalExpression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LogicalExpression.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LogicalExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -430,6 +586,9 @@ export namespace RygelServer {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MediaArtStore extends GObject.Object {
         static $gtype: GObject.GType<MediaArtStore>;
 
@@ -450,16 +609,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaArtStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaArtStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaArtStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaArtStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaArtStore.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaArtStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -472,8 +634,21 @@ export namespace RygelServer {
 
         // Methods
 
+        /**
+         * @param item
+         */
         lookup_media_art(item: MusicItem): Thumbnail | null;
+        /**
+         * @param item
+         * @param file
+         * @param data
+         * @param mime
+         */
         add(item: MusicItem, file: Gio.File, data: Uint8Array | string, mime: string): void;
+        /**
+         * @param item
+         * @param file
+         */
         search_media_art_for_file(item: MusicItem, file: Gio.File): void;
     }
 
@@ -493,6 +668,9 @@ export namespace RygelServer {
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MediaObjects extends Gee.ArrayList {
         static $gtype: GObject.GType<MediaObjects>;
 
@@ -515,16 +693,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaObjects.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaObjects.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaObjects.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaObjects.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaObjects.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaObjects.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -533,6 +714,9 @@ export namespace RygelServer {
 
         // Methods
 
+        /**
+         * @param sort_criteria
+         */
         sort_by_criteria(sort_criteria: string): void;
     }
 
@@ -580,6 +764,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MusicItem extends AudioItem {
         static $gtype: GObject.GType<MusicItem>;
 
@@ -617,16 +804,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MusicItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MusicItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MusicItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MusicItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MusicItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MusicItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -637,10 +827,19 @@ export namespace RygelServer {
 
         lookup_album_art(): void;
         get_track_number(): number;
+        /**
+         * @param value
+         */
         set_track_number(value: number): void;
         get_disc_number(): number;
+        /**
+         * @param value
+         */
         set_disc_number(value: number): void;
         get_album_art(): Thumbnail;
+        /**
+         * @param value
+         */
         set_album_art(value: Thumbnail): void;
     }
 
@@ -672,6 +871,9 @@ export namespace RygelServer {
         interface ConstructorProps extends ImageItem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PhotoItem extends ImageItem {
         static $gtype: GObject.GType<PhotoItem>;
 
@@ -694,16 +896,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PhotoItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PhotoItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PhotoItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PhotoItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PhotoItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PhotoItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -716,6 +921,9 @@ export namespace RygelServer {
         interface SignalSignatures extends SearchExpression.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RelationalExpression extends SearchExpression {
         static $gtype: GObject.GType<RelationalExpression>;
 
@@ -727,16 +935,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RelationalExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RelationalExpression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RelationalExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RelationalExpression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RelationalExpression.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RelationalExpression.SignalSignatures[K]> extends [any, ...infer Q]
@@ -747,8 +958,17 @@ export namespace RygelServer {
 
         // Methods
 
+        /**
+         * @param str
+         */
         compare_string(str?: string | null): boolean;
+        /**
+         * @param integer
+         */
         compare_int(integer: number): boolean;
+        /**
+         * @param integer
+         */
         compare_uint(integer: number): boolean;
     }
 
@@ -781,6 +1001,9 @@ export namespace RygelServer {
         interface ConstructorProps extends MediaContainer.ConstructorProps, SearchableContainer.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SimpleContainer extends MediaContainer implements SearchableContainer {
         static $gtype: GObject.GType<SimpleContainer>;
 
@@ -809,16 +1032,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SimpleContainer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleContainer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SimpleContainer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleContainer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SimpleContainer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SimpleContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -827,38 +1053,65 @@ export namespace RygelServer {
 
         // Methods
 
+        /**
+         * @param child
+         */
         add_child_item(child: MediaItem): void;
         get_all_children(): MediaObjects;
+        /**
+         * @param child
+         */
         add_child_container(child: MediaContainer): void;
+        /**
+         * @param child
+         */
         remove_child(child: MediaObject): void;
         clear(): void;
+        /**
+         * @param child_id
+         */
         is_child_id_unique(child_id: string): boolean;
-
-        // Inherited properties
+        /** @category Inherited from RygelServer.SearchableContainer */
         get search_classes(): Gee.ArrayList;
         set search_classes(val: Gee.ArrayList);
+        /** @category Inherited from RygelServer.SearchableContainer */
         get searchClasses(): Gee.ArrayList;
         set searchClasses(val: Gee.ArrayList);
+        /** @category Inherited from RygelServer.MediaContainer */
         get child_count(): number;
         set child_count(val: number);
+        /** @category Inherited from RygelServer.MediaContainer */
         get childCount(): number;
         set childCount(val: number);
+        /** @category Inherited from RygelServer.MediaContainer */
         get empty_child_count(): number;
         set empty_child_count(val: number);
+        /** @category Inherited from RygelServer.MediaContainer */
         get emptyChildCount(): number;
         set emptyChildCount(val: number);
+        /** @category Inherited from RygelServer.MediaContainer */
         get all_child_count(): number;
+        /** @category Inherited from RygelServer.MediaContainer */
         get allChildCount(): number;
+        /** @category Inherited from RygelServer.MediaContainer */
         get create_mode_enabled(): boolean;
         set create_mode_enabled(val: boolean);
+        /** @category Inherited from RygelServer.MediaContainer */
         get createModeEnabled(): boolean;
         set createModeEnabled(val: boolean);
+        /** @category Inherited from RygelServer.MediaContainer */
         get sort_criteria(): string;
         set sort_criteria(val: string);
+        /** @category Inherited from RygelServer.MediaContainer */
         get sortCriteria(): string;
         set sortCriteria(val: string);
-
-        // Inherited methods
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         */
         search(
             expression: SearchExpression | null,
             offset: number,
@@ -866,6 +1119,14 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[MediaObjects | null, number]>;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         search(
             expression: SearchExpression | null,
             offset: number,
@@ -874,6 +1135,14 @@ export namespace RygelServer {
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         search(
             expression: SearchExpression | null,
             offset: number,
@@ -882,7 +1151,17 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[MediaObjects | null, number]> | void;
+        /**
+         * @param _res_
+         */
         search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         */
         simple_search(
             expression: SearchExpression | null,
             offset: number,
@@ -890,6 +1169,14 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[MediaObjects | null, number]>;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         simple_search(
             expression: SearchExpression | null,
             offset: number,
@@ -898,6 +1185,14 @@ export namespace RygelServer {
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         simple_search(
             expression: SearchExpression | null,
             offset: number,
@@ -906,21 +1201,53 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[MediaObjects | null, number]> | void;
+        /**
+         * @param _res_
+         */
         simple_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
+        /**
+         * @param id
+         * @param cancellable
+         */
         find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         find_object(
             id: string,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         find_object(
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObject | null> | void;
+        /**
+         * @param _res_
+         */
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
         get_search_classes(): Gee.ArrayList;
+        /**
+         * @param value
+         */
         set_search_classes(value: Gee.ArrayList): void;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         * @virtual
+         */
         vfunc_search(
             expression: SearchExpression | null,
             offset: number,
@@ -929,15 +1256,39 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
+        /**
+         * @virtual
+         */
         vfunc_get_search_classes(): Gee.ArrayList;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_search_classes(value: Gee.ArrayList): void;
+        /**
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         */
         get_children(
             offset: number,
             max_count: number,
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<MediaObjects | null>;
+        /**
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         get_children(
             offset: number,
             max_count: number,
@@ -945,6 +1296,13 @@ export namespace RygelServer {
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         get_children(
             offset: number,
             max_count: number,
@@ -952,17 +1310,45 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObjects | null> | void;
+        /**
+         * @param _res_
+         */
         get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
+        /**
+         * @param object
+         * @param event_type
+         * @param sub_tree_update
+         */
         updated(object: MediaObject | null, event_type: ObjectEventType | null, sub_tree_update: boolean): void;
         get_child_count(): number;
+        /**
+         * @param value
+         */
         set_child_count(value: number): void;
         get_empty_child_count(): number;
+        /**
+         * @param value
+         */
         set_empty_child_count(value: number): void;
         get_all_child_count(): number;
         get_create_mode_enabled(): boolean;
+        /**
+         * @param value
+         */
         set_create_mode_enabled(value: boolean): void;
         get_sort_criteria(): string;
+        /**
+         * @param value
+         */
         set_sort_criteria(value: string): void;
+        /**
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         * @virtual
+         */
         vfunc_get_children(
             offset: number,
             max_count: number,
@@ -970,12 +1356,26 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         * @virtual
+         */
         vfunc_find_object(
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
     }
 
@@ -984,6 +1384,9 @@ export namespace RygelServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Subtitle {
         static $gtype: GObject.GType<Subtitle>;
 
@@ -1004,16 +1407,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Subtitle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Subtitle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Subtitle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Subtitle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Subtitle.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Subtitle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1022,10 +1428,19 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param protocol
+         * @param index
+         * @virtual
+         */
         vfunc_get_resource(protocol: string, index: number): MediaResource;
 
         // Methods
 
+        /**
+         * @param protocol
+         * @param index
+         */
         get_resource(protocol: string, index: number): MediaResource;
     }
 
@@ -1034,6 +1449,9 @@ export namespace RygelServer {
         interface SignalSignatures extends RygelCore.IconInfo.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Thumbnail extends RygelCore.IconInfo {
         static $gtype: GObject.GType<Thumbnail>;
 
@@ -1052,16 +1470,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Thumbnail.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Thumbnail.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Thumbnail.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Thumbnail.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Thumbnail.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Thumbnail.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1070,10 +1491,19 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param protocol
+         * @param index
+         * @virtual
+         */
         vfunc_get_resource(protocol: string, index: number): MediaResource;
 
         // Methods
 
+        /**
+         * @param protocol
+         * @param index
+         */
         get_resource(protocol: string, index: number): MediaResource;
     }
 
@@ -1120,6 +1550,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class VideoItem extends AudioItem implements VisualItem {
         static $gtype: GObject.GType<VideoItem>;
 
@@ -1149,16 +1582,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VideoItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VideoItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VideoItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VideoItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VideoItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VideoItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1167,91 +1603,203 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param http_server
+         * @virtual
+         */
         vfunc_add_subtitle_resources(http_server: HTTPServer): void;
 
         // Methods
 
+        /**
+         * @param http_server
+         */
         add_subtitle_resources(http_server: HTTPServer): void;
         get_author(): string;
+        /**
+         * @param value
+         */
         set_author(value: string): void;
         get_subtitles(): Gee.ArrayList;
+        /**
+         * @param value
+         */
         set_subtitles(value: Gee.ArrayList): void;
-
-        // Inherited properties
+        /** @category Inherited from RygelServer.VisualItem */
         get width(): number;
         set width(val: number);
+        /** @category Inherited from RygelServer.VisualItem */
         get height(): number;
         set height(val: number);
+        /** @category Inherited from RygelServer.VisualItem */
         get color_depth(): number;
         set color_depth(val: number);
+        /** @category Inherited from RygelServer.VisualItem */
         get colorDepth(): number;
         set colorDepth(val: number);
+        /** @category Inherited from RygelServer.VisualItem */
         get thumbnails(): Gee.ArrayList;
         set thumbnails(val: Gee.ArrayList);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get mime_type(): string;
         set mime_type(val: string);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get mimeType(): string;
         set mimeType(val: string);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get dlna_profile(): string;
         set dlna_profile(val: string);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get dlnaProfile(): string;
         set dlnaProfile(val: string);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get size(): number;
         set size(val: number);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get place_holder(): boolean;
         set place_holder(val: boolean);
+        /** @category Inherited from RygelServer.MediaFileItem */
         get placeHolder(): boolean;
         set placeHolder(val: boolean);
-
-        // Inherited methods
         get_width(): number;
+        /**
+         * @param value
+         */
         set_width(value: number): void;
         get_height(): number;
+        /**
+         * @param value
+         */
         set_height(value: number): void;
         get_color_depth(): number;
+        /**
+         * @param value
+         */
         set_color_depth(value: number): void;
         get_thumbnails(): Gee.ArrayList;
+        /**
+         * @param value
+         */
         set_thumbnails(value: Gee.ArrayList): void;
+        /**
+         * @virtual
+         */
         vfunc_get_width(): number;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_width(value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_height(): number;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_height(value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_color_depth(): number;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_color_depth(value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_thumbnails(): Gee.ArrayList;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_thumbnails(value: Gee.ArrayList): void;
         get_primary_resource(): MediaResource;
         get_extension(): string;
+        /**
+         * @param mime_type
+         */
         ext_from_mime_type(mime_type: string): string;
         add_engine_resources(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         add_engine_resources_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param server
+         */
         add_additional_resources(server: HTTPServer): void;
         get_mime_type(): string;
+        /**
+         * @param value
+         */
         set_mime_type(value: string): void;
         get_dlna_profile(): string;
+        /**
+         * @param value
+         */
         set_dlna_profile(value: string): void;
         get_size(): number;
+        /**
+         * @param value
+         */
         set_size(value: number): void;
         get_place_holder(): boolean;
+        /**
+         * @param value
+         */
         set_place_holder(value: boolean): void;
+        /**
+         * @virtual
+         */
         vfunc_get_primary_resource(): MediaResource;
+        /**
+         * @virtual
+         */
         vfunc_get_extension(): string;
+        /**
+         * @param _callback_
+         * @virtual
+         */
         vfunc_add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_add_engine_resources_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param server
+         * @virtual
+         */
         vfunc_add_additional_resources(server: HTTPServer): void;
     }
 
     namespace MediaContainer {
         // Signal signatures
         interface SignalSignatures extends MediaObject.SignalSignatures {
+            /**
+             * @signal
+             */
             'container-updated': (
                 arg0: MediaContainer,
                 arg1: MediaObject,
                 arg2: ObjectEventType,
                 arg3: boolean,
             ) => void;
+            /**
+             * @signal
+             */
             'sub-tree-updates-finished': (arg0: MediaObject) => void;
             'notify::child-count': (pspec: GObject.ParamSpec) => void;
             'notify::empty-child-count': (pspec: GObject.ParamSpec) => void;
@@ -1289,6 +1837,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MediaContainer extends MediaObject {
         static $gtype: GObject.GType<MediaContainer>;
 
@@ -1336,16 +1887,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaContainer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaContainer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaContainer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaContainer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaContainer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1354,10 +1908,22 @@ export namespace RygelServer {
 
         // Static methods
 
+        /**
+         * @param a
+         * @param b
+         */
         static equal_func(a: MediaContainer, b: MediaContainer): boolean;
 
         // Virtual methods
 
+        /**
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         * @virtual
+         */
         vfunc_get_children(
             offset: number,
             max_count: number,
@@ -1365,22 +1931,49 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         * @virtual
+         */
         vfunc_find_object(
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
         // Methods
 
+        /**
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         */
         get_children(
             offset: number,
             max_count: number,
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<MediaObjects | null>;
+        /**
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         get_children(
             offset: number,
             max_count: number,
@@ -1388,6 +1981,13 @@ export namespace RygelServer {
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         get_children(
             offset: number,
             max_count: number,
@@ -1395,28 +1995,65 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObjects | null> | void;
+        /**
+         * @param _res_
+         */
         get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
+        /**
+         * @param id
+         * @param cancellable
+         */
         find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         find_object(
             id: string,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         find_object(
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObject | null> | void;
+        /**
+         * @param _res_
+         */
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
+        /**
+         * @param object
+         * @param event_type
+         * @param sub_tree_update
+         */
         updated(object: MediaObject | null, event_type: ObjectEventType | null, sub_tree_update: boolean): void;
         get_child_count(): number;
+        /**
+         * @param value
+         */
         set_child_count(value: number): void;
         get_empty_child_count(): number;
+        /**
+         * @param value
+         */
         set_empty_child_count(value: number): void;
         get_all_child_count(): number;
         get_create_mode_enabled(): boolean;
+        /**
+         * @param value
+         */
         set_create_mode_enabled(value: boolean): void;
         get_sort_criteria(): string;
+        /**
+         * @param value
+         */
         set_sort_criteria(value: string): void;
     }
 
@@ -1446,6 +2083,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MediaItem extends MediaObject {
         static $gtype: GObject.GType<MediaItem>;
 
@@ -1471,16 +2111,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1490,6 +2133,9 @@ export namespace RygelServer {
         // Methods
 
         get_description(): string;
+        /**
+         * @param value
+         */
         set_description(value: string): void;
     }
 
@@ -1529,6 +2175,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MediaFileItem extends MediaItem {
         static $gtype: GObject.GType<MediaFileItem>;
 
@@ -1570,16 +2219,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaFileItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaFileItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaFileItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaFileItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaFileItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaFileItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1588,29 +2240,74 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_primary_resource(): MediaResource;
+        /**
+         * @virtual
+         */
         vfunc_get_extension(): string;
+        /**
+         * @param _callback_
+         * @virtual
+         */
         vfunc_add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_add_engine_resources_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param server
+         * @virtual
+         */
         vfunc_add_additional_resources(server: HTTPServer): void;
 
         // Methods
 
         get_primary_resource(): MediaResource;
         get_extension(): string;
+        /**
+         * @param mime_type
+         */
         ext_from_mime_type(mime_type: string): string;
         add_engine_resources(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         add_engine_resources_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param server
+         */
         add_additional_resources(server: HTTPServer): void;
         get_mime_type(): string;
+        /**
+         * @param value
+         */
         set_mime_type(value: string): void;
         get_dlna_profile(): string;
+        /**
+         * @param value
+         */
         set_dlna_profile(value: string): void;
         get_size(): number;
+        /**
+         * @param value
+         */
         set_size(value: number): void;
         get_place_holder(): boolean;
+        /**
+         * @param value
+         */
         set_place_holder(value: boolean): void;
     }
 
@@ -1656,6 +2353,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MediaObject extends GObject.Object {
         static $gtype: GObject.GType<MediaObject>;
 
@@ -1717,16 +2417,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaObject.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaObject.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaObject.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaObject.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1735,6 +2438,10 @@ export namespace RygelServer {
 
         // Static methods
 
+        /**
+         * @param replacement_pairs
+         * @param source_string
+         */
         static apply_replacements(
             replacement_pairs: { [key: string]: any } | GLib.HashTable<string, string>,
             source_string?: string | null,
@@ -1742,64 +2449,187 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param uri
+         * @virtual
+         */
         vfunc_add_uri(uri: string): void;
+        /**
+         * @param serializer
+         * @param http_server
+         * @virtual
+         */
         vfunc_serialize(serializer: Serializer, http_server: HTTPServer): GUPnPAV.DIDLLiteObject | null;
+        /**
+         * @param request
+         * @param resource
+         * @virtual
+         */
         vfunc_create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): DataSource | null;
+        /**
+         * @param didl_object
+         * @virtual
+         */
         vfunc_apply_didl_lite(didl_object: GUPnPAV.DIDLLiteObject): void;
+        /**
+         * @param media_object
+         * @param property
+         * @virtual
+         */
         vfunc_compare_by_property(media_object: MediaObject, property: string): number;
+        /**
+         * @virtual
+         */
         vfunc_get_ocm_flags(): GUPnPAV.OCMFlags;
 
         // Methods
 
         get_uris(): Gee.List;
         get_primary_uri(): string | null;
+        /**
+         * @param uri
+         */
         add_uri(uri: string): void;
+        /**
+         * @param cancellable
+         */
         get_writable(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.File | null>;
+        /**
+         * @param cancellable
+         * @param _callback_
+         */
         get_writable(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param cancellable
+         * @param _callback_
+         */
         get_writable(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.File | null> | void;
+        /**
+         * @param _res_
+         */
         get_writable_finish(_res_: Gio.AsyncResult): Gio.File | null;
+        /**
+         * @param cancellable
+         */
         get_writables(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gee.ArrayList>;
+        /**
+         * @param cancellable
+         * @param _callback_
+         */
         get_writables(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param cancellable
+         * @param _callback_
+         */
         get_writables(
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gee.ArrayList> | void;
+        /**
+         * @param _res_
+         */
         get_writables_finish(_res_: Gio.AsyncResult): Gee.ArrayList;
         get_resource_list(): Gee.List;
+        /**
+         * @param resource_name
+         */
         get_resource_by_name(resource_name: string): MediaResource | null;
+        /**
+         * @param serializer
+         * @param http_server
+         */
         serialize(serializer: Serializer, http_server: HTTPServer): GUPnPAV.DIDLLiteObject | null;
+        /**
+         * @param didl_object
+         * @param http_server
+         */
         serialize_resource_list(didl_object: GUPnPAV.DIDLLiteObject, http_server: HTTPServer): void;
+        /**
+         * @param request
+         * @param resource
+         */
         create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): DataSource | null;
+        /**
+         * @param didl_object
+         */
         apply_didl_lite(didl_object: GUPnPAV.DIDLLiteObject): void;
+        /**
+         * @param media_object
+         * @param property
+         */
         compare_by_property(media_object: MediaObject, property: string): number;
+        /**
+         * @param prop1
+         * @param prop2
+         */
         compare_string_props(prop1: string, prop2: string): number;
+        /**
+         * @param prop1
+         * @param prop2
+         */
         compare_int_props(prop1: number, prop2: number): number;
         get_id(): string;
+        /**
+         * @param value
+         */
         set_id(value: string): void;
         get_ref_id(): string;
+        /**
+         * @param value
+         */
         set_ref_id(value: string): void;
         get_upnp_class(): string;
+        /**
+         * @param value
+         */
         set_upnp_class(value: string): void;
         get_date(): string;
+        /**
+         * @param value
+         */
         set_date(value: string): void;
         get_creator(): string;
+        /**
+         * @param value
+         */
         set_creator(value: string): void;
         get_modified(): number;
+        /**
+         * @param value
+         */
         set_modified(value: number): void;
         get_object_update_id(): number;
+        /**
+         * @param value
+         */
         set_object_update_id(value: number): void;
         get_artist(): string;
+        /**
+         * @param value
+         */
         set_artist(value: string): void;
         get_genre(): string;
+        /**
+         * @param value
+         */
         set_genre(value: string): void;
         get_parent(): MediaContainer;
+        /**
+         * @param value
+         */
         set_parent(value: MediaContainer): void;
         get_parent_ref(): MediaContainer;
+        /**
+         * @param value
+         */
         set_parent_ref(value: MediaContainer): void;
         get_title(): string;
+        /**
+         * @param value
+         */
         set_title(value: string): void;
         get_ocm_flags(): GUPnPAV.OCMFlags;
     }
@@ -1866,6 +2696,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MediaResource extends GObject.Object {
         static $gtype: GObject.GType<MediaResource>;
 
@@ -1962,16 +2795,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaResource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaResource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaResource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaResource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaResource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1982,11 +2818,21 @@ export namespace RygelServer {
 
         dup(): MediaResource;
         get_name(): string;
+        /**
+         * @param didl_resource
+         * @param replacements
+         */
         serialize(
             didl_resource: GUPnPAV.DIDLLiteResource,
             replacements?: GLib.HashTable<string, string> | null,
         ): GUPnPAV.DIDLLiteResource;
+        /**
+         * @param pi
+         */
         set_protocol_info(pi: GUPnPAV.ProtocolInfo): void;
+        /**
+         * @param replacements
+         */
         get_protocol_info(replacements?: GLib.HashTable<string, string> | null): GUPnPAV.ProtocolInfo;
         supports_arbitrary_byte_seek(): boolean;
         supports_arbitrary_time_seek(): boolean;
@@ -1997,52 +2843,121 @@ export namespace RygelServer {
         is_link_protection_enabled(): boolean;
         is_dlna_content(): boolean;
         get_default_transfer_mode(): string;
+        /**
+         * @param transfer_mode
+         */
         supports_transfer_mode(transfer_mode: string): boolean;
         is_streamable(): boolean;
         is_cleartext_range_support_enabled(): boolean;
         supports_playspeed(): boolean;
+        /**
+         * @param flags
+         */
         is_dlna_protocol_flag_set(flags: number): boolean;
+        /**
+         * @param flags
+         */
         is_dlna_operation_mode_set(flags: number): boolean;
         to_string(): string;
         get_uri(): string;
+        /**
+         * @param value
+         */
         set_uri(value: string): void;
         get_import_uri(): string;
+        /**
+         * @param value
+         */
         set_import_uri(value: string): void;
         get_extension(): string;
+        /**
+         * @param value
+         */
         set_extension(value: string): void;
         get_size(): number;
+        /**
+         * @param value
+         */
         set_size(value: number): void;
         get_cleartext_size(): number;
+        /**
+         * @param value
+         */
         set_cleartext_size(value: number): void;
         get_duration(): number;
+        /**
+         * @param value
+         */
         set_duration(value: number): void;
         get_bitrate(): number;
+        /**
+         * @param value
+         */
         set_bitrate(value: number): void;
         get_bits_per_sample(): number;
+        /**
+         * @param value
+         */
         set_bits_per_sample(value: number): void;
         get_color_depth(): number;
+        /**
+         * @param value
+         */
         set_color_depth(value: number): void;
         get_width(): number;
+        /**
+         * @param value
+         */
         set_width(value: number): void;
         get_height(): number;
+        /**
+         * @param value
+         */
         set_height(value: number): void;
         get_audio_channels(): number;
+        /**
+         * @param value
+         */
         set_audio_channels(value: number): void;
         get_sample_freq(): number;
+        /**
+         * @param value
+         */
         set_sample_freq(value: number): void;
         get_protocol(): string;
+        /**
+         * @param value
+         */
         set_protocol(value: string): void;
         get_mime_type(): string;
+        /**
+         * @param value
+         */
         set_mime_type(value: string): void;
         get_dlna_profile(): string;
+        /**
+         * @param value
+         */
         set_dlna_profile(value: string): void;
         get_network(): string;
+        /**
+         * @param value
+         */
         set_network(value: string): void;
         get_dlna_conversion(): GUPnPAV.DLNAConversion;
+        /**
+         * @param value
+         */
         set_dlna_conversion(value: GUPnPAV.DLNAConversion | null): void;
         get_dlna_flags(): GUPnPAV.DLNAFlags;
+        /**
+         * @param value
+         */
         set_dlna_flags(value: GUPnPAV.DLNAFlags | null): void;
         get_dlna_operation(): GUPnPAV.DLNAOperation;
+        /**
+         * @param value
+         */
         set_dlna_operation(value: GUPnPAV.DLNAOperation | null): void;
     }
 
@@ -2078,6 +2993,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MediaServerPlugin extends RygelCore.Plugin {
         static $gtype: GObject.GType<MediaServerPlugin>;
 
@@ -2113,16 +3031,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaServerPlugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaServerPlugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaServerPlugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaServerPlugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaServerPlugin.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaServerPlugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2131,6 +3052,9 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_search_caps(): string;
 
         // Methods
@@ -2138,8 +3062,14 @@ export namespace RygelServer {
         get_root_container(): MediaContainer;
         get_search_caps(): string;
         get_upload_profiles(): RygelCore.DLNAProfile[];
+        /**
+         * @param value
+         */
         set_upload_profiles(value: RygelCore.DLNAProfile[]): void;
         get_supported_profiles(): RygelCore.DLNAProfile[];
+        /**
+         * @param value
+         */
         set_supported_profiles(value: RygelCore.DLNAProfile[]): void;
     }
 
@@ -2148,6 +3078,9 @@ export namespace RygelServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class SearchExpression {
         static $gtype: GObject.GType<SearchExpression>;
 
@@ -2164,16 +3097,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SearchExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SearchExpression.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SearchExpression.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SearchExpression.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SearchExpression.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SearchExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2182,11 +3118,21 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param media_object
+         * @virtual
+         */
         vfunc_satisfied_by(media_object: MediaObject): boolean;
+        /**
+         * @virtual
+         */
         vfunc_to_string(): string;
 
         // Methods
 
+        /**
+         * @param media_object
+         */
         satisfied_by(media_object: MediaObject): boolean;
         to_string(): string;
     }
@@ -2208,6 +3154,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MediaServer extends RygelCore.MediaDevice {
         static $gtype: GObject.GType<MediaServer>;
 
@@ -2239,16 +3188,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaServer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaServer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaServer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaServer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaServer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2259,6 +3211,9 @@ export namespace RygelServer {
     namespace MediaEngine {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'resource-changed': (arg0: string) => void;
         }
 
@@ -2267,6 +3222,9 @@ export namespace RygelServer {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MediaEngine extends GObject.Object {
         static $gtype: GObject.GType<MediaEngine>;
 
@@ -2287,16 +3245,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaEngine.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaEngine.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaEngine.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaEngine.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaEngine.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaEngine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2310,32 +3271,79 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_dlna_profiles(): RygelCore.DLNAProfile[];
+        /**
+         * @param item
+         * @param _callback_
+         * @virtual
+         */
         vfunc_get_resources_for_item(item: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_get_resources_for_item_finish(_res_: Gio.AsyncResult): Gee.List | null;
+        /**
+         * @param item
+         * @param resource
+         * @param replacements
+         * @virtual
+         */
         vfunc_create_data_source_for_resource(
             item: MediaObject,
             resource: MediaResource,
             replacements: { [key: string]: any } | GLib.HashTable<string, string>,
         ): DataSource | null;
+        /**
+         * @param uri
+         * @virtual
+         */
         vfunc_create_data_source_for_uri(uri: string): DataSource | null;
+        /**
+         * @virtual
+         */
         vfunc_get_internal_protocol_schemes(): string[];
 
         // Methods
 
         get_dlna_profiles(): RygelCore.DLNAProfile[];
+        /**
+         * @param item
+         */
         get_resources_for_item(item: MediaObject): globalThis.Promise<Gee.List | null>;
+        /**
+         * @param item
+         * @param _callback_
+         */
         get_resources_for_item(item: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param item
+         * @param _callback_
+         */
         get_resources_for_item(
             item: MediaObject,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gee.List | null> | void;
+        /**
+         * @param _res_
+         */
         get_resources_for_item_finish(_res_: Gio.AsyncResult): Gee.List | null;
+        /**
+         * @param item
+         * @param resource
+         * @param replacements
+         */
         create_data_source_for_resource(
             item: MediaObject,
             resource: MediaResource,
             replacements: { [key: string]: any } | GLib.HashTable<string, string>,
         ): DataSource | null;
+        /**
+         * @param uri
+         */
         create_data_source_for_uri(uri: string): DataSource | null;
         get_internal_protocol_schemes(): string[];
     }
@@ -2349,6 +3357,9 @@ export namespace RygelServer {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class HTTPSeekRequest extends GObject.Object {
         static $gtype: GObject.GType<HTTPSeekRequest>;
 
@@ -2369,16 +3380,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPSeekRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPSeekRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPSeekRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPSeekRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPSeekRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPSeekRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2414,6 +3428,9 @@ export namespace RygelServer {
         interface ConstructorProps extends MediaFileItem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PlaylistItem extends MediaFileItem {
         static $gtype: GObject.GType<PlaylistItem>;
 
@@ -2436,16 +3453,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PlaylistItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaylistItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PlaylistItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaylistItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlaylistItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlaylistItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2471,6 +3491,9 @@ export namespace RygelServer {
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ContentDirectory extends GUPnP.Service {
         static $gtype: GObject.GType<ContentDirectory>;
 
@@ -2501,16 +3524,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContentDirectory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentDirectory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContentDirectory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentDirectory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContentDirectory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContentDirectory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2541,6 +3567,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HTTPByteSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPByteSeekRequest>;
 
@@ -2582,16 +3611,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPByteSeekRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPByteSeekRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPByteSeekRequest.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2602,17 +3634,33 @@ export namespace RygelServer {
 
         // Static methods
 
+        /**
+         * @param message
+         * @param handler
+         */
         static supported(message: Soup.ServerMessage, handler: HTTPGetHandler): boolean;
+        /**
+         * @param msg
+         */
         static requested(msg: Soup.ServerMessage): boolean;
 
         // Methods
 
         get_start_byte(): number;
+        /**
+         * @param value
+         */
         set_start_byte(value: number): void;
         get_end_byte(): number;
+        /**
+         * @param value
+         */
         set_end_byte(value: number): void;
         get_range_length(): number;
         get_total_size(): number;
+        /**
+         * @param value
+         */
         set_total_size(value: number): void;
     }
 
@@ -2639,6 +3687,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HTTPByteSeekResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<HTTPByteSeekResponse>;
 
@@ -2682,16 +3733,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPByteSeekResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPByteSeekResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPByteSeekResponse.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2703,11 +3757,20 @@ export namespace RygelServer {
         // Methods
 
         get_start_byte(): number;
+        /**
+         * @param value
+         */
         set_start_byte(value: number): void;
         get_end_byte(): number;
+        /**
+         * @param value
+         */
         set_end_byte(value: number): void;
         get_range_length(): number;
         get_total_size(): number;
+        /**
+         * @param value
+         */
         set_total_size(value: number): void;
     }
 
@@ -2724,6 +3787,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class HTTPGetHandler extends GObject.Object {
         static $gtype: GObject.GType<HTTPGetHandler>;
 
@@ -2749,16 +3815,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPGetHandler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPGetHandler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPGetHandler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPGetHandler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPGetHandler.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPGetHandler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2767,28 +3836,70 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param request
+         * @virtual
+         */
         vfunc_add_response_headers(request: HTTPGet): void;
+        /**
+         * @virtual
+         */
         vfunc_get_default_transfer_mode(): string;
+        /**
+         * @param mode
+         * @virtual
+         */
         vfunc_supports_transfer_mode(mode: string): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_resource_size(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_resource_duration(): number;
+        /**
+         * @virtual
+         */
         vfunc_supports_byte_seek(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_supports_time_seek(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_supports_playspeed(): boolean;
+        /**
+         * @param request
+         * @virtual
+         */
         vfunc_render_body(request: HTTPGet): HTTPResponse;
 
         // Methods
 
+        /**
+         * @param request
+         */
         add_response_headers(request: HTTPGet): void;
         get_default_transfer_mode(): string;
+        /**
+         * @param mode
+         */
         supports_transfer_mode(mode: string): boolean;
         get_resource_size(): number;
         get_resource_duration(): number;
         supports_byte_seek(): boolean;
         supports_time_seek(): boolean;
         supports_playspeed(): boolean;
+        /**
+         * @param request
+         */
         render_body(request: HTTPGet): HTTPResponse;
         get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         */
         set_cancellable(value: Gio.Cancellable): void;
     }
 
@@ -2801,6 +3912,9 @@ export namespace RygelServer {
         interface ConstructorProps extends HTTPRequest.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HTTPGet extends HTTPRequest {
         static $gtype: GObject.GType<HTTPGet>;
 
@@ -2829,16 +3943,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPGet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPGet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPGet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPGet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPGet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPGet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2874,6 +3991,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HTTPItemURI extends GObject.Object {
         static $gtype: GObject.GType<HTTPItemURI>;
 
@@ -2933,16 +4053,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPItemURI.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPItemURI.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPItemURI.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPItemURI.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPItemURI.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPItemURI.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2953,16 +4076,34 @@ export namespace RygelServer {
 
         to_string(): string;
         get_item_id(): string;
+        /**
+         * @param value
+         */
         set_item_id(value: string): void;
         get_thumbnail_index(): number;
+        /**
+         * @param value
+         */
         set_thumbnail_index(value: number): void;
         get_subtitle_index(): number;
+        /**
+         * @param value
+         */
         set_subtitle_index(value: number): void;
         get_resource_name(): string | null;
+        /**
+         * @param value
+         */
         set_resource_name(value?: string | null): void;
         get_http_server(): HTTPServer;
+        /**
+         * @param value
+         */
         set_http_server(value: HTTPServer): void;
         get_extension(): string;
+        /**
+         * @param value
+         */
         set_extension(value: string): void;
     }
 
@@ -2977,6 +4118,9 @@ export namespace RygelServer {
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class HTTPRequest extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPRequest>;
 
@@ -3006,16 +4150,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3024,38 +4171,103 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param _callback_
+         * @virtual
+         */
         vfunc_handle(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_handle_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param _callback_
+         * @virtual
+         */
         vfunc_find_item(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_find_item_finish(_res_: Gio.AsyncResult): void;
 
         // Methods
 
         handle(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         handle(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         handle(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         handle_finish(_res_: Gio.AsyncResult): void;
         find_item(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         find_item(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         find_item(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         find_item_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param _error_
+         */
         handle_error(_error_: GLib.Error): void;
+        /**
+         * @param status
+         * @param reason
+         */
         end(status: number, reason?: string | null): void;
-
-        // Inherited properties
+        /** @category Inherited from RygelCore.StateMachine */
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
-
-        // Inherited methods
         run(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         */
         set_cancellable(value: Gio.Cancellable): void;
+        /**
+         * @param _callback_
+         * @virtual
+         */
         vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_run_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @virtual
+         */
         vfunc_get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_cancellable(value: Gio.Cancellable): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3070,32 +4282,32 @@ export namespace RygelServer {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3104,39 +4316,39 @@ export namespace RygelServer {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3147,13 +4359,16 @@ export namespace RygelServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3161,7 +4376,7 @@ export namespace RygelServer {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3169,9 +4384,9 @@ export namespace RygelServer {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3191,9 +4406,9 @@ export namespace RygelServer {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3207,33 +4422,33 @@ export namespace RygelServer {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3266,21 +4481,21 @@ export namespace RygelServer {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3290,8 +4505,8 @@ export namespace RygelServer {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3308,10 +4523,10 @@ export namespace RygelServer {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3326,13 +4541,13 @@ export namespace RygelServer {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3363,21 +4578,21 @@ export namespace RygelServer {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3387,33 +4602,34 @@ export namespace RygelServer {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3422,6 +4638,7 @@ export namespace RygelServer {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3430,12 +4647,14 @@ export namespace RygelServer {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3444,20 +4663,22 @@ export namespace RygelServer {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3469,6 +4690,7 @@ export namespace RygelServer {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3514,6 +4736,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HTTPResponse extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPResponse>;
 
@@ -3548,16 +4773,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPResponse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3566,29 +4794,62 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param aborted
+         * @param status
+         * @virtual
+         */
         vfunc_end(aborted: boolean, status: number): void;
 
         // Methods
 
         preroll(): Gee.List | null;
+        /**
+         * @param aborted
+         * @param status
+         */
         end(aborted: boolean, status: number): void;
         get_server(): Soup.Server;
         get_priority(): number;
-
-        // Inherited properties
+        /** @category Inherited from RygelCore.StateMachine */
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
-
-        // Inherited methods
         run(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         */
         set_cancellable(value: Gio.Cancellable): void;
+        /**
+         * @param _callback_
+         * @virtual
+         */
         vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_run_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @virtual
+         */
         vfunc_get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_cancellable(value: Gio.Cancellable): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3603,32 +4864,32 @@ export namespace RygelServer {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3637,39 +4898,39 @@ export namespace RygelServer {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3680,13 +4941,16 @@ export namespace RygelServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3694,7 +4958,7 @@ export namespace RygelServer {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3702,9 +4966,9 @@ export namespace RygelServer {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3724,9 +4988,9 @@ export namespace RygelServer {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3740,33 +5004,33 @@ export namespace RygelServer {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3799,21 +5063,21 @@ export namespace RygelServer {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3823,8 +5087,8 @@ export namespace RygelServer {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3841,10 +5105,10 @@ export namespace RygelServer {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3859,13 +5123,13 @@ export namespace RygelServer {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3896,21 +5160,21 @@ export namespace RygelServer {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3920,33 +5184,34 @@ export namespace RygelServer {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3955,6 +5220,7 @@ export namespace RygelServer {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3963,12 +5229,14 @@ export namespace RygelServer {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3977,20 +5245,22 @@ export namespace RygelServer {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4002,6 +5272,7 @@ export namespace RygelServer {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4040,6 +5311,9 @@ export namespace RygelServer {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class HTTPResponseElement extends GObject.Object {
         static $gtype: GObject.GType<HTTPResponseElement>;
 
@@ -4060,16 +5334,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPResponseElement.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPResponseElement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPResponseElement.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPResponseElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPResponseElement.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPResponseElement.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4080,11 +5357,21 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @param request
+         * @virtual
+         */
         vfunc_add_response_headers(request: HTTPRequest): void;
+        /**
+         * @virtual
+         */
         vfunc_to_string(): string;
 
         // Methods
 
+        /**
+         * @param request
+         */
         add_response_headers(request: HTTPRequest): void;
         to_string(): string;
     }
@@ -4107,6 +5394,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HTTPServer extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPServer>;
 
@@ -4145,16 +5435,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPServer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPServer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPServer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPServer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPServer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPServer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4163,12 +5456,24 @@ export namespace RygelServer {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_protocol(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_protocol_info(): Gee.ArrayList;
 
         // Methods
 
+        /**
+         * @param res
+         */
         set_resource_delivery_options(res: MediaResource): void;
+        /**
+         * @param uri
+         */
         need_proxy(uri: string): boolean;
         get_protocol(): string;
         get_protocol_info(): Gee.ArrayList;
@@ -4176,22 +5481,49 @@ export namespace RygelServer {
         is_local(): boolean;
         get_path_root(): string;
         get_server_name(): string;
+        /**
+         * @param value
+         */
         set_server_name(value: string): void;
-
-        // Inherited properties
+        /** @category Inherited from RygelCore.StateMachine */
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
-
-        // Inherited methods
         run(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         */
         set_cancellable(value: Gio.Cancellable): void;
+        /**
+         * @param _callback_
+         * @virtual
+         */
         vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _res_
+         * @virtual
+         */
         vfunc_run_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @virtual
+         */
         vfunc_get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_cancellable(value: Gio.Cancellable): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -4206,32 +5538,32 @@ export namespace RygelServer {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4240,39 +5572,39 @@ export namespace RygelServer {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4283,13 +5615,16 @@ export namespace RygelServer {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4297,7 +5632,7 @@ export namespace RygelServer {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4305,9 +5640,9 @@ export namespace RygelServer {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4327,9 +5662,9 @@ export namespace RygelServer {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4343,33 +5678,33 @@ export namespace RygelServer {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4402,21 +5737,21 @@ export namespace RygelServer {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4426,8 +5761,8 @@ export namespace RygelServer {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4444,10 +5779,10 @@ export namespace RygelServer {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4462,13 +5797,13 @@ export namespace RygelServer {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4499,21 +5834,21 @@ export namespace RygelServer {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4523,33 +5858,34 @@ export namespace RygelServer {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4558,6 +5894,7 @@ export namespace RygelServer {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4566,12 +5903,14 @@ export namespace RygelServer {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4580,20 +5919,22 @@ export namespace RygelServer {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4605,6 +5946,7 @@ export namespace RygelServer {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4643,6 +5985,9 @@ export namespace RygelServer {
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HTTPTimeSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPTimeSeekRequest>;
 
@@ -4670,16 +6015,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPTimeSeekRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPTimeSeekRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPTimeSeekRequest.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4690,7 +6038,14 @@ export namespace RygelServer {
 
         // Static methods
 
+        /**
+         * @param message
+         * @param handler
+         */
         static supported(message: Soup.ServerMessage, handler: HTTPGetHandler): boolean;
+        /**
+         * @param message
+         */
         static requested(message: Soup.ServerMessage): boolean;
 
         // Methods
@@ -4733,6 +6088,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HTTPTimeSeekResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<HTTPTimeSeekResponse>;
 
@@ -4811,16 +6169,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPTimeSeekResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HTTPTimeSeekResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HTTPTimeSeekResponse.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4855,6 +6216,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Serializer extends GObject.Object {
         static $gtype: GObject.GType<Serializer>;
 
@@ -4882,16 +6246,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Serializer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Serializer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Serializer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Serializer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Serializer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Serializer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4902,6 +6269,9 @@ export namespace RygelServer {
 
         add_item(): GUPnPAV.DIDLLiteItem | null;
         add_container(): GUPnPAV.DIDLLiteContainer | null;
+        /**
+         * @param filter_string
+         */
         filter(filter_string: string): void;
         get_string(): string;
     }
@@ -4911,6 +6281,9 @@ export namespace RygelServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PlaySpeed {
         static $gtype: GObject.GType<PlaySpeed>;
 
@@ -4930,16 +6303,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PlaySpeed.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaySpeed.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PlaySpeed.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaySpeed.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlaySpeed.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlaySpeed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4948,6 +6324,9 @@ export namespace RygelServer {
 
         // Methods
 
+        /**
+         * @param that
+         */
         equals(that: PlaySpeed): boolean;
         is_positive(): boolean;
         is_normal_rate(): boolean;
@@ -4969,6 +6348,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PlaySpeedRequest extends GObject.Object {
         static $gtype: GObject.GType<PlaySpeedRequest>;
 
@@ -4998,16 +6380,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PlaySpeedRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaySpeedRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PlaySpeedRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaySpeedRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlaySpeedRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlaySpeedRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5016,10 +6401,16 @@ export namespace RygelServer {
 
         // Static methods
 
+        /**
+         * @param request
+         */
         static supported(request: HTTPGet): boolean;
 
         // Methods
 
+        /**
+         * @param that
+         */
         equals(that: PlaySpeedRequest): boolean;
         get_speed(): PlaySpeed;
     }
@@ -5033,6 +6424,9 @@ export namespace RygelServer {
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PlaySpeedResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<PlaySpeedResponse>;
 
@@ -5063,16 +6457,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PlaySpeedResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaySpeedResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PlaySpeedResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaySpeedResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlaySpeedResponse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlaySpeedResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5081,6 +6478,9 @@ export namespace RygelServer {
 
         // Methods
 
+        /**
+         * @param that
+         */
         equals(that: PlaySpeedRequest): boolean;
     }
 
@@ -5107,6 +6507,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DTCPCleartextRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DTCPCleartextRequest>;
 
@@ -5148,16 +6551,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DTCPCleartextRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DTCPCleartextRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DTCPCleartextRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DTCPCleartextRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DTCPCleartextRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DTCPCleartextRequest.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5168,7 +6574,14 @@ export namespace RygelServer {
 
         // Static methods
 
+        /**
+         * @param message
+         * @param handler
+         */
         static supported(message: Soup.ServerMessage, handler: HTTPGetHandler): boolean;
+        /**
+         * @param message
+         */
         static requested(message: Soup.ServerMessage): boolean;
 
         // Methods
@@ -5205,6 +6618,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DTCPCleartextResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<DTCPCleartextResponse>;
 
@@ -5257,16 +6673,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DTCPCleartextResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DTCPCleartextResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DTCPCleartextResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DTCPCleartextResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DTCPCleartextResponse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DTCPCleartextResponse.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5282,6 +6701,9 @@ export namespace RygelServer {
         get_range_length(): number;
         get_total_size(): number;
         get_encrypted_length(): number;
+        /**
+         * @param value
+         */
         set_encrypted_length(value: number): void;
     }
 
@@ -5294,6 +6716,9 @@ export namespace RygelServer {
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DLNAAvailableSeekRangeRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeRequest>;
 
@@ -5314,16 +6739,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DLNAAvailableSeekRangeRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DLNAAvailableSeekRangeRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DLNAAvailableSeekRangeRequest.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5334,7 +6762,14 @@ export namespace RygelServer {
 
         // Static methods
 
+        /**
+         * @param message
+         * @param handler
+         */
         static supported(message: Soup.Message, handler: HTTPGetHandler): boolean;
+        /**
+         * @param message
+         */
         static requested(message: Soup.Message): boolean;
     }
 
@@ -5366,6 +6801,9 @@ export namespace RygelServer {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DLNAAvailableSeekRangeResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeResponse>;
 
@@ -5421,16 +6859,19 @@ export namespace RygelServer {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DLNAAvailableSeekRangeResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DLNAAvailableSeekRangeResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DLNAAvailableSeekRangeResponse.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5449,227 +6890,506 @@ export namespace RygelServer {
         get_range_length(): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioItemClass = typeof AudioItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioItemPrivate {
         static $gtype: GObject.GType<AudioItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ImageItemClass = typeof ImageItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class ImageItemPrivate {
         static $gtype: GObject.GType<ImageItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LogicalExpressionClass = typeof LogicalExpression;
+    /**
+     * @gir-type Struct
+     */
     abstract class LogicalExpressionPrivate {
         static $gtype: GObject.GType<LogicalExpressionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaArtStoreClass = typeof MediaArtStore;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaArtStorePrivate {
         static $gtype: GObject.GType<MediaArtStorePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaObjectsClass = typeof MediaObjects;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaObjectsPrivate {
         static $gtype: GObject.GType<MediaObjectsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MusicItemClass = typeof MusicItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class MusicItemPrivate {
         static $gtype: GObject.GType<MusicItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PhotoItemClass = typeof PhotoItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class PhotoItemPrivate {
         static $gtype: GObject.GType<PhotoItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RelationalExpressionClass = typeof RelationalExpression;
+    /**
+     * @gir-type Struct
+     */
     abstract class RelationalExpressionPrivate {
         static $gtype: GObject.GType<RelationalExpressionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SimpleContainerClass = typeof SimpleContainer;
+    /**
+     * @gir-type Struct
+     */
     abstract class SimpleContainerPrivate {
         static $gtype: GObject.GType<SimpleContainerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SubtitleClass = typeof Subtitle;
+    /**
+     * @gir-type Struct
+     */
     abstract class SubtitlePrivate {
         static $gtype: GObject.GType<SubtitlePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ThumbnailClass = typeof Thumbnail;
+    /**
+     * @gir-type Struct
+     */
     abstract class ThumbnailPrivate {
         static $gtype: GObject.GType<ThumbnailPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VideoItemClass = typeof VideoItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class VideoItemPrivate {
         static $gtype: GObject.GType<VideoItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaContainerClass = typeof MediaContainer;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaContainerPrivate {
         static $gtype: GObject.GType<MediaContainerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaItemClass = typeof MediaItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaItemPrivate {
         static $gtype: GObject.GType<MediaItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaFileItemClass = typeof MediaFileItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaFileItemPrivate {
         static $gtype: GObject.GType<MediaFileItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaObjectClass = typeof MediaObject;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaObjectPrivate {
         static $gtype: GObject.GType<MediaObjectPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaResourceClass = typeof MediaResource;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaResourcePrivate {
         static $gtype: GObject.GType<MediaResourcePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaServerPluginClass = typeof MediaServerPlugin;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaServerPluginPrivate {
         static $gtype: GObject.GType<MediaServerPluginPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SearchExpressionClass = typeof SearchExpression;
+    /**
+     * @gir-type Struct
+     */
     abstract class SearchExpressionPrivate {
         static $gtype: GObject.GType<SearchExpressionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaServerClass = typeof MediaServer;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaServerPrivate {
         static $gtype: GObject.GType<MediaServerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaEngineClass = typeof MediaEngine;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaEnginePrivate {
         static $gtype: GObject.GType<MediaEnginePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPSeekRequestClass = typeof HTTPSeekRequest;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPSeekRequestPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlaylistItemClass = typeof PlaylistItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlaylistItemPrivate {
         static $gtype: GObject.GType<PlaylistItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContentDirectoryClass = typeof ContentDirectory;
+    /**
+     * @gir-type Struct
+     */
     abstract class ContentDirectoryPrivate {
         static $gtype: GObject.GType<ContentDirectoryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPByteSeekRequestClass = typeof HTTPByteSeekRequest;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPByteSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPByteSeekRequestPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPByteSeekResponseClass = typeof HTTPByteSeekResponse;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPByteSeekResponsePrivate {
         static $gtype: GObject.GType<HTTPByteSeekResponsePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPGetHandlerClass = typeof HTTPGetHandler;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPGetHandlerPrivate {
         static $gtype: GObject.GType<HTTPGetHandlerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPGetClass = typeof HTTPGet;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPGetPrivate {
         static $gtype: GObject.GType<HTTPGetPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPItemURIClass = typeof HTTPItemURI;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPItemURIPrivate {
         static $gtype: GObject.GType<HTTPItemURIPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPRequestClass = typeof HTTPRequest;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPRequestPrivate {
         static $gtype: GObject.GType<HTTPRequestPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPResponseClass = typeof HTTPResponse;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPResponsePrivate {
         static $gtype: GObject.GType<HTTPResponsePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPResponseElementClass = typeof HTTPResponseElement;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPResponseElementPrivate {
         static $gtype: GObject.GType<HTTPResponseElementPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPServerClass = typeof HTTPServer;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPServerPrivate {
         static $gtype: GObject.GType<HTTPServerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPTimeSeekRequestClass = typeof HTTPTimeSeekRequest;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPTimeSeekRequestPrivate {
         static $gtype: GObject.GType<HTTPTimeSeekRequestPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HTTPTimeSeekResponseClass = typeof HTTPTimeSeekResponse;
+    /**
+     * @gir-type Struct
+     */
     abstract class HTTPTimeSeekResponsePrivate {
         static $gtype: GObject.GType<HTTPTimeSeekResponsePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SerializerClass = typeof Serializer;
+    /**
+     * @gir-type Struct
+     */
     abstract class SerializerPrivate {
         static $gtype: GObject.GType<SerializerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlaySpeedClass = typeof PlaySpeed;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlaySpeedPrivate {
         static $gtype: GObject.GType<PlaySpeedPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlaySpeedRequestClass = typeof PlaySpeedRequest;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlaySpeedRequestPrivate {
         static $gtype: GObject.GType<PlaySpeedRequestPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlaySpeedResponseClass = typeof PlaySpeedResponse;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlaySpeedResponsePrivate {
         static $gtype: GObject.GType<PlaySpeedResponsePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DTCPCleartextRequestClass = typeof DTCPCleartextRequest;
+    /**
+     * @gir-type Struct
+     */
     abstract class DTCPCleartextRequestPrivate {
         static $gtype: GObject.GType<DTCPCleartextRequestPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DTCPCleartextResponseClass = typeof DTCPCleartextResponse;
+    /**
+     * @gir-type Struct
+     */
     abstract class DTCPCleartextResponsePrivate {
         static $gtype: GObject.GType<DTCPCleartextResponsePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DLNAAvailableSeekRangeRequestClass = typeof DLNAAvailableSeekRangeRequest;
+    /**
+     * @gir-type Struct
+     */
     abstract class DLNAAvailableSeekRangeRequestPrivate {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeRequestPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DLNAAvailableSeekRangeResponseClass = typeof DLNAAvailableSeekRangeResponse;
+    /**
+     * @gir-type Struct
+     */
     abstract class DLNAAvailableSeekRangeResponsePrivate {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeResponsePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SearchableContainerIface = typeof SearchableContainer;
+    /**
+     * @gir-type Alias
+     */
     type TrackableContainerIface = typeof TrackableContainer;
+    /**
+     * @gir-type Alias
+     */
     type TrackableItemIface = typeof TrackableItem;
+    /**
+     * @gir-type Alias
+     */
     type VisualItemIface = typeof VisualItem;
+    /**
+     * @gir-type Alias
+     */
     type WritableContainerIface = typeof WritableContainer;
+    /**
+     * @gir-type Alias
+     */
     type DataSourceIface = typeof DataSource;
+    /**
+     * @gir-type Alias
+     */
     type UpdatableObjectIface = typeof UpdatableObject;
     namespace SearchableContainer {
         /**
@@ -5679,6 +7399,15 @@ export namespace RygelServer {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param expression
+             * @param offset
+             * @param max_count
+             * @param sort_criteria
+             * @param cancellable
+             * @param _callback_
+             * @virtual
+             */
             vfunc_search(
                 expression: SearchExpression | null,
                 offset: number,
@@ -5687,8 +7416,19 @@ export namespace RygelServer {
                 cancellable?: Gio.Cancellable | null,
                 _callback_?: Gio.AsyncReadyCallback<this> | null,
             ): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
+            /**
+             * @virtual
+             */
             vfunc_get_search_classes(): Gee.ArrayList;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_search_classes(value: Gee.ArrayList): void;
         }
 
@@ -5704,6 +7444,9 @@ export namespace RygelServer {
         $gtype: GObject.GType<SearchableContainer>;
         prototype: SearchableContainer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface SearchableContainer extends MediaContainer, SearchableContainer.Interface {
         // Properties
 
@@ -5714,6 +7457,13 @@ export namespace RygelServer {
 
         // Methods
 
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         */
         search(
             expression: SearchExpression | null,
             offset: number,
@@ -5721,6 +7471,14 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[MediaObjects | null, number]>;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         search(
             expression: SearchExpression | null,
             offset: number,
@@ -5729,6 +7487,14 @@ export namespace RygelServer {
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         search(
             expression: SearchExpression | null,
             offset: number,
@@ -5737,7 +7503,17 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[MediaObjects | null, number]> | void;
+        /**
+         * @param _res_
+         */
         search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         */
         simple_search(
             expression: SearchExpression | null,
             offset: number,
@@ -5745,6 +7521,14 @@ export namespace RygelServer {
             sort_criteria: string,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[MediaObjects | null, number]>;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         simple_search(
             expression: SearchExpression | null,
             offset: number,
@@ -5753,6 +7537,14 @@ export namespace RygelServer {
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param expression
+         * @param offset
+         * @param max_count
+         * @param sort_criteria
+         * @param cancellable
+         * @param _callback_
+         */
         simple_search(
             expression: SearchExpression | null,
             offset: number,
@@ -5761,20 +7553,43 @@ export namespace RygelServer {
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[MediaObjects | null, number]> | void;
+        /**
+         * @param _res_
+         */
         simple_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
+        /**
+         * @param id
+         * @param cancellable
+         */
         find_object(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         find_object(
             id: string,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         find_object(
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<MediaObject | null> | void;
+        /**
+         * @param _res_
+         */
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
         get_search_classes(): Gee.ArrayList;
+        /**
+         * @param value
+         */
         set_search_classes(value: Gee.ArrayList): void;
     }
 
@@ -5790,12 +7605,40 @@ export namespace RygelServer {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param object
+             * @param _callback_
+             * @virtual
+             */
             vfunc_add_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_add_child_finish(_res_: Gio.AsyncResult): void;
+            /**
+             * @param object
+             * @param _callback_
+             * @virtual
+             */
             vfunc_remove_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_remove_child_finish(_res_: Gio.AsyncResult): void;
+            /**
+             * @virtual
+             */
             vfunc_get_service_reset_token(): string;
+            /**
+             * @param token
+             * @virtual
+             */
             vfunc_set_service_reset_token(token: string): void;
+            /**
+             * @virtual
+             */
             vfunc_get_system_update_id(): number;
         }
 
@@ -5808,42 +7651,113 @@ export namespace RygelServer {
         $gtype: GObject.GType<TrackableContainer>;
         prototype: TrackableContainer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface TrackableContainer extends MediaContainer, TrackableContainer.Interface {
         // Methods
 
         clear(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         clear(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         clear(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         clear_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param object
+         */
         add_child(object: MediaObject): globalThis.Promise<void>;
+        /**
+         * @param object
+         * @param _callback_
+         */
         add_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param object
+         * @param _callback_
+         */
         add_child(
             object: MediaObject,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         add_child_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param object
+         */
         add_child_tracked(object: MediaObject): globalThis.Promise<void>;
+        /**
+         * @param object
+         * @param _callback_
+         */
         add_child_tracked(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param object
+         * @param _callback_
+         */
         add_child_tracked(
             object: MediaObject,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         add_child_tracked_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param object
+         */
         remove_child(object: MediaObject): globalThis.Promise<void>;
+        /**
+         * @param object
+         * @param _callback_
+         */
         remove_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param object
+         * @param _callback_
+         */
         remove_child(
             object: MediaObject,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         remove_child_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param object
+         */
         remove_child_tracked(object: MediaObject): globalThis.Promise<void>;
+        /**
+         * @param object
+         * @param _callback_
+         */
         remove_child_tracked(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param object
+         * @param _callback_
+         */
         remove_child_tracked(
             object: MediaObject,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         remove_child_tracked_finish(_res_: Gio.AsyncResult): void;
         get_service_reset_token(): string;
+        /**
+         * @param token
+         */
         set_service_reset_token(token: string): void;
         get_system_update_id(): number;
     }
@@ -5862,6 +7776,9 @@ export namespace RygelServer {
         $gtype: GObject.GType<TrackableItem>;
         prototype: TrackableItem;
     }
+    /**
+     * @gir-type Interface
+     */
     interface TrackableItem extends MediaItem {
         // Methods
 
@@ -5880,13 +7797,41 @@ export namespace RygelServer {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_width(): number;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_width(value: number): void;
+            /**
+             * @virtual
+             */
             vfunc_get_height(): number;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_height(value: number): void;
+            /**
+             * @virtual
+             */
             vfunc_get_color_depth(): number;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_color_depth(value: number): void;
+            /**
+             * @virtual
+             */
             vfunc_get_thumbnails(): Gee.ArrayList;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_thumbnails(value: Gee.ArrayList): void;
         }
 
@@ -5905,6 +7850,9 @@ export namespace RygelServer {
         $gtype: GObject.GType<VisualItem>;
         prototype: VisualItem;
     }
+    /**
+     * @gir-type Interface
+     */
     interface VisualItem extends MediaFileItem, VisualItem.Interface {
         // Properties
 
@@ -5922,12 +7870,24 @@ export namespace RygelServer {
         // Methods
 
         get_width(): number;
+        /**
+         * @param value
+         */
         set_width(value: number): void;
         get_height(): number;
+        /**
+         * @param value
+         */
         set_height(value: number): void;
         get_color_depth(): number;
+        /**
+         * @param value
+         */
         set_color_depth(value: number): void;
         get_thumbnails(): Gee.ArrayList;
+        /**
+         * @param value
+         */
         set_thumbnails(value: Gee.ArrayList): void;
     }
 
@@ -5943,37 +7903,94 @@ export namespace RygelServer {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param item
+             * @param cancellable
+             * @param _callback_
+             * @virtual
+             */
             vfunc_add_item(
                 item: MediaFileItem,
                 cancellable?: Gio.Cancellable | null,
                 _callback_?: Gio.AsyncReadyCallback<this> | null,
             ): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_add_item_finish(_res_: Gio.AsyncResult): void;
+            /**
+             * @param container
+             * @param cancellable
+             * @param _callback_
+             * @virtual
+             */
             vfunc_add_container(
                 container: MediaContainer,
                 cancellable?: Gio.Cancellable | null,
                 _callback_?: Gio.AsyncReadyCallback<this> | null,
             ): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_add_container_finish(_res_: Gio.AsyncResult): void;
+            /**
+             * @param object
+             * @param cancellable
+             * @param _callback_
+             * @virtual
+             */
             vfunc_add_reference(
                 object: MediaObject,
                 cancellable?: Gio.Cancellable | null,
                 _callback_?: Gio.AsyncReadyCallback<this> | null,
             ): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_add_reference_finish(_res_: Gio.AsyncResult): string;
+            /**
+             * @param id
+             * @param cancellable
+             * @param _callback_
+             * @virtual
+             */
             vfunc_remove_item(
                 id: string,
                 cancellable?: Gio.Cancellable | null,
                 _callback_?: Gio.AsyncReadyCallback<this> | null,
             ): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_remove_item_finish(_res_: Gio.AsyncResult): void;
+            /**
+             * @param id
+             * @param cancellable
+             * @param _callback_
+             * @virtual
+             */
             vfunc_remove_container(
                 id: string,
                 cancellable?: Gio.Cancellable | null,
                 _callback_?: Gio.AsyncReadyCallback<this> | null,
             ): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_remove_container_finish(_res_: Gio.AsyncResult): void;
+            /**
+             * @virtual
+             */
             vfunc_get_create_classes(): Gee.ArrayList;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_create_classes(value: Gee.ArrayList): void;
         }
 
@@ -5989,6 +8006,9 @@ export namespace RygelServer {
         $gtype: GObject.GType<WritableContainer>;
         prototype: WritableContainer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface WritableContainer extends MediaContainer, WritableContainer.Interface {
         // Properties
 
@@ -5999,68 +8019,159 @@ export namespace RygelServer {
 
         // Methods
 
+        /**
+         * @param upnp_class
+         */
         can_create(upnp_class: string): boolean;
+        /**
+         * @param item
+         * @param cancellable
+         */
         add_item(item: MediaFileItem, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        /**
+         * @param item
+         * @param cancellable
+         * @param _callback_
+         */
         add_item(
             item: MediaFileItem,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param item
+         * @param cancellable
+         * @param _callback_
+         */
         add_item(
             item: MediaFileItem,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         add_item_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param container
+         * @param cancellable
+         */
         add_container(container: MediaContainer, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        /**
+         * @param container
+         * @param cancellable
+         * @param _callback_
+         */
         add_container(
             container: MediaContainer,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param container
+         * @param cancellable
+         * @param _callback_
+         */
         add_container(
             container: MediaContainer,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         add_container_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param object
+         * @param cancellable
+         */
         add_reference(object: MediaObject, cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        /**
+         * @param object
+         * @param cancellable
+         * @param _callback_
+         */
         add_reference(
             object: MediaObject,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param object
+         * @param cancellable
+         * @param _callback_
+         */
         add_reference(
             object: MediaObject,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
+        /**
+         * @param _res_
+         */
         add_reference_finish(_res_: Gio.AsyncResult): string;
+        /**
+         * @param id
+         * @param cancellable
+         */
         remove_item(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         remove_item(
             id: string,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         remove_item(
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         remove_item_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param id
+         * @param cancellable
+         */
         remove_container(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         remove_container(
             id: string,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param id
+         * @param cancellable
+         * @param _callback_
+         */
         remove_container(
             id: string,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         remove_container_finish(_res_: Gio.AsyncResult): void;
         get_create_classes(): Gee.ArrayList;
+        /**
+         * @param value
+         */
         set_create_classes(value: Gee.ArrayList): void;
     }
 
@@ -6076,10 +8187,27 @@ export namespace RygelServer {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param seek
+             * @param playspeed
+             * @virtual
+             */
             vfunc_preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
+            /**
+             * @virtual
+             */
             vfunc_start(): void;
+            /**
+             * @virtual
+             */
             vfunc_freeze(): void;
+            /**
+             * @virtual
+             */
             vfunc_thaw(): void;
+            /**
+             * @virtual
+             */
             vfunc_stop(): void;
         }
 
@@ -6092,9 +8220,16 @@ export namespace RygelServer {
         $gtype: GObject.GType<DataSource>;
         prototype: DataSource;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DataSource extends GObject.Object, DataSource.Interface {
         // Methods
 
+        /**
+         * @param seek
+         * @param playspeed
+         */
         preroll(seek?: HTTPSeekRequest | null, playspeed?: PlaySpeedRequest | null): Gee.List | null;
         start(): void;
         freeze(): void;
@@ -6114,7 +8249,15 @@ export namespace RygelServer {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param _callback_
+             * @virtual
+             */
             vfunc_commit(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_commit_finish(_res_: Gio.AsyncResult): void;
         }
 
@@ -6127,12 +8270,24 @@ export namespace RygelServer {
         $gtype: GObject.GType<UpdatableObject>;
         prototype: UpdatableObject;
     }
+    /**
+     * @gir-type Interface
+     */
     interface UpdatableObject extends MediaObject, UpdatableObject.Interface {
         // Methods
 
         commit(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         commit(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         commit(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         commit_finish(_res_: Gio.AsyncResult): void;
     }
 

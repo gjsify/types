@@ -21,6 +21,9 @@ export namespace TelepathyLogger {
      * TelepathyLogger-0.2
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum EntityType {
         /**
          * the current contact's type is unknown
@@ -43,6 +46,9 @@ export namespace TelepathyLogger {
         SELF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LogManagerError {
         /**
          * Error return when adding logs fails
@@ -50,23 +56,27 @@ export namespace TelepathyLogger {
         LOG_MANAGER_ERROR_ADD_EVENT,
     }
 
+    /**
+     * @gir-type Callback
+     */
     interface LogEventFilter {
         (event: Event): boolean;
     }
     /**
-     * Mask used to filter type of #TplEvent returned.
+     * Mask used to filter type of {@link TelepathyLogger.Event} returned.
+     * @gir-type Flags
      */
     enum EventTypeMask {
         /**
-         * Mask to #TplTextEvent
+         * Mask to {@link TelepathyLogger.TextEvent}
          */
         TEXT,
         /**
-         * Mask to #TplCallEvent
+         * Mask to {@link TelepathyLogger.CallEvent}
          */
         CALL,
         /**
-         * Special value to select all type of #TplEvent
+         * Special value to select all type of {@link TelepathyLogger.Event}
          */
         ANY,
     }
@@ -101,6 +111,7 @@ export namespace TelepathyLogger {
 
     /**
      * An object representing a call log event.
+     * @gir-type Class
      */
     class CallEvent extends Event {
         static $gtype: GObject.GType<CallEvent>;
@@ -132,16 +143,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CallEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CallEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CallEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CallEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CallEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CallEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -150,9 +164,21 @@ export namespace TelepathyLogger {
 
         // Methods
 
+        /**
+         * @returns the same string as the          {@link TelepathyLogger.CallEvent.detailed_end_reason} property
+         */
         get_detailed_end_reason(): string;
+        /**
+         * @returns the same duration as the {@link TelepathyLogger.CallEvent.duration} property
+         */
         get_duration(): GLib.TimeSpan;
+        /**
+         * @returns the same {@link TelepathyLogger.Entity}          as {@link TelepathyLogger.CallEvent.end_actor} property
+         */
         get_end_actor(): Entity;
+        /**
+         * @returns the same {@link TelepathyGLib.CallStateChangeReason} as {@link TelepathyLogger.CallEvent.end_reason} property
+         */
         get_end_reason(): TelepathyGLib.CallStateChangeReason;
     }
 
@@ -178,6 +204,7 @@ export namespace TelepathyLogger {
 
     /**
      * An object representing a contact or room.
+     * @gir-type Class
      */
     class Entity extends GObject.Object {
         static $gtype: GObject.GType<Entity>;
@@ -201,7 +228,7 @@ export namespace TelepathyLogger {
          */
         get identifier(): string;
         /**
-         * The entity's type (see #TplEntityType).
+         * The entity's type (see {@link TelepathyLogger.EntityType}).
          */
         get type(): number;
 
@@ -228,16 +255,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Entity.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Entity.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Entity.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Entity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -246,9 +276,21 @@ export namespace TelepathyLogger {
 
         // Methods
 
+        /**
+         * @returns the alias of the entity, or `null`
+         */
         get_alias(): string;
+        /**
+         * @returns a token representing the avatar of the token, or `null`
+         */
         get_avatar_token(): string;
+        /**
+         * @returns the type of the entity
+         */
         get_entity_type(): EntityType;
+        /**
+         * @returns the identifier of the entity
+         */
         get_identifier(): string;
     }
 
@@ -279,6 +321,7 @@ export namespace TelepathyLogger {
 
     /**
      * An object representing a generic log event.
+     * @gir-type Class
      */
     abstract class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
@@ -311,16 +354,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Event.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Event.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Event.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -331,22 +377,31 @@ export namespace TelepathyLogger {
 
         /**
          * Checks if two instances of TplEvent represent the same data
-         * @param data an instance of the same TplEvent subclass of @self
-         * @returns %TRUE if @data is the same type of @self and they hold the same data, %FALSE otherwise
+         * @param data an instance of the same TplEvent subclass of `self`
+         * @returns `true` if `data` is the same type of `self` and they hold the same data, `false` otherwise
          */
         equal(data: Event): boolean;
         /**
          * <!-- no more to say -->
-         * @returns the same account as the #TplEvent:account property
+         * @returns the same account as the {@link TelepathyLogger.Event.account} property
          */
         get_account(): TelepathyGLib.Account;
         /**
          * <!-- no more to say -->
-         * @returns the path as the #TplEvent:account property
+         * @returns the path as the {@link TelepathyLogger.Event.account} property
          */
         get_account_path(): string;
+        /**
+         * @returns the same {@link TelepathyLogger.Entity} as the {@link TelepathyLogger.Event.receiver} property
+         */
         get_receiver(): Entity;
+        /**
+         * @returns the same {@link TelepathyLogger.Entity} as the {@link TelepathyLogger.Event.sender} property
+         */
         get_sender(): Entity;
+        /**
+         * @returns the same timestamp as the {@link TelepathyLogger.Event.timestamp} property
+         */
         get_timestamp(): number;
     }
 
@@ -361,6 +416,7 @@ export namespace TelepathyLogger {
 
     /**
      * An object used to access logs
+     * @gir-type Class
      */
     class LogManager extends GObject.Object {
         static $gtype: GObject.GType<LogManager>;
@@ -386,16 +442,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LogManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LogManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LogManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LogManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LogManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LogManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -418,7 +477,7 @@ export namespace TelepathyLogger {
         disable_for_entity(account: TelepathyGLib.Account, entity: Entity): void;
         /**
          * Re-enables logging of events for entity previously disabled by
-         * tpl_log_manager_disable_for_entity(). By default logging is enabled for all
+         * `tpl_log_manager_disable_for_entity()`. By default logging is enabled for all
          * entities.
          * @param account
          * @param entity a TplEntity
@@ -428,22 +487,22 @@ export namespace TelepathyLogger {
          * Checks if logs exist for `target`.
          *
          * It applies for any registered TplLogStore with the TplLogStore:readable
-         * property %TRUE.
+         * property `true`.
          * @param account TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
-         * @returns %TRUE logs exist for @target, otherwise %FALSE
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
+         * @returns `true` logs exist for `target`, otherwise `false`
          */
         exists(account: TelepathyGLib.Account, target: Entity, type_mask: number): boolean;
         /**
-         * Retrieves a list of #GDate corresponding to each day where
+         * Retrieves a list of {@link GLib.Date} corresponding to each day where
          * at least one event exist for `target`.
          *
          * It applies for any registered TplLogStore with the TplLogStore:readable
-         * property %TRUE.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
+         * property `true`.
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          */
         get_dates_async(
             account: TelepathyGLib.Account,
@@ -451,14 +510,14 @@ export namespace TelepathyLogger {
             type_mask: number,
         ): globalThis.Promise<GLib.Date[]>;
         /**
-         * Retrieves a list of #GDate corresponding to each day where
+         * Retrieves a list of {@link GLib.Date} corresponding to each day where
          * at least one event exist for `target`.
          *
          * It applies for any registered TplLogStore with the TplLogStore:readable
-         * property %TRUE.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
+         * property `true`.
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          * @param callback a callback to call when the request is satisfied
          */
         get_dates_async(
@@ -468,14 +527,14 @@ export namespace TelepathyLogger {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Retrieves a list of #GDate corresponding to each day where
+         * Retrieves a list of {@link GLib.Date} corresponding to each day where
          * at least one event exist for `target`.
          *
          * It applies for any registered TplLogStore with the TplLogStore:readable
-         * property %TRUE.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
+         * property `true`.
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          * @param callback a callback to call when the request is satisfied
          */
         get_dates_async(
@@ -484,34 +543,42 @@ export namespace TelepathyLogger {
             type_mask: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Date[]> | void;
+        /**
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `TRUE` if the operation was successful, otherwise `FALSE`
+         */
         get_dates_finish(result: Gio.AsyncResult): [boolean, GLib.Date[]];
         /**
          * Start a query looking for all entities for which you have logs in the `account`.
-         * @param account a #TpAccount
+         * @param account a {@link TelepathyGLib.Account}
          */
         get_entities_async(account: TelepathyGLib.Account): globalThis.Promise<Entity[]>;
         /**
          * Start a query looking for all entities for which you have logs in the `account`.
-         * @param account a #TpAccount
+         * @param account a {@link TelepathyGLib.Account}
          * @param callback a callback to call when the request is satisfied
          */
         get_entities_async(account: TelepathyGLib.Account, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Start a query looking for all entities for which you have logs in the `account`.
-         * @param account a #TpAccount
+         * @param account a {@link TelepathyGLib.Account}
          * @param callback a callback to call when the request is satisfied
          */
         get_entities_async(
             account: TelepathyGLib.Account,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Entity[]> | void;
+        /**
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `TRUE` if the operation was successful, otherwise `FALSE`
+         */
         get_entities_finish(result: Gio.AsyncResult): [boolean, Entity[]];
         /**
-         * Retrieve a list of #TplEvent at `date` with `target`.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
-         * @param date a #GDate
+         * Retrieve a list of {@link TelepathyLogger.Event} at `date` with `target`.
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
+         * @param date a {@link GLib.Date}
          */
         get_events_for_date_async(
             account: TelepathyGLib.Account,
@@ -520,11 +587,11 @@ export namespace TelepathyLogger {
             date: GLib.Date,
         ): globalThis.Promise<Event[]>;
         /**
-         * Retrieve a list of #TplEvent at `date` with `target`.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
-         * @param date a #GDate
+         * Retrieve a list of {@link TelepathyLogger.Event} at `date` with `target`.
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
+         * @param date a {@link GLib.Date}
          * @param callback a callback to call when the request is satisfied
          */
         get_events_for_date_async(
@@ -535,11 +602,11 @@ export namespace TelepathyLogger {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Retrieve a list of #TplEvent at `date` with `target`.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
-         * @param date a #GDate
+         * Retrieve a list of {@link TelepathyLogger.Event} at `date` with `target`.
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
+         * @param date a {@link GLib.Date}
          * @param callback a callback to call when the request is satisfied
          */
         get_events_for_date_async(
@@ -549,12 +616,16 @@ export namespace TelepathyLogger {
             date: GLib.Date,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Event[]> | void;
+        /**
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `TRUE` if the operation was successful, otherwise `FALSE`
+         */
         get_events_for_date_finish(result: Gio.AsyncResult): [boolean, Event[]];
         /**
          * Retrieve the most recent `num_event` events exchanged with `target`.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          * @param num_events number of maximum events to fetch
          * @param filter an optional filter function
          */
@@ -567,9 +638,9 @@ export namespace TelepathyLogger {
         ): globalThis.Promise<Event[]>;
         /**
          * Retrieve the most recent `num_event` events exchanged with `target`.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          * @param num_events number of maximum events to fetch
          * @param filter an optional filter function
          * @param callback a callback to call when the request is satisfied
@@ -584,9 +655,9 @@ export namespace TelepathyLogger {
         ): void;
         /**
          * Retrieve the most recent `num_event` events exchanged with `target`.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          * @param num_events number of maximum events to fetch
          * @param filter an optional filter function
          * @param callback a callback to call when the request is satisfied
@@ -599,32 +670,36 @@ export namespace TelepathyLogger {
             filter?: LogEventFilter | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Event[]> | void;
+        /**
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
+         */
         get_filtered_events_finish(result: Gio.AsyncResult): [boolean, Event[]];
         /**
          * Checks, whether logging is disabled for given entity. By default, logging
          * is enabled for all entities.
          * @param account
          * @param entity a TplEntity
-         * @returns %TRUE if logging for the entity has been disabled, %FALSE otherwise.
+         * @returns `true` if logging for the entity has been disabled, `false` otherwise.
          */
         is_disabled_for_entity(account: TelepathyGLib.Account, entity: Entity): boolean;
         /**
          * Search for all the conversations containing `text`.
          * @param text the pattern to search
-         * @param type_mask event type filter see #TplEventTypeMask
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          */
         search_async(text: string, type_mask: number): globalThis.Promise<LogSearchHit[]>;
         /**
          * Search for all the conversations containing `text`.
          * @param text the pattern to search
-         * @param type_mask event type filter see #TplEventTypeMask
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          * @param callback a callback to call when the request is satisfied
          */
         search_async(text: string, type_mask: number, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Search for all the conversations containing `text`.
          * @param text the pattern to search
-         * @param type_mask event type filter see #TplEventTypeMask
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          * @param callback a callback to call when the request is satisfied
          */
         search_async(
@@ -632,14 +707,18 @@ export namespace TelepathyLogger {
             type_mask: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<LogSearchHit[]> | void;
+        /**
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `TRUE` if the operation was successful, otherwise `FALSE`
+         */
         search_finish(result: Gio.AsyncResult): [boolean, LogSearchHit[]];
         /**
-         * Create a #TplLogWalker to traverse all the events exchanged with `target`.
-         * @param account a #TpAccount
-         * @param target a non-NULL #TplEntity
-         * @param type_mask event type filter see #TplEventTypeMask
+         * Create a {@link TelepathyLogger.LogWalker} to traverse all the events exchanged with `target`.
+         * @param account a {@link TelepathyGLib.Account}
+         * @param target a non-NULL {@link TelepathyLogger.Entity}
+         * @param type_mask event type filter see {@link TelepathyLogger.EventTypeMask}
          * @param filter an optional filter function
-         * @returns a #TplLogWalker
+         * @returns a {@link TelepathyLogger.LogWalker}
          */
         walk_filtered_events(
             account: TelepathyGLib.Account,
@@ -667,6 +746,8 @@ export namespace TelepathyLogger {
 
     /**
      * An object used to iterate over the logs
+     * @gir-type Class
+     * @since 0.8.0
      */
     class LogWalker extends GObject.Object {
         static $gtype: GObject.GType<LogWalker>;
@@ -694,16 +775,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LogWalker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LogWalker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LogWalker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LogWalker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LogWalker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LogWalker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -732,36 +816,40 @@ export namespace TelepathyLogger {
             num_events: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Event[]> | void;
+        /**
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
+         */
         get_events_finish(result: Gio.AsyncResult): [boolean, Event[]];
         /**
          * Determines whether `walker` has run out of events. This is the case
          * when `walker` has returned all the events from the logs.
-         * @returns #TRUE if @walker has run out of events, otherwise #FALSE.
+         * @returns `TRUE` if `walker` has run out of events, otherwise `FALSE`.
          */
         is_end(): boolean;
         /**
          * Determines whether `walker` is pointing at the most recent event in
          * the logs. This is the case when `walker` has not yet returned any
          * events or has been rewound completely.
-         * @returns #TRUE if @walker is pointing at the most recent event, otherwise #FALSE.
+         * @returns `TRUE` if `walker` is pointing at the most recent event, otherwise `FALSE`.
          */
         is_start(): boolean;
         /**
          * Move the `walker` back by the last `num_event` events that were
-         * returned by tpl_log_walker_get_events_async().
+         * returned by `tpl_log_walker_get_events_async()`.
          * @param num_events number of events to move back
          */
         rewind_async(num_events: number): globalThis.Promise<boolean>;
         /**
          * Move the `walker` back by the last `num_event` events that were
-         * returned by tpl_log_walker_get_events_async().
+         * returned by `tpl_log_walker_get_events_async()`.
          * @param num_events number of events to move back
          * @param callback a callback to call when the request is satisfied
          */
         rewind_async(num_events: number, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Move the `walker` back by the last `num_event` events that were
-         * returned by tpl_log_walker_get_events_async().
+         * returned by `tpl_log_walker_get_events_async()`.
          * @param num_events number of events to move back
          * @param callback a callback to call when the request is satisfied
          */
@@ -769,6 +857,10 @@ export namespace TelepathyLogger {
             num_events: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
+        /**
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
+         */
         rewind_finish(result: Gio.AsyncResult): boolean;
     }
 
@@ -805,6 +897,7 @@ export namespace TelepathyLogger {
 
     /**
      * An object representing a text log event.
+     * @gir-type Class
      */
     class TextEvent extends Event {
         static $gtype: GObject.GType<TextEvent>;
@@ -838,16 +931,19 @@ export namespace TelepathyLogger {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -856,31 +952,68 @@ export namespace TelepathyLogger {
 
         // Methods
 
+        /**
+         * @returns the same value as the {@link TelepathyLogger.TextEvent.edit_timestamp} property
+         */
         get_edit_timestamp(): number;
+        /**
+         * @returns the same message as the {@link TelepathyLogger.TextEvent.message} property
+         */
         get_message(): string;
+        /**
+         * @returns the same message as the {@link TelepathyLogger.TextEvent.message_token} property
+         */
         get_message_token(): string;
+        /**
+         * @returns the same message as the {@link TelepathyLogger.TextEvent.message_type} property
+         */
         get_message_type(): TelepathyGLib.ChannelTextMessageType;
+        /**
+         * @returns A {@link GLib.List}  of {@link TelepathyLogger.TextEvent} that this event supersedes.
+         */
         get_supersedes(): TextEvent[];
+        /**
+         * @returns the same message as the {@link TelepathyLogger.TextEvent.supersedes_token} property
+         */
         get_supersedes_token(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CallEventClass = typeof CallEvent;
+    /**
+     * @gir-type Struct
+     */
     abstract class CallEventPriv {
         static $gtype: GObject.GType<CallEventPriv>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class EntityPriv {
         static $gtype: GObject.GType<EntityPriv>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EventClass = typeof Event;
+    /**
+     * @gir-type Struct
+     */
     abstract class EventPriv {
         static $gtype: GObject.GType<EventPriv>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LogManagerClass = typeof LogManager;
     /**
      * Represent the context where the search has results.
+     * @gir-type Struct
      */
     class LogSearchHit {
         static $gtype: GObject.GType<LogSearchHit>;
@@ -892,12 +1025,24 @@ export namespace TelepathyLogger {
         date: GLib.Date;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LogWalkerClass = typeof LogWalker;
+    /**
+     * @gir-type Struct
+     */
     abstract class LogWalkerPriv {
         static $gtype: GObject.GType<LogWalkerPriv>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TextEventClass = typeof TextEvent;
+    /**
+     * @gir-type Struct
+     */
     abstract class TextEventPriv {
         static $gtype: GObject.GType<TextEventPriv>;
     }

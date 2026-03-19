@@ -45,6 +45,7 @@ export namespace Meta {
      *
      * Note, you can't add stuff here without extending the theme format
      * to draw a new function and breaking all existing themes.
+     * @gir-type Enum
      */
     enum ButtonFunction {
         /**
@@ -64,7 +65,7 @@ export namespace Meta {
          */
         CLOSE,
         /**
-         * Marks the end of the #MetaButtonFunction enumeration
+         * Marks the end of the {@link Meta.ButtonFunction} enumeration
          */
         LAST,
     }
@@ -73,6 +74,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<CloseDialogResponse>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CloseDialogResponse {
         WAIT,
         FORCE_CLOSE,
@@ -84,7 +88,8 @@ export namespace Meta {
 
     /**
      * Indicates the appropriate effect to show the user for
-     * meta_compositor_show_window() and meta_compositor_hide_window()
+     * `meta_compositor_show_window()` and `meta_compositor_hide_window()`
+     * @gir-type Enum
      */
     enum CompEffect {
         /**
@@ -119,6 +124,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<CompositorType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CompositorType {
         WAYLAND,
         X11,
@@ -128,6 +136,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<Cursor>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Cursor {
         NONE,
         /**
@@ -213,6 +224,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<DisplayCorner>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DisplayCorner {
         /**
          * top-left corner
@@ -236,6 +250,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<DisplayDirection>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DisplayDirection {
         /**
          * up
@@ -259,6 +276,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<EdgeType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum EdgeType {
         /**
          * Whether the edge belongs to a window
@@ -278,6 +298,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<ExitCode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ExitCode {
         /**
          * Success
@@ -293,6 +316,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<FrameType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FrameType {
         /**
          * Normal frame
@@ -323,7 +349,7 @@ export namespace Meta {
          */
         ATTACHED,
         /**
-         * Marks the end of the #MetaFrameType enumeration
+         * Marks the end of the {@link Meta.FrameType} enumeration
          */
         LAST,
     }
@@ -332,6 +358,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<GrabOp>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum GrabOp {
         /**
          * None
@@ -421,6 +450,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<Gravity>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Gravity {
         NONE,
         NORTH_WEST,
@@ -439,6 +471,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<InhibitShortcutsDialogResponse>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum InhibitShortcutsDialogResponse {
         ALLOW,
         DENY,
@@ -448,6 +483,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<KeyBindingAction>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum KeyBindingAction {
         /**
          * FILLME
@@ -814,6 +852,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<LaterType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LaterType {
         /**
          * call in a resize processing phase that is done
@@ -847,6 +888,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<LocaleDirection>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LocaleDirection {
         LTR,
         RTL,
@@ -856,6 +900,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<MonitorSwitchConfigType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MonitorSwitchConfigType {
         ALL_MIRROR,
         ALL_LINEAR,
@@ -868,6 +915,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<MotionDirection>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MotionDirection {
         /**
          * Upwards motion
@@ -907,13 +957,16 @@ export namespace Meta {
         export const $gtype: GObject.GType<MultiTextureFormat>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MultiTextureFormat {
         /**
          * Invalid value
          */
         INVALID,
         /**
-         * Any format supported by Cogl (see #CoglPixelFormat)
+         * Any format supported by Cogl (see {@link Cogl.PixelFormat})
          */
         SIMPLE,
         /**
@@ -935,6 +988,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<PadDirection>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PadDirection {
         UP,
         DOWN,
@@ -946,6 +1002,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<PadFeatureType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PadFeatureType {
         RING,
         STRIP,
@@ -955,6 +1014,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<PowerSaveChangeReason>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PowerSaveChangeReason {
         MODE_CHANGE,
         HOTPLUG,
@@ -964,6 +1026,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<Preference>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Preference {
         /**
          * mouse button modifiers
@@ -1104,6 +1169,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<SelectionType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SelectionType {
         SELECTION_PRIMARY,
         SELECTION_CLIPBOARD,
@@ -1115,6 +1183,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<ShadowMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ShadowMode {
         AUTO,
         FORCED_OFF,
@@ -1125,6 +1196,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<Side>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Side {
         /**
          * Left side
@@ -1148,6 +1222,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<SizeChange>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SizeChange {
         MAXIMIZE,
         UNMAXIMIZE,
@@ -1163,6 +1240,7 @@ export namespace Meta {
     /**
      * Layers a window can be in.
      * These MUST be in the order of stacking.
+     * @gir-type Enum
      */
     enum StackLayer {
         /**
@@ -1190,7 +1268,7 @@ export namespace Meta {
          */
         OVERRIDE_REDIRECT,
         /**
-         * Marks the end of the #MetaStackLayer enumeration
+         * Marks the end of the {@link Meta.StackLayer} enumeration
          */
         LAST,
     }
@@ -1199,6 +1277,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<TabList>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TabList {
         /**
          * Normal windows
@@ -1222,6 +1303,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<TabShowType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TabShowType {
         /**
          * Show icon (Alt-Tab mode)
@@ -1237,6 +1321,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<WindowClientType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum WindowClientType {
         /**
          * A Wayland based window
@@ -1254,6 +1341,7 @@ export namespace Meta {
 
     /**
      * Menu the compositor should display for a given window
+     * @gir-type Enum
      */
     enum WindowMenuType {
         /**
@@ -1270,6 +1358,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<WindowType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum WindowType {
         /**
          * Normal
@@ -1356,11 +1447,19 @@ export namespace Meta {
      * @returns The accelerator name.
      */
     function accelerator_name(accelerator_mods: Clutter.ModifierType | null, accelerator_key: number): string;
+    /**
+     * @param debug_flags
+     * @param draw_flags
+     * @param pick_flags
+     */
     function add_clutter_debug_flags(
         debug_flags: Clutter.DebugFlag | null,
         draw_flags: Clutter.DrawDebugFlag | null,
         pick_flags: Clutter.PickDebugFlag | null,
     ): void;
+    /**
+     * @param flag
+     */
     function add_debug_paint_flag(flag: DebugPaintFlag | null): void;
     /**
      * Ensure log messages for the given topic `topic`
@@ -1378,24 +1477,38 @@ export namespace Meta {
     /**
      * Disables unredirection, can be useful in situations where having
      * unredirected windows is undesirable like when recording a video.
-     * @param display a #MetaDisplay
+     * @param display a {@link Meta.Display}
      */
     function disable_unredirect_for_display(display: Display): void;
     /**
      * Enables unredirection which reduces the overhead for apps like games.
-     * @param display a #MetaDisplay
+     * @param display a {@link Meta.Display}
      */
     function enable_unredirect_for_display(display: Display): void;
+    /**
+     * @param code
+     */
     function exit(code: ExitCode | null): void;
+    /**
+     * @param keybinding_action
+     */
     function external_binding_name_for_action(keybinding_action: number): string;
+    /**
+     * @param display
+     * @param timestamp
+     */
     function focus_stage_window(display: Display, timestamp: number): void;
     /**
      * Converts a frame type enum value to the name string that would
      * appear in the theme definition file.
-     * @param type a #MetaFrameType
+     * @param type a {@link Meta.FrameType}
      * @returns the string value
      */
     function frame_type_to_string(type: FrameType | null): string;
+    /**
+     * @param src
+     * @param n
+     */
     function g_utf8_strndup(src: string, n: number): string;
     function get_clutter_debug_flags(): [
         Clutter.DebugFlag | null,
@@ -1403,21 +1516,47 @@ export namespace Meta {
         Clutter.PickDebugFlag | null,
     ];
     function get_debug_paint_flags(): DebugPaintFlag;
+    /**
+     * @param display a {@link Meta.Display}
+     * @returns The feedback group corresponding to `display`
+     */
     function get_feedback_group_for_display(display: Display): Clutter.Actor;
     function get_locale_direction(): LocaleDirection;
+    /**
+     * @param display a {@link Meta.Display}
+     * @returns The {@link Clutter.Stage} for the display
+     */
     function get_stage_for_display(display: Display): Clutter.Actor;
+    /**
+     * @param display a {@link Meta.Display}
+     * @returns The top window group corresponding to `display`
+     */
     function get_top_window_group_for_display(display: Display): Clutter.Actor;
+    /**
+     * @param display a {@link Meta.Display}
+     * @returns The set of {@link Meta.WindowActor} on `display`
+     */
     function get_window_actors(display: Display): Clutter.Actor[];
+    /**
+     * @param display a {@link Meta.Display}
+     * @returns The window group corresponding to `display`
+     */
     function get_window_group_for_display(display: Display): Clutter.Actor;
+    /**
+     * @param gravity
+     */
     function gravity_to_string(gravity: Gravity | null): string;
     /**
-     * Returns %TRUE if this instance of Mutter comes from Mutter
+     * Returns `true` if this instance of Mutter comes from Mutter
      * restarting itself (for example to enable/disable stereo.)
      *
-     * See [func`Meta`.restart]. If this is the case, any startup visuals
+     * See {@link Meta.restart}. If this is the case, any startup visuals
      * or animations should be suppressed.
      */
     function is_restart(): boolean;
+    /**
+     * @param topic
+     */
     function is_topic_enabled(topic: DebugTopic | null): boolean;
     function is_verbose(): boolean;
     function is_wayland_compositor(): boolean;
@@ -1426,12 +1565,19 @@ export namespace Meta {
      * builtin key binding.
      * @param name The name of the keybinding to set
      * @param handler The new handler function
-     * @returns %TRUE if the binding known as @name was found, %FALSE otherwise.
+     * @returns `true` if the binding known as `name` was found, `false` otherwise.
      */
     function keybindings_set_custom_handler(name: string, handler?: KeyHandlerFunc | null): boolean;
     function pop_no_msg_prefix(): void;
+    /**
+     * @param pref
+     */
     function preference_to_string(pref: Preference | null): string;
     function prefs_bell_is_audible(): boolean;
+    /**
+     * @param i
+     * @param name
+     */
     function prefs_change_workspace_name(i: number, name: string): void;
     function prefs_get_action_double_click_titlebar(): GDesktopEnums.TitlebarAction;
     function prefs_get_action_middle_click_titlebar(): GDesktopEnums.TitlebarAction;
@@ -1457,7 +1603,13 @@ export namespace Meta {
     function prefs_get_force_fullscreen(): boolean;
     function prefs_get_gnome_accessibility(): boolean;
     function prefs_get_gnome_animations(): boolean;
+    /**
+     * @param name
+     */
     function prefs_get_keybinding_action(name: string): KeyBindingAction;
+    /**
+     * @param name
+     */
     function prefs_get_keybinding_label(name: string): string | null;
     function prefs_get_mouse_button_menu(): number;
     function prefs_get_mouse_button_mods(): Clutter.ModifierType;
@@ -1467,24 +1619,44 @@ export namespace Meta {
     function prefs_get_show_fallback_app_menu(): boolean;
     function prefs_get_visual_bell(): boolean;
     function prefs_get_visual_bell_type(): GDesktopEnums.VisualBellType;
+    /**
+     * @param i
+     */
     function prefs_get_workspace_name(i: number): string;
     function prefs_get_workspaces_only_on_primary(): boolean;
+    /**
+     * @param whether
+     */
     function prefs_set_force_fullscreen(whether: boolean): void;
+    /**
+     * @param n_workspaces
+     */
     function prefs_set_num_workspaces(n_workspaces: number): void;
+    /**
+     * @param whether
+     */
     function prefs_set_show_fallback_app_menu(whether: boolean): void;
     function push_no_msg_prefix(): void;
+    /**
+     * @param debug_flags
+     * @param draw_flags
+     * @param pick_flags
+     */
     function remove_clutter_debug_flags(
         debug_flags: Clutter.DebugFlag | null,
         draw_flags: Clutter.DrawDebugFlag | null,
         pick_flags: Clutter.PickDebugFlag | null,
     ): void;
+    /**
+     * @param flag
+     */
     function remove_debug_paint_flag(flag: DebugPaintFlag | null): void;
     /**
      * Stop printing log messages for the given topic `topic`.
      *
-     * Note that this method does not stack with [func`Meta`.add_verbose_topic];
-     * i.e. if two calls to [func`Meta`.add_verbose_topic] for the same
-     * topic are made, one call to [func`Meta`.remove_verbose_topic]  will
+     * Note that this method does not stack with {@link Meta.add_verbose_topic};
+     * i.e. if two calls to {@link Meta.add_verbose_topic} for the same
+     * topic are made, one call to {@link Meta.remove_verbose_topic}  will
      * remove it.
      * @param topic Topic for which logging will be stopped
      */
@@ -1499,28 +1671,59 @@ export namespace Meta {
      * So in order for this to work, the compositor must handle two
      * signals
      *
-     * - [signal`Meta`.Display::show-restart-message], to display the
+     * - `Meta.Display::show-restart-message`, to display the
      * message passed here on the Clutter stage
-     * - [signal`Meta`.Display::restart] to actually reexec the compositor.
-     * @param message message to display to the user, or %NULL
-     * @param context a #MetaContext
+     * - `Meta.Display::restart` to actually reexec the compositor.
+     * @param message message to display to the user, or `null`
+     * @param context a {@link Meta.Context}
      */
     function restart(message: string | null, context: Context): void;
+    /**
+     * @param topic
+     */
     function topic_to_string(topic: DebugTopic | null): string;
+    /**
+     * @param v1
+     * @param v2
+     */
     function unsigned_long_equal(v1?: any | null, v2?: any | null): number;
+    /**
+     * @param v
+     */
     function unsigned_long_hash(v?: any | null): number;
+    /**
+     * @param x11_display
+     */
     function x11_error_trap_pop(x11_display: X11Display): void;
+    /**
+     * @param x11_display
+     */
     function x11_error_trap_pop_with_return(x11_display: X11Display): number;
+    /**
+     * @param x11_display
+     */
     function x11_error_trap_push(x11_display: X11Display): void;
+    /**
+     * @gir-type Callback
+     */
     interface IdleMonitorWatchFunc {
         (monitor: IdleMonitor, watch_id: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface KeyHandlerFunc {
         (display: Display, window: Window, event: any | null, binding: KeyBinding): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface PrefsChangedFunc {
         (pref: Preference): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface WindowForeachFunc {
         (window: Window): boolean;
     }
@@ -1528,6 +1731,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<BackendCapabilities>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum BackendCapabilities {
         NONE,
         BARRIERS,
@@ -1537,6 +1743,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<BarrierDirection>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum BarrierDirection {
         /**
          * Positive direction in the X axis
@@ -1560,6 +1769,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<BarrierFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum BarrierFlags {
         NONE,
         STICKY,
@@ -1569,6 +1781,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<DebugPaintFlag>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DebugPaintFlag {
         /**
          * default
@@ -1584,6 +1799,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<DebugTopic>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DebugTopic {
         /**
          * verbose logging
@@ -1705,6 +1923,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<Direction>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum Direction {
         /**
          * Left
@@ -1744,6 +1965,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<KeyBindingFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum KeyBindingFlags {
         /**
          * none
@@ -1785,6 +2009,7 @@ export namespace Meta {
 
     /**
      * Keyboard accessibility features.
+     * @gir-type Flags
      */
     enum KeyboardA11yFlags {
         KEYBOARD_ENABLED,
@@ -1807,6 +2032,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<MaximizeFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum MaximizeFlags {
         /**
          * Horizontal
@@ -1826,6 +2054,9 @@ export namespace Meta {
         export const $gtype: GObject.GType<VirtualModifier>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum VirtualModifier {
         /**
          * Shift mask
@@ -1872,11 +2103,29 @@ export namespace Meta {
     namespace Backend {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'gpu-added': (arg0: unknown) => void;
+            /**
+             * @signal
+             */
             'keymap-changed': () => void;
+            /**
+             * @signal
+             */
             'keymap-layout-group-changed': (arg0: number) => void;
+            /**
+             * @signal
+             */
             'last-device-changed': (arg0: Clutter.InputDevice) => void;
+            /**
+             * @signal
+             */
             'lid-is-closed-changed': (arg0: boolean) => void;
+            /**
+             * @signal
+             */
             'prepare-shutdown': () => void;
             'notify::capabilities': (pspec: GObject.ParamSpec) => void;
             'notify::context': (pspec: GObject.ParamSpec) => void;
@@ -1895,22 +2144,23 @@ export namespace Meta {
      *
      * MetaBackend is the abstraction that deals with several things like:
      * - Modesetting (depending on the backend, this can be done either by X or KMS)
-     * - Initializing the #MetaSettings
+     * - Initializing the {@link Meta.Settings}
      * - Setting up Monitor configuration
-     * - Input device configuration (using the #ClutterDeviceManager)
-     * - Creating the #MetaRenderer
-     * - Setting up the stage of the scene graph (using #MetaStage)
-     * - Creating the object that deals with the cursor (using #MetaCursorTracker)
-     *     and its possible pointer constraint (using #MetaPointerConstraint)
-     * - Setting the cursor sprite (using #MetaCursorRenderer)
+     * - Input device configuration (using the `ClutterDeviceManager`)
+     * - Creating the `MetaRenderer`
+     * - Setting up the stage of the scene graph (using {@link Meta.Stage})
+     * - Creating the object that deals with the cursor (using {@link Meta.CursorTracker})
+     *     and its possible pointer constraint (using `MetaPointerConstraint`)
+     * - Setting the cursor sprite (using `MetaCursorRenderer`)
      * - Interacting with logind (using the appropriate D-Bus interface)
      * - Querying UPower (over D-Bus) to know when the lid is closed
-     * - Setup Remote Desktop / Screencasting (#MetaRemoteDesktop)
-     * - Setup the #MetaEgl object
+     * - Setup Remote Desktop / Screencasting (`MetaRemoteDesktop`)
+     * - Setup the `MetaEgl` object
      *
-     * Note that the #MetaBackend is not a subclass of #ClutterBackend. It is
+     * Note that the {@link Meta.Backend} is not a subclass of {@link Clutter.Backend}. It is
      * responsible for creating the correct one, based on the backend that is
-     * used (#MetaBackendNative or #MetaBackendX11).
+     * used (`MetaBackendNative` or `MetaBackendX11`).
+     * @gir-type Class
      */
     abstract class Backend extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Backend>;
@@ -1937,16 +2187,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Backend.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1956,52 +2209,73 @@ export namespace Meta {
         // Methods
 
         get_capabilities(): BackendCapabilities;
+        /**
+         * @returns The {@link Meta.Context}
+         */
         get_context(): Context;
+        /**
+         * @returns the {@link Meta.IdleMonitor} that tracks server-global idle time for all devices.
+         */
         get_core_idle_monitor(): IdleMonitor;
         /**
-         * Gets the global #MetaDnd that's managed by this backend.
-         * @returns the #MetaDnd
+         * Gets the global {@link Meta.Dnd} that's managed by this backend.
+         * @returns the {@link Meta.Dnd}
          */
         get_dnd(): Dnd;
+        /**
+         * @returns A {@link Meta.MonitorManager}
+         */
         get_monitor_manager(): MonitorManager;
+        /**
+         * @returns The {@link Meta.RemoteAccessController}
+         */
         get_remote_access_controller(): RemoteAccessController;
         /**
-         * Gets the global #ClutterStage that's managed by this backend.
-         * @returns the #ClutterStage
+         * Gets the global {@link Clutter.Stage} that's managed by this backend.
+         * @returns the {@link Clutter.Stage}
          */
         get_stage(): Clutter.Actor;
         is_headless(): boolean;
+        /**
+         * @returns `true` if the rendering is hardware accelerated, otherwise `false`.
+         */
         is_rendering_hardware_accelerated(): boolean;
+        /**
+         * @param idx
+         */
         lock_layout_group(idx: number): void;
+        /**
+         * @param layouts
+         * @param variants
+         * @param options
+         */
         set_keymap(layouts: string, variants: string, options: string): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2011,40 +2285,40 @@ export namespace Meta {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2054,11 +2328,12 @@ export namespace Meta {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2074,32 +2349,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2108,39 +2383,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2151,13 +2426,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2165,7 +2443,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2173,9 +2451,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2195,9 +2473,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2211,33 +2489,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2270,21 +2548,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2294,8 +2572,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2312,10 +2590,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2330,13 +2608,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2367,21 +2645,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2391,33 +2669,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2426,6 +2705,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2434,12 +2714,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2448,20 +2730,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2473,6 +2757,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2505,6 +2790,9 @@ export namespace Meta {
     namespace Background {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: () => void;
             'notify::meta-display': (pspec: GObject.ParamSpec) => void;
         }
@@ -2520,8 +2808,9 @@ export namespace Meta {
     /**
      * This class handles tracking and painting the root window background.
      *
-     * By integrating with [class`Meta`.WindowGroup] we can avoid painting parts of
+     * By integrating with {@link Meta.WindowGroup} we can avoid painting parts of
      * the background that are obscured by other windows.
+     * @gir-type Class
      */
     class Background extends GObject.Object {
         static $gtype: GObject.GType<Background>;
@@ -2550,16 +2839,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Background.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Background.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Background.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Background.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Background.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Background.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2572,19 +2864,33 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param file1
+         * @param file2
+         * @param blend_factor
+         * @param style
+         */
         set_blend(
             file1: Gio.File,
             file2: Gio.File,
             blend_factor: number,
             style: GDesktopEnums.BackgroundStyle | null,
         ): void;
+        /**
+         * @param color
+         */
         set_color(color: Clutter.Color): void;
         /**
          * Set the background to `file`
-         * @param file a #GFile representing the background file
+         * @param file a {@link Gio.File} representing the background file
          * @param style the background style to apply
          */
         set_file(file: Gio.File | null, style: GDesktopEnums.BackgroundStyle | null): void;
+        /**
+         * @param shading_direction
+         * @param color
+         * @param second_color
+         */
         set_gradient(
             shading_direction: GDesktopEnums.BackgroundShading | null,
             color: Clutter.Color,
@@ -2688,8 +2994,9 @@ export namespace Meta {
     /**
      * This class handles tracking and painting the root window background.
      *
-     * By integrating with [class`Meta`.WindowGroup] we can avoid painting parts of
+     * By integrating with {@link Meta.WindowGroup} we can avoid painting parts of
      * the background that are obscured by other windows.
+     * @gir-type Class
      */
     class BackgroundActor<A extends Clutter.Actor = Clutter.Actor>
         extends Clutter.Actor<Clutter.LayoutManager, BackgroundContent>
@@ -2725,54 +3032,55 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BackgroundActor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundActor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BackgroundActor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundActor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BackgroundActor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BackgroundActor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
+         * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
-         * @returns The #GParamSpec for the given property   or %NULL
+         * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
         /**
          * Get animated actor.
-         * @returns a #ClutterActor
+         * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
+         * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
+         * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
+         * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
          *
          * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
+         * involving {@link Clutter.Animatable}s.
          *
-         * This function replaces clutter_animatable_animate_property().
+         * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
-         * @returns %TRUE if the interpolation was successful,   and %FALSE otherwise
+         * @param interval a {@link Clutter.Interval} with the animation range
+         * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
         /**
@@ -2782,33 +3090,37 @@ export namespace Meta {
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
+         * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
         /**
          * Get animated actor.
+         * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
+         * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
+         * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
+         * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
          *
          * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
+         * involving {@link Clutter.Animatable}s.
          *
-         * This function replaces clutter_animatable_animate_property().
+         * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
+         * @param interval a {@link Clutter.Interval} with the animation range
+         * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @virtual
          */
         vfunc_interpolate_value(
             property_name: string,
@@ -2819,208 +3131,225 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @virtual
          */
         vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
         /**
-         * Gets a container specific property of a child of `container,` In general,
+         * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
-         * freeing the memory by calling g_value_unset().
+         * freeing the memory by calling `g_value_unset()`.
          *
-         * Note that clutter_container_child_set_property() is really intended for
-         * language bindings, clutter_container_child_set() is much more convenient
+         * Note that `clutter_container_child_set_property()` is really intended for
+         * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
          * Sets a container-specific property on a child of `container`.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
          * @param child_name the name of the requested child.
-         * @returns The child actor with the requested name,   or %NULL if no actor with that name was found.
+         * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
-         * @returns the #ClutterChildMeta for the @actor child   of @container or %NULL if the specific actor does not exist or the   container is not configured to provide `ClutterChildMeta`s
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specific actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_added(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_removed(actor: A): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
+         * @virtual
          */
         vfunc_add(actor: A): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
+         * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_remove(actor: A): void;
         /**
-         * Retrieves the id of `scriptable` set using [method`Clutter`.Scriptable.set_id].
+         * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
         /**
          * Parses the passed JSON node. The implementation must set the type
-         * of the passed [struct`GObject`.Value] pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
+         * of the passed {@link GObject.Value} pointer using `g_value_init()`.
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
-         * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
+         * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
+         * {@link Clutter.ScriptableIface}.
          *
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
-         * definition language parsed by [class`Script]`.
-         * @param id_ the #ClutterScript id of the object
+         * definition language parsed by {@link Script}.
+         * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
         /**
-         * Retrieves the id of `scriptable` set using [method`Clutter`.Scriptable.set_id].
+         * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Parses the passed JSON node. The implementation must set the type
-         * of the passed [struct`GObject`.Value] pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
+         * of the passed {@link GObject.Value} pointer using `g_value_init()`.
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @virtual
          */
         vfunc_parse_custom_node(
             script: Clutter.Script,
@@ -3031,19 +3360,21 @@ export namespace Meta {
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
+         * {@link Clutter.ScriptableIface}.
          *
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
-         * definition language parsed by [class`Script]`.
-         * @param id_ the #ClutterScript id of the object
+         * definition language parsed by {@link Script}.
+         * @param id_ the {@link Clutter.Script} id of the object
+         * @virtual
          */
         vfunc_set_id(id_: string): void;
         /**
@@ -3059,32 +3390,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3093,39 +3424,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3136,13 +3467,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3150,7 +3484,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3158,9 +3492,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3180,9 +3514,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3196,33 +3530,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3255,21 +3589,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3279,8 +3613,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3297,10 +3631,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3315,13 +3649,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3352,21 +3686,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3376,33 +3710,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3411,6 +3746,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3419,12 +3755,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3433,20 +3771,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3458,6 +3798,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3526,7 +3867,7 @@ export namespace Meta {
     /**
      * This class handles tracking and painting the root window background.
      *
-     * By integrating with [class`Meta`.WindowGroup] we can avoid painting parts of
+     * By integrating with {@link Meta.WindowGroup} we can avoid painting parts of
      * the background that are obscured by other windows.
      *
      * The overall model drawing model of this content is that we have one
@@ -3572,6 +3913,7 @@ export namespace Meta {
      * gradient, or a repeated texture for wallpaper, or a pre-rendered
      * texture the size of the screen), and we draw with that, possibly
      * adding the vignette and opacity.
+     * @gir-type Class
      */
     class BackgroundContent extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<BackgroundContent>;
@@ -3623,16 +3965,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BackgroundContent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundContent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BackgroundContent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundContent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BackgroundContent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BackgroundContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3650,71 +3995,102 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param background
+         */
         set_background(background: Background): void;
+        /**
+         * @param enabled
+         * @param height
+         * @param tone_start
+         */
         set_gradient(enabled: boolean, height: number, tone_start: number): void;
         /**
-         * Sets the bounding clip rectangle of the #MetaBackgroundContent that's used
-         * when a rounded clip set via meta_background_content_set_rounded_clip_radius()
-         * is in effect, set it to  %NULL to use no bounding clip, rounding the edges
+         * Sets the bounding clip rectangle of the {@link Meta.BackgroundContent} that's used
+         * when a rounded clip set via `meta_background_content_set_rounded_clip_radius()`
+         * is in effect, set it to  `null` to use no bounding clip, rounding the edges
          * of the full texture.
-         * @param bounds The new bounding clip rectangle, or %NULL
+         * @param bounds The new bounding clip rectangle, or `null`
          */
         set_rounded_clip_bounds(bounds?: Graphene.Rect | null): void;
-        set_rounded_clip_radius(radius: number): void;
-        set_vignette(enabled: boolean, brightness: number, sharpness: number): void;
-
-        // Inherited methods
         /**
-         * Retrieves the natural size of the `content,` if any.
+         * @param radius
+         */
+        set_rounded_clip_radius(radius: number): void;
+        /**
+         * @param enabled
+         * @param brightness
+         * @param sharpness
+         */
+        set_vignette(enabled: boolean, brightness: number, sharpness: number): void;
+        /**
+         * Retrieves the natural size of the `content`, if any.
          *
-         * The natural size of a #ClutterContent is defined as the size the content
+         * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
-         * @returns %TRUE if the content has a preferred size, and %FALSE   otherwise
+         * @returns `true` if the content has a preferred size, and `false`   otherwise
          */
         get_preferred_size(): [boolean, number, number];
         /**
-         * Invalidates a #ClutterContent.
+         * Invalidates a {@link Clutter.Content}.
          *
-         * This function should be called by #ClutterContent implementations when
+         * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          */
         invalidate(): void;
         /**
-         * Signals that `content'`s size changed. Attached actors with request mode
-         * set to %CLUTTER_REQUEST_CONTENT_SIZE will have a relayout queued.
+         * Signals that `content`'s size changed. Attached actors with request mode
+         * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
          *
          * Attached actors with other request modes are not redrawn. To redraw them
-         * too, use clutter_content_invalidate().
+         * too, use `clutter_content_invalidate()`.
          */
         invalidate_size(): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_attached(actor: Clutter.Actor): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_detached(actor: Clutter.Actor): void;
         /**
-         * Retrieves the natural size of the `content,` if any.
+         * Retrieves the natural size of the `content`, if any.
          *
-         * The natural size of a #ClutterContent is defined as the size the content
+         * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
         /**
-         * Invalidates a #ClutterContent.
+         * Invalidates a {@link Clutter.Content}.
          *
-         * This function should be called by #ClutterContent implementations when
+         * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @virtual
          */
         vfunc_invalidate(): void;
         /**
-         * Signals that `content'`s size changed. Attached actors with request mode
-         * set to %CLUTTER_REQUEST_CONTENT_SIZE will have a relayout queued.
+         * Signals that `content`'s size changed. Attached actors with request mode
+         * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
          *
          * Attached actors with other request modes are not redrawn. To redraw them
-         * too, use clutter_content_invalidate().
+         * too, use `clutter_content_invalidate()`.
+         * @virtual
          */
         vfunc_invalidate_size(): void;
+        /**
+         * @param actor
+         * @param node
+         * @param paint_context
+         * @virtual
+         */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode, paint_context: Clutter.PaintContext): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3729,32 +4105,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3763,39 +4139,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3806,13 +4182,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3820,7 +4199,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3828,9 +4207,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3850,9 +4229,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3866,33 +4245,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3925,21 +4304,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3949,8 +4328,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3967,10 +4346,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3985,13 +4364,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4022,21 +4401,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4046,33 +4425,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4081,6 +4461,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4089,12 +4470,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4103,20 +4486,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4128,6 +4513,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4252,8 +4638,9 @@ export namespace Meta {
      * It makes sure to only draw the parts of the backgrounds not
      * occluded by opaque windows.
      *
-     * See #MetaWindowGroup for more information behind the motivation,
+     * See {@link Meta.WindowGroup} for more information behind the motivation,
      * and details on implementation.
+     * @gir-type Class
      */
     class BackgroundGroup<A extends Clutter.Actor = Clutter.Actor>
         extends Clutter.Actor
@@ -4280,54 +4667,55 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BackgroundGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BackgroundGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BackgroundGroup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BackgroundGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
+         * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
-         * @returns The #GParamSpec for the given property   or %NULL
+         * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
         /**
          * Get animated actor.
-         * @returns a #ClutterActor
+         * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
+         * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
+         * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
+         * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
          *
          * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
+         * involving {@link Clutter.Animatable}s.
          *
-         * This function replaces clutter_animatable_animate_property().
+         * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
-         * @returns %TRUE if the interpolation was successful,   and %FALSE otherwise
+         * @param interval a {@link Clutter.Interval} with the animation range
+         * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
         /**
@@ -4337,33 +4725,37 @@ export namespace Meta {
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
+         * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
         /**
          * Get animated actor.
+         * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
+         * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
+         * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
+         * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
          *
          * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
+         * involving {@link Clutter.Animatable}s.
          *
-         * This function replaces clutter_animatable_animate_property().
+         * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
+         * @param interval a {@link Clutter.Interval} with the animation range
+         * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @virtual
          */
         vfunc_interpolate_value(
             property_name: string,
@@ -4374,208 +4766,225 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @virtual
          */
         vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
         /**
-         * Gets a container specific property of a child of `container,` In general,
+         * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
-         * freeing the memory by calling g_value_unset().
+         * freeing the memory by calling `g_value_unset()`.
          *
-         * Note that clutter_container_child_set_property() is really intended for
-         * language bindings, clutter_container_child_set() is much more convenient
+         * Note that `clutter_container_child_set_property()` is really intended for
+         * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
          * Sets a container-specific property on a child of `container`.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
          * @param child_name the name of the requested child.
-         * @returns The child actor with the requested name,   or %NULL if no actor with that name was found.
+         * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
-         * @returns the #ClutterChildMeta for the @actor child   of @container or %NULL if the specific actor does not exist or the   container is not configured to provide `ClutterChildMeta`s
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specific actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_added(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_removed(actor: A): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
+         * @virtual
          */
         vfunc_add(actor: A): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
+         * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_remove(actor: A): void;
         /**
-         * Retrieves the id of `scriptable` set using [method`Clutter`.Scriptable.set_id].
+         * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
         /**
          * Parses the passed JSON node. The implementation must set the type
-         * of the passed [struct`GObject`.Value] pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
+         * of the passed {@link GObject.Value} pointer using `g_value_init()`.
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
-         * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
+         * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
+         * {@link Clutter.ScriptableIface}.
          *
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
-         * definition language parsed by [class`Script]`.
-         * @param id_ the #ClutterScript id of the object
+         * definition language parsed by {@link Script}.
+         * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
         /**
-         * Retrieves the id of `scriptable` set using [method`Clutter`.Scriptable.set_id].
+         * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Parses the passed JSON node. The implementation must set the type
-         * of the passed [struct`GObject`.Value] pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
+         * of the passed {@link GObject.Value} pointer using `g_value_init()`.
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @virtual
          */
         vfunc_parse_custom_node(
             script: Clutter.Script,
@@ -4586,19 +4995,21 @@ export namespace Meta {
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
+         * {@link Clutter.ScriptableIface}.
          *
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
-         * definition language parsed by [class`Script]`.
-         * @param id_ the #ClutterScript id of the object
+         * definition language parsed by {@link Script}.
+         * @param id_ the {@link Clutter.Script} id of the object
+         * @virtual
          */
         vfunc_set_id(id_: string): void;
         /**
@@ -4614,32 +5025,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4648,39 +5059,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4691,13 +5102,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4705,7 +5119,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4713,9 +5127,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4735,9 +5149,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4751,33 +5165,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4810,21 +5224,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4834,8 +5248,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4852,10 +5266,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4870,13 +5284,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4907,21 +5321,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4931,33 +5345,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4966,6 +5381,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4974,12 +5390,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4988,20 +5406,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5013,6 +5433,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5045,6 +5466,9 @@ export namespace Meta {
     namespace BackgroundImage {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             loaded: () => void;
         }
 
@@ -5055,6 +5479,7 @@ export namespace Meta {
 
     /**
      * Represents a loaded or loading background image.
+     * @gir-type Class
      */
     class BackgroundImage extends GObject.Object {
         static $gtype: GObject.GType<BackgroundImage>;
@@ -5076,16 +5501,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BackgroundImage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundImage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BackgroundImage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundImage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BackgroundImage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BackgroundImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5096,12 +5524,18 @@ export namespace Meta {
 
         /**
          * This function is a convenience function for checking for success,
-         * without having to call meta_background_image_get_texture() and
+         * without having to call `meta_background_image_get_texture()` and
          * handle the return of a Cogl type.
-         * @returns %TRUE if loading completed successfully, otherwise %FALSE
+         * @returns `true` if loading completed successfully, otherwise `false`
          */
         get_success(): boolean;
+        /**
+         * @returns a {@link Cogl.Texture} if loading succeeded; if  loading failed or has not yet finished, `null`.
+         */
         get_texture(): Cogl.Texture;
+        /**
+         * @returns `true` if loading has already completed, `false` otherwise
+         */
         is_loaded(): boolean;
     }
 
@@ -5119,6 +5553,7 @@ export namespace Meta {
      *
      * There's actually nothing background specific about it, other than it is tuned
      * to work well for large images as typically are used for backgrounds.
+     * @gir-type Class
      */
     class BackgroundImageCache extends GObject.Object {
         static $gtype: GObject.GType<BackgroundImageCache>;
@@ -5140,16 +5575,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BackgroundImageCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundImageCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BackgroundImageCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BackgroundImageCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BackgroundImageCache.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BackgroundImageCache.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5168,13 +5606,13 @@ export namespace Meta {
          * Loads an image to use as a background, or returns a reference to an
          * image that is already in the process of loading or loaded.
          *
-         * In either case, what is returned is a [class`Meta`.BackgroundImage] which can be dereferenced
-         * to get a [iface`Cogl`.Texture]. If [method`Meta`.BackgroundImage.is_loaded] returns %TRUE,
-         * the background is loaded, otherwise the [signal`Meta`.BackgroundImage::loaded]
+         * In either case, what is returned is a {@link Meta.BackgroundImage} which can be dereferenced
+         * to get a {@link Cogl.Texture}. If {@link Meta.BackgroundImage.is_loaded} returns `true`,
+         * the background is loaded, otherwise the `Meta.BackgroundImage::loaded`
          * signal will be emitted exactly once. The 'loaded' state means that the
          * loading process finished, whether it succeeded or failed.
-         * @param file #GFile to load
-         * @returns a #MetaBackgroundImage to dereference to get the loaded texture
+         * @param file {@link Gio.File} to load
+         * @returns a {@link Meta.BackgroundImage} to dereference to get the loaded texture
          */
         load(file: Gio.File): BackgroundImage;
         /**
@@ -5188,7 +5626,17 @@ export namespace Meta {
     namespace Barrier {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * When a pointer barrier is hit, this will trigger. This
+             * requires an XI2-enabled server.
+             * @signal
+             */
             hit: (arg0: BarrierEvent) => void;
+            /**
+             * When a pointer barrier hitbox was left, this will trigger.
+             * This requires an XI2-enabled server.
+             * @signal
+             */
             left: (arg0: BarrierEvent) => void;
             'notify::backend': (pspec: GObject.ParamSpec) => void;
             'notify::directions': (pspec: GObject.ParamSpec) => void;
@@ -5216,6 +5664,7 @@ export namespace Meta {
 
     /**
      * Pointer barriers
+     * @gir-type Class
      */
     class Barrier extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Barrier>;
@@ -5258,16 +5707,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Barrier.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Barrier.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Barrier.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Barrier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Barrier.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Barrier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5281,39 +5733,37 @@ export namespace Meta {
         /**
          * In XI2.3, pointer barriers provide a feature where they can
          * be temporarily released so that the pointer goes through
-         * them. Pass a #MetaBarrierEvent to release the barrier for
+         * them. Pass a {@link Meta.BarrierEvent} to release the barrier for
          * this event sequence.
          * @param event The event to release the pointer for
          */
         release(event: BarrierEvent): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -5323,40 +5773,40 @@ export namespace Meta {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -5366,11 +5816,12 @@ export namespace Meta {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -5386,32 +5837,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5420,39 +5871,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5463,13 +5914,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5477,7 +5931,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5485,9 +5939,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5507,9 +5961,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5523,33 +5977,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5582,21 +6036,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -5606,8 +6060,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5624,10 +6078,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5642,13 +6096,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5679,21 +6133,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5703,33 +6157,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5738,6 +6193,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5746,12 +6202,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5760,20 +6218,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5785,6 +6245,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5833,8 +6294,8 @@ export namespace Meta {
      * Compositor API
      *
      * At a high-level, a window is not-visible or visible. When a
-     * window is added (with meta_compositor_add_window()) it is not visible.
-     * meta_compositor_show_window() indicates a transition from not-visible to
+     * window is added (with `meta_compositor_add_window()`) it is not visible.
+     * `meta_compositor_show_window()` indicates a transition from not-visible to
      * visible. Some of the reasons for this:
      *
      * - Window newly created
@@ -5842,7 +6303,7 @@ export namespace Meta {
      * - Window is moved to the current desktop
      * - Window was made sticky
      *
-     * meta_compositor_hide_window() indicates that the window has transitioned from
+     * `meta_compositor_hide_window()` indicates that the window has transitioned from
      * visible to not-visible. Some reasons include:
      *
      * - Window was destroyed
@@ -5852,13 +6313,13 @@ export namespace Meta {
      *
      * Note that combinations are possible - a window might have first
      * been minimized and then moved to a different desktop. The 'effect' parameter
-     * to meta_compositor_show_window() and meta_compositor_hide_window() is a hint
+     * to `meta_compositor_show_window()` and `meta_compositor_hide_window()` is a hint
      * as to the appropriate effect to show the user and should not
      * be considered to be indicative of a state change.
      *
-     * When the active workspace is changed, meta_compositor_switch_workspace() is
-     * called first, then meta_compositor_show_window() and
-     * meta_compositor_hide_window() are called individually for each window
+     * When the active workspace is changed, `meta_compositor_switch_workspace()` is
+     * called first, then `meta_compositor_show_window()` and
+     * `meta_compositor_hide_window()` are called individually for each window
      * affected, with an effect of META_COMP_EFFECT_NONE.
      * If hiding windows will affect the switch workspace animation, the
      * compositor needs to delay hiding the windows until the switch
@@ -5869,12 +6330,13 @@ export namespace Meta {
      * There's two containers in the stage that are used to place window actors, here
      * are listed in the order in which they are painted:
      *
-     * - window group, accessible with meta_get_window_group_for_display()
-     * - top window group, accessible with meta_get_top_window_group_for_display()
+     * - window group, accessible with `meta_get_window_group_for_display()`
+     * - top window group, accessible with `meta_get_top_window_group_for_display()`
      *
      * Mutter will place actors representing windows in the window group, except for
      * override-redirect windows (ie. popups and menus) which will be placed in the
      * top window group.
+     * @gir-type Class
      */
     abstract class Compositor extends GObject.Object {
         static $gtype: GObject.GType<Compositor>;
@@ -5901,16 +6363,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Compositor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Compositor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Compositor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Compositor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Compositor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Compositor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5919,14 +6384,26 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @returns The feedback group corresponding to `display`
+         */
         get_feedback_group(): Clutter.Actor;
+        /**
+         * @returns a {@link Meta.Laters}
+         */
         get_laters(): Laters;
     }
 
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'prepare-shutdown': () => void;
+            /**
+             * @signal
+             */
             started: () => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
             'notify::unsafe-mode': (pspec: GObject.ParamSpec) => void;
@@ -5941,6 +6418,9 @@ export namespace Meta {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
@@ -5969,16 +6449,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5988,26 +6471,36 @@ export namespace Meta {
         // Methods
 
         /**
-         * See g_option_context_add_main_entries() for more details.
-         * @param entries a %NULL-terminated array of #GOptionEntrys
-         * @param translation_domain a translation domain to use, or %NULL
+         * See `g_option_context_add_main_entries()` for more details.
+         * @param entries a `null`-terminated array of `GOptionEntrys`
+         * @param translation_domain a translation domain to use, or `null`
          */
         add_option_entries(entries: GLib.OptionEntry[], translation_domain?: string | null): void;
         /**
-         * See g_option_context_add_group() for more details.
+         * See `g_option_context_add_group()` for more details.
          * @param group the group to add
          */
         add_option_group(group: GLib.OptionGroup): void;
+        /**
+         * @param argv Address of the`argv` parameter of `main()`, or `null`.
+         * @returns `true` if the commandline arguments (if any) were valid and if the configuration has been successful, `false` otherwise
+         */
         configure(argv?: string[] | null): [boolean, string[] | null];
         destroy(): void;
+        /**
+         * @returns the {@link Meta.Backend}
+         */
         get_backend(): Backend;
         get_compositor_type(): CompositorType;
+        /**
+         * @returns the {@link Meta.Display}
+         */
         get_display(): Display;
         /**
-         * Get the #MetaWaylandCompositor associated with the MetaContext. The might be
+         * Get the {@link Meta.WaylandCompositor} associated with the MetaContext. The might be
          * none currently associated if the context hasn't been started or if the
-         * requested compositor type is not %META_COMPOSITOR_TYPE_WAYLAND.
-         * @returns the #MetaWaylandCompositor
+         * requested compositor type is not {@link Meta.CompositorType.WAYLAND}.
+         * @returns the {@link Meta.WaylandCompositor}
          */
         get_wayland_compositor(): WaylandCompositor | null;
         is_replacing(): boolean;
@@ -6017,24 +6510,45 @@ export namespace Meta {
          */
         raise_rlimit_nofile(): boolean;
         /**
-         * Restores the RLIMIT_NOFILE limits from when the #MetaContext was created.
+         * Restores the RLIMIT_NOFILE limits from when the {@link Meta.Context} was created.
          */
         restore_rlimit_nofile(): boolean;
         run_main_loop(): boolean;
+        /**
+         * @param wm_keybindings
+         */
         set_gnome_wm_keybindings(wm_keybindings: string): void;
+        /**
+         * @param plugin_gtype
+         */
         set_plugin_gtype(plugin_gtype: GObject.GType): void;
+        /**
+         * @param plugin_name
+         */
         set_plugin_name(plugin_name: string): void;
         setup(): boolean;
         start(): boolean;
         terminate(): void;
+        /**
+         * @param error
+         */
         terminate_with_error(error: GLib.Error): void;
     }
 
     namespace CursorTracker {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'cursor-changed': () => void;
+            /**
+             * @signal
+             */
             'position-invalidated': () => void;
+            /**
+             * @signal
+             */
             'visibility-changed': () => void;
             'notify::backend': (pspec: GObject.ParamSpec) => void;
         }
@@ -6049,6 +6563,7 @@ export namespace Meta {
     /**
      * Mutter cursor tracking helper. Originally only tracking
      * the cursor image, now more of a "core pointer abstraction"
+     * @gir-type Class
      */
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
@@ -6074,16 +6589,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CursorTracker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6094,7 +6612,7 @@ export namespace Meta {
 
         /**
          * Retrieves the cursor tracker object for `display`.
-         * @param display the #MetaDisplay
+         * @param display the {@link Meta.Display}
          */
         static get_for_display(display: Display): CursorTracker;
 
@@ -6115,30 +6633,88 @@ export namespace Meta {
          */
         get_scale(): number;
         /**
-         * Get the #CoglTexture of the cursor sprite
-         * @returns the #CoglTexture of the cursor sprite
+         * Get the {@link Cogl.Texture} of the cursor sprite
+         * @returns the {@link Cogl.Texture} of the cursor sprite
          */
         get_sprite(): Cogl.Texture | null;
+        /**
+         * @param visible
+         */
         set_pointer_visible(visible: boolean): void;
     }
 
     namespace Display {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'accelerator-activated': (arg0: number, arg1: Clutter.InputDevice, arg2: number) => void;
+            /**
+             * @signal
+             */
             closing: () => void;
+            /**
+             * @signal
+             */
             'cursor-updated': () => void;
+            /**
+             * @signal
+             */
             'gl-video-memory-purged': () => void;
+            /**
+             * @signal
+             */
             'grab-op-begin': (arg0: Window, arg1: GrabOp) => void;
+            /**
+             * @signal
+             */
             'grab-op-end': (arg0: Window, arg1: GrabOp) => void;
+            /**
+             * @signal
+             */
             'in-fullscreen-changed': () => void;
+            /**
+             * @signal
+             */
             'init-xserver': (arg0: Gio.Task) => boolean | void;
+            /**
+             * The ::modifiers-accelerator-activated signal will be emitted when
+             * a special modifiers-only keybinding is activated.
+             * @signal
+             */
             'modifiers-accelerator-activated': () => boolean | void;
+            /**
+             * @signal
+             */
             'overlay-key': () => void;
+            /**
+             * @signal
+             */
             'pad-mode-switch': (arg0: Clutter.InputDevice, arg1: number, arg2: number) => void;
+            /**
+             * @signal
+             */
             restacked: () => void;
+            /**
+             * The signal is emitted to indicate that compositor
+             * should reexec the process.
+             *
+             * This is emitted when {@link Meta.restart} is called,
+             * either by Mutter internally or by the embedding compositor.
+             *
+             * See also `Meta.Display::show-restart-message`.
+             * @signal
+             */
             restart: () => boolean | void;
+            /**
+             * @signal
+             */
             'show-osd': (arg0: number, arg1: string, arg2: string) => void;
+            /**
+             * Requests the pad button mapping OSD to be shown.
+             * @signal
+             */
             'show-pad-osd': (
                 arg0: Clutter.InputDevice,
                 arg1: Gio.Settings,
@@ -6146,18 +6722,68 @@ export namespace Meta {
                 arg3: boolean,
                 arg4: number,
             ) => Clutter.Actor | null;
+            /**
+             * @signal
+             */
             'show-resize-popup': (arg0: boolean, arg1: Mtk.Rectangle, arg2: number, arg3: number) => boolean | void;
+            /**
+             * The signal will be emitted to indicate that the compositor
+             * should show a message during restart.
+             *
+             * This is emitted when {@link Meta.restart} is called, either by Mutter
+             * internally or by the embedding compositor. The message should be
+             * immediately added to the Clutter stage in its final form -
+             * `Meta.Display::restart` will be emitted to exit the application and leave the
+             * stage contents frozen as soon as the the stage is painted again.
+             *
+             * On case of failure to restart, this signal will be emitted again
+             * with `null` for `message`.
+             * @signal
+             */
             'show-restart-message': (arg0: string | null) => boolean | void;
+            /**
+             * @signal
+             */
             'showing-desktop-changed': () => void;
+            /**
+             * @signal
+             */
             'window-created': (arg0: Window) => void;
+            /**
+             * @signal
+             */
             'window-demands-attention': (arg0: Window) => void;
+            /**
+             * @signal
+             */
             'window-entered-monitor': (arg0: number, arg1: Window) => void;
+            /**
+             * @signal
+             */
             'window-left-monitor': (arg0: number, arg1: Window) => void;
+            /**
+             * @signal
+             */
             'window-marked-urgent': (arg0: Window) => void;
+            /**
+             * @signal
+             */
             'window-visibility-updated': (arg0: any | null, arg1: any | null, arg2: any | null) => void;
+            /**
+             * @signal
+             */
             'workareas-changed': () => void;
+            /**
+             * @signal
+             */
             'x11-display-closing': () => void;
+            /**
+             * @signal
+             */
             'x11-display-opened': () => void;
+            /**
+             * @signal
+             */
             'x11-display-setup': () => void;
             'notify::compositor-modifiers': (pspec: GObject.ParamSpec) => void;
             'notify::focus-window': (pspec: GObject.ParamSpec) => void;
@@ -6176,7 +6802,8 @@ export namespace Meta {
     /**
      * Mutter display representation
      *
-     * The display is represented as a #MetaDisplay struct.
+     * The display is represented as a {@link Meta.Display} struct.
+     * @gir-type Class
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
@@ -6205,16 +6832,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6225,19 +6855,19 @@ export namespace Meta {
 
         /**
          * Add a keybinding at runtime. The key `name` in `schema` needs to be of
-         * type %G_VARIANT_TYPE_STRING_ARRAY, with each string describing a
+         * type `G_VARIANT_TYPE_STRING_ARRAY`, with each string describing a
          * keybinding in the form of "&lt;Control&gt;a" or "&lt;Shift&gt;&lt;Alt&gt;F1". The parser
          * is fairly liberal and allows lower or upper case, and also abbreviations
          * such as "&lt;Ctl&gt;" and "&lt;Ctrl&gt;". If the key is set to the empty list or a
          * list with a single element of either "" or "disabled", the keybinding is
          * disabled.
          *
-         * Use meta_display_remove_keybinding() to remove the binding.
+         * Use `meta_display_remove_keybinding()` to remove the binding.
          * @param name the binding's name
-         * @param settings the #GSettings object where @name is stored
+         * @param settings the {@link Gio.Settings} object where `name` is stored
          * @param flags flags to specify binding details
          * @param handler function to run when the keybinding is invoked
-         * @returns the corresponding keybinding action if the keybinding was          added successfully, otherwise %META_KEYBINDING_ACTION_NONE
+         * @returns the corresponding keybinding action if the keybinding was          added successfully, otherwise {@link Meta.KeyBindingAction.NONE}
          */
         add_keybinding(
             name: string,
@@ -6246,17 +6876,32 @@ export namespace Meta {
             handler: KeyHandlerFunc,
         ): number;
         /**
-         * Sets the mouse-mode flag to %FALSE, which means that motion events are
+         * Sets the mouse-mode flag to `false`, which means that motion events are
          * no longer ignored in mouse or sloppy focus.
          * This is an internal function. It should be used only for reimplementing
          * keybindings, and only in a manner compatible with core code.
          */
         clear_mouse_mode(): void;
+        /**
+         * @param timestamp
+         */
         close(timestamp: number): void;
+        /**
+         * @param timestamp
+         */
         focus_default_window(timestamp: number): void;
+        /**
+         * @param timestamp
+         */
         freeze_keyboard(timestamp: number): void;
+        /**
+         * @returns the {@link Meta.Compositor}
+         */
         get_compositor(): Compositor;
         get_compositor_modifiers(): Clutter.ModifierType;
+        /**
+         * @returns the {@link Meta.Context}
+         */
         get_context(): Context;
         /**
          * Gets the index of the monitor that currently has the mouse pointer.
@@ -6274,14 +6919,17 @@ export namespace Meta {
         get_focus_window(): Window;
         /**
          * Get the keybinding action bound to `keycode`. Builtin keybindings
-         * have a fixed associated #MetaKeyBindingAction, for bindings added
+         * have a fixed associated {@link Meta.KeyBindingAction}, for bindings added
          * dynamically the function will return the keybinding action
-         * meta_display_add_keybinding() returns on registration.
+         * `meta_display_add_keybinding()` returns on registration.
          * @param keycode Raw keycode
          * @param mask Event mask
-         * @returns The action that should be taken for the given key, or %META_KEYBINDING_ACTION_NONE.
+         * @returns The action that should be taken for the given key, or {@link Meta.KeyBindingAction.NONE}.
          */
         get_keybinding_action(keycode: number, mask: number): number;
+        /**
+         * @returns Timestamp of the last user interaction event with a window
+         */
         get_last_user_time(): number;
         /**
          * Stores the location and size of the indicated `monitor` in `geometry`.
@@ -6296,10 +6944,17 @@ export namespace Meta {
          * You can get notification when this changes by connecting to
          * MetaDisplay::in-fullscreen-changed.
          * @param monitor the monitor number
-         * @returns %TRUE if there is a fullscreen window covering the specified monitor.
+         * @returns `true` if there is a fullscreen window covering the specified monitor.
          */
         get_monitor_in_fullscreen(monitor: number): boolean;
+        /**
+         * @param rect
+         */
         get_monitor_index_for_rect(rect: Mtk.Rectangle): number;
+        /**
+         * @param which_monitor
+         * @param dir
+         */
         get_monitor_neighbor_index(which_monitor: number, dir: DisplayDirection | null): number;
         /**
          * Gets the monitor scaling value for the given `monitor`.
@@ -6312,7 +6967,17 @@ export namespace Meta {
          * @returns the number of monitors
          */
         get_n_monitors(): number;
+        /**
+         * @param pad
+         * @param button_number
+         */
         get_pad_button_label(pad: Clutter.InputDevice, button_number: number): string;
+        /**
+         * @param pad
+         * @param feature
+         * @param direction
+         * @param feature_number
+         */
         get_pad_feature_label(
             pad: Clutter.InputDevice,
             feature: PadFeatureType | null,
@@ -6324,11 +6989,17 @@ export namespace Meta {
          * @returns a monitor index
          */
         get_primary_monitor(): number;
+        /**
+         * @returns The selection manager of the display
+         */
         get_selection(): Selection;
         /**
          * Retrieve the size of the display.
          */
         get_size(): [number, number];
+        /**
+         * @returns The sound player of the display
+         */
         get_sound_player(): SoundPlayer;
         /**
          * Determine the active window that should be displayed for Alt-TAB.
@@ -6340,7 +7011,7 @@ export namespace Meta {
         /**
          * Determine the list of windows that should be displayed for Alt-TAB
          * functionality.  The windows are returned in most recently used order.
-         * If `workspace` is not %NULL, the list only contains windows that are on
+         * If `workspace` is not `null`, the list only contains windows that are on
          * `workspace` or have the demands-attention hint set; otherwise it contains
          * all windows.
          * @param type type of tab list
@@ -6354,22 +7025,29 @@ export namespace Meta {
          * @param type type of tab list
          * @param workspace origin workspace
          * @param window starting window
-         * @param backward If %TRUE, look for the previous window.
+         * @param backward If `true`, look for the previous window.
          * @returns Next window
          */
         get_tab_next(type: TabList | null, workspace: Workspace, window: Window | null, backward: boolean): Window;
+        /**
+         * @returns The workspace manager of the display
+         */
         get_workspace_manager(): WorkspaceManager;
+        /**
+         * @param accelerator
+         * @param flags
+         */
         grab_accelerator(accelerator: string, flags: KeyBindingFlags | null): number;
         /**
-         * Returns %TRUE if there is an ongoing grab operation.
+         * Returns `true` if there is an ongoing grab operation.
          * @returns Whether there is an active display grab operation.
          */
         is_grabbed(): boolean;
         /**
          * Tells whether the event sequence is the used for pointer emulation
          * and single-touch interaction.
-         * @param sequence a #ClutterEventSequence
-         * @returns #TRUE if the sequence emulates pointer behavior
+         * @param sequence a {@link Clutter.EventSequence}
+         * @returns `TRUE` if the sequence emulates pointer behavior
          */
         is_pointer_emulating_sequence(sequence?: Clutter.EventSequence | null): boolean;
         /**
@@ -6379,14 +7057,26 @@ export namespace Meta {
          */
         list_all_windows(): Window[];
         /**
-         * Remove keybinding `name;` the function will fail if `name` is not a known
-         * keybinding or has not been added with meta_display_add_keybinding().
+         * Remove keybinding `name`; the function will fail if `name` is not a known
+         * keybinding or has not been added with `meta_display_add_keybinding()`.
          * @param name name of the keybinding to remove
-         * @returns %TRUE if the binding has been removed successfully,          otherwise %FALSE
+         * @returns `true` if the binding has been removed successfully,          otherwise `false`
          */
         remove_keybinding(name: string): boolean;
+        /**
+         * @param pad
+         * @param edition_mode
+         */
         request_pad_osd(pad: Clutter.InputDevice, edition_mode: boolean): void;
+        /**
+         * @param cursor
+         */
         set_cursor(cursor: Cursor | null): void;
+        /**
+         * @param window
+         * @param focus_frame
+         * @param timestamp
+         */
         set_input_focus(window: Window, focus_frame: boolean, timestamp: number): void;
         /**
          * Sorts a set of windows according to their current stacking order. If windows
@@ -6402,10 +7092,25 @@ export namespace Meta {
          * @returns Input windows sorted by stacking order, from lowest to highest
          */
         sort_windows_by_stacking(windows: Window[]): Window[];
+        /**
+         * @returns whether pointer barriers can be supported. When running as an X compositor the X server needs XInput 2 version 2.3. When running as a display server it is supported when running on the native backend. Clients should use this method to determine whether their interfaces should depend on new barrier features.
+         */
         supports_extended_barriers(): boolean;
+        /**
+         * @param timestamp
+         */
         unfreeze_keyboard(timestamp: number): void;
+        /**
+         * @param action_id
+         */
         ungrab_accelerator(action_id: number): boolean;
+        /**
+         * @param timestamp
+         */
         ungrab_keyboard(timestamp: number): void;
+        /**
+         * @param timestamp
+         */
         unset_input_focus(timestamp: number): void;
         /**
          * Xserver time can wraparound, thus comparing two timestamps needs to take
@@ -6427,8 +7132,17 @@ export namespace Meta {
     namespace Dnd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'dnd-enter': () => void;
+            /**
+             * @signal
+             */
             'dnd-leave': () => void;
+            /**
+             * @signal
+             */
             'dnd-position-change': (arg0: number, arg1: number) => void;
         }
 
@@ -6437,6 +7151,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Dnd extends GObject.Object {
         static $gtype: GObject.GType<Dnd>;
 
@@ -6457,16 +7174,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Dnd.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dnd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Dnd.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dnd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Dnd.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Dnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6489,6 +7209,7 @@ export namespace Meta {
 
     /**
      * Mutter idle counter (similar to X's IDLETIME)
+     * @gir-type Class
      */
     class IdleMonitor extends GObject.Object {
         static $gtype: GObject.GType<IdleMonitor>;
@@ -6517,16 +7238,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6535,13 +7259,25 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param interval_msec The idletime interval, in milliseconds
+         * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
+         * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `meta_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `meta_idle_monitor_add_user_active_watch()`.
+         */
         add_idle_watch(interval_msec: number, callback?: IdleMonitorWatchFunc | null): number;
+        /**
+         * @param callback The callback to call when the user is     active again.
+         * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `meta_idle_monitor_add_idle_watch()`, has triggered.
+         */
         add_user_active_watch(callback?: IdleMonitorWatchFunc | null): number;
+        /**
+         * @returns The current idle time, in milliseconds, or -1 for not supported
+         */
         get_idletime(): number;
         /**
          * Removes an idle time watcher, previously added by
-         * meta_idle_monitor_add_idle_watch() or
-         * meta_idle_monitor_add_user_active_watch().
+         * `meta_idle_monitor_add_idle_watch()` or
+         * `meta_idle_monitor_add_user_active_watch()`.
          * @param id A watch ID
          */
         remove_watch(id: number): void;
@@ -6556,6 +7292,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Laters extends GObject.Object {
         static $gtype: GObject.GType<Laters>;
 
@@ -6576,16 +7315,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Laters.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Laters.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Laters.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Laters.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Laters.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Laters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6596,7 +7338,7 @@ export namespace Meta {
 
         /**
          * Sets up a callback  to be called at some later time. `when` determines the
-         * particular later occasion at which it is called. This is much like g_idle_add(),
+         * particular later occasion at which it is called. This is much like `g_idle_add()`,
          * except that the functions interact properly with clutter event handling.
          * If a "later" function is added from a clutter event handler, and is supposed
          * to be run before the stage is redrawn, it will be run before that redraw
@@ -6607,8 +7349,8 @@ export namespace Meta {
          */
         add(when: LaterType | null, func: GLib.SourceFunc): number;
         /**
-         * Removes a callback added with meta_later_add()
-         * @param later_id the integer ID returned from meta_later_add()
+         * Removes a callback added with `meta_later_add()`
+         * @param later_id the integer ID returned from `meta_later_add()`
          */
         remove(later_id: number): void;
     }
@@ -6630,6 +7372,9 @@ export namespace Meta {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LaunchContext extends Gio.AppLaunchContext {
         static $gtype: GObject.GType<LaunchContext>;
 
@@ -6658,16 +7403,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LaunchContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LaunchContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LaunchContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LaunchContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LaunchContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LaunchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6676,17 +7424,38 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param timestamp
+         */
         set_timestamp(timestamp: number): void;
+        /**
+         * @param workspace
+         */
         set_workspace(workspace: Workspace): void;
     }
 
     namespace MonitorManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'confirm-display-change': () => void;
+            /**
+             * @signal
+             */
             'monitor-privacy-screen-changed': (arg0: unknown, arg1: boolean) => void;
+            /**
+             * @signal
+             */
             'monitors-changed': () => void;
+            /**
+             * @signal
+             */
             'monitors-changed-internal': () => void;
+            /**
+             * @signal
+             */
             'power-save-mode-changed': (arg0: PowerSaveChangeReason) => void;
             'notify::backend': (pspec: GObject.ParamSpec) => void;
             'notify::experimental-hdr': (pspec: GObject.ParamSpec) => void;
@@ -6713,13 +7482,14 @@ export namespace Meta {
     /**
      * A manager for multiple monitors
      *
-     * #MetaMonitorManager is an abstract class which contains methods to handle
-     * multiple monitors (both #MetaMonitor and #MetaLogicalMonitor) and GPU's
-     * (#MetaGpu). Its functions include reading and/or changing the current
+     * {@link Meta.MonitorManager} is an abstract class which contains methods to handle
+     * multiple monitors (both `MetaMonitor` and `MetaLogicalMonitor`) and GPU's
+     * (`MetaGpu`). Its functions include reading and/or changing the current
      * configuration and available capabiliies.
      *
-     * The #MetaMonitorManager also provides the "org.gnome.Mutter.DisplayConfig"
+     * The {@link Meta.MonitorManager} also provides the "org.gnome.Mutter.DisplayConfig"
      * DBus service, so apps like GNOME Settings can use this functionality.
+     * @gir-type Class
      */
     class MonitorManager extends GObject.Object {
         static $gtype: GObject.GType<MonitorManager>;
@@ -6755,16 +7525,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MonitorManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonitorManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MonitorManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MonitorManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MonitorManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MonitorManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6779,9 +7552,16 @@ export namespace Meta {
          * Returns whether the built-in display (i.e. a laptop panel) is turned on.
          */
         get_is_builtin_display_on(): boolean;
+        /**
+         * @param connector A valid connector name
+         * @returns The monitor index or -1 if `id` isn't valid or the connector isn't associated with a logical monitor.
+         */
         get_monitor_for_connector(connector: string): number;
         get_panel_orientation_managed(): boolean;
         get_switch_config(): MonitorSwitchConfigType;
+        /**
+         * @param config_type
+         */
         switch_config(config_type: MonitorSwitchConfigType | null): void;
     }
 
@@ -6794,6 +7574,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MultiTexture extends GObject.Object {
         static $gtype: GObject.GType<MultiTexture>;
 
@@ -6818,16 +7601,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MultiTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultiTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MultiTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultiTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MultiTexture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MultiTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6837,49 +7623,49 @@ export namespace Meta {
         // Methods
 
         /**
-         * Returns the #MetaMultiTextureFormat that is used by this texture.
-         * @returns The texture format that is used by this #MetaMultiTexture.
+         * Returns the {@link Meta.MultiTextureFormat} that is used by this texture.
+         * @returns The texture format that is used by this {@link Meta.MultiTexture}.
          */
         get_format(): MultiTextureFormat;
         /**
-         * Returns the height of the #MetaMultiTexture. Prefer this over calling
-         * cogl_texture_get_height() on one of the textures, as that might give a
+         * Returns the height of the {@link Meta.MultiTexture}. Prefer this over calling
+         * `cogl_texture_get_height()` on one of the textures, as that might give a
          * different size when dealing with subsampling.
          * @returns The height of the texture.
          */
         get_height(): number;
         /**
          * Returns the number of planes for this texture. Note that this is entirely
-         * dependent on the #CoglPixelFormat that is used. For example, simple RGB
+         * dependent on the {@link Cogl.PixelFormat} that is used. For example, simple RGB
          * textures will have a single plane, while some more convoluted formats like
          * NV12 and YUV 4:4:4 can have 2 and 3 planes respectively.
-         * @returns The number of planes in this #MetaMultiTexture.
+         * @returns The number of planes in this {@link Meta.MultiTexture}.
          */
         get_n_planes(): number;
         /**
-         * Returns the n'th plane of the #MetaMultiTexture. Note that it's a programming
-         * error to use with an index larger than meta_multi_texture_get_n_planes().
+         * Returns the n'th plane of the {@link Meta.MultiTexture}. Note that it's a programming
+         * error to use with an index larger than `meta_multi_texture_get_n_planes()`.
          * @param index the index of the plane
-         * @returns The plane at the given @index.
+         * @returns The plane at the given `index`.
          */
         get_plane(index: number): Cogl.Texture;
         /**
-         * Returns the width of the #MetaMultiTexture. Prefer this over calling
-         * cogl_texture_get_width() on one of the textures, as that might give a
+         * Returns the width of the {@link Meta.MultiTexture}. Prefer this over calling
+         * `cogl_texture_get_width()` on one of the textures, as that might give a
          * different size when dealing with subsampling.
          * @returns The width of the texture.
          */
         get_width(): number;
         /**
          * A small function that checks whether the given multi texture uses a "simple"
-         * format, i.e. one that can be represented by a #CoglPixelFormat.
+         * format, i.e. one that can be represented by a {@link Cogl.PixelFormat}.
          * @returns Whether the texture format is #META_MULTI_TEXTURE_FORMAT_SIMPLE
          */
         is_simple(): boolean;
         /**
-         * Returns a string representation of `multi_texture,` useful for debugging
+         * Returns a string representation of `multi_texture`, useful for debugging
          * purposes.
-         * @returns A string representation of @multi_texture. Use g_free() when done with it.
+         * @returns A string representation of `multi_texture`. Use `g_free()` when done with it.
          */
         to_string(): string;
     }
@@ -6895,6 +7681,7 @@ export namespace Meta {
 
     /**
      * Entry point for plugins
+     * @gir-type Class
      */
     abstract class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
@@ -6916,16 +7703,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6934,32 +7724,45 @@ export namespace Meta {
 
         // Static methods
 
+        /**
+         * @param gtype
+         */
         static manager_set_plugin_type(gtype: GObject.GType): void;
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_confirm_display_change(): void;
         /**
          * Virtual function called when the window represented by `actor` is destroyed.
-         * @param actor a #MetaWindowActor
+         * @param actor a {@link Meta.WindowActor}
+         * @virtual
          */
         vfunc_destroy(actor: WindowActor): void;
+        /**
+         * @virtual
+         */
         vfunc_hide_tile_preview(): void;
         /**
          * Virtual function called when handling each keybinding.
-         * @param binding a #MetaKeyBinding
+         * @param binding a {@link Meta.KeyBinding}
+         * @virtual
          */
         vfunc_keybinding_filter(binding: KeyBinding): boolean;
         /**
          * Virtual function called when the workspace-switching effect needs to be
          * killed prematurely.
+         * @virtual
          */
         vfunc_kill_switch_workspace(): void;
         /**
          * Virtual function called when the effects on `actor` need to be killed
-         * prematurely; the plugin must call the completed() callback as if the effect
+         * prematurely; the plugin must call the `completed()` callback as if the effect
          * terminated naturally.
-         * @param actor a #MetaWindowActor
+         * @param actor a {@link Meta.WindowActor}
+         * @virtual
          */
         vfunc_kill_window_effects(actor: WindowActor): void;
         /**
@@ -6967,74 +7770,133 @@ export namespace Meta {
          * mechanism.
          * The common way to implement this function is to show some animation
          * on screen to draw user attention on the pointer location.
+         * @virtual
          */
         vfunc_locate_pointer(): void;
         /**
          * Virtual function called when the window represented by `actor` is mapped.
-         * @param actor a #MetaWindowActor
+         * @param actor a {@link Meta.WindowActor}
+         * @virtual
          */
         vfunc_map(actor: WindowActor): void;
         /**
          * Virtual function called when the window represented by `actor` is minimized.
-         * @param actor a #MetaWindowActor
+         * @param actor a {@link Meta.WindowActor}
+         * @virtual
          */
         vfunc_minimize(actor: WindowActor): void;
         /**
-         * Virtual function that returns information about the #MetaPlugin.
+         * Virtual function that returns information about the {@link Meta.Plugin}.
+         * @virtual
          */
         vfunc_plugin_info(): PluginInfo;
+        /**
+         * @param window
+         * @param tile_rect
+         * @param tile_monitor_number
+         * @virtual
+         */
         vfunc_show_tile_preview(window: Window, tile_rect: Mtk.Rectangle, tile_monitor_number: number): void;
+        /**
+         * @param window
+         * @param menu
+         * @param x
+         * @param y
+         * @virtual
+         */
         vfunc_show_window_menu(window: Window, menu: WindowMenuType, x: number, y: number): void;
+        /**
+         * @param window
+         * @param menu
+         * @param rect
+         * @virtual
+         */
         vfunc_show_window_menu_for_rect(window: Window, menu: WindowMenuType, rect: Mtk.Rectangle): void;
+        /**
+         * @param actor
+         * @param which_change
+         * @param old_frame_rect
+         * @param old_buffer_rect
+         * @virtual
+         */
         vfunc_size_change(
             actor: WindowActor,
             which_change: SizeChange,
             old_frame_rect: Mtk.Rectangle,
             old_buffer_rect: Mtk.Rectangle,
         ): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_size_changed(actor: WindowActor): void;
         /**
          * Virtual function called when the compositor starts managing a screen
+         * @virtual
          */
         vfunc_start(): void;
         /**
          * Virtual function called when the window represented by `actor` is destroyed.
          * @param from origin workspace
          * @param to destination workspace
-         * @param direction a #MetaMotionDirection
+         * @param direction a {@link Meta.MotionDirection}
+         * @virtual
          */
         vfunc_switch_workspace(from: number, to: number, direction: MotionDirection): void;
         /**
          * Virtual function called when the window represented by `actor` is unminimized.
-         * @param actor a #MetaWindowActor
+         * @param actor a {@link Meta.WindowActor}
+         * @virtual
          */
         vfunc_unminimize(actor: WindowActor): void;
         /**
          * Virtual function called when handling each event.
          * @param event
+         * @virtual
          */
         vfunc_xevent_filter(event: xlib.XEvent): boolean;
 
         // Methods
 
+        /**
+         * @param ok
+         */
         complete_display_change(ok: boolean): void;
+        /**
+         * @param actor
+         */
         destroy_completed(actor: WindowActor): void;
         /**
-         * Gets the #MetaDisplay corresponding to a plugin.
-         * @returns the #MetaDisplay for the plugin
+         * Gets the {@link Meta.Display} corresponding to a plugin.
+         * @returns the {@link Meta.Display} for the plugin
          */
         get_display(): Display;
         get_info(): PluginInfo;
+        /**
+         * @param actor
+         */
         map_completed(actor: WindowActor): void;
+        /**
+         * @param actor
+         */
         minimize_completed(actor: WindowActor): void;
+        /**
+         * @param actor
+         */
         size_change_completed(actor: WindowActor): void;
         switch_workspace_completed(): void;
+        /**
+         * @param actor
+         */
         unminimize_completed(actor: WindowActor): void;
     }
 
     namespace RemoteAccessController {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'new-handle': (arg0: RemoteAccessHandle) => void;
         }
 
@@ -7043,6 +7905,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RemoteAccessController extends GObject.Object {
         static $gtype: GObject.GType<RemoteAccessController>;
 
@@ -7063,16 +7928,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RemoteAccessController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RemoteAccessController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RemoteAccessController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RemoteAccessController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RemoteAccessController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RemoteAccessController.SignalSignatures[K]> extends [any, ...infer Q]
@@ -7099,6 +7967,9 @@ export namespace Meta {
     namespace RemoteAccessHandle {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             stopped: () => void;
             'notify::is-recording': (pspec: GObject.ParamSpec) => void;
         }
@@ -7111,6 +7982,9 @@ export namespace Meta {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RemoteAccessHandle extends GObject.Object {
         static $gtype: GObject.GType<RemoteAccessHandle>;
 
@@ -7136,16 +8010,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RemoteAccessHandle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RemoteAccessHandle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RemoteAccessHandle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RemoteAccessHandle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RemoteAccessHandle.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RemoteAccessHandle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7156,6 +8033,7 @@ export namespace Meta {
 
         /**
          * Stop the associated remote access session.
+         * @virtual
          */
         vfunc_stop(): void;
 
@@ -7171,6 +8049,9 @@ export namespace Meta {
     namespace Selection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'owner-changed': (arg0: number, arg1: SelectionSource) => void;
         }
 
@@ -7179,6 +8060,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Selection extends GObject.Object {
         static $gtype: GObject.GType<Selection>;
 
@@ -7201,16 +8085,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Selection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Selection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Selection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Selection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7226,7 +8113,7 @@ export namespace Meta {
          */
         get_mimetypes(selection_type: SelectionType | null): string[];
         /**
-         * Sets `owner` as the owner of the selection given by `selection_type,`
+         * Sets `owner` as the owner of the selection given by `selection_type`,
          * unsets any previous owner there was.
          * @param selection_type Selection type
          * @param owner New selection owner
@@ -7287,7 +8174,7 @@ export namespace Meta {
         /**
          * Finishes the transfer of a queried mimetype.
          * @param result The async result
-         * @returns #TRUE if the transfer was successful.
+         * @returns `TRUE` if the transfer was successful.
          */
         transfer_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -7302,7 +8189,13 @@ export namespace Meta {
     namespace SelectionSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             activated: () => void;
+            /**
+             * @signal
+             */
             deactivated: () => void;
         }
 
@@ -7311,6 +8204,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SelectionSource extends GObject.Object {
         static $gtype: GObject.GType<SelectionSource>;
 
@@ -7331,16 +8227,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SelectionSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SelectionSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SelectionSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SelectionSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SelectionSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SelectionSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7349,12 +8248,25 @@ export namespace Meta {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_activated(): void;
+        /**
+         * @virtual
+         */
         vfunc_deactivated(): void;
         /**
          * Returns the list of supported mimetypes.
+         * @virtual
          */
         vfunc_get_mimetypes(): string[];
+        /**
+         * @param mimetype
+         * @param cancellable
+         * @param callback
+         * @virtual
+         */
         vfunc_read_async(
             mimetype: string,
             cancellable?: Gio.Cancellable | null,
@@ -7363,6 +8275,7 @@ export namespace Meta {
         /**
          * Finishes a read from the selection source.
          * @param result The async result
+         * @virtual
          */
         vfunc_read_finish(result: Gio.AsyncResult): Gio.InputStream;
 
@@ -7374,16 +8287,30 @@ export namespace Meta {
          */
         get_mimetypes(): string[];
         /**
-         * Returns #TRUE if the source is active on a selection.
-         * @returns #TRUE if the source owns a selection.
+         * Returns `TRUE` if the source is active on a selection.
+         * @returns `TRUE` if the source owns a selection.
          */
         is_active(): boolean;
+        /**
+         * @param mimetype
+         * @param cancellable
+         */
         read_async(mimetype: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        /**
+         * @param mimetype
+         * @param cancellable
+         * @param callback
+         */
         read_async(
             mimetype: string,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param mimetype
+         * @param cancellable
+         * @param callback
+         */
         read_async(
             mimetype: string,
             cancellable?: Gio.Cancellable | null,
@@ -7392,7 +8319,7 @@ export namespace Meta {
         /**
          * Finishes a read from the selection source.
          * @param result The async result
-         * @returns The resulting #GInputStream
+         * @returns The resulting {@link Gio.InputStream}
          */
         read_finish(result: Gio.AsyncResult): Gio.InputStream;
     }
@@ -7406,6 +8333,9 @@ export namespace Meta {
         interface ConstructorProps extends SelectionSource.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SelectionSourceMemory extends SelectionSource {
         static $gtype: GObject.GType<SelectionSourceMemory>;
 
@@ -7428,16 +8358,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SelectionSourceMemory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SelectionSourceMemory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SelectionSourceMemory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SelectionSourceMemory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SelectionSourceMemory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SelectionSourceMemory.SignalSignatures[K]> extends [any, ...infer Q]
@@ -7450,6 +8383,9 @@ export namespace Meta {
     namespace ShadowFactory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: () => void;
         }
 
@@ -7462,7 +8398,8 @@ export namespace Meta {
      * Create window shadows.
      *
      * It caches shadows internally so that multiple shadows created for
-     * the same shape with the same radius will share the same [struct`Meta`.Shadow].
+     * the same shape with the same radius will share the same {@link Meta.Shadow}.
+     * @gir-type Class
      */
     class ShadowFactory extends GObject.Object {
         static $gtype: GObject.GType<ShadowFactory>;
@@ -7486,16 +8423,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ShadowFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShadowFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ShadowFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShadowFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ShadowFactory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ShadowFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7528,7 +8468,7 @@ export namespace Meta {
          * @param height the actual height of the window's region
          * @param class_name name of the class of window shadows
          * @param focused whether the shadow is for a focused window
-         * @returns a newly referenced #MetaShadow; unref with  meta_shadow_unref()
+         * @returns a newly referenced {@link Meta.Shadow}; unref with  `meta_shadow_unref()`
          */
         get_shadow(shape: WindowShape, width: number, height: number, class_name: string, focused: boolean): Shadow;
         /**
@@ -7547,6 +8487,9 @@ export namespace Meta {
     namespace ShapedTexture {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'size-changed': () => void;
         }
 
@@ -7558,10 +8501,11 @@ export namespace Meta {
     /**
      * A ClutterContent which draws a shaped texture
      *
-     * A MetaShapedTexture draws a #CoglTexture (often provided from a client
+     * A MetaShapedTexture draws a {@link Cogl.Texture} (often provided from a client
      * surface) in such a way that it matches any required transformations that
-     * give its final shape, such as a #MetaMonitorTransform, y-invertedness, or a
+     * give its final shape, such as a `MetaMonitorTransform`, y-invertedness, or a
      * crop-and-scale operation.
+     * @gir-type Class
      */
     class ShapedTexture extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<ShapedTexture>;
@@ -7583,16 +8527,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ShapedTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShapedTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ShapedTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShapedTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ShapedTexture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ShapedTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7606,65 +8553,89 @@ export namespace Meta {
          * image by alpha blending the two images, and returns the flattened
          * image.
          * @param clip A clipping rectangle, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the texture, the rectangle will be clipped.
-         * @returns a new cairo surface to be freed with cairo_surface_destroy().
+         * @returns a new cairo surface to be freed with `cairo_surface_destroy()`.
          */
         get_image(clip?: Mtk.Rectangle | null): cairo.Surface | null;
-        get_texture(): MultiTexture;
-        set_create_mipmaps(create_mipmaps: boolean): void;
-        set_mask_texture(mask_texture: Cogl.Texture): void;
-
-        // Inherited methods
         /**
-         * Retrieves the natural size of the `content,` if any.
+         * @returns the unshaped texture
+         */
+        get_texture(): MultiTexture;
+        /**
+         * @param create_mipmaps
+         */
+        set_create_mipmaps(create_mipmaps: boolean): void;
+        /**
+         * @param mask_texture
+         */
+        set_mask_texture(mask_texture: Cogl.Texture): void;
+        /**
+         * Retrieves the natural size of the `content`, if any.
          *
-         * The natural size of a #ClutterContent is defined as the size the content
+         * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
-         * @returns %TRUE if the content has a preferred size, and %FALSE   otherwise
+         * @returns `true` if the content has a preferred size, and `false`   otherwise
          */
         get_preferred_size(): [boolean, number, number];
         /**
-         * Invalidates a #ClutterContent.
+         * Invalidates a {@link Clutter.Content}.
          *
-         * This function should be called by #ClutterContent implementations when
+         * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          */
         invalidate(): void;
         /**
-         * Signals that `content'`s size changed. Attached actors with request mode
-         * set to %CLUTTER_REQUEST_CONTENT_SIZE will have a relayout queued.
+         * Signals that `content`'s size changed. Attached actors with request mode
+         * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
          *
          * Attached actors with other request modes are not redrawn. To redraw them
-         * too, use clutter_content_invalidate().
+         * too, use `clutter_content_invalidate()`.
          */
         invalidate_size(): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_attached(actor: Clutter.Actor): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_detached(actor: Clutter.Actor): void;
         /**
-         * Retrieves the natural size of the `content,` if any.
+         * Retrieves the natural size of the `content`, if any.
          *
-         * The natural size of a #ClutterContent is defined as the size the content
+         * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
         /**
-         * Invalidates a #ClutterContent.
+         * Invalidates a {@link Clutter.Content}.
          *
-         * This function should be called by #ClutterContent implementations when
+         * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @virtual
          */
         vfunc_invalidate(): void;
         /**
-         * Signals that `content'`s size changed. Attached actors with request mode
-         * set to %CLUTTER_REQUEST_CONTENT_SIZE will have a relayout queued.
+         * Signals that `content`'s size changed. Attached actors with request mode
+         * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
          *
          * Attached actors with other request modes are not redrawn. To redraw them
-         * too, use clutter_content_invalidate().
+         * too, use `clutter_content_invalidate()`.
+         * @virtual
          */
         vfunc_invalidate_size(): void;
+        /**
+         * @param actor
+         * @param node
+         * @param paint_context
+         * @virtual
+         */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode, paint_context: Clutter.PaintContext): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -7679,32 +8650,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7713,39 +8684,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7756,13 +8727,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7770,7 +8744,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7778,9 +8752,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7800,9 +8774,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7816,33 +8790,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7875,21 +8849,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -7899,8 +8873,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7917,10 +8891,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7935,13 +8909,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7972,21 +8946,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7996,33 +8970,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8031,6 +9006,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8039,12 +9015,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8053,20 +9031,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8078,6 +9058,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8116,6 +9097,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SoundPlayer extends GObject.Object {
         static $gtype: GObject.GType<SoundPlayer>;
 
@@ -8136,16 +9120,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SoundPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8261,6 +9248,9 @@ export namespace Meta {
                 Clutter.Scriptable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Stage<A extends Clutter.Actor = Clutter.Actor>
         extends Clutter.Stage
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
@@ -8284,16 +9274,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Stage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Stage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Stage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8302,163 +9295,178 @@ export namespace Meta {
 
         // Static methods
 
-        static is_focused(display: Display): boolean;
-
-        // Inherited methods
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * @param display
+         */
+        static is_focused(display: Display): boolean;
+        /**
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
         /**
-         * Gets a container specific property of a child of `container,` In general,
+         * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
-         * freeing the memory by calling g_value_unset().
+         * freeing the memory by calling `g_value_unset()`.
          *
-         * Note that clutter_container_child_set_property() is really intended for
-         * language bindings, clutter_container_child_set() is much more convenient
+         * Note that `clutter_container_child_set_property()` is really intended for
+         * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
          * Sets a container-specific property on a child of `container`.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
          * @param child_name the name of the requested child.
-         * @returns The child actor with the requested name,   or %NULL if no actor with that name was found.
+         * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
-         * @returns the #ClutterChildMeta for the @actor child   of @container or %NULL if the specific actor does not exist or the   container is not configured to provide `ClutterChildMeta`s
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specific actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_added(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_removed(actor: A): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
+         * @virtual
          */
         vfunc_add(actor: A): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
+         * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_remove(actor: A): void;
         /**
@@ -8474,32 +9482,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -8508,39 +9516,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -8551,13 +9559,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8565,7 +9576,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8573,9 +9584,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8595,9 +9606,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8611,33 +9622,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8670,21 +9681,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -8694,8 +9705,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8712,10 +9723,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8730,13 +9741,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8767,21 +9778,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8791,33 +9802,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8826,6 +9838,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8834,12 +9847,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8848,20 +9863,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8873,6 +9890,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8905,6 +9923,9 @@ export namespace Meta {
     namespace StartupNotification {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: (arg0: StartupSequence) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
         }
@@ -8916,6 +9937,9 @@ export namespace Meta {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StartupNotification extends GObject.Object {
         static $gtype: GObject.GType<StartupNotification>;
 
@@ -8940,16 +9964,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StartupNotification.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StartupNotification.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StartupNotification.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StartupNotification.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StartupNotification.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StartupNotification.SignalSignatures[K]> extends [any, ...infer Q]
@@ -8967,7 +9994,7 @@ export namespace Meta {
         create_launcher(): LaunchContext;
         /**
          * Get the list of startup sequences arrived in the startup notification object.
-         * @returns a #GSList of #MetaStartupSequence in the #MetaStartupNotification.
+         * @returns a {@link GLib.SList} of {@link Meta.StartupSequence} in the {@link Meta.StartupNotification}.
          */
         get_sequences(): StartupSequence[];
     }
@@ -8975,7 +10002,13 @@ export namespace Meta {
     namespace StartupSequence {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             complete: () => void;
+            /**
+             * @signal
+             */
             timeout: () => void;
             'notify::application-id': (pspec: GObject.ParamSpec) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -9003,6 +10036,9 @@ export namespace Meta {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StartupSequence extends GObject.Object {
         static $gtype: GObject.GType<StartupSequence>;
 
@@ -9036,16 +10072,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StartupSequence.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StartupSequence.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StartupSequence.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StartupSequence.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StartupSequence.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StartupSequence.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9057,13 +10096,13 @@ export namespace Meta {
         complete(): void;
         /**
          * Get the application id of the startup sequence.
-         * @returns the application id or %NULL.
+         * @returns the application id or `null`.
          */
         get_application_id(): string | null;
         get_completed(): boolean;
         /**
          * Get the icon name of the startup sequence.
-         * @returns the icon name or %NULL.
+         * @returns the icon name or `null`.
          */
         get_icon_name(): string | null;
         get_id(): string;
@@ -9071,7 +10110,7 @@ export namespace Meta {
         get_timestamp(): number;
         /**
          * Get the wmclass of the startup sequence.
-         * @returns the wmclass or %NULL.
+         * @returns the wmclass or `null`.
          */
         get_wmclass(): string | null;
         get_workspace(): number;
@@ -9080,6 +10119,9 @@ export namespace Meta {
     namespace WaylandClient {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'client-destroyed': () => void;
         }
 
@@ -9088,6 +10130,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WaylandClient extends GObject.Object {
         static $gtype: GObject.GType<WaylandClient>;
 
@@ -9110,16 +10155,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandClient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandClient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandClient.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9128,12 +10176,18 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param window
+         */
         hide_from_window_list(window: Window): void;
         /**
          * Mark window as DESKTOP window
          * @param window a MetaWindow
          */
         make_desktop(window: Window): void;
+        /**
+         * @param window
+         */
         owns_window(window: Window): boolean;
         /**
          * Shows again this window in window lists, like taskbars, pagers...
@@ -9141,13 +10195,13 @@ export namespace Meta {
          */
         show_in_window_list(window: Window): void;
         /**
-         * Creates a #GSubprocess given a provided array of arguments, launching a new
+         * Creates a {@link Gio.Subprocess} given a provided array of arguments, launching a new
          * process with the binary specified in the first element of argv, and with the
          * rest of elements as parameters. It also sets up a new Wayland socket and sets
          * the environment variable WAYLAND_SOCKET to make the new process to use it.
          * @param display the current MetaDisplay
          * @param argv Command line arguments
-         * @returns A new #GSubprocess, or %NULL on error (and @error will be set)
+         * @returns A new {@link Gio.Subprocess}, or `null` on error (and `error` will be set)
          */
         spawnv(display: Display, argv: string[]): Gio.Subprocess;
     }
@@ -9155,6 +10209,9 @@ export namespace Meta {
     namespace WaylandCompositor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'prepare-shutdown': () => void;
         }
 
@@ -9163,6 +10220,9 @@ export namespace Meta {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WaylandCompositor extends GObject.Object {
         static $gtype: GObject.GType<WaylandCompositor>;
 
@@ -9183,16 +10243,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandCompositor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandCompositor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandCompositor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandCompositor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandCompositor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandCompositor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9201,20 +10264,65 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @returns the Wayland display object
+         */
         get_wayland_display(): any | null;
     }
 
     namespace Window {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             focus: () => void;
+            /**
+             * This is emitted when the monitor with the highest scale
+             * intersecting the window changes.
+             * @signal
+             */
             'highest-scale-monitor-changed': () => void;
+            /**
+             * This is emitted when the position of a window might
+             * have changed.
+             *
+             * Specifically, this is emitted when the position of
+             * the toplevel window has changed, or when the position
+             * of the client window has changed.
+             * @signal
+             */
             'position-changed': () => void;
+            /**
+             * @signal
+             */
             raised: () => void;
+            /**
+             * This is emitted after a window has been shown.
+             * @signal
+             */
             shown: () => void;
+            /**
+             * This is emitted when the size of a window might
+             * have changed.
+             *
+             * Specifically, this is emitted when the size of
+             * the toplevel window has changed, or when the
+             * size of the client window has changed.
+             * @signal
+             */
             'size-changed': () => void;
+            /**
+             * @signal
+             */
             unmanaged: () => void;
+            /**
+             * @signal
+             */
             unmanaging: () => void;
+            /**
+             * @signal
+             */
             'workspace-changed': () => void;
             'notify::above': (pspec: GObject.ParamSpec) => void;
             'notify::appears-focused': (pspec: GObject.ParamSpec) => void;
@@ -9303,36 +10411,37 @@ export namespace Meta {
     /**
      * A display-agnostic abstraction for a window.
      *
-     * #MetaWindow is the core abstraction in Mutter of a window. It has the
+     * {@link Meta.Window} is the core abstraction in Mutter of a window. It has the
      * properties you'd expect, such as a title, whether it's fullscreen,
      * has decorations, etc.
      *
      * Since a lot of different kinds of windows exist, each window also a
-     * [enum`Meta`.WindowType] which denotes which kind of window we're exactly dealing
+     * {@link Meta.WindowType} which denotes which kind of window we're exactly dealing
      * with. For example, one expects slightly different behaviour from a dialog
      * than a "normal" window. The type of a window can be queried with
-     * [method`Meta`.Window.get_window_type].
+     * {@link Meta.Window.get_window_type}.
      *
      * Common API for windows include:
      *
-     * - Minimizing: [method`Meta`.Window.minimize] / [method`Meta`.Window.unminimize]
-     * - Maximizing: [method`Meta`.Window.maximize] / [method`Meta`.Window.unmaximize]
-     * - Fullscreen: [method`Meta`.Window.make_fullscreen] / [method`Meta`.Window.unmake_fullscreen]
-     *               / [method`Meta`.Window.is_fullscreen]
+     * - Minimizing: {@link Meta.Window.minimize} / {@link Meta.Window.unminimize}
+     * - Maximizing: {@link Meta.Window.maximize} / {@link Meta.Window.unmaximize}
+     * - Fullscreen: {@link Meta.Window.make_fullscreen} / {@link Meta.Window.unmake_fullscreen}
+     *               / {@link Meta.Window.is_fullscreen}
      *
-     * Each #MetaWindow is part of either one or all [class`Meta`.Workspace]s of the
+     * Each {@link Meta.Window} is part of either one or all {@link Meta.Workspace}s of the
      * desktop. You can activate a window on a certain workspace using
-     * [method`Meta`.Window.activate_with_workspace], and query on which workspace it is
-     * located using [method`Meta`.Window.located_on_workspace]. The workspace it is part
-     * of can be obtained using [method`Meta`.Window.get_workspace].
+     * {@link Meta.Window.activate_with_workspace}, and query on which workspace it is
+     * located using {@link Meta.Window.located_on_workspace}. The workspace it is part
+     * of can be obtained using {@link Meta.Window.get_workspace}.
      *
      * Each display protocol should make a subclass to be compatible with that
-     * protocols' specifics, for example #MetaWindowX11 and #MetaWindowWayland.
+     * protocols' specifics, for example `MetaWindowX11` and `MetaWindowWayland`.
      * This is independent of the protocol that the client uses, which is modeled
-     * using the [enum`Meta`.WindowClientType] enum.
+     * using the {@link Meta.WindowClientType} enum.
      *
      * To integrate within the Clutter scene graph, which deals with the actual
-     * rendering, each #MetaWindow will be part of a [class`Meta`.WindowActor].
+     * rendering, each {@link Meta.Window} will be part of a {@link Meta.WindowActor}.
+     * @gir-type Class
      */
     abstract class Window extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Window>;
@@ -9404,16 +10513,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Window.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Window.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Window.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9422,10 +10534,23 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param current_time
+         */
         activate(current_time: number): void;
+        /**
+         * @param current_time
+         * @param workspace
+         */
         activate_with_workspace(current_time: number, workspace: Workspace): void;
         allows_move(): boolean;
         allows_resize(): boolean;
+        /**
+         * @param op
+         * @param device
+         * @param sequence
+         * @param timestamp
+         */
         begin_grab_op(
             op: GrabOp | null,
             device: Clutter.InputDevice | null,
@@ -9435,8 +10560,18 @@ export namespace Meta {
         can_close(): boolean;
         can_maximize(): boolean;
         can_minimize(): boolean;
+        /**
+         * @param workspace
+         */
         change_workspace(workspace: Workspace): void;
+        /**
+         * @param space_index
+         * @param append
+         */
         change_workspace_by_index(space_index: number, append: boolean): void;
+        /**
+         * @param timestamp
+         */
         check_alive(timestamp: number): void;
         /**
          * Converts a desired bounds of the client window into the corresponding bounds
@@ -9445,27 +10580,33 @@ export namespace Meta {
          */
         client_rect_to_frame_rect(client_rect: Mtk.Rectangle): Mtk.Rectangle;
         compute_group(): void;
+        /**
+         * @param timestamp
+         */
         ['delete'](timestamp: number): void;
         /**
-         * Follow the chain of parents of `window,` skipping transient windows,
+         * Follow the chain of parents of `window`, skipping transient windows,
          * and return the "root" window which has no non-transient parent.
          * @returns The root ancestor window
          */
         find_root_ancestor(): Window;
+        /**
+         * @param timestamp
+         */
         focus(timestamp: number): void;
         /**
          * If `window` is transient, call `func` with the window for which it's transient,
-         * repeatedly until either we find a non-transient window, or `func` returns %FALSE.
-         * @param func Called for each window which is a transient parent of @window
+         * repeatedly until either we find a non-transient window, or `func` returns `false`.
+         * @param func Called for each window which is a transient parent of `window`
          */
         foreach_ancestor(func: WindowForeachFunc): void;
         /**
-         * Call `func` for every window which is either transient for `window,` or is
+         * Call `func` for every window which is either transient for `window`, or is
          * a transient of a window which is in turn transient for `window`.
          * The order of window enumeration is not defined.
          *
-         * Iteration will stop if `func` at any point returns %FALSE.
-         * @param func Called for each window which is a transient of @window (transitively)
+         * Iteration will stop if `func` at any point returns `false`.
+         * @param func Called for each window which is a transient of `window` (transitively)
          */
         foreach_transient(func: WindowForeachFunc): void;
         /**
@@ -9487,11 +10628,11 @@ export namespace Meta {
         /**
          * Returns name of the client machine from which this windows was created,
          * if known (obtained from the WM_CLIENT_MACHINE property).
-         * @returns the machine name, or %NULL; the string is owned by the window manager and should not be freed or modified by the caller.
+         * @returns the machine name, or `null`; the string is owned by the window manager and should not be freed or modified by the caller.
          */
         get_client_machine(): string | null;
         /**
-         * Returns the #MetaWindowClientType of the window.
+         * Returns the {@link Meta.WindowClientType} of the window.
          * @returns The root ancestor window
          */
         get_client_type(): WindowClientType;
@@ -9501,10 +10642,13 @@ export namespace Meta {
          */
         get_compositor_private<T = GObject.Object>(): T;
         get_description(): string;
+        /**
+         * @returns The display for `window`
+         */
         get_display(): Display;
         /**
          * Gets a region representing the outer bounds of the window's frame.
-         * @returns a #cairo_region_t  holding the outer bounds of the window, or %NULL if the window  doesn't have a frame.
+         * @returns a {@link cairo.Region}  holding the outer bounds of the window, or `null` if the window  doesn't have a frame.
          */
         get_frame_bounds(): cairo.Region | null;
         /**
@@ -9520,19 +10664,40 @@ export namespace Meta {
          * @returns the frame type
          */
         get_frame_type(): FrameType;
+        /**
+         * @returns the object path
+         */
         get_gtk_app_menu_object_path(): string | null;
+        /**
+         * @returns the application ID
+         */
         get_gtk_application_id(): string | null;
+        /**
+         * @returns the object path
+         */
         get_gtk_application_object_path(): string | null;
+        /**
+         * @returns the object path
+         */
         get_gtk_menubar_object_path(): string | null;
+        /**
+         * @returns the theme variant or `null`
+         */
         get_gtk_theme_variant(): string | null;
+        /**
+         * @returns the unique name
+         */
         get_gtk_unique_bus_name(): string | null;
+        /**
+         * @returns the object path
+         */
         get_gtk_window_object_path(): string | null;
         /**
          * Gets the location of the icon corresponding to the window.
          *
          * The location will be provided set by the task bar or other user interface
          * element displaying the icon, and is relative to the root window.
-         * @returns %TRUE if the icon geometry was successfully retrieved.
+         * @returns `true` if the icon geometry was successfully retrieved.
          */
         get_icon_geometry(): [boolean, Mtk.Rectangle];
         /**
@@ -9543,7 +10708,7 @@ export namespace Meta {
         get_layer(): StackLayer;
         /**
          * Gets the current maximization state of the window, as combination
-         * of the %META_MAXIMIZE_HORIZONTAL and %META_MAXIMIZE_VERTICAL flags;
+         * of the {@link Meta.MaximizeFlags.HORIZONTAL} and {@link Meta.MaximizeFlags.VERTICAL} flags;
          * @returns current maximization state
          */
         get_maximized(): MaximizeFlags;
@@ -9563,7 +10728,7 @@ export namespace Meta {
          * any plugin-specific hints must be suitably namespaced to allow for shared
          * use; 'mutter-' key prefix is reserved for internal use, and must not be used
          * by plugins.
-         * @returns the _MUTTER_HINTS string, or %NULL if no hints are set.
+         * @returns the _MUTTER_HINTS string, or `null` if no hints are set.
          */
         get_mutter_hints(): string | null;
         /**
@@ -9579,12 +10744,12 @@ export namespace Meta {
         /**
          * Gets an unique id for a sandboxed app (currently flatpaks and snaps are
          * supported).
-         * @returns the sandboxed application ID or %NULL
+         * @returns the sandboxed application ID or `null`
          */
         get_sandboxed_app_id(): string | null;
         /**
          * The stable sequence number is a monotonicially increasing
-         * unique integer assigned to each #MetaWindow upon creation.
+         * unique integer assigned to each {@link Meta.Window} upon creation.
          *
          * This number can be useful for sorting windows in a stable
          * fashion.
@@ -9592,7 +10757,7 @@ export namespace Meta {
          */
         get_stable_sequence(): number;
         /**
-         * Gets the startup id of the given #MetaWindow
+         * Gets the startup id of the given {@link Meta.Window}
          * @returns the startup id
          */
         get_startup_id(): string | null;
@@ -9605,17 +10770,20 @@ export namespace Meta {
          *  - spanning the remaining monitor width;
          *  - there is no 3rd window stacked between both tiled windows that's
          *    partially visible in the common edge.
-         * @returns the matching tiled window or %NULL if it doesn't exist.
+         * @returns the matching tiled window or `null` if it doesn't exist.
          */
         get_tile_match(): Window | null;
+        /**
+         * @returns the current title of the window.
+         */
         get_title(): string;
         /**
-         * Returns the #MetaWindow for the window that is pointed to by the
+         * Returns the {@link Meta.Window} for the window that is pointed to by the
          * WM_TRANSIENT_FOR hint on this window (see XGetTransientForHint()
          * or XSetTransientForHint()). Mutter keeps transient windows above their
          * parents. A typical usage of this hint is for a dialog that wants to stay
          * above its associated window.
-         * @returns the window this window is transient for, or %NULL if the WM_TRANSIENT_FOR hint is unset or does not point to a toplevel window that Mutter knows about.
+         * @returns the window this window is transient for, or `null` if the WM_TRANSIENT_FOR hint is unset or does not point to a toplevel window that Mutter knows about.
          */
         get_transient_for(): Window | null;
         /**
@@ -9651,17 +10819,17 @@ export namespace Meta {
          */
         get_work_area_current_monitor(): Mtk.Rectangle;
         /**
-         * Get the work area for `window,` given the monitor index
+         * Get the work area for `window`, given the monitor index
          * `which_monitor`.
          * @param which_monitor a moniotr to get the work area for
          */
         get_work_area_for_monitor(which_monitor: number): Mtk.Rectangle;
         /**
-         * Gets the [class`Meta`.Workspace] that the window is currently displayed on.
+         * Gets the {@link Meta.Workspace} that the window is currently displayed on.
          *
          * If the window is on all workspaces, returns the currently active
          * workspace.
-         * @returns the #MetaWorkspace for the window
+         * @returns the {@link Meta.Workspace} for the window
          */
         get_workspace(): Workspace;
         group_leader_changed(): void;
@@ -9669,8 +10837,8 @@ export namespace Meta {
          * Tests if `window` has any transients attached to it.
          *
          * If the `attach_modal_dialogs` option is not enabled, this will
-         * always return %FALSE.
-         * @returns whether @window has attached transients
+         * always return `false`.
+         * @returns whether `window` has attached transients
          */
         has_attached_dialogs(): boolean;
         has_focus(): boolean;
@@ -9678,19 +10846,19 @@ export namespace Meta {
         is_above(): boolean;
         is_always_on_all_workspaces(): boolean;
         /**
-         * The function determines whether `window` is an ancestor of `transient;` it does
-         * so by traversing the `transient'`s ancestors until it either locates `window`
+         * The function determines whether `window` is an ancestor of `transient`; it does
+         * so by traversing the `transient`'s ancestors until it either locates `window`
          * or reaches an ancestor that is not transient.
-         * @param _transient a #MetaWindow
-         * @returns %TRUE if window is an ancestor of transient.
+         * @param _transient a {@link Meta.Window}
+         * @returns `true` if window is an ancestor of transient.
          */
         is_ancestor_of_transient(_transient: Window): boolean;
         /**
          * Tests if `window` should be attached to its parent window.
          *
          * If the `attach_modal_dialogs` option is not enabled, this will
-         * always return %FALSE.
-         * @returns whether @window should be attached to its parent
+         * always return `false`.
+         * @returns whether `window` should be attached to its parent
          */
         is_attached_dialog(): boolean;
         /**
@@ -9699,25 +10867,53 @@ export namespace Meta {
          * `window->decorated` refers only to whether we should add decorations.
          */
         is_client_decorated(): boolean;
+        /**
+         * @returns `true` if the window is currently fullscreen
+         */
         is_fullscreen(): boolean;
         is_hidden(): boolean;
+        /**
+         * @returns `true` if the window is occupies an entire monitor or               the whole screen.
+         */
         is_monitor_sized(): boolean;
         is_on_all_workspaces(): boolean;
+        /**
+         * @returns `true` if the window is on the primary monitor
+         */
         is_on_primary_monitor(): boolean;
+        /**
+         * @returns `true` if this window isn't managed by mutter; it will control its own positioning and mutter won't draw decorations among other things.  In X terminology this is "override redirect".
+         */
         is_override_redirect(): boolean;
+        /**
+         * @returns `true` if this window originates from a host different from the one running mutter.
+         */
         is_remote(): boolean;
+        /**
+         * @returns `true` if the window is occupies the               the whole screen (all monitors).
+         */
         is_screen_sized(): boolean;
         /**
          * Gets whether this window should be ignored by task lists.
-         * @returns %TRUE if the skip bar hint is set.
+         * @returns `true` if the skip bar hint is set.
          */
         is_skip_taskbar(): boolean;
         kill(): void;
+        /**
+         * @param workspace a {@link Meta.Workspace}
+         * @returns whether `window` is displayed on `workspace`, or whether it will be displayed on all workspaces.
+         */
         located_on_workspace(workspace: Workspace): boolean;
         lower(): void;
+        /**
+         * @param timestamp
+         */
         lower_with_transients(timestamp: number): void;
         make_above(): void;
         make_fullscreen(): void;
+        /**
+         * @param directions
+         */
         maximize(directions: MaximizeFlags | null): void;
         minimize(): void;
         /**
@@ -9725,7 +10921,7 @@ export namespace Meta {
          * workspace, using the northwest edge of the frame as the reference,
          * instead of the actual window's origin, but only if a frame is present.
          *
-         * Otherwise, acts identically to meta_window_move().
+         * Otherwise, acts identically to `meta_window_move()`.
          * @param user_op bool to indicate whether or not this is a user operation
          * @param root_x_nw desired x pos
          * @param root_y_nw desired y pos
@@ -9742,13 +10938,16 @@ export namespace Meta {
          */
         move_resize_frame(user_op: boolean, root_x_nw: number, root_y_nw: number, w: number, h: number): void;
         /**
-         * Moves the window to the monitor with index `monitor,` keeping
+         * Moves the window to the monitor with index `monitor`, keeping
          * the relative position of the window's top left corner.
          * @param monitor desired monitor index
          */
         move_to_monitor(monitor: number): void;
         raise(): void;
         raise_and_make_recent(): void;
+        /**
+         * @param priv
+         */
         set_compositor_private(priv: GObject.Object): void;
         set_demands_attention(): void;
         /**
@@ -9756,48 +10955,52 @@ export namespace Meta {
          *
          * If set, the location should correspond to a dock, task bar or other user
          * interface element displaying the icon, and is relative to the root window.
-         * @param rect rectangle with the desired geometry or %NULL.
+         * @param rect rectangle with the desired geometry or `null`.
          */
         set_icon_geometry(rect?: Mtk.Rectangle | null): void;
         shove_titlebar_onscreen(): void;
+        /**
+         * @returns `true` if window would be visible, if its workspace was current
+         */
         showing_on_its_workspace(): boolean;
         shutdown_group(): void;
         stick(): void;
         titlebar_is_onscreen(): boolean;
         unmake_above(): void;
         unmake_fullscreen(): void;
+        /**
+         * @param directions
+         */
         unmaximize(directions: MaximizeFlags | null): void;
         unminimize(): void;
         unset_demands_attention(): void;
         unstick(): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -9807,40 +11010,40 @@ export namespace Meta {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -9850,11 +11053,12 @@ export namespace Meta {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -9870,32 +11074,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -9904,39 +11108,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -9947,13 +11151,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -9961,7 +11168,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -9969,9 +11176,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -9991,9 +11198,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -10007,33 +11214,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -10066,21 +11273,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -10090,8 +11297,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -10108,10 +11315,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -10126,13 +11333,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -10163,21 +11370,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -10187,33 +11394,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -10222,6 +11430,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -10230,12 +11439,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -10244,20 +11455,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -10269,6 +11482,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -10301,9 +11515,36 @@ export namespace Meta {
     namespace WindowActor {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            /**
+             * Notify that one or more of the surfaces of the window have been damaged.
+             * @signal
+             */
             damaged: () => void;
+            /**
+             * The ::effects-completed signal will be emitted once all pending compositor
+             * effects are completed.
+             * @signal
+             */
             'effects-completed': () => void;
+            /**
+             * The ::first-frame signal will be emitted the first time a frame
+             * of window contents has been drawn by the application and Mutter
+             * has had the chance to drawn that frame to the screen. If the
+             * window starts off initially hidden, obscured, or on on a
+             * different workspace, the ::first-frame signal will be emitted
+             * even though the user doesn't see the contents.
+             *
+             * MetaDisplay::window-created is a good place to connect to this
+             * signal - at that point, the MetaWindowActor for the window
+             * exists, but the window has reliably not yet been drawn.
+             * Connecting to an existing window that has already been drawn to
+             * the screen is not useful.
+             * @signal
+             */
             'first-frame': () => void;
+            /**
+             * @signal
+             */
             thawed: () => void;
             'notify::meta-window': (pspec: GObject.ParamSpec) => void;
             'notify::actions': (pspec: GObject.ParamSpec) => void;
@@ -10396,17 +11637,18 @@ export namespace Meta {
     /**
      * An actor representing a top-level window in the scene graph
      *
-     * #MetaWindowActor is a #ClutterActor that adds a notion of a window to the
-     * Clutter scene graph. It contains a #MetaWindow which provides the windowing
-     * API, and the #MetaCompositor that handles it.  For the actual content of the
-     * window, it contains a #MetaSurfaceActor.
+     * {@link Meta.WindowActor} is a {@link Clutter.Actor} that adds a notion of a window to the
+     * Clutter scene graph. It contains a {@link Meta.Window} which provides the windowing
+     * API, and the {@link Meta.Compositor} that handles it.  For the actual content of the
+     * window, it contains a `MetaSurfaceActor`.
      *
-     * #MetaWindowActor takes care of the rendering features you need for your
+     * {@link Meta.WindowActor} takes care of the rendering features you need for your
      * window. For example, it will take the windows' requested opacity and use
-     * that for clutter_actor_set_opacity(). Furthermore, it will also draw a
-     * shadow around the window (using #MetaShadow) and deal with synchronization
+     * that for `clutter_actor_set_opacity()`. Furthermore, it will also draw a
+     * shadow around the window (using {@link Meta.Shadow}) and deal with synchronization
      * between events of the window and the actual render loop. See
      * MetaWindowActor::first-frame for an example of the latter.
+     * @gir-type Class
      */
     abstract class WindowActor<A extends Clutter.Actor = Clutter.Actor>
         extends Clutter.Actor
@@ -10436,16 +11678,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WindowActor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowActor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WindowActor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowActor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WindowActor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WindowActor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10455,9 +11700,9 @@ export namespace Meta {
         // Methods
 
         /**
-         * Freezes the #MetaWindowActor, which inhibits updates and geometry
+         * Freezes the {@link Meta.WindowActor}, which inhibits updates and geometry
          * changes of the window. This property is refcounted, so make sure
-         * to call meta_window_actor_thaw() the exact same amount of times
+         * to call `meta_window_actor_thaw()` the exact same amount of times
          * as this function to allow updates again.
          */
         freeze(): void;
@@ -10465,65 +11710,67 @@ export namespace Meta {
          * Flattens the layers of `self` into one ARGB32 image by alpha blending
          * the images, and returns the flattened image.
          * @param clip A clipping rectangle, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the actor, the rectangle will be clipped.
-         * @returns a new cairo surface to be freed with cairo_surface_destroy().
+         * @returns a new cairo surface to be freed with `cairo_surface_destroy()`.
          */
         get_image(clip?: Mtk.Rectangle | null): cairo.Surface | null;
         /**
-         * Gets the #MetaWindow object that the the #MetaWindowActor is displaying
-         * @returns the displayed #MetaWindow
+         * Gets the {@link Meta.Window} object that the the {@link Meta.WindowActor} is displaying
+         * @returns the displayed {@link Meta.Window}
          */
         get_meta_window(): Window | null;
         /**
          * Gets the ClutterActor that is used to display the contents of the window,
          * or NULL if no texture is shown yet, because the window is not mapped.
-         * @returns the #ClutterActor for the contents
+         * @returns the {@link Clutter.Actor} for the contents
          */
         get_texture(): ShapedTexture | null;
         /**
          * Gets whether the X window that the actor was displaying has been destroyed
-         * @returns %TRUE when the window is destroyed, otherwise %FALSE
+         * @returns `true` when the window is destroyed, otherwise `false`
          */
         is_destroyed(): boolean;
+        /**
+         * @param clip A clipping rectangle, in actor coordinates, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the actor, the rectangle will be clipped.
+         * @returns a new {@link Clutter.Content}
+         */
         paint_to_content(clip?: Mtk.Rectangle | null): Clutter.Content | null;
         sync_visibility(): void;
         /**
-         * Thaws/unfreezes the #MetaWindowActor to allow updates and geometry
-         * changes after a window was frozen using meta_window_actor_freeze().
+         * Thaws/unfreezes the {@link Meta.WindowActor} to allow updates and geometry
+         * changes after a window was frozen using `meta_window_actor_freeze()`.
          */
         thaw(): void;
-
-        // Inherited methods
         /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
+         * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
-         * @returns The #GParamSpec for the given property   or %NULL
+         * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
         /**
          * Get animated actor.
-         * @returns a #ClutterActor
+         * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
+         * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
+         * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
+         * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
          *
          * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
+         * involving {@link Clutter.Animatable}s.
          *
-         * This function replaces clutter_animatable_animate_property().
+         * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
-         * @returns %TRUE if the interpolation was successful,   and %FALSE otherwise
+         * @param interval a {@link Clutter.Interval} with the animation range
+         * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
         /**
@@ -10533,33 +11780,37 @@ export namespace Meta {
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
+         * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
         /**
          * Get animated actor.
+         * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
+         * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
+         * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
+         * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
          *
          * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
+         * involving {@link Clutter.Animatable}s.
          *
-         * This function replaces clutter_animatable_animate_property().
+         * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
+         * @param interval a {@link Clutter.Interval} with the animation range
+         * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @virtual
          */
         vfunc_interpolate_value(
             property_name: string,
@@ -10570,208 +11821,225 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @virtual
          */
         vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
         /**
-         * Gets a container specific property of a child of `container,` In general,
+         * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
-         * freeing the memory by calling g_value_unset().
+         * freeing the memory by calling `g_value_unset()`.
          *
-         * Note that clutter_container_child_set_property() is really intended for
-         * language bindings, clutter_container_child_set() is much more convenient
+         * Note that `clutter_container_child_set_property()` is really intended for
+         * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
          * Sets a container-specific property on a child of `container`.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
          * @param child_name the name of the requested child.
-         * @returns The child actor with the requested name,   or %NULL if no actor with that name was found.
+         * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
-         * @returns the #ClutterChildMeta for the @actor child   of @container or %NULL if the specific actor does not exist or the   container is not configured to provide `ClutterChildMeta`s
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specific actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_added(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_removed(actor: A): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
+         * @virtual
          */
         vfunc_add(actor: A): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
+         * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_remove(actor: A): void;
         /**
-         * Retrieves the id of `scriptable` set using [method`Clutter`.Scriptable.set_id].
+         * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
         /**
          * Parses the passed JSON node. The implementation must set the type
-         * of the passed [struct`GObject`.Value] pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
+         * of the passed {@link GObject.Value} pointer using `g_value_init()`.
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
-         * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
+         * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
+         * {@link Clutter.ScriptableIface}.
          *
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
-         * definition language parsed by [class`Script]`.
-         * @param id_ the #ClutterScript id of the object
+         * definition language parsed by {@link Script}.
+         * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
         /**
-         * Retrieves the id of `scriptable` set using [method`Clutter`.Scriptable.set_id].
+         * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Parses the passed JSON node. The implementation must set the type
-         * of the passed [struct`GObject`.Value] pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
+         * of the passed {@link GObject.Value} pointer using `g_value_init()`.
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @virtual
          */
         vfunc_parse_custom_node(
             script: Clutter.Script,
@@ -10782,19 +12050,21 @@ export namespace Meta {
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
+         * {@link Clutter.ScriptableIface}.
          *
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
-         * definition language parsed by [class`Script]`.
-         * @param id_ the #ClutterScript id of the object
+         * definition language parsed by {@link Script}.
+         * @param id_ the {@link Clutter.Script} id of the object
+         * @virtual
          */
         vfunc_set_id(id_: string): void;
         /**
@@ -10810,32 +12080,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -10844,39 +12114,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -10887,13 +12157,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -10901,7 +12174,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -10909,9 +12182,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -10931,9 +12204,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -10947,33 +12220,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -11006,21 +12279,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -11030,8 +12303,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11048,10 +12321,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -11066,13 +12339,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11103,21 +12376,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11127,33 +12400,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -11162,6 +12436,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -11170,12 +12445,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -11184,20 +12461,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -11209,6 +12488,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -11325,6 +12605,9 @@ export namespace Meta {
                 Clutter.Scriptable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WindowGroup<A extends Clutter.Actor = Clutter.Actor>
         extends Clutter.Actor
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
@@ -11348,54 +12631,55 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WindowGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WindowGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WindowGroup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WindowGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
+         * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
-         * @returns The #GParamSpec for the given property   or %NULL
+         * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
         /**
          * Get animated actor.
-         * @returns a #ClutterActor
+         * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
+         * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
+         * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
+         * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
          *
          * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
+         * involving {@link Clutter.Animatable}s.
          *
-         * This function replaces clutter_animatable_animate_property().
+         * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
-         * @returns %TRUE if the interpolation was successful,   and %FALSE otherwise
+         * @param interval a {@link Clutter.Interval} with the animation range
+         * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
         /**
@@ -11405,33 +12689,37 @@ export namespace Meta {
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Finds the [class`GObject`.ParamSpec] for `property_name`
+         * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
         /**
          * Get animated actor.
+         * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
-         * @param value a #GValue initialized to the type of the property to retrieve
+         * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Asks a #ClutterAnimatable implementation to interpolate a
+         * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
-         * a #ClutterInterval, using `progress` as the interpolation
+         * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
          *
          * This function should be used for every property animation
-         * involving `ClutterAnimatable`s.
+         * involving {@link Clutter.Animatable}s.
          *
-         * This function replaces clutter_animatable_animate_property().
+         * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
-         * @param interval a #ClutterInterval with the animation range
-         * @param progress the progress to use to interpolate between the   initial and final values of the @interval
+         * @param interval a {@link Clutter.Interval} with the animation range
+         * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @virtual
          */
         vfunc_interpolate_value(
             property_name: string,
@@ -11442,208 +12730,225 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @virtual
          */
         vfunc_set_final_state(property_name: string, value: GObject.Value | any): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
         /**
-         * Gets a container specific property of a child of `container,` In general,
+         * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
-         * freeing the memory by calling g_value_unset().
+         * freeing the memory by calling `g_value_unset()`.
          *
-         * Note that clutter_container_child_set_property() is really intended for
-         * language bindings, clutter_container_child_set() is much more convenient
+         * Note that `clutter_container_child_set_property()` is really intended for
+         * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_get_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
          * Sets a container-specific property on a child of `container`.
-         * @param child a #ClutterActor that is a child of @container.
+         * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
         child_set_property(child: A, property: string, value: GObject.Value | any): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
          * @param child_name the name of the requested child.
-         * @returns The child actor with the requested name,   or %NULL if no actor with that name was found.
+         * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
-         * @returns the #ClutterChildMeta for the @actor child   of @container or %NULL if the specific actor does not exist or the   container is not configured to provide `ClutterChildMeta`s
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specific actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_added(actor: A): void;
+        /**
+         * @param actor
+         * @virtual
+         */
         vfunc_actor_removed(actor: A): void;
         /**
-         * Adds a #ClutterActor to `container`. This function will emit the
+         * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
-         * `container`. You cannot add a #ClutterActor to more than one
-         * #ClutterContainer.
+         * `container`. You cannot add a {@link Clutter.Actor} to more than one
+         * {@link Clutter.Container}.
          *
-         * This function will call #ClutterContainerIface.add(), which is a
+         * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
-         * call clutter_actor_add_child().
-         * @param actor the first #ClutterActor to add
+         * call `clutter_actor_add_child()`.
+         * @param actor the first {@link Clutter.Actor} to add
+         * @virtual
          */
         vfunc_add(actor: A): void;
         /**
-         * Calls the #ClutterContainerIface.child_notify() virtual function
-         * of #ClutterContainer. The default implementation will emit the
-         * #ClutterContainer::child-notify signal.
-         * @param child a #ClutterActor
-         * @param pspec a #GParamSpec
+         * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
+         * of {@link Clutter.Container}. The default implementation will emit the
+         * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
+         * @param child a {@link Clutter.Actor}
+         * @param pspec a {@link GObject.ParamSpec}
+         * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
         /**
-         * Creates the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if the #ClutterContainerIface::child_meta_type
-         * class member is not set to %G_TYPE_INVALID.
+         * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
+         * class member is not set to `G_TYPE_INVALID`.
          *
-         * This function is only useful when adding a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when adding a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
         /**
-         * Destroys the #ClutterChildMeta wrapping `actor` inside the
-         * `container,` if any.
+         * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
+         * `container`, if any.
          *
-         * This function is only useful when removing a #ClutterActor to
-         * a #ClutterContainer implementation outside of the
-         * #ClutterContainer::add() virtual function implementation.
+         * This function is only useful when removing a {@link Clutter.Actor} to
+         * a {@link Clutter.Container} implementation outside of the
+         * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
          *
          * Applications should not call this function.
-         * @param actor a #ClutterActor
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
         /**
-         * Retrieves the #ClutterChildMeta which contains the data about the
+         * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
-         * @param actor a #ClutterActor that is a child of @container.
+         * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
-         * yourself, using g_object_ref(). When the actor has been removed,
+         * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
          *
-         * This function will call #ClutterContainerIface.remove(), which is a
+         * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
-         * clutter_actor_remove_child().
-         * @param actor a #ClutterActor
+         * `clutter_actor_remove_child()`.
+         * @param actor a {@link Clutter.Actor}
+         * @virtual
          */
         vfunc_remove(actor: A): void;
         /**
-         * Retrieves the id of `scriptable` set using [method`Clutter`.Scriptable.set_id].
+         * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
         /**
          * Parses the passed JSON node. The implementation must set the type
-         * of the passed [struct`GObject`.Value] pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
+         * of the passed {@link GObject.Value} pointer using `g_value_init()`.
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
-         * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
+         * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
+         * {@link Clutter.ScriptableIface}.
          *
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
-         * definition language parsed by [class`Script]`.
-         * @param id_ the #ClutterScript id of the object
+         * definition language parsed by {@link Script}.
+         * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
         /**
-         * Retrieves the id of `scriptable` set using [method`Clutter`.Scriptable.set_id].
+         * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Parses the passed JSON node. The implementation must set the type
-         * of the passed [struct`GObject`.Value] pointer using g_value_init().
-         * @param script the #ClutterScript creating the scriptable instance
+         * of the passed {@link GObject.Value} pointer using `g_value_init()`.
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @virtual
          */
         vfunc_parse_custom_node(
             script: Clutter.Script,
@@ -11654,19 +12959,21 @@ export namespace Meta {
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
-         * @param script the #ClutterScript creating the scriptable instance
+         * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
-         * #ClutterScriptableIface.
+         * {@link Clutter.ScriptableIface}.
          *
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
-         * definition language parsed by [class`Script]`.
-         * @param id_ the #ClutterScript id of the object
+         * definition language parsed by {@link Script}.
+         * @param id_ the {@link Clutter.Script} id of the object
+         * @virtual
          */
         vfunc_set_id(id_: string): void;
         /**
@@ -11682,32 +12989,32 @@ export namespace Meta {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -11716,39 +13023,39 @@ export namespace Meta {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -11759,13 +13066,16 @@ export namespace Meta {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11773,7 +13083,7 @@ export namespace Meta {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11781,9 +13091,9 @@ export namespace Meta {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11803,9 +13113,9 @@ export namespace Meta {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11819,33 +13129,33 @@ export namespace Meta {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -11878,21 +13188,21 @@ export namespace Meta {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -11902,8 +13212,8 @@ export namespace Meta {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11920,10 +13230,10 @@ export namespace Meta {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -11938,13 +13248,13 @@ export namespace Meta {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11975,21 +13285,21 @@ export namespace Meta {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11999,33 +13309,34 @@ export namespace Meta {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12034,6 +13345,7 @@ export namespace Meta {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12042,12 +13354,14 @@ export namespace Meta {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12056,20 +13370,22 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -12081,6 +13397,7 @@ export namespace Meta {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -12113,7 +13430,13 @@ export namespace Meta {
     namespace Workspace {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'window-added': (arg0: Window) => void;
+            /**
+             * @signal
+             */
             'window-removed': (arg0: Window) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
             'notify::n-windows': (pspec: GObject.ParamSpec) => void;
@@ -12139,6 +13462,7 @@ export namespace Meta {
      * which is the EWMH's name for the same thing.)  Only one workspace
      * of a screen may be active at once; all windows on all other workspaces
      * are unmapped.
+     * @gir-type Class
      */
     class Workspace extends GObject.Object {
         static $gtype: GObject.GType<Workspace>;
@@ -12168,16 +13492,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Workspace.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Workspace.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Workspace.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Workspace.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Workspace.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Workspace.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12186,35 +13513,38 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param timestamp
+         */
         activate(timestamp: number): void;
         /**
          * Switches to `workspace` and possibly activates the window `focus_this`.
          *
-         * The window `focus_this` is activated by calling meta_window_activate()
+         * The window `focus_this` is activated by calling `meta_window_activate()`
          * which will unminimize it and transient parents, raise it and give it
          * the focus.
          *
          * If a window is currently being moved by the user, it will be
          * moved to `workspace`.
          *
-         * The advantage of calling this function instead of meta_workspace_activate()
-         * followed by meta_window_activate() is that it happens as a unit, so
+         * The advantage of calling this function instead of `meta_workspace_activate()`
+         * followed by `meta_window_activate()` is that it happens as a unit, so
          * no other window gets focused first before `focus_this`.
-         * @param focus_this the #MetaWindow to be focused, or %NULL
-         * @param timestamp timestamp for @focus_this
+         * @param focus_this the {@link Meta.Window} to be focused, or `null`
+         * @param timestamp timestamp for `focus_this`
          */
         activate_with_focus(focus_this: Window, timestamp: number): void;
         /**
-         * Gets the #MetaDisplay that the workspace is part of.
-         * @returns the #MetaDisplay for the workspace
+         * Gets the {@link Meta.Display} that the workspace is part of.
+         * @returns the {@link Meta.Display} for the workspace
          */
         get_display(): Display;
         /**
-         * Calculate and retrieve the workspace that is next to `workspace,`
+         * Calculate and retrieve the workspace that is next to `workspace`,
          * according to `direction` and the current workspace layout, as set
-         * by meta_screen_override_workspace_layout().
-         * @param direction a #MetaMotionDirection, relative to @workspace
-         * @returns the workspace next to @workspace, or   @workspace itself if the neighbor would be outside the layout
+         * by `meta_screen_override_workspace_layout()`.
+         * @param direction a {@link Meta.MotionDirection}, relative to `workspace`
+         * @returns the workspace next to `workspace`, or   `workspace` itself if the neighbor would be outside the layout
          */
         get_neighbor(direction: MotionDirection | null): Workspace;
         /**
@@ -12238,7 +13568,7 @@ export namespace Meta {
          * Sets a list of struts that will be used in addition to the struts
          * of the windows in the workspace when computing the work area of
          * the workspace.
-         * @param struts list of #MetaStrut
+         * @param struts list of {@link Meta.Strut}
          */
         set_builtin_struts(struts: Strut[]): void;
     }
@@ -12246,11 +13576,29 @@ export namespace Meta {
     namespace WorkspaceManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'active-workspace-changed': () => void;
+            /**
+             * @signal
+             */
             'showing-desktop-changed': () => void;
+            /**
+             * @signal
+             */
             'workspace-added': (arg0: number) => void;
+            /**
+             * @signal
+             */
             'workspace-removed': (arg0: number) => void;
+            /**
+             * @signal
+             */
             'workspace-switched': (arg0: number, arg1: number, arg2: MotionDirection) => void;
+            /**
+             * @signal
+             */
             'workspaces-reordered': () => void;
             'notify::layout-columns': (pspec: GObject.ParamSpec) => void;
             'notify::layout-rows': (pspec: GObject.ParamSpec) => void;
@@ -12269,6 +13617,9 @@ export namespace Meta {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceManager extends GObject.Object {
         static $gtype: GObject.GType<WorkspaceManager>;
 
@@ -12298,16 +13649,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12319,29 +13673,32 @@ export namespace Meta {
         /**
          * Append a new workspace to the workspace manager and (optionally) switch to that
          * display.
-         * @param activate %TRUE if the workspace should be switched to after creation
+         * @param activate `true` if the workspace should be switched to after creation
          * @param timestamp if switching to a new workspace, timestamp to be used when   focusing a window on the new workspace. (Doesn't hurt to pass a valid   timestamp when available even if not switching workspaces.)
          * @returns the newly appended workspace.
          */
         append_new_workspace(activate: boolean, timestamp: number): Workspace;
+        /**
+         * @returns The current workspace
+         */
         get_active_workspace(): Workspace;
         get_active_workspace_index(): number;
         get_n_workspaces(): number;
         /**
          * Gets the workspace object for one of a workspace manager's workspaces given the workspace
          * index. It's valid to call this function with an out-of-range index and it
-         * will robustly return %NULL.
+         * will robustly return `null`.
          * @param index index of one of the display's workspaces
-         * @returns the workspace object with specified   index, or %NULL if the index is out of range.
+         * @returns the workspace object with specified   index, or `null` if the index is out of range.
          */
         get_workspace_by_index(index: number): Workspace | null;
         /**
          * Explicitly set the layout of workspaces. Once this has been called, the contents of the
          * _NET_DESKTOP_LAYOUT property on the root window are completely ignored.
          * @param starting_corner the corner at which the first workspace is found
-         * @param vertical_layout if %TRUE the workspaces are laid out in columns rather than rows
-         * @param n_rows number of rows of workspaces, or -1 to determine the number of rows from   @n_columns and the total number of workspaces
-         * @param n_columns number of columns of workspaces, or -1 to determine the number of columns from   @n_rows and the total number of workspaces
+         * @param vertical_layout if `true` the workspaces are laid out in columns rather than rows
+         * @param n_rows number of rows of workspaces, or -1 to determine the number of rows from   `n_columns` and the total number of workspaces
+         * @param n_columns number of columns of workspaces, or -1 to determine the number of columns from   `n_rows` and the total number of workspaces
          */
         override_workspace_layout(
             starting_corner: DisplayCorner | null,
@@ -12349,6 +13706,10 @@ export namespace Meta {
             n_rows: number,
             n_columns: number,
         ): void;
+        /**
+         * @param workspace
+         * @param timestamp
+         */
         remove_workspace(workspace: Workspace, timestamp: number): void;
         /**
          * Reorder a workspace to a new index. If the workspace is currently active
@@ -12357,7 +13718,7 @@ export namespace Meta {
          * will not be found in the list, this function will return.
          *
          * Calling this function will also emit the "workspaces-reordered" signal.
-         * @param workspace a #MetaWorkspace to reorder
+         * @param workspace a {@link Meta.Workspace} to reorder
          * @param new_index the new index of the passed workspace
          */
         reorder_workspace(workspace: Workspace, new_index: number): void;
@@ -12375,7 +13736,8 @@ export namespace Meta {
     /**
      * Mutter X display handler
      *
-     * The X11 display is represented as a #MetaX11Display struct.
+     * The X11 display is represented as a {@link Meta.X11Display} struct.
+     * @gir-type Class
      */
     class X11Display extends GObject.Object {
         static $gtype: GObject.GType<X11Display>;
@@ -12397,16 +13759,19 @@ export namespace Meta {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11Display.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12415,18 +13780,51 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param display
+         */
         redirect_windows(display: Display): void;
+        /**
+         * @param region
+         */
         set_stage_input_region(region: xfixes.XserverRegion): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BackendClass = typeof Backend;
+    /**
+     * @gir-type Alias
+     */
     type BackgroundActorClass = typeof BackgroundActor;
+    /**
+     * @gir-type Alias
+     */
     type BackgroundClass = typeof Background;
+    /**
+     * @gir-type Alias
+     */
     type BackgroundContentClass = typeof BackgroundContent;
+    /**
+     * @gir-type Alias
+     */
     type BackgroundGroupClass = typeof BackgroundGroup;
+    /**
+     * @gir-type Alias
+     */
     type BackgroundImageCacheClass = typeof BackgroundImageCache;
+    /**
+     * @gir-type Alias
+     */
     type BackgroundImageClass = typeof BackgroundImage;
+    /**
+     * @gir-type Alias
+     */
     type BarrierClass = typeof Barrier;
+    /**
+     * @gir-type Struct
+     */
     class BarrierEvent {
         static $gtype: GObject.GType<BarrierEvent>;
 
@@ -12459,6 +13857,9 @@ export namespace Meta {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ButtonLayout {
         static $gtype: GObject.GType<ButtonLayout>;
 
@@ -12470,12 +13871,33 @@ export namespace Meta {
         right_buttons_has_spacer: boolean[];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CloseDialogInterface = typeof CloseDialog;
+    /**
+     * @gir-type Alias
+     */
     type CompositorClass = typeof Compositor;
+    /**
+     * @gir-type Alias
+     */
     type ContextClass = typeof Context;
+    /**
+     * @gir-type Alias
+     */
     type CursorTrackerClass = typeof CursorTracker;
+    /**
+     * @gir-type Alias
+     */
     type DisplayClass = typeof Display;
+    /**
+     * @gir-type Alias
+     */
     type DndClass = typeof Dnd;
+    /**
+     * @gir-type Struct
+     */
     class Edge {
         static $gtype: GObject.GType<Edge>;
 
@@ -12486,10 +13908,16 @@ export namespace Meta {
         edge_type: EdgeType;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Frame {
         static $gtype: GObject.GType<Frame>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class FrameBorder {
         static $gtype: GObject.GType<FrameBorder>;
 
@@ -12512,6 +13940,9 @@ export namespace Meta {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class FrameBorders {
         static $gtype: GObject.GType<FrameBorders>;
 
@@ -12536,8 +13967,17 @@ export namespace Meta {
         clear(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IdleMonitorClass = typeof IdleMonitor;
+    /**
+     * @gir-type Alias
+     */
     type InhibitShortcutsDialogInterface = typeof InhibitShortcutsDialog;
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyBinding {
         static $gtype: GObject.GType<KeyBinding>;
 
@@ -12550,11 +13990,29 @@ export namespace Meta {
         is_reversed(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LatersClass = typeof Laters;
+    /**
+     * @gir-type Alias
+     */
     type LaunchContextClass = typeof LaunchContext;
+    /**
+     * @gir-type Alias
+     */
     type MonitorManagerClass = typeof MonitorManager;
+    /**
+     * @gir-type Alias
+     */
     type MultiTextureClass = typeof MultiTexture;
+    /**
+     * @gir-type Alias
+     */
     type PluginClass = typeof Plugin;
+    /**
+     * @gir-type Struct
+     */
     class PluginInfo {
         static $gtype: GObject.GType<PluginInfo>;
 
@@ -12579,11 +14037,29 @@ export namespace Meta {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RemoteAccessControllerClass = typeof RemoteAccessController;
+    /**
+     * @gir-type Alias
+     */
     type RemoteAccessHandleClass = typeof RemoteAccessHandle;
+    /**
+     * @gir-type Alias
+     */
     type SelectionClass = typeof Selection;
+    /**
+     * @gir-type Alias
+     */
     type SelectionSourceClass = typeof SelectionSource;
+    /**
+     * @gir-type Alias
+     */
     type SelectionSourceMemoryClass = typeof SelectionSourceMemory;
+    /**
+     * @gir-type Struct
+     */
     abstract class Settings {
         static $gtype: GObject.GType<Settings>;
 
@@ -12599,6 +14075,7 @@ export namespace Meta {
      *
      * E.g., it knows how big the unscaled borders are on each
      * side of the shadow texture.
+     * @gir-type Struct
      */
     abstract class Shadow {
         static $gtype: GObject.GType<Shadow>;
@@ -12607,7 +14084,7 @@ export namespace Meta {
 
         /**
          * Computes the bounds of the pixels that will be affected by
-         * meta_shadow_paint()
+         * `meta_shadow_paint()`
          * @param window_x x position of the region to paint a shadow for
          * @param window_y y position of the region to paint a shadow for
          * @param window_width actual width of the region to paint a shadow for
@@ -12625,16 +14102,16 @@ export namespace Meta {
          * Paints the shadow at the given position, for the specified actual
          * size of the region.
          *
-         * Since a #MetaShadow can be shared between different sizes with
-         * the same extracted [struct`Meta`.WindowShape] the size needs to be passed in here.
+         * Since a {@link Meta.Shadow} can be shared between different sizes with
+         * the same extracted {@link Meta.WindowShape} the size needs to be passed in here.
          * @param framebuffer
          * @param window_x x position of the region to paint a shadow for
          * @param window_y y position of the region to paint a shadow for
          * @param window_width actual width of the region to paint a shadow for
          * @param window_height actual height of the region to paint a shadow for
          * @param opacity
-         * @param clip if non-%NULL specifies the visible portion   of the shadow.
-         * @param clip_strictly if %TRUE, drawing will be clipped strictly   to @clip, otherwise, it will be only used to optimize   drawing.
+         * @param clip if non-`null` specifies the visible portion   of the shadow.
+         * @param clip_strictly if `true`, drawing will be clipped strictly   to `clip`, otherwise, it will be only used to optimize   drawing.
          */
         paint(
             framebuffer: Cogl.Framebuffer,
@@ -12650,9 +14127,13 @@ export namespace Meta {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ShadowFactoryClass = typeof ShadowFactory;
     /**
      * Information about how to draw a particular style of shadow.
+     * @gir-type Struct
      */
     class ShadowParams {
         static $gtype: GObject.GType<ShadowParams>;
@@ -12678,11 +14159,29 @@ export namespace Meta {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ShapedTextureClass = typeof ShapedTexture;
+    /**
+     * @gir-type Alias
+     */
     type SoundPlayerClass = typeof SoundPlayer;
+    /**
+     * @gir-type Alias
+     */
     type StageClass = typeof Stage;
+    /**
+     * @gir-type Alias
+     */
     type StartupNotificationClass = typeof StartupNotification;
+    /**
+     * @gir-type Alias
+     */
     type StartupSequenceClass = typeof StartupSequence;
+    /**
+     * @gir-type Struct
+     */
     class Strut {
         static $gtype: GObject.GType<Strut>;
 
@@ -12692,10 +14191,25 @@ export namespace Meta {
         side: Side;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WaylandClientClass = typeof WaylandClient;
+    /**
+     * @gir-type Alias
+     */
     type WaylandCompositorClass = typeof WaylandCompositor;
+    /**
+     * @gir-type Alias
+     */
     type WindowActorClass = typeof WindowActor;
+    /**
+     * @gir-type Alias
+     */
     type WindowClass = typeof Window;
+    /**
+     * @gir-type Alias
+     */
     type WindowGroupClass = typeof WindowGroup;
     /**
      * Represents a 9-sliced region with borders on all sides that
@@ -12704,8 +14218,9 @@ export namespace Meta {
      * For example, the regions representing two windows that are rounded rectangles,
      * with the same corner radius but different sizes, have the same MetaWindowShape.
      *
-     * #MetaWindowShape is designed to be used as part of a hash table key, so has
+     * {@link Meta.WindowShape} is designed to be used as part of a hash table key, so has
      * efficient hash and equal functions.
+     * @gir-type Struct
      */
     class WindowShape {
         static $gtype: GObject.GType<WindowShape>;
@@ -12718,7 +14233,16 @@ export namespace Meta {
 
         // Methods
 
+        /**
+         * @param shape_b
+         */
         equal(shape_b: WindowShape): boolean;
+        /**
+         * @param border_top
+         * @param border_right
+         * @param border_bottom
+         * @param border_left
+         */
         get_borders(border_top: number, border_right: number, border_bottom: number, border_left: number): void;
         hash(): number;
         ref(): WindowShape;
@@ -12733,8 +14257,17 @@ export namespace Meta {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceClass = typeof Workspace;
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceManagerClass = typeof WorkspaceManager;
+    /**
+     * @gir-type Alias
+     */
     type X11DisplayClass = typeof X11Display;
     namespace CloseDialog {
         /**
@@ -12747,14 +14280,17 @@ export namespace Meta {
             /**
              * Call whenever `dialog` should receive keyboard focus,
              * usually when the window would.
+             * @virtual
              */
             vfunc_focus(): void;
             /**
              * Hides the close dialog.
+             * @virtual
              */
             vfunc_hide(): void;
             /**
              * Shows the close dialog.
+             * @virtual
              */
             vfunc_show(): void;
         }
@@ -12770,6 +14306,9 @@ export namespace Meta {
         $gtype: GObject.GType<CloseDialog>;
         prototype: CloseDialog;
     }
+    /**
+     * @gir-type Interface
+     */
     interface CloseDialog extends GObject.Object, CloseDialog.Interface {
         // Properties
 
@@ -12788,13 +14327,13 @@ export namespace Meta {
         hide(): void;
         /**
          * Returns whether `dialog` is currently visible.
-         * @returns #TRUE if @dialog is visible.
+         * @returns `TRUE` if `dialog` is visible.
          */
         is_visible(): boolean;
         /**
-         * Responds and closes the dialog. To be called by #MetaCloseDialog
+         * Responds and closes the dialog. To be called by {@link Meta.CloseDialog}
          * implementations.
-         * @param response a #MetaCloseDialogResponse
+         * @param response a {@link Meta.CloseDialogResponse}
          */
         response(response: CloseDialogResponse | null): void;
         /**
@@ -12817,10 +14356,12 @@ export namespace Meta {
 
             /**
              * Hides the inhibit shortcuts dialog.
+             * @virtual
              */
             vfunc_hide(): void;
             /**
              * Shows the inhibit shortcuts dialog.
+             * @virtual
              */
             vfunc_show(): void;
         }
@@ -12836,6 +14377,9 @@ export namespace Meta {
         $gtype: GObject.GType<InhibitShortcutsDialog>;
         prototype: InhibitShortcutsDialog;
     }
+    /**
+     * @gir-type Interface
+     */
     interface InhibitShortcutsDialog extends GObject.Object, InhibitShortcutsDialog.Interface {
         // Properties
 
@@ -12848,9 +14392,9 @@ export namespace Meta {
          */
         hide(): void;
         /**
-         * Responds and closes the dialog. To be called by #MetaInhibitShortcutsDialog
+         * Responds and closes the dialog. To be called by {@link Meta.InhibitShortcutsDialog}
          * implementations.
-         * @param response a #MetaInhibitShortcutsDialogResponse
+         * @param response a {@link Meta.InhibitShortcutsDialogResponse}
          */
         response(response: InhibitShortcutsDialogResponse | null): void;
         /**

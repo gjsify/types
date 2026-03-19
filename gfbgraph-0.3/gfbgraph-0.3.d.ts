@@ -23,16 +23,19 @@ export namespace GFBGraph {
      * GFBGraph-0.3
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum NodeError {
         CONNECTIONABLE,
         CONNECTABLE,
     }
 
     /**
-     * Create a new #RestProxyCall pointing to the Facebook Graph API url (https://graph.facebook.com)
+     * Create a new {@link Rest.ProxyCall} pointing to the Facebook Graph API url (https://graph.facebook.com)
      * and processed by the authorizer to allow queries.
-     * @param authorizer a #GFBGraphAuthorizer.
-     * @returns a new #RestProxyCall or %NULL in case of error.
+     * @param authorizer a {@link GFBGraph.Authorizer}.
+     * @returns a new {@link Rest.ProxyCall} or `null` in case of error.
      */
     function new_rest_call(authorizer: Authorizer): Rest.ProxyCall;
     namespace Album {
@@ -59,6 +62,9 @@ export namespace GFBGraph {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Album extends Node implements Connectable {
         static $gtype: GObject.GType<Album>;
 
@@ -105,16 +111,19 @@ export namespace GFBGraph {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Album.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Album.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Album.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Album.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Album.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Album.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -123,119 +132,132 @@ export namespace GFBGraph {
 
         // Methods
 
+        /**
+         * @returns the number of photos into the `album` or -1 in case of error.
+         */
         get_count(): number;
         get_cover_photo_id(): string;
+        /**
+         * @returns the `album` description, or `null`.
+         */
         get_description(): string;
+        /**
+         * @returns the `album` name, or `null`.
+         */
         get_name(): string;
         /**
          * Sets the description for the `album`.
-         * @param description a const pointer to a #gchar.
+         * @param description a const pointer to a `gchar`.
          */
         set_description(description: string): void;
         /**
          * Sets the name for the `album`.
-         * @param name a const pointer to a #gchar.
+         * @param name a const pointer to a `gchar`.
          */
         set_name(name: string): void;
-
-        // Inherited properties
+        /** @category Inherited from GFBGraph.Node */
         get created_time(): string;
         set created_time(val: string);
+        /** @category Inherited from GFBGraph.Node */
         get createdTime(): string;
         set createdTime(val: string);
         /**
          * The node ID. All nodes have one of this.
+         * @category Inherited from GFBGraph.Node
          */
         get id(): string;
         set id(val: string);
         /**
          * The node link. An URL to the node on Facebook.
+         * @category Inherited from GFBGraph.Node
          */
         get link(): string;
         set link(val: string);
+        /** @category Inherited from GFBGraph.Node */
         get updated_time(): string;
         set updated_time(val: string);
+        /** @category Inherited from GFBGraph.Node */
         get updatedTime(): string;
         set updatedTime(val: string);
-
-        // Inherited methods
         /**
-         * In most cases, #GFBGraphConnectable implementers can use this function in order to parse
-         * the response when a gfbgraph_node_get_connection_nodes() is executed and the
-         * gfbgraph_connectable_parse_connected_data() was called.
+         * In most cases, {@link GFBGraph.Connectable} implementers can use this function in order to parse
+         * the response when a `gfbgraph_node_get_connection_nodes()` is executed and the
+         * `gfbgraph_connectable_parse_connected_data()` was called.
          *
          * Normally, Facebook Graph API returns the connections in the same way, using JSON objects,
          * with a root object called "data".
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
-         * @returns a newly-allocated #GList of #GFBGraphNode with the same #GType as @self.
+         * @param payload a const `gchar` with the response string from the Facebook Graph API.
+         * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} with the same {@link GObject.GType} as `self`.
          */
         default_parse_connected_data(payload: string): Node[];
         /**
          * Get the Facebook Graph API function path to retrieve the nodes connected with `node_type`
-         * managed by the #GFBGraphConnectable object.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns a const #gchar with the function path or %NULL.
+         * managed by the {@link GFBGraph.Connectable} object.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns a const `gchar` with the function path or `null`.
          */
         get_connection_path(node_type: GObject.GType): string;
         /**
          * Get the params to be inserted in a request to the Facebook Graph API
          * in order to append the node `self` to a node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns A string based #GHashTable with the params and his values or %NULL.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns A string based {@link GLib.HashTable} with the params and his values or `null`.
          */
         get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
         /**
-         * Check if `self` object, normally a #GFBGraphNode implementing the #GFBGraphConnectable interface,
+         * Check if `self` object, normally a {@link GFBGraph.Node} implementing the {@link GFBGraph.Connectable} interface,
          * has the possibility to be connected to another node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns %TRUE in case that the @self object can be connected to a node of type @node_type, %FALSE otherwise.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns `true` in case that the `self` object can be connected to a node of type `node_type`, `false` otherwise.
          */
         is_connectable_to(node_type: GObject.GType): boolean;
         /**
-         * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
+         * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
          * executed.
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
-         * @returns a newly-allocated #GList of #GFBGraphNode created from the @payload or %NULL.
+         * @param payload a const `gchar` with the response string from the Facebook Graph API.
+         * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} created from the `payload` or `null`.
          */
         parse_connected_data(payload: string): Node[];
         /**
          * Get the params to be inserted in a request to the Facebook Graph API
          * in order to append the node `self` to a node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @virtual
          */
         vfunc_get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
         /**
-         * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
+         * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
          * executed.
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
+         * @param payload a const `gchar` with the response string from the Facebook Graph API.
+         * @virtual
          */
         vfunc_parse_connected_data(payload: string): Node[];
         /**
-         * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
+         * Appends `connect_node` to `node`. `connect_node` must implement the {@link GFBGraph.Connectable} interface
          * and be connectable to `node` GType.
-         * @param connect_node A #GFBGraphNode.
-         * @param authorizer A #GFBGraphAuthorizer.
+         * @param connect_node A {@link GFBGraph.Node}.
+         * @param authorizer A {@link GFBGraph.Authorizer}.
          * @returns TRUE on sucess, FALSE if an error ocurred.
          */
         append_connection(connect_node: Node, authorizer: Authorizer): boolean;
         /**
          * Retrieve the nodes of type `node_type` connected to the `node` object. The `node_type` object must
-         * implement the #GFBGraphConnectionable interface and be connectable to `node` type object.
-         * See gfbgraph_node_get_connection_nodes_async() for the asynchronous version of this call.
-         * @param node_type a #GFBGraphNode type #GType that determines the kind of nodes to retrieve.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @returns a newly-allocated #GList of type @node_type objects with the found nodes.
+         * implement the `GFBGraphConnectionable` interface and be connectable to `node` type object.
+         * See `gfbgraph_node_get_connection_nodes_async()` for the asynchronous version of this call.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that determines the kind of nodes to retrieve.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @returns a newly-allocated {@link GLib.List} of type `node_type` objects with the found nodes.
          */
         get_connection_nodes(node_type: GObject.GType, authorizer: Authorizer): Node[];
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -244,14 +266,14 @@ export namespace GFBGraph {
         ): globalThis.Promise<Node[]>;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -261,14 +283,14 @@ export namespace GFBGraph {
         ): void;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -278,9 +300,9 @@ export namespace GFBGraph {
         ): globalThis.Promise<Node[]> | void;
         /**
          * Finishes an asynchronous operation started with
-         * gfbgraph_node_get_connection_nodes_async().
-         * @param result A #GAsyncResult.
-         * @returns a newly-allocated #GList of type #node_type objects with the found nodes.
+         * `gfbgraph_node_get_connection_nodes_async()`.
+         * @param result A {@link Gio.AsyncResult}.
+         * @returns a newly-allocated {@link GLib.List} of type `node_type` objects with the found nodes.
          */
         get_connection_nodes_async_finish(result: Gio.AsyncResult): Node[];
         /**
@@ -302,7 +324,7 @@ export namespace GFBGraph {
         /**
          * Sets the ID for a node. Just useful when a new node is created
          * and the Graph API returns the ID of the new created node.
-         * @param id a const pointer to a #gchar.
+         * @param id a const pointer to a `gchar`.
          */
         set_id(id: string): void;
     }
@@ -316,6 +338,9 @@ export namespace GFBGraph {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
 
@@ -336,28 +361,29 @@ export namespace GFBGraph {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Adds the necessary authorization to `call`.
          *
          * This method modifies `call` in place and is thread safe.
-         * @param call A #RestProxyCall.
+         * @param call A {@link Rest.ProxyCall}.
          */
         process_call(call: Rest.ProxyCall): void;
         /**
@@ -365,7 +391,7 @@ export namespace GFBGraph {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
          */
         process_message(message: Soup.Message): void;
         /**
@@ -373,15 +399,16 @@ export namespace GFBGraph {
          * held by it.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Adds the necessary authorization to `call`.
          *
          * This method modifies `call` in place and is thread safe.
-         * @param call A #RestProxyCall.
+         * @param call A {@link Rest.ProxyCall}.
+         * @virtual
          */
         vfunc_process_call(call: Rest.ProxyCall): void;
         /**
@@ -389,7 +416,8 @@ export namespace GFBGraph {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
+         * @virtual
          */
         vfunc_process_message(message: Soup.Message): void;
         /**
@@ -397,7 +425,8 @@ export namespace GFBGraph {
          * held by it.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or %NULL.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @virtual
          */
         vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -413,32 +442,32 @@ export namespace GFBGraph {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -447,39 +476,39 @@ export namespace GFBGraph {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -490,13 +519,16 @@ export namespace GFBGraph {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -504,7 +536,7 @@ export namespace GFBGraph {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -512,9 +544,9 @@ export namespace GFBGraph {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -534,9 +566,9 @@ export namespace GFBGraph {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -550,33 +582,33 @@ export namespace GFBGraph {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -609,21 +641,21 @@ export namespace GFBGraph {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -633,8 +665,8 @@ export namespace GFBGraph {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -651,10 +683,10 @@ export namespace GFBGraph {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -669,13 +701,13 @@ export namespace GFBGraph {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -706,21 +738,21 @@ export namespace GFBGraph {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -730,33 +762,34 @@ export namespace GFBGraph {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -765,6 +798,7 @@ export namespace GFBGraph {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -773,12 +807,14 @@ export namespace GFBGraph {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -787,20 +823,22 @@ export namespace GFBGraph {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -812,6 +850,7 @@ export namespace GFBGraph {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -862,6 +901,9 @@ export namespace GFBGraph {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
@@ -907,16 +949,19 @@ export namespace GFBGraph {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Node.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Node.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -930,31 +975,31 @@ export namespace GFBGraph {
         // Methods
 
         /**
-         * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
+         * Appends `connect_node` to `node`. `connect_node` must implement the {@link GFBGraph.Connectable} interface
          * and be connectable to `node` GType.
-         * @param connect_node A #GFBGraphNode.
-         * @param authorizer A #GFBGraphAuthorizer.
+         * @param connect_node A {@link GFBGraph.Node}.
+         * @param authorizer A {@link GFBGraph.Authorizer}.
          * @returns TRUE on sucess, FALSE if an error ocurred.
          */
         append_connection(connect_node: Node, authorizer: Authorizer): boolean;
         /**
          * Retrieve the nodes of type `node_type` connected to the `node` object. The `node_type` object must
-         * implement the #GFBGraphConnectionable interface and be connectable to `node` type object.
-         * See gfbgraph_node_get_connection_nodes_async() for the asynchronous version of this call.
-         * @param node_type a #GFBGraphNode type #GType that determines the kind of nodes to retrieve.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @returns a newly-allocated #GList of type @node_type objects with the found nodes.
+         * implement the `GFBGraphConnectionable` interface and be connectable to `node` type object.
+         * See `gfbgraph_node_get_connection_nodes_async()` for the asynchronous version of this call.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that determines the kind of nodes to retrieve.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @returns a newly-allocated {@link GLib.List} of type `node_type` objects with the found nodes.
          */
         get_connection_nodes(node_type: GObject.GType, authorizer: Authorizer): Node[];
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -963,14 +1008,14 @@ export namespace GFBGraph {
         ): globalThis.Promise<Node[]>;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -980,14 +1025,14 @@ export namespace GFBGraph {
         ): void;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -997,9 +1042,9 @@ export namespace GFBGraph {
         ): globalThis.Promise<Node[]> | void;
         /**
          * Finishes an asynchronous operation started with
-         * gfbgraph_node_get_connection_nodes_async().
-         * @param result A #GAsyncResult.
-         * @returns a newly-allocated #GList of type #node_type objects with the found nodes.
+         * `gfbgraph_node_get_connection_nodes_async()`.
+         * @param result A {@link Gio.AsyncResult}.
+         * @returns a newly-allocated {@link GLib.List} of type `node_type` objects with the found nodes.
          */
         get_connection_nodes_async_finish(result: Gio.AsyncResult): Node[];
         /**
@@ -1021,7 +1066,7 @@ export namespace GFBGraph {
         /**
          * Sets the ID for a node. Just useful when a new node is created
          * and the Graph API returns the ID of the new created node.
-         * @param id a const pointer to a #gchar.
+         * @param id a const pointer to a `gchar`.
          */
         set_id(id: string): void;
     }
@@ -1052,6 +1097,9 @@ export namespace GFBGraph {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Photo extends Node implements Connectable, Json.Serializable {
         static $gtype: GObject.GType<Photo>;
 
@@ -1104,16 +1152,19 @@ export namespace GFBGraph {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Photo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Photo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Photo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Photo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Photo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Photo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1123,95 +1174,114 @@ export namespace GFBGraph {
         // Methods
 
         /**
-         * Download the default sized photo pointed by `photo,` with a maximum width or height of 720px.
+         * Download the default sized photo pointed by `photo`, with a maximum width or height of 720px.
          * The photo always is a JPEG.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @returns a #GInputStream with the photo content or %NULL in case of error.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @returns a {@link Gio.InputStream} with the photo content or `null` in case of error.
          */
         download_default_size(authorizer: Authorizer): Gio.InputStream;
         get_default_height(): number;
         get_default_source_uri(): string;
         get_default_width(): number;
+        /**
+         * @returns a {@link GFBGraph.PhotoImage} with the higher resolution available of the photo
+         */
         get_image_hires(): PhotoImage;
+        /**
+         * @param height
+         */
         get_image_near_height(height: number): PhotoImage;
+        /**
+         * @param width
+         */
         get_image_near_width(width: number): PhotoImage;
+        /**
+         * @returns a {@link GLib.List} of {@link GFBGraph.PhotoImage} with the available photo sizes
+         */
         get_images(): PhotoImage[];
+        /**
+         * @returns the `photo` name, which is the comment given by the user so it would by larger, or `null`.
+         */
         get_name(): string;
-
-        // Inherited properties
+        /** @category Inherited from GFBGraph.Node */
         get created_time(): string;
         set created_time(val: string);
+        /** @category Inherited from GFBGraph.Node */
         get createdTime(): string;
         set createdTime(val: string);
         /**
          * The node ID. All nodes have one of this.
+         * @category Inherited from GFBGraph.Node
          */
         get id(): string;
         set id(val: string);
         /**
          * The node link. An URL to the node on Facebook.
+         * @category Inherited from GFBGraph.Node
          */
         get link(): string;
         set link(val: string);
+        /** @category Inherited from GFBGraph.Node */
         get updated_time(): string;
         set updated_time(val: string);
+        /** @category Inherited from GFBGraph.Node */
         get updatedTime(): string;
         set updatedTime(val: string);
-
-        // Inherited methods
         /**
-         * In most cases, #GFBGraphConnectable implementers can use this function in order to parse
-         * the response when a gfbgraph_node_get_connection_nodes() is executed and the
-         * gfbgraph_connectable_parse_connected_data() was called.
+         * In most cases, {@link GFBGraph.Connectable} implementers can use this function in order to parse
+         * the response when a `gfbgraph_node_get_connection_nodes()` is executed and the
+         * `gfbgraph_connectable_parse_connected_data()` was called.
          *
          * Normally, Facebook Graph API returns the connections in the same way, using JSON objects,
          * with a root object called "data".
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
-         * @returns a newly-allocated #GList of #GFBGraphNode with the same #GType as @self.
+         * @param payload a const `gchar` with the response string from the Facebook Graph API.
+         * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} with the same {@link GObject.GType} as `self`.
          */
         default_parse_connected_data(payload: string): Node[];
         /**
          * Get the Facebook Graph API function path to retrieve the nodes connected with `node_type`
-         * managed by the #GFBGraphConnectable object.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns a const #gchar with the function path or %NULL.
+         * managed by the {@link GFBGraph.Connectable} object.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns a const `gchar` with the function path or `null`.
          */
         get_connection_path(node_type: GObject.GType): string;
         /**
          * Get the params to be inserted in a request to the Facebook Graph API
          * in order to append the node `self` to a node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns A string based #GHashTable with the params and his values or %NULL.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns A string based {@link GLib.HashTable} with the params and his values or `null`.
          */
         get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
         /**
-         * Check if `self` object, normally a #GFBGraphNode implementing the #GFBGraphConnectable interface,
+         * Check if `self` object, normally a {@link GFBGraph.Node} implementing the {@link GFBGraph.Connectable} interface,
          * has the possibility to be connected to another node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns %TRUE in case that the @self object can be connected to a node of type @node_type, %FALSE otherwise.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns `true` in case that the `self` object can be connected to a node of type `node_type`, `false` otherwise.
          */
         is_connectable_to(node_type: GObject.GType): boolean;
         /**
-         * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
+         * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
          * executed.
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
-         * @returns a newly-allocated #GList of #GFBGraphNode created from the @payload or %NULL.
+         * @param payload a const `gchar` with the response string from the Facebook Graph API.
+         * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} created from the `payload` or `null`.
          */
         parse_connected_data(payload: string): Node[];
         /**
          * Get the params to be inserted in a request to the Facebook Graph API
          * in order to append the node `self` to a node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @virtual
          */
         vfunc_get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
         /**
-         * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
+         * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
          * executed.
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
+         * @param payload a const `gchar` with the response string from the Facebook Graph API.
+         * @virtual
          */
         vfunc_parse_connected_data(payload: string): Node[];
         /**
-         * Calls the default implementation of the [vfunc`Json`.Serializable.deserialize_property]
+         * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
          * virtual function.
          *
          * This function can be used inside a custom implementation of the
@@ -1241,7 +1311,7 @@ export namespace GFBGraph {
             property_node: Json.Node,
         ): boolean;
         /**
-         * Calls the default implementation of the [vfunc`Json`.Serializable.serialize_property]
+         * Calls the default implementation of the {@link Json.Serializable.serialize_property}
          * virtual function.
          *
          * This function can be used inside a custom implementation of the
@@ -1271,16 +1341,16 @@ export namespace GFBGraph {
             pspec: GObject.ParamSpec,
         ): Json.Node | null;
         /**
-         * Asks a `JsonSerializable` implementation to deserialize the
+         * Asks a {@link Json.Serializable} implementation to deserialize the
          * property contained inside `property_node` and place its value
          * into `value`.
          *
          * The `value` can be:
          *
-         * - an empty `GValue` initialized by `G_VALUE_INIT`, which will be automatically
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
          *   initialized with the expected type of the property by using the given
          *   property description (since JSON-GLib 1.6)
-         * - a `GValue` initialized with the expected type of the property
+         * - a {@link GObject.Value} initialized with the expected type of the property
          *
          * This function will not be called for properties that are marked as
          * as `G_PARAM_CONSTRUCT_ONLY`.
@@ -1295,31 +1365,34 @@ export namespace GFBGraph {
             property_node: Json.Node,
         ): [boolean, unknown];
         /**
-         * Calls the [vfunc`Json`.Serializable.find_property] implementation on
-         * the `JsonSerializable` instance, which will return the property
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
          */
         find_property(name: string): GObject.ParamSpec | null;
         /**
-         * Calls the [vfunc`Json`.Serializable.get_property] implementation
-         * on the `JsonSerializable` instance, which will get the value of
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
          */
         get_property(pspec: GObject.ParamSpec): unknown;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
-         * Calls the [vfunc`Json`.Serializable.list_properties] implementation on
-         * the `JsonSerializable` instance, which will return the list of serializable
+         * Calls the {@link Json.Serializable.list_properties} implementation on
+         * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
          */
         list_properties(): GObject.ParamSpec[];
         /**
-         * Asks a `JsonSerializable` implementation to serialize an object
+         * Asks a {@link Json.Serializable} implementation to serialize an object
          * property into a JSON node.
          * @param property_name the name of the property to serialize
          * @param value the value of the property to serialize
@@ -1332,32 +1405,36 @@ export namespace GFBGraph {
             pspec: GObject.ParamSpec,
         ): Json.Node | null;
         /**
-         * Calls the [vfunc`Json`.Serializable.set_property] implementation
-         * on the `JsonSerializable` instance, which will set the property
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
-         * Asks a `JsonSerializable` implementation to deserialize the
+         * Asks a {@link Json.Serializable} implementation to deserialize the
          * property contained inside `property_node` and place its value
          * into `value`.
          *
          * The `value` can be:
          *
-         * - an empty `GValue` initialized by `G_VALUE_INIT`, which will be automatically
+         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
          *   initialized with the expected type of the property by using the given
          *   property description (since JSON-GLib 1.6)
-         * - a `GValue` initialized with the expected type of the property
+         * - a {@link GObject.Value} initialized with the expected type of the property
          *
          * This function will not be called for properties that are marked as
          * as `G_PARAM_CONSTRUCT_ONLY`.
          * @param property_name the name of the property to serialize
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
+         * @virtual
          */
         vfunc_deserialize_property(
             property_name: string,
@@ -1365,27 +1442,34 @@ export namespace GFBGraph {
             property_node: Json.Node,
         ): [boolean, unknown];
         /**
-         * Calls the [vfunc`Json`.Serializable.find_property] implementation on
-         * the `JsonSerializable` instance, which will return the property
+         * Calls the {@link Json.Serializable.find_property} implementation on
+         * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
         /**
-         * Calls the [vfunc`Json`.Serializable.get_property] implementation
-         * on the `JsonSerializable` instance, which will get the value of
+         * Calls the {@link Json.Serializable.get_property} implementation
+         * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): unknown;
+        /**
+         * @param args
+         * @virtual
+         */
         // Conflicted with GObject.Object.vfunc_get_property
         vfunc_get_property(...args: never[]): any;
         /**
-         * Asks a `JsonSerializable` implementation to serialize an object
+         * Asks a {@link Json.Serializable} implementation to serialize an object
          * property into a JSON node.
          * @param property_name the name of the property to serialize
          * @param value the value of the property to serialize
          * @param pspec a property description
+         * @virtual
          */
         vfunc_serialize_property(
             property_name: string,
@@ -1393,41 +1477,46 @@ export namespace GFBGraph {
             pspec: GObject.ParamSpec,
         ): Json.Node | null;
         /**
-         * Calls the [vfunc`Json`.Serializable.set_property] implementation
-         * on the `JsonSerializable` instance, which will set the property
+         * Calls the {@link Json.Serializable.set_property} implementation
+         * on the {@link Json.Serializable} instance, which will set the property
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        /**
+         * @param args
+         * @virtual
+         */
         // Conflicted with GObject.Object.vfunc_set_property
         vfunc_set_property(...args: never[]): any;
         /**
-         * Appends `connect_node` to `node`. `connect_node` must implement the #GFBGraphConnectable interface
+         * Appends `connect_node` to `node`. `connect_node` must implement the {@link GFBGraph.Connectable} interface
          * and be connectable to `node` GType.
-         * @param connect_node A #GFBGraphNode.
-         * @param authorizer A #GFBGraphAuthorizer.
+         * @param connect_node A {@link GFBGraph.Node}.
+         * @param authorizer A {@link GFBGraph.Authorizer}.
          * @returns TRUE on sucess, FALSE if an error ocurred.
          */
         append_connection(connect_node: Node, authorizer: Authorizer): boolean;
         /**
          * Retrieve the nodes of type `node_type` connected to the `node` object. The `node_type` object must
-         * implement the #GFBGraphConnectionable interface and be connectable to `node` type object.
-         * See gfbgraph_node_get_connection_nodes_async() for the asynchronous version of this call.
-         * @param node_type a #GFBGraphNode type #GType that determines the kind of nodes to retrieve.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @returns a newly-allocated #GList of type @node_type objects with the found nodes.
+         * implement the `GFBGraphConnectionable` interface and be connectable to `node` type object.
+         * See `gfbgraph_node_get_connection_nodes_async()` for the asynchronous version of this call.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that determines the kind of nodes to retrieve.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @returns a newly-allocated {@link GLib.List} of type `node_type` objects with the found nodes.
          */
         get_connection_nodes(node_type: GObject.GType, authorizer: Authorizer): Node[];
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -1436,14 +1525,14 @@ export namespace GFBGraph {
         ): globalThis.Promise<Node[]>;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -1453,14 +1542,14 @@ export namespace GFBGraph {
         ): void;
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
-         * gfbgraph_node_get_connection_nodes() for the synchronous version of this call.
+         * `gfbgraph_node_get_connection_nodes()` for the synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_node_get_connection_nodes_finish()
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_node_get_connection_nodes_finish()`
          * to get the list of connected nodes.
-         * @param node_type a #GFBGraphNode type #GType that must implement the #GFBGraphConnectionable interface.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that must implement the `GFBGraphConnectionable` interface.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         get_connection_nodes_async(
             node_type: GObject.GType,
@@ -1470,9 +1559,9 @@ export namespace GFBGraph {
         ): globalThis.Promise<Node[]> | void;
         /**
          * Finishes an asynchronous operation started with
-         * gfbgraph_node_get_connection_nodes_async().
-         * @param result A #GAsyncResult.
-         * @returns a newly-allocated #GList of type #node_type objects with the found nodes.
+         * `gfbgraph_node_get_connection_nodes_async()`.
+         * @param result A {@link Gio.AsyncResult}.
+         * @returns a newly-allocated {@link GLib.List} of type `node_type` objects with the found nodes.
          */
         get_connection_nodes_async_finish(result: Gio.AsyncResult): Node[];
         /**
@@ -1494,7 +1583,7 @@ export namespace GFBGraph {
         /**
          * Sets the ID for a node. Just useful when a new node is created
          * and the Graph API returns the ID of the new created node.
-         * @param id a const pointer to a #gchar.
+         * @param id a const pointer to a `gchar`.
          */
         set_id(id: string): void;
         /**
@@ -1510,32 +1599,32 @@ export namespace GFBGraph {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1544,39 +1633,39 @@ export namespace GFBGraph {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1587,13 +1676,16 @@ export namespace GFBGraph {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1601,7 +1693,7 @@ export namespace GFBGraph {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1609,16 +1701,16 @@ export namespace GFBGraph {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1632,33 +1724,33 @@ export namespace GFBGraph {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1691,21 +1783,21 @@ export namespace GFBGraph {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1715,8 +1807,8 @@ export namespace GFBGraph {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1733,10 +1825,10 @@ export namespace GFBGraph {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1745,13 +1837,13 @@ export namespace GFBGraph {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1782,21 +1874,21 @@ export namespace GFBGraph {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1806,33 +1898,34 @@ export namespace GFBGraph {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1841,6 +1934,7 @@ export namespace GFBGraph {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1849,26 +1943,29 @@ export namespace GFBGraph {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1912,6 +2009,9 @@ export namespace GFBGraph {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SimpleAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<SimpleAuthorizer>;
 
@@ -1941,28 +2041,29 @@ export namespace GFBGraph {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleAuthorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleAuthorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SimpleAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Adds the necessary authorization to `call`.
          *
          * This method modifies `call` in place and is thread safe.
-         * @param call A #RestProxyCall.
+         * @param call A {@link Rest.ProxyCall}.
          */
         process_call(call: Rest.ProxyCall): void;
         /**
@@ -1970,7 +2071,7 @@ export namespace GFBGraph {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
          */
         process_message(message: Soup.Message): void;
         /**
@@ -1978,15 +2079,16 @@ export namespace GFBGraph {
          * held by it.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Adds the necessary authorization to `call`.
          *
          * This method modifies `call` in place and is thread safe.
-         * @param call A #RestProxyCall.
+         * @param call A {@link Rest.ProxyCall}.
+         * @virtual
          */
         vfunc_process_call(call: Rest.ProxyCall): void;
         /**
@@ -1994,7 +2096,8 @@ export namespace GFBGraph {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
+         * @virtual
          */
         vfunc_process_message(message: Soup.Message): void;
         /**
@@ -2002,7 +2105,8 @@ export namespace GFBGraph {
          * held by it.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or %NULL.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @virtual
          */
         vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2018,32 +2122,32 @@ export namespace GFBGraph {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2052,39 +2156,39 @@ export namespace GFBGraph {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2095,13 +2199,16 @@ export namespace GFBGraph {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2109,7 +2216,7 @@ export namespace GFBGraph {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2117,9 +2224,9 @@ export namespace GFBGraph {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2139,9 +2246,9 @@ export namespace GFBGraph {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2155,33 +2262,33 @@ export namespace GFBGraph {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2214,21 +2321,21 @@ export namespace GFBGraph {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2238,8 +2345,8 @@ export namespace GFBGraph {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2256,10 +2363,10 @@ export namespace GFBGraph {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2274,13 +2381,13 @@ export namespace GFBGraph {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2311,21 +2418,21 @@ export namespace GFBGraph {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2335,33 +2442,34 @@ export namespace GFBGraph {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2370,6 +2478,7 @@ export namespace GFBGraph {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2378,12 +2487,14 @@ export namespace GFBGraph {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2392,20 +2503,22 @@ export namespace GFBGraph {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2417,6 +2530,7 @@ export namespace GFBGraph {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2465,6 +2579,9 @@ export namespace GFBGraph {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class User extends Node {
         static $gtype: GObject.GType<User>;
 
@@ -2502,16 +2619,19 @@ export namespace GFBGraph {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof User.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof User.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof User.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2522,19 +2642,19 @@ export namespace GFBGraph {
 
         /**
          * Retrieve the current user logged using the https://graph.facebook.com/me Graph API function.
-         * See gfbgraph_user_get_my_async() for the asynchronous version of this call.
-         * @param authorizer a #GFBGraphAuthorizer.
+         * See `gfbgraph_user_get_my_async()` for the asynchronous version of this call.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
          */
         static get_me(authorizer: Authorizer): User;
         /**
-         * Asynchronously retrieve the current user logged. See gfbgraph_user_get_me() for the
+         * Asynchronously retrieve the current user logged. See `gfbgraph_user_get_me()` for the
          * synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_user_get_me_finish()
-         * to get the #GFBGraphUser for to the current user logged.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_user_get_me_finish()`
+         * to get the {@link GFBGraph.User} for to the current user logged.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         static get_me_async(
             authorizer: Authorizer,
@@ -2543,9 +2663,9 @@ export namespace GFBGraph {
         ): void;
         /**
          * Finishes an asynchronous operation started with
-         * gfbgraph_user_get_me_async().
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param result A #GAsyncResult.
+         * `gfbgraph_user_get_me_async()`.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param result A {@link Gio.AsyncResult}.
          */
         static get_me_async_finish(authorizer: Authorizer, result: Gio.AsyncResult): User;
 
@@ -2553,29 +2673,29 @@ export namespace GFBGraph {
 
         /**
          * Retrieve the albums nodes owned by the `user`. This functions call the function ID/albums.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @returns a newly-allocated #GList with the albums nodes owned by the given user.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @returns a newly-allocated {@link GLib.List} with the albums nodes owned by the given user.
          */
         get_albums(authorizer: Authorizer): Album[];
         /**
-         * Asynchronously retrieve the albums nodes owned by the `user`. See gfbgraph_user_get_albums() for the
+         * Asynchronously retrieve the albums nodes owned by the `user`. See `gfbgraph_user_get_albums()` for the
          * synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_user_get_albums_async_finish()
-         * to get the #GList of #GFBGraphAlbum owned by the `user`.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_user_get_albums_async_finish()`
+         * to get the {@link GLib.List} of {@link GFBGraph.Album} owned by the `user`.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          */
         get_albums_async(authorizer: Authorizer, cancellable?: Gio.Cancellable | null): globalThis.Promise<Album[]>;
         /**
-         * Asynchronously retrieve the albums nodes owned by the `user`. See gfbgraph_user_get_albums() for the
+         * Asynchronously retrieve the albums nodes owned by the `user`. See `gfbgraph_user_get_albums()` for the
          * synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_user_get_albums_async_finish()
-         * to get the #GList of #GFBGraphAlbum owned by the `user`.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_user_get_albums_async_finish()`
+         * to get the {@link GLib.List} of {@link GFBGraph.Album} owned by the `user`.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         get_albums_async(
             authorizer: Authorizer,
@@ -2583,14 +2703,14 @@ export namespace GFBGraph {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Asynchronously retrieve the albums nodes owned by the `user`. See gfbgraph_user_get_albums() for the
+         * Asynchronously retrieve the albums nodes owned by the `user`. See `gfbgraph_user_get_albums()` for the
          * synchronous version of this call.
          *
-         * When the operation is finished, `callback` will be called. You can then call gfbgraph_user_get_albums_async_finish()
-         * to get the #GList of #GFBGraphAlbum owned by the `user`.
-         * @param authorizer a #GFBGraphAuthorizer.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is completed.
+         * When the operation is finished, `callback` will be called. You can then call `gfbgraph_user_get_albums_async_finish()`
+         * to get the {@link GLib.List} of {@link GFBGraph.Album} owned by the `user`.
+         * @param authorizer a {@link GFBGraph.Authorizer}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
         get_albums_async(
             authorizer: Authorizer,
@@ -2599,44 +2719,72 @@ export namespace GFBGraph {
         ): globalThis.Promise<Album[]> | void;
         /**
          * Finishes an asynchronous operation started with
-         * gfbgraph_user_get_albums_async().
-         * @param result A #GAsyncResult.
-         * @returns a newly-allocated #GList of albums owned by the @user.
+         * `gfbgraph_user_get_albums_async()`.
+         * @param result A {@link Gio.AsyncResult}.
+         * @returns a newly-allocated {@link GLib.List} of albums owned by the `user`.
          */
         get_albums_async_finish(result: Gio.AsyncResult): Album[];
         /**
          * Get the user email. To retrieve this propertie, you need 'email' extended
          * permission.
-         * @returns a const #gchar with the user email, or %NULL.
+         * @returns a const `gchar` with the user email, or `null`.
          */
         get_email(): string;
         /**
          * Get the user full name.
-         * @returns a const #gchar with the user full name, or %NULL.
+         * @returns a const `gchar` with the user full name, or `null`.
          */
         get_name(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AlbumClass = typeof Album;
+    /**
+     * @gir-type Struct
+     */
     abstract class AlbumPrivate {
         static $gtype: GObject.GType<AlbumPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthorizerInterface = typeof Authorizer;
+    /**
+     * @gir-type Alias
+     */
     type ConnectableInterface = typeof Connectable;
+    /**
+     * @gir-type Alias
+     */
     type GoaAuthorizerClass = typeof GoaAuthorizer;
+    /**
+     * @gir-type Struct
+     */
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NodeClass = typeof Node;
+    /**
+     * @gir-type Struct
+     */
     abstract class NodePrivate {
         static $gtype: GObject.GType<NodePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PhotoClass = typeof Photo;
     /**
      * An struct with the information of a image.
+     * @gir-type Struct
      */
     class PhotoImage {
         static $gtype: GObject.GType<PhotoImage>;
@@ -2658,16 +2806,31 @@ export namespace GFBGraph {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class PhotoPrivate {
         static $gtype: GObject.GType<PhotoPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SimpleAuthorizerClass = typeof SimpleAuthorizer;
+    /**
+     * @gir-type Struct
+     */
     abstract class SimpleAuthorizerPrivate {
         static $gtype: GObject.GType<SimpleAuthorizerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UserClass = typeof User;
+    /**
+     * @gir-type Struct
+     */
     abstract class UserPrivate {
         static $gtype: GObject.GType<UserPrivate>;
     }
@@ -2684,7 +2847,8 @@ export namespace GFBGraph {
              * Adds the necessary authorization to `call`.
              *
              * This method modifies `call` in place and is thread safe.
-             * @param call A #RestProxyCall.
+             * @param call A {@link Rest.ProxyCall}.
+             * @virtual
              */
             vfunc_process_call(call: Rest.ProxyCall): void;
             /**
@@ -2692,7 +2856,8 @@ export namespace GFBGraph {
              * can be DELETE, GET and POST.
              *
              * This method modifies `message` in place and is thread safe.
-             * @param message A #SoupMessage.
+             * @param message A {@link Soup.Message}.
+             * @virtual
              */
             vfunc_process_message(message: Soup.Message): void;
             /**
@@ -2700,7 +2865,8 @@ export namespace GFBGraph {
              * held by it.
              *
              * This method is thread safe.
-             * @param cancellable An optional #GCancellable object, or %NULL.
+             * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+             * @virtual
              */
             vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         }
@@ -2714,6 +2880,9 @@ export namespace GFBGraph {
         $gtype: GObject.GType<Authorizer>;
         prototype: Authorizer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Authorizer extends GObject.Object, Authorizer.Interface {
         // Methods
 
@@ -2721,7 +2890,7 @@ export namespace GFBGraph {
          * Adds the necessary authorization to `call`.
          *
          * This method modifies `call` in place and is thread safe.
-         * @param call A #RestProxyCall.
+         * @param call A {@link Rest.ProxyCall}.
          */
         process_call(call: Rest.ProxyCall): void;
         /**
@@ -2729,7 +2898,7 @@ export namespace GFBGraph {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
          */
         process_message(message: Soup.Message): void;
         /**
@@ -2737,8 +2906,8 @@ export namespace GFBGraph {
          * held by it.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or %NULL.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
     }
@@ -2758,13 +2927,15 @@ export namespace GFBGraph {
             /**
              * Get the params to be inserted in a request to the Facebook Graph API
              * in order to append the node `self` to a node of type `node_type`.
-             * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
+             * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+             * @virtual
              */
             vfunc_get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
             /**
-             * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
+             * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
              * executed.
-             * @param payload a const #gchar with the response string from the Facebook Graph API.
+             * @param payload a const `gchar` with the response string from the Facebook Graph API.
+             * @virtual
              */
             vfunc_parse_connected_data(payload: string): Node[];
         }
@@ -2778,46 +2949,49 @@ export namespace GFBGraph {
         $gtype: GObject.GType<Connectable>;
         prototype: Connectable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Connectable extends Node, Connectable.Interface {
         // Methods
 
         /**
-         * In most cases, #GFBGraphConnectable implementers can use this function in order to parse
-         * the response when a gfbgraph_node_get_connection_nodes() is executed and the
-         * gfbgraph_connectable_parse_connected_data() was called.
+         * In most cases, {@link GFBGraph.Connectable} implementers can use this function in order to parse
+         * the response when a `gfbgraph_node_get_connection_nodes()` is executed and the
+         * `gfbgraph_connectable_parse_connected_data()` was called.
          *
          * Normally, Facebook Graph API returns the connections in the same way, using JSON objects,
          * with a root object called "data".
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
-         * @returns a newly-allocated #GList of #GFBGraphNode with the same #GType as @self.
+         * @param payload a const `gchar` with the response string from the Facebook Graph API.
+         * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} with the same {@link GObject.GType} as `self`.
          */
         default_parse_connected_data(payload: string): Node[];
         /**
          * Get the Facebook Graph API function path to retrieve the nodes connected with `node_type`
-         * managed by the #GFBGraphConnectable object.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns a const #gchar with the function path or %NULL.
+         * managed by the {@link GFBGraph.Connectable} object.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns a const `gchar` with the function path or `null`.
          */
         get_connection_path(node_type: GObject.GType): string;
         /**
          * Get the params to be inserted in a request to the Facebook Graph API
          * in order to append the node `self` to a node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns A string based #GHashTable with the params and his values or %NULL.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns A string based {@link GLib.HashTable} with the params and his values or `null`.
          */
         get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
         /**
-         * Check if `self` object, normally a #GFBGraphNode implementing the #GFBGraphConnectable interface,
+         * Check if `self` object, normally a {@link GFBGraph.Node} implementing the {@link GFBGraph.Connectable} interface,
          * has the possibility to be connected to another node of type `node_type`.
-         * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
-         * @returns %TRUE in case that the @self object can be connected to a node of type @node_type, %FALSE otherwise.
+         * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
+         * @returns `true` in case that the `self` object can be connected to a node of type `node_type`, `false` otherwise.
          */
         is_connectable_to(node_type: GObject.GType): boolean;
         /**
-         * Parse the response contained in `payload` when a gfbgraph_node_get_connection_nodes() was
+         * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
          * executed.
-         * @param payload a const #gchar with the response string from the Facebook Graph API.
-         * @returns a newly-allocated #GList of #GFBGraphNode created from the @payload or %NULL.
+         * @param payload a const `gchar` with the response string from the Facebook Graph API.
+         * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} created from the `payload` or `null`.
          */
         parse_connected_data(payload: string): Node[];
     }

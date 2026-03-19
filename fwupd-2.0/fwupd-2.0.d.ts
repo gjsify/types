@@ -22,6 +22,7 @@ export namespace Fwupd {
 
     /**
      * The error code.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -104,6 +105,7 @@ export namespace Fwupd {
 
     /**
      * The update state.
+     * @gir-type Enum
      */
     enum KeyringKind {
         /**
@@ -130,6 +132,7 @@ export namespace Fwupd {
 
     /**
      * The release urgency.
+     * @gir-type Enum
      */
     enum ReleaseUrgency {
         /**
@@ -156,6 +159,7 @@ export namespace Fwupd {
 
     /**
      * The kind of remote.
+     * @gir-type Enum
      */
     enum RemoteKind {
         /**
@@ -178,6 +182,7 @@ export namespace Fwupd {
 
     /**
      * The HSI level.
+     * @gir-type Enum
      */
     enum SecurityAttrLevel {
         /**
@@ -208,6 +213,7 @@ export namespace Fwupd {
 
     /**
      * The HSI result.
+     * @gir-type Enum
      */
     enum SecurityAttrResult {
         /**
@@ -274,6 +280,7 @@ export namespace Fwupd {
 
     /**
      * The flags to show daemon status.
+     * @gir-type Enum
      */
     enum Status {
         /**
@@ -336,6 +343,7 @@ export namespace Fwupd {
 
     /**
      * The update state.
+     * @gir-type Enum
      */
     enum UpdateState {
         /**
@@ -367,8 +375,9 @@ export namespace Fwupd {
     /**
      * The flags used when parsing version numbers.
      *
-     * If no verification is required then %FWUPD_VERSION_FORMAT_PLAIN should
+     * If no verification is required then {@link Fwupd.VersionFormat.PLAIN} should
      * be used to signify an unparsable text string.
+     * @gir-type Enum
      */
     enum VersionFormat {
         /**
@@ -578,17 +587,19 @@ export namespace Fwupd {
     /**
      * Builds a JSON report for the list of devices. No filtering is done on the
      * `devices` array, and it is expected that the caller will filter to something
-     * sane, e.g. %FWUPD_DEVICE_FLAG_REPORTED at the bare minimum.
+     * sane, e.g. `FWUPD_DEVICE_FLAG_REPORTED` at the bare minimum.
      * @param devices devices
-     * @returns a string, or %NULL if the ID is not present
+     * @returns a string, or `null` if the ID is not present
+     * @since 1.0.4
      */
     function build_history_report_json(devices: Device[]): string;
     /**
      * Gets a salted hash of the /etc/machine-id contents. This can be used to
      * identify a specific machine. It is not possible to recover the original
      * machine-id from the machine-hash.
-     * @param salt The salt, or %NULL for none
-     * @returns the SHA256 machine hash, or %NULL if the ID is not present
+     * @param salt The salt, or `null` for none
+     * @returns the SHA256 machine hash, or `null` if the ID is not present
+     * @since 1.0.4
      */
     function build_machine_id(salt: string): string;
     /**
@@ -602,76 +613,91 @@ export namespace Fwupd {
      * Before freaking out about theoretical privacy implications, much more data
      * than this is sent to each and every website you visit.
      *
-     * Rather that using this function you should use fwupd_client_set_user_agent_for_package()
+     * Rather that using this function you should use `fwupd_client_set_user_agent_for_package()`
      * which uses the *runtime* version of the daemon rather than the *build-time*
      * version.
      * @param package_name client program name, e.g. "gnome-software"
      * @param package_version client program version, e.g. "3.28.1"
      * @returns a string, e.g. `foo/0.1 (Linux i386 4.14.5; en; Fedora 27) fwupd/1.0.3`
+     * @since 1.0.3
      */
     function build_user_agent(package_name: string, package_version: string): string;
     /**
      * Formats a checksum for display.
      * @param checksum A checksum
-     * @returns text, or %NULL for invalid
+     * @returns text, or `null` for invalid
+     * @since 0.9.3
      */
     function checksum_format_for_display(checksum: string): string;
     /**
      * Gets a the best possible checksum kind.
      * @param checksums checksums
-     * @returns a checksum from the array, or %NULL if nothing was suitable
+     * @returns a checksum from the array, or `null` if nothing was suitable
+     * @since 0.9.4
      */
     function checksum_get_best(checksums: string[]): string;
     /**
      * Gets a specific checksum kind.
      * @param checksums checksums
-     * @param kind a #GChecksumType, e.g. %G_CHECKSUM_SHA512
-     * @returns a checksum from the array, or %NULL if not found
+     * @param kind a {@link GLib.ChecksumType}, e.g. {@link GLib.ChecksumType.SHA512}
+     * @returns a checksum from the array, or `null` if not found
+     * @since 0.9.4
      */
     function checksum_get_by_kind(checksums: string[], kind: GLib.ChecksumType | null): string;
     /**
      * Guesses the checksum kind based on the length of the hash.
      * @param checksum A checksum
-     * @returns a #GChecksumType, e.g. %G_CHECKSUM_SHA1
+     * @returns a {@link GLib.ChecksumType}, e.g. {@link GLib.ChecksumType.SHA1}
+     * @since 0.9.3
      */
     function checksum_guess_kind(checksum: string): GLib.ChecksumType;
     /**
-     * Converts a string to a #FwupdError.
+     * Converts a string to a {@link Fwupd.Error}.
      * @param error A string, e.g. `org.freedesktop.fwupd.VersionNewer`
      * @returns enumerated value
+     * @since 0.7.0
      */
     function error_from_string(error: string): Error;
+    /**
+     * @returns An error quark.
+     * @since 0.1.1
+     */
     function error_quark(): GLib.Quark;
     /**
-     * Converts a #FwupdError to a string.
-     * @param error A #FwupdError, e.g. %FWUPD_ERROR_VERSION_NEWER
+     * Converts a {@link Fwupd.Error} to a string.
+     * @param error A {@link Fwupd.Error}, e.g. {@link Fwupd.Error.VERSION_NEWER}
      * @returns identifier string
+     * @since 0.7.0
      */
     function error_to_string(error: Error | null): string;
     /**
-     * Converts a string to a #FwupdFeatureFlags.
+     * Converts a string to a {@link Fwupd.FeatureFlags}.
      * @param feature_flag A string, e.g. `detach-action`
      * @returns enumerated value
+     * @since 1.4.5
      */
     function feature_flag_from_string(feature_flag: string): FeatureFlags;
     /**
-     * Converts a #FwupdFeatureFlags to a string.
-     * @param feature_flag A #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_DETACH_ACTION
+     * Converts a {@link Fwupd.FeatureFlags} to a string.
+     * @param feature_flag A {@link Fwupd.FeatureFlags}, e.g. {@link Fwupd.FeatureFlags.DETACH_ACTION}
      * @returns identifier string
+     * @since 1.4.5
      */
     function feature_flag_to_string(feature_flag: FeatureFlags | null): string;
     /**
      * Loads information from the system os-release file.
      * @returns keys from os-release
+     * @since 1.0.7
      */
     function get_os_release(): GLib.HashTable<string, string>;
     /**
      * Converts a string GUID into its binary encoding. All string GUIDs are
      * formatted as big endian but on-disk can be encoded in different ways.
      * @param guidstr a GUID, e.g. `00112233-4455-6677-8899-aabbccddeeff`
-     * @param guid a #fwupd_guid_t, or NULL to just check the GUID
-     * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_MIXED_ENDIAN
-     * @returns %TRUE for success
+     * @param guid a `fwupd_guid_t`, or NULL to just check the GUID
+     * @param flags some %FwupdGuidFlags, e.g. {@link Fwupd.GuidFlags.MIXED_ENDIAN}
+     * @returns `true` for success
+     * @since 1.2.5
      */
     function guid_from_string(guidstr: string | null, guid: number, flags: GuidFlags | null): boolean;
     /**
@@ -681,9 +707,10 @@ export namespace Fwupd {
      * The implementation is taken from RFC4122, Section 4.1.3; specifically
      * using a type-5 SHA-1 hash.
      * @param data data to hash
-     * @param datasz length of @data
-     * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_NAMESPACE_MICROSOFT
-     * @returns A new GUID, or %NULL for internal error
+     * @param datasz length of `data`
+     * @param flags some %FwupdGuidFlags, e.g. {@link Fwupd.GuidFlags.NAMESPACE_MICROSOFT}
+     * @returns A new GUID, or `null` for internal error
+     * @since 1.2.5
      */
     function guid_hash_data(data: number, datasz: number, flags: GuidFlags | null): string;
     /**
@@ -698,84 +725,98 @@ export namespace Fwupd {
      *    import uuid
      *    print uuid.uuid5(uuid.NAMESPACE_DNS, 'python.org')
      * @param str A source string to use as a key
-     * @returns A new GUID, or %NULL if the string was invalid
+     * @returns A new GUID, or `null` if the string was invalid
+     * @since 1.2.5
      */
     function guid_hash_string(str: string): string;
     /**
      * Checks the string is a valid GUID.
      * @param guid string to check, e.g. `00112233-4455-6677-8899-aabbccddeeff`
-     * @returns %TRUE if @guid was a valid GUID, %FALSE otherwise
+     * @returns `true` if `guid` was a valid GUID, `false` otherwise
+     * @since 1.2.5
      */
     function guid_is_valid(guid: string): boolean;
     /**
      * Returns a text GUID of mixed or BE endian for a packed buffer.
-     * @param guid a #fwupd_guid_t to read
-     * @param flags some %FwupdGuidFlags, e.g. %FWUPD_GUID_FLAG_MIXED_ENDIAN
+     * @param guid a `fwupd_guid_t` to read
+     * @param flags some %FwupdGuidFlags, e.g. {@link Fwupd.GuidFlags.MIXED_ENDIAN}
      * @returns A new GUID
+     * @since 1.2.5
      */
     function guid_to_string(guid: number, flags: GuidFlags | null): string;
     /**
      * Converts an printable string to an enumerated type.
      * @param keyring_kind a string, e.g. `gpg`
-     * @returns a #FwupdKeyringKind, e.g. %FWUPD_KEYRING_KIND_GPG
+     * @returns a {@link Fwupd.KeyringKind}, e.g. {@link Fwupd.KeyringKind.GPG}
+     * @since 0.9.7
      */
     function keyring_kind_from_string(keyring_kind: string): KeyringKind;
     /**
      * Converts an enumerated type to a printable string.
-     * @param keyring_kind a #FwupdKeyringKind, e.g. %FWUPD_KEYRING_KIND_GPG
+     * @param keyring_kind a {@link Fwupd.KeyringKind}, e.g. {@link Fwupd.KeyringKind.GPG}
      * @returns a string, e.g. `gpg`
+     * @since 0.9.7
      */
     function keyring_kind_to_string(keyring_kind: KeyringKind | null): string;
     /**
-     * Converts a string to a #FwupdStatus.
+     * Converts a string to a {@link Fwupd.Status}.
      * @param status A string, e.g. `decompressing`
      * @returns enumerated value
+     * @since 0.1.1
      */
     function status_from_string(status: string): Status;
     /**
-     * Converts a #FwupdStatus to a string.
-     * @param status A #FwupdStatus, e.g. %FWUPD_STATUS_DECOMPRESSING
+     * Converts a {@link Fwupd.Status} to a string.
+     * @param status A {@link Fwupd.Status}, e.g. {@link Fwupd.Status.DECOMPRESSING}
      * @returns identifier string
+     * @since 0.1.1
      */
     function status_to_string(status: Status | null): string;
     /**
-     * Converts a string to a #FwupdTrustFlags.
+     * Converts a string to a {@link Fwupd.TrustFlags}.
      * @param trust_flag A string, e.g. `payload`
      * @returns enumerated value
+     * @since 0.7.0
      */
     function trust_flag_from_string(trust_flag: string): TrustFlags;
     /**
-     * Converts a #FwupdTrustFlags to a string.
-     * @param trust_flag A #FwupdTrustFlags, e.g. %FWUPD_TRUST_FLAG_PAYLOAD
+     * Converts a {@link Fwupd.TrustFlags} to a string.
+     * @param trust_flag A {@link Fwupd.TrustFlags}, e.g. {@link Fwupd.TrustFlags.PAYLOAD}
      * @returns identifier string
+     * @since 0.7.0
      */
     function trust_flag_to_string(trust_flag: TrustFlags | null): string;
     /**
-     * Converts a string to a #FwupdUpdateState.
+     * Converts a string to a {@link Fwupd.UpdateState}.
      * @param update_state A string, e.g. `pending`
      * @returns enumerated value
+     * @since 0.7.0
      */
     function update_state_from_string(update_state: string): UpdateState;
     /**
-     * Converts a #FwupdUpdateState to a string.
-     * @param update_state A #FwupdUpdateState, e.g. %FWUPD_UPDATE_STATE_PENDING
+     * Converts a {@link Fwupd.UpdateState} to a string.
+     * @param update_state A {@link Fwupd.UpdateState}, e.g. {@link Fwupd.UpdateState.PENDING}
      * @returns identifier string
+     * @since 0.7.0
      */
     function update_state_to_string(update_state: UpdateState | null): string;
     /**
      * Converts text to a display version type.
      * @param str A string, e.g. `quad`
-     * @returns A #FwupdVersionFormat, e.g. %FWUPD_VERSION_FORMAT_TRIPLET
+     * @returns A {@link Fwupd.VersionFormat}, e.g. {@link Fwupd.VersionFormat.TRIPLET}
+     * @since 1.2.9
      */
     function version_format_from_string(str: string): VersionFormat;
     /**
      * Converts a display version type to text.
-     * @param kind A #FwupdVersionFormat, e.g. %FWUPD_VERSION_FORMAT_TRIPLET
-     * @returns A string, e.g. `quad`, or %NULL if not known
+     * @param kind A {@link Fwupd.VersionFormat}, e.g. {@link Fwupd.VersionFormat.TRIPLET}
+     * @returns A string, e.g. `quad`, or `null` if not known
+     * @since 1.2.9
      */
     function version_format_to_string(kind: VersionFormat | null): string;
     /**
      * The options to use for downloading.
+     * @gir-type Flags
      */
     enum ClientDownloadFlags {
         /**
@@ -790,6 +831,7 @@ export namespace Fwupd {
 
     /**
      * The options to use for uploading.
+     * @gir-type Flags
      */
     enum ClientUploadFlags {
         /**
@@ -804,6 +846,7 @@ export namespace Fwupd {
 
     /**
      * The flags to the feature capabilities of the front-end client.
+     * @gir-type Flags
      */
     enum FeatureFlags {
         /**
@@ -830,6 +873,7 @@ export namespace Fwupd {
 
     /**
      * The flags to show how the data should be converted.
+     * @gir-type Flags
      */
     enum GuidFlags {
         /**
@@ -848,6 +892,7 @@ export namespace Fwupd {
 
     /**
      * Flags to set when performing the firmware update or install.
+     * @gir-type Flags
      */
     enum InstallFlags {
         /**
@@ -898,6 +943,7 @@ export namespace Fwupd {
 
     /**
      * The flags available for HSI attributes.
+     * @gir-type Flags
      */
     enum SecurityAttrFlags {
         /**
@@ -928,6 +974,7 @@ export namespace Fwupd {
 
     /**
      * Flags to set when performing the firmware update or install.
+     * @gir-type Flags
      */
     enum SelfSignFlags {
         /**
@@ -946,6 +993,7 @@ export namespace Fwupd {
 
     /**
      * The flags to show the level of trust.
+     * @gir-type Flags
      */
     enum TrustFlags {
         /**
@@ -965,10 +1013,37 @@ export namespace Fwupd {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::changed signal is emitted when the daemon internal has
+             * changed, for instance when a device has been added or removed.
+             * @signal
+             * @since 0.7.0
+             */
             changed: () => void;
+            /**
+             * The ::device-added signal is emitted when a device has been
+             * added.
+             * @signal
+             * @since 0.7.1
+             */
             'device-added': (arg0: Device) => void;
+            /**
+             * The ::device-changed signal is emitted when a device has been
+             * changed in some way, e.g. the version number is updated.
+             * @signal
+             * @since 0.7.1
+             */
             'device-changed': (arg0: Device) => void;
+            /**
+             * The ::device-removed signal is emitted when a device has been
+             * removed.
+             * @signal
+             * @since 0.7.1
+             */
             'device-removed': (arg0: Device) => void;
+            /**
+             * @signal
+             */
             'status-changed': (arg0: number) => void;
             'notify::daemon-version': (pspec: GObject.ParamSpec) => void;
             'notify::host-machine-id': (pspec: GObject.ParamSpec) => void;
@@ -1001,6 +1076,9 @@ export namespace Fwupd {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
@@ -1008,60 +1086,74 @@ export namespace Fwupd {
 
         /**
          * The daemon version number.
+         * @since 0.9.6
          */
         get daemon_version(): string;
         /**
          * The daemon version number.
+         * @since 0.9.6
          */
         get daemonVersion(): string;
         /**
          * The host machine-id string
+         * @since 1.3.2
          */
         get host_machine_id(): string;
         /**
          * The host machine-id string
+         * @since 1.3.2
          */
         get hostMachineId(): string;
         /**
          * The host product string
+         * @since 1.3.1
          */
         get host_product(): string;
         /**
          * The host product string
+         * @since 1.3.1
          */
         get hostProduct(): string;
         /**
          * The host machine-id string
+         * @since 1.5.0
          */
         get host_security_id(): string;
         /**
          * The host machine-id string
+         * @since 1.5.0
          */
         get hostSecurityId(): string;
         /**
          * If the daemon is running in an interactive terminal
+         * @since 1.3.4
          */
         get interactive(): boolean;
         /**
          * The last-reported percentage of the daemon.
+         * @since 0.7.3
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * The libsoup session, now unused.
+         * @since 1.4.5
          */
         get soup_session(): GObject.Object;
         /**
          * The libsoup session, now unused.
+         * @since 1.4.5
          */
         get soupSession(): GObject.Object;
         /**
          * The last-reported status of the daemon.
+         * @since 0.7.0
          */
         get status(): number;
         set status(val: number);
         /**
          * If the daemon is tainted by 3rd party code.
+         * @since 1.2.4
          */
         get tainted(): boolean;
 
@@ -1084,16 +1176,19 @@ export namespace Fwupd {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1102,10 +1197,29 @@ export namespace Fwupd {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_changed(): void;
+        /**
+         * @param result
+         * @virtual
+         */
         vfunc_device_added(result: Device): void;
+        /**
+         * @param result
+         * @virtual
+         */
         vfunc_device_changed(result: Device): void;
+        /**
+         * @param result
+         * @virtual
+         */
         vfunc_device_removed(result: Device): void;
+        /**
+         * @param status
+         * @virtual
+         */
         vfunc_status_changed(status: Status): void;
 
         // Methods
@@ -1113,23 +1227,23 @@ export namespace Fwupd {
         /**
          * Activates up a device, which normally means the device switches to a new
          * firmware version. This should only be called when data loss cannot occur.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param device_id a device
-         * @returns %TRUE for success
+         * @returns `true` for success
          */
         activate(cancellable: Gio.Cancellable | null, device_id: string): boolean;
         /**
          * Activates up a device, which normally means the device switches to a new
          * firmware version. This should only be called when data loss cannot occur.
          * @param device_id a device
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         activate_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Activates up a device, which normally means the device switches to a new
          * firmware version. This should only be called when data loss cannot occur.
          * @param device_id a device
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         activate_async(
@@ -1141,7 +1255,7 @@ export namespace Fwupd {
          * Activates up a device, which normally means the device switches to a new
          * firmware version. This should only be called when data loss cannot occur.
          * @param device_id a device
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         activate_async(
@@ -1150,28 +1264,28 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_activate_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_activate_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         activate_finish(res: Gio.AsyncResult): boolean;
         /**
          * Clears the results for a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         clear_results(device_id: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Clears the results for a specific device.
          * @param device_id a device
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         clear_results_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Clears the results for a specific device.
          * @param device_id a device
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         clear_results_async(
@@ -1182,7 +1296,7 @@ export namespace Fwupd {
         /**
          * Clears the results for a specific device.
          * @param device_id a device
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         clear_results_async(
@@ -1191,36 +1305,39 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_clear_results_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_clear_results_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         clear_results_finish(res: Gio.AsyncResult): boolean;
         /**
          * Sets up the client ready for use. Most other methods call this
          * for you, and do you only need to call this if you are just watching
          * the client.
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         connect(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Sets up the client ready for use. This is probably the first method you call
          * when wanting to use libfwupd in an asynchronous manner.
          *
-         * Other methods such as fwupd_client_get_devices_async() should only be called
-         * after fwupd_client_connect_finish() has been called without an error.
-         * @param cancellable the #GCancellable, or %NULL
+         * Other methods such as `fwupd_client_get_devices_async()` should only be called
+         * after `fwupd_client_connect_finish()` has been called without an error.
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         connect_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Sets up the client ready for use. This is probably the first method you call
          * when wanting to use libfwupd in an asynchronous manner.
          *
-         * Other methods such as fwupd_client_get_devices_async() should only be called
-         * after fwupd_client_connect_finish() has been called without an error.
-         * @param cancellable the #GCancellable, or %NULL
+         * Other methods such as `fwupd_client_get_devices_async()` should only be called
+         * after `fwupd_client_connect_finish()` has been called without an error.
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         connect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -1228,9 +1345,9 @@ export namespace Fwupd {
          * Sets up the client ready for use. This is probably the first method you call
          * when wanting to use libfwupd in an asynchronous manner.
          *
-         * Other methods such as fwupd_client_get_devices_async() should only be called
-         * after fwupd_client_connect_finish() has been called without an error.
-         * @param cancellable the #GCancellable, or %NULL
+         * Other methods such as `fwupd_client_get_devices_async()` should only be called
+         * after `fwupd_client_connect_finish()` has been called without an error.
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         connect_async(
@@ -1238,18 +1355,18 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_connect_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_connect_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         connect_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Downloads data from a remote server. The fwupd_client_set_user_agent() function
+         * Downloads data from a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          * @param url the remote URL
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns downloaded data, or %NULL for error
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns downloaded data, or `null` for error
          */
         download_bytes(
             url: string,
@@ -1257,18 +1374,18 @@ export namespace Fwupd {
             cancellable?: Gio.Cancellable | null,
         ): GLib.Bytes;
         /**
-         * Downloads data from a remote server. The fwupd_client_set_user_agent() function
+         * Downloads data from a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param url the remote URL
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         download_bytes_async(
             url: string,
@@ -1276,18 +1393,18 @@ export namespace Fwupd {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes>;
         /**
-         * Downloads data from a remote server. The fwupd_client_set_user_agent() function
+         * Downloads data from a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param url the remote URL
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         download_bytes_async(
@@ -1297,18 +1414,18 @@ export namespace Fwupd {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Downloads data from a remote server. The fwupd_client_set_user_agent() function
+         * Downloads data from a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param url the remote URL
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         download_bytes_async(
@@ -1318,19 +1435,19 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
         /**
-         * Gets the result of fwupd_client_download_bytes_async().
-         * @param res the #GAsyncResult
-         * @returns downloaded data, or %NULL for error
+         * Gets the result of `fwupd_client_download_bytes_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns downloaded data, or `null` for error
          */
         download_bytes_finish(res: Gio.AsyncResult): GLib.Bytes;
         /**
-         * Downloads data from a remote server. The fwupd_client_set_user_agent() function
+         * Downloads data from a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          * @param url the remote URL
-         * @param file a #GFile
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE if the file was written, or %NULL for error
+         * @param file a {@link Gio.File}
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` if the file was written, or `null` for error
          */
         download_file(
             url: string,
@@ -1341,30 +1458,30 @@ export namespace Fwupd {
         /**
          * Sets up the client networking support ready for use. Most other download and
          * upload methods call this automatically, and do you only need to call this if
-         * the session is being used outside the #FwupdClient.
-         * @returns %TRUE for success
+         * the session is being used outside the {@link Fwupd.Client}.
+         * @returns `true` for success
          */
         ensure_networking(): boolean;
         /**
          * Gets the list of approved firmware.
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns checksums, or %NULL for error
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns checksums, or `null` for error
          */
         get_approved_firmware(cancellable?: Gio.Cancellable | null): string[];
         /**
          * Gets the list of approved firmware.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_approved_firmware_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Gets the list of approved firmware.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_approved_firmware_async(
@@ -1374,9 +1491,9 @@ export namespace Fwupd {
         /**
          * Gets the list of approved firmware.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_approved_firmware_async(
@@ -1384,31 +1501,31 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
-         * Gets the result of fwupd_client_get_approved_firmware_async().
-         * @param res the #GAsyncResult
-         * @returns checksums, or %NULL for error
+         * Gets the result of `fwupd_client_get_approved_firmware_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns checksums, or `null` for error
          */
         get_approved_firmware_finish(res: Gio.AsyncResult): string[];
         /**
          * Gets the list of blocked firmware.
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns checksums, or %NULL for error
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns checksums, or `null` for error
          */
         get_blocked_firmware(cancellable?: Gio.Cancellable | null): string[];
         /**
          * Gets the list of blocked firmware.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_blocked_firmware_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string[]>;
         /**
          * Gets the list of blocked firmware.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_blocked_firmware_async(
@@ -1418,9 +1535,9 @@ export namespace Fwupd {
         /**
          * Gets the list of blocked firmware.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_blocked_firmware_async(
@@ -1428,39 +1545,39 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
-         * Gets the result of fwupd_client_get_blocked_firmware_async().
-         * @param res the #GAsyncResult
-         * @returns checksums, or %NULL for error
+         * Gets the result of `fwupd_client_get_blocked_firmware_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns checksums, or `null` for error
          */
         get_blocked_firmware_finish(res: Gio.AsyncResult): string[];
         /**
          * Gets if the daemon is running in an interactive terminal.
-         * @returns %TRUE if the daemon is running in an interactive terminal
+         * @returns `true` if the daemon is running in an interactive terminal
          */
         get_daemon_interactive(): boolean;
         /**
          * Gets the daemon version number.
-         * @returns a string, or %NULL for unknown.
+         * @returns a string, or `null` for unknown.
          */
         get_daemon_version(): string;
         /**
          * Gets details about a specific firmware file.
          * @param filename the firmware filename, e.g. `firmware.cab`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns an array of results
          */
         get_details(filename: string, cancellable?: Gio.Cancellable | null): Device[];
         /**
          * Gets details about a specific firmware file.
          * @param bytes the firmware blob, e.g. the contents of `firmware.cab`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns an array of results
          */
         get_details_bytes(bytes: GLib.Bytes | Uint8Array, cancellable?: Gio.Cancellable | null): Device[];
         /**
          * Gets details about a specific firmware file.
-         * @param bytes a #GBytes for the firmware, e.g. `firmware.cab`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param bytes a {@link GLib.Bytes} for the firmware, e.g. `firmware.cab`
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_details_bytes_async(
             bytes: GLib.Bytes | Uint8Array,
@@ -1468,8 +1585,8 @@ export namespace Fwupd {
         ): globalThis.Promise<Device[]>;
         /**
          * Gets details about a specific firmware file.
-         * @param bytes a #GBytes for the firmware, e.g. `firmware.cab`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param bytes a {@link GLib.Bytes} for the firmware, e.g. `firmware.cab`
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_details_bytes_async(
@@ -1479,8 +1596,8 @@ export namespace Fwupd {
         ): void;
         /**
          * Gets details about a specific firmware file.
-         * @param bytes a #GBytes for the firmware, e.g. `firmware.cab`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param bytes a {@link GLib.Bytes} for the firmware, e.g. `firmware.cab`
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_details_bytes_async(
@@ -1489,34 +1606,34 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device[]> | void;
         /**
-         * Gets the result of fwupd_client_get_details_bytes_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_details_bytes_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns an array of results
          */
         get_details_bytes_finish(res: Gio.AsyncResult): Device[];
         /**
          * Gets a device by it's device ID.
          * @param device_id the device ID, e.g. `usb:00:01:03:03`
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns a #FwupdDevice or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns a {@link Fwupd.Device} or `null`
          */
         get_device_by_id(device_id: string, cancellable?: Gio.Cancellable | null): Device;
         /**
          * Gets a device by it's device ID.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_device_by_id_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Device>;
         /**
          * Gets a device by it's device ID.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_device_by_id_async(
@@ -1527,10 +1644,10 @@ export namespace Fwupd {
         /**
          * Gets a device by it's device ID.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_device_by_id_async(
@@ -1539,40 +1656,40 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device> | void;
         /**
-         * Gets the result of fwupd_client_get_device_by_id_async().
-         * @param res the #GAsyncResult
-         * @returns a #FwupdDevice, or %NULL for failure
+         * Gets the result of `fwupd_client_get_device_by_id_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns a {@link Fwupd.Device}, or `null` for failure
          */
         get_device_by_id_finish(res: Gio.AsyncResult): Device;
         /**
          * Gets all the devices registered with the daemon.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns results
          */
         get_devices(cancellable?: Gio.Cancellable | null): Device[];
         /**
          * Gets all the devices registered with the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_devices_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Device[]>;
         /**
          * Gets all the devices registered with the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_devices_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Gets all the devices registered with the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_devices_async(
@@ -1583,28 +1700,28 @@ export namespace Fwupd {
          * Gets any devices that provide a specific GUID. An error is returned if no
          * devices contains this GUID.
          * @param guid the GUID, e.g. `e22c4520-43dc-5bb3-8245-5787fead9b63`
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns devices or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns devices or `null`
          */
         get_devices_by_guid(guid: string, cancellable?: Gio.Cancellable | null): Device[];
         /**
          * Gets any devices that provide a specific GUID. An error is returned if no
          * devices contains this GUID.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param guid the GUID, e.g. `e22c4520-43dc-5bb3-8245-5787fead9b63`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_devices_by_guid_async(guid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Release[]>;
         /**
          * Gets any devices that provide a specific GUID. An error is returned if no
          * devices contains this GUID.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param guid the GUID, e.g. `e22c4520-43dc-5bb3-8245-5787fead9b63`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_devices_by_guid_async(
@@ -1616,10 +1733,10 @@ export namespace Fwupd {
          * Gets any devices that provide a specific GUID. An error is returned if no
          * devices contains this GUID.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param guid the GUID, e.g. `e22c4520-43dc-5bb3-8245-5787fead9b63`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_devices_by_guid_async(
@@ -1628,40 +1745,40 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Release[]> | void;
         /**
-         * Gets the result of fwupd_client_get_devices_by_guid_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_devices_by_guid_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns results
          */
         get_devices_by_guid_finish(res: Gio.AsyncResult): Release[];
         /**
-         * Gets the result of fwupd_client_get_devices_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_devices_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns results
          */
         get_devices_finish(res: Gio.AsyncResult): Device[];
         /**
          * Gets all the downgrades for a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns results
          */
         get_downgrades(device_id: string, cancellable?: Gio.Cancellable | null): Release[];
         /**
          * Gets all the downgrades for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_downgrades_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Release[]>;
         /**
          * Gets all the downgrades for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_downgrades_async(
@@ -1672,10 +1789,10 @@ export namespace Fwupd {
         /**
          * Gets all the downgrades for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_downgrades_async(
@@ -1684,40 +1801,40 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Release[]> | void;
         /**
-         * Gets the result of fwupd_client_get_downgrades_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_downgrades_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns results
          */
         get_downgrades_finish(res: Gio.AsyncResult): Release[];
         /**
          * Gets all the history.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns results
          */
         get_history(cancellable?: Gio.Cancellable | null): Device[];
         /**
          * Gets all the history.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_history_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Device[]>;
         /**
          * Gets all the history.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_history_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Gets all the history.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_history_async(
@@ -1725,41 +1842,41 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device[]> | void;
         /**
-         * Gets the result of fwupd_client_get_history_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_history_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns results
          */
         get_history_finish(res: Gio.AsyncResult): Device[];
         /**
          * Gets the string that represents the host machine ID
-         * @returns a string, or %NULL for unknown.
+         * @returns a string, or `null` for unknown.
          */
         get_host_machine_id(): string;
         /**
          * Gets the string that represents the host running fwupd
-         * @returns a string, or %NULL for unknown.
+         * @returns a string, or `null` for unknown.
          */
         get_host_product(): string;
         /**
          * Gets all the host security attributes from the daemon.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns attributes
          */
         get_host_security_attrs(cancellable?: Gio.Cancellable | null): SecurityAttr[];
         /**
          * Gets all the host security attributes from the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_host_security_attrs_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<SecurityAttr[]>;
         /**
          * Gets all the host security attributes from the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_host_security_attrs_async(
@@ -1769,9 +1886,9 @@ export namespace Fwupd {
         /**
          * Gets all the host security attributes from the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_host_security_attrs_async(
@@ -1779,20 +1896,20 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SecurityAttr[]> | void;
         /**
-         * Gets the result of fwupd_client_get_host_security_attrs_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_host_security_attrs_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns attributes
          */
         get_host_security_attrs_finish(res: Gio.AsyncResult): SecurityAttr[];
         /**
          * Gets the string that represents the host machine ID
-         * @returns a string, or %NULL for unknown.
+         * @returns a string, or `null` for unknown.
          */
         get_host_security_id(): string;
         /**
-         * Gets the internal #GMainContext to use for synchronous methods.
-         * By default the value is set a new #GMainContext.
-         * @returns the #GMainContext
+         * Gets the internal {@link GLib.MainContext} to use for synchronous methods.
+         * By default the value is set a new {@link GLib.MainContext}.
+         * @returns the {@link GLib.MainContext}
          */
         get_main_context(): GLib.MainContext;
         /**
@@ -1802,33 +1919,33 @@ export namespace Fwupd {
         get_percentage(): number;
         /**
          * Gets all the plugins being used the daemon.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns results
          */
         get_plugins(cancellable?: Gio.Cancellable | null): Plugin[];
         /**
          * Gets all the plugins being used by the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_plugins_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Device[]>;
         /**
          * Gets all the plugins being used by the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_plugins_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Gets all the plugins being used by the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_plugins_async(
@@ -1836,34 +1953,34 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device[]> | void;
         /**
-         * Gets the result of fwupd_client_get_plugins_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_plugins_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns results
          */
         get_plugins_finish(res: Gio.AsyncResult): Device[];
         /**
          * Gets all the releases for a specific device
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns results
          */
         get_releases(device_id: string, cancellable?: Gio.Cancellable | null): Release[];
         /**
          * Gets all the releases for a specific device
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_releases_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Release[]>;
         /**
          * Gets all the releases for a specific device
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_releases_async(
@@ -1874,10 +1991,10 @@ export namespace Fwupd {
         /**
          * Gets all the releases for a specific device
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_releases_async(
@@ -1886,28 +2003,28 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Release[]> | void;
         /**
-         * Gets the result of fwupd_client_get_releases_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_releases_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns results
          */
         get_releases_finish(res: Gio.AsyncResult): Release[];
         /**
          * Gets a specific remote that has been configured for the system.
          * @param remote_id the remote ID, e.g. `lvfs-testing`
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns a #FwupdRemote, or %NULL if not found
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns a {@link Fwupd.Remote}, or `null` if not found
          */
         get_remote_by_id(remote_id: string, cancellable?: Gio.Cancellable | null): Remote;
         /**
          * Gets a specific remote that has been configured for the system.
          * @param remote_id the remote ID, e.g. `lvfs-testing`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_remote_by_id_async(remote_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Remote>;
         /**
          * Gets a specific remote that has been configured for the system.
          * @param remote_id the remote ID, e.g. `lvfs-testing`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_remote_by_id_async(
@@ -1918,7 +2035,7 @@ export namespace Fwupd {
         /**
          * Gets a specific remote that has been configured for the system.
          * @param remote_id the remote ID, e.g. `lvfs-testing`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_remote_by_id_async(
@@ -1927,40 +2044,40 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Remote> | void;
         /**
-         * Gets the result of fwupd_client_get_remote_by_id_async().
-         * @param res the #GAsyncResult
-         * @returns a #FwupdRemote, or %NULL if not found
+         * Gets the result of `fwupd_client_get_remote_by_id_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns a {@link Fwupd.Remote}, or `null` if not found
          */
         get_remote_by_id_finish(res: Gio.AsyncResult): Remote;
         /**
          * Gets the list of remotes that have been configured for the system.
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns list of remotes, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns list of remotes, or `null`
          */
         get_remotes(cancellable?: Gio.Cancellable | null): Remote[];
         /**
          * Gets the list of remotes that have been configured for the system.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_remotes_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Remote[]>;
         /**
          * Gets the list of remotes that have been configured for the system.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_remotes_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Gets the list of remotes that have been configured for the system.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_remotes_async(
@@ -1968,31 +2085,31 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Remote[]> | void;
         /**
-         * Gets the result of fwupd_client_get_remotes_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_remotes_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns results
          */
         get_remotes_finish(res: Gio.AsyncResult): Remote[];
         /**
          * Gets all the report metadata from the daemon.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns attributes
          */
         get_report_metadata(cancellable?: Gio.Cancellable | null): GLib.HashTable<any, any>;
         /**
          * Gets all the report metadata from the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_report_metadata_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable<any, any>>;
         /**
          * Gets all the report metadata from the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_report_metadata_async(
@@ -2002,9 +2119,9 @@ export namespace Fwupd {
         /**
          * Gets all the report metadata from the daemon.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_report_metadata_async(
@@ -2012,34 +2129,34 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.HashTable<any, any>> | void;
         /**
-         * Gets the result of fwupd_client_get_report_metadata_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_report_metadata_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns attributes
          */
         get_report_metadata_finish(res: Gio.AsyncResult): GLib.HashTable<any, any>;
         /**
          * Gets the results of a previous firmware update for a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns a #FwupdDevice, or %NULL for failure
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns a {@link Fwupd.Device}, or `null` for failure
          */
         get_results(device_id: string, cancellable?: Gio.Cancellable | null): Device;
         /**
          * Gets the results of a previous firmware update for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_results_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Device>;
         /**
          * Gets the results of a previous firmware update for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_results_async(
@@ -2050,10 +2167,10 @@ export namespace Fwupd {
         /**
          * Gets the results of a previous firmware update for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_results_async(
@@ -2062,44 +2179,44 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Device> | void;
         /**
-         * Gets the result of fwupd_client_get_results_async().
-         * @param res the #GAsyncResult
-         * @returns a #FwupdDevice, or %NULL for failure
+         * Gets the result of `fwupd_client_get_results_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns a {@link Fwupd.Device}, or `null` for failure
          */
         get_results_finish(res: Gio.AsyncResult): Device;
         /**
          * Gets the last returned status value.
-         * @returns a #FwupdStatus, or %FWUPD_STATUS_UNKNOWN for unknown.
+         * @returns a {@link Fwupd.Status}, or {@link Fwupd.Status.UNKNOWN} for unknown.
          */
         get_status(): Status;
         /**
          * Gets if the daemon has been tainted by 3rd party code.
-         * @returns %TRUE if the daemon is unsupported
+         * @returns `true` if the daemon is unsupported
          */
         get_tainted(): boolean;
         /**
          * Gets all the upgrades for a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @returns results
          */
         get_upgrades(device_id: string, cancellable?: Gio.Cancellable | null): Release[];
         /**
          * Gets all the upgrades for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         get_upgrades_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Release[]>;
         /**
          * Gets all the upgrades for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_upgrades_async(
@@ -2110,10 +2227,10 @@ export namespace Fwupd {
         /**
          * Gets all the upgrades for a specific device.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         get_upgrades_async(
@@ -2122,8 +2239,8 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Release[]> | void;
         /**
-         * Gets the result of fwupd_client_get_upgrades_async().
-         * @param res the #GAsyncResult
+         * Gets the result of `fwupd_client_get_upgrades_async()`.
+         * @param res the {@link Gio.AsyncResult}
          * @returns results
          */
         get_upgrades_finish(res: Gio.AsyncResult): Release[];
@@ -2131,16 +2248,16 @@ export namespace Fwupd {
          * Gets the string that represents the user agent that is used for
          * uploading and downloading. The user agent will contain the runtime
          * version of fwupd somewhere in the provided string.
-         * @returns a string, or %NULL for unknown.
+         * @returns a string, or `null` for unknown.
          */
         get_user_agent(): string;
         /**
          * Install a file onto a specific device.
          * @param device_id the device ID
          * @param filename the filename to install
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         install(
             device_id: string,
@@ -2153,11 +2270,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param device_id the device ID
          * @param filename the filename to install
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         install_async(
             device_id: string,
@@ -2170,11 +2287,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param device_id the device ID
          * @param filename the filename to install
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         install_async(
@@ -2189,11 +2306,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param device_id the device ID
          * @param filename the filename to install
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         install_async(
@@ -2206,10 +2323,10 @@ export namespace Fwupd {
         /**
          * Install firmware onto a specific device.
          * @param device_id the device ID
-         * @param bytes #GBytes
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param bytes {@link GLib.Bytes}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         install_bytes(
             device_id: string,
@@ -2222,11 +2339,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param device_id the device ID
-         * @param bytes #GBytes
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * @param bytes {@link GLib.Bytes}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         install_bytes_async(
             device_id: string,
@@ -2239,11 +2356,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param device_id the device ID
-         * @param bytes #GBytes
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * @param bytes {@link GLib.Bytes}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         install_bytes_async(
@@ -2258,11 +2375,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param device_id the device ID
-         * @param bytes #GBytes
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * @param bytes {@link GLib.Bytes}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         install_bytes_async(
@@ -2273,24 +2390,24 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_install_bytes_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_install_bytes_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         install_bytes_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Gets the result of fwupd_client_install_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_install_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         install_finish(res: Gio.AsyncResult): boolean;
         /**
          * Installs a new release on a device, downloading the firmware if required.
-         * @param device A #FwupdDevice
-         * @param release A #FwupdRelease
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param device A {@link Fwupd.Device}
+         * @param release A {@link Fwupd.Release}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         install_release(
             device: Device,
@@ -2300,12 +2417,12 @@ export namespace Fwupd {
         ): boolean;
         /**
          * Installs a new release on a device, downloading the firmware if required.
-         * @param device A #FwupdDevice
-         * @param release A #FwupdRelease
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param download_flags the #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param device A {@link Fwupd.Device}
+         * @param release A {@link Fwupd.Release}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param download_flags the {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         install_release2(
             device: Device,
@@ -2319,12 +2436,12 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
-         * @param device A #FwupdDevice
-         * @param release A #FwupdRelease
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param download_flags the #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_DISABLE_IPFS
-         * @param cancellable the #GCancellable, or %NULL
+         * `fwupd_client_set_main_context()`.
+         * @param device A {@link Fwupd.Device}
+         * @param release A {@link Fwupd.Release}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param download_flags the {@link Fwupd.ClientDownloadFlags}, e.g. `FWUPD_CLIENT_DOWNLOAD_FLAG_DISABLE_IPFS`
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         install_release2_async(
@@ -2340,11 +2457,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
-         * @param device A #FwupdDevice
-         * @param release A #FwupdRelease
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * `fwupd_client_set_main_context()`.
+         * @param device A {@link Fwupd.Device}
+         * @param release A {@link Fwupd.Release}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         install_release_async(
             device: Device,
@@ -2357,11 +2474,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
-         * @param device A #FwupdDevice
-         * @param release A #FwupdRelease
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * `fwupd_client_set_main_context()`.
+         * @param device A {@link Fwupd.Device}
+         * @param release A {@link Fwupd.Release}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         install_release_async(
@@ -2376,11 +2493,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
-         * @param device A #FwupdDevice
-         * @param release A #FwupdRelease
-         * @param install_flags the #FwupdInstallFlags, e.g. %FWUPD_INSTALL_FLAG_ALLOW_REINSTALL
-         * @param cancellable the #GCancellable, or %NULL
+         * `fwupd_client_set_main_context()`.
+         * @param device A {@link Fwupd.Device}
+         * @param release A {@link Fwupd.Release}
+         * @param install_flags the {@link Fwupd.InstallFlags}, e.g. {@link Fwupd.InstallFlags.ALLOW_REINSTALL}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         install_release_async(
@@ -2391,9 +2508,9 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_install_release_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_install_release_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         install_release_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -2401,8 +2518,8 @@ export namespace Fwupd {
          * The daemon will only respond to this request with proper permissions
          * @param key key, e.g. `DisabledPlugins`
          * @param value value, e.g. `*`
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         modify_config(key: string, value: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2410,7 +2527,7 @@ export namespace Fwupd {
          * The daemon will only respond to this request with proper permissions
          * @param key key, e.g. `DisabledPlugins`
          * @param value value, e.g. `*`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         modify_config_async(
             key: string,
@@ -2422,7 +2539,7 @@ export namespace Fwupd {
          * The daemon will only respond to this request with proper permissions
          * @param key key, e.g. `DisabledPlugins`
          * @param value value, e.g. `*`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         modify_config_async(
@@ -2436,7 +2553,7 @@ export namespace Fwupd {
          * The daemon will only respond to this request with proper permissions
          * @param key key, e.g. `DisabledPlugins`
          * @param value value, e.g. `*`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         modify_config_async(
@@ -2446,30 +2563,30 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_modify_config_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_modify_config_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         modify_config_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Modifies a device in a specific way. Not all properties on the #FwupdDevice
+         * Modifies a device in a specific way. Not all properties on the {@link Fwupd.Device}
          * are settable by the client, and some may have other restrictions on `value`.
          *
          * NOTE: User authentication may be required to complete this action.
          * @param device_id the device ID
          * @param key the key, e.g. `Flags`
          * @param value the key, e.g. `reported`
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         modify_device(device_id: string, key: string, value: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Modifies a device in a specific way. Not all properties on the #FwupdDevice
+         * Modifies a device in a specific way. Not all properties on the {@link Fwupd.Device}
          * are settable by the client, and some may have other restrictions on `value`.
          * @param device_id the device ID
          * @param key the key, e.g. `Flags`
          * @param value the key, e.g. `reported`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         modify_device_async(
             device_id: string,
@@ -2478,12 +2595,12 @@ export namespace Fwupd {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
-         * Modifies a device in a specific way. Not all properties on the #FwupdDevice
+         * Modifies a device in a specific way. Not all properties on the {@link Fwupd.Device}
          * are settable by the client, and some may have other restrictions on `value`.
          * @param device_id the device ID
          * @param key the key, e.g. `Flags`
          * @param value the key, e.g. `reported`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         modify_device_async(
@@ -2494,12 +2611,12 @@ export namespace Fwupd {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Modifies a device in a specific way. Not all properties on the #FwupdDevice
+         * Modifies a device in a specific way. Not all properties on the {@link Fwupd.Device}
          * are settable by the client, and some may have other restrictions on `value`.
          * @param device_id the device ID
          * @param key the key, e.g. `Flags`
          * @param value the key, e.g. `reported`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         modify_device_async(
@@ -2510,9 +2627,9 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_modify_device_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_modify_device_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         modify_device_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -2522,8 +2639,8 @@ export namespace Fwupd {
          * @param remote_id the remote ID, e.g. `lvfs-testing`
          * @param key the key, e.g. `Enabled`
          * @param value the key, e.g. `true`
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         modify_remote(remote_id: string, key: string, value: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2531,7 +2648,7 @@ export namespace Fwupd {
          * @param remote_id the remote ID, e.g. `lvfs-testing`
          * @param key the key, e.g. `Enabled`
          * @param value the key, e.g. `true`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         modify_remote_async(
             remote_id: string,
@@ -2544,7 +2661,7 @@ export namespace Fwupd {
          * @param remote_id the remote ID, e.g. `lvfs-testing`
          * @param key the key, e.g. `Enabled`
          * @param value the key, e.g. `true`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         modify_remote_async(
@@ -2559,7 +2676,7 @@ export namespace Fwupd {
          * @param remote_id the remote ID, e.g. `lvfs-testing`
          * @param key the key, e.g. `Enabled`
          * @param value the key, e.g. `true`
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         modify_remote_async(
@@ -2570,16 +2687,16 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_modify_remote_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_modify_remote_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         modify_remote_finish(res: Gio.AsyncResult): boolean;
         /**
          * Refreshes a remote by downloading new metadata.
-         * @param remote A #FwupdRemote
-         * @param cancellable A #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param remote A {@link Fwupd.Remote}
+         * @param cancellable A {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         refresh_remote(remote: Remote, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2587,9 +2704,9 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
-         * @param remote A #FwupdRemote
-         * @param cancellable the #GCancellable, or %NULL
+         * `fwupd_client_set_main_context()`.
+         * @param remote A {@link Fwupd.Remote}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         refresh_remote_async(remote: Remote, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
@@ -2597,9 +2714,9 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
-         * @param remote A #FwupdRemote
-         * @param cancellable the #GCancellable, or %NULL
+         * `fwupd_client_set_main_context()`.
+         * @param remote A {@link Fwupd.Remote}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         refresh_remote_async(
@@ -2612,9 +2729,9 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
-         * @param remote A #FwupdRemote
-         * @param cancellable the #GCancellable, or %NULL
+         * `fwupd_client_set_main_context()`.
+         * @param remote A {@link Fwupd.Remote}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         refresh_remote_async(
@@ -2623,27 +2740,27 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_refresh_remote_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_refresh_remote_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         refresh_remote_finish(res: Gio.AsyncResult): boolean;
         /**
          * Signs the data using the client self-signed certificate.
          * @param value A string to sign, typically a JSON blob
-         * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns a signature, or %NULL for failure
+         * @param flags {@link Fwupd.SelfSignFlags}, e.g. {@link Fwupd.SelfSignFlags.ADD_TIMESTAMP}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns a signature, or `null` for failure
          */
         self_sign(value: string, flags: SelfSignFlags | null, cancellable?: Gio.Cancellable | null): string;
         /**
          * Signs the data using the client self-signed certificate.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param value A string to sign, typically a JSON blob
-         * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.SelfSignFlags}, e.g. {@link Fwupd.SelfSignFlags.ADD_TIMESTAMP}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         self_sign_async(
             value: string,
@@ -2653,11 +2770,11 @@ export namespace Fwupd {
         /**
          * Signs the data using the client self-signed certificate.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param value A string to sign, typically a JSON blob
-         * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.SelfSignFlags}, e.g. {@link Fwupd.SelfSignFlags.ADD_TIMESTAMP}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         self_sign_async(
@@ -2669,11 +2786,11 @@ export namespace Fwupd {
         /**
          * Signs the data using the client self-signed certificate.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          * @param value A string to sign, typically a JSON blob
-         * @param flags #FwupdSelfSignFlags, e.g. %FWUPD_SELF_SIGN_FLAG_ADD_TIMESTAMP
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.SelfSignFlags}, e.g. {@link Fwupd.SelfSignFlags.ADD_TIMESTAMP}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         self_sign_async(
@@ -2683,22 +2800,22 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Gets the result of fwupd_client_self_sign_async().
-         * @param res the #GAsyncResult
-         * @returns a signature, or %NULL for failure
+         * Gets the result of `fwupd_client_self_sign_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns a signature, or `null` for failure
          */
         self_sign_finish(res: Gio.AsyncResult): string;
         /**
          * Sets the list of approved firmware.
          * @param checksums Array of checksums
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         set_approved_firmware(checksums: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the list of approved firmware.
          * @param checksums firmware checksums
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         set_approved_firmware_async(
             checksums: string[],
@@ -2707,7 +2824,7 @@ export namespace Fwupd {
         /**
          * Sets the list of approved firmware.
          * @param checksums firmware checksums
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         set_approved_firmware_async(
@@ -2718,7 +2835,7 @@ export namespace Fwupd {
         /**
          * Sets the list of approved firmware.
          * @param checksums firmware checksums
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         set_approved_firmware_async(
@@ -2727,22 +2844,22 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_set_approved_firmware_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_set_approved_firmware_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         set_approved_firmware_finish(res: Gio.AsyncResult): boolean;
         /**
          * Sets the list of approved firmware.
          * @param checksums Array of checksums
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         set_blocked_firmware(checksums: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the list of blocked firmware.
          * @param checksums firmware checksums
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         set_blocked_firmware_async(
             checksums: string[],
@@ -2751,7 +2868,7 @@ export namespace Fwupd {
         /**
          * Sets the list of blocked firmware.
          * @param checksums firmware checksums
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         set_blocked_firmware_async(
@@ -2762,7 +2879,7 @@ export namespace Fwupd {
         /**
          * Sets the list of blocked firmware.
          * @param checksums firmware checksums
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         set_blocked_firmware_async(
@@ -2771,9 +2888,9 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_set_blocked_firmware_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_set_blocked_firmware_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         set_blocked_firmware_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -2782,17 +2899,17 @@ export namespace Fwupd {
          * how to detach the hardware.
          *
          * Clients can call this none or multiple times.
-         * @param feature_flags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param feature_flags {@link Fwupd.FeatureFlags}, e.g. `FWUPD_FEATURE_FLAG_UPDATE_TEXT`
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         set_feature_flags(feature_flags: FeatureFlags | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the features the client supports. This allows firmware to depend on
          * specific front-end features, for instance showing the user an image on
          * how to detach the hardware.
-         * @param feature_flags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
-         * @param cancellable the #GCancellable, or %NULL
+         * @param feature_flags {@link Fwupd.FeatureFlags}, e.g. `FWUPD_FEATURE_FLAG_UPDATE_TEXT`
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         set_feature_flags_async(
             feature_flags: FeatureFlags | null,
@@ -2802,8 +2919,8 @@ export namespace Fwupd {
          * Sets the features the client supports. This allows firmware to depend on
          * specific front-end features, for instance showing the user an image on
          * how to detach the hardware.
-         * @param feature_flags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
-         * @param cancellable the #GCancellable, or %NULL
+         * @param feature_flags {@link Fwupd.FeatureFlags}, e.g. `FWUPD_FEATURE_FLAG_UPDATE_TEXT`
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         set_feature_flags_async(
@@ -2815,8 +2932,8 @@ export namespace Fwupd {
          * Sets the features the client supports. This allows firmware to depend on
          * specific front-end features, for instance showing the user an image on
          * how to detach the hardware.
-         * @param feature_flags #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_UPDATE_TEXT
-         * @param cancellable the #GCancellable, or %NULL
+         * @param feature_flags {@link Fwupd.FeatureFlags}, e.g. `FWUPD_FEATURE_FLAG_UPDATE_TEXT`
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         set_feature_flags_async(
@@ -2825,14 +2942,14 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_set_feature_flags_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_set_feature_flags_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         set_feature_flags_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Sets the internal #GMainContext to use for returning progress signals.
-         * @param main_ctx #GMainContext or %NULL to use the global default main context
+         * Sets the internal {@link GLib.MainContext} to use for returning progress signals.
+         * @param main_ctx {@link GLib.MainContext} or `null` to use the global default main context
          */
         set_main_context(main_ctx?: GLib.MainContext | null): void;
         /**
@@ -2858,20 +2975,20 @@ export namespace Fwupd {
         /**
          * Unlocks a specific device so firmware can be read or wrote.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         unlock(device_id: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Unlocks a specific device so firmware can be read or wrote.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         unlock_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Unlocks a specific device so firmware can be read or wrote.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         unlock_async(
@@ -2882,7 +2999,7 @@ export namespace Fwupd {
         /**
          * Unlocks a specific device so firmware can be read or wrote.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         unlock_async(
@@ -2891,9 +3008,9 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_unlock_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_unlock_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         unlock_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -2906,8 +3023,8 @@ export namespace Fwupd {
          * @param remote_id the remote ID, e.g. `lvfs-testing`
          * @param metadata_fn the XML metadata filename
          * @param signature_fn the GPG signature file
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         update_metadata(
             remote_id: string,
@@ -2925,8 +3042,8 @@ export namespace Fwupd {
          * @param remote_id remote ID, e.g. `lvfs-testing`
          * @param metadata XML metadata data
          * @param signature signature data
-         * @param cancellable #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         update_metadata_bytes(
             remote_id: string,
@@ -2944,11 +3061,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param remote_id remote ID, e.g. `lvfs-testing`
          * @param metadata XML metadata data
          * @param signature signature data
-         * @param cancellable #GCancellable, or %NULL
+         * @param cancellable {@link Gio.Cancellable}, or `null`
          */
         update_metadata_bytes_async(
             remote_id: string,
@@ -2966,11 +3083,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param remote_id remote ID, e.g. `lvfs-testing`
          * @param metadata XML metadata data
          * @param signature signature data
-         * @param cancellable #GCancellable, or %NULL
+         * @param cancellable {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         update_metadata_bytes_async(
@@ -2990,11 +3107,11 @@ export namespace Fwupd {
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param remote_id remote ID, e.g. `lvfs-testing`
          * @param metadata XML metadata data
          * @param signature signature data
-         * @param cancellable #GCancellable, or %NULL
+         * @param cancellable {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         update_metadata_bytes_async(
@@ -3005,20 +3122,20 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_update_metadata_bytes_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_update_metadata_bytes_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         update_metadata_bytes_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Uploads data to a remote server. The fwupd_client_set_user_agent() function
+         * Uploads data to a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          * @param url the remote URL
          * @param payload payload string
          * @param signature signature string
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns response data, or %NULL for error
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns response data, or `null` for error
          */
         upload_bytes(
             url: string,
@@ -3028,20 +3145,20 @@ export namespace Fwupd {
             cancellable?: Gio.Cancellable | null,
         ): GLib.Bytes;
         /**
-         * Uploads data to a remote server. The fwupd_client_set_user_agent() function
+         * Uploads data to a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param url the remote URL
          * @param payload payload string
          * @param signature signature string
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         upload_bytes_async(
             url: string,
@@ -3051,20 +3168,20 @@ export namespace Fwupd {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GLib.Bytes>;
         /**
-         * Uploads data to a remote server. The fwupd_client_set_user_agent() function
+         * Uploads data to a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param url the remote URL
          * @param payload payload string
          * @param signature signature string
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         upload_bytes_async(
@@ -3076,20 +3193,20 @@ export namespace Fwupd {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Uploads data to a remote server. The fwupd_client_set_user_agent() function
+         * Uploads data to a remote server. The `fwupd_client_set_user_agent()` function
          * should be called before this method is used.
          *
-         * You must have called fwupd_client_connect_async() on `self` before using
+         * You must have called `fwupd_client_connect_async()` on `self` before using
          * this method.
          *
          * NOTE: This method is thread-safe, but progress signals will be
          * emitted in the global default main context, if not explicitly set with
-         * fwupd_client_set_main_context().
+         * `fwupd_client_set_main_context()`.
          * @param url the remote URL
          * @param payload payload string
          * @param signature signature string
-         * @param flags #FwupdClientDownloadFlags, e.g. %FWUPD_CLIENT_DOWNLOAD_FLAG_NONE
-         * @param cancellable the #GCancellable, or %NULL
+         * @param flags {@link Fwupd.ClientDownloadFlags}, e.g. {@link Fwupd.ClientDownloadFlags.NONE}
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         upload_bytes_async(
@@ -3101,28 +3218,28 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
         /**
-         * Gets the result of fwupd_client_upload_bytes_async().
-         * @param res the #GAsyncResult
-         * @returns response data, or %NULL for error
+         * Gets the result of `fwupd_client_upload_bytes_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns response data, or `null` for error
          */
         upload_bytes_finish(res: Gio.AsyncResult): GLib.Bytes;
         /**
          * Verify a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for verification success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for verification success
          */
         verify(device_id: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Verify a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         verify_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Verify a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         verify_async(
@@ -3133,7 +3250,7 @@ export namespace Fwupd {
         /**
          * Verify a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         verify_async(
@@ -3142,28 +3259,28 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_verify_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_verify_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         verify_finish(res: Gio.AsyncResult): boolean;
         /**
          * Update the verification record for a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for verification success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for verification success
          */
         verify_update(device_id: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Update the verification record for a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          */
         verify_update_async(device_id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Update the verification record for a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         verify_update_async(
@@ -3174,7 +3291,7 @@ export namespace Fwupd {
         /**
          * Update the verification record for a specific device.
          * @param device_id the device ID
-         * @param cancellable the #GCancellable, or %NULL
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
         verify_update_async(
@@ -3183,9 +3300,9 @@ export namespace Fwupd {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the result of fwupd_client_verify_update_async().
-         * @param res the #GAsyncResult
-         * @returns %TRUE for success
+         * Gets the result of `fwupd_client_verify_update_async()`.
+         * @param res the {@link Gio.AsyncResult}
+         * @returns `true` for success
          */
         verify_update_finish(res: Gio.AsyncResult): boolean;
     }
@@ -3215,6 +3332,9 @@ export namespace Fwupd {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
@@ -3256,16 +3376,19 @@ export namespace Fwupd {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3281,22 +3404,22 @@ export namespace Fwupd {
         static array_ensure_parents(devices: Device[]): void;
         /**
          * Creates an array of new devices using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static array_from_variant(value: GLib.Variant): Device[];
         /**
-         * Converts a string to a #FwupdDeviceFlags.
+         * Converts a string to a {@link Fwupd.DeviceFlags}.
          * @param device_flag A string, e.g. `require-ac`
          */
         static flag_from_string(device_flag: string): DeviceFlags;
         /**
-         * Converts a #FwupdDeviceFlags to a string.
-         * @param device_flag A #FwupdDeviceFlags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
+         * Converts a {@link Fwupd.DeviceFlags} to a string.
+         * @param device_flag A {@link Fwupd.DeviceFlags}, e.g. `FWUPD_DEVICE_FLAG_REQUIRE_AC`
          */
         static flag_to_string(device_flag: DeviceFlags): string;
         /**
          * Creates a new device using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static from_variant(value: GLib.Variant): Device;
         /**
@@ -3319,13 +3442,13 @@ export namespace Fwupd {
          * device in some way.
          *
          * NOTE: You should never call this function from user code, it is for daemon
-         * use only. Only use fwupd_device_set_parent() to set up a logical tree.
-         * @param child Another #FwupdDevice
+         * use only. Only use `fwupd_device_set_parent()` to set up a logical tree.
+         * @param child Another {@link Fwupd.Device}
          */
         add_child(child: Device): void;
         /**
          * Adds a specific device flag to the device.
-         * @param flag the #FwupdDeviceFlags
+         * @param flag the {@link Fwupd.DeviceFlags}
          */
         add_flag(flag: DeviceFlags): void;
         /**
@@ -3345,7 +3468,7 @@ export namespace Fwupd {
         add_instance_id(instance_id: string): void;
         /**
          * Adds a release for this device.
-         * @param release a #FwupdRelease
+         * @param release a {@link Fwupd.Release}
          */
         add_release(release: Release): void;
         /**
@@ -3355,13 +3478,13 @@ export namespace Fwupd {
         add_vendor_id(vendor_id: string): void;
         /**
          * Comparison function for comparing two FwupdDevice objects.
-         * @param device2 a #FwupdDevice
+         * @param device2 a {@link Fwupd.Device}
          * @returns negative, 0 or positive
          */
         compare(device2: Device): number;
         /**
          * Gets the current device branch.
-         * @returns the device branch, or %NULL if unset
+         * @returns the device branch, or `null` if unset
          */
         get_branch(): string;
         /**
@@ -3370,7 +3493,7 @@ export namespace Fwupd {
          */
         get_checksums(): string[];
         /**
-         * Gets the device children. These can only be assigned using fwupd_device_set_parent().
+         * Gets the device children. These can only be assigned using `fwupd_device_set_parent()`.
          * @returns the children, which may be empty
          */
         get_children(): Device[];
@@ -3381,7 +3504,7 @@ export namespace Fwupd {
         get_created(): number;
         /**
          * Gets the device description in AppStream markup format.
-         * @returns the device description, or %NULL if unset
+         * @returns the device description, or `null` if unset
          */
         get_description(): string;
         /**
@@ -3391,12 +3514,12 @@ export namespace Fwupd {
         get_flags(): number;
         /**
          * Gets the number of flash cycles left on the device
-         * @returns the flash cycles left, or %NULL if unset
+         * @returns the flash cycles left, or `null` if unset
          */
         get_flashes_left(): number;
         /**
          * Gets the default GUID.
-         * @returns the GUID, or %NULL if unset
+         * @returns the GUID, or `null` if unset
          */
         get_guid_default(): string;
         /**
@@ -3414,7 +3537,7 @@ export namespace Fwupd {
         get_icons(): string[];
         /**
          * Gets the ID.
-         * @returns the ID, or %NULL if unset
+         * @returns the ID, or `null` if unset
          */
         get_id(): string;
         /**
@@ -3434,32 +3557,32 @@ export namespace Fwupd {
         get_modified(): number;
         /**
          * Gets the device name.
-         * @returns the device name, or %NULL if unset
+         * @returns the device name, or `null` if unset
          */
         get_name(): string;
         /**
          * Gets the parent.
-         * @returns the parent device, or %NULL if unset
+         * @returns the parent device, or `null` if unset
          */
         get_parent(): Device;
         /**
          * Gets the ID.
-         * @returns the parent ID, or %NULL if unset
+         * @returns the parent ID, or `null` if unset
          */
         get_parent_id(): string;
         /**
          * Gets the plugin that created the device.
-         * @returns the plugin name, or %NULL if unset
+         * @returns the plugin name, or `null` if unset
          */
         get_plugin(): string;
         /**
          * Gets the protocol that the device uses for updating.
-         * @returns the protocol name, or %NULL if unset
+         * @returns the protocol name, or `null` if unset
          */
         get_protocol(): string;
         /**
          * Gets the default release for this device.
-         * @returns the #FwupdRelease, or %NULL if not set
+         * @returns the {@link Fwupd.Release}, or `null` if not set
          */
         get_release_default(): Release;
         /**
@@ -3469,47 +3592,47 @@ export namespace Fwupd {
         get_releases(): Release[];
         /**
          * Gets the serial number for the device.
-         * @returns a string value, or %NULL if never set.
+         * @returns a string value, or `null` if never set.
          */
         get_serial(): string;
         /**
          * Returns what the device is currently doing.
-         * @returns the status value, e.g. %FWUPD_STATUS_DEVICE_WRITE
+         * @returns the status value, e.g. {@link Fwupd.Status.DEVICE_WRITE}
          */
         get_status(): Status;
         /**
          * Gets the device summary.
-         * @returns the device summary, or %NULL if unset
+         * @returns the device summary, or `null` if unset
          */
         get_summary(): string;
         /**
          * Gets the update error.
-         * @returns the update error, or %NULL if unset
+         * @returns the update error, or `null` if unset
          */
         get_update_error(): string;
         /**
          * Gets the update image.
-         * @returns the update image URL, or %NULL if unset
+         * @returns the update image URL, or `null` if unset
          */
         get_update_image(): string;
         /**
          * Gets the update message.
-         * @returns the update message, or %NULL if unset
+         * @returns the update message, or `null` if unset
          */
         get_update_message(): string;
         /**
          * Gets the update state.
-         * @returns the update state, or %FWUPD_UPDATE_STATE_UNKNOWN if unset
+         * @returns the update state, or {@link Fwupd.UpdateState.UNKNOWN} if unset
          */
         get_update_state(): UpdateState;
         /**
          * Gets the device vendor.
-         * @returns the device vendor, or %NULL if unset
+         * @returns the device vendor, or `null` if unset
          */
         get_vendor(): string;
         /**
          * Gets the combined device vendor ID.
-         * @returns the device vendor, e.g. 'USB:0x1234|PCI:0x5678', or %NULL if unset
+         * @returns the device vendor, e.g. 'USB:0x1234|PCI:0x5678', or `null` if unset
          */
         get_vendor_id(): string;
         /**
@@ -3519,12 +3642,12 @@ export namespace Fwupd {
         get_vendor_ids(): string[];
         /**
          * Gets the device version.
-         * @returns the device version, or %NULL if unset
+         * @returns the device version, or `null` if unset
          */
         get_version(): string;
         /**
          * Gets the version of the bootloader.
-         * @returns the device version_bootloader, or %NULL if unset
+         * @returns the device version_bootloader, or `null` if unset
          */
         get_version_bootloader(): string;
         /**
@@ -3534,12 +3657,12 @@ export namespace Fwupd {
         get_version_bootloader_raw(): number;
         /**
          * Gets the update state.
-         * @returns the update state, or %FWUPD_VERSION_FORMAT_UNKNOWN if unset
+         * @returns the update state, or {@link Fwupd.VersionFormat.UNKNOWN} if unset
          */
         get_version_format(): VersionFormat;
         /**
          * Gets the lowest version of firmware the device will accept.
-         * @returns the device version_lowest, or %NULL if unset
+         * @returns the device version_lowest, or `null` if unset
          */
         get_version_lowest(): string;
         /**
@@ -3554,36 +3677,36 @@ export namespace Fwupd {
         get_version_raw(): number;
         /**
          * Finds if the device has a specific device flag.
-         * @param flag the #FwupdDeviceFlags
-         * @returns %TRUE if the flag is set
+         * @param flag the {@link Fwupd.DeviceFlags}
+         * @returns `true` if the flag is set
          */
         has_flag(flag: DeviceFlags): boolean;
         /**
          * Finds out if the device has this specific GUID.
          * @param guid the GUID, e.g. `2082b5e0-7a64-478a-b1b2-e3404fab6dad`
-         * @returns %TRUE if the GUID is found
+         * @returns `true` if the GUID is found
          */
         has_guid(guid: string): boolean;
         /**
          * Finds out if the device has this specific InstanceID.
          * @param instance_id the InstanceID, e.g. `PCI\VEN_10EC&DEV_525A`
-         * @returns %TRUE if the InstanceID is found
+         * @returns `true` if the InstanceID is found
          */
         has_instance_id(instance_id: string): boolean;
         /**
          * Finds out if the device has this specific vendor ID.
          * @param vendor_id the ID, e.g. 'USB:0x1234'
-         * @returns %TRUE if the ID is found
+         * @returns `true` if the ID is found
          */
         has_vendor_id(vendor_id: string): boolean;
         /**
          * Copy all properties from the donor object if they have not already been set.
-         * @param donor Another #FwupdDevice
+         * @param donor Another {@link Fwupd.Device}
          */
         incorporate(donor: Device): void;
         /**
          * Removes a specific device flag from the device.
-         * @param flag the #FwupdDeviceFlags
+         * @param flag the {@link Fwupd.DeviceFlags}
          */
         remove_flag(flag: DeviceFlags): void;
         /**
@@ -3603,7 +3726,7 @@ export namespace Fwupd {
         set_description(description: string): void;
         /**
          * Sets the device flags.
-         * @param flags the device flags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
+         * @param flags the device flags, e.g. `FWUPD_DEVICE_FLAG_REQUIRE_AC`
          */
         set_flags(flags: number): void;
         /**
@@ -3633,7 +3756,7 @@ export namespace Fwupd {
         set_name(name: string): void;
         /**
          * Sets the parent. Only used internally.
-         * @param parent another #FwupdDevice, or %NULL
+         * @param parent another {@link Fwupd.Device}, or `null`
          */
         set_parent(parent: Device): void;
         /**
@@ -3658,7 +3781,7 @@ export namespace Fwupd {
         set_serial(serial: string): void;
         /**
          * Sets what the device is currently doing.
-         * @param status the status value, e.g. %FWUPD_STATUS_DEVICE_WRITE
+         * @param status the status value, e.g. {@link Fwupd.Status.DEVICE_WRITE}
          */
         set_status(status: Status | null): void;
         /**
@@ -3683,7 +3806,7 @@ export namespace Fwupd {
         set_update_message(update_message: string): void;
         /**
          * Sets the update state.
-         * @param update_state the state, e.g. %FWUPD_UPDATE_STATE_PENDING
+         * @param update_state the state, e.g. {@link Fwupd.UpdateState.PENDING}
          */
         set_update_state(update_state: UpdateState | null): void;
         /**
@@ -3713,7 +3836,7 @@ export namespace Fwupd {
         set_version_bootloader_raw(version_bootloader_raw: number): void;
         /**
          * Sets the update state.
-         * @param version_format the state, e.g. %FWUPD_VERSION_FORMAT_PENDING
+         * @param version_format the state, e.g. `FWUPD_VERSION_FORMAT_PENDING`
          */
         set_version_format(version_format: VersionFormat | null): void;
         /**
@@ -3733,19 +3856,19 @@ export namespace Fwupd {
         set_version_raw(version_raw: number): void;
         /**
          * Builds a text representation of the object.
-         * @returns text, or %NULL for invalid
+         * @returns text, or `null` for invalid
          */
         to_string(): string;
         /**
          * Creates a GVariant from the device data omitting sensitive fields
-         * @returns the GVariant, or %NULL for error
+         * @returns the GVariant, or `null` for error
          */
         to_variant(): GLib.Variant;
         /**
          * Creates a GVariant from the device data.
          * Optionally provides additional data based upon flags
-         * @param flags #FwupdDeviceFlags for the call
-         * @returns the GVariant, or %NULL for error
+         * @param flags {@link Fwupd.DeviceFlags} for the call
+         * @returns the GVariant, or `null` for error
          */
         to_variant_full(flags: DeviceFlags): GLib.Variant;
     }
@@ -3765,6 +3888,9 @@ export namespace Fwupd {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
 
@@ -3794,16 +3920,19 @@ export namespace Fwupd {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3814,22 +3943,22 @@ export namespace Fwupd {
 
         /**
          * Creates an array of new plugins using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static array_from_variant(value: GLib.Variant): Plugin[];
         /**
-         * Converts a string to a #FwupdPluginFlags.
+         * Converts a string to a {@link Fwupd.PluginFlags}.
          * @param plugin_flag A string, e.g. `require-ac`
          */
         static flag_from_string(plugin_flag: string): PluginFlags;
         /**
-         * Converts a #FwupdDeviceFlags to a string.
-         * @param plugin_flag A #FwupdPluginFlags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
+         * Converts a {@link Fwupd.DeviceFlags} to a string.
+         * @param plugin_flag A {@link Fwupd.PluginFlags}, e.g. `FWUPD_DEVICE_FLAG_REQUIRE_AC`
          */
         static flag_to_string(plugin_flag: PluginFlags): string;
         /**
          * Creates a new plugin using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static from_variant(value: GLib.Variant): Plugin;
 
@@ -3837,7 +3966,7 @@ export namespace Fwupd {
 
         /**
          * Adds a specific plugin flag to the plugin.
-         * @param flag the #FwupdPluginFlags
+         * @param flag the {@link Fwupd.PluginFlags}
          */
         add_flag(flag: PluginFlags): void;
         /**
@@ -3847,23 +3976,23 @@ export namespace Fwupd {
         get_flags(): number;
         /**
          * Gets the plugin name.
-         * @returns the plugin name, or %NULL if unset
+         * @returns the plugin name, or `null` if unset
          */
         get_name(): string;
         /**
          * Finds if the plugin has a specific plugin flag.
-         * @param flag the #FwupdPluginFlags
-         * @returns %TRUE if the flag is set
+         * @param flag the {@link Fwupd.PluginFlags}
+         * @returns `true` if the flag is set
          */
         has_flag(flag: PluginFlags): boolean;
         /**
          * Removes a specific plugin flag from the plugin.
-         * @param flag the #FwupdPluginFlags
+         * @param flag the {@link Fwupd.PluginFlags}
          */
         remove_flag(flag: PluginFlags): void;
         /**
          * Sets the plugin flags.
-         * @param flags the plugin flags, e.g. %FWUPD_PLUGIN_FLAG_CAPSULES_UNSUPPORTED
+         * @param flags the plugin flags, e.g. `FWUPD_PLUGIN_FLAG_CAPSULES_UNSUPPORTED`
          */
         set_flags(flags: number): void;
         /**
@@ -3873,12 +4002,12 @@ export namespace Fwupd {
         set_name(name: string): void;
         /**
          * Builds a text representation of the object.
-         * @returns text, or %NULL for invalid
+         * @returns text, or `null` for invalid
          */
         to_string(): string;
         /**
          * Creates a GVariant from the plugin data omitting sensitive fields
-         * @returns the GVariant, or %NULL for error
+         * @returns the GVariant, or `null` for error
          */
         to_variant(): GLib.Variant;
     }
@@ -3892,6 +4021,9 @@ export namespace Fwupd {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
 
@@ -3914,16 +4046,19 @@ export namespace Fwupd {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Release.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Release.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Release.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Release.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3934,22 +4069,22 @@ export namespace Fwupd {
 
         /**
          * Creates an array of new releases using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static array_from_variant(value: GLib.Variant): Release[];
         /**
-         * Converts a string to a #FwupdReleaseFlags.
+         * Converts a string to a {@link Fwupd.ReleaseFlags}.
          * @param release_flag A string, e.g. `trusted-payload`
          */
         static flag_from_string(release_flag: string): ReleaseFlags;
         /**
-         * Converts a #FwupdReleaseFlags to a string.
-         * @param release_flag A #FwupdReleaseFlags, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
+         * Converts a {@link Fwupd.ReleaseFlags} to a string.
+         * @param release_flag A {@link Fwupd.ReleaseFlags}, e.g. `FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD`
          */
         static flag_to_string(release_flag: ReleaseFlags): string;
         /**
          * Creates a new release using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static from_variant(value: GLib.Variant): Release;
         /**
@@ -3959,7 +4094,7 @@ export namespace Fwupd {
         static urgency_from_string(release_urgency: string): ReleaseUrgency;
         /**
          * Converts an enumerated value to a string.
-         * @param release_urgency A #FwupdReleaseUrgency, e.g. %FWUPD_RELEASE_URGENCY_HIGH
+         * @param release_urgency A {@link Fwupd.ReleaseUrgency}, e.g. {@link Fwupd.ReleaseUrgency.HIGH}
          */
         static urgency_to_string(release_urgency: ReleaseUrgency): string;
 
@@ -3977,7 +4112,7 @@ export namespace Fwupd {
         add_checksum(checksum: string): void;
         /**
          * Adds a specific release flag to the release.
-         * @param flag the #FwupdReleaseFlags
+         * @param flag the {@link Fwupd.ReleaseFlags}
          */
         add_flag(flag: ReleaseFlags): void;
         /**
@@ -4003,12 +4138,12 @@ export namespace Fwupd {
         add_metadata_item(key: string, value: string): void;
         /**
          * Gets the AppStream ID.
-         * @returns the AppStream ID, or %NULL if unset
+         * @returns the AppStream ID, or `null` if unset
          */
         get_appstream_id(): string;
         /**
          * Gets the update branch.
-         * @returns the alternate branch, or %NULL if unset
+         * @returns the alternate branch, or `null` if unset
          */
         get_branch(): string;
         /**
@@ -4028,27 +4163,27 @@ export namespace Fwupd {
         get_created(): number;
         /**
          * Gets the update description in AppStream markup format.
-         * @returns the update description, or %NULL if unset
+         * @returns the update description, or `null` if unset
          */
         get_description(): string;
         /**
          * Gets the optional text caption used to manually detach the device.
-         * @returns the string caption, or %NULL if unset
+         * @returns the string caption, or `null` if unset
          */
         get_detach_caption(): string;
         /**
          * Gets the optional image used to manually detach the device.
-         * @returns the URI, or %NULL if unset
+         * @returns the URI, or `null` if unset
          */
         get_detach_image(): string;
         /**
          * Gets the URL for the online update notes.
-         * @returns the update URL, or %NULL if unset
+         * @returns the update URL, or `null` if unset
          */
         get_details_url(): string;
         /**
          * Gets the update filename.
-         * @returns the update filename, or %NULL if unset
+         * @returns the update filename, or `null` if unset
          */
         get_filename(): string;
         /**
@@ -4058,7 +4193,7 @@ export namespace Fwupd {
         get_flags(): ReleaseFlags;
         /**
          * Gets the update homepage.
-         * @returns the update homepage, or %NULL if unset
+         * @returns the update homepage, or `null` if unset
          */
         get_homepage(): string;
         /**
@@ -4073,7 +4208,7 @@ export namespace Fwupd {
         get_issues(): string[];
         /**
          * Gets the update license.
-         * @returns the update license, or %NULL if unset
+         * @returns the update license, or `null` if unset
          */
         get_license(): string;
         /**
@@ -4092,27 +4227,27 @@ export namespace Fwupd {
         /**
          * Gets a release metadata item.
          * @param key the key
-         * @returns the value, or %NULL if unset
+         * @returns the value, or `null` if unset
          */
         get_metadata_item(key: string): string;
         /**
          * Gets the update name.
-         * @returns the update name, or %NULL if unset
+         * @returns the update name, or `null` if unset
          */
         get_name(): string;
         /**
          * Gets the update variant suffix.
-         * @returns the update variant, or %NULL if unset
+         * @returns the update variant, or `null` if unset
          */
         get_name_variant_suffix(): string;
         /**
          * Gets the update protocol.
-         * @returns the update protocol, or %NULL if unset
+         * @returns the update protocol, or `null` if unset
          */
         get_protocol(): string;
         /**
          * Gets the remote ID that can be used for downloading.
-         * @returns the ID, or %NULL if unset
+         * @returns the ID, or `null` if unset
          */
         get_remote_id(): string;
         /**
@@ -4122,12 +4257,12 @@ export namespace Fwupd {
         get_size(): number;
         /**
          * Gets the URL of the source code used to build this release.
-         * @returns the update source_url, or %NULL if unset
+         * @returns the update source_url, or `null` if unset
          */
         get_source_url(): string;
         /**
          * Gets the update summary.
-         * @returns the update summary, or %NULL if unset
+         * @returns the update summary, or `null` if unset
          */
         get_summary(): string;
         /**
@@ -4137,12 +4272,12 @@ export namespace Fwupd {
         get_trust_flags(): TrustFlags;
         /**
          * Gets the update image.
-         * @returns the update image URL, or %NULL if unset
+         * @returns the update image URL, or `null` if unset
          */
         get_update_image(): string;
         /**
          * Gets the update message.
-         * @returns the update message, or %NULL if unset
+         * @returns the update message, or `null` if unset
          */
         get_update_message(): string;
         /**
@@ -4152,40 +4287,40 @@ export namespace Fwupd {
         get_urgency(): ReleaseUrgency;
         /**
          * Gets the default update URI.
-         * @returns the update URI, or %NULL if unset
+         * @returns the update URI, or `null` if unset
          */
         get_uri(): string;
         /**
          * Gets the update vendor.
-         * @returns the update vendor, or %NULL if unset
+         * @returns the update vendor, or `null` if unset
          */
         get_vendor(): string;
         /**
          * Gets the update version.
-         * @returns the update version, or %NULL if unset
+         * @returns the update version, or `null` if unset
          */
         get_version(): string;
         /**
          * Finds out if the release has the update category.
          * @param category the update category, e.g. `X-EmbeddedController`
-         * @returns %TRUE if the release matches
+         * @returns `true` if the release matches
          */
         has_category(category: string): boolean;
         /**
          * Finds out if the release has the update checksum.
          * @param checksum the update checksum
-         * @returns %TRUE if the release matches
+         * @returns `true` if the release matches
          */
         has_checksum(checksum: string): boolean;
         /**
          * Finds if the release has a specific release flag.
-         * @param flag the #FwupdReleaseFlags
-         * @returns %TRUE if the flag is set
+         * @param flag the {@link Fwupd.ReleaseFlags}
+         * @returns `true` if the flag is set
          */
         has_flag(flag: ReleaseFlags): boolean;
         /**
          * Removes a specific release flag from the release.
-         * @param flag the #FwupdReleaseFlags
+         * @param flag the {@link Fwupd.ReleaseFlags}
          */
         remove_flag(flag: ReleaseFlags): void;
         /**
@@ -4230,7 +4365,7 @@ export namespace Fwupd {
         set_filename(filename: string): void;
         /**
          * Sets the release flags.
-         * @param flags the release flags, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
+         * @param flags the release flags, e.g. `FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD`
          */
         set_flags(flags: ReleaseFlags): void;
         /**
@@ -4300,7 +4435,7 @@ export namespace Fwupd {
         set_update_message(update_message: string): void;
         /**
          * Sets the release urgency.
-         * @param urgency the release urgency, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
+         * @param urgency the release urgency, e.g. `FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD`
          */
         set_urgency(urgency: ReleaseUrgency | null): void;
         /**
@@ -4320,12 +4455,12 @@ export namespace Fwupd {
         set_version(version: string): void;
         /**
          * Builds a text representation of the object.
-         * @returns text, or %NULL for invalid
+         * @returns text, or `null` for invalid
          */
         to_string(): string;
         /**
          * Creates a GVariant from the release data.
-         * @returns the GVariant, or %NULL for error
+         * @returns the GVariant, or `null` for error
          */
         to_variant(): GLib.Variant;
     }
@@ -4354,6 +4489,9 @@ export namespace Fwupd {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Remote extends GObject.Object {
         static $gtype: GObject.GType<Remote>;
 
@@ -4362,42 +4500,50 @@ export namespace Fwupd {
         /**
          * If firmware from the remote should be checked against the system
          * list of approved firmware.
+         * @since 1.2.6
          */
         get approval_required(): boolean;
         set approval_required(val: boolean);
         /**
          * If firmware from the remote should be checked against the system
          * list of approved firmware.
+         * @since 1.2.6
          */
         get approvalRequired(): boolean;
         set approvalRequired(val: boolean);
         /**
          * The behavior for auto-uploading reports.
+         * @since 1.3.3
          */
         get automatic_reports(): boolean;
         set automatic_reports(val: boolean);
         /**
          * The behavior for auto-uploading reports.
+         * @since 1.3.3
          */
         get automaticReports(): boolean;
         set automaticReports(val: boolean);
         /**
          * The behavior for auto-uploading security reports.
+         * @since 1.5.0
          */
         get automatic_security_reports(): boolean;
         set automatic_security_reports(val: boolean);
         /**
          * The behavior for auto-uploading security reports.
+         * @since 1.5.0
          */
         get automaticSecurityReports(): boolean;
         set automaticSecurityReports(val: boolean);
         /**
          * If the remote is enabled and should be used.
+         * @since 0.9.3
          */
         get enabled(): boolean;
         set enabled(val: boolean);
         /**
          * The remote ID.
+         * @since 0.9.3
          */
         get id(): string;
         set id(val: string);
@@ -4421,16 +4567,19 @@ export namespace Fwupd {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Remote.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Remote.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Remote.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Remote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4441,12 +4590,12 @@ export namespace Fwupd {
 
         /**
          * Creates an array of new devices using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static array_from_variant(value: GLib.Variant): Remote[];
         /**
          * Creates a new remote using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static from_variant(value: GLib.Variant): Remote;
         /**
@@ -4456,7 +4605,7 @@ export namespace Fwupd {
         static kind_from_string(kind: string): RemoteKind;
         /**
          * Converts an enumerated type to a printable string.
-         * @param kind a #FwupdRemoteKind, e.g. %FWUPD_REMOTE_KIND_DOWNLOAD
+         * @param kind a {@link Fwupd.RemoteKind}, e.g. {@link Fwupd.RemoteKind.DOWNLOAD}
          */
         static kind_to_string(kind: RemoteKind): string;
 
@@ -4466,88 +4615,88 @@ export namespace Fwupd {
          * Builds a URI for the URL using the username and password set for the remote,
          * including any basename URI substitution.
          * @param url the URL to use
-         * @returns a URI, or %NULL for error
+         * @returns a URI, or `null` for error
          */
         build_firmware_uri(url: string): string;
         /**
          * Gets the age of the remote in seconds.
-         * @returns a age, or %G_MAXUINT64 for unavailable
+         * @returns a age, or `G_MAXUINT64` for unavailable
          */
         get_age(): number;
         /**
          * Gets the remote agreement in AppStream markup format
-         * @returns a string, or %NULL if unset
+         * @returns a string, or `null` if unset
          */
         get_agreement(): string;
         /**
          * Gets if firmware from the remote should be checked against the list
          * of a approved checksums.
-         * @returns a #TRUE if the remote is restricted
+         * @returns a `TRUE` if the remote is restricted
          */
         get_approval_required(): boolean;
         /**
          * Gets if reports should be automatically uploaded to this remote
-         * @returns a #TRUE if the remote should have reports uploaded automatically
+         * @returns a `TRUE` if the remote should have reports uploaded automatically
          */
         get_automatic_reports(): boolean;
         /**
          * Gets if security reports should be automatically uploaded to this remote
-         * @returns a #TRUE if the remote should have reports uploaded automatically
+         * @returns a `TRUE` if the remote should have reports uploaded automatically
          */
         get_automatic_security_reports(): boolean;
         /**
          * Gets the remote checksum.
-         * @returns a string, or %NULL if unset
+         * @returns a string, or `null` if unset
          */
         get_checksum(): string;
         /**
          * Gets if the remote is enabled and should be used.
-         * @returns a #TRUE if the remote is enabled
+         * @returns a `TRUE` if the remote is enabled
          */
         get_enabled(): boolean;
         /**
          * Gets the path and filename that the remote is using for a cache.
-         * @returns a string, or %NULL for unset
+         * @returns a string, or `null` for unset
          */
         get_filename_cache(): string;
         /**
          * Gets the path and filename that the remote is using for a signature cache.
-         * @returns a string, or %NULL for unset
+         * @returns a string, or `null` for unset
          */
         get_filename_cache_sig(): string;
         /**
          * Gets the path and filename of the remote itself, typically a `.conf` file.
-         * @returns a string, or %NULL for unset
+         * @returns a string, or `null` for unset
          */
         get_filename_source(): string;
         /**
          * Gets the base URI for firmware.
-         * @returns a URI, or %NULL for unset.
+         * @returns a URI, or `null` for unset.
          */
         get_firmware_base_uri(): string;
         /**
          * Gets the remote ID, e.g. `lvfs-testing`.
-         * @returns a string, or %NULL if unset
+         * @returns a string, or `null` if unset
          */
         get_id(): string;
         /**
          * Gets the keyring kind of the remote.
-         * @returns a #FwupdKeyringKind, e.g. #FWUPD_KEYRING_KIND_GPG
+         * @returns a {@link Fwupd.KeyringKind}, e.g. #FWUPD_KEYRING_KIND_GPG
          */
         get_keyring_kind(): KeyringKind;
         /**
          * Gets the kind of the remote.
-         * @returns a #FwupdRemoteKind, e.g. #FWUPD_REMOTE_KIND_LOCAL
+         * @returns a {@link Fwupd.RemoteKind}, e.g. #FWUPD_REMOTE_KIND_LOCAL
          */
         get_kind(): RemoteKind;
         /**
          * Gets the URI for the remote metadata.
-         * @returns a URI, or %NULL for invalid.
+         * @returns a URI, or `null` for invalid.
          */
         get_metadata_uri(): string;
         /**
          * Gets the URI for the remote metadata signature.
-         * @returns a URI, or %NULL for invalid.
+         * @returns a URI, or `null` for invalid.
          */
         get_metadata_uri_sig(): string;
         /**
@@ -4562,7 +4711,7 @@ export namespace Fwupd {
         get_order_before(): string[];
         /**
          * Gets the password configured for the remote.
-         * @returns a string, or %NULL for unset
+         * @returns a string, or `null` for unset
          */
         get_password(): string;
         /**
@@ -4572,27 +4721,27 @@ export namespace Fwupd {
         get_priority(): number;
         /**
          * Gets the base directory for storing remote metadata
-         * @returns a string, or %NULL if unset
+         * @returns a string, or `null` if unset
          */
         get_remotes_dir(): string;
         /**
          * Gets the URI for the remote reporting.
-         * @returns a URI, or %NULL for invalid.
+         * @returns a URI, or `null` for invalid.
          */
         get_report_uri(): string;
         /**
          * Gets the URI for the security report.
-         * @returns a URI, or %NULL for invalid.
+         * @returns a URI, or `null` for invalid.
          */
         get_security_report_uri(): string;
         /**
          * Gets the remote title, e.g. `Linux Vendor Firmware Service`.
-         * @returns a string, or %NULL if unset
+         * @returns a string, or `null` if unset
          */
         get_title(): string;
         /**
          * Gets the username configured for the remote.
-         * @returns a string, or %NULL for unset
+         * @returns a string, or `null` for unset
          */
         get_username(): string;
         /**
@@ -4600,14 +4749,14 @@ export namespace Fwupd {
          * for you, and do you only need to call this if you are just watching
          * the self.
          * @param filename A filename
-         * @param cancellable the #GCancellable, or %NULL
-         * @returns %TRUE for success
+         * @param cancellable the {@link Gio.Cancellable}, or `null`
+         * @returns `true` for success
          */
         load_from_filename(filename: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Parses the signature, updating the metadata URI as appropriate.
          * @param filename A filename
-         * @returns %TRUE for success
+         * @returns `true` for success
          */
         load_signature(filename: string): boolean;
         /**
@@ -4615,8 +4764,8 @@ export namespace Fwupd {
          *
          * This can only be called for remotes with `Keyring=jcat` which is
          * the default for most remotes.
-         * @param bytes A #GBytes
-         * @returns %TRUE for success
+         * @param bytes A {@link GLib.Bytes}
+         * @returns `true` for success
          */
         load_signature_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
         /**
@@ -4626,7 +4775,7 @@ export namespace Fwupd {
         set_agreement(agreement: string): void;
         /**
          * Sets the keyring kind
-         * @param keyring_kind #FwupdKeyringKind e.g. #FWUPD_KEYRING_KIND_PKCS7
+         * @param keyring_kind {@link Fwupd.KeyringKind} e.g. #FWUPD_KEYRING_KIND_PKCS7
          */
         set_keyring_kind(keyring_kind: KeyringKind | null): void;
         /**
@@ -4646,7 +4795,7 @@ export namespace Fwupd {
         set_remotes_dir(directory: string): void;
         /**
          * Creates a GVariant from the remote data.
-         * @returns the GVariant, or %NULL for error
+         * @returns the GVariant, or `null` for error
          */
         to_variant(): GLib.Variant;
     }
@@ -4660,6 +4809,9 @@ export namespace Fwupd {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SecurityAttr extends GObject.Object {
         static $gtype: GObject.GType<SecurityAttr>;
 
@@ -4682,16 +4834,19 @@ export namespace Fwupd {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SecurityAttr.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SecurityAttr.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SecurityAttr.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SecurityAttr.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SecurityAttr.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SecurityAttr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4702,27 +4857,27 @@ export namespace Fwupd {
 
         /**
          * Creates an array of new security_attrs using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static array_from_variant(value: GLib.Variant): SecurityAttr[];
         /**
          * Returns the printable string for the flag.
-         * @param flag A #FwupdSecurityAttrFlags, e.g. %FWUPD_SECURITY_ATTR_FLAG_SUCCESS
+         * @param flag A {@link Fwupd.SecurityAttrFlags}, e.g. {@link Fwupd.SecurityAttrFlags.SUCCESS}
          */
         static flag_to_string(flag: SecurityAttrFlags): string;
         /**
          * Returns the string suffix for the flag.
-         * @param flag A #FwupdSecurityAttrFlags, e.g. %FWUPD_SECURITY_ATTR_FLAG_RUNTIME_UPDATES
+         * @param flag A {@link Fwupd.SecurityAttrFlags}, e.g. {@link Fwupd.SecurityAttrFlags.RUNTIME_UPDATES}
          */
         static flag_to_suffix(flag: SecurityAttrFlags): string;
         /**
          * Creates a new self using packed data.
-         * @param value a #GVariant
+         * @param value a {@link GLib.Variant}
          */
         static from_variant(value: GLib.Variant): SecurityAttr;
         /**
          * Returns the printable string for the result enum.
-         * @param result A #FwupdSecurityAttrResult, e.g. %FWUPD_SECURITY_ATTR_RESULT_ENABLED
+         * @param result A {@link Fwupd.SecurityAttrResult}, e.g. {@link Fwupd.SecurityAttrResult.ENABLED}
          */
         static result_to_string(result: SecurityAttrResult): string;
 
@@ -4730,7 +4885,7 @@ export namespace Fwupd {
 
         /**
          * Adds a specific self flag to the self.
-         * @param flag the #FwupdSecurityAttrFlags
+         * @param flag the {@link Fwupd.SecurityAttrFlags}
          */
         add_flag(flag: SecurityAttrFlags | null): void;
         /**
@@ -4747,7 +4902,7 @@ export namespace Fwupd {
         add_obsolete(appstream_id: string): void;
         /**
          * Gets the AppStream ID.
-         * @returns the AppStream ID, or %NULL if unset
+         * @returns the AppStream ID, or `null` if unset
          */
         get_appstream_id(): string;
         /**
@@ -4757,18 +4912,18 @@ export namespace Fwupd {
         get_flags(): SecurityAttrFlags;
         /**
          * Gets the HSI level.
-         * @returns the #FwupdSecurityAttrLevel, or %FWUPD_SECURITY_ATTR_LEVEL_NONE if unset
+         * @returns the {@link Fwupd.SecurityAttrLevel}, or {@link Fwupd.SecurityAttrLevel.NONE} if unset
          */
         get_level(): SecurityAttrLevel;
         /**
          * Gets private metadata from the attribute which may be used in the name.
          * @param key metadata key
-         * @returns the metadata value, or %NULL if unfound
+         * @returns the metadata value, or `null` if unfound
          */
         get_metadata(key: string): string | null;
         /**
          * Gets the attribute name.
-         * @returns the attribute name, or %NULL if unset
+         * @returns the attribute name, or `null` if unset
          */
         get_name(): string;
         /**
@@ -4779,29 +4934,29 @@ export namespace Fwupd {
         get_obsoletes(): string[];
         /**
          * Gets the plugin that created the attribute.
-         * @returns the plugin name, or %NULL if unset
+         * @returns the plugin name, or `null` if unset
          */
         get_plugin(): string;
         /**
          * Gets the optional HSI result.
-         * @returns the #FwupdSecurityAttrResult, e.g %FWUPD_SECURITY_ATTR_LEVEL_LOCKED
+         * @returns the {@link Fwupd.SecurityAttrResult}, e.g `FWUPD_SECURITY_ATTR_LEVEL_LOCKED`
          */
         get_result(): SecurityAttrResult;
         /**
          * Gets the attribute URL.
-         * @returns the attribute result, or %NULL if unset
+         * @returns the attribute result, or `null` if unset
          */
         get_url(): string;
         /**
          * Finds if the self has a specific self flag.
-         * @param flag the #FwupdSecurityAttrFlags
-         * @returns %TRUE if the flag is set
+         * @param flag the {@link Fwupd.SecurityAttrFlags}
+         * @returns `true` if the flag is set
          */
         has_flag(flag: SecurityAttrFlags | null): boolean;
         /**
          * Finds out if the attribute obsoletes a specific appstream_id.
          * @param appstream_id the attribute appstream_id
-         * @returns %TRUE if the self matches
+         * @returns `true` if the self matches
          */
         has_obsolete(appstream_id: string): boolean;
         /**
@@ -4811,13 +4966,13 @@ export namespace Fwupd {
         set_appstream_id(appstream_id: string): void;
         /**
          * Sets the self flags.
-         * @param flags the self flags, e.g. %FWUPD_SECURITY_ATTR_FLAG_OBSOLETED
+         * @param flags the self flags, e.g. {@link Fwupd.SecurityAttrFlags.OBSOLETED}
          */
         set_flags(flags: SecurityAttrFlags | null): void;
         /**
-         * Sets the HSI level. A `level` of %FWUPD_SECURITY_ATTR_LEVEL_NONE is not used
+         * Sets the HSI level. A `level` of {@link Fwupd.SecurityAttrLevel.NONE} is not used
          * for the HSI calculation.
-         * @param level A #FwupdSecurityAttrLevel, e.g. %FWUPD_SECURITY_ATTR_LEVEL_IMPORTANT
+         * @param level A {@link Fwupd.SecurityAttrLevel}, e.g. {@link Fwupd.SecurityAttrLevel.IMPORTANT}
          */
         set_level(level: SecurityAttrLevel | null): void;
         /**
@@ -4833,7 +4988,7 @@ export namespace Fwupd {
         /**
          * Sets the optional HSI result. This is required because some attributes may
          * be a "success" when something is `locked` or may be "failed" if `found`.
-         * @param result A #FwupdSecurityAttrResult, e.g. %FWUPD_SECURITY_ATTR_LEVEL_LOCKED
+         * @param result A {@link Fwupd.SecurityAttrResult}, e.g. `FWUPD_SECURITY_ATTR_LEVEL_LOCKED`
          */
         set_result(result: SecurityAttrResult | null): void;
         /**
@@ -4843,24 +4998,54 @@ export namespace Fwupd {
         set_url(url: string): void;
         /**
          * Builds a text representation of the object.
-         * @returns text, or %NULL for invalid
+         * @returns text, or `null` for invalid
          */
         to_string(): string;
         /**
          * Creates a GVariant from the self data.
-         * @returns the GVariant, or %NULL for error
+         * @returns the GVariant, or `null` for error
          */
         to_variant(): GLib.Variant;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
+    /**
+     * @gir-type Alias
+     */
     type PluginClass = typeof Plugin;
+    /**
+     * @gir-type Alias
+     */
     type ReleaseClass = typeof Release;
+    /**
+     * @gir-type Alias
+     */
     type RemoteClass = typeof Remote;
+    /**
+     * @gir-type Alias
+     */
     type SecurityAttrClass = typeof SecurityAttr;
+    /**
+     * The device flags.
+     * @gir-type Alias
+     */
     type DeviceFlags = number;
+    /**
+     * The plugin flags.
+     * @gir-type Alias
+     */
     type PluginFlags = number;
+    /**
+     * The release flags.
+     * @gir-type Alias
+     */
     type ReleaseFlags = number;
     /**
      * Name of the imported GIR library

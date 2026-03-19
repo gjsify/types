@@ -30,6 +30,9 @@ export namespace ArrowFlight {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CallOptions extends GObject.Object {
         static $gtype: GObject.GType<CallOptions>;
 
@@ -52,16 +55,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CallOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CallOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CallOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -82,6 +88,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
@@ -108,16 +117,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -126,7 +138,17 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @param ticket A {@link ArrowFlight.Ticket}.
+         * @param options A {@link ArrowFlight.CallOptions}.
+         * @returns The {@link ArrowFlight.StreamReader} to read record batched from the server   on success, `null` on error.
+         */
         do_get(ticket: Ticket, options?: CallOptions | null): StreamReader | null;
+        /**
+         * @param criteria A {@link ArrowFlight.Criteria}.
+         * @param options A {@link ArrowFlight.CallOptions}.
+         * @returns The returned list of {@link ArrowFlight.Info} on success, `null` on error.
+         */
         list_flights(criteria?: Criteria | null, options?: CallOptions | null): Info[] | null;
     }
 
@@ -139,6 +161,9 @@ export namespace ArrowFlight {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
 
@@ -161,16 +186,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -189,6 +217,9 @@ export namespace ArrowFlight {
         interface ConstructorProps extends Descriptor.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CommandDescriptor extends Descriptor {
         static $gtype: GObject.GType<CommandDescriptor>;
 
@@ -211,16 +242,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CommandDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CommandDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CommandDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -229,6 +263,9 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @returns The opaque value used to express a command.   It should be freed with `g_free()` when no longer needed.
+         */
         get_command(): string;
     }
 
@@ -245,6 +282,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Criteria extends GObject.Object {
         static $gtype: GObject.GType<Criteria>;
 
@@ -252,6 +292,7 @@ export namespace ArrowFlight {
 
         /**
          * Opaque criteria expression, dependent on server implementation.
+         * @since 5.0.0
          */
         get expression(): GLib.Bytes;
         set expression(val: GLib.Bytes);
@@ -275,16 +316,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Criteria.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Criteria.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Criteria.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Criteria.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Criteria.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Criteria.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -305,6 +349,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DataStream extends GObject.Object {
         static $gtype: GObject.GType<DataStream>;
 
@@ -329,16 +376,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DataStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DataStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DataStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DataStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -359,6 +409,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Descriptor extends GObject.Object {
         static $gtype: GObject.GType<Descriptor>;
 
@@ -383,16 +436,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Descriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Descriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Descriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -401,7 +457,14 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @param other_descriptor A {@link ArrowFlight.Descriptor} to be compared.
+         * @returns `true` if both of them represents the same descriptor,   `false` otherwise.
+         */
         equal(other_descriptor: Descriptor): boolean;
+        /**
+         * @returns A descriptor as a string.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -418,6 +481,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
 
@@ -425,6 +491,7 @@ export namespace ArrowFlight {
 
         /**
          * Opaque ticket identify; use with DoGet RPC.
+         * @since 5.0.0
          */
         get ticket(): Ticket;
 
@@ -447,16 +514,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Endpoint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Endpoint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -465,7 +535,14 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @param other_endpoint A {@link ArrowFlight.Endpoint} to be compared.
+         * @returns `true` if both of them represents the same endpoint,   `false` otherwise.
+         */
         equal(other_endpoint: Endpoint): boolean;
+        /**
+         * @returns The locations in this endpoint.   It must be freed with `g_list_free()` and `g_object_unref()` when no   longer needed. You can use `g_list_free_full(locations,   g_object_unref)`.
+         */
         get_locations(): Location[] | null;
     }
 
@@ -482,6 +559,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
 
@@ -514,16 +594,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Info.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Info.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Info.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -532,11 +615,31 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @param other_info A {@link ArrowFlight.Info} to be compared.
+         * @returns `true` if both of them represents the same information,   `false` otherwise.
+         */
         equal(other_info: Info): boolean;
+        /**
+         * @returns The {@link ArrowFlight.Descriptor} of the information.
+         */
         get_descriptor(): Descriptor;
+        /**
+         * @returns The list of {@link ArrowFlight.Endpoint} of the information.
+         */
         get_endpoints(): Endpoint[];
+        /**
+         * @param options A {@link Arrow.ReadOptions}.
+         * @returns Deserialized {@link Arrow.Schema}, `null` on error.
+         */
         get_schema(options?: Arrow.ReadOptions | null): Arrow.Schema;
+        /**
+         * @returns The number of total bytes of the information.
+         */
         get_total_bytes(): number;
+        /**
+         * @returns The number of total records of the information.
+         */
         get_total_records(): number;
     }
 
@@ -549,6 +652,9 @@ export namespace ArrowFlight {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
 
@@ -571,16 +677,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -589,8 +698,18 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @param other_location A {@link ArrowFlight.Location} to be compared.
+         * @returns `true` if both of them represents the same URI, `false` otherwise.
+         */
         equal(other_location: Location): boolean;
+        /**
+         * @returns The scheme of this URI.   It should be freed with `g_free()` when no longer needed.
+         */
         get_scheme(): string;
+        /**
+         * @returns A representation of this URI as a string.   It should be freed with `g_free()` when no longer needed.
+         */
         to_string(): string;
     }
 
@@ -605,6 +724,9 @@ export namespace ArrowFlight {
         interface ConstructorProps extends Descriptor.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PathDescriptor extends Descriptor {
         static $gtype: GObject.GType<PathDescriptor>;
 
@@ -627,16 +749,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PathDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PathDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PathDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -645,6 +770,9 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @returns The paths in this descriptor.   It must be freed with `g_strfreev()` when no longer needed.
+         */
         get_paths(): string[] | null;
     }
 
@@ -661,6 +789,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchReader>;
 
@@ -685,16 +816,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -703,7 +837,13 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @returns The all data on success, `null` on error.
+         */
         read_all(): Arrow.Table;
+        /**
+         * @returns The next chunk on success, `null` on end   of stream, `null` on error.
+         */
         read_next(): StreamChunk;
     }
 
@@ -721,6 +861,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RecordBatchStream extends DataStream {
         static $gtype: GObject.GType<RecordBatchStream>;
 
@@ -728,6 +871,7 @@ export namespace ArrowFlight {
 
         /**
          * The reader that produces record batches.
+         * @since 6.0.0
          */
         get reader(): Arrow.RecordBatchReader;
 
@@ -750,16 +894,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordBatchStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordBatchStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -776,6 +923,9 @@ export namespace ArrowFlight {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
 
@@ -796,16 +946,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Server.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Server.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Server.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -814,19 +967,43 @@ export namespace ArrowFlight {
 
         // Virtual methods
 
+        /**
+         * @param context A {@link ArrowFlight.ServerCallContext}.
+         * @param ticket A {@link ArrowFlight.Ticket}.
+         * @virtual
+         */
         vfunc_do_get(context: ServerCallContext, ticket: Ticket): DataStream;
+        /**
+         * @param context A {@link ArrowFlight.ServerCallContext}.
+         * @param criteria A {@link ArrowFlight.Criteria}.
+         * @virtual
+         */
         vfunc_list_flights(context: ServerCallContext, criteria?: Criteria | null): Info[];
 
         // Methods
 
+        /**
+         * @param context A {@link ArrowFlight.ServerCallContext}.
+         * @param ticket A {@link ArrowFlight.Ticket}.
+         * @returns {@link ArrowFlight.DataStream} on success, `null` on error.
+         */
         do_get(context: ServerCallContext, ticket: Ticket): DataStream;
         get_port(): number;
+        /**
+         * @param context A {@link ArrowFlight.ServerCallContext}.
+         * @param criteria A {@link ArrowFlight.Criteria}.
+         * @returns {@link GLib.List} of {@link ArrowFlight.Info} on success, `null` on error.
+         */
         list_flights(context: ServerCallContext, criteria?: Criteria | null): Info[];
+        /**
+         * @param options A {@link ArrowFlight.ServerOptions}.
+         * @returns `true` on success, `false` on error.
+         */
         listen(options: ServerOptions): boolean;
         /**
          * Shuts down the serve. This function can be called from signal
          * handler or another thread.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         shutdown(): boolean;
         wait(): boolean;
@@ -846,6 +1023,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ServerCallContext extends GObject.Object {
         static $gtype: GObject.GType<ServerCallContext>;
 
@@ -871,16 +1051,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServerCallContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServerCallContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServerCallContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -901,6 +1084,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ServerOptions extends GObject.Object {
         static $gtype: GObject.GType<ServerOptions>;
 
@@ -927,16 +1113,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServerOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServerOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServerOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -957,6 +1146,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StreamChunk extends GObject.Object {
         static $gtype: GObject.GType<StreamChunk>;
 
@@ -981,16 +1173,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamChunk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamChunk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamChunk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -999,9 +1194,18 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @returns The data of the chunk.
+         */
         get_data(): Arrow.RecordBatch;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+        /**
+         * @returns The metadata of the chunk.   The metadata may be NULL.
+         */
         get_metadata(): Arrow.Buffer | null;
     }
 
@@ -1016,6 +1220,9 @@ export namespace ArrowFlight {
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<StreamReader>;
 
@@ -1036,16 +1243,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1066,6 +1276,9 @@ export namespace ArrowFlight {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Ticket extends GObject.Object {
         static $gtype: GObject.GType<Ticket>;
 
@@ -1074,6 +1287,7 @@ export namespace ArrowFlight {
         /**
          * Opaque identifier or credential to use when requesting a data
          * stream with the DoGet RPC.
+         * @since 5.0.0
          */
         get data(): GLib.Bytes;
         set data(val: GLib.Bytes);
@@ -1097,16 +1311,19 @@ export namespace ArrowFlight {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Ticket.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ticket.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Ticket.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ticket.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Ticket.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Ticket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1115,27 +1332,88 @@ export namespace ArrowFlight {
 
         // Methods
 
+        /**
+         * @param other_ticket A {@link ArrowFlight.Ticket} to be compared.
+         * @returns `true` if both of them represents the same ticket, `false` otherwise.
+         */
         equal(other_ticket: Ticket): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CallOptionsClass = typeof CallOptions;
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type ClientOptionsClass = typeof ClientOptions;
+    /**
+     * @gir-type Alias
+     */
     type CommandDescriptorClass = typeof CommandDescriptor;
+    /**
+     * @gir-type Alias
+     */
     type CriteriaClass = typeof Criteria;
+    /**
+     * @gir-type Alias
+     */
     type DataStreamClass = typeof DataStream;
+    /**
+     * @gir-type Alias
+     */
     type DescriptorClass = typeof Descriptor;
+    /**
+     * @gir-type Alias
+     */
     type EndpointClass = typeof Endpoint;
+    /**
+     * @gir-type Alias
+     */
     type InfoClass = typeof Info;
+    /**
+     * @gir-type Alias
+     */
     type LocationClass = typeof Location;
+    /**
+     * @gir-type Alias
+     */
     type PathDescriptorClass = typeof PathDescriptor;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchReaderClass = typeof RecordBatchReader;
+    /**
+     * @gir-type Alias
+     */
     type RecordBatchStreamClass = typeof RecordBatchStream;
+    /**
+     * @gir-type Alias
+     */
     type ServerCallContextClass = typeof ServerCallContext;
+    /**
+     * @gir-type Alias
+     */
     type ServerClass = typeof Server;
+    /**
+     * @gir-type Alias
+     */
     type ServerOptionsClass = typeof ServerOptions;
+    /**
+     * @gir-type Alias
+     */
     type StreamChunkClass = typeof StreamChunk;
+    /**
+     * @gir-type Alias
+     */
     type StreamReaderClass = typeof StreamReader;
+    /**
+     * @gir-type Alias
+     */
     type TicketClass = typeof Ticket;
     /**
      * Name of the imported GIR library

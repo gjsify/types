@@ -27,6 +27,8 @@ export namespace Poppler {
 
     /**
      * Layer actions
+     * @gir-type Enum
+     * @since 0.14
      */
     enum ActionLayerAction {
         /**
@@ -49,6 +51,8 @@ export namespace Poppler {
 
     /**
      * Movie operations
+     * @gir-type Enum
+     * @since 0.14
      */
     enum ActionMovieOperation {
         /**
@@ -75,6 +79,7 @@ export namespace Poppler {
 
     /**
      * Action types
+     * @gir-type Enum
      */
     enum ActionType {
         /**
@@ -133,6 +138,8 @@ export namespace Poppler {
 
     /**
      * Form field additional action types to be passed to `poppler_form_field_get_additional_action`
+     * @gir-type Enum
+     * @since 0.72
      */
     enum AdditionalActionType {
         /**
@@ -159,6 +166,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<AnnotExternalDataType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotExternalDataType {
         '3D',
         UNKNOWN,
@@ -168,6 +178,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<AnnotFreeTextQuadding>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotFreeTextQuadding {
         LEFT_JUSTIFIED,
         CENTERED,
@@ -178,6 +191,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<AnnotMarkupReplyType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotMarkupReplyType {
         R,
         GROUP,
@@ -187,6 +203,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<AnnotStampIcon>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotStampIcon {
         UNKNOWN,
         APPROVED,
@@ -209,6 +228,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<AnnotTextState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotTextState {
         MARKED,
         UNMARKED,
@@ -224,6 +246,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<AnnotType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotType {
         UNKNOWN,
         TEXT,
@@ -258,7 +283,8 @@ export namespace Poppler {
     }
 
     /**
-     * Backend codes returned by poppler_get_backend().
+     * Backend codes returned by `poppler_get_backend()`.
+     * @gir-type Enum
      */
     enum Backend {
         /**
@@ -281,6 +307,8 @@ export namespace Poppler {
 
     /**
      * Signature certificate verification results
+     * @gir-type Enum
+     * @since 21.12.0
      */
     enum CertificateStatus {
         /**
@@ -319,6 +347,7 @@ export namespace Poppler {
 
     /**
      * Destination types
+     * @gir-type Enum
      */
     enum DestType {
         /**
@@ -375,13 +404,14 @@ export namespace Poppler {
          */
         FITBV,
         /**
-         * got to page specified by a name. See poppler_document_find_dest()
+         * got to page specified by a name. See `poppler_document_find_dest()`
          */
         NAMED,
     }
 
     /**
-     * Error codes returned by #PopplerDocument
+     * Error codes returned by {@link Poppler.Document}
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -425,6 +455,7 @@ export namespace Poppler {
 
     /**
      * Font types
+     * @gir-type Enum
      */
     enum FontType {
         /**
@@ -481,6 +512,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<FormButtonType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FormButtonType {
         PUSH,
         CHECK,
@@ -491,6 +525,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<FormChoiceType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FormChoiceType {
         COMBO,
         LIST,
@@ -500,6 +537,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<FormFieldType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FormFieldType {
         UNKNOWN,
         BUTTON,
@@ -512,6 +552,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<FormTextType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FormTextType {
         NORMAL,
         MULTILINE,
@@ -524,6 +567,8 @@ export namespace Poppler {
 
     /**
      * Play mode enum values.
+     * @gir-type Enum
+     * @since 0.54
      */
     enum MoviePlayMode {
         /**
@@ -551,6 +596,8 @@ export namespace Poppler {
 
     /**
      * PDF Subtype Conformance
+     * @gir-type Enum
+     * @since 0.70
      */
     enum PDFConformance {
         /**
@@ -593,6 +640,7 @@ export namespace Poppler {
 
     /**
      * PDF Subtype Part
+     * @gir-type Struct
      */
     class PDFPart {
         static $gtype: GObject.GType<PDFPart>;
@@ -647,6 +695,8 @@ export namespace Poppler {
 
     /**
      * PDF Subtype
+     * @gir-type Enum
+     * @since 0.70
      */
     enum PDFSubtype {
         /**
@@ -685,6 +735,7 @@ export namespace Poppler {
 
     /**
      * Page layout types
+     * @gir-type Enum
      */
     enum PageLayout {
         /**
@@ -723,6 +774,7 @@ export namespace Poppler {
 
     /**
      * Page modes
+     * @gir-type Enum
      */
     enum PageMode {
         /**
@@ -762,6 +814,7 @@ export namespace Poppler {
     /**
      * Page transition alignment types for #POPPLER_PAGE_TRANSITION_SPLIT
      * and #POPPLER_PAGE_TRANSITION_BLINDS transition types
+     * @gir-type Enum
      */
     enum PageTransitionAlignment {
         /**
@@ -781,6 +834,7 @@ export namespace Poppler {
     /**
      * Page transition direction types for #POPPLER_PAGE_TRANSITION_SPLIT,
      * #POPPLER_PAGE_TRANSITION_BOX and #POPPLER_PAGE_TRANSITION_FLY transition types
+     * @gir-type Enum
      */
     enum PageTransitionDirection {
         /**
@@ -799,6 +853,7 @@ export namespace Poppler {
 
     /**
      * Page transition types
+     * @gir-type Enum
      */
     enum PageTransitionType {
         /**
@@ -861,6 +916,8 @@ export namespace Poppler {
 
     /**
      * Duplex viewer preference
+     * @gir-type Enum
+     * @since 0.80
      */
     enum PrintDuplex {
         /**
@@ -887,6 +944,8 @@ export namespace Poppler {
 
     /**
      * PrintScaling viewer preference
+     * @gir-type Enum
+     * @since 0.73
      */
     enum PrintScaling {
         /**
@@ -905,6 +964,7 @@ export namespace Poppler {
 
     /**
      * Selection styles
+     * @gir-type Enum
      */
     enum SelectionStyle {
         /**
@@ -927,6 +987,8 @@ export namespace Poppler {
 
     /**
      * Signature verification results
+     * @gir-type Enum
+     * @since 21.12.0
      */
     enum SignatureStatus {
         /**
@@ -963,6 +1025,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<Stretch>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Stretch {
         ULTRA_CONDENSED,
         EXTRA_CONDENSED,
@@ -979,6 +1044,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureBlockAlign>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureBlockAlign {
         BEFORE,
         MIDDLE,
@@ -990,6 +1058,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureBorderStyle>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureBorderStyle {
         NONE,
         HIDDEN,
@@ -1006,6 +1077,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureElementKind>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureElementKind {
         CONTENT,
         OBJECT_REFERENCE,
@@ -1064,6 +1138,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureFormRole>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureFormRole {
         UNDEFINED,
         RADIO_BUTTON,
@@ -1076,12 +1153,18 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureFormState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureFormState {
         ON,
         OFF,
         NEUTRAL,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class StructureGlyphOrientation {
         static $gtype: GObject.GType<StructureGlyphOrientation>;
 
@@ -1098,6 +1181,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureInlineAlign>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureInlineAlign {
         START,
         CENTER,
@@ -1108,6 +1194,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureListNumbering>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureListNumbering {
         NONE,
         DISC,
@@ -1124,6 +1213,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructurePlacement>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructurePlacement {
         BLOCK,
         INLINE,
@@ -1136,6 +1228,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureRubyAlign>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureRubyAlign {
         START,
         CENTER,
@@ -1148,6 +1243,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureRubyPosition>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureRubyPosition {
         BEFORE,
         AFTER,
@@ -1159,6 +1257,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureTableScope>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureTableScope {
         ROW,
         COLUMN,
@@ -1169,6 +1270,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureTextAlign>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureTextAlign {
         START,
         CENTER,
@@ -1180,6 +1284,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureTextDecoration>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureTextDecoration {
         NONE,
         UNDERLINE,
@@ -1191,6 +1298,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureWritingMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StructureWritingMode {
         LR_TB,
         RL_TB,
@@ -1201,6 +1311,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<Style>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Style {
         NORMAL,
         OBLIQUE,
@@ -1211,6 +1324,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<Weight>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Weight {
         THIN,
         ULTRALIGHT,
@@ -1239,24 +1355,28 @@ export namespace Poppler {
     /**
      * The major version number of the poppler header files (e.g. in poppler version
      * 0.1.2 this is 0.)
+     * @since 0.12
      */
     const MAJOR_VERSION: number;
     /**
      * The micro version number of the poppler header files (e.g. in poppler version
      * 0.1.2 this is 2.)
+     * @since 0.12
      */
     const MICRO_VERSION: number;
     /**
      * The major version number of the poppler header files (e.g. in poppler version
      * 0.1.2 this is 1.)
+     * @since 0.12
      */
     const MINOR_VERSION: number;
     /**
-     * Parses a PDF format date string and converts it to a #time_t. Returns #FALSE
+     * Parses a PDF format date string and converts it to a `time_t`. Returns `FALSE`
      * if the parsing fails or the input string is not a valid PDF format date string
      * @param date string to parse
-     * @param timet an uninitialized #time_t
-     * @returns #TRUE, if @timet was set
+     * @param timet an uninitialized `time_t`
+     * @returns `TRUE`, if `timet` was set
+     * @since 0.12
      */
     function date_parse(date: string, timet: number): boolean;
     function error_quark(): GLib.Quark;
@@ -1273,12 +1393,13 @@ export namespace Poppler {
     /**
      * Get certificate by nick name
      * @param id
-     * @returns a #PopplerCertificateInfo or %NULL if not found
+     * @returns a {@link Poppler.CertificateInfo} or `null` if not found
      */
     function get_certificate_info_by_id(id: string): CertificateInfo;
     /**
      * Get NSS directory
      * @returns nss directroy.
+     * @since 23.07.0
      */
     function get_nss_dir(): string;
     /**
@@ -1288,47 +1409,60 @@ export namespace Poppler {
     function get_version(): string;
     /**
      * Converts a bytestring into a zero-terminated string suitable to
-     * pass to poppler_document_find_dest().
+     * pass to `poppler_document_find_dest()`.
      *
      * Note that the returned string has no defined encoding and is not
      * suitable for display to the user.
      *
-     * The returned data must be freed using g_free().
+     * The returned data must be freed using `g_free()`.
      * @param data the bytestring data
      * @returns the named dest
+     * @since 0.73
      */
     function named_dest_from_bytestring(data: Uint8Array | string): string;
     /**
-     * Converts a named dest string (e.g. from #PopplerDest.named_dest) into a
+     * Converts a named dest string (e.g. from {@link Poppler.Dest}.named_dest) into a
      * bytestring, inverting the transformation of
-     * poppler_named_dest_from_bytestring().
+     * `poppler_named_dest_from_bytestring()`.
      *
      * Note that the returned data is not zero terminated and may also
      * contains embedded NUL bytes.
      *
-     * If `name` is not a valid named dest string, returns %NULL.
+     * If `name` is not a valid named dest string, returns `null`.
      *
-     * The returned data must be freed using g_free().
+     * The returned data must be freed using `g_free()`.
      * @param name the named dest string
-     * @returns a new bytestring,   or %NULL
+     * @returns a new bytestring,   or `null`
+     * @since 0.73
      */
     function named_dest_to_bytestring(name: string): Uint8Array | null;
     /**
      * Set NSS directory
      * @param path
+     * @since 23.07.0
      */
     function set_nss_dir(path: string): void;
     /**
      * A callback which asks for certificate password
-     * @param func a #PopplerNssPasswordFunc that represents a signature annotation
+     * @param func a {@link Poppler.NssPasswordFunc} that represents a signature annotation
+     * @since 23.07.0
      */
     function set_nss_password_callback(func: NssPasswordFunc): void;
+    /**
+     * @gir-type Callback
+     */
     interface AttachmentSaveFunc {
         (buf: Uint8Array | string): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface MediaSaveFunc {
         (buf: Uint8Array | string): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface NssPasswordFunc {
         (text: string): string;
     }
@@ -1336,6 +1470,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<AnnotFlag>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum AnnotFlag {
         UNKNOWN,
         INVISIBLE,
@@ -1356,6 +1493,8 @@ export namespace Poppler {
 
     /**
      * Flags using while searching text in a page
+     * @gir-type Flags
+     * @since 0.22
      */
     enum FindFlags {
         /**
@@ -1395,6 +1534,7 @@ export namespace Poppler {
 
     /**
      * Permissions
+     * @gir-type Flags
      */
     enum Permissions {
         /**
@@ -1443,6 +1583,9 @@ export namespace Poppler {
 
     /**
      * Printing flags
+     * @gir-type Flags
+     * @since 0.16
+     * @deprecated since 25.02: Use `poppler_page_render_full()` and {@link Poppler.RenderAnnotsFlags} instead.
      */
     enum PrintFlags {
         /**
@@ -1467,6 +1610,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<RenderAnnotsFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum RenderAnnotsFlags {
         NONE,
         TEXT,
@@ -1508,6 +1654,8 @@ export namespace Poppler {
 
     /**
      * Signature validation flags
+     * @gir-type Flags
+     * @since 21.12.0
      */
     enum SignatureValidationFlags {
         /**
@@ -1528,6 +1676,9 @@ export namespace Poppler {
         export const $gtype: GObject.GType<StructureGetTextFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum StructureGetTextFlags {
         /**
          * No flags.
@@ -1547,6 +1698,7 @@ export namespace Poppler {
 
     /**
      * Viewer preferences
+     * @gir-type Flags
      */
     enum ViewerPreferences {
         /**
@@ -1592,6 +1744,9 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Annot extends GObject.Object {
         static $gtype: GObject.GType<Annot>;
 
@@ -1612,16 +1767,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Annot.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Annot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Annot.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Annot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Annot.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Annot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1632,42 +1790,42 @@ export namespace Poppler {
 
         /**
          * Gets the type of `poppler_annot`
-         * @returns #PopplerAnnotType of @poppler_annot.
+         * @returns {@link Poppler.AnnotType} of `poppler_annot`.
          */
         get_annot_type(): AnnotType;
         /**
          * Returns the border width of the annotation. Some PDF editors set a border
          * width even if the border is not actually drawn.
          * @param width a valid pointer to a double
-         * @returns true and sets @border_width to the actual border width if a border is defined, otherwise returns false and sets @border_width to 0.
+         * @returns true and sets `border_width` to the actual border width if a border is defined, otherwise returns false and sets `border_width` to 0.
          */
         get_border_width(width: number): boolean;
         /**
          * Retrieves the color of `poppler_annot`.
-         * @returns a new allocated #PopplerColor with the color values of               @poppler_annot, or %NULL. It must be freed with g_free() when done.
+         * @returns a new allocated {@link Poppler.Color} with the color values of               `poppler_annot`, or `null`. It must be freed with `g_free()` when done.
          */
         get_color(): Color;
         /**
          * Retrieves the contents of `poppler_annot`.
-         * @returns a new allocated string with the contents of @poppler_annot. It               must be freed with g_free() when done.
+         * @returns a new allocated string with the contents of `poppler_annot`. It               must be freed with `g_free()` when done.
          */
         get_contents(): string;
         /**
          * Retrieves the flag field specifying various characteristics of the
          * `poppler_annot`.
-         * @returns the flag field of @poppler_annot.
+         * @returns the flag field of `poppler_annot`.
          */
         get_flags(): AnnotFlag;
         /**
          * Retrieves the last modification data of `poppler_annot`. The returned
          * string will be either a PDF format date or a text string.
-         * See also #poppler_date_parse()
-         * @returns a new allocated string with the last modification data of               @poppler_annot. It must be freed with g_free() when done.
+         * See also `poppler_date_parse`()
+         * @returns a new allocated string with the last modification data of               `poppler_annot`. It must be freed with `g_free()` when done.
          */
         get_modified(): string;
         /**
          * Retrieves the name of `poppler_annot`.
-         * @returns a new allocated string with the name of @poppler_annot. It must               be freed with g_free() when done.
+         * @returns a new allocated string with the name of `poppler_annot`. It must               be freed with `g_free()` when done.
          */
         get_name(): string;
         /**
@@ -1690,7 +1848,7 @@ export namespace Poppler {
         set_border_width(width: number): void;
         /**
          * Sets the color of `poppler_annot`.
-         * @param poppler_color a #PopplerColor, or %NULL
+         * @param poppler_color a {@link Poppler.Color}, or `null`
          */
         set_color(poppler_color?: Color | null): void;
         /**
@@ -1702,13 +1860,13 @@ export namespace Poppler {
         /**
          * Sets the flag field specifying various characteristics of the
          * `poppler_annot`.
-         * @param flags a #PopplerAnnotFlag
+         * @param flags a {@link Poppler.AnnotFlag}
          */
         set_flags(flags: AnnotFlag | null): void;
         /**
          * Move the annotation to the rectangle representing the page coordinates
          * where the annotation `poppler_annot` should be placed.
-         * @param poppler_rect a #PopplerRectangle with the new annotation's coordinates
+         * @param poppler_rect a {@link Poppler.Rectangle} with the new annotation's coordinates
          */
         set_rectangle(poppler_rect: Rectangle): void;
     }
@@ -1726,6 +1884,7 @@ export namespace Poppler {
      * An annotation for circle.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotCircle extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotCircle>;
@@ -1749,16 +1908,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotCircle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotCircle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotCircle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotCircle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotCircle.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotCircle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1769,12 +1931,12 @@ export namespace Poppler {
 
         /**
          * Retrieves the interior color of `poppler_annot`.
-         * @returns a new allocated #PopplerColor with the color values of               @poppler_annot, or %NULL. It must be freed with g_free() when done.
+         * @returns a new allocated {@link Poppler.Color} with the color values of               `poppler_annot`, or `null`. It must be freed with `g_free()` when done.
          */
         get_interior_color(): Color;
         /**
          * Sets the interior color of `poppler_annot`.
-         * @param poppler_color a #PopplerColor, or %NULL
+         * @param poppler_color a {@link Poppler.Color}, or `null`
          */
         set_interior_color(poppler_color?: Color | null): void;
     }
@@ -1792,6 +1954,7 @@ export namespace Poppler {
      * An annotation for file attachment.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotFileAttachment extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFileAttachment>;
@@ -1813,16 +1976,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotFileAttachment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotFileAttachment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotFileAttachment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotFileAttachment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotFileAttachment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotFileAttachment.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1834,14 +2000,14 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Creates a #PopplerAttachment for the file of the file attachment annotation `annot`.
-         * The #PopplerAttachment must be unrefed with g_object_unref by the caller.
-         * @returns @PopplerAttachment
+         * Creates a {@link Poppler.Attachment} for the file of the file attachment annotation `annot`.
+         * The {@link Poppler.Attachment} must be unrefed with g_object_unref by the caller.
+         * @returns `PopplerAttachment`
          */
         get_attachment(): Attachment;
         /**
          * Retrieves the name of `poppler_annot`.
-         * @returns a new allocated string with the name of @poppler_annot. It must               be freed with g_free() when done.
+         * @returns a new allocated string with the name of `poppler_annot`. It must               be freed with `g_free()` when done.
          */
         get_name(): string;
     }
@@ -1859,6 +2025,7 @@ export namespace Poppler {
      * An annotation for free text.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotFreeText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFreeText>;
@@ -1882,16 +2049,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotFreeText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotFreeText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotFreeText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotFreeText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotFreeText.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotFreeText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1901,14 +2071,14 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Retrieves a #PopplerAnnotCalloutLine of four or six numbers specifying a callout
+         * Retrieves a {@link Poppler.AnnotCalloutLine} of four or six numbers specifying a callout
          * line attached to the `poppler_annot`.
-         * @returns a new allocated #PopplerAnnotCalloutLine if the annot has a callout               line, %NULL in other case. It must be freed with g_free() when               done.
+         * @returns a new allocated {@link Poppler.AnnotCalloutLine} if the annot has a callout               line, `null` in other case. It must be freed with `g_free()` when               done.
          */
         get_callout_line(): AnnotCalloutLine;
         /**
          * Gets the font color.
-         * @returns a copy of the font's #PopplerColor.
+         * @returns a copy of the font's {@link Poppler.Color}.
          */
         get_font_color(): Color;
         /**
@@ -1918,17 +2088,17 @@ export namespace Poppler {
         get_font_desc(): FontDescription | null;
         /**
          * Retrieves the justification of the text of `poppler_annot`.
-         * @returns #PopplerAnnotFreeTextQuadding of @poppler_annot.
+         * @returns {@link Poppler.AnnotFreeTextQuadding} of `poppler_annot`.
          */
         get_quadding(): AnnotFreeTextQuadding;
         /**
          * Sets the font color.
-         * @param color a #PopplerColor
+         * @param color a {@link Poppler.Color}
          */
         set_font_color(color: Color): void;
         /**
          * Sets the font description (i.e. font family name, style, weight, stretch and size).
-         * @param font_desc a #PopplerFontDescription
+         * @param font_desc a {@link Poppler.FontDescription}
          */
         set_font_desc(font_desc: FontDescription): void;
     }
@@ -1942,6 +2112,10 @@ export namespace Poppler {
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     * @since 25.06.0
+     */
     class AnnotInk extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotInk>;
 
@@ -1964,16 +2138,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotInk.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotInk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotInk.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotInk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotInk.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotInk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1994,9 +2171,9 @@ export namespace Poppler {
          *
          * This function computes and set the appropriate smallest rectangle
          * area that contains all the points of `ink_list`. Setting the rectangle
-         * afterwards with #poppler_annot_set_rectangle should not be done
+         * afterwards with `poppler_annot_set_rectangle` should not be done
          * to preserve scaling and positioning.
-         * @param ink_list a list of #PopplerPath
+         * @param ink_list a list of {@link Poppler.Path}
          */
         set_ink_list(ink_list: Path[]): void;
     }
@@ -2014,6 +2191,7 @@ export namespace Poppler {
      * An annotation for line.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotLine extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotLine>;
@@ -2037,16 +2215,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotLine.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotLine.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotLine.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotLine.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotLine.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotLine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2057,8 +2238,8 @@ export namespace Poppler {
 
         /**
          * Set the coordinate points where the `poppler_annot` starts and ends.
-         * @param start a #PopplerPoint of the starting vertice
-         * @param end a #PopplerPoint of the ending vertice
+         * @param start a {@link Poppler.Point} of the starting vertice
+         * @param end a {@link Poppler.Point} of the ending vertice
          */
         set_vertices(start: Point, end: Point): void;
     }
@@ -2076,6 +2257,7 @@ export namespace Poppler {
      * An annotation for markup.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotMarkup extends Annot {
         static $gtype: GObject.GType<AnnotMarkup>;
@@ -2097,16 +2279,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotMarkup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotMarkup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotMarkup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotMarkup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotMarkup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2117,52 +2302,52 @@ export namespace Poppler {
 
         /**
          * Returns the date and time when the annotation was created
-         * @returns a #GDate representing the date and time               when the annotation was created, or %NULL
+         * @returns a {@link GLib.Date} representing the date and time               when the annotation was created, or `null`
          */
         get_date(): GLib.Date;
         /**
          * Gets the external data type of `poppler_annot`.
-         * @returns #PopplerAnnotExternalDataType of @poppler_annot.
+         * @returns {@link Poppler.AnnotExternalDataType} of `poppler_annot`.
          */
         get_external_data(): AnnotExternalDataType;
         /**
          * Retrieves the label text of `poppler_annot`.
-         * @returns the label text of @poppler_annot.
+         * @returns the label text of `poppler_annot`.
          */
         get_label(): string;
         /**
          * Retrieves the opacity value of `poppler_annot`.
-         * @returns the opacity value of @poppler_annot,               between 0 (transparent) and 1 (opaque)
+         * @returns the opacity value of `poppler_annot`,               between 0 (transparent) and 1 (opaque)
          */
         get_opacity(): number;
         /**
          * Retrieves the state of the popup window related to `poppler_annot`.
-         * @returns the state of @poppler_annot. %TRUE if it's open, %FALSE in               other case.
+         * @returns the state of `poppler_annot`. `true` if it's open, `false` in               other case.
          */
         get_popup_is_open(): boolean;
         /**
          * Retrieves the rectangle of the popup window related to `poppler_annot`.
-         * @returns %TRUE if #PopplerRectangle was correctly filled, %FALSE otherwise
+         * @returns `true` if {@link Poppler.Rectangle} was correctly filled, `false` otherwise
          */
         get_popup_rectangle(): [boolean, Rectangle];
         /**
          * Gets the reply type of `poppler_annot`.
-         * @returns #PopplerAnnotMarkupReplyType of @poppler_annot.
+         * @returns {@link Poppler.AnnotMarkupReplyType} of `poppler_annot`.
          */
         get_reply_to(): AnnotMarkupReplyType;
         /**
          * Retrives the subject text of `poppler_annot`.
-         * @returns the subject text of @poppler_annot.
+         * @returns the subject text of `poppler_annot`.
          */
         get_subject(): string;
         /**
-         * Return %TRUE if the markup annotation has a popup window associated
-         * @returns %TRUE, if @poppler_annot has popup, %FALSE otherwise
+         * Return `true` if the markup annotation has a popup window associated
+         * @returns `true`, if `poppler_annot` has popup, `false` otherwise
          */
         has_popup(): boolean;
         /**
-         * Sets the label text of `poppler_annot,` replacing the current one
-         * @param label a text string containing the new label, or %NULL
+         * Sets the label text of `poppler_annot`, replacing the current one
+         * @param label a text string containing the new label, or `null`
          */
         set_label(label?: string | null): void;
         /**
@@ -2175,7 +2360,7 @@ export namespace Poppler {
         /**
          * Associates a new popup window for editing contents of `poppler_annot`.
          * Popup window shall be displayed by viewers at `popup_rect` on the page.
-         * @param popup_rect a #PopplerRectangle
+         * @param popup_rect a {@link Poppler.Rectangle}
          */
         set_popup(popup_rect: Rectangle): void;
         /**
@@ -2186,9 +2371,9 @@ export namespace Poppler {
         /**
          * Sets the rectangle of the popup window related to `poppler_annot`.
          * This doesn't have any effect if `poppler_annot` doesn't have a
-         * popup associated, use poppler_annot_markup_set_popup() to associate
-         * a popup window to a #PopplerAnnotMarkup.
-         * @param poppler_rect a #PopplerRectangle to set
+         * popup associated, use `poppler_annot_markup_set_popup()` to associate
+         * a popup window to a {@link Poppler.AnnotMarkup}.
+         * @param poppler_rect a {@link Poppler.Rectangle} to set
          */
         set_popup_rectangle(poppler_rect: Rectangle): void;
     }
@@ -2206,6 +2391,7 @@ export namespace Poppler {
      * An annotation for movie.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotMovie extends Annot {
         static $gtype: GObject.GType<AnnotMovie>;
@@ -2227,16 +2413,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotMovie.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotMovie.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotMovie.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotMovie.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotMovie.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotMovie.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2247,12 +2436,12 @@ export namespace Poppler {
 
         /**
          * Retrieves the movie object (PopplerMovie) stored in the `poppler_annot`.
-         * @returns the movie object stored in the @poppler_annot. The returned               object is owned by #PopplerAnnotMovie and should not be freed
+         * @returns the movie object stored in the `poppler_annot`. The returned               object is owned by {@link Poppler.AnnotMovie} and should not be freed
          */
         get_movie(): Movie;
         /**
          * Retrieves the movie title of `poppler_annot`.
-         * @returns the title text of @poppler_annot.
+         * @returns the title text of `poppler_annot`.
          */
         get_title(): string;
     }
@@ -2270,6 +2459,7 @@ export namespace Poppler {
      * An annotation for screen.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotScreen extends Annot {
         static $gtype: GObject.GType<AnnotScreen>;
@@ -2291,16 +2481,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotScreen.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotScreen.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotScreen.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotScreen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotScreen.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotScreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2310,8 +2503,8 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Retrieves the action (#PopplerAction) that shall be performed when `poppler_annot` is activated
-         * @returns the action to perform. The returned               object is owned by @poppler_annot and should not be freed
+         * Retrieves the action ({@link Poppler.Action}) that shall be performed when `poppler_annot` is activated
+         * @returns the action to perform. The returned               object is owned by `poppler_annot` and should not be freed
          */
         get_action(): Action;
     }
@@ -2329,6 +2522,7 @@ export namespace Poppler {
      * An annotation for square.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotSquare extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotSquare>;
@@ -2352,16 +2546,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotSquare.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotSquare.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotSquare.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotSquare.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotSquare.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotSquare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2372,12 +2569,12 @@ export namespace Poppler {
 
         /**
          * Retrieves the interior color of `poppler_annot`.
-         * @returns a new allocated #PopplerColor with the color values of               @poppler_annot, or %NULL. It must be freed with g_free() when done.
+         * @returns a new allocated {@link Poppler.Color} with the color values of               `poppler_annot`, or `null`. It must be freed with `g_free()` when done.
          */
         get_interior_color(): Color;
         /**
          * Sets the interior color of `poppler_annot`.
-         * @param poppler_color a #PopplerColor, or %NULL
+         * @param poppler_color a {@link Poppler.Color}, or `null`
          */
         set_interior_color(poppler_color?: Color | null): void;
     }
@@ -2395,6 +2592,7 @@ export namespace Poppler {
      * An annotation for stamp.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotStamp extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotStamp>;
@@ -2418,16 +2616,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotStamp.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotStamp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotStamp.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotStamp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotStamp.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotStamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2436,16 +2637,19 @@ export namespace Poppler {
 
         // Methods
 
+        /**
+         * @returns the corresponding {@link Poppler.AnnotStampIcon} of the icon
+         */
         get_icon(): AnnotStampIcon;
         /**
          * Sets the custom image of `poppler_annot` to be `image`
          * @param image an image cairo surface
-         * @returns %TRUE on success, %FALSE otherwise.
+         * @returns `true` on success, `false` otherwise.
          */
         set_custom_image(image: cairo.Surface): boolean;
         /**
-         * Sets the icon of `poppler_annot` to be one of the predefined values in #PopplerAnnotStampIcon
-         * @param icon the #PopplerAnnotStampIcon type of the icon
+         * Sets the icon of `poppler_annot` to be one of the predefined values in {@link Poppler.AnnotStampIcon}
+         * @param icon the {@link Poppler.AnnotStampIcon} type of the icon
          */
         set_icon(icon: AnnotStampIcon | null): void;
     }
@@ -2463,6 +2667,7 @@ export namespace Poppler {
      * An annotation for text.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotText>;
@@ -2486,16 +2691,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotText.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2511,12 +2719,12 @@ export namespace Poppler {
         get_icon(): string;
         /**
          * Retrieves the state of `poppler_annot`.
-         * @returns the state of @poppler_annot. %TRUE if it's open, %FALSE in               other case.
+         * @returns the state of `poppler_annot`. `true` if it's open, `false` in               other case.
          */
         get_is_open(): boolean;
         /**
          * Retrieves the state of `poppler_annot`.
-         * @returns #PopplerAnnotTextState of @poppler_annot.
+         * @returns {@link Poppler.AnnotTextState} of `poppler_annot`.
          */
         get_state(): AnnotTextState;
         /**
@@ -2574,6 +2782,7 @@ export namespace Poppler {
      * An annotation for text markup.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class AnnotTextMarkup extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotTextMarkup>;
@@ -2603,16 +2812,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotTextMarkup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotTextMarkup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotTextMarkup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotTextMarkup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotTextMarkup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotTextMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2622,15 +2834,15 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Returns a #GArray of #PopplerQuadrilateral items that map from a
-         * location on `page` to a #PopplerAnnotTextMarkup.  This array must be freed
+         * Returns a {@link GLib.Array} of {@link Poppler.Quadrilateral} items that map from a
+         * location on `page` to a {@link Poppler.AnnotTextMarkup}.  This array must be freed
          * when done.
-         * @returns A #GArray of #PopplerQuadrilateral
+         * @returns A {@link GLib.Array} of {@link Poppler.Quadrilateral}
          */
         get_quadrilaterals(): Quadrilateral[];
         /**
          * Set the regions (Quadrilaterals) to apply the text markup in `poppler_annot`.
-         * @param quadrilaterals A #GArray of   #PopplerQuadrilateral<!-- -->s
+         * @param quadrilaterals A {@link GLib.Array} of   {@link Poppler.Quadrilateral}<!-- -->s
          */
         set_quadrilaterals(quadrilaterals: Quadrilateral[]): void;
     }
@@ -2646,6 +2858,7 @@ export namespace Poppler {
 
     /**
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
@@ -2676,16 +2889,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Attachment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Attachment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Attachment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2694,38 +2910,56 @@ export namespace Poppler {
 
         // Methods
 
+        /**
+         * @returns The attachment's checksum.
+         */
         get_checksum(): GLib.String;
+        /**
+         * @returns The attachment's creation date and time as a {@link GLib.DateTime}, or `null` if the creation date and time is not available.
+         */
         get_ctime(): GLib.DateTime | null;
+        /**
+         * @returns The attachment's descriptive text.
+         */
         get_description(): string;
+        /**
+         * @returns The attachment's modification date and time as a {@link GLib.DateTime}, or `null` if the modification date and time is not available.
+         */
         get_mtime(): GLib.DateTime | null;
+        /**
+         * @returns The attachment's name.
+         */
         get_name(): string;
+        /**
+         * @returns The attachment's size.
+         */
         get_size(): number;
         /**
-         * Saves `attachment` to a file indicated by `filename`.  If `error` is set, %FALSE
+         * Saves `attachment` to a file indicated by `filename`.  If `error` is set, `false`
          * will be returned. Possible errors include those in the #G_FILE_ERROR domain
          * and whatever the save function generates.
          * @param filename name of file to save
-         * @returns %TRUE, if the file successfully saved
+         * @returns `true`, if the file successfully saved
          */
         save(filename: string): boolean;
         /**
          * Saves `attachment` by feeding the produced data to `save_func`. Can be used
          * when you want to store the attachment to something other than a file, such as
-         * an in-memory buffer or a socket. If `error` is set, %FALSE will be
+         * an in-memory buffer or a socket. If `error` is set, `false` will be
          * returned. Possible errors include those in the #G_FILE_ERROR domain and
          * whatever the save function generates.
          * @param save_func a function that is called to save each block of data that the save routine generates.
-         * @returns %TRUE, if the save successfully completed
+         * @returns `true`, if the save successfully completed
          */
         save_to_callback(save_func: AttachmentSaveFunc): boolean;
         /**
-         * Saves `attachment` to a file referred to by `fd`.  If `error` is set, %FALSE
+         * Saves `attachment` to a file referred to by `fd`.  If `error` is set, `false`
          * will be returned. Possible errors include those in the #G_FILE_ERROR domain
          * and whatever the save function generates.
-         * Note that this function takes ownership of `fd;` you must not operate on it
+         * Note that this function takes ownership of `fd`; you must not operate on it
          * again, nor close it.
          * @param fd a valid file descriptor open for writing
-         * @returns %TRUE, if the file successfully saved
+         * @returns `true`, if the file successfully saved
          */
         save_to_fd(fd: number): boolean;
     }
@@ -2813,6 +3047,7 @@ export namespace Poppler {
      * A poppler document.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
@@ -2826,47 +3061,51 @@ export namespace Poppler {
         set author(val: string);
         /**
          * The date the document was created as seconds since the Epoch, or -1
+         * @deprecated since 20.09.0: This will overflow in 2038. Use creation-datetime instead.
          */
         get creation_date(): number;
         set creation_date(val: number);
         /**
          * The date the document was created as seconds since the Epoch, or -1
+         * @deprecated since 20.09.0: This will overflow in 2038. Use creation-datetime instead.
          */
         get creationDate(): number;
         set creationDate(val: number);
         /**
-         * The #GDateTime the document was created.
+         * The {@link GLib.DateTime} the document was created.
+         * @since 20.09.0
          */
         get creation_datetime(): GLib.DateTime;
         set creation_datetime(val: GLib.DateTime);
         /**
-         * The #GDateTime the document was created.
+         * The {@link GLib.DateTime} the document was created.
+         * @since 20.09.0
          */
         get creationDatetime(): GLib.DateTime;
         set creationDatetime(val: GLib.DateTime);
         /**
-         * The creator of the document. See also poppler_document_get_creator()
+         * The creator of the document. See also `poppler_document_get_creator()`
          */
         get creator(): string;
         set creator(val: string);
         /**
-         * The PDF version as string. See also poppler_document_get_pdf_version_string()
+         * The PDF version as string. See also `poppler_document_get_pdf_version_string()`
          */
         get format(): string;
         /**
-         * The PDF major version number. See also poppler_document_get_pdf_version()
+         * The PDF major version number. See also `poppler_document_get_pdf_version()`
          */
         get format_major(): number;
         /**
-         * The PDF major version number. See also poppler_document_get_pdf_version()
+         * The PDF major version number. See also `poppler_document_get_pdf_version()`
          */
         get formatMajor(): number;
         /**
-         * The PDF minor version number. See also poppler_document_get_pdf_version()
+         * The PDF minor version number. See also `poppler_document_get_pdf_version()`
          */
         get format_minor(): number;
         /**
-         * The PDF minor version number. See also poppler_document_get_pdf_version()
+         * The PDF minor version number. See also `poppler_document_get_pdf_version()`
          */
         get formatMinor(): number;
         /**
@@ -2875,30 +3114,34 @@ export namespace Poppler {
         get keywords(): string;
         set keywords(val: string);
         /**
-         * Whether document is linearized. See also poppler_document_is_linearized()
+         * Whether document is linearized. See also `poppler_document_is_linearized()`
          */
         get linearized(): boolean;
         /**
-         * Document metadata in XML format, or %NULL
+         * Document metadata in XML format, or `null`
          */
         get metadata(): string;
         /**
          * The date the document was most recently modified as seconds since the Epoch, or -1
+         * @deprecated since 20.09.0: This will overflow in 2038. Use mod-datetime instead.
          */
         get mod_date(): number;
         set mod_date(val: number);
         /**
          * The date the document was most recently modified as seconds since the Epoch, or -1
+         * @deprecated since 20.09.0: This will overflow in 2038. Use mod-datetime instead.
          */
         get modDate(): number;
         set modDate(val: number);
         /**
-         * The #GDateTime the document was most recently modified.
+         * The {@link GLib.DateTime} the document was most recently modified.
+         * @since 20.09.0
          */
         get mod_datetime(): GLib.DateTime;
         set mod_datetime(val: GLib.DateTime);
         /**
-         * The #GDateTime the document was most recently modified.
+         * The {@link GLib.DateTime} the document was most recently modified.
+         * @since 20.09.0
          */
         get modDatetime(): GLib.DateTime;
         set modDatetime(val: GLib.DateTime);
@@ -2922,20 +3165,34 @@ export namespace Poppler {
          * Flags specifying which operations are permitted when the document is opened
          */
         get permissions(): Permissions;
+        /**
+         * @since 0.80
+         */
         get print_duplex(): PrintDuplex;
+        /**
+         * @since 0.80
+         */
         get printDuplex(): PrintDuplex;
         /**
          * Suggested number of copies to be printed for this document
+         * @since 0.80
          */
         get print_n_copies(): number;
         /**
          * Suggested number of copies to be printed for this document
+         * @since 0.80
          */
         get printNCopies(): number;
+        /**
+         * @since 0.73
+         */
         get print_scaling(): PrintScaling;
+        /**
+         * @since 0.73
+         */
         get printScaling(): PrintScaling;
         /**
-         * The producer of the document. See also poppler_document_get_producer()
+         * The producer of the document. See also `poppler_document_get_producer()`
          */
         get producer(): string;
         set producer(val: string);
@@ -2965,15 +3222,15 @@ export namespace Poppler {
          */
         get subtypePart(): PDFPart;
         /**
-         * Document PDF subtype. See also poppler_document_get_pdf_subtype_string()
+         * Document PDF subtype. See also `poppler_document_get_pdf_subtype_string()`
          */
         get subtype_string(): string;
         /**
-         * Document PDF subtype. See also poppler_document_get_pdf_subtype_string()
+         * Document PDF subtype. See also `poppler_document_get_pdf_subtype_string()`
          */
         get subtypeString(): string;
         /**
-         * The document's title or %NULL
+         * The document's title or `null`
          */
         get title(): string;
         set title(val: string);
@@ -3014,16 +3271,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Document.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Document.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3036,36 +3296,36 @@ export namespace Poppler {
          * Creates a balanced binary tree of all named destinations in `document`
          *
          * The tree key is strings in the form returned by
-         * poppler_named_dest_to_bytestring() which constains a destination name.
-         * The tree value is the #PopplerDest which contains a named destination.
-         * The return value must be freed with g_tree_destroy().
-         * @returns the #GTree, or %NULL
+         * `poppler_named_dest_to_bytestring()` which constains a destination name.
+         * The tree value is the {@link Poppler.Dest} which contains a named destination.
+         * The return value must be freed with `g_tree_destroy()`.
+         * @returns the {@link GLib.Tree}, or `null`
          */
         create_dests_tree(): GLib.Tree | null;
         /**
-         * Creates a #PopplerDest for the named destination `link_name` in `document`.
+         * Creates a {@link Poppler.Dest} for the named destination `link_name` in `document`.
          *
          * Note that named destinations are bytestrings, not string. That means that
          * unless `link_name` was returned by a poppler function (e.g. is
-         * #PopplerDest.named_dest), it needs to be converted to string
-         * using poppler_named_dest_from_bytestring() before being passed to this
+         * {@link Poppler.Dest}.named_dest), it needs to be converted to string
+         * using `poppler_named_dest_from_bytestring()` before being passed to this
          * function.
          *
-         * The returned value must be freed with poppler_dest_free().
+         * The returned value must be freed with `poppler_dest_free()`.
          * @param link_name a named destination
-         * @returns a new #PopplerDest destination, or %NULL if   @link_name is not a destination.
+         * @returns a new {@link Poppler.Dest} destination, or `null` if   `link_name` is not a destination.
          */
         find_dest(link_name: string): Dest;
         /**
-         * Returns a #GList containing #PopplerAttachment<!-- -->s.  These attachments
+         * Returns a {@link GLib.List} containing {@link Poppler.Attachment}<!-- -->s.  These attachments
          * are unowned, and must be unreffed, and the list must be freed with
-         * g_list_free().
+         * `g_list_free()`.
          * @returns a list of available attachments.
          */
         get_attachments(): Attachment[];
         /**
          * Returns the author of the document
-         * @returns a new allocated string containing the author               of @document, or %NULL
+         * @returns a new allocated string containing the author               of `document`, or `null`
          */
         get_author(): string;
         /**
@@ -3074,22 +3334,22 @@ export namespace Poppler {
          */
         get_creation_date(): number;
         /**
-         * Returns the date the document was created as a #GDateTime
-         * @returns the date the document was created, or %NULL
+         * Returns the date the document was created as a {@link GLib.DateTime}
+         * @returns the date the document was created, or `null`
          */
         get_creation_date_time(): GLib.DateTime | null;
         /**
          * Returns the creator of the document. If the document was converted
          * from another format, the creator is the name of the product
          * that created the original document from which it was converted.
-         * @returns a new allocated string containing the creator               of @document, or %NULL
+         * @returns a new allocated string containing the creator               of `document`, or `null`
          */
         get_creator(): string;
         /**
-         * Returns the #PopplerFormField for the given `id`. It must be freed with
-         * g_object_unref()
-         * @param id an id of a #PopplerFormField
-         * @returns a new #PopplerFormField or %NULL if not found
+         * Returns the {@link Poppler.FormField} for the given `id`. It must be freed with
+         * `g_object_unref()`
+         * @param id an id of a {@link Poppler.FormField}
+         * @returns a new {@link Poppler.FormField} or `null` if not found
          */
         get_form_field(id: number): FormField;
         /**
@@ -3101,17 +3361,17 @@ export namespace Poppler {
          *
          * Note that returned strings are not null-terminated, they have a fixed
          * size of 32 bytes.
-         * @returns %TRUE if the @document contains an id, %FALSE otherwise
+         * @returns `true` if the `document` contains an id, `false` otherwise
          */
         get_id(): [boolean, string, string];
         /**
          * Returns the keywords associated to the document
-         * @returns a new allocated string containing keywords associated               to @document, or %NULL
+         * @returns a new allocated string containing keywords associated               to `document`, or `null`
          */
         get_keywords(): string;
         /**
          * Returns the XML metadata string of the document
-         * @returns a new allocated string containing the XML               metadata, or %NULL
+         * @returns a new allocated string containing the XML               metadata, or `null`
          */
         get_metadata(): string;
         /**
@@ -3120,13 +3380,13 @@ export namespace Poppler {
          */
         get_modification_date(): number;
         /**
-         * Returns the date the document was most recently modified as a #GDateTime
-         * @returns the date the document was modified, or %NULL
+         * Returns the date the document was most recently modified as a {@link GLib.DateTime}
+         * @returns the date the document was modified, or `null`
          */
         get_modification_date_time(): GLib.DateTime | null;
         /**
          * Returns the number of attachments in a loaded document.
-         * See also poppler_document_get_attachments()
+         * See also `poppler_document_get_attachments()`
          * @returns Number of attachments
          */
         get_n_attachments(): number;
@@ -3143,52 +3403,52 @@ export namespace Poppler {
          */
         get_n_signatures(): number;
         /**
-         * Returns the #PopplerPage indexed at `index`.  This object is owned by the
+         * Returns the {@link Poppler.Page} indexed at `index`.  This object is owned by the
          * caller.
          * @param index a page index
-         * @returns The #PopplerPage at @index
+         * @returns The {@link Poppler.Page} at `index`
          */
         get_page(index: number): Page;
         /**
-         * Returns the #PopplerPage reference by `label`.  This object is owned by the
+         * Returns the {@link Poppler.Page} reference by `label`.  This object is owned by the
          * caller.  `label` is a human-readable string representation of the page number,
          * and can be document specific.  Typically, it is a value such as "iii" or "3".
          *
          * By default, "1" refers to the first page.
          * @param label a page label
-         * @returns The #PopplerPage referenced by @label
+         * @returns The {@link Poppler.Page} referenced by `label`
          */
         get_page_by_label(label: string): Page;
         /**
          * Returns the page layout that should be used when the document is opened
-         * @returns a #PopplerPageLayout that should be used when the document is opened
+         * @returns a {@link Poppler.PageLayout} that should be used when the document is opened
          */
         get_page_layout(): PageLayout;
         /**
-         * Returns a #PopplerPageMode representing how the document should
+         * Returns a {@link Poppler.PageMode} representing how the document should
          * be initially displayed when opened.
-         * @returns a #PopplerPageMode that should be used when document is opened
+         * @returns a {@link Poppler.PageMode} that should be used when document is opened
          */
         get_page_mode(): PageMode;
         /**
-         * Returns the conformance level of the `document` as #PopplerPDFConformance.
+         * Returns the conformance level of the `document` as {@link Poppler.PDFConformance}.
          * @returns the document's subtype conformance level
          */
         get_pdf_conformance(): PDFConformance;
         /**
          * Returns the part of the conforming standard that the `document` adheres to
-         * as a #PopplerPDFSubtype.
+         * as a {@link Poppler.PDFSubtype}.
          * @returns the document's subtype part
          */
         get_pdf_part(): PDFPart;
         /**
-         * Returns the subtype of `document` as a #PopplerPDFSubtype.
+         * Returns the subtype of `document` as a {@link Poppler.PDFSubtype}.
          * @returns the document's subtype
          */
         get_pdf_subtype(): PDFSubtype;
         /**
          * Returns the PDF subtype version of `document` as a string.
-         * @returns a newly allocated string containing the PDF subtype version of @document, or %NULL
+         * @returns a newly allocated string containing the PDF subtype version of `document`, or `null`
          */
         get_pdf_subtype_string(): string | null;
         /**
@@ -3198,19 +3458,19 @@ export namespace Poppler {
         get_pdf_version(): [number, number];
         /**
          * Returns the PDF version of `document` as a string (e.g. PDF-1.6)
-         * @returns a new allocated string containing the PDF version               of @document, or %NULL
+         * @returns a new allocated string containing the PDF version               of `document`, or `null`
          */
         get_pdf_version_string(): string;
         /**
          * Returns the flags specifying which operations are permitted when the document is opened.
-         * @returns a set of flags from  #PopplerPermissions enumeration
+         * @returns a set of flags from  {@link Poppler.Permissions} enumeration
          */
         get_permissions(): Permissions;
         /**
          * Returns the duplex mode value suggested for printing by author of the document.
          * Value POPPLER_PRINT_DUPLEX_NONE means that the document does not specify this
          * preference.
-         * @returns a #PopplerPrintDuplex that should be used when document is printed
+         * @returns a {@link Poppler.PrintDuplex} that should be used when document is printed
          */
         get_print_duplex(): PrintDuplex;
         /**
@@ -3223,42 +3483,42 @@ export namespace Poppler {
         get_print_n_copies(): number;
         /**
          * Returns the suggested page ranges to print in the form of array
-         * of #PopplerPageRange<!-- -->s and number of ranges.
-         * %NULL pointer means that the document does not specify page ranges
+         * of {@link Poppler.PageRange}<!-- -->s and number of ranges.
+         * `null` pointer means that the document does not specify page ranges
          * for printing.
-         * @returns an array          of #PopplerPageRange<!-- -->s or %NULL. Free the array when          it is no longer needed.
+         * @returns an array          of {@link Poppler.PageRange}<!-- -->s or `null`. Free the array when          it is no longer needed.
          */
         get_print_page_ranges(): PageRange[];
         /**
          * Returns the print scaling value suggested by author of the document.
-         * @returns a #PopplerPrintScaling that should be used when document is printed
+         * @returns a {@link Poppler.PrintScaling} that should be used when document is printed
          */
         get_print_scaling(): PrintScaling;
         /**
          * Returns the producer of the document. If the document was converted
          * from another format, the producer is the name of the product
          * that converted it to PDF
-         * @returns a new allocated string containing the producer               of @document, or %NULL
+         * @returns a new allocated string containing the producer               of `document`, or `null`
          */
         get_producer(): string;
         /**
-         * Returns a #GList containing all signature #PopplerFormField<!-- -->s in the document.
+         * Returns a {@link GLib.List} containing all signature {@link Poppler.FormField}<!-- -->s in the document.
          * @returns a list of all signature form fields.
          */
         get_signature_fields(): FormField[];
         /**
          * Returns the subject of the document
-         * @returns a new allocated string containing the subject               of @document, or %NULL
+         * @returns a new allocated string containing the subject               of `document`, or `null`
          */
         get_subject(): string;
         /**
          * Returns the document's title
-         * @returns a new allocated string containing the title               of @document, or %NULL
+         * @returns a new allocated string containing the title               of `document`, or `null`
          */
         get_title(): string;
         /**
-         * Returns %TRUE of `document` has any attachments.
-         * @returns %TRUE, if @document has attachments.
+         * Returns `true` of `document` has any attachments.
+         * @returns `true`, if `document` has attachments.
          */
         has_attachments(): boolean;
         /**
@@ -3268,7 +3528,7 @@ export namespace Poppler {
         /**
          * Returns whether `document` is linearized or not. Linearization of PDF
          * enables efficient incremental access of the PDF file in a network environment.
-         * @returns %TRUE if @document is linearized, %FALSE otherwise
+         * @returns `true` if `document` is linearized, `false` otherwise
          */
         is_linearized(): boolean;
         /**
@@ -3277,47 +3537,47 @@ export namespace Poppler {
          * All form fields are reset regardless of the exclude_fields flag
          * if fields is empty.
          * @param fields list of fields to reset
-         * @param exclude_fields whether to reset all fields except those in @fields
+         * @param exclude_fields whether to reset all fields except those in `fields`
          */
         reset_form(fields: string[] | null, exclude_fields: boolean): void;
         /**
          * Saves `document`. Any change made in the document such as
          * form fields filled, annotations added or modified
          * will be saved.
-         * If `error` is set, %FALSE will be returned. Possible errors
+         * If `error` is set, `false` will be returned. Possible errors
          * include those in the #G_FILE_ERROR domain.
          * @param uri uri of file to save
-         * @returns %TRUE, if the document was successfully saved
+         * @returns `true`, if the document was successfully saved
          */
         save(uri: string): boolean;
         /**
          * Saves a copy of the original `document`.
          * Any change made in the document such as
          * form fields filled by the user will not be saved.
-         * If `error` is set, %FALSE will be returned. Possible errors
+         * If `error` is set, `false` will be returned. Possible errors
          * include those in the #G_FILE_ERROR domain.
          * @param uri uri of file to save
-         * @returns %TRUE, if the document was successfully saved
+         * @returns `true`, if the document was successfully saved
          */
         save_a_copy(uri: string): boolean;
         /**
          * Saves `document`. Any change made in the document such as
          * form fields filled, annotations added or modified
-         * will be saved if `include_changes` is %TRUE, or discarded i
-         * `include_changes` is %FALSE.
+         * will be saved if `include_changes` is `true`, or discarded i
+         * `include_changes` is `false`.
          *
-         * Note that this function takes ownership of `fd;` you must not operate on it
+         * Note that this function takes ownership of `fd`; you must not operate on it
          * again, nor close it.
          *
-         * If `error` is set, %FALSE will be returned. Possible errors
+         * If `error` is set, `false` will be returned. Possible errors
          * include those in the #G_FILE_ERROR domain.
          * @param fd a valid file descriptor open for writing
          * @param include_changes whether to include user changes (e.g. form fills)
-         * @returns %TRUE, if the document was successfully saved
+         * @returns `true`, if the document was successfully saved
          */
         save_to_fd(fd: number, include_changes: boolean): boolean;
         /**
-         * Sets the document's author. If `author` is %NULL, Author
+         * Sets the document's author. If `author` is `null`, Author
          * entry is removed from the document's Info dictionary.
          * @param author A new author
          */
@@ -3329,19 +3589,19 @@ export namespace Poppler {
          */
         set_creation_date(creation_date: number): void;
         /**
-         * Sets the document's creation date. If `creation_datetime` is %NULL,
+         * Sets the document's creation date. If `creation_datetime` is `null`,
          * CreationDate entry is removed from the document's Info dictionary.
-         * @param creation_datetime A new creation #GDateTime
+         * @param creation_datetime A new creation {@link GLib.DateTime}
          */
         set_creation_date_time(creation_datetime?: GLib.DateTime | null): void;
         /**
-         * Sets the document's creator. If `creator` is %NULL, Creator
+         * Sets the document's creator. If `creator` is `null`, Creator
          * entry is removed from the document's Info dictionary.
          * @param creator A new creator
          */
         set_creator(creator: string): void;
         /**
-         * Sets the document's keywords. If `keywords` is %NULL,
+         * Sets the document's keywords. If `keywords` is `null`,
          * Keywords entry is removed from the document's Info dictionary.
          * @param keywords New keywords
          */
@@ -3353,40 +3613,40 @@ export namespace Poppler {
          */
         set_modification_date(modification_date: number): void;
         /**
-         * Sets the document's modification date. If `modification_datetime` is %NULL,
+         * Sets the document's modification date. If `modification_datetime` is `null`,
          * ModDate entry is removed from the document's Info dictionary.
-         * @param modification_datetime A new modification #GDateTime
+         * @param modification_datetime A new modification {@link GLib.DateTime}
          */
         set_modification_date_time(modification_datetime?: GLib.DateTime | null): void;
         /**
-         * Sets the document's producer. If `producer` is %NULL,
+         * Sets the document's producer. If `producer` is `null`,
          * Producer entry is removed from the document's Info dictionary.
          * @param producer A new producer
          */
         set_producer(producer: string): void;
         /**
-         * Sets the document's subject. If `subject` is %NULL, Subject
+         * Sets the document's subject. If `subject` is `null`, Subject
          * entry is removed from the document's Info dictionary.
          * @param subject A new subject
          */
         set_subject(subject: string): void;
         /**
-         * Sets the document's title. If `title` is %NULL, Title entry
+         * Sets the document's title. If `title` is `null`, Title entry
          * is removed from the document's Info dictionary.
          * @param title A new title
          */
         set_title(title: string): void;
         /**
-         * Sign #document using #signing_data.
-         * @param signing_data a #PopplerSigningData
-         * @param cancellable a #GCancellable
+         * Sign #document using `signing_data`.
+         * @param signing_data a {@link Poppler.SigningData}
+         * @param cancellable a {@link Gio.Cancellable}
          */
         sign(signing_data: SigningData, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * Sign #document using #signing_data.
-         * @param signing_data a #PopplerSigningData
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback
+         * Sign #document using `signing_data`.
+         * @param signing_data a {@link Poppler.SigningData}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         sign(
             signing_data: SigningData,
@@ -3394,10 +3654,10 @@ export namespace Poppler {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Sign #document using #signing_data.
-         * @param signing_data a #PopplerSigningData
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback
+         * Sign #document using `signing_data`.
+         * @param signing_data a {@link Poppler.SigningData}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         sign(
             signing_data: SigningData,
@@ -3406,8 +3666,8 @@ export namespace Poppler {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finish poppler_sign_document and get return status or error.
-         * @param result a #GAsyncResult
-         * @returns %TRUE on successful signing a document, otherwise %FALSE and error is set.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` on successful signing a document, otherwise `false` and error is set.
          */
         sign_finish(result: Gio.AsyncResult): boolean;
     }
@@ -3425,6 +3685,7 @@ export namespace Poppler {
      * Interface for getting the Fonts of a poppler_document
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Class
      */
     class FontInfo extends GObject.Object {
         static $gtype: GObject.GType<FontInfo>;
@@ -3448,16 +3709,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FontInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FontInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FontInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FontInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FontInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FontInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3490,7 +3754,7 @@ export namespace Poppler {
          * }
          * </programlisting></informalexample>
          * @param n_pages number of pages to scan
-         * @returns %TRUE, if fonts were found
+         * @returns `true`, if fonts were found
          */
         scan(n_pages: number): [boolean, FontsIter];
     }
@@ -3505,9 +3769,10 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerDocument form field.
+     * A {@link Poppler.Document} form field.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
@@ -3529,16 +3794,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FormField.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FormField.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FormField.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FormField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3549,62 +3817,62 @@ export namespace Poppler {
 
         /**
          * Gets the button type of `field`
-         * @returns #PopplerFormButtonType of @field
+         * @returns {@link Poppler.FormButtonType} of `field`
          */
         button_get_button_type(): FormButtonType;
         /**
-         * Queries a #PopplerFormField and returns its current state. Returns %TRUE if
-         * `field` is pressed in and %FALSE if it is raised.
-         * @returns current state of @field
+         * Queries a {@link Poppler.FormField} and returns its current state. Returns `true` if
+         * `field` is pressed in and `false` if it is raised.
+         * @returns current state of `field`
          */
         button_get_state(): boolean;
         /**
-         * Sets the status of `field`. Set to %TRUE if you want the #PopplerFormField
-         * to be 'pressed in', and %FALSE to raise it.
-         * @param state %TRUE or %FALSE
+         * Sets the status of `field`. Set to `true` if you want the {@link Poppler.FormField}
+         * to be 'pressed in', and `false` to raise it.
+         * @param state `true` or `false`
          */
         button_set_state(state: boolean): void;
         /**
          * Checks whether `field` allows multiple choices to be selected
-         * @returns %TRUE if @field allows multiple choices to be selected
+         * @returns `true` if `field` allows multiple choices to be selected
          */
         choice_can_select_multiple(): boolean;
         choice_commit_on_change(): boolean;
         /**
          * Checks whether spell checking should be done for the contents of `field`
-         * @returns %TRUE if spell checking should be done for @field
+         * @returns `true` if spell checking should be done for `field`
          */
         choice_do_spell_check(): boolean;
         /**
          * Gets the choice type of `field`
-         * @returns #PopplerFormChoiceType of @field
+         * @returns {@link Poppler.FormChoiceType} of `field`
          */
         choice_get_choice_type(): FormChoiceType;
         /**
          * Returns the contents of the item on `field` at the given index
          * @param index the index of the item
-         * @returns a new allocated string. It must be freed with g_free() when done.
+         * @returns a new allocated string. It must be freed with `g_free()` when done.
          */
         choice_get_item(index: number): string;
         /**
          * Returns the number of items on `field`
-         * @returns the number of items on @field
+         * @returns the number of items on `field`
          */
         choice_get_n_items(): number;
         /**
          * Retrieves the contents of `field`.
-         * @returns a new allocated string. It must be freed with g_free() when done.
+         * @returns a new allocated string. It must be freed with `g_free()` when done.
          */
         choice_get_text(): string;
         /**
          * Checks whether `field` is editable
-         * @returns %TRUE if @field is editable
+         * @returns `true` if `field` is editable
          */
         choice_is_editable(): boolean;
         /**
          * Checks whether the item at the given index on `field` is currently selected
          * @param index the index of the item
-         * @returns %TRUE if item at @index is currently selected
+         * @returns `true` if item at `index` is currently selected
          */
         choice_is_item_selected(index: number): boolean;
         /**
@@ -3627,28 +3895,28 @@ export namespace Poppler {
          */
         choice_unselect_all(): void;
         /**
-         * Retrieves the action (#PopplerAction) that shall be
-         * performed when `field` is activated, or %NULL
-         * @returns the action to perform. The returned               object is owned by @field and should not be freed
+         * Retrieves the action ({@link Poppler.Action}) that shall be
+         * performed when `field` is activated, or `null`
+         * @returns the action to perform. The returned               object is owned by `field` and should not be freed
          */
         get_action(): Action;
         /**
-         * Retrieves the action (#PopplerAction) that shall be performed when
-         * an additional action is triggered on `field,` or %NULL.
+         * Retrieves the action ({@link Poppler.Action}) that shall be performed when
+         * an additional action is triggered on `field`, or `null`.
          * @param type the type of additional action
-         * @returns the action to perform. The returned               object is owned by @field and should not be freed.
+         * @returns the action to perform. The returned               object is owned by `field` and should not be freed.
          */
         get_additional_action(type: AdditionalActionType | null): Action;
         /**
          * Gets the alternate ui name of `field`. This name is also commonly
          * used by pdf producers/readers to show it as a tooltip when `field` area
          * is hovered by a pointing device (eg. mouse).
-         * @returns a new allocated string. It must be freed with g_free() when done.
+         * @returns a new allocated string. It must be freed with `g_free()` when done.
          */
         get_alternate_ui_name(): string;
         /**
          * Gets the type of `field`
-         * @returns #PopplerFormFieldType of @field
+         * @returns {@link Poppler.FormFieldType} of `field`
          */
         get_field_type(): FormFieldType;
         /**
@@ -3656,40 +3924,40 @@ export namespace Poppler {
          *
          * WARNING: This function always returns 0. Contact the poppler
          * mailing list if you're interested in implementing it properly
-         * @returns the font size of @field
+         * @returns the font size of `field`
          */
         get_font_size(): number;
         /**
          * Gets the id of `field`
-         * @returns the id of @field
+         * @returns the id of `field`
          */
         get_id(): number;
         /**
          * Gets the mapping name of `field` that is used when
          * exporting interactive form field data from the document
-         * @returns a new allocated string. It must be freed with g_free() when done.
+         * @returns a new allocated string. It must be freed with `g_free()` when done.
          */
         get_mapping_name(): string;
         /**
          * Gets the fully qualified name of `field`. It's constructed by concatenating
          * the partial field names of the field and all of its ancestors.
-         * @returns a new allocated string. It must be freed with g_free() when done.
+         * @returns a new allocated string. It must be freed with `g_free()` when done.
          */
         get_name(): string;
         /**
          * Gets the partial name of `field`.
-         * @returns a new allocated string. It must be freed with g_free() when done.
+         * @returns a new allocated string. It must be freed with `g_free()` when done.
          */
         get_partial_name(): string;
         /**
          * Checks whether `field` is read only
-         * @returns %TRUE if @field is read only
+         * @returns `true` if `field` is read only
          */
         is_read_only(): boolean;
         /**
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
-         * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
-         * @param cancellable optional #GCancellable object
+         * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
+         * @param cancellable optional {@link Gio.Cancellable} object
          */
         signature_validate_async(
             flags: SignatureValidationFlags | null,
@@ -3697,9 +3965,9 @@ export namespace Poppler {
         ): globalThis.Promise<SignatureInfo>;
         /**
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
-         * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
-         * @param cancellable optional #GCancellable object
-         * @param callback a #GAsyncReadyCallback to call when the signature is validated
+         * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
+         * @param cancellable optional {@link Gio.Cancellable} object
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the signature is validated
          */
         signature_validate_async(
             flags: SignatureValidationFlags | null,
@@ -3708,9 +3976,9 @@ export namespace Poppler {
         ): void;
         /**
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
-         * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
-         * @param cancellable optional #GCancellable object
-         * @param callback a #GAsyncReadyCallback to call when the signature is validated
+         * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
+         * @param cancellable optional {@link Gio.Cancellable} object
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the signature is validated
          */
         signature_validate_async(
             flags: SignatureValidationFlags | null,
@@ -3719,16 +3987,16 @@ export namespace Poppler {
         ): globalThis.Promise<SignatureInfo> | void;
         /**
          * Finishes validation of the cryptographic signature contained in `signature_field`.
-         * See poppler_form_field_signature_validate_async().
-         * @param result a #GAsyncResult
-         * @returns a #PopplerSignatureInfo structure containing signature metadata and validation status                                Free the returned structure with poppler_signature_info_free().
+         * See `poppler_form_field_signature_validate_async()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a {@link Poppler.SignatureInfo} structure containing signature metadata and validation status                                Free the returned structure with `poppler_signature_info_free()`.
          */
         signature_validate_finish(result: Gio.AsyncResult): SignatureInfo;
         /**
          * Synchronously validates the cryptographic signature contained in `signature_field`.
-         * @param flags #PopplerSignatureValidationFlags flags influencing process of validation of the field signature
-         * @param cancellable optional #GCancellable object
-         * @returns a #PopplerSignatureInfo structure containing signature metadata and validation status                                Free the returned structure with poppler_signature_info_free().
+         * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
+         * @param cancellable optional {@link Gio.Cancellable} object
+         * @returns a {@link Poppler.SignatureInfo} structure containing signature metadata and validation status                                Free the returned structure with `poppler_signature_info_free()`.
          */
         signature_validate_sync(
             flags: SignatureValidationFlags | null,
@@ -3737,32 +4005,32 @@ export namespace Poppler {
         text_do_scroll(): boolean;
         /**
          * Checks whether spell checking should be done for the contents of `field`
-         * @returns %TRUE if spell checking should be done for @field
+         * @returns `true` if spell checking should be done for `field`
          */
         text_do_spell_check(): boolean;
         /**
          * Retrieves the maximum allowed length of the text in `field`
-         * @returns the maximum allowed number of characters in @field, or -1 if there is no maximum.
+         * @returns the maximum allowed number of characters in `field`, or -1 if there is no maximum.
          */
         text_get_max_len(): number;
         /**
          * Retrieves the contents of `field`.
-         * @returns a new allocated string. It must be freed with g_free() when done.
+         * @returns a new allocated string. It must be freed with `g_free()` when done.
          */
         text_get_text(): string;
         /**
          * Gets the text type of `field`.
-         * @returns #PopplerFormTextType of @field
+         * @returns {@link Poppler.FormTextType} of `field`
          */
         text_get_text_type(): FormTextType;
         /**
          * Checks whether content of `field` is a password and it must be hidden
-         * @returns %TRUE if the content of @field is a password
+         * @returns `true` if the content of `field` is a password
          */
         text_is_password(): boolean;
         /**
          * Checks whether the contents of `field` are rich text
-         * @returns %TRUE if the contents of @field are rich text
+         * @returns `true` if the contents of `field` are rich text
          */
         text_is_rich_text(): boolean;
         /**
@@ -3782,9 +4050,10 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerDocument layer.
+     * A {@link Poppler.Document} layer.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
@@ -3806,16 +4075,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Layer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Layer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Layer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3826,7 +4098,7 @@ export namespace Poppler {
 
         /**
          * Returns the numeric ID the radio button group associated with `layer`.
-         * @returns the ID of the radio button group associated with @layer, or 0 if the layer is not associated to any radio button group
+         * @returns the ID of the radio button group associated with `layer`, or 0 if the layer is not associated to any radio button group
          */
         get_radio_button_group_id(): number;
         /**
@@ -3843,12 +4115,12 @@ export namespace Poppler {
         hide(): void;
         /**
          * Returns whether `layer` is parent of other nested layers.
-         * @returns %TRUE if @layer is a parent layer
+         * @returns `true` if `layer` is a parent layer
          */
         is_parent(): boolean;
         /**
          * Returns whether `layer` is visible
-         * @returns %TRUE if @layer is visible
+         * @returns `true` if `layer` is visible
          */
         is_visible(): boolean;
         /**
@@ -3866,6 +4138,9 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
 
@@ -3886,16 +4161,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Media.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Media.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Media.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3906,18 +4184,18 @@ export namespace Poppler {
 
         /**
          * Returns the auto-play parameter.
-         * @returns %TRUE if media should auto-play, %FALSE otherwise
+         * @returns `true` if media should auto-play, `false` otherwise
          */
         get_auto_play(): boolean;
         /**
          * Returns the media clip filename, in case of non-embedded media. filename might be
          * a local relative or absolute path or a URI
-         * @returns a filename, return value is owned by #PopplerMedia and should not be freed
+         * @returns a filename, return value is owned by {@link Poppler.Media} and should not be freed
          */
         get_filename(): string;
         /**
          * Returns the media clip mime-type
-         * @returns the mime-type, return value is owned by #PopplerMedia and should not be freed
+         * @returns the mime-type, return value is owned by {@link Poppler.Media} and should not be freed
          */
         get_mime_type(): string;
         /**
@@ -3927,45 +4205,45 @@ export namespace Poppler {
         get_repeat_count(): number;
         /**
          * Returns the show controls parameter.
-         * @returns %TRUE if media should show controls, %FALSE otherwise
+         * @returns `true` if media should show controls, `false` otherwise
          */
         get_show_controls(): boolean;
         /**
-         * Whether the media clip is embedded in the PDF. If the result is %TRUE, the embedded stream
-         * can be saved with poppler_media_save() or poppler_media_save_to_callback() function.
-         * If the result is %FALSE, the media clip filename can be retrieved with
-         * poppler_media_get_filename() function.
-         * @returns %TRUE if media clip is embedded, %FALSE otherwise
+         * Whether the media clip is embedded in the PDF. If the result is `true`, the embedded stream
+         * can be saved with `poppler_media_save()` or `poppler_media_save_to_callback()` function.
+         * If the result is `false`, the media clip filename can be retrieved with
+         * `poppler_media_get_filename()` function.
+         * @returns `true` if media clip is embedded, `false` otherwise
          */
         is_embedded(): boolean;
         /**
          * Saves embedded stream of `poppler_media` to a file indicated by `filename`.
-         * If `error` is set, %FALSE will be returned.
+         * If `error` is set, `false` will be returned.
          * Possible errors include those in the #G_FILE_ERROR domain
          * and whatever the save function generates.
          * @param filename name of file to save
-         * @returns %TRUE, if the file successfully saved
+         * @returns `true`, if the file successfully saved
          */
         save(filename: string): boolean;
         /**
          * Saves embedded stream of `poppler_media` by feeding the produced data to `save_func`. Can be used
          * when you want to store the media clip stream to something other than a file, such as
-         * an in-memory buffer or a socket. If `error` is set, %FALSE will be
+         * an in-memory buffer or a socket. If `error` is set, `false` will be
          * returned. Possible errors include those in the #G_FILE_ERROR domain and
          * whatever the save function generates.
          * @param save_func a function that is called to save each block of data that the save routine generates.
-         * @returns %TRUE, if the save successfully completed
+         * @returns `true`, if the save successfully completed
          */
         save_to_callback(save_func: MediaSaveFunc): boolean;
         /**
          * Saves embedded stream of `poppler_media` to a file referred to by `fd`.
-         * If `error` is set, %FALSE will be returned.
+         * If `error` is set, `false` will be returned.
          * Possible errors include those in the #G_FILE_ERROR domain
          * and whatever the save function generates.
-         * Note that this function takes ownership of `fd;` you must not operate on it
+         * Note that this function takes ownership of `fd`; you must not operate on it
          * again, nor close it.
          * @param fd a valid file descriptor open for writing
-         * @returns %TRUE, if the file successfully saved
+         * @returns `true`, if the file successfully saved
          */
         save_to_fd(fd: number): boolean;
     }
@@ -3980,9 +4258,10 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerDocument movie.
+     * A {@link Poppler.Document} movie.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class Movie extends GObject.Object {
         static $gtype: GObject.GType<Movie>;
@@ -4004,16 +4283,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Movie.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Movie.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Movie.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Movie.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Movie.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Movie.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4037,12 +4319,12 @@ export namespace Poppler {
         get_duration(): number;
         /**
          * Returns the local filename identifying a self-describing movie file
-         * @returns a local filename, return value is owned by #PopplerMovie and               should not be freed
+         * @returns a local filename, return value is owned by {@link Poppler.Movie} and               should not be freed
          */
         get_filename(): string;
         /**
          * Returns the play mode of `poppler_movie`.
-         * @returns a #PopplerMoviePlayMode.
+         * @returns a {@link Poppler.MoviePlayMode}.
          */
         get_play_mode(): MoviePlayMode;
         /**
@@ -4068,19 +4350,19 @@ export namespace Poppler {
         /**
          * Returns whether the user must wait for the movie to be finished before
          * the PDF viewer accepts any interactive action
-         * @returns %TRUE if yes, %FALSE otherwise
+         * @returns `true` if yes, `false` otherwise
          */
         is_synchronous(): boolean;
         /**
          * Returns whether a poster image representing the Movie
          * shall be displayed. The poster image must be retrieved
          * from the movie file.
-         * @returns %TRUE if move needs a poster image, %FALSE otherwise
+         * @returns `true` if move needs a poster image, `false` otherwise
          */
         need_poster(): boolean;
         /**
          * Returns whether to display a movie controller bar while playing the movie
-         * @returns %TRUE if controller bar should be displayed, %FALSE otherwise
+         * @returns `true` if controller bar should be displayed, `false` otherwise
          */
         show_controls(): boolean;
     }
@@ -4094,6 +4376,9 @@ export namespace Poppler {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PSFile extends GObject.Object {
         static $gtype: GObject.GType<PSFile>;
 
@@ -4118,16 +4403,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PSFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PSFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PSFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PSFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PSFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PSFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4169,9 +4457,10 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerDocument page.
+     * A {@link Poppler.Document} page.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
@@ -4179,7 +4468,7 @@ export namespace Poppler {
         // Properties
 
         /**
-         * The label of the page or %NULL. See also poppler_page_get_label()
+         * The label of the page or `null`. See also `poppler_page_get_label()`
          */
         get label(): string;
 
@@ -4200,16 +4489,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Page.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Page.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Page.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4219,42 +4511,42 @@ export namespace Poppler {
         // Static methods
 
         /**
-         * Frees a list of #PopplerAnnotMapping<!-- -->s allocated by
-         * poppler_page_get_annot_mapping().  It also unreferences the #PopplerAnnot<!-- -->s
+         * Frees a list of {@link Poppler.AnnotMapping}<!-- -->s allocated by
+         * `poppler_page_get_annot_mapping()`.  It also unreferences the {@link Poppler.Annot}<!-- -->s
          * that each mapping contains, so if you want to keep them around, you need to
-         * reference them with g_object_ref().
-         * @param list A list of   #PopplerAnnotMapping<!-- -->s
+         * reference them with `g_object_ref()`.
+         * @param list A list of   {@link Poppler.AnnotMapping}<!-- -->s
          */
         static free_annot_mapping(list: AnnotMapping[]): void;
         /**
-         * Frees a list of #PopplerFormFieldMapping<!-- -->s allocated by
-         * poppler_page_get_form_field_mapping().
-         * @param list A list of   #PopplerFormFieldMapping<!-- -->s
+         * Frees a list of {@link Poppler.FormFieldMapping}<!-- -->s allocated by
+         * `poppler_page_get_form_field_mapping()`.
+         * @param list A list of   {@link Poppler.FormFieldMapping}<!-- -->s
          */
         static free_form_field_mapping(list: FormFieldMapping[]): void;
         /**
-         * Frees a list of #PopplerImageMapping<!-- -->s allocated by
-         * poppler_page_get_image_mapping().
-         * @param list A list of   #PopplerImageMapping<!-- -->s
+         * Frees a list of {@link Poppler.ImageMapping}<!-- -->s allocated by
+         * `poppler_page_get_image_mapping()`.
+         * @param list A list of   {@link Poppler.ImageMapping}<!-- -->s
          */
         static free_image_mapping(list: ImageMapping[]): void;
         /**
-         * Frees a list of #PopplerLinkMapping<!-- -->s allocated by
-         * poppler_page_get_link_mapping().  It also frees the #PopplerAction<!-- -->s
+         * Frees a list of {@link Poppler.LinkMapping}<!-- -->s allocated by
+         * `poppler_page_get_link_mapping()`.  It also frees the {@link Poppler.Action}<!-- -->s
          * that each mapping contains, so if you want to keep them around, you need to
-         * copy them with poppler_action_copy().
-         * @param list A list of   #PopplerLinkMapping<!-- -->s
+         * copy them with `poppler_action_copy()`.
+         * @param list A list of   {@link Poppler.LinkMapping}<!-- -->s
          */
         static free_link_mapping(list: LinkMapping[]): void;
         /**
-         * Frees a list of #PopplerTextAttributes<!-- -->s allocated by
-         * poppler_page_get_text_attributes().
-         * @param list A list of   #PopplerTextAttributes<!-- -->s
+         * Frees a list of {@link Poppler.TextAttributes}<!-- -->s allocated by
+         * `poppler_page_get_text_attributes()`.
+         * @param list A list of   {@link Poppler.TextAttributes}<!-- -->s
          */
         static free_text_attributes(list: TextAttributes[]): void;
         /**
          * Frees `region`
-         * @param region a #GList of   #PopplerRectangle
+         * @param region a {@link GLib.List} of   {@link Poppler.Rectangle}
          */
         static selection_region_free(region: Rectangle[]): void;
 
@@ -4262,48 +4554,51 @@ export namespace Poppler {
 
         /**
          * Adds annotation `annot` to `page`.
-         * @param annot a #PopplerAnnot to add
+         * @param annot a {@link Poppler.Annot} to add
          */
         add_annot(annot: Annot): void;
         /**
-         * Finds `text` in `page` with the default options (%POPPLER_FIND_DEFAULT) and
-         * returns a #GList of rectangles for each occurrence of the text on the page.
+         * Finds `text` in `page` with the default options ({@link Poppler.FindFlags.DEFAULT}) and
+         * returns a {@link GLib.List} of rectangles for each occurrence of the text on the page.
          * The coordinates are in PDF points.
          * @param text the text to search for (UTF-8 encoded)
-         * @returns a #GList of #PopplerRectangle,
+         * @returns a {@link GLib.List} of {@link Poppler.Rectangle},
          */
         find_text(text: string): Rectangle[];
         /**
-         * Finds `text` in `page` with the given #PopplerFindFlags options and
-         * returns a #GList of rectangles for each occurrence of the text on the page.
+         * Finds `text` in `page` with the given {@link Poppler.FindFlags} options and
+         * returns a {@link GLib.List} of rectangles for each occurrence of the text on the page.
          * The coordinates are in PDF points.
          *
-         * When %POPPLER_FIND_MULTILINE is passed in `options,` matches may span more than
-         * one line. In this case, the returned list will contain one #PopplerRectangle
-         * for each part of a match. The function poppler_rectangle_find_get_match_continued()
-         * will return %TRUE for all rectangles belonging to the same match, except for
+         * When {@link Poppler.FindFlags.MULTILINE} is passed in `options`, matches may span more than
+         * one line. In this case, the returned list will contain one {@link Poppler.Rectangle}
+         * for each part of a match. The function `poppler_rectangle_find_get_match_continued()`
+         * will return `true` for all rectangles belonging to the same match, except for
          * the last one. If a hyphen was ignored at the end of the part of the match,
-         * poppler_rectangle_find_get_ignored_hyphen() will return %TRUE for that
+         * `poppler_rectangle_find_get_ignored_hyphen()` will return `true` for that
          * rectangle.
          *
          * Note that currently matches spanning more than two lines are not found.
          * (This limitation may be lifted in a future version.)
          *
          * Note also that currently finding multi-line matches backwards is not
-         * implemented; if you pass %POPPLER_FIND_BACKWARDS and %POPPLER_FIND_MULTILINE
-         * together, %POPPLER_FIND_MULTILINE will be ignored.
+         * implemented; if you pass {@link Poppler.FindFlags.BACKWARDS} and {@link Poppler.FindFlags.MULTILINE}
+         * together, {@link Poppler.FindFlags.MULTILINE} will be ignored.
          * @param text the text to search for (UTF-8 encoded)
          * @param options find options
-         * @returns a newly allocated list of newly allocated #PopplerRectangle. Free with g_list_free_full() using poppler_rectangle_free().
+         * @returns a newly allocated list of newly allocated {@link Poppler.Rectangle}. Free with `g_list_free_full()` using `poppler_rectangle_free()`.
          */
         find_text_with_options(text: string, options: FindFlags | null): Rectangle[];
         /**
-         * Returns a list of #PopplerAnnotMapping items that map from a location on
-         * `page` to a #PopplerAnnot.  This list must be freed with
-         * poppler_page_free_annot_mapping() when done.
-         * @returns A #GList of #PopplerAnnotMapping
+         * Returns a list of {@link Poppler.AnnotMapping} items that map from a location on
+         * `page` to a {@link Poppler.Annot}.  This list must be freed with
+         * `poppler_page_free_annot_mapping()` when done.
+         * @returns A {@link GLib.List} of {@link Poppler.AnnotMapping}
          */
         get_annot_mapping(): AnnotMapping[];
+        /**
+         * @param rect
+         */
         get_bounding_box(rect: Rectangle): boolean;
         /**
          * Retrurns the crop box of `page`
@@ -4311,14 +4606,14 @@ export namespace Poppler {
         get_crop_box(): Rectangle;
         /**
          * Returns the duration of `page`
-         * @returns duration in seconds of @page or -1.
+         * @returns duration in seconds of `page` or -1.
          */
         get_duration(): number;
         /**
-         * Returns a list of #PopplerFormFieldMapping items that map from a
+         * Returns a list of {@link Poppler.FormFieldMapping} items that map from a
          * location on `page` to a form field.  This list must be freed
-         * with poppler_page_free_form_field_mapping() when done.
-         * @returns A #GList of #PopplerFormFieldMapping
+         * with `poppler_page_free_form_field_mapping()` when done.
+         * @returns A {@link GLib.List} of {@link Poppler.FormFieldMapping}
          */
         get_form_field_mapping(): FormFieldMapping[];
         /**
@@ -4328,56 +4623,56 @@ export namespace Poppler {
          */
         get_image(image_id: number): cairo.Surface;
         /**
-         * Returns a list of #PopplerImageMapping items that map from a
+         * Returns a list of {@link Poppler.ImageMapping} items that map from a
          * location on `page` to an image of the page. This list must be freed
-         * with poppler_page_free_image_mapping() when done.
-         * @returns A #GList of #PopplerImageMapping
+         * with `poppler_page_free_image_mapping()` when done.
+         * @returns A {@link GLib.List} of {@link Poppler.ImageMapping}
          */
         get_image_mapping(): ImageMapping[];
         /**
          * Returns the index of `page`
-         * @returns index value of @page
+         * @returns index value of `page`
          */
         get_index(): number;
         /**
          * Returns the label of `page`. Note that page labels
          * and page indices might not coincide.
-         * @returns a new allocated string containing the label of @page,               or %NULL if @page doesn't have a label
+         * @returns a new allocated string containing the label of `page`,               or `null` if `page` doesn't have a label
          */
         get_label(): string;
         /**
-         * Returns a list of #PopplerLinkMapping items that map from a
-         * location on `page` to a #PopplerAction.  This list must be freed
-         * with poppler_page_free_link_mapping() when done.
-         * @returns A #GList of #PopplerLinkMapping
+         * Returns a list of {@link Poppler.LinkMapping} items that map from a
+         * location on `page` to a {@link Poppler.Action}.  This list must be freed
+         * with `poppler_page_free_link_mapping()` when done.
+         * @returns A {@link GLib.List} of {@link Poppler.LinkMapping}
          */
         get_link_mapping(): LinkMapping[];
         /**
          * Returns a region containing the area that would be rendered by
-         * poppler_page_render_selection().
-         * The returned region must be freed with cairo_region_destroy()
+         * `poppler_page_render_selection()`.
+         * The returned region must be freed with `cairo_region_destroy()`
          * @param scale scale specified as pixels per point
-         * @param style a #PopplerSelectionStyle
+         * @param style a {@link Poppler.SelectionStyle}
          * @param selection start and end point of selection as a rectangle
          * @returns a cairo_region_t
          */
         get_selected_region(scale: number, style: SelectionStyle | null, selection: Rectangle): cairo.Region;
         /**
          * Retrieves the contents of the specified `selection` as text.
-         * @param style a #PopplerSelectionStyle
-         * @param selection the #PopplerRectangle including the text
-         * @returns a pointer to the contents of the @selection as a string
+         * @param style a {@link Poppler.SelectionStyle}
+         * @param selection the {@link Poppler.Rectangle} including the text
+         * @returns a pointer to the contents of the `selection` as a string
          */
         get_selected_text(style: SelectionStyle | null, selection: Rectangle): string;
         /**
          * Returns a region containing the area that would be rendered by
-         * poppler_page_render_selection() as a #GList of
-         * #PopplerRectangle. The returned list must be freed with
-         * poppler_page_selection_region_free().
+         * `poppler_page_render_selection()` as a {@link GLib.List} of
+         * {@link Poppler.Rectangle}. The returned list must be freed with
+         * `poppler_page_selection_region_free()`.
          * @param scale scale specified as pixels per point
-         * @param style a #PopplerSelectionStyle
+         * @param style a {@link Poppler.SelectionStyle}
          * @param selection start and end point of selection as a rectangle
-         * @returns a #GList of #PopplerRectangle
+         * @returns a {@link GLib.List} of {@link Poppler.Rectangle}
          */
         get_selection_region(scale: number, style: SelectionStyle | null, selection: Rectangle): Rectangle[];
         /**
@@ -4386,89 +4681,89 @@ export namespace Poppler {
         get_size(): [number, number];
         /**
          * Retrieves the text of `page`.
-         * @returns a pointer to the text of the @page               as a string
+         * @returns a pointer to the text of the `page`               as a string
          */
         get_text(): string;
         /**
-         * Obtains the attributes of the text as a #GList of #PopplerTextAttributes.
-         * This list must be freed with poppler_page_free_text_attributes() when done.
+         * Obtains the attributes of the text as a {@link GLib.List} of {@link Poppler.TextAttributes}.
+         * This list must be freed with `poppler_page_free_text_attributes()` when done.
          *
-         * Each list element is a #PopplerTextAttributes struct where start_index and
-         * end_index indicates the range of text (as returned by poppler_page_get_text())
+         * Each list element is a {@link Poppler.TextAttributes} struct where start_index and
+         * end_index indicates the range of text (as returned by `poppler_page_get_text()`)
          * to which text attributes apply.
          *
-         * See also poppler_page_get_text_attributes_for_area()
-         * @returns A #GList of #PopplerTextAttributes
+         * See also `poppler_page_get_text_attributes_for_area()`
+         * @returns A {@link GLib.List} of {@link Poppler.TextAttributes}
          */
         get_text_attributes(): TextAttributes[];
         /**
-         * Obtains the attributes of the text in `area` as a #GList of #PopplerTextAttributes.
-         * This list must be freed with poppler_page_free_text_attributes() when done.
+         * Obtains the attributes of the text in `area` as a {@link GLib.List} of {@link Poppler.TextAttributes}.
+         * This list must be freed with `poppler_page_free_text_attributes()` when done.
          *
-         * Each list element is a #PopplerTextAttributes struct where start_index and
-         * end_index indicates the range of text (as returned by poppler_page_get_text_for_area())
+         * Each list element is a {@link Poppler.TextAttributes} struct where start_index and
+         * end_index indicates the range of text (as returned by `poppler_page_get_text_for_area()`)
          * to which text attributes apply.
-         * @param area a #PopplerRectangle
-         * @returns A #GList of #PopplerTextAttributes
+         * @param area a {@link Poppler.Rectangle}
+         * @returns A {@link GLib.List} of {@link Poppler.TextAttributes}
          */
         get_text_attributes_for_area(area: Rectangle): TextAttributes[];
         /**
          * Retrieves the text of `page` contained in `area`.
-         * @param area a #PopplerRectangle
+         * @param area a {@link Poppler.Rectangle}
          * @returns a pointer to the text as a string
          */
         get_text_for_area(area: Rectangle): string;
         /**
-         * Obtains the layout of the text as a list of #PopplerRectangle
-         * This array must be freed with g_free() when done.
+         * Obtains the layout of the text as a list of {@link Poppler.Rectangle}
+         * This array must be freed with `g_free()` when done.
          *
          * The position in the array represents an offset in the text returned by
-         * poppler_page_get_text()
+         * `poppler_page_get_text()`
          *
-         * See also poppler_page_get_text_layout_for_area().
-         * @returns %TRUE if the page contains text, %FALSE otherwise
+         * See also `poppler_page_get_text_layout_for_area()`.
+         * @returns `true` if the page contains text, `false` otherwise
          */
         get_text_layout(): [boolean, Rectangle[]];
         /**
-         * Obtains the layout of the text contained in `area` as a list of #PopplerRectangle
-         * This array must be freed with g_free() when done.
+         * Obtains the layout of the text contained in `area` as a list of {@link Poppler.Rectangle}
+         * This array must be freed with `g_free()` when done.
          *
          * The position in the array represents an offset in the text returned by
-         * poppler_page_get_text_for_area()
-         * @param area a #PopplerRectangle
-         * @returns %TRUE if the page contains text, %FALSE otherwise
+         * `poppler_page_get_text_for_area()`
+         * @param area a {@link Poppler.Rectangle}
+         * @returns `true` if the page contains text, `false` otherwise
          */
         get_text_layout_for_area(area: Rectangle): [boolean, Rectangle[]];
         /**
          * Get the embedded thumbnail for the specified page.  If the document
          * doesn't have an embedded thumbnail for the page, this function
-         * returns %NULL.
-         * @returns the tumbnail as a cairo_surface_t or %NULL if the document doesn't have a thumbnail for this page.
+         * returns `null`.
+         * @returns the tumbnail as a cairo_surface_t or `null` if the document doesn't have a thumbnail for this page.
          */
         get_thumbnail(): cairo.Surface;
         /**
-         * Returns %TRUE if `page` has a thumbnail associated with it.  It also
+         * Returns `true` if `page` has a thumbnail associated with it.  It also
          * fills in `width` and `height` with the width and height of the
          * thumbnail.  The values of width and height are not changed if no
          * appropriate thumbnail exists.
-         * @returns %TRUE, if @page has a thumbnail associated with it.
+         * @returns `true`, if `page` has a thumbnail associated with it.
          */
         get_thumbnail_size(): [boolean, number, number];
         /**
          * Returns the transition effect of `page`
-         * @returns a #PopplerPageTransition or %NULL.
+         * @returns a {@link Poppler.PageTransition} or `null`.
          */
         get_transition(): PageTransition;
         /**
          * Removes annotation `annot` from `page`
-         * @param annot a #PopplerAnnot to remove
+         * @param annot a {@link Poppler.Annot} to remove
          */
         remove_annot(annot: Annot): void;
         /**
          * Render the page to the given cairo context. This function
          * is for rendering a page that will be displayed. If you want
          * to render a page that will be printed use
-         * poppler_page_render_for_printing() instead.  Please see the documentation
+         * `poppler_page_render_for_printing()` instead.  Please see the documentation
          * for that function for the differences between rendering to the screen and
          * rendering to a printer.
          * @param cairo cairo context to render to
@@ -4477,15 +4772,15 @@ export namespace Poppler {
         /**
          * Render the page to the given cairo context for printing with
          * #POPPLER_PRINT_ALL flags selected.  If you want a different set of flags,
-         * use poppler_page_render_full() with printing #TRUE and the corresponding
+         * use `poppler_page_render_full()` with printing `TRUE` and the corresponding
          * flags.
          *
-         * The difference between poppler_page_render() and this function is that some
+         * The difference between `poppler_page_render()` and this function is that some
          * things get rendered differently between screens and printers:
          *
          * <itemizedlist>
          *   <listitem>
-         *     PDF annotations get rendered according to their #PopplerAnnotFlag value.
+         *     PDF annotations get rendered according to their {@link Poppler.AnnotFlag} value.
          *     For example, #POPPLER_ANNOT_FLAG_PRINT refers to whether an annotation
          *     is printed or not, whereas #POPPLER_ANNOT_FLAG_NO_VIEW refers to whether
          *     an annotation is invisible when displaying to the screen.
@@ -4512,7 +4807,7 @@ export namespace Poppler {
          * Render the page to the given cairo context for printing
          * with the specified options
          *
-         * See the documentation for poppler_page_render_for_printing() for the
+         * See the documentation for `poppler_page_render_for_printing()` for the
          * differences between rendering to the screen and rendering to a printer.
          * @param cairo cairo context to render to
          * @param options print options
@@ -4524,7 +4819,7 @@ export namespace Poppler {
          *
          * The `printing` parameter determines whether a page is rendered for printing
          * or for displaying it on a screen. See the documentation for
-         * poppler_page_render_for_printing() for the differences between rendering to
+         * `poppler_page_render_for_printing()` for the differences between rendering to
          * the screen and rendering to a printer.
          * @param cairo cairo context to render to
          * @param printing cairo context to render to
@@ -4538,12 +4833,12 @@ export namespace Poppler {
          * background.
          *
          * If non-NULL, `old_selection` specifies the selection that is already
-         * rendered to `cairo,` in which case this function will (some day)
+         * rendered to `cairo`, in which case this function will (some day)
          * only render the changed part of the selection.
          * @param cairo cairo context to render to
          * @param selection start and end point of selection as a rectangle
          * @param old_selection previous selection
-         * @param style a #PopplerSelectionStyle
+         * @param style a {@link Poppler.SelectionStyle}
          * @param glyph_color color to use for drawing glyphs
          * @param background_color color to use for the selection background
          */
@@ -4567,12 +4862,12 @@ export namespace Poppler {
          * background. Glyphs will not be drawn.
          *
          * If non-NULL, `old_selection` specifies the selection that is already
-         * rendered to `cairo,` in which case this function will (some day)
+         * rendered to `cairo`, in which case this function will (some day)
          * only render the changed part of the selection.
          * @param cairo cairo context to render to
          * @param selection start and end point of selection as a rectangle
          * @param old_selection previous selection
-         * @param style a #PopplerSelectionStyle
+         * @param style a {@link Poppler.SelectionStyle}
          * @param background_color color to use for the selection background
          * @param background_opacity opacity to use for the selection background
          */
@@ -4596,9 +4891,10 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerDocument structure element.
+     * A {@link Poppler.Document} structure element.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Class
      */
     class StructureElement extends GObject.Object {
         static $gtype: GObject.GType<StructureElement>;
@@ -4620,16 +4916,19 @@ export namespace Poppler {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StructureElement.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructureElement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StructureElement.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructureElement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StructureElement.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StructureElement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4642,7 +4941,7 @@ export namespace Poppler {
          * Acronyms and abbreviations contained in elements of type
          * #POPPLER_STRUCTURE_ELEMENT_SPAN may have an associated expanded
          * text form, which can be retrieved using this function.
-         * @returns Text of the expanded abbreviation if the    element text is an abbreviation or acrony, %NULL if not.
+         * @returns Text of the expanded abbreviation if the    element text is an abbreviation or acrony, `null` if not.
          */
         get_abbreviation(): string;
         /**
@@ -4653,8 +4952,8 @@ export namespace Poppler {
          * graphical elements which look like text when rendered.
          *
          * Note that for elements containing proper text, the function
-         * poppler_structure_element_get_text() must be used instead.
-         * @returns The actual text for the element, or %NULL    if not defined.
+         * `poppler_structure_element_get_text()` must be used instead.
+         * @returns The actual text for the element, or `null`    if not defined.
          */
         get_actual_text(): string;
         /**
@@ -4663,14 +4962,14 @@ export namespace Poppler {
          * figures, to specify a textual description of the element.
          *
          * Note that for elements containing proper text, the function
-         * poppler_structure_element_get_text() must be used instead.
-         * @returns The alternate text representation for the    element, or %NULL if not defined.
+         * `poppler_structure_element_get_text()` must be used instead.
+         * @returns The alternate text representation for the    element, or `null` if not defined.
          */
         get_alt_text(): string;
         /**
          * Obtains the background color of the element. If this attribute is
          * not specified, the element shall be treated as if it were transparent.
-         * @returns %TRUE if a color is defined for the element,    %FALSE otherwise.
+         * @returns `true` if a color is defined for the element,    `false` otherwise.
          */
         get_background_color(): [boolean, Color];
         /**
@@ -4681,7 +4980,7 @@ export namespace Poppler {
         get_baseline_shift(): number;
         /**
          * Obtains the block-alignment mode of the block-level structure element.
-         * @returns A #PopplerStructureBlockAlign value.
+         * @returns A {@link Poppler.StructureBlockAlign} value.
          */
         get_block_align(): StructureBlockAlign;
         /**
@@ -4691,7 +4990,7 @@ export namespace Poppler {
          * If this attribute is not specified, the border color for this element shall
          * be the current text fill color in effect at the start of its associated
          * content.
-         * @returns %TRUE if a color is defined for the element,    %FALSE otherwise.
+         * @returns `true` if a color is defined for the element,    `false` otherwise.
          */
         get_border_color(): [boolean, Color[]];
         /**
@@ -4705,19 +5004,19 @@ export namespace Poppler {
          * are in before-after-start-end ordering (for the typical Western
          * left-to-right writing, that is top-bottom-left-right).
          * A value of 0 indicates that the border shall not be drawn.
-         * @returns %TRUE if the border thickness attribute is defined for    the element, %FALSE otherwise.
+         * @returns `true` if the border thickness attribute is defined for    the element, `false` otherwise.
          */
         get_border_thickness(): [boolean, number[]];
         /**
          * Obtains the size of the bounding box of a block-level structure element.
-         * @returns %TRUE if a bounding box is defined for the element,    %FALSE otherwise.
+         * @returns `true` if a bounding box is defined for the element,    `false` otherwise.
          */
         get_bounding_box(): [boolean, Rectangle];
         /**
          * Obtains the color of the content contained in the element.
          * If this attribute is not specified, the color for this element shall
          * be the current text fill color in effect at the start of its associated content.
-         * @returns %TRUE if a color is defined for the element,    %FALSE otherwise.
+         * @returns `true` if a color is defined for the element,    `false` otherwise.
          */
         get_color(): [boolean, Color];
         /**
@@ -4731,23 +5030,23 @@ export namespace Poppler {
          * array of elements: the first one is the size of the gap in between
          * columns 1 and 2, second is the size between columns 2 and 3, and so on.
          *
-         * For elements which use a single column, %NULL is returned and `n_values`
+         * For elements which use a single column, `null` is returned and `n_values`
          * is set to zero.
          *
-         * If the attribute is undefined, %NULL is returned and `n_values` is set
+         * If the attribute is undefined, `null` is returned and `n_values` is set
          * to a non-zero value.
          *
          * The array with the results is allocated by the function. When it is
-         * not needed anymore, be sure to call g_free() on it.
-         * @returns Array containing the values for the column gaps, or %NULL if the    array is empty or the attribute is not defined.
+         * not needed anymore, be sure to call `g_free()` on it.
+         * @returns Array containing the values for the column gaps, or `null` if the    array is empty or the attribute is not defined.
          */
         get_column_gaps(): number[];
         /**
          * Obtains an array with the widths of the columns.
          *
          * The array with the results is allocated by the function. When it is
-         * not needed anymore, be sure to call g_free() on it.
-         * @returns Array containing widths of the columns, or %NULL if the attribute    is not defined.
+         * not needed anymore, be sure to call `g_free()` on it.
+         * @returns Array containing widths of the columns, or `null` if the attribute    is not defined.
          */
         get_column_widths(): number[];
         /**
@@ -4763,27 +5062,27 @@ export namespace Poppler {
          * element to the user.
          *
          * The returned string is allocated by the function. When it is
-         * not needed anymore, be sure to call g_free() on it.
-         * @returns A string, or %NULL if the attribute    is not defined.
+         * not needed anymore, be sure to call `g_free()` on it.
+         * @returns A string, or `null` if the attribute    is not defined.
          */
         get_form_description(): string;
         /**
          * Obtains the role of a form structure element that is part of a form, or is
          * a form field. This hints how the control for the element is intended
          * to be rendered.
-         * @returns A #PopplerStructureFormRole value.
+         * @returns A {@link Poppler.StructureFormRole} value.
          */
         get_form_role(): StructureFormRole;
         /**
          * For a structure element that is a form field, obtains in which state
          * the associated control is expected to be rendered.
-         * @returns A #PopplerStructureFormState value.
+         * @returns A {@link Poppler.StructureFormState} value.
          */
         get_form_state(): StructureFormState;
         /**
          * Obtains the glyph orientation for the text contained in a
          * inline-level structure element.
-         * @returns A #PopplerStructureGlyphOrientation value.
+         * @returns A {@link Poppler.StructureGlyphOrientation} value.
          */
         get_glyph_orientation(): StructureGlyphOrientation;
         /**
@@ -4794,20 +5093,23 @@ export namespace Poppler {
         get_height(): number;
         /**
          * Obtains the identifier of an element.
-         * @returns The identifier of the element (if    defined), or %NULL.
+         * @returns The identifier of the element (if    defined), or `null`.
          */
         get_id(): string;
         /**
          * Obtains the inline-alignment mode of the block-level structure element.
-         * @returns A #PopplerStructureInlineAlign value.
+         * @returns A {@link Poppler.StructureInlineAlign} value.
          */
         get_inline_align(): StructureInlineAlign;
+        /**
+         * @returns A {@link Poppler.StructureElementKind} value.
+         */
         get_kind(): StructureElementKind;
         /**
          * Obtains the language and country code for the content in an element,
-         * in two-letter ISO format, e.g. <code>en_ES</code>, or %NULL if not
+         * in two-letter ISO format, e.g. <code>en_ES</code>, or `null` if not
          * defined.
-         * @returns language and country code, or %NULL.
+         * @returns language and country code, or `null`.
          */
         get_language(): string;
         /**
@@ -4819,7 +5121,7 @@ export namespace Poppler {
         get_line_height(): number;
         /**
          * Obtains the list numbering style for list items.
-         * @returns A #PopplerStructureListNumbering value.
+         * @returns A {@link Poppler.StructureListNumbering} value.
          */
         get_list_numbering(): StructureListNumbering;
         /**
@@ -4835,19 +5137,19 @@ export namespace Poppler {
         get_page(): number;
         /**
          * Obtains the placement type of the structure element.
-         * @returns A #PopplerStructurePlacement value.
+         * @returns A {@link Poppler.StructurePlacement} value.
          */
         get_placement(): StructurePlacement;
         /**
          * Obtains the alignment for the ruby text contained in a
          * inline-level structure element.
-         * @returns A #PopplerStructureRubyAlign value.
+         * @returns A {@link Poppler.StructureRubyAlign} value.
          */
         get_ruby_align(): StructureRubyAlign;
         /**
          * Obtains the position for the ruby text contained in a
          * inline-level structure element.
-         * @returns A #PopplerStructureRubyPosition value.
+         * @returns A {@link Poppler.StructureRubyPosition} value.
          */
         get_ruby_position(): StructureRubyPosition;
         /**
@@ -4881,9 +5183,9 @@ export namespace Poppler {
          * useful for table header row elements.
          *
          * The array with the results is allocated by the function. The number
-         * of items in the returned array can be obtained with g_strv_length().
-         * The returned value must be freed using g_strfreev().
-         * @returns Zero-terminated array of strings with the table header names,    or %NULL if the attribute is not defined.
+         * of items in the returned array can be obtained with `g_strv_length()`.
+         * The returned value must be freed using `g_strfreev()`.
+         * @returns Zero-terminated array of strings with the table header names,    or `null` if the attribute is not defined.
          */
         get_table_headers(): string[];
         /**
@@ -4900,7 +5202,7 @@ export namespace Poppler {
         get_table_row_span(): number;
         /**
          * Obtains the scope of a table structure element.
-         * @returns A #PopplerStructureTableScope value.
+         * @returns A {@link Poppler.StructureTableScope} value.
          */
         get_table_scope(): StructureTableScope;
         /**
@@ -4912,21 +5214,21 @@ export namespace Poppler {
          * keywords.
          *
          * The returned string is allocated by the function. When it is
-         * not needed anymore, be sure to call g_free() on it.
-         * @returns A string, or %NULL if the attribute    is not defined.
+         * not needed anymore, be sure to call `g_free()` on it.
+         * @returns A string, or `null` if the attribute    is not defined.
          */
         get_table_summary(): string;
         /**
          * Obtains the text enclosed by an element, or the text enclosed by the
          * elements in the subtree (including the element itself).
-         * @param flags A #PopplerStructureGetTextFlags value, or    %POPPLER_STRUCTURE_GET_TEXT_NONE to disable all the flags.
+         * @param flags A {@link Poppler.StructureGetTextFlags} value, or    {@link Poppler.StructureGetTextFlags.NONE} to disable all the flags.
          * @returns A string.
          */
         get_text(flags: StructureGetTextFlags | null): string;
         /**
          * Obtains the text alignment mode of the text contained into a
          * block-level structure element.
-         * @returns A #PopplerStructureTextAlign value.
+         * @returns A {@link Poppler.StructureTextAlign} value.
          */
         get_text_align(): StructureTextAlign;
         /**
@@ -4934,7 +5236,7 @@ export namespace Poppler {
          * in the inline-level structure element.
          * If this attribute is not specified, the color for this element shall be the current fill
          * color in effect at the start of its associated content.
-         * @returns %TRUE if a color is defined for the element,    %FALSE otherwise.
+         * @returns `true` if a color is defined for the element,    `false` otherwise.
          */
         get_text_decoration_color(): [boolean, Color];
         /**
@@ -4948,7 +5250,7 @@ export namespace Poppler {
         /**
          * Obtains the text decoration type of the text contained in the
          * inline-level structure element.
-         * @returns A #PopplerStructureTextDecoration value.
+         * @returns A {@link Poppler.StructureTextDecoration} value.
          */
         get_text_decoration_type(): StructureTextDecoration;
         /**
@@ -4957,7 +5259,7 @@ export namespace Poppler {
          */
         get_text_indent(): number;
         /**
-         * Obtains the text enclosed by an element, as an array of #PopplerTextSpan
+         * Obtains the text enclosed by an element, as an array of {@link Poppler.TextSpan}
          * structures. Each item in the list is a piece of text which share the same
          * attributes, plus its attributes. The following example shows how to
          * obtain and free the text spans of an element:
@@ -4971,12 +5273,12 @@ export namespace Poppler {
          *    poppler_text_span_free (text_spans[i]);
          * g_free (text_spans);
          * </programlisting></informalexample>
-         * @returns An array of #PopplerTextSpan elements.
+         * @returns An array of {@link Poppler.TextSpan} elements.
          */
         get_text_spans(): TextSpan[];
         /**
          * Obtains the title of an element.
-         * @returns The title of the element, or %NULL.
+         * @returns The title of the element, or `null`.
          */
         get_title(): string;
         /**
@@ -4988,33 +5290,34 @@ export namespace Poppler {
         /**
          * Obtains the writing mode (writing direction) of the content associated
          * with a structure element.
-         * @returns A #PopplerStructureWritingMode value.
+         * @returns A {@link Poppler.StructureWritingMode} value.
          */
         get_writing_mode(): StructureWritingMode;
         /**
          * Checks whether an element is a block element.
-         * @returns %TRUE if  the element is a block element, or %FALSE otherwise.
+         * @returns `true` if  the element is a block element, or `false` otherwise.
          */
         is_block(): boolean;
         /**
          * Checks whether an element is actual document content.
-         * @returns %TRUE if the element is content, or %FALSE otherwise.
+         * @returns `true` if the element is content, or `false` otherwise.
          */
         is_content(): boolean;
         /**
          * Checks whether an element is a grouping element.
-         * @returns %TRUE if the element is a grouping element, %FALSE    otherwise.
+         * @returns `true` if the element is a grouping element, `false`    otherwise.
          */
         is_grouping(): boolean;
         /**
          * Checks whether an element is an inline element.
-         * @returns %TRUE if the element is an inline element, or %FALSE otherwise.
+         * @returns `true` if the element is an inline element, or `false` otherwise.
          */
         is_inline(): boolean;
     }
 
     /**
-     * Fields common to all #PopplerAction<!-- -->s
+     * Fields common to all {@link Poppler.Action}<!-- -->s
+     * @gir-type Struct
      */
     class ActionAny {
         static $gtype: GObject.GType<ActionAny>;
@@ -5027,6 +5330,7 @@ export namespace Poppler {
 
     /**
      * Go to destination
+     * @gir-type Struct
      */
     class ActionGotoDest {
         static $gtype: GObject.GType<ActionGotoDest>;
@@ -5039,6 +5343,7 @@ export namespace Poppler {
 
     /**
      * Go to destination in another document
+     * @gir-type Struct
      */
     class ActionGotoRemote {
         static $gtype: GObject.GType<ActionGotoRemote>;
@@ -5052,6 +5357,8 @@ export namespace Poppler {
 
     /**
      * Javascript.
+     * @gir-type Struct
+     * @since 0.18
      */
     class ActionJavascript {
         static $gtype: GObject.GType<ActionJavascript>;
@@ -5065,6 +5372,7 @@ export namespace Poppler {
 
     /**
      * Launch app (or open document)
+     * @gir-type Struct
      */
     class ActionLaunch {
         static $gtype: GObject.GType<ActionLaunch>;
@@ -5079,6 +5387,7 @@ export namespace Poppler {
 
     /**
      * Action to perform over a list of layers
+     * @gir-type Struct
      */
     class ActionLayer {
         static $gtype: GObject.GType<ActionLayer>;
@@ -5091,6 +5400,8 @@ export namespace Poppler {
 
     /**
      * Play movies.
+     * @gir-type Struct
+     * @since 0.14
      */
     class ActionMovie {
         static $gtype: GObject.GType<ActionMovie>;
@@ -5105,6 +5416,7 @@ export namespace Poppler {
 
     /**
      * Predefined action
+     * @gir-type Struct
      */
     class ActionNamed {
         static $gtype: GObject.GType<ActionNamed>;
@@ -5118,6 +5430,8 @@ export namespace Poppler {
 
     /**
      * State of layer.
+     * @gir-type Struct
+     * @since 0.14
      */
     class ActionOCGState {
         static $gtype: GObject.GType<ActionOCGState>;
@@ -5130,6 +5444,8 @@ export namespace Poppler {
 
     /**
      * Play multimedia content.
+     * @gir-type Struct
+     * @since 0.14
      */
     class ActionRendition {
         static $gtype: GObject.GType<ActionRendition>;
@@ -5145,9 +5461,11 @@ export namespace Poppler {
     /**
      * Resets some or all fields within a PDF form.
      *
-     * The default behavior resets only the list of `fields,` but setting
-     * `exclude` to %TRUE will cause the action to reset all fields but those
+     * The default behavior resets only the list of `fields`, but setting
+     * `exclude` to `true` will cause the action to reset all fields but those
      * listed. Providing an empty list of fields resets the entire form.
+     * @gir-type Struct
+     * @since 0.90
      */
     class ActionResetForm {
         static $gtype: GObject.GType<ActionResetForm>;
@@ -5162,6 +5480,7 @@ export namespace Poppler {
 
     /**
      * URI
+     * @gir-type Struct
      */
     class ActionUri {
         static $gtype: GObject.GType<ActionUri>;
@@ -5177,6 +5496,7 @@ export namespace Poppler {
      * An annotation for callout line.
      *
      * Since 25.06 this type supports g_autoptr
+     * @gir-type Struct
      */
     class AnnotCalloutLine {
         static $gtype: GObject.GType<AnnotCalloutLine>;
@@ -5210,21 +5530,22 @@ export namespace Poppler {
         // Methods
 
         /**
-         * It does copy `callout` to a new #PopplerAnnotCalloutLine.
-         * @returns a new allocated #PopplerAnnotCalloutLine as exact copy of               @callout, %NULL in other case. It must be freed when done.
+         * It does copy `callout` to a new {@link Poppler.AnnotCalloutLine}.
+         * @returns a new allocated {@link Poppler.AnnotCalloutLine} as exact copy of               `callout`, `null` in other case. It must be freed when done.
          */
         copy(): AnnotCalloutLine;
         /**
-         * Frees the memory used by #PopplerAnnotCalloutLine.
+         * Frees the memory used by {@link Poppler.AnnotCalloutLine}.
          */
         free(): void;
     }
 
     /**
-     * A #PopplerAnnotMapping structure represents the location
+     * A {@link Poppler.AnnotMapping} structure represents the location
      * of `annot` on the page
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class AnnotMapping {
         static $gtype: GObject.GType<AnnotMapping>;
@@ -5248,20 +5569,25 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `mapping`
-         * @returns a new allocated copy of @mapping
+         * @returns a new allocated copy of `mapping`
          */
         copy(): AnnotMapping;
         /**
-         * Frees the given #PopplerAnnotMapping
+         * Frees the given {@link Poppler.AnnotMapping}
          */
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AttachmentClass = typeof Attachment;
     /**
      * PopplerCertificateInfo contains detailed info about a signing certificate.
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
+     * @since 23.07.0
      */
     class CertificateInfo {
         static $gtype: GObject.GType<CertificateInfo>;
@@ -5275,8 +5601,8 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Copies `certificate_info,` creating an identical #PopplerCertificateInfo.
-         * @returns a new #PopplerCertificateInfo structure identical to @certificate_info
+         * Copies `certificate_info`, creating an identical {@link Poppler.CertificateInfo}.
+         * @returns a new {@link Poppler.CertificateInfo} structure identical to `certificate_info`
          */
         copy(): CertificateInfo;
         /**
@@ -5331,10 +5657,11 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerColor describes a RGB color. Color components
+     * A {@link Poppler.Color} describes a RGB color. Color components
      * are values between 0 and 65535
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class Color {
         static $gtype: GObject.GType<Color>;
@@ -5361,11 +5688,11 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `color`
-         * @returns a new allocated copy of @color
+         * @returns a new allocated copy of `color`
          */
         copy(): Color;
         /**
-         * Frees the given #PopplerColor
+         * Frees the given {@link Poppler.Color}
          */
         free(): void;
     }
@@ -5375,13 +5702,14 @@ export namespace Poppler {
      *
      * Note that `named_dest` is the string representation of the named
      * destination. This is the right form to pass to poppler functions,
-     * e.g. poppler_document_find_dest(), but to get the destination as
+     * e.g. `poppler_document_find_dest()`, but to get the destination as
      * it appears in the PDF itself, you need to convert it to a bytestring
-     * with poppler_named_dest_to_bytestring() first.
+     * with `poppler_named_dest_to_bytestring()` first.
      * Also note that `named_dest` does not have a defined encoding and
      * is not in a form suitable to be displayed to the user.
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class Dest {
         static $gtype: GObject.GType<Dest>;
@@ -5403,8 +5731,8 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Copies `dest,` creating an identical #PopplerDest.
-         * @returns a new destination identical to @dest
+         * Copies `dest`, creating an identical {@link Poppler.Dest}.
+         * @returns a new destination identical to `dest`
          */
         copy(): Dest;
         /**
@@ -5414,12 +5742,14 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerFontDescription structure represents the description
+     * A {@link Poppler.FontDescription} structure represents the description
      * of a font. When used together with Pango, all the fields are
      * value-compatible with pango equivalent, although Pango font
      * descriptions may contain more information.
      *
      * This type supports g_autoptr
+     * @gir-type Struct
+     * @since 24.12.0
      */
     class FontDescription {
         static $gtype: GObject.GType<FontDescription>;
@@ -5442,17 +5772,18 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `font_desc`
-         * @returns a new allocated copy of @font_desc
+         * @returns a new allocated copy of `font_desc`
          */
         copy(): FontDescription;
         /**
-         * Frees the given #PopplerFontDescription
+         * Frees the given {@link Poppler.FontDescription}
          */
         free(): void;
     }
 
     /**
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     abstract class FontsIter {
         static $gtype: GObject.GType<FontsIter>;
@@ -5461,11 +5792,11 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `iter`
-         * @returns a new allocated copy of @iter
+         * @returns a new allocated copy of `iter`
          */
         copy(): FontsIter;
         /**
-         * Frees the given #PopplerFontsIter
+         * Frees the given {@link Poppler.FontsIter}
          */
         free(): void;
         /**
@@ -5474,9 +5805,9 @@ export namespace Poppler {
          */
         get_encoding(): string;
         /**
-         * The filename of the font associated with `iter` or %NULL if
+         * The filename of the font associated with `iter` or `null` if
          * the font is embedded
-         * @returns the filename of the font or %NULL if font is embedded
+         * @returns the filename of the font or `null` if font is embedded
          */
         get_file_name(): string;
         /**
@@ -5495,33 +5826,34 @@ export namespace Poppler {
          */
         get_name(): string;
         /**
-         * The name of the substitute font of the font associated with `iter` or %NULL if
+         * The name of the substitute font of the font associated with `iter` or `null` if
          * the font is embedded
-         * @returns the name of the substitute font or %NULL if font is embedded
+         * @returns the name of the substitute font or `null` if font is embedded
          */
         get_substitute_name(): string;
         /**
          * Returns whether the font associated with `iter` is embedded in the document
-         * @returns %TRUE if font is embedded, %FALSE otherwise
+         * @returns `true` if font is embedded, `false` otherwise
          */
         is_embedded(): boolean;
         /**
          * Returns whether the font associated with `iter` is a subset of another font
-         * @returns %TRUE if font is a subset, %FALSE otherwise
+         * @returns `true` if font is a subset, `false` otherwise
          */
         is_subset(): boolean;
         /**
          * Sets `iter` to point to the next font
-         * @returns %TRUE, if @iter was set to the next font
+         * @returns `true`, if `iter` was set to the next font
          */
         next(): boolean;
     }
 
     /**
-     * A #PopplerFormFieldMapping structure represents the location
+     * A {@link Poppler.FormFieldMapping} structure represents the location
      * of `field` on the page
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class FormFieldMapping {
         static $gtype: GObject.GType<FormFieldMapping>;
@@ -5545,20 +5877,21 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `mapping`
-         * @returns a new allocated copy of @mapping
+         * @returns a new allocated copy of `mapping`
          */
         copy(): FormFieldMapping;
         /**
-         * Frees the given #PopplerFormFieldMapping
+         * Frees the given {@link Poppler.FormFieldMapping}
          */
         free(): void;
     }
 
     /**
-     * A #PopplerImageMapping structure represents the location
+     * A {@link Poppler.ImageMapping} structure represents the location
      * of an image on the page
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class ImageMapping {
         static $gtype: GObject.GType<ImageMapping>;
@@ -5583,11 +5916,11 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `mapping`
-         * @returns a new allocated copy of @mapping
+         * @returns a new allocated copy of `mapping`
          */
         copy(): ImageMapping;
         /**
-         * Frees the given #PopplerImageMapping
+         * Frees the given {@link Poppler.ImageMapping}
          */
         free(): void;
     }
@@ -5596,6 +5929,7 @@ export namespace Poppler {
      * Interface for getting the Index of a poppler_document
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class IndexIter {
         static $gtype: GObject.GType<IndexIter>;
@@ -5609,9 +5943,9 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Creates a new #PopplerIndexIter as a copy of `iter`.  This must be freed with
-         * poppler_index_iter_free().
-         * @returns a new #PopplerIndexIter
+         * Creates a new {@link Poppler.IndexIter} as a copy of `iter`.  This must be freed with
+         * `poppler_index_iter_free()`.
+         * @returns a new {@link Poppler.IndexIter}
          */
         copy(): IndexIter;
         /**
@@ -5619,28 +5953,28 @@ export namespace Poppler {
          */
         free(): void;
         /**
-         * Returns the #PopplerAction associated with `iter`.  It must be freed with
-         * poppler_action_free().
-         * @returns a new #PopplerAction
+         * Returns the {@link Poppler.Action} associated with `iter`.  It must be freed with
+         * `poppler_action_free()`.
+         * @returns a new {@link Poppler.Action}
          */
         get_action(): Action;
         /**
-         * Returns a newly created child of `parent,` or %NULL if the iter has no child.
-         * See poppler_index_iter_new() for more information on this function.
-         * @returns a new #PopplerIndexIter
+         * Returns a newly created child of `parent`, or `null` if the iter has no child.
+         * See `poppler_index_iter_new()` for more information on this function.
+         * @returns a new {@link Poppler.IndexIter}
          */
         get_child(): IndexIter;
         /**
          * Returns whether this node should be expanded by default to the user.  The
          * document can provide a hint as to how the document's index should be expanded
          * initially.
-         * @returns %TRUE, if the document wants @iter to be expanded
+         * @returns `true`, if the document wants `iter` to be expanded
          */
         is_open(): boolean;
         /**
          * Sets `iter` to point to the next action at the current level, if valid.  See
-         * poppler_index_iter_new() for more information.
-         * @returns %TRUE, if @iter was set to the next action
+         * `poppler_index_iter_new()` for more information.
+         * @returns `true`, if `iter` was set to the next action
          */
         next(): boolean;
     }
@@ -5649,6 +5983,7 @@ export namespace Poppler {
      * Interface for getting the Layers of a poppler_document
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class LayersIter {
         static $gtype: GObject.GType<LayersIter>;
@@ -5662,9 +5997,9 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Creates a new #PopplerLayersIter as a copy of `iter`.  This must be freed with
-         * poppler_layers_iter_free().
-         * @returns a new #PopplerLayersIter Since 0.12
+         * Creates a new {@link Poppler.LayersIter} as a copy of `iter`.  This must be freed with
+         * `poppler_layers_iter_free()`.
+         * @returns a new {@link Poppler.LayersIter} Since 0.12
          */
         copy(): LayersIter;
         /**
@@ -5672,35 +6007,36 @@ export namespace Poppler {
          */
         free(): void;
         /**
-         * Returns a newly created child of `parent,` or %NULL if the iter has no child.
-         * See poppler_layers_iter_new() for more information on this function.
-         * @returns a new #PopplerLayersIter, or %NULL
+         * Returns a newly created child of `parent`, or `null` if the iter has no child.
+         * See `poppler_layers_iter_new()` for more information on this function.
+         * @returns a new {@link Poppler.LayersIter}, or `null`
          */
         get_child(): LayersIter;
         /**
-         * Returns the #PopplerLayer associated with `iter`.
-         * @returns a new #PopplerLayer, or %NULL if there isn't any layer associated with @iter
+         * Returns the {@link Poppler.Layer} associated with `iter`.
+         * @returns a new {@link Poppler.Layer}, or `null` if there isn't any layer associated with `iter`
          */
         get_layer(): Layer;
         /**
          * Returns the title associated with `iter`.  It must be freed with
-         * g_free().
-         * @returns a new string containing the @iter's title or %NULL if @iter doesn't have a title. The returned string should be freed with g_free() when no longer needed.
+         * `g_free()`.
+         * @returns a new string containing the `iter`'s title or `null` if `iter` doesn't have a title. The returned string should be freed with `g_free()` when no longer needed.
          */
         get_title(): string;
         /**
          * Sets `iter` to point to the next action at the current level, if valid.  See
-         * poppler_layers_iter_new() for more information.
-         * @returns %TRUE, if @iter was set to the next action
+         * `poppler_layers_iter_new()` for more information.
+         * @returns `true`, if `iter` was set to the next action
          */
         next(): boolean;
     }
 
     /**
-     * A #PopplerLinkMapping structure represents the location
+     * A {@link Poppler.LinkMapping} structure represents the location
      * of `action` on the page
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class LinkMapping {
         static $gtype: GObject.GType<LinkMapping>;
@@ -5723,17 +6059,19 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `mapping`
-         * @returns a new allocated copy of @mapping
+         * @returns a new allocated copy of `mapping`
          */
         copy(): LinkMapping;
         /**
-         * Frees the given #PopplerLinkMapping
+         * Frees the given {@link Poppler.LinkMapping}
          */
         free(): void;
     }
 
     /**
-     * A #PopplerPageRange is used to specify a range of pages.
+     * A {@link Poppler.PageRange} is used to specify a range of pages.
+     * @gir-type Struct
+     * @since 0.80
      */
     class PageRange {
         static $gtype: GObject.GType<PageRange>;
@@ -5754,10 +6092,11 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerPageTransition structures describes a visual transition
+     * A {@link Poppler.PageTransition} structures describes a visual transition
      * to use when moving between pages during a presentation
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class PageTransition {
         static $gtype: GObject.GType<PageTransition>;
@@ -5794,15 +6133,19 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `transition`
-         * @returns a new allocated copy of @transition
+         * @returns a new allocated copy of `transition`
          */
         copy(): PageTransition;
         /**
-         * Frees the given #PopplerPageTransition
+         * Frees the given {@link Poppler.PageTransition}
          */
         free(): void;
     }
 
+    /**
+     * @gir-type Struct
+     * @since 25.06.0
+     */
     class Path {
         static $gtype: GObject.GType<Path>;
 
@@ -5816,24 +6159,25 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `path`.
-         * @returns a new allocated copy of @path
+         * @returns a new allocated copy of `path`
          */
         copy(): Path;
         /**
-         * Frees the given #PopplerPath.
+         * Frees the given {@link Poppler.Path}.
          */
         free(): void;
         /**
          * Returns the array of points of `path`.
-         * @returns all the points of @path
+         * @returns all the points of `path`
          */
         get_points(): Point[];
     }
 
     /**
-     * A #PopplerPoint is used to describe a location point on a page
+     * A {@link Poppler.Point} is used to describe a location point on a page
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class Point {
         static $gtype: GObject.GType<Point>;
@@ -5857,9 +6201,9 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Creates a copy of `point`. The copy must be freed with poppler_point_free()
+         * Creates a copy of `point`. The copy must be freed with `poppler_point_free()`
          * after use.
-         * @returns a new allocated copy of @point
+         * @returns a new allocated copy of `point`
          */
         copy(): Point;
         /**
@@ -5869,12 +6213,13 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerQuadrilateral is used to describe rectangle-like polygon
+     * A {@link Poppler.Quadrilateral} is used to describe rectangle-like polygon
      *  with arbitrary inclination on a page.
      *
      *  Since 24.10 this type supports g_autoptr
      *
      *  Since: 0.26
+     * @gir-type Struct
      */
     class Quadrilateral {
         static $gtype: GObject.GType<Quadrilateral>;
@@ -5902,8 +6247,8 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Creates a copy of `quad`. The copy must be freed with poppler_quadrilateral_free() after use.
-         * @returns a new allocated copy of @quad
+         * Creates a copy of `quad`. The copy must be freed with `poppler_quadrilateral_free()` after use.
+         * @returns a new allocated copy of `quad`
          */
         copy(): Quadrilateral;
         /**
@@ -5913,10 +6258,11 @@ export namespace Poppler {
     }
 
     /**
-     * A #PopplerRectangle is used to describe
+     * A {@link Poppler.Rectangle} is used to describe
      * locations on a page and bounding boxes
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
@@ -5947,44 +6293,44 @@ export namespace Poppler {
          * Creates a copy of `rectangle`.
          *
          * Note that you must only use this function on an allocated PopplerRectangle, as
-         * returned by poppler_rectangle_new(), poppler_rectangle_copy(), or the list elements
-         * returned from poppler_page_find_text() or poppler_page_find_text_with_options().
-         * @returns a new allocated copy of @rectangle
+         * returned by `poppler_rectangle_new()`, `poppler_rectangle_copy()`, or the list elements
+         * returned from `poppler_page_find_text()` or `poppler_page_find_text_with_options()`.
+         * @returns a new allocated copy of `rectangle`
          */
         copy(): Rectangle;
         /**
-         * When using poppler_page_find_text_with_options() with the
-         * %POPPLER_FIND_MULTILINE flag, a match may span more than one line,
+         * When using `poppler_page_find_text_with_options()` with the
+         * {@link Poppler.FindFlags.MULTILINE} flag, a match may span more than one line,
          * and may have been formed by ignoring a hyphen at the end of the line.
-         * When this happens at the end of the line corresponding to `rectangle,`
-         * this function returns %TRUE (and then poppler_rectangle_find_get_match_continued()
-         * will also return %TRUE); otherwise it returns %FALSE.
+         * When this happens at the end of the line corresponding to `rectangle`,
+         * this function returns `true` (and then `poppler_rectangle_find_get_match_continued()`
+         * will also return `true`); otherwise it returns `false`.
          *
-         * Note that you must only call this function on a #PopplerRectangle
-         * returned in the list from poppler_page_find_text() or
-         * poppler_page_find_text_with_options().
-         * @returns whether a hyphen was ignored at the end of the line corresponding to @rectangle.
+         * Note that you must only call this function on a {@link Poppler.Rectangle}
+         * returned in the list from `poppler_page_find_text()` or
+         * `poppler_page_find_text_with_options()`.
+         * @returns whether a hyphen was ignored at the end of the line corresponding to `rectangle`.
          */
         find_get_ignored_hyphen(): boolean;
         /**
-         * When using poppler_page_find_text_with_options() with the
-         * %POPPLER_FIND_MULTILINE flag, a match may span more than one line
+         * When using `poppler_page_find_text_with_options()` with the
+         * {@link Poppler.FindFlags.MULTILINE} flag, a match may span more than one line
          * and thus consist of more than one rectangle. Every rectangle belonging
-         * to the same match will return %TRUE from this function, except for
-         * the last rectangle, where this function will return %FALSE.
+         * to the same match will return `true` from this function, except for
+         * the last rectangle, where this function will return `false`.
          *
-         * Note that you must only call this function on a #PopplerRectangle
-         * returned in the list from poppler_page_find_text() or
-         * poppler_page_find_text_with_options().
+         * Note that you must only call this function on a {@link Poppler.Rectangle}
+         * returned in the list from `poppler_page_find_text()` or
+         * `poppler_page_find_text_with_options()`.
          * @returns whether there are more rectangles belonging to the same match
          */
         find_get_match_continued(): boolean;
         /**
-         * Frees the given #PopplerRectangle.
+         * Frees the given {@link Poppler.Rectangle}.
          *
          * Note that you must only use this function on an allocated PopplerRectangle, as
-         * returned by poppler_rectangle_new(), poppler_rectangle_copy(), or the list elements
-         * returned from poppler_page_find_text() or poppler_page_find_text_with_options().
+         * returned by `poppler_rectangle_new()`, `poppler_rectangle_copy()`, or the list elements
+         * returned from `poppler_page_find_text()` or `poppler_page_find_text_with_options()`.
          */
         free(): void;
     }
@@ -5994,6 +6340,8 @@ export namespace Poppler {
      * contained in a form field.
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
+     * @since 21.12.0
      */
     abstract class SignatureInfo {
         static $gtype: GObject.GType<SignatureInfo>;
@@ -6001,8 +6349,8 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Copies `siginfo,` creating an identical #PopplerSignatureInfo.
-         * @returns a new #PopplerSignatureInfo structure identical to @siginfo
+         * Copies `siginfo`, creating an identical {@link Poppler.SignatureInfo}.
+         * @returns a new {@link Poppler.SignatureInfo} structure identical to `siginfo`
          */
         copy(): SignatureInfo;
         /**
@@ -6042,6 +6390,7 @@ export namespace Poppler {
 
     /**
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class SigningData {
         static $gtype: GObject.GType<SigningData>;
@@ -6055,8 +6404,8 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Copies `signing_data,` creating an identical #PopplerSigningData.
-         * @returns a new #PopplerSigningData structure identical to @signing_data
+         * Copies `signing_data`, creating an identical {@link Poppler.SigningData}.
+         * @returns a new {@link Poppler.SigningData} structure identical to `signing_data`
          */
         copy(): SigningData;
         /**
@@ -6065,12 +6414,12 @@ export namespace Poppler {
         free(): void;
         /**
          * Get signature background color.
-         * @returns a #PopplerColor
+         * @returns a {@link Poppler.Color}
          */
         get_background_color(): Color;
         /**
          * Get signature border color.
-         * @returns a #PopplerColor
+         * @returns a {@link Poppler.Color}
          */
         get_border_color(): Color;
         /**
@@ -6080,7 +6429,7 @@ export namespace Poppler {
         get_border_width(): number;
         /**
          * Get certification information.
-         * @returns a #PopplerCertificateInfo
+         * @returns a {@link Poppler.CertificateInfo}
          */
         get_certificate_info(): CertificateInfo;
         /**
@@ -6105,7 +6454,7 @@ export namespace Poppler {
         get_field_partial_name(): string;
         /**
          * Get signature font color.
-         * @returns a #PopplerColor
+         * @returns a {@link Poppler.Color}
          */
         get_font_color(): Color;
         /**
@@ -6145,7 +6494,7 @@ export namespace Poppler {
         get_reason(): string;
         /**
          * Get signature rectangle.
-         * @returns a #PopplerRectangle
+         * @returns a {@link Poppler.Rectangle}
          */
         get_signature_rectangle(): Rectangle;
         /**
@@ -6160,12 +6509,12 @@ export namespace Poppler {
         get_signature_text_left(): string;
         /**
          * Set signature background color.
-         * @param background_color a #PopplerColor to be used for signature background
+         * @param background_color a {@link Poppler.Color} to be used for signature background
          */
         set_background_color(background_color: Color): void;
         /**
          * Set signature border color.
-         * @param border_color a #PopplerColor to be used for signature border
+         * @param border_color a {@link Poppler.Color} to be used for signature border
          */
         set_border_color(border_color: Color): void;
         /**
@@ -6175,7 +6524,7 @@ export namespace Poppler {
         set_border_width(border_width: number): void;
         /**
          * Set certification information.
-         * @param certificate_info a #PopplerCertificateInfo
+         * @param certificate_info a {@link Poppler.CertificateInfo}
          */
         set_certificate_info(certificate_info: CertificateInfo): void;
         /**
@@ -6200,7 +6549,7 @@ export namespace Poppler {
         set_field_partial_name(field_partial_name: string): void;
         /**
          * Set signature font color.
-         * @param font_color a #PopplerColor to be used as signature font color
+         * @param font_color a {@link Poppler.Color} to be used as signature font color
          */
         set_font_color(font_color: Color): void;
         /**
@@ -6240,7 +6589,7 @@ export namespace Poppler {
         set_reason(reason: string): void;
         /**
          * Set signature rectangle.
-         * @param signature_rect a #PopplerRectangle where signature should be shown
+         * @param signature_rect a {@link Poppler.Rectangle} where signature should be shown
          */
         set_signature_rectangle(signature_rect: Rectangle): void;
         /**
@@ -6257,6 +6606,7 @@ export namespace Poppler {
 
     /**
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class StructureElementIter {
         static $gtype: GObject.GType<StructureElementIter>;
@@ -6270,9 +6620,9 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Creates a new #PopplerStructureElementIter as a copy of `iter`. The
-         * returned value must be freed with poppler_structure_element_iter_free().
-         * @returns a new #PopplerStructureElementIter
+         * Creates a new {@link Poppler.StructureElementIter} as a copy of `iter`. The
+         * returned value must be freed with `poppler_structure_element_iter_free()`.
+         * @returns a new {@link Poppler.StructureElementIter}
          */
         copy(): StructureElementIter;
         /**
@@ -6281,27 +6631,29 @@ export namespace Poppler {
         free(): void;
         /**
          * Returns a new iterator to the children elements of the
-         * #PopplerStructureElement associated with `iter`. The returned value must
-         * be freed with poppler_structure_element_iter_free().
-         * @returns a new #PopplerStructureElementIter
+         * {@link Poppler.StructureElement} associated with `iter`. The returned value must
+         * be freed with `poppler_structure_element_iter_free()`.
+         * @returns a new {@link Poppler.StructureElementIter}
          */
         get_child(): StructureElementIter;
         /**
-         * Returns the #PopplerStructureElementIter associated with `iter`.
-         * @returns a new #PopplerStructureElementIter
+         * Returns the {@link Poppler.StructureElementIter} associated with `iter`.
+         * @returns a new {@link Poppler.StructureElementIter}
          */
         get_element(): StructureElement;
         /**
          * Sets `iter` to point to the next structure element at the current level
-         * of the tree, if valid. See poppler_structure_element_iter_new() for more
+         * of the tree, if valid. See `poppler_structure_element_iter_new()` for more
          * information.
-         * @returns %TRUE, if @iter was set to the next structure element
+         * @returns `true`, if `iter` was set to the next structure element
          */
         next(): boolean;
     }
 
     /**
-     * A #PopplerTextAttributes is used to describe text attributes of a range of text
+     * A {@link Poppler.TextAttributes} is used to describe text attributes of a range of text
+     * @gir-type Struct
+     * @since 0.18
      */
     class TextAttributes {
         static $gtype: GObject.GType<TextAttributes>;
@@ -6334,17 +6686,18 @@ export namespace Poppler {
 
         /**
          * Creates a copy of `text_attrs`
-         * @returns a new allocated copy of @text_attrs
+         * @returns a new allocated copy of `text_attrs`
          */
         copy(): TextAttributes;
         /**
-         * Frees the given #PopplerTextAttributes
+         * Frees the given {@link Poppler.TextAttributes}
          */
         free(): void;
     }
 
     /**
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     abstract class TextSpan {
         static $gtype: GObject.GType<TextSpan>;
@@ -6353,7 +6706,7 @@ export namespace Poppler {
 
         /**
          * Makes a copy of a text span.
-         * @returns A new #PopplerTextSpan
+         * @returns A new {@link Poppler.TextSpan}
          */
         copy(): TextSpan;
         /**
@@ -6366,7 +6719,7 @@ export namespace Poppler {
         get_color(): Color;
         /**
          * Obtains the name of the font in which the span is to be rendered.
-         * @returns A string containing the font name, or   %NULL if a font is not defined.
+         * @returns A string containing the font name, or   `null` if a font is not defined.
          */
         get_font_name(): string;
         /**
@@ -6392,9 +6745,10 @@ export namespace Poppler {
     }
 
     /**
-     * A generic wrapper for actions that exposes only #PopplerActionType.
+     * A generic wrapper for actions that exposes only {@link Poppler.ActionType}.
      *
      * Since 24.10 this type supports g_autoptr
+     * @gir-type Struct
      */
     class Action {
         static $gtype: GObject.GType<Action>;
@@ -6406,8 +6760,8 @@ export namespace Poppler {
         // Methods
 
         /**
-         * Copies `action,` creating an identical #PopplerAction.
-         * @returns a new action identical to @action
+         * Copies `action`, creating an identical {@link Poppler.Action}.
+         * @returns a new action identical to `action`
          */
         copy(): Action;
         /**

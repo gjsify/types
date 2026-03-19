@@ -20,6 +20,9 @@ export namespace Govf {
      * Govf-0.1
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum PackageError {
         FAILED,
         NOT_FOUND,
@@ -36,6 +39,9 @@ export namespace Govf {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Disk extends GObject.Object {
         static $gtype: GObject.GType<Disk>;
 
@@ -58,16 +64,19 @@ export namespace Govf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Disk.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Disk.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Disk.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Disk.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Disk.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Disk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -127,6 +136,9 @@ export namespace Govf {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
 
@@ -149,16 +161,19 @@ export namespace Govf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Package.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -173,17 +188,17 @@ export namespace Govf {
 
         /**
          * Extracts a disk...
-         * @param disk a #GovfDisk
+         * @param disk a {@link Govf.Disk}
          * @param save_path a file path
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         extract_disk(disk: Disk, save_path: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Extracts a disk...
-         * @param disk a #GovfDisk
+         * @param disk a {@link Govf.Disk}
          * @param save_path a file path
-         * @param cancellable a #GCancellable or %NULL
-         * @param callback a #GAsyncReadyCallback to call      when the request is satisfied
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call      when the request is satisfied
          */
         extract_disk(
             disk: Disk,
@@ -193,10 +208,10 @@ export namespace Govf {
         ): void;
         /**
          * Extracts a disk...
-         * @param disk a #GovfDisk
+         * @param disk a {@link Govf.Disk}
          * @param save_path a file path
-         * @param cancellable a #GCancellable or %NULL
-         * @param callback a #GAsyncReadyCallback to call      when the request is satisfied
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call      when the request is satisfied
          */
         extract_disk(
             disk: Disk,
@@ -204,6 +219,9 @@ export namespace Govf {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
+        /**
+         * @param result
+         */
         extract_disk_finish(result: Gio.AsyncResult): boolean;
         /**
          * Returns an array with all the disks associated with the OVF package.
@@ -214,32 +232,32 @@ export namespace Govf {
          * Loads an OVF package from a memory buffer that holds an .ovf file.
          * @param data OVF data
          * @param length size of the OVF data
-         * @returns %TRUE if the operation succeeded
+         * @returns `true` if the operation succeeded
          */
         load_from_data(data: string, length: number): boolean;
         /**
          * Loads an OVF package from an uncompressed .ovf file.
          * @param filename an .ovf file name
-         * @returns %TRUE if the operation succeeded
+         * @returns `true` if the operation succeeded
          */
         load_from_file(filename: string): boolean;
         /**
          * Loads an OVF package from a compressed .ova file.
          *
-         * `callback` should call govf_package_load_from_ova_file_finish()
+         * `callback` should call `govf_package_load_from_ova_file_finish()`
          * to get the result of this asynchronous operation.
          * @param filename an .ova file name
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          */
         load_from_ova_file(filename: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads an OVF package from a compressed .ova file.
          *
-         * `callback` should call govf_package_load_from_ova_file_finish()
+         * `callback` should call `govf_package_load_from_ova_file_finish()`
          * to get the result of this asynchronous operation.
          * @param filename an .ova file name
-         * @param cancellable a #GCancellable or %NULL
-         * @param callback a #GAsyncReadyCallback to call when      the request is satisfied
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when      the request is satisfied
          */
         load_from_ova_file(
             filename: string,
@@ -249,27 +267,36 @@ export namespace Govf {
         /**
          * Loads an OVF package from a compressed .ova file.
          *
-         * `callback` should call govf_package_load_from_ova_file_finish()
+         * `callback` should call `govf_package_load_from_ova_file_finish()`
          * to get the result of this asynchronous operation.
          * @param filename an .ova file name
-         * @param cancellable a #GCancellable or %NULL
-         * @param callback a #GAsyncReadyCallback to call when      the request is satisfied
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when      the request is satisfied
          */
         load_from_ova_file(
             filename: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
+        /**
+         * @param result
+         */
         load_from_ova_file_finish(result: Gio.AsyncResult): boolean;
         /**
          * Saves the OVF package to an uncompressed .ovf file.
          * @param filename an .ovf file name
-         * @returns %TRUE if the operation succeeded
+         * @returns `true` if the operation succeeded
          */
         save_file(filename: string): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiskClass = typeof Disk;
+    /**
+     * @gir-type Alias
+     */
     type PackageClass = typeof Package;
     /**
      * Name of the imported GIR library

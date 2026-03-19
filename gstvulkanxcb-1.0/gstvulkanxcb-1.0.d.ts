@@ -37,8 +37,10 @@ export namespace GstVulkanXCB {
     }
 
     /**
-     * the contents of a #GstVulkanDisplayXCB are private and should only be accessed
+     * the contents of a {@link GstVulkanXCB.VulkanDisplayXCB} are private and should only be accessed
      * through the provided API
+     * @gir-type Class
+     * @since 1.18
      */
     class VulkanDisplayXCB extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayXCB>;
@@ -65,16 +67,19 @@ export namespace GstVulkanXCB {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDisplayXCB.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDisplayXCB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanDisplayXCB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -82,6 +87,9 @@ export namespace GstVulkanXCB {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanDisplayXCBClass = typeof VulkanDisplayXCB;
     /**
      * Name of the imported GIR library

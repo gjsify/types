@@ -22,14 +22,15 @@ export namespace TrackerMiner {
      */
 
     /**
-     * Possible errors returned when calling tracker_decorator_next_finish().
+     * Possible errors returned when calling `tracker_decorator_next_finish()`.
+     * @gir-type Enum
      */
     enum DecoratorError {
         /**
          * There is no item to be processed
          * next. It is entirely possible to have a ::items_available signal
          * emitted and then have this error when calling
-         * tracker_decorator_next_finish() because the signal may apply to a
+         * `tracker_decorator_next_finish()` because the signal may apply to a
          * class which we're not interested in. For example, a new nmo:Email
          * might have been added to Tracker, but we might only be interested
          * in nfo:Document. This case would give this error.
@@ -46,6 +47,9 @@ export namespace TrackerMiner {
         export const $gtype: GObject.GType<FilterPolicy>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FilterPolicy {
         DENY,
         ACCEPT,
@@ -55,6 +59,9 @@ export namespace TrackerMiner {
         export const $gtype: GObject.GType<FilterType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FilterType {
         FILE,
         DIRECTORY,
@@ -62,8 +69,9 @@ export namespace TrackerMiner {
     }
 
     /**
-     * Possible errors returned when calling #TrackerMiner APIs or
+     * Possible errors returned when calling {@link TrackerMiner.Miner} APIs or
      * subclassed miners where the error is generic to all miners.
+     * @gir-type Enum
      */
     enum MinerError {
         /**
@@ -101,7 +109,9 @@ export namespace TrackerMiner {
 
     /**
      * Possible errors returned when calling creating new objects based on
-     * the #TrackerMinerFS type and other APIs available with this class.
+     * the {@link TrackerMiner.MinerFS} type and other APIs available with this class.
+     * @gir-type Enum
+     * @since 1.2.
      */
     enum MinerFSError {
         /**
@@ -116,6 +126,9 @@ export namespace TrackerMiner {
         export const $gtype: GObject.GType<NetworkType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum NetworkType {
         NONE,
         UNKNOWN,
@@ -128,6 +141,7 @@ export namespace TrackerMiner {
     /**
      * The name of the D-Bus interface to use for all data miners that
      * inter-operate with Tracker.
+     * @since 0.8.
      */
     const MINER_DBUS_INTERFACE: string;
     /**
@@ -135,6 +149,7 @@ export namespace TrackerMiner {
      * miners to be written using `TRACKER_MINER_DBUS_NAME_PREFIX` + "Files" for
      * example and would show up on D-Bus under
      * &quot;org.freedesktop.Tracker1.Miner.Files&quot;.
+     * @since 0.8.
      */
     const MINER_DBUS_NAME_PREFIX: string;
     /**
@@ -142,16 +157,21 @@ export namespace TrackerMiner {
      * miners to be written using `TRACKER_MINER_DBUS_PATH_PREFIX` + "Files" for
      * example and would show up on D-Bus under
      * &quot;/org/freedesktop/Tracker1/Miner/Files&quot;.
+     * @since 0.8.
      */
     const MINER_DBUS_PATH_PREFIX: string;
     /**
-     * Used as the domain for any #GErrors reported by `TrackerMiner` objects.
+     * Used as the domain for any `GErrors` reported by `TrackerMiner` objects.
+     * @since 0.8.
      */
     const MINER_ERROR_DOMAIN: string;
     export namespace DirectoryFlags {
         export const $gtype: GObject.GType<DirectoryFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DirectoryFlags {
         NONE,
         RECURSE,
@@ -167,7 +187,21 @@ export namespace TrackerMiner {
     namespace Decorator {
         // Signal signatures
         interface SignalSignatures extends Miner.SignalSignatures {
+            /**
+             * The ::finished signal will be emitted whenever the
+             * {@link TrackerMiner.Decorator} has finished extracted extended metadata
+             * for resources in the database.
+             * @signal
+             * @since 0.18.
+             */
             finished: () => void;
+            /**
+             * The ::items-available signal will be emitted whenever the
+             * {@link TrackerMiner.Decorator} sees resources that are available for
+             * extended metadata extraction.
+             * @signal
+             * @since 0.18.
+             */
             'items-available': () => void;
             'notify::class-names': (pspec: GObject.ParamSpec) => void;
             'notify::commit-batch-size': (pspec: GObject.ParamSpec) => void;
@@ -198,6 +232,7 @@ export namespace TrackerMiner {
     /**
      * Abstract miner object for passive extended metadata indexing, i.e.
      * data past the basic information such as file name, size, etc.
+     * @gir-type Class
      */
     abstract class Decorator extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<Decorator>;
@@ -238,16 +273,19 @@ export namespace TrackerMiner {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Decorator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Decorator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Decorator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Decorator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -257,14 +295,20 @@ export namespace TrackerMiner {
         // Static methods
 
         /**
-         * Gives the caller the #GQuark used to identify #TrackerDecorator errors
-         * in #GError structures. The #GQuark is used as the domain for the error.
+         * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.Decorator} errors
+         * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
          */
         static error_quark(): GLib.Quark;
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_finished(): void;
+        /**
+         * @virtual
+         */
         vfunc_items_available(): void;
 
         // Methods
@@ -279,14 +323,14 @@ export namespace TrackerMiner {
         /**
          * This function returns a string list of class names which are being
          * updated with extended metadata. An example would be 'nfo:Document'.
-         * @returns a const gchar** or #NULL.
+         * @returns a const gchar** or `NULL`.
          */
         get_class_names(): string[];
         /**
-         * The unique string identifying this #TrackerDecorator that has
+         * The unique string identifying this {@link TrackerMiner.Decorator} that has
          * extracted the extended metadata. This is essentially an identifier
          * so it's clear WHO has extracted this extended metadata.
-         * @returns a const gchar* or #NULL if an error happened.
+         * @returns a const gchar* or `NULL` if an error happened.
          */
         get_data_source(): string;
         /**
@@ -302,9 +346,9 @@ export namespace TrackerMiner {
          * extracted. If the item in the queue has been completed already, it
          * signals it's completion instead.
          *
-         * This function will give a #GError if the miner is paused at the
+         * This function will give a {@link GLib.Error} if the miner is paused at the
          * time it is called.
-         * @param cancellable a #GCancellable.
+         * @param cancellable a {@link Gio.Cancellable}.
          */
         next(cancellable?: Gio.Cancellable | null): globalThis.Promise<DecoratorInfo>;
         /**
@@ -312,10 +356,10 @@ export namespace TrackerMiner {
          * extracted. If the item in the queue has been completed already, it
          * signals it's completion instead.
          *
-         * This function will give a #GError if the miner is paused at the
+         * This function will give a {@link GLib.Error} if the miner is paused at the
          * time it is called.
-         * @param cancellable a #GCancellable.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable}.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         next(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
@@ -323,10 +367,10 @@ export namespace TrackerMiner {
          * extracted. If the item in the queue has been completed already, it
          * signals it's completion instead.
          *
-         * This function will give a #GError if the miner is paused at the
+         * This function will give a {@link GLib.Error} if the miner is paused at the
          * time it is called.
-         * @param cancellable a #GCancellable.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable}.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         next(
             cancellable?: Gio.Cancellable | null,
@@ -334,10 +378,10 @@ export namespace TrackerMiner {
         ): globalThis.Promise<DecoratorInfo> | void;
         /**
          * Should be called in the callback function provided to
-         * tracker_decorator_next() to return the result of the task be it an
+         * `tracker_decorator_next()` to return the result of the task be it an
          * error or not.
-         * @param result a #GAsyncResult.
-         * @returns a #TrackerDecoratorInfo on success or  #NULL on error. Free with tracker_decorator_info_unref().
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns a {@link TrackerMiner.DecoratorInfo} on success or  `NULL` on error. Free with `tracker_decorator_info_unref()`.
          */
         next_finish(result: Gio.AsyncResult): DecoratorInfo;
         /**
@@ -356,34 +400,32 @@ export namespace TrackerMiner {
          * @param rdf_types a string array of rdf types
          */
         set_priority_rdf_types(rdf_types: string): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -393,40 +435,40 @@ export namespace TrackerMiner {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -436,11 +478,12 @@ export namespace TrackerMiner {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -456,32 +499,32 @@ export namespace TrackerMiner {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -490,39 +533,39 @@ export namespace TrackerMiner {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -533,13 +576,16 @@ export namespace TrackerMiner {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -547,7 +593,7 @@ export namespace TrackerMiner {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -555,9 +601,9 @@ export namespace TrackerMiner {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -577,9 +623,9 @@ export namespace TrackerMiner {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -593,33 +639,33 @@ export namespace TrackerMiner {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -652,21 +698,21 @@ export namespace TrackerMiner {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -676,8 +722,8 @@ export namespace TrackerMiner {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -694,10 +740,10 @@ export namespace TrackerMiner {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -712,13 +758,13 @@ export namespace TrackerMiner {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -749,21 +795,21 @@ export namespace TrackerMiner {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -773,33 +819,34 @@ export namespace TrackerMiner {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -808,6 +855,7 @@ export namespace TrackerMiner {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -816,12 +864,14 @@ export namespace TrackerMiner {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -830,20 +880,22 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -855,6 +907,7 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -906,6 +959,7 @@ export namespace TrackerMiner {
 
     /**
      * A decorator object.
+     * @gir-type Class
      */
     abstract class DecoratorFS extends Decorator implements Gio.Initable {
         static $gtype: GObject.GType<DecoratorFS>;
@@ -931,16 +985,19 @@ export namespace TrackerMiner {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DecoratorFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -951,12 +1008,10 @@ export namespace TrackerMiner {
 
         /**
          * Prepends a file for processing.
-         * @param file a #GFile to process
+         * @param file a {@link Gio.File} to process
          * @returns the tracker:id of the element corresponding to the file
          */
         prepend_file(file: Gio.File): number;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -970,32 +1025,32 @@ export namespace TrackerMiner {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1004,39 +1059,39 @@ export namespace TrackerMiner {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1047,13 +1102,16 @@ export namespace TrackerMiner {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1061,7 +1119,7 @@ export namespace TrackerMiner {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1069,9 +1127,9 @@ export namespace TrackerMiner {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1091,9 +1149,9 @@ export namespace TrackerMiner {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1107,33 +1165,33 @@ export namespace TrackerMiner {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1166,21 +1224,21 @@ export namespace TrackerMiner {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1190,8 +1248,8 @@ export namespace TrackerMiner {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1208,10 +1266,10 @@ export namespace TrackerMiner {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1226,13 +1284,13 @@ export namespace TrackerMiner {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1263,21 +1321,21 @@ export namespace TrackerMiner {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1287,33 +1345,34 @@ export namespace TrackerMiner {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1322,6 +1381,7 @@ export namespace TrackerMiner {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1330,12 +1390,14 @@ export namespace TrackerMiner {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1344,20 +1406,22 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1369,6 +1433,7 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1401,9 +1466,44 @@ export namespace TrackerMiner {
     namespace IndexingTree {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::child-updated signal may be emitted to notify
+             * about possible changes on children of a root.
+             *
+             * {@link TrackerMiner.IndexingTree} does not emit those by itself,
+             * those may be triggered through `tracker_indexing_tree_notify_update()`.
+             * @signal
+             * @since 1.10
+             */
             'child-updated': (arg0: Gio.File, arg1: Gio.File) => void;
+            /**
+             * the ::directory-added signal is emitted when a new
+             * directory is added to the list of other directories which
+             * are to be considered for indexing. Typically this is
+             * signalled when the `tracker_indexing_tree_add()` API is
+             * called.
+             * @signal
+             * @since 0.14.0
+             */
             'directory-added': (arg0: Gio.File) => void;
+            /**
+             * the ::directory-removed signal is emitted when a
+             * directory is removed from the list of other directories
+             * which are to be considered for indexing. Typically this is
+             * signalled when the `tracker_indexing_tree_remove()` API is
+             * called.
+             * @signal
+             * @since 0.14.0
+             */
             'directory-removed': (arg0: Gio.File) => void;
+            /**
+             * The ::directory-updated signal is emitted on a root
+             * when either its indexing flags change (e.g. due to consecutive
+             * calls to `tracker_indexing_tree_add()`), or anytime an update is
+             * requested through `tracker_indexing_tree_notify_update()`.
+             * @signal
+             * @since 0.14.0
+             */
             'directory-updated': (arg0: Gio.File) => void;
             'notify::filter-hidden': (pspec: GObject.ParamSpec) => void;
             'notify::root': (pspec: GObject.ParamSpec) => void;
@@ -1419,7 +1519,8 @@ export namespace TrackerMiner {
     }
 
     /**
-     * Base object used to configure indexing within #TrackerMinerFS items.
+     * Base object used to configure indexing within {@link TrackerMiner.MinerFS} items.
+     * @gir-type Class
      */
     class IndexingTree extends GObject.Object {
         static $gtype: GObject.GType<IndexingTree>;
@@ -1457,16 +1558,19 @@ export namespace TrackerMiner {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IndexingTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1475,9 +1579,26 @@ export namespace TrackerMiner {
 
         // Virtual methods
 
+        /**
+         * @param root
+         * @param child
+         * @virtual
+         */
         vfunc_child_updated(root: Gio.File, child: Gio.File): void;
+        /**
+         * @param directory
+         * @virtual
+         */
         vfunc_directory_added(directory: Gio.File): void;
+        /**
+         * @param directory
+         * @virtual
+         */
         vfunc_directory_removed(directory: Gio.File): void;
+        /**
+         * @param directory
+         * @virtual
+         */
         vfunc_directory_updated(directory: Gio.File): void;
 
         // Methods
@@ -1485,7 +1606,7 @@ export namespace TrackerMiner {
         /**
          * Adds a directory to the indexing tree with the
          * given configuration flags.
-         * @param directory #GFile pointing to a directory
+         * @param directory {@link Gio.File} pointing to a directory
          * @param flags Configuration flags for the directory
          */
         add(directory: Gio.File, flags: DirectoryFlags | null): void;
@@ -1501,29 +1622,29 @@ export namespace TrackerMiner {
          */
         clear_filters(type: FilterType | null): void;
         /**
-         * returns %TRUE if `file` should be indexed according to the
-         * parameters given through tracker_indexing_tree_add() and
-         * tracker_indexing_tree_add_filter().
+         * returns `true` if `file` should be indexed according to the
+         * parameters given through `tracker_indexing_tree_add()` and
+         * `tracker_indexing_tree_add_filter()`.
          *
          * If `file_type` is #G_FILE_TYPE_UNKNOWN, file type will be queried to the
          * file system.
-         * @param file a #GFile
-         * @param file_type a #GFileType
-         * @returns %TRUE if @file should be indexed.
+         * @param file a {@link Gio.File}
+         * @param file_type a {@link Gio.FileType}
+         * @returns `true` if `file` should be indexed.
          */
         file_is_indexable(file: Gio.File, file_type: Gio.FileType | null): boolean;
         /**
          * Evaluates if the URL represented by `file` is the same of that for
          * the root of the `tree`.
-         * @param file a #GFile to compare
-         * @returns %TRUE if @file matches the URL canonically, otherwise %FALSE.
+         * @param file a {@link Gio.File} to compare
+         * @returns `true` if `file` matches the URL canonically, otherwise `false`.
          */
         file_is_root(file: Gio.File): boolean;
         /**
-         * Returns %TRUE if `file` matches any filter of the given filter type.
+         * Returns `true` if `file` matches any filter of the given filter type.
          * @param type filter type
-         * @param file a #GFile
-         * @returns %TRUE if @file is filtered.
+         * @param file a {@link Gio.File}
+         * @returns `true` if `file` is filtered.
          */
         file_matches_filter(type: FilterType | null, file: Gio.File): boolean;
         /**
@@ -1532,18 +1653,18 @@ export namespace TrackerMiner {
          * for that is returned here. The `filter` allows specific type of
          * policies to be returned, for example, the default policy for files
          * (#TRACKER_FILTER_FILE).
-         * @param filter a #TrackerFilterType
+         * @param filter a {@link TrackerMiner.FilterType}
          * @returns Either #TRACKER_FILTER_POLICY_DENY or #TRACKER_FILTER_POLICY_ALLOW.
          */
         get_default_policy(filter: FilterType | null): FilterPolicy;
         /**
          * Describes if the `tree` should index hidden content. To change this
-         * setting, see tracker_indexing_tree_set_filter_hidden().
-         * @returns %FALSE if hidden files are indexed, otherwise %TRUE.
+         * setting, see `tracker_indexing_tree_set_filter_hidden()`.
+         * @returns `false` if hidden files are indexed, otherwise `true`.
          */
         get_filter_hidden(): boolean;
         /**
-         * Returns the #GFile that represents the master root location for all
+         * Returns the {@link Gio.File} that represents the master root location for all
          * indexing locations. For example, if
          * <filename>file:///etc</filename> is an indexed path and so was
          * <filename>file:///home/user</filename>, the master root is
@@ -1551,7 +1672,7 @@ export namespace TrackerMiner {
          * used, so you can not mix <filename>http</filename> and
          * <filename>file</filename> roots in `tree`.
          *
-         * The return value should <emphasis>NEVER</emphasis> be %NULL. In
+         * The return value should <emphasis>NEVER</emphasis> be `null`. In
          * cases where no root is given, we fallback to
          * <filename>file:///</filename>.
          *
@@ -1566,49 +1687,49 @@ export namespace TrackerMiner {
          * - root = ANY root, normally config root, but it can also apply to
          *   roots added for devices, which technically are not a config root or a
          *   master root.
-         * @returns the effective root for all locations, or %NULL on error. The root is owned by @tree and should not be freed. It can be referenced using g_object_ref().
+         * @returns the effective root for all locations, or `null` on error. The root is owned by `tree` and should not be freed. It can be referenced using `g_object_ref()`.
          */
         get_master_root(): Gio.File;
         /**
-         * Returns the #GFile that was previously added through tracker_indexing_tree_add()
-         * and would equal or contain `file,` or %NULL if none applies.
+         * Returns the {@link Gio.File} that was previously added through `tracker_indexing_tree_add()`
+         * and would equal or contain `file`, or `null` if none applies.
          *
-         * If the return value is non-%NULL, `directory_flags` would contain the
-         * #TrackerDirectoryFlags applying to `file`.
-         * @param file a #GFile
-         * @returns the effective parent in @tree, or %NULL
+         * If the return value is non-`null`, `directory_flags` would contain the
+         * {@link TrackerMiner.DirectoryFlags} applying to `file`.
+         * @param file a {@link Gio.File}
+         * @returns the effective parent in `tree`, or `null`
          */
         get_root(file: Gio.File): [Gio.File, DirectoryFlags];
         /**
          * Returns the list of indexing roots in `tree`
-         * @returns The list          of roots, the list itself must be freed with g_list_free(),          the list elements are owned by @tree and should not be          freed.
+         * @returns The list          of roots, the list itself must be freed with `g_list_free()`,          the list elements are owned by `tree` and should not be          freed.
          */
         list_roots(): Gio.File[];
         /**
-         * Signals either #TrackerIndexingTree::directory-updated or
-         * #TrackerIndexingTree::child-updated on the given file and
-         * returns #TRUE. If `file` is not indexed according to the
-         * #TrackerIndexingTree, #FALSE is returned.
+         * Signals either {@link TrackerMiner.IndexingTree.SignalSignatures.directory_updated | TrackerMiner.IndexingTree::directory-updated} or
+         * {@link TrackerMiner.IndexingTree.SignalSignatures.child_updated | TrackerMiner.IndexingTree::child-updated} on the given file and
+         * returns `TRUE`. If `file` is not indexed according to the
+         * {@link TrackerMiner.IndexingTree}, `FALSE` is returned.
          *
-         * If `recursive` is #TRUE, #TrackerIndexingTree::directory-updated
+         * If `recursive` is `TRUE`, {@link TrackerMiner.IndexingTree.SignalSignatures.directory_updated | TrackerMiner.IndexingTree::directory-updated}
          * will be emitted on the indexing roots that are contained in `file`.
-         * @param file a #GFile
+         * @param file a {@link Gio.File}
          * @param recursive Whether contained indexing roots are affected by the update
-         * @returns #TRUE if a signal is emitted.
+         * @returns `TRUE` if a signal is emitted.
          */
         notify_update(file: Gio.File, recursive: boolean): boolean;
         /**
-         * returns %TRUE if `parent` should be indexed based on its contents.
+         * returns `true` if `parent` should be indexed based on its contents.
          * @param parent parent directory
-         * @param children children within @parent
-         * @returns %TRUE if @parent should be indexed.
+         * @param children children within `parent`
+         * @returns `true` if `parent` should be indexed.
          */
         parent_is_indexable(parent: Gio.File, children: Gio.File[]): boolean;
         /**
          * Removes `directory` from the indexing tree, note that
-         * only directories previously added with tracker_indexing_tree_add()
+         * only directories previously added with `tracker_indexing_tree_add()`
          * can be effectively removed.
-         * @param directory #GFile pointing to a directory
+         * @param directory {@link Gio.File} pointing to a directory
          */
         remove(directory: Gio.File): void;
         /**
@@ -1618,8 +1739,8 @@ export namespace TrackerMiner {
          *
          * For example, you can (by default), disable indexing all directories
          * using this function.
-         * @param filter a #TrackerFilterType
-         * @param policy a #TrackerFilterPolicy
+         * @param filter a {@link TrackerMiner.FilterType}
+         * @param policy a {@link TrackerMiner.FilterPolicy}
          */
         set_default_policy(filter: FilterType | null, policy: FilterPolicy | null): void;
         /**
@@ -1629,8 +1750,8 @@ export namespace TrackerMiner {
          * files.
          *
          * Sets the indexing policy for `tree` with hidden files and content.
-         * To ignore hidden files, `filter_hidden` should be %TRUE, otherwise
-         * %FALSE.
+         * To ignore hidden files, `filter_hidden` should be `true`, otherwise
+         * `false`.
          * @param filter_hidden a boolean
          */
         set_filter_hidden(filter_hidden: boolean): void;
@@ -1639,11 +1760,57 @@ export namespace TrackerMiner {
     namespace Miner {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * the ::ignore-next-update signal is emitted in the miner
+             * right after it has been asked to mark `urls` as to ignore on next update
+             * through `tracker_miner_ignore_next_update()`.
+             * @signal
+             * @since 0.8
+             */
             'ignore-next-update': (arg0: string[]) => void;
+            /**
+             * the ::paused signal is emitted whenever
+             * there is any reason to pause, either
+             * internal (through `tracker_miner_pause()`) or
+             * external (through DBus, see `TrackerMinerManager`).
+             * @signal
+             * @since 0.8
+             */
             paused: () => void;
+            /**
+             * the ::progress signal will be emitted by TrackerMiner implementations
+             * to indicate progress about the data mining process. `status` will
+             * contain a translated string with the current miner status and `progress`
+             * will indicate how much has been processed so far. `remaining_time` will
+             * give the number expected of seconds to finish processing, 0 if the
+             * value cannot be estimated, and -1 if its not applicable.
+             * @signal
+             * @since 0.12
+             */
             progress: (arg0: string, arg1: number, arg2: number) => void;
+            /**
+             * the ::resumed signal is emitted whenever
+             * all reasons to pause have disappeared, see
+             * `tracker_miner_resume()` and `TrackerMinerManager`.
+             * @signal
+             * @since 0.8
+             */
             resumed: () => void;
+            /**
+             * the ::started signal is emitted in the miner
+             * right after it has been started through
+             * `tracker_miner_start()`.
+             * @signal
+             * @since 0.8
+             */
             started: () => void;
+            /**
+             * the ::stopped signal is emitted in the miner
+             * right after it has been stopped through
+             * `tracker_miner_stop()`.
+             * @signal
+             * @since 0.8
+             */
             stopped: () => void;
             'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
             'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
@@ -1670,6 +1837,7 @@ export namespace TrackerMiner {
 
     /**
      * Abstract miner object.
+     * @gir-type Class
      */
     abstract class Miner extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Miner>;
@@ -1711,16 +1879,19 @@ export namespace TrackerMiner {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Miner.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Miner.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Miner.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Miner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1730,8 +1901,8 @@ export namespace TrackerMiner {
         // Static methods
 
         /**
-         * Gives the caller the #GQuark used to identify #TrackerMiner errors
-         * in #GError structures. The #GQuark is used as the domain for the error.
+         * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.Miner} errors
+         * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
          */
         static error_quark(): GLib.Quark;
 
@@ -1740,24 +1911,42 @@ export namespace TrackerMiner {
         /**
          * Tells the miner to mark `urls` are to ignore on next update.
          * @param urls the urls to mark as to ignore on next update
+         * @virtual
          */
         vfunc_ignore_next_update(urls: string[]): void;
+        /**
+         * @virtual
+         */
         vfunc_paused(): void;
+        /**
+         * @param status
+         * @param progress
+         * @virtual
+         */
         vfunc_progress(status: string, progress: number): void;
+        /**
+         * @virtual
+         */
         vfunc_resumed(): void;
+        /**
+         * @virtual
+         */
         vfunc_started(): void;
+        /**
+         * @virtual
+         */
         vfunc_stopped(): void;
 
         // Methods
 
         /**
-         * Gets the #TrackerSparqlConnection initialized by `miner`
-         * @returns a #TrackerSparqlConnection.
+         * Gets the {@link Tracker.SparqlConnection} initialized by `miner`
+         * @returns a {@link Tracker.SparqlConnection}.
          */
         get_connection(): Tracker.SparqlConnection;
         /**
-         * Gets the #GDBusConnection initialized by `miner`
-         * @returns a #GDBusConnection.
+         * Gets the {@link Gio.DBusConnection} initialized by `miner`
+         * @returns a {@link Gio.DBusConnection}.
          */
         get_dbus_connection(): Gio.DBusConnection;
         /**
@@ -1782,18 +1971,18 @@ export namespace TrackerMiner {
          */
         ignore_next_update(urls: string[]): void;
         /**
-         * Returns #TRUE if the miner is paused.
-         * @returns #TRUE if the miner is paused.
+         * Returns `TRUE` if the miner is paused.
+         * @returns `TRUE` if the miner is paused.
          */
         is_paused(): boolean;
         /**
-         * Returns #TRUE if the miner has been started.
-         * @returns #TRUE if the miner is already started.
+         * Returns `TRUE` if the miner has been started.
+         * @returns `TRUE` if the miner is already started.
          */
         is_started(): boolean;
         /**
          * Asks `miner` to pause. On success the cookie ID is returned,
-         * this is what must be used in tracker_miner_resume() to resume
+         * this is what must be used in `tracker_miner_resume()` to resume
          * operations. On failure `error` will be set and -1 will be returned.
          * @param reason reason to pause
          * @returns The pause cookie ID.
@@ -1801,10 +1990,10 @@ export namespace TrackerMiner {
         pause(reason: string): number;
         /**
          * Asks the miner to resume processing. The cookie must be something
-         * returned by tracker_miner_pause(). The miner won't actually resume
+         * returned by `tracker_miner_pause()`. The miner won't actually resume
          * operations until all pause requests have been resumed.
          * @param cookie pause cookie
-         * @returns #TRUE if the cookie was valid.
+         * @returns `TRUE` if the cookie was valid.
          */
         resume(cookie: number): boolean;
         /**
@@ -1815,34 +2004,32 @@ export namespace TrackerMiner {
          * Tells the miner to stop processing data.
          */
         stop(): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1852,40 +2039,40 @@ export namespace TrackerMiner {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1895,11 +2082,12 @@ export namespace TrackerMiner {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1915,32 +2103,32 @@ export namespace TrackerMiner {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1949,39 +2137,39 @@ export namespace TrackerMiner {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1992,13 +2180,16 @@ export namespace TrackerMiner {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2006,7 +2197,7 @@ export namespace TrackerMiner {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2014,9 +2205,9 @@ export namespace TrackerMiner {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2036,9 +2227,9 @@ export namespace TrackerMiner {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2052,33 +2243,33 @@ export namespace TrackerMiner {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2111,21 +2302,21 @@ export namespace TrackerMiner {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2135,8 +2326,8 @@ export namespace TrackerMiner {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2153,10 +2344,10 @@ export namespace TrackerMiner {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2171,13 +2362,13 @@ export namespace TrackerMiner {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2208,21 +2399,21 @@ export namespace TrackerMiner {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2232,33 +2423,34 @@ export namespace TrackerMiner {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2267,6 +2459,7 @@ export namespace TrackerMiner {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2275,12 +2468,14 @@ export namespace TrackerMiner {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2289,20 +2484,22 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2314,6 +2511,7 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2346,24 +2544,111 @@ export namespace TrackerMiner {
     namespace MinerFS {
         // Signal signatures
         interface SignalSignatures extends Miner.SignalSignatures {
+            /**
+             * The ::finished signal is emitted when `miner_fs` has finished
+             * all pending processing.
+             * @signal
+             * @since 0.8
+             */
             finished: (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number) => void;
+            /**
+             * The ::finished-crawl signal is emitted when `miner_fs` has
+             * finished finding all resources that need to be indexed
+             * with the root location of `file`. At this point, it's likely
+             * many are still in the queue to be added to the database,
+             * but this gives some indication that a location is
+             * processed.
+             * @signal
+             * @since 1.2
+             */
             'finished-root': (arg0: Gio.File) => void;
+            /**
+             * The ::ignore-next-update-file signal is emitted whenever a file should
+             * be marked as to ignore on next update, and it's metadata prepared for that.
+             *
+             * `builder` is the {@link Tracker.SparqlBuilder} where all sparql updates
+             * to be performed for `file` will be appended.
+             * @signal
+             * @since 0.8
+             * @deprecated since 0.12
+             */
             'ignore-next-update-file': (
                 arg0: Gio.File,
                 arg1: Tracker.SparqlBuilder,
                 arg2: Gio.Cancellable | null,
             ) => boolean | void;
+            /**
+             * The ::process-file signal is emitted whenever a file should
+             * be processed, and it's metadata extracted.
+             *
+             * `builder` is the {@link Tracker.SparqlBuilder} where all sparql updates
+             * to be performed for `file` will be appended.
+             *
+             * This signal allows both synchronous and asynchronous extraction,
+             * in the synchronous case `cancellable` can be safely ignored. In
+             * either case, on successful metadata extraction, implementations
+             * must call `tracker_miner_fs_file_notify()` to indicate that
+             * processing has finished on `file`, so the miner can execute
+             * the SPARQL updates and continue processing other files.
+             * @signal
+             * @since 0.8
+             */
             'process-file': (
                 arg0: Gio.File,
                 arg1: Tracker.SparqlBuilder,
                 arg2: Gio.Cancellable | null,
             ) => boolean | void;
+            /**
+             * The ::process-file-attributes signal is emitted whenever a file should
+             * be processed, but only the attribute-related metadata extracted.
+             *
+             * `builder` is the {@link Tracker.SparqlBuilder} where all sparql updates
+             * to be performed for `file` will be appended. For the properties being
+             * updated, the DELETE statements should be included as well.
+             *
+             * This signal allows both synchronous and asynchronous extraction,
+             * in the synchronous case `cancellable` can be safely ignored. In
+             * either case, on successful metadata extraction, implementations
+             * must call `tracker_miner_fs_file_notify()` to indicate that
+             * processing has finished on `file`, so the miner can execute
+             * the SPARQL updates and continue processing other files.
+             * @signal
+             * @since 0.10
+             */
             'process-file-attributes': (
                 arg0: Gio.File,
                 arg1: Tracker.SparqlBuilder,
                 arg2: Gio.Cancellable | null,
             ) => boolean | void;
+            /**
+             * The ::remove-file signal will be emitted on files that need removal
+             * according to the miner configuration (either the files themselves are
+             * deleted, or the directory/contents no longer need inspection according
+             * to miner configuration and their location.
+             *
+             * This operation is always assumed to be recursive, the `children_only`
+             * argument will be `true` if for any reason the topmost directory needs
+             * to stay (e.g. moved from a recursively indexed directory tree to a
+             * non-recursively indexed location).
+             *
+             * The `builder` argument can be used to provide additional SPARQL
+             * deletes and updates necessary around the deletion of those items. If
+             * the return value of this signal is `true`, `builder` is expected to
+             * contain all relevant deletes for this operation.
+             *
+             * If the return value of this signal is `false`, the miner will apply
+             * its default behavior, which is deleting all triples that correspond
+             * to the affected URIs.
+             * @signal
+             * @since 1.8
+             */
             'remove-file': (arg0: Gio.File, arg1: boolean, arg2: Tracker.SparqlBuilder) => boolean | void;
+            /**
+             * The ::writeback-file signal is emitted whenever a file must be written
+             * back
+             * @signal
+             * @since 0.10.20
+             */
             'writeback-file': (
                 arg0: Gio.File,
                 arg1: string[],
@@ -2405,6 +2690,7 @@ export namespace TrackerMiner {
 
     /**
      * Abstract miner implementation to get data from the filesystem.
+     * @gir-type Class
      */
     abstract class MinerFS extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerFS>;
@@ -2450,16 +2736,19 @@ export namespace TrackerMiner {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MinerFS.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MinerFS.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MinerFS.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MinerFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2469,13 +2758,21 @@ export namespace TrackerMiner {
         // Static methods
 
         /**
-         * Gives the caller the #GQuark used to identify #TrackerMinerFS errors
-         * in #GError structures. The #GQuark is used as the domain for the error.
+         * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.MinerFS} errors
+         * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
          */
         static error_quark(): GLib.Quark;
 
         // Virtual methods
 
+        /**
+         * @param elapsed
+         * @param directories_found
+         * @param directories_ignored
+         * @param files_found
+         * @param files_ignored
+         * @virtual
+         */
         vfunc_finished(
             elapsed: number,
             directories_found: number,
@@ -2483,6 +2780,14 @@ export namespace TrackerMiner {
             files_found: number,
             files_ignored: number,
         ): void;
+        /**
+         * @param root
+         * @param directories_found
+         * @param directories_ignored
+         * @param files_found
+         * @param files_ignored
+         * @virtual
+         */
         vfunc_finished_root(
             root: Gio.File,
             directories_found: number,
@@ -2490,47 +2795,71 @@ export namespace TrackerMiner {
             files_found: number,
             files_ignored: number,
         ): void;
+        /**
+         * @param file
+         * @param builder
+         * @param cancellable
+         * @virtual
+         */
         vfunc_ignore_next_update_file(
             file: Gio.File,
             builder: Tracker.SparqlBuilder,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
+        /**
+         * @param file
+         * @param builder
+         * @param cancellable
+         * @virtual
+         */
         vfunc_process_file(
             file: Gio.File,
             builder: Tracker.SparqlBuilder,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
+        /**
+         * @param file
+         * @param builder
+         * @param cancellable
+         * @virtual
+         */
         vfunc_process_file_attributes(
             file: Gio.File,
             builder: Tracker.SparqlBuilder,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
+        /**
+         * @param file
+         * @param children_only
+         * @param builder
+         * @virtual
+         */
         vfunc_remove_file(file: Gio.File, children_only: boolean, builder: Tracker.SparqlBuilder): boolean;
 
         // Methods
 
         /**
-         * Tells the miner-fs that the given #GFile corresponds to a
+         * Tells the miner-fs that the given {@link Gio.File} corresponds to a
          * directory which was created in the store without a specific
          * parent object. In this case, when regenerating internal
          * caches, an extra query will be done so that these elements
          * are taken into account.
-         * @param file a #GFile
+         * @param file a {@link Gio.File}
          */
         add_directory_without_parent(file: Gio.File): void;
         /**
          * Tells the filesystem miner to check and index a directory,
          * this file must be part of the usual crawling directories
-         * of #TrackerMinerFS. See tracker_miner_fs_directory_add().
-         * @param file #GFile for the directory to check
+         * of {@link TrackerMiner.MinerFS}. See `tracker_miner_fs_directory_add()`.
+         * @param file {@link Gio.File} for the directory to check
          * @param check_parents whether to check parents and eligibility or not
          */
         check_directory(file: Gio.File, check_parents: boolean): void;
         /**
          * Tells the filesystem miner to check and index a directory at
          * a given priority, this file must be part of the usual crawling
-         * directories of #TrackerMinerFS. See tracker_miner_fs_directory_add().
-         * @param file #GFile for the directory to check
+         * directories of {@link TrackerMiner.MinerFS}. See `tracker_miner_fs_directory_add()`.
+         * @param file {@link Gio.File} for the directory to check
          * @param priority the priority of the check task
          * @param check_parents whether to check parents and eligibility or not
          */
@@ -2538,136 +2867,136 @@ export namespace TrackerMiner {
         /**
          * Tells the filesystem miner to check and index a file,
          * this file must be part of the usual crawling directories
-         * of #TrackerMinerFS. See tracker_miner_fs_directory_add().
-         * @param file #GFile for the file to check
+         * of {@link TrackerMiner.MinerFS}. See `tracker_miner_fs_directory_add()`.
+         * @param file {@link Gio.File} for the file to check
          * @param check_parents whether to check parents and eligibility or not
          */
         check_file(file: Gio.File, check_parents: boolean): void;
         /**
          * Tells the filesystem miner to check and index a file at
          * a given priority, this file must be part of the usual
-         * crawling directories of #TrackerMinerFS. See
-         * tracker_miner_fs_directory_add().
-         * @param file #GFile for the file to check
+         * crawling directories of {@link TrackerMiner.MinerFS}. See
+         * `tracker_miner_fs_directory_add()`.
+         * @param file {@link Gio.File} for the file to check
          * @param priority the priority of the check task
          * @param check_parents whether to check parents and eligibility or not
          */
         check_file_with_priority(file: Gio.File, priority: number, check_parents: boolean): void;
         /**
          * Tells the filesystem miner to inspect a directory.
-         * @param file #GFile for the directory to inspect
+         * @param file {@link Gio.File} for the directory to inspect
          * @param recurse whether the directory should be inspected recursively
          */
         directory_add(file: Gio.File, recurse: boolean): void;
         /**
          * Removes a directory from being inspected by `fs`. Note that only directory
          *  watches are removed.
-         * @param file #GFile for the directory to be removed
-         * @returns %TRUE if the directory was successfully removed.
+         * @param file {@link Gio.File} for the directory to be removed
+         * @returns `true` if the directory was successfully removed.
          */
         directory_remove(file: Gio.File): boolean;
         /**
-         * Removes a directory from being inspected by `fs,` and removes all
+         * Removes a directory from being inspected by `fs`, and removes all
          * associated metadata of the directory (and its contents) from the
          * store.
-         * @param file #GFile for the directory to be removed
-         * @returns %TRUE if the directory was successfully removed.
+         * @param file {@link Gio.File} for the directory to be removed
+         * @returns `true` if the directory was successfully removed.
          */
         directory_remove_full(file: Gio.File): boolean;
         /**
          * Notifies `fs` that all processing on `file` has been finished, if any error
-         * happened during file data processing, it should be passed in `error,` else
-         * that parameter will contain %NULL to reflect success.
-         * @param file a #GFile
-         * @param error a #GError with the error that happened during processing, or %NULL.
+         * happened during file data processing, it should be passed in `error`, else
+         * that parameter will contain `null` to reflect success.
+         * @param file a {@link Gio.File}
+         * @param error a {@link GLib.Error} with the error that happened during processing, or `null`.
          */
         file_notify(file: Gio.File, error: GLib.Error): void;
         /**
          * Tells `fs` to force mtime checking (regardless of the global mtime check
          * configuration) on the given `directory`.
-         * @param directory a #GFile representing the directory
+         * @param directory a {@link Gio.File} representing the directory
          */
         force_mtime_checking(directory: Gio.File): void;
         force_recheck(): void;
         /**
-         * Returns the #TrackerDataProvider implementation, which is being used
-         * to supply #GFile and #GFileInfo content to Tracker.
-         * @returns The #TrackerDataProvider supplying content
+         * Returns the {@link TrackerMiner.DataProvider} implementation, which is being used
+         * to supply {@link Gio.File} and {@link Gio.FileInfo} content to Tracker.
+         * @returns The {@link TrackerMiner.DataProvider} supplying content
          */
         get_data_provider(): DataProvider;
         /**
-         * Returns the #TrackerIndexingTree which determines
+         * Returns the {@link TrackerMiner.IndexingTree} which determines
          * what files/directories are indexed by `fs`
-         * @returns The #TrackerIndexingTree          holding the indexing configuration
+         * @returns The {@link TrackerMiner.IndexingTree}          holding the indexing configuration
          */
         get_indexing_tree(): IndexingTree;
         /**
          * Returns a boolean which indicates if the indexing tree is crawled
-         * upon start up or not. This may be set to %FALSE if working
+         * upon start up or not. This may be set to `false` if working
          * prodominently with cloud data where you can't perform these checks.
          * By default and for local file systems, this is enabled.
-         * @returns %TRUE if a file system structure is crawled for new updates on start up, otherwise %FALSE.
+         * @returns `true` if a file system structure is crawled for new updates on start up, otherwise `false`.
          */
         get_initial_crawling(): boolean;
         /**
          * Returns a boolean used to identify if file modification time checks
-         * are performed when processing content. This may be set to %FALSE if
+         * are performed when processing content. This may be set to `false` if
          * working prodominently with cloud data where you can't perform these
          * checks. By default and for local file systems, this is enabled.
-         * @returns %TRUE if mtime checks for directories against the database are done when @fs crawls the file system, otherwise %FALSE.
+         * @returns `true` if mtime checks for directories against the database are done when `fs` crawls the file system, otherwise `false`.
          */
         get_mtime_checking(): boolean;
         /**
-         * If `file` is currently being processed by `fs,` this function
+         * If `file` is currently being processed by `fs`, this function
          * will return the parent folder URN if any. This function is
          * useful to set the nie:belongsToContainer relationship. The
-         * processing order of #TrackerMinerFS guarantees that a folder
+         * processing order of {@link TrackerMiner.MinerFS} guarantees that a folder
          * has been already fully processed for indexing before any
          * children is processed, so most usually this function should
-         * return non-%NULL.
-         * @param file a #GFile obtained in #TrackerMinerFS::process-file
-         * @returns The parent folder URN, or %NULL.
+         * return non-`null`.
+         * @param file a {@link Gio.File} obtained in {@link TrackerMiner.MinerFS.SignalSignatures.process_file | TrackerMiner.MinerFS::process-file}
+         * @returns The parent folder URN, or `null`.
          */
         get_parent_urn(file: Gio.File): string | null;
         /**
          * Gets the current throttle value, see
-         * tracker_miner_fs_set_throttle() for more details.
+         * `tracker_miner_fs_set_throttle()` for more details.
          * @returns a double representing a value between 0.0 and 1.0.
          */
         get_throttle(): number;
         /**
          * If the item exists in the store, this function retrieves
-         * the URN for a #GFile being currently processed.
+         * the URN for a {@link Gio.File} being currently processed.
          *
-         * If `file` is not being currently processed by `fs,` or doesn't
-         * exist in the store yet, %NULL will be returned.
-         * @param file a #GFile obtained in #TrackerMinerFS::process-file
-         * @returns The URN containing the data associated to @file,          or %NULL.
+         * If `file` is not being currently processed by `fs`, or doesn't
+         * exist in the store yet, `null` will be returned.
+         * @param file a {@link Gio.File} obtained in {@link TrackerMiner.MinerFS.SignalSignatures.process_file | TrackerMiner.MinerFS::process-file}
+         * @returns The URN containing the data associated to `file`,          or `null`.
          */
         get_urn(file: Gio.File): string | null;
         /**
          * The `fs` keeps many priority queus for content it is processing.
-         * This function returns %TRUE if the sum of all (or any) priority
+         * This function returns `true` if the sum of all (or any) priority
          * queues is more than 0. This includes items deleted, created,
          * updated, moved or being written back.
-         * @returns %TRUE if there are items to process in the internal queues, otherwise %FALSE.
+         * @returns `true` if there are items to process in the internal queues, otherwise `false`.
          */
         has_items_to_process(): boolean;
         /**
          * If the item exists in the store, this function retrieves
-         * the URN of the given #GFile
+         * the URN of the given {@link Gio.File}
          *
-         * If `file` doesn't exist in the store yet, %NULL will be returned.
-         * @param file a #GFile
-         * @returns A newly allocated string with the URN containing the data associated          to @file, or %NULL.
+         * If `file` doesn't exist in the store yet, `null` will be returned.
+         * @param file a {@link Gio.File}
+         * @returns A newly allocated string with the URN containing the data associated          to `file`, or `null`.
          */
         query_urn(file: Gio.File): string;
         /**
-         * Tells the `fs` that crawling the #TrackerIndexingTree should happen
+         * Tells the `fs` that crawling the {@link TrackerMiner.IndexingTree} should happen
          * initially. This is actually required to set up file system monitor
          * using technologies like inotify, etc.
          *
-         * Setting this to #FALSE can dramatically improve the start up the
+         * Setting this to `FALSE` can dramatically improve the start up the
          * crawling of the `fs`.
          *
          * The down side is that using this consistently means that some files
@@ -2678,15 +3007,15 @@ export namespace TrackerMiner {
          * could be changed outside between startup and shutdown of the
          * process using this API.
          *
-         * The default if not set directly is that `do_initial_crawling` is %TRUE.
-         * @param do_initial_crawling a #gboolean
+         * The default if not set directly is that `do_initial_crawling` is `true`.
+         * @param do_initial_crawling a `gboolean`
          */
         set_initial_crawling(do_initial_crawling: boolean): void;
         /**
          * Tells the miner-fs that during the crawling phase, directory mtime
          * checks should or shouldn't be performed against the database to
          * make sure we have the most up to date version of the file being
-         * checked at the time. Setting this to #FALSE can dramatically
+         * checked at the time. Setting this to `FALSE` can dramatically
          * improve the start up the crawling of the `fs`.
          *
          * The down side is that using this consistently means that some files
@@ -2697,8 +3026,8 @@ export namespace TrackerMiner {
          * could be changed outside between startup and shutdown of the
          * process using this API.
          *
-         * The default if not set directly is that `mtime_checking` is %TRUE.
-         * @param mtime_checking a #gboolean
+         * The default if not set directly is that `mtime_checking` is `true`.
+         * @param mtime_checking a `gboolean`
          */
         set_mtime_checking(mtime_checking: boolean): void;
         /**
@@ -2712,47 +3041,45 @@ export namespace TrackerMiner {
         set_throttle(throttle: number): void;
         /**
          * Tells the filesystem miner to writeback a file.
-         * @param file #GFile for the file to check
-         * @param rdf_types A #GStrv with rdf types
+         * @param file {@link Gio.File} for the file to check
+         * @param rdf_types A {@link GObject.Strv} with rdf types
          * @param results A array of results from the preparation query
          */
         writeback_file(file: Gio.File, rdf_types: string[], results: string[][]): void;
         /**
          * Notifies `fs` that all writing back on `file` has been finished, if any error
-         * happened during file data processing, it should be passed in `error,` else
-         * that parameter will contain %NULL to reflect success.
-         * @param file a #GFile
-         * @param error a #GError with the error that happened during processing, or %NULL.
+         * happened during file data processing, it should be passed in `error`, else
+         * that parameter will contain `null` to reflect success.
+         * @param file a {@link Gio.File}
+         * @param error a {@link GLib.Error} with the error that happened during processing, or `null`.
          */
         writeback_notify(file: Gio.File, error: GLib.Error): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2762,40 +3089,40 @@ export namespace TrackerMiner {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2805,11 +3132,12 @@ export namespace TrackerMiner {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2825,32 +3153,32 @@ export namespace TrackerMiner {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2859,39 +3187,39 @@ export namespace TrackerMiner {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2902,13 +3230,16 @@ export namespace TrackerMiner {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2916,7 +3247,7 @@ export namespace TrackerMiner {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2924,9 +3255,9 @@ export namespace TrackerMiner {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2946,9 +3277,9 @@ export namespace TrackerMiner {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2962,33 +3293,33 @@ export namespace TrackerMiner {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3021,21 +3352,21 @@ export namespace TrackerMiner {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3045,8 +3376,8 @@ export namespace TrackerMiner {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3063,10 +3394,10 @@ export namespace TrackerMiner {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3081,13 +3412,13 @@ export namespace TrackerMiner {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3118,21 +3449,21 @@ export namespace TrackerMiner {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3142,33 +3473,34 @@ export namespace TrackerMiner {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3177,6 +3509,7 @@ export namespace TrackerMiner {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3185,12 +3518,14 @@ export namespace TrackerMiner {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3199,20 +3534,22 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3224,6 +3561,7 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3256,7 +3594,22 @@ export namespace TrackerMiner {
     namespace MinerOnline {
         // Signal signatures
         interface SignalSignatures extends Miner.SignalSignatures {
+            /**
+             * the ::connected signal is emitted when a specific `type` of
+             * network becomes connected.
+             *
+             * Return values of `TRUE` from this signal indicate whether a
+             * {@link TrackerMiner.Miner} should resume indexing or not upon ::connected.
+             * @signal
+             * @since 0.18.0
+             */
             connected: (arg0: NetworkType) => boolean | void;
+            /**
+             * the ::disconnected signal is emitted when a specific `type` of
+             * network becomes disconnected.
+             * @signal
+             * @since 0.18.0
+             */
             disconnected: () => void;
             'notify::network-type': (pspec: GObject.ParamSpec) => void;
             'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
@@ -3277,6 +3630,7 @@ export namespace TrackerMiner {
 
     /**
      * Abstract miner object for data requiring connectivity.
+     * @gir-type Class
      */
     abstract class MinerOnline extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerOnline>;
@@ -3303,16 +3657,19 @@ export namespace TrackerMiner {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MinerOnline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3321,44 +3678,49 @@ export namespace TrackerMiner {
 
         // Virtual methods
 
+        /**
+         * @param network
+         * @virtual
+         */
         vfunc_connected(network: NetworkType): boolean;
+        /**
+         * @virtual
+         */
         vfunc_disconnected(): void;
 
         // Methods
 
         /**
          * Get the type of network this data `miner` uses to index content.
-         * @returns a #TrackerNetworkType on success or #TRACKER_NETWORK_TYPE_NONE on error.
+         * @returns a {@link TrackerMiner.NetworkType} on success or #TRACKER_NETWORK_TYPE_NONE on error.
          */
         get_network_type(): NetworkType;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3368,40 +3730,40 @@ export namespace TrackerMiner {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3411,11 +3773,12 @@ export namespace TrackerMiner {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -3431,32 +3794,32 @@ export namespace TrackerMiner {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3465,39 +3828,39 @@ export namespace TrackerMiner {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3508,13 +3871,16 @@ export namespace TrackerMiner {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3522,7 +3888,7 @@ export namespace TrackerMiner {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3530,9 +3896,9 @@ export namespace TrackerMiner {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3552,9 +3918,9 @@ export namespace TrackerMiner {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3568,33 +3934,33 @@ export namespace TrackerMiner {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3627,21 +3993,21 @@ export namespace TrackerMiner {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3651,8 +4017,8 @@ export namespace TrackerMiner {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3669,10 +4035,10 @@ export namespace TrackerMiner {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3687,13 +4053,13 @@ export namespace TrackerMiner {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3724,21 +4090,21 @@ export namespace TrackerMiner {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3748,33 +4114,34 @@ export namespace TrackerMiner {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3783,6 +4150,7 @@ export namespace TrackerMiner {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3791,12 +4159,14 @@ export namespace TrackerMiner {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3805,20 +4175,22 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3830,6 +4202,7 @@ export namespace TrackerMiner {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3859,9 +4232,21 @@ export namespace TrackerMiner {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DataProviderIface = typeof DataProvider;
+    /**
+     * @gir-type Alias
+     */
     type DecoratorClass = typeof Decorator;
+    /**
+     * @gir-type Alias
+     */
     type DecoratorFSClass = typeof DecoratorFS;
+    /**
+     * @gir-type Struct
+     */
     class DecoratorInfo {
         static $gtype: GObject.GType<DecoratorInfo>;
 
@@ -3873,45 +4258,45 @@ export namespace TrackerMiner {
          * document or file.
          *
          * ¹: http://en.wikipedia.org/wiki/MIME
-         * @returns the MIME type for #TrackerDecoratorInfo on success or #NULL on error.
+         * @returns the MIME type for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
          */
         get_mimetype(): string;
         /**
-         * A #TrackerSparqlBuilder allows the caller to extract the final
+         * A {@link Tracker.SparqlBuilder} allows the caller to extract the final
          * SPARQL used to insert the extracted metadata into the database for
          * the resource being processed.
          *
-         * This function calls g_task_get_task_data() on the return value of
-         * tracker_decorator_info_get_task().
-         * @returns a #TrackerSparqlBuilder on success or #NULL on error.
+         * This function calls `g_task_get_task_data()` on the return value of
+         * `tracker_decorator_info_get_task()`.
+         * @returns a {@link Tracker.SparqlBuilder} on success or `NULL` on error.
          */
         get_sparql(): Tracker.SparqlBuilder;
         /**
-         * Get the #GTask associated with retrieving extended metadata and
+         * Get the {@link Gio.Task} associated with retrieving extended metadata and
          * information for a URN in Tracker.
          *
-         * The task object's data (accessible with g_task_get_task_data()) is the
-         * #TrackerSparqlBuilder that you must populate with the results of the
+         * The task object's data (accessible with `g_task_get_task_data()`) is the
+         * {@link Tracker.SparqlBuilder} that you must populate with the results of the
          * metadata extraction. This can also be accessed with
-         * tracker_decorator_info_get_sparql().
-         * @returns the #GTask for #TrackerDecoratorInfo on success or #NULL if there is no existing #GTask.
+         * `tracker_decorator_info_get_sparql()`.
+         * @returns the {@link Gio.Task} for {@link TrackerMiner.DecoratorInfo} on success or `NULL` if there is no existing {@link Gio.Task}.
          */
         get_task(): Gio.Task;
         /**
          * A URL is a Uniform Resource Locator and should be a location associated
          * with a resource in the database. For example, 'file:///tmp/foo.txt'.
-         * @returns the URL for #TrackerDecoratorInfo on success or #NULL on error.
+         * @returns the URL for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
          */
         get_url(): string;
         /**
          * A URN is a Uniform Resource Name and should be a unique identifier
          * for a resource in the database.
-         * @returns the URN for #TrackerDecoratorInfo on success or #NULL on error.
+         * @returns the URN for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
          */
         get_urn(): string;
         /**
          * Increases the reference count of `info` by 1.
-         * @returns the same @info passed in, or %NULL on error.
+         * @returns the same `info` passed in, or `null` on error.
          */
         ref(): DecoratorInfo;
         /**
@@ -3921,15 +4306,36 @@ export namespace TrackerMiner {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EnumeratorIface = typeof Enumerator;
+    /**
+     * @gir-type Alias
+     */
     type IndexingTreeClass = typeof IndexingTree;
+    /**
+     * @gir-type Alias
+     */
     type MinerClass = typeof Miner;
+    /**
+     * @gir-type Alias
+     */
     type MinerFSClass = typeof MinerFS;
+    /**
+     * @gir-type Struct
+     */
     abstract class MinerFSPrivate {
         static $gtype: GObject.GType<MinerFSPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MinerOnlineClass = typeof MinerOnline;
+    /**
+     * @gir-type Struct
+     */
     abstract class MinerPrivate {
         static $gtype: GObject.GType<MinerPrivate>;
     }
@@ -3943,7 +4349,7 @@ export namespace TrackerMiner {
             // Virtual methods
 
             /**
-             * Creates a #TrackerEnumerator to enumerate children at the URI
+             * Creates a {@link TrackerMiner.Enumerator} to enumerate children at the URI
              * provided by `url`.
              *
              * The attributes value is a string that specifies the file attributes
@@ -3954,12 +4360,13 @@ export namespace TrackerMiner {
              * a wildcard like "standard::*" means all attributes in the standard
              * namespace. An example attribute query be "standard::*,owner::user".
              * The standard attributes are available as defines, like
-             * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
+             * G_FILE_ATTRIBUTE_STANDARD_NAME. See `g_file_enumerate_children()` for
              * more details.
-             * @param url a #GFile to enumerate
+             * @param url a {@link Gio.File} to enumerate
              * @param attributes an attribute query string
-             * @param flags a set of #TrackerDirectoryFlags
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
+             * @param flags a set of {@link TrackerMiner.DirectoryFlags}
+             * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+             * @virtual
              */
             vfunc_begin(
                 url: Gio.File,
@@ -3968,32 +4375,33 @@ export namespace TrackerMiner {
                 cancellable?: Gio.Cancellable | null,
             ): Enumerator;
             /**
-             * Precisely the same operation as tracker_data_provider_begin()
+             * Precisely the same operation as `tracker_data_provider_begin()`
              * is performing, but asynchronously.
              *
              * When all i/o for the operation is finished the `callback` will be
              * called with the requested information.
              *
-             * See the documentation of #TrackerDataProvider for information about the
+             * See the documentation of {@link TrackerMiner.DataProvider} for information about the
              * order of returned files.
              *
              * In case of a partial error the callback will be called with any
              * succeeding items and no error, and on the next request the error
              * will be reported. If a request is cancelled the callback will be
-             * called with %G_IO_ERROR_CANCELLED.
+             * called with {@link Gio.IOErrorEnum.CANCELLED}.
              *
              * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
+             * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
              *
              * Any outstanding i/o request with higher priority (lower numerical
              * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param url a #GFile to enumerate
+             * priority. Default priority is `G_PRIORITY_DEFAULT`.
+             * @param url a {@link Gio.File} to enumerate
              * @param attributes an attribute query string
-             * @param flags a set of #TrackerDirectoryFlags
+             * @param flags a set of {@link TrackerMiner.DirectoryFlags}
              * @param io_priority the [I/O priority][io-priority] of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+             * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+             * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+             * @virtual
              */
             vfunc_begin_async(
                 url: Gio.File,
@@ -4005,13 +4413,14 @@ export namespace TrackerMiner {
             ): void;
             /**
              * Finishes the asynchronous operation started with
-             * tracker_data_provider_begin_async().
-             * @param result a #GAsyncResult.
+             * `tracker_data_provider_begin_async()`.
+             * @param result a {@link Gio.AsyncResult}.
+             * @virtual
              */
             vfunc_begin_finish(result: Gio.AsyncResult): Enumerator;
             /**
              * Closes any caches or operations related to creating the
-             * #TrackerEnumerator to enumerate data at `url`.
+             * {@link TrackerMiner.Enumerator} to enumerate data at `url`.
              *
              * The attributes value is a string that specifies the file attributes
              * that should be gathered. It is not an error if it's not possible to
@@ -4021,37 +4430,39 @@ export namespace TrackerMiner {
              * a wildcard like "standard::*" means all attributes in the standard
              * namespace. An example attribute query be "standard::*,owner::user".
              * The standard attributes are available as defines, like
-             * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
+             * G_FILE_ATTRIBUTE_STANDARD_NAME. See `g_file_enumerate_children()` for
              * more details.
-             * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
+             * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
+             * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+             * @virtual
              */
             vfunc_end(enumerator: Enumerator, cancellable?: Gio.Cancellable | null): boolean;
             /**
-             * Precisely the same operation as tracker_data_provider_end()
+             * Precisely the same operation as `tracker_data_provider_end()`
              * is performing, but asynchronously.
              *
              * When all i/o for the operation is finished the `callback` will be
              * called with the requested information.
              *
-             * See the documentation of #TrackerDataProvider for information about the
+             * See the documentation of {@link TrackerMiner.DataProvider} for information about the
              * order of returned files.
              *
              * In case of a partial error the callback will be called with any
              * succeeding items and no error, and on the next request the error
              * will be reported. If a request is cancelled the callback will be
-             * called with %G_IO_ERROR_CANCELLED.
+             * called with {@link Gio.IOErrorEnum.CANCELLED}.
              *
              * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
+             * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
              *
              * Any outstanding i/o request with higher priority (lower numerical
              * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
-             * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
+             * priority. Default priority is `G_PRIORITY_DEFAULT`.
+             * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
              * @param io_priority the [I/O priority][io-priority] of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+             * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+             * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+             * @virtual
              */
             vfunc_end_async(
                 enumerator: Enumerator,
@@ -4061,8 +4472,9 @@ export namespace TrackerMiner {
             ): void;
             /**
              * Finishes the asynchronous operation started with
-             * tracker_data_provider_end_async().
-             * @param result a #GAsyncResult.
+             * `tracker_data_provider_end_async()`.
+             * @param result a {@link Gio.AsyncResult}.
+             * @virtual
              */
             vfunc_end_finish(result: Gio.AsyncResult): boolean;
         }
@@ -4076,11 +4488,15 @@ export namespace TrackerMiner {
         $gtype: GObject.GType<DataProvider>;
         prototype: DataProvider;
     }
+    /**
+     * An interface to enumerate URIs and feed the data to Tracker.
+     * @gir-type Interface
+     */
     interface DataProvider extends GObject.Object, DataProvider.Interface {
         // Methods
 
         /**
-         * Creates a #TrackerEnumerator to enumerate children at the URI
+         * Creates a {@link TrackerMiner.Enumerator} to enumerate children at the URI
          * provided by `url`.
          *
          * The attributes value is a string that specifies the file attributes
@@ -4091,13 +4507,13 @@ export namespace TrackerMiner {
          * a wildcard like "standard::*" means all attributes in the standard
          * namespace. An example attribute query be "standard::*,owner::user".
          * The standard attributes are available as defines, like
-         * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
+         * G_FILE_ATTRIBUTE_STANDARD_NAME. See `g_file_enumerate_children()` for
          * more details.
-         * @param url a #GFile to enumerate
+         * @param url a {@link Gio.File} to enumerate
          * @param attributes an attribute query string
-         * @param flags a set of #TrackerDirectoryFlags
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns a #TrackerEnumerator or %NULL on failure. This must be freed with g_object_unref().
+         * @param flags a set of {@link TrackerMiner.DirectoryFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns a {@link TrackerMiner.Enumerator} or `null` on failure. This must be freed with `g_object_unref()`.
          */
         begin(
             url: Gio.File,
@@ -4106,31 +4522,31 @@ export namespace TrackerMiner {
             cancellable?: Gio.Cancellable | null,
         ): Enumerator;
         /**
-         * Precisely the same operation as tracker_data_provider_begin()
+         * Precisely the same operation as `tracker_data_provider_begin()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
          *
-         * See the documentation of #TrackerDataProvider for information about the
+         * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
          *
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param url a #GFile to enumerate
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param url a {@link Gio.File} to enumerate
          * @param attributes an attribute query string
-         * @param flags a set of #TrackerDirectoryFlags
+         * @param flags a set of {@link TrackerMiner.DirectoryFlags}
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
         begin_async(
             url: Gio.File,
@@ -4140,32 +4556,32 @@ export namespace TrackerMiner {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Enumerator>;
         /**
-         * Precisely the same operation as tracker_data_provider_begin()
+         * Precisely the same operation as `tracker_data_provider_begin()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
          *
-         * See the documentation of #TrackerDataProvider for information about the
+         * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
          *
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param url a #GFile to enumerate
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param url a {@link Gio.File} to enumerate
          * @param attributes an attribute query string
-         * @param flags a set of #TrackerDirectoryFlags
+         * @param flags a set of {@link TrackerMiner.DirectoryFlags}
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         begin_async(
             url: Gio.File,
@@ -4176,32 +4592,32 @@ export namespace TrackerMiner {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Precisely the same operation as tracker_data_provider_begin()
+         * Precisely the same operation as `tracker_data_provider_begin()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
          *
-         * See the documentation of #TrackerDataProvider for information about the
+         * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
          *
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param url a #GFile to enumerate
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param url a {@link Gio.File} to enumerate
          * @param attributes an attribute query string
-         * @param flags a set of #TrackerDirectoryFlags
+         * @param flags a set of {@link TrackerMiner.DirectoryFlags}
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         begin_async(
             url: Gio.File,
@@ -4213,14 +4629,14 @@ export namespace TrackerMiner {
         ): globalThis.Promise<Enumerator> | void;
         /**
          * Finishes the asynchronous operation started with
-         * tracker_data_provider_begin_async().
-         * @param result a #GAsyncResult.
-         * @returns a #TrackerEnumerator or %NULL on failure. This must be freed with g_object_unref().
+         * `tracker_data_provider_begin_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns a {@link TrackerMiner.Enumerator} or `null` on failure. This must be freed with `g_object_unref()`.
          */
         begin_finish(result: Gio.AsyncResult): Enumerator;
         /**
          * Closes any caches or operations related to creating the
-         * #TrackerEnumerator to enumerate data at `url`.
+         * {@link TrackerMiner.Enumerator} to enumerate data at `url`.
          *
          * The attributes value is a string that specifies the file attributes
          * that should be gathered. It is not an error if it's not possible to
@@ -4230,37 +4646,37 @@ export namespace TrackerMiner {
          * a wildcard like "standard::*" means all attributes in the standard
          * namespace. An example attribute query be "standard::*,owner::user".
          * The standard attributes are available as defines, like
-         * G_FILE_ATTRIBUTE_STANDARD_NAME. See g_file_enumerate_children() for
+         * G_FILE_ATTRIBUTE_STANDARD_NAME. See `g_file_enumerate_children()` for
          * more details.
-         * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE on success, otherwise %FALSE and @error is set.
+         * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` on success, otherwise `false` and `error` is set.
          */
         end(enumerator: Enumerator, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Precisely the same operation as tracker_data_provider_end()
+         * Precisely the same operation as `tracker_data_provider_end()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
          *
-         * See the documentation of #TrackerDataProvider for information about the
+         * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
          *
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
         end_async(
             enumerator: Enumerator,
@@ -4268,30 +4684,30 @@ export namespace TrackerMiner {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
-         * Precisely the same operation as tracker_data_provider_end()
+         * Precisely the same operation as `tracker_data_provider_end()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
          *
-         * See the documentation of #TrackerDataProvider for information about the
+         * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
          *
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         end_async(
             enumerator: Enumerator,
@@ -4300,30 +4716,30 @@ export namespace TrackerMiner {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Precisely the same operation as tracker_data_provider_end()
+         * Precisely the same operation as `tracker_data_provider_end()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
          *
-         * See the documentation of #TrackerDataProvider for information about the
+         * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
          *
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
-         * @param enumerator a #TrackerEnumerator originally created by tracker_data_provider_begin().
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         end_async(
             enumerator: Enumerator,
@@ -4333,9 +4749,9 @@ export namespace TrackerMiner {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes the asynchronous operation started with
-         * tracker_data_provider_end_async().
-         * @param result a #GAsyncResult.
-         * @returns %TRUE on success, otherwise %FALSE and @error is set.
+         * `tracker_data_provider_end_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns `true` on success, otherwise `false` and `error` is set.
          */
         end_finish(result: Gio.AsyncResult): boolean;
     }
@@ -4355,11 +4771,12 @@ export namespace TrackerMiner {
             /**
              * Enumerates to the next piece of data according to the `enumerator`
              * implementation.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
+             * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+             * @virtual
              */
             vfunc_next(cancellable?: Gio.Cancellable | null): any | null;
             /**
-             * Precisely the same operation as tracker_enumerator_next()
+             * Precisely the same operation as `tracker_enumerator_next()`
              * is performing, but asynchronously.
              *
              * When all i/o for the operation is finished the `callback` will be
@@ -4368,17 +4785,18 @@ export namespace TrackerMiner {
              * In case of a partial error the callback will be called with any
              * succeeding items and no error, and on the next request the error
              * will be reported. If a request is cancelled the callback will be
-             * called with %G_IO_ERROR_CANCELLED.
+             * called with {@link Gio.IOErrorEnum.CANCELLED}.
              *
              * During an async request no other sync and async calls are allowed,
-             * and will result in %G_IO_ERROR_PENDING errors.
+             * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
              *
              * Any outstanding i/o request with higher priority (lower numerical
              * value) will be executed before an outstanding request with lower
-             * priority. Default priority is %G_PRIORITY_DEFAULT.
+             * priority. Default priority is `G_PRIORITY_DEFAULT`.
              * @param io_priority the [I/O priority][io-priority] of the request
-             * @param cancellable optional #GCancellable object, %NULL to ignore
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+             * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+             * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+             * @virtual
              */
             vfunc_next_async(
                 io_priority: number,
@@ -4387,8 +4805,9 @@ export namespace TrackerMiner {
             ): void;
             /**
              * Finishes the asynchronous operation started with
-             * tracker_enumerator_next_async().
-             * @param result a #GAsyncResult.
+             * `tracker_enumerator_next_async()`.
+             * @param result a {@link Gio.AsyncResult}.
+             * @virtual
              */
             vfunc_next_finish(result: Gio.AsyncResult): any | null;
         }
@@ -4402,18 +4821,22 @@ export namespace TrackerMiner {
         $gtype: GObject.GType<Enumerator>;
         prototype: Enumerator;
     }
+    /**
+     * An interface to enumerate URIs and feed the data to Tracker.
+     * @gir-type Interface
+     */
     interface Enumerator extends GObject.Object, Enumerator.Interface {
         // Methods
 
         /**
          * Enumerates to the next piece of data according to the `enumerator`
          * implementation.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns Returns a #gpointer with the next item from the @enumerator, or %NULL when @error is set or the operation was cancelled in @cancellable. The data must be freed. The function to free depends on the data returned by the enumerator and the #TrackerDataProvider that created the @enumerator.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns Returns a `gpointer` with the next item from the `enumerator`, or `null` when `error` is set or the operation was cancelled in `cancellable`. The data must be freed. The function to free depends on the data returned by the enumerator and the {@link TrackerMiner.DataProvider} that created the `enumerator`.
          */
         next(cancellable?: Gio.Cancellable | null): any | null;
         /**
-         * Precisely the same operation as tracker_enumerator_next()
+         * Precisely the same operation as `tracker_enumerator_next()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
@@ -4422,20 +4845,20 @@ export namespace TrackerMiner {
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
         next_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<any | null>;
         /**
-         * Precisely the same operation as tracker_enumerator_next()
+         * Precisely the same operation as `tracker_enumerator_next()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
@@ -4444,17 +4867,17 @@ export namespace TrackerMiner {
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         next_async(
             io_priority: number,
@@ -4462,7 +4885,7 @@ export namespace TrackerMiner {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Precisely the same operation as tracker_enumerator_next()
+         * Precisely the same operation as `tracker_enumerator_next()`
          * is performing, but asynchronously.
          *
          * When all i/o for the operation is finished the `callback` will be
@@ -4471,17 +4894,17 @@ export namespace TrackerMiner {
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
-         * called with %G_IO_ERROR_CANCELLED.
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         next_async(
             io_priority: number,
@@ -4490,9 +4913,9 @@ export namespace TrackerMiner {
         ): globalThis.Promise<any | null> | void;
         /**
          * Finishes the asynchronous operation started with
-         * tracker_enumerator_next_async().
-         * @param result a #GAsyncResult.
-         * @returns Returns a #gpointer with the next item from the @enumerator, or %NULL when @error is set or the operation was cancelled in @cancellable. The data must be freed. The function to free depends on the data returned by the enumerator and the #TrackerDataProvider that created the @enumerator.
+         * `tracker_enumerator_next_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns Returns a `gpointer` with the next item from the `enumerator`, or `null` when `error` is set or the operation was cancelled in `cancellable`. The data must be freed. The function to free depends on the data returned by the enumerator and the {@link TrackerMiner.DataProvider} that created the `enumerator`.
          */
         next_finish(result: Gio.AsyncResult): any | null;
     }

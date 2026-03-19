@@ -26,7 +26,9 @@ export namespace EBookContacts {
      */
 
     /**
-     * The type of change in an #EBookChange
+     * The type of change in an {@link EBookContacts.BookChange}
+     * @gir-type Enum
+     * @deprecated since 3.2
      */
     enum BookChangeType {
         /**
@@ -44,7 +46,8 @@ export namespace EBookContacts {
     }
 
     /**
-     * Error codes returned by #EBookClient APIs, if an #EClientError was not available.
+     * Error codes returned by `EBookClient` APIs, if an {@link EDataServer.ClientError} was not available.
+     * @gir-type Struct
      */
     class BookClientError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -64,7 +67,7 @@ export namespace EBookContacts {
          */
         static CONTACT_ID_ALREADY_EXISTS: number;
         /**
-         * Referred #ESource does not exist
+         * Referred {@link EDataServer.Source} does not exist
          */
         static NO_SUCH_SOURCE: number;
         /**
@@ -83,10 +86,12 @@ export namespace EBookContacts {
 
     /**
      * Specifies the start position to in the list of traversed contacts
-     * in calls to e_book_client_cursor_step().
+     * in calls to `e_book_client_cursor_step()`.
      *
-     * When an #EBookClientCursor is created, the current position implied by %E_BOOK_CURSOR_ORIGIN_CURRENT
-     * is the same as %E_BOOK_CURSOR_ORIGIN_BEGIN.
+     * When an `EBookClientCursor` is created, the current position implied by {@link EBookContacts.BookCursorOrigin.CURRENT}
+     * is the same as {@link EBookContacts.BookCursorOrigin.BEGIN}.
+     * @gir-type Enum
+     * @since 3.12
      */
     enum BookCursorOrigin {
         /**
@@ -109,6 +114,8 @@ export namespace EBookContacts {
 
     /**
      * Specifies the sort order of an ordered query
+     * @gir-type Enum
+     * @since 3.12
      */
     enum BookCursorSortType {
         /**
@@ -126,7 +133,8 @@ export namespace EBookContacts {
     }
 
     /**
-     * The type of index defined by e_source_backend_summary_setup_set_indexed_fields()
+     * The type of index defined by `e_source_backend_summary_setup_set_indexed_fields()`
+     * @gir-type Enum
      */
     enum BookIndexType {
         /**
@@ -145,15 +153,16 @@ export namespace EBookContacts {
          */
         PHONE,
         /**
-         * Indicates that a given #EContactField should be usable as a sort key.
+         * Indicates that a given {@link EBookContacts.ContactField} should be usable as a sort key.
          */
         SORT_KEY,
     }
 
     /**
-     * The kind of test a query created by e_book_query_field_test() shall perform.
+     * The kind of test a query created by `e_book_query_field_test()` shall perform.
      *
-     * See also: e_phone_number_compare_strings().
+     * See also: `e_phone_number_compare_strings()`.
+     * @gir-type Enum
      */
     enum BookQueryTest {
         /**
@@ -174,41 +183,43 @@ export namespace EBookContacts {
         ENDS_WITH,
         /**
          * check if a field matches with a value tested
-         * using e_phone_number_compare_strings(), the match must be of strenth %E_PHONE_NUMBER_MATCH_EXACT
+         * using `e_phone_number_compare_strings()`, the match must be of strenth {@link EBookContacts.PhoneNumberMatch.EXACT}
          * for this query to return any matches.
          */
         EQUALS_PHONE_NUMBER,
         /**
          * check if a field matches with a value tested
-         * using e_phone_number_compare_strings(), the match must be at least of strength %E_PHONE_NUMBER_MATCH_NATIONAL
+         * using `e_phone_number_compare_strings()`, the match must be at least of strength {@link EBookContacts.PhoneNumberMatch.NATIONAL}
          * for this query to return any matches.
          */
         EQUALS_NATIONAL_PHONE_NUMBER,
         /**
          * check if a field matches with a value tested
-         * using e_phone_number_compare_strings(), the match must be at least of strength %E_PHONE_NUMBER_MATCH_SHORT
+         * using `e_phone_number_compare_strings()`, the match must be at least of strength {@link EBookContacts.PhoneNumberMatch.SHORT}
          * for this query to return any matches.
          */
         EQUALS_SHORT_PHONE_NUMBER,
         /**
-         * A regular expression query against contact data normalized with e_util_utf8_normalize(),
+         * A regular expression query against contact data normalized with `e_util_utf8_normalize()`,
          * the normalized data is lower case with any accents removed.
          */
         REGEX_NORMAL,
         /**
          * A regular expression query against raw contact data, this is usually slower than
-         * a %E_BOOK_QUERY_REGEX_NORMAL as it implies that #EVCard(s) must be parsed in order to get the raw data
+         * a {@link EBookContacts.BookQueryTest.REGEX_NORMAL} as it implies that {@link EBookContacts.VCard}(s) must be parsed in order to get the raw data
          * for comparison.
          */
         REGEX_RAW,
         /**
-         * End marker for the #EBookQueryTest enumeration, not a valid query test.
+         * End marker for the {@link EBookContacts.BookQueryTest} enumeration, not a valid query test.
          */
         LAST,
     }
 
     /**
-     * Status messages used in notifications in the deprecated #EBookView class
+     * Status messages used in notifications in the deprecated `EBookView` class
+     * @gir-type Enum
+     * @deprecated since 3.2: Use `EBookClientView` instead.
      */
     enum BookViewStatus {
         /**
@@ -237,6 +248,9 @@ export namespace EBookContacts {
         ERROR_OTHER_ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ContactField {
         UID,
         FILE_AS,
@@ -393,6 +407,9 @@ export namespace EBookContacts {
         LAST_LABEL_ID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ContactPhotoType {
         INLINED,
         URI,
@@ -400,6 +417,8 @@ export namespace EBookContacts {
 
     /**
      * The origin of a parsed EPhoneNumber's country calling code.
+     * @gir-type Enum
+     * @since 3.8
      */
     enum PhoneNumberCountrySource {
         /**
@@ -421,6 +440,7 @@ export namespace EBookContacts {
 
     /**
      * Numeric description of a phone number related error.
+     * @gir-type Struct
      */
     class PhoneNumberError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -467,6 +487,8 @@ export namespace EBookContacts {
 
     /**
      * The supported formatting rules for phone numbers.
+     * @gir-type Enum
+     * @since 3.8
      */
     enum PhoneNumberFormat {
         /**
@@ -548,6 +570,8 @@ export namespace EBookContacts {
      * </informaltable>
      * </para>
      * </example>
+     * @gir-type Enum
+     * @since 3.8
      */
     enum PhoneNumberMatch {
         /**
@@ -575,6 +599,9 @@ export namespace EBookContacts {
         SHORT,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VCardFormat {
         static $gtype: GObject.GType<VCardFormat>;
 
@@ -587,6 +614,7 @@ export namespace EBookContacts {
     /**
      * Provides comma-separated list of all known categories used by
      * the contacts stored in the book backend.
+     * @since 3.48
      */
     const BOOK_BACKEND_PROPERTY_CATEGORIES: string;
     /**
@@ -594,14 +622,16 @@ export namespace EBookContacts {
      * All of these attributes should be set, otherwise the backend will reject
      * saving the contact.
      *
-     * The e_contact_field_id() can be used to transform the field name
-     * into an #EContactField.
+     * The `e_contact_field_id()` can be used to transform the field name
+     * into an {@link EBookContacts.ContactField}.
+     * @since 3.2
      */
     const BOOK_BACKEND_PROPERTY_REQUIRED_FIELDS: string;
     /**
      * The current overall revision string, this can be used as
      * a quick check to see if data has changed at all since the
      * last time the addressbook revision was observed.
+     * @since 3.4
      */
     const BOOK_BACKEND_PROPERTY_REVISION: string;
     /**
@@ -609,20 +639,30 @@ export namespace EBookContacts {
      * Attributes other than those listed here can be discarded. This can be
      * used to enable/show only supported elements in GUI.
      *
-     * The e_contact_field_id() can be used to transform the field name
-     * into an #EContactField.
+     * The `e_contact_field_id()` can be used to transform the field name
+     * into an {@link EBookContacts.ContactField}.
+     * @since 3.2
      */
     const BOOK_BACKEND_PROPERTY_SUPPORTED_FIELDS: string;
     const EVC_ADR: string;
     const EVC_BDAY: string;
     const EVC_CALURI: string;
     const EVC_CATEGORIES: string;
+    /**
+     * @since 3.2
+     */
     const EVC_CL_UID: string;
+    /**
+     * @since 3.2
+     */
     const EVC_CONTACT_LIST: string;
     const EVC_EMAIL: string;
     const EVC_ENCODING: string;
     const EVC_FBURL: string;
     const EVC_FN: string;
+    /**
+     * @since 1.12
+     */
     const EVC_GEO: string;
     const EVC_ICSCALENDAR: string;
     const EVC_KEY: string;
@@ -633,6 +673,9 @@ export namespace EBookContacts {
     const EVC_NICKNAME: string;
     const EVC_NOTE: string;
     const EVC_ORG: string;
+    /**
+     * @since 3.2
+     */
     const EVC_PARENT_CL: string;
     const EVC_PHOTO: string;
     const EVC_PRODID: string;
@@ -651,6 +694,9 @@ export namespace EBookContacts {
     const EVC_X_ASSISTANT: string;
     const EVC_X_BIRTHDAY: string;
     const EVC_X_BLOG_URL: string;
+    /**
+     * @since 3.6
+     */
     const EVC_X_BOOK_UID: string;
     const EVC_X_CALLBACK: string;
     const EVC_X_COMPANY: string;
@@ -663,133 +709,160 @@ export namespace EBookContacts {
     const EVC_X_E164: string;
     const EVC_X_FILE_AS: string;
     const EVC_X_GADUGADU: string;
+    /**
+     * @since 3.2
+     */
     const EVC_X_GOOGLE_TALK: string;
     const EVC_X_GROUPWISE: string;
     const EVC_X_ICQ: string;
     const EVC_X_JABBER: string;
     const EVC_X_LIST: string;
+    /**
+     * @since 3.2
+     */
     const EVC_X_LIST_NAME: string;
     const EVC_X_LIST_SHOW_ADDRESSES: string;
     const EVC_X_MANAGER: string;
     const EVC_X_MATRIX: string;
     const EVC_X_MSN: string;
     const EVC_X_RADIO: string;
+    /**
+     * @since 2.26
+     */
     const EVC_X_SIP: string;
+    /**
+     * @since 2.26
+     */
     const EVC_X_SKYPE: string;
     const EVC_X_SPOUSE: string;
     const EVC_X_TELEX: string;
     const EVC_X_TTYTDD: string;
     /**
      * Twitter name(s).
+     * @since 3.6
      */
     const EVC_X_TWITTER: string;
     const EVC_X_VIDEO_URL: string;
     const EVC_X_WANTS_HTML: string;
     const EVC_X_YAHOO: string;
     /**
-     * Pass this extension name to e_source_get_extension() to access
-     * #ESourceBackendSummarySetup.  This is also used as a group name in key files.
+     * Pass this extension name to `e_source_get_extension()` to access
+     * {@link EBookContacts.SourceBackendSummarySetup}.  This is also used as a group name in key files.
+     * @since 3.8
      */
     const SOURCE_EXTENSION_BACKEND_SUMMARY_SETUP: string;
     /**
      * FIXME: Document me!
+     * @since 3.4
      */
     const VCARD_21_VALID_PARAMETERS: string;
     /**
      * FIXME: Document me!
+     * @since 3.4
      */
     const VCARD_21_VALID_PROPERTIES: string;
     /**
      * Parses a string representing a mailing address into a
-     * structure of type #EAddressWestern.
+     * structure of type {@link EBookContacts.AddressWestern}.
      * @param in_address a string representing a mailing address
-     * @returns A new #EAddressWestern structure, or %NULL if    the parsing failed or when the @in_address was %NULL.
+     * @returns A new {@link EBookContacts.AddressWestern} structure, or `null` if    the parsing failed or when the `in_address` was `null`.
      */
     function address_western_parse(in_address?: string | null): AddressWestern | null;
+    /**
+     * @param code an {@link EBookContacts.BookClientError} code to create
+     * @param custom_msg custom message to use for the error; can be `null`
+     * @returns a new {@link GLib.Error} containing an E_BOOK_CLIENT_ERROR of the given `code`. If the `custom_msg` is NULL, then the error message is the one returned from `e_book_client_error_to_string()` for the `code`, otherwise the given message is used. Returned pointer should be freed with `g_error_free()`.
+     * @since 3.2
+     */
     function book_client_error_create(code: BookClientError | null, custom_msg?: string | null): GLib.Error;
     function book_client_error_quark(): GLib.Quark;
     /**
      * Get localized human readable description of the given error code.
-     * @param code an #EBookClientError code
+     * @param code an {@link EBookContacts.BookClientError} code
      * @returns Localized human readable description of the given error code
+     * @since 3.2
      */
     function book_client_error_to_string(code: BookClientError | null): string;
     /**
      * Returns whether the `self` considers contacts stored in the ascending order.
-     * @param self an #EBookIndicesUpdater
-     * @returns %TRUE, when considers contacts sorted in ascending order,    %FALSE when in the descending order.
+     * @param self an {@link EBookContacts.BookIndicesUpdater}
+     * @returns `true`, when considers contacts sorted in ascending order,    `false` when in the descending order.
+     * @since 3.50
      */
     function book_indices_get_ascending_sort(self: BookIndicesUpdater): boolean;
     /**
      * Sets whether the contacts are sorted in an ascending order; if not,
      * then they are sorted in the descending order. That influences what
      * indexes the indices have set.
-     * @param self an #EBookIndicesUpdater
+     * @param self an {@link EBookContacts.BookIndicesUpdater}
      * @param ascending_sort the value to set
+     * @since 3.50
      */
     function book_indices_set_ascending_sort(self: BookIndicesUpdater, ascending_sort: boolean): void;
     /**
-     * Create a new #EBookQuery which is the logical AND of the queries in #qs.
+     * Create a new {@link EBookContacts.BookQuery} which is the logical AND of the queries in #qs.
      * @param nqs the number of queries to AND
-     * @param qs pointer to an array of #EBookQuery items
-     * @param unref if %TRUE, the new query takes ownership of the existing queries
-     * @returns A new #EBookQuery
+     * @param qs pointer to an array of {@link EBookContacts.BookQuery} items
+     * @param unref if `true`, the new query takes ownership of the existing queries
+     * @returns A new {@link EBookContacts.BookQuery}
      */
     function book_query_and(nqs: number, qs: BookQuery, unref: boolean): BookQuery;
     /**
-     * Creates a new #EBookQuery which tests if any field contains `value`.
+     * Creates a new {@link EBookContacts.BookQuery} which tests if any field contains `value`.
      * @param value a value
-     * @returns the new #EBookQuery
+     * @returns the new {@link EBookContacts.BookQuery}
      */
     function book_query_any_field_contains(value: string): BookQuery;
     /**
-     * Creates a new #EBookQuery which tests if the field `field` exists.
-     * @param field an #EContactField
-     * @returns the new #EBookQuery
+     * Creates a new {@link EBookContacts.BookQuery} which tests if the field `field` exists.
+     * @param field an {@link EBookContacts.ContactField}
+     * @returns the new {@link EBookContacts.BookQuery}
      */
     function book_query_field_exists(field: ContactField | null): BookQuery;
     /**
-     * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
-     * @param field an #EContactField to test
+     * Creates a new {@link EBookContacts.BookQuery} which tests `field` for `value` using the test `test`.
+     * @param field an {@link EBookContacts.ContactField} to test
      * @param test the test to apply
      * @param value the value to test for
-     * @returns the new #EBookQuery
+     * @returns the new {@link EBookContacts.BookQuery}
      */
     function book_query_field_test(field: ContactField | null, test: BookQueryTest | null, value: string): BookQuery;
     /**
-     * Parse `query_string` and return a new #EBookQuery representing it.
+     * Parse `query_string` and return a new {@link EBookContacts.BookQuery} representing it.
      * @param query_string the query
-     * @returns the new #EBookQuery.
+     * @returns the new {@link EBookContacts.BookQuery}.
      */
     function book_query_from_string(query_string: string): BookQuery;
     /**
-     * Creates a new #EBookQuery which is the logical OR of the queries in #qs.
+     * Creates a new {@link EBookContacts.BookQuery} which is the logical OR of the queries in #qs.
      * @param nqs the number of queries to OR
-     * @param qs pointer to an array of #EBookQuery items
-     * @param unref if %TRUE, the new query takes ownership of the existing queries
-     * @returns A new #EBookQuery
+     * @param qs pointer to an array of {@link EBookContacts.BookQuery} items
+     * @param unref if `true`, the new query takes ownership of the existing queries
+     * @returns A new {@link EBookContacts.BookQuery}
      */
     function book_query_or(nqs: number, qs: BookQuery, unref: boolean): BookQuery;
     /**
-     * Creates a new #EBookQuery which tests if the field `field` exists. `field`
+     * Creates a new {@link EBookContacts.BookQuery} which tests if the field `field` exists. `field`
      * should be a vCard field name, such as #EVC_FN or #EVC_X_MSN.
      * @param field a field name
-     * @returns the new #EBookQuery
+     * @returns the new {@link EBookContacts.BookQuery}
      */
     function book_query_vcard_field_exists(field: string): BookQuery;
     /**
-     * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
+     * Creates a new {@link EBookContacts.BookQuery} which tests `field` for `value` using the test `test`.
      * @param field a EVCard field name to test
      * @param test the test to apply
      * @param value the value to test for
-     * @returns the new #EBookQuery
+     * @returns the new {@link EBookContacts.BookQuery}
+     * @since 2.22
      */
     function book_query_vcard_field_test(field: string, test: BookQueryTest | null, value: string): BookQuery;
     /**
-     * Encodes the #EConflictResolution into the bit-or of #EBookOperationFlags.
-     * The returned value can be bit-or-ed with other #EBookOperationFlags values.
-     * @param conflict_resolution an #EConflictResolution
-     * @returns a bit-or of #EBookOperationFlags, corresponding to the @conflict_resolution
+     * Encodes the {@link EDataServer.ConflictResolution} into the bit-or of {@link EBookContacts.BookOperationFlags}.
+     * The returned value can be bit-or-ed with other {@link EBookContacts.BookOperationFlags} values.
+     * @param conflict_resolution an {@link EDataServer.ConflictResolution}
+     * @returns a bit-or of {@link EBookContacts.BookOperationFlags}, corresponding to the `conflict_resolution`
+     * @since 3.34
      */
     function book_util_conflict_resolution_to_operation_flags(
         conflict_resolution: EDataServer.ConflictResolution | null,
@@ -798,17 +871,18 @@ export namespace EBookContacts {
      * Compares list of categories on the `old_contact` with the list of categories
      * on the `new_contact` and fills `out_added` categories and `out_removed` categories
      * accordingly, as if the `old_contact` is replaced with the `new_contact`. When either
-     * of the contacts is %NULL, it's considered as having no categories set.
-     * Rather than returning empty #GHashTable, the return argument is set to %NULL
+     * of the contacts is `null`, it's considered as having no categories set.
+     * Rather than returning empty {@link GLib.HashTable}, the return argument is set to `null`
      * when there are no added/removed categories.
      *
      * The key of the hash table is the category string, the value is an integer (1).
      * There is used the hash table only for speed.
      *
-     * The returned #GHashTable-s should be freed with g_hash_table_unref(),
+     * The returned {@link GLib.HashTable}-s should be freed with `g_hash_table_unref()`,
      * when no longer needed.
-     * @param old_contact an old #EContact, or %NULL
-     * @param new_contact a new #EContact, or %NULL
+     * @param old_contact an old {@link EBookContacts.Contact}, or `null`
+     * @param new_contact a new {@link EBookContacts.Contact}, or `null`
+     * @since 3.48
      */
     function book_util_diff_categories(
         old_contact: Contact | null,
@@ -818,49 +892,53 @@ export namespace EBookContacts {
      * Parses the `email_address` and calls `func` for each found address.
      * The first parameter of the `func` is the name, the second parameter
      * of the `func` is the email, the third parameters of the `func` is
-     * the `user_data`. The `func` returns %TRUE, to continue processing.
+     * the `user_data`. The `func` returns `true`, to continue processing.
      * @param email_address one or more email addresses as string
-     * @param func a function to call for each email @user_data (closure func): user data passed to @func
+     * @param func a function to call for each email `user_data` (closure func): user data passed to `func`
+     * @since 3.44
      */
     function book_util_foreach_address(email_address: string, func: GLib.HRFunc): void;
     /**
-     * Decodes the #EConflictResolution from the bit-or of #EBookOperationFlags.
-     * @param flags bit-or of #EBookOperationFlags
-     * @returns an #EConflictResolution as stored in the @flags
+     * Decodes the {@link EDataServer.ConflictResolution} from the bit-or of {@link EBookContacts.BookOperationFlags}.
+     * @param flags bit-or of {@link EBookContacts.BookOperationFlags}
+     * @returns an {@link EDataServer.ConflictResolution} as stored in the `flags`
+     * @since 3.34
      */
     function book_util_operation_flags_to_conflict_resolution(flags: number): EDataServer.ConflictResolution;
     /**
      * Copies a list of allocated strings, specifically
-     * for the #EContactAttrList boxed type used for multi valued
+     * for the {@link EBookContacts.ContactAttrList} boxed type used for multi valued
      * contact fields.
-     * @param list A #GList of strings
-     * @returns A copy of @list
+     * @param list A {@link GLib.List} of strings
+     * @returns A copy of `list`
+     * @since 3.8
      */
     function contact_attr_list_copy(list: string[]): string[];
     /**
      * Frees a list of allocated strings, specifically
-     * for the #EContactAttrList boxed type used for multi valued
+     * for the {@link EBookContacts.ContactAttrList} boxed type used for multi valued
      * contact fields.
-     * @param list A #GList of strings
+     * @param list A {@link GLib.List} of strings
+     * @since 3.8
      */
     function contact_attr_list_free(list: string[]): void;
     /**
-     * Creates a new #EContactDate based on `str`.
+     * Creates a new {@link EBookContacts.ContactDate} based on `str`.
      * @param str a date string in the format YYYY-MM-DD or YYYYMMDD
-     * @returns A new #EContactDate struct.
+     * @returns A new {@link EBookContacts.ContactDate} struct.
      */
     function contact_date_from_string(str: string): ContactDate;
     /**
-     * Creates a new #EContactName based on the parsed `name_str`.
+     * Creates a new {@link EBookContacts.ContactName} based on the parsed `name_str`.
      * @param name_str a string representing a contact's full name
-     * @returns A new #EContactName struct.
+     * @returns A new {@link EBookContacts.ContactName} struct.
      */
     function contact_name_from_string(name_str: string): ContactName;
     /**
-     * Parses `full_name` and returns an #ENameWestern struct filled with
+     * Parses `full_name` and returns an {@link EBookContacts.NameWestern} struct filled with
      * the component parts of the name.
      * @param full_name A string containing a western name.
-     * @returns A new #ENameWestern struct.
+     * @returns A new {@link EBookContacts.NameWestern} struct.
      */
     function name_western_parse(full_name: string): NameWestern;
     /**
@@ -868,14 +946,16 @@ export namespace EBookContacts {
      * @param first_number the first EPhoneNumber to compare
      * @param second_number the second EPhoneNumber to compare
      * @returns The quality of matching for the two phone numbers.
+     * @since 3.8
      */
     function phone_number_compare_strings(first_number: string, second_number: string): PhoneNumberMatch;
     /**
      * Compares two phone numbers within the context of `region_code`.
      * @param first_number the first EPhoneNumber to compare
      * @param second_number the second EPhoneNumber to compare
-     * @param region_code a two-letter country code, or %NULL
+     * @param region_code a two-letter country code, or `null`
      * @returns The quality of matching for the two phone numbers.
+     * @since 3.8
      */
     function phone_number_compare_strings_with_region(
         first_number: string,
@@ -890,36 +970,39 @@ export namespace EBookContacts {
      *
      * The two-letter country code passed in `region_code` only is used if the
      * `phone_number` is not written in international format. The application's
-     * default region as returned by e_phone_number_get_default_region() is used
-     * if `region_code` is %NULL.
+     * default region as returned by `e_phone_number_get_default_region()` is used
+     * if `region_code` is `null`.
      *
      * If the number is guaranteed to start with a '+' followed by the country
      * calling code, then "ZZ" can be passed for `region_code`.
      * @param phone_number the phone number to parse
-     * @param region_code a two-letter country code, or %NULL
-     * @returns a new #EPhoneNumber instance on success, or %NULL on error. Call e_phone_number_free() to release this instance.
+     * @param region_code a two-letter country code, or `null`
+     * @returns a new {@link EBookContacts.PhoneNumber} instance on success, or `null` on error. Call `e_phone_number_free()` to release this instance.
+     * @since 3.8
      */
     function phone_number_from_string(phone_number: string, region_code?: string | null): PhoneNumber;
     /**
-     * Retrieves the preferred country calling code for `region_code,`
-     * e.g. 358 for "fi" or 1 for "en_US`UTF-8`".
+     * Retrieves the preferred country calling code for `region_code`,
+     * e.g. 358 for "fi" or 1 for "en_US@UTF-8".
      *
-     * If %NULL is passed for `region_code` the default region as returned by
-     * e_phone_number_get_default_region() is used.
-     * @param region_code a two-letter country code, a locale name, or %NULL
+     * If `null` is passed for `region_code` the default region as returned by
+     * `e_phone_number_get_default_region()` is used.
+     * @param region_code a two-letter country code, a locale name, or `null`
      * @returns a valid country calling code, or zero if an unknown region code was passed.
+     * @since 3.8
      */
     function phone_number_get_country_code_for_region(region_code?: string | null): number;
     /**
      * Retrieves the current two-letter country code that's used by default for
-     * parsing phone numbers in e_phone_number_from_string(). It can be useful
+     * parsing phone numbers in `e_phone_number_from_string()`. It can be useful
      * to store this number before parsing a bigger number of phone numbers.
      *
      * The result of this functions depends on the current setup of the
-     * %LC_ADDRESS category: If that category provides a reasonable value
+     * `LC_ADDRESS` category: If that category provides a reasonable value
      * for %_NL_ADDRESS_COUNTRY_AB2 this value is returned. Otherwise the
-     * locale name configured for %LC_ADDRESS is parsed.
+     * locale name configured for `LC_ADDRESS` is parsed.
      * @returns a newly allocated string containing the current locale's two-letter code for phone number parsing.
+     * @since 3.8
      */
     function phone_number_get_default_region(): string;
     /**
@@ -927,16 +1010,22 @@ export namespace EBookContacts {
      * function before using any of the phone-utils functions to ensure that the
      * required functionality is available, and to pick alternative mechanisms if
      * needed.
-     * @returns %TRUE if phone number support is available.
+     * @returns `true` if phone number support is available.
+     * @since 3.8
      */
     function phone_number_is_supported(): boolean;
+    /**
+     * @gir-type Alias
+     */
     type ContactAttrList = object | null;
     export namespace BookClientViewFlags {
         export const $gtype: GObject.GType<BookClientViewFlags>;
     }
 
     /**
-     * Flags that control the behaviour of an #EBookClientView.
+     * Flags that control the behaviour of an `EBookClientView`.
+     * @gir-type Flags
+     * @since 3.4
      */
     enum BookClientViewFlags {
         /**
@@ -946,14 +1035,14 @@ export namespace EBookContacts {
         /**
          * If this flag is set then all contacts matching the view's query will
          *   be sent as notifications when starting the view, otherwise only future
-         *   changes will be reported.  The default for an #EBookClientView is %TRUE.
+         *   changes will be reported.  The default for an `EBookClientView` is `true`.
          */
         NOTIFY_INITIAL,
         /**
          * Rather than receiving contact changes one-by-one, be notified only
          *   by "content-changed" signal and query contacts by ranges. See
-         *   e_book_client_view_set_sort_fields_sync() for more information.
-         *   The default is %FALSE. Since: 3.50
+         *   `e_book_client_view_set_sort_fields_sync()` for more information.
+         *   The default is `false`. Since: 3.50
          */
         MANUAL_QUERY,
     }
@@ -963,7 +1052,9 @@ export namespace EBookContacts {
     }
 
     /**
-     * Defines the behaviour of e_book_client_cursor_step().
+     * Defines the behaviour of `e_book_client_cursor_step()`.
+     * @gir-type Flags
+     * @since 3.12
      */
     enum BookCursorStepFlags {
         /**
@@ -985,6 +1076,8 @@ export namespace EBookContacts {
      * resolution mode flags cannot be combined together, where the `E_BOOK_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`
      * is the default behavior (and it is used when no other conflict resolution flag is set).
      * The flags can be ignored when the operation or the backend don't support it.
+     * @gir-type Flags
+     * @since 3.34
      */
     enum BookOperationFlags {
         /**
@@ -1029,6 +1122,8 @@ export namespace EBookContacts {
 
     /**
      * An abstract object to handle EBookIndices changes.
+     * @gir-type Class
+     * @since 3.50
      */
     abstract class BookIndicesUpdater extends GObject.Object {
         static $gtype: GObject.GType<BookIndicesUpdater>;
@@ -1050,16 +1145,19 @@ export namespace EBookContacts {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BookIndicesUpdater.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BookIndicesUpdater.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BookIndicesUpdater.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BookIndicesUpdater.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BookIndicesUpdater.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BookIndicesUpdater.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1074,36 +1172,36 @@ export namespace EBookContacts {
          * In case the `uid` had been added previously its index is modified
          * instead.
          *
-         * This function can be used only after initial call to e_book_indices_updater_take_indices().
+         * This function can be used only after initial call to `e_book_indices_updater_take_indices()`.
          * @param uid a UID of a contact
          * @param indices_index index to the indices array the contact belongs to
          * @returns whether the indices changed
          */
         add(uid: string, indices_index: number): boolean;
         /**
-         * Sets the initial indices to be updated by the `self`. If %NULL,
+         * Sets the initial indices to be updated by the `self`. If `null`,
          * then unsets them.
-         * @returns current indices, or %NULL, when none had been set yet
+         * @returns current indices, or `null`, when none had been set yet
          */
         get_indices(): BookIndices | null;
         /**
          * Notifies the `self` that an existing contact with UID `uid` had been removed
          * from the set. Calling the function with `uid` unknown to the `self` does nothing
-         * and returns %FALSE.
+         * and returns `false`.
          *
-         * This function can be used only after initial call to e_book_indices_updater_take_indices().
+         * This function can be used only after initial call to `e_book_indices_updater_take_indices()`.
          * @param uid a UID of a removed contact
          * @returns whether the indices changed
          */
         remove(uid: string): boolean;
         /**
-         * Sets the initial indices to be updated by the `self`. If %NULL,
+         * Sets the initial indices to be updated by the `self`. If `null`,
          * then unsets them. The function always discards data previously
          * gathered about the involved contacts, regardless whether
          * the indices changed or not.
          *
          * The function assumes ownership of the `indices`.
-         * @param indices an #EBookIndices, or %NULL
+         * @param indices an {@link EBookContacts.BookIndices}, or `null`
          * @returns whether the indices changed
          */
         take_indices(indices?: BookIndices | null): boolean;
@@ -1580,6 +1678,9 @@ export namespace EBookContacts {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Contact extends VCard {
         static $gtype: GObject.GType<Contact>;
 
@@ -2111,16 +2212,19 @@ export namespace EBookContacts {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Contact.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Contact.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Contact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2130,41 +2234,41 @@ export namespace EBookContacts {
         // Static methods
 
         /**
-         * Gets the #EContactField corresponding to the `field_name`.
+         * Gets the {@link EBookContacts.ContactField} corresponding to the `field_name`.
          * @param field_name a string representing a contact field
          */
         static field_id(field_name: string): ContactField;
         /**
-         * Gets the #EContactField corresponding to the `vcard_field`.
+         * Gets the {@link EBookContacts.ContactField} corresponding to the `vcard_field`.
          * @param vcard_field a string representing a vCard field
          */
         static field_id_from_vcard(vcard_field: string): ContactField;
         /**
          * Returns whether the `field_id` is of a string type,
-         * thus it can be used with e_contact_get_const().
-         * @param field_id an #EContactField
+         * thus it can be used with `e_contact_get_const()`.
+         * @param field_id an {@link EBookContacts.ContactField}
          */
         static field_is_string(field_id: ContactField): boolean;
         /**
          * Gets the string representation of `field_id`.
-         * @param field_id an #EContactField
+         * @param field_id an {@link EBookContacts.ContactField}
          */
         static field_name(field_id: ContactField): string;
         /**
-         * Gets the #GType used for this contact field, this indicates
-         * what kind of value can be passed to e_contact_set().
-         * @param field_id an #EContactField
+         * Gets the {@link GObject.GType} used for this contact field, this indicates
+         * what kind of value can be passed to `e_contact_set()`.
+         * @param field_id an {@link EBookContacts.ContactField}
          */
         static field_type(field_id: ContactField): GObject.GType;
         /**
          * Gets a human-readable, translated string representation
          * of `field_id`.
-         * @param field_id an #EContactField
+         * @param field_id an {@link EBookContacts.ContactField}
          */
         static pretty_name(field_id: ContactField): string;
         /**
-         * Gets the vcard attribute corresponding to `field_id,` as a string.
-         * @param field_id an #EContactField
+         * Gets the vcard attribute corresponding to `field_id`, as a string.
+         * @param field_id an {@link EBookContacts.ContactField}
          */
         static vcard_attribute(field_id: ContactField): string;
 
@@ -2172,57 +2276,63 @@ export namespace EBookContacts {
 
         /**
          * Creates a copy of `contact`.
-         * @returns A new #EContact identical to @contact.
+         * @returns A new {@link EBookContacts.Contact} identical to `contact`.
          */
         duplicate(): Contact;
         /**
-         * Gets the value of `contact'`s field specified by `field_id`.
-         * @param field_id an #EContactField
-         * @returns Depends on the field's type, owned by the caller. This may be %NULL if the field isn't set.
+         * Gets the value of `contact`'s field specified by `field_id`.
+         * @param field_id an {@link EBookContacts.ContactField}
+         * @returns Depends on the field's type, owned by the caller. This may be `null` if the field isn't set.
          */
         get(field_id: ContactField | null): any | null;
         /**
-         * Gets a list of the vcard attributes for `contact'`s `field_id`.
-         * @param field_id an #EContactField
-         * @returns A #GList of pointers to #EVCardAttribute, owned by the caller.
+         * Gets a list of the vcard attributes for `contact`'s `field_id`.
+         * @param field_id an {@link EBookContacts.ContactField}
+         * @returns A {@link GLib.List} of pointers to {@link EBookContacts.VCardAttribute}, owned by the caller.
          */
         get_attributes(field_id: ContactField | null): VCardAttribute[];
+        /**
+         * @param args
+         */
         // Conflicted with EBookContacts.VCard.get_attributes
         get_attributes(...args: never[]): any;
         /**
-         * Gets a list of the vcard attributes for `contact'`s `field_ids`.
-         * @param field_ids an array of #EContactField
-         * @returns A #GList of pointers to #EVCardAttribute, owned by the caller.
+         * Gets a list of the vcard attributes for `contact`'s `field_ids`.
+         * @param field_ids an array of {@link EBookContacts.ContactField}
+         * @returns A {@link GLib.List} of pointers to {@link EBookContacts.VCardAttribute}, owned by the caller.
          */
         get_attributes_set(field_ids: ContactField[] | null): VCardAttribute[];
         /**
-         * Gets the value of `contact'`s field specified by `field_id,` caching
-         * the result so it can be freed later. Use e_contact_field_is_string()
+         * Gets the value of `contact`'s field specified by `field_id`, caching
+         * the result so it can be freed later. Use `e_contact_field_is_string()`
          * to check whether the field can be used here.
-         * @param field_id an #EContactField
-         * @returns Depends on the field's type, owned by the #EContact.
+         * @param field_id an {@link EBookContacts.ContactField}
+         * @returns Depends on the field's type, owned by the {@link EBookContacts.Contact}.
          */
         get_const(field_id: ContactField | null): any | null;
         /**
-         * Tries to modify any #EContactPhoto fields which are
-         * stored on the local file system as type %E_CONTACT_PHOTO_TYPE_URI
-         * to be inlined and stored as %E_CONTACT_PHOTO_TYPE_INLINED instead.
-         * @returns %TRUE if there were no errors, upon error %FALSE is returned    and @error is set.
+         * Tries to modify any {@link EBookContacts.ContactPhoto} fields which are
+         * stored on the local file system as type {@link EBookContacts.ContactPhotoType.URI}
+         * to be inlined and stored as {@link EBookContacts.ContactPhotoType.INLINED} instead.
+         * @returns `true` if there were no errors, upon error `false` is returned    and `error` is set.
          */
         inline_local_photos(): boolean;
         /**
-         * Sets the value of `contact'`s field specified by `field_id` to `value`.
-         * @param field_id an #EContactField
-         * @param value a value whose type depends on the @field_id
+         * Sets the value of `contact`'s field specified by `field_id` to `value`.
+         * @param field_id an {@link EBookContacts.ContactField}
+         * @param value a value whose type depends on the `field_id`
          */
         set(field_id: ContactField | null, value?: any | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
-         * Sets the vcard attributes for `contact'`s `field_id`.
+         * Sets the vcard attributes for `contact`'s `field_id`.
          * Attributes are added to the contact in the same order as they are in `attributes`.
-         * @param field_id an #EContactField
-         * @param attributes a #GList of pointers to #EVCardAttribute
+         * @param field_id an {@link EBookContacts.ContactField}
+         * @param attributes a {@link GLib.List} of pointers to {@link EBookContacts.VCardAttribute}
          */
         set_attributes(field_id: ContactField | null, attributes: VCardAttribute[]): void;
     }
@@ -2248,6 +2358,8 @@ export namespace EBookContacts {
     /**
      * Contains only private data that should be read and manipulated using the
      * functions below.
+     * @gir-type Class
+     * @since 3.8
      */
     class SourceBackendSummarySetup extends EDataServer.SourceExtension {
         static $gtype: GObject.GType<SourceBackendSummarySetup>;
@@ -2280,16 +2392,19 @@ export namespace EBookContacts {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SourceBackendSummarySetup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SourceBackendSummarySetup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SourceBackendSummarySetup.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2301,21 +2416,21 @@ export namespace EBookContacts {
         // Methods
 
         /**
-         * Fetches the #EContactFields configured to be indexed, with thier respective #EBookIndexTypes.
-         * @returns The array of indexed #EContactFields.
+         * Fetches the `EContactFields` configured to be indexed, with thier respective `EBookIndexTypes`.
+         * @returns The array of indexed `EContactFields`.
          */
         get_indexed_fields(): [ContactField, BookIndexType, number];
         /**
-         * Fetches the #EContactFields which are configured to be a part of the summary.
+         * Fetches the `EContactFields` which are configured to be a part of the summary.
          *
          * <note><para>If there are no configured summary fields, the default configuration is assumed</para></note>
-         * @returns An array of #EContactFields @n_fields long, should be freed with g_free() when done.
+         * @returns An array of `EContactFields` `n_fields` long, should be freed with `g_free()` when done.
          */
         get_summary_fields(): [ContactField, number];
         /**
-         * Defines indexes for quick reference for the given given #EContactFields in the addressbook.
+         * Defines indexes for quick reference for the given given `EContactFields` in the addressbook.
          *
-         * The same #EContactField may be specified multiple times to create multiple indexes
+         * The same {@link EBookContacts.ContactField} may be specified multiple times to create multiple indexes
          * with different characteristics. If an #E_BOOK_INDEX_PREFIX index is created it will
          * be used for #E_BOOK_QUERY_BEGINS_WITH queries. An #E_BOOK_INDEX_SUFFIX index
          * will be constructed efficiently for suffix matching and will be used for
@@ -2324,24 +2439,24 @@ export namespace EBookContacts {
          *
          * <note><para>The specified indexed fields must also be a part of the summary, any indexed fields
          * specified that are not already a part of the summary will be ignored.</para></note>
-         * @param fields The array of #EContactFields to set indexes for
-         * @param types The array of #EBookIndexTypes defining what types of indexes to create
-         * @param n_fields The number elements in the passed @fields, @rule_types and @rules arrays.
+         * @param fields The array of `EContactFields` to set indexes for
+         * @param types The array of `EBookIndexTypes` defining what types of indexes to create
+         * @param n_fields The number elements in the passed `fields`, `rule_types` and `rules` arrays.
          */
         set_indexed_fieldsv(fields: ContactField | null, types: BookIndexType | null, n_fields: number): void;
         /**
          * Sets the summary fields configured for the given addressbook.
          *
-         * The fields %E_CONTACT_UID and %E_CONTACT_REV are not optional,
+         * The fields {@link EBookContacts.ContactField.UID} and {@link EBookContacts.ContactField.REV} are not optional,
          * they will be stored in the summary regardless of the configured summary.
          *
          * An empty summary configuration is assumed to be the default summary
          * configuration.
          *
-         * <note><para>Only #EContactFields with the type #G_TYPE_STRING or #G_TYPE_BOOLEAN
+         * <note><para>Only `EContactFields` with the type #G_TYPE_STRING or #G_TYPE_BOOLEAN
          * are currently supported as summary fields.</para></note>
-         * @param fields The array of #EContactFields to set as summary fields
-         * @param n_fields The number of #EContactFields in @fields
+         * @param fields The array of `EContactFields` to set as summary fields
+         * @param n_fields The number of `EContactFields` in `fields`
          */
         set_summary_fieldsv(fields: ContactField | null, n_fields: number): void;
     }
@@ -2355,6 +2470,9 @@ export namespace EBookContacts {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VCard extends GObject.Object {
         static $gtype: GObject.GType<VCard>;
 
@@ -2379,16 +2497,19 @@ export namespace EBookContacts {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VCard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VCard.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VCard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VCard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VCard.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VCard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2412,54 +2533,54 @@ export namespace EBookContacts {
 
         /**
          * Prepends `attr` to `evc`. This takes ownership of `attr`.
-         * @param attr an #EVCardAttribute to add
+         * @param attr an {@link EBookContacts.VCardAttribute} to add
          */
         add_attribute(attr: VCardAttribute): void;
         /**
-         * Prepends `attr` to `evcard,` setting it to `value`. This takes ownership of
+         * Prepends `attr` to `evcard`, setting it to `value`. This takes ownership of
          * `attr`.
          *
-         * This is a convenience wrapper around e_vcard_attribute_add_value() and
-         * e_vcard_add_attribute().
-         * @param attr an #EVCardAttribute to add
+         * This is a convenience wrapper around `e_vcard_attribute_add_value()` and
+         * `e_vcard_add_attribute()`.
+         * @param attr an {@link EBookContacts.VCardAttribute} to add
          * @param value a value to assign to the attribute
          */
         add_attribute_with_value(attr: VCardAttribute, value: string): void;
         /**
          * Appends `attr` to `evc` to the end of a list of attributes. This takes
          * ownership of `attr`.
-         * @param attr an #EVCardAttribute to append
+         * @param attr an {@link EBookContacts.VCardAttribute} to append
          */
         append_attribute(attr: VCardAttribute): void;
         /**
-         * Appends `attr` to `evcard,` setting it to `value`. This takes ownership of
+         * Appends `attr` to `evcard`, setting it to `value`. This takes ownership of
          * `attr`.
          *
-         * This is a convenience wrapper around e_vcard_attribute_add_value() and
-         * e_vcard_append_attribute().
-         * @param attr an #EVCardAttribute to append
+         * This is a convenience wrapper around `e_vcard_attribute_add_value()` and
+         * `e_vcard_append_attribute()`.
+         * @param attr an {@link EBookContacts.VCardAttribute} to append
          * @param value a value to assign to the attribute
          */
         append_attribute_with_value(attr: VCardAttribute, value: string): void;
         /**
-         * Constructs the existing #EVCard, `evc,` setting its vCard data to `str`.
+         * Constructs the existing {@link EBookContacts.VCard}, `evc`, setting its vCard data to `str`.
          *
          * This modifies `evc`.
          * @param str a vCard string
          */
         construct(str: string): void;
         /**
-         * Similar to e_vcard_construct_with_uid(), but can also
-         * be used with an `str` that is not %NULL terminated.
+         * Similar to `e_vcard_construct_with_uid()`, but can also
+         * be used with an `str` that is not `null` terminated.
          * @param str a vCard string
-         * @param len length of @str, or -1 if @str is %NULL terminated
+         * @param len length of `str`, or -1 if `str` is `null` terminated
          * @param uid a unique ID string
          */
         construct_full(str: string, len: number, uid?: string | null): void;
         /**
-         * Constructs the existing #EVCard, `evc,` setting its vCard data to `str,` and
+         * Constructs the existing {@link EBookContacts.VCard}, `evc`, setting its vCard data to `str`, and
          * adding a new UID attribute with the value given in `uid` (if `uid` is
-         * non-%NULL).
+         * non-`null`).
          *
          * This modifies `evc`.
          * @param str a vCard string
@@ -2467,55 +2588,55 @@ export namespace EBookContacts {
          */
         construct_with_uid(str: string, uid?: string | null): void;
         /**
-         * Prints a dump of `evc'`s structure to stdout. Used for
+         * Prints a dump of `evc`'s structure to stdout. Used for
          * debugging.
          */
         dump_structure(): void;
         /**
-         * Get the attribute `name` from `evc`.  The #EVCardAttribute is owned by
-         * `evcard` and should not be freed. If the attribute does not exist, %NULL is
+         * Get the attribute `name` from `evc`.  The {@link EBookContacts.VCardAttribute} is owned by
+         * `evcard` and should not be freed. If the attribute does not exist, `null` is
          * returned.
          *
          * <note><para>This will only return the <emphasis>first</emphasis> attribute
          * with the given `name`. To get other attributes of that name (for example,
          * other <code>TEL</code> attributes if a contact has multiple telephone
-         * numbers), use e_vcard_get_attributes() and iterate over the list searching
+         * numbers), use `e_vcard_get_attributes()` and iterate over the list searching
          * for matching attributes.</para>
-         * <para>This method iterates over all attributes in the #EVCard, so should not
+         * <para>This method iterates over all attributes in the {@link EBookContacts.VCard}, so should not
          * be called often. If extracting a large number of attributes from a vCard, it
          * is more efficient to iterate once over the list returned by
-         * e_vcard_get_attributes().</para></note>
+         * `e_vcard_get_attributes()`.</para></note>
          * @param name the name of the attribute to get
-         * @returns An #EVCardAttribute if found, or %NULL.
+         * @returns An {@link EBookContacts.VCardAttribute} if found, or `null`.
          */
         get_attribute(name: string): VCardAttribute | null;
         /**
-         * Similar to e_vcard_get_attribute() but this method will not attempt to
+         * Similar to `e_vcard_get_attribute()` but this method will not attempt to
          * parse the vCard if it is not already parsed.
          * @param name the name of the attribute to get
-         * @returns An #EVCardAttribute if found, or %NULL.
+         * @returns An {@link EBookContacts.VCardAttribute} if found, or `null`.
          */
         get_attribute_if_parsed(name: string): VCardAttribute | null;
         /**
          * Gets the list of all attributes from `evcard`. The list and its
-         * contents are owned by `evcard,` and must not be freed.
-         * @returns A list of attributes of type #EVCardAttribute.
+         * contents are owned by `evcard`, and must not be freed.
+         * @returns A list of attributes of type {@link EBookContacts.VCardAttribute}.
          */
         get_attributes(): VCardAttribute[];
         /**
-         * Check if the `evc` has been parsed already, as #EVCard implements lazy parsing
+         * Check if the `evc` has been parsed already, as {@link EBookContacts.VCard} implements lazy parsing
          * of its vCard data. Used for debugging.
-         * @returns %TRUE if @evc has been parsed, %FALSE otherwise.
+         * @returns `true` if `evc` has been parsed, `false` otherwise.
          */
         is_parsed(): boolean;
         /**
          * Removes `attr` from `evc` and frees it. This takes ownership of `attr`.
-         * @param attr an #EVCardAttribute to remove
+         * @param attr an {@link EBookContacts.VCardAttribute} to remove
          */
         remove_attribute(attr: VCardAttribute): void;
         /**
          * Removes all the attributes with group name and attribute name equal to the
-         * passed in values. If `attr_group` is %NULL or an empty string,
+         * passed in values. If `attr_group` is `null` or an empty string,
          * it removes all the attributes with passed in name irrespective of
          * their group names.
          * @param attr_group group name of attributes to be removed
@@ -2529,18 +2650,23 @@ export namespace EBookContacts {
          * @returns A newly allocated string representing the vcard.
          */
         to_string(format: VCardFormat | null): string;
+        /**
+         * @param x_name the attribute name, which starts with "X-"
+         * @returns Value of attribute `x_name`, or `null`,    when there is no such attribute. Free the returned pointer with `g_free()`,    when no longer needed.
+         */
         util_dup_x_attribute(x_name: string): string | null;
         /**
-         * Sets an "X-" attribute `x_name` to value `value` in `vcard,` or
-         * removes it from `vcard,` when `value` is %NULL.
+         * Sets an "X-" attribute `x_name` to value `value` in `vcard`, or
+         * removes it from `vcard`, when `value` is `null`.
          * @param x_name the attribute name, which starts with "X-"
-         * @param value the value to set, or %NULL to unset
+         * @param value the value to set, or `null` to unset
          */
         util_set_x_attribute(x_name: string, value?: string | null): void;
     }
 
     /**
      * Western address structure.
+     * @gir-type Struct
      */
     class AddressWestern {
         static $gtype: GObject.GType<AddressWestern>;
@@ -2573,7 +2699,7 @@ export namespace EBookContacts {
 
         /**
          * Parses a string representing a mailing address into a
-         * structure of type #EAddressWestern.
+         * structure of type {@link EBookContacts.AddressWestern}.
          * @param in_address a string representing a mailing address
          */
         static parse(in_address?: string | null): AddressWestern | null;
@@ -2582,7 +2708,7 @@ export namespace EBookContacts {
 
         /**
          * Creates a copy of `eaw`.
-         * @returns A new #EAddressWestern struct identical to @eaw.
+         * @returns A new {@link EBookContacts.AddressWestern} struct identical to `eaw`.
          */
         copy(): AddressWestern;
         /**
@@ -2592,7 +2718,9 @@ export namespace EBookContacts {
     }
 
     /**
-     * This is a part of the deprecated #EBook API.
+     * This is a part of the deprecated `EBook` API.
+     * @gir-type Struct
+     * @deprecated since 3.2
      */
     class BookChange {
         static $gtype: GObject.GType<BookChange>;
@@ -2605,7 +2733,9 @@ export namespace EBookContacts {
 
     /**
      * This is a structure describing sort settings in the view.
-     * See e_book_client_view_set_sort_fields_sync() for more information.
+     * See `e_book_client_view_set_sort_fields_sync()` for more information.
+     * @gir-type Struct
+     * @since 3.50
      */
     class BookClientViewSortFields {
         static $gtype: GObject.GType<BookClientViewSortFields>;
@@ -2618,7 +2748,9 @@ export namespace EBookContacts {
 
     /**
      * This is a structure describing indices of the contacts in the view.
-     * See e_book_client_view_dup_indices() for more information.
+     * See `e_book_client_view_dup_indices()` for more information.
+     * @gir-type Struct
+     * @since 3.50
      */
     class BookIndices {
         static $gtype: GObject.GType<BookIndices>;
@@ -2641,73 +2773,82 @@ export namespace EBookContacts {
 
         /**
          * Returns whether the `self` considers contacts stored in the ascending order.
-         * @param self an #EBookIndicesUpdater
+         * @param self an {@link EBookContacts.BookIndicesUpdater}
          */
         static get_ascending_sort(self: BookIndicesUpdater): boolean;
         /**
          * Sets whether the contacts are sorted in an ascending order; if not,
          * then they are sorted in the descending order. That influences what
          * indexes the indices have set.
-         * @param self an #EBookIndicesUpdater
+         * @param self an {@link EBookContacts.BookIndicesUpdater}
          * @param ascending_sort the value to set
          */
         static set_ascending_sort(self: BookIndicesUpdater, ascending_sort: boolean): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BookIndicesUpdaterClass = typeof BookIndicesUpdater;
+    /**
+     * @gir-type Struct
+     */
     abstract class BookIndicesUpdaterPrivate {
         static $gtype: GObject.GType<BookIndicesUpdaterPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class BookQuery {
         static $gtype: GObject.GType<BookQuery>;
 
         // Static methods
 
         /**
-         * Create a new #EBookQuery which is the logical AND of the queries in #qs.
+         * Create a new {@link EBookContacts.BookQuery} which is the logical AND of the queries in #qs.
          * @param nqs the number of queries to AND
-         * @param qs pointer to an array of #EBookQuery items
-         * @param unref if %TRUE, the new query takes ownership of the existing queries
+         * @param qs pointer to an array of {@link EBookContacts.BookQuery} items
+         * @param unref if `true`, the new query takes ownership of the existing queries
          */
         static and(nqs: number, qs: BookQuery, unref: boolean): BookQuery;
         /**
-         * Creates a new #EBookQuery which tests if any field contains `value`.
+         * Creates a new {@link EBookContacts.BookQuery} which tests if any field contains `value`.
          * @param value a value
          */
         static any_field_contains(value: string): BookQuery;
         /**
-         * Creates a new #EBookQuery which tests if the field `field` exists.
-         * @param field an #EContactField
+         * Creates a new {@link EBookContacts.BookQuery} which tests if the field `field` exists.
+         * @param field an {@link EBookContacts.ContactField}
          */
         static field_exists(field: ContactField): BookQuery;
         /**
-         * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
-         * @param field an #EContactField to test
+         * Creates a new {@link EBookContacts.BookQuery} which tests `field` for `value` using the test `test`.
+         * @param field an {@link EBookContacts.ContactField} to test
          * @param test the test to apply
          * @param value the value to test for
          */
         static field_test(field: ContactField, test: BookQueryTest, value: string): BookQuery;
         /**
-         * Parse `query_string` and return a new #EBookQuery representing it.
+         * Parse `query_string` and return a new {@link EBookContacts.BookQuery} representing it.
          * @param query_string the query
          */
         static from_string(query_string: string): BookQuery;
         /**
-         * Creates a new #EBookQuery which is the logical OR of the queries in #qs.
+         * Creates a new {@link EBookContacts.BookQuery} which is the logical OR of the queries in #qs.
          * @param nqs the number of queries to OR
-         * @param qs pointer to an array of #EBookQuery items
-         * @param unref if %TRUE, the new query takes ownership of the existing queries
+         * @param qs pointer to an array of {@link EBookContacts.BookQuery} items
+         * @param unref if `true`, the new query takes ownership of the existing queries
          */
         static or(nqs: number, qs: BookQuery, unref: boolean): BookQuery;
         /**
-         * Creates a new #EBookQuery which tests if the field `field` exists. `field`
+         * Creates a new {@link EBookContacts.BookQuery} which tests if the field `field` exists. `field`
          * should be a vCard field name, such as #EVC_FN or #EVC_X_MSN.
          * @param field a field name
          */
         static vcard_field_exists(field: string): BookQuery;
         /**
-         * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
+         * Creates a new {@link EBookContacts.BookQuery} which tests `field` for `value` using the test `test`.
          * @param field a EVCard field name to test
          * @param test the test to apply
          * @param value the value to test for
@@ -2718,18 +2859,18 @@ export namespace EBookContacts {
 
         /**
          * Creates a copy of `q`.
-         * @returns A new #EBookQuery identical to @q.
+         * @returns A new {@link EBookContacts.BookQuery} identical to `q`.
          */
         copy(): BookQuery;
         /**
-         * Creates a new #EBookQuery which is the opposite of #q.
-         * @param unref if %TRUE, the new query takes ownership of the existing queries
-         * @returns the new #EBookQuery
+         * Creates a new {@link EBookContacts.BookQuery} which is the opposite of #q.
+         * @param unref if `true`, the new query takes ownership of the existing queries
+         * @returns the new {@link EBookContacts.BookQuery}
          */
         not(unref: boolean): BookQuery;
         /**
          * Increment the reference count on `q`.
-         * @returns @q
+         * @returns `q`
          */
         ref(): BookQuery;
         /**
@@ -2739,11 +2880,14 @@ export namespace EBookContacts {
         to_string(): string;
         /**
          * Decrement the reference count on `q`. When the reference count reaches 0, `q`
-         * will be freed and any child queries will have e_book_query_unref() called.
+         * will be freed and any child queries will have `e_book_query_unref()` called.
          */
         unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ContactAddress {
         static $gtype: GObject.GType<ContactAddress>;
 
@@ -2783,6 +2927,9 @@ export namespace EBookContacts {
         free(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ContactCert {
         static $gtype: GObject.GType<ContactCert>;
 
@@ -2810,7 +2957,13 @@ export namespace EBookContacts {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContactClass = typeof Contact;
+    /**
+     * @gir-type Struct
+     */
     class ContactDate {
         static $gtype: GObject.GType<ContactDate>;
 
@@ -2835,7 +2988,7 @@ export namespace EBookContacts {
         // Static methods
 
         /**
-         * Creates a new #EContactDate based on `str`.
+         * Creates a new {@link EBookContacts.ContactDate} based on `str`.
          * @param str a date string in the format YYYY-MM-DD or YYYYMMDD
          */
         static from_string(str: string): ContactDate;
@@ -2844,8 +2997,8 @@ export namespace EBookContacts {
 
         /**
          * Checks if `dt1` and `dt2` are the same date.
-         * @param dt2 an #EContactDate
-         * @returns %TRUE if @dt1 and @dt2 are equal, %FALSE otherwise.
+         * @param dt2 an {@link EBookContacts.ContactDate}
+         * @returns `true` if `dt1` and `dt2` are equal, `false` otherwise.
          */
         equal(dt2: ContactDate): boolean;
         /**
@@ -2860,6 +3013,10 @@ export namespace EBookContacts {
         to_string(): string;
     }
 
+    /**
+     * @gir-type Struct
+     * @since 1.12
+     */
     class ContactGeo {
         static $gtype: GObject.GType<ContactGeo>;
 
@@ -2887,6 +3044,9 @@ export namespace EBookContacts {
         free(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ContactName {
         static $gtype: GObject.GType<ContactName>;
 
@@ -2915,7 +3075,7 @@ export namespace EBookContacts {
         // Static methods
 
         /**
-         * Creates a new #EContactName based on the parsed `name_str`.
+         * Creates a new {@link EBookContacts.ContactName} based on the parsed `name_str`.
          * @param name_str a string representing a contact's full name
          */
         static from_string(name_str: string): ContactName;
@@ -2924,7 +3084,7 @@ export namespace EBookContacts {
 
         /**
          * Creates a copy of `n`.
-         * @returns A new #EContactName identical to @n.
+         * @returns A new {@link EBookContacts.ContactName} identical to `n`.
          */
         copy(): ContactName;
         /**
@@ -2933,11 +3093,14 @@ export namespace EBookContacts {
         free(): void;
         /**
          * Generates a string representation of `name`.
-         * @returns The string representation of @name.
+         * @returns The string representation of `name`.
          */
         to_string(): string;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ContactPhoto {
         static $gtype: GObject.GType<ContactPhoto>;
 
@@ -2959,7 +3122,7 @@ export namespace EBookContacts {
 
         /**
          * Creates a copy of `photo`.
-         * @returns A new #EContactPhoto struct identical to @photo.
+         * @returns A new {@link EBookContacts.ContactPhoto} struct identical to `photo`.
          */
         copy(): ContactPhoto;
         /**
@@ -2967,41 +3130,47 @@ export namespace EBookContacts {
          */
         free(): void;
         /**
-         * Gets the `photo'`s data.
-         * @returns the inlined image in the #EContactPhoto, or %NULL if it has not been set.
+         * Gets the `photo`'s data.
+         * @returns the inlined image in the {@link EBookContacts.ContactPhoto}, or `null` if it has not been set.
          */
         get_inlined(): Uint8Array | null;
         /**
-         * Gets the `photo'`s mime type.
-         * @returns the MIME type of the image, or %NULL if it has not been set.
+         * Gets the `photo`'s mime type.
+         * @returns the MIME type of the image, or `null` if it has not been set.
          */
         get_mime_type(): string | null;
         /**
-         * Gets the `photo'`s URI.
-         * @returns the URI of the image, or %NULL if it has not been set
+         * Gets the `photo`'s URI.
+         * @returns the URI of the image, or `null` if it has not been set
          */
         get_uri(): string | null;
         /**
-         * Sets the `photo'`s inlined data.
+         * Sets the `photo`'s inlined data.
          * @param data the inlined image data
          */
         set_inlined(data: Uint8Array | string): void;
         /**
-         * Sets the `photo'`s mime type.
+         * Sets the `photo`'s mime type.
          * @param mime_type the mime type
          */
         set_mime_type(mime_type: string): void;
         /**
-         * Sets the `photo'`s URI.
-         * @param uri the @photo's URI
+         * Sets the `photo`'s URI.
+         * @param uri the `photo`'s URI
          */
         set_uri(uri: string): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class ContactPrivate {
         static $gtype: GObject.GType<ContactPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class NameWestern {
         static $gtype: GObject.GType<NameWestern>;
 
@@ -3032,7 +3201,7 @@ export namespace EBookContacts {
         // Static methods
 
         /**
-         * Parses `full_name` and returns an #ENameWestern struct filled with
+         * Parses `full_name` and returns an {@link EBookContacts.NameWestern} struct filled with
          * the component parts of the name.
          * @param full_name A string containing a western name.
          */
@@ -3042,7 +3211,7 @@ export namespace EBookContacts {
 
         /**
          * Creates a copy of `w`.
-         * @returns A new #ENameWestern struct identical to @w.
+         * @returns A new {@link EBookContacts.NameWestern} struct identical to `w`.
          */
         copy(): NameWestern;
         /**
@@ -3053,7 +3222,9 @@ export namespace EBookContacts {
 
     /**
      * This opaque type describes a parsed phone number. It can be copied using
-     * e_phone_number_copy(). To release it call e_phone_number_free().
+     * `e_phone_number_copy()`. To release it call `e_phone_number_free()`.
+     * @gir-type Struct
+     * @since 3.8
      */
     abstract class PhoneNumber {
         static $gtype: GObject.GType<PhoneNumber>;
@@ -3070,7 +3241,7 @@ export namespace EBookContacts {
          * Compares two phone numbers within the context of `region_code`.
          * @param first_number the first EPhoneNumber to compare
          * @param second_number the second EPhoneNumber to compare
-         * @param region_code a two-letter country code, or %NULL
+         * @param region_code a two-letter country code, or `null`
          */
         static compare_strings_with_region(
             first_number: string,
@@ -3085,33 +3256,33 @@ export namespace EBookContacts {
          *
          * The two-letter country code passed in `region_code` only is used if the
          * `phone_number` is not written in international format. The application's
-         * default region as returned by e_phone_number_get_default_region() is used
-         * if `region_code` is %NULL.
+         * default region as returned by `e_phone_number_get_default_region()` is used
+         * if `region_code` is `null`.
          *
          * If the number is guaranteed to start with a '+' followed by the country
          * calling code, then "ZZ" can be passed for `region_code`.
          * @param phone_number the phone number to parse
-         * @param region_code a two-letter country code, or %NULL
+         * @param region_code a two-letter country code, or `null`
          */
         static from_string(phone_number: string, region_code?: string | null): PhoneNumber;
         /**
-         * Retrieves the preferred country calling code for `region_code,`
-         * e.g. 358 for "fi" or 1 for "en_US`UTF-8`".
+         * Retrieves the preferred country calling code for `region_code`,
+         * e.g. 358 for "fi" or 1 for "en_US@UTF-8".
          *
-         * If %NULL is passed for `region_code` the default region as returned by
-         * e_phone_number_get_default_region() is used.
-         * @param region_code a two-letter country code, a locale name, or %NULL
+         * If `null` is passed for `region_code` the default region as returned by
+         * `e_phone_number_get_default_region()` is used.
+         * @param region_code a two-letter country code, a locale name, or `null`
          */
         static get_country_code_for_region(region_code?: string | null): number;
         /**
          * Retrieves the current two-letter country code that's used by default for
-         * parsing phone numbers in e_phone_number_from_string(). It can be useful
+         * parsing phone numbers in `e_phone_number_from_string()`. It can be useful
          * to store this number before parsing a bigger number of phone numbers.
          *
          * The result of this functions depends on the current setup of the
-         * %LC_ADDRESS category: If that category provides a reasonable value
+         * `LC_ADDRESS` category: If that category provides a reasonable value
          * for %_NL_ADDRESS_COUNTRY_AB2 this value is returned. Otherwise the
-         * locale name configured for %LC_ADDRESS is parsed.
+         * locale name configured for `LC_ADDRESS` is parsed.
          */
         static get_default_region(): string;
         /**
@@ -3132,7 +3303,7 @@ export namespace EBookContacts {
         compare(second_number: PhoneNumber): PhoneNumberMatch;
         /**
          * Makes a copy of `phone_number`.
-         * @returns A newly allocated EPhoneNumber instance. Call e_phone_number_free() to release this instance.
+         * @returns A newly allocated EPhoneNumber instance. Call `e_phone_number_free()` to release this instance.
          */
         copy(): PhoneNumber;
         /**
@@ -3140,10 +3311,10 @@ export namespace EBookContacts {
          */
         free(): void;
         /**
-         * Queries the `phone_number'`s country calling code and optionally stores the country
+         * Queries the `phone_number`'s country calling code and optionally stores the country
          * calling code's origin in `source`. For instance when parsing "+1-617-5423789" this
          * function would return one and assing E_PHONE_NUMBER_COUNTRY_FROM_FQTN to `source`.
-         * @param source an optional location for storing the phone number's origin, or %NULL
+         * @param source an optional location for storing the phone number's origin, or `null`
          * @returns A valid country calling code, or zero if no code is known.
          */
         get_country_code(source?: (PhoneNumberCountrySource | null) | null): number;
@@ -3151,22 +3322,31 @@ export namespace EBookContacts {
          * Queries the national portion of `phone_number` without any call-out
          * prefixes. For instance when parsing "+1-617-5423789" this function would
          * return the string "6175423789".
-         * @returns The national portion of @phone_number.
+         * @returns The national portion of `phone_number`.
          */
         get_national_number(): string;
         /**
          * Describes the `phone_number` according to the rules applying to `format`.
          * @param format the phone number format to apply
-         * @returns A formatted string for @phone_number.
+         * @returns A formatted string for `phone_number`.
          */
         to_string(format: PhoneNumberFormat | null): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SourceBackendSummarySetupClass = typeof SourceBackendSummarySetup;
+    /**
+     * @gir-type Struct
+     */
     abstract class SourceBackendSummarySetupPrivate {
         static $gtype: GObject.GType<SourceBackendSummarySetupPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VCardAttribute {
         static $gtype: GObject.GType<VCardAttribute>;
 
@@ -3179,34 +3359,34 @@ export namespace EBookContacts {
         // Methods
 
         /**
-         * Prepends `param` to `attr'`s list of parameters. This takes ownership of
+         * Prepends `param` to `attr`'s list of parameters. This takes ownership of
          * `param` (and all its values).
          *
          * Duplicate parameters have their values merged, so that all parameter names
          * in `attr` are unique. Values are also merged so that uniqueness is preserved.
-         * @param param an #EVCardAttributeParam to add
+         * @param param an {@link EBookContacts.VCardAttributeParam} to add
          */
         add_param(param: VCardAttributeParam): void;
         /**
-         * Appends `value` to `param,` then prepends `param` to `attr`. This takes ownership
-         * of `param,` but not of `value`.
+         * Appends `value` to `param`, then prepends `param` to `attr`. This takes ownership
+         * of `param`, but not of `value`.
          *
-         * This is a convenience method for e_vcard_attribute_param_add_value() and
-         * e_vcard_attribute_add_param().
-         * @param param an #EVCardAttributeParam
+         * This is a convenience method for `e_vcard_attribute_param_add_value()` and
+         * `e_vcard_attribute_add_param()`.
+         * @param param an {@link EBookContacts.VCardAttributeParam}
          * @param value a string value
          */
         add_param_with_value(param: VCardAttributeParam, value: string): void;
         /**
-         * Appends `value` to `attr'`s list of values.
+         * Appends `value` to `attr`'s list of values.
          * @param value a string value
          */
         add_value(value: string): void;
         /**
-         * Encodes `value` according to the encoding used for `attr,` and appends it to
-         * `attr'`s list of values.
+         * Encodes `value` according to the encoding used for `attr`, and appends it to
+         * `attr`'s list of values.
          *
-         * This should only be used if the #EVCardAttribute has a non-raw encoding (i.e.
+         * This should only be used if the {@link EBookContacts.VCardAttribute} has a non-raw encoding (i.e.
          * if it’s encoded in base-64 or quoted-printable encoding).
          * @param value an encoded value
          * @param len the length of the encoded value, in bytes
@@ -3214,7 +3394,7 @@ export namespace EBookContacts {
         add_value_decoded(value: string, len: number): void;
         /**
          * Makes a copy of `attr`.
-         * @returns A new #EVCardAttribute identical to @attr.
+         * @returns A new {@link EBookContacts.VCardAttribute} identical to `attr`.
          */
         copy(): VCardAttribute;
         /**
@@ -3223,7 +3403,7 @@ export namespace EBookContacts {
         free(): void;
         /**
          * Gets the group name of `attr`.
-         * @returns The attribute's group name, or %NULL.
+         * @returns The attribute's group name, or `null`.
          */
         get_group(): string | null;
         /**
@@ -3233,70 +3413,70 @@ export namespace EBookContacts {
         get_name(): string;
         /**
          * Gets the list of values for the paramater `name` from `attr`. The list and its
-         * contents are owned by `attr,` and must not be freed. If no parameter with the
-         * given `name` exists, %NULL is returned.
+         * contents are owned by `attr`, and must not be freed. If no parameter with the
+         * given `name` exists, `null` is returned.
          * @param name a parameter name
-         * @returns A list of string elements representing the parameter's values, or %NULL.
+         * @returns A list of string elements representing the parameter's values, or `null`.
          */
         get_param(name: string): string[] | null;
         /**
-         * Gets the list of parameters (of type #EVCardAttributeParam) from `attr`. The
-         * list and its contents are owned by `attr,` and must not be freed.
-         * @returns A list of elements of type #EVCardAttributeParam.
+         * Gets the list of parameters (of type {@link EBookContacts.VCardAttributeParam}) from `attr`. The
+         * list and its contents are owned by `attr`, and must not be freed.
+         * @returns A list of elements of type {@link EBookContacts.VCardAttributeParam}.
          */
         get_params(): VCardAttributeParam[];
         /**
-         * Gets the value of a single-valued #EVCardAttribute, `attr`.
+         * Gets the value of a single-valued {@link EBookContacts.VCardAttribute}, `attr`.
          *
          * For example, for a <code>FN</code> (full name) attribute, this will
          * return the contact’s full name as a single string.
          *
-         * This will print a warning if called on an #EVCardAttribute which is not
-         * single-valued (i.e. for which e_vcard_attribute_is_single_valued() returns
-         * %FALSE). Use e_vcard_attribute_get_values() in such cases instead.
-         * @returns A newly allocated string representing the value, or %NULL if the attribute has no value.
+         * This will print a warning if called on an {@link EBookContacts.VCardAttribute} which is not
+         * single-valued (i.e. for which `e_vcard_attribute_is_single_valued()` returns
+         * `false`). Use `e_vcard_attribute_get_values()` in such cases instead.
+         * @returns A newly allocated string representing the value, or `null` if the attribute has no value.
          */
         get_value(): string | null;
         /**
-         * Gets the value of a single-valued #EVCardAttribute, `attr,` decoding
+         * Gets the value of a single-valued {@link EBookContacts.VCardAttribute}, `attr`, decoding
          * it if necessary according to the encoding given in the vCard’s
          * <code>ENCODING</code> attribute.
          *
-         * This will print a warning if called on an #EVCardAttribute which is not
-         * single-valued (i.e. for which e_vcard_attribute_is_single_valued() returns
-         * %FALSE). Use e_vcard_attribute_get_values_decoded() in such cases instead.
-         * @returns A newly allocated #GString representing the value, or %NULL if the attribute has no value.
+         * This will print a warning if called on an {@link EBookContacts.VCardAttribute} which is not
+         * single-valued (i.e. for which `e_vcard_attribute_is_single_valued()` returns
+         * `false`). Use `e_vcard_attribute_get_values_decoded()` in such cases instead.
+         * @returns A newly allocated {@link GLib.String} representing the value, or `null` if the attribute has no value.
          */
         get_value_decoded(): GLib.String | null;
         /**
          * Gets the ordered list of values from `attr`. The list and its
-         * contents are owned by `attr,` and must not be freed.
+         * contents are owned by `attr`, and must not be freed.
          *
          * For example, for an <code>ADR</code> (postal address) attribute, this will
          * return the components of the postal address.
          *
          * This may be called on a single-valued attribute (i.e. one for which
-         * e_vcard_attribute_is_single_valued() returns %TRUE) and will return a
+         * `e_vcard_attribute_is_single_valued()` returns `true`) and will return a
          * one-element list in that case. Alternatively, use
-         * e_vcard_attribute_get_value() in such cases.
-         * @returns A list of string values. They will all be non-%NULL, but may be empty strings. The list itself may be empty.
+         * `e_vcard_attribute_get_value()` in such cases.
+         * @returns A list of string values. They will all be non-`null`, but may be empty strings. The list itself may be empty.
          */
         get_values(): string[];
         /**
-         * Gets the ordered list of values from `attr,` decoding them if
+         * Gets the ordered list of values from `attr`, decoding them if
          * necessary according to the encoding given in the vCard’s
          * <code>ENCODING</code> attribute. The list and its contents are owned by
-         * `attr,` and must not be freed.
+         * `attr`, and must not be freed.
          *
          * This may be called on a single-valued attribute (i.e. one for which
-         * e_vcard_attribute_is_single_valued() returns %TRUE) and will return a
+         * `e_vcard_attribute_is_single_valued()` returns `true`) and will return a
          * one-element list in that case. Alternatively, use
-         * e_vcard_attribute_get_value_decoded() in such cases.
-         * @returns A list of values of type #GString.
+         * `e_vcard_attribute_get_value_decoded()` in such cases.
+         * @returns A list of values of type {@link GLib.String}.
          */
         get_values_decoded(): GLib.String[];
         /**
-         * Checks if `attr` has an #EVCardAttributeParam with name %EVC_TYPE and `typestr`
+         * Checks if `attr` has an {@link EBookContacts.VCardAttributeParam} with name `EVC_TYPE` and `typestr`
          * as one of its values.
          *
          * For example, for the vCard attribute:
@@ -3316,12 +3496,12 @@ export namespace EBookContacts {
          *
          * Comparisons against `typestr` are case-insensitive.
          * @param typestr a string representing the type
-         * @returns %TRUE if such a parameter exists, %FALSE otherwise.
+         * @returns `true` if such a parameter exists, `false` otherwise.
          */
         has_type(typestr: string): boolean;
         /**
          * Checks if `attr` has a single value.
-         * @returns %TRUE if the attribute has exactly one value, %FALSE otherwise.
+         * @returns `true` if the attribute has exactly one value, `false` otherwise.
          */
         is_single_valued(): boolean;
         /**
@@ -3333,7 +3513,7 @@ export namespace EBookContacts {
         remove_param(param_name: string): void;
         /**
          * Removes the value `s` from the parameter `param_name` on the attribute `attr`.
-         * If `s` was the only value for parameter `param_name,` that parameter is removed
+         * If `s` was the only value for parameter `param_name`, that parameter is removed
          * entirely from `attr` and freed.
          * @param param_name a parameter name
          * @param s a value
@@ -3342,7 +3522,7 @@ export namespace EBookContacts {
         /**
          * Removes and frees all parameters from `attr`.
          *
-         * This also resets the #EVCardAttribute's encoding back to raw.
+         * This also resets the {@link EBookContacts.VCardAttribute}'s encoding back to raw.
          */
         remove_params(): void;
         /**
@@ -3356,6 +3536,9 @@ export namespace EBookContacts {
         remove_values(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VCardAttributeParam {
         static $gtype: GObject.GType<VCardAttributeParam>;
 
@@ -3368,13 +3551,13 @@ export namespace EBookContacts {
         // Methods
 
         /**
-         * Appends `value` to `param'`s list of values.
+         * Appends `value` to `param`'s list of values.
          * @param value a string value to add
          */
         add_value(value: string): void;
         /**
          * Makes a copy of `param` and all its values.
-         * @returns a new #EVCardAttributeParam identical to @param.
+         * @returns a new {@link EBookContacts.VCardAttributeParam} identical to `param`.
          */
         copy(): VCardAttributeParam;
         /**
@@ -3391,13 +3574,13 @@ export namespace EBookContacts {
          * ```
          *
          * this would return <code>TYPE</code> (which is string-equivalent to
-         * %EVC_TYPE).
+         * `EVC_TYPE`).
          * @returns The name of the parameter.
          */
         get_name(): string;
         /**
          * Gets the list of values from `param`. The list and its
-         * contents are owned by `param,` and must not be freed.
+         * contents are owned by `param`, and must not be freed.
          *
          * For example, for the <code>TYPE</code> parameter of the vCard attribute:
          *
@@ -3415,7 +3598,13 @@ export namespace EBookContacts {
         remove_values(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VCardClass = typeof VCard;
+    /**
+     * @gir-type Struct
+     */
     abstract class VCardPrivate {
         static $gtype: GObject.GType<VCardPrivate>;
     }

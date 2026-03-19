@@ -57,44 +57,47 @@ export namespace ClapperGtk {
      * ClapperGtk runtime major version component
      *
      * This returns the ClapperGtk library version your code is
-     * running against unlike [const`ClapperGtk`.MAJOR_VERSION]
+     * running against unlike {@link ClapperGtk.MAJOR_VERSION}
      * which represents compile time version.
      * @returns the major version number of the ClapperGtk library
+     * @since 0.10
      */
     function get_major_version(): number;
     /**
      * ClapperGtk runtime micro version component
      *
      * This returns the ClapperGtk library version your code is
-     * running against unlike [const`ClapperGtk`.MICRO_VERSION]
+     * running against unlike {@link ClapperGtk.MICRO_VERSION}
      * which represents compile time version.
      * @returns the micro version number of the ClapperGtk library
+     * @since 0.10
      */
     function get_micro_version(): number;
     /**
      * ClapperGtk runtime minor version component
      *
      * This returns the ClapperGtk library version your code is
-     * running against unlike [const`ClapperGtk`.MINOR_VERSION]
+     * running against unlike {@link ClapperGtk.MINOR_VERSION}
      * which represents compile time version.
      * @returns the minor version number of the ClapperGtk library
+     * @since 0.10
      */
     function get_minor_version(): number;
     /**
-     * Get [class`Clapper`.Player] used by [class`ClapperGtk`.Av] ancestor of `widget`.
+     * Get {@link Clapper.Player} used by {@link ClapperGtk.Av} ancestor of `widget`.
      *
-     * This utility is a convenience wrapper for calling [method`Gtk`.Widget.get_ancestor]
-     * of type `CLAPPER_GTK_TYPE_AV` and [method`ClapperGtk`.Av.get_player] with
-     * additional %NULL checking and type casting.
+     * This utility is a convenience wrapper for calling {@link Gtk.Widget.get_ancestor}
+     * of type `CLAPPER_GTK_TYPE_AV` and {@link ClapperGtk.Av.get_player} with
+     * additional `null` checking and type casting.
      *
      * This is meant to be used mainly for custom widget development as an easy access to the
-     * underlying parent [class`Clapper`.Player] object. If you want to get the player from
-     * [class`ClapperGtk`.Av] widget itself, use [method`ClapperGtk`.Av.get_player] instead.
+     * underlying parent {@link Clapper.Player} object. If you want to get the player from
+     * {@link ClapperGtk.Av} widget itself, use {@link ClapperGtk.Av.get_player} instead.
      *
-     * Rememeber that this function will return %NULL when widget does not have
-     * a [class`ClapperGtk`.Av] ancestor in widget hierarchy (widget is not yet placed).
-     * @param widget a #GtkWidget
-     * @returns a #ClapperPlayer from ancestor of a @widget.
+     * Rememeber that this function will return `null` when widget does not have
+     * a {@link ClapperGtk.Av} ancestor in widget hierarchy (widget is not yet placed).
+     * @param widget a {@link Gtk.Widget}
+     * @returns a {@link Clapper.Player} from ancestor of a `widget`.
      */
     function get_player_from_ancestor(widget: Gtk.Widget): Clapper.Player | null;
     function get_resource(): Gio.Resource;
@@ -102,15 +105,19 @@ export namespace ClapperGtk {
      * ClapperGtk runtime version as string
      *
      * This returns the ClapperGtk library version your code is
-     * running against unlike [const`ClapperGtk`.VERSION_S]
+     * running against unlike {@link ClapperGtk.VERSION_S}
      * which represents compile time version.
      * @returns the version of the ClapperGtk library as string
+     * @since 0.10
      */
     function get_version_s(): string;
     export namespace VideoActionMask {
         export const $gtype: GObject.GType<VideoActionMask>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum VideoActionMask {
         /**
          * No action
@@ -197,31 +204,31 @@ export namespace ClapperGtk {
     /**
      * A GTK widget for audio playback with Clapper API.
      *
-     * #ClapperGtkAudio is a widget meant for integrating audio playback
-     * within GTK application. It exposes [class`Clapper`.Player] through its
-     * base class [property`ClapperGtk`.Av:player] property.
+     * {@link ClapperGtk.Audio} is a widget meant for integrating audio playback
+     * within GTK application. It exposes {@link Clapper.Player} through its
+     * base class {@link ClapperGtk.Av.player} property.
      *
      * Other widgets (buttons, seek bar, etc.) provided by `ClapperGtk` library, once placed
-     * anywhere inside audio container (including nesting within another widget like [class`Gtk`.Box])
-     * will automatically control #ClapperGtkAudio they are within. This allows to freely create
+     * anywhere inside audio container (including nesting within another widget like {@link Gtk.Box})
+     * will automatically control {@link ClapperGtk.Audio} they are within. This allows to freely create
      * custom UI best suited for specific application.
      *
      * # Basic usage
      *
      * A typical use case is to embed audio widget as part of your app where audio playback
-     * is needed (can be even the very first child of the window). Get the [class`Clapper`.Player]
-     * belonging to the AV widget and start adding new [class`Clapper`.MediaItem] items to the
-     * [class`Clapper`.Queue] for playback. For more information please refer to the Clapper
+     * is needed (can be even the very first child of the window). Get the {@link Clapper.Player}
+     * belonging to the AV widget and start adding new {@link Clapper.MediaItem} items to the
+     * {@link Clapper.Queue} for playback. For more information please refer to the Clapper
      * playback library documentation.
      *
      * # Actions
      *
-     * You can use built-in actions of parent [class`ClapperGtk`.Av].
+     * You can use built-in actions of parent {@link ClapperGtk.Av}.
      * See its documentation for the list of available ones.
      *
      * # ClapperGtkAudio as GtkBuildable
      *
-     * #ClapperGtkAudio implementation of the [iface`Gtk`.Buildable] interface supports
+     * {@link ClapperGtk.Audio} implementation of the {@link Gtk.Buildable} interface supports
      * placing a single widget (which might then hold multiple widgets) as `<child>` element.
      *
      * ```xml
@@ -242,6 +249,8 @@ export namespace ClapperGtk {
      *   </child>
      * </object>
      * ```
+     * @gir-type Class
+     * @since 0.10
      */
     class Audio extends Av implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Audio>;
@@ -249,7 +258,7 @@ export namespace ClapperGtk {
         // Properties
 
         /**
-         * The child widget of `ClapperGtkAudio`.
+         * The child widget of {@link ClapperGtk.Audio}.
          */
         get child(): Gtk.Widget;
         set child(val: Gtk.Widget);
@@ -273,16 +282,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Audio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Audio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Audio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Audio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -292,17 +304,15 @@ export namespace ClapperGtk {
         // Methods
 
         /**
-         * Get a child #GtkWidget of `audio`.
-         * @returns #GtkWidget set as child.
+         * Get a child {@link Gtk.Widget} of `audio`.
+         * @returns {@link Gtk.Widget} set as child.
          */
         get_child(): Gtk.Widget | null;
         /**
-         * Set a child #GtkWidget of `audio`.
-         * @param child a #GtkWidget
+         * Set a child {@link Gtk.Widget} of `audio`.
+         * @param child a {@link Gtk.Widget}
          */
         set_child(child?: Gtk.Widget | null): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -316,32 +326,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -350,39 +360,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -393,13 +403,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -407,7 +420,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -415,9 +428,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -437,9 +450,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -453,33 +466,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -512,21 +525,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -536,8 +549,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -554,10 +567,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -572,13 +585,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -609,21 +622,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -633,33 +646,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -668,6 +682,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -676,12 +691,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -690,20 +707,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -715,6 +734,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -806,11 +826,11 @@ export namespace ClapperGtk {
     /**
      * A base class for GTK audio and video widgets.
      *
-     * See its descendants: [class`ClapperGtk`.Audio] and [class`ClapperGtk`.Video].
+     * See its descendants: {@link ClapperGtk.Audio} and {@link ClapperGtk.Video}.
      *
      * # Actions
      *
-     * #ClapperGtkAv defines a set of built-in actions:
+     * {@link ClapperGtk.Av} defines a set of built-in actions:
      *
      * ```yaml
      * - "av.toggle-play": toggle play/pause
@@ -831,6 +851,8 @@ export namespace ClapperGtk {
      * - "av.next-item": select next item in queue
      * - "av.select-item": select item at specified index in queue (variant "u")
      * ```
+     * @gir-type Class
+     * @since 0.10
      */
     class Av extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Av>;
@@ -852,7 +874,7 @@ export namespace ClapperGtk {
          */
         get inhibited(): boolean;
         /**
-         * A #ClapperPlayer used by widget.
+         * A {@link Clapper.Player} used by widget.
          */
         get player(): Clapper.Player;
 
@@ -873,16 +895,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Av.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Av.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Av.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Av.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Av.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Av.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -893,18 +918,18 @@ export namespace ClapperGtk {
 
         /**
          * Get whether automatic session inhibit is enabled.
-         * @returns %TRUE if enabled, %FALSE otherwise.
+         * @returns `true` if enabled, `false` otherwise.
          */
         get_auto_inhibit(): boolean;
         /**
          * Get whether session is currently inhibited by
-         * [property`ClapperGtk`.Av:auto-inhibit].
-         * @returns %TRUE if inhibited, %FALSE otherwise.
+         * {@link ClapperGtk.Av.auto_inhibit}.
+         * @returns `true` if inhibited, `false` otherwise.
          */
         get_inhibited(): boolean;
         /**
-         * Get #ClapperPlayer used by this #ClapperGtkAv instance.
-         * @returns a #ClapperPlayer used by widget.
+         * Get {@link Clapper.Player} used by this {@link ClapperGtk.Av} instance.
+         * @returns a {@link Clapper.Player} used by widget.
          */
         get_player(): Clapper.Player;
         /**
@@ -913,24 +938,22 @@ export namespace ClapperGtk {
          * @param inhibit whether to enable automatic session inhibit
          */
         set_auto_inhibit(inhibit: boolean): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -965,7 +988,7 @@ export namespace ClapperGtk {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -984,9 +1007,9 @@ export namespace ClapperGtk {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -1012,7 +1035,7 @@ export namespace ClapperGtk {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -1031,7 +1054,7 @@ export namespace ClapperGtk {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -1040,7 +1063,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -1051,7 +1074,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -1062,7 +1085,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -1074,41 +1097,47 @@ export namespace ClapperGtk {
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -1116,18 +1145,20 @@ export namespace ClapperGtk {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -1138,10 +1169,11 @@ export namespace ClapperGtk {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -1151,9 +1183,10 @@ export namespace ClapperGtk {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -1163,39 +1196,44 @@ export namespace ClapperGtk {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -1211,32 +1249,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1245,39 +1283,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1288,13 +1326,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1302,7 +1343,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1310,9 +1351,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1332,9 +1373,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1348,33 +1389,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1407,21 +1448,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1431,8 +1472,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1449,10 +1490,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1467,13 +1508,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1504,21 +1545,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1528,33 +1569,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1563,6 +1605,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1571,12 +1614,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1585,20 +1630,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1610,6 +1657,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1696,15 +1744,16 @@ export namespace ClapperGtk {
     /**
      * A layer where various messages can be displayed.
      *
-     * #ClapperGtkBillboard widget is meant to be overlaid on top of
-     * [class`ClapperGtk`.Video] as a normal (non-fading) overlay.
+     * {@link ClapperGtk.Billboard} widget is meant to be overlaid on top of
+     * {@link ClapperGtk.Video} as a normal (non-fading) overlay.
      *
      * It is used to display various messages/announcements and later
      * takes care of fading them on its own.
      *
      * If automatic volume/speed change notifications when their values do
      * change are desired, functions for announcing them can be run in callbacks
-     * to corresponding property notify signals on the [class`Clapper`.Player].
+     * to corresponding property notify signals on the {@link Clapper.Player}.
+     * @gir-type Class
      */
     class Billboard extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Billboard>;
@@ -1728,16 +1777,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Billboard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Billboard.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Billboard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Billboard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Billboard.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Billboard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1764,7 +1816,7 @@ export namespace ClapperGtk {
          * Pins a permanent message on the `billboard`.
          *
          * The message will stay on the `billboard` until a
-         * [method`ClapperGtk`.Billboard.unpin_pinned_message] is called.
+         * {@link ClapperGtk.Billboard.unpin_pinned_message} is called.
          * @param icon_name an icon name
          * @param message a message text
          */
@@ -1785,8 +1837,6 @@ export namespace ClapperGtk {
          * so it is safe to call when unsure.
          */
         unpin_pinned_message(): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1800,32 +1850,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1834,39 +1884,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1877,13 +1927,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1891,7 +1944,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1899,9 +1952,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1921,9 +1974,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1937,33 +1990,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1996,21 +2049,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2020,8 +2073,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2038,10 +2091,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2056,13 +2109,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2093,21 +2146,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2117,33 +2170,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2152,6 +2206,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2160,12 +2215,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2174,20 +2231,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2199,6 +2258,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2231,6 +2291,11 @@ export namespace ClapperGtk {
     namespace Container {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * A helper signal for implementing mobile/narrow adaptive
+             * behavior on descendants.
+             * @signal
+             */
             adapt: (arg0: boolean) => void;
             'notify::adaptive-height': (pspec: GObject.ParamSpec) => void;
             'notify::adaptive-width': (pspec: GObject.ParamSpec) => void;
@@ -2305,8 +2370,9 @@ export namespace ClapperGtk {
      * a limited maximal width/height.
      *
      * If you need to have more then single widget as child, place a widget that
-     * can hold multiple children such as [class`Gtk`.Box] as a single conatiner child
+     * can hold multiple children such as {@link Gtk.Box} as a single conatiner child
      * and then your widgets into that child.
+     * @gir-type Class
      */
     class Container extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Container>;
@@ -2314,22 +2380,22 @@ export namespace ClapperGtk {
         // Properties
 
         /**
-         * Adaptive height threshold that triggers [signal`ClapperGtk`.Container::adapt] signal.
+         * Adaptive height threshold that triggers `ClapperGtk.Container::adapt` signal.
          */
         get adaptive_height(): number;
         set adaptive_height(val: number);
         /**
-         * Adaptive height threshold that triggers [signal`ClapperGtk`.Container::adapt] signal.
+         * Adaptive height threshold that triggers `ClapperGtk.Container::adapt` signal.
          */
         get adaptiveHeight(): number;
         set adaptiveHeight(val: number);
         /**
-         * Adaptive width threshold that triggers [signal`ClapperGtk`.Container::adapt] signal.
+         * Adaptive width threshold that triggers `ClapperGtk.Container::adapt` signal.
          */
         get adaptive_width(): number;
         set adaptive_width(val: number);
         /**
-         * Adaptive width threshold that triggers [signal`ClapperGtk`.Container::adapt] signal.
+         * Adaptive width threshold that triggers `ClapperGtk.Container::adapt` signal.
          */
         get adaptiveWidth(): number;
         set adaptiveWidth(val: number);
@@ -2373,16 +2439,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Container.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Container.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Container.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Container.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Container.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Container.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2402,8 +2471,8 @@ export namespace ClapperGtk {
          */
         get_adaptive_width(): number;
         /**
-         * Get a child #GtkWidget of `container`.
-         * @returns #GtkWidget set as child.
+         * Get a child {@link Gtk.Widget} of `container`.
+         * @returns {@link Gtk.Widget} set as child.
          */
         get_child(): Gtk.Widget | null;
         /**
@@ -2418,27 +2487,27 @@ export namespace ClapperGtk {
         get_width_target(): number;
         /**
          * Set an adaptive height threshold. When widget is resized to value or lower,
-         * an [signal`ClapperGtk`.Container::adapt] signal will be emitted with %TRUE to
-         * notify implementation about mobile adaptation request, otherwise %FALSE when
+         * an `ClapperGtk.Container::adapt` signal will be emitted with `true` to
+         * notify implementation about mobile adaptation request, otherwise `false` when
          * both threshold values are exceeded.
          * @param height a threshold on which adapt signal should be triggered or -1 to disable.
          */
         set_adaptive_height(height: number): void;
         /**
          * Set an adaptive width threshold. When widget is resized to value or lower,
-         * an [signal`ClapperGtk`.Container::adapt] signal will be emitted with %TRUE to
-         * notify implementation about mobile adaptation request, otherwise %FALSE when
+         * an `ClapperGtk.Container::adapt` signal will be emitted with `true` to
+         * notify implementation about mobile adaptation request, otherwise `false` when
          * both threshold values are exceeded.
          * @param width a threshold on which adapt signal should be triggered or -1 to disable.
          */
         set_adaptive_width(width: number): void;
         /**
-         * Set a child #GtkWidget of `container`.
-         * @param child a #GtkWidget
+         * Set a child {@link Gtk.Widget} of `container`.
+         * @param child a {@link Gtk.Widget}
          */
         set_child(child: Gtk.Widget): void;
         /**
-         * Same as clapper_gtk_container_set_width_target() but for widget height.
+         * Same as `clapper_gtk_container_set_width_target()` but for widget height.
          * @param height height to target or -1 to restore default behavior
          */
         set_height_target(height: number): void;
@@ -2449,24 +2518,22 @@ export namespace ClapperGtk {
          * @param width width to target -1 to restore default behavior
          */
         set_width_target(width: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -2501,7 +2568,7 @@ export namespace ClapperGtk {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -2520,9 +2587,9 @@ export namespace ClapperGtk {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -2548,7 +2615,7 @@ export namespace ClapperGtk {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -2567,7 +2634,7 @@ export namespace ClapperGtk {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -2576,7 +2643,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2587,7 +2654,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2598,7 +2665,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2610,41 +2677,47 @@ export namespace ClapperGtk {
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -2652,18 +2725,20 @@ export namespace ClapperGtk {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -2674,10 +2749,11 @@ export namespace ClapperGtk {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -2687,9 +2763,10 @@ export namespace ClapperGtk {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -2699,39 +2776,44 @@ export namespace ClapperGtk {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -2747,32 +2829,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2781,39 +2863,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2824,13 +2906,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2838,7 +2923,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2846,9 +2931,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2868,9 +2953,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2884,33 +2969,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2943,21 +3028,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2967,8 +3052,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2985,10 +3070,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3003,13 +3088,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3040,21 +3125,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3064,33 +3149,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3099,6 +3185,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3107,12 +3194,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3121,20 +3210,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3146,6 +3237,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3178,6 +3270,25 @@ export namespace ClapperGtk {
     namespace ExtraMenuButton {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * A signal that user wants to open subtitles file.
+             *
+             * Implementation should add a way for user to select subtitles to open
+             * such as by e.g. using {@link Gtk.FileDialog} and then add them to the
+             * `item` using {@link Clapper.MediaItem.set_suburi} method.
+             *
+             * This signal will pass the {@link Clapper.MediaItem} that was current when
+             * user clicked the open button and subtitles should be added to this `item`.
+             * This avoids situations where another item starts playing before user selects
+             * subtitles file to be opened. When using asynchronous operations to open file,
+             * implementation should {@link GObject.Object.ref} the item to ensure that it
+             * stays valid until finish.
+             *
+             * Note that this signal will not be emitted if open button is not visible by
+             * setting {@link ClapperGtk.ExtraMenuButton.set_can_open_subtitles} to `true`,
+             * so you do not have to implement handler for it otherwise.
+             * @signal
+             */
             'open-subtitles': (arg0: Clapper.MediaItem) => void;
             'notify::can-open-subtitles': (pspec: GObject.ParamSpec) => void;
             'notify::speed-visible': (pspec: GObject.ParamSpec) => void;
@@ -3239,6 +3350,7 @@ export namespace ClapperGtk {
 
     /**
      * A menu button with extra options.
+     * @gir-type Class
      */
     class ExtraMenuButton extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<ExtraMenuButton>;
@@ -3295,16 +3407,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExtraMenuButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtraMenuButton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExtraMenuButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExtraMenuButton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExtraMenuButton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExtraMenuButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3315,24 +3430,24 @@ export namespace ClapperGtk {
 
         /**
          * Get whether an option to open external subtitle stream inside popover is visible.
-         * @returns %TRUE if open subtitles is visible, %FALSE otherwise.
+         * @returns `true` if open subtitles is visible, `false` otherwise.
          */
         get_can_open_subtitles(): boolean;
         /**
          * Get whether speed control inside popover is visible.
-         * @returns %TRUE if speed control is visible, %FALSE otherwise.
+         * @returns `true` if speed control is visible, `false` otherwise.
          */
         get_speed_visible(): boolean;
         /**
          * Get whether volume control inside popover is visible.
-         * @returns TRUE if volume control is visible, %FALSE otherwise.
+         * @returns TRUE if volume control is visible, `false` otherwise.
          */
         get_volume_visible(): boolean;
         /**
          * Set whether an option to open external subtitle stream should be allowed.
          *
-         * Note that this [class`Gtk`.Widget] can only add subtitles to currently playing
-         * [class`Clapper`.MediaItem]. When no media is selected, option to open subtitles
+         * Note that this {@link Gtk.Widget} can only add subtitles to currently playing
+         * {@link Clapper.MediaItem}. When no media is selected, option to open subtitles
          * will not be shown regardless how this option is set.
          * @param allowed whether opening subtitles should be allowed
          */
@@ -3347,24 +3462,22 @@ export namespace ClapperGtk {
          * @param visible whether visible
          */
         set_volume_visible(visible: boolean): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -3399,7 +3512,7 @@ export namespace ClapperGtk {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -3418,9 +3531,9 @@ export namespace ClapperGtk {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -3446,7 +3559,7 @@ export namespace ClapperGtk {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -3465,7 +3578,7 @@ export namespace ClapperGtk {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -3474,7 +3587,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3485,7 +3598,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3496,7 +3609,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3508,41 +3621,47 @@ export namespace ClapperGtk {
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -3550,18 +3669,20 @@ export namespace ClapperGtk {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -3572,10 +3693,11 @@ export namespace ClapperGtk {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -3585,9 +3707,10 @@ export namespace ClapperGtk {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -3597,39 +3720,44 @@ export namespace ClapperGtk {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -3645,32 +3773,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3679,39 +3807,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3722,13 +3850,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3736,7 +3867,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3744,9 +3875,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3766,9 +3897,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3782,33 +3913,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3841,21 +3972,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3865,8 +3996,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3883,10 +4014,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3901,13 +4032,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3938,21 +4069,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3962,33 +4093,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3997,6 +4129,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4005,12 +4138,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4019,20 +4154,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4044,6 +4181,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4134,18 +4272,19 @@ export namespace ClapperGtk {
     }
 
     /**
-     * A #ClapperGtkContainer that can take priority in user interactions with the #ClapperGtkVideo.
+     * A {@link ClapperGtk.Container} that can take priority in user interactions with the {@link ClapperGtk.Video}.
      *
-     * #ClapperGtkLeadContainer is a special type of [class`ClapperGtk`.Container] that can
+     * {@link ClapperGtk.LeadContainer} is a special type of {@link ClapperGtk.Container} that can
      * lead in interaction events. When "leading", it is assumed that user interactions
      * over it which would normally trigger actions can be blocked/ignored when set in mask
      * of actions that this widget should block.
      *
      * This kind of container is useful when creating some statically visible overlays
-     * covering top of [class`ClapperGtk`.Video] that you want to take priority instead of
+     * covering top of {@link ClapperGtk.Video} that you want to take priority instead of
      * triggering default actions such as toggle play on click or revealing fading overlays.
      *
-     * For more info how container widget works see [class`ClapperGtk`.Container] documentation.
+     * For more info how container widget works see {@link ClapperGtk.Container} documentation.
+     * @gir-type Class
      */
     class LeadContainer extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<LeadContainer>;
@@ -4187,16 +4326,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LeadContainer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LeadContainer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LeadContainer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LeadContainer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LeadContainer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LeadContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4212,13 +4354,13 @@ export namespace ClapperGtk {
         get_blocked_actions(): VideoActionMask;
         /**
          * Get a whenever `lead_container` has leadership set.
-         * @returns %TRUE if container is leading, %FALSE otherwise.
+         * @returns `true` if container is leading, `false` otherwise.
          */
         get_leading(): boolean;
         /**
-         * Set `actions` that #ClapperGtkVideo should skip when #GdkEvent which
+         * Set `actions` that {@link ClapperGtk.Video} should skip when {@link Gdk.Event} which
          * would normally trigger them happens inside `lead_container`.
-         * @param actions a #ClapperGtkVideoActionMask of actions to block
+         * @param actions a {@link ClapperGtk.VideoActionMask} of actions to block
          */
         set_blocked_actions(actions: VideoActionMask | null): void;
         /**
@@ -4229,8 +4371,6 @@ export namespace ClapperGtk {
          * @param leading enable leadership
          */
         set_leading(leading: boolean): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4244,32 +4384,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4278,39 +4418,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4321,13 +4461,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4335,7 +4478,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4343,9 +4486,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4365,9 +4508,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4381,33 +4524,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4440,21 +4583,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4464,8 +4607,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4482,10 +4625,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4500,13 +4643,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4537,21 +4680,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4561,33 +4704,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4596,6 +4740,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4604,12 +4749,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4618,20 +4765,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4643,6 +4792,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4732,7 +4882,8 @@ export namespace ClapperGtk {
     }
 
     /**
-     * A #GtkButton for selecting next queue item.
+     * A {@link Gtk.Button} for selecting next queue item.
+     * @gir-type Class
      */
     class NextItemButton
         extends Gtk.Button
@@ -4759,40 +4910,45 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NextItemButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NextItemButton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NextItemButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NextItemButton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NextItemButton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NextItemButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The name of the action with which this widget should be associated.
+         * @category Inherited from Gtk.Actionable
          */
         get action_name(): string;
         set action_name(val: string);
         /**
          * The name of the action with which this widget should be associated.
+         * @category Inherited from Gtk.Actionable
          */
         get actionName(): string;
         set actionName(val: string);
         /**
          * The target value of the actionable widget's action.
+         * @category Inherited from Gtk.Actionable
          */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
         /**
          * The target value of the actionable widget's action.
+         * @category Inherited from Gtk.Actionable
          */
         get actionTarget(): GLib.Variant;
         set actionTarget(val: GLib.Variant);
@@ -4802,6 +4958,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
         set can_focus(val: boolean);
@@ -4811,26 +4968,31 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
         set canTarget(val: boolean);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get css_classes(): string[];
         set css_classes(val: string[]);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get cssClasses(): string[];
         set cssClasses(val: string[]);
@@ -4839,6 +5001,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
         /**
@@ -4846,10 +5009,12 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
         /**
          * The cursor used by `widget`.
+         * @category Inherited from Gtk.Widget
          */
         get cursor(): Gdk.Cursor;
         set cursor(val: Gdk.Cursor);
@@ -4857,6 +5022,7 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
         set focus_on_click(val: boolean);
@@ -4864,52 +5030,61 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
         set has_tooltip(val: boolean);
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
@@ -4917,6 +5092,7 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
         set height_request(val: number);
@@ -4924,39 +5100,45 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layout_manager(): Gtk.LayoutManager;
         set layout_manager(val: Gtk.LayoutManager);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layoutManager(): Gtk.LayoutManager;
         set layoutManager(val: Gtk.LayoutManager);
@@ -4966,7 +5148,9 @@ export namespace ClapperGtk {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
         set limit_events(val: boolean);
@@ -4976,7 +5160,9 @@ export namespace ClapperGtk {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
         set limitEvents(val: boolean);
@@ -4985,7 +5171,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
         set margin_bottom(val: number);
@@ -4994,7 +5181,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
         set marginBottom(val: number);
@@ -5006,7 +5194,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
         set margin_end(val: number);
@@ -5018,7 +5207,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
         set marginEnd(val: number);
@@ -5030,7 +5220,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
         set margin_start(val: number);
@@ -5042,7 +5233,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
         set marginStart(val: number);
@@ -5051,7 +5243,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
         set margin_top(val: number);
@@ -5060,17 +5253,20 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
@@ -5079,39 +5275,47 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
-         * The `GtkRoot` widget of the widget tree containing this widget.
+         * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
         set sensitive(val: boolean);
@@ -5119,16 +5323,17 @@ export namespace ClapperGtk {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_markup(): string;
         set tooltip_markup(val: string);
@@ -5136,73 +5341,81 @@ export namespace ClapperGtk {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipMarkup(): string;
         set tooltipMarkup(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_text(): string;
         set tooltip_text(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipText(): string;
         set tooltipText(val: string);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -5210,6 +5423,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
         set width_request(val: number);
@@ -5217,11 +5431,10 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
         set widthRequest(val: number);
-
-        // Inherited methods
         /**
          * Gets the action name for `actionable`.
          * @returns the action name
@@ -5236,15 +5449,15 @@ export namespace ClapperGtk {
          * Specifies the name of the action with which this widget should be
          * associated.
          *
-         * If `action_name` is %NULL then the widget will be unassociated from
+         * If `action_name` is `null` then the widget will be unassociated from
          * any previous action.
          *
          * Usually this function is used when the widget is located (or will be
-         * located) within the hierarchy of a `GtkApplicationWindow`.
+         * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          *
          * Names are of the form “win.save” or “app.quit” for actions on the
-         * containing [class`ApplicationWindow]` or its associated [class`Application]`,
-         * respectively. This is the same form used for actions in the [class`Gio`.Menu]
+         * containing {@link ApplicationWindow} or its associated {@link Application},
+         * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name
          */
@@ -5252,14 +5465,14 @@ export namespace ClapperGtk {
         /**
          * Sets the target value of an actionable widget.
          *
-         * If `target_value` is %NULL then the target value is unset.
+         * If `target_value` is `null` then the target value is unset.
          *
          * The target value has two purposes. First, it is used as the parameter
-         * to activation of the action associated with the `GtkActionable` widget.
+         * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
          * “active” — the widget is active if the state is equal to the given target.
          *
-         * Consider the example of associating a set of buttons with a [iface`Gio`.Action]
+         * Consider the example of associating a set of buttons with a {@link Gio.Action}
          * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
@@ -5268,7 +5481,7 @@ export namespace ClapperGtk {
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
-         * @param target_value a [struct@GLib.Variant] to set as the target value
+         * @param target_value a {@link GLib.Variant} to set as the target value
          */
         set_action_target_value(target_value?: GLib.Variant | null): void;
         /**
@@ -5276,46 +5489,49 @@ export namespace ClapperGtk {
          * actionable widget.
          *
          * `detailed_action_name` is a string in the format accepted by
-         * [func`Gio`.Action.parse_detailed_name].
+         * {@link Gio.Action.parse_detailed_name}.
          * @param detailed_action_name the detailed action name
          */
         set_detailed_action_name(detailed_action_name: string): void;
         /**
          * Gets the action name for `actionable`.
+         * @virtual
          */
         vfunc_get_action_name(): string | null;
         /**
          * Gets the current target value of `actionable`.
+         * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant | null;
         /**
          * Specifies the name of the action with which this widget should be
          * associated.
          *
-         * If `action_name` is %NULL then the widget will be unassociated from
+         * If `action_name` is `null` then the widget will be unassociated from
          * any previous action.
          *
          * Usually this function is used when the widget is located (or will be
-         * located) within the hierarchy of a `GtkApplicationWindow`.
+         * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          *
          * Names are of the form “win.save” or “app.quit” for actions on the
-         * containing [class`ApplicationWindow]` or its associated [class`Application]`,
-         * respectively. This is the same form used for actions in the [class`Gio`.Menu]
+         * containing {@link ApplicationWindow} or its associated {@link Application},
+         * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name
+         * @virtual
          */
         vfunc_set_action_name(action_name?: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
-         * If `target_value` is %NULL then the target value is unset.
+         * If `target_value` is `null` then the target value is unset.
          *
          * The target value has two purposes. First, it is used as the parameter
-         * to activation of the action associated with the `GtkActionable` widget.
+         * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
          * “active” — the widget is active if the state is equal to the given target.
          *
-         * Consider the example of associating a set of buttons with a [iface`Gio`.Action]
+         * Consider the example of associating a set of buttons with a {@link Gio.Action}
          * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
@@ -5324,7 +5540,8 @@ export namespace ClapperGtk {
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
-         * @param target_value a [struct@GLib.Variant] to set as the target value
+         * @param target_value a {@link GLib.Variant} to set as the target value
+         * @virtual
          */
         vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
         /**
@@ -5340,32 +5557,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5374,39 +5591,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5417,13 +5634,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5431,7 +5651,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5439,9 +5659,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5461,9 +5681,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5477,33 +5697,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5536,21 +5756,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -5560,8 +5780,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5578,10 +5798,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5596,13 +5816,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5633,21 +5853,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5657,33 +5877,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5692,6 +5913,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5700,12 +5922,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5714,20 +5938,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5739,6 +5965,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5768,7 +5995,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): void;
         /**
          * Enables or disables an action installed with
-         * [method`Gtk`.WidgetClass.install_action].
+         * {@link Gtk.WidgetClass.install_action}.
          * @param action_name action name, such as "clipboard.paste"
          * @param enabled whether the action is now enabled
          */
@@ -5777,15 +6004,15 @@ export namespace ClapperGtk {
          * Activates the widget.
          *
          * The activation will emit the signal set using
-         * [method`Gtk`.WidgetClass.set_activate_signal]
+         * {@link Gtk.WidgetClass.set_activate_signal}
          * during class initialization.
          *
          * Activation is what happens when you press <kbd>Enter</kbd>
          * on a widget.
          *
          * If you wish to handle the activation keybinding yourself,
-         * it is recommended to use [method`Gtk`.WidgetClass.add_shortcut]
-         * with an action created with [ctor`Gtk`.SignalAction.new].
+         * it is recommended to use {@link Gtk.WidgetClass.add_shortcut}
+         * with an action created with {@link Gtk.SignalAction.new}.
          *
          * If `widget` is not activatable, the function returns false.
          * @returns true if the widget was activated
@@ -5798,12 +6025,12 @@ export namespace ClapperGtk {
          * `widget` and its ancestors.
          *
          * If the action is in an action group added with
-         * [method`Gtk`.Widget.insert_action_group], the `name` is expected
+         * {@link Gtk.Widget.insert_action_group}, the `name` is expected
          * to be prefixed with the prefix that was used when the group was
          * inserted.
          *
          * The arguments must match the actions expected parameter type,
-         * as returned by [method`Gio`.Action.get_parameter_type].
+         * as returned by {@link Gio.Action.get_parameter_type}.
          * @param name the name of the action to activate
          * @param args parameters to use
          * @returns true if the action was activated
@@ -5813,7 +6040,7 @@ export namespace ClapperGtk {
          * Activates the `default.activate` action for the widget.
          *
          * The action is looked up in the same was as for
-         * [method`Gtk`.Widget.activate_action].
+         * {@link Gtk.Widget.activate_action}.
          */
         activate_default(): void;
         /**
@@ -5823,7 +6050,7 @@ export namespace ClapperGtk {
          * propagated to the widget.
          *
          * You will usually want to call this function right after
-         * creating any kind of [class`Gtk`.EventController].
+         * creating any kind of {@link Gtk.EventController}.
          * @param controller an event controller that hasn't been   added to a widget yet
          */
         add_controller(controller: Gtk.EventController): void;
@@ -5831,22 +6058,22 @@ export namespace ClapperGtk {
          * Adds a style class to the widget.
          *
          * After calling this function, the widget’s style will match
-         * for `css_class,` according to CSS matching rules.
+         * for `css_class`, according to CSS matching rules.
          *
-         * Use [method`Gtk`.Widget.remove_css_class] to remove the
+         * Use {@link Gtk.Widget.remove_css_class} to remove the
          * style again.
-         * @param css_class style class to add to @widget, without the leading period
+         * @param css_class style class to add to `widget`, without the leading period
          */
         add_css_class(css_class: string): void;
         /**
          * Adds a widget to the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * Note that the list of mnemonic labels for the widget is cleared
          * when the widget is destroyed, so the caller must make sure
          * to update its internal state at this point as well.
-         * @param label a widget that acts as a mnemonic label for @widget
+         * @param label a widget that acts as a mnemonic label for `widget`
          */
         add_mnemonic_label(label: Gtk.Widget): void;
         /**
@@ -5862,20 +6089,20 @@ export namespace ClapperGtk {
          * The tick callback does not automatically imply a relayout or repaint.
          * If you want a repaint or relayout, and aren’t changing widget properties
          * that would trigger that (for example, changing the text of a label),
-         * then you will have to call [method`Gtk`.Widget.queue_resize] or
-         * [method`Gtk`.Widget.queue_draw] yourself.
+         * then you will have to call {@link Gtk.Widget.queue_resize} or
+         * {@link Gtk.Widget.queue_draw} yourself.
          *
-         * [method`Gdk`.FrameClock.get_frame_time] should generally be used
+         * {@link Gdk.FrameClock.get_frame_time} should generally be used
          * for timing continuous animations and
-         * [method`Gdk`.FrameTimings.get_predicted_presentation_time] should be
+         * {@link Gdk.FrameTimings.get_predicted_presentation_time} should be
          * used if you are trying to display isolated frames at particular times.
          *
          * This is a more convenient alternative to connecting directly to the
-         * [signal`Gdk`.FrameClock::update] signal of the frame clock, since you
+         * `Gdk.FrameClock::update` signal of the frame clock, since you
          * don't have to worry about when a frame clock is assigned to a widget.
          *
          * To remove a tick callback, pass the ID that is returned by this function
-         * to [method`Gtk`.Widget.remove_tick_callback].
+         * to {@link Gtk.Widget.remove_tick_callback}.
          * @param callback function   to call for updating animations
          * @returns an ID for this callback
          */
@@ -5891,7 +6118,7 @@ export namespace ClapperGtk {
          * This function is only used by widget implementations.
          *
          * For a version that does not take a transform, see
-         * [method`Gtk`.Widget.size_allocate].
+         * {@link Gtk.Widget.size_allocate}.
          * @param width new width
          * @param height new height
          * @param baseline new baseline, or -1
@@ -5905,7 +6132,7 @@ export namespace ClapperGtk {
          * The `direction` argument indicates what kind of motion is taking
          * place (up, down, left, right, tab forward, tab backward).
          *
-         * This function calls the [vfunc`Gtk`.Widget.focus] virtual function;
+         * This function calls the {@link Gtk.Widget.focus} virtual function;
          * widgets can override the virtual function in order to implement
          * appropriate focus behavior.
          *
@@ -5913,14 +6140,14 @@ export namespace ClapperGtk {
          * true if moving in `direction` left the focus on a focusable location
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
-         * [method`Gtk`.Widget.grab_focus] to place the focus accordingly;
+         * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
          * when returning false, they don’t modify the current focus location.
          *
          * This function is used by custom widget implementations; if you're
-         * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
+         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
-         * @returns true if focus ended up inside @widget
+         * @returns true if focus ended up inside `widget`
          */
         child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
@@ -5931,7 +6158,7 @@ export namespace ClapperGtk {
          * overview to learn more.
          *
          * If the operation is successful, true is returned. If `widget` has no
-         * bounds or the bounds cannot be expressed in `target'`s coordinate space
+         * bounds or the bounds cannot be expressed in `target`'s coordinate space
          * (for example if both widgets are in different windows), false is
          * returned and `bounds` is set to the zero rectangle.
          *
@@ -5945,7 +6172,7 @@ export namespace ClapperGtk {
          * extra space when possible.
          *
          * Widgets with children should check this, rather than looking at
-         * [method`Gtk`.Widget.get_hexpand] or [method`Gtk`.Widget.get_vexpand].
+         * {@link Gtk.Widget.get_hexpand} or {@link Gtk.Widget.get_vexpand}.
          *
          * This function already checks whether the widget is visible, so
          * visibility does not need to be checked separately. Non-visible
@@ -5959,20 +6186,20 @@ export namespace ClapperGtk {
          */
         compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
-         * Translates the given `point` in `widget'`s coordinates to coordinates
-         * in `target’`s coordinate system.
+         * Translates the given `point` in `widget`'s coordinates to coordinates
+         * in `target`’s coordinate system.
          *
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
          * to (0, 0) and false is returned.
          * @param target the widget to transform into
-         * @param point a point in @widget's coordinate system
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param point a point in `widget`'s coordinate system
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         compute_point(target: Gtk.Widget, point: Graphene.Point): [boolean, Graphene.Point];
         /**
          * Computes a matrix suitable to describe a transformation from
-         * `widget'`s coordinate system into `target'`s coordinate system.
+         * `widget`'s coordinate system into `target`'s coordinate system.
          *
          * The transform can not be computed in certain cases, for example
          * when `widget` and `target` do not share a common ancestor. In that
@@ -5988,47 +6215,47 @@ export namespace ClapperGtk {
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
-         * @returns true if @widget contains the point (x, y)
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @returns true if `widget` contains the point (x, y)
          */
         contains(x: number, y: number): boolean;
         /**
-         * Creates a new `PangoContext` that is configured for the widget.
+         * Creates a new {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map,
+         * The {@link Pango.Context} will have the appropriate font map,
          * font options, font description, and base direction set.
          *
-         * See also [method`Gtk`.Widget.get_pango_context].
-         * @returns the new `PangoContext`
+         * See also {@link Gtk.Widget.get_pango_context}.
+         * @returns the new {@link Pango.Context}
          */
         create_pango_context(): Pango.Context;
         /**
-         * Creates a new `PangoLayout` that is configured for the widget.
+         * Creates a new {@link Pango.Layout} that is configured for the widget.
          *
-         * The `PangoLayout` will have the appropriate font map,
+         * The {@link Pango.Layout} will have the appropriate font map,
          * font description, and base direction set.
          *
-         * If you keep a `PangoLayout` created in this way around,
-         * you need to re-create it when the widgets `PangoContext`
+         * If you keep a {@link Pango.Layout} created in this way around,
+         * you need to re-create it when the widgets {@link Pango.Context}
          * is replaced. This can be tracked by listening to changes
-         * of the [property`Gtk`.Widget:root] property on the widget.
+         * of the {@link Gtk.Widget.root} property on the widget.
          * @param text text to set on the layout
-         * @returns the new `PangoLayout`
+         * @returns the new {@link Pango.Layout}
          */
         create_pango_layout(text?: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
-         * This function is the opposite of [method`Gtk`.Widget.init_template],
+         * This function is the opposite of {@link Gtk.Widget.init_template},
          * and it is used to clear all the template children from a widget
          * instance. If you bound a template child to a field in the instance
          * structure, or in the instance private data structure, the field will
          * be set to `NULL` after this function returns.
          *
-         * You should call this function inside the `GObjectClass.dispose()`
-         * implementation of any widget that called [method`Gtk`.Widget.init_template].
+         * You should call this function inside the {@link GObject.Object.dispose}
+         * implementation of any widget that called {@link Gtk.Widget.init_template}.
          * Typically, you will want to call this function last, right before
          * chaining up to the parent type's dispose implementation, e.g.
          *
@@ -6059,10 +6286,10 @@ export namespace ClapperGtk {
         /**
          * Notifies the user about an input-related error on the widget.
          *
-         * If the [property`Gtk`.Settings:gtk-error-bell] setting is true,
-         * it calls [method`Gdk`.Surface.beep], otherwise it does nothing.
+         * If the {@link Gtk.Settings.gtk_error_bell} setting is true,
+         * it calls {@link Gdk.Surface.beep}, otherwise it does nothing.
          *
-         * Note that the effect of [method`Gdk`.Surface.beep] can be configured
+         * Note that the effect of {@link Gdk.Surface.beep} can be configured
          * in many ways, depending on the windowing backend and the desktop
          * environment or window manager that is used.
          */
@@ -6071,9 +6298,9 @@ export namespace ClapperGtk {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidget`Class.snapshot() function, and when allocating
-         * child widgets in `GtkWidget`Class.size_allocate().
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_allocated_baseline(): number;
         /**
@@ -6081,7 +6308,7 @@ export namespace ClapperGtk {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the height of the @widget
+         * @returns the height of the `widget`
          */
         get_allocated_height(): number;
         /**
@@ -6089,7 +6316,7 @@ export namespace ClapperGtk {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the width of the @widget
+         * @returns the width of the `widget`
          */
         get_allocated_width(): number;
         /**
@@ -6097,13 +6324,13 @@ export namespace ClapperGtk {
          *
          * Note, when implementing a layout widget: a widget’s allocation
          * will be its “adjusted” allocation, that is, the widget’s parent
-         * typically calls [method`Gtk`.Widget.size_allocate] with an allocation,
+         * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
-         * [method`Gtk`.Widget.get_allocation] returns the adjusted allocation that
+         * {@link Gtk.Widget.get_allocation} returns the adjusted allocation that
          * was actually assigned to the widget. The adjusted allocation is
          * guaranteed to be completely contained within the
-         * [method`Gtk`.Widget.size_allocate] allocation, however.
+         * {@link Gtk.Widget.size_allocate} allocation, however.
          *
          * So a layout widget is guaranteed that its children stay inside
          * the assigned bounds, but not that they have exactly the bounds the
@@ -6114,11 +6341,11 @@ export namespace ClapperGtk {
          * Gets the first ancestor of the widget with type `widget_type`.
          *
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first `GtkBox` that’s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          *
-         * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
+         * Note that unlike {@link Gtk.Widget.is_ancestor}, this function
          * considers `widget` to be an ancestor of itself.
          * @param widget_type ancestor type
          * @returns the ancestor widget
@@ -6128,26 +6355,26 @@ export namespace ClapperGtk {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidgetClass.snapshot()` function, and when allocating
-         * child widgets in `GtkWidgetClass.size_allocate()`.
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_baseline(): number;
         /**
          * Determines whether the input focus can enter the widget or any
          * of its children.
          *
-         * See [method`Gtk`.Widget.set_can_focus].
-         * @returns true if the input focus can enter @widget
+         * See {@link Gtk.Widget.set_can_focus}.
+         * @returns true if the input focus can enter `widget`
          */
         get_can_focus(): boolean;
         /**
          * Queries whether the widget can be the target of pointer events.
-         * @returns true if @widget can receive pointer events
+         * @returns true if `widget` can receive pointer events
          */
         get_can_target(): boolean;
         /**
-         * Gets the value set with [method`Gtk`.Widget.set_child_visible].
+         * Gets the value set with {@link Gtk.Widget.set_child_visible}.
          *
          * If you feel a need to use this function, your code probably
          * needs reorganization.
@@ -6178,7 +6405,7 @@ export namespace ClapperGtk {
         get_color(): Gdk.RGBA;
         /**
          * Returns the list of style classes applied to the widget.
-         * @returns a `NULL`-terminated list of   css classes currently applied to @widget
+         * @returns a `NULL`-terminated list of   css classes currently applied to `widget`
          */
         get_css_classes(): string[];
         /**
@@ -6189,14 +6416,14 @@ export namespace ClapperGtk {
         /**
          * Gets the cursor set on the widget.
          *
-         * See [method`Gtk`.Widget.set_cursor] for details.
-         * @returns the cursor   that is set on @widget
+         * See {@link Gtk.Widget.set_cursor} for details.
+         * @returns the cursor   that is set on `widget`
          */
         get_cursor(): Gdk.Cursor | null;
         /**
          * Gets the reading direction for the widget.
          *
-         * See [method`Gtk`.Widget.set_direction].
+         * See {@link Gtk.Widget.set_direction}.
          * @returns the reading direction for the widget
          */
         get_direction(): Gtk.TextDirection;
@@ -6204,7 +6431,7 @@ export namespace ClapperGtk {
          * Get the display for the window that the widget belongs to.
          *
          * This function can only be called after the widget has been
-         * added to a widget hierarchy with a `GtkRoot` at the top.
+         * added to a widget hierarchy with a {@link Gtk.Root} at the top.
          *
          * In general, you should only create display-specific
          * resources when a widget has been realized, and you should
@@ -6221,35 +6448,35 @@ export namespace ClapperGtk {
         get_first_child(): Gtk.Widget | null;
         /**
          * Returns the focus child of the widget.
-         * @returns the current focus   child of @widget
+         * @returns the current focus   child of `widget`
          */
         get_focus_child(): Gtk.Widget | null;
         /**
          * Returns whether the widget should grab focus when it is clicked
          * with the mouse.
          *
-         * See [method`Gtk`.Widget.set_focus_on_click].
+         * See {@link Gtk.Widget.set_focus_on_click}.
          * @returns true if the widget should grab focus when it is   clicked with the mouse
          */
         get_focus_on_click(): boolean;
         /**
          * Determines whether the widget can own the input focus.
          *
-         * See [method`Gtk`.Widget.set_focusable].
-         * @returns true if @widget can own the input focus
+         * See {@link Gtk.Widget.set_focusable}.
+         * @returns true if `widget` can own the input focus
          */
         get_focusable(): boolean;
         /**
          * Gets the font map of the widget.
          *
-         * See [method`Gtk`.Widget.set_font_map].
-         * @returns the font map of @widget
+         * See {@link Gtk.Widget.set_font_map}.
+         * @returns the font map of `widget`
          */
         get_font_map(): Pango.FontMap | null;
         /**
          * Returns the `cairo_font_options_t` of the widget.
          *
-         * Seee [method`Gtk`.Widget.set_font_options].
+         * Seee {@link Gtk.Widget.set_font_options}.
          * @returns the `cairo_font_options_t` of widget
          */
         get_font_options(): cairo.FontOptions | null;
@@ -6258,17 +6485,17 @@ export namespace ClapperGtk {
          *
          * The frame clock is a global “ticker” that can be used to drive
          * animations and repaints. The most common reason to get the frame
-         * clock is to call [method`Gdk`.FrameClock.get_frame_time], in order
+         * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
          * the start of the animation with an initial value from
-         * [method`Gdk`.FrameClock.get_frame_time], and then update the animation
-         * by calling [method`Gdk`.FrameClock.get_frame_time] again during each repaint.
+         * {@link Gdk.FrameClock.get_frame_time}, and then update the animation
+         * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          *
-         * [method`Gdk`.FrameClock.request_phase] will result in a new frame on the
+         * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
          * clock, but won’t necessarily repaint any widgets. To repaint a widget,
-         * you have to use [method`Gtk`.Widget.queue_draw] which invalidates the
+         * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
-         * [method`Gtk`.Widget.queue_draw] will also end up requesting a frame
+         * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          *
          * A widget’s frame clock will not change while the widget is mapped.
@@ -6284,15 +6511,15 @@ export namespace ClapperGtk {
          *
          * For backwards compatibility reasons this method will never return
          * one of the baseline alignments, but instead it will convert it to
-         * [enum`Gtk`.Align.fill] or [enum`Gtk`.Align.center].
+         * {@link Gtk.Align.FILL} or {@link Gtk.Align.CENTER}.
          *
          * Baselines are not supported for horizontal alignment.
-         * @returns the horizontal alignment of @widget
+         * @returns the horizontal alignment of `widget`
          */
         get_halign(): Gtk.Align;
         /**
          * Returns the current value of the `has-tooltip` property.
-         * @returns current value of `has-tooltip` on @widget
+         * @returns current value of `has-tooltip` on `widget`
          */
         get_has_tooltip(): boolean;
         /**
@@ -6300,13 +6527,13 @@ export namespace ClapperGtk {
          *
          * This function returns the height passed to its
          * size-allocate implementation, which is the height you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The height of @widget
+         * @returns The height of `widget`
          */
         get_height(): number;
         /**
@@ -6317,7 +6544,7 @@ export namespace ClapperGtk {
          * receive the extra space. For example, a list or scrollable area
          * or document in your window would often be set to expand.
          *
-         * Widgets with children should use [method`Gtk`.Widget.compute_expand]
+         * Widgets with children should use {@link Gtk.Widget.compute_expand}
          * rather than this function, to see whether any of its children,
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
@@ -6331,7 +6558,7 @@ export namespace ClapperGtk {
         /**
          * Gets whether the `hexpand` flag has been explicitly set.
          *
-         * If [property`Gtk`.Widget:hexpand] property is set, then it
+         * If {@link Gtk.Widget.hexpand} property is set, then it
          * overrides any computed expand value based on child widgets.
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
@@ -6351,12 +6578,12 @@ export namespace ClapperGtk {
         /**
          * Retrieves the layout manager of the widget.
          *
-         * See [method`Gtk`.Widget.set_layout_manager].
-         * @returns the layout manager of @widget
+         * See {@link Gtk.Widget.set_layout_manager}.
+         * @returns the layout manager of `widget`
          */
         get_layout_manager(): Gtk.LayoutManager | null;
         /**
-         * Gets the value of the [property`Gtk`.Widget:limit-events] property.
+         * Gets the value of the {@link Gtk.Widget.limit_events} property.
          */
         get_limit_events(): boolean;
         /**
@@ -6366,39 +6593,39 @@ export namespace ClapperGtk {
         get_mapped(): boolean;
         /**
          * Gets the bottom margin of the widget.
-         * @returns The bottom margin of @widget
+         * @returns The bottom margin of `widget`
          */
         get_margin_bottom(): number;
         /**
          * Gets the end margin of the widget.
-         * @returns The end margin of @widget
+         * @returns The end margin of `widget`
          */
         get_margin_end(): number;
         /**
          * Gets the start margin of the widget.
-         * @returns The start margin of @widget
+         * @returns The start margin of `widget`
          */
         get_margin_start(): number;
         /**
          * Gets the top margin of the widget.
-         * @returns The top margin of @widget
+         * @returns The top margin of `widget`
          */
         get_margin_top(): number;
         /**
          * Retrieves the name of a widget.
          *
-         * See [method`Gtk`.Widget.set_name] for the significance of widget names.
+         * See {@link Gtk.Widget.set_name} for the significance of widget names.
          * @returns name of the widget
          */
         get_name(): string;
         /**
-         * Returns the nearest `GtkNative` ancestor of the widget.
+         * Returns the nearest {@link Gtk.Native} ancestor of the widget.
          *
          * This function will return `NULL` if the widget is not
          * contained inside a widget tree with a native ancestor.
          *
-         * `GtkNative` widgets will return themselves here.
-         * @returns the `GtkNative` ancestor of @widget
+         * {@link Gtk.Native} widgets will return themselves here.
+         * @returns the {@link Gtk.Native} ancestor of `widget`
          */
         get_native(): Gtk.Native | null;
         /**
@@ -6411,7 +6638,7 @@ export namespace ClapperGtk {
         /**
          * Fetches the requested opacity for the widget.
          *
-         * See [method`Gtk`.Widget.set_opacity].
+         * See {@link Gtk.Widget.set_opacity}.
          * @returns the requested opacity for this widget
          */
         get_opacity(): number;
@@ -6421,23 +6648,23 @@ export namespace ClapperGtk {
          */
         get_overflow(): Gtk.Overflow;
         /**
-         * Gets a `PangoContext` that is configured for the widget.
+         * Gets a {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map, font description,
+         * The {@link Pango.Context} will have the appropriate font map, font description,
          * and base direction set.
          *
-         * Unlike the context returned by [method`Gtk`.Widget.create_pango_context],
+         * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
          * and will be updated to match any changes to the widget’s attributes.
          * This can be tracked by listening to changes of the
-         * [property`Gtk`.Widget:root] property on the widget.
-         * @returns the `PangoContext` for the widget
+         * {@link Gtk.Widget.root} property on the widget.
+         * @returns the {@link Pango.Context} for the widget
          */
         get_pango_context(): Pango.Context;
         /**
          * Returns the parent widget of the widget.
-         * @returns the parent widget of @widget
+         * @returns the parent widget of `widget`
          */
         get_parent(): Gtk.Widget | null;
         /**
@@ -6447,14 +6674,14 @@ export namespace ClapperGtk {
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
          * to deduce toplevel window and menu sizes as well as child widgets in
-         * free-form containers such as `GtkFixed`.
+         * free-form containers such as {@link Gtk.Fixed}.
          *
          * Handle with care. Note that the natural height of a height-for-width
          * widget will generally be a smaller size than the minimum height, since
          * the required height for the natural width is generally smaller than the
          * required height for the minimum width.
          *
-         * Use [method`Gtk`.Widget.measure] if you want to support baseline alignment.
+         * Use {@link Gtk.Widget.measure} if you want to support baseline alignment.
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
@@ -6477,7 +6704,7 @@ export namespace ClapperGtk {
         get_primary_clipboard(): Gdk.Clipboard;
         /**
          * Determines whether the widget is realized.
-         * @returns true if @widget is realized
+         * @returns true if `widget` is realized
          */
         get_realized(): boolean;
         /**
@@ -6485,8 +6712,8 @@ export namespace ClapperGtk {
          * within its toplevel when it has the focus, even if another widget
          * is the default.
          *
-         * See [method`Gtk`.Widget.set_receives_default].
-         * @returns true if @widget acts as the default widget when focused
+         * See {@link Gtk.Widget.set_receives_default}.
+         * @returns true if `widget` acts as the default widget when focused
          */
         get_receives_default(): boolean;
         /**
@@ -6497,17 +6724,17 @@ export namespace ClapperGtk {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
-         * @returns The `GtkSizeRequestMode` preferred by @widget.
+         * @returns The {@link Gtk.SizeRequestMode} preferred by `widget`.
          */
         get_request_mode(): Gtk.SizeRequestMode;
         /**
-         * Returns the `GtkRoot` widget of the widget.
+         * Returns the {@link Gtk.Root} widget of the widget.
          *
          * This function will return `NULL` if the widget is not contained
          * inside a widget tree with a root widget.
          *
-         * `GtkRoot` widgets will return themselves here.
-         * @returns the root widget of @widget
+         * {@link Gtk.Root} widgets will return themselves here.
+         * @returns the root widget of `widget`
          */
         get_root(): Gtk.Root | null;
         /**
@@ -6517,32 +6744,32 @@ export namespace ClapperGtk {
          * On traditional systems this is 1, on high density outputs,
          * it can be a higher value (typically 2).
          *
-         * See [method`Gdk`.Surface.get_scale_factor].
+         * See {@link Gdk.Surface.get_scale_factor}.
          *
          * Note that modern systems may support *fractional* scaling,
          * where the scale factor is not an integer. On such systems,
          * this function will return the next higher integer value,
-         * but you probably want to use [method`Gdk`.Surface.get_scale]
+         * but you probably want to use {@link Gdk.Surface.get_scale}
          * to get the fractional scale value.
-         * @returns the scale factor for @widget
+         * @returns the scale factor for `widget`
          */
         get_scale_factor(): number;
         /**
          * Returns the widget’s sensitivity.
          *
          * This function returns the value that has been set using
-         * [method`Gtk`.Widget.set_sensitive]).
+         * {@link Gtk.Widget.set_sensitive}).
          *
          * The effective sensitivity of a widget is however determined
          * by both its own and its parent widget’s sensitivity.
-         * See [method`Gtk`.Widget.is_sensitive].
+         * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
         get_sensitive(): boolean;
         /**
          * Gets the settings object holding the settings used for the widget.
          *
-         * Note that this function can only be called when the `GtkWidget`
+         * Note that this function can only be called when the {@link Gtk.Widget}
          * is attached to a toplevel, since the settings object is specific
          * to a particular display. If you want to monitor the widget for
          * changes in its settings, connect to the `notify::display` signal.
@@ -6554,16 +6781,16 @@ export namespace ClapperGtk {
          *
          * Which dimension is returned depends on `orientation`.
          *
-         * This is equivalent to calling [method`Gtk`.Widget.get_width]
-         * for [enum`Gtk`.Orientation.horizontal] or [method`Gtk`.Widget.get_height]
-         * for [enum`Gtk`.Orientation.vertical], but can be used when
+         * This is equivalent to calling {@link Gtk.Widget.get_width}
+         * for {@link Gtk.Orientation.HORIZONTAL} or {@link Gtk.Widget.get_height}
+         * for {@link Gtk.Orientation.VERTICAL}, but can be used when
          * writing orientation-independent code, such as when
-         * implementing [iface`Gtk`.Orientable] widgets.
+         * implementing {@link Gtk.Orientable} widgets.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
          * @param orientation the orientation to query
-         * @returns the size of @widget in @orientation
+         * @returns the size of `widget` in `orientation`
          */
         get_size(orientation: Gtk.Orientation | null): number;
         /**
@@ -6573,22 +6800,22 @@ export namespace ClapperGtk {
          * dimension has not been set explicitly and the natural requisition
          * of the widget will be used instead.
          *
-         * See [method`Gtk`.Widget.set_size_request].
+         * See {@link Gtk.Widget.set_size_request}.
          *
          * To get the size a widget will actually request, call
-         * [method`Gtk`.Widget.measure] instead of this function.
+         * {@link Gtk.Widget.measure} instead of this function.
          */
         get_size_request(): [number, number];
         /**
          * Returns the widget state as a flag set.
          *
-         * It is worth mentioning that the effective [flags`Gtk`.StateFlags.insensitive]
+         * It is worth mentioning that the effective {@link Gtk.StateFlags.INSENSITIVE}
          * state will be returned, that is, also based on parent insensitivity,
          * even if `widget` itself is sensitive.
          *
          * Also note that if you are looking for a way to obtain the
-         * [flags`Gtk`.StateFlags] to pass to a [class`Gtk`.StyleContext]
-         * method, you should look at [method`Gtk`.StyleContext.get_state].
+         * {@link Gtk.StateFlags} to pass to a {@link Gtk.StyleContext}
+         * method, you should look at {@link Gtk.StyleContext.get_state}.
          * @returns the state flags of widget
          */
         get_state_flags(): Gtk.StateFlags;
@@ -6605,22 +6832,22 @@ export namespace ClapperGtk {
          * the widget.
          *
          * This will only report children which were previously declared
-         * with [method`Gtk`.WidgetClass.bind_template_child_full] or one of its
+         * with {@link Gtk.WidgetClass.bind_template_child_full} or one of its
          * variants.
          *
          * This function is only meant to be called for code which is private
          * to the `widget_type` which declared the child and is meant for language
          * bindings which cannot easily make use of the GObject structure offsets.
-         * @param widget_type The `GType` to get a template child for
+         * @param widget_type The {@link GObject.GType} to get a template child for
          * @param name ID of the child defined in the template XML
-         * @returns the object built in the template XML with   the id @name
+         * @returns the object built in the template XML with   the id `name`
          */
         get_template_child<T = GObject.Object>(widget_type: GObject.GType, name: string): T;
         /**
          * Gets the contents of the tooltip for the widget.
          *
          * If the tooltip has not been set using
-         * [method`Gtk`.Widget.set_tooltip_markup], this
+         * {@link Gtk.Widget.set_tooltip_markup}, this
          * function returns `NULL`.
          * @returns the tooltip text
          */
@@ -6628,29 +6855,29 @@ export namespace ClapperGtk {
         /**
          * Gets the contents of the tooltip for the widget.
          *
-         * If the `widget'`s tooltip was set using
-         * [method`Gtk`.Widget.set_tooltip_markup],
+         * If the `widget`'s tooltip was set using
+         * {@link Gtk.Widget.set_tooltip_markup},
          * this function will return the escaped text.
          * @returns the tooltip text
          */
         get_tooltip_text(): string | null;
         /**
          * Gets the vertical alignment of the widget.
-         * @returns the vertical alignment of @widget
+         * @returns the vertical alignment of `widget`
          */
         get_valign(): Gtk.Align;
         /**
          * Gets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.get_hexpand] for more detail.
+         * See {@link Gtk.Widget.get_hexpand} for more detail.
          * @returns whether vexpand flag is set
          */
         get_vexpand(): boolean;
         /**
          * Gets whether the `vexpand` flag has been explicitly set.
          *
-         * See [method`Gtk`.Widget.get_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.get_hexpand_set} for more detail.
          * @returns whether vexpand has been explicitly set
          */
         get_vexpand_set(): boolean;
@@ -6659,12 +6886,12 @@ export namespace ClapperGtk {
          *
          * If you want to take into account whether the widget’s
          * parent is also marked as visible, use
-         * [method`Gtk`.Widget.is_visible] instead.
+         * {@link Gtk.Widget.is_visible} instead.
          *
          * This function does not check if the widget is
          * obscured in any way.
          *
-         * See [method`Gtk`.Widget.set_visible].
+         * See {@link Gtk.Widget.set_visible}.
          * @returns true if the widget is visible
          */
         get_visible(): boolean;
@@ -6673,32 +6900,32 @@ export namespace ClapperGtk {
          *
          * This function returns the width passed to its
          * size-allocate implementation, which is the width you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The width of @widget
+         * @returns The width of `widget`
          */
         get_width(): number;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
-         * @returns true if focus is now inside @widget
+         * @returns true if focus is now inside `widget`
          */
         grab_focus(): boolean;
         /**
          * Returns whether a style class is currently applied to the widget.
          * @param css_class style class, without the leading period
-         * @returns true if @css_class is currently applied to @widget
+         * @returns true if `css_class` is currently applied to `widget`
          */
         has_css_class(css_class: string): boolean;
         /**
@@ -6707,11 +6934,11 @@ export namespace ClapperGtk {
          *
          * This is a convenience function that takes into account whether
          * focus indication should currently be shown in the toplevel window
-         * of `widget`. See [method`Gtk`.Window.get_focus_visible] for more
+         * of `widget`. See {@link Gtk.Window.get_focus_visible} for more
          * information about focus indication.
          *
          * To find out if the widget has the global input focus, use
-         * [method`Gtk`.Widget.has_focus].
+         * {@link Gtk.Widget.has_focus}.
          * @returns true if the widget should display a “focus rectangle”
          */
         has_visible_focus(): boolean;
@@ -6726,7 +6953,7 @@ export namespace ClapperGtk {
          *
          * This information can sometimes be used to avoid doing
          * unnecessary work.
-         * @returns true if @widget is being destroyed
+         * @returns true if `widget` is being destroyed
          */
         in_destruction(): boolean;
         /**
@@ -6734,7 +6961,7 @@ export namespace ClapperGtk {
          *
          * This function must be called in the instance initializer
          * for any class which assigned itself a template using
-         * [method`Gtk`.WidgetClass.set_template].
+         * {@link Gtk.WidgetClass.set_template}.
          *
          * It is important to call this function in the instance initializer
          * of a widget subclass and not in `GObject.constructed()` or
@@ -6755,85 +6982,85 @@ export namespace ClapperGtk {
         /**
          * Inserts an action group into the widget's actions.
          *
-         * Children of `widget` that implement [iface`Gtk`.Actionable] can
+         * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
          * “action-name” to `prefix`.`action-name`.
          *
          * Note that inheritance is defined for individual actions. I.e.
-         * even if you insert a group with prefix `prefix,` actions with
+         * even if you insert a group with prefix `prefix`, actions with
          * the same prefix will still be inherited from the parent, unless
          * the group contains an action with the same name.
          *
          * If `group` is `NULL`, a previously inserted group for `name` is
          * removed from `widget`.
-         * @param name the prefix for actions in @group
+         * @param name the prefix for actions in `group`
          * @param group an action group
          */
         insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed after `previous_sibling,` or at the beginning if
+         * It will be placed after `previous_sibling`, or at the beginning if
          * `previous_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_prev_sibling (widget)`
          * will return `previous_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this
+         * If `parent` is already set as the parent widget of `widget`, this
          * function can also be used to reorder `widget` in the child widget
          * list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param previous_sibling the new previous sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param previous_sibling the new previous sibling of `widget`
          */
         insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed before `next_sibling,` or at the end if
+         * It will be placed before `next_sibling`, or at the end if
          * `next_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_next_sibling (widget)`
          * will return `next_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this function
+         * If `parent` is already set as the parent widget of `widget`, this function
          * can also be used to reorder `widget` in the child widget list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param next_sibling the new next sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param next_sibling the new next sibling of `widget`
          */
         insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
-         * @param ancestor another `GtkWidget`
-         * @returns true if @ancestor contains @widget as a child,   grandchild, great grandchild, etc
+         * @param ancestor another {@link Gtk.Widget}
+         * @returns true if `ancestor` contains `widget` as a child,   grandchild, great grandchild, etc
          */
         is_ancestor(ancestor: Gtk.Widget): boolean;
         /**
          * Determines whether the widget can be drawn to.
          *
          * A widget can be drawn if it is mapped and visible.
-         * @returns true if @widget is drawable
+         * @returns true if `widget` is drawable
          */
         is_drawable(): boolean;
         /**
          * Determines if the widget is the focus widget within its
          * toplevel.
          *
-         * This does not mean that the [property`Gtk`.Widget:has-focus]
-         * property is necessarily set; [property`Gtk`.Widget:has-focus]
+         * This does not mean that the {@link Gtk.Widget.has_focus}
+         * property is necessarily set; {@link Gtk.Widget.has_focus}
          * will only be set if the toplevel widget additionally has the
          * global input focus.
          * @returns true if the widget is the focus widget
@@ -6853,38 +7080,38 @@ export namespace ClapperGtk {
          *
          * This function does not check if the widget is obscured in any way.
          *
-         * See also [method`Gtk`.Widget.get_visible] and
-         * [method`Gtk`.Widget.set_visible].
+         * See also {@link Gtk.Widget.get_visible} and
+         * {@link Gtk.Widget.set_visible}.
          * @returns true if the widget and all its parents are visible
          */
         is_visible(): boolean;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
@@ -6896,7 +7123,7 @@ export namespace ClapperGtk {
          * mnemonic.
          *
          * Typically, these widgets will be labels. See, for example,
-         * [method`Gtk`.Label.set_mnemonic_widget].
+         * {@link Gtk.Label.set_mnemonic_widget}.
          *
          * The widgets in the list are not individually referenced.
          * If you want to iterate through the list and perform actions
@@ -6915,18 +7142,18 @@ export namespace ClapperGtk {
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
         measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
          * @returns true if the signal has been handled
          */
@@ -6940,7 +7167,7 @@ export namespace ClapperGtk {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's children
+         * @returns a list model tracking `widget`'s children
          */
         observe_children(): Gio.ListModel;
         /**
@@ -6952,17 +7179,17 @@ export namespace ClapperGtk {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's controllers
+         * @returns a list model tracking `widget`'s controllers
          */
         observe_controllers(): Gio.ListModel;
         /**
          * Finds the descendant of the widget closest to a point.
          *
          * The point (x, y) must be given in widget coordinates, so (0, 0)
-         * is assumed to be the top left of `widget'`s content area.
+         * is assumed to be the top left of `widget`'s content area.
          *
          * Usually widgets will return `NULL` if the given coordinate is not
-         * contained in `widget` checked via [method`Gtk`.Widget.contains].
+         * contained in `widget` checked via {@link Gtk.Widget.contains}.
          * Otherwise they will recursively try to find a child that does
          * not return `NULL`. Widgets are however free to customize their
          * picking algorithm.
@@ -6970,21 +7197,21 @@ export namespace ClapperGtk {
          * This function is used on the toplevel to determine the widget
          * below the mouse cursor for purposes of hover highlighting and
          * delivering events.
-         * @param x x coordinate to test, relative to @widget's origin
-         * @param y y coordinate to test, relative to @widget's origin
+         * @param x x coordinate to test, relative to `widget`'s origin
+         * @param y y coordinate to test, relative to `widget`'s origin
          * @param flags flags to influence what is picked
          * @returns the widget's descendant at (x, y)
          */
         pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
         /**
-         * Flags the widget for a rerun of the [vfunc`Gtk`.Widget.size_allocate]
+         * Flags the widget for a rerun of the {@link Gtk.Widget.size_allocate}
          * function.
          *
-         * Use this function instead of [method`Gtk`.Widget.queue_resize]
-         * when the `widget'`s size request didn't change but it wants to
+         * Use this function instead of {@link Gtk.Widget.queue_resize}
+         * when the `widget`'s size request didn't change but it wants to
          * reposition its contents.
          *
-         * An example user of this function is [method`Gtk`.Widget.set_halign].
+         * An example user of this function is {@link Gtk.Widget.set_halign}.
          *
          * This function is only for use in widget implementations.
          */
@@ -6995,7 +7222,7 @@ export namespace ClapperGtk {
          * The redraw will happen in the paint phase
          * of the current or the next frame.
          *
-         * This means `widget'`s [vfunc`Gtk`.Widget.snapshot]
+         * This means `widget`'s {@link Gtk.Widget.snapshot}
          * implementation will be called.
          */
         queue_draw(): void;
@@ -7004,13 +7231,13 @@ export namespace ClapperGtk {
          *
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * [class`Gtk`.Label], the label queues a resize to ensure there’s
+         * {@link Gtk.Label}, the label queues a resize to ensure there’s
          * enough space for the new text.
          *
-         * Note that you cannot call gtk_widget_queue_resize() on a widget
-         * from inside its implementation of the [vfunc`Gtk`.Widget.size_allocate]
-         * virtual method. Calls to gtk_widget_queue_resize() from inside
-         * [vfunc`Gtk`.Widget.size_allocate] will be silently ignored.
+         * Note that you cannot call `gtk_widget_queue_resize()` on a widget
+         * from inside its implementation of the {@link Gtk.Widget.size_allocate}
+         * virtual method. Calls to `gtk_widget_queue_resize()` from inside
+         * {@link Gtk.Widget.size_allocate} will be silently ignored.
          *
          * This function is only for use in widget implementations.
          */
@@ -7031,7 +7258,7 @@ export namespace ClapperGtk {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
          */
         realize(): void;
         /**
@@ -7049,23 +7276,23 @@ export namespace ClapperGtk {
          * Removes a style from the widget.
          *
          * After this, the style of `widget` will stop matching for `css_class`.
-         * @param css_class style class to remove from @widget, without the leading period
+         * @param css_class style class to remove from `widget`, without the leading period
          */
         remove_css_class(css_class: string): void;
         /**
          * Removes a widget from the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * The widget must have previously been added to the list with
-         * [method`Gtk`.Widget.add_mnemonic_label].
-         * @param label a widget that is a mnemonic label for @widget
+         * {@link Gtk.Widget.add_mnemonic_label}.
+         * @param label a widget that is a mnemonic label for `widget`
          */
         remove_mnemonic_label(label: Gtk.Widget): void;
         /**
          * Removes a tick callback previously registered with
-         * [method`Gtk`.Widget.add_tick_callback].
-         * @param id an ID returned by [method@Gtk.Widget.add_tick_callback]
+         * {@link Gtk.Widget.add_tick_callback}.
+         * @param id an ID returned by {@link Gtk.Widget.add_tick_callback}
          */
         remove_tick_callback(id: number): void;
         /**
@@ -7081,7 +7308,7 @@ export namespace ClapperGtk {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
          * @param can_focus whether the input focus can enter   the widget or any of its children
          */
@@ -7095,7 +7322,7 @@ export namespace ClapperGtk {
          * Sets whether the widget should be mapped along with its parent.
          *
          * The child visibility can be set for widget before it is added
-         * to a container with [method`Gtk`.Widget.set_parent], to avoid
+         * to a container with {@link Gtk.Widget.set_parent}, to avoid
          * mapping children unnecessary before immediately unmapping them.
          * However it will be reset to its default state of true when the
          * widget is removed from a container.
@@ -7108,7 +7335,7 @@ export namespace ClapperGtk {
          *
          * This function is only useful for widget implementations
          * and should never be called by an application.
-         * @param child_visible whether @widget should be mapped along   with its parent
+         * @param child_visible whether `widget` should be mapped along   with its parent
          */
         set_child_visible(child_visible: boolean): void;
         /**
@@ -7130,12 +7357,12 @@ export namespace ClapperGtk {
          * the widget.
          *
          * This is a utility function that creates a cursor via
-         * [ctor`Gdk`.Cursor.new_from_name] and then sets it on `widget`
-         * with [method`Gtk`.Widget.set_cursor]. See those functions for
+         * {@link Gdk.Cursor.new_from_name} and then sets it on `widget`
+         * with {@link Gtk.Widget.set_cursor}. See those functions for
          * details.
          *
          * On top of that, this function allows `name` to be `NULL`, which
-         * will do the same as calling [method`Gtk`.Widget.set_cursor]
+         * will do the same as calling {@link Gtk.Widget.set_cursor}
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
@@ -7154,8 +7381,8 @@ export namespace ClapperGtk {
          * an order that is explicitly visual rather than logical (such as
          * buttons for text justification).
          *
-         * If the direction is set to [enum`Gtk`.TextDirection.none], then
-         * the value set by [func`Gtk`.Widget.set_default_direction] will be used.
+         * If the direction is set to {@link Gtk.TextDirection.NONE}, then
+         * the value set by {@link Gtk.Widget.set_default_direction} will be used.
          * @param dir the new direction
          */
         set_direction(dir: Gtk.TextDirection | null): void;
@@ -7164,8 +7391,8 @@ export namespace ClapperGtk {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
         set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -7182,7 +7409,7 @@ export namespace ClapperGtk {
          * Sets whether the widget can own the input focus.
          *
          * Widget implementations should set `focusable` to true in
-         * their init() function if they want to receive keyboard input.
+         * their `init()` function if they want to receive keyboard input.
          *
          * Note that having `focusable` be true is only one of the
          * necessary conditions for being focusable. A widget must
@@ -7190,9 +7417,9 @@ export namespace ClapperGtk {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
-         * @param focusable whether or not @widget can own the input focus
+         * @param focusable whether or not `widget` can own the input focus
          */
         set_focusable(focusable: boolean): void;
         /**
@@ -7204,14 +7431,14 @@ export namespace ClapperGtk {
          * of available fonts.
          *
          * When not set, the widget will inherit the font map from its parent.
-         * @param font_map a `PangoFontMap`
+         * @param font_map a {@link Pango.FontMap}
          */
         set_font_map(font_map?: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
          *
-         * When not set, the default font options for the `GdkDisplay`
+         * When not set, the default font options for the {@link Gdk.Display}
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
@@ -7223,7 +7450,7 @@ export namespace ClapperGtk {
         set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the `has-tooltip` property on the widget.
-         * @param has_tooltip whether or not @widget has a tooltip
+         * @param has_tooltip whether or not `widget` has a tooltip
          */
         set_has_tooltip(has_tooltip: boolean): void;
         /**
@@ -7240,18 +7467,18 @@ export namespace ClapperGtk {
          *
          * By default, widgets automatically expand if any of their children
          * want to expand. (To see if a widget will automatically expand given
-         * its current children and state, call [method`Gtk`.Widget.compute_expand].
+         * its current children and state, call {@link Gtk.Widget.compute_expand}.
          * A widget can decide how the expandability of children affects its
          * own expansion by overriding the `compute_expand` virtual method on
-         * `GtkWidget`.).
+         * {@link Gtk.Widget}.).
          *
          * Setting hexpand explicitly with this function will override the
          * automatic expand behavior.
          *
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
-         * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
-         * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
+         * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -7259,8 +7486,8 @@ export namespace ClapperGtk {
         /**
          * Sets whether the hexpand flag will be used.
          *
-         * The [property`Gtk`.Widget:hexpand-set] property will be set
-         * automatically when you call [method`Gtk`.Widget.set_hexpand]
+         * The {@link Gtk.Widget.hexpand_set} property will be set
+         * automatically when you call {@link Gtk.Widget.set_hexpand}
          * to set hexpand, so the most likely reason to use this function
          * would be to unset an explicit expand flag.
          *
@@ -7312,7 +7539,7 @@ export namespace ClapperGtk {
          * Setting a name allows you to refer to the widget from a
          * CSS file. You can apply a style to widgets with a particular name
          * in the CSS file. See the documentation for the CSS syntax (on the
-         * same page as the docs for [class`Gtk`.StyleContext].
+         * same page as the docs for {@link Gtk.StyleContext}.
          *
          * Note that the CSS syntax has certain special characters to delimit
          * and represent elements in a selector (period, #, >, *...), so using
@@ -7331,7 +7558,7 @@ export namespace ClapperGtk {
          * there are some limitations: For toplevel widgets, applying opacity
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
-         * [method`Gdk`.Display.is_composited]. On Windows and Wayland it will
+         * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
          * always work, although setting a window’s opacity after the window
          * has been shown may cause some flicker.
          *
@@ -7340,8 +7567,8 @@ export namespace ClapperGtk {
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
          * widgets (since that would make widgets deeper in the hierarchy
-         * progressively more translucent). As a consequence, [class`Gtk`.Popover]
-         * instances and other [iface`Gtk`.Native] widgets with their own surface
+         * progressively more translucent). As a consequence, {@link Gtk.Popover}
+         * instances and other {@link Gtk.Native} widgets with their own surface
          * will use their own opacity value, and thus by default appear
          * non-translucent, even if they are attached to a toplevel that
          * is translucent.
@@ -7352,12 +7579,12 @@ export namespace ClapperGtk {
          * Sets how the widget treats content that is drawn outside the
          * it's content area.
          *
-         * See the definition of [enum`Gtk`.Overflow] for details.
+         * See the definition of {@link Gtk.Overflow} for details.
          *
          * This setting is provided for widget implementations and
          * should not be used by application code.
          *
-         * The default value is [enum`Gtk`.Overflow.visible].
+         * The default value is {@link Gtk.Overflow.VISIBLE}.
          * @param overflow desired overflow value
          */
         set_overflow(overflow: Gtk.Overflow | null): void;
@@ -7366,10 +7593,10 @@ export namespace ClapperGtk {
          *
          * This takes care of details such as updating the state and style
          * of the child to reflect its new location and resizing the parent.
-         * The opposite function is [method`Gtk`.Widget.unparent].
+         * The opposite function is {@link Gtk.Widget.unparent}.
          *
          * This function is useful only when implementing subclasses of
-         * `GtkWidget`.
+         * {@link Gtk.Widget}.
          * @param parent parent widget
          */
         set_parent(parent: Gtk.Widget): void;
@@ -7377,7 +7604,7 @@ export namespace ClapperGtk {
          * Sets whether the widget will be treated as the default
          * widget within its toplevel when it has the focus, even if
          * another widget is the default.
-         * @param receives_default whether or not @widget can be a default widget
+         * @param receives_default whether or not `widget` can be a default widget
          */
         set_receives_default(receives_default: boolean): void;
         /**
@@ -7397,7 +7624,7 @@ export namespace ClapperGtk {
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          *
-         * In most cases, [method`Gtk`.Window.set_default_size] is a better
+         * In most cases, {@link Gtk.Window.set_default_size} is a better
          * choice for toplevel windows than this function; setting the default
          * size will still allow users to shrink the window. Setting the size
          * request will force them to leave the window at least as large as
@@ -7419,14 +7646,14 @@ export namespace ClapperGtk {
          *
          * The size request set here does not include any margin from the
          * properties
-         * [property`Gtk`.Widget:margin-start],
-         * [property`Gtk`.Widget:margin-end],
-         * [property`Gtk`.Widget:margin-top], and
-         * [property`Gtk`.Widget:margin-bottom], but it does include pretty
+         * {@link Gtk.Widget.margin_start},
+         * {@link Gtk.Widget.margin_end},
+         * {@link Gtk.Widget.margin_top}, and
+         * {@link Gtk.Widget.margin_bottom}, but it does include pretty
          * much all other padding or border properties set by any subclass
-         * of `GtkWidget`.
-         * @param width width @widget should request, or -1 to unset
-         * @param height height @widget should request, or -1 to unset
+         * of {@link Gtk.Widget}.
+         * @param width width `widget` should request, or -1 to unset
+         * @param height height `widget` should request, or -1 to unset
          */
         set_size_request(width: number, height: number): void;
         /**
@@ -7434,13 +7661,13 @@ export namespace ClapperGtk {
          *
          * Typical widget states are insensitive, prelighted, etc.
          *
-         * This function accepts the values [flags`Gtk`.StateFlags.dir-ltr] and
-         * [flags`Gtk`.StateFlags.dir-rtl] but ignores them. If you want to set
-         * the widget's direction, use [method`Gtk`.Widget.set_direction].
+         * This function accepts the values {@link Gtk.StateFlags.DIR-LTR} and
+         * {@link Gtk.StateFlags.DIR-RTL} but ignores them. If you want to set
+         * the widget's direction, use {@link Gtk.Widget.set_direction}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn on
-         * @param clear whether to clear state before turning on @flags
+         * @param clear whether to clear state before turning on `flags`
          */
         set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
@@ -7449,11 +7676,11 @@ export namespace ClapperGtk {
          * `markup` must contain Pango markup.
          *
          * This function will take care of setting the
-         * [property`Gtk`.Widget:has-tooltip] as a side effect, and of the
-         * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
+         * {@link Gtk.Widget.has_tooltip} as a side effect, and of the
+         * default handler for the `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_markup].
-         * @param markup the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_markup}.
+         * @param markup the contents of the tooltip for `widget`
          */
         set_tooltip_markup(markup?: string | null): void;
         /**
@@ -7462,12 +7689,12 @@ export namespace ClapperGtk {
          * If `text` contains any markup, it will be escaped.
          *
          * This function will take care of setting
-         * [property`Gtk`.Widget:has-tooltip] as a side effect,
+         * {@link Gtk.Widget.has_tooltip} as a side effect,
          * and of the default handler for the
-         * [signal`Gtk`.Widget::query-tooltip] signal.
+         * `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_text].
-         * @param text the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_text}.
+         * @param text the contents of the tooltip for `widget`
          */
         set_tooltip_text(text?: string | null): void;
         /**
@@ -7479,14 +7706,14 @@ export namespace ClapperGtk {
          * Sets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.set_hexpand] for more detail.
+         * See {@link Gtk.Widget.set_hexpand} for more detail.
          * @param expand whether to expand
          */
         set_vexpand(expand: boolean): void;
         /**
          * Sets whether the vexpand flag will be used.
          *
-         * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.set_hexpand_set} for more detail.
          * @param set value for vexpand-set property
          */
         set_vexpand_set(set: boolean): void;
@@ -7494,7 +7721,7 @@ export namespace ClapperGtk {
          * Sets the visibility state of `widget`.
          *
          * Note that setting this to true doesn’t mean the widget is
-         * actually viewable, see [method`Gtk`.Widget.get_visible].
+         * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
         set_visible(visible: boolean): void;
@@ -7504,7 +7731,7 @@ export namespace ClapperGtk {
          *
          * This is false for invisible children, but also
          * for children that have their own surface, such
-         * as [class`Gtk`.Popover] instances.
+         * as {@link Gtk.Popover} instances.
          * @returns true if child should be included in   measuring and allocating
          */
         should_layout(): boolean;
@@ -7525,8 +7752,8 @@ export namespace ClapperGtk {
          * Allocates widget with a transformation that translates
          * the origin to the position in `allocation`.
          *
-         * This is a simple form of [method`Gtk`.Widget.allocate].
-         * @param allocation position and size to be allocated to @widget
+         * This is a simple form of {@link Gtk.Widget.allocate}.
+         * @param allocation position and size to be allocated to `widget`
          * @param baseline the baseline of the child, or -1
          */
         size_allocate(allocation: Gtk.Allocation, baseline: number): void;
@@ -7534,32 +7761,32 @@ export namespace ClapperGtk {
          * Snapshots a child of the widget.
          *
          * When a widget receives a call to the snapshot function,
-         * it must send synthetic [vfunc`Gtk`.Widget.snapshot] calls
+         * it must send synthetic {@link Gtk.Widget.snapshot} calls
          * to all children. This function provides a convenient way
          * of doing this. A widget, when it receives a call to its
-         * [vfunc`Gtk`.Widget.snapshot] function, calls
-         * gtk_widget_snapshot_child() once for each child, passing in
+         * {@link Gtk.Widget.snapshot} function, calls
+         * `gtk_widget_snapshot_child()` once for each child, passing in
          * the `snapshot` the widget received.
          *
-         * This function takes care of translating the origin of `snapshot,`
+         * This function takes care of translating the origin of `snapshot`,
          * and deciding whether the child needs to be snapshot.
          *
-         * It does nothing for children that implement `GtkNative`.
-         * @param child a child of @widget
-         * @param snapshot snapshot as passed to the widget. In particular, no   calls to [method@Gtk.Snapshot.translate] or other transform calls   should have been made
+         * It does nothing for children that implement {@link Gtk.Native}.
+         * @param child a child of `widget`
+         * @param snapshot snapshot as passed to the widget. In particular, no   calls to {@link Gtk.Snapshot.translate} or other transform calls   should have been made
          */
         snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void;
         /**
-         * Translates coordinates relative to `src_widget’`s allocation
-         * to coordinates relative to `dest_widget’`s allocations.
+         * Translates coordinates relative to `src_widget`’s allocation
+         * to coordinates relative to `dest_widget`’s allocations.
          *
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
          * are set to 0 and false is returned.
          * @param dest_widget another widget
-         * @param src_x X position in widget coordinates of @src_widget
-         * @param src_y Y position in widget coordinates of @src_widget
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param src_x X position in widget coordinates of `src_widget`
+         * @param src_y Y position in widget coordinates of `src_widget`
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [boolean, number, number];
         /**
@@ -7590,7 +7817,7 @@ export namespace ClapperGtk {
         /**
          * Turns off flag values for the current widget state.
          *
-         * See [method`Gtk`.Widget.set_state_flags].
+         * See {@link Gtk.Widget.set_state_flags}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn off
@@ -7601,15 +7828,17 @@ export namespace ClapperGtk {
          *   widget extra space when possible.
          * @param hexpand_p
          * @param vexpand_p
+         * @virtual
          */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
         /**
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @virtual
          */
         vfunc_contains(x: number, y: number): boolean;
         /**
@@ -7618,17 +7847,20 @@ export namespace ClapperGtk {
          *   redraws accordingly. The default implementation will take care of this for
          *   all the default CSS properties, so implementations must chain up.
          * @param change
+         * @virtual
          */
         vfunc_css_changed(change: Gtk.CssStyleChange): void;
         /**
          * Signal emitted when the text direction of a
          *   widget changes.
          * @param previous_direction
+         * @virtual
          */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
         /**
-         * Vfunc for gtk_widget_child_focus()
+         * Vfunc for `gtk_widget_child_focus()`
          * @param direction
+         * @virtual
          */
         vfunc_focus(direction: Gtk.DirectionType): boolean;
         /**
@@ -7639,95 +7871,104 @@ export namespace ClapperGtk {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
+         * @virtual
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
+         * @virtual
          */
         vfunc_grab_focus(): boolean;
         /**
          * Reverses the effects of [method.Gtk.Widget.show].
          *
          * This is causing the widget to be hidden (invisible to the user).
+         * @virtual
          */
         vfunc_hide(): void;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
+         * @virtual
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Causes a widget to be mapped if it isn’t already.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_map(): void;
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @virtual
          */
         vfunc_measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
+         * @virtual
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
         /**
          * Signal emitted when a change of focus is requested
          * @param direction
+         * @virtual
          */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
         /**
-         * Signal emitted when “has-tooltip” is %TRUE and the
+         * Signal emitted when “has-tooltip” is `true` and the
          *   hover timeout has expired with the cursor hovering “above”
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x
          * @param y
          * @param keyboard_tooltip
          * @param tooltip
+         * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
@@ -7746,12 +7987,14 @@ export namespace ClapperGtk {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
+         * @virtual
          */
         vfunc_realize(): void;
         /**
-         * Called when the widget gets added to a `GtkRoot` widget. Must
+         * Called when the widget gets added to a {@link Gtk.Root} widget. Must
          *   chain up
+         * @virtual
          */
         vfunc_root(): void;
         /**
@@ -7759,8 +8002,9 @@ export namespace ClapperGtk {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
+         * @virtual
          */
         vfunc_set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -7774,6 +8018,7 @@ export namespace ClapperGtk {
          * When a toplevel widget is shown, it is immediately realized and
          * mapped; other shown widgets are realized and mapped when their
          * toplevel widget is realized and mapped.
+         * @virtual
          */
         vfunc_show(): void;
         /**
@@ -7782,28 +8027,33 @@ export namespace ClapperGtk {
          * @param width
          * @param height
          * @param baseline
+         * @virtual
          */
         vfunc_size_allocate(width: number, height: number, baseline: number): void;
         /**
          * Vfunc called when a new snapshot of the widget has to be taken.
          * @param snapshot
+         * @virtual
          */
         vfunc_snapshot(snapshot: Gtk.Snapshot): void;
         /**
          * Signal emitted when the widget state changes,
-         *   see gtk_widget_get_state_flags().
+         *   see `gtk_widget_get_state_flags()`.
          * @param previous_state_flags
+         * @virtual
          */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
         /**
          * Emitted when a system setting was changed. Must chain up.
          * @param settings
+         * @virtual
          */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
          * Causes a widget to be unmapped if it’s currently mapped.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_unmap(): void;
         /**
@@ -7812,11 +8062,13 @@ export namespace ClapperGtk {
          * This frees all GDK resources associated with the widget.
          *
          * This function is only useful in widget implementations.
+         * @virtual
          */
         vfunc_unrealize(): void;
         /**
          * Called when the widget is about to be removed from its
-         *   `GtkRoot` widget. Must chain up
+         *   {@link Gtk.Root} widget. Must chain up
+         * @virtual
          */
         vfunc_unroot(): void;
     }
@@ -7881,7 +8133,8 @@ export namespace ClapperGtk {
     }
 
     /**
-     * A #GtkButton for selecting previous queue item.
+     * A {@link Gtk.Button} for selecting previous queue item.
+     * @gir-type Class
      */
     class PreviousItemButton
         extends Gtk.Button
@@ -7908,40 +8161,45 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PreviousItemButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviousItemButton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PreviousItemButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviousItemButton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PreviousItemButton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PreviousItemButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The name of the action with which this widget should be associated.
+         * @category Inherited from Gtk.Actionable
          */
         get action_name(): string;
         set action_name(val: string);
         /**
          * The name of the action with which this widget should be associated.
+         * @category Inherited from Gtk.Actionable
          */
         get actionName(): string;
         set actionName(val: string);
         /**
          * The target value of the actionable widget's action.
+         * @category Inherited from Gtk.Actionable
          */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
         /**
          * The target value of the actionable widget's action.
+         * @category Inherited from Gtk.Actionable
          */
         get actionTarget(): GLib.Variant;
         set actionTarget(val: GLib.Variant);
@@ -7951,6 +8209,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
         set can_focus(val: boolean);
@@ -7960,26 +8219,31 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
         set canTarget(val: boolean);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get css_classes(): string[];
         set css_classes(val: string[]);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get cssClasses(): string[];
         set cssClasses(val: string[]);
@@ -7988,6 +8252,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
         /**
@@ -7995,10 +8260,12 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
         /**
          * The cursor used by `widget`.
+         * @category Inherited from Gtk.Widget
          */
         get cursor(): Gdk.Cursor;
         set cursor(val: Gdk.Cursor);
@@ -8006,6 +8273,7 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
         set focus_on_click(val: boolean);
@@ -8013,52 +8281,61 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
         set has_tooltip(val: boolean);
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
@@ -8066,6 +8343,7 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
         set height_request(val: number);
@@ -8073,39 +8351,45 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layout_manager(): Gtk.LayoutManager;
         set layout_manager(val: Gtk.LayoutManager);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layoutManager(): Gtk.LayoutManager;
         set layoutManager(val: Gtk.LayoutManager);
@@ -8115,7 +8399,9 @@ export namespace ClapperGtk {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
         set limit_events(val: boolean);
@@ -8125,7 +8411,9 @@ export namespace ClapperGtk {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
         set limitEvents(val: boolean);
@@ -8134,7 +8422,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
         set margin_bottom(val: number);
@@ -8143,7 +8432,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
         set marginBottom(val: number);
@@ -8155,7 +8445,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
         set margin_end(val: number);
@@ -8167,7 +8458,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
         set marginEnd(val: number);
@@ -8179,7 +8471,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
         set margin_start(val: number);
@@ -8191,7 +8484,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
         set marginStart(val: number);
@@ -8200,7 +8494,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
         set margin_top(val: number);
@@ -8209,17 +8504,20 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
@@ -8228,39 +8526,47 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
-         * The `GtkRoot` widget of the widget tree containing this widget.
+         * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
         set sensitive(val: boolean);
@@ -8268,16 +8574,17 @@ export namespace ClapperGtk {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_markup(): string;
         set tooltip_markup(val: string);
@@ -8285,73 +8592,81 @@ export namespace ClapperGtk {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipMarkup(): string;
         set tooltipMarkup(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_text(): string;
         set tooltip_text(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipText(): string;
         set tooltipText(val: string);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -8359,6 +8674,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
         set width_request(val: number);
@@ -8366,11 +8682,10 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
         set widthRequest(val: number);
-
-        // Inherited methods
         /**
          * Gets the action name for `actionable`.
          * @returns the action name
@@ -8385,15 +8700,15 @@ export namespace ClapperGtk {
          * Specifies the name of the action with which this widget should be
          * associated.
          *
-         * If `action_name` is %NULL then the widget will be unassociated from
+         * If `action_name` is `null` then the widget will be unassociated from
          * any previous action.
          *
          * Usually this function is used when the widget is located (or will be
-         * located) within the hierarchy of a `GtkApplicationWindow`.
+         * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          *
          * Names are of the form “win.save” or “app.quit” for actions on the
-         * containing [class`ApplicationWindow]` or its associated [class`Application]`,
-         * respectively. This is the same form used for actions in the [class`Gio`.Menu]
+         * containing {@link ApplicationWindow} or its associated {@link Application},
+         * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name
          */
@@ -8401,14 +8716,14 @@ export namespace ClapperGtk {
         /**
          * Sets the target value of an actionable widget.
          *
-         * If `target_value` is %NULL then the target value is unset.
+         * If `target_value` is `null` then the target value is unset.
          *
          * The target value has two purposes. First, it is used as the parameter
-         * to activation of the action associated with the `GtkActionable` widget.
+         * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
          * “active” — the widget is active if the state is equal to the given target.
          *
-         * Consider the example of associating a set of buttons with a [iface`Gio`.Action]
+         * Consider the example of associating a set of buttons with a {@link Gio.Action}
          * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
@@ -8417,7 +8732,7 @@ export namespace ClapperGtk {
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
-         * @param target_value a [struct@GLib.Variant] to set as the target value
+         * @param target_value a {@link GLib.Variant} to set as the target value
          */
         set_action_target_value(target_value?: GLib.Variant | null): void;
         /**
@@ -8425,46 +8740,49 @@ export namespace ClapperGtk {
          * actionable widget.
          *
          * `detailed_action_name` is a string in the format accepted by
-         * [func`Gio`.Action.parse_detailed_name].
+         * {@link Gio.Action.parse_detailed_name}.
          * @param detailed_action_name the detailed action name
          */
         set_detailed_action_name(detailed_action_name: string): void;
         /**
          * Gets the action name for `actionable`.
+         * @virtual
          */
         vfunc_get_action_name(): string | null;
         /**
          * Gets the current target value of `actionable`.
+         * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant | null;
         /**
          * Specifies the name of the action with which this widget should be
          * associated.
          *
-         * If `action_name` is %NULL then the widget will be unassociated from
+         * If `action_name` is `null` then the widget will be unassociated from
          * any previous action.
          *
          * Usually this function is used when the widget is located (or will be
-         * located) within the hierarchy of a `GtkApplicationWindow`.
+         * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          *
          * Names are of the form “win.save” or “app.quit” for actions on the
-         * containing [class`ApplicationWindow]` or its associated [class`Application]`,
-         * respectively. This is the same form used for actions in the [class`Gio`.Menu]
+         * containing {@link ApplicationWindow} or its associated {@link Application},
+         * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name
+         * @virtual
          */
         vfunc_set_action_name(action_name?: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
-         * If `target_value` is %NULL then the target value is unset.
+         * If `target_value` is `null` then the target value is unset.
          *
          * The target value has two purposes. First, it is used as the parameter
-         * to activation of the action associated with the `GtkActionable` widget.
+         * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
          * “active” — the widget is active if the state is equal to the given target.
          *
-         * Consider the example of associating a set of buttons with a [iface`Gio`.Action]
+         * Consider the example of associating a set of buttons with a {@link Gio.Action}
          * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
@@ -8473,7 +8791,8 @@ export namespace ClapperGtk {
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
-         * @param target_value a [struct@GLib.Variant] to set as the target value
+         * @param target_value a {@link GLib.Variant} to set as the target value
+         * @virtual
          */
         vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
         /**
@@ -8489,32 +8808,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -8523,39 +8842,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -8566,13 +8885,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8580,7 +8902,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8588,9 +8910,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8610,9 +8932,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8626,33 +8948,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8685,21 +9007,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -8709,8 +9031,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8727,10 +9049,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8745,13 +9067,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8782,21 +9104,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8806,33 +9128,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8841,6 +9164,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8849,12 +9173,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8863,20 +9189,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8888,6 +9216,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8917,7 +9246,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): void;
         /**
          * Enables or disables an action installed with
-         * [method`Gtk`.WidgetClass.install_action].
+         * {@link Gtk.WidgetClass.install_action}.
          * @param action_name action name, such as "clipboard.paste"
          * @param enabled whether the action is now enabled
          */
@@ -8926,15 +9255,15 @@ export namespace ClapperGtk {
          * Activates the widget.
          *
          * The activation will emit the signal set using
-         * [method`Gtk`.WidgetClass.set_activate_signal]
+         * {@link Gtk.WidgetClass.set_activate_signal}
          * during class initialization.
          *
          * Activation is what happens when you press <kbd>Enter</kbd>
          * on a widget.
          *
          * If you wish to handle the activation keybinding yourself,
-         * it is recommended to use [method`Gtk`.WidgetClass.add_shortcut]
-         * with an action created with [ctor`Gtk`.SignalAction.new].
+         * it is recommended to use {@link Gtk.WidgetClass.add_shortcut}
+         * with an action created with {@link Gtk.SignalAction.new}.
          *
          * If `widget` is not activatable, the function returns false.
          * @returns true if the widget was activated
@@ -8947,12 +9276,12 @@ export namespace ClapperGtk {
          * `widget` and its ancestors.
          *
          * If the action is in an action group added with
-         * [method`Gtk`.Widget.insert_action_group], the `name` is expected
+         * {@link Gtk.Widget.insert_action_group}, the `name` is expected
          * to be prefixed with the prefix that was used when the group was
          * inserted.
          *
          * The arguments must match the actions expected parameter type,
-         * as returned by [method`Gio`.Action.get_parameter_type].
+         * as returned by {@link Gio.Action.get_parameter_type}.
          * @param name the name of the action to activate
          * @param args parameters to use
          * @returns true if the action was activated
@@ -8962,7 +9291,7 @@ export namespace ClapperGtk {
          * Activates the `default.activate` action for the widget.
          *
          * The action is looked up in the same was as for
-         * [method`Gtk`.Widget.activate_action].
+         * {@link Gtk.Widget.activate_action}.
          */
         activate_default(): void;
         /**
@@ -8972,7 +9301,7 @@ export namespace ClapperGtk {
          * propagated to the widget.
          *
          * You will usually want to call this function right after
-         * creating any kind of [class`Gtk`.EventController].
+         * creating any kind of {@link Gtk.EventController}.
          * @param controller an event controller that hasn't been   added to a widget yet
          */
         add_controller(controller: Gtk.EventController): void;
@@ -8980,22 +9309,22 @@ export namespace ClapperGtk {
          * Adds a style class to the widget.
          *
          * After calling this function, the widget’s style will match
-         * for `css_class,` according to CSS matching rules.
+         * for `css_class`, according to CSS matching rules.
          *
-         * Use [method`Gtk`.Widget.remove_css_class] to remove the
+         * Use {@link Gtk.Widget.remove_css_class} to remove the
          * style again.
-         * @param css_class style class to add to @widget, without the leading period
+         * @param css_class style class to add to `widget`, without the leading period
          */
         add_css_class(css_class: string): void;
         /**
          * Adds a widget to the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * Note that the list of mnemonic labels for the widget is cleared
          * when the widget is destroyed, so the caller must make sure
          * to update its internal state at this point as well.
-         * @param label a widget that acts as a mnemonic label for @widget
+         * @param label a widget that acts as a mnemonic label for `widget`
          */
         add_mnemonic_label(label: Gtk.Widget): void;
         /**
@@ -9011,20 +9340,20 @@ export namespace ClapperGtk {
          * The tick callback does not automatically imply a relayout or repaint.
          * If you want a repaint or relayout, and aren’t changing widget properties
          * that would trigger that (for example, changing the text of a label),
-         * then you will have to call [method`Gtk`.Widget.queue_resize] or
-         * [method`Gtk`.Widget.queue_draw] yourself.
+         * then you will have to call {@link Gtk.Widget.queue_resize} or
+         * {@link Gtk.Widget.queue_draw} yourself.
          *
-         * [method`Gdk`.FrameClock.get_frame_time] should generally be used
+         * {@link Gdk.FrameClock.get_frame_time} should generally be used
          * for timing continuous animations and
-         * [method`Gdk`.FrameTimings.get_predicted_presentation_time] should be
+         * {@link Gdk.FrameTimings.get_predicted_presentation_time} should be
          * used if you are trying to display isolated frames at particular times.
          *
          * This is a more convenient alternative to connecting directly to the
-         * [signal`Gdk`.FrameClock::update] signal of the frame clock, since you
+         * `Gdk.FrameClock::update` signal of the frame clock, since you
          * don't have to worry about when a frame clock is assigned to a widget.
          *
          * To remove a tick callback, pass the ID that is returned by this function
-         * to [method`Gtk`.Widget.remove_tick_callback].
+         * to {@link Gtk.Widget.remove_tick_callback}.
          * @param callback function   to call for updating animations
          * @returns an ID for this callback
          */
@@ -9040,7 +9369,7 @@ export namespace ClapperGtk {
          * This function is only used by widget implementations.
          *
          * For a version that does not take a transform, see
-         * [method`Gtk`.Widget.size_allocate].
+         * {@link Gtk.Widget.size_allocate}.
          * @param width new width
          * @param height new height
          * @param baseline new baseline, or -1
@@ -9054,7 +9383,7 @@ export namespace ClapperGtk {
          * The `direction` argument indicates what kind of motion is taking
          * place (up, down, left, right, tab forward, tab backward).
          *
-         * This function calls the [vfunc`Gtk`.Widget.focus] virtual function;
+         * This function calls the {@link Gtk.Widget.focus} virtual function;
          * widgets can override the virtual function in order to implement
          * appropriate focus behavior.
          *
@@ -9062,14 +9391,14 @@ export namespace ClapperGtk {
          * true if moving in `direction` left the focus on a focusable location
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
-         * [method`Gtk`.Widget.grab_focus] to place the focus accordingly;
+         * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
          * when returning false, they don’t modify the current focus location.
          *
          * This function is used by custom widget implementations; if you're
-         * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
+         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
-         * @returns true if focus ended up inside @widget
+         * @returns true if focus ended up inside `widget`
          */
         child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
@@ -9080,7 +9409,7 @@ export namespace ClapperGtk {
          * overview to learn more.
          *
          * If the operation is successful, true is returned. If `widget` has no
-         * bounds or the bounds cannot be expressed in `target'`s coordinate space
+         * bounds or the bounds cannot be expressed in `target`'s coordinate space
          * (for example if both widgets are in different windows), false is
          * returned and `bounds` is set to the zero rectangle.
          *
@@ -9094,7 +9423,7 @@ export namespace ClapperGtk {
          * extra space when possible.
          *
          * Widgets with children should check this, rather than looking at
-         * [method`Gtk`.Widget.get_hexpand] or [method`Gtk`.Widget.get_vexpand].
+         * {@link Gtk.Widget.get_hexpand} or {@link Gtk.Widget.get_vexpand}.
          *
          * This function already checks whether the widget is visible, so
          * visibility does not need to be checked separately. Non-visible
@@ -9108,20 +9437,20 @@ export namespace ClapperGtk {
          */
         compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
-         * Translates the given `point` in `widget'`s coordinates to coordinates
-         * in `target’`s coordinate system.
+         * Translates the given `point` in `widget`'s coordinates to coordinates
+         * in `target`’s coordinate system.
          *
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
          * to (0, 0) and false is returned.
          * @param target the widget to transform into
-         * @param point a point in @widget's coordinate system
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param point a point in `widget`'s coordinate system
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         compute_point(target: Gtk.Widget, point: Graphene.Point): [boolean, Graphene.Point];
         /**
          * Computes a matrix suitable to describe a transformation from
-         * `widget'`s coordinate system into `target'`s coordinate system.
+         * `widget`'s coordinate system into `target`'s coordinate system.
          *
          * The transform can not be computed in certain cases, for example
          * when `widget` and `target` do not share a common ancestor. In that
@@ -9137,47 +9466,47 @@ export namespace ClapperGtk {
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
-         * @returns true if @widget contains the point (x, y)
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @returns true if `widget` contains the point (x, y)
          */
         contains(x: number, y: number): boolean;
         /**
-         * Creates a new `PangoContext` that is configured for the widget.
+         * Creates a new {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map,
+         * The {@link Pango.Context} will have the appropriate font map,
          * font options, font description, and base direction set.
          *
-         * See also [method`Gtk`.Widget.get_pango_context].
-         * @returns the new `PangoContext`
+         * See also {@link Gtk.Widget.get_pango_context}.
+         * @returns the new {@link Pango.Context}
          */
         create_pango_context(): Pango.Context;
         /**
-         * Creates a new `PangoLayout` that is configured for the widget.
+         * Creates a new {@link Pango.Layout} that is configured for the widget.
          *
-         * The `PangoLayout` will have the appropriate font map,
+         * The {@link Pango.Layout} will have the appropriate font map,
          * font description, and base direction set.
          *
-         * If you keep a `PangoLayout` created in this way around,
-         * you need to re-create it when the widgets `PangoContext`
+         * If you keep a {@link Pango.Layout} created in this way around,
+         * you need to re-create it when the widgets {@link Pango.Context}
          * is replaced. This can be tracked by listening to changes
-         * of the [property`Gtk`.Widget:root] property on the widget.
+         * of the {@link Gtk.Widget.root} property on the widget.
          * @param text text to set on the layout
-         * @returns the new `PangoLayout`
+         * @returns the new {@link Pango.Layout}
          */
         create_pango_layout(text?: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
-         * This function is the opposite of [method`Gtk`.Widget.init_template],
+         * This function is the opposite of {@link Gtk.Widget.init_template},
          * and it is used to clear all the template children from a widget
          * instance. If you bound a template child to a field in the instance
          * structure, or in the instance private data structure, the field will
          * be set to `NULL` after this function returns.
          *
-         * You should call this function inside the `GObjectClass.dispose()`
-         * implementation of any widget that called [method`Gtk`.Widget.init_template].
+         * You should call this function inside the {@link GObject.Object.dispose}
+         * implementation of any widget that called {@link Gtk.Widget.init_template}.
          * Typically, you will want to call this function last, right before
          * chaining up to the parent type's dispose implementation, e.g.
          *
@@ -9208,10 +9537,10 @@ export namespace ClapperGtk {
         /**
          * Notifies the user about an input-related error on the widget.
          *
-         * If the [property`Gtk`.Settings:gtk-error-bell] setting is true,
-         * it calls [method`Gdk`.Surface.beep], otherwise it does nothing.
+         * If the {@link Gtk.Settings.gtk_error_bell} setting is true,
+         * it calls {@link Gdk.Surface.beep}, otherwise it does nothing.
          *
-         * Note that the effect of [method`Gdk`.Surface.beep] can be configured
+         * Note that the effect of {@link Gdk.Surface.beep} can be configured
          * in many ways, depending on the windowing backend and the desktop
          * environment or window manager that is used.
          */
@@ -9220,9 +9549,9 @@ export namespace ClapperGtk {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidget`Class.snapshot() function, and when allocating
-         * child widgets in `GtkWidget`Class.size_allocate().
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_allocated_baseline(): number;
         /**
@@ -9230,7 +9559,7 @@ export namespace ClapperGtk {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the height of the @widget
+         * @returns the height of the `widget`
          */
         get_allocated_height(): number;
         /**
@@ -9238,7 +9567,7 @@ export namespace ClapperGtk {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the width of the @widget
+         * @returns the width of the `widget`
          */
         get_allocated_width(): number;
         /**
@@ -9246,13 +9575,13 @@ export namespace ClapperGtk {
          *
          * Note, when implementing a layout widget: a widget’s allocation
          * will be its “adjusted” allocation, that is, the widget’s parent
-         * typically calls [method`Gtk`.Widget.size_allocate] with an allocation,
+         * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
-         * [method`Gtk`.Widget.get_allocation] returns the adjusted allocation that
+         * {@link Gtk.Widget.get_allocation} returns the adjusted allocation that
          * was actually assigned to the widget. The adjusted allocation is
          * guaranteed to be completely contained within the
-         * [method`Gtk`.Widget.size_allocate] allocation, however.
+         * {@link Gtk.Widget.size_allocate} allocation, however.
          *
          * So a layout widget is guaranteed that its children stay inside
          * the assigned bounds, but not that they have exactly the bounds the
@@ -9263,11 +9592,11 @@ export namespace ClapperGtk {
          * Gets the first ancestor of the widget with type `widget_type`.
          *
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first `GtkBox` that’s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          *
-         * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
+         * Note that unlike {@link Gtk.Widget.is_ancestor}, this function
          * considers `widget` to be an ancestor of itself.
          * @param widget_type ancestor type
          * @returns the ancestor widget
@@ -9277,26 +9606,26 @@ export namespace ClapperGtk {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidgetClass.snapshot()` function, and when allocating
-         * child widgets in `GtkWidgetClass.size_allocate()`.
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_baseline(): number;
         /**
          * Determines whether the input focus can enter the widget or any
          * of its children.
          *
-         * See [method`Gtk`.Widget.set_can_focus].
-         * @returns true if the input focus can enter @widget
+         * See {@link Gtk.Widget.set_can_focus}.
+         * @returns true if the input focus can enter `widget`
          */
         get_can_focus(): boolean;
         /**
          * Queries whether the widget can be the target of pointer events.
-         * @returns true if @widget can receive pointer events
+         * @returns true if `widget` can receive pointer events
          */
         get_can_target(): boolean;
         /**
-         * Gets the value set with [method`Gtk`.Widget.set_child_visible].
+         * Gets the value set with {@link Gtk.Widget.set_child_visible}.
          *
          * If you feel a need to use this function, your code probably
          * needs reorganization.
@@ -9327,7 +9656,7 @@ export namespace ClapperGtk {
         get_color(): Gdk.RGBA;
         /**
          * Returns the list of style classes applied to the widget.
-         * @returns a `NULL`-terminated list of   css classes currently applied to @widget
+         * @returns a `NULL`-terminated list of   css classes currently applied to `widget`
          */
         get_css_classes(): string[];
         /**
@@ -9338,14 +9667,14 @@ export namespace ClapperGtk {
         /**
          * Gets the cursor set on the widget.
          *
-         * See [method`Gtk`.Widget.set_cursor] for details.
-         * @returns the cursor   that is set on @widget
+         * See {@link Gtk.Widget.set_cursor} for details.
+         * @returns the cursor   that is set on `widget`
          */
         get_cursor(): Gdk.Cursor | null;
         /**
          * Gets the reading direction for the widget.
          *
-         * See [method`Gtk`.Widget.set_direction].
+         * See {@link Gtk.Widget.set_direction}.
          * @returns the reading direction for the widget
          */
         get_direction(): Gtk.TextDirection;
@@ -9353,7 +9682,7 @@ export namespace ClapperGtk {
          * Get the display for the window that the widget belongs to.
          *
          * This function can only be called after the widget has been
-         * added to a widget hierarchy with a `GtkRoot` at the top.
+         * added to a widget hierarchy with a {@link Gtk.Root} at the top.
          *
          * In general, you should only create display-specific
          * resources when a widget has been realized, and you should
@@ -9370,35 +9699,35 @@ export namespace ClapperGtk {
         get_first_child(): Gtk.Widget | null;
         /**
          * Returns the focus child of the widget.
-         * @returns the current focus   child of @widget
+         * @returns the current focus   child of `widget`
          */
         get_focus_child(): Gtk.Widget | null;
         /**
          * Returns whether the widget should grab focus when it is clicked
          * with the mouse.
          *
-         * See [method`Gtk`.Widget.set_focus_on_click].
+         * See {@link Gtk.Widget.set_focus_on_click}.
          * @returns true if the widget should grab focus when it is   clicked with the mouse
          */
         get_focus_on_click(): boolean;
         /**
          * Determines whether the widget can own the input focus.
          *
-         * See [method`Gtk`.Widget.set_focusable].
-         * @returns true if @widget can own the input focus
+         * See {@link Gtk.Widget.set_focusable}.
+         * @returns true if `widget` can own the input focus
          */
         get_focusable(): boolean;
         /**
          * Gets the font map of the widget.
          *
-         * See [method`Gtk`.Widget.set_font_map].
-         * @returns the font map of @widget
+         * See {@link Gtk.Widget.set_font_map}.
+         * @returns the font map of `widget`
          */
         get_font_map(): Pango.FontMap | null;
         /**
          * Returns the `cairo_font_options_t` of the widget.
          *
-         * Seee [method`Gtk`.Widget.set_font_options].
+         * Seee {@link Gtk.Widget.set_font_options}.
          * @returns the `cairo_font_options_t` of widget
          */
         get_font_options(): cairo.FontOptions | null;
@@ -9407,17 +9736,17 @@ export namespace ClapperGtk {
          *
          * The frame clock is a global “ticker” that can be used to drive
          * animations and repaints. The most common reason to get the frame
-         * clock is to call [method`Gdk`.FrameClock.get_frame_time], in order
+         * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
          * the start of the animation with an initial value from
-         * [method`Gdk`.FrameClock.get_frame_time], and then update the animation
-         * by calling [method`Gdk`.FrameClock.get_frame_time] again during each repaint.
+         * {@link Gdk.FrameClock.get_frame_time}, and then update the animation
+         * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          *
-         * [method`Gdk`.FrameClock.request_phase] will result in a new frame on the
+         * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
          * clock, but won’t necessarily repaint any widgets. To repaint a widget,
-         * you have to use [method`Gtk`.Widget.queue_draw] which invalidates the
+         * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
-         * [method`Gtk`.Widget.queue_draw] will also end up requesting a frame
+         * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          *
          * A widget’s frame clock will not change while the widget is mapped.
@@ -9433,15 +9762,15 @@ export namespace ClapperGtk {
          *
          * For backwards compatibility reasons this method will never return
          * one of the baseline alignments, but instead it will convert it to
-         * [enum`Gtk`.Align.fill] or [enum`Gtk`.Align.center].
+         * {@link Gtk.Align.FILL} or {@link Gtk.Align.CENTER}.
          *
          * Baselines are not supported for horizontal alignment.
-         * @returns the horizontal alignment of @widget
+         * @returns the horizontal alignment of `widget`
          */
         get_halign(): Gtk.Align;
         /**
          * Returns the current value of the `has-tooltip` property.
-         * @returns current value of `has-tooltip` on @widget
+         * @returns current value of `has-tooltip` on `widget`
          */
         get_has_tooltip(): boolean;
         /**
@@ -9449,13 +9778,13 @@ export namespace ClapperGtk {
          *
          * This function returns the height passed to its
          * size-allocate implementation, which is the height you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The height of @widget
+         * @returns The height of `widget`
          */
         get_height(): number;
         /**
@@ -9466,7 +9795,7 @@ export namespace ClapperGtk {
          * receive the extra space. For example, a list or scrollable area
          * or document in your window would often be set to expand.
          *
-         * Widgets with children should use [method`Gtk`.Widget.compute_expand]
+         * Widgets with children should use {@link Gtk.Widget.compute_expand}
          * rather than this function, to see whether any of its children,
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
@@ -9480,7 +9809,7 @@ export namespace ClapperGtk {
         /**
          * Gets whether the `hexpand` flag has been explicitly set.
          *
-         * If [property`Gtk`.Widget:hexpand] property is set, then it
+         * If {@link Gtk.Widget.hexpand} property is set, then it
          * overrides any computed expand value based on child widgets.
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
@@ -9500,12 +9829,12 @@ export namespace ClapperGtk {
         /**
          * Retrieves the layout manager of the widget.
          *
-         * See [method`Gtk`.Widget.set_layout_manager].
-         * @returns the layout manager of @widget
+         * See {@link Gtk.Widget.set_layout_manager}.
+         * @returns the layout manager of `widget`
          */
         get_layout_manager(): Gtk.LayoutManager | null;
         /**
-         * Gets the value of the [property`Gtk`.Widget:limit-events] property.
+         * Gets the value of the {@link Gtk.Widget.limit_events} property.
          */
         get_limit_events(): boolean;
         /**
@@ -9515,39 +9844,39 @@ export namespace ClapperGtk {
         get_mapped(): boolean;
         /**
          * Gets the bottom margin of the widget.
-         * @returns The bottom margin of @widget
+         * @returns The bottom margin of `widget`
          */
         get_margin_bottom(): number;
         /**
          * Gets the end margin of the widget.
-         * @returns The end margin of @widget
+         * @returns The end margin of `widget`
          */
         get_margin_end(): number;
         /**
          * Gets the start margin of the widget.
-         * @returns The start margin of @widget
+         * @returns The start margin of `widget`
          */
         get_margin_start(): number;
         /**
          * Gets the top margin of the widget.
-         * @returns The top margin of @widget
+         * @returns The top margin of `widget`
          */
         get_margin_top(): number;
         /**
          * Retrieves the name of a widget.
          *
-         * See [method`Gtk`.Widget.set_name] for the significance of widget names.
+         * See {@link Gtk.Widget.set_name} for the significance of widget names.
          * @returns name of the widget
          */
         get_name(): string;
         /**
-         * Returns the nearest `GtkNative` ancestor of the widget.
+         * Returns the nearest {@link Gtk.Native} ancestor of the widget.
          *
          * This function will return `NULL` if the widget is not
          * contained inside a widget tree with a native ancestor.
          *
-         * `GtkNative` widgets will return themselves here.
-         * @returns the `GtkNative` ancestor of @widget
+         * {@link Gtk.Native} widgets will return themselves here.
+         * @returns the {@link Gtk.Native} ancestor of `widget`
          */
         get_native(): Gtk.Native | null;
         /**
@@ -9560,7 +9889,7 @@ export namespace ClapperGtk {
         /**
          * Fetches the requested opacity for the widget.
          *
-         * See [method`Gtk`.Widget.set_opacity].
+         * See {@link Gtk.Widget.set_opacity}.
          * @returns the requested opacity for this widget
          */
         get_opacity(): number;
@@ -9570,23 +9899,23 @@ export namespace ClapperGtk {
          */
         get_overflow(): Gtk.Overflow;
         /**
-         * Gets a `PangoContext` that is configured for the widget.
+         * Gets a {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map, font description,
+         * The {@link Pango.Context} will have the appropriate font map, font description,
          * and base direction set.
          *
-         * Unlike the context returned by [method`Gtk`.Widget.create_pango_context],
+         * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
          * and will be updated to match any changes to the widget’s attributes.
          * This can be tracked by listening to changes of the
-         * [property`Gtk`.Widget:root] property on the widget.
-         * @returns the `PangoContext` for the widget
+         * {@link Gtk.Widget.root} property on the widget.
+         * @returns the {@link Pango.Context} for the widget
          */
         get_pango_context(): Pango.Context;
         /**
          * Returns the parent widget of the widget.
-         * @returns the parent widget of @widget
+         * @returns the parent widget of `widget`
          */
         get_parent(): Gtk.Widget | null;
         /**
@@ -9596,14 +9925,14 @@ export namespace ClapperGtk {
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
          * to deduce toplevel window and menu sizes as well as child widgets in
-         * free-form containers such as `GtkFixed`.
+         * free-form containers such as {@link Gtk.Fixed}.
          *
          * Handle with care. Note that the natural height of a height-for-width
          * widget will generally be a smaller size than the minimum height, since
          * the required height for the natural width is generally smaller than the
          * required height for the minimum width.
          *
-         * Use [method`Gtk`.Widget.measure] if you want to support baseline alignment.
+         * Use {@link Gtk.Widget.measure} if you want to support baseline alignment.
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
@@ -9626,7 +9955,7 @@ export namespace ClapperGtk {
         get_primary_clipboard(): Gdk.Clipboard;
         /**
          * Determines whether the widget is realized.
-         * @returns true if @widget is realized
+         * @returns true if `widget` is realized
          */
         get_realized(): boolean;
         /**
@@ -9634,8 +9963,8 @@ export namespace ClapperGtk {
          * within its toplevel when it has the focus, even if another widget
          * is the default.
          *
-         * See [method`Gtk`.Widget.set_receives_default].
-         * @returns true if @widget acts as the default widget when focused
+         * See {@link Gtk.Widget.set_receives_default}.
+         * @returns true if `widget` acts as the default widget when focused
          */
         get_receives_default(): boolean;
         /**
@@ -9646,17 +9975,17 @@ export namespace ClapperGtk {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
-         * @returns The `GtkSizeRequestMode` preferred by @widget.
+         * @returns The {@link Gtk.SizeRequestMode} preferred by `widget`.
          */
         get_request_mode(): Gtk.SizeRequestMode;
         /**
-         * Returns the `GtkRoot` widget of the widget.
+         * Returns the {@link Gtk.Root} widget of the widget.
          *
          * This function will return `NULL` if the widget is not contained
          * inside a widget tree with a root widget.
          *
-         * `GtkRoot` widgets will return themselves here.
-         * @returns the root widget of @widget
+         * {@link Gtk.Root} widgets will return themselves here.
+         * @returns the root widget of `widget`
          */
         get_root(): Gtk.Root | null;
         /**
@@ -9666,32 +9995,32 @@ export namespace ClapperGtk {
          * On traditional systems this is 1, on high density outputs,
          * it can be a higher value (typically 2).
          *
-         * See [method`Gdk`.Surface.get_scale_factor].
+         * See {@link Gdk.Surface.get_scale_factor}.
          *
          * Note that modern systems may support *fractional* scaling,
          * where the scale factor is not an integer. On such systems,
          * this function will return the next higher integer value,
-         * but you probably want to use [method`Gdk`.Surface.get_scale]
+         * but you probably want to use {@link Gdk.Surface.get_scale}
          * to get the fractional scale value.
-         * @returns the scale factor for @widget
+         * @returns the scale factor for `widget`
          */
         get_scale_factor(): number;
         /**
          * Returns the widget’s sensitivity.
          *
          * This function returns the value that has been set using
-         * [method`Gtk`.Widget.set_sensitive]).
+         * {@link Gtk.Widget.set_sensitive}).
          *
          * The effective sensitivity of a widget is however determined
          * by both its own and its parent widget’s sensitivity.
-         * See [method`Gtk`.Widget.is_sensitive].
+         * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
         get_sensitive(): boolean;
         /**
          * Gets the settings object holding the settings used for the widget.
          *
-         * Note that this function can only be called when the `GtkWidget`
+         * Note that this function can only be called when the {@link Gtk.Widget}
          * is attached to a toplevel, since the settings object is specific
          * to a particular display. If you want to monitor the widget for
          * changes in its settings, connect to the `notify::display` signal.
@@ -9703,16 +10032,16 @@ export namespace ClapperGtk {
          *
          * Which dimension is returned depends on `orientation`.
          *
-         * This is equivalent to calling [method`Gtk`.Widget.get_width]
-         * for [enum`Gtk`.Orientation.horizontal] or [method`Gtk`.Widget.get_height]
-         * for [enum`Gtk`.Orientation.vertical], but can be used when
+         * This is equivalent to calling {@link Gtk.Widget.get_width}
+         * for {@link Gtk.Orientation.HORIZONTAL} or {@link Gtk.Widget.get_height}
+         * for {@link Gtk.Orientation.VERTICAL}, but can be used when
          * writing orientation-independent code, such as when
-         * implementing [iface`Gtk`.Orientable] widgets.
+         * implementing {@link Gtk.Orientable} widgets.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
          * @param orientation the orientation to query
-         * @returns the size of @widget in @orientation
+         * @returns the size of `widget` in `orientation`
          */
         get_size(orientation: Gtk.Orientation | null): number;
         /**
@@ -9722,22 +10051,22 @@ export namespace ClapperGtk {
          * dimension has not been set explicitly and the natural requisition
          * of the widget will be used instead.
          *
-         * See [method`Gtk`.Widget.set_size_request].
+         * See {@link Gtk.Widget.set_size_request}.
          *
          * To get the size a widget will actually request, call
-         * [method`Gtk`.Widget.measure] instead of this function.
+         * {@link Gtk.Widget.measure} instead of this function.
          */
         get_size_request(): [number, number];
         /**
          * Returns the widget state as a flag set.
          *
-         * It is worth mentioning that the effective [flags`Gtk`.StateFlags.insensitive]
+         * It is worth mentioning that the effective {@link Gtk.StateFlags.INSENSITIVE}
          * state will be returned, that is, also based on parent insensitivity,
          * even if `widget` itself is sensitive.
          *
          * Also note that if you are looking for a way to obtain the
-         * [flags`Gtk`.StateFlags] to pass to a [class`Gtk`.StyleContext]
-         * method, you should look at [method`Gtk`.StyleContext.get_state].
+         * {@link Gtk.StateFlags} to pass to a {@link Gtk.StyleContext}
+         * method, you should look at {@link Gtk.StyleContext.get_state}.
          * @returns the state flags of widget
          */
         get_state_flags(): Gtk.StateFlags;
@@ -9754,22 +10083,22 @@ export namespace ClapperGtk {
          * the widget.
          *
          * This will only report children which were previously declared
-         * with [method`Gtk`.WidgetClass.bind_template_child_full] or one of its
+         * with {@link Gtk.WidgetClass.bind_template_child_full} or one of its
          * variants.
          *
          * This function is only meant to be called for code which is private
          * to the `widget_type` which declared the child and is meant for language
          * bindings which cannot easily make use of the GObject structure offsets.
-         * @param widget_type The `GType` to get a template child for
+         * @param widget_type The {@link GObject.GType} to get a template child for
          * @param name ID of the child defined in the template XML
-         * @returns the object built in the template XML with   the id @name
+         * @returns the object built in the template XML with   the id `name`
          */
         get_template_child<T = GObject.Object>(widget_type: GObject.GType, name: string): T;
         /**
          * Gets the contents of the tooltip for the widget.
          *
          * If the tooltip has not been set using
-         * [method`Gtk`.Widget.set_tooltip_markup], this
+         * {@link Gtk.Widget.set_tooltip_markup}, this
          * function returns `NULL`.
          * @returns the tooltip text
          */
@@ -9777,29 +10106,29 @@ export namespace ClapperGtk {
         /**
          * Gets the contents of the tooltip for the widget.
          *
-         * If the `widget'`s tooltip was set using
-         * [method`Gtk`.Widget.set_tooltip_markup],
+         * If the `widget`'s tooltip was set using
+         * {@link Gtk.Widget.set_tooltip_markup},
          * this function will return the escaped text.
          * @returns the tooltip text
          */
         get_tooltip_text(): string | null;
         /**
          * Gets the vertical alignment of the widget.
-         * @returns the vertical alignment of @widget
+         * @returns the vertical alignment of `widget`
          */
         get_valign(): Gtk.Align;
         /**
          * Gets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.get_hexpand] for more detail.
+         * See {@link Gtk.Widget.get_hexpand} for more detail.
          * @returns whether vexpand flag is set
          */
         get_vexpand(): boolean;
         /**
          * Gets whether the `vexpand` flag has been explicitly set.
          *
-         * See [method`Gtk`.Widget.get_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.get_hexpand_set} for more detail.
          * @returns whether vexpand has been explicitly set
          */
         get_vexpand_set(): boolean;
@@ -9808,12 +10137,12 @@ export namespace ClapperGtk {
          *
          * If you want to take into account whether the widget’s
          * parent is also marked as visible, use
-         * [method`Gtk`.Widget.is_visible] instead.
+         * {@link Gtk.Widget.is_visible} instead.
          *
          * This function does not check if the widget is
          * obscured in any way.
          *
-         * See [method`Gtk`.Widget.set_visible].
+         * See {@link Gtk.Widget.set_visible}.
          * @returns true if the widget is visible
          */
         get_visible(): boolean;
@@ -9822,32 +10151,32 @@ export namespace ClapperGtk {
          *
          * This function returns the width passed to its
          * size-allocate implementation, which is the width you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The width of @widget
+         * @returns The width of `widget`
          */
         get_width(): number;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
-         * @returns true if focus is now inside @widget
+         * @returns true if focus is now inside `widget`
          */
         grab_focus(): boolean;
         /**
          * Returns whether a style class is currently applied to the widget.
          * @param css_class style class, without the leading period
-         * @returns true if @css_class is currently applied to @widget
+         * @returns true if `css_class` is currently applied to `widget`
          */
         has_css_class(css_class: string): boolean;
         /**
@@ -9856,11 +10185,11 @@ export namespace ClapperGtk {
          *
          * This is a convenience function that takes into account whether
          * focus indication should currently be shown in the toplevel window
-         * of `widget`. See [method`Gtk`.Window.get_focus_visible] for more
+         * of `widget`. See {@link Gtk.Window.get_focus_visible} for more
          * information about focus indication.
          *
          * To find out if the widget has the global input focus, use
-         * [method`Gtk`.Widget.has_focus].
+         * {@link Gtk.Widget.has_focus}.
          * @returns true if the widget should display a “focus rectangle”
          */
         has_visible_focus(): boolean;
@@ -9875,7 +10204,7 @@ export namespace ClapperGtk {
          *
          * This information can sometimes be used to avoid doing
          * unnecessary work.
-         * @returns true if @widget is being destroyed
+         * @returns true if `widget` is being destroyed
          */
         in_destruction(): boolean;
         /**
@@ -9883,7 +10212,7 @@ export namespace ClapperGtk {
          *
          * This function must be called in the instance initializer
          * for any class which assigned itself a template using
-         * [method`Gtk`.WidgetClass.set_template].
+         * {@link Gtk.WidgetClass.set_template}.
          *
          * It is important to call this function in the instance initializer
          * of a widget subclass and not in `GObject.constructed()` or
@@ -9904,85 +10233,85 @@ export namespace ClapperGtk {
         /**
          * Inserts an action group into the widget's actions.
          *
-         * Children of `widget` that implement [iface`Gtk`.Actionable] can
+         * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
          * “action-name” to `prefix`.`action-name`.
          *
          * Note that inheritance is defined for individual actions. I.e.
-         * even if you insert a group with prefix `prefix,` actions with
+         * even if you insert a group with prefix `prefix`, actions with
          * the same prefix will still be inherited from the parent, unless
          * the group contains an action with the same name.
          *
          * If `group` is `NULL`, a previously inserted group for `name` is
          * removed from `widget`.
-         * @param name the prefix for actions in @group
+         * @param name the prefix for actions in `group`
          * @param group an action group
          */
         insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed after `previous_sibling,` or at the beginning if
+         * It will be placed after `previous_sibling`, or at the beginning if
          * `previous_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_prev_sibling (widget)`
          * will return `previous_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this
+         * If `parent` is already set as the parent widget of `widget`, this
          * function can also be used to reorder `widget` in the child widget
          * list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param previous_sibling the new previous sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param previous_sibling the new previous sibling of `widget`
          */
         insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed before `next_sibling,` or at the end if
+         * It will be placed before `next_sibling`, or at the end if
          * `next_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_next_sibling (widget)`
          * will return `next_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this function
+         * If `parent` is already set as the parent widget of `widget`, this function
          * can also be used to reorder `widget` in the child widget list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param next_sibling the new next sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param next_sibling the new next sibling of `widget`
          */
         insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
-         * @param ancestor another `GtkWidget`
-         * @returns true if @ancestor contains @widget as a child,   grandchild, great grandchild, etc
+         * @param ancestor another {@link Gtk.Widget}
+         * @returns true if `ancestor` contains `widget` as a child,   grandchild, great grandchild, etc
          */
         is_ancestor(ancestor: Gtk.Widget): boolean;
         /**
          * Determines whether the widget can be drawn to.
          *
          * A widget can be drawn if it is mapped and visible.
-         * @returns true if @widget is drawable
+         * @returns true if `widget` is drawable
          */
         is_drawable(): boolean;
         /**
          * Determines if the widget is the focus widget within its
          * toplevel.
          *
-         * This does not mean that the [property`Gtk`.Widget:has-focus]
-         * property is necessarily set; [property`Gtk`.Widget:has-focus]
+         * This does not mean that the {@link Gtk.Widget.has_focus}
+         * property is necessarily set; {@link Gtk.Widget.has_focus}
          * will only be set if the toplevel widget additionally has the
          * global input focus.
          * @returns true if the widget is the focus widget
@@ -10002,38 +10331,38 @@ export namespace ClapperGtk {
          *
          * This function does not check if the widget is obscured in any way.
          *
-         * See also [method`Gtk`.Widget.get_visible] and
-         * [method`Gtk`.Widget.set_visible].
+         * See also {@link Gtk.Widget.get_visible} and
+         * {@link Gtk.Widget.set_visible}.
          * @returns true if the widget and all its parents are visible
          */
         is_visible(): boolean;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
@@ -10045,7 +10374,7 @@ export namespace ClapperGtk {
          * mnemonic.
          *
          * Typically, these widgets will be labels. See, for example,
-         * [method`Gtk`.Label.set_mnemonic_widget].
+         * {@link Gtk.Label.set_mnemonic_widget}.
          *
          * The widgets in the list are not individually referenced.
          * If you want to iterate through the list and perform actions
@@ -10064,18 +10393,18 @@ export namespace ClapperGtk {
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
         measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
          * @returns true if the signal has been handled
          */
@@ -10089,7 +10418,7 @@ export namespace ClapperGtk {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's children
+         * @returns a list model tracking `widget`'s children
          */
         observe_children(): Gio.ListModel;
         /**
@@ -10101,17 +10430,17 @@ export namespace ClapperGtk {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's controllers
+         * @returns a list model tracking `widget`'s controllers
          */
         observe_controllers(): Gio.ListModel;
         /**
          * Finds the descendant of the widget closest to a point.
          *
          * The point (x, y) must be given in widget coordinates, so (0, 0)
-         * is assumed to be the top left of `widget'`s content area.
+         * is assumed to be the top left of `widget`'s content area.
          *
          * Usually widgets will return `NULL` if the given coordinate is not
-         * contained in `widget` checked via [method`Gtk`.Widget.contains].
+         * contained in `widget` checked via {@link Gtk.Widget.contains}.
          * Otherwise they will recursively try to find a child that does
          * not return `NULL`. Widgets are however free to customize their
          * picking algorithm.
@@ -10119,21 +10448,21 @@ export namespace ClapperGtk {
          * This function is used on the toplevel to determine the widget
          * below the mouse cursor for purposes of hover highlighting and
          * delivering events.
-         * @param x x coordinate to test, relative to @widget's origin
-         * @param y y coordinate to test, relative to @widget's origin
+         * @param x x coordinate to test, relative to `widget`'s origin
+         * @param y y coordinate to test, relative to `widget`'s origin
          * @param flags flags to influence what is picked
          * @returns the widget's descendant at (x, y)
          */
         pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
         /**
-         * Flags the widget for a rerun of the [vfunc`Gtk`.Widget.size_allocate]
+         * Flags the widget for a rerun of the {@link Gtk.Widget.size_allocate}
          * function.
          *
-         * Use this function instead of [method`Gtk`.Widget.queue_resize]
-         * when the `widget'`s size request didn't change but it wants to
+         * Use this function instead of {@link Gtk.Widget.queue_resize}
+         * when the `widget`'s size request didn't change but it wants to
          * reposition its contents.
          *
-         * An example user of this function is [method`Gtk`.Widget.set_halign].
+         * An example user of this function is {@link Gtk.Widget.set_halign}.
          *
          * This function is only for use in widget implementations.
          */
@@ -10144,7 +10473,7 @@ export namespace ClapperGtk {
          * The redraw will happen in the paint phase
          * of the current or the next frame.
          *
-         * This means `widget'`s [vfunc`Gtk`.Widget.snapshot]
+         * This means `widget`'s {@link Gtk.Widget.snapshot}
          * implementation will be called.
          */
         queue_draw(): void;
@@ -10153,13 +10482,13 @@ export namespace ClapperGtk {
          *
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * [class`Gtk`.Label], the label queues a resize to ensure there’s
+         * {@link Gtk.Label}, the label queues a resize to ensure there’s
          * enough space for the new text.
          *
-         * Note that you cannot call gtk_widget_queue_resize() on a widget
-         * from inside its implementation of the [vfunc`Gtk`.Widget.size_allocate]
-         * virtual method. Calls to gtk_widget_queue_resize() from inside
-         * [vfunc`Gtk`.Widget.size_allocate] will be silently ignored.
+         * Note that you cannot call `gtk_widget_queue_resize()` on a widget
+         * from inside its implementation of the {@link Gtk.Widget.size_allocate}
+         * virtual method. Calls to `gtk_widget_queue_resize()` from inside
+         * {@link Gtk.Widget.size_allocate} will be silently ignored.
          *
          * This function is only for use in widget implementations.
          */
@@ -10180,7 +10509,7 @@ export namespace ClapperGtk {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
          */
         realize(): void;
         /**
@@ -10198,23 +10527,23 @@ export namespace ClapperGtk {
          * Removes a style from the widget.
          *
          * After this, the style of `widget` will stop matching for `css_class`.
-         * @param css_class style class to remove from @widget, without the leading period
+         * @param css_class style class to remove from `widget`, without the leading period
          */
         remove_css_class(css_class: string): void;
         /**
          * Removes a widget from the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * The widget must have previously been added to the list with
-         * [method`Gtk`.Widget.add_mnemonic_label].
-         * @param label a widget that is a mnemonic label for @widget
+         * {@link Gtk.Widget.add_mnemonic_label}.
+         * @param label a widget that is a mnemonic label for `widget`
          */
         remove_mnemonic_label(label: Gtk.Widget): void;
         /**
          * Removes a tick callback previously registered with
-         * [method`Gtk`.Widget.add_tick_callback].
-         * @param id an ID returned by [method@Gtk.Widget.add_tick_callback]
+         * {@link Gtk.Widget.add_tick_callback}.
+         * @param id an ID returned by {@link Gtk.Widget.add_tick_callback}
          */
         remove_tick_callback(id: number): void;
         /**
@@ -10230,7 +10559,7 @@ export namespace ClapperGtk {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
          * @param can_focus whether the input focus can enter   the widget or any of its children
          */
@@ -10244,7 +10573,7 @@ export namespace ClapperGtk {
          * Sets whether the widget should be mapped along with its parent.
          *
          * The child visibility can be set for widget before it is added
-         * to a container with [method`Gtk`.Widget.set_parent], to avoid
+         * to a container with {@link Gtk.Widget.set_parent}, to avoid
          * mapping children unnecessary before immediately unmapping them.
          * However it will be reset to its default state of true when the
          * widget is removed from a container.
@@ -10257,7 +10586,7 @@ export namespace ClapperGtk {
          *
          * This function is only useful for widget implementations
          * and should never be called by an application.
-         * @param child_visible whether @widget should be mapped along   with its parent
+         * @param child_visible whether `widget` should be mapped along   with its parent
          */
         set_child_visible(child_visible: boolean): void;
         /**
@@ -10279,12 +10608,12 @@ export namespace ClapperGtk {
          * the widget.
          *
          * This is a utility function that creates a cursor via
-         * [ctor`Gdk`.Cursor.new_from_name] and then sets it on `widget`
-         * with [method`Gtk`.Widget.set_cursor]. See those functions for
+         * {@link Gdk.Cursor.new_from_name} and then sets it on `widget`
+         * with {@link Gtk.Widget.set_cursor}. See those functions for
          * details.
          *
          * On top of that, this function allows `name` to be `NULL`, which
-         * will do the same as calling [method`Gtk`.Widget.set_cursor]
+         * will do the same as calling {@link Gtk.Widget.set_cursor}
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
@@ -10303,8 +10632,8 @@ export namespace ClapperGtk {
          * an order that is explicitly visual rather than logical (such as
          * buttons for text justification).
          *
-         * If the direction is set to [enum`Gtk`.TextDirection.none], then
-         * the value set by [func`Gtk`.Widget.set_default_direction] will be used.
+         * If the direction is set to {@link Gtk.TextDirection.NONE}, then
+         * the value set by {@link Gtk.Widget.set_default_direction} will be used.
          * @param dir the new direction
          */
         set_direction(dir: Gtk.TextDirection | null): void;
@@ -10313,8 +10642,8 @@ export namespace ClapperGtk {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
         set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -10331,7 +10660,7 @@ export namespace ClapperGtk {
          * Sets whether the widget can own the input focus.
          *
          * Widget implementations should set `focusable` to true in
-         * their init() function if they want to receive keyboard input.
+         * their `init()` function if they want to receive keyboard input.
          *
          * Note that having `focusable` be true is only one of the
          * necessary conditions for being focusable. A widget must
@@ -10339,9 +10668,9 @@ export namespace ClapperGtk {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
-         * @param focusable whether or not @widget can own the input focus
+         * @param focusable whether or not `widget` can own the input focus
          */
         set_focusable(focusable: boolean): void;
         /**
@@ -10353,14 +10682,14 @@ export namespace ClapperGtk {
          * of available fonts.
          *
          * When not set, the widget will inherit the font map from its parent.
-         * @param font_map a `PangoFontMap`
+         * @param font_map a {@link Pango.FontMap}
          */
         set_font_map(font_map?: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
          *
-         * When not set, the default font options for the `GdkDisplay`
+         * When not set, the default font options for the {@link Gdk.Display}
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
@@ -10372,7 +10701,7 @@ export namespace ClapperGtk {
         set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the `has-tooltip` property on the widget.
-         * @param has_tooltip whether or not @widget has a tooltip
+         * @param has_tooltip whether or not `widget` has a tooltip
          */
         set_has_tooltip(has_tooltip: boolean): void;
         /**
@@ -10389,18 +10718,18 @@ export namespace ClapperGtk {
          *
          * By default, widgets automatically expand if any of their children
          * want to expand. (To see if a widget will automatically expand given
-         * its current children and state, call [method`Gtk`.Widget.compute_expand].
+         * its current children and state, call {@link Gtk.Widget.compute_expand}.
          * A widget can decide how the expandability of children affects its
          * own expansion by overriding the `compute_expand` virtual method on
-         * `GtkWidget`.).
+         * {@link Gtk.Widget}.).
          *
          * Setting hexpand explicitly with this function will override the
          * automatic expand behavior.
          *
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
-         * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
-         * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
+         * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -10408,8 +10737,8 @@ export namespace ClapperGtk {
         /**
          * Sets whether the hexpand flag will be used.
          *
-         * The [property`Gtk`.Widget:hexpand-set] property will be set
-         * automatically when you call [method`Gtk`.Widget.set_hexpand]
+         * The {@link Gtk.Widget.hexpand_set} property will be set
+         * automatically when you call {@link Gtk.Widget.set_hexpand}
          * to set hexpand, so the most likely reason to use this function
          * would be to unset an explicit expand flag.
          *
@@ -10461,7 +10790,7 @@ export namespace ClapperGtk {
          * Setting a name allows you to refer to the widget from a
          * CSS file. You can apply a style to widgets with a particular name
          * in the CSS file. See the documentation for the CSS syntax (on the
-         * same page as the docs for [class`Gtk`.StyleContext].
+         * same page as the docs for {@link Gtk.StyleContext}.
          *
          * Note that the CSS syntax has certain special characters to delimit
          * and represent elements in a selector (period, #, >, *...), so using
@@ -10480,7 +10809,7 @@ export namespace ClapperGtk {
          * there are some limitations: For toplevel widgets, applying opacity
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
-         * [method`Gdk`.Display.is_composited]. On Windows and Wayland it will
+         * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
          * always work, although setting a window’s opacity after the window
          * has been shown may cause some flicker.
          *
@@ -10489,8 +10818,8 @@ export namespace ClapperGtk {
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
          * widgets (since that would make widgets deeper in the hierarchy
-         * progressively more translucent). As a consequence, [class`Gtk`.Popover]
-         * instances and other [iface`Gtk`.Native] widgets with their own surface
+         * progressively more translucent). As a consequence, {@link Gtk.Popover}
+         * instances and other {@link Gtk.Native} widgets with their own surface
          * will use their own opacity value, and thus by default appear
          * non-translucent, even if they are attached to a toplevel that
          * is translucent.
@@ -10501,12 +10830,12 @@ export namespace ClapperGtk {
          * Sets how the widget treats content that is drawn outside the
          * it's content area.
          *
-         * See the definition of [enum`Gtk`.Overflow] for details.
+         * See the definition of {@link Gtk.Overflow} for details.
          *
          * This setting is provided for widget implementations and
          * should not be used by application code.
          *
-         * The default value is [enum`Gtk`.Overflow.visible].
+         * The default value is {@link Gtk.Overflow.VISIBLE}.
          * @param overflow desired overflow value
          */
         set_overflow(overflow: Gtk.Overflow | null): void;
@@ -10515,10 +10844,10 @@ export namespace ClapperGtk {
          *
          * This takes care of details such as updating the state and style
          * of the child to reflect its new location and resizing the parent.
-         * The opposite function is [method`Gtk`.Widget.unparent].
+         * The opposite function is {@link Gtk.Widget.unparent}.
          *
          * This function is useful only when implementing subclasses of
-         * `GtkWidget`.
+         * {@link Gtk.Widget}.
          * @param parent parent widget
          */
         set_parent(parent: Gtk.Widget): void;
@@ -10526,7 +10855,7 @@ export namespace ClapperGtk {
          * Sets whether the widget will be treated as the default
          * widget within its toplevel when it has the focus, even if
          * another widget is the default.
-         * @param receives_default whether or not @widget can be a default widget
+         * @param receives_default whether or not `widget` can be a default widget
          */
         set_receives_default(receives_default: boolean): void;
         /**
@@ -10546,7 +10875,7 @@ export namespace ClapperGtk {
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          *
-         * In most cases, [method`Gtk`.Window.set_default_size] is a better
+         * In most cases, {@link Gtk.Window.set_default_size} is a better
          * choice for toplevel windows than this function; setting the default
          * size will still allow users to shrink the window. Setting the size
          * request will force them to leave the window at least as large as
@@ -10568,14 +10897,14 @@ export namespace ClapperGtk {
          *
          * The size request set here does not include any margin from the
          * properties
-         * [property`Gtk`.Widget:margin-start],
-         * [property`Gtk`.Widget:margin-end],
-         * [property`Gtk`.Widget:margin-top], and
-         * [property`Gtk`.Widget:margin-bottom], but it does include pretty
+         * {@link Gtk.Widget.margin_start},
+         * {@link Gtk.Widget.margin_end},
+         * {@link Gtk.Widget.margin_top}, and
+         * {@link Gtk.Widget.margin_bottom}, but it does include pretty
          * much all other padding or border properties set by any subclass
-         * of `GtkWidget`.
-         * @param width width @widget should request, or -1 to unset
-         * @param height height @widget should request, or -1 to unset
+         * of {@link Gtk.Widget}.
+         * @param width width `widget` should request, or -1 to unset
+         * @param height height `widget` should request, or -1 to unset
          */
         set_size_request(width: number, height: number): void;
         /**
@@ -10583,13 +10912,13 @@ export namespace ClapperGtk {
          *
          * Typical widget states are insensitive, prelighted, etc.
          *
-         * This function accepts the values [flags`Gtk`.StateFlags.dir-ltr] and
-         * [flags`Gtk`.StateFlags.dir-rtl] but ignores them. If you want to set
-         * the widget's direction, use [method`Gtk`.Widget.set_direction].
+         * This function accepts the values {@link Gtk.StateFlags.DIR-LTR} and
+         * {@link Gtk.StateFlags.DIR-RTL} but ignores them. If you want to set
+         * the widget's direction, use {@link Gtk.Widget.set_direction}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn on
-         * @param clear whether to clear state before turning on @flags
+         * @param clear whether to clear state before turning on `flags`
          */
         set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
@@ -10598,11 +10927,11 @@ export namespace ClapperGtk {
          * `markup` must contain Pango markup.
          *
          * This function will take care of setting the
-         * [property`Gtk`.Widget:has-tooltip] as a side effect, and of the
-         * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
+         * {@link Gtk.Widget.has_tooltip} as a side effect, and of the
+         * default handler for the `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_markup].
-         * @param markup the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_markup}.
+         * @param markup the contents of the tooltip for `widget`
          */
         set_tooltip_markup(markup?: string | null): void;
         /**
@@ -10611,12 +10940,12 @@ export namespace ClapperGtk {
          * If `text` contains any markup, it will be escaped.
          *
          * This function will take care of setting
-         * [property`Gtk`.Widget:has-tooltip] as a side effect,
+         * {@link Gtk.Widget.has_tooltip} as a side effect,
          * and of the default handler for the
-         * [signal`Gtk`.Widget::query-tooltip] signal.
+         * `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_text].
-         * @param text the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_text}.
+         * @param text the contents of the tooltip for `widget`
          */
         set_tooltip_text(text?: string | null): void;
         /**
@@ -10628,14 +10957,14 @@ export namespace ClapperGtk {
          * Sets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.set_hexpand] for more detail.
+         * See {@link Gtk.Widget.set_hexpand} for more detail.
          * @param expand whether to expand
          */
         set_vexpand(expand: boolean): void;
         /**
          * Sets whether the vexpand flag will be used.
          *
-         * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.set_hexpand_set} for more detail.
          * @param set value for vexpand-set property
          */
         set_vexpand_set(set: boolean): void;
@@ -10643,7 +10972,7 @@ export namespace ClapperGtk {
          * Sets the visibility state of `widget`.
          *
          * Note that setting this to true doesn’t mean the widget is
-         * actually viewable, see [method`Gtk`.Widget.get_visible].
+         * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
         set_visible(visible: boolean): void;
@@ -10653,7 +10982,7 @@ export namespace ClapperGtk {
          *
          * This is false for invisible children, but also
          * for children that have their own surface, such
-         * as [class`Gtk`.Popover] instances.
+         * as {@link Gtk.Popover} instances.
          * @returns true if child should be included in   measuring and allocating
          */
         should_layout(): boolean;
@@ -10674,8 +11003,8 @@ export namespace ClapperGtk {
          * Allocates widget with a transformation that translates
          * the origin to the position in `allocation`.
          *
-         * This is a simple form of [method`Gtk`.Widget.allocate].
-         * @param allocation position and size to be allocated to @widget
+         * This is a simple form of {@link Gtk.Widget.allocate}.
+         * @param allocation position and size to be allocated to `widget`
          * @param baseline the baseline of the child, or -1
          */
         size_allocate(allocation: Gtk.Allocation, baseline: number): void;
@@ -10683,32 +11012,32 @@ export namespace ClapperGtk {
          * Snapshots a child of the widget.
          *
          * When a widget receives a call to the snapshot function,
-         * it must send synthetic [vfunc`Gtk`.Widget.snapshot] calls
+         * it must send synthetic {@link Gtk.Widget.snapshot} calls
          * to all children. This function provides a convenient way
          * of doing this. A widget, when it receives a call to its
-         * [vfunc`Gtk`.Widget.snapshot] function, calls
-         * gtk_widget_snapshot_child() once for each child, passing in
+         * {@link Gtk.Widget.snapshot} function, calls
+         * `gtk_widget_snapshot_child()` once for each child, passing in
          * the `snapshot` the widget received.
          *
-         * This function takes care of translating the origin of `snapshot,`
+         * This function takes care of translating the origin of `snapshot`,
          * and deciding whether the child needs to be snapshot.
          *
-         * It does nothing for children that implement `GtkNative`.
-         * @param child a child of @widget
-         * @param snapshot snapshot as passed to the widget. In particular, no   calls to [method@Gtk.Snapshot.translate] or other transform calls   should have been made
+         * It does nothing for children that implement {@link Gtk.Native}.
+         * @param child a child of `widget`
+         * @param snapshot snapshot as passed to the widget. In particular, no   calls to {@link Gtk.Snapshot.translate} or other transform calls   should have been made
          */
         snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void;
         /**
-         * Translates coordinates relative to `src_widget’`s allocation
-         * to coordinates relative to `dest_widget’`s allocations.
+         * Translates coordinates relative to `src_widget`’s allocation
+         * to coordinates relative to `dest_widget`’s allocations.
          *
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
          * are set to 0 and false is returned.
          * @param dest_widget another widget
-         * @param src_x X position in widget coordinates of @src_widget
-         * @param src_y Y position in widget coordinates of @src_widget
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param src_x X position in widget coordinates of `src_widget`
+         * @param src_y Y position in widget coordinates of `src_widget`
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [boolean, number, number];
         /**
@@ -10739,7 +11068,7 @@ export namespace ClapperGtk {
         /**
          * Turns off flag values for the current widget state.
          *
-         * See [method`Gtk`.Widget.set_state_flags].
+         * See {@link Gtk.Widget.set_state_flags}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn off
@@ -10750,15 +11079,17 @@ export namespace ClapperGtk {
          *   widget extra space when possible.
          * @param hexpand_p
          * @param vexpand_p
+         * @virtual
          */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
         /**
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @virtual
          */
         vfunc_contains(x: number, y: number): boolean;
         /**
@@ -10767,17 +11098,20 @@ export namespace ClapperGtk {
          *   redraws accordingly. The default implementation will take care of this for
          *   all the default CSS properties, so implementations must chain up.
          * @param change
+         * @virtual
          */
         vfunc_css_changed(change: Gtk.CssStyleChange): void;
         /**
          * Signal emitted when the text direction of a
          *   widget changes.
          * @param previous_direction
+         * @virtual
          */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
         /**
-         * Vfunc for gtk_widget_child_focus()
+         * Vfunc for `gtk_widget_child_focus()`
          * @param direction
+         * @virtual
          */
         vfunc_focus(direction: Gtk.DirectionType): boolean;
         /**
@@ -10788,95 +11122,104 @@ export namespace ClapperGtk {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
+         * @virtual
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
+         * @virtual
          */
         vfunc_grab_focus(): boolean;
         /**
          * Reverses the effects of [method.Gtk.Widget.show].
          *
          * This is causing the widget to be hidden (invisible to the user).
+         * @virtual
          */
         vfunc_hide(): void;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
+         * @virtual
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Causes a widget to be mapped if it isn’t already.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_map(): void;
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @virtual
          */
         vfunc_measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
+         * @virtual
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
         /**
          * Signal emitted when a change of focus is requested
          * @param direction
+         * @virtual
          */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
         /**
-         * Signal emitted when “has-tooltip” is %TRUE and the
+         * Signal emitted when “has-tooltip” is `true` and the
          *   hover timeout has expired with the cursor hovering “above”
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x
          * @param y
          * @param keyboard_tooltip
          * @param tooltip
+         * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
@@ -10895,12 +11238,14 @@ export namespace ClapperGtk {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
+         * @virtual
          */
         vfunc_realize(): void;
         /**
-         * Called when the widget gets added to a `GtkRoot` widget. Must
+         * Called when the widget gets added to a {@link Gtk.Root} widget. Must
          *   chain up
+         * @virtual
          */
         vfunc_root(): void;
         /**
@@ -10908,8 +11253,9 @@ export namespace ClapperGtk {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
+         * @virtual
          */
         vfunc_set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -10923,6 +11269,7 @@ export namespace ClapperGtk {
          * When a toplevel widget is shown, it is immediately realized and
          * mapped; other shown widgets are realized and mapped when their
          * toplevel widget is realized and mapped.
+         * @virtual
          */
         vfunc_show(): void;
         /**
@@ -10931,28 +11278,33 @@ export namespace ClapperGtk {
          * @param width
          * @param height
          * @param baseline
+         * @virtual
          */
         vfunc_size_allocate(width: number, height: number, baseline: number): void;
         /**
          * Vfunc called when a new snapshot of the widget has to be taken.
          * @param snapshot
+         * @virtual
          */
         vfunc_snapshot(snapshot: Gtk.Snapshot): void;
         /**
          * Signal emitted when the widget state changes,
-         *   see gtk_widget_get_state_flags().
+         *   see `gtk_widget_get_state_flags()`.
          * @param previous_state_flags
+         * @virtual
          */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
         /**
          * Emitted when a system setting was changed. Must chain up.
          * @param settings
+         * @virtual
          */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
          * Causes a widget to be unmapped if it’s currently mapped.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_unmap(): void;
         /**
@@ -10961,11 +11313,13 @@ export namespace ClapperGtk {
          * This frees all GDK resources associated with the widget.
          *
          * This function is only useful in widget implementations.
+         * @virtual
          */
         vfunc_unrealize(): void;
         /**
          * Called when the widget is about to be removed from its
-         *   `GtkRoot` widget. Must chain up
+         *   {@link Gtk.Root} widget. Must chain up
+         * @virtual
          */
         vfunc_unroot(): void;
     }
@@ -11030,6 +11384,7 @@ export namespace ClapperGtk {
 
     /**
      * A bar for seeking and displaying playback position.
+     * @gir-type Class
      */
     class SeekBar extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SeekBar>;
@@ -11076,16 +11431,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SeekBar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SeekBar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SeekBar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SeekBar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SeekBar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SeekBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11096,12 +11454,12 @@ export namespace ClapperGtk {
 
         /**
          * Get whether the position and duration labels are going to be revealed.
-         * @returns TRUE if the labels are going to be revealed, %FALSE otherwise.
+         * @returns TRUE if the labels are going to be revealed, `false` otherwise.
          */
         get_reveal_labels(): boolean;
         /**
-         * Get [enum`Clapper`.PlayerSeekMethod] used when seeking with seek bar.
-         * @returns #ClapperPlayerSeekMethod used for seeking.
+         * Get {@link Clapper.PlayerSeekMethod} used when seeking with seek bar.
+         * @returns {@link Clapper.PlayerSeekMethod} used for seeking.
          */
         get_seek_method(): Clapper.PlayerSeekMethod;
         /**
@@ -11110,28 +11468,26 @@ export namespace ClapperGtk {
          */
         set_reveal_labels(reveal: boolean): void;
         /**
-         * Set [enum`Clapper`.PlayerSeekMethod] to use when seeking with seek bar.
-         * @param method a #ClapperPlayerSeekMethod
+         * Set {@link Clapper.PlayerSeekMethod} to use when seeking with seek bar.
+         * @param method a {@link Clapper.PlayerSeekMethod}
          */
         set_seek_method(method: Clapper.PlayerSeekMethod | null): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -11166,7 +11522,7 @@ export namespace ClapperGtk {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -11185,9 +11541,9 @@ export namespace ClapperGtk {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -11213,7 +11569,7 @@ export namespace ClapperGtk {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -11232,7 +11588,7 @@ export namespace ClapperGtk {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -11241,7 +11597,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -11252,7 +11608,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -11263,7 +11619,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -11275,41 +11631,47 @@ export namespace ClapperGtk {
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -11317,18 +11679,20 @@ export namespace ClapperGtk {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -11339,10 +11703,11 @@ export namespace ClapperGtk {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -11352,9 +11717,10 @@ export namespace ClapperGtk {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -11364,39 +11730,44 @@ export namespace ClapperGtk {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -11412,32 +11783,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -11446,39 +11817,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -11489,13 +11860,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11503,7 +11877,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11511,9 +11885,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11533,9 +11907,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11549,33 +11923,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -11608,21 +11982,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -11632,8 +12006,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11650,10 +12024,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -11668,13 +12042,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11705,21 +12079,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11729,33 +12103,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -11764,6 +12139,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -11772,12 +12148,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -11786,20 +12164,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -11811,6 +12191,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -11906,12 +12287,13 @@ export namespace ClapperGtk {
     /**
      * A minimalistic playback controls panel widget.
      *
-     * #ClapperGtkSimpleControls is a simple, ready to be used playback controls widget.
-     * It is meant to be placed as an overlay (either fading or not) of [class`ClapperGtk`.Video]
+     * {@link ClapperGtk.SimpleControls} is a simple, ready to be used playback controls widget.
+     * It is meant to be placed as an overlay (either fading or not) of {@link ClapperGtk.Video}
      * as-is, providing minimal yet universal playback controls for your app.
      *
      * If you need a further customized controls, please use individual widgets this
      * widget consists of to build your own controls implementation instead.
+     * @gir-type Class
      */
     class SimpleControls extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SimpleControls>;
@@ -11961,16 +12343,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SimpleControls.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleControls.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SimpleControls.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleControls.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SimpleControls.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SimpleControls.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11980,37 +12365,35 @@ export namespace ClapperGtk {
         // Methods
 
         /**
-         * Get [class`ClapperGtk`.ExtraMenuButton] that resides within `controls`.
-         * @returns #ClapperGtkExtraMenuButton within simple controls panel.
+         * Get {@link ClapperGtk.ExtraMenuButton} that resides within `controls`.
+         * @returns {@link ClapperGtk.ExtraMenuButton} within simple controls panel.
          */
         get_extra_menu_button(): ExtraMenuButton;
         /**
-         * Get whether [class`ClapperGtk`.ToggleFullscreenButton] button in the `controls`
+         * Get whether {@link ClapperGtk.ToggleFullscreenButton} button in the `controls`
          * is set to be visible.
-         * @returns %TRUE when fullscreenable, %FALSE otherwise.
+         * @returns `true` when fullscreenable, `false` otherwise.
          */
         get_fullscreenable(): boolean;
         /**
-         * Get [enum`Clapper`.PlayerSeekMethod] used when seeking with progress bar.
-         * @returns #ClapperPlayerSeekMethod used for seeking.
+         * Get {@link Clapper.PlayerSeekMethod} used when seeking with progress bar.
+         * @returns {@link Clapper.PlayerSeekMethod} used for seeking.
          */
         get_seek_method(): Clapper.PlayerSeekMethod;
         /**
-         * Set whether [class`ClapperGtk`.ToggleFullscreenButton] button in the `controls`
+         * Set whether {@link ClapperGtk.ToggleFullscreenButton} button in the `controls`
          * should be visible.
          *
-         * You might want to consider setting this to %FALSE, if your application
-         * does not implement [signal`ClapperGtk`.Video::toggle-fullscreen] signal.
+         * You might want to consider setting this to `false`, if your application
+         * does not implement `ClapperGtk.Video::toggle-fullscreen` signal.
          * @param fullscreenable whether show button for toggling fullscreen state
          */
         set_fullscreenable(fullscreenable: boolean): void;
         /**
-         * Set [enum`Clapper`.PlayerSeekMethod] to use when seeking with progress bar.
-         * @param method a #ClapperPlayerSeekMethod
+         * Set {@link Clapper.PlayerSeekMethod} to use when seeking with progress bar.
+         * @param method a {@link Clapper.PlayerSeekMethod}
          */
         set_seek_method(method: Clapper.PlayerSeekMethod | null): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12024,32 +12407,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -12058,39 +12441,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -12101,13 +12484,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -12115,7 +12501,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -12123,9 +12509,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -12145,9 +12531,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -12161,33 +12547,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -12220,21 +12606,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -12244,8 +12630,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -12262,10 +12648,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -12280,13 +12666,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -12317,21 +12703,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -12341,33 +12727,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12376,6 +12763,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12384,12 +12772,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12398,20 +12788,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -12423,6 +12815,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -12518,12 +12911,13 @@ export namespace ClapperGtk {
     /**
      * A header panel widget that displays current media title.
      *
-     * #ClapperGtkTitleHeader is a simple, ready to be used header widget that
-     * displays current media title. It can be placed as-is as a [class`ClapperGtk`.Video]
+     * {@link ClapperGtk.TitleHeader} is a simple, ready to be used header widget that
+     * displays current media title. It can be placed as-is as a {@link ClapperGtk.Video}
      * overlay (either fading or not).
      *
-     * If you need a further customized header, you can use [class`ClapperGtk`.TitleLabel]
+     * If you need a further customized header, you can use {@link ClapperGtk.TitleLabel}
      * which is used by this widget to build your own implementation instead.
+     * @gir-type Class
      */
     class TitleHeader extends LeadContainer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<TitleHeader>;
@@ -12568,16 +12962,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TitleHeader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TitleHeader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TitleHeader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TitleHeader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TitleHeader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TitleHeader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12592,19 +12989,17 @@ export namespace ClapperGtk {
          */
         get_current_title(): string;
         /**
-         * Get whether a [property`Clapper`.MediaItem:uri] property is going
+         * Get whether a {@link Clapper.MediaItem.uri} property is going
          * be displayed as a header text when no other title could be determined.
-         * @returns %TRUE when item URI will be used as fallback, %FALSE otherwise.
+         * @returns `true` when item URI will be used as fallback, `false` otherwise.
          */
         get_fallback_to_uri(): boolean;
         /**
-         * Set whether a [property`Clapper`.MediaItem:uri] property should
+         * Set whether a {@link Clapper.MediaItem.uri} property should
          * be displayed as a header text when no other title could be determined.
          * @param enabled whether enabled
          */
         set_fallback_to_uri(enabled: boolean): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12618,32 +13013,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -12652,39 +13047,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -12695,13 +13090,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -12709,7 +13107,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -12717,9 +13115,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -12739,9 +13137,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -12755,33 +13153,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -12814,21 +13212,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -12838,8 +13236,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -12856,10 +13254,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -12874,13 +13272,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -12911,21 +13309,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -12935,33 +13333,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12970,6 +13369,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12978,12 +13378,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12992,20 +13394,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -13017,6 +13421,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -13110,14 +13515,15 @@ export namespace ClapperGtk {
     /**
      * A label showing an up to date title of media item.
      *
-     * By default #ClapperGtkTitleLabel will automatically show title
-     * of [property`Clapper`.Queue:current-item] when placed within
-     * [class`ClapperGtk`.Video] widget hierarchy.
+     * By default {@link ClapperGtk.TitleLabel} will automatically show title
+     * of {@link Clapper.Queue.current_item} when placed within
+     * {@link ClapperGtk.Video} widget hierarchy.
      *
-     * Setting [property`ClapperGtk`.TitleLabel:media-item] property will
-     * make it show title of that particular [class`Clapper`.MediaItem]
+     * Setting {@link ClapperGtk.TitleLabel.media_item} property will
+     * make it show title of that particular {@link Clapper.MediaItem}
      * instead. Providing an item to read title from also allows using
-     * this [class`Gtk`.Widget] outside of [class`ClapperGtk`.Video].
+     * this {@link Gtk.Widget} outside of {@link ClapperGtk.Video}.
+     * @gir-type Class
      */
     class TitleLabel extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<TitleLabel>;
@@ -13172,16 +13578,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TitleLabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TitleLabel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TitleLabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TitleLabel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TitleLabel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TitleLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13196,9 +13605,9 @@ export namespace ClapperGtk {
          */
         get_current_title(): string;
         /**
-         * Get whether a [property`Clapper`.MediaItem:uri] property is going
+         * Get whether a {@link Clapper.MediaItem.uri} property is going
          * be displayed as a label text when no other title could be determined.
-         * @returns %TRUE when item URI will be used as fallback, %FALSE otherwise.
+         * @returns `true` when item URI will be used as fallback, `false` otherwise.
          */
         get_fallback_to_uri(): boolean;
         /**
@@ -13207,35 +13616,33 @@ export namespace ClapperGtk {
          */
         get_media_item(): Clapper.MediaItem | null;
         /**
-         * Set whether a [property`Clapper`.MediaItem:uri] property should
+         * Set whether a {@link Clapper.MediaItem.uri} property should
          * be displayed as a label text when no other title could be determined.
          * @param enabled whether enabled
          */
         set_fallback_to_uri(enabled: boolean): void;
         /**
-         * Set a media item to display title of as label. When set to %NULL,
+         * Set a media item to display title of as label. When set to `null`,
          * `label` will use default behavior (showing title of current queue item).
-         * @param item a #ClapperMediaItem
+         * @param item a {@link Clapper.MediaItem}
          */
         set_media_item(item?: Clapper.MediaItem | null): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -13270,7 +13677,7 @@ export namespace ClapperGtk {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -13289,9 +13696,9 @@ export namespace ClapperGtk {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -13317,7 +13724,7 @@ export namespace ClapperGtk {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -13336,7 +13743,7 @@ export namespace ClapperGtk {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -13345,7 +13752,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -13356,7 +13763,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -13367,7 +13774,7 @@ export namespace ClapperGtk {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -13379,41 +13786,47 @@ export namespace ClapperGtk {
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -13421,18 +13834,20 @@ export namespace ClapperGtk {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -13443,10 +13858,11 @@ export namespace ClapperGtk {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -13456,9 +13872,10 @@ export namespace ClapperGtk {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -13468,39 +13885,44 @@ export namespace ClapperGtk {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -13516,32 +13938,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -13550,39 +13972,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -13593,13 +14015,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -13607,7 +14032,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -13615,9 +14040,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -13637,9 +14062,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -13653,33 +14078,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -13712,21 +14137,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -13736,8 +14161,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -13754,10 +14179,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -13772,13 +14197,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -13809,21 +14234,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -13833,33 +14258,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -13868,6 +14294,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -13876,12 +14303,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -13890,20 +14319,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -13915,6 +14346,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -14004,7 +14436,8 @@ export namespace ClapperGtk {
     }
 
     /**
-     * A #GtkButton for toggling fullscreen state.
+     * A {@link Gtk.Button} for toggling fullscreen state.
+     * @gir-type Class
      */
     class ToggleFullscreenButton
         extends Gtk.Button
@@ -14031,16 +14464,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ToggleFullscreenButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ToggleFullscreenButton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ToggleFullscreenButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ToggleFullscreenButton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ToggleFullscreenButton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ToggleFullscreenButton.SignalSignatures[K]> extends [any, ...infer Q]
@@ -14048,25 +14484,27 @@ export namespace ClapperGtk {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The name of the action with which this widget should be associated.
+         * @category Inherited from Gtk.Actionable
          */
         get action_name(): string;
         set action_name(val: string);
         /**
          * The name of the action with which this widget should be associated.
+         * @category Inherited from Gtk.Actionable
          */
         get actionName(): string;
         set actionName(val: string);
         /**
          * The target value of the actionable widget's action.
+         * @category Inherited from Gtk.Actionable
          */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
         /**
          * The target value of the actionable widget's action.
+         * @category Inherited from Gtk.Actionable
          */
         get actionTarget(): GLib.Variant;
         set actionTarget(val: GLib.Variant);
@@ -14076,6 +14514,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
         set can_focus(val: boolean);
@@ -14085,26 +14524,31 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
         set canTarget(val: boolean);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get css_classes(): string[];
         set css_classes(val: string[]);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get cssClasses(): string[];
         set cssClasses(val: string[]);
@@ -14113,6 +14557,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
         /**
@@ -14120,10 +14565,12 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
         /**
          * The cursor used by `widget`.
+         * @category Inherited from Gtk.Widget
          */
         get cursor(): Gdk.Cursor;
         set cursor(val: Gdk.Cursor);
@@ -14131,6 +14578,7 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
         set focus_on_click(val: boolean);
@@ -14138,52 +14586,61 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
         set has_tooltip(val: boolean);
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
@@ -14191,6 +14648,7 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
         set height_request(val: number);
@@ -14198,39 +14656,45 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layout_manager(): Gtk.LayoutManager;
         set layout_manager(val: Gtk.LayoutManager);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layoutManager(): Gtk.LayoutManager;
         set layoutManager(val: Gtk.LayoutManager);
@@ -14240,7 +14704,9 @@ export namespace ClapperGtk {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
         set limit_events(val: boolean);
@@ -14250,7 +14716,9 @@ export namespace ClapperGtk {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
         set limitEvents(val: boolean);
@@ -14259,7 +14727,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
         set margin_bottom(val: number);
@@ -14268,7 +14737,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
         set marginBottom(val: number);
@@ -14280,7 +14750,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
         set margin_end(val: number);
@@ -14292,7 +14763,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
         set marginEnd(val: number);
@@ -14304,7 +14776,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
         set margin_start(val: number);
@@ -14316,7 +14789,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
         set marginStart(val: number);
@@ -14325,7 +14799,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
         set margin_top(val: number);
@@ -14334,17 +14809,20 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
@@ -14353,39 +14831,47 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
-         * The `GtkRoot` widget of the widget tree containing this widget.
+         * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
         set sensitive(val: boolean);
@@ -14393,16 +14879,17 @@ export namespace ClapperGtk {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_markup(): string;
         set tooltip_markup(val: string);
@@ -14410,73 +14897,81 @@ export namespace ClapperGtk {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipMarkup(): string;
         set tooltipMarkup(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_text(): string;
         set tooltip_text(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipText(): string;
         set tooltipText(val: string);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -14484,6 +14979,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
         set width_request(val: number);
@@ -14491,11 +14987,10 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
         set widthRequest(val: number);
-
-        // Inherited methods
         /**
          * Gets the action name for `actionable`.
          * @returns the action name
@@ -14510,15 +15005,15 @@ export namespace ClapperGtk {
          * Specifies the name of the action with which this widget should be
          * associated.
          *
-         * If `action_name` is %NULL then the widget will be unassociated from
+         * If `action_name` is `null` then the widget will be unassociated from
          * any previous action.
          *
          * Usually this function is used when the widget is located (or will be
-         * located) within the hierarchy of a `GtkApplicationWindow`.
+         * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          *
          * Names are of the form “win.save” or “app.quit” for actions on the
-         * containing [class`ApplicationWindow]` or its associated [class`Application]`,
-         * respectively. This is the same form used for actions in the [class`Gio`.Menu]
+         * containing {@link ApplicationWindow} or its associated {@link Application},
+         * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name
          */
@@ -14526,14 +15021,14 @@ export namespace ClapperGtk {
         /**
          * Sets the target value of an actionable widget.
          *
-         * If `target_value` is %NULL then the target value is unset.
+         * If `target_value` is `null` then the target value is unset.
          *
          * The target value has two purposes. First, it is used as the parameter
-         * to activation of the action associated with the `GtkActionable` widget.
+         * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
          * “active” — the widget is active if the state is equal to the given target.
          *
-         * Consider the example of associating a set of buttons with a [iface`Gio`.Action]
+         * Consider the example of associating a set of buttons with a {@link Gio.Action}
          * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
@@ -14542,7 +15037,7 @@ export namespace ClapperGtk {
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
-         * @param target_value a [struct@GLib.Variant] to set as the target value
+         * @param target_value a {@link GLib.Variant} to set as the target value
          */
         set_action_target_value(target_value?: GLib.Variant | null): void;
         /**
@@ -14550,46 +15045,49 @@ export namespace ClapperGtk {
          * actionable widget.
          *
          * `detailed_action_name` is a string in the format accepted by
-         * [func`Gio`.Action.parse_detailed_name].
+         * {@link Gio.Action.parse_detailed_name}.
          * @param detailed_action_name the detailed action name
          */
         set_detailed_action_name(detailed_action_name: string): void;
         /**
          * Gets the action name for `actionable`.
+         * @virtual
          */
         vfunc_get_action_name(): string | null;
         /**
          * Gets the current target value of `actionable`.
+         * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant | null;
         /**
          * Specifies the name of the action with which this widget should be
          * associated.
          *
-         * If `action_name` is %NULL then the widget will be unassociated from
+         * If `action_name` is `null` then the widget will be unassociated from
          * any previous action.
          *
          * Usually this function is used when the widget is located (or will be
-         * located) within the hierarchy of a `GtkApplicationWindow`.
+         * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          *
          * Names are of the form “win.save” or “app.quit” for actions on the
-         * containing [class`ApplicationWindow]` or its associated [class`Application]`,
-         * respectively. This is the same form used for actions in the [class`Gio`.Menu]
+         * containing {@link ApplicationWindow} or its associated {@link Application},
+         * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name
+         * @virtual
          */
         vfunc_set_action_name(action_name?: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
-         * If `target_value` is %NULL then the target value is unset.
+         * If `target_value` is `null` then the target value is unset.
          *
          * The target value has two purposes. First, it is used as the parameter
-         * to activation of the action associated with the `GtkActionable` widget.
+         * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
          * “active” — the widget is active if the state is equal to the given target.
          *
-         * Consider the example of associating a set of buttons with a [iface`Gio`.Action]
+         * Consider the example of associating a set of buttons with a {@link Gio.Action}
          * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
@@ -14598,7 +15096,8 @@ export namespace ClapperGtk {
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
-         * @param target_value a [struct@GLib.Variant] to set as the target value
+         * @param target_value a {@link GLib.Variant} to set as the target value
+         * @virtual
          */
         vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
         /**
@@ -14614,32 +15113,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -14648,39 +15147,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -14691,13 +15190,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -14705,7 +15207,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -14713,9 +15215,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -14735,9 +15237,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -14751,33 +15253,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -14810,21 +15312,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -14834,8 +15336,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -14852,10 +15354,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -14870,13 +15372,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -14907,21 +15409,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -14931,33 +15433,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -14966,6 +15469,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -14974,12 +15478,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -14988,20 +15494,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -15013,6 +15521,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -15042,7 +15551,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): void;
         /**
          * Enables or disables an action installed with
-         * [method`Gtk`.WidgetClass.install_action].
+         * {@link Gtk.WidgetClass.install_action}.
          * @param action_name action name, such as "clipboard.paste"
          * @param enabled whether the action is now enabled
          */
@@ -15051,15 +15560,15 @@ export namespace ClapperGtk {
          * Activates the widget.
          *
          * The activation will emit the signal set using
-         * [method`Gtk`.WidgetClass.set_activate_signal]
+         * {@link Gtk.WidgetClass.set_activate_signal}
          * during class initialization.
          *
          * Activation is what happens when you press <kbd>Enter</kbd>
          * on a widget.
          *
          * If you wish to handle the activation keybinding yourself,
-         * it is recommended to use [method`Gtk`.WidgetClass.add_shortcut]
-         * with an action created with [ctor`Gtk`.SignalAction.new].
+         * it is recommended to use {@link Gtk.WidgetClass.add_shortcut}
+         * with an action created with {@link Gtk.SignalAction.new}.
          *
          * If `widget` is not activatable, the function returns false.
          * @returns true if the widget was activated
@@ -15072,12 +15581,12 @@ export namespace ClapperGtk {
          * `widget` and its ancestors.
          *
          * If the action is in an action group added with
-         * [method`Gtk`.Widget.insert_action_group], the `name` is expected
+         * {@link Gtk.Widget.insert_action_group}, the `name` is expected
          * to be prefixed with the prefix that was used when the group was
          * inserted.
          *
          * The arguments must match the actions expected parameter type,
-         * as returned by [method`Gio`.Action.get_parameter_type].
+         * as returned by {@link Gio.Action.get_parameter_type}.
          * @param name the name of the action to activate
          * @param args parameters to use
          * @returns true if the action was activated
@@ -15087,7 +15596,7 @@ export namespace ClapperGtk {
          * Activates the `default.activate` action for the widget.
          *
          * The action is looked up in the same was as for
-         * [method`Gtk`.Widget.activate_action].
+         * {@link Gtk.Widget.activate_action}.
          */
         activate_default(): void;
         /**
@@ -15097,7 +15606,7 @@ export namespace ClapperGtk {
          * propagated to the widget.
          *
          * You will usually want to call this function right after
-         * creating any kind of [class`Gtk`.EventController].
+         * creating any kind of {@link Gtk.EventController}.
          * @param controller an event controller that hasn't been   added to a widget yet
          */
         add_controller(controller: Gtk.EventController): void;
@@ -15105,22 +15614,22 @@ export namespace ClapperGtk {
          * Adds a style class to the widget.
          *
          * After calling this function, the widget’s style will match
-         * for `css_class,` according to CSS matching rules.
+         * for `css_class`, according to CSS matching rules.
          *
-         * Use [method`Gtk`.Widget.remove_css_class] to remove the
+         * Use {@link Gtk.Widget.remove_css_class} to remove the
          * style again.
-         * @param css_class style class to add to @widget, without the leading period
+         * @param css_class style class to add to `widget`, without the leading period
          */
         add_css_class(css_class: string): void;
         /**
          * Adds a widget to the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * Note that the list of mnemonic labels for the widget is cleared
          * when the widget is destroyed, so the caller must make sure
          * to update its internal state at this point as well.
-         * @param label a widget that acts as a mnemonic label for @widget
+         * @param label a widget that acts as a mnemonic label for `widget`
          */
         add_mnemonic_label(label: Gtk.Widget): void;
         /**
@@ -15136,20 +15645,20 @@ export namespace ClapperGtk {
          * The tick callback does not automatically imply a relayout or repaint.
          * If you want a repaint or relayout, and aren’t changing widget properties
          * that would trigger that (for example, changing the text of a label),
-         * then you will have to call [method`Gtk`.Widget.queue_resize] or
-         * [method`Gtk`.Widget.queue_draw] yourself.
+         * then you will have to call {@link Gtk.Widget.queue_resize} or
+         * {@link Gtk.Widget.queue_draw} yourself.
          *
-         * [method`Gdk`.FrameClock.get_frame_time] should generally be used
+         * {@link Gdk.FrameClock.get_frame_time} should generally be used
          * for timing continuous animations and
-         * [method`Gdk`.FrameTimings.get_predicted_presentation_time] should be
+         * {@link Gdk.FrameTimings.get_predicted_presentation_time} should be
          * used if you are trying to display isolated frames at particular times.
          *
          * This is a more convenient alternative to connecting directly to the
-         * [signal`Gdk`.FrameClock::update] signal of the frame clock, since you
+         * `Gdk.FrameClock::update` signal of the frame clock, since you
          * don't have to worry about when a frame clock is assigned to a widget.
          *
          * To remove a tick callback, pass the ID that is returned by this function
-         * to [method`Gtk`.Widget.remove_tick_callback].
+         * to {@link Gtk.Widget.remove_tick_callback}.
          * @param callback function   to call for updating animations
          * @returns an ID for this callback
          */
@@ -15165,7 +15674,7 @@ export namespace ClapperGtk {
          * This function is only used by widget implementations.
          *
          * For a version that does not take a transform, see
-         * [method`Gtk`.Widget.size_allocate].
+         * {@link Gtk.Widget.size_allocate}.
          * @param width new width
          * @param height new height
          * @param baseline new baseline, or -1
@@ -15179,7 +15688,7 @@ export namespace ClapperGtk {
          * The `direction` argument indicates what kind of motion is taking
          * place (up, down, left, right, tab forward, tab backward).
          *
-         * This function calls the [vfunc`Gtk`.Widget.focus] virtual function;
+         * This function calls the {@link Gtk.Widget.focus} virtual function;
          * widgets can override the virtual function in order to implement
          * appropriate focus behavior.
          *
@@ -15187,14 +15696,14 @@ export namespace ClapperGtk {
          * true if moving in `direction` left the focus on a focusable location
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
-         * [method`Gtk`.Widget.grab_focus] to place the focus accordingly;
+         * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
          * when returning false, they don’t modify the current focus location.
          *
          * This function is used by custom widget implementations; if you're
-         * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
+         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
-         * @returns true if focus ended up inside @widget
+         * @returns true if focus ended up inside `widget`
          */
         child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
@@ -15205,7 +15714,7 @@ export namespace ClapperGtk {
          * overview to learn more.
          *
          * If the operation is successful, true is returned. If `widget` has no
-         * bounds or the bounds cannot be expressed in `target'`s coordinate space
+         * bounds or the bounds cannot be expressed in `target`'s coordinate space
          * (for example if both widgets are in different windows), false is
          * returned and `bounds` is set to the zero rectangle.
          *
@@ -15219,7 +15728,7 @@ export namespace ClapperGtk {
          * extra space when possible.
          *
          * Widgets with children should check this, rather than looking at
-         * [method`Gtk`.Widget.get_hexpand] or [method`Gtk`.Widget.get_vexpand].
+         * {@link Gtk.Widget.get_hexpand} or {@link Gtk.Widget.get_vexpand}.
          *
          * This function already checks whether the widget is visible, so
          * visibility does not need to be checked separately. Non-visible
@@ -15233,20 +15742,20 @@ export namespace ClapperGtk {
          */
         compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
-         * Translates the given `point` in `widget'`s coordinates to coordinates
-         * in `target’`s coordinate system.
+         * Translates the given `point` in `widget`'s coordinates to coordinates
+         * in `target`’s coordinate system.
          *
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
          * to (0, 0) and false is returned.
          * @param target the widget to transform into
-         * @param point a point in @widget's coordinate system
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param point a point in `widget`'s coordinate system
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         compute_point(target: Gtk.Widget, point: Graphene.Point): [boolean, Graphene.Point];
         /**
          * Computes a matrix suitable to describe a transformation from
-         * `widget'`s coordinate system into `target'`s coordinate system.
+         * `widget`'s coordinate system into `target`'s coordinate system.
          *
          * The transform can not be computed in certain cases, for example
          * when `widget` and `target` do not share a common ancestor. In that
@@ -15262,47 +15771,47 @@ export namespace ClapperGtk {
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
-         * @returns true if @widget contains the point (x, y)
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @returns true if `widget` contains the point (x, y)
          */
         contains(x: number, y: number): boolean;
         /**
-         * Creates a new `PangoContext` that is configured for the widget.
+         * Creates a new {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map,
+         * The {@link Pango.Context} will have the appropriate font map,
          * font options, font description, and base direction set.
          *
-         * See also [method`Gtk`.Widget.get_pango_context].
-         * @returns the new `PangoContext`
+         * See also {@link Gtk.Widget.get_pango_context}.
+         * @returns the new {@link Pango.Context}
          */
         create_pango_context(): Pango.Context;
         /**
-         * Creates a new `PangoLayout` that is configured for the widget.
+         * Creates a new {@link Pango.Layout} that is configured for the widget.
          *
-         * The `PangoLayout` will have the appropriate font map,
+         * The {@link Pango.Layout} will have the appropriate font map,
          * font description, and base direction set.
          *
-         * If you keep a `PangoLayout` created in this way around,
-         * you need to re-create it when the widgets `PangoContext`
+         * If you keep a {@link Pango.Layout} created in this way around,
+         * you need to re-create it when the widgets {@link Pango.Context}
          * is replaced. This can be tracked by listening to changes
-         * of the [property`Gtk`.Widget:root] property on the widget.
+         * of the {@link Gtk.Widget.root} property on the widget.
          * @param text text to set on the layout
-         * @returns the new `PangoLayout`
+         * @returns the new {@link Pango.Layout}
          */
         create_pango_layout(text?: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
-         * This function is the opposite of [method`Gtk`.Widget.init_template],
+         * This function is the opposite of {@link Gtk.Widget.init_template},
          * and it is used to clear all the template children from a widget
          * instance. If you bound a template child to a field in the instance
          * structure, or in the instance private data structure, the field will
          * be set to `NULL` after this function returns.
          *
-         * You should call this function inside the `GObjectClass.dispose()`
-         * implementation of any widget that called [method`Gtk`.Widget.init_template].
+         * You should call this function inside the {@link GObject.Object.dispose}
+         * implementation of any widget that called {@link Gtk.Widget.init_template}.
          * Typically, you will want to call this function last, right before
          * chaining up to the parent type's dispose implementation, e.g.
          *
@@ -15333,10 +15842,10 @@ export namespace ClapperGtk {
         /**
          * Notifies the user about an input-related error on the widget.
          *
-         * If the [property`Gtk`.Settings:gtk-error-bell] setting is true,
-         * it calls [method`Gdk`.Surface.beep], otherwise it does nothing.
+         * If the {@link Gtk.Settings.gtk_error_bell} setting is true,
+         * it calls {@link Gdk.Surface.beep}, otherwise it does nothing.
          *
-         * Note that the effect of [method`Gdk`.Surface.beep] can be configured
+         * Note that the effect of {@link Gdk.Surface.beep} can be configured
          * in many ways, depending on the windowing backend and the desktop
          * environment or window manager that is used.
          */
@@ -15345,9 +15854,9 @@ export namespace ClapperGtk {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidget`Class.snapshot() function, and when allocating
-         * child widgets in `GtkWidget`Class.size_allocate().
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_allocated_baseline(): number;
         /**
@@ -15355,7 +15864,7 @@ export namespace ClapperGtk {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the height of the @widget
+         * @returns the height of the `widget`
          */
         get_allocated_height(): number;
         /**
@@ -15363,7 +15872,7 @@ export namespace ClapperGtk {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the width of the @widget
+         * @returns the width of the `widget`
          */
         get_allocated_width(): number;
         /**
@@ -15371,13 +15880,13 @@ export namespace ClapperGtk {
          *
          * Note, when implementing a layout widget: a widget’s allocation
          * will be its “adjusted” allocation, that is, the widget’s parent
-         * typically calls [method`Gtk`.Widget.size_allocate] with an allocation,
+         * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
-         * [method`Gtk`.Widget.get_allocation] returns the adjusted allocation that
+         * {@link Gtk.Widget.get_allocation} returns the adjusted allocation that
          * was actually assigned to the widget. The adjusted allocation is
          * guaranteed to be completely contained within the
-         * [method`Gtk`.Widget.size_allocate] allocation, however.
+         * {@link Gtk.Widget.size_allocate} allocation, however.
          *
          * So a layout widget is guaranteed that its children stay inside
          * the assigned bounds, but not that they have exactly the bounds the
@@ -15388,11 +15897,11 @@ export namespace ClapperGtk {
          * Gets the first ancestor of the widget with type `widget_type`.
          *
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first `GtkBox` that’s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          *
-         * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
+         * Note that unlike {@link Gtk.Widget.is_ancestor}, this function
          * considers `widget` to be an ancestor of itself.
          * @param widget_type ancestor type
          * @returns the ancestor widget
@@ -15402,26 +15911,26 @@ export namespace ClapperGtk {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidgetClass.snapshot()` function, and when allocating
-         * child widgets in `GtkWidgetClass.size_allocate()`.
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_baseline(): number;
         /**
          * Determines whether the input focus can enter the widget or any
          * of its children.
          *
-         * See [method`Gtk`.Widget.set_can_focus].
-         * @returns true if the input focus can enter @widget
+         * See {@link Gtk.Widget.set_can_focus}.
+         * @returns true if the input focus can enter `widget`
          */
         get_can_focus(): boolean;
         /**
          * Queries whether the widget can be the target of pointer events.
-         * @returns true if @widget can receive pointer events
+         * @returns true if `widget` can receive pointer events
          */
         get_can_target(): boolean;
         /**
-         * Gets the value set with [method`Gtk`.Widget.set_child_visible].
+         * Gets the value set with {@link Gtk.Widget.set_child_visible}.
          *
          * If you feel a need to use this function, your code probably
          * needs reorganization.
@@ -15452,7 +15961,7 @@ export namespace ClapperGtk {
         get_color(): Gdk.RGBA;
         /**
          * Returns the list of style classes applied to the widget.
-         * @returns a `NULL`-terminated list of   css classes currently applied to @widget
+         * @returns a `NULL`-terminated list of   css classes currently applied to `widget`
          */
         get_css_classes(): string[];
         /**
@@ -15463,14 +15972,14 @@ export namespace ClapperGtk {
         /**
          * Gets the cursor set on the widget.
          *
-         * See [method`Gtk`.Widget.set_cursor] for details.
-         * @returns the cursor   that is set on @widget
+         * See {@link Gtk.Widget.set_cursor} for details.
+         * @returns the cursor   that is set on `widget`
          */
         get_cursor(): Gdk.Cursor | null;
         /**
          * Gets the reading direction for the widget.
          *
-         * See [method`Gtk`.Widget.set_direction].
+         * See {@link Gtk.Widget.set_direction}.
          * @returns the reading direction for the widget
          */
         get_direction(): Gtk.TextDirection;
@@ -15478,7 +15987,7 @@ export namespace ClapperGtk {
          * Get the display for the window that the widget belongs to.
          *
          * This function can only be called after the widget has been
-         * added to a widget hierarchy with a `GtkRoot` at the top.
+         * added to a widget hierarchy with a {@link Gtk.Root} at the top.
          *
          * In general, you should only create display-specific
          * resources when a widget has been realized, and you should
@@ -15495,35 +16004,35 @@ export namespace ClapperGtk {
         get_first_child(): Gtk.Widget | null;
         /**
          * Returns the focus child of the widget.
-         * @returns the current focus   child of @widget
+         * @returns the current focus   child of `widget`
          */
         get_focus_child(): Gtk.Widget | null;
         /**
          * Returns whether the widget should grab focus when it is clicked
          * with the mouse.
          *
-         * See [method`Gtk`.Widget.set_focus_on_click].
+         * See {@link Gtk.Widget.set_focus_on_click}.
          * @returns true if the widget should grab focus when it is   clicked with the mouse
          */
         get_focus_on_click(): boolean;
         /**
          * Determines whether the widget can own the input focus.
          *
-         * See [method`Gtk`.Widget.set_focusable].
-         * @returns true if @widget can own the input focus
+         * See {@link Gtk.Widget.set_focusable}.
+         * @returns true if `widget` can own the input focus
          */
         get_focusable(): boolean;
         /**
          * Gets the font map of the widget.
          *
-         * See [method`Gtk`.Widget.set_font_map].
-         * @returns the font map of @widget
+         * See {@link Gtk.Widget.set_font_map}.
+         * @returns the font map of `widget`
          */
         get_font_map(): Pango.FontMap | null;
         /**
          * Returns the `cairo_font_options_t` of the widget.
          *
-         * Seee [method`Gtk`.Widget.set_font_options].
+         * Seee {@link Gtk.Widget.set_font_options}.
          * @returns the `cairo_font_options_t` of widget
          */
         get_font_options(): cairo.FontOptions | null;
@@ -15532,17 +16041,17 @@ export namespace ClapperGtk {
          *
          * The frame clock is a global “ticker” that can be used to drive
          * animations and repaints. The most common reason to get the frame
-         * clock is to call [method`Gdk`.FrameClock.get_frame_time], in order
+         * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
          * the start of the animation with an initial value from
-         * [method`Gdk`.FrameClock.get_frame_time], and then update the animation
-         * by calling [method`Gdk`.FrameClock.get_frame_time] again during each repaint.
+         * {@link Gdk.FrameClock.get_frame_time}, and then update the animation
+         * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          *
-         * [method`Gdk`.FrameClock.request_phase] will result in a new frame on the
+         * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
          * clock, but won’t necessarily repaint any widgets. To repaint a widget,
-         * you have to use [method`Gtk`.Widget.queue_draw] which invalidates the
+         * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
-         * [method`Gtk`.Widget.queue_draw] will also end up requesting a frame
+         * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          *
          * A widget’s frame clock will not change while the widget is mapped.
@@ -15558,15 +16067,15 @@ export namespace ClapperGtk {
          *
          * For backwards compatibility reasons this method will never return
          * one of the baseline alignments, but instead it will convert it to
-         * [enum`Gtk`.Align.fill] or [enum`Gtk`.Align.center].
+         * {@link Gtk.Align.FILL} or {@link Gtk.Align.CENTER}.
          *
          * Baselines are not supported for horizontal alignment.
-         * @returns the horizontal alignment of @widget
+         * @returns the horizontal alignment of `widget`
          */
         get_halign(): Gtk.Align;
         /**
          * Returns the current value of the `has-tooltip` property.
-         * @returns current value of `has-tooltip` on @widget
+         * @returns current value of `has-tooltip` on `widget`
          */
         get_has_tooltip(): boolean;
         /**
@@ -15574,13 +16083,13 @@ export namespace ClapperGtk {
          *
          * This function returns the height passed to its
          * size-allocate implementation, which is the height you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The height of @widget
+         * @returns The height of `widget`
          */
         get_height(): number;
         /**
@@ -15591,7 +16100,7 @@ export namespace ClapperGtk {
          * receive the extra space. For example, a list or scrollable area
          * or document in your window would often be set to expand.
          *
-         * Widgets with children should use [method`Gtk`.Widget.compute_expand]
+         * Widgets with children should use {@link Gtk.Widget.compute_expand}
          * rather than this function, to see whether any of its children,
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
@@ -15605,7 +16114,7 @@ export namespace ClapperGtk {
         /**
          * Gets whether the `hexpand` flag has been explicitly set.
          *
-         * If [property`Gtk`.Widget:hexpand] property is set, then it
+         * If {@link Gtk.Widget.hexpand} property is set, then it
          * overrides any computed expand value based on child widgets.
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
@@ -15625,12 +16134,12 @@ export namespace ClapperGtk {
         /**
          * Retrieves the layout manager of the widget.
          *
-         * See [method`Gtk`.Widget.set_layout_manager].
-         * @returns the layout manager of @widget
+         * See {@link Gtk.Widget.set_layout_manager}.
+         * @returns the layout manager of `widget`
          */
         get_layout_manager(): Gtk.LayoutManager | null;
         /**
-         * Gets the value of the [property`Gtk`.Widget:limit-events] property.
+         * Gets the value of the {@link Gtk.Widget.limit_events} property.
          */
         get_limit_events(): boolean;
         /**
@@ -15640,39 +16149,39 @@ export namespace ClapperGtk {
         get_mapped(): boolean;
         /**
          * Gets the bottom margin of the widget.
-         * @returns The bottom margin of @widget
+         * @returns The bottom margin of `widget`
          */
         get_margin_bottom(): number;
         /**
          * Gets the end margin of the widget.
-         * @returns The end margin of @widget
+         * @returns The end margin of `widget`
          */
         get_margin_end(): number;
         /**
          * Gets the start margin of the widget.
-         * @returns The start margin of @widget
+         * @returns The start margin of `widget`
          */
         get_margin_start(): number;
         /**
          * Gets the top margin of the widget.
-         * @returns The top margin of @widget
+         * @returns The top margin of `widget`
          */
         get_margin_top(): number;
         /**
          * Retrieves the name of a widget.
          *
-         * See [method`Gtk`.Widget.set_name] for the significance of widget names.
+         * See {@link Gtk.Widget.set_name} for the significance of widget names.
          * @returns name of the widget
          */
         get_name(): string;
         /**
-         * Returns the nearest `GtkNative` ancestor of the widget.
+         * Returns the nearest {@link Gtk.Native} ancestor of the widget.
          *
          * This function will return `NULL` if the widget is not
          * contained inside a widget tree with a native ancestor.
          *
-         * `GtkNative` widgets will return themselves here.
-         * @returns the `GtkNative` ancestor of @widget
+         * {@link Gtk.Native} widgets will return themselves here.
+         * @returns the {@link Gtk.Native} ancestor of `widget`
          */
         get_native(): Gtk.Native | null;
         /**
@@ -15685,7 +16194,7 @@ export namespace ClapperGtk {
         /**
          * Fetches the requested opacity for the widget.
          *
-         * See [method`Gtk`.Widget.set_opacity].
+         * See {@link Gtk.Widget.set_opacity}.
          * @returns the requested opacity for this widget
          */
         get_opacity(): number;
@@ -15695,23 +16204,23 @@ export namespace ClapperGtk {
          */
         get_overflow(): Gtk.Overflow;
         /**
-         * Gets a `PangoContext` that is configured for the widget.
+         * Gets a {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map, font description,
+         * The {@link Pango.Context} will have the appropriate font map, font description,
          * and base direction set.
          *
-         * Unlike the context returned by [method`Gtk`.Widget.create_pango_context],
+         * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
          * and will be updated to match any changes to the widget’s attributes.
          * This can be tracked by listening to changes of the
-         * [property`Gtk`.Widget:root] property on the widget.
-         * @returns the `PangoContext` for the widget
+         * {@link Gtk.Widget.root} property on the widget.
+         * @returns the {@link Pango.Context} for the widget
          */
         get_pango_context(): Pango.Context;
         /**
          * Returns the parent widget of the widget.
-         * @returns the parent widget of @widget
+         * @returns the parent widget of `widget`
          */
         get_parent(): Gtk.Widget | null;
         /**
@@ -15721,14 +16230,14 @@ export namespace ClapperGtk {
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
          * to deduce toplevel window and menu sizes as well as child widgets in
-         * free-form containers such as `GtkFixed`.
+         * free-form containers such as {@link Gtk.Fixed}.
          *
          * Handle with care. Note that the natural height of a height-for-width
          * widget will generally be a smaller size than the minimum height, since
          * the required height for the natural width is generally smaller than the
          * required height for the minimum width.
          *
-         * Use [method`Gtk`.Widget.measure] if you want to support baseline alignment.
+         * Use {@link Gtk.Widget.measure} if you want to support baseline alignment.
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
@@ -15751,7 +16260,7 @@ export namespace ClapperGtk {
         get_primary_clipboard(): Gdk.Clipboard;
         /**
          * Determines whether the widget is realized.
-         * @returns true if @widget is realized
+         * @returns true if `widget` is realized
          */
         get_realized(): boolean;
         /**
@@ -15759,8 +16268,8 @@ export namespace ClapperGtk {
          * within its toplevel when it has the focus, even if another widget
          * is the default.
          *
-         * See [method`Gtk`.Widget.set_receives_default].
-         * @returns true if @widget acts as the default widget when focused
+         * See {@link Gtk.Widget.set_receives_default}.
+         * @returns true if `widget` acts as the default widget when focused
          */
         get_receives_default(): boolean;
         /**
@@ -15771,17 +16280,17 @@ export namespace ClapperGtk {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
-         * @returns The `GtkSizeRequestMode` preferred by @widget.
+         * @returns The {@link Gtk.SizeRequestMode} preferred by `widget`.
          */
         get_request_mode(): Gtk.SizeRequestMode;
         /**
-         * Returns the `GtkRoot` widget of the widget.
+         * Returns the {@link Gtk.Root} widget of the widget.
          *
          * This function will return `NULL` if the widget is not contained
          * inside a widget tree with a root widget.
          *
-         * `GtkRoot` widgets will return themselves here.
-         * @returns the root widget of @widget
+         * {@link Gtk.Root} widgets will return themselves here.
+         * @returns the root widget of `widget`
          */
         get_root(): Gtk.Root | null;
         /**
@@ -15791,32 +16300,32 @@ export namespace ClapperGtk {
          * On traditional systems this is 1, on high density outputs,
          * it can be a higher value (typically 2).
          *
-         * See [method`Gdk`.Surface.get_scale_factor].
+         * See {@link Gdk.Surface.get_scale_factor}.
          *
          * Note that modern systems may support *fractional* scaling,
          * where the scale factor is not an integer. On such systems,
          * this function will return the next higher integer value,
-         * but you probably want to use [method`Gdk`.Surface.get_scale]
+         * but you probably want to use {@link Gdk.Surface.get_scale}
          * to get the fractional scale value.
-         * @returns the scale factor for @widget
+         * @returns the scale factor for `widget`
          */
         get_scale_factor(): number;
         /**
          * Returns the widget’s sensitivity.
          *
          * This function returns the value that has been set using
-         * [method`Gtk`.Widget.set_sensitive]).
+         * {@link Gtk.Widget.set_sensitive}).
          *
          * The effective sensitivity of a widget is however determined
          * by both its own and its parent widget’s sensitivity.
-         * See [method`Gtk`.Widget.is_sensitive].
+         * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
         get_sensitive(): boolean;
         /**
          * Gets the settings object holding the settings used for the widget.
          *
-         * Note that this function can only be called when the `GtkWidget`
+         * Note that this function can only be called when the {@link Gtk.Widget}
          * is attached to a toplevel, since the settings object is specific
          * to a particular display. If you want to monitor the widget for
          * changes in its settings, connect to the `notify::display` signal.
@@ -15828,16 +16337,16 @@ export namespace ClapperGtk {
          *
          * Which dimension is returned depends on `orientation`.
          *
-         * This is equivalent to calling [method`Gtk`.Widget.get_width]
-         * for [enum`Gtk`.Orientation.horizontal] or [method`Gtk`.Widget.get_height]
-         * for [enum`Gtk`.Orientation.vertical], but can be used when
+         * This is equivalent to calling {@link Gtk.Widget.get_width}
+         * for {@link Gtk.Orientation.HORIZONTAL} or {@link Gtk.Widget.get_height}
+         * for {@link Gtk.Orientation.VERTICAL}, but can be used when
          * writing orientation-independent code, such as when
-         * implementing [iface`Gtk`.Orientable] widgets.
+         * implementing {@link Gtk.Orientable} widgets.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
          * @param orientation the orientation to query
-         * @returns the size of @widget in @orientation
+         * @returns the size of `widget` in `orientation`
          */
         get_size(orientation: Gtk.Orientation | null): number;
         /**
@@ -15847,22 +16356,22 @@ export namespace ClapperGtk {
          * dimension has not been set explicitly and the natural requisition
          * of the widget will be used instead.
          *
-         * See [method`Gtk`.Widget.set_size_request].
+         * See {@link Gtk.Widget.set_size_request}.
          *
          * To get the size a widget will actually request, call
-         * [method`Gtk`.Widget.measure] instead of this function.
+         * {@link Gtk.Widget.measure} instead of this function.
          */
         get_size_request(): [number, number];
         /**
          * Returns the widget state as a flag set.
          *
-         * It is worth mentioning that the effective [flags`Gtk`.StateFlags.insensitive]
+         * It is worth mentioning that the effective {@link Gtk.StateFlags.INSENSITIVE}
          * state will be returned, that is, also based on parent insensitivity,
          * even if `widget` itself is sensitive.
          *
          * Also note that if you are looking for a way to obtain the
-         * [flags`Gtk`.StateFlags] to pass to a [class`Gtk`.StyleContext]
-         * method, you should look at [method`Gtk`.StyleContext.get_state].
+         * {@link Gtk.StateFlags} to pass to a {@link Gtk.StyleContext}
+         * method, you should look at {@link Gtk.StyleContext.get_state}.
          * @returns the state flags of widget
          */
         get_state_flags(): Gtk.StateFlags;
@@ -15879,22 +16388,22 @@ export namespace ClapperGtk {
          * the widget.
          *
          * This will only report children which were previously declared
-         * with [method`Gtk`.WidgetClass.bind_template_child_full] or one of its
+         * with {@link Gtk.WidgetClass.bind_template_child_full} or one of its
          * variants.
          *
          * This function is only meant to be called for code which is private
          * to the `widget_type` which declared the child and is meant for language
          * bindings which cannot easily make use of the GObject structure offsets.
-         * @param widget_type The `GType` to get a template child for
+         * @param widget_type The {@link GObject.GType} to get a template child for
          * @param name ID of the child defined in the template XML
-         * @returns the object built in the template XML with   the id @name
+         * @returns the object built in the template XML with   the id `name`
          */
         get_template_child<T = GObject.Object>(widget_type: GObject.GType, name: string): T;
         /**
          * Gets the contents of the tooltip for the widget.
          *
          * If the tooltip has not been set using
-         * [method`Gtk`.Widget.set_tooltip_markup], this
+         * {@link Gtk.Widget.set_tooltip_markup}, this
          * function returns `NULL`.
          * @returns the tooltip text
          */
@@ -15902,29 +16411,29 @@ export namespace ClapperGtk {
         /**
          * Gets the contents of the tooltip for the widget.
          *
-         * If the `widget'`s tooltip was set using
-         * [method`Gtk`.Widget.set_tooltip_markup],
+         * If the `widget`'s tooltip was set using
+         * {@link Gtk.Widget.set_tooltip_markup},
          * this function will return the escaped text.
          * @returns the tooltip text
          */
         get_tooltip_text(): string | null;
         /**
          * Gets the vertical alignment of the widget.
-         * @returns the vertical alignment of @widget
+         * @returns the vertical alignment of `widget`
          */
         get_valign(): Gtk.Align;
         /**
          * Gets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.get_hexpand] for more detail.
+         * See {@link Gtk.Widget.get_hexpand} for more detail.
          * @returns whether vexpand flag is set
          */
         get_vexpand(): boolean;
         /**
          * Gets whether the `vexpand` flag has been explicitly set.
          *
-         * See [method`Gtk`.Widget.get_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.get_hexpand_set} for more detail.
          * @returns whether vexpand has been explicitly set
          */
         get_vexpand_set(): boolean;
@@ -15933,12 +16442,12 @@ export namespace ClapperGtk {
          *
          * If you want to take into account whether the widget’s
          * parent is also marked as visible, use
-         * [method`Gtk`.Widget.is_visible] instead.
+         * {@link Gtk.Widget.is_visible} instead.
          *
          * This function does not check if the widget is
          * obscured in any way.
          *
-         * See [method`Gtk`.Widget.set_visible].
+         * See {@link Gtk.Widget.set_visible}.
          * @returns true if the widget is visible
          */
         get_visible(): boolean;
@@ -15947,32 +16456,32 @@ export namespace ClapperGtk {
          *
          * This function returns the width passed to its
          * size-allocate implementation, which is the width you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The width of @widget
+         * @returns The width of `widget`
          */
         get_width(): number;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
-         * @returns true if focus is now inside @widget
+         * @returns true if focus is now inside `widget`
          */
         grab_focus(): boolean;
         /**
          * Returns whether a style class is currently applied to the widget.
          * @param css_class style class, without the leading period
-         * @returns true if @css_class is currently applied to @widget
+         * @returns true if `css_class` is currently applied to `widget`
          */
         has_css_class(css_class: string): boolean;
         /**
@@ -15981,11 +16490,11 @@ export namespace ClapperGtk {
          *
          * This is a convenience function that takes into account whether
          * focus indication should currently be shown in the toplevel window
-         * of `widget`. See [method`Gtk`.Window.get_focus_visible] for more
+         * of `widget`. See {@link Gtk.Window.get_focus_visible} for more
          * information about focus indication.
          *
          * To find out if the widget has the global input focus, use
-         * [method`Gtk`.Widget.has_focus].
+         * {@link Gtk.Widget.has_focus}.
          * @returns true if the widget should display a “focus rectangle”
          */
         has_visible_focus(): boolean;
@@ -16000,7 +16509,7 @@ export namespace ClapperGtk {
          *
          * This information can sometimes be used to avoid doing
          * unnecessary work.
-         * @returns true if @widget is being destroyed
+         * @returns true if `widget` is being destroyed
          */
         in_destruction(): boolean;
         /**
@@ -16008,7 +16517,7 @@ export namespace ClapperGtk {
          *
          * This function must be called in the instance initializer
          * for any class which assigned itself a template using
-         * [method`Gtk`.WidgetClass.set_template].
+         * {@link Gtk.WidgetClass.set_template}.
          *
          * It is important to call this function in the instance initializer
          * of a widget subclass and not in `GObject.constructed()` or
@@ -16029,85 +16538,85 @@ export namespace ClapperGtk {
         /**
          * Inserts an action group into the widget's actions.
          *
-         * Children of `widget` that implement [iface`Gtk`.Actionable] can
+         * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
          * “action-name” to `prefix`.`action-name`.
          *
          * Note that inheritance is defined for individual actions. I.e.
-         * even if you insert a group with prefix `prefix,` actions with
+         * even if you insert a group with prefix `prefix`, actions with
          * the same prefix will still be inherited from the parent, unless
          * the group contains an action with the same name.
          *
          * If `group` is `NULL`, a previously inserted group for `name` is
          * removed from `widget`.
-         * @param name the prefix for actions in @group
+         * @param name the prefix for actions in `group`
          * @param group an action group
          */
         insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed after `previous_sibling,` or at the beginning if
+         * It will be placed after `previous_sibling`, or at the beginning if
          * `previous_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_prev_sibling (widget)`
          * will return `previous_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this
+         * If `parent` is already set as the parent widget of `widget`, this
          * function can also be used to reorder `widget` in the child widget
          * list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param previous_sibling the new previous sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param previous_sibling the new previous sibling of `widget`
          */
         insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed before `next_sibling,` or at the end if
+         * It will be placed before `next_sibling`, or at the end if
          * `next_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_next_sibling (widget)`
          * will return `next_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this function
+         * If `parent` is already set as the parent widget of `widget`, this function
          * can also be used to reorder `widget` in the child widget list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param next_sibling the new next sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param next_sibling the new next sibling of `widget`
          */
         insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
-         * @param ancestor another `GtkWidget`
-         * @returns true if @ancestor contains @widget as a child,   grandchild, great grandchild, etc
+         * @param ancestor another {@link Gtk.Widget}
+         * @returns true if `ancestor` contains `widget` as a child,   grandchild, great grandchild, etc
          */
         is_ancestor(ancestor: Gtk.Widget): boolean;
         /**
          * Determines whether the widget can be drawn to.
          *
          * A widget can be drawn if it is mapped and visible.
-         * @returns true if @widget is drawable
+         * @returns true if `widget` is drawable
          */
         is_drawable(): boolean;
         /**
          * Determines if the widget is the focus widget within its
          * toplevel.
          *
-         * This does not mean that the [property`Gtk`.Widget:has-focus]
-         * property is necessarily set; [property`Gtk`.Widget:has-focus]
+         * This does not mean that the {@link Gtk.Widget.has_focus}
+         * property is necessarily set; {@link Gtk.Widget.has_focus}
          * will only be set if the toplevel widget additionally has the
          * global input focus.
          * @returns true if the widget is the focus widget
@@ -16127,38 +16636,38 @@ export namespace ClapperGtk {
          *
          * This function does not check if the widget is obscured in any way.
          *
-         * See also [method`Gtk`.Widget.get_visible] and
-         * [method`Gtk`.Widget.set_visible].
+         * See also {@link Gtk.Widget.get_visible} and
+         * {@link Gtk.Widget.set_visible}.
          * @returns true if the widget and all its parents are visible
          */
         is_visible(): boolean;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
@@ -16170,7 +16679,7 @@ export namespace ClapperGtk {
          * mnemonic.
          *
          * Typically, these widgets will be labels. See, for example,
-         * [method`Gtk`.Label.set_mnemonic_widget].
+         * {@link Gtk.Label.set_mnemonic_widget}.
          *
          * The widgets in the list are not individually referenced.
          * If you want to iterate through the list and perform actions
@@ -16189,18 +16698,18 @@ export namespace ClapperGtk {
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
         measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
          * @returns true if the signal has been handled
          */
@@ -16214,7 +16723,7 @@ export namespace ClapperGtk {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's children
+         * @returns a list model tracking `widget`'s children
          */
         observe_children(): Gio.ListModel;
         /**
@@ -16226,17 +16735,17 @@ export namespace ClapperGtk {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's controllers
+         * @returns a list model tracking `widget`'s controllers
          */
         observe_controllers(): Gio.ListModel;
         /**
          * Finds the descendant of the widget closest to a point.
          *
          * The point (x, y) must be given in widget coordinates, so (0, 0)
-         * is assumed to be the top left of `widget'`s content area.
+         * is assumed to be the top left of `widget`'s content area.
          *
          * Usually widgets will return `NULL` if the given coordinate is not
-         * contained in `widget` checked via [method`Gtk`.Widget.contains].
+         * contained in `widget` checked via {@link Gtk.Widget.contains}.
          * Otherwise they will recursively try to find a child that does
          * not return `NULL`. Widgets are however free to customize their
          * picking algorithm.
@@ -16244,21 +16753,21 @@ export namespace ClapperGtk {
          * This function is used on the toplevel to determine the widget
          * below the mouse cursor for purposes of hover highlighting and
          * delivering events.
-         * @param x x coordinate to test, relative to @widget's origin
-         * @param y y coordinate to test, relative to @widget's origin
+         * @param x x coordinate to test, relative to `widget`'s origin
+         * @param y y coordinate to test, relative to `widget`'s origin
          * @param flags flags to influence what is picked
          * @returns the widget's descendant at (x, y)
          */
         pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
         /**
-         * Flags the widget for a rerun of the [vfunc`Gtk`.Widget.size_allocate]
+         * Flags the widget for a rerun of the {@link Gtk.Widget.size_allocate}
          * function.
          *
-         * Use this function instead of [method`Gtk`.Widget.queue_resize]
-         * when the `widget'`s size request didn't change but it wants to
+         * Use this function instead of {@link Gtk.Widget.queue_resize}
+         * when the `widget`'s size request didn't change but it wants to
          * reposition its contents.
          *
-         * An example user of this function is [method`Gtk`.Widget.set_halign].
+         * An example user of this function is {@link Gtk.Widget.set_halign}.
          *
          * This function is only for use in widget implementations.
          */
@@ -16269,7 +16778,7 @@ export namespace ClapperGtk {
          * The redraw will happen in the paint phase
          * of the current or the next frame.
          *
-         * This means `widget'`s [vfunc`Gtk`.Widget.snapshot]
+         * This means `widget`'s {@link Gtk.Widget.snapshot}
          * implementation will be called.
          */
         queue_draw(): void;
@@ -16278,13 +16787,13 @@ export namespace ClapperGtk {
          *
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * [class`Gtk`.Label], the label queues a resize to ensure there’s
+         * {@link Gtk.Label}, the label queues a resize to ensure there’s
          * enough space for the new text.
          *
-         * Note that you cannot call gtk_widget_queue_resize() on a widget
-         * from inside its implementation of the [vfunc`Gtk`.Widget.size_allocate]
-         * virtual method. Calls to gtk_widget_queue_resize() from inside
-         * [vfunc`Gtk`.Widget.size_allocate] will be silently ignored.
+         * Note that you cannot call `gtk_widget_queue_resize()` on a widget
+         * from inside its implementation of the {@link Gtk.Widget.size_allocate}
+         * virtual method. Calls to `gtk_widget_queue_resize()` from inside
+         * {@link Gtk.Widget.size_allocate} will be silently ignored.
          *
          * This function is only for use in widget implementations.
          */
@@ -16305,7 +16814,7 @@ export namespace ClapperGtk {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
          */
         realize(): void;
         /**
@@ -16323,23 +16832,23 @@ export namespace ClapperGtk {
          * Removes a style from the widget.
          *
          * After this, the style of `widget` will stop matching for `css_class`.
-         * @param css_class style class to remove from @widget, without the leading period
+         * @param css_class style class to remove from `widget`, without the leading period
          */
         remove_css_class(css_class: string): void;
         /**
          * Removes a widget from the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * The widget must have previously been added to the list with
-         * [method`Gtk`.Widget.add_mnemonic_label].
-         * @param label a widget that is a mnemonic label for @widget
+         * {@link Gtk.Widget.add_mnemonic_label}.
+         * @param label a widget that is a mnemonic label for `widget`
          */
         remove_mnemonic_label(label: Gtk.Widget): void;
         /**
          * Removes a tick callback previously registered with
-         * [method`Gtk`.Widget.add_tick_callback].
-         * @param id an ID returned by [method@Gtk.Widget.add_tick_callback]
+         * {@link Gtk.Widget.add_tick_callback}.
+         * @param id an ID returned by {@link Gtk.Widget.add_tick_callback}
          */
         remove_tick_callback(id: number): void;
         /**
@@ -16355,7 +16864,7 @@ export namespace ClapperGtk {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
          * @param can_focus whether the input focus can enter   the widget or any of its children
          */
@@ -16369,7 +16878,7 @@ export namespace ClapperGtk {
          * Sets whether the widget should be mapped along with its parent.
          *
          * The child visibility can be set for widget before it is added
-         * to a container with [method`Gtk`.Widget.set_parent], to avoid
+         * to a container with {@link Gtk.Widget.set_parent}, to avoid
          * mapping children unnecessary before immediately unmapping them.
          * However it will be reset to its default state of true when the
          * widget is removed from a container.
@@ -16382,7 +16891,7 @@ export namespace ClapperGtk {
          *
          * This function is only useful for widget implementations
          * and should never be called by an application.
-         * @param child_visible whether @widget should be mapped along   with its parent
+         * @param child_visible whether `widget` should be mapped along   with its parent
          */
         set_child_visible(child_visible: boolean): void;
         /**
@@ -16404,12 +16913,12 @@ export namespace ClapperGtk {
          * the widget.
          *
          * This is a utility function that creates a cursor via
-         * [ctor`Gdk`.Cursor.new_from_name] and then sets it on `widget`
-         * with [method`Gtk`.Widget.set_cursor]. See those functions for
+         * {@link Gdk.Cursor.new_from_name} and then sets it on `widget`
+         * with {@link Gtk.Widget.set_cursor}. See those functions for
          * details.
          *
          * On top of that, this function allows `name` to be `NULL`, which
-         * will do the same as calling [method`Gtk`.Widget.set_cursor]
+         * will do the same as calling {@link Gtk.Widget.set_cursor}
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
@@ -16428,8 +16937,8 @@ export namespace ClapperGtk {
          * an order that is explicitly visual rather than logical (such as
          * buttons for text justification).
          *
-         * If the direction is set to [enum`Gtk`.TextDirection.none], then
-         * the value set by [func`Gtk`.Widget.set_default_direction] will be used.
+         * If the direction is set to {@link Gtk.TextDirection.NONE}, then
+         * the value set by {@link Gtk.Widget.set_default_direction} will be used.
          * @param dir the new direction
          */
         set_direction(dir: Gtk.TextDirection | null): void;
@@ -16438,8 +16947,8 @@ export namespace ClapperGtk {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
         set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -16456,7 +16965,7 @@ export namespace ClapperGtk {
          * Sets whether the widget can own the input focus.
          *
          * Widget implementations should set `focusable` to true in
-         * their init() function if they want to receive keyboard input.
+         * their `init()` function if they want to receive keyboard input.
          *
          * Note that having `focusable` be true is only one of the
          * necessary conditions for being focusable. A widget must
@@ -16464,9 +16973,9 @@ export namespace ClapperGtk {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
-         * @param focusable whether or not @widget can own the input focus
+         * @param focusable whether or not `widget` can own the input focus
          */
         set_focusable(focusable: boolean): void;
         /**
@@ -16478,14 +16987,14 @@ export namespace ClapperGtk {
          * of available fonts.
          *
          * When not set, the widget will inherit the font map from its parent.
-         * @param font_map a `PangoFontMap`
+         * @param font_map a {@link Pango.FontMap}
          */
         set_font_map(font_map?: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
          *
-         * When not set, the default font options for the `GdkDisplay`
+         * When not set, the default font options for the {@link Gdk.Display}
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
@@ -16497,7 +17006,7 @@ export namespace ClapperGtk {
         set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the `has-tooltip` property on the widget.
-         * @param has_tooltip whether or not @widget has a tooltip
+         * @param has_tooltip whether or not `widget` has a tooltip
          */
         set_has_tooltip(has_tooltip: boolean): void;
         /**
@@ -16514,18 +17023,18 @@ export namespace ClapperGtk {
          *
          * By default, widgets automatically expand if any of their children
          * want to expand. (To see if a widget will automatically expand given
-         * its current children and state, call [method`Gtk`.Widget.compute_expand].
+         * its current children and state, call {@link Gtk.Widget.compute_expand}.
          * A widget can decide how the expandability of children affects its
          * own expansion by overriding the `compute_expand` virtual method on
-         * `GtkWidget`.).
+         * {@link Gtk.Widget}.).
          *
          * Setting hexpand explicitly with this function will override the
          * automatic expand behavior.
          *
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
-         * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
-         * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
+         * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -16533,8 +17042,8 @@ export namespace ClapperGtk {
         /**
          * Sets whether the hexpand flag will be used.
          *
-         * The [property`Gtk`.Widget:hexpand-set] property will be set
-         * automatically when you call [method`Gtk`.Widget.set_hexpand]
+         * The {@link Gtk.Widget.hexpand_set} property will be set
+         * automatically when you call {@link Gtk.Widget.set_hexpand}
          * to set hexpand, so the most likely reason to use this function
          * would be to unset an explicit expand flag.
          *
@@ -16586,7 +17095,7 @@ export namespace ClapperGtk {
          * Setting a name allows you to refer to the widget from a
          * CSS file. You can apply a style to widgets with a particular name
          * in the CSS file. See the documentation for the CSS syntax (on the
-         * same page as the docs for [class`Gtk`.StyleContext].
+         * same page as the docs for {@link Gtk.StyleContext}.
          *
          * Note that the CSS syntax has certain special characters to delimit
          * and represent elements in a selector (period, #, >, *...), so using
@@ -16605,7 +17114,7 @@ export namespace ClapperGtk {
          * there are some limitations: For toplevel widgets, applying opacity
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
-         * [method`Gdk`.Display.is_composited]. On Windows and Wayland it will
+         * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
          * always work, although setting a window’s opacity after the window
          * has been shown may cause some flicker.
          *
@@ -16614,8 +17123,8 @@ export namespace ClapperGtk {
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
          * widgets (since that would make widgets deeper in the hierarchy
-         * progressively more translucent). As a consequence, [class`Gtk`.Popover]
-         * instances and other [iface`Gtk`.Native] widgets with their own surface
+         * progressively more translucent). As a consequence, {@link Gtk.Popover}
+         * instances and other {@link Gtk.Native} widgets with their own surface
          * will use their own opacity value, and thus by default appear
          * non-translucent, even if they are attached to a toplevel that
          * is translucent.
@@ -16626,12 +17135,12 @@ export namespace ClapperGtk {
          * Sets how the widget treats content that is drawn outside the
          * it's content area.
          *
-         * See the definition of [enum`Gtk`.Overflow] for details.
+         * See the definition of {@link Gtk.Overflow} for details.
          *
          * This setting is provided for widget implementations and
          * should not be used by application code.
          *
-         * The default value is [enum`Gtk`.Overflow.visible].
+         * The default value is {@link Gtk.Overflow.VISIBLE}.
          * @param overflow desired overflow value
          */
         set_overflow(overflow: Gtk.Overflow | null): void;
@@ -16640,10 +17149,10 @@ export namespace ClapperGtk {
          *
          * This takes care of details such as updating the state and style
          * of the child to reflect its new location and resizing the parent.
-         * The opposite function is [method`Gtk`.Widget.unparent].
+         * The opposite function is {@link Gtk.Widget.unparent}.
          *
          * This function is useful only when implementing subclasses of
-         * `GtkWidget`.
+         * {@link Gtk.Widget}.
          * @param parent parent widget
          */
         set_parent(parent: Gtk.Widget): void;
@@ -16651,7 +17160,7 @@ export namespace ClapperGtk {
          * Sets whether the widget will be treated as the default
          * widget within its toplevel when it has the focus, even if
          * another widget is the default.
-         * @param receives_default whether or not @widget can be a default widget
+         * @param receives_default whether or not `widget` can be a default widget
          */
         set_receives_default(receives_default: boolean): void;
         /**
@@ -16671,7 +17180,7 @@ export namespace ClapperGtk {
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          *
-         * In most cases, [method`Gtk`.Window.set_default_size] is a better
+         * In most cases, {@link Gtk.Window.set_default_size} is a better
          * choice for toplevel windows than this function; setting the default
          * size will still allow users to shrink the window. Setting the size
          * request will force them to leave the window at least as large as
@@ -16693,14 +17202,14 @@ export namespace ClapperGtk {
          *
          * The size request set here does not include any margin from the
          * properties
-         * [property`Gtk`.Widget:margin-start],
-         * [property`Gtk`.Widget:margin-end],
-         * [property`Gtk`.Widget:margin-top], and
-         * [property`Gtk`.Widget:margin-bottom], but it does include pretty
+         * {@link Gtk.Widget.margin_start},
+         * {@link Gtk.Widget.margin_end},
+         * {@link Gtk.Widget.margin_top}, and
+         * {@link Gtk.Widget.margin_bottom}, but it does include pretty
          * much all other padding or border properties set by any subclass
-         * of `GtkWidget`.
-         * @param width width @widget should request, or -1 to unset
-         * @param height height @widget should request, or -1 to unset
+         * of {@link Gtk.Widget}.
+         * @param width width `widget` should request, or -1 to unset
+         * @param height height `widget` should request, or -1 to unset
          */
         set_size_request(width: number, height: number): void;
         /**
@@ -16708,13 +17217,13 @@ export namespace ClapperGtk {
          *
          * Typical widget states are insensitive, prelighted, etc.
          *
-         * This function accepts the values [flags`Gtk`.StateFlags.dir-ltr] and
-         * [flags`Gtk`.StateFlags.dir-rtl] but ignores them. If you want to set
-         * the widget's direction, use [method`Gtk`.Widget.set_direction].
+         * This function accepts the values {@link Gtk.StateFlags.DIR-LTR} and
+         * {@link Gtk.StateFlags.DIR-RTL} but ignores them. If you want to set
+         * the widget's direction, use {@link Gtk.Widget.set_direction}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn on
-         * @param clear whether to clear state before turning on @flags
+         * @param clear whether to clear state before turning on `flags`
          */
         set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
@@ -16723,11 +17232,11 @@ export namespace ClapperGtk {
          * `markup` must contain Pango markup.
          *
          * This function will take care of setting the
-         * [property`Gtk`.Widget:has-tooltip] as a side effect, and of the
-         * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
+         * {@link Gtk.Widget.has_tooltip} as a side effect, and of the
+         * default handler for the `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_markup].
-         * @param markup the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_markup}.
+         * @param markup the contents of the tooltip for `widget`
          */
         set_tooltip_markup(markup?: string | null): void;
         /**
@@ -16736,12 +17245,12 @@ export namespace ClapperGtk {
          * If `text` contains any markup, it will be escaped.
          *
          * This function will take care of setting
-         * [property`Gtk`.Widget:has-tooltip] as a side effect,
+         * {@link Gtk.Widget.has_tooltip} as a side effect,
          * and of the default handler for the
-         * [signal`Gtk`.Widget::query-tooltip] signal.
+         * `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_text].
-         * @param text the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_text}.
+         * @param text the contents of the tooltip for `widget`
          */
         set_tooltip_text(text?: string | null): void;
         /**
@@ -16753,14 +17262,14 @@ export namespace ClapperGtk {
          * Sets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.set_hexpand] for more detail.
+         * See {@link Gtk.Widget.set_hexpand} for more detail.
          * @param expand whether to expand
          */
         set_vexpand(expand: boolean): void;
         /**
          * Sets whether the vexpand flag will be used.
          *
-         * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.set_hexpand_set} for more detail.
          * @param set value for vexpand-set property
          */
         set_vexpand_set(set: boolean): void;
@@ -16768,7 +17277,7 @@ export namespace ClapperGtk {
          * Sets the visibility state of `widget`.
          *
          * Note that setting this to true doesn’t mean the widget is
-         * actually viewable, see [method`Gtk`.Widget.get_visible].
+         * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
         set_visible(visible: boolean): void;
@@ -16778,7 +17287,7 @@ export namespace ClapperGtk {
          *
          * This is false for invisible children, but also
          * for children that have their own surface, such
-         * as [class`Gtk`.Popover] instances.
+         * as {@link Gtk.Popover} instances.
          * @returns true if child should be included in   measuring and allocating
          */
         should_layout(): boolean;
@@ -16799,8 +17308,8 @@ export namespace ClapperGtk {
          * Allocates widget with a transformation that translates
          * the origin to the position in `allocation`.
          *
-         * This is a simple form of [method`Gtk`.Widget.allocate].
-         * @param allocation position and size to be allocated to @widget
+         * This is a simple form of {@link Gtk.Widget.allocate}.
+         * @param allocation position and size to be allocated to `widget`
          * @param baseline the baseline of the child, or -1
          */
         size_allocate(allocation: Gtk.Allocation, baseline: number): void;
@@ -16808,32 +17317,32 @@ export namespace ClapperGtk {
          * Snapshots a child of the widget.
          *
          * When a widget receives a call to the snapshot function,
-         * it must send synthetic [vfunc`Gtk`.Widget.snapshot] calls
+         * it must send synthetic {@link Gtk.Widget.snapshot} calls
          * to all children. This function provides a convenient way
          * of doing this. A widget, when it receives a call to its
-         * [vfunc`Gtk`.Widget.snapshot] function, calls
-         * gtk_widget_snapshot_child() once for each child, passing in
+         * {@link Gtk.Widget.snapshot} function, calls
+         * `gtk_widget_snapshot_child()` once for each child, passing in
          * the `snapshot` the widget received.
          *
-         * This function takes care of translating the origin of `snapshot,`
+         * This function takes care of translating the origin of `snapshot`,
          * and deciding whether the child needs to be snapshot.
          *
-         * It does nothing for children that implement `GtkNative`.
-         * @param child a child of @widget
-         * @param snapshot snapshot as passed to the widget. In particular, no   calls to [method@Gtk.Snapshot.translate] or other transform calls   should have been made
+         * It does nothing for children that implement {@link Gtk.Native}.
+         * @param child a child of `widget`
+         * @param snapshot snapshot as passed to the widget. In particular, no   calls to {@link Gtk.Snapshot.translate} or other transform calls   should have been made
          */
         snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void;
         /**
-         * Translates coordinates relative to `src_widget’`s allocation
-         * to coordinates relative to `dest_widget’`s allocations.
+         * Translates coordinates relative to `src_widget`’s allocation
+         * to coordinates relative to `dest_widget`’s allocations.
          *
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
          * are set to 0 and false is returned.
          * @param dest_widget another widget
-         * @param src_x X position in widget coordinates of @src_widget
-         * @param src_y Y position in widget coordinates of @src_widget
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param src_x X position in widget coordinates of `src_widget`
+         * @param src_y Y position in widget coordinates of `src_widget`
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [boolean, number, number];
         /**
@@ -16864,7 +17373,7 @@ export namespace ClapperGtk {
         /**
          * Turns off flag values for the current widget state.
          *
-         * See [method`Gtk`.Widget.set_state_flags].
+         * See {@link Gtk.Widget.set_state_flags}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn off
@@ -16875,15 +17384,17 @@ export namespace ClapperGtk {
          *   widget extra space when possible.
          * @param hexpand_p
          * @param vexpand_p
+         * @virtual
          */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
         /**
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @virtual
          */
         vfunc_contains(x: number, y: number): boolean;
         /**
@@ -16892,17 +17403,20 @@ export namespace ClapperGtk {
          *   redraws accordingly. The default implementation will take care of this for
          *   all the default CSS properties, so implementations must chain up.
          * @param change
+         * @virtual
          */
         vfunc_css_changed(change: Gtk.CssStyleChange): void;
         /**
          * Signal emitted when the text direction of a
          *   widget changes.
          * @param previous_direction
+         * @virtual
          */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
         /**
-         * Vfunc for gtk_widget_child_focus()
+         * Vfunc for `gtk_widget_child_focus()`
          * @param direction
+         * @virtual
          */
         vfunc_focus(direction: Gtk.DirectionType): boolean;
         /**
@@ -16913,95 +17427,104 @@ export namespace ClapperGtk {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
+         * @virtual
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
+         * @virtual
          */
         vfunc_grab_focus(): boolean;
         /**
          * Reverses the effects of [method.Gtk.Widget.show].
          *
          * This is causing the widget to be hidden (invisible to the user).
+         * @virtual
          */
         vfunc_hide(): void;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
+         * @virtual
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Causes a widget to be mapped if it isn’t already.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_map(): void;
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @virtual
          */
         vfunc_measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
+         * @virtual
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
         /**
          * Signal emitted when a change of focus is requested
          * @param direction
+         * @virtual
          */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
         /**
-         * Signal emitted when “has-tooltip” is %TRUE and the
+         * Signal emitted when “has-tooltip” is `true` and the
          *   hover timeout has expired with the cursor hovering “above”
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x
          * @param y
          * @param keyboard_tooltip
          * @param tooltip
+         * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
@@ -17020,12 +17543,14 @@ export namespace ClapperGtk {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
+         * @virtual
          */
         vfunc_realize(): void;
         /**
-         * Called when the widget gets added to a `GtkRoot` widget. Must
+         * Called when the widget gets added to a {@link Gtk.Root} widget. Must
          *   chain up
+         * @virtual
          */
         vfunc_root(): void;
         /**
@@ -17033,8 +17558,9 @@ export namespace ClapperGtk {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
+         * @virtual
          */
         vfunc_set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -17048,6 +17574,7 @@ export namespace ClapperGtk {
          * When a toplevel widget is shown, it is immediately realized and
          * mapped; other shown widgets are realized and mapped when their
          * toplevel widget is realized and mapped.
+         * @virtual
          */
         vfunc_show(): void;
         /**
@@ -17056,28 +17583,33 @@ export namespace ClapperGtk {
          * @param width
          * @param height
          * @param baseline
+         * @virtual
          */
         vfunc_size_allocate(width: number, height: number, baseline: number): void;
         /**
          * Vfunc called when a new snapshot of the widget has to be taken.
          * @param snapshot
+         * @virtual
          */
         vfunc_snapshot(snapshot: Gtk.Snapshot): void;
         /**
          * Signal emitted when the widget state changes,
-         *   see gtk_widget_get_state_flags().
+         *   see `gtk_widget_get_state_flags()`.
          * @param previous_state_flags
+         * @virtual
          */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
         /**
          * Emitted when a system setting was changed. Must chain up.
          * @param settings
+         * @virtual
          */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
          * Causes a widget to be unmapped if it’s currently mapped.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_unmap(): void;
         /**
@@ -17086,11 +17618,13 @@ export namespace ClapperGtk {
          * This frees all GDK resources associated with the widget.
          *
          * This function is only useful in widget implementations.
+         * @virtual
          */
         vfunc_unrealize(): void;
         /**
          * Called when the widget is about to be removed from its
-         *   `GtkRoot` widget. Must chain up
+         *   {@link Gtk.Root} widget. Must chain up
+         * @virtual
          */
         vfunc_unroot(): void;
     }
@@ -17155,7 +17689,8 @@ export namespace ClapperGtk {
     }
 
     /**
-     * A #GtkButton for toggling play/pause of playback.
+     * A {@link Gtk.Button} for toggling play/pause of playback.
+     * @gir-type Class
      */
     class TogglePlayButton
         extends Gtk.Button
@@ -17182,40 +17717,45 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TogglePlayButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TogglePlayButton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TogglePlayButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TogglePlayButton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TogglePlayButton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TogglePlayButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The name of the action with which this widget should be associated.
+         * @category Inherited from Gtk.Actionable
          */
         get action_name(): string;
         set action_name(val: string);
         /**
          * The name of the action with which this widget should be associated.
+         * @category Inherited from Gtk.Actionable
          */
         get actionName(): string;
         set actionName(val: string);
         /**
          * The target value of the actionable widget's action.
+         * @category Inherited from Gtk.Actionable
          */
         get action_target(): GLib.Variant;
         set action_target(val: GLib.Variant);
         /**
          * The target value of the actionable widget's action.
+         * @category Inherited from Gtk.Actionable
          */
         get actionTarget(): GLib.Variant;
         set actionTarget(val: GLib.Variant);
@@ -17225,6 +17765,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
         set can_focus(val: boolean);
@@ -17234,26 +17775,31 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
         set canTarget(val: boolean);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get css_classes(): string[];
         set css_classes(val: string[]);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get cssClasses(): string[];
         set cssClasses(val: string[]);
@@ -17262,6 +17808,7 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
         /**
@@ -17269,10 +17816,12 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
         /**
          * The cursor used by `widget`.
+         * @category Inherited from Gtk.Widget
          */
         get cursor(): Gdk.Cursor;
         set cursor(val: Gdk.Cursor);
@@ -17280,6 +17829,7 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
         set focus_on_click(val: boolean);
@@ -17287,52 +17837,61 @@ export namespace ClapperGtk {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
         set has_tooltip(val: boolean);
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
@@ -17340,6 +17899,7 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
         set height_request(val: number);
@@ -17347,39 +17907,45 @@ export namespace ClapperGtk {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layout_manager(): Gtk.LayoutManager;
         set layout_manager(val: Gtk.LayoutManager);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layoutManager(): Gtk.LayoutManager;
         set layoutManager(val: Gtk.LayoutManager);
@@ -17389,7 +17955,9 @@ export namespace ClapperGtk {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
         set limit_events(val: boolean);
@@ -17399,7 +17967,9 @@ export namespace ClapperGtk {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
         set limitEvents(val: boolean);
@@ -17408,7 +17978,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
         set margin_bottom(val: number);
@@ -17417,7 +17988,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
         set marginBottom(val: number);
@@ -17429,7 +18001,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
         set margin_end(val: number);
@@ -17441,7 +18014,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
         set marginEnd(val: number);
@@ -17453,7 +18027,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
         set margin_start(val: number);
@@ -17465,7 +18040,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
         set marginStart(val: number);
@@ -17474,7 +18050,8 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
         set margin_top(val: number);
@@ -17483,17 +18060,20 @@ export namespace ClapperGtk {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
@@ -17502,39 +18082,47 @@ export namespace ClapperGtk {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
-         * The `GtkRoot` widget of the widget tree containing this widget.
+         * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
         set sensitive(val: boolean);
@@ -17542,16 +18130,17 @@ export namespace ClapperGtk {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_markup(): string;
         set tooltip_markup(val: string);
@@ -17559,73 +18148,81 @@ export namespace ClapperGtk {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipMarkup(): string;
         set tooltipMarkup(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_text(): string;
         set tooltip_text(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipText(): string;
         set tooltipText(val: string);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -17633,6 +18230,7 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
         set width_request(val: number);
@@ -17640,11 +18238,10 @@ export namespace ClapperGtk {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
         set widthRequest(val: number);
-
-        // Inherited methods
         /**
          * Gets the action name for `actionable`.
          * @returns the action name
@@ -17659,15 +18256,15 @@ export namespace ClapperGtk {
          * Specifies the name of the action with which this widget should be
          * associated.
          *
-         * If `action_name` is %NULL then the widget will be unassociated from
+         * If `action_name` is `null` then the widget will be unassociated from
          * any previous action.
          *
          * Usually this function is used when the widget is located (or will be
-         * located) within the hierarchy of a `GtkApplicationWindow`.
+         * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          *
          * Names are of the form “win.save” or “app.quit” for actions on the
-         * containing [class`ApplicationWindow]` or its associated [class`Application]`,
-         * respectively. This is the same form used for actions in the [class`Gio`.Menu]
+         * containing {@link ApplicationWindow} or its associated {@link Application},
+         * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name
          */
@@ -17675,14 +18272,14 @@ export namespace ClapperGtk {
         /**
          * Sets the target value of an actionable widget.
          *
-         * If `target_value` is %NULL then the target value is unset.
+         * If `target_value` is `null` then the target value is unset.
          *
          * The target value has two purposes. First, it is used as the parameter
-         * to activation of the action associated with the `GtkActionable` widget.
+         * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
          * “active” — the widget is active if the state is equal to the given target.
          *
-         * Consider the example of associating a set of buttons with a [iface`Gio`.Action]
+         * Consider the example of associating a set of buttons with a {@link Gio.Action}
          * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
@@ -17691,7 +18288,7 @@ export namespace ClapperGtk {
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
-         * @param target_value a [struct@GLib.Variant] to set as the target value
+         * @param target_value a {@link GLib.Variant} to set as the target value
          */
         set_action_target_value(target_value?: GLib.Variant | null): void;
         /**
@@ -17699,46 +18296,49 @@ export namespace ClapperGtk {
          * actionable widget.
          *
          * `detailed_action_name` is a string in the format accepted by
-         * [func`Gio`.Action.parse_detailed_name].
+         * {@link Gio.Action.parse_detailed_name}.
          * @param detailed_action_name the detailed action name
          */
         set_detailed_action_name(detailed_action_name: string): void;
         /**
          * Gets the action name for `actionable`.
+         * @virtual
          */
         vfunc_get_action_name(): string | null;
         /**
          * Gets the current target value of `actionable`.
+         * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant | null;
         /**
          * Specifies the name of the action with which this widget should be
          * associated.
          *
-         * If `action_name` is %NULL then the widget will be unassociated from
+         * If `action_name` is `null` then the widget will be unassociated from
          * any previous action.
          *
          * Usually this function is used when the widget is located (or will be
-         * located) within the hierarchy of a `GtkApplicationWindow`.
+         * located) within the hierarchy of a {@link Gtk.ApplicationWindow}.
          *
          * Names are of the form “win.save” or “app.quit” for actions on the
-         * containing [class`ApplicationWindow]` or its associated [class`Application]`,
-         * respectively. This is the same form used for actions in the [class`Gio`.Menu]
+         * containing {@link ApplicationWindow} or its associated {@link Application},
+         * respectively. This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name
+         * @virtual
          */
         vfunc_set_action_name(action_name?: string | null): void;
         /**
          * Sets the target value of an actionable widget.
          *
-         * If `target_value` is %NULL then the target value is unset.
+         * If `target_value` is `null` then the target value is unset.
          *
          * The target value has two purposes. First, it is used as the parameter
-         * to activation of the action associated with the `GtkActionable` widget.
+         * to activation of the action associated with the {@link Gtk.Actionable} widget.
          * Second, it is used to determine if the widget should be rendered as
          * “active” — the widget is active if the state is equal to the given target.
          *
-         * Consider the example of associating a set of buttons with a [iface`Gio`.Action]
+         * Consider the example of associating a set of buttons with a {@link Gio.Action}
          * with string state in a typical “radio button” situation. Each button
          * will be associated with the same action, but with a different target
          * value for that action. Clicking on a particular button will activate
@@ -17747,7 +18347,8 @@ export namespace ClapperGtk {
          * is now equal to the target value of the button, the button will now
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
-         * @param target_value a [struct@GLib.Variant] to set as the target value
+         * @param target_value a {@link GLib.Variant} to set as the target value
+         * @virtual
          */
         vfunc_set_action_target_value(target_value?: GLib.Variant | null): void;
         /**
@@ -17763,32 +18364,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -17797,39 +18398,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -17840,13 +18441,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -17854,7 +18458,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -17862,9 +18466,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -17884,9 +18488,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -17900,33 +18504,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -17959,21 +18563,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -17983,8 +18587,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -18001,10 +18605,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -18019,13 +18623,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -18056,21 +18660,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -18080,33 +18684,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -18115,6 +18720,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -18123,12 +18729,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -18137,20 +18745,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -18162,6 +18772,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -18191,7 +18802,7 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): void;
         /**
          * Enables or disables an action installed with
-         * [method`Gtk`.WidgetClass.install_action].
+         * {@link Gtk.WidgetClass.install_action}.
          * @param action_name action name, such as "clipboard.paste"
          * @param enabled whether the action is now enabled
          */
@@ -18200,15 +18811,15 @@ export namespace ClapperGtk {
          * Activates the widget.
          *
          * The activation will emit the signal set using
-         * [method`Gtk`.WidgetClass.set_activate_signal]
+         * {@link Gtk.WidgetClass.set_activate_signal}
          * during class initialization.
          *
          * Activation is what happens when you press <kbd>Enter</kbd>
          * on a widget.
          *
          * If you wish to handle the activation keybinding yourself,
-         * it is recommended to use [method`Gtk`.WidgetClass.add_shortcut]
-         * with an action created with [ctor`Gtk`.SignalAction.new].
+         * it is recommended to use {@link Gtk.WidgetClass.add_shortcut}
+         * with an action created with {@link Gtk.SignalAction.new}.
          *
          * If `widget` is not activatable, the function returns false.
          * @returns true if the widget was activated
@@ -18221,12 +18832,12 @@ export namespace ClapperGtk {
          * `widget` and its ancestors.
          *
          * If the action is in an action group added with
-         * [method`Gtk`.Widget.insert_action_group], the `name` is expected
+         * {@link Gtk.Widget.insert_action_group}, the `name` is expected
          * to be prefixed with the prefix that was used when the group was
          * inserted.
          *
          * The arguments must match the actions expected parameter type,
-         * as returned by [method`Gio`.Action.get_parameter_type].
+         * as returned by {@link Gio.Action.get_parameter_type}.
          * @param name the name of the action to activate
          * @param args parameters to use
          * @returns true if the action was activated
@@ -18236,7 +18847,7 @@ export namespace ClapperGtk {
          * Activates the `default.activate` action for the widget.
          *
          * The action is looked up in the same was as for
-         * [method`Gtk`.Widget.activate_action].
+         * {@link Gtk.Widget.activate_action}.
          */
         activate_default(): void;
         /**
@@ -18246,7 +18857,7 @@ export namespace ClapperGtk {
          * propagated to the widget.
          *
          * You will usually want to call this function right after
-         * creating any kind of [class`Gtk`.EventController].
+         * creating any kind of {@link Gtk.EventController}.
          * @param controller an event controller that hasn't been   added to a widget yet
          */
         add_controller(controller: Gtk.EventController): void;
@@ -18254,22 +18865,22 @@ export namespace ClapperGtk {
          * Adds a style class to the widget.
          *
          * After calling this function, the widget’s style will match
-         * for `css_class,` according to CSS matching rules.
+         * for `css_class`, according to CSS matching rules.
          *
-         * Use [method`Gtk`.Widget.remove_css_class] to remove the
+         * Use {@link Gtk.Widget.remove_css_class} to remove the
          * style again.
-         * @param css_class style class to add to @widget, without the leading period
+         * @param css_class style class to add to `widget`, without the leading period
          */
         add_css_class(css_class: string): void;
         /**
          * Adds a widget to the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * Note that the list of mnemonic labels for the widget is cleared
          * when the widget is destroyed, so the caller must make sure
          * to update its internal state at this point as well.
-         * @param label a widget that acts as a mnemonic label for @widget
+         * @param label a widget that acts as a mnemonic label for `widget`
          */
         add_mnemonic_label(label: Gtk.Widget): void;
         /**
@@ -18285,20 +18896,20 @@ export namespace ClapperGtk {
          * The tick callback does not automatically imply a relayout or repaint.
          * If you want a repaint or relayout, and aren’t changing widget properties
          * that would trigger that (for example, changing the text of a label),
-         * then you will have to call [method`Gtk`.Widget.queue_resize] or
-         * [method`Gtk`.Widget.queue_draw] yourself.
+         * then you will have to call {@link Gtk.Widget.queue_resize} or
+         * {@link Gtk.Widget.queue_draw} yourself.
          *
-         * [method`Gdk`.FrameClock.get_frame_time] should generally be used
+         * {@link Gdk.FrameClock.get_frame_time} should generally be used
          * for timing continuous animations and
-         * [method`Gdk`.FrameTimings.get_predicted_presentation_time] should be
+         * {@link Gdk.FrameTimings.get_predicted_presentation_time} should be
          * used if you are trying to display isolated frames at particular times.
          *
          * This is a more convenient alternative to connecting directly to the
-         * [signal`Gdk`.FrameClock::update] signal of the frame clock, since you
+         * `Gdk.FrameClock::update` signal of the frame clock, since you
          * don't have to worry about when a frame clock is assigned to a widget.
          *
          * To remove a tick callback, pass the ID that is returned by this function
-         * to [method`Gtk`.Widget.remove_tick_callback].
+         * to {@link Gtk.Widget.remove_tick_callback}.
          * @param callback function   to call for updating animations
          * @returns an ID for this callback
          */
@@ -18314,7 +18925,7 @@ export namespace ClapperGtk {
          * This function is only used by widget implementations.
          *
          * For a version that does not take a transform, see
-         * [method`Gtk`.Widget.size_allocate].
+         * {@link Gtk.Widget.size_allocate}.
          * @param width new width
          * @param height new height
          * @param baseline new baseline, or -1
@@ -18328,7 +18939,7 @@ export namespace ClapperGtk {
          * The `direction` argument indicates what kind of motion is taking
          * place (up, down, left, right, tab forward, tab backward).
          *
-         * This function calls the [vfunc`Gtk`.Widget.focus] virtual function;
+         * This function calls the {@link Gtk.Widget.focus} virtual function;
          * widgets can override the virtual function in order to implement
          * appropriate focus behavior.
          *
@@ -18336,14 +18947,14 @@ export namespace ClapperGtk {
          * true if moving in `direction` left the focus on a focusable location
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
-         * [method`Gtk`.Widget.grab_focus] to place the focus accordingly;
+         * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
          * when returning false, they don’t modify the current focus location.
          *
          * This function is used by custom widget implementations; if you're
-         * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
+         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
-         * @returns true if focus ended up inside @widget
+         * @returns true if focus ended up inside `widget`
          */
         child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
@@ -18354,7 +18965,7 @@ export namespace ClapperGtk {
          * overview to learn more.
          *
          * If the operation is successful, true is returned. If `widget` has no
-         * bounds or the bounds cannot be expressed in `target'`s coordinate space
+         * bounds or the bounds cannot be expressed in `target`'s coordinate space
          * (for example if both widgets are in different windows), false is
          * returned and `bounds` is set to the zero rectangle.
          *
@@ -18368,7 +18979,7 @@ export namespace ClapperGtk {
          * extra space when possible.
          *
          * Widgets with children should check this, rather than looking at
-         * [method`Gtk`.Widget.get_hexpand] or [method`Gtk`.Widget.get_vexpand].
+         * {@link Gtk.Widget.get_hexpand} or {@link Gtk.Widget.get_vexpand}.
          *
          * This function already checks whether the widget is visible, so
          * visibility does not need to be checked separately. Non-visible
@@ -18382,20 +18993,20 @@ export namespace ClapperGtk {
          */
         compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
-         * Translates the given `point` in `widget'`s coordinates to coordinates
-         * in `target’`s coordinate system.
+         * Translates the given `point` in `widget`'s coordinates to coordinates
+         * in `target`’s coordinate system.
          *
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
          * to (0, 0) and false is returned.
          * @param target the widget to transform into
-         * @param point a point in @widget's coordinate system
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param point a point in `widget`'s coordinate system
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         compute_point(target: Gtk.Widget, point: Graphene.Point): [boolean, Graphene.Point];
         /**
          * Computes a matrix suitable to describe a transformation from
-         * `widget'`s coordinate system into `target'`s coordinate system.
+         * `widget`'s coordinate system into `target`'s coordinate system.
          *
          * The transform can not be computed in certain cases, for example
          * when `widget` and `target` do not share a common ancestor. In that
@@ -18411,47 +19022,47 @@ export namespace ClapperGtk {
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
-         * @returns true if @widget contains the point (x, y)
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @returns true if `widget` contains the point (x, y)
          */
         contains(x: number, y: number): boolean;
         /**
-         * Creates a new `PangoContext` that is configured for the widget.
+         * Creates a new {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map,
+         * The {@link Pango.Context} will have the appropriate font map,
          * font options, font description, and base direction set.
          *
-         * See also [method`Gtk`.Widget.get_pango_context].
-         * @returns the new `PangoContext`
+         * See also {@link Gtk.Widget.get_pango_context}.
+         * @returns the new {@link Pango.Context}
          */
         create_pango_context(): Pango.Context;
         /**
-         * Creates a new `PangoLayout` that is configured for the widget.
+         * Creates a new {@link Pango.Layout} that is configured for the widget.
          *
-         * The `PangoLayout` will have the appropriate font map,
+         * The {@link Pango.Layout} will have the appropriate font map,
          * font description, and base direction set.
          *
-         * If you keep a `PangoLayout` created in this way around,
-         * you need to re-create it when the widgets `PangoContext`
+         * If you keep a {@link Pango.Layout} created in this way around,
+         * you need to re-create it when the widgets {@link Pango.Context}
          * is replaced. This can be tracked by listening to changes
-         * of the [property`Gtk`.Widget:root] property on the widget.
+         * of the {@link Gtk.Widget.root} property on the widget.
          * @param text text to set on the layout
-         * @returns the new `PangoLayout`
+         * @returns the new {@link Pango.Layout}
          */
         create_pango_layout(text?: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
-         * This function is the opposite of [method`Gtk`.Widget.init_template],
+         * This function is the opposite of {@link Gtk.Widget.init_template},
          * and it is used to clear all the template children from a widget
          * instance. If you bound a template child to a field in the instance
          * structure, or in the instance private data structure, the field will
          * be set to `NULL` after this function returns.
          *
-         * You should call this function inside the `GObjectClass.dispose()`
-         * implementation of any widget that called [method`Gtk`.Widget.init_template].
+         * You should call this function inside the {@link GObject.Object.dispose}
+         * implementation of any widget that called {@link Gtk.Widget.init_template}.
          * Typically, you will want to call this function last, right before
          * chaining up to the parent type's dispose implementation, e.g.
          *
@@ -18482,10 +19093,10 @@ export namespace ClapperGtk {
         /**
          * Notifies the user about an input-related error on the widget.
          *
-         * If the [property`Gtk`.Settings:gtk-error-bell] setting is true,
-         * it calls [method`Gdk`.Surface.beep], otherwise it does nothing.
+         * If the {@link Gtk.Settings.gtk_error_bell} setting is true,
+         * it calls {@link Gdk.Surface.beep}, otherwise it does nothing.
          *
-         * Note that the effect of [method`Gdk`.Surface.beep] can be configured
+         * Note that the effect of {@link Gdk.Surface.beep} can be configured
          * in many ways, depending on the windowing backend and the desktop
          * environment or window manager that is used.
          */
@@ -18494,9 +19105,9 @@ export namespace ClapperGtk {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidget`Class.snapshot() function, and when allocating
-         * child widgets in `GtkWidget`Class.size_allocate().
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_allocated_baseline(): number;
         /**
@@ -18504,7 +19115,7 @@ export namespace ClapperGtk {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the height of the @widget
+         * @returns the height of the `widget`
          */
         get_allocated_height(): number;
         /**
@@ -18512,7 +19123,7 @@ export namespace ClapperGtk {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the width of the @widget
+         * @returns the width of the `widget`
          */
         get_allocated_width(): number;
         /**
@@ -18520,13 +19131,13 @@ export namespace ClapperGtk {
          *
          * Note, when implementing a layout widget: a widget’s allocation
          * will be its “adjusted” allocation, that is, the widget’s parent
-         * typically calls [method`Gtk`.Widget.size_allocate] with an allocation,
+         * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
-         * [method`Gtk`.Widget.get_allocation] returns the adjusted allocation that
+         * {@link Gtk.Widget.get_allocation} returns the adjusted allocation that
          * was actually assigned to the widget. The adjusted allocation is
          * guaranteed to be completely contained within the
-         * [method`Gtk`.Widget.size_allocate] allocation, however.
+         * {@link Gtk.Widget.size_allocate} allocation, however.
          *
          * So a layout widget is guaranteed that its children stay inside
          * the assigned bounds, but not that they have exactly the bounds the
@@ -18537,11 +19148,11 @@ export namespace ClapperGtk {
          * Gets the first ancestor of the widget with type `widget_type`.
          *
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first `GtkBox` that’s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          *
-         * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
+         * Note that unlike {@link Gtk.Widget.is_ancestor}, this function
          * considers `widget` to be an ancestor of itself.
          * @param widget_type ancestor type
          * @returns the ancestor widget
@@ -18551,26 +19162,26 @@ export namespace ClapperGtk {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidgetClass.snapshot()` function, and when allocating
-         * child widgets in `GtkWidgetClass.size_allocate()`.
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_baseline(): number;
         /**
          * Determines whether the input focus can enter the widget or any
          * of its children.
          *
-         * See [method`Gtk`.Widget.set_can_focus].
-         * @returns true if the input focus can enter @widget
+         * See {@link Gtk.Widget.set_can_focus}.
+         * @returns true if the input focus can enter `widget`
          */
         get_can_focus(): boolean;
         /**
          * Queries whether the widget can be the target of pointer events.
-         * @returns true if @widget can receive pointer events
+         * @returns true if `widget` can receive pointer events
          */
         get_can_target(): boolean;
         /**
-         * Gets the value set with [method`Gtk`.Widget.set_child_visible].
+         * Gets the value set with {@link Gtk.Widget.set_child_visible}.
          *
          * If you feel a need to use this function, your code probably
          * needs reorganization.
@@ -18601,7 +19212,7 @@ export namespace ClapperGtk {
         get_color(): Gdk.RGBA;
         /**
          * Returns the list of style classes applied to the widget.
-         * @returns a `NULL`-terminated list of   css classes currently applied to @widget
+         * @returns a `NULL`-terminated list of   css classes currently applied to `widget`
          */
         get_css_classes(): string[];
         /**
@@ -18612,14 +19223,14 @@ export namespace ClapperGtk {
         /**
          * Gets the cursor set on the widget.
          *
-         * See [method`Gtk`.Widget.set_cursor] for details.
-         * @returns the cursor   that is set on @widget
+         * See {@link Gtk.Widget.set_cursor} for details.
+         * @returns the cursor   that is set on `widget`
          */
         get_cursor(): Gdk.Cursor | null;
         /**
          * Gets the reading direction for the widget.
          *
-         * See [method`Gtk`.Widget.set_direction].
+         * See {@link Gtk.Widget.set_direction}.
          * @returns the reading direction for the widget
          */
         get_direction(): Gtk.TextDirection;
@@ -18627,7 +19238,7 @@ export namespace ClapperGtk {
          * Get the display for the window that the widget belongs to.
          *
          * This function can only be called after the widget has been
-         * added to a widget hierarchy with a `GtkRoot` at the top.
+         * added to a widget hierarchy with a {@link Gtk.Root} at the top.
          *
          * In general, you should only create display-specific
          * resources when a widget has been realized, and you should
@@ -18644,35 +19255,35 @@ export namespace ClapperGtk {
         get_first_child(): Gtk.Widget | null;
         /**
          * Returns the focus child of the widget.
-         * @returns the current focus   child of @widget
+         * @returns the current focus   child of `widget`
          */
         get_focus_child(): Gtk.Widget | null;
         /**
          * Returns whether the widget should grab focus when it is clicked
          * with the mouse.
          *
-         * See [method`Gtk`.Widget.set_focus_on_click].
+         * See {@link Gtk.Widget.set_focus_on_click}.
          * @returns true if the widget should grab focus when it is   clicked with the mouse
          */
         get_focus_on_click(): boolean;
         /**
          * Determines whether the widget can own the input focus.
          *
-         * See [method`Gtk`.Widget.set_focusable].
-         * @returns true if @widget can own the input focus
+         * See {@link Gtk.Widget.set_focusable}.
+         * @returns true if `widget` can own the input focus
          */
         get_focusable(): boolean;
         /**
          * Gets the font map of the widget.
          *
-         * See [method`Gtk`.Widget.set_font_map].
-         * @returns the font map of @widget
+         * See {@link Gtk.Widget.set_font_map}.
+         * @returns the font map of `widget`
          */
         get_font_map(): Pango.FontMap | null;
         /**
          * Returns the `cairo_font_options_t` of the widget.
          *
-         * Seee [method`Gtk`.Widget.set_font_options].
+         * Seee {@link Gtk.Widget.set_font_options}.
          * @returns the `cairo_font_options_t` of widget
          */
         get_font_options(): cairo.FontOptions | null;
@@ -18681,17 +19292,17 @@ export namespace ClapperGtk {
          *
          * The frame clock is a global “ticker” that can be used to drive
          * animations and repaints. The most common reason to get the frame
-         * clock is to call [method`Gdk`.FrameClock.get_frame_time], in order
+         * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
          * the start of the animation with an initial value from
-         * [method`Gdk`.FrameClock.get_frame_time], and then update the animation
-         * by calling [method`Gdk`.FrameClock.get_frame_time] again during each repaint.
+         * {@link Gdk.FrameClock.get_frame_time}, and then update the animation
+         * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          *
-         * [method`Gdk`.FrameClock.request_phase] will result in a new frame on the
+         * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
          * clock, but won’t necessarily repaint any widgets. To repaint a widget,
-         * you have to use [method`Gtk`.Widget.queue_draw] which invalidates the
+         * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
-         * [method`Gtk`.Widget.queue_draw] will also end up requesting a frame
+         * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          *
          * A widget’s frame clock will not change while the widget is mapped.
@@ -18707,15 +19318,15 @@ export namespace ClapperGtk {
          *
          * For backwards compatibility reasons this method will never return
          * one of the baseline alignments, but instead it will convert it to
-         * [enum`Gtk`.Align.fill] or [enum`Gtk`.Align.center].
+         * {@link Gtk.Align.FILL} or {@link Gtk.Align.CENTER}.
          *
          * Baselines are not supported for horizontal alignment.
-         * @returns the horizontal alignment of @widget
+         * @returns the horizontal alignment of `widget`
          */
         get_halign(): Gtk.Align;
         /**
          * Returns the current value of the `has-tooltip` property.
-         * @returns current value of `has-tooltip` on @widget
+         * @returns current value of `has-tooltip` on `widget`
          */
         get_has_tooltip(): boolean;
         /**
@@ -18723,13 +19334,13 @@ export namespace ClapperGtk {
          *
          * This function returns the height passed to its
          * size-allocate implementation, which is the height you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The height of @widget
+         * @returns The height of `widget`
          */
         get_height(): number;
         /**
@@ -18740,7 +19351,7 @@ export namespace ClapperGtk {
          * receive the extra space. For example, a list or scrollable area
          * or document in your window would often be set to expand.
          *
-         * Widgets with children should use [method`Gtk`.Widget.compute_expand]
+         * Widgets with children should use {@link Gtk.Widget.compute_expand}
          * rather than this function, to see whether any of its children,
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
@@ -18754,7 +19365,7 @@ export namespace ClapperGtk {
         /**
          * Gets whether the `hexpand` flag has been explicitly set.
          *
-         * If [property`Gtk`.Widget:hexpand] property is set, then it
+         * If {@link Gtk.Widget.hexpand} property is set, then it
          * overrides any computed expand value based on child widgets.
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
@@ -18774,12 +19385,12 @@ export namespace ClapperGtk {
         /**
          * Retrieves the layout manager of the widget.
          *
-         * See [method`Gtk`.Widget.set_layout_manager].
-         * @returns the layout manager of @widget
+         * See {@link Gtk.Widget.set_layout_manager}.
+         * @returns the layout manager of `widget`
          */
         get_layout_manager(): Gtk.LayoutManager | null;
         /**
-         * Gets the value of the [property`Gtk`.Widget:limit-events] property.
+         * Gets the value of the {@link Gtk.Widget.limit_events} property.
          */
         get_limit_events(): boolean;
         /**
@@ -18789,39 +19400,39 @@ export namespace ClapperGtk {
         get_mapped(): boolean;
         /**
          * Gets the bottom margin of the widget.
-         * @returns The bottom margin of @widget
+         * @returns The bottom margin of `widget`
          */
         get_margin_bottom(): number;
         /**
          * Gets the end margin of the widget.
-         * @returns The end margin of @widget
+         * @returns The end margin of `widget`
          */
         get_margin_end(): number;
         /**
          * Gets the start margin of the widget.
-         * @returns The start margin of @widget
+         * @returns The start margin of `widget`
          */
         get_margin_start(): number;
         /**
          * Gets the top margin of the widget.
-         * @returns The top margin of @widget
+         * @returns The top margin of `widget`
          */
         get_margin_top(): number;
         /**
          * Retrieves the name of a widget.
          *
-         * See [method`Gtk`.Widget.set_name] for the significance of widget names.
+         * See {@link Gtk.Widget.set_name} for the significance of widget names.
          * @returns name of the widget
          */
         get_name(): string;
         /**
-         * Returns the nearest `GtkNative` ancestor of the widget.
+         * Returns the nearest {@link Gtk.Native} ancestor of the widget.
          *
          * This function will return `NULL` if the widget is not
          * contained inside a widget tree with a native ancestor.
          *
-         * `GtkNative` widgets will return themselves here.
-         * @returns the `GtkNative` ancestor of @widget
+         * {@link Gtk.Native} widgets will return themselves here.
+         * @returns the {@link Gtk.Native} ancestor of `widget`
          */
         get_native(): Gtk.Native | null;
         /**
@@ -18834,7 +19445,7 @@ export namespace ClapperGtk {
         /**
          * Fetches the requested opacity for the widget.
          *
-         * See [method`Gtk`.Widget.set_opacity].
+         * See {@link Gtk.Widget.set_opacity}.
          * @returns the requested opacity for this widget
          */
         get_opacity(): number;
@@ -18844,23 +19455,23 @@ export namespace ClapperGtk {
          */
         get_overflow(): Gtk.Overflow;
         /**
-         * Gets a `PangoContext` that is configured for the widget.
+         * Gets a {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map, font description,
+         * The {@link Pango.Context} will have the appropriate font map, font description,
          * and base direction set.
          *
-         * Unlike the context returned by [method`Gtk`.Widget.create_pango_context],
+         * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
          * and will be updated to match any changes to the widget’s attributes.
          * This can be tracked by listening to changes of the
-         * [property`Gtk`.Widget:root] property on the widget.
-         * @returns the `PangoContext` for the widget
+         * {@link Gtk.Widget.root} property on the widget.
+         * @returns the {@link Pango.Context} for the widget
          */
         get_pango_context(): Pango.Context;
         /**
          * Returns the parent widget of the widget.
-         * @returns the parent widget of @widget
+         * @returns the parent widget of `widget`
          */
         get_parent(): Gtk.Widget | null;
         /**
@@ -18870,14 +19481,14 @@ export namespace ClapperGtk {
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
          * to deduce toplevel window and menu sizes as well as child widgets in
-         * free-form containers such as `GtkFixed`.
+         * free-form containers such as {@link Gtk.Fixed}.
          *
          * Handle with care. Note that the natural height of a height-for-width
          * widget will generally be a smaller size than the minimum height, since
          * the required height for the natural width is generally smaller than the
          * required height for the minimum width.
          *
-         * Use [method`Gtk`.Widget.measure] if you want to support baseline alignment.
+         * Use {@link Gtk.Widget.measure} if you want to support baseline alignment.
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
@@ -18900,7 +19511,7 @@ export namespace ClapperGtk {
         get_primary_clipboard(): Gdk.Clipboard;
         /**
          * Determines whether the widget is realized.
-         * @returns true if @widget is realized
+         * @returns true if `widget` is realized
          */
         get_realized(): boolean;
         /**
@@ -18908,8 +19519,8 @@ export namespace ClapperGtk {
          * within its toplevel when it has the focus, even if another widget
          * is the default.
          *
-         * See [method`Gtk`.Widget.set_receives_default].
-         * @returns true if @widget acts as the default widget when focused
+         * See {@link Gtk.Widget.set_receives_default}.
+         * @returns true if `widget` acts as the default widget when focused
          */
         get_receives_default(): boolean;
         /**
@@ -18920,17 +19531,17 @@ export namespace ClapperGtk {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
-         * @returns The `GtkSizeRequestMode` preferred by @widget.
+         * @returns The {@link Gtk.SizeRequestMode} preferred by `widget`.
          */
         get_request_mode(): Gtk.SizeRequestMode;
         /**
-         * Returns the `GtkRoot` widget of the widget.
+         * Returns the {@link Gtk.Root} widget of the widget.
          *
          * This function will return `NULL` if the widget is not contained
          * inside a widget tree with a root widget.
          *
-         * `GtkRoot` widgets will return themselves here.
-         * @returns the root widget of @widget
+         * {@link Gtk.Root} widgets will return themselves here.
+         * @returns the root widget of `widget`
          */
         get_root(): Gtk.Root | null;
         /**
@@ -18940,32 +19551,32 @@ export namespace ClapperGtk {
          * On traditional systems this is 1, on high density outputs,
          * it can be a higher value (typically 2).
          *
-         * See [method`Gdk`.Surface.get_scale_factor].
+         * See {@link Gdk.Surface.get_scale_factor}.
          *
          * Note that modern systems may support *fractional* scaling,
          * where the scale factor is not an integer. On such systems,
          * this function will return the next higher integer value,
-         * but you probably want to use [method`Gdk`.Surface.get_scale]
+         * but you probably want to use {@link Gdk.Surface.get_scale}
          * to get the fractional scale value.
-         * @returns the scale factor for @widget
+         * @returns the scale factor for `widget`
          */
         get_scale_factor(): number;
         /**
          * Returns the widget’s sensitivity.
          *
          * This function returns the value that has been set using
-         * [method`Gtk`.Widget.set_sensitive]).
+         * {@link Gtk.Widget.set_sensitive}).
          *
          * The effective sensitivity of a widget is however determined
          * by both its own and its parent widget’s sensitivity.
-         * See [method`Gtk`.Widget.is_sensitive].
+         * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
         get_sensitive(): boolean;
         /**
          * Gets the settings object holding the settings used for the widget.
          *
-         * Note that this function can only be called when the `GtkWidget`
+         * Note that this function can only be called when the {@link Gtk.Widget}
          * is attached to a toplevel, since the settings object is specific
          * to a particular display. If you want to monitor the widget for
          * changes in its settings, connect to the `notify::display` signal.
@@ -18977,16 +19588,16 @@ export namespace ClapperGtk {
          *
          * Which dimension is returned depends on `orientation`.
          *
-         * This is equivalent to calling [method`Gtk`.Widget.get_width]
-         * for [enum`Gtk`.Orientation.horizontal] or [method`Gtk`.Widget.get_height]
-         * for [enum`Gtk`.Orientation.vertical], but can be used when
+         * This is equivalent to calling {@link Gtk.Widget.get_width}
+         * for {@link Gtk.Orientation.HORIZONTAL} or {@link Gtk.Widget.get_height}
+         * for {@link Gtk.Orientation.VERTICAL}, but can be used when
          * writing orientation-independent code, such as when
-         * implementing [iface`Gtk`.Orientable] widgets.
+         * implementing {@link Gtk.Orientable} widgets.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
          * @param orientation the orientation to query
-         * @returns the size of @widget in @orientation
+         * @returns the size of `widget` in `orientation`
          */
         get_size(orientation: Gtk.Orientation | null): number;
         /**
@@ -18996,22 +19607,22 @@ export namespace ClapperGtk {
          * dimension has not been set explicitly and the natural requisition
          * of the widget will be used instead.
          *
-         * See [method`Gtk`.Widget.set_size_request].
+         * See {@link Gtk.Widget.set_size_request}.
          *
          * To get the size a widget will actually request, call
-         * [method`Gtk`.Widget.measure] instead of this function.
+         * {@link Gtk.Widget.measure} instead of this function.
          */
         get_size_request(): [number, number];
         /**
          * Returns the widget state as a flag set.
          *
-         * It is worth mentioning that the effective [flags`Gtk`.StateFlags.insensitive]
+         * It is worth mentioning that the effective {@link Gtk.StateFlags.INSENSITIVE}
          * state will be returned, that is, also based on parent insensitivity,
          * even if `widget` itself is sensitive.
          *
          * Also note that if you are looking for a way to obtain the
-         * [flags`Gtk`.StateFlags] to pass to a [class`Gtk`.StyleContext]
-         * method, you should look at [method`Gtk`.StyleContext.get_state].
+         * {@link Gtk.StateFlags} to pass to a {@link Gtk.StyleContext}
+         * method, you should look at {@link Gtk.StyleContext.get_state}.
          * @returns the state flags of widget
          */
         get_state_flags(): Gtk.StateFlags;
@@ -19028,22 +19639,22 @@ export namespace ClapperGtk {
          * the widget.
          *
          * This will only report children which were previously declared
-         * with [method`Gtk`.WidgetClass.bind_template_child_full] or one of its
+         * with {@link Gtk.WidgetClass.bind_template_child_full} or one of its
          * variants.
          *
          * This function is only meant to be called for code which is private
          * to the `widget_type` which declared the child and is meant for language
          * bindings which cannot easily make use of the GObject structure offsets.
-         * @param widget_type The `GType` to get a template child for
+         * @param widget_type The {@link GObject.GType} to get a template child for
          * @param name ID of the child defined in the template XML
-         * @returns the object built in the template XML with   the id @name
+         * @returns the object built in the template XML with   the id `name`
          */
         get_template_child<T = GObject.Object>(widget_type: GObject.GType, name: string): T;
         /**
          * Gets the contents of the tooltip for the widget.
          *
          * If the tooltip has not been set using
-         * [method`Gtk`.Widget.set_tooltip_markup], this
+         * {@link Gtk.Widget.set_tooltip_markup}, this
          * function returns `NULL`.
          * @returns the tooltip text
          */
@@ -19051,29 +19662,29 @@ export namespace ClapperGtk {
         /**
          * Gets the contents of the tooltip for the widget.
          *
-         * If the `widget'`s tooltip was set using
-         * [method`Gtk`.Widget.set_tooltip_markup],
+         * If the `widget`'s tooltip was set using
+         * {@link Gtk.Widget.set_tooltip_markup},
          * this function will return the escaped text.
          * @returns the tooltip text
          */
         get_tooltip_text(): string | null;
         /**
          * Gets the vertical alignment of the widget.
-         * @returns the vertical alignment of @widget
+         * @returns the vertical alignment of `widget`
          */
         get_valign(): Gtk.Align;
         /**
          * Gets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.get_hexpand] for more detail.
+         * See {@link Gtk.Widget.get_hexpand} for more detail.
          * @returns whether vexpand flag is set
          */
         get_vexpand(): boolean;
         /**
          * Gets whether the `vexpand` flag has been explicitly set.
          *
-         * See [method`Gtk`.Widget.get_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.get_hexpand_set} for more detail.
          * @returns whether vexpand has been explicitly set
          */
         get_vexpand_set(): boolean;
@@ -19082,12 +19693,12 @@ export namespace ClapperGtk {
          *
          * If you want to take into account whether the widget’s
          * parent is also marked as visible, use
-         * [method`Gtk`.Widget.is_visible] instead.
+         * {@link Gtk.Widget.is_visible} instead.
          *
          * This function does not check if the widget is
          * obscured in any way.
          *
-         * See [method`Gtk`.Widget.set_visible].
+         * See {@link Gtk.Widget.set_visible}.
          * @returns true if the widget is visible
          */
         get_visible(): boolean;
@@ -19096,32 +19707,32 @@ export namespace ClapperGtk {
          *
          * This function returns the width passed to its
          * size-allocate implementation, which is the width you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The width of @widget
+         * @returns The width of `widget`
          */
         get_width(): number;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
-         * @returns true if focus is now inside @widget
+         * @returns true if focus is now inside `widget`
          */
         grab_focus(): boolean;
         /**
          * Returns whether a style class is currently applied to the widget.
          * @param css_class style class, without the leading period
-         * @returns true if @css_class is currently applied to @widget
+         * @returns true if `css_class` is currently applied to `widget`
          */
         has_css_class(css_class: string): boolean;
         /**
@@ -19130,11 +19741,11 @@ export namespace ClapperGtk {
          *
          * This is a convenience function that takes into account whether
          * focus indication should currently be shown in the toplevel window
-         * of `widget`. See [method`Gtk`.Window.get_focus_visible] for more
+         * of `widget`. See {@link Gtk.Window.get_focus_visible} for more
          * information about focus indication.
          *
          * To find out if the widget has the global input focus, use
-         * [method`Gtk`.Widget.has_focus].
+         * {@link Gtk.Widget.has_focus}.
          * @returns true if the widget should display a “focus rectangle”
          */
         has_visible_focus(): boolean;
@@ -19149,7 +19760,7 @@ export namespace ClapperGtk {
          *
          * This information can sometimes be used to avoid doing
          * unnecessary work.
-         * @returns true if @widget is being destroyed
+         * @returns true if `widget` is being destroyed
          */
         in_destruction(): boolean;
         /**
@@ -19157,7 +19768,7 @@ export namespace ClapperGtk {
          *
          * This function must be called in the instance initializer
          * for any class which assigned itself a template using
-         * [method`Gtk`.WidgetClass.set_template].
+         * {@link Gtk.WidgetClass.set_template}.
          *
          * It is important to call this function in the instance initializer
          * of a widget subclass and not in `GObject.constructed()` or
@@ -19178,85 +19789,85 @@ export namespace ClapperGtk {
         /**
          * Inserts an action group into the widget's actions.
          *
-         * Children of `widget` that implement [iface`Gtk`.Actionable] can
+         * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
          * “action-name” to `prefix`.`action-name`.
          *
          * Note that inheritance is defined for individual actions. I.e.
-         * even if you insert a group with prefix `prefix,` actions with
+         * even if you insert a group with prefix `prefix`, actions with
          * the same prefix will still be inherited from the parent, unless
          * the group contains an action with the same name.
          *
          * If `group` is `NULL`, a previously inserted group for `name` is
          * removed from `widget`.
-         * @param name the prefix for actions in @group
+         * @param name the prefix for actions in `group`
          * @param group an action group
          */
         insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed after `previous_sibling,` or at the beginning if
+         * It will be placed after `previous_sibling`, or at the beginning if
          * `previous_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_prev_sibling (widget)`
          * will return `previous_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this
+         * If `parent` is already set as the parent widget of `widget`, this
          * function can also be used to reorder `widget` in the child widget
          * list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param previous_sibling the new previous sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param previous_sibling the new previous sibling of `widget`
          */
         insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed before `next_sibling,` or at the end if
+         * It will be placed before `next_sibling`, or at the end if
          * `next_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_next_sibling (widget)`
          * will return `next_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this function
+         * If `parent` is already set as the parent widget of `widget`, this function
          * can also be used to reorder `widget` in the child widget list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param next_sibling the new next sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param next_sibling the new next sibling of `widget`
          */
         insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
-         * @param ancestor another `GtkWidget`
-         * @returns true if @ancestor contains @widget as a child,   grandchild, great grandchild, etc
+         * @param ancestor another {@link Gtk.Widget}
+         * @returns true if `ancestor` contains `widget` as a child,   grandchild, great grandchild, etc
          */
         is_ancestor(ancestor: Gtk.Widget): boolean;
         /**
          * Determines whether the widget can be drawn to.
          *
          * A widget can be drawn if it is mapped and visible.
-         * @returns true if @widget is drawable
+         * @returns true if `widget` is drawable
          */
         is_drawable(): boolean;
         /**
          * Determines if the widget is the focus widget within its
          * toplevel.
          *
-         * This does not mean that the [property`Gtk`.Widget:has-focus]
-         * property is necessarily set; [property`Gtk`.Widget:has-focus]
+         * This does not mean that the {@link Gtk.Widget.has_focus}
+         * property is necessarily set; {@link Gtk.Widget.has_focus}
          * will only be set if the toplevel widget additionally has the
          * global input focus.
          * @returns true if the widget is the focus widget
@@ -19276,38 +19887,38 @@ export namespace ClapperGtk {
          *
          * This function does not check if the widget is obscured in any way.
          *
-         * See also [method`Gtk`.Widget.get_visible] and
-         * [method`Gtk`.Widget.set_visible].
+         * See also {@link Gtk.Widget.get_visible} and
+         * {@link Gtk.Widget.set_visible}.
          * @returns true if the widget and all its parents are visible
          */
         is_visible(): boolean;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
@@ -19319,7 +19930,7 @@ export namespace ClapperGtk {
          * mnemonic.
          *
          * Typically, these widgets will be labels. See, for example,
-         * [method`Gtk`.Label.set_mnemonic_widget].
+         * {@link Gtk.Label.set_mnemonic_widget}.
          *
          * The widgets in the list are not individually referenced.
          * If you want to iterate through the list and perform actions
@@ -19338,18 +19949,18 @@ export namespace ClapperGtk {
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
         measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
          * @returns true if the signal has been handled
          */
@@ -19363,7 +19974,7 @@ export namespace ClapperGtk {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's children
+         * @returns a list model tracking `widget`'s children
          */
         observe_children(): Gio.ListModel;
         /**
@@ -19375,17 +19986,17 @@ export namespace ClapperGtk {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's controllers
+         * @returns a list model tracking `widget`'s controllers
          */
         observe_controllers(): Gio.ListModel;
         /**
          * Finds the descendant of the widget closest to a point.
          *
          * The point (x, y) must be given in widget coordinates, so (0, 0)
-         * is assumed to be the top left of `widget'`s content area.
+         * is assumed to be the top left of `widget`'s content area.
          *
          * Usually widgets will return `NULL` if the given coordinate is not
-         * contained in `widget` checked via [method`Gtk`.Widget.contains].
+         * contained in `widget` checked via {@link Gtk.Widget.contains}.
          * Otherwise they will recursively try to find a child that does
          * not return `NULL`. Widgets are however free to customize their
          * picking algorithm.
@@ -19393,21 +20004,21 @@ export namespace ClapperGtk {
          * This function is used on the toplevel to determine the widget
          * below the mouse cursor for purposes of hover highlighting and
          * delivering events.
-         * @param x x coordinate to test, relative to @widget's origin
-         * @param y y coordinate to test, relative to @widget's origin
+         * @param x x coordinate to test, relative to `widget`'s origin
+         * @param y y coordinate to test, relative to `widget`'s origin
          * @param flags flags to influence what is picked
          * @returns the widget's descendant at (x, y)
          */
         pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
         /**
-         * Flags the widget for a rerun of the [vfunc`Gtk`.Widget.size_allocate]
+         * Flags the widget for a rerun of the {@link Gtk.Widget.size_allocate}
          * function.
          *
-         * Use this function instead of [method`Gtk`.Widget.queue_resize]
-         * when the `widget'`s size request didn't change but it wants to
+         * Use this function instead of {@link Gtk.Widget.queue_resize}
+         * when the `widget`'s size request didn't change but it wants to
          * reposition its contents.
          *
-         * An example user of this function is [method`Gtk`.Widget.set_halign].
+         * An example user of this function is {@link Gtk.Widget.set_halign}.
          *
          * This function is only for use in widget implementations.
          */
@@ -19418,7 +20029,7 @@ export namespace ClapperGtk {
          * The redraw will happen in the paint phase
          * of the current or the next frame.
          *
-         * This means `widget'`s [vfunc`Gtk`.Widget.snapshot]
+         * This means `widget`'s {@link Gtk.Widget.snapshot}
          * implementation will be called.
          */
         queue_draw(): void;
@@ -19427,13 +20038,13 @@ export namespace ClapperGtk {
          *
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * [class`Gtk`.Label], the label queues a resize to ensure there’s
+         * {@link Gtk.Label}, the label queues a resize to ensure there’s
          * enough space for the new text.
          *
-         * Note that you cannot call gtk_widget_queue_resize() on a widget
-         * from inside its implementation of the [vfunc`Gtk`.Widget.size_allocate]
-         * virtual method. Calls to gtk_widget_queue_resize() from inside
-         * [vfunc`Gtk`.Widget.size_allocate] will be silently ignored.
+         * Note that you cannot call `gtk_widget_queue_resize()` on a widget
+         * from inside its implementation of the {@link Gtk.Widget.size_allocate}
+         * virtual method. Calls to `gtk_widget_queue_resize()` from inside
+         * {@link Gtk.Widget.size_allocate} will be silently ignored.
          *
          * This function is only for use in widget implementations.
          */
@@ -19454,7 +20065,7 @@ export namespace ClapperGtk {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
          */
         realize(): void;
         /**
@@ -19472,23 +20083,23 @@ export namespace ClapperGtk {
          * Removes a style from the widget.
          *
          * After this, the style of `widget` will stop matching for `css_class`.
-         * @param css_class style class to remove from @widget, without the leading period
+         * @param css_class style class to remove from `widget`, without the leading period
          */
         remove_css_class(css_class: string): void;
         /**
          * Removes a widget from the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * The widget must have previously been added to the list with
-         * [method`Gtk`.Widget.add_mnemonic_label].
-         * @param label a widget that is a mnemonic label for @widget
+         * {@link Gtk.Widget.add_mnemonic_label}.
+         * @param label a widget that is a mnemonic label for `widget`
          */
         remove_mnemonic_label(label: Gtk.Widget): void;
         /**
          * Removes a tick callback previously registered with
-         * [method`Gtk`.Widget.add_tick_callback].
-         * @param id an ID returned by [method@Gtk.Widget.add_tick_callback]
+         * {@link Gtk.Widget.add_tick_callback}.
+         * @param id an ID returned by {@link Gtk.Widget.add_tick_callback}
          */
         remove_tick_callback(id: number): void;
         /**
@@ -19504,7 +20115,7 @@ export namespace ClapperGtk {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
          * @param can_focus whether the input focus can enter   the widget or any of its children
          */
@@ -19518,7 +20129,7 @@ export namespace ClapperGtk {
          * Sets whether the widget should be mapped along with its parent.
          *
          * The child visibility can be set for widget before it is added
-         * to a container with [method`Gtk`.Widget.set_parent], to avoid
+         * to a container with {@link Gtk.Widget.set_parent}, to avoid
          * mapping children unnecessary before immediately unmapping them.
          * However it will be reset to its default state of true when the
          * widget is removed from a container.
@@ -19531,7 +20142,7 @@ export namespace ClapperGtk {
          *
          * This function is only useful for widget implementations
          * and should never be called by an application.
-         * @param child_visible whether @widget should be mapped along   with its parent
+         * @param child_visible whether `widget` should be mapped along   with its parent
          */
         set_child_visible(child_visible: boolean): void;
         /**
@@ -19553,12 +20164,12 @@ export namespace ClapperGtk {
          * the widget.
          *
          * This is a utility function that creates a cursor via
-         * [ctor`Gdk`.Cursor.new_from_name] and then sets it on `widget`
-         * with [method`Gtk`.Widget.set_cursor]. See those functions for
+         * {@link Gdk.Cursor.new_from_name} and then sets it on `widget`
+         * with {@link Gtk.Widget.set_cursor}. See those functions for
          * details.
          *
          * On top of that, this function allows `name` to be `NULL`, which
-         * will do the same as calling [method`Gtk`.Widget.set_cursor]
+         * will do the same as calling {@link Gtk.Widget.set_cursor}
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
@@ -19577,8 +20188,8 @@ export namespace ClapperGtk {
          * an order that is explicitly visual rather than logical (such as
          * buttons for text justification).
          *
-         * If the direction is set to [enum`Gtk`.TextDirection.none], then
-         * the value set by [func`Gtk`.Widget.set_default_direction] will be used.
+         * If the direction is set to {@link Gtk.TextDirection.NONE}, then
+         * the value set by {@link Gtk.Widget.set_default_direction} will be used.
          * @param dir the new direction
          */
         set_direction(dir: Gtk.TextDirection | null): void;
@@ -19587,8 +20198,8 @@ export namespace ClapperGtk {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
         set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -19605,7 +20216,7 @@ export namespace ClapperGtk {
          * Sets whether the widget can own the input focus.
          *
          * Widget implementations should set `focusable` to true in
-         * their init() function if they want to receive keyboard input.
+         * their `init()` function if they want to receive keyboard input.
          *
          * Note that having `focusable` be true is only one of the
          * necessary conditions for being focusable. A widget must
@@ -19613,9 +20224,9 @@ export namespace ClapperGtk {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
-         * @param focusable whether or not @widget can own the input focus
+         * @param focusable whether or not `widget` can own the input focus
          */
         set_focusable(focusable: boolean): void;
         /**
@@ -19627,14 +20238,14 @@ export namespace ClapperGtk {
          * of available fonts.
          *
          * When not set, the widget will inherit the font map from its parent.
-         * @param font_map a `PangoFontMap`
+         * @param font_map a {@link Pango.FontMap}
          */
         set_font_map(font_map?: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
          *
-         * When not set, the default font options for the `GdkDisplay`
+         * When not set, the default font options for the {@link Gdk.Display}
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
@@ -19646,7 +20257,7 @@ export namespace ClapperGtk {
         set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the `has-tooltip` property on the widget.
-         * @param has_tooltip whether or not @widget has a tooltip
+         * @param has_tooltip whether or not `widget` has a tooltip
          */
         set_has_tooltip(has_tooltip: boolean): void;
         /**
@@ -19663,18 +20274,18 @@ export namespace ClapperGtk {
          *
          * By default, widgets automatically expand if any of their children
          * want to expand. (To see if a widget will automatically expand given
-         * its current children and state, call [method`Gtk`.Widget.compute_expand].
+         * its current children and state, call {@link Gtk.Widget.compute_expand}.
          * A widget can decide how the expandability of children affects its
          * own expansion by overriding the `compute_expand` virtual method on
-         * `GtkWidget`.).
+         * {@link Gtk.Widget}.).
          *
          * Setting hexpand explicitly with this function will override the
          * automatic expand behavior.
          *
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
-         * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
-         * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
+         * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -19682,8 +20293,8 @@ export namespace ClapperGtk {
         /**
          * Sets whether the hexpand flag will be used.
          *
-         * The [property`Gtk`.Widget:hexpand-set] property will be set
-         * automatically when you call [method`Gtk`.Widget.set_hexpand]
+         * The {@link Gtk.Widget.hexpand_set} property will be set
+         * automatically when you call {@link Gtk.Widget.set_hexpand}
          * to set hexpand, so the most likely reason to use this function
          * would be to unset an explicit expand flag.
          *
@@ -19735,7 +20346,7 @@ export namespace ClapperGtk {
          * Setting a name allows you to refer to the widget from a
          * CSS file. You can apply a style to widgets with a particular name
          * in the CSS file. See the documentation for the CSS syntax (on the
-         * same page as the docs for [class`Gtk`.StyleContext].
+         * same page as the docs for {@link Gtk.StyleContext}.
          *
          * Note that the CSS syntax has certain special characters to delimit
          * and represent elements in a selector (period, #, >, *...), so using
@@ -19754,7 +20365,7 @@ export namespace ClapperGtk {
          * there are some limitations: For toplevel widgets, applying opacity
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
-         * [method`Gdk`.Display.is_composited]. On Windows and Wayland it will
+         * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
          * always work, although setting a window’s opacity after the window
          * has been shown may cause some flicker.
          *
@@ -19763,8 +20374,8 @@ export namespace ClapperGtk {
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
          * widgets (since that would make widgets deeper in the hierarchy
-         * progressively more translucent). As a consequence, [class`Gtk`.Popover]
-         * instances and other [iface`Gtk`.Native] widgets with their own surface
+         * progressively more translucent). As a consequence, {@link Gtk.Popover}
+         * instances and other {@link Gtk.Native} widgets with their own surface
          * will use their own opacity value, and thus by default appear
          * non-translucent, even if they are attached to a toplevel that
          * is translucent.
@@ -19775,12 +20386,12 @@ export namespace ClapperGtk {
          * Sets how the widget treats content that is drawn outside the
          * it's content area.
          *
-         * See the definition of [enum`Gtk`.Overflow] for details.
+         * See the definition of {@link Gtk.Overflow} for details.
          *
          * This setting is provided for widget implementations and
          * should not be used by application code.
          *
-         * The default value is [enum`Gtk`.Overflow.visible].
+         * The default value is {@link Gtk.Overflow.VISIBLE}.
          * @param overflow desired overflow value
          */
         set_overflow(overflow: Gtk.Overflow | null): void;
@@ -19789,10 +20400,10 @@ export namespace ClapperGtk {
          *
          * This takes care of details such as updating the state and style
          * of the child to reflect its new location and resizing the parent.
-         * The opposite function is [method`Gtk`.Widget.unparent].
+         * The opposite function is {@link Gtk.Widget.unparent}.
          *
          * This function is useful only when implementing subclasses of
-         * `GtkWidget`.
+         * {@link Gtk.Widget}.
          * @param parent parent widget
          */
         set_parent(parent: Gtk.Widget): void;
@@ -19800,7 +20411,7 @@ export namespace ClapperGtk {
          * Sets whether the widget will be treated as the default
          * widget within its toplevel when it has the focus, even if
          * another widget is the default.
-         * @param receives_default whether or not @widget can be a default widget
+         * @param receives_default whether or not `widget` can be a default widget
          */
         set_receives_default(receives_default: boolean): void;
         /**
@@ -19820,7 +20431,7 @@ export namespace ClapperGtk {
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          *
-         * In most cases, [method`Gtk`.Window.set_default_size] is a better
+         * In most cases, {@link Gtk.Window.set_default_size} is a better
          * choice for toplevel windows than this function; setting the default
          * size will still allow users to shrink the window. Setting the size
          * request will force them to leave the window at least as large as
@@ -19842,14 +20453,14 @@ export namespace ClapperGtk {
          *
          * The size request set here does not include any margin from the
          * properties
-         * [property`Gtk`.Widget:margin-start],
-         * [property`Gtk`.Widget:margin-end],
-         * [property`Gtk`.Widget:margin-top], and
-         * [property`Gtk`.Widget:margin-bottom], but it does include pretty
+         * {@link Gtk.Widget.margin_start},
+         * {@link Gtk.Widget.margin_end},
+         * {@link Gtk.Widget.margin_top}, and
+         * {@link Gtk.Widget.margin_bottom}, but it does include pretty
          * much all other padding or border properties set by any subclass
-         * of `GtkWidget`.
-         * @param width width @widget should request, or -1 to unset
-         * @param height height @widget should request, or -1 to unset
+         * of {@link Gtk.Widget}.
+         * @param width width `widget` should request, or -1 to unset
+         * @param height height `widget` should request, or -1 to unset
          */
         set_size_request(width: number, height: number): void;
         /**
@@ -19857,13 +20468,13 @@ export namespace ClapperGtk {
          *
          * Typical widget states are insensitive, prelighted, etc.
          *
-         * This function accepts the values [flags`Gtk`.StateFlags.dir-ltr] and
-         * [flags`Gtk`.StateFlags.dir-rtl] but ignores them. If you want to set
-         * the widget's direction, use [method`Gtk`.Widget.set_direction].
+         * This function accepts the values {@link Gtk.StateFlags.DIR-LTR} and
+         * {@link Gtk.StateFlags.DIR-RTL} but ignores them. If you want to set
+         * the widget's direction, use {@link Gtk.Widget.set_direction}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn on
-         * @param clear whether to clear state before turning on @flags
+         * @param clear whether to clear state before turning on `flags`
          */
         set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
@@ -19872,11 +20483,11 @@ export namespace ClapperGtk {
          * `markup` must contain Pango markup.
          *
          * This function will take care of setting the
-         * [property`Gtk`.Widget:has-tooltip] as a side effect, and of the
-         * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
+         * {@link Gtk.Widget.has_tooltip} as a side effect, and of the
+         * default handler for the `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_markup].
-         * @param markup the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_markup}.
+         * @param markup the contents of the tooltip for `widget`
          */
         set_tooltip_markup(markup?: string | null): void;
         /**
@@ -19885,12 +20496,12 @@ export namespace ClapperGtk {
          * If `text` contains any markup, it will be escaped.
          *
          * This function will take care of setting
-         * [property`Gtk`.Widget:has-tooltip] as a side effect,
+         * {@link Gtk.Widget.has_tooltip} as a side effect,
          * and of the default handler for the
-         * [signal`Gtk`.Widget::query-tooltip] signal.
+         * `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_text].
-         * @param text the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_text}.
+         * @param text the contents of the tooltip for `widget`
          */
         set_tooltip_text(text?: string | null): void;
         /**
@@ -19902,14 +20513,14 @@ export namespace ClapperGtk {
          * Sets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.set_hexpand] for more detail.
+         * See {@link Gtk.Widget.set_hexpand} for more detail.
          * @param expand whether to expand
          */
         set_vexpand(expand: boolean): void;
         /**
          * Sets whether the vexpand flag will be used.
          *
-         * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.set_hexpand_set} for more detail.
          * @param set value for vexpand-set property
          */
         set_vexpand_set(set: boolean): void;
@@ -19917,7 +20528,7 @@ export namespace ClapperGtk {
          * Sets the visibility state of `widget`.
          *
          * Note that setting this to true doesn’t mean the widget is
-         * actually viewable, see [method`Gtk`.Widget.get_visible].
+         * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
         set_visible(visible: boolean): void;
@@ -19927,7 +20538,7 @@ export namespace ClapperGtk {
          *
          * This is false for invisible children, but also
          * for children that have their own surface, such
-         * as [class`Gtk`.Popover] instances.
+         * as {@link Gtk.Popover} instances.
          * @returns true if child should be included in   measuring and allocating
          */
         should_layout(): boolean;
@@ -19948,8 +20559,8 @@ export namespace ClapperGtk {
          * Allocates widget with a transformation that translates
          * the origin to the position in `allocation`.
          *
-         * This is a simple form of [method`Gtk`.Widget.allocate].
-         * @param allocation position and size to be allocated to @widget
+         * This is a simple form of {@link Gtk.Widget.allocate}.
+         * @param allocation position and size to be allocated to `widget`
          * @param baseline the baseline of the child, or -1
          */
         size_allocate(allocation: Gtk.Allocation, baseline: number): void;
@@ -19957,32 +20568,32 @@ export namespace ClapperGtk {
          * Snapshots a child of the widget.
          *
          * When a widget receives a call to the snapshot function,
-         * it must send synthetic [vfunc`Gtk`.Widget.snapshot] calls
+         * it must send synthetic {@link Gtk.Widget.snapshot} calls
          * to all children. This function provides a convenient way
          * of doing this. A widget, when it receives a call to its
-         * [vfunc`Gtk`.Widget.snapshot] function, calls
-         * gtk_widget_snapshot_child() once for each child, passing in
+         * {@link Gtk.Widget.snapshot} function, calls
+         * `gtk_widget_snapshot_child()` once for each child, passing in
          * the `snapshot` the widget received.
          *
-         * This function takes care of translating the origin of `snapshot,`
+         * This function takes care of translating the origin of `snapshot`,
          * and deciding whether the child needs to be snapshot.
          *
-         * It does nothing for children that implement `GtkNative`.
-         * @param child a child of @widget
-         * @param snapshot snapshot as passed to the widget. In particular, no   calls to [method@Gtk.Snapshot.translate] or other transform calls   should have been made
+         * It does nothing for children that implement {@link Gtk.Native}.
+         * @param child a child of `widget`
+         * @param snapshot snapshot as passed to the widget. In particular, no   calls to {@link Gtk.Snapshot.translate} or other transform calls   should have been made
          */
         snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void;
         /**
-         * Translates coordinates relative to `src_widget’`s allocation
-         * to coordinates relative to `dest_widget’`s allocations.
+         * Translates coordinates relative to `src_widget`’s allocation
+         * to coordinates relative to `dest_widget`’s allocations.
          *
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
          * are set to 0 and false is returned.
          * @param dest_widget another widget
-         * @param src_x X position in widget coordinates of @src_widget
-         * @param src_y Y position in widget coordinates of @src_widget
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param src_x X position in widget coordinates of `src_widget`
+         * @param src_y Y position in widget coordinates of `src_widget`
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [boolean, number, number];
         /**
@@ -20013,7 +20624,7 @@ export namespace ClapperGtk {
         /**
          * Turns off flag values for the current widget state.
          *
-         * See [method`Gtk`.Widget.set_state_flags].
+         * See {@link Gtk.Widget.set_state_flags}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn off
@@ -20024,15 +20635,17 @@ export namespace ClapperGtk {
          *   widget extra space when possible.
          * @param hexpand_p
          * @param vexpand_p
+         * @virtual
          */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
         /**
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @virtual
          */
         vfunc_contains(x: number, y: number): boolean;
         /**
@@ -20041,17 +20654,20 @@ export namespace ClapperGtk {
          *   redraws accordingly. The default implementation will take care of this for
          *   all the default CSS properties, so implementations must chain up.
          * @param change
+         * @virtual
          */
         vfunc_css_changed(change: Gtk.CssStyleChange): void;
         /**
          * Signal emitted when the text direction of a
          *   widget changes.
          * @param previous_direction
+         * @virtual
          */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
         /**
-         * Vfunc for gtk_widget_child_focus()
+         * Vfunc for `gtk_widget_child_focus()`
          * @param direction
+         * @virtual
          */
         vfunc_focus(direction: Gtk.DirectionType): boolean;
         /**
@@ -20062,95 +20678,104 @@ export namespace ClapperGtk {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
+         * @virtual
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
+         * @virtual
          */
         vfunc_grab_focus(): boolean;
         /**
          * Reverses the effects of [method.Gtk.Widget.show].
          *
          * This is causing the widget to be hidden (invisible to the user).
+         * @virtual
          */
         vfunc_hide(): void;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
+         * @virtual
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Causes a widget to be mapped if it isn’t already.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_map(): void;
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @virtual
          */
         vfunc_measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
+         * @virtual
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
         /**
          * Signal emitted when a change of focus is requested
          * @param direction
+         * @virtual
          */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
         /**
-         * Signal emitted when “has-tooltip” is %TRUE and the
+         * Signal emitted when “has-tooltip” is `true` and the
          *   hover timeout has expired with the cursor hovering “above”
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x
          * @param y
          * @param keyboard_tooltip
          * @param tooltip
+         * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
@@ -20169,12 +20794,14 @@ export namespace ClapperGtk {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
+         * @virtual
          */
         vfunc_realize(): void;
         /**
-         * Called when the widget gets added to a `GtkRoot` widget. Must
+         * Called when the widget gets added to a {@link Gtk.Root} widget. Must
          *   chain up
+         * @virtual
          */
         vfunc_root(): void;
         /**
@@ -20182,8 +20809,9 @@ export namespace ClapperGtk {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
+         * @virtual
          */
         vfunc_set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -20197,6 +20825,7 @@ export namespace ClapperGtk {
          * When a toplevel widget is shown, it is immediately realized and
          * mapped; other shown widgets are realized and mapped when their
          * toplevel widget is realized and mapped.
+         * @virtual
          */
         vfunc_show(): void;
         /**
@@ -20205,28 +20834,33 @@ export namespace ClapperGtk {
          * @param width
          * @param height
          * @param baseline
+         * @virtual
          */
         vfunc_size_allocate(width: number, height: number, baseline: number): void;
         /**
          * Vfunc called when a new snapshot of the widget has to be taken.
          * @param snapshot
+         * @virtual
          */
         vfunc_snapshot(snapshot: Gtk.Snapshot): void;
         /**
          * Signal emitted when the widget state changes,
-         *   see gtk_widget_get_state_flags().
+         *   see `gtk_widget_get_state_flags()`.
          * @param previous_state_flags
+         * @virtual
          */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
         /**
          * Emitted when a system setting was changed. Must chain up.
          * @param settings
+         * @virtual
          */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
          * Causes a widget to be unmapped if it’s currently mapped.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_unmap(): void;
         /**
@@ -20235,11 +20869,13 @@ export namespace ClapperGtk {
          * This frees all GDK resources associated with the widget.
          *
          * This function is only useful in widget implementations.
+         * @virtual
          */
         vfunc_unrealize(): void;
         /**
          * Called when the widget is about to be removed from its
-         *   `GtkRoot` widget. Must chain up
+         *   {@link Gtk.Root} widget. Must chain up
+         * @virtual
          */
         vfunc_unroot(): void;
     }
@@ -20247,7 +20883,23 @@ export namespace ClapperGtk {
     namespace Video {
         // Signal signatures
         interface SignalSignatures extends Av.SignalSignatures {
+            /**
+             * A helper signal for implementing common seeking by double tap
+             * on screen side for touchscreen devices.
+             *
+             * Note that `forward` already takes into account RTL direction,
+             * so implementation does not have to check.
+             * @signal
+             */
             'seek-request': (arg0: boolean) => void;
+            /**
+             * A signal that user requested a change in fullscreen state of the video.
+             *
+             * Note that when going fullscreen from this signal, user will expect
+             * for only video to be fullscreened and not the whole app window.
+             * It is up to implementation to decide how to handle that.
+             * @signal
+             */
             'toggle-fullscreen': () => void;
             'notify::fade-delay': (pspec: GObject.ParamSpec) => void;
             'notify::touch-fade-delay': (pspec: GObject.ParamSpec) => void;
@@ -20309,37 +20961,37 @@ export namespace ClapperGtk {
     /**
      * A ready to be used GTK video widget implementing Clapper API.
      *
-     * #ClapperGtkVideo is the main widget exposed by `ClapperGtk` API. It both displays
-     * videos played by [class`Clapper`.Player] (exposed as [property`ClapperGtk`.Av:player] property)
+     * {@link ClapperGtk.Video} is the main widget exposed by `ClapperGtk` API. It both displays
+     * videos played by {@link Clapper.Player} (exposed as {@link ClapperGtk.Av.player} property)
      * and manages revealing and fading of any additional widgets overlaid on top of it.
      *
      * Other widgets provided by `ClapperGtk` library, once placed anywhere on video
-     * (including nesting within another widget like [class`Gtk`.Box]) will automatically
-     * control #ClapperGtkVideo they were overlaid on top of. This allows to freely create
+     * (including nesting within another widget like {@link Gtk.Box}) will automatically
+     * control {@link ClapperGtk.Video} they were overlaid on top of. This allows to freely create
      * custom playback control panels best suited for specific application. Additionally,
-     * pre-made widgets such as [class`ClapperGtk`.SimpleControls] are also available.
+     * pre-made widgets such as {@link ClapperGtk.SimpleControls} are also available.
      *
      * # Basic usage
      *
      * A typical use case is to embed video widget as part of your app where video playback
-     * is needed. Get the [class`Clapper`.Player] belonging to the AV widget and start adding
-     * new [class`Clapper`.MediaItem] items to the [class`Clapper`.Queue] for playback.
+     * is needed. Get the {@link Clapper.Player} belonging to the AV widget and start adding
+     * new {@link Clapper.MediaItem} items to the {@link Clapper.Queue} for playback.
      * For more information please refer to the Clapper playback library documentation.
      *
-     * #ClapperGtkVideo can automatically take care of revealing and later fading overlaid
+     * {@link ClapperGtk.Video} can automatically take care of revealing and later fading overlaid
      * content when interacting with the video. To do this, simply add your widgets with
-     * [method`ClapperGtk`.Video.add_fading_overlay]. If you want to display some static content
+     * {@link ClapperGtk.Video.add_fading_overlay}. If you want to display some static content
      * on top of video (or take care of visibility within overlaid widget itself) you can add
-     * it to the video as a normal overlay with [method`ClapperGtk`.Video.add_overlay].
+     * it to the video as a normal overlay with {@link ClapperGtk.Video.add_overlay}.
      *
      * # Actions
      *
-     * You can use built-in actions of parent [class`ClapperGtk`.Av].
+     * You can use built-in actions of parent {@link ClapperGtk.Av}.
      * See its documentation, for the list of available ones.
      *
      * # ClapperGtkVideo as GtkBuildable
      *
-     * #ClapperGtkVideo implementation of the [iface`Gtk`.Buildable] interface supports
+     * {@link ClapperGtk.Video} implementation of the {@link Gtk.Buildable} interface supports
      * placing children as either normal overlay by specifying `overlay` or a fading
      * one by specifying `fading-overlay` as the `type` attribute of a `<child>` element.
      * Position of overlaid content is determined by `valign/halign` properties.
@@ -20358,6 +21010,7 @@ export namespace ClapperGtk {
      *   </child>
      * </object>
      * ```
+     * @gir-type Class
      */
     class Video extends Av implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Video>;
@@ -20406,16 +21059,19 @@ export namespace ClapperGtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Video.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Video.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Video.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Video.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20425,25 +21081,25 @@ export namespace ClapperGtk {
         // Methods
 
         /**
-         * Similiar as clapper_gtk_video_add_overlay() but will also automatically
-         * add fading functionality to overlaid #GtkWidget for convenience. This will
+         * Similiar as `clapper_gtk_video_add_overlay()` but will also automatically
+         * add fading functionality to overlaid {@link Gtk.Widget} for convenience. This will
          * make widget reveal itself when interacting with `video` and fade otherwise.
          * Useful when placing widgets such as playback controls panels.
-         * @param widget a #GtkWidget
+         * @param widget a {@link Gtk.Widget}
          */
         add_fading_overlay(widget: Gtk.Widget): void;
         /**
-         * Add another #GtkWidget to be overlaid on top of video.
+         * Add another {@link Gtk.Widget} to be overlaid on top of video.
          *
          * The position at which `widget` is placed is determined from
-         * [property`Gtk`.Widget:halign] and [property`Gtk`.Widget:valign] properties.
+         * {@link Gtk.Widget.halign} and {@link Gtk.Widget.valign} properties.
          *
          * This function will overlay `widget` as-is meaning that widget is responsible
-         * for managing its own visablity if needed. If you want to add a #GtkWidget
+         * for managing its own visablity if needed. If you want to add a {@link Gtk.Widget}
          * that will reveal and fade itself automatically when interacting with `video`
-         * (e.g. controls panel) you can use clapper_gtk_video_add_fading_overlay()
+         * (e.g. controls panel) you can use `clapper_gtk_video_add_fading_overlay()`
          * function for convenience.
-         * @param widget a #GtkWidget
+         * @param widget a {@link Gtk.Widget}
          */
         add_overlay(widget: Gtk.Widget): void;
         /**
@@ -20472,8 +21128,6 @@ export namespace ClapperGtk {
          * @param delay a touch fade delay
          */
         set_touch_fade_delay(delay: number): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -20487,32 +21141,32 @@ export namespace ClapperGtk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -20521,39 +21175,39 @@ export namespace ClapperGtk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -20564,13 +21218,16 @@ export namespace ClapperGtk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -20578,7 +21235,7 @@ export namespace ClapperGtk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -20586,9 +21243,9 @@ export namespace ClapperGtk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -20608,9 +21265,9 @@ export namespace ClapperGtk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -20624,33 +21281,33 @@ export namespace ClapperGtk {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -20683,21 +21340,21 @@ export namespace ClapperGtk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -20707,8 +21364,8 @@ export namespace ClapperGtk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -20725,10 +21382,10 @@ export namespace ClapperGtk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -20743,13 +21400,13 @@ export namespace ClapperGtk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -20780,21 +21437,21 @@ export namespace ClapperGtk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -20804,33 +21461,34 @@ export namespace ClapperGtk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -20839,6 +21497,7 @@ export namespace ClapperGtk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -20847,12 +21506,14 @@ export namespace ClapperGtk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -20861,20 +21522,22 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -20886,6 +21549,7 @@ export namespace ClapperGtk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -20915,20 +21579,65 @@ export namespace ClapperGtk {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioClass = typeof Audio;
+    /**
+     * @gir-type Alias
+     */
     type AvClass = typeof Av;
+    /**
+     * @gir-type Alias
+     */
     type BillboardClass = typeof Billboard;
+    /**
+     * @gir-type Alias
+     */
     type ContainerClass = typeof Container;
+    /**
+     * @gir-type Alias
+     */
     type ExtraMenuButtonClass = typeof ExtraMenuButton;
+    /**
+     * @gir-type Alias
+     */
     type LeadContainerClass = typeof LeadContainer;
+    /**
+     * @gir-type Alias
+     */
     type NextItemButtonClass = typeof NextItemButton;
+    /**
+     * @gir-type Alias
+     */
     type PreviousItemButtonClass = typeof PreviousItemButton;
+    /**
+     * @gir-type Alias
+     */
     type SeekBarClass = typeof SeekBar;
+    /**
+     * @gir-type Alias
+     */
     type SimpleControlsClass = typeof SimpleControls;
+    /**
+     * @gir-type Alias
+     */
     type TitleHeaderClass = typeof TitleHeader;
+    /**
+     * @gir-type Alias
+     */
     type TitleLabelClass = typeof TitleLabel;
+    /**
+     * @gir-type Alias
+     */
     type ToggleFullscreenButtonClass = typeof ToggleFullscreenButton;
+    /**
+     * @gir-type Alias
+     */
     type TogglePlayButtonClass = typeof TogglePlayButton;
+    /**
+     * @gir-type Alias
+     */
     type VideoClass = typeof Video;
     /**
      * Name of the imported GIR library

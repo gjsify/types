@@ -26,9 +26,11 @@ export namespace Manette {
     }
 
     /**
-     * Describes available types of a [class`Device]`.
+     * Describes available types of a {@link Device}.
      *
      * More values may be added to this enumeration over time.
+     * @gir-type Enum
+     * @since 0.2.10
      */
     enum DeviceType {
         /**
@@ -47,6 +49,7 @@ export namespace Manette {
 
     /**
      * Specifies the type of the event.
+     * @gir-type Enum
      */
     enum EventType {
         /**
@@ -73,19 +76,23 @@ export namespace Manette {
 
     /**
      * libmanette major version component (e.g. 1 if the version is 1.2.3).
+     * @since 0.2.10
      */
     const MAJOR_VERSION: number;
     /**
      * libmanette micro version component (e.g. 3 if the version is 1.2.3).
+     * @since 0.2.10
      */
     const MICRO_VERSION: number;
     /**
      * libmanette minor version component (e.g. 2 if the version is 1.2.3).
+     * @since 0.2.10
      */
     const MINOR_VERSION: number;
     /**
      * libmanette version, encoded as a string, useful for printing and
      * concatenation.
+     * @since 0.2.10
      */
     const VERSION_S: string;
     /**
@@ -94,7 +101,7 @@ export namespace Manette {
      * For example, in libmanette version 1.2.3 this is 1.
      *
      * This function is in the library, so it represents the libmanette library your
-     * code is running against. Contrast with the [const`MAJOR_VERSION]` constant,
+     * code is running against. Contrast with the {@link MAJOR_VERSION} constant,
      * which represents the major version of the libmanette headers you have
      * included when compiling your code.
      * @returns the major version number of the libmanette library
@@ -106,7 +113,7 @@ export namespace Manette {
      * For example, in libmanette version 1.2.3 this is 3.
      *
      * This function is in the library, so it represents the libmanette library your
-     * code is running against. Contrast with the [const`MAJOR_VERSION]` constant,
+     * code is running against. Contrast with the {@link MAJOR_VERSION} constant,
      * which represents the micro version of the libmanette headers you have
      * included when compiling your code.
      * @returns the micro version number of the libmanette library
@@ -118,7 +125,7 @@ export namespace Manette {
      * For example, in libmanette version 1.2.3 this is 2.
      *
      * This function is in the library, so it represents the libmanette library your
-     * code is running against. Contrast with the [const`MAJOR_VERSION]` constant,
+     * code is running against. Contrast with the {@link MAJOR_VERSION} constant,
      * which represents the minor version of the libmanette headers you have
      * included when compiling your code.
      * @returns the minor version number of the libmanette library
@@ -128,11 +135,35 @@ export namespace Manette {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when an absolute axis' value changes.
+             * @signal
+             */
             'absolute-axis-event': (arg0: Event) => void;
+            /**
+             * Emitted when a button is pressed.
+             * @signal
+             */
             'button-press-event': (arg0: Event) => void;
+            /**
+             * Emitted when a button is released.
+             * @signal
+             */
             'button-release-event': (arg0: Event) => void;
+            /**
+             * Emitted when the device is disconnected.
+             * @signal
+             */
             disconnected: () => void;
+            /**
+             * Emitted for any kind of event before mapping it.
+             * @signal
+             */
             event: (arg0: Event) => void;
+            /**
+             * Emitted when a hat axis' value changes.
+             * @signal
+             */
             'hat-axis-event': (arg0: Event) => void;
         }
 
@@ -144,7 +175,8 @@ export namespace Manette {
     /**
      * An object representing a physical gamepad.
      *
-     * See also: [class`Monitor]`.
+     * See also: {@link Monitor}.
+     * @gir-type Class
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
@@ -166,16 +198,19 @@ export namespace Manette {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -196,15 +231,15 @@ export namespace Manette {
          */
         get_guid(): string;
         /**
-         * Gets the user mapping for `self,` or default mapping if there isn't any.
+         * Gets the user mapping for `self`, or default mapping if there isn't any.
          *
          * Can return `NULL` if there's no mapping or `self` doesn't support mappings.
-         * @returns the mapping for @self
+         * @returns the mapping for `self`
          */
         get_mapping(): string | null;
         /**
          * Gets the device's name.
-         * @returns the name of @self
+         * @returns the name of `self`
          */
         get_name(): string;
         /**
@@ -219,12 +254,12 @@ export namespace Manette {
         has_input(type: number, code: number): boolean;
         /**
          * Gets whether `self` supports rumble.
-         * @returns whether @self supports rumble
+         * @returns whether `self` supports rumble
          */
         has_rumble(): boolean;
         /**
          * Gets whether `self` has a user mapping.
-         * @returns whether @self has a user mapping
+         * @returns whether `self` has a user mapping
          */
         has_user_mapping(): boolean;
         /**
@@ -251,7 +286,7 @@ export namespace Manette {
         save_user_mapping(mapping_string: string): void;
         /**
          * Gets whether `self` supports mapping.
-         * @returns whether @self supports mapping
+         * @returns whether `self` supports mapping
          */
         supports_mapping(): boolean;
     }
@@ -259,7 +294,15 @@ export namespace Manette {
     namespace Monitor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when `device` is connected.
+             * @signal
+             */
             'device-connected': (arg0: Device) => void;
+            /**
+             * Emitted when `device` is disconnected.
+             * @signal
+             */
             'device-disconnected': (arg0: Device) => void;
         }
 
@@ -271,7 +314,8 @@ export namespace Manette {
     /**
      * An object monitoring the availability of devices.
      *
-     * See also: [class`Device]`.
+     * See also: {@link Device}.
+     * @gir-type Class
      */
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
@@ -295,16 +339,19 @@ export namespace Manette {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -315,15 +362,22 @@ export namespace Manette {
 
         /**
          * Creates a new `ManetterMonitorIter` iterating on `self`.
-         * @returns a new iterator for @self
+         * @returns a new iterator for `self`
          */
         iterate(): MonitorIter;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
+    /**
+     * @gir-type Alias
+     */
     type MonitorClass = typeof Monitor;
     /**
-     * An object iterating over the available devices in [class`Monitor]`.
+     * An object iterating over the available devices in {@link Monitor}.
+     * @gir-type Struct
      */
     abstract class MonitorIter {
         static $gtype: GObject.GType<MonitorIter>;
@@ -338,7 +392,8 @@ export namespace Manette {
     }
 
     /**
-     * An event emitted by a [class`Device]`.
+     * An event emitted by a {@link Device}.
+     * @gir-type Struct
      */
     class Event {
         static $gtype: GObject.GType<Event>;
@@ -346,47 +401,47 @@ export namespace Manette {
         // Methods
 
         /**
-         * Gets the axis of `self,` if any.
+         * Gets the axis of `self`, if any.
          * @returns whether the axis was retrieved
          */
         get_absolute(): [boolean, number, number];
         /**
-         * Gets the button of `self,` if any.
+         * Gets the button of `self`, if any.
          * @returns whether the button was retrieved
          */
         get_button(): [boolean, number];
         /**
-         * Gets the [class`Device]` associated with the `self`.
-         * @returns the device associated with the @self
+         * Gets the {@link Device} associated with the `self`.
+         * @returns the device associated with the `self`
          */
         get_device(): Device;
         /**
          * Gets the event type of `self`.
-         * @returns the event type of @self
+         * @returns the event type of `self`
          */
         get_event_type(): EventType;
         /**
          * Gets the hardware code of `self`.
-         * @returns the hardware code of @self
+         * @returns the hardware code of `self`
          */
         get_hardware_code(): number;
         /**
          * Gets the hardware index of `self`.
-         * @returns the hardware index of @self
+         * @returns the hardware index of `self`
          */
         get_hardware_index(): number;
         /**
          * Gets the hardware type of `self`.
-         * @returns the hardware type of @self
+         * @returns the hardware type of `self`
          */
         get_hardware_type(): number;
         /**
          * Gets the hardware value of `self`.
-         * @returns the hardware value of @self
+         * @returns the hardware value of `self`
          */
         get_hardware_value(): number;
         /**
-         * Gets the hat of `self,` if any.
+         * Gets the hat of `self`, if any.
          * @returns whether the hat was retrieved
          */
         get_hat(): [boolean, number, number];
@@ -396,7 +451,7 @@ export namespace Manette {
          *
          * Use this timestamp to ensure external factors such as synchronous disk writes
          * don't influence your timing computations.
-         * @returns the timestamp of when @self was received by the input driver
+         * @returns the timestamp of when `self` was received by the input driver
          */
         get_time(): number;
     }

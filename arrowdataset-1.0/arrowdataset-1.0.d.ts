@@ -27,6 +27,8 @@ export namespace ArrowDataset {
 
     /**
      * They are corresponding to `arrow::dataset::SegmentEncoding` values.
+     * @gir-type Enum
+     * @since 6.0.0
      */
     enum SegmentEncoding {
         /**
@@ -50,6 +52,9 @@ export namespace ArrowDataset {
         interface ConstructorProps extends FileFormat.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CSVFileFormat extends FileFormat {
         static $gtype: GObject.GType<CSVFileFormat>;
 
@@ -72,16 +77,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CSVFileFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CSVFileFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CSVFileFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -102,6 +110,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Dataset extends GObject.Object {
         static $gtype: GObject.GType<Dataset>;
 
@@ -126,16 +137,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Dataset.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dataset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Dataset.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dataset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Dataset.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Dataset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -144,8 +158,17 @@ export namespace ArrowDataset {
 
         // Methods
 
+        /**
+         * @returns A newly created {@link ArrowDataset.ScannerBuilder} on success, `null` on error.
+         */
         begin_scan(): ScannerBuilder | null;
+        /**
+         * @returns The type name of `dataset`.   It should be freed with `g_free()` when no longer needed.
+         */
         get_type_name(): string;
+        /**
+         * @returns A loaded {@link Arrow.Table} on success, `null` on error.
+         */
         to_table(): Arrow.Table | null;
     }
 
@@ -163,6 +186,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class DatasetFactory extends GObject.Object {
         static $gtype: GObject.GType<DatasetFactory>;
 
@@ -188,16 +214,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DatasetFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DatasetFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DatasetFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -206,6 +235,9 @@ export namespace ArrowDataset {
 
         // Methods
 
+        /**
+         * @returns A newly created {@link ArrowDataset.Dataset} on success, `null` on error.
+         */
         finish(): Dataset | null;
     }
 
@@ -220,6 +252,9 @@ export namespace ArrowDataset {
         interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DirectoryPartitioning extends KeyValuePartitioning {
         static $gtype: GObject.GType<DirectoryPartitioning>;
 
@@ -249,16 +284,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectoryPartitioning.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectoryPartitioning.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DirectoryPartitioning.SignalSignatures[K]> extends [any, ...infer Q]
@@ -281,6 +319,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileFormat extends GObject.Object {
         static $gtype: GObject.GType<FileFormat>;
 
@@ -305,16 +346,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -323,9 +367,27 @@ export namespace ArrowDataset {
 
         // Methods
 
+        /**
+         * @param other_format A {@link ArrowDataset.FileFormat} to be compared.
+         * @returns `true` if they are the same content file format, `false` otherwise.
+         */
         equal(other_format: FileFormat): boolean;
+        /**
+         * @returns The default {@link ArrowDataset.FileWriteOptions} of `format`.
+         */
         get_default_write_options(): FileWriteOptions;
+        /**
+         * @returns The type name of `format`.   It should be freed with `g_free()` when no longer needed.
+         */
         get_type_name(): string;
+        /**
+         * @param destination A {@link Arrow.OutputStream}.
+         * @param file_system The {@link Arrow.FileSystem} of `destination`.
+         * @param path The path of `destination`.
+         * @param schema A {@link Arrow.Schema} that is used by written record batches.
+         * @param options A {@link ArrowDataset.FileWriteOptions}.
+         * @returns The newly created {@link ArrowDataset.FileWriter} of `format`   on success, `null` on error.
+         */
         open_writer(
             destination: Arrow.OutputStream,
             file_system: Arrow.FileSystem,
@@ -354,6 +416,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileSystemDataset extends Dataset {
         static $gtype: GObject.GType<FileSystemDataset>;
 
@@ -361,18 +426,22 @@ export namespace ArrowDataset {
 
         /**
          * File system of the dataset.
+         * @since 5.0.0
          */
         get file_system(): Arrow.FileSystem;
         /**
          * File system of the dataset.
+         * @since 5.0.0
          */
         get fileSystem(): Arrow.FileSystem;
         /**
          * Format of the dataset.
+         * @since 5.0.0
          */
         get format(): FileFormat;
         /**
          * Partitioning of the dataset.
+         * @since 6.0.0
          */
         get partitioning(): Partitioning;
 
@@ -393,16 +462,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSystemDataset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSystemDataset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileSystemDataset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -411,6 +483,10 @@ export namespace ArrowDataset {
 
         // Static methods
 
+        /**
+         * @param scanner A {@link ArrowDataset.Scanner} that produces data to be written.
+         * @param options A {@link ArrowDataset.FileSystemDatasetWriteOptions}.
+         */
         static write_scanner(scanner: Scanner, options: FileSystemDatasetWriteOptions): boolean;
     }
 
@@ -436,35 +512,44 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileSystemDatasetFactory extends DatasetFactory {
         static $gtype: GObject.GType<FileSystemDatasetFactory>;
 
         // Properties
 
         /**
-         * File system passed to #GADatasetFileSystemDataset.
+         * File system passed to {@link ArrowDataset.FileSystemDataset}.
+         * @since 5.0.0
          */
         get file_system(): Arrow.FileSystem;
         /**
-         * File system passed to #GADatasetFileSystemDataset.
+         * File system passed to {@link ArrowDataset.FileSystemDataset}.
+         * @since 5.0.0
          */
         get fileSystem(): Arrow.FileSystem;
         /**
-         * Format passed to #GADatasetFileSystemDataset.
+         * Format passed to {@link ArrowDataset.FileSystemDataset}.
+         * @since 5.0.0
          */
         get format(): FileFormat;
         /**
-         * Partition base directory used by #GADatasetFileSystemDataset.
+         * Partition base directory used by {@link ArrowDataset.FileSystemDataset}.
+         * @since 6.0.0
          */
         get partition_base_dir(): string;
         set partition_base_dir(val: string);
         /**
-         * Partition base directory used by #GADatasetFileSystemDataset.
+         * Partition base directory used by {@link ArrowDataset.FileSystemDataset}.
+         * @since 6.0.0
          */
         get partitionBaseDir(): string;
         set partitionBaseDir(val: string);
         /**
-         * Partitioning used by #GADatasetFileSystemDataset.
+         * Partitioning used by {@link ArrowDataset.FileSystemDataset}.
+         * @since 6.0.0
          */
         get partitioning(): Partitioning;
         set partitioning(val: Partitioning);
@@ -488,16 +573,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSystemDatasetFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSystemDatasetFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileSystemDatasetFactory.SignalSignatures[K]> extends [any, ...infer Q]
@@ -508,9 +596,24 @@ export namespace ArrowDataset {
 
         // Methods
 
+        /**
+         * @param path A path to be added.
+         * @returns `true` on success, `false` otherwise.
+         */
         add_path(path: string): boolean;
+        /**
+         * @returns A newly created {@link ArrowDataset.FileSystemDataset} on success, `null` on error.
+         */
         finish(): FileSystemDataset | null;
+        /**
+         * @param file_system A {@link Arrow.FileSystem}.
+         * @returns `true` on success, `false` otherwise.
+         */
         set_file_system(file_system: Arrow.FileSystem): boolean;
+        /**
+         * @param uri An URI for file system.
+         * @returns `true` on success, `false` otherwise.
+         */
         set_file_system_uri(uri: string): boolean;
     }
 
@@ -542,6 +645,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileSystemDatasetWriteOptions extends GObject.Object {
         static $gtype: GObject.GType<FileSystemDatasetWriteOptions>;
 
@@ -554,12 +660,14 @@ export namespace ArrowDataset {
         /**
          * Template string used to generate fragment base names. {i} will be
          * replaced by an auto incremented integer.
+         * @since 6.0.0
          */
         get base_name_template(): string;
         set base_name_template(val: string);
         /**
          * Template string used to generate fragment base names. {i} will be
          * replaced by an auto incremented integer.
+         * @since 6.0.0
          */
         get baseNameTemplate(): string;
         set baseNameTemplate(val: string);
@@ -573,16 +681,19 @@ export namespace ArrowDataset {
         set fileWriteOptions(val: FileWriteOptions);
         /**
          * Maximum number of partitions any batch may be written into.
+         * @since 6.0.0
          */
         get max_partitions(): number;
         set max_partitions(val: number);
         /**
          * Maximum number of partitions any batch may be written into.
+         * @since 6.0.0
          */
         get maxPartitions(): number;
         set maxPartitions(val: number);
         /**
-         * #GADatasetPartitioning used to generate fragment paths.
+         * {@link ArrowDataset.Partitioning} used to generate fragment paths.
+         * @since 6.0.0
          */
         get partitioning(): Partitioning;
         set partitioning(val: Partitioning);
@@ -606,16 +717,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSystemDatasetWriteOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSystemDatasetWriteOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileSystemDatasetWriteOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -638,6 +752,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileWriteOptions extends GObject.Object {
         static $gtype: GObject.GType<FileWriteOptions>;
 
@@ -662,16 +779,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileWriteOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileWriteOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileWriteOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -692,6 +812,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileWriter extends GObject.Object {
         static $gtype: GObject.GType<FileWriter>;
 
@@ -716,16 +839,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -734,8 +860,19 @@ export namespace ArrowDataset {
 
         // Methods
 
+        /**
+         * @returns `true` on success, `false` on error.
+         */
         finish(): boolean;
+        /**
+         * @param record_batch A {@link Arrow.RecordBatch} to be written.
+         * @returns `true` on success, `false` on error.
+         */
         write_record_batch(record_batch: Arrow.RecordBatch): boolean;
+        /**
+         * @param reader A {@link Arrow.RecordBatchReader} to be written.
+         * @returns `true` on success, `false` on error.
+         */
         write_record_batch_reader(reader: Arrow.RecordBatchReader): boolean;
     }
 
@@ -752,6 +889,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Fragment extends GObject.Object {
         static $gtype: GObject.GType<Fragment>;
 
@@ -776,16 +916,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Fragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Fragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Fragment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Fragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -804,6 +947,9 @@ export namespace ArrowDataset {
         interface ConstructorProps extends FileFormat.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class IPCFileFormat extends FileFormat {
         static $gtype: GObject.GType<IPCFileFormat>;
 
@@ -826,16 +972,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IPCFileFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IPCFileFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IPCFileFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -854,6 +1003,9 @@ export namespace ArrowDataset {
         interface ConstructorProps extends Fragment.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InMemoryFragment extends Fragment {
         static $gtype: GObject.GType<InMemoryFragment>;
 
@@ -876,16 +1028,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InMemoryFragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InMemoryFragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InMemoryFragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -904,6 +1059,9 @@ export namespace ArrowDataset {
         interface ConstructorProps extends Partitioning.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class KeyValuePartitioning extends Partitioning {
         static $gtype: GObject.GType<KeyValuePartitioning>;
 
@@ -924,16 +1082,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyValuePartitioning.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyValuePartitioning.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyValuePartitioning.SignalSignatures[K]> extends [any, ...infer Q]
@@ -954,6 +1115,9 @@ export namespace ArrowDataset {
         interface ConstructorProps extends FileFormat.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParquetFileFormat extends FileFormat {
         static $gtype: GObject.GType<ParquetFileFormat>;
 
@@ -976,16 +1140,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParquetFileFormat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParquetFileFormat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParquetFileFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1006,6 +1173,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Partitioning extends GObject.Object {
         static $gtype: GObject.GType<Partitioning>;
 
@@ -1032,16 +1202,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Partitioning.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Partitioning.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Partitioning.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1050,6 +1223,9 @@ export namespace ArrowDataset {
 
         // Methods
 
+        /**
+         * @returns The type name of `partitioning`.   It should be freed with `g_free()` when no longer needed.
+         */
         get_type_name(): string;
     }
 
@@ -1072,6 +1248,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PartitioningOptions extends GObject.Object {
         static $gtype: GObject.GType<PartitioningOptions>;
 
@@ -1083,6 +1262,7 @@ export namespace ArrowDataset {
          * materializing virtual columns, and Expressions parsed by the
          * finished Partitioning will include dictionaries of all unique
          * inspected values for each field.
+         * @since 6.0.0
          */
         get infer_dictionary(): boolean;
         set infer_dictionary(val: boolean);
@@ -1092,6 +1272,7 @@ export namespace ArrowDataset {
          * materializing virtual columns, and Expressions parsed by the
          * finished Partitioning will include dictionaries of all unique
          * inspected values for each field.
+         * @since 6.0.0
          */
         get inferDictionary(): boolean;
         set inferDictionary(val: boolean);
@@ -1099,18 +1280,21 @@ export namespace ArrowDataset {
          * Optionally, an expected schema can be provided, in which case
          * inference will only check discovered fields against the schema
          * and update internal state (such as dictionaries).
+         * @since 6.0.0
          */
         get schema(): Arrow.Schema;
         set schema(val: Arrow.Schema);
         /**
          * After splitting a path into components, decode the path
          * components before parsing according to this scheme.
+         * @since 6.0.0
          */
         get segment_encoding(): SegmentEncoding;
         set segment_encoding(val: SegmentEncoding);
         /**
          * After splitting a path into components, decode the path
          * components before parsing according to this scheme.
+         * @since 6.0.0
          */
         get segmentEncoding(): SegmentEncoding;
         set segmentEncoding(val: SegmentEncoding);
@@ -1134,16 +1318,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PartitioningOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PartitioningOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PartitioningOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1166,6 +1353,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Scanner extends GObject.Object {
         static $gtype: GObject.GType<Scanner>;
 
@@ -1190,16 +1380,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Scanner.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Scanner.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Scanner.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Scanner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1208,6 +1401,9 @@ export namespace ArrowDataset {
 
         // Methods
 
+        /**
+         * @returns A newly created {@link Arrow.Table} on success, `null` on error.
+         */
         to_table(): Arrow.Table | null;
     }
 
@@ -1225,6 +1421,9 @@ export namespace ArrowDataset {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScannerBuilder extends GObject.Object {
         static $gtype: GObject.GType<ScannerBuilder>;
 
@@ -1254,16 +1453,19 @@ export namespace ArrowDataset {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScannerBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScannerBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScannerBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1272,28 +1474,92 @@ export namespace ArrowDataset {
 
         // Methods
 
+        /**
+         * @returns A newly created {@link ArrowDataset.Scanner} on success, `null` on error.
+         */
         finish(): Scanner | null;
+        /**
+         * @param expression A {@link Arrow.Expression} to filter rows with.
+         * @returns `true` on success, `false` on error.
+         */
         set_filter(expression: Arrow.Expression): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CSVFileFormatClass = typeof CSVFileFormat;
+    /**
+     * @gir-type Alias
+     */
     type DatasetClass = typeof Dataset;
+    /**
+     * @gir-type Alias
+     */
     type DatasetFactoryClass = typeof DatasetFactory;
+    /**
+     * @gir-type Alias
+     */
     type DirectoryPartitioningClass = typeof DirectoryPartitioning;
+    /**
+     * @gir-type Alias
+     */
     type FileFormatClass = typeof FileFormat;
+    /**
+     * @gir-type Alias
+     */
     type FileSystemDatasetClass = typeof FileSystemDataset;
+    /**
+     * @gir-type Alias
+     */
     type FileSystemDatasetFactoryClass = typeof FileSystemDatasetFactory;
+    /**
+     * @gir-type Alias
+     */
     type FileSystemDatasetWriteOptionsClass = typeof FileSystemDatasetWriteOptions;
+    /**
+     * @gir-type Alias
+     */
     type FileWriteOptionsClass = typeof FileWriteOptions;
+    /**
+     * @gir-type Alias
+     */
     type FileWriterClass = typeof FileWriter;
+    /**
+     * @gir-type Alias
+     */
     type FragmentClass = typeof Fragment;
+    /**
+     * @gir-type Alias
+     */
     type IPCFileFormatClass = typeof IPCFileFormat;
+    /**
+     * @gir-type Alias
+     */
     type InMemoryFragmentClass = typeof InMemoryFragment;
+    /**
+     * @gir-type Alias
+     */
     type KeyValuePartitioningClass = typeof KeyValuePartitioning;
+    /**
+     * @gir-type Alias
+     */
     type ParquetFileFormatClass = typeof ParquetFileFormat;
+    /**
+     * @gir-type Alias
+     */
     type PartitioningClass = typeof Partitioning;
+    /**
+     * @gir-type Alias
+     */
     type PartitioningOptionsClass = typeof PartitioningOptions;
+    /**
+     * @gir-type Alias
+     */
     type ScannerBuilderClass = typeof ScannerBuilder;
+    /**
+     * @gir-type Alias
+     */
     type ScannerClass = typeof Scanner;
     /**
      * Name of the imported GIR library

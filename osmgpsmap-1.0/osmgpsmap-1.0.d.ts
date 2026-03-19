@@ -29,6 +29,9 @@ export namespace OsmGpsMap {
      * OsmGpsMap-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum MapKey_t {
         FULLSCREEN,
         ZOOMIN,
@@ -40,6 +43,9 @@ export namespace OsmGpsMap {
         MAX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MapSource_t {
         NULL,
         OPENSTREETMAP,
@@ -65,6 +71,18 @@ export namespace OsmGpsMap {
     namespace Map {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            /**
+             * The {@link OsmGpsMap.Map.SignalSignatures.changed | OsmGpsMap.Map::changed} signal is emitted any time the map zoom or map center
+             * is chaged (such as by dragging or zooming).
+             *
+             * <note>
+             * <para>
+             * If you are only interested in the map zoom, then you can simply connect
+             * to ::notify::zoom
+             * </para>
+             * </note>
+             * @signal
+             */
             changed: () => void;
             'notify::auto-center': (pspec: GObject.ParamSpec) => void;
             'notify::auto-center-threshold': (pspec: GObject.ParamSpec) => void;
@@ -189,6 +207,9 @@ export namespace OsmGpsMap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Map extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Map>;
 
@@ -231,7 +252,7 @@ export namespace OsmGpsMap {
          * <para>
          * If you do not wish to use the default map tiles (provided by OpenStreeMap)
          * it is recommened that you set this property at construction, instead
-         * of setting #OsmGpsMap:repo-uri.
+         * of setting {@link OsmGpsMap.Map.repo_uri}.
          * </para>
          * </note>
          */
@@ -244,7 +265,7 @@ export namespace OsmGpsMap {
          * <para>
          * If you do not wish to use the default map tiles (provided by OpenStreeMap)
          * it is recommened that you set this property at construction, instead
-         * of setting #OsmGpsMap:repo-uri.
+         * of setting {@link OsmGpsMap.Map.repo_uri}.
          * </para>
          * </note>
          */
@@ -299,12 +320,12 @@ export namespace OsmGpsMap {
          * </listitem>
          * <listitem>
          * <para>
-         * \#Q0 - Quad tree format, set of "0123"
+         * \`Q0` - Quad tree format, set of "0123"
          * </para>
          * </listitem>
          * <listitem>
          * <para>
-         * \#YS - Not Implemented
+         * \`YS` - Not Implemented
          * </para>
          * </listitem>
          * <listitem>
@@ -318,10 +339,10 @@ export namespace OsmGpsMap {
          * <para>
          * If you do not wish to use the default map tiles (provided by OpenStreeMap)
          * it is recommened that you use one of the predefined map sources, and thus
-         * you should construct the map by setting #OsmGpsMap:map-source and not
-         * #OsmGpsMap:repo-uri. The #OsmGpsMap:repo-uri property is primarily
+         * you should construct the map by setting {@link OsmGpsMap.Map.map_source} and not
+         * {@link OsmGpsMap.Map.repo_uri}. The {@link OsmGpsMap.Map.repo_uri} property is primarily
          * designed for applications that wish complete control of tile repository
-         * management, or wish to use #OsmGpsMap with a tile repository it does not
+         * management, or wish to use {@link OsmGpsMap.Map} with a tile repository it does not
          * explicitly support.
          * </para>
          * </note>
@@ -362,12 +383,12 @@ export namespace OsmGpsMap {
          * </listitem>
          * <listitem>
          * <para>
-         * \#Q0 - Quad tree format, set of "0123"
+         * \`Q0` - Quad tree format, set of "0123"
          * </para>
          * </listitem>
          * <listitem>
          * <para>
-         * \#YS - Not Implemented
+         * \`YS` - Not Implemented
          * </para>
          * </listitem>
          * <listitem>
@@ -381,10 +402,10 @@ export namespace OsmGpsMap {
          * <para>
          * If you do not wish to use the default map tiles (provided by OpenStreeMap)
          * it is recommened that you use one of the predefined map sources, and thus
-         * you should construct the map by setting #OsmGpsMap:map-source and not
-         * #OsmGpsMap:repo-uri. The #OsmGpsMap:repo-uri property is primarily
+         * you should construct the map by setting {@link OsmGpsMap.Map.map_source} and not
+         * {@link OsmGpsMap.Map.repo_uri}. The {@link OsmGpsMap.Map.repo_uri} property is primarily
          * designed for applications that wish complete control of tile repository
-         * management, or wish to use #OsmGpsMap with a tile repository it does not
+         * management, or wish to use {@link OsmGpsMap.Map} with a tile repository it does not
          * explicitly support.
          * </para>
          * </note>
@@ -393,14 +414,14 @@ export namespace OsmGpsMap {
         /**
          * Controls whether the current gps point is shown on the map. Note that
          * for derived classes that implement the draw_gps_point vfunc, if this
-         * property is %FALSE
+         * property is `false`
          */
         get show_gps_point(): boolean;
         set show_gps_point(val: boolean);
         /**
          * Controls whether the current gps point is shown on the map. Note that
          * for derived classes that implement the draw_gps_point vfunc, if this
-         * property is %FALSE
+         * property is `false`
          */
         get showGpsPoint(): boolean;
         set showGpsPoint(val: boolean);
@@ -411,13 +432,13 @@ export namespace OsmGpsMap {
         /**
          * Either a full path or one of the special format URIs
          * #OSM_GPS_MAP_CACHE_DISABLED, #OSM_GPS_MAP_CACHE_AUTO,
-         * #OSM_GPS_MAP_CACHE_FRIENDLY. Also see #OsmGpsMap:tile-cache-base for a
+         * #OSM_GPS_MAP_CACHE_FRIENDLY. Also see {@link OsmGpsMap.Map.tile_cache_base} for a
          * full understanding.
          *
          * #OSM_GPS_MAP_CACHE_DISABLED disables the on disk tile cache (so all tiles
          * are fetched from the network. #OSM_GPS_MAP_CACHE_AUTO causes the tile
          * cache to be /tile-cache-base/md5(repo-uri), where md5 is the md5sum
-         * of #OsmGpsMap:repo-uri. #OSM_GPS_MAP_CACHE_FRIENDLY
+         * of {@link OsmGpsMap.Map.repo_uri}. #OSM_GPS_MAP_CACHE_FRIENDLY
          * causes the tile cache to be /tile-cache-base/friendlyname(repo-uri).
          *
          * Any other string is interpreted as a local path, i.e. /path/to/cache
@@ -427,13 +448,13 @@ export namespace OsmGpsMap {
         /**
          * Either a full path or one of the special format URIs
          * #OSM_GPS_MAP_CACHE_DISABLED, #OSM_GPS_MAP_CACHE_AUTO,
-         * #OSM_GPS_MAP_CACHE_FRIENDLY. Also see #OsmGpsMap:tile-cache-base for a
+         * #OSM_GPS_MAP_CACHE_FRIENDLY. Also see {@link OsmGpsMap.Map.tile_cache_base} for a
          * full understanding.
          *
          * #OSM_GPS_MAP_CACHE_DISABLED disables the on disk tile cache (so all tiles
          * are fetched from the network. #OSM_GPS_MAP_CACHE_AUTO causes the tile
          * cache to be /tile-cache-base/md5(repo-uri), where md5 is the md5sum
-         * of #OsmGpsMap:repo-uri. #OSM_GPS_MAP_CACHE_FRIENDLY
+         * of {@link OsmGpsMap.Map.repo_uri}. #OSM_GPS_MAP_CACHE_FRIENDLY
          * causes the tile cache to be /tile-cache-base/friendlyname(repo-uri).
          *
          * Any other string is interpreted as a local path, i.e. /path/to/cache
@@ -442,7 +463,7 @@ export namespace OsmGpsMap {
         set tileCache(val: string);
         /**
          * The base directory of the tile cache when you have constructed
-         * the map with #OsmGpsMap:tile-cache set to #OSM_GPS_MAP_CACHE_AUTO or
+         * the map with {@link OsmGpsMap.Map.tile_cache} set to #OSM_GPS_MAP_CACHE_AUTO or
          * #OSM_GPS_MAP_CACHE_FRIENDLY
          *
          * The string is interpreted as a local path, i.e. /path/to/cache. If NULL
@@ -451,12 +472,12 @@ export namespace OsmGpsMap {
          * <ulink url="http://www.freedesktop.org/wiki/Specifications/basedir-spec">
          * <citetitle>XDG Base Directory Specification</citetitle></ulink>). To get the
          * base directory where map tiles will be cached call
-         * osm_gps_map_get_default_cache_directory()
+         * `osm_gps_map_get_default_cache_directory()`
          */
         get tile_cache_base(): string;
         /**
          * The base directory of the tile cache when you have constructed
-         * the map with #OsmGpsMap:tile-cache set to #OSM_GPS_MAP_CACHE_AUTO or
+         * the map with {@link OsmGpsMap.Map.tile_cache} set to #OSM_GPS_MAP_CACHE_AUTO or
          * #OSM_GPS_MAP_CACHE_FRIENDLY
          *
          * The string is interpreted as a local path, i.e. /path/to/cache. If NULL
@@ -465,7 +486,7 @@ export namespace OsmGpsMap {
          * <ulink url="http://www.freedesktop.org/wiki/Specifications/basedir-spec">
          * <citetitle>XDG Base Directory Specification</citetitle></ulink>). To get the
          * base directory where map tiles will be cached call
-         * osm_gps_map_get_default_cache_directory()
+         * `osm_gps_map_get_default_cache_directory()`
          */
         get tileCacheBase(): string;
         get tile_zoom_offset(): number;
@@ -505,16 +526,19 @@ export namespace OsmGpsMap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Map.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Map.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Map.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Map.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -524,15 +548,37 @@ export namespace OsmGpsMap {
         // Static methods
 
         static get_default_cache_directory(): string;
+        /**
+         * @param source
+         */
         static source_get_friendly_name(source: MapSource_t): string;
+        /**
+         * @param source
+         */
         static source_get_image_format(source: MapSource_t): string;
+        /**
+         * @param source
+         */
         static source_get_max_zoom(source: MapSource_t): number;
+        /**
+         * @param source
+         */
         static source_get_min_zoom(source: MapSource_t): number;
+        /**
+         * @param source
+         */
         static source_get_repo_uri(source: MapSource_t): string;
+        /**
+         * @param source
+         */
         static source_is_valid(source: MapSource_t): boolean;
 
         // Virtual methods
 
+        /**
+         * @param cr
+         * @virtual
+         */
         vfunc_draw_gps_point(cr: cairo.Context): void;
 
         // Methods
@@ -552,7 +598,7 @@ export namespace OsmGpsMap {
         convert_screen_to_geographic(pixel_x: number, pixel_y: number): MapPoint;
         /**
          * Cancels all tiles currently being downloaded. Typically used if you wish to
-         * cacel a large number of tiles queued using osm_gps_map_download_maps()
+         * cacel a large number of tiles queued using `osm_gps_map_download_maps()`
          */
         download_cancel_all(): void;
         /**
@@ -572,15 +618,40 @@ export namespace OsmGpsMap {
         /**
          * A convenience function for getting the geographic location of events,
          * such as mouse clicks, on the map
-         * @param event A #GtkEventButton that occured on the map
+         * @param event A `GtkEventButton` that occured on the map
          * @returns The point on the globe corresponding to the click
          */
         get_event_location(event: Gdk.EventButton): MapPoint;
+        /**
+         * @returns the scale of the map at the center, in meters/pixel.
+         */
         get_scale(): number;
+        /**
+         * @param latitude degrees
+         * @param longitude degrees
+         * @param heading degrees or #OSM_GPS_MAP_INVALID to disable showing heading
+         */
         gps_add(latitude: number, longitude: number, heading: number): void;
         gps_clear(): void;
+        /**
+         * @returns The {@link OsmGpsMap.MapTrack} of the internal GPS track, i.e. that which is modified when calling `osm_gps_map_gps_add()`. You must not free this.
+         */
         gps_get_track(): MapTrack;
+        /**
+         * @param latitude
+         * @param longitude
+         * @param image
+         * @returns A {@link OsmGpsMap.MapImage} representing the added pixbuf
+         */
         image_add(latitude: number, longitude: number, image: GdkPixbuf.Pixbuf): MapImage;
+        /**
+         * @param latitude
+         * @param longitude
+         * @param image
+         * @param xalign
+         * @param yalign
+         * @returns A {@link OsmGpsMap.MapImage} representing the added pixbuf
+         */
         image_add_with_alignment(
             latitude: number,
             longitude: number,
@@ -588,6 +659,15 @@ export namespace OsmGpsMap {
             xalign: number,
             yalign: number,
         ): MapImage;
+        /**
+         * @param latitude
+         * @param longitude
+         * @param image
+         * @param xalign
+         * @param yalign
+         * @param zorder
+         * @returns A {@link OsmGpsMap.MapImage} representing the added pixbuf
+         */
         image_add_with_alignment_z(
             latitude: number,
             longitude: number,
@@ -596,37 +676,80 @@ export namespace OsmGpsMap {
             yalign: number,
             zorder: number,
         ): MapImage;
+        /**
+         * @param latitude
+         * @param longitude
+         * @param image
+         * @param zorder
+         * @returns A {@link OsmGpsMap.MapImage} representing the added pixbuf
+         */
         image_add_z(latitude: number, longitude: number, image: GdkPixbuf.Pixbuf, zorder: number): MapImage;
+        /**
+         * @param image
+         */
         image_remove(image: MapImage): boolean;
         image_remove_all(): void;
+        /**
+         * @param layer a {@link OsmGpsMap.MapLayer} object
+         */
         layer_add(layer: MapLayer): void;
+        /**
+         * @param layer a {@link OsmGpsMap.MapLayer} object
+         */
         layer_remove(layer: MapLayer): boolean;
         layer_remove_all(): void;
         map_redraw(): boolean;
         map_redraw_idle(): void;
+        /**
+         * @param poly
+         */
         polygon_add(poly: MapPolygon): void;
+        /**
+         * @param poly
+         */
         polygon_remove(poly: MapPolygon): boolean;
         polygon_remove_all(): void;
         /**
-         * Scrolls the map by `dx,` `dy` pixels (positive north, east)
+         * Scrolls the map by `dx`, `dy` pixels (positive north, east)
          * @param dx
          * @param dy
          */
         scroll(dx: number, dy: number): void;
+        /**
+         * @param latitude
+         * @param longitude
+         */
         set_center(latitude: number, longitude: number): void;
+        /**
+         * @param latitude
+         * @param longitude
+         * @param zoom
+         */
         set_center_and_zoom(latitude: number, longitude: number, zoom: number): void;
         /**
          * Associates a keyboard shortcut with the supplied `keyval`
-         * (as returned by #gdk_keyval_from_name or simiar). The action given in `key`
+         * (as returned by `gdk_keyval_from_name` or simiar). The action given in `key`
          * will be triggered when the corresponding `keyval` is pressed. By default
          * no keyboard shortcuts are associated.
          * @param key a #OsmGpsMapKey_t
          * @param keyval
          */
         set_keyboard_shortcut(key: MapKey_t | null, keyval: number): void;
+        /**
+         * @param zoom
+         */
         set_zoom(zoom: number): number;
+        /**
+         * @param zoom_offset
+         */
         set_zoom_offset(zoom_offset: number): void;
+        /**
+         * @param track
+         */
         track_add(track: MapTrack): void;
+        /**
+         * @param track
+         */
         track_remove(track: MapTrack): boolean;
         track_remove_all(): void;
         /**
@@ -639,8 +762,6 @@ export namespace OsmGpsMap {
         zoom_fit_bbox(latitude1: number, latitude2: number, longitude1: number, longitude2: number): void;
         zoom_in(): number;
         zoom_out(): number;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -654,32 +775,32 @@ export namespace OsmGpsMap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -688,39 +809,39 @@ export namespace OsmGpsMap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -731,13 +852,16 @@ export namespace OsmGpsMap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -745,7 +869,7 @@ export namespace OsmGpsMap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -753,9 +877,9 @@ export namespace OsmGpsMap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -775,9 +899,9 @@ export namespace OsmGpsMap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -791,33 +915,33 @@ export namespace OsmGpsMap {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -850,21 +974,21 @@ export namespace OsmGpsMap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -874,8 +998,8 @@ export namespace OsmGpsMap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -892,10 +1016,10 @@ export namespace OsmGpsMap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -910,13 +1034,13 @@ export namespace OsmGpsMap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -947,21 +1071,21 @@ export namespace OsmGpsMap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -971,33 +1095,34 @@ export namespace OsmGpsMap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1006,6 +1131,7 @@ export namespace OsmGpsMap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1014,12 +1140,14 @@ export namespace OsmGpsMap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1028,20 +1156,22 @@ export namespace OsmGpsMap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1053,6 +1183,7 @@ export namespace OsmGpsMap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1108,6 +1239,9 @@ export namespace OsmGpsMap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MapImage extends GObject.Object {
         static $gtype: GObject.GType<MapImage>;
 
@@ -1151,16 +1285,19 @@ export namespace OsmGpsMap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapImage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapImage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapImage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapImage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapImage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1169,10 +1306,17 @@ export namespace OsmGpsMap {
 
         // Methods
 
+        /**
+         * @param cr
+         * @param rect
+         */
         draw(cr: cairo.Context, rect: Gdk.Rectangle): void;
         get_point(): MapPoint;
         get_rotation(): number;
         get_zorder(): number;
+        /**
+         * @param rot
+         */
         set_rotation(rot: number): void;
     }
 
@@ -1217,6 +1361,9 @@ export namespace OsmGpsMap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MapOsd extends GObject.Object implements MapLayer {
         static $gtype: GObject.GType<MapOsd>;
 
@@ -1342,30 +1489,59 @@ export namespace OsmGpsMap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapOsd.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapOsd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapOsd.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapOsd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapOsd.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapOsd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         busy(): boolean;
+        /**
+         * @param map
+         * @param event
+         */
         button_press(map: Map, event: Gdk.EventButton): boolean;
+        /**
+         * @param map
+         * @param cr
+         */
         draw(map: Map, cr: cairo.Context): void;
+        /**
+         * @param map
+         */
         render(map: Map): void;
+        /**
+         * @virtual
+         */
         vfunc_busy(): boolean;
+        /**
+         * @param map
+         * @param event
+         * @virtual
+         */
         vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;
+        /**
+         * @param map
+         * @param cr
+         * @virtual
+         */
         vfunc_draw(map: Map, cr: cairo.Context): void;
+        /**
+         * @param map
+         * @virtual
+         */
         vfunc_render(map: Map): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1380,32 +1556,32 @@ export namespace OsmGpsMap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1414,39 +1590,39 @@ export namespace OsmGpsMap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1457,13 +1633,16 @@ export namespace OsmGpsMap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1471,7 +1650,7 @@ export namespace OsmGpsMap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1479,9 +1658,9 @@ export namespace OsmGpsMap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1501,9 +1680,9 @@ export namespace OsmGpsMap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1517,33 +1696,33 @@ export namespace OsmGpsMap {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1576,21 +1755,21 @@ export namespace OsmGpsMap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1600,8 +1779,8 @@ export namespace OsmGpsMap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1618,10 +1797,10 @@ export namespace OsmGpsMap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1636,13 +1815,13 @@ export namespace OsmGpsMap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1673,21 +1852,21 @@ export namespace OsmGpsMap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1697,33 +1876,34 @@ export namespace OsmGpsMap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1732,6 +1912,7 @@ export namespace OsmGpsMap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1740,12 +1921,14 @@ export namespace OsmGpsMap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1754,20 +1937,22 @@ export namespace OsmGpsMap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1779,6 +1964,7 @@ export namespace OsmGpsMap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1827,6 +2013,9 @@ export namespace OsmGpsMap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MapPolygon extends GObject.Object {
         static $gtype: GObject.GType<MapPolygon>;
 
@@ -1860,16 +2049,19 @@ export namespace OsmGpsMap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapPolygon.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapPolygon.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapPolygon.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapPolygon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapPolygon.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapPolygon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1880,9 +2072,22 @@ export namespace OsmGpsMap {
     namespace MapTrack {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The point-added signal.
+             * @signal
+             */
             'point-added': (arg0: MapPoint) => void;
+            /**
+             * @signal
+             */
             'point-changed': (arg0: number) => void;
+            /**
+             * @signal
+             */
             'point-inserted': (arg0: number) => void;
+            /**
+             * @signal
+             */
             'point-removed': (arg0: number) => void;
             'notify::alpha': (pspec: GObject.ParamSpec) => void;
             'notify::color': (pspec: GObject.ParamSpec) => void;
@@ -1905,6 +2110,9 @@ export namespace OsmGpsMap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MapTrack extends GObject.Object {
         static $gtype: GObject.GType<MapTrack>;
 
@@ -1943,16 +2151,19 @@ export namespace OsmGpsMap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapTrack.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1962,45 +2173,79 @@ export namespace OsmGpsMap {
         // Methods
 
         /**
-         * track (in,out): a #OsmGpsMapTrack
+         * track (in,out): a {@link OsmGpsMap.MapTrack}
          * `point` (in): point to add
          * @param point
          */
         add_point(point: MapPoint): void;
+        /**
+         * @param color
+         */
         get_color(color: Gdk.RGBA): void;
         /**
-         * `track` (in): a #OsmGpsMapTrack
+         * `track` (in): a {@link OsmGpsMap.MapTrack}
          * @returns the length of the track in meters.
          */
         get_length(): number;
+        /**
+         * @param pos
+         */
         get_point(pos: number): MapPoint;
         /**
-         * `track` (in): a #OsmGpsMapTrack
-         * @returns list of #OsmGpsMapPoint
+         * `track` (in): a {@link OsmGpsMap.MapTrack}
+         * @returns list of {@link OsmGpsMap.MapPoint}
          */
         get_points(): MapPoint[];
+        /**
+         * @param np
+         * @param pos
+         */
         insert_point(np: MapPoint, pos: number): void;
         n_points(): number;
         /**
-         * `track` (in): a #OsmGpsMapTrack
+         * `track` (in): a {@link OsmGpsMap.MapTrack}
          * @param pos Position of the point to remove
          */
         remove_point(pos: number): void;
+        /**
+         * @param color
+         */
         set_color(color: Gdk.RGBA): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MapClass = typeof Map;
+    /**
+     * @gir-type Alias
+     */
     type MapImageClass = typeof MapImage;
+    /**
+     * @gir-type Struct
+     */
     abstract class MapImagePrivate {
         static $gtype: GObject.GType<MapImagePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MapLayerIface = typeof MapLayer;
+    /**
+     * @gir-type Alias
+     */
     type MapOsdClass = typeof MapOsd;
+    /**
+     * @gir-type Struct
+     */
     abstract class MapOsdPrivate {
         static $gtype: GObject.GType<MapOsdPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MapPoint {
         static $gtype: GObject.GType<MapPoint>;
 
@@ -2031,21 +2276,48 @@ export namespace OsmGpsMap {
          * of the current window, i.e the top left and bottom right corners.
          */
         get_degrees(): [number, number];
+        /**
+         * @param rlat
+         * @param rlon
+         */
         get_radians(rlat: number, rlon: number): void;
+        /**
+         * @param lat
+         * @param lon
+         */
         set_degrees(lat: number, lon: number): void;
+        /**
+         * @param rlat
+         * @param rlon
+         */
         set_radians(rlat: number, rlon: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MapPolygonClass = typeof MapPolygon;
+    /**
+     * @gir-type Struct
+     */
     abstract class MapPolygonPrivate {
         static $gtype: GObject.GType<MapPolygonPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MapPrivate {
         static $gtype: GObject.GType<MapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MapTrackClass = typeof MapTrack;
+    /**
+     * @gir-type Struct
+     */
     abstract class MapTrackPrivate {
         static $gtype: GObject.GType<MapTrackPrivate>;
     }
@@ -2058,9 +2330,26 @@ export namespace OsmGpsMap {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_busy(): boolean;
+            /**
+             * @param map
+             * @param event
+             * @virtual
+             */
             vfunc_button_press(map: Map, event: Gdk.EventButton): boolean;
+            /**
+             * @param map
+             * @param cr
+             * @virtual
+             */
             vfunc_draw(map: Map, cr: cairo.Context): void;
+            /**
+             * @param map
+             * @virtual
+             */
             vfunc_render(map: Map): void;
         }
 
@@ -2073,12 +2362,26 @@ export namespace OsmGpsMap {
         $gtype: GObject.GType<MapLayer>;
         prototype: MapLayer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MapLayer extends GObject.Object, MapLayer.Interface {
         // Methods
 
         busy(): boolean;
+        /**
+         * @param map
+         * @param event
+         */
         button_press(map: Map, event: Gdk.EventButton): boolean;
+        /**
+         * @param map
+         * @param cr
+         */
         draw(map: Map, cr: cairo.Context): void;
+        /**
+         * @param map
+         */
         render(map: Map): void;
     }
 

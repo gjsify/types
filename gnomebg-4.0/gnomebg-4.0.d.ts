@@ -32,7 +32,13 @@ export namespace GnomeBG {
     namespace BG {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: () => void;
+            /**
+             * @signal
+             */
             transitioned: () => void;
         }
 
@@ -41,6 +47,9 @@ export namespace GnomeBG {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
 
@@ -63,16 +72,19 @@ export namespace GnomeBG {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BG.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BG.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BG.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -105,17 +117,34 @@ export namespace GnomeBG {
          * @param window
          * @param width
          * @param height
-         * @returns %NULL on error (e.g. out of X connections)
+         * @returns `null` on error (e.g. out of X connections)
          */
         create_surface(window: Gdk.Surface, width: number, height: number): cairo.Surface;
+        /**
+         * @param factory
+         * @param screen_area
+         * @param dest_width
+         * @param dest_height
+         * @returns a {@link GdkPixbuf.Pixbuf} showing the background as a thumbnail
+         */
         create_thumbnail(
             factory: GnomeDesktop.DesktopThumbnailFactory,
             screen_area: cairo.RectangleInt,
             dest_width: number,
             dest_height: number,
         ): GdkPixbuf.Pixbuf;
+        /**
+         * @param dest
+         */
         draw(dest: GdkPixbuf.Pixbuf): void;
         get_filename(): string;
+        /**
+         * @param factory
+         * @param best_width
+         * @param best_height
+         * @param width
+         * @param height
+         */
         get_image_size(
             factory: GnomeDesktop.DesktopThumbnailFactory,
             best_width: number,
@@ -124,13 +153,39 @@ export namespace GnomeBG {
             height: number,
         ): boolean;
         get_placement(): GDesktopEnums.BackgroundStyle;
+        /**
+         * @param type
+         * @param primary
+         * @param secondary
+         */
         get_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
         has_multiple_sizes(): boolean;
+        /**
+         * @param dest_width
+         * @param dest_height
+         */
         is_dark(dest_width: number, dest_height: number): boolean;
+        /**
+         * @param settings
+         */
         load_from_preferences(settings: Gio.Settings): void;
+        /**
+         * @param settings
+         */
         save_to_preferences(settings: Gio.Settings): void;
+        /**
+         * @param filename
+         */
         set_filename(filename: string): void;
+        /**
+         * @param placement
+         */
         set_placement(placement: GDesktopEnums.BackgroundStyle | null): void;
+        /**
+         * @param type
+         * @param primary
+         * @param secondary
+         */
         set_rgba(type: GDesktopEnums.BackgroundShading | null, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
     }
 
@@ -156,6 +211,9 @@ export namespace GnomeBG {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class BGSlideShow extends GObject.Object {
         static $gtype: GObject.GType<BGSlideShow>;
 
@@ -192,16 +250,19 @@ export namespace GnomeBG {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BGSlideShow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -218,7 +279,7 @@ export namespace GnomeBG {
         get_current_slide(width: number, height: number): [number, number, boolean, string, string];
         /**
          * gets whether or not the slide show has multiple sizes for different monitors
-         * @returns %TRUE if multiple sizes
+         * @returns `true` if multiple sizes
          */
         get_has_multiple_sizes(): boolean;
         /**
@@ -230,7 +291,7 @@ export namespace GnomeBG {
          * @param frame_number frame number
          * @param width monitor width
          * @param height monitor height
-         * @returns %TRUE if successful
+         * @returns `true` if successful
          */
         get_slide(
             frame_number: number,
@@ -249,19 +310,28 @@ export namespace GnomeBG {
         get_total_duration(): number;
         /**
          * Tries to load the slide show.
-         * @returns %TRUE if successful
+         * @returns `true` if successful
          */
         load(): boolean;
         /**
          * Tries to load the slide show asynchronously.
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback
          */
         load_async(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BGClass = typeof BG;
+    /**
+     * @gir-type Alias
+     */
     type BGSlideShowClass = typeof BGSlideShow;
+    /**
+     * @gir-type Struct
+     */
     abstract class BGSlideShowPrivate {
         static $gtype: GObject.GType<BGSlideShowPrivate>;
     }

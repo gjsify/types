@@ -2,6 +2,8 @@
     "entryPoints": ["./midori-0.6.d.ts"],
     "readme": "./README.md",
     "name": "Midori-0.6",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

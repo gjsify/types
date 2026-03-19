@@ -20,12 +20,14 @@ export namespace LangTag {
 
     /**
      * Error code used in this library.
+     * @gir-type Enum
      */
     enum ErrorType {}
 
     /**
-     * This is used as a binary count sequence with lt_tag_get_string_with_filter()
+     * This is used as a binary count sequence with `lt_tag_get_string_with_filter()`
      * to allow only given tags to be the outcome.
+     * @gir-type Enum
      */
     enum TagFilter {}
 
@@ -50,12 +52,18 @@ export namespace LangTag {
     function db_get_script(): ScriptDb;
     function db_get_variant(): VariantDb;
     function db_initialize(): void;
+    /**
+     * @param path
+     */
     function db_set_datadir(path: string): void;
+    /**
+     * @param val
+     */
     function db_set_val(val: DbVal): void;
     /**
      * Load all of the modules on the system, including the internal accessor.
-     * This has to be invoked before processing something with #lt_extension_t.
-     * or lt_db_initialize() does.
+     * This has to be invoked before processing something with `lt_extension_t`.
+     * or `lt_db_initialize()` does.
      */
     function ext_modules_load(): void;
     /**
@@ -64,11 +72,11 @@ export namespace LangTag {
     function ext_modules_unload(): void;
     /**
      * Initialize the iterator with `tmpl` object. this function has to be called
-     * before performing any opperation with the iterator and lt_iter_finish()
+     * before performing any opperation with the iterator and `lt_iter_finish()`
      * when the iterator isn't needed anymore.
      *
      * ```
-     * lt_lang_db *lang = lt_lang_db_new();
+     * lt_lang_db *lang = `lt_lang_db_new()`;
      * LtPointer *key, *val;
      * LtIter *iter;
      *
@@ -84,59 +92,93 @@ export namespace LangTag {
      */
     function iter_init(tmpl: IterTmpl): Iter;
     /**
-     * Frees all of the memory used by a #LtList.
-     * @param data a #LtList.
+     * Frees all of the memory used by a {@link LangTag.List}.
+     * @param data a {@link LangTag.List}.
      */
     function list_free(data: Pointer): void;
     /**
      * Convert current locale to the language tag.
-     * @param error a #LtError.
-     * @returns a #LtTag, %NULL if fails.
+     * @param error a {@link LangTag.Error}.
+     * @returns a {@link LangTag.Tag}, `null` if fails.
      */
     function tag_convert_from_locale(error?: Error | null): Tag;
     /**
      * Convert `locale` to the language tag.
      * @param locale a locale string
-     * @param error a #LtError or %NULL.
-     * @returns a #LtTag, %NULL if fails.
+     * @param error a {@link LangTag.Error} or `null`.
+     * @returns a {@link LangTag.Tag}, `null` if fails.
      */
     function tag_convert_from_locale_string(locale: string, error?: Error | null): Tag;
+    /**
+     * @gir-type Callback
+     */
     interface CompareFunc {
         (v1: Pointer, v2: Pointer): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface CopyFunc {
         (data: Pointer): Pointer;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DestroyFunc {
         (data: Pointer): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtModuleDataNewFunc {
         (): ExtModuleData;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtModuleGetFuncsFunc {
         (): ExtModuleFuncs;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtModuleGetTagFunc {
         (data: ExtModuleData): string;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtModuleParseFunc {
         (data: ExtModuleData, subtag: string, error?: Error | null): Bool;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtModulePrecheckFunc {
         (data: ExtModuleData, tag: Tag, error?: Error | null): Bool;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtModuleSingletonFunc {
         (): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtModuleValidateFunc {
         (data: ExtModuleData): Bool;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtModuleVersionFunc {
         (): number;
     }
     /**
      * The database set of structure to peek instances of them. this is useful
      * for the debugging purpose only.
+     * @gir-type Struct
      */
     class DbVal {
         static $gtype: GObject.GType<DbVal>;
@@ -144,7 +186,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtError</structname>
-     * structure are private to the #LtError implementation.
+     * structure are private to the {@link LangTag.Error} implementation.
+     * @gir-type Struct
      */
     class Error {
         static $gtype: GObject.GType<Error>;
@@ -162,11 +205,11 @@ export namespace LangTag {
          */
         clear(): void;
         /**
-         * Checks if `error` contains `type` of errors. if #LT_ERR_ANY is set to `type,`
+         * Checks if `error` contains `type` of errors. if #LT_ERR_ANY is set to `type`,
          * all the types of the errors are targeted. otherwise the result is filtered
          * out by `type`.
          * @param type a #LtErrorype_t
-         * @returns %TRUE if any, otherwise %FALSE
+         * @returns `true` if any, otherwise `false`
          */
         is_set(type: ErrorType | null): Bool;
         /**
@@ -176,7 +219,7 @@ export namespace LangTag {
         print(type: ErrorType | null): void;
         /**
          * Inscreases the reference count of `error`.
-         * @returns the same @error object.
+         * @returns the same `error` object.
          */
         ref(): Error;
         /**
@@ -188,7 +231,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtExtModule</structname>
-     * structure are private to the #LtExtModule implementation.
+     * structure are private to the {@link LangTag.ExtModule} implementation.
+     * @gir-type Struct
      */
     abstract class ExtModule {
         static $gtype: GObject.GType<ExtModule>;
@@ -197,7 +241,7 @@ export namespace LangTag {
 
         /**
          * Increases the reference count of `module`.
-         * @returns the same @module object.
+         * @returns the same `module` object.
          */
         ref(): ExtModule;
         /**
@@ -209,7 +253,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtExtModuleData</structname>
-     * structure are private to the #LtExtModuleData implementation.
+     * structure are private to the {@link LangTag.ExtModuleData} implementation.
+     * @gir-type Struct
      */
     class ExtModuleData {
         static $gtype: GObject.GType<ExtModuleData>;
@@ -232,7 +277,7 @@ export namespace LangTag {
 
         /**
          * Increases the reference count of `data`.
-         * @returns the same @data object.
+         * @returns the same `data` object.
          */
         ref(): ExtModuleData;
         /**
@@ -244,8 +289,9 @@ export namespace LangTag {
 
     /**
      * The <structname>LtExtModuleFuncs</structname> struct is a callback
-     * collection to provide an accessor between #lt_extension_t
-     * and #LtExtModule and extend features.
+     * collection to provide an accessor between `lt_extension_t`
+     * and {@link LangTag.ExtModule} and extend features.
+     * @gir-type Struct
      */
     class ExtModuleFuncs {
         static $gtype: GObject.GType<ExtModuleFuncs>;
@@ -262,7 +308,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtExtension</structname>
-     * structure are private to the #LtExtension implementation.
+     * structure are private to the {@link LangTag.Extension} implementation.
+     * @gir-type Struct
      */
     abstract class Extension {
         static $gtype: GObject.GType<Extension>;
@@ -271,8 +318,8 @@ export namespace LangTag {
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtExtension.
-         * @returns %TRUE if it's the same, otherwise %FALSE.
+         * @param v2 a {@link LangTag.Extension}.
+         * @returns `true` if it's the same, otherwise `false`.
          */
         compare(v2: Extension): Bool;
         /**
@@ -291,7 +338,7 @@ export namespace LangTag {
         get_tag(): string;
         /**
          * Increases the reference count of `extension`.
-         * @returns the same @extension object.
+         * @returns the same `extension` object.
          */
         ref(): Extension;
         truncate(): Bool;
@@ -304,7 +351,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtExtlang</structname>
-     * structure are private to the #LtExtlang implementation.
+     * structure are private to the {@link LangTag.Extlang} implementation.
+     * @gir-type Struct
      */
     abstract class Extlang {
         static $gtype: GObject.GType<Extlang>;
@@ -313,8 +361,8 @@ export namespace LangTag {
 
         /**
          * Compares if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtExtlang.
-         * @returns %TRUE if it's the same, otherwise %FALSE.
+         * @param v2 a {@link LangTag.Extlang}.
+         * @returns `true` if it's the same, otherwise `false`.
          */
         compare(v2: Extlang): Bool;
         /**
@@ -325,7 +373,7 @@ export namespace LangTag {
          * Obtains the macrolanguage being assigned for the subtag.
          * This is available only when the subtag is registered as the macrolanguage
          * in ISO 639-3.
-         * @returns a macrolanguage string or %NULL.
+         * @returns a macrolanguage string or `null`.
          */
         get_macro_language(): string;
         /**
@@ -336,14 +384,14 @@ export namespace LangTag {
         /**
          * Obtains the preferred-value. this is available only when the subtag is
          * marked as deprecated.
-         * @returns a preferred-value for the subtag or %NULL.
+         * @returns a preferred-value for the subtag or `null`.
          */
         get_preferred_tag(): string;
         /**
          * Obtains the prefix being assigned to the subtag.
          * This is available only when the subtag has a particular seqnence of
          * subgtags that form a meaningful tag with the subtag.
-         * @returns a prefix string or %NULL.
+         * @returns a prefix string or `null`.
          */
         get_prefix(): string;
         /**
@@ -353,7 +401,7 @@ export namespace LangTag {
         get_tag(): string;
         /**
          * Increases the reference count of `extlang`.
-         * @returns the same @extlang object.
+         * @returns the same `extlang` object.
          */
         ref(): Extlang;
         /**
@@ -365,7 +413,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtExtlangDb</structname>
-     * structure are private to the #LtExtlangDb implementation.
+     * structure are private to the {@link LangTag.ExtlangDb} implementation.
+     * @gir-type Struct
      */
     class ExtlangDb {
         static $gtype: GObject.GType<ExtlangDb>;
@@ -381,12 +430,12 @@ export namespace LangTag {
         /**
          * Lookup `LtExtlang` if `subtag` is valid and registered into the database.
          * @param subtag a subtag name to lookup.
-         * @returns a #LtExtlang that meets with @subtag.                           otherwise %NULL.
+         * @returns a {@link LangTag.Extlang} that meets with `subtag`.                           otherwise `null`.
          */
         lookup(subtag: string): Extlang;
         /**
          * Increases the reference count of `extlangdb`.
-         * @returns the same @extlangdb object.
+         * @returns the same `extlangdb` object.
          */
         ref(): ExtlangDb;
         /**
@@ -398,7 +447,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtGrandfathered</structname>
-     * structure are private to the #LtGrandfathered implementation.
+     * structure are private to the {@link LangTag.Grandfathered} implementation.
+     * @gir-type Struct
      */
     abstract class Grandfathered {
         static $gtype: GObject.GType<Grandfathered>;
@@ -407,8 +457,8 @@ export namespace LangTag {
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtGrandfathered.
-         * @returns %TRUE if it's the same. otherwise %FALSE.
+         * @param v2 a {@link LangTag.Grandfathered}.
+         * @returns `true` if it's the same. otherwise `false`.
          */
         compare(v2: Grandfathered): Bool;
         /**
@@ -429,7 +479,7 @@ export namespace LangTag {
         /**
          * Obtains the preferred-value. this is available only when the tag is
          * marked as deprecated.
-         * @returns a preferred-value for the tag or %NULL.
+         * @returns a preferred-value for the tag or `null`.
          */
         get_preferred_tag(): string;
         /**
@@ -439,7 +489,7 @@ export namespace LangTag {
         get_tag(): string;
         /**
          * Increases the reference count of `grandfathered`.
-         * @returns the same @grandfathered object.
+         * @returns the same `grandfathered` object.
          */
         ref(): Grandfathered;
         /**
@@ -451,7 +501,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtGrandfatheredDb</structname>
-     * structure are private to the #LtGrandfatheredDb implementation.
+     * structure are private to the {@link LangTag.GrandfatheredDb} implementation.
+     * @gir-type Struct
      */
     class GrandfatheredDb {
         static $gtype: GObject.GType<GrandfatheredDb>;
@@ -467,12 +518,12 @@ export namespace LangTag {
         /**
          * Lookup `LtGrandfathered` if `tag` is valid and registered into the database.
          * @param tag a tag name to lookup.
-         * @returns a #LtGrandfathered that meets with @tag.                           otherwise %NULL.
+         * @returns a {@link LangTag.Grandfathered} that meets with `tag`.                           otherwise `null`.
          */
         lookup(tag: string): Grandfathered;
         /**
          * Increases the reference count of `grandfathereddb`.
-         * @returns the same @grandfathereddb object.
+         * @returns the same `grandfathereddb` object.
          */
         ref(): GrandfatheredDb;
         /**
@@ -484,7 +535,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtIter</structname>
-     * structure are private to the #LtIter implementation.
+     * structure are private to the {@link LangTag.Iter} implementation.
+     * @gir-type Struct
      */
     abstract class Iter {
         static $gtype: GObject.GType<Iter>;
@@ -493,11 +545,11 @@ export namespace LangTag {
 
         /**
          * Initialize the iterator with `tmpl` object. this function has to be called
-         * before performing any opperation with the iterator and lt_iter_finish()
+         * before performing any opperation with the iterator and `lt_iter_finish()`
          * when the iterator isn't needed anymore.
          *
          * ```
-         * lt_lang_db *lang = lt_lang_db_new();
+         * lt_lang_db *lang = `lt_lang_db_new()`;
          * LtPointer *key, *val;
          * LtIter *iter;
          *
@@ -520,16 +572,16 @@ export namespace LangTag {
         finish(): void;
         /**
          * Advances `iter` and retrieves the key and/or value that are now
-         * pointed to as a result of this advancement. If %FALSE is returned,
+         * pointed to as a result of this advancement. If `false` is returned,
          * `key` and `value` are not set, and the iterator becomes invalid.
-         * @param key a location to store the key, or %NULL
-         * @param val a location to store the value, or %NULL
-         * @returns %FALSE if the end of the object that the iterator is adapted          has been reached.
+         * @param key a location to store the key, or `null`
+         * @param val a location to store the value, or `null`
+         * @returns `false` if the end of the object that the iterator is adapted          has been reached.
          */
         next(key?: Pointer | null, val?: Pointer | null): Bool;
         /**
          * Increases the reference count of `iter`.
-         * @returns the same @iter object.
+         * @returns the same `iter` object.
          */
         ref(): Iter;
         /**
@@ -541,7 +593,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtIterTmpl</structname>
-     * structure are private to the #LtIterTmpl implementation.
+     * structure are private to the {@link LangTag.IterTmpl} implementation.
+     * @gir-type Struct
      */
     abstract class IterTmpl {
         static $gtype: GObject.GType<IterTmpl>;
@@ -549,7 +602,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtLang</structname>
-     * structure are private to the #LtLang implementation.
+     * structure are private to the {@link LangTag.Lang} implementation.
+     * @gir-type Struct
      */
     abstract class Lang {
         static $gtype: GObject.GType<Lang>;
@@ -558,8 +612,8 @@ export namespace LangTag {
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtLang.
-         * @returns %TRUE if it's the same, otherwise %FALSE.
+         * @param v2 a {@link LangTag.Lang}.
+         * @returns `true` if it's the same, otherwise `false`.
          */
         compare(v2: Lang): Bool;
         /**
@@ -576,7 +630,7 @@ export namespace LangTag {
          * Obtains the macrolanguage being assigned for the subtag.
          * This is available only when the subtag is registered as the macrolanguage
          * in ISO 639-3.
-         * @returns a macrolanguage string or %NULL.
+         * @returns a macrolanguage string or `null`.
          */
         get_macro_language(): string;
         /**
@@ -587,19 +641,19 @@ export namespace LangTag {
         /**
          * Obtains the preferred-value. this is available only when the tag is
          * marked as deprecated.
-         * @returns a preferred-value for the tag or %NULL.
+         * @returns a preferred-value for the tag or `null`.
          */
         get_preferred_tag(): string;
         /**
          * Obtains the scope value indicating the type of language code according
          * to ISO 639.
-         * @returns a scope string or %NULL.
+         * @returns a scope string or `null`.
          */
         get_scope(): string;
         /**
          * Obtains the suppress-script value. which shouldn't be used to form
          * language tags with the associated primary or extended language subtag.
-         * @returns a suppress-script string or %NULL.
+         * @returns a suppress-script string or `null`.
          */
         get_suppress_script(): string;
         /**
@@ -609,7 +663,7 @@ export namespace LangTag {
         get_tag(): string;
         /**
          * Increases the reference count of `lang`.
-         * @returns the same @lang object.
+         * @returns the same `lang` object.
          */
         ref(): Lang;
         /**
@@ -621,7 +675,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtLangDb</structname>
-     * structure are private to the #LtLangDb implementation.
+     * structure are private to the {@link LangTag.LangDb} implementation.
+     * @gir-type Struct
      */
     class LangDb {
         static $gtype: GObject.GType<LangDb>;
@@ -637,12 +692,12 @@ export namespace LangTag {
         /**
          * Lookup `LtLang` if `subtag` is valid and registered into the database.
          * @param subtag a subtag name to lookup.
-         * @returns a #LtLang that meets with @subtag.                           otherwise %NULL.
+         * @returns a {@link LangTag.Lang} that meets with `subtag`.                           otherwise `null`.
          */
         lookup(subtag: string): Lang;
         /**
          * Increases the reference count of `langdb`.
-         * @returns the same @langdb object.
+         * @returns the same `langdb` object.
          */
         ref(): LangDb;
         /**
@@ -654,7 +709,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtList</structname>
-     * structure are private to the #LtList implementation.
+     * structure are private to the {@link LangTag.List} implementation.
+     * @gir-type Struct
      */
     class List {
         static $gtype: GObject.GType<List>;
@@ -668,8 +724,8 @@ export namespace LangTag {
         // Static methods
 
         /**
-         * Frees all of the memory used by a #LtList.
-         * @param data a #LtList.
+         * Frees all of the memory used by a {@link LangTag.List}.
+         * @param data a {@link LangTag.List}.
          */
         static free(data: Pointer): void;
 
@@ -678,100 +734,100 @@ export namespace LangTag {
         /**
          * Adds a new element on to the end of the list.
          * @param data the data for the new element
-         * @param func the call back function to destroy @data or %NULL
-         * @returns the new start of the #LtList.
+         * @param func the call back function to destroy `data` or `null`
+         * @returns the new start of the {@link LangTag.List}.
          */
         append(data: Pointer, func: DestroyFunc): List;
         /**
-         * Removes an element from a #LtList.
+         * Removes an element from a {@link LangTag.List}.
          * If two elements contain the same data, only the first is removed.
-         * If none of the elements contain the data, the #LtList is unchanged.
+         * If none of the elements contain the data, the {@link LangTag.List} is unchanged.
          * @param data the data of the element to remove.
-         * @returns the new start of the #LtList.
+         * @returns the new start of the {@link LangTag.List}.
          */
         ['delete'](data: Pointer): List;
         /**
          * Removes the node `link_` from the `list` and frees it.
-         * @param link_ node to delete from @list
-         * @returns the new head of @list
+         * @param link_ node to delete from `list`
+         * @returns the new head of `list`
          */
         delete_link(link_: List): List;
         /**
-         * Finds the element in a #LtList which
+         * Finds the element in a {@link LangTag.List} which
          * contains the given data.
          * @param data the element data to find
-         * @returns the found #LtList element, or %NULL if it's not found
+         * @returns the found {@link LangTag.List} element, or `null` if it's not found
          */
         find(data: Pointer): List;
         /**
-         * Finds an element in a #LtList, using a supplied function to
+         * Finds an element in a {@link LangTag.List}, using a supplied function to
          * find the desired element. It iterates over the list, calling
          * the given function which should return 0 when the desired
-         * element is found. The function takes two const #LtPointer
-         * arguments, the #LtList element's data as the first argument
+         * element is found. The function takes two const {@link LangTag.Pointer}
+         * arguments, the {@link LangTag.List} element's data as the first argument
          * and the given data.
          * @param data the data passed to the function
          * @param func the function to call for each element.        It should return 0 when the desired element is found
-         * @returns the found #LtList element, or %NULL if it's not found
+         * @returns the found {@link LangTag.List} element, or `null` if it's not found
          */
         find_custom(data: Pointer, func: CompareFunc): List;
         /**
-         * Gets the first element in a #LtList.
-         * @returns the first element in the #LtList          or %NULL if the #LtList has no elements.
+         * Gets the first element in a {@link LangTag.List}.
+         * @returns the first element in the {@link LangTag.List}          or `null` if the {@link LangTag.List} has no elements.
          */
         first(): List;
         /**
-         * Gets the last element in a #LtList.
-         * @returns the last element in the #LtList          or %NULL if the #LtList has no elements.
+         * Gets the last element in a {@link LangTag.List}.
+         * @returns the last element in the {@link LangTag.List}          or `null` if the {@link LangTag.List} has no elements.
          */
         last(): List;
         /**
-         * Gets the number of elements in a #LtList.
-         * @returns the number of elements in the #LtList.
+         * Gets the number of elements in a {@link LangTag.List}.
+         * @returns the number of elements in the {@link LangTag.List}.
          */
         length(): number;
         /**
-         * Gets the next element in a #LtList.
-         * @returns the next element, or %NULL if there are no more elements.
+         * Gets the next element in a {@link LangTag.List}.
+         * @returns the next element, or `null` if there are no more elements.
          */
         next(): List;
         /**
          * Sets the data in the first element to `data` and drop the element.
          * @param data a pointer to set the data in the first element
-         * @returns the new head of @list.
+         * @returns the new head of `list`.
          */
         pop(data: Pointer): List;
         /**
          * Adds a new element on to the start of the list.
          * @param data the data for the new element
-         * @param func the call back function to destroy @data or %NULL
-         * @returns the new start of the #LtList.
+         * @param func the call back function to destroy `data` or `null`
+         * @returns the new start of the {@link LangTag.List}.
          */
         prepend(data: Pointer, func: DestroyFunc): List;
         /**
-         * Gets the previous element in a #LtList.
-         * @returns the previous element, or %NULL if there are no previous elements.
+         * Gets the previous element in a {@link LangTag.List}.
+         * @returns the previous element, or `null` if there are no previous elements.
          */
         previous(): List;
         /**
          * Increases the reference count of `list`.
-         * @returns the same @list object.
+         * @returns the same `list` object.
          */
         ref(): List;
         /**
-         * Removes an element from a #LtList.
+         * Removes an element from a {@link LangTag.List}.
          * If two elements contain the same data, only the first is removed.
-         * If none of the elements contain the data, the #LtList is unchanged.
-         * This works similar to lt_list_delete() though, the difference is
+         * If none of the elements contain the data, the {@link LangTag.List} is unchanged.
+         * This works similar to `lt_list_delete()` though, the difference is
          * this won't calls the finalizer to destroy the data in the element.
          * @param data the data of the element to remove.
-         * @returns the new start of the #LtList.
+         * @returns the new start of the {@link LangTag.List}.
          */
         remove(data: Pointer): List;
         /**
-         * Sorts a #LtList using the given comparison function.
-         * @param func the comparison function used to sort the #LtList.        This function is passed the data from 2 elements of the #LtList        and should return 0 if they are equal, a negative value if the        first element comes before the second, or a positive value if        the first element comes after the second.
-         * @returns the start of the sorted #LtList
+         * Sorts a {@link LangTag.List} using the given comparison function.
+         * @param func the comparison function used to sort the {@link LangTag.List}.        This function is passed the data from 2 elements of the {@link LangTag.List}        and should return 0 if they are equal, a negative value if the        first element comes before the second, or a positive value if        the first element comes after the second.
+         * @returns the start of the sorted {@link LangTag.List}
          */
         sort(func: CompareFunc): List;
         /**
@@ -780,15 +836,16 @@ export namespace LangTag {
          */
         unref(): void;
         /**
-         * Gets a value in a #LtList.
-         * @returns a pointer to be set to the #LtList.
+         * Gets a value in a {@link LangTag.List}.
+         * @returns a pointer to be set to the {@link LangTag.List}.
          */
         value(): Pointer;
     }
 
     /**
      * All the fields in the <structname>LtRedundant</structname>
-     * structure are private to the #LtRedundant implementation.
+     * structure are private to the {@link LangTag.Redundant} implementation.
+     * @gir-type Struct
      */
     abstract class Redundant {
         static $gtype: GObject.GType<Redundant>;
@@ -797,8 +854,8 @@ export namespace LangTag {
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtRedundant.
-         * @returns %TRUE if it's the same. otherwise %FALSE.
+         * @param v2 a {@link LangTag.Redundant}.
+         * @returns `true` if it's the same. otherwise `false`.
          */
         compare(v2: Redundant): Bool;
         /**
@@ -819,7 +876,7 @@ export namespace LangTag {
         /**
          * Obtains the preferred-value. this is available only when the tag is
          * marked as deprecated.
-         * @returns a preferred-value for the tag or %NULL.
+         * @returns a preferred-value for the tag or `null`.
          */
         get_preferred_tag(): string;
         /**
@@ -829,7 +886,7 @@ export namespace LangTag {
         get_tag(): string;
         /**
          * Increases the reference count of `redundant`.
-         * @returns the same @redundant object.
+         * @returns the same `redundant` object.
          */
         ref(): Redundant;
         /**
@@ -841,7 +898,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtRedundantDb</structname>
-     * structure are private to the #LtRedundantDb implementation.
+     * structure are private to the {@link LangTag.RedundantDb} implementation.
+     * @gir-type Struct
      */
     class RedundantDb {
         static $gtype: GObject.GType<RedundantDb>;
@@ -857,12 +915,12 @@ export namespace LangTag {
         /**
          * Lookup `LtRedundant` if `tag` is valid and registered into the database.
          * @param tag a tag name to lookup.
-         * @returns a #LtRedundant that meets with @tag.                           otherwise %NULL.
+         * @returns a {@link LangTag.Redundant} that meets with `tag`.                           otherwise `null`.
          */
         lookup(tag: string): Redundant;
         /**
          * Increases the reference count of `redundantdb`.
-         * @returns the same @redundantdb object.
+         * @returns the same `redundantdb` object.
          */
         ref(): RedundantDb;
         /**
@@ -874,7 +932,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtRegion</structname>
-     * structure are private to the #LtRegion implementation.
+     * structure are private to the {@link LangTag.Region} implementation.
+     * @gir-type Struct
      */
     abstract class Region {
         static $gtype: GObject.GType<Region>;
@@ -883,8 +942,8 @@ export namespace LangTag {
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtRegion.
-         * @returns %TRUE if it's the same, otherwise %FALSE.
+         * @param v2 a {@link LangTag.Region}.
+         * @returns `true` if it's the same, otherwise `false`.
          */
         compare(v2: Region): Bool;
         /**
@@ -905,7 +964,7 @@ export namespace LangTag {
         /**
          * Obtains the preferred-value. this is available only when the tag is
          * marked as deprecated.
-         * @returns a preferred-value for the tag or %NULL.
+         * @returns a preferred-value for the tag or `null`.
          */
         get_preferred_tag(): string;
         /**
@@ -915,7 +974,7 @@ export namespace LangTag {
         get_tag(): string;
         /**
          * Increases the reference count of `region`.
-         * @returns the same @region object.
+         * @returns the same `region` object.
          */
         ref(): Region;
         /**
@@ -927,7 +986,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtRegionDb</structname>
-     * structure are private to the #LtRegionDb implementation.
+     * structure are private to the {@link LangTag.RegionDb} implementation.
+     * @gir-type Struct
      */
     class RegionDb {
         static $gtype: GObject.GType<RegionDb>;
@@ -944,12 +1004,12 @@ export namespace LangTag {
          * Lookup `LtRegion` if `language_or_code` is valid and registered into
          * the database.
          * @param language_or_code a region code to lookup.
-         * @returns a #LtRegion that meets with @language_or_code.                           otherwise %NULL.
+         * @returns a {@link LangTag.Region} that meets with `language_or_code`.                           otherwise `null`.
          */
         lookup(language_or_code: string): Region;
         /**
          * Increases the reference count of `regiondb`.
-         * @returns the same @regiondb object.
+         * @returns the same `regiondb` object.
          */
         ref(): RegionDb;
         /**
@@ -961,7 +1021,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtRelationDb</structname>
-     * structure are private to the #LtRelationDb implementation.
+     * structure are private to the {@link LangTag.RelationDb} implementation.
+     * @gir-type Struct
      */
     class RelationDb {
         static $gtype: GObject.GType<RelationDb>;
@@ -976,19 +1037,19 @@ export namespace LangTag {
 
         /**
          * Look up the languages corresponding to the script `script`.
-         * @param script a #LtScript.
-         * @returns a #LtList containing #LtLang object.
+         * @param script a {@link LangTag.Script}.
+         * @returns a {@link LangTag.List} containing {@link LangTag.Lang} object.
          */
         lookup_lang_from_script(script: Script): List;
         /**
          * Look up the scripts corresponding to the language `lang`.
-         * @param lang a #LtLang.
-         * @returns a #LtList containing #LtScript objects.
+         * @param lang a {@link LangTag.Lang}.
+         * @returns a {@link LangTag.List} containing {@link LangTag.Script} objects.
          */
         lookup_script_from_lang(lang: Lang): List;
         /**
          * Increases the reference count of `relationdb`.
-         * @returns the same @relationddb object.
+         * @returns the same `relationddb` object.
          */
         ref(): RelationDb;
         /**
@@ -1000,7 +1061,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtScript</structname>
-     * structure are private to the #LtScript implementation.
+     * structure are private to the {@link LangTag.Script} implementation.
+     * @gir-type Struct
      */
     abstract class Script {
         static $gtype: GObject.GType<Script>;
@@ -1009,13 +1071,13 @@ export namespace LangTag {
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtScript.
-         * @returns %TRUE if it's the same, otherwise %FALSE.
+         * @param v2 a {@link LangTag.Script}.
+         * @returns `true` if it's the same, otherwise `false`.
          */
         compare(v2: Script): Bool;
         /**
          * Convert the script subtag to the locale variant modifier.
-         * @returns a modifier string or %NULL.
+         * @returns a modifier string or `null`.
          */
         convert_to_modifier(): string;
         /**
@@ -1034,7 +1096,7 @@ export namespace LangTag {
         get_tag(): string;
         /**
          * Increases the reference count of `script`.
-         * @returns the same @script object.
+         * @returns the same `script` object.
          */
         ref(): Script;
         /**
@@ -1046,7 +1108,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtScriptDb</structname>
-     * structure are private to the #LtScriptDb implementation.
+     * structure are private to the {@link LangTag.ScriptDb} implementation.
+     * @gir-type Struct
      */
     class ScriptDb {
         static $gtype: GObject.GType<ScriptDb>;
@@ -1062,12 +1125,12 @@ export namespace LangTag {
         /**
          * Lookup `LtScript` if `subtag` is valid and registered into the database.
          * @param subtag a subtag name to lookup.
-         * @returns a #LtScript that meets with @subtag.                           otherwise %NULL.
+         * @returns a {@link LangTag.Script} that meets with `subtag`.                           otherwise `null`.
          */
         lookup(subtag: string): Script;
         /**
          * Increases the reference count of `scriptdb`.
-         * @returns the same @scriptdb object.
+         * @returns the same `scriptdb` object.
          */
         ref(): ScriptDb;
         /**
@@ -1079,7 +1142,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtString</structname>
-     * structure are private to the #LtString implementation.
+     * structure are private to the {@link LangTag.String} implementation.
+     * @gir-type Struct
      */
     class String {
         static $gtype: GObject.GType<String>;
@@ -1093,25 +1157,25 @@ export namespace LangTag {
         // Methods
 
         /**
-         * Adds a string onto the end of a #LtString, expanding
+         * Adds a string onto the end of a {@link LangTag.String}, expanding
          * it if necessary.
-         * @param str the string to append onto the end of @string
-         * @returns the same @string object
+         * @param str the string to append onto the end of `string`
+         * @returns the same `string` object
          */
         append(str: string): String;
         /**
-         * Adds a byte onto the end of a #LtString, expanding
+         * Adds a byte onto the end of a {@link LangTag.String}, expanding
          * it if necessary.
-         * @param c the byte to append onto the end of @string
-         * @returns the same @string object.
+         * @param c the byte to append onto the end of `string`
+         * @returns the same `string` object.
          */
         append_c(c: number): String;
         /**
-         * Obtain a byte in a #LtString at `pos`. If `pos` is a negative,
+         * Obtain a byte in a {@link LangTag.String} at `pos`. If `pos` is a negative,
          * the position is calculated from current size. i.e. if the buffer
          * contains "abc", and `pos` is -1, this will returns 'c' then.
-         * @param pos position in @string where to obtain the byte
-         * @returns the byte in @string at @pos
+         * @param pos position in `string` where to obtain the byte
+         * @returns the byte in `string` at `pos`
          */
         at(pos: number): number;
         /**
@@ -1119,12 +1183,12 @@ export namespace LangTag {
          */
         clear(): void;
         /**
-         * Frees the memory allocated for the #LtString.
-         * If `free_segment` is %TRUE it also frees the character data.  If
-         * it's %FALSE, the caller gains ownership of the buffer and must
-         * free it after use with free().
-         * @param free_segment if %TRUE, the actual character data is freed as well
-         * @returns the character data of @string          (i.e. %NULL if @free_segment is %TRUE)
+         * Frees the memory allocated for the {@link LangTag.String}.
+         * If `free_segment` is `true` it also frees the character data.  If
+         * it's `false`, the caller gains ownership of the buffer and must
+         * free it after use with `free()`.
+         * @param free_segment if `true`, the actual character data is freed as well
+         * @returns the character data of `string`          (i.e. `null` if `free_segment` is `true`)
          */
         free(free_segment: Bool): string;
         /**
@@ -1134,16 +1198,19 @@ export namespace LangTag {
         length(): number;
         /**
          * Increases the reference count of `string`.
-         * @returns the same @string object.
+         * @returns the same `string` object.
          */
         ref(): String;
         /**
          * Replaces a character in `string` at `pos`.
-         * @param pos position in @string where replacement should happen
+         * @param pos position in `string` where replacement should happen
          * @param c the byte to replace
-         * @returns the same @string object
+         * @returns the same `string` object
          */
         replace_c(pos: number, c: number): String;
+        /**
+         * @param len
+         */
         truncate(len: number): String;
         /**
          * Decreases the reference count of `string`. when its reference count
@@ -1152,14 +1219,15 @@ export namespace LangTag {
         unref(): void;
         /**
          * Returns the buffer in `string`.
-         * @returns a string which @string has.
+         * @returns a string which `string` has.
          */
         value(): string;
     }
 
     /**
      * All the fields in the <structname>LtTag</structname>
-     * structure are private to the #LtTag implementation.
+     * structure are private to the {@link LangTag.Tag} implementation.
+     * @gir-type Struct
      */
     class Tag {
         static $gtype: GObject.GType<Tag>;
@@ -1174,13 +1242,13 @@ export namespace LangTag {
 
         /**
          * Convert current locale to the language tag.
-         * @param error a #LtError.
+         * @param error a {@link LangTag.Error}.
          */
         static convert_from_locale(error?: Error | null): Tag;
         /**
          * Convert `locale` to the language tag.
          * @param locale a locale string
-         * @param error a #LtError or %NULL.
+         * @param error a {@link LangTag.Error} or `null`.
          */
         static convert_from_locale_string(locale: string, error?: Error | null): Tag;
 
@@ -1188,14 +1256,14 @@ export namespace LangTag {
 
         /**
          * Canonicalize the language tag according to various information of subtags.
-         * @param error a #LtError or %NULL.
+         * @param error a {@link LangTag.Error} or `null`.
          * @returns a language tag string.
          */
         canonicalize(error?: Error | null): string;
         /**
          * Canonicalize the language tag in the extlang form
          * according to various information of subtags.
-         * @param error a #LtError or %NULL.
+         * @param error a {@link LangTag.Error} or `null`.
          * @returns a language tag string.
          */
         canonicalize_in_extlang_form(error?: Error | null): string;
@@ -1205,19 +1273,19 @@ export namespace LangTag {
         clear(): void;
         /**
          * Compare if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtTag.
-         * @returns %TRUE if it's the same, otherwise %FALSE.
+         * @param v2 a {@link LangTag.Tag}.
+         * @returns `true` if it's the same, otherwise `false`.
          */
         compare(v2: Tag): Bool;
         /**
          * Convert the language tag to the locale.
-         * @param error a #LtError or %NULL.
-         * @returns a locale string or %NULL if fails
+         * @param error a {@link LangTag.Error} or `null`.
+         * @returns a locale string or `null` if fails
          */
         convert_to_locale(error?: Error | null): string;
         /**
          * Create a copy instance of `tag`.
-         * @returns a new instance of #LtTag or %NULL if fails.
+         * @returns a new instance of {@link LangTag.Tag} or `null` if fails.
          */
         copy(): Tag;
         /**
@@ -1225,38 +1293,38 @@ export namespace LangTag {
          */
         dump(): void;
         /**
-         * Obtain a #LtExtension instance in `tag`.
-         * @returns a #LtExtension.
+         * Obtain a {@link LangTag.Extension} instance in `tag`.
+         * @returns a {@link LangTag.Extension}.
          */
         get_extension(): Extension;
         /**
-         * Obtain a #LtExtlang instance in `tag`.
-         * @returns a #LtExtlang.
+         * Obtain a {@link LangTag.Extlang} instance in `tag`.
+         * @returns a {@link LangTag.Extlang}.
          */
         get_extlang(): Extlang;
         /**
-         * Obtain a #LtGrandfathered instance in `tag`.
-         * @returns a #LtGrandfathered.
+         * Obtain a {@link LangTag.Grandfathered} instance in `tag`.
+         * @returns a {@link LangTag.Grandfathered}.
          */
         get_grandfathered(): Grandfathered;
         /**
-         * Obtain a #LtLang instance in `tag`.
-         * @returns a #LtLang.
+         * Obtain a {@link LangTag.Lang} instance in `tag`.
+         * @returns a {@link LangTag.Lang}.
          */
         get_language(): Lang;
         /**
-         * Obtain a #LtString instance in `tag`.
-         * @returns a #LtString.
+         * Obtain a {@link LangTag.String} instance in `tag`.
+         * @returns a {@link LangTag.String}.
          */
         get_privateuse(): String;
         /**
-         * Obtain a #LtRegion instance in `tag`.
-         * @returns a #LtRegion.
+         * Obtain a {@link LangTag.Region} instance in `tag`.
+         * @returns a {@link LangTag.Region}.
          */
         get_region(): Region;
         /**
-         * Obtain a #LtScript instance in `tag`.
-         * @returns a #LtScript.
+         * Obtain a {@link LangTag.Script} instance in `tag`.
+         * @returns a {@link LangTag.Script}.
          */
         get_script(): Script;
         /**
@@ -1266,13 +1334,13 @@ export namespace LangTag {
         get_string(): string;
         /**
          * Obtains a language tag in string against `filter`.
-         * @param filter a binary count sequence of #lt_tag_filter_t.
+         * @param filter a binary count sequence of `lt_tag_filter_t`.
          * @returns a language tag string.
          */
         get_string_with_filter(filter: number): string;
         /**
-         * Obtain a list of #LtVariant instance in `tag`.
-         * @returns a #LtList containing #LtVariant.
+         * Obtain a list of {@link LangTag.Variant} instance in `tag`.
+         * @returns a {@link LangTag.List} containing {@link LangTag.Variant}.
          */
         get_variants(): List;
         /**
@@ -1280,39 +1348,45 @@ export namespace LangTag {
          * Any of subtags in `pattern` is allowed to use the wildcard according to
          * the syntax in RFC 4647.
          * @param pattern a language range string.
-         * @param error a #LtError or %NULL.
-         * @returns a language tag string if any matches, otherwise %NULL.
+         * @param error a {@link LangTag.Error} or `null`.
+         * @returns a language tag string if any matches, otherwise `null`.
          */
         lookup(pattern: string, error?: Error | null): string;
         /**
          * Try matching of `v1` and `v2`. any of subtags in `v2` is allowed to use
          * the wildcard according to the syntax in RFC 4647.
          * @param v2 a language range string.
-         * @param error a #LtError or %NULL.
-         * @returns %TRUE if it matches, otherwise %FALSE.
+         * @param error a {@link LangTag.Error} or `null`.
+         * @returns `true` if it matches, otherwise `false`.
          */
         match(v2: string, error?: Error | null): Bool;
         /**
          * Parse `tag_string` and create appropriate instances for subtags.
          * @param tag_string language tag to be parsed.
-         * @param error a #LtError or %NULL.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @param error a {@link LangTag.Error} or `null`.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         parse(tag_string: string, error?: Error | null): Bool;
         /**
-         * Continue to parse a language tag with `tag_string`. please use lt_tag_parse()
+         * Continue to parse a language tag with `tag_string`. please use `lt_tag_parse()`
          * at first.
          * @param tag_string a language tag to be parsed much more.
-         * @param error a #LtError or %NULL.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @param error a {@link LangTag.Error} or `null`.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         parse_with_extra_token(tag_string: string, error?: Error | null): Bool;
         /**
          * Increases the reference count of `tag`.
-         * @returns the same @tag object.
+         * @returns the same `tag` object.
          */
         ref(): Tag;
+        /**
+         * @param error
+         */
         transform(error: Error): string;
+        /**
+         * @param error
+         */
         truncate(error: Error): Bool;
         /**
          * Decreases the reference count of `tag`. when its reference count
@@ -1323,7 +1397,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtVariant</structname>
-     * structure are private to the #LtVariant implementation.
+     * structure are private to the {@link LangTag.Variant} implementation.
+     * @gir-type Struct
      */
     abstract class Variant {
         static $gtype: GObject.GType<Variant>;
@@ -1332,8 +1407,8 @@ export namespace LangTag {
 
         /**
          * Compare if `v1` and `v2` is the same object or not.
-         * @param v2 a #LtVariant.
-         * @returns %TRUE if it's the same, otherwise %FALSE.
+         * @param v2 a {@link LangTag.Variant}.
+         * @returns `true` if it's the same, otherwise `false`.
          */
         compare(v2: Variant): Bool;
         /**
@@ -1354,7 +1429,7 @@ export namespace LangTag {
         /**
          * Obtains the preferred-value. this is available only when the tag is
          * marked as deprecated.
-         * @returns a preferred-value for the tag or %NULL.
+         * @returns a preferred-value for the tag or `null`.
          */
         get_preferred_tag(): string;
         /**
@@ -1362,7 +1437,7 @@ export namespace LangTag {
          * This is available only when the subtag has any suitable sequence of
          * subtags for forming (with other subtags, as appropriate) a language
          * tag when using the variant.
-         * @returns a #LtList contains prefix strings or %NULL.
+         * @returns a {@link LangTag.List} contains prefix strings or `null`.
          */
         get_prefix(): List;
         /**
@@ -1372,7 +1447,7 @@ export namespace LangTag {
         get_tag(): string;
         /**
          * Increases the reference count of `variant`.
-         * @returns the same @variant object.
+         * @returns the same `variant` object.
          */
         ref(): Variant;
         /**
@@ -1384,7 +1459,8 @@ export namespace LangTag {
 
     /**
      * All the fields in the <structname>LtVariantDb</structname>
-     * structure are private to the #LtVariantDb implementation.
+     * structure are private to the {@link LangTag.VariantDb} implementation.
+     * @gir-type Struct
      */
     class VariantDb {
         static $gtype: GObject.GType<VariantDb>;
@@ -1400,12 +1476,12 @@ export namespace LangTag {
         /**
          * Lookup `LtVariant` if `subtag` is valid and registered into the database.
          * @param subtag a subtag name to lookup.
-         * @returns a #LtVariant that meets with @subtag.                           otherwise %NULL.
+         * @returns a {@link LangTag.Variant} that meets with `subtag`.                           otherwise `null`.
          */
         lookup(subtag: string): Variant;
         /**
          * Increases the reference count of `variantdb`.
-         * @returns the same @variantdb object.
+         * @returns the same `variantdb` object.
          */
         ref(): VariantDb;
         /**
@@ -1415,7 +1491,15 @@ export namespace LangTag {
         unref(): void;
     }
 
+    /**
+     * The type of boolean value.
+     * @gir-type Alias
+     */
     type Bool = number;
+    /**
+     * The type of object pointer.
+     * @gir-type Alias
+     */
     type Pointer = any;
     /**
      * Name of the imported GIR library

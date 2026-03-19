@@ -28,6 +28,9 @@ export namespace GdkX11 {
      * GdkX11-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum X11DeviceType {
         LOGICAL,
         PHYSICAL,
@@ -36,41 +39,47 @@ export namespace GdkX11 {
 
     /**
      * Returns the device ID as seen by XInput2.
-     * @param device a `GdkDevice`
+     * @param device a {@link Gdk.Device}
      * @returns the XInput2 device ID
+     * @deprecated since 4.18
      */
     function x11_device_get_id(device: X11DeviceXI2): number;
     /**
-     * Returns the `GdkDevice` that wraps the given device ID.
+     * Returns the {@link Gdk.Device} that wraps the given device ID.
      * @param device_manager a `GdkDeviceManager`
      * @param device_id a device ID, as understood by the XInput2 protocol
-     * @returns The   `GdkDevice` wrapping the device ID, or %NULL if the given ID   doesn’t currently represent a device.
+     * @returns The   {@link Gdk.Device} wrapping the device ID, or `null` if the given ID   doesn’t currently represent a device.
+     * @deprecated since 4.18
      */
     function x11_device_manager_lookup(device_manager: X11DeviceManagerXI2, device_id: number): X11DeviceXI2 | null;
     /**
-     * Frees the data returned from gdk_x11_display_string_to_compound_text().
-     * @param ctext The pointer stored in @ctext from a call to   gdk_x11_display_string_to_compound_text().
+     * Frees the data returned from `gdk_x11_display_string_to_compound_text()`.
+     * @param ctext The pointer stored in `ctext` from a call to   `gdk_x11_display_string_to_compound_text()`.
+     * @deprecated since 4.18
      */
     function x11_free_compound_text(ctext: number): void;
     /**
      * Frees the array of strings created by
-     * gdk_x11_display_text_property_to_text_list().
-     * @param list the value stored in the @list parameter by   a call to gdk_x11_display_text_property_to_text_list().
+     * `gdk_x11_display_text_property_to_text_list()`.
+     * @param list the value stored in the `list` parameter by   a call to `gdk_x11_display_text_property_to_text_list()`.
+     * @deprecated since 4.18
      */
     function x11_free_text_list(list: string): void;
     /**
      * Routine to get the current X server time stamp.
-     * @param surface a `GdkSurface`, used for communication   with the server. The surface must have `GDK_PROPERTY_CHANGE_MASK` in   its events mask or a hang will result.
+     * @param surface a {@link Gdk.Surface}, used for communication   with the server. The surface must have `GDK_PROPERTY_CHANGE_MASK` in   its events mask or a hang will result.
      * @returns the time stamp
+     * @deprecated since 4.18
      */
     function x11_get_server_time(surface: X11Surface): number;
     /**
-     * Returns the X atom for a `GdkDisplay` corresponding to `atom_name`.
+     * Returns the X atom for a {@link Gdk.Display} corresponding to `atom_name`.
      * This function caches the result, so if called repeatedly it is much
      * faster than XInternAtom(), which is a round trip to the server each time.
-     * @param display a `GdkDisplay`
+     * @param display a {@link Gdk.Display}
      * @param atom_name a string
-     * @returns a X atom for a `GdkDisplay`
+     * @returns a X atom for a {@link Gdk.Display}
+     * @deprecated since 4.18
      */
     function x11_get_xatom_by_name_for_display(display: X11Display, atom_name: string): xlib.Atom;
     /**
@@ -78,15 +87,16 @@ export namespace GdkX11 {
      * function is meant mainly for debugging, so for convenience, unlike
      * XAtomName() and the result doesn’t need to
      * be freed.
-     * @param display the `GdkDisplay` where @xatom is defined
+     * @param display the {@link Gdk.Display} where `xatom` is defined
      * @param xatom an X atom
      * @returns name of the X atom; this string is owned by GDK,   so it shouldn’t be modified or freed.
+     * @deprecated since 4.18
      */
     function x11_get_xatom_name_for_display(display: X11Display, xatom: xlib.Atom): string;
     /**
-     * Find the `GdkDisplay` corresponding to `xdisplay,` if any exists.
+     * Find the {@link Gdk.Display} corresponding to `xdisplay`, if any exists.
      * @param xdisplay a pointer to an X Display
-     * @returns the `GdkDisplay`, if found, otherwise %NULL.
+     * @returns the {@link Gdk.Display}, if found, otherwise `null`.
      */
     function x11_lookup_xdisplay(xdisplay: xlib.Display): X11Display;
     /**
@@ -96,7 +106,7 @@ export namespace GdkX11 {
      *
      * See the X Session Management Library documentation for more information on
      * session management and the Inter-Client Communication Conventions Manual
-     * @param sm_client_id the client id assigned by the session manager    when the connection was opened, or %NULL to remove the property.
+     * @param sm_client_id the client id assigned by the session manager    when the connection was opened, or `null` to remove the property.
      */
     function x11_set_sm_client_id(sm_client_id?: string | null): void;
     namespace X11AppLaunchContext {
@@ -110,6 +120,9 @@ export namespace GdkX11 {
         interface ConstructorProps extends Gdk.AppLaunchContext.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class X11AppLaunchContext extends Gdk.AppLaunchContext {
         static $gtype: GObject.GType<X11AppLaunchContext>;
 
@@ -130,16 +143,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11AppLaunchContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11AppLaunchContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11AppLaunchContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11AppLaunchContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11AppLaunchContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11AppLaunchContext.SignalSignatures[K]> extends [any, ...infer Q]
@@ -168,6 +184,9 @@ export namespace GdkX11 {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class X11DeviceManagerXI2 extends GObject.Object {
         static $gtype: GObject.GType<X11DeviceManagerXI2>;
 
@@ -195,16 +214,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11DeviceManagerXI2.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11DeviceManagerXI2.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11DeviceManagerXI2.SignalSignatures[K]> extends [any, ...infer Q]
@@ -246,6 +268,9 @@ export namespace GdkX11 {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class X11DeviceXI2 extends Gdk.Device {
         static $gtype: GObject.GType<X11DeviceXI2>;
 
@@ -271,16 +296,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11DeviceXI2.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11DeviceXI2.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11DeviceXI2.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11DeviceXI2.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11DeviceXI2.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11DeviceXI2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -291,6 +319,24 @@ export namespace GdkX11 {
     namespace X11Display {
         // Signal signatures
         interface SignalSignatures extends Gdk.Display.SignalSignatures {
+            /**
+             * The ::xevent signal is a low level signal that is emitted
+             * whenever an XEvent has been received.
+             *
+             * When handlers to this signal return `true`, no other handlers will be
+             * invoked. In particular, the default handler for this function is
+             * GDK's own event handling mechanism, so by returning `true` for an event
+             * that GDK expects to translate, you may break GDK and/or GTK+ in
+             * interesting ways. You have been warned.
+             *
+             * If you want this signal handler to queue a {@link Gdk.Event}, you can use
+             * `gdk_display_put_event()`.
+             *
+             * If you are interested in X GenericEvents, bear in mind that
+             * XGetEventData() has been already called on the event, and
+             * XFreeEventData() will be called afterwards.
+             * @signal
+             */
             xevent: (arg0: any | null) => boolean | void;
             'notify::composited': (pspec: GObject.ParamSpec) => void;
             'notify::dmabuf-formats': (pspec: GObject.ParamSpec) => void;
@@ -304,6 +350,9 @@ export namespace GdkX11 {
         interface ConstructorProps extends Gdk.Display.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class X11Display extends Gdk.Display {
         static $gtype: GObject.GType<X11Display>;
 
@@ -324,16 +373,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11Display.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -344,7 +396,7 @@ export namespace GdkX11 {
 
         /**
          * Tries to open a new display to the X server given by
-         * `display_name`. If opening the display fails, %NULL is
+         * `display_name`. If opening the display fails, `null` is
          * returned.
          * @param display_name name of the X display.   See the XOpenDisplay() for details.
          */
@@ -354,7 +406,7 @@ export namespace GdkX11 {
          *
          * The X11 backend uses the program class to set the class name part
          * of the `WM_CLASS` property on toplevel windows; see the ICCCM.
-         * @param display a `GdkDisplay`
+         * @param display a {@link Gdk.Display}
          * @param program_class a string
          */
         static set_program_class(display: Gdk.Display, program_class: string): void;
@@ -362,18 +414,18 @@ export namespace GdkX11 {
         // Methods
 
         /**
-         * Pops the error trap pushed by gdk_x11_display_error_trap_push().
+         * Pops the error trap pushed by `gdk_x11_display_error_trap_push()`.
          * Will XSync() if necessary and will always block until
          * the error is known to have occurred or not occurred,
          * so the error code can be returned.
          *
          * If you don’t need to use the return value,
-         * gdk_x11_display_error_trap_pop_ignored() would be more efficient.
+         * `gdk_x11_display_error_trap_pop_ignored()` would be more efficient.
          * @returns X error code or 0 on success
          */
         error_trap_pop(): number;
         /**
-         * Pops the error trap pushed by gdk_x11_display_error_trap_push().
+         * Pops the error trap pushed by `gdk_x11_display_error_trap_push()`.
          * Does not block to see if an error occurred; merely records the
          * range of requests to ignore errors for, and ignores those errors
          * if they arrive asynchronously.
@@ -382,16 +434,16 @@ export namespace GdkX11 {
         /**
          * Begins a range of X requests on `display` for which X error events
          * will be ignored. Unignored errors (when no trap is pushed) will abort
-         * the application. Use gdk_x11_display_error_trap_pop() or
-         * gdk_x11_display_error_trap_pop_ignored()to lift a trap pushed
+         * the application. Use `gdk_x11_display_error_trap_pop()` or
+         * `gdk_x11_display_error_trap_pop_ignored()`to lift a trap pushed
          * with this function.
          */
         error_trap_push(): void;
         /**
          * Returns the default group leader surface for all toplevel surfaces
          * on `display`. This surface is implicitly created by GDK.
-         * See gdk_x11_surface_set_group().
-         * @returns The default group leader surface for @display
+         * See `gdk_x11_surface_set_group()`.
+         * @returns The default group leader surface for `display`
          */
         get_default_group(): Gdk.Surface;
         /**
@@ -403,12 +455,12 @@ export namespace GdkX11 {
         get_egl_display(): any | null;
         /**
          * Retrieves the version of the EGL implementation.
-         * @returns %TRUE if EGL is available
+         * @returns `true` if EGL is available
          */
         get_egl_version(): [boolean, number, number];
         /**
          * Retrieves the version of the GLX implementation.
-         * @returns %TRUE if GLX is available
+         * @returns `true` if GLX is available
          */
         get_glx_version(): [boolean, number, number];
         /**
@@ -425,57 +477,60 @@ export namespace GdkX11 {
          */
         get_primary_monitor(): Gdk.Monitor;
         /**
-         * Retrieves the `GdkX11Screen` of the `display`.
-         * @returns the `GdkX11Screen`
+         * Retrieves the {@link GdkX11.X11Screen} of the `display`.
+         * @returns the {@link GdkX11.X11Screen}
          */
         get_screen(): X11Screen;
         /**
          * Gets the startup notification ID for a display.
-         * @returns the startup notification ID for @display
+         * @returns the startup notification ID for `display`
          */
         get_startup_notification_id(): string;
+        /**
+         * @param args
+         */
         // Conflicted with Gdk.Display.get_startup_notification_id
         get_startup_notification_id(...args: never[]): any;
         /**
          * Returns the timestamp of the last user interaction on
          * `display`. The timestamp is taken from events caused
          * by user interaction such as key presses or pointer
-         * movements. See gdk_x11_surface_set_user_time().
+         * movements. See `gdk_x11_surface_set_user_time()`.
          * @returns the timestamp of the last user interaction
          */
         get_user_time(): number;
         /**
-         * Returns the X cursor belonging to a `GdkCursor`, potentially
+         * Returns the X cursor belonging to a {@link Gdk.Cursor}, potentially
          * creating the cursor.
          *
          * Be aware that the returned cursor may not be unique to `cursor`.
          * It may for example be shared with its fallback cursor. On old
          * X servers that don't support the XCursor extension, all cursors
          * may even fall back to a few default cursors.
-         * @param cursor a `GdkCursor`
+         * @param cursor a {@link Gdk.Cursor}
          * @returns an Xlib Cursor.
          */
         get_xcursor(cursor: Gdk.Cursor): xlib.Cursor;
         /**
-         * Returns the X display of a `GdkDisplay`.
+         * Returns the X display of a {@link Gdk.Display}.
          * @returns an X display
          */
         get_xdisplay(): xlib.Display;
         /**
-         * Returns the root X window used by `GdkDisplay`.
+         * Returns the root X window used by {@link Gdk.Display}.
          * @returns an X Window
          */
         get_xrootwindow(): xlib.Window;
         /**
-         * Returns the X Screen used by `GdkDisplay`.
+         * Returns the X Screen used by {@link Gdk.Display}.
          * @returns an X Screen
          */
         get_xscreen(): xlib.Screen;
         /**
          * Call XGrabServer() on `display`.
-         * To ungrab the display again, use gdk_x11_display_ungrab().
+         * To ungrab the display again, use `gdk_x11_display_ungrab()`.
          *
-         * gdk_x11_display_grab()/gdk_x11_display_ungrab() calls can be nested.
+         * `gdk_x11_display_grab()`/gdk_x11_display_ungrab() calls can be nested.
          */
         grab(): void;
         /**
@@ -483,12 +538,12 @@ export namespace GdkX11 {
          * should be taken.
          *
          * If the windowing system supports it, existing cursors created
-         * with [ctor`Gdk`.Cursor.new_from_name] are updated to reflect the theme
-         * change. Custom cursors constructed with [ctor`Gdk`.Cursor.new_from_texture]
+         * with {@link Gdk.Cursor.new_from_name} are updated to reflect the theme
+         * change. Custom cursors constructed with {@link Gdk.Cursor.new_from_texture}
          * will have to be handled by the application (GTK applications can learn
          * about cursor theme changes by listening for change notification
          * for the corresponding `GtkSetting`).
-         * @param theme the name of the cursor theme to use, or %NULL   to unset a previously set value
+         * @param theme the name of the cursor theme to use, or `null`   to unset a previously set value
          * @param size the cursor size to use, or 0 to keep the previous size
          */
         set_cursor_theme(theme: string | null, size: number): void;
@@ -497,7 +552,7 @@ export namespace GdkX11 {
          *
          * This is usually taken from the value of the DESKTOP_STARTUP_ID
          * environment variable, but in some cases (such as the application not
-         * being launched using exec()) it can come from other sources.
+         * being launched using `exec()`) it can come from other sources.
          *
          * If the ID contains the string "_TIME" then the portion following that
          * string is taken to be the X11 timestamp of the event that triggered
@@ -506,7 +561,7 @@ export namespace GdkX11 {
          *
          * The startup ID is also what is used to signal that the startup is
          * complete (for example, when opening a window or when calling
-         * gdk_display_notify_startup_complete()).
+         * `gdk_display_notify_startup_complete()`).
          * @param startup_id the startup notification ID (must be valid utf8)
          */
         set_startup_notification_id(startup_id: string): void;
@@ -537,7 +592,7 @@ export namespace GdkX11 {
          * @param format the format of the property
          * @param text The text data
          * @param length The number of items to transform
-         * @param list location to store an  array of strings in   the encoding of the current locale. This array should be   freed using gdk_x11_free_text_list().
+         * @param list location to store an  array of strings in   the encoding of the current locale. This array should be   freed using `gdk_x11_free_text_list()`.
          * @returns the number of strings stored in list, or 0,   if the conversion failed
          */
         text_property_to_text_list(
@@ -549,13 +604,13 @@ export namespace GdkX11 {
         ): number;
         /**
          * Ungrab `display` after it has been grabbed with
-         * gdk_x11_display_grab().
+         * `gdk_x11_display_grab()`.
          */
         ungrab(): void;
         /**
          * Converts from UTF-8 to compound text.
          * @param str a UTF-8 string
-         * @returns %TRUE if the conversion succeeded, otherwise %FALSE
+         * @returns `true` if the conversion succeeded, otherwise `false`
          */
         utf8_to_compound_text(str: string): [boolean, string, number, Uint8Array];
     }
@@ -577,6 +632,9 @@ export namespace GdkX11 {
         interface ConstructorProps extends Gdk.Drag.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class X11Drag extends Gdk.Drag {
         static $gtype: GObject.GType<X11Drag>;
 
@@ -597,16 +655,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11Drag.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Drag.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11Drag.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Drag.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11Drag.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11Drag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -629,6 +690,9 @@ export namespace GdkX11 {
         interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class X11GLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<X11GLContext>;
 
@@ -649,16 +713,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11GLContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11GLContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11GLContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11GLContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11GLContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11GLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -689,6 +756,9 @@ export namespace GdkX11 {
         interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class X11Monitor extends Gdk.Monitor {
         static $gtype: GObject.GType<X11Monitor>;
 
@@ -709,16 +779,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11Monitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Monitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11Monitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Monitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11Monitor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -729,7 +802,7 @@ export namespace GdkX11 {
 
         /**
          * Returns the XID of the Output corresponding to `monitor`.
-         * @returns the XID of @monitor
+         * @returns the XID of `monitor`
          */
         get_output(): xlib.XID;
         /**
@@ -737,7 +810,7 @@ export namespace GdkX11 {
          * within the display coordinate space.
          *
          * The returned geometry is in ”application pixels”, not in ”device pixels”
-         * (see [method`Gdk`.Monitor.get_scale_factor]).
+         * (see {@link Gdk.Monitor.get_scale_factor}).
          */
         get_workarea(): Gdk.Rectangle;
     }
@@ -745,6 +818,9 @@ export namespace GdkX11 {
     namespace X11Screen {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'window-manager-changed': () => void;
         }
 
@@ -753,6 +829,9 @@ export namespace GdkX11 {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class X11Screen extends GObject.Object {
         static $gtype: GObject.GType<X11Screen>;
 
@@ -773,16 +852,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11Screen.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Screen.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11Screen.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Screen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11Screen.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11Screen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -816,17 +898,17 @@ export namespace GdkX11 {
          */
         get_number_of_desktops(): number;
         /**
-         * Returns the index of a `GdkX11Screen`.
-         * @returns the position of @screen among the screens   of its display
+         * Returns the index of a {@link GdkX11.X11Screen}.
+         * @returns the position of `screen` among the screens   of its display
          */
         get_screen_number(): number;
         /**
          * Returns the name of the window manager for `screen`.
-         * @returns the name of the window manager screen @screen, or "unknown" if the window manager is unknown. The string is owned by GDK and should not be freed.
+         * @returns the name of the window manager screen `screen`, or "unknown" if the window manager is unknown. The string is owned by GDK and should not be freed.
          */
         get_window_manager_name(): string;
         /**
-         * Returns the screen of a `GdkX11Screen`.
+         * Returns the screen of a {@link GdkX11.X11Screen}.
          * @returns an Xlib Screen*
          */
         get_xscreen(): xlib.Screen;
@@ -840,11 +922,11 @@ export namespace GdkX11 {
          * a way that impacts persistent application state. A common bug
          * is that your application can start up before the window manager
          * does when the user logs in, and before the window manager starts
-         * gdk_x11_screen_supports_net_wm_hint() will return %FALSE for every property.
-         * You can monitor the window_manager_changed signal on `GdkX11Screen` to detect
+         * `gdk_x11_screen_supports_net_wm_hint()` will return `false` for every property.
+         * You can monitor the window_manager_changed signal on {@link GdkX11.X11Screen} to detect
          * a window manager change.
          * @param property_name name of the WM property
-         * @returns %TRUE if the window manager supports @property
+         * @returns `true` if the window manager supports `property`
          */
         supports_net_wm_hint(property_name: string): boolean;
     }
@@ -867,6 +949,9 @@ export namespace GdkX11 {
         interface ConstructorProps extends Gdk.Surface.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class X11Surface extends Gdk.Surface {
         static $gtype: GObject.GType<X11Surface>;
 
@@ -887,16 +972,19 @@ export namespace GdkX11 {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof X11Surface.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Surface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof X11Surface.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, X11Surface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof X11Surface.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<X11Surface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -906,8 +994,8 @@ export namespace GdkX11 {
         // Static methods
 
         /**
-         * Looks up the `GdkSurface` that wraps the given native window handle.
-         * @param display the `GdkDisplay` corresponding to the   window handle
+         * Looks up the {@link Gdk.Surface} that wraps the given native window handle.
+         * @param display the {@link Gdk.Display} corresponding to the   window handle
          * @param window an Xlib Window
          */
         static lookup_for_display(display: X11Display, window: xlib.Window): X11Surface;
@@ -916,7 +1004,7 @@ export namespace GdkX11 {
 
         /**
          * Gets the number of the workspace `surface` is on.
-         * @returns the current workspace of @surface
+         * @returns the current workspace of `surface`
          */
         get_desktop(): number;
         /**
@@ -925,8 +1013,8 @@ export namespace GdkX11 {
          */
         get_group(): Gdk.Surface | null;
         /**
-         * Returns the X resource (surface) belonging to a `GdkSurface`.
-         * @returns the ID of @drawable’s X resource.
+         * Returns the X resource (surface) belonging to a {@link Gdk.Surface}.
+         * @returns the ID of `drawable`’s X resource.
          */
         get_xid(): xlib.Window;
         /**
@@ -956,19 +1044,19 @@ export namespace GdkX11 {
         /**
          * Sets the group leader of `surface` to be `leader`.
          * See the ICCCM for details.
-         * @param leader a `GdkSurface`
+         * @param leader a {@link Gdk.Surface}
          */
         set_group(leader: Gdk.Surface): void;
         /**
          * Sets a hint on `surface` that pagers should not
          * display it. See the EWMH for details.
-         * @param skips_pager %TRUE to skip pagers
+         * @param skips_pager `true` to skip pagers
          */
         set_skip_pager_hint(skips_pager: boolean): void;
         /**
          * Sets a hint on `surface` that taskbars should not
          * display it. See the EWMH for details.
-         * @param skips_taskbar %TRUE to skip taskbars
+         * @param skips_taskbar `true` to skip taskbars
          */
         set_skip_taskbar_hint(skips_taskbar: boolean): void;
         /**
@@ -987,7 +1075,7 @@ export namespace GdkX11 {
         /**
          * Sets a hint on `surface` that it needs user attention.
          * See the ICCCM for details.
-         * @param urgent %TRUE to indicate urgenct attention needed
+         * @param urgent `true` to indicate urgenct attention needed
          */
         set_urgency_hint(urgent: boolean): void;
         /**
@@ -1011,19 +1099,46 @@ export namespace GdkX11 {
          * property of type UTF8_STRING.  If the given `surface` is
          * not a toplevel surface, it is ignored.
          * @param name Property name, will be interned as an X atom
-         * @param value Property value, or %NULL to delete
+         * @param value Property value, or `null` to delete
          */
         set_utf8_property(name: string, value?: string | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type X11AppLaunchContextClass = typeof X11AppLaunchContext;
+    /**
+     * @gir-type Alias
+     */
     type X11DeviceManagerXI2Class = typeof X11DeviceManagerXI2;
+    /**
+     * @gir-type Alias
+     */
     type X11DeviceXI2Class = typeof X11DeviceXI2;
+    /**
+     * @gir-type Alias
+     */
     type X11DisplayClass = typeof X11Display;
+    /**
+     * @gir-type Alias
+     */
     type X11DragClass = typeof X11Drag;
+    /**
+     * @gir-type Alias
+     */
     type X11GLContextClass = typeof X11GLContext;
+    /**
+     * @gir-type Alias
+     */
     type X11MonitorClass = typeof X11Monitor;
+    /**
+     * @gir-type Alias
+     */
     type X11ScreenClass = typeof X11Screen;
+    /**
+     * @gir-type Alias
+     */
     type X11SurfaceClass = typeof X11Surface;
     /**
      * Name of the imported GIR library

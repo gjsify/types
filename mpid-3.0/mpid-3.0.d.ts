@@ -22,6 +22,9 @@ export namespace MPID {
         export const $gtype: GObject.GType<Error>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Error {
         /**
          * Indicates no error has occurred
@@ -46,6 +49,9 @@ export namespace MPID {
         DEVICE_INFO_MISSING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Source {
         /**
          * No device information is available
@@ -65,6 +71,9 @@ export namespace MPID {
         export const $gtype: GObject.GType<SourceType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SourceType {
         NO_DEVICE_INFO,
         SYSTEM_DEVICE_INFO,
@@ -136,9 +145,10 @@ export namespace MPID {
     }
 
     /**
-     * An #MPIDDevice stores a set of information for a particular attached device,
+     * An {@link MPID.Device} stores a set of information for a particular attached device,
      * identified by either a mount point (e.g. /media/device) or a device node
      * (e.g. /dev/sdb).
+     * @gir-type Class
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
@@ -172,7 +182,7 @@ export namespace MPID {
          */
         get driveType(): string;
         /**
-         * MPID error code resulting from device detection (see #MPIDError)
+         * MPID error code resulting from device detection (see {@link MPID.Error})
          */
         get error(): Error;
         /**
@@ -246,11 +256,11 @@ export namespace MPID {
          */
         get playlistPath(): string;
         /**
-         * If %TRUE, the device must be ejected rather than unmounted
+         * If `true`, the device must be ejected rather than unmounted
          */
         get requires_eject(): boolean;
         /**
-         * If %TRUE, the device must be ejected rather than unmounted
+         * If `true`, the device must be ejected rather than unmounted
          */
         get requiresEject(): boolean;
         /**
@@ -258,7 +268,7 @@ export namespace MPID {
          */
         get serial(): string;
         /**
-         * The information source used to provide device information (see #MPIDSource)
+         * The information source used to provide device information (see {@link MPID.Source})
          */
         get source(): SourceType;
         /**
@@ -287,16 +297,19 @@ export namespace MPID {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -304,6 +317,9 @@ export namespace MPID {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
     /**
      * Name of the imported GIR library

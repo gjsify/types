@@ -30,17 +30,26 @@ export namespace Liferea {
      * Liferea-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum feedListFindType {
         ODE_BY_URL,
         ODE_BY_ID,
         OLDER_BY_TITLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum itemViewMode {
         SINGLE_ITEM,
         NODE_INFO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum lifereaIcon {
         CON_UNREAD,
         CON_FLAG,
@@ -52,6 +61,9 @@ export namespace Liferea {
         AX_ICONS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum nodeSourceState {
         NONE,
         IN_PROGRESS,
@@ -60,6 +72,9 @@ export namespace Liferea {
         MIGRATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum nodeViewSortType {
         TIME,
         TITLE,
@@ -67,6 +82,9 @@ export namespace Liferea {
         STATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum nodeViewType {
         NORMAL,
         WIDE,
@@ -95,7 +113,7 @@ export namespace Liferea {
     /**
      * Return auth information for a given node. Each extension able to
      * supply a user name and password for the given id is to synchronously call
-     * liferea_auth_info_from_store() to set them.
+     * `liferea_auth_info_from_store()` to set them.
      *
      * `param` authId		a node id
      * `param` username		reference to return username
@@ -151,29 +169,63 @@ export namespace Liferea {
      * @returns GIcon
      */
     function icon_get(icon: lifereaIcon | null): Gio.Icon;
+    /**
+     * @param ptr
+     * @param func
+     * @param params
+     * @param user_data
+     */
     function node_foreach_child_full(ptr: nodePtr, func: any | null, params: number, user_data?: any | null): void;
     /**
      * Returns a new unused unique node id.
      * @returns new id (to be free'd using g_free)
      */
     function node_new_id(): string;
+    /**
+     * @param node
+     * @param item
+     * @param newState
+     */
     function node_source_item_set_flag(node: nodePtr, item: itemPtr, newState: boolean): void;
+    /**
+     * @param action
+     * @param parameter
+     * @param user_data
+     */
     function on_action_launch_item_in_browser(
         action: Gio.SimpleAction,
         parameter: GLib.Variant,
         user_data?: any | null,
     ): void;
+    /**
+     * @param action
+     * @param parameter
+     * @param user_data
+     */
     function on_action_launch_item_in_external_browser(
         action: Gio.SimpleAction,
         parameter: GLib.Variant,
         user_data?: any | null,
     ): void;
+    /**
+     * @param action
+     * @param parameter
+     * @param user_data
+     */
     function on_action_launch_item_in_tab(
         action: Gio.SimpleAction,
         parameter: GLib.Variant,
         user_data?: any | null,
     ): void;
+    /**
+     * @param action
+     * @param parameter
+     * @param user_data
+     */
     function on_remove_items_activate(action: Gio.SimpleAction, parameter: GLib.Variant, user_data?: any | null): void;
+    /**
+     * @returns the name of the currently configured social bookmarking site.
+     */
     function social_get_bookmark_site(): string;
     /**
      * Returns a social bookmarking link for the configured site
@@ -201,15 +253,27 @@ export namespace Liferea {
      * @param name descriptive name
      */
     function social_unregister_bookmark_site(name: string): void;
+    /**
+     * @gir-type Callback
+     */
     interface itemActionFunc {
         (item: itemPtr, userdata?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface nodeActionDataFunc {
         (node: nodePtr): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface nodeActionFunc {
         (node: nodePtr): void;
     }
+    /**
+     * @gir-type Flags
+     */
     enum nodeSourceCapability {
         IS_ROOT,
         DYNAMIC_CREATION,
@@ -224,6 +288,9 @@ export namespace Liferea {
         REPARENT_NODE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum nodeSourceUpdate {
         LIST,
         LOGIN,
@@ -257,6 +324,9 @@ export namespace Liferea {
                 Gio.ActionMap.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
 
@@ -277,16 +347,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -300,8 +373,6 @@ export namespace Liferea {
          * Shutdown GApplication
          */
         static shutdown(): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -315,32 +386,32 @@ export namespace Liferea {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -349,39 +420,39 @@ export namespace Liferea {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -392,13 +463,16 @@ export namespace Liferea {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -406,7 +480,7 @@ export namespace Liferea {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -414,9 +488,9 @@ export namespace Liferea {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -436,9 +510,9 @@ export namespace Liferea {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -452,33 +526,33 @@ export namespace Liferea {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -511,21 +585,21 @@ export namespace Liferea {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -535,8 +609,8 @@ export namespace Liferea {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -553,10 +627,10 @@ export namespace Liferea {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -571,13 +645,13 @@ export namespace Liferea {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -608,21 +682,21 @@ export namespace Liferea {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -632,33 +706,34 @@ export namespace Liferea {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -667,6 +742,7 @@ export namespace Liferea {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -675,12 +751,14 @@ export namespace Liferea {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -689,20 +767,22 @@ export namespace Liferea {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -714,6 +794,7 @@ export namespace Liferea {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -746,8 +827,17 @@ export namespace Liferea {
     namespace Browser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'location-changed': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'statusbar-changed': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'title-changed': (arg0: string) => void;
             'notify::renderwidget': (pspec: GObject.ParamSpec) => void;
         }
@@ -759,6 +849,9 @@ export namespace Liferea {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Browser extends GObject.Object {
         static $gtype: GObject.GType<Browser>;
 
@@ -783,16 +876,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Browser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Browser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Browser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Browser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -823,9 +919,21 @@ export namespace Liferea {
          * @returns the currently set zoom level
          */
         get_zoom(): number;
+        /**
+         * @param location
+         */
         load_finished(location: string): void;
+        /**
+         * @param location
+         */
         location_changed(location: string): void;
+        /**
+         * @param url
+         */
         on_url(url: string): void;
+        /**
+         * @param progress
+         */
         progress_changed(progress: number): void;
         /**
          * Function scrolls down the given HTML view if possible.
@@ -849,6 +957,9 @@ export namespace Liferea {
          * @param zoom New zoom
          */
         set_zoom(zoom: number): void;
+        /**
+         * @param title
+         */
         title_changed(title: string): void;
         /**
          * Renders item or node info into the given HTML view.
@@ -880,6 +991,9 @@ export namespace Liferea {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class BrowserTabs extends GObject.Object {
         static $gtype: GObject.GType<BrowserTabs>;
 
@@ -908,16 +1022,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BrowserTabs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BrowserTabs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BrowserTabs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -946,8 +1063,17 @@ export namespace Liferea {
     namespace FeedList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'items-updated': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'new-items': (arg0: any | null) => void;
+            /**
+             * @signal
+             */
             'node-updated': (arg0: string) => void;
         }
 
@@ -956,6 +1082,9 @@ export namespace Liferea {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FeedList extends GObject.Object {
         static $gtype: GObject.GType<FeedList>;
 
@@ -976,16 +1105,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FeedList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FeedList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FeedList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FeedList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FeedList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FeedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1028,6 +1160,9 @@ export namespace Liferea {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
 
@@ -1074,16 +1209,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1101,6 +1239,9 @@ export namespace Liferea {
     namespace ItemList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'item-updated': (arg0: string) => void;
         }
 
@@ -1109,6 +1250,9 @@ export namespace Liferea {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ItemList extends GObject.Object {
         static $gtype: GObject.GType<ItemList>;
 
@@ -1129,16 +1273,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ItemList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ItemList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ItemList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ItemList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ItemList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ItemList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1156,6 +1303,9 @@ export namespace Liferea {
          * item list. Or does nothing if there are no unread items left.
          */
         static select_next_unread(): void;
+        /**
+         * @param item
+         */
         static update_item(item: itemPtr): void;
     }
 
@@ -1168,6 +1318,9 @@ export namespace Liferea {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ItemListView extends GObject.Object {
         static $gtype: GObject.GType<ItemListView>;
 
@@ -1188,16 +1341,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ItemListView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ItemListView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ItemListView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1212,6 +1368,9 @@ export namespace Liferea {
          * @returns TRUE if the item is in the ItemListView
          */
         contains_id(id: number): boolean;
+        /**
+         * @param enabled
+         */
         enable_favicon_column(enabled: boolean): void;
         /**
          * Returns the GtkWidget used by the ItemListView instance.
@@ -1253,6 +1412,9 @@ export namespace Liferea {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ItemView extends GObject.Object {
         static $gtype: GObject.GType<ItemView>;
 
@@ -1280,16 +1442,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ItemView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ItemView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ItemView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ItemView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ItemView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ItemView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1363,7 +1528,13 @@ export namespace Liferea {
     namespace NetworkMonitor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'online-status-changed': (arg0: boolean) => void;
+            /**
+             * @signal
+             */
             'proxy-changed': () => void;
         }
 
@@ -1372,6 +1543,9 @@ export namespace Liferea {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NetworkMonitor extends GObject.Object {
         static $gtype: GObject.GType<NetworkMonitor>;
 
@@ -1392,16 +1566,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NetworkMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NetworkMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NetworkMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1450,6 +1627,9 @@ export namespace Liferea {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Shell extends GObject.Object {
         static $gtype: GObject.GType<Shell>;
 
@@ -1482,16 +1662,19 @@ export namespace Liferea {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Shell.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Shell.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Shell.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Shell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1533,27 +1716,75 @@ export namespace Liferea {
         static toggle_visibility(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationClass = typeof Application;
+    /**
+     * @gir-type Alias
+     */
     type AuthActivatableInterface = typeof AuthActivatable;
+    /**
+     * @gir-type Alias
+     */
     type BrowserClass = typeof Browser;
+    /**
+     * @gir-type Alias
+     */
     type BrowserTabsClass = typeof BrowserTabs;
+    /**
+     * @gir-type Alias
+     */
     type FeedListClass = typeof FeedList;
+    /**
+     * @gir-type Alias
+     */
     type ItemClass = typeof Item;
+    /**
+     * @gir-type Alias
+     */
     type ItemListClass = typeof ItemList;
+    /**
+     * @gir-type Struct
+     */
     abstract class ItemListPrivate {
         static $gtype: GObject.GType<ItemListPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ItemListViewClass = typeof ItemListView;
+    /**
+     * @gir-type Alias
+     */
     type ItemViewClass = typeof ItemView;
+    /**
+     * @gir-type Alias
+     */
     type NetworkMonitorClass = typeof NetworkMonitor;
+    /**
+     * @gir-type Struct
+     */
     abstract class NetworkMonitorPrivate {
         static $gtype: GObject.GType<NetworkMonitorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NodeSourceActivatableInterface = typeof NodeSourceActivatable;
+    /**
+     * @gir-type Alias
+     */
     type ShellActivatableInterface = typeof ShellActivatable;
+    /**
+     * @gir-type Alias
+     */
     type ShellClass = typeof Shell;
+    /**
+     * @gir-type Struct
+     */
     class encType {
         static $gtype: GObject.GType<encType>;
 
@@ -1576,10 +1807,16 @@ export namespace Liferea {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class encTypePtr {
         static $gtype: GObject.GType<encTypePtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class enclosure {
         static $gtype: GObject.GType<enclosure>;
 
@@ -1623,14 +1860,23 @@ export namespace Liferea {
         static values_to_string(url: string, mime: string, size: number, downloaded: boolean): string;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class enclosurePtr {
         static $gtype: GObject.GType<enclosurePtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class itemPtr {
         static $gtype: GObject.GType<itemPtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class itemSet {
         static $gtype: GObject.GType<itemSet>;
 
@@ -1651,10 +1897,16 @@ export namespace Liferea {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class itemSetPtr {
         static $gtype: GObject.GType<itemSetPtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class node {
         static $gtype: GObject.GType<node>;
 
@@ -1682,6 +1934,12 @@ export namespace Liferea {
 
         // Static methods
 
+        /**
+         * @param ptr
+         * @param func
+         * @param params
+         * @param user_data
+         */
         static foreach_child_full(ptr: nodePtr, func: any | null, params: number, user_data?: any | null): void;
         /**
          * Returns a new unused unique node id.
@@ -1689,10 +1947,16 @@ export namespace Liferea {
         static new_id(): string;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class nodePtr {
         static $gtype: GObject.GType<nodePtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class nodeSource {
         static $gtype: GObject.GType<nodeSource>;
 
@@ -1705,13 +1969,24 @@ export namespace Liferea {
 
         // Static methods
 
+        /**
+         * @param node
+         * @param item
+         * @param newState
+         */
         static item_set_flag(node: nodePtr, item: itemPtr, newState: boolean): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class nodeSourcePtr {
         static $gtype: GObject.GType<nodeSourcePtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class nodeSourceType {
         static $gtype: GObject.GType<nodeSourceType>;
 
@@ -1722,10 +1997,16 @@ export namespace Liferea {
         capabilities: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class nodeSourceTypePtr {
         static $gtype: GObject.GType<nodeSourceTypePtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class socialSite {
         static $gtype: GObject.GType<socialSite>;
 
@@ -1748,14 +2029,23 @@ export namespace Liferea {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class socialSitePtr {
         static $gtype: GObject.GType<socialSitePtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class subscriptionType {
         static $gtype: GObject.GType<subscriptionType>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class subscriptionTypePtr {
         static $gtype: GObject.GType<subscriptionTypePtr>;
     }
@@ -1770,26 +2060,30 @@ export namespace Liferea {
 
             /**
              * Activates the extension.
+             * @virtual
              */
             vfunc_activate(): void;
             /**
              * Deactivates the extension.
+             * @virtual
              */
             vfunc_deactivate(): void;
             /**
              * Triggers a query for authentication infos for a given subscription.
-             * Expects triggered plugins to use liferea_auth_info_add() to provide
+             * Expects triggered plugins to use `liferea_auth_info_add()` to provide
              * any matches.
              * @param authId a unique auth info id
+             * @virtual
              */
             vfunc_query(authId: string): void;
             /**
              * Triggers a query for authentication infos for a given subscription.
-             * Expects triggered plugins to use liferea_auth_info_add() to provide
+             * Expects triggered plugins to use `liferea_auth_info_add()` to provide
              * any matches.
              * @param authId a unique auth info id
              * @param username the username to store
              * @param password the password to store
+             * @virtual
              */
             vfunc_store(authId: string, username: string, password: string): void;
         }
@@ -1803,6 +2097,9 @@ export namespace Liferea {
         $gtype: GObject.GType<AuthActivatable>;
         prototype: AuthActivatable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface AuthActivatable extends GObject.Object, AuthActivatable.Interface {
         // Methods
 
@@ -1816,14 +2113,14 @@ export namespace Liferea {
         deactivate(): void;
         /**
          * Triggers a query for authentication infos for a given subscription.
-         * Expects triggered plugins to use liferea_auth_info_add() to provide
+         * Expects triggered plugins to use `liferea_auth_info_add()` to provide
          * any matches.
          * @param authId a unique auth info id
          */
         query(authId: string): void;
         /**
          * Triggers a query for authentication infos for a given subscription.
-         * Expects triggered plugins to use liferea_auth_info_add() to provide
+         * Expects triggered plugins to use `liferea_auth_info_add()` to provide
          * any matches.
          * @param authId a unique auth info id
          * @param username the username to store
@@ -1844,7 +2141,13 @@ export namespace Liferea {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_activate(): void;
+            /**
+             * @virtual
+             */
             vfunc_deactivate(): void;
         }
 
@@ -1857,6 +2160,9 @@ export namespace Liferea {
         $gtype: GObject.GType<NodeSourceActivatable>;
         prototype: NodeSourceActivatable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface NodeSourceActivatable extends GObject.Object, NodeSourceActivatable.Interface {
         // Methods
 
@@ -1878,15 +2184,18 @@ export namespace Liferea {
 
             /**
              * Activates the extension on the shell property.
+             * @virtual
              */
             vfunc_activate(): void;
             /**
              * Deactivates the extension on the shell property.
+             * @virtual
              */
             vfunc_deactivate(): void;
             /**
              * Triggers an update of the extension internal state to take into account
              * state changes in the window, due to some event or user action.
+             * @virtual
              */
             vfunc_update_state(): void;
         }
@@ -1902,6 +2211,9 @@ export namespace Liferea {
         $gtype: GObject.GType<ShellActivatable>;
         prototype: ShellActivatable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ShellActivatable extends GObject.Object, ShellActivatable.Interface {
         // Properties
 

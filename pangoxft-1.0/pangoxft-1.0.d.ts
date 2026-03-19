@@ -31,16 +31,17 @@ export namespace PangoXft {
      */
 
     /**
-     * Returns the `PangoXftFontMap` for the given display and screen.
+     * Returns the {@link PangoXft.FontMap} for the given display and screen.
      * The fontmap is owned by Pango and will be valid until
      * the display is closed.
      * @param display an X display
-     * @param screen the screen number of a screen within @display
-     * @returns a `PangoFontMap` object, owned by Pango.
+     * @param screen the screen number of a screen within `display`
+     * @returns a {@link Pango.FontMap} object, owned by Pango.
+     * @since 1.2
      */
     function get_font_map(display: xlib.Display, screen: number): Pango.FontMap;
     /**
-     * Renders a `PangoGlyphString` onto an Xrender Picture object.
+     * Renders a {@link Pango.GlyphString} onto an Xrender Picture object.
      * @param display an X display
      * @param src_picture the source picture to draw the string with
      * @param dest_picture the destination picture to draw the string onto
@@ -59,7 +60,7 @@ export namespace PangoXft {
         y: number,
     ): void;
     /**
-     * Renders a `PangoGlyphString` onto an XftDraw object wrapping an X drawable.
+     * Renders a {@link Pango.GlyphString} onto an XftDraw object wrapping an X drawable.
      * @param draw the XftDraw object.
      * @param color the color in which to draw the string
      * @param font the font in which to draw the string
@@ -76,39 +77,42 @@ export namespace PangoXft {
         y: number,
     ): void;
     /**
-     * Render a `PangoLayout` onto a XftDraw
+     * Render a {@link Pango.Layout} onto a XftDraw
      * @param draw an XftDraw
      * @param color the foreground color in which to draw the layout   (may be overridden by color attributes)
-     * @param layout a `PangoLayout`
+     * @param layout a {@link Pango.Layout}
      * @param x the X position of the left of the layout (in Pango units)
      * @param y the Y position of the top of the layout (in Pango units)
+     * @since 1.8
      */
     function render_layout(draw: xft.Draw, color: xft.Color, layout: Pango.Layout, x: number, y: number): void;
     /**
-     * Render a `PangoLayoutLine` onto a XftDraw
+     * Render a {@link Pango.LayoutLine} onto a XftDraw
      * @param draw an XftDraw
      * @param color the foreground color in which to draw the layout line   (may be overridden by color attributes)
-     * @param line a `PangoLayoutLine`
+     * @param line a {@link Pango.LayoutLine}
      * @param x the x position of start of string (in Pango units)
      * @param y the y position of baseline (in Pango units)
+     * @since 1.8
      */
     function render_layout_line(draw: xft.Draw, color: xft.Color, line: Pango.LayoutLine, x: number, y: number): void;
     /**
-     * Renders a `PangoGlyphString` onto a XftDraw, possibly
+     * Renders a {@link Pango.GlyphString} onto a XftDraw, possibly
      * transforming the layed-out coordinates through a transformation
      * matrix.
      *
      * Note that the transformation matrix for `font` is not
      * changed, so to produce correct rendering results, the `font`
-     * must have been loaded using a `PangoContext` with an identical
+     * must have been loaded using a {@link Pango.Context} with an identical
      * transformation matrix to that passed in to this function.
      * @param draw an XftDraw
      * @param color the color in which to draw the glyphs
-     * @param matrix a `PangoMatrix`
+     * @param matrix a {@link Pango.Matrix}
      * @param font the font in which to draw the string
      * @param glyphs the glyph string to draw
      * @param x the x position of the start of the string (in Pango   units in user space coordinates)
      * @param y the y position of the baseline (in Pango units   in user space coordinates)
+     * @since 1.8
      */
     function render_transformed(
         draw: xft.Draw,
@@ -121,12 +125,14 @@ export namespace PangoXft {
     ): void;
     /**
      * Sets a function that will be called to do final configuration
-     * substitution on a #FcPattern before it is used to load
+     * substitution on a {@link fontconfig.Pattern} before it is used to load
      * the font. This function can be used to do things like set
      * hinting and antialiasing options.
      * @param display an X Display
-     * @param screen the screen number of a screen within @display
-     * @param func function to call to to do final config tweaking        on #FcPattern objects.
+     * @param screen the screen number of a screen within `display`
+     * @param func function to call to to do final config tweaking        on {@link fontconfig.Pattern} objects.
+     * @since 1.2
+     * @deprecated since 1.46: Use `pango_fc_font_map_set_default_substitute()` instead.
      */
     function set_default_substitute(display: xlib.Display, screen: number, func: SubstituteFunc): void;
     /**
@@ -135,19 +141,25 @@ export namespace PangoXft {
      * X display is closed, resources are released automatically,
      * without needing to call this function.
      * @param display an X display
-     * @param screen the screen number of a screen within @display
+     * @param screen the screen number of a screen within `display`
+     * @since 1.2
      */
     function shutdown_display(display: xlib.Display, screen: number): void;
     /**
      * Call this function any time the results of the
      * default substitution function set with
-     * pango_xft_set_default_substitute() change.
+     * `pango_xft_set_default_substitute()` change.
      * That is, if your substitution function will return different
      * results for the same input pattern, you must call this function.
      * @param display an X Display
-     * @param screen the screen number of a screen within @display
+     * @param screen the screen number of a screen within `display`
+     * @since 1.2
+     * @deprecated since 1.46: Use `pango_fc_font_map_substitute_changed()` instead.
      */
     function substitute_changed(display: xlib.Display, screen: number): void;
+    /**
+     * @gir-type Callback
+     */
     interface SubstituteFunc {
         (pattern: fontconfig.Pattern, data?: any | null): void;
     }
@@ -164,8 +176,9 @@ export namespace PangoXft {
     }
 
     /**
-     * `PangoXftFont` is an implementation of `PangoFcFont` using the Xft
-     * library for rendering.  It is used in conjunction with `PangoXftFontMap`.
+     * {@link PangoXft.Font} is an implementation of {@link PangoFc.Font} using the Xft
+     * library for rendering.  It is used in conjunction with {@link PangoXft.FontMap}.
+     * @gir-type Class
      */
     class Font extends PangoFc.Font {
         static $gtype: GObject.GType<Font>;
@@ -187,16 +200,19 @@ export namespace PangoXft {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Font.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Font.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Font.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Font.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -210,9 +226,9 @@ export namespace PangoXft {
          * for `font`.
          *
          * If you only want to determine whether the font has
-         * the glyph, use pango_xft_font_has_char().
+         * the glyph, use `pango_xft_font_has_char()`.
          *
-         * Use pango_fc_font_get_glyph() instead.
+         * Use `pango_fc_font_get_glyph()` instead.
          * @param wc Unicode codepoint to look up
          * @returns the glyph index, or 0, if the Unicode  character does not exist in the font.
          */
@@ -223,15 +239,15 @@ export namespace PangoXft {
          *
          * Use PANGO_GET_UNKNOWN_GLYPH() instead.
          * @param wc the Unicode character for which a glyph is needed.
-         * @returns a glyph index into @font.
+         * @returns a glyph index into `font`.
          */
         get_unknown_glyph(wc: string): Pango.Glyph;
         /**
          * Determines whether `font` has a glyph for the codepoint `wc`.
          *
-         * Use pango_fc_font_has_char() instead.
+         * Use `pango_fc_font_has_char()` instead.
          * @param wc Unicode codepoint to look up
-         * @returns %TRUE if @font has the requested codepoint.
+         * @returns `true` if `font` has the requested codepoint.
          */
         has_char(wc: string): boolean;
     }
@@ -250,9 +266,10 @@ export namespace PangoXft {
     }
 
     /**
-     * `PangoXftFontMap` is an implementation of `PangoFcFontMap` suitable for
+     * {@link PangoXft.FontMap} is an implementation of {@link PangoFc.FontMap} suitable for
      * the Xft library as the renderer.  It is used in to create fonts of
-     * type `PangoXftFont`.
+     * type {@link PangoXft.Font}.
+     * @gir-type Class
      */
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
@@ -274,33 +291,34 @@ export namespace PangoXft {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FontMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FontMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FontMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FontMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Gets the type of the items in `list`.
          *
-         * All items returned from g_list_model_get_item() are of the type
+         * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
          *
-         * The item type of a #GListModel can not change during the life of the
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
-         * @returns the #GType of the items contained in @list.
+         * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
         /**
@@ -308,73 +326,75 @@ export namespace PangoXft {
          *
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
-         * `position` until g_list_model_get_item() returns %NULL.
-         * @returns the number of items in @list.
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @returns the number of items in `list`.
          */
         get_n_items(): number;
         /**
          * Get the item at `position`.
          *
-         * If `position` is greater than the number of items in `list,` %NULL is
+         * If `position` is greater than the number of items in `list`, `null` is
          * returned.
          *
-         * %NULL is never returned for an index that is smaller than the length
+         * `null` is never returned for an index that is smaller than the length
          * of the list.
          *
          * This function is meant to be used by language bindings in place
-         * of g_list_model_get_item().
+         * of `g_list_model_get_item()`.
          *
-         * See also: g_list_model_get_n_items()
+         * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
-         * @returns the object at @position.
+         * @returns the object at `position`.
          */
         get_item(position: number): A | null;
         /**
-         * Emits the #GListModel::items-changed signal on `list`.
+         * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
          *
          * This function should only be called by classes implementing
-         * #GListModel. It has to be called after the internal representation
+         * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
          *
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
-         * as #GListStore), changes can be reported in response to uses of that
+         * as {@link Gio.ListStore}), changes can be reported in response to uses of that
          * API.  For models that represent remote data, changes should only be
          * made from a fresh mainloop dispatch.  It is particularly not
-         * permitted to make changes in response to a call to the #GListModel
+         * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
          *
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
          * same contents of the model.
-         * @param position the position at which @list changed
+         * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
         /**
          * Get the item at `position`. If `position` is greater than the number of
-         * items in `list,` %NULL is returned.
+         * items in `list`, `null` is returned.
          *
-         * %NULL is never returned for an index that is smaller than the length
-         * of the list.  See g_list_model_get_n_items().
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.  See `g_list_model_get_n_items()`.
          *
-         * The same #GObject instance may not appear more than once in a #GListModel.
+         * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @virtual
          */
         vfunc_get_item(position: number): A | null;
         /**
          * Gets the type of the items in `list`.
          *
-         * All items returned from g_list_model_get_item() are of the type
+         * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
          *
-         * The item type of a #GListModel can not change during the life of the
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
         /**
@@ -382,7 +402,8 @@ export namespace PangoXft {
          *
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
-         * `position` until g_list_model_get_item() returns %NULL.
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @virtual
          */
         vfunc_get_n_items(): number;
         /**
@@ -398,32 +419,32 @@ export namespace PangoXft {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -432,39 +453,39 @@ export namespace PangoXft {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -475,13 +496,16 @@ export namespace PangoXft {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -489,7 +513,7 @@ export namespace PangoXft {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -497,9 +521,9 @@ export namespace PangoXft {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -519,9 +543,9 @@ export namespace PangoXft {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -535,33 +559,33 @@ export namespace PangoXft {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -594,21 +618,21 @@ export namespace PangoXft {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -618,8 +642,8 @@ export namespace PangoXft {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -636,10 +660,10 @@ export namespace PangoXft {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -654,13 +678,13 @@ export namespace PangoXft {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -691,21 +715,21 @@ export namespace PangoXft {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -715,33 +739,34 @@ export namespace PangoXft {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -750,6 +775,7 @@ export namespace PangoXft {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -758,12 +784,14 @@ export namespace PangoXft {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -772,20 +800,22 @@ export namespace PangoXft {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -797,6 +827,7 @@ export namespace PangoXft {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -842,10 +873,12 @@ export namespace PangoXft {
     }
 
     /**
-     * `PangoXftRenderer` is a subclass of `PangoRenderer` used for rendering
+     * {@link PangoXft.Renderer} is a subclass of {@link Pango.Renderer} used for rendering
      * with Pango's Xft backend. It can be used directly, or it can be
      * further subclassed to modify exactly how drawing of individual
      * elements occurs.
+     * @gir-type Class
+     * @since 1.8
      */
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
@@ -874,16 +907,19 @@ export namespace PangoXft {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -899,6 +935,7 @@ export namespace PangoXft {
          * @param xft_font
          * @param glyphs
          * @param n_glyphs
+         * @virtual
          */
         vfunc_composite_glyphs(xft_font: xft.Font, glyphs: xft.GlyphSpec, n_glyphs: number): void;
         /**
@@ -907,6 +944,7 @@ export namespace PangoXft {
          * @param part
          * @param trapezoids
          * @param n_trapezoids
+         * @virtual
          */
         vfunc_composite_trapezoids(part: Pango.RenderPart, trapezoids: xlib.XTrapezoid, n_trapezoids: number): void;
 
@@ -925,7 +963,13 @@ export namespace PangoXft {
         set_draw(draw: xft.Draw): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RendererClass = typeof Renderer;
+    /**
+     * @gir-type Struct
+     */
     abstract class RendererPrivate {
         static $gtype: GObject.GType<RendererPrivate>;
     }

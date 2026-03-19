@@ -36,6 +36,7 @@ export namespace Mks {
 
     /**
      * A mouse button.
+     * @gir-type Enum
      */
     enum MouseButton {
         /**
@@ -74,6 +75,7 @@ export namespace Mks {
 
     /**
      * A screen kind.
+     * @gir-type Enum
      */
     enum ScreenKind {
         /**
@@ -92,6 +94,7 @@ export namespace Mks {
 
     /**
      * The type of a touch event.
+     * @gir-type Enum
      */
     enum TouchEventKind {
         /**
@@ -113,15 +116,15 @@ export namespace Mks {
     }
 
     /**
-     * mks major version component (e.g. 1 if %MKS_VERSION is 1.2.3)
+     * mks major version component (e.g. 1 if `MKS_VERSION` is 1.2.3)
      */
     const MAJOR_VERSION: number;
     /**
-     * mks micro version component (e.g. 3 if %MKS_VERSION is 1.2.3)
+     * mks micro version component (e.g. 3 if `MKS_VERSION` is 1.2.3)
      */
     const MICRO_VERSION: number;
     /**
-     * mks minor version component (e.g. 2 if %MKS_VERSION is 1.2.3)
+     * mks minor version component (e.g. 2 if `MKS_VERSION` is 1.2.3)
      */
     const MINOR_VERSION: number;
     /**
@@ -153,6 +156,7 @@ export namespace Mks {
 
     /**
      * The active keyboard modifiers.
+     * @gir-type Flags
      */
     enum KeyboardModifier {
         /**
@@ -188,6 +192,7 @@ export namespace Mks {
 
     /**
      * An abstraction of a virtualized QEMU device.
+     * @gir-type Class
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
@@ -216,16 +221,19 @@ export namespace Mks {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -300,6 +308,9 @@ export namespace Mks {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Display extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Display>;
 
@@ -335,16 +346,19 @@ export namespace Mks {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -363,18 +377,18 @@ export namespace Mks {
          * where the `event` happened.
          *
          * Could be useful for implementing touch support emulation.
-         * @param event A #GdkEvent
+         * @param event A {@link Gdk.Event}
          * @returns Whether the event has an associated position
          */
         get_event_position_in_guest(event: Gdk.Event): [boolean, number, number];
         /**
          * Gets the screen connected to the display.
-         * @returns a #MksScreen
+         * @returns a {@link Mks.Screen}
          */
         get_screen(): Screen;
         /**
-         * Gets the #GtkShortcutTrigger that will ungrab the display.
-         * @returns a #GtkShortcutTrigger
+         * Gets the {@link Gtk.ShortcutTrigger} that will ungrab the display.
+         * @returns a {@link Gtk.ShortcutTrigger}
          */
         get_ungrab_trigger(): Gtk.ShortcutTrigger;
         /**
@@ -383,26 +397,30 @@ export namespace Mks {
          * @param auto_resize Whether to auto resize or not
          */
         set_auto_resize(auto_resize: boolean): void;
-        set_screen(screen: Screen): void;
-        set_ungrab_trigger(trigger: Gtk.ShortcutTrigger): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * @param screen
+         */
+        set_screen(screen: Screen): void;
+        /**
+         * @param trigger
+         */
+        set_ungrab_trigger(trigger: Gtk.ShortcutTrigger): void;
+        /**
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -437,7 +455,7 @@ export namespace Mks {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -456,9 +474,9 @@ export namespace Mks {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -484,7 +502,7 @@ export namespace Mks {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -503,7 +521,7 @@ export namespace Mks {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -512,7 +530,7 @@ export namespace Mks {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -523,7 +541,7 @@ export namespace Mks {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -534,7 +552,7 @@ export namespace Mks {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -546,41 +564,47 @@ export namespace Mks {
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -588,18 +612,20 @@ export namespace Mks {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -610,10 +636,11 @@ export namespace Mks {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -623,9 +650,10 @@ export namespace Mks {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -635,39 +663,44 @@ export namespace Mks {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -683,32 +716,32 @@ export namespace Mks {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -717,39 +750,39 @@ export namespace Mks {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -760,13 +793,16 @@ export namespace Mks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -774,7 +810,7 @@ export namespace Mks {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -782,9 +818,9 @@ export namespace Mks {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -804,9 +840,9 @@ export namespace Mks {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -820,33 +856,33 @@ export namespace Mks {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -879,21 +915,21 @@ export namespace Mks {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -903,8 +939,8 @@ export namespace Mks {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -921,10 +957,10 @@ export namespace Mks {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -939,13 +975,13 @@ export namespace Mks {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -976,21 +1012,21 @@ export namespace Mks {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1000,33 +1036,34 @@ export namespace Mks {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1035,6 +1072,7 @@ export namespace Mks {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1043,12 +1081,14 @@ export namespace Mks {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1057,20 +1097,22 @@ export namespace Mks {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1082,6 +1124,7 @@ export namespace Mks {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1127,6 +1170,7 @@ export namespace Mks {
 
     /**
      * A virtualized QEMU keyboard.
+     * @gir-type Class
      */
     class Keyboard extends Device {
         static $gtype: GObject.GType<Keyboard>;
@@ -1155,16 +1199,19 @@ export namespace Mks {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Keyboard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Keyboard.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Keyboard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Keyboard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Keyboard.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Keyboard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1189,14 +1236,14 @@ export namespace Mks {
         /**
          * Presses `keycode`.
          * @param keycode the hardware keycode
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         press(keycode: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Presses `keycode`.
          * @param keycode the hardware keycode
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         press(
             keycode: number,
@@ -1206,8 +1253,8 @@ export namespace Mks {
         /**
          * Presses `keycode`.
          * @param keycode the hardware keycode
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         press(
             keycode: number,
@@ -1215,29 +1262,29 @@ export namespace Mks {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Completes a call to [method`Mks`.Keyboard.press].
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * Completes a call to {@link Mks.Keyboard.press}.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         press_finish(result: Gio.AsyncResult): boolean;
         /**
          * Synchronously press the `keycode`.
          * @param keycode the hardware keycode
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
         press_sync(keycode: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Releases `keycode`.
          * @param keycode the hardware keycode
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         release(keycode: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Releases `keycode`.
          * @param keycode the hardware keycode
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         release(
             keycode: number,
@@ -1247,8 +1294,8 @@ export namespace Mks {
         /**
          * Releases `keycode`.
          * @param keycode the hardware keycode
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         release(
             keycode: number,
@@ -1256,16 +1303,16 @@ export namespace Mks {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Completes a call to [method`Mks`.Keyboard.release].
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * Completes a call to {@link Mks.Keyboard.release}.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         release_finish(result: Gio.AsyncResult): boolean;
         /**
          * Synchronously release the `keycode`.
          * @param keycode the hardware keycode
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
         release_sync(keycode: number, cancellable?: Gio.Cancellable | null): boolean;
     }
@@ -1287,6 +1334,7 @@ export namespace Mks {
 
     /**
      * A virtualized QEMU mouse.
+     * @gir-type Class
      */
     class Mouse extends Device {
         static $gtype: GObject.GType<Mouse>;
@@ -1319,16 +1367,19 @@ export namespace Mks {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mouse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mouse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mouse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mouse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mouse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mouse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1345,15 +1396,15 @@ export namespace Mks {
          * Moves the mouse by delta_x and delta_y.
          * @param delta_x the x coordinate delta
          * @param delta_y the y coordinate delta
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         move_by(delta_x: number, delta_y: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Moves the mouse by delta_x and delta_y.
          * @param delta_x the x coordinate delta
          * @param delta_y the y coordinate delta
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         move_by(
             delta_x: number,
@@ -1365,8 +1416,8 @@ export namespace Mks {
          * Moves the mouse by delta_x and delta_y.
          * @param delta_x the x coordinate delta
          * @param delta_y the y coordinate delta
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         move_by(
             delta_x: number,
@@ -1375,32 +1426,32 @@ export namespace Mks {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Completes a call to [method`Mks`.Mouse.move_by].
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * Completes a call to {@link Mks.Mouse.move_by}.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         move_by_finish(result: Gio.AsyncResult): boolean;
         /**
          * Synchronously moves the mouse by delta_x and delta_y.
          * @param delta_x the x coordinate delta
          * @param delta_y the y coordinate delta
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
         move_by_sync(delta_x: number, delta_y: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Moves to the absolute position at coordinates (x,y).
          * @param x the x coordinate
          * @param y the y coordinate
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         move_to(x: number, y: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Moves to the absolute position at coordinates (x,y).
          * @param x the x coordinate
          * @param y the y coordinate
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         move_to(
             x: number,
@@ -1412,8 +1463,8 @@ export namespace Mks {
          * Moves to the absolute position at coordinates (x,y).
          * @param x the x coordinate
          * @param y the y coordinate
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         move_to(
             x: number,
@@ -1422,30 +1473,30 @@ export namespace Mks {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Completes a call to [method`Mks`.Mouse.move_to].
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * Completes a call to {@link Mks.Mouse.move_to}.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         move_to_finish(result: Gio.AsyncResult): boolean;
         /**
          * Synchronously moves to the absolute position at coordinates (x,y).
          * @param x the x coordinate
          * @param y the y coordinate
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
         move_to_sync(x: number, y: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Presses a mouse button.
-         * @param button the #MksMouseButton that was pressed
-         * @param cancellable a #GCancellable
+         * @param button the {@link Mks.MouseButton} that was pressed
+         * @param cancellable a {@link Gio.Cancellable}
          */
         press(button: MouseButton | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Presses a mouse button.
-         * @param button the #MksMouseButton that was pressed
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param button the {@link Mks.MouseButton} that was pressed
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         press(
             button: MouseButton | null,
@@ -1454,9 +1505,9 @@ export namespace Mks {
         ): void;
         /**
          * Presses a mouse button.
-         * @param button the #MksMouseButton that was pressed
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param button the {@link Mks.MouseButton} that was pressed
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         press(
             button: MouseButton | null,
@@ -1464,29 +1515,29 @@ export namespace Mks {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Completes a call to [method`Mks`.Mouse.press].
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * Completes a call to {@link Mks.Mouse.press}.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         press_finish(result: Gio.AsyncResult): boolean;
         /**
          * Synchronously press a mouse button.
-         * @param button the #MksMouseButton that was released
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
+         * @param button the {@link Mks.MouseButton} that was released
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
         press_sync(button: MouseButton | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Releases a mouse button.
-         * @param button the #MksMouseButton that was released
-         * @param cancellable a #GCancellable
+         * @param button the {@link Mks.MouseButton} that was released
+         * @param cancellable a {@link Gio.Cancellable}
          */
         release(button: MouseButton | null, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Releases a mouse button.
-         * @param button the #MksMouseButton that was released
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param button the {@link Mks.MouseButton} that was released
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         release(
             button: MouseButton | null,
@@ -1495,9 +1546,9 @@ export namespace Mks {
         ): void;
         /**
          * Releases a mouse button.
-         * @param button the #MksMouseButton that was released
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param button the {@link Mks.MouseButton} that was released
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         release(
             button: MouseButton | null,
@@ -1505,16 +1556,16 @@ export namespace Mks {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Completes a call to [method`Mks`.Mouse.release].
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * Completes a call to {@link Mks.Mouse.release}.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         release_finish(result: Gio.AsyncResult): boolean;
         /**
          * Synchronously releases a mouse button.
-         * @param button the #MksMouseButton that was released
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
+         * @param button the {@link Mks.MouseButton} that was released
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
         release_sync(button: MouseButton | null, cancellable?: Gio.Cancellable | null): boolean;
     }
@@ -1546,6 +1597,9 @@ export namespace Mks {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Screen extends Device {
         static $gtype: GObject.GType<Screen>;
 
@@ -1577,16 +1631,19 @@ export namespace Mks {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Screen.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Screen.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Screen.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Screen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Screen.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Screen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1596,85 +1653,99 @@ export namespace Mks {
         // Methods
 
         /**
-         * Asynchronously creates a #GdkPaintable that is updated with the
+         * Asynchronously creates a {@link Gdk.Paintable} that is updated with the
          * contents of the screen.
          *
          * This function registers a new `socketpair()` which is shared with
          * the QEMU instance to receive rendering updates. Those updates are
-         * propagated to the resulting #GdkPainable which can be retrieved
-         * using mks_screen_attach_finish() from `callback`.
-         * @param cancellable a #GCancellable
+         * propagated to the resulting `GdkPainable` which can be retrieved
+         * using `mks_screen_attach_finish()` from `callback`.
+         * @param cancellable a {@link Gio.Cancellable}
          */
         attach(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gdk.Paintable>;
         /**
-         * Asynchronously creates a #GdkPaintable that is updated with the
+         * Asynchronously creates a {@link Gdk.Paintable} that is updated with the
          * contents of the screen.
          *
          * This function registers a new `socketpair()` which is shared with
          * the QEMU instance to receive rendering updates. Those updates are
-         * propagated to the resulting #GdkPainable which can be retrieved
-         * using mks_screen_attach_finish() from `callback`.
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * propagated to the resulting `GdkPainable` which can be retrieved
+         * using `mks_screen_attach_finish()` from `callback`.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         attach(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Asynchronously creates a #GdkPaintable that is updated with the
+         * Asynchronously creates a {@link Gdk.Paintable} that is updated with the
          * contents of the screen.
          *
          * This function registers a new `socketpair()` which is shared with
          * the QEMU instance to receive rendering updates. Those updates are
-         * propagated to the resulting #GdkPainable which can be retrieved
-         * using mks_screen_attach_finish() from `callback`.
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * propagated to the resulting `GdkPainable` which can be retrieved
+         * using `mks_screen_attach_finish()` from `callback`.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         attach(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gdk.Paintable> | void;
         /**
-         * Completes an asynchronous request to create a [iface`Gdk`.Paintable] containing
-         * the contents of #MksScreen in the QEMU instance.
+         * Completes an asynchronous request to create a {@link Gdk.Paintable} containing
+         * the contents of {@link Mks.Screen} in the QEMU instance.
          *
-         * The resulting [iface`Gdk`.Paintable] will be updated as changes are delivered
+         * The resulting {@link Gdk.Paintable} will be updated as changes are delivered
          * from QEMU over a private `socketpair()`. In the typical case, those
          * changes are propagated using a DMA-BUF and damage notifications.
-         * @param result a #GAsyncResult provided to callback
-         * @returns a #GdkPainable if successful; otherwise %NULL   and @error is set.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns a `GdkPainable` if successful; otherwise `null`   and `error` is set.
          */
         attach_finish(result: Gio.AsyncResult): Gdk.Paintable;
         /**
          * Synchronous request to attach to screen, creating a paintable that can
          * be used to update display as the QEMU instance updates.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns a #GdkPaintable if successful; otherwise %NULL   and @error is set.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns a {@link Gdk.Paintable} if successful; otherwise `null`   and `error` is set.
          */
         attach_sync(cancellable?: Gio.Cancellable | null): Gdk.Paintable;
+        /**
+         * @param attributes
+         * @param cancellable
+         */
         configure(attributes: ScreenAttributes, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        /**
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         configure(
             attributes: ScreenAttributes,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param attributes
+         * @param cancellable
+         * @param callback
+         */
         configure(
             attributes: ScreenAttributes,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Completes a call to mks_screen_configure().
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * Completes a call to `mks_screen_configure()`.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         configure_finish(result: Gio.AsyncResult): boolean;
         /**
          * Requests the QEMU instance reconfigure the screen using `attributes`.
          *
          * This function takes ownership of `attributes`.
-         * @param attributes a #MksScreenAttributes
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * @param attributes a {@link Mks.ScreenAttributes}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         configure_sync(attributes: ScreenAttributes, cancellable?: Gio.Cancellable | null): boolean;
         get_device_address(): string;
@@ -1684,18 +1755,18 @@ export namespace Mks {
          */
         get_height(): number;
         /**
-         * Gets the #MksScreen:keyboard property.
-         * @returns a #MksKeyboard
+         * Gets the {@link Mks.Screen.keyboard} property.
+         * @returns a {@link Mks.Keyboard}
          */
         get_keyboard(): Keyboard;
         /**
          * Gets the "kind" property.
-         * @returns a #MksScreenKind
+         * @returns a {@link Mks.ScreenKind}
          */
         get_kind(): ScreenKind;
         /**
-         * Gets the #MksScreen:mouse property.
-         * @returns a #MksMouse
+         * Gets the {@link Mks.Screen.mouse} property.
+         * @returns a {@link Mks.Mouse}
          */
         get_mouse(): Mouse;
         /**
@@ -1704,8 +1775,8 @@ export namespace Mks {
          */
         get_number(): number;
         /**
-         * Gets the #MksScreen:touchable property.
-         * @returns a #MksTouchable
+         * Gets the {@link Mks.Screen.touchable} property.
+         * @returns a {@link Mks.Touchable}
          */
         get_touchable(): Touchable;
         /**
@@ -1738,28 +1809,29 @@ export namespace Mks {
     /**
      * Session connected to a QEMU VM
      *
-     * The `MksSession` represents a connection to a QEMU VM instance. It contains
+     * The {@link Mks.Session} represents a connection to a QEMU VM instance. It contains
      * devices such as the mouse, keyboard, and screen which can be used with GTK.
      *
-     * You may monitor [property`Mks`.Session:devices] using [signal`Gio`.ListModel::items-changed] to be
+     * You may monitor {@link Mks.Session.devices} using `Gio.ListModel::items-changed` to be
      * notified of changes to available devices in the session.
      *
      * # Connecting To QEMU
      *
-     * To use `MksSession`, you should create your QEMU instance using `dbus` for
+     * To use {@link Mks.Session}, you should create your QEMU instance using `dbus` for
      * the various devices that support it. You'll need to provide your P2P D-Bus
      * address when connecting to QEMU.
      *
-     * Using the same [class`Gio`.DBusConnection], create a `MksSession` with
-     * [func`Mks`.Session.new_for_connection]. The `MksSession` instance will negotiate
+     * Using the same {@link Gio.DBusConnection}, create a {@link Mks.Session} with
+     * {@link Mks.Session.new_for_connection}. The {@link Mks.Session} instance will negotiate
      * with the peer to determine what devices are available and expose them
-     * via the [property`Mks`.Session:devices] [iface`Gio`.ListModel].
+     * via the {@link Mks.Session.devices} {@link Gio.ListModel}.
      *
      * # Creating Widgets
      *
      * You can create a new widget to embed in your application by calling
-     * [method`Mks`.Session.ref_screen] and set the screen for the [class`Mks`.Display]
-     * with [method`Mks`.Display.set_screen].
+     * {@link Mks.Session.ref_screen} and set the screen for the {@link Mks.Display}
+     * with {@link Mks.Display.set_screen}.
+     * @gir-type Class
      */
     class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
         static $gtype: GObject.GType<Session>;
@@ -1767,12 +1839,12 @@ export namespace Mks {
         // Properties
 
         /**
-         * The [class`Gio`.DBusConnection] that is used to communicate with QEMU.
+         * The {@link Gio.DBusConnection} that is used to communicate with QEMU.
          */
         get connection(): Gio.DBusConnection;
         /**
-         * A [iface`Gio`.ListModel] of devices that have been
-         * discovered on the [class`Gio`.DBusConnection] to QEMU.
+         * A {@link Gio.ListModel} of devices that have been
+         * discovered on the {@link Gio.DBusConnection} to QEMU.
          */
         get devices(): Gio.ListModel;
         /**
@@ -1805,16 +1877,19 @@ export namespace Mks {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1824,9 +1899,9 @@ export namespace Mks {
         // Static methods
 
         /**
-         * Creates a #MksSession which communicates using `connection`.
+         * Creates a {@link Mks.Session} which communicates using `connection`.
          *
-         * The [class`Gio`.DBusConnection] should be a private D-Bus connection to a QEMU
+         * The {@link Gio.DBusConnection} should be a private D-Bus connection to a QEMU
          * instance which has devices created using the "dbus" backend.
          *
          * `callback` will be executed when the session has been created or
@@ -1834,11 +1909,11 @@ export namespace Mks {
          *
          * This function will not block the calling thread.
          *
-         * use [ctor`Mks`.Session.new_for_connection_finish] to get the result of
+         * use {@link Mks.Session.new_for_connection_finish} to get the result of
          * this operation.
-         * @param connection a #GDBusConnection
+         * @param connection a {@link Gio.DBusConnection}
          * @param io_priority priority for IO operations
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion of the operation
          */
         static new_for_connection(
@@ -1852,12 +1927,12 @@ export namespace Mks {
 
         /**
          * Gets the DBus connection used for this session.
-         * @returns a #GDBusConnection or %NULL if   the connection has not been set, or was disposed.
+         * @returns a {@link Gio.DBusConnection} or `null` if   the connection has not been set, or was disposed.
          */
         get_connection(): Gio.DBusConnection | null;
         /**
-         * Gets a #GListModel of devices connected to the session.
-         * @returns a #GListModel of #MksDevice
+         * Gets a {@link Gio.ListModel} of devices connected to the session.
+         * @returns a {@link Gio.ListModel} of {@link Mks.Device}
          */
         get_devices(): Gio.ListModel;
         /**
@@ -1870,92 +1945,90 @@ export namespace Mks {
         get_uuid(): string;
         /**
          * Gets the main screen for the session.
-         * @returns a #MksScreen or %NULL
+         * @returns a {@link Mks.Screen} or `null`
          */
         ref_screen(): Screen | null;
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -1965,43 +2038,43 @@ export namespace Mks {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -2010,58 +2083,59 @@ export namespace Mks {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Session;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -2070,36 +2144,37 @@ export namespace Mks {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2109,40 +2184,40 @@ export namespace Mks {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2152,11 +2227,12 @@ export namespace Mks {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2172,32 +2248,32 @@ export namespace Mks {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2206,39 +2282,39 @@ export namespace Mks {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2249,13 +2325,16 @@ export namespace Mks {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2263,7 +2342,7 @@ export namespace Mks {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2271,9 +2350,9 @@ export namespace Mks {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2293,9 +2372,9 @@ export namespace Mks {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2309,33 +2388,33 @@ export namespace Mks {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2368,21 +2447,21 @@ export namespace Mks {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2392,8 +2471,8 @@ export namespace Mks {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2410,10 +2489,10 @@ export namespace Mks {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2428,13 +2507,13 @@ export namespace Mks {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2465,21 +2544,21 @@ export namespace Mks {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2489,33 +2568,34 @@ export namespace Mks {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2524,6 +2604,7 @@ export namespace Mks {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2532,12 +2613,14 @@ export namespace Mks {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2546,20 +2629,22 @@ export namespace Mks {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2571,6 +2656,7 @@ export namespace Mks {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2617,6 +2703,7 @@ export namespace Mks {
 
     /**
      * A virtualized QEMU touch device.
+     * @gir-type Class
      */
     class Touchable extends Device {
         static $gtype: GObject.GType<Touchable>;
@@ -2649,16 +2736,19 @@ export namespace Mks {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Touchable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Touchable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Touchable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Touchable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Touchable.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Touchable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2677,7 +2767,7 @@ export namespace Mks {
          * @param num_slot the slot number
          * @param x the x absolute coordinate
          * @param y the y absolute coordinate
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         send_event(
             kind: TouchEventKind | null,
@@ -2692,8 +2782,8 @@ export namespace Mks {
          * @param num_slot the slot number
          * @param x the x absolute coordinate
          * @param y the y absolute coordinate
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         send_event(
             kind: TouchEventKind | null,
@@ -2709,8 +2799,8 @@ export namespace Mks {
          * @param num_slot the slot number
          * @param x the x absolute coordinate
          * @param y the y absolute coordinate
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         send_event(
             kind: TouchEventKind | null,
@@ -2721,9 +2811,9 @@ export namespace Mks {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Completes a call to [method`Mks`.Touchable.send_event].
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation completed successfully; otherwise %FALSE   and @error is set.
+         * Completes a call to {@link Mks.Touchable.send_event}.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
          */
         send_event_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -2732,8 +2822,8 @@ export namespace Mks {
          * @param num_slot the slot number
          * @param x the x absolute coordinate
          * @param y the y absolute coordinate
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the operation was acknowledged by the QEMU instance;   otherwise %FALSE and @error is set.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
          */
         send_event_sync(
             kind: TouchEventKind | null,
@@ -2744,15 +2834,28 @@ export namespace Mks {
         ): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
+    /**
+     * @gir-type Alias
+     */
     type DisplayClass = typeof Display;
+    /**
+     * @gir-type Alias
+     */
     type KeyboardClass = typeof Keyboard;
+    /**
+     * @gir-type Alias
+     */
     type MouseClass = typeof Mouse;
     /**
      * Screen attributes.
      *
      * The attributes are used to reconfigure the QEMU instance with
-     * [method`Mks`.Screen.configure] or [method`Mks`.Screen.configure_sync].
+     * {@link Mks.Screen.configure} or {@link Mks.Screen.configure_sync}.
+     * @gir-type Struct
      */
     class ScreenAttributes {
         static $gtype: GObject.GType<ScreenAttributes>;
@@ -2766,20 +2869,20 @@ export namespace Mks {
         // Methods
 
         /**
-         * Makes a deep copy of a #MksScreenAttributes.
-         * @returns A newly created #MksScreenAttributes with the same   contents as @self. If @self is %NULL, %NULL is returned.
+         * Makes a deep copy of a {@link Mks.ScreenAttributes}.
+         * @returns A newly created {@link Mks.ScreenAttributes} with the same   contents as `self`. If `self` is `null`, `null` is returned.
          */
         copy(): ScreenAttributes;
         /**
          * Returns `true` if the two attributes are equal, `false` otherwise.
-         * @param other a #MksScreenAttributes
+         * @param other a {@link Mks.ScreenAttributes}
          */
         equal(other: ScreenAttributes): boolean;
         /**
-         * Frees a #MksScreenAttributes.
+         * Frees a {@link Mks.ScreenAttributes}.
          *
-         * Allocated using [ctor`Mks`.ScreenAttributes.new]
-         * or [method`Mks`.ScreenAttributes.copy].
+         * Allocated using {@link Mks.ScreenAttributes.new}
+         * or {@link Mks.ScreenAttributes.copy}.
          */
         free(): void;
         /**
@@ -2814,8 +2917,17 @@ export namespace Mks {
         set_y_offset(y_offset: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScreenClass = typeof Screen;
+    /**
+     * @gir-type Alias
+     */
     type SessionClass = typeof Session;
+    /**
+     * @gir-type Alias
+     */
     type TouchableClass = typeof Touchable;
     /**
      * Name of the imported GIR library

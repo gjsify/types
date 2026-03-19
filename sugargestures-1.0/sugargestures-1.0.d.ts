@@ -33,6 +33,9 @@ export namespace SugarGestures {
         export const $gtype: GObject.GType<EventControllerState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum EventControllerState {
         NONE,
         COLLECTING,
@@ -44,6 +47,9 @@ export namespace SugarGestures {
         export const $gtype: GObject.GType<SwipeDirection>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SwipeDirection {
         LEFT,
         RIGHT,
@@ -55,6 +61,9 @@ export namespace SugarGestures {
         export const $gtype: GObject.GType<EventControllerFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum EventControllerFlags {
         NONE,
         EXCLUSIVE,
@@ -64,6 +73,9 @@ export namespace SugarGestures {
         export const $gtype: GObject.GType<SwipeDirectionFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum SwipeDirectionFlags {
         LEFT,
         RIGHT,
@@ -74,8 +86,17 @@ export namespace SugarGestures {
     namespace EventController {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             began: () => void;
+            /**
+             * @signal
+             */
             ended: () => void;
+            /**
+             * @signal
+             */
             updated: () => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
             'notify::widget': (pspec: GObject.ParamSpec) => void;
@@ -89,6 +110,9 @@ export namespace SugarGestures {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class EventController extends GObject.Object {
         static $gtype: GObject.GType<EventController>;
 
@@ -115,16 +139,19 @@ export namespace SugarGestures {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EventController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EventController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EventController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EventController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -133,18 +160,47 @@ export namespace SugarGestures {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_began(): void;
+        /**
+         * @virtual
+         */
         vfunc_ended(): void;
+        /**
+         * @virtual
+         */
         vfunc_get_state(): EventControllerState;
+        /**
+         * @param event
+         * @virtual
+         */
         vfunc_handle_event(event: Gdk.Event): boolean;
+        /**
+         * @virtual
+         */
         vfunc_reset(): void;
+        /**
+         * @virtual
+         */
         vfunc_updated(): void;
 
         // Methods
 
+        /**
+         * @param widget
+         * @param flags
+         */
         attach(widget: Gtk.Widget, flags: EventControllerFlags | null): boolean;
+        /**
+         * @param widget
+         */
         detach(widget: Gtk.Widget): boolean;
         get_state(): EventControllerState;
+        /**
+         * @param event
+         */
         handle_event(event: Gdk.Event): boolean;
         reset(): boolean;
     }
@@ -152,6 +208,9 @@ export namespace SugarGestures {
     namespace LongPressController {
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
+            /**
+             * @signal
+             */
             pressed: (arg0: number, arg1: number) => void;
             'notify::threshold': (pspec: GObject.ParamSpec) => void;
             'notify::trigger-delay': (pspec: GObject.ParamSpec) => void;
@@ -168,6 +227,9 @@ export namespace SugarGestures {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LongPressController extends EventController {
         static $gtype: GObject.GType<LongPressController>;
 
@@ -199,16 +261,19 @@ export namespace SugarGestures {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LongPressController.SignalSignatures[K]> extends [any, ...infer Q]
@@ -219,12 +284,20 @@ export namespace SugarGestures {
 
         // Virtual methods
 
+        /**
+         * @param x
+         * @param y
+         * @virtual
+         */
         vfunc_pressed(x: number, y: number): void;
     }
 
     namespace RotateController {
         // Signal signatures
         interface SignalSignatures extends TouchController.SignalSignatures {
+            /**
+             * @signal
+             */
             'angle-changed': (arg0: number, arg1: number) => void;
             'notify::max-touches': (pspec: GObject.ParamSpec) => void;
             'notify::min-touches': (pspec: GObject.ParamSpec) => void;
@@ -237,6 +310,9 @@ export namespace SugarGestures {
         interface ConstructorProps extends TouchController.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RotateController extends TouchController {
         static $gtype: GObject.GType<RotateController>;
 
@@ -263,16 +339,19 @@ export namespace SugarGestures {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RotateController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RotateController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RotateController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RotateController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -281,15 +360,20 @@ export namespace SugarGestures {
 
         // Virtual methods
 
+        /**
+         * @param angle
+         * @param delta
+         * @virtual
+         */
         vfunc_angle_changed(angle: number, delta: number): void;
 
         // Methods
 
         /**
-         * If `controller` is on state %SUGAR_EVENT_CONTROLLER_STATE_RECOGNIZED,
-         * this function returns %TRUE and fills in `delta` with the angle difference
+         * If `controller` is on state {@link SugarGestures.EventControllerState.RECOGNIZED},
+         * this function returns `true` and fills in `delta` with the angle difference
          * in radians since the gesture was first recognized.
-         * @returns %TRUE if @controller is recognizing a rotate gesture
+         * @returns `true` if `controller` is recognizing a rotate gesture
          */
         get_angle_delta(): [boolean, number];
     }
@@ -297,6 +381,9 @@ export namespace SugarGestures {
     namespace SwipeController {
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
+            /**
+             * @signal
+             */
             'swipe-ended': (arg0: SwipeDirection) => void;
             'notify::directions': (pspec: GObject.ParamSpec) => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
@@ -310,6 +397,9 @@ export namespace SugarGestures {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SwipeController extends EventController {
         static $gtype: GObject.GType<SwipeController>;
 
@@ -336,16 +426,19 @@ export namespace SugarGestures {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SwipeController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -354,6 +447,10 @@ export namespace SugarGestures {
 
         // Virtual methods
 
+        /**
+         * @param direction
+         * @virtual
+         */
         vfunc_swipe_ended(direction: SwipeDirection): void;
     }
 
@@ -376,6 +473,9 @@ export namespace SugarGestures {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class TouchController extends EventController {
         static $gtype: GObject.GType<TouchController>;
 
@@ -407,16 +507,19 @@ export namespace SugarGestures {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TouchController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TouchController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TouchController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TouchController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -428,14 +531,14 @@ export namespace SugarGestures {
         /**
          * If a gesture is ongoing, this function returns the center of
          * the bounding box containing all ongoing touches.
-         * @returns %TRUE if a gesture is in progress
+         * @returns `true` if a gesture is in progress
          */
         get_center(): [boolean, number, number];
         /**
-         * If `sequence` is operating on `controller,` this function returns %TRUE and
+         * If `sequence` is operating on `controller`, this function returns `true` and
          * fills in `x` and `y` with the latest coordinates for that `sequence`.
-         * @param sequence a #GdkEventSequence
-         * @returns %TRUE if @sequence operates on @controller
+         * @param sequence a {@link Gdk.EventSequence}
+         * @returns `true` if `sequence` operates on `controller`
          */
         get_coords(sequence: Gdk.EventSequence): [boolean, number, number];
         /**
@@ -453,6 +556,9 @@ export namespace SugarGestures {
     namespace ZoomController {
         // Signal signatures
         interface SignalSignatures extends TouchController.SignalSignatures {
+            /**
+             * @signal
+             */
             'scale-changed': (arg0: number) => void;
             'notify::max-touches': (pspec: GObject.ParamSpec) => void;
             'notify::min-touches': (pspec: GObject.ParamSpec) => void;
@@ -465,6 +571,9 @@ export namespace SugarGestures {
         interface ConstructorProps extends TouchController.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ZoomController extends TouchController {
         static $gtype: GObject.GType<ZoomController>;
 
@@ -491,16 +600,19 @@ export namespace SugarGestures {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ZoomController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -509,21 +621,31 @@ export namespace SugarGestures {
 
         // Virtual methods
 
+        /**
+         * @param scale
+         * @virtual
+         */
         vfunc_scale_changed(scale: number): void;
 
         // Methods
 
         /**
-         * If `controller` is on state %SUGAR_EVENT_CONTROLLER_STATE_RECOGNIZED,
-         * this function returns %TRUE and fills in `scale` with the zooming
+         * If `controller` is on state {@link SugarGestures.EventControllerState.RECOGNIZED},
+         * this function returns `true` and fills in `scale` with the zooming
          * difference since the gesture was recognized (hence the starting point
          * is considered 1x).
-         * @returns %TRUE if @controller is recognizing a zoom gesture
+         * @returns `true` if `controller` is recognizing a zoom gesture
          */
         get_scale_delta(): [boolean, number];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EventControllerClass = typeof EventController;
+    /**
+     * @gir-type Struct
+     */
     class EventControllerPrivate {
         static $gtype: GObject.GType<EventControllerPrivate>;
 
@@ -532,7 +654,13 @@ export namespace SugarGestures {
         widget: Gtk.Widget;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LongPressControllerClass = typeof LongPressController;
+    /**
+     * @gir-type Struct
+     */
     class LongPressControllerPrivate {
         static $gtype: GObject.GType<LongPressControllerPrivate>;
 
@@ -551,7 +679,13 @@ export namespace SugarGestures {
         triggered: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RotateControllerClass = typeof RotateController;
+    /**
+     * @gir-type Struct
+     */
     class RotateControllerPrivate {
         static $gtype: GObject.GType<RotateControllerPrivate>;
 
@@ -568,7 +702,13 @@ export namespace SugarGestures {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SwipeControllerClass = typeof SwipeController;
+    /**
+     * @gir-type Struct
+     */
     class SwipeControllerPrivate {
         static $gtype: GObject.GType<SwipeControllerPrivate>;
 
@@ -581,7 +721,13 @@ export namespace SugarGestures {
         directions: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TouchControllerClass = typeof TouchController;
+    /**
+     * @gir-type Struct
+     */
     class TouchControllerPrivate {
         static $gtype: GObject.GType<TouchControllerPrivate>;
 
@@ -591,7 +737,13 @@ export namespace SugarGestures {
         max_touches: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ZoomControllerClass = typeof ZoomController;
+    /**
+     * @gir-type Struct
+     */
     class ZoomControllerPrivate {
         static $gtype: GObject.GType<ZoomControllerPrivate>;
 

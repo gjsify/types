@@ -26,10 +26,38 @@ export namespace TelepathyFarstream {
     namespace Channel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This function is called after a channel is closed, either because
+             * it has been closed by the connection manager or because we had a locally
+             * generated error.
+             * @signal
+             */
             closed: () => void;
+            /**
+             * Tells the application that a content has been added. In the callback for
+             * this signal, the application should set its preferred codecs, and hook
+             * up to any signal from {@link TelepathyFarstream.Content} it cares about. Special care should be
+             * made to connect {@link TelepathyFarstream.Content.SignalSignatures.src_pad_added | TelepathyFarstream.Content::src-pad-added} as well
+             * as the {@link TelepathyFarstream.Content.SignalSignatures.start_sending | TelepathyFarstream.Content::start-sending} and {@link TelepathyFarstream.Content.SignalSignatures.stop_sending | TelepathyFarstream.Content::stop-sending} signals.
+             * @signal
+             */
             'content-added': (arg0: Content) => void;
+            /**
+             * Tells the application that a content is being removed.
+             * @signal
+             */
             'content-removed': (arg0: Content) => void;
+            /**
+             * When this signal is emitted, the conference should be added to the
+             * application's pipeline.
+             * @signal
+             */
             'fs-conference-added': (arg0: Farstream.Conference) => void;
+            /**
+             * When this signal is emitted, the conference should be remove from the
+             * application's pipeline.
+             * @signal
+             */
             'fs-conference-removed': (arg0: Farstream.Conference) => void;
             'notify::channel': (pspec: GObject.ParamSpec) => void;
             'notify::fs-conferences': (pspec: GObject.ParamSpec) => void;
@@ -49,6 +77,7 @@ export namespace TelepathyFarstream {
 
     /**
      * All members of the object are private
+     * @gir-type Class
      */
     class Channel extends GObject.Object implements Gio.AsyncInitable<Channel> {
         static $gtype: GObject.GType<Channel>;
@@ -83,16 +112,19 @@ export namespace TelepathyFarstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -102,13 +134,13 @@ export namespace TelepathyFarstream {
         // Static methods
 
         /**
-         * Creates a new #TfChannel from an existing channel proxy, the new
+         * Creates a new {@link TelepathyFarstream.Channel} from an existing channel proxy, the new
          * TfChannel object will be return in the async callback.
          *
-         * The user must call tf_channel_new_finish() in the callback
+         * The user must call `tf_channel_new_finish()` in the callback
          * to get the finished object.
-         * @param channel_proxy a #TpChannel proxy
-         * @param callback a #GAsyncReadyCallback to call when the channel is ready
+         * @param channel_proxy a {@link TelepathyGLib.Channel} proxy
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the channel is ready
          */
         static new_async(channel_proxy: TelepathyGLib.Channel, callback?: Gio.AsyncReadyCallback<Channel> | null): void;
 
@@ -116,94 +148,92 @@ export namespace TelepathyFarstream {
 
         /**
          * You must call this function on call messages received on the async bus.
-         * #GstMessages are not modified.
-         * @param message A #GstMessage received from the bus
-         * @returns %TRUE if the message has been handled, %FALSE otherwise
+         * `GstMessages` are not modified.
+         * @param message A {@link Gst.Message} received from the bus
+         * @returns `true` if the message has been handled, `false` otherwise
          */
         bus_message(message: Gst.Message): boolean;
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -213,43 +243,43 @@ export namespace TelepathyFarstream {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -258,58 +288,59 @@ export namespace TelepathyFarstream {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Channel;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -318,8 +349,9 @@ export namespace TelepathyFarstream {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -335,32 +367,32 @@ export namespace TelepathyFarstream {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -369,39 +401,39 @@ export namespace TelepathyFarstream {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -412,13 +444,16 @@ export namespace TelepathyFarstream {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -426,7 +461,7 @@ export namespace TelepathyFarstream {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -434,9 +469,9 @@ export namespace TelepathyFarstream {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -456,9 +491,9 @@ export namespace TelepathyFarstream {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -472,33 +507,33 @@ export namespace TelepathyFarstream {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -531,21 +566,21 @@ export namespace TelepathyFarstream {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -555,8 +590,8 @@ export namespace TelepathyFarstream {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -573,10 +608,10 @@ export namespace TelepathyFarstream {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -591,13 +626,13 @@ export namespace TelepathyFarstream {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -628,21 +663,21 @@ export namespace TelepathyFarstream {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -652,33 +687,34 @@ export namespace TelepathyFarstream {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -687,6 +723,7 @@ export namespace TelepathyFarstream {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -695,12 +732,14 @@ export namespace TelepathyFarstream {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -709,20 +748,22 @@ export namespace TelepathyFarstream {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -734,6 +775,7 @@ export namespace TelepathyFarstream {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -766,11 +808,50 @@ export namespace TelepathyFarstream {
     namespace Content {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal requests that the source be restarted so that the caps can
+             * be renegotiated with a new resolutions and framerate.
+             * @signal
+             */
             'restart-source': () => void;
+            /**
+             * This signal is emitted when a data is coming on a new pad. This signal
+             * is not emitted on the main thread, so special care must be made to lock
+             * the relevant data. When the callback returns from this signal, data will
+             * start flowing through the pad, so the application MUST connect a sink.
+             * @signal
+             */
             'src-pad-added': (arg0: number, arg1: Farstream.Stream, arg2: Gst.Pad, arg3: Farstream.Codec) => void;
+            /**
+             * This signal is emitted when the connection managers requests that the
+             * application prepares itself to start receiving data again from certain
+             * handles.
+             *
+             * This signal will only be emitted after the {@link TelepathyFarstream.Content.SignalSignatures.stop_receiving | TelepathyFarstream.Content::stop-receiving}
+             * signal has succeeded. It will not be emitted right after
+             *  {@link TelepathyFarstream.Content.SignalSignatures.src_pad_added | TelepathyFarstream.Content::src-pad-added}.
+             * @signal
+             */
             'start-receiving': (arg0: any, arg1: number) => boolean | void;
+            /**
+             * This signal is emitted when the connection manager ask to send media.
+             * For example, this can be used to open a camera, start recording from a
+             * microphone or play back a file. The application should start
+             * sending data on the {@link TelepathyFarstream.Content.sink_pad}
+             * @signal
+             */
             'start-sending': () => boolean | void;
+            /**
+             * This signal is emitted when the connection manager wants to tell the
+             * application that it is now allowed to stop receiving.
+             * @signal
+             */
             'stop-receiving': (arg0: any, arg1: number) => void;
+            /**
+             * This signal is emitted when the connection manager ask to stop
+             * sending media
+             * @signal
+             */
             'stop-sending': () => void;
             'notify::fs-conference': (pspec: GObject.ParamSpec) => void;
             'notify::fs-session': (pspec: GObject.ParamSpec) => void;
@@ -800,6 +881,7 @@ export namespace TelepathyFarstream {
 
     /**
      * This structure is private, this class is not subclassable.
+     * @gir-type Class
      */
     abstract class Content extends GObject.Object {
         static $gtype: GObject.GType<Content>;
@@ -836,16 +918,19 @@ export namespace TelepathyFarstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Content.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Content.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Content.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Content.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -863,9 +948,9 @@ export namespace TelepathyFarstream {
         /**
          * Provides a iterator that can be used to iterate through all of the src
          * pads that are are used to receive from a group of Telepathy handles.
-         * @param handles a 0 terminated array of #guint representing Telepathy handles
-         * @param handle_count the numner of handles in @handles
-         * @returns a #GstIterator
+         * @param handles a 0 terminated array of `guint` representing Telepathy handles
+         * @param handle_count the numner of handles in `handles`
+         * @returns a {@link Gst.Iterator}
          */
         iterate_src_pads(handles: number, handle_count: number): Gst.Iterator;
         /**
@@ -874,8 +959,8 @@ export namespace TelepathyFarstream {
          * and the call.
          *
          * If handles are not specific, it assumes that it is valid for all handles.
-         * @param handles an array of #guint representing Telepathy handles, may be %NULL
-         * @param handle_count the numner of handles in @handles
+         * @param handles an array of `guint` representing Telepathy handles, may be `null`
+         * @param handle_count the numner of handles in `handles`
          * @param message The error message
          */
         receiving_failed(handles: number, handle_count: number, message: string): void;
@@ -888,12 +973,24 @@ export namespace TelepathyFarstream {
         sending_failed(message: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ChannelClass = typeof Channel;
+    /**
+     * @gir-type Struct
+     */
     abstract class ChannelPrivate {
         static $gtype: GObject.GType<ChannelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContentClass = typeof Content;
+    /**
+     * @gir-type Struct
+     */
     abstract class ContentPrivate {
         static $gtype: GObject.GType<ContentPrivate>;
     }

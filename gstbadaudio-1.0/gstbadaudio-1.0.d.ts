@@ -26,6 +26,7 @@ export namespace GstBadAudio {
      * The output mode defines how the output behaves with regards to looping. Either the playback position is
      * moved back to the beginning of the loop, acting like a backwards seek, or it increases steadily, as if
      * loop were "unrolled".
+     * @gir-type Enum
      */
     enum NonstreamAudioOutputMode {
         /**
@@ -40,6 +41,7 @@ export namespace GstBadAudio {
 
     /**
      * The subsong mode defines how the decoder shall handle subsongs.
+     * @gir-type Enum
      */
     enum NonstreamAudioSubsongMode {
         /**
@@ -150,7 +152,7 @@ export namespace GstBadAudio {
      *   - If upstream cannot respond to the size query (in bytes) of `load_from_buffer`
      *     fails, an error is reported, and the pipeline stops.
      *   - If there are no errors, `load_from_buffer` is called to load the media. The
-     *     subclass must at least call gst_nonstream_audio_decoder_set_output_format()
+     *     subclass must at least call `gst_nonstream_audio_decoder_set_output_format()`
      *     there, and is free to make use of the initial subsong, output mode, and
      *     position. If the actual output mode or position differs from the initial
      *     value,it must set the initial value to the actual one (for example, if
@@ -164,20 +166,20 @@ export namespace GstBadAudio {
      *     class switches to loaded mode, and starts the decoder output task.
      *
      * * Loaded mode</title>
-     *   - Inside the decoder output task, the base class repeatedly calls `decode,`
+     *   - Inside the decoder output task, the base class repeatedly calls `decode`,
      *     which returns a buffer with decoded, ready-to-play samples. If the
      *     subclass reached the end of playback, `decode` returns FALSE, otherwise
      *     TRUE.
      *   - Upon reaching a loop end, subclass either ignores that, or loops back
      *     to the beginning of the loop. In the latter case, if the output mode is set
-     *     to LOOPING, the subclass must call gst_nonstream_audio_decoder_handle_loop()
+     *     to LOOPING, the subclass must call `gst_nonstream_audio_decoder_handle_loop()`
      *     *after* the playback position moved to the start of the loop. In
      *     STEADY mode, the subclass must *not* call this function.
      *     Since many decoders only provide a callback for when the looping occurs,
      *     and that looping occurs inside the decoding operation itself, the following
      *     mechanism for subclass is suggested: set a flag inside such a callback.
      *     Then, in the next `decode` call, before doing the decoding, check this flag.
-     *     If it is set, gst_nonstream_audio_decoder_handle_loop() is called, and the
+     *     If it is set, `gst_nonstream_audio_decoder_handle_loop()` is called, and the
      *     flag is cleared.
      *     (This function call is necessary in LOOPING mode because it updates the
      *     current segment and makes sure the next buffer that is sent downstream
@@ -214,6 +216,7 @@ export namespace GstBadAudio {
      *   the duration of the respective subsong in LOOPING mode and to G_MAXINT64 in
      *   STEADY mode. If the number of loops is 0, entry durations are set to the
      *   subsong duration regardless of the output mode.
+     * @gir-type Class
      */
     abstract class NonstreamAudioDecoder extends Gst.Element {
         static $gtype: GObject.GType<NonstreamAudioDecoder>;
@@ -261,16 +264,19 @@ export namespace GstBadAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NonstreamAudioDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NonstreamAudioDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NonstreamAudioDecoder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -281,15 +287,56 @@ export namespace GstBadAudio {
 
         // Virtual methods
 
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
+        /**
+         * @param buffer
+         * @param num_samples
+         * @virtual
+         */
         vfunc_decode(buffer: Gst.Buffer, num_samples: number): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_current_subsong(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_main_tags(): Gst.TagList;
+        /**
+         * @virtual
+         */
         vfunc_get_num_loops(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_num_subsongs(): number;
+        /**
+         * @param subsong
+         * @virtual
+         */
         vfunc_get_subsong_duration(subsong: number): Gst.ClockTime;
+        /**
+         * @param subsong
+         * @virtual
+         */
         vfunc_get_subsong_tags(subsong: number): Gst.TagList;
+        /**
+         * @virtual
+         */
         vfunc_get_supported_output_modes(): number;
+        /**
+         * @param source_data
+         * @param initial_subsong
+         * @param initial_subsong_mode
+         * @param initial_position
+         * @param initial_output_mode
+         * @param initial_num_loops
+         * @virtual
+         */
         vfunc_load_from_buffer(
             source_data: Gst.Buffer,
             initial_subsong: number,
@@ -298,6 +345,14 @@ export namespace GstBadAudio {
             initial_output_mode: NonstreamAudioOutputMode,
             initial_num_loops: number,
         ): boolean;
+        /**
+         * @param initial_subsong
+         * @param initial_subsong_mode
+         * @param initial_position
+         * @param initial_output_mode
+         * @param initial_num_loops
+         * @virtual
+         */
         vfunc_load_from_custom(
             initial_subsong: number,
             initial_subsong_mode: NonstreamAudioSubsongMode,
@@ -305,13 +360,46 @@ export namespace GstBadAudio {
             initial_output_mode: NonstreamAudioOutputMode,
             initial_num_loops: number,
         ): boolean;
+        /**
+         * @virtual
+         */
         vfunc_negotiate(): boolean;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
+        /**
+         * @param new_position
+         * @virtual
+         */
         vfunc_seek(new_position: Gst.ClockTime): boolean;
+        /**
+         * @param subsong
+         * @param initial_position
+         * @virtual
+         */
         vfunc_set_current_subsong(subsong: number, initial_position: Gst.ClockTime): boolean;
+        /**
+         * @param num_loops
+         * @virtual
+         */
         vfunc_set_num_loops(num_loops: number): boolean;
+        /**
+         * @param mode
+         * @param current_position
+         * @virtual
+         */
         vfunc_set_output_mode(mode: NonstreamAudioOutputMode, current_position: Gst.ClockTime): boolean;
+        /**
+         * @param mode
+         * @param initial_position
+         * @virtual
+         */
         vfunc_set_subsong_mode(mode: NonstreamAudioSubsongMode, initial_position: Gst.ClockTime): boolean;
+        /**
+         * @virtual
+         */
         vfunc_tell(): Gst.ClockTime;
 
         // Methods
@@ -319,8 +407,8 @@ export namespace GstBadAudio {
         /**
          * Allocates an output buffer with the internally configured buffer pool.
          *
-         * This function may only be called from within `load_from_buffer,`
-         * `load_from_custom,` and `decode`.
+         * This function may only be called from within `load_from_buffer`,
+         * `load_from_custom`, and `decode`.
          * @param size Size of the output buffer, in bytes
          * @returns Newly allocated output buffer, or NULL if allocation failed
          */
@@ -333,7 +421,7 @@ export namespace GstBadAudio {
          * sample rate is often a freely adjustable value in module players.
          *
          * This function tries to find a value inside the srcpad peer's caps for
-         * `format,` `sample_rate,` `num_chnanels` . Any of these can be NULL; they
+         * `format`, `sample_rate`, `num_chnanels` . Any of these can be NULL; they
          * (and the corresponding downstream caps) are then skipped while retrieving
          * information. Non-fixated caps are fixated first; the value closest to
          * their present value is then chosen. For example, if the variables pointed
@@ -346,12 +434,12 @@ export namespace GstBadAudio {
          * This way, the initial values the the variables pointed to by the arguments
          * are set to can be used as default output values. Note that if no downstream
          * caps can be retrieved, then this function does nothing, therefore it is
-         * necessary to ensure that `format,` `sample_rate,` and `channels` have valid
+         * necessary to ensure that `format`, `sample_rate`, and `channels` have valid
          * initial values.
          *
          * Decoder lock is not held by this function, so it can be called from within
          * any of the class vfuncs.
-         * @param format #GstAudioFormat value to fill with a sample format
+         * @param format {@link GstAudio.AudioFormat} value to fill with a sample format
          * @param sample_rate Integer to fill with a sample rate
          * @param num_channels Integer to fill with a channel count
          */
@@ -365,7 +453,7 @@ export namespace GstBadAudio {
          * This function is only useful for subclasses which can be in the
          * GST_NONSTREAM_AUDIO_OUTPUT_MODE_LOOPING output mode, since in the
          * GST_NONSTREAM_AUDIO_OUTPUT_MODE_STEADY output mode, this function
-         * does nothing. See #GstNonstreamAudioOutputMode for more details.
+         * does nothing. See {@link GstBadAudio.NonstreamAudioOutputMode} for more details.
          *
          * The subclass calls this during playback when it loops. It produces
          * a new segment with updated base time and internal time values, to allow
@@ -399,7 +487,7 @@ export namespace GstBadAudio {
          * Convenience function; sets the output caps by means of common parameters.
          *
          * Internally, this fills a GstAudioInfo structure and calls
-         * gst_nonstream_audio_decoder_set_output_format().
+         * `gst_nonstream_audio_decoder_set_output_format()`.
          * @param sample_rate Output sample rate to use, in Hz
          * @param sample_format Output sample format to use
          * @param num_channels Number of output channels to use
@@ -424,7 +512,8 @@ export namespace GstBadAudio {
     /**
      * This class is similar to GstAdapter, but it is made to work with
      * non-interleaved (planar) audio buffers. Before using, an audio format
-     * must be configured with gst_planar_audio_adapter_configure()
+     * must be configured with `gst_planar_audio_adapter_configure()`
+     * @gir-type Class
      */
     class PlanarAudioAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlanarAudioAdapter>;
@@ -448,16 +537,19 @@ export namespace GstBadAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlanarAudioAdapter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlanarAudioAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlanarAudioAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -468,9 +560,9 @@ export namespace GstBadAudio {
 
         /**
          * Gets the maximum amount of samples available, that is it returns the maximum
-         * value that can be supplied to gst_planar_audio_adapter_get_buffer() without
-         * that function returning %NULL.
-         * @returns number of samples available in @adapter
+         * value that can be supplied to `gst_planar_audio_adapter_get_buffer()` without
+         * that function returning `null`.
+         * @returns number of samples available in `adapter`
          */
         available(): number;
         /**
@@ -480,7 +572,7 @@ export namespace GstBadAudio {
         /**
          * Sets up the `adapter` to handle audio data of the specified audio format.
          * Note that this will internally clear the adapter and re-initialize it.
-         * @param info a #GstAudioInfo describing the format of the audio data
+         * @param info a {@link GstAudio.AudioInfo} describing the format of the audio data
          */
         configure(info: GstAudio.AudioInfo): void;
         distance_from_discont(): number;
@@ -497,21 +589,21 @@ export namespace GstBadAudio {
          */
         flush(to_flush: number): void;
         /**
-         * Returns a #GstBuffer containing the first `nsamples` of the `adapter,` but
+         * Returns a {@link Gst.Buffer} containing the first `nsamples` of the `adapter`, but
          * does not flush them from the adapter.
-         * Use gst_planar_audio_adapter_take_buffer() for flushing at the same time.
+         * Use `gst_planar_audio_adapter_take_buffer()` for flushing at the same time.
          *
          * The map `flags` can be used to give an optimization hint to this function.
          * When the requested buffer is meant to be mapped only for reading, it might
          * be possible to avoid copying memory in some cases.
          *
-         * Caller owns a reference to the returned buffer. gst_buffer_unref() after
+         * Caller owns a reference to the returned buffer. `gst_buffer_unref()` after
          * usage.
          *
          * Free-function: gst_buffer_unref
          * @param nsamples the number of samples to get
          * @param flags hint the intended use of the returned buffer
-         * @returns a #GstBuffer containing the first     @nsamples of the adapter, or %NULL if @nsamples samples are not     available. gst_buffer_unref() when no longer needed.
+         * @returns a {@link Gst.Buffer} containing the first     `nsamples` of the adapter, or `null` if `nsamples` samples are not     available. `gst_buffer_unref()` when no longer needed.
          */
         get_buffer(nsamples: number, flags: Gst.MapFlags | null): Gst.Buffer | null;
         /**
@@ -565,27 +657,33 @@ export namespace GstBadAudio {
         /**
          * Adds the data from `buf` to the data stored inside `adapter` and takes
          * ownership of the buffer.
-         * @param buf a #GstBuffer to queue in the adapter
+         * @param buf a {@link Gst.Buffer} to queue in the adapter
          */
         push(buf: Gst.Buffer): void;
         /**
-         * Returns a #GstBuffer containing the first `nsamples` bytes of the
+         * Returns a {@link Gst.Buffer} containing the first `nsamples` bytes of the
          * `adapter`. The returned bytes will be flushed from the adapter.
          *
-         * See gst_planar_audio_adapter_get_buffer() for more details.
+         * See `gst_planar_audio_adapter_get_buffer()` for more details.
          *
-         * Caller owns a reference to the returned buffer. gst_buffer_unref() after
+         * Caller owns a reference to the returned buffer. `gst_buffer_unref()` after
          * usage.
          *
          * Free-function: gst_buffer_unref
          * @param nsamples the number of samples to take
          * @param flags hint the intended use of the returned buffer
-         * @returns a #GstBuffer containing the first     @nsamples of the adapter, or %NULL if @nsamples samples are not     available. gst_buffer_unref() when no longer needed.
+         * @returns a {@link Gst.Buffer} containing the first     `nsamples` of the adapter, or `null` if `nsamples` samples are not     available. `gst_buffer_unref()` when no longer needed.
          */
         take_buffer(nsamples: number, flags: Gst.MapFlags | null): Gst.Buffer | null;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NonstreamAudioDecoderClass = typeof NonstreamAudioDecoder;
+    /**
+     * @gir-type Alias
+     */
     type PlanarAudioAdapterClass = typeof PlanarAudioAdapter;
     /**
      * Name of the imported GIR library

@@ -25,22 +25,23 @@ export namespace GrlPls {
      * Browse into a playlist. The playlist entries are
      * returned via the `callback` function as GrlMedia objects.
      * This function imitates the API and way of working of
-     * #grl_source_browse.
+     * `grl_source_browse`.
      *
      * The `playlist` provided could be of any GrlMedia class,
      * as long as its URI points to a valid playlist file.
      *
      * This function is asynchronous.
      *
-     * See #grl_source_browse() function for additional information
+     * See `grl_source_browse`() function for additional information
      * and sample code.
      * @param source a source
      * @param playlist a playlist
-     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
      * @param options options wanted for that operation
-     * @param filter_func A filter function, or %NULL
+     * @param filter_func A filter function, or `null`
      * @param callback the user defined callback
      * @returns the operation identifier
+     * @since 0.2.0
      */
     function browse(
         source: Grl.Source,
@@ -61,36 +62,38 @@ export namespace GrlPls {
      *
      * This function is asynchronous.
      *
-     * See #grl_pls_browse() and #grl_source_browse() function for additional
+     * See `grl_pls_browse`() and `grl_source_browse`() function for additional
      * information and sample code.
      * @param source a source
-     * @param filter_func A filter function, or %NULL
+     * @param filter_func A filter function, or `null`
      * @param bs a GrlSourceBrowseSpec structure with details of the browsing operation
+     * @since 0.2.0
      */
     function browse_by_spec(source: Grl.Source, filter_func: FilterFunc | null, bs: Grl.SourceBrowseSpec): void;
     /**
      * Browse into a playlist. The playlist entries are
      * returned via the `callback` function as GrlMedia objects.
      * This function imitates the API and way of working of
-     * #grl_source_browse_sync.
+     * `grl_source_browse_sync`.
      *
      * The filter function `filter_func` will be used for plugins
      * or applications to be able to refuse particular entries from
      * being listed.
      *
-     * If a %NULL filter function is passed, the media will be added
+     * If a `null` filter function is passed, the media will be added
      * with only the metadata coming from the playlist included.
      *
      * This function is synchronous.
      *
-     * See #grl_source_browse_sync() function for additional information
+     * See `grl_source_browse_sync`() function for additional information
      * and sample code.
      * @param source a source
      * @param playlist a playlist
-     * @param keys the #GList of #GrlKeyID<!-- -->s to request
+     * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
      * @param options options wanted for that operation
-     * @param filter_func A filter function, or %NULL
-     * @returns a #GList with #GrlMedia elements. After use g_object_unref() every element and g_list_free() the list.
+     * @param filter_func A filter function, or `null`
+     * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
+     * @since 0.2.0
      */
     function browse_sync(
         source: Grl.Source,
@@ -100,19 +103,20 @@ export namespace GrlPls {
         filter_func?: FilterFunc | null,
     ): Grl.Media[];
     /**
-     * This function will update (if `content` is non-%NULL) or create a
+     * This function will update (if `content` is non-`null`) or create a
      * GrlMedia and populate it with information from `info`.
      *
-     * If `info` is %NULL, a call to g_file_query_info() will be made.
+     * If `info` is `null`, a call to `g_file_query_info()` will be made.
      *
      * This function is useful for plugins that browse the local filesystem
      * and want to easily create GrlMedia from filesystem information.
-     * @param content an existing #GrlMedia for the file, or %NULL
-     * @param file a #GFile pointing to the file or directory in question
-     * @param info an existing #GFileInfo, or %NULL
+     * @param content an existing {@link Grl.Media} for the file, or `null`
+     * @param file a {@link Gio.File} pointing to the file or directory in question
+     * @param info an existing {@link Gio.FileInfo}, or `null`
      * @param handle_pls Whether playlists should be handled as containers
-     * @param options a #GrlOperationOptions representing the options to apply   to this operation.
-     * @returns a new #GrlMedia.
+     * @param options a {@link Grl.OperationOptions} representing the options to apply   to this operation.
+     * @returns a new {@link Grl.Media}.
+     * @since 0.2.0
      */
     function file_to_media(
         content: Grl.Media,
@@ -123,20 +127,25 @@ export namespace GrlPls {
     ): Grl.Media;
     /**
      * Returns the list of attributes to pass to
-     * g_file_query_info() to make it possible to
-     * populate a GrlMedia using grl_pls_file_to_media().
+     * `g_file_query_info()` to make it possible to
+     * populate a GrlMedia using `grl_pls_file_to_media()`.
      *
      * Do not free the result of this function.
      * @returns a string containing the list of attributes.
+     * @since 0.2.0
      */
     function get_file_attributes(): string;
     /**
      * Check if a file identified by GrlMedia object is a playlist or not.
      * This function does blocking I/O.
      * @param media GrlMedia
-     * @returns %TRUE if a GrlMedia is recognized as a playlist.
+     * @returns `true` if a GrlMedia is recognized as a playlist.
+     * @since 0.2.0
      */
     function media_is_playlist(media: Grl.Media): boolean;
+    /**
+     * @gir-type Callback
+     */
     interface FilterFunc {
         (source: Grl.Source, media: Grl.Media): Grl.Media;
     }

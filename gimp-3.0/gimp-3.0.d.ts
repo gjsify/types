@@ -57,6 +57,7 @@ export namespace Gimp {
 
     /**
      * Modes of initialising a layer mask.
+     * @gir-type Enum
      */
     enum AddMaskType {
         /**
@@ -91,6 +92,8 @@ export namespace Gimp {
 
     /**
      * Methods of syncing procedure arguments.
+     * @gir-type Enum
+     * @since 3.0
      */
     enum ArgumentSync {
         /**
@@ -109,6 +112,7 @@ export namespace Gimp {
 
     /**
      * Extracted from app/paint/paint-enums.h
+     * @gir-type Enum
      */
     enum BrushApplicationMode {
         /**
@@ -127,6 +131,7 @@ export namespace Gimp {
 
     /**
      * Shapes of generated brushes.
+     * @gir-type Enum
      */
     enum BrushGeneratedShape {
         /**
@@ -149,6 +154,7 @@ export namespace Gimp {
 
     /**
      * Style of line endings.
+     * @gir-type Enum
      */
     enum CapStyle {
         /**
@@ -171,6 +177,7 @@ export namespace Gimp {
 
     /**
      * Operations to combine channels and selections.
+     * @gir-type Enum
      */
     enum ChannelOps {
         /**
@@ -197,6 +204,7 @@ export namespace Gimp {
 
     /**
      * Channels (as in color components).
+     * @gir-type Enum
      */
     enum ChannelType {
         /**
@@ -231,6 +239,7 @@ export namespace Gimp {
 
     /**
      * Size of the checkerboard indicating transparency.
+     * @gir-type Enum
      */
     enum CheckSize {
         /**
@@ -253,6 +262,7 @@ export namespace Gimp {
 
     /**
      * Color/Brightness of the checkerboard indicating transparency.
+     * @gir-type Enum
      */
     enum CheckType {
         /**
@@ -291,6 +301,7 @@ export namespace Gimp {
 
     /**
      * Clone sources.
+     * @gir-type Enum
      */
     enum CloneType {
         /**
@@ -309,6 +320,7 @@ export namespace Gimp {
 
     /**
      * Modes of color management.
+     * @gir-type Enum
      */
     enum ColorManagementMode {
         /**
@@ -331,6 +343,7 @@ export namespace Gimp {
 
     /**
      * Intents for color management.
+     * @gir-type Enum
      */
     enum ColorRenderingIntent {
         /**
@@ -357,6 +370,8 @@ export namespace Gimp {
 
     /**
      * Possible tag colors.
+     * @gir-type Enum
+     * @since 2.10
      */
     enum ColorTag {
         /**
@@ -398,7 +413,8 @@ export namespace Gimp {
     }
 
     /**
-     * Flags for modifying #GimpColorTransform's behavior.
+     * Flags for modifying {@link Gimp.ColorTransform}'s behavior.
+     * @gir-type Enum
      */
     enum ColorTransformFlags {
         /**
@@ -424,6 +440,8 @@ export namespace Gimp {
 
     /**
      * Encoding types of image components.
+     * @gir-type Enum
+     * @since 2.10
      */
     enum ComponentType {
         /**
@@ -453,7 +471,8 @@ export namespace Gimp {
     }
 
     /**
-     * The possible values of a #GError thrown by libgimpconfig.
+     * The possible values of a {@link GLib.Error} thrown by libgimpconfig.
+     * @gir-type Struct
      */
     class ConfigError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -488,6 +507,7 @@ export namespace Gimp {
 
     /**
      * Types of config paths.
+     * @gir-type Enum
      */
     enum ConfigPathType {
         /**
@@ -514,6 +534,7 @@ export namespace Gimp {
 
     /**
      * Extracted from app/core/core-enums.h
+     * @gir-type Enum
      */
     enum ConvertDitherType {
         /**
@@ -540,6 +561,7 @@ export namespace Gimp {
 
     /**
      * Types of palettes for indexed conversion.
+     * @gir-type Enum
      */
     enum ConvertPaletteType {
         /**
@@ -566,6 +588,7 @@ export namespace Gimp {
 
     /**
      * Types of convolutions.
+     * @gir-type Enum
      */
     enum ConvolveType {
         /**
@@ -580,6 +603,7 @@ export namespace Gimp {
 
     /**
      * Types of detectable CPU accelerations
+     * @gir-type Enum
      */
     enum CpuAccelFlags {
         /**
@@ -638,6 +662,7 @@ export namespace Gimp {
 
     /**
      * Grayscale conversion methods.
+     * @gir-type Enum
      */
     enum DesaturateMode {
         /**
@@ -668,6 +693,7 @@ export namespace Gimp {
 
     /**
      * Methods for the dodge/burn operation.
+     * @gir-type Enum
      */
     enum DodgeBurnType {
         /**
@@ -681,7 +707,8 @@ export namespace Gimp {
     }
 
     /**
-     * Possible return values of [method`ExportOptions`.get_image].
+     * Possible return values of {@link ExportOptions.get_image}.
+     * @gir-type Enum
      */
     enum ExportReturn {
         /**
@@ -700,6 +727,7 @@ export namespace Gimp {
 
     /**
      * Types of filling.
+     * @gir-type Enum
      */
     enum FillType {
         /**
@@ -734,6 +762,7 @@ export namespace Gimp {
 
     /**
      * Foreground extract engines.
+     * @gir-type Enum
      */
     enum ForegroundExtractMode {
         /**
@@ -748,6 +777,8 @@ export namespace Gimp {
 
     /**
      * Color space for blending gradients.
+     * @gir-type Enum
+     * @since 2.10
      */
     enum GradientBlendColorSpace {
         /**
@@ -770,6 +801,7 @@ export namespace Gimp {
 
     /**
      * Coloring types for gradient segments.
+     * @gir-type Enum
      */
     enum GradientSegmentColor {
         /**
@@ -792,6 +824,7 @@ export namespace Gimp {
 
     /**
      * Transition functions for gradient segments.
+     * @gir-type Enum
      */
     enum GradientSegmentType {
         /**
@@ -826,6 +859,7 @@ export namespace Gimp {
 
     /**
      * Gradient shapes.
+     * @gir-type Enum
      */
     enum GradientType {
         /**
@@ -880,6 +914,7 @@ export namespace Gimp {
 
     /**
      * Rendering types for the display grid.
+     * @gir-type Enum
      */
     enum GridStyle {
         /**
@@ -910,6 +945,7 @@ export namespace Gimp {
 
     /**
      * Extracted from app/core/core-enums.h
+     * @gir-type Enum
      */
     enum HistogramChannel {
         /**
@@ -944,6 +980,7 @@ export namespace Gimp {
 
     /**
      * Hue ranges.
+     * @gir-type Enum
      */
     enum HueRange {
         /**
@@ -982,6 +1019,7 @@ export namespace Gimp {
 
     /**
      * Icon types for plug-ins to register.
+     * @gir-type Enum
      */
     enum IconType {
         /**
@@ -1004,6 +1042,7 @@ export namespace Gimp {
 
     /**
      * Image color models.
+     * @gir-type Enum
      */
     enum ImageBaseType {
         /**
@@ -1026,6 +1065,7 @@ export namespace Gimp {
 
     /**
      * Possible drawable types.
+     * @gir-type Enum
      */
     enum ImageType {
         /**
@@ -1060,6 +1100,7 @@ export namespace Gimp {
 
     /**
      * Ink tool tips.
+     * @gir-type Enum
      */
     enum InkBlobType {
         /**
@@ -1082,6 +1123,7 @@ export namespace Gimp {
 
     /**
      * Interpolation types.
+     * @gir-type Enum
      */
     enum InterpolationType {
         /**
@@ -1112,6 +1154,7 @@ export namespace Gimp {
 
     /**
      * Line join styles.
+     * @gir-type Enum
      */
     enum JoinStyle {
         /**
@@ -1134,6 +1177,7 @@ export namespace Gimp {
 
     /**
      * Extracted from app/operations/operations-enums.h
+     * @gir-type Enum
      */
     enum LayerColorSpace {
         /**
@@ -1156,6 +1200,7 @@ export namespace Gimp {
 
     /**
      * Extracted from app/operations/operations-enums.h
+     * @gir-type Enum
      */
     enum LayerCompositeMode {
         /**
@@ -1186,6 +1231,7 @@ export namespace Gimp {
 
     /**
      * Extracted from app/operations/operations-enums.h
+     * @gir-type Enum
      */
     enum LayerMode {
         /**
@@ -1444,6 +1490,7 @@ export namespace Gimp {
 
     /**
      * Layer mask apply modes.
+     * @gir-type Enum
      */
     enum MaskApplyMode {
         /**
@@ -1462,6 +1509,7 @@ export namespace Gimp {
 
     /**
      * Types of merging layers.
+     * @gir-type Enum
      */
     enum MergeType {
         /**
@@ -1488,6 +1536,7 @@ export namespace Gimp {
 
     /**
      * How to present messages.
+     * @gir-type Enum
      */
     enum MessageHandlerType {
         /**
@@ -1506,6 +1555,7 @@ export namespace Gimp {
 
     /**
      * Well-defined colorspace information available from metadata
+     * @gir-type Enum
      */
     enum MetadataColorspace {
         /**
@@ -1528,6 +1578,7 @@ export namespace Gimp {
 
     /**
      * Types of errors returned by modules
+     * @gir-type Enum
      */
     enum ModuleError {
         /**
@@ -1537,11 +1588,12 @@ export namespace Gimp {
     }
 
     /**
-     * The possible states a #GimpModule can be in.
+     * The possible states a {@link Gimp.Module} can be in.
+     * @gir-type Enum
      */
     enum ModuleState {
         /**
-         * Missing gimp_module_register() function
+         * Missing `gimp_module_register()` function
          *                                 or other error.
          */
         ERROR,
@@ -1551,7 +1603,7 @@ export namespace Gimp {
          */
         LOADED,
         /**
-         * gimp_module_register() returned %FALSE.
+         * `gimp_module_register()` returned `false`.
          */
         LOAD_FAILED,
         /**
@@ -1567,6 +1619,7 @@ export namespace Gimp {
 
     /**
      * Background fill types for the offset operation.
+     * @gir-type Enum
      */
     enum OffsetType {
         /**
@@ -1589,6 +1642,7 @@ export namespace Gimp {
 
     /**
      * Orientations for various purposes.
+     * @gir-type Enum
      */
     enum OrientationType {
         /**
@@ -1611,6 +1665,7 @@ export namespace Gimp {
 
     /**
      * PDB error handlers.
+     * @gir-type Enum
      */
     enum PDBErrorHandler {
         /**
@@ -1629,6 +1684,7 @@ export namespace Gimp {
 
     /**
      * Types of PDB procedures.
+     * @gir-type Enum
      */
     enum PDBProcType {
         /**
@@ -1655,6 +1711,7 @@ export namespace Gimp {
 
     /**
      * Return status of PDB calls.
+     * @gir-type Enum
      */
     enum PDBStatusType {
         /**
@@ -1685,6 +1742,7 @@ export namespace Gimp {
 
     /**
      * Paint application modes.
+     * @gir-type Enum
      */
     enum PaintApplicationMode {
         /**
@@ -1703,6 +1761,7 @@ export namespace Gimp {
 
     /**
      * Possible type of strokes in path objects.
+     * @gir-type Enum
      */
     enum PathStrokeType {
         /**
@@ -1714,6 +1773,7 @@ export namespace Gimp {
     /**
      * How to deal with transparency when creating thubnail pixbufs from
      * images and drawables.
+     * @gir-type Enum
      */
     enum PixbufTransparency {
         /**
@@ -1736,6 +1796,8 @@ export namespace Gimp {
 
     /**
      * Precisions for pixel encoding.
+     * @gir-type Enum
+     * @since 2.10
      */
     enum Precision {
         /**
@@ -1812,17 +1874,17 @@ export namespace Gimp {
         DOUBLE_PERCEPTUAL,
         /**
          * deprecated alias for
-         *                                `GIMP_PRECISION_U8`_NON_LINEAR
+         *                                `GIMP_PRECISION_U8_NON_LINEAR`
          */
         U8_GAMMA,
         /**
          * deprecated alias for
-         *                                `GIMP_PRECISION_U1`6_NON_LINEAR
+         *                                `GIMP_PRECISION_U16_NON_LINEAR`
          */
         U16_GAMMA,
         /**
          * deprecated alias for
-         *                                `GIMP_PRECISION_U3`2_NON_LINEAR
+         *                                `GIMP_PRECISION_U32_NON_LINEAR`
          */
         U32_GAMMA,
         /**
@@ -1848,6 +1910,7 @@ export namespace Gimp {
 
     /**
      * Commands for the progress API.
+     * @gir-type Enum
      */
     enum ProgressCommand {
         /**
@@ -1876,6 +1939,9 @@ export namespace Gimp {
         GET_WINDOW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum RGBCompositeMode {
         /**
          * don't do compositing
@@ -1897,6 +1963,7 @@ export namespace Gimp {
 
     /**
      * Repeat modes for example for gradients.
+     * @gir-type Enum
      */
     enum RepeatMode {
         /**
@@ -1923,6 +1990,7 @@ export namespace Gimp {
 
     /**
      * Types of simple rotations.
+     * @gir-type Enum
      */
     enum RotationType {
         /**
@@ -1945,6 +2013,7 @@ export namespace Gimp {
 
     /**
      * Run modes for plug-ins.
+     * @gir-type Enum
      */
     enum RunMode {
         /**
@@ -1967,6 +2036,7 @@ export namespace Gimp {
 
     /**
      * Criterions for color similarity.
+     * @gir-type Enum
      */
     enum SelectCriterion {
         /**
@@ -2021,6 +2091,7 @@ export namespace Gimp {
 
     /**
      * Size types for the old-style text API.
+     * @gir-type Enum
      */
     enum SizeType {
         /**
@@ -2039,6 +2110,7 @@ export namespace Gimp {
 
     /**
      * When to generate stack traces in case of an error.
+     * @gir-type Enum
      */
     enum StackTraceMode {
         /**
@@ -2061,6 +2133,7 @@ export namespace Gimp {
 
     /**
      * Methods of stroking selections and paths.
+     * @gir-type Enum
      */
     enum StrokeMethod {
         /**
@@ -2079,6 +2152,7 @@ export namespace Gimp {
 
     /**
      * Text directions.
+     * @gir-type Enum
      */
     enum TextDirection {
         /**
@@ -2113,6 +2187,7 @@ export namespace Gimp {
 
     /**
      * Text hint strengths.
+     * @gir-type Enum
      */
     enum TextHintStyle {
         /**
@@ -2139,6 +2214,7 @@ export namespace Gimp {
 
     /**
      * Text justifications.
+     * @gir-type Enum
      */
     enum TextJustification {
         /**
@@ -2165,6 +2241,7 @@ export namespace Gimp {
 
     /**
      * For choosing which brightness ranges to transform.
+     * @gir-type Enum
      */
     enum TransferMode {
         /**
@@ -2187,6 +2264,7 @@ export namespace Gimp {
 
     /**
      * Transform directions.
+     * @gir-type Enum
      */
     enum TransformDirection {
         /**
@@ -2205,6 +2283,7 @@ export namespace Gimp {
 
     /**
      * Ways of clipping the result when transforming drawables.
+     * @gir-type Enum
      */
     enum TransformResize {
         /**
@@ -2229,6 +2308,7 @@ export namespace Gimp {
      * Integer IDs of built-in units used for dimensions in images. These
      * IDs are meant to stay stable but user-created units IDs may change
      * from one session to another.
+     * @gir-type Enum
      */
     enum UnitID {
         /**
@@ -2261,6 +2341,9 @@ export namespace Gimp {
         PERCENT,
     }
 
+    /**
+     * @since 2.2
+     */
     const API_VERSION: string;
     /**
      * The dark gray value for the default checkerboard pattern.
@@ -2298,13 +2381,13 @@ export namespace Gimp {
      */
     const CONFIG_PARAM_DONT_COMPARE: number;
     /**
-     * The default flags that should be used for serializable #GimpConfig
+     * The default flags that should be used for serializable {@link Gimp.Config}
      * properties.
      */
     const CONFIG_PARAM_FLAGS: number;
     /**
      * Minimum shift count to be used for core application defined
-     * [flags`GObject`.ParamFlags].
+     * {@link GObject.ParamFlags}.
      */
     const CONFIG_PARAM_FLAG_SHIFT: number;
     /**
@@ -2334,7 +2417,7 @@ export namespace Gimp {
     /**
      * A large but arbitrary value that can be used when an upper limit
      * for a memory size (in bytes) is needed. It is smaller than
-     * %G_MAXDOUBLE since the #GimpMemsizeEntry doesn't handle larger
+     * `G_MAXDOUBLE` since the `GimpMemsizeEntry` doesn't handle larger
      * values.
      */
     const MAX_MEMSIZE: number;
@@ -2366,7 +2449,7 @@ export namespace Gimp {
     const MIN_RESOLUTION: number;
     /**
      * The version of the module system's ABI. Modules put this value into
-     * #GimpModuleInfo's `abi_version` field so the code loading the modules
+     * {@link Gimp.ModuleInfo}'s `abi_version` field so the code loading the modules
      * can check if it was compiled against the same module ABI the modules
      * are compiled against.
      *
@@ -2375,8 +2458,8 @@ export namespace Gimp {
      *
      *  - the libgimpmodule implementation (if the change affects modules).
      *
-     *  - one of the classes implemented by modules (currently #GimpColorDisplay,
-     *    #GimpColorSelector and #GimpController).
+     *  - one of the classes implemented by modules (currently `GimpColorDisplay`,
+     *    `GimpColorSelector` and `GimpController`).
      */
     const MODULE_ABI_VERSION: number;
     /**
@@ -2389,16 +2472,28 @@ export namespace Gimp {
     const PARAM_DONT_SERIALIZE: number;
     /**
      * Minimum shift count to be used for libgimpconfig defined
-     * [flags`GObject`.ParamFlags] (see libgimpconfig/gimpconfig-params.h).
+     * {@link GObject.ParamFlags} (see libgimpconfig/gimpconfig-params.h).
      */
     const PARAM_FLAG_SHIFT: number;
     /**
      * Since 3.0
      */
     const PARAM_NO_VALIDATE: number;
+    /**
+     * @since 2.4
+     */
     const PARAM_READABLE: number;
+    /**
+     * @since 2.4
+     */
     const PARAM_READWRITE: number;
+    /**
+     * @since 2.4
+     */
     const PARAM_STATIC_STRINGS: number;
+    /**
+     * @since 2.4
+     */
     const PARAM_WRITABLE: number;
     const PARASITE_ATTACH_GRANDPARENT: number;
     const PARASITE_ATTACH_PARENT: number;
@@ -2416,6 +2511,18 @@ export namespace Gimp {
      * The GIMP version as a string.
      */
     const VERSION: string;
+    /**
+     * @param x1 left x coordinate of the area to process.
+     * @param y1 top y coordinate of the area to process.
+     * @param x2 right x coordinate of the area to process.
+     * @param y2 bottom y coordinate of the area to process.
+     * @param max_depth maximum depth of supersampling.
+     * @param threshold lower threshold of pixel difference that stops                  supersampling.
+     * @param render_func function calculate the color value at                  given  coordinates.
+     * @param put_pixel_func function to a pixels to a color at                  given coordinates.
+     * @param progress_func function to report progress.
+     * @returns the number of pixels processed.
+     */
     function adaptive_supersample_area(
         x1: number,
         y1: number,
@@ -2446,7 +2553,7 @@ export namespace Gimp {
      * is time-dependent.
      *
      * This tool simulates the use of an airbrush. It is similar to
-     * gimp_airbrush() except that the pressure is derived from the
+     * `gimp_airbrush()` except that the pressure is derived from the
      * airbrush tools options box. It the option has not been set the
      * default for the option will be used.
      * @param drawable The affected drawable.
@@ -2460,12 +2567,40 @@ export namespace Gimp {
      * This procedure attaches a global parasite. It has no return values.
      * @param parasite The parasite to attach.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function attach_parasite(parasite: Parasite): boolean;
+    /**
+     * @param x
+     * @param y
+     * @param values
+     */
     function bilinear(x: number, y: number, values: number[]): number;
+    /**
+     * @param x
+     * @param y
+     * @param values
+     */
     function bilinear_16(x: number, y: number, values: number[]): number;
+    /**
+     * @param x
+     * @param y
+     * @param values
+     */
     function bilinear_32(x: number, y: number, values: number[]): number;
+    /**
+     * @param x
+     * @param y
+     * @param values
+     */
     function bilinear_8(x: number, y: number, values: Uint8Array | string): number;
+    /**
+     * @param x
+     * @param y
+     * @param values Array of pixels in RGBA double format
+     * @param has_alpha Whether `values` has an alpha channel
+     * @param retvalues Resulting pixel
+     */
     function bilinear_rgb(x: number, y: number, values: number[], has_alpha: boolean, retvalues: number[]): void;
     /**
      * This function wraps bindtextdomain on UNIX and wbintextdomain on Windows.
@@ -2473,6 +2608,7 @@ export namespace Gimp {
      * and UTF-8 on Windows.
      * @param domain_name a gettext domain name
      * @param dir_name path of the catalog directory
+     * @since 3.0
      */
     function bind_text_domain(domain_name: string, dir_name: string): void;
     /**
@@ -2488,9 +2624,9 @@ export namespace Gimp {
      *
      * This procedure returns a complete listing of available GIMP brushes.
      * Each name returned can be used as input to the
-     * gimp_context_set_brush() procedure.
+     * `gimp_context_set_brush()` procedure.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of brush names.          The returned value must be freed with g_strfreev().
+     * @returns The list of brush names.          The returned value must be freed with `g_strfreev()`.
      */
     function brushes_get_list(filter: string): string[];
     /**
@@ -2532,6 +2668,7 @@ export namespace Gimp {
      * This procedure deletes a named buffer.
      * @param buffer_name The buffer name.
      * @returns TRUE on success.
+     * @since 2.4
      */
     function buffer_delete(buffer_name: string): boolean;
     /**
@@ -2540,6 +2677,7 @@ export namespace Gimp {
      * This procedure retrieves the specified named buffer's bytes.
      * @param buffer_name The buffer name.
      * @returns The buffer bpp.
+     * @since 2.4
      */
     function buffer_get_bytes(buffer_name: string): number;
     /**
@@ -2548,6 +2686,7 @@ export namespace Gimp {
      * This procedure retrieves the specified named buffer's height.
      * @param buffer_name The buffer name.
      * @returns The buffer height.
+     * @since 2.4
      */
     function buffer_get_height(buffer_name: string): number;
     /**
@@ -2556,6 +2695,7 @@ export namespace Gimp {
      * This procedure retrieves the specified named buffer's image type.
      * @param buffer_name The buffer name.
      * @returns The buffer image type.
+     * @since 2.4
      */
     function buffer_get_image_type(buffer_name: string): ImageType;
     /**
@@ -2564,6 +2704,7 @@ export namespace Gimp {
      * This procedure retrieves the specified named buffer's width.
      * @param buffer_name The buffer name.
      * @returns The buffer width.
+     * @since 2.4
      */
     function buffer_get_width(buffer_name: string): number;
     /**
@@ -2572,7 +2713,8 @@ export namespace Gimp {
      * This procedure renames a named buffer.
      * @param buffer_name The buffer name.
      * @param new_name The buffer's new name.
-     * @returns The real name given to the buffer.          The returned value must be freed with g_free().
+     * @returns The real name given to the buffer.          The returned value must be freed with `g_free()`.
+     * @since 2.4
      */
     function buffer_rename(buffer_name: string, new_name: string): string;
     /**
@@ -2581,14 +2723,15 @@ export namespace Gimp {
      * This procedure returns a complete listing of available named
      * buffers.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of buffer names.          The returned value must be freed with g_strfreev().
+     * @returns The list of buffer names.          The returned value must be freed with `g_strfreev()`.
+     * @since 2.4
      */
     function buffers_get_list(filter: string): string[];
     /**
      * Returns the default top directory for GIMP cached files. If the
      * environment variable GIMP3_CACHEDIR exists, that is used.  It
      * should be an absolute pathname.  Otherwise, a subdirectory of the
-     * directory returned by g_get_user_cache_dir() is used.
+     * directory returned by `g_get_user_cache_dir()` is used.
      *
      * Note that the actual directories used for GIMP caches files can
      * be overridden by the user in the preferences dialog.
@@ -2601,15 +2744,17 @@ export namespace Gimp {
      * GLib, which isn't necessarily UTF-8. (On Windows it always is
      * UTF-8.).
      * @returns The default top directory for GIMP cached files.
+     * @since 2.10.10
      */
     function cache_directory(): string;
     /**
      * Create a repeating checkerboard pattern.
      * @param cr Cairo context
      * @param size check size
-     * @param light light check color or %NULL to use the default light gray
-     * @param dark dark check color or %NULL to use the default dark gray
-     * @returns a new Cairo pattern that can be used as a source on @cr.
+     * @param light light check color or `null` to use the default light gray
+     * @param dark dark check color or `null` to use the default dark gray
+     * @returns a new Cairo pattern that can be used as a source on `cr`.
+     * @since 2.6
      */
     function cairo_checkerboard_create(
         cr: cairo.Context,
@@ -2618,24 +2763,26 @@ export namespace Gimp {
         dark: Gegl.Color,
     ): cairo.Pattern;
     /**
-     * This function returns a #GeglBuffer which wraps `surface'`s pixels.
+     * This function returns a {@link Gegl.Buffer} which wraps `surface`'s pixels.
      * It must only be called on image surfaces, calling it on other surface
      * types is an error.
      *
-     * If `format` is set, the returned [class`Gegl`.Buffer] will use it. It has to
+     * If `format` is set, the returned {@link Gegl.Buffer} will use it. It has to
      * map with `surface` Cairo format. If unset, the buffer format will be
      * determined from `surface`. The main difference is that automatically
      * determined format has sRGB space and TRC by default.
      * @param surface a Cairo surface
      * @param format a Babl format.
-     * @returns a #GeglBuffer
+     * @returns a {@link Gegl.Buffer}
+     * @since 2.10
      */
     function cairo_surface_create_buffer(surface: cairo.Surface, format: Babl.Object): Gegl.Buffer;
     /**
-     * This function returns a #Babl format that corresponds to `surface'`s
+     * This function returns a {@link Babl.Object} format that corresponds to `surface`'s
      * pixel format.
      * @param surface a Cairo surface
-     * @returns the #Babl format of @surface.
+     * @returns the {@link Babl.Object} format of `surface`.
+     * @since 2.10
      */
     function cairo_surface_get_format(surface: cairo.Surface): Babl.Object;
     /**
@@ -2645,7 +2792,8 @@ export namespace Gimp {
      * and parameter names. Every character of the input string that is
      * not either '-', 'a-z', 'A-Z' or '0-9' will be replaced by a '-'.
      * @param identifier The identifier string to canonicalize.
-     * @returns The canonicalized identifier. This is a newly allocated          string that should be freed with g_free() when no longer          needed.
+     * @returns The canonicalized identifier. This is a newly allocated          string that should be freed with `g_free()` when no longer          needed.
+     * @since 2.4
      */
     function canonicalize_identifier(identifier: string): string;
     /**
@@ -2654,6 +2802,7 @@ export namespace Gimp {
      *
      * This is a constant value given at plug-in configuration time.
      * @returns the _check_custom_color1 value
+     * @since 3.0
      */
     function check_custom_color1(): Gegl.Color;
     /**
@@ -2662,6 +2811,7 @@ export namespace Gimp {
      *
      * This is a constant value given at plug-in configuration time.
      * @returns the _check_custom_color2 value
+     * @since 3.0
      */
     function check_custom_color2(): Gegl.Color;
     /**
@@ -2669,6 +2819,7 @@ export namespace Gimp {
      *
      * This is a constant value given at plug-in configuration time.
      * @returns the check_size value
+     * @since 2.2
      */
     function check_size(): CheckSize;
     /**
@@ -2676,12 +2827,13 @@ export namespace Gimp {
      *
      * This is a constant value given at plug-in configuration time.
      * @returns the check_type value
+     * @since 2.2
      */
     function check_type(): CheckType;
     /**
      * Retrieves the colors to use when drawing a checkerboard for a certain
-     * #GimpCheckType and custom colors.
-     * If `type` is %GIMP_CHECK_TYPE_CUSTOM_CHECKS, then `color1` and `color2`
+     * {@link Gimp.CheckType} and custom colors.
+     * If `type` is {@link Gimp.CheckType.CUSTOM_CHECKS}, then `color1` and `color2`
      * will remain untouched, which means you must initialize them to the
      * values expected for custom checks.
      *
@@ -2696,6 +2848,7 @@ export namespace Gimp {
      * @param type the checkerboard type
      * @param color1 current custom color and return location for the first color.
      * @param color2 current custom color and return location for the second color.
+     * @since 3.0
      */
     function checks_get_colors(
         type: CheckType | null,
@@ -2738,7 +2891,7 @@ export namespace Gimp {
      *
      * This tool clones (copies) from the source drawable starting at the
      * specified source coordinates to the dest drawable. This function
-     * performs exactly the same as the gimp_clone() function except that
+     * performs exactly the same as the `gimp_clone()` function except that
      * the tools arguments are obtained from the clones option dialog. It
      * this dialog has not been activated then the dialogs default values
      * will be used.
@@ -2748,17 +2901,21 @@ export namespace Gimp {
      */
     function clone_default(drawable: Drawable, strokes: number[]): boolean;
     /**
-     * Creates a new #GimpColorArray containing a deep copy of a %NULL-terminated
-     * array of [class`Gegl`.Color].
+     * Creates a new {@link Gimp.ColorArray} containing a deep copy of a `null`-terminated
+     * array of {@link Gegl.Color}.
      * @param array an array of colors.
-     * @returns a new #GimpColorArray.
+     * @returns a new {@link Gimp.ColorArray}.
      */
     function color_array_copy(array: ColorArray): ColorArray;
     /**
-     * Frees a %NULL-terminated array of [class`Gegl`.Color].
+     * Frees a `null`-terminated array of {@link Gegl.Color}.
      * @param array an array of colors.
      */
     function color_array_free(array: ColorArray): void;
+    /**
+     * @param array an array of colors.
+     * @returns the number of {@link Gegl.Color} in `array`.
+     */
     function color_array_get_length(array: ColorArray): number;
     function color_array_get_type(): GObject.GType;
     /**
@@ -2766,9 +2923,10 @@ export namespace Gimp {
      * A small error of margin is accepted, so that for instance a component
      * at -0.0000001 is not making the whole color to be considered as
      * out-of-gamut while it may just be computation imprecision.
-     * @param color a [class@Gegl.Color]
-     * @param space a color space to convert @color to.
-     * @returns whether the color is out of @space gamut.
+     * @param color a {@link Gegl.Color}
+     * @param space a color space to convert `color` to.
+     * @returns whether the color is out of `space` gamut.
+     * @since 3.0
      */
     function color_is_out_of_gamut(color: Gegl.Color, space: Babl.Object): boolean;
     /**
@@ -2778,8 +2936,9 @@ export namespace Gimp {
      * A small error of margin is accepted, so that for instance a component
      * at -0.0000001 is not making the whole color to be considered as
      * out-of-gamut while it may just be computation imprecision.
-     * @param color a [class@Gegl.Color]
+     * @param color a {@link Gegl.Color}
      * @returns whether the color is out of its own color space gamut.
+     * @since 3.0
      */
     function color_is_out_of_self_gamut(color: Gegl.Color): boolean;
     /**
@@ -2800,47 +2959,49 @@ export namespace Gimp {
      *     printf ("Both colors are identical, ignoring their alpha component");
      *   }
      * ```
-     * @param color1 a [class@Gegl.Color]
-     * @param color2 a [class@Gegl.Color]
+     * @param color1 a {@link Gegl.Color}
+     * @param color2 a {@link Gegl.Color}
      * @returns whether the 2 colors can be considered the same for the human eyes.
+     * @since 3.0
      */
     function color_is_perceptually_identical(color1: Gegl.Color, color2: Gegl.Color): boolean;
     /**
      * Returns the list of [SVG 1.0 color
      * keywords](https://www.w3.org/TR/SVG/types.html) that is recognized by
-     * [func`color_parse_name]`.
+     * {@link color_parse_name}.
      *
      * The returned strings are const and must not be freed. Only the array
      * must be freed with `g_free()`.
      *
-     * The optional `colors` arrays must be freed with [func`color_array_free]` when
+     * The optional `colors` arrays must be freed with {@link color_array_free} when
      * they are no longer needed.
      * @returns an array of color names.
+     * @since 2.2
      */
     function color_list_names(): [string[], Gegl.Color[] | null];
     /**
      * Attempts to parse a string describing an sRGB color in CSS notation. This can
      * be either a numerical representation (`rgb(255,0,0)` or `rgb(100%,0%,0%)`)
-     * or a hexadecimal notation as parsed by [func`color_parse_hex]` (`##ff0000`) or
-     * a color name as parsed by [func`color_parse_css]` (`red`).
+     * or a hexadecimal notation as parsed by {@link color_parse_hex} (`##ff0000`) or
+     * a color name as parsed by {@link color_parse_css} (`red`).
      *
      * Additionally the `rgba()`, `hsl()` and `hsla()` functions are supported too.
      * @param css a string describing a color in CSS notation
-     * @returns a newly allocated [class@Gegl.Color] if @css was                           parsed successfully, %NULL otherwise
+     * @returns a newly allocated {@link Gegl.Color} if `css` was                           parsed successfully, `null` otherwise
      */
     function color_parse_css(css: string): Gegl.Color;
     /**
      * Attempts to parse a string describing a sRGB color in hexadecimal
      * notation (optionally prefixed with a '#').
      * @param hex a string describing a color in hexadecimal notation
-     * @returns a newly allocated color representing @hex.
+     * @returns a newly allocated color representing `hex`.
      */
     function color_parse_hex(hex: string): Gegl.Color;
     /**
      * Attempts to parse a color name. This function accepts [SVG 1.1 color
      * keywords](https://www.w3.org/TR/SVG11/types.html#ColorKeywords).
      * @param name a color name (in UTF-8 encoding)
-     * @returns a sRGB color as defined in "4.4. Recognized color          keyword names" list of SVG 1.1 specification, if @name was parsed          successfully, %NULL otherwise
+     * @returns a sRGB color as defined in "4.4. Recognized color          keyword names" list of SVG 1.1 specification, if `name` was parsed          successfully, `null` otherwise
      */
     function color_parse_name(name: string): Gegl.Color;
     /**
@@ -2848,73 +3009,85 @@ export namespace Gimp {
      * of premultiplied channels), without changing the format of `color`.
      *
      * If `color` has no alpha component, this function is a no-op.
-     * @param color a [class@Gegl.Color]
+     * @param color a {@link Gegl.Color}
      * @param alpha new value for the alpha channel.
+     * @since 3.0
      */
     function color_set_alpha(color: Gegl.Color, alpha: number): void;
     /**
      * Creates a search path as it is used in the gimprc file.  The path
-     * returned by gimp_config_build_data_path() includes a directory
+     * returned by `gimp_config_build_data_path()` includes a directory
      * below the user's gimp directory and one in the system-wide data
      * directory.
      *
-     * Note that you cannot use this path directly with gimp_path_parse().
+     * Note that you cannot use this path directly with `gimp_path_parse()`.
      * As it is in the gimprc notation, you first need to expand and
-     * recode it using gimp_config_path_expand().
+     * recode it using `gimp_config_path_expand()`.
      * @param name directory name (in UTF-8 encoding)
      * @returns a newly allocated string
+     * @since 2.4
      */
     function config_build_data_path(name: string): string;
     /**
      * Creates a search path as it is used in the gimprc file.  The path
-     * returned by gimp_config_build_plug_in_path() includes a directory
+     * returned by `gimp_config_build_plug_in_path()` includes a directory
      * below the user's gimp directory and one in the system-wide plug-in
      * directory.
      *
-     * Note that you cannot use this path directly with gimp_path_parse().
+     * Note that you cannot use this path directly with `gimp_path_parse()`.
      * As it is in the gimprc notation, you first need to expand and
-     * recode it using gimp_config_path_expand().
+     * recode it using `gimp_config_path_expand()`.
      * @param name directory name (in UTF-8 encoding)
      * @returns a newly allocated string
+     * @since 2.4
      */
     function config_build_plug_in_path(name: string): string;
     /**
      * Creates a search path as it is used in the gimprc file.  The path
-     * returned by gimp_config_build_system_path() is just the read-only
-     * parts of the search path constructed by gimp_config_build_plug_in_path().
+     * returned by `gimp_config_build_system_path()` is just the read-only
+     * parts of the search path constructed by `gimp_config_build_plug_in_path()`.
      *
-     * Note that you cannot use this path directly with gimp_path_parse().
+     * Note that you cannot use this path directly with `gimp_path_parse()`.
      * As it is in the gimprc notation, you first need to expand and
-     * recode it using gimp_config_path_expand().
+     * recode it using `gimp_config_path_expand()`.
      * @param name directory name (in UTF-8 encoding)
      * @returns a newly allocated string
+     * @since 2.10.6
      */
     function config_build_system_path(name: string): string;
     /**
      * Creates a search path as it is used in the gimprc file.  The path
-     * returned by gimp_config_build_writable_path() is just the writable
-     * parts of the search path constructed by gimp_config_build_data_path().
+     * returned by `gimp_config_build_writable_path()` is just the writable
+     * parts of the search path constructed by `gimp_config_build_data_path()`.
      *
-     * Note that you cannot use this path directly with gimp_path_parse().
+     * Note that you cannot use this path directly with `gimp_path_parse()`.
      * As it is in the gimprc notation, you first need to expand and
-     * recode it using gimp_config_path_expand().
+     * recode it using `gimp_config_path_expand()`.
      * @param name directory name (in UTF-8 encoding)
      * @returns a newly allocated string
+     * @since 2.4
      */
     function config_build_writable_path(name: string): string;
+    /**
+     * @param scanner a {@link GLib.Scanner}
+     * @param expected_token the expected token
+     * @param nest_level the nest level
+     * @since 2.4
+     */
     function config_deserialize_return(
         scanner: GLib.Scanner,
         expected_token: GLib.TokenType | null,
         nest_level: number,
     ): boolean;
     /**
-     * Sets `value` to new #GStrv.
+     * Sets `value` to new {@link GObject.Strv}.
      * Scans i.e. consumes serialization to fill the GStrv.
      *
      * Requires `value` to be initialized to hold type #G_TYPE_BOXED.
-     * @param value destination #GValue to hold a #GStrv
-     * @param scanner #GScanner positioned in serialization stream
-     * @returns G_TOKEN_RIGHT_PAREN on success. G_TOKEN_INT on failure to scan length. G_TOKEN_STRING on failure to scan enough quoted strings. On failure, the value in @value is not touched and could be NULL.
+     * @param value destination {@link GObject.Value} to hold a {@link GObject.Strv}
+     * @param scanner {@link GLib.Scanner} positioned in serialization stream
+     * @returns G_TOKEN_RIGHT_PAREN on success. G_TOKEN_INT on failure to scan length. G_TOKEN_STRING on failure to scan enough quoted strings. On failure, the value in `value` is not touched and could be NULL.
+     * @since 3.0
      */
     function config_deserialize_strv(value: GObject.Value | any, scanner: GLib.Scanner): GLib.TokenType;
     /**
@@ -2924,65 +3097,73 @@ export namespace Gimp {
      * If the two objects are not of the same type, only properties that
      * exist in both object classes and are of the same value_type are
      * compared.
-     * @param a a #GObject
-     * @param b another #GObject object
+     * @param a a {@link GObject.Object}
+     * @param b another {@link GObject.Object} object
      * @param flags a mask of GParamFlags
      * @returns a GList of differing GParamSpecs.
+     * @since 2.4
      */
     function config_diff(a: GObject.Object, b: GObject.Object, flags: GObject.ParamFlags | null): GObject.ParamSpec[];
     /**
      * This function is never called directly. Use GIMP_CONFIG_ERROR() instead.
-     * @returns the #GQuark that defines the GimpConfig error domain.
+     * @returns the {@link GLib.Quark} that defines the GimpConfig error domain.
+     * @since 2.4
      */
     function config_error_quark(): GLib.Quark;
     /**
-     * Creates an exact copy of `pspec,` with all its properties, returns
-     * %NULL if `pspec` is of an unknown type that can't be duplicated.
-     * @param pspec the #GParamSpec to duplicate
-     * @returns The new #GParamSpec, or %NULL.
+     * Creates an exact copy of `pspec`, with all its properties, returns
+     * `null` if `pspec` is of an unknown type that can't be duplicated.
+     * @param pspec the {@link GObject.ParamSpec} to duplicate
+     * @returns The new {@link GObject.ParamSpec}, or `null`.
+     * @since 3.0
      */
     function config_param_spec_duplicate(pspec: GObject.ParamSpec): GObject.ParamSpec;
     /**
      * Resets all writable properties of `object` to the default values as
-     * defined in their #GParamSpec. Properties marked as "construct-only"
+     * defined in their {@link GObject.ParamSpec}. Properties marked as "construct-only"
      * are not touched.
      *
-     * If you want to reset a #GimpConfig object, please use gimp_config_reset().
-     * @param object a #GObject
+     * If you want to reset a {@link Gimp.Config} object, please use `gimp_config_reset()`.
+     * @param object a {@link GObject.Object}
+     * @since 2.4
      */
     function config_reset_properties(object: GObject.Object): void;
     /**
      * Resets the property named `property_name` to its default value.  The
      * property must be writable and must not be marked as "construct-only".
-     * @param object a #GObject
+     * @param object a {@link GObject.Object}
      * @param property_name name of the property to reset
+     * @since 2.4
      */
     function config_reset_property(object: GObject.Object, property_name: string): void;
     /**
-     * Appends a string repr of the #GStrv value of #GValue to `str`.
+     * Appends a string repr of the {@link GObject.Strv} value of {@link GObject.Value} to `str`.
      * Repr is an integer literal greater than or equal to zero,
      * followed by a possibly empty sequence
      * of quoted and escaped string literals.
-     * @param value source #GValue holding a #GStrv
+     * @param value source {@link GObject.Value} holding a {@link GObject.Strv}
      * @param str destination string
-     * @returns %TRUE always
+     * @returns `true` always
+     * @since 3.0
      */
     function config_serialize_strv(value: GObject.Value | any, str: GLib.String): boolean;
     /**
-     * This utility function appends a string representation of #GValue to `str`.
-     * @param value a #GValue.
-     * @param str a #GString.
+     * This utility function appends a string representation of {@link GObject.Value} to `str`.
+     * @param value a {@link GObject.Value}.
+     * @param str a {@link GLib.String}.
      * @param escaped whether to escape string values.
-     * @returns %TRUE if serialization succeeded, %FALSE otherwise.
+     * @returns `true` if serialization succeeded, `false` otherwise.
+     * @since 2.4
      */
     function config_serialize_value(value: GObject.Value | any, str: GLib.String, escaped: boolean): boolean;
     /**
      * Escapes and quotes `val` and appends it to `string`. The escape
-     * algorithm is different from the one used by g_strescape() since it
+     * algorithm is different from the one used by `g_strescape()` since it
      * leaves non-ASCII characters intact and thus preserves UTF-8
      * strings. Only control characters and quotes are being escaped.
-     * @param string pointer to a #GString
-     * @param val a string to append or %NULL
+     * @param string pointer to a {@link GLib.String}
+     * @param val a string to append or `null`
+     * @since 2.4
      */
     function config_string_append_escaped(string: GLib.String, val: string): void;
     /**
@@ -2995,21 +3176,23 @@ export namespace Gimp {
      * If the two objects are not of the same type, only properties that
      * exist in both object classes and are of the same value_type are
      * synchronized
-     * @param src a #GObject
-     * @param dest another #GObject
+     * @param src a {@link GObject.Object}
+     * @param dest another {@link GObject.Object}
      * @param flags a mask of GParamFlags
-     * @returns %TRUE if @dest was modified, %FALSE otherwise
+     * @returns `true` if `dest` was modified, `false` otherwise
+     * @since 2.4
      */
     function config_sync(src: GObject.Object, dest: GObject.Object, flags: GObject.ParamFlags | null): boolean;
     /**
-     * This function is a fancy wrapper around g_type_register_static().
-     * It creates a new object type as subclass of `parent_type,` installs
-     * `pspecs` on it and makes the new type implement the #GimpConfig
+     * This function is a fancy wrapper around `g_type_register_static()`.
+     * It creates a new object type as subclass of `parent_type`, installs
+     * `pspecs` on it and makes the new type implement the {@link Gimp.Config}
      * interface.
      * @param parent_type type from which this type will be derived
      * @param type_name string used as the name of the new type
-     * @param pspecs array of #GParamSpec to install as properties on the new type
-     * @returns the newly registered #GType
+     * @param pspecs array of {@link GObject.ParamSpec} to install as properties on the new type
+     * @returns the newly registered {@link GObject.GType}
+     * @since 3.0
      */
     function config_type_register(
         parent_type: GObject.GType,
@@ -3021,8 +3204,9 @@ export namespace Gimp {
      * painting.
      *
      * Returns whether the currently active paint dynamics (as returned by
-     * gimp_context_get_dynamics()) is enabled.
+     * `gimp_context_get_dynamics()`) is enabled.
      * @returns Whether dynamics enabled or disabled.
+     * @since 3.0
      */
     function context_are_dynamics_enabled(): boolean;
     /**
@@ -3032,6 +3216,7 @@ export namespace Gimp {
      * operations.
      * @param enable Whether to enable or disable dynamics.
      * @returns TRUE on success.
+     * @since 3.0
      */
     function context_enable_dynamics(enable: boolean): boolean;
     /**
@@ -3039,6 +3224,7 @@ export namespace Gimp {
      *
      * Returns the antialias setting.
      * @returns The antialias setting.
+     * @since 2.8
      */
     function context_get_antialias(): boolean;
     /**
@@ -3048,6 +3234,7 @@ export namespace Gimp {
      * used in a variety of tools such as blending, erasing (with non-alpha
      * images), and image filling.
      * @returns The background color.
+     * @since 2.2
      */
     function context_get_background(): Gegl.Color;
     /**
@@ -3056,6 +3243,7 @@ export namespace Gimp {
      * Returns the currently active brush. All paint and stroke operations
      * use this brush.
      * @returns The active brush.
+     * @since 2.2
      */
     function context_get_brush(): Brush;
     /**
@@ -3063,6 +3251,7 @@ export namespace Gimp {
      *
      * Set the angle in degrees for brush based paint tools.
      * @returns Angle in degrees.
+     * @since 2.8
      */
     function context_get_brush_angle(): number;
     /**
@@ -3070,6 +3259,7 @@ export namespace Gimp {
      *
      * Set the aspect ratio for brush based paint tools.
      * @returns Aspect ratio.
+     * @since 2.8
      */
     function context_get_brush_aspect_ratio(): number;
     /**
@@ -3077,6 +3267,7 @@ export namespace Gimp {
      *
      * Get the brush application force for brush based paint tools.
      * @returns Brush application force.
+     * @since 2.10
      */
     function context_get_brush_force(): number;
     /**
@@ -3084,6 +3275,7 @@ export namespace Gimp {
      *
      * Get the brush hardness for brush based paint tools.
      * @returns Brush hardness.
+     * @since 2.10
      */
     function context_get_brush_hardness(): number;
     /**
@@ -3091,6 +3283,7 @@ export namespace Gimp {
      *
      * Get the brush size in pixels for brush based paint tools.
      * @returns Brush size in pixels.
+     * @since 2.8
      */
     function context_get_brush_size(): number;
     /**
@@ -3099,6 +3292,7 @@ export namespace Gimp {
      * Get the brush spacing as percent of size for brush based paint
      * tools.
      * @returns Brush spacing as fraction of size.
+     * @since 2.10
      */
     function context_get_brush_spacing(): number;
     /**
@@ -3106,14 +3300,16 @@ export namespace Gimp {
      *
      * Returns the diagonal neighbors setting.
      * @returns The diagonal neighbors setting.
+     * @since 2.10
      */
     function context_get_diagonal_neighbors(): boolean;
     /**
      * Get the distance metric used in some computations.
      *
      * Returns the distance metric in the current context. See
-     * gimp_context_set_distance_metric() to know more about its usage.
+     * `gimp_context_set_distance_metric()` to know more about its usage.
      * @returns The distance metric.
+     * @since 2.10
      */
     function context_get_distance_metric(): Gegl.DistanceMetric;
     /**
@@ -3123,9 +3319,10 @@ export namespace Gimp {
      * all paint operations and stroke operations use this paint dynamics
      * to control the application of paint to the image. If disabled, the
      * dynamics will be ignored during paint actions.
-     * See gimp_context_are_dynamics_enabled() to enquire whether dynamics
+     * See `gimp_context_are_dynamics_enabled()` to enquire whether dynamics
      * are used or ignored.
-     * @returns The name of the active paint dynamics.          The returned value must be freed with g_free().
+     * @returns The name of the active paint dynamics.          The returned value must be freed with `g_free()`.
+     * @since 2.8
      */
     function context_get_dynamics(): string;
     /**
@@ -3133,6 +3330,7 @@ export namespace Gimp {
      *
      * Returns the feather setting.
      * @returns The feather setting.
+     * @since 2.8
      */
     function context_get_feather(): boolean;
     /**
@@ -3140,6 +3338,7 @@ export namespace Gimp {
      *
      * Returns the feather radius setting.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_get_feather_radius(): [boolean, number, number];
     /**
@@ -3147,6 +3346,7 @@ export namespace Gimp {
      *
      * Returns the currently active font.
      * @returns The active font.
+     * @since 2.2
      */
     function context_get_font(): Font;
     /**
@@ -3156,6 +3356,7 @@ export namespace Gimp {
      * used in a variety of tools such as paint tools, blending, and bucket
      * fill.
      * @returns The foreground color.
+     * @since 2.2
      */
     function context_get_foreground(): Gegl.Color;
     /**
@@ -3163,6 +3364,7 @@ export namespace Gimp {
      *
      * Returns the currently active gradient.
      * @returns The active gradient.
+     * @since 2.2
      */
     function context_get_gradient(): Gradient;
     /**
@@ -3171,6 +3373,7 @@ export namespace Gimp {
      * Get the gradient blend color space for paint tools and the gradient
      * tool.
      * @returns Color blend space.
+     * @since 2.10
      */
     function context_get_gradient_blend_color_space(): GradientBlendColorSpace;
     /**
@@ -3178,6 +3381,7 @@ export namespace Gimp {
      *
      * Get the gradient repeat mode for paint tools and the gradient tool.
      * @returns Repeat mode.
+     * @since 2.10
      */
     function context_get_gradient_repeat_mode(): RepeatMode;
     /**
@@ -3186,6 +3390,7 @@ export namespace Gimp {
      * Get the gradient reverse setting for paint tools and the gradient
      * tool.
      * @returns Reverse.
+     * @since 2.10
      */
     function context_get_gradient_reverse(): boolean;
     /**
@@ -3193,6 +3398,7 @@ export namespace Gimp {
      *
      * Get the ink angle in degrees for ink tool.
      * @returns ink angle in degrees.
+     * @since 2.8
      */
     function context_get_ink_angle(): number;
     /**
@@ -3200,6 +3406,7 @@ export namespace Gimp {
      *
      * Get the ink blob angle in degrees for ink tool.
      * @returns ink blob angle in degrees.
+     * @since 2.8
      */
     function context_get_ink_blob_angle(): number;
     /**
@@ -3207,6 +3414,7 @@ export namespace Gimp {
      *
      * Get the ink blob aspect ratio for ink tool.
      * @returns ink blob aspect ratio.
+     * @since 2.8
      */
     function context_get_ink_blob_aspect_ratio(): number;
     /**
@@ -3214,6 +3422,7 @@ export namespace Gimp {
      *
      * Get the ink blob type for ink tool.
      * @returns Ink blob type.
+     * @since 2.8
      */
     function context_get_ink_blob_type(): InkBlobType;
     /**
@@ -3221,6 +3430,7 @@ export namespace Gimp {
      *
      * Get the ink blob size in pixels for ink tool.
      * @returns ink blob size in pixels.
+     * @since 2.8
      */
     function context_get_ink_size(): number;
     /**
@@ -3228,6 +3438,7 @@ export namespace Gimp {
      *
      * Get the ink size sensitivity for ink tool.
      * @returns ink size sensitivity.
+     * @since 2.8
      */
     function context_get_ink_size_sensitivity(): number;
     /**
@@ -3235,6 +3446,7 @@ export namespace Gimp {
      *
      * Get the ink speed sensitivity for ink tool.
      * @returns ink speed sensitivity.
+     * @since 2.8
      */
     function context_get_ink_speed_sensitivity(): number;
     /**
@@ -3242,6 +3454,7 @@ export namespace Gimp {
      *
      * Get the ink tilt sensitivity for ink tool.
      * @returns ink tilt sensitivity.
+     * @since 2.8
      */
     function context_get_ink_tilt_sensitivity(): number;
     /**
@@ -3250,9 +3463,10 @@ export namespace Gimp {
      * Returns the interpolation setting. The return value is an integer
      * which corresponds to the values listed in the argument description.
      * If the interpolation has not been set explicitly by
-     * gimp_context_set_interpolation(), the default interpolation set in
+     * `gimp_context_set_interpolation()`, the default interpolation set in
      * gimprc will be used.
      * @returns The interpolation type.
+     * @since 2.8
      */
     function context_get_interpolation(): InterpolationType;
     /**
@@ -3260,6 +3474,7 @@ export namespace Gimp {
      *
      * Returns the line cap style setting.
      * @returns The line cap style setting.
+     * @since 2.10
      */
     function context_get_line_cap_style(): CapStyle;
     /**
@@ -3267,6 +3482,7 @@ export namespace Gimp {
      *
      * Returns the line dash offset setting.
      * @returns The line dash offset setting.
+     * @since 2.10
      */
     function context_get_line_dash_offset(): number;
     /**
@@ -3274,6 +3490,7 @@ export namespace Gimp {
      *
      * Returns the line dash pattern setting.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_get_line_dash_pattern(): [boolean, number[]];
     /**
@@ -3281,6 +3498,7 @@ export namespace Gimp {
      *
      * Returns the line join style setting.
      * @returns The line join style setting.
+     * @since 2.10
      */
     function context_get_line_join_style(): JoinStyle;
     /**
@@ -3288,6 +3506,7 @@ export namespace Gimp {
      *
      * Returns the line miter limit setting.
      * @returns The line miter limit setting.
+     * @since 2.10
      */
     function context_get_line_miter_limit(): number;
     /**
@@ -3295,6 +3514,7 @@ export namespace Gimp {
      *
      * Returns the line width setting.
      * @returns The line width setting.
+     * @since 2.10
      */
     function context_get_line_width(): number;
     /**
@@ -3302,13 +3522,15 @@ export namespace Gimp {
      *
      * Returns the line width unit setting.
      * @returns The line width unit setting.
+     * @since 2.10
      */
     function context_get_line_width_unit(): Unit;
     /**
      * Get the currently active MyPaint brush.
      *
      * Returns the name of the currently active MyPaint brush.
-     * @returns The name of the active MyPaint brush.          The returned value must be freed with g_free().
+     * @returns The name of the active MyPaint brush.          The returned value must be freed with `g_free()`.
+     * @since 2.10
      */
     function context_get_mypaint_brush(): string;
     /**
@@ -3317,13 +3539,15 @@ export namespace Gimp {
      * Returns the opacity setting. The return value is a floating point
      * number between 0 and 100.
      * @returns The opacity.
+     * @since 2.2
      */
     function context_get_opacity(): number;
     /**
      * Get the currently active paint method.
      *
      * Returns the name of the currently active paint method.
-     * @returns The name of the active paint method.          The returned value must be freed with g_free().
+     * @returns The name of the active paint method.          The returned value must be freed with `g_free()`.
+     * @since 2.4
      */
     function context_get_paint_method(): string;
     /**
@@ -3332,6 +3556,7 @@ export namespace Gimp {
      * Returns the paint-mode setting. The return value is an integer which
      * corresponds to the values listed in the argument description.
      * @returns The paint mode.
+     * @since 2.2
      */
     function context_get_paint_mode(): LayerMode;
     /**
@@ -3339,6 +3564,7 @@ export namespace Gimp {
      *
      * Returns the currently active palette.
      * @returns The active palette.
+     * @since 2.2
      */
     function context_get_palette(): Palette;
     /**
@@ -3348,6 +3574,7 @@ export namespace Gimp {
      * bucket-fill operations with patterns will use this pattern to
      * control the application of paint to the image.
      * @returns The active pattern.
+     * @since 2.2
      */
     function context_get_pattern(): Pattern;
     /**
@@ -3355,6 +3582,7 @@ export namespace Gimp {
      *
      * Returns the sample criterion setting.
      * @returns The sample criterion setting.
+     * @since 2.8
      */
     function context_get_sample_criterion(): SelectCriterion;
     /**
@@ -3362,6 +3590,7 @@ export namespace Gimp {
      *
      * Returns the sample merged setting.
      * @returns The sample merged setting.
+     * @since 2.8
      */
     function context_get_sample_merged(): boolean;
     /**
@@ -3369,14 +3598,16 @@ export namespace Gimp {
      *
      * Returns the sample threshold setting.
      * @returns The sample threshold setting.
+     * @since 2.8
      */
     function context_get_sample_threshold(): number;
     /**
      * Get the sample threshold setting as an integer value.
      *
      * Returns the sample threshold setting as an integer value. See
-     * gimp_context_get_sample_threshold().
+     * `gimp_context_get_sample_threshold()`.
      * @returns The sample threshold setting.
+     * @since 2.8
      */
     function context_get_sample_threshold_int(): number;
     /**
@@ -3384,6 +3615,7 @@ export namespace Gimp {
      *
      * Returns the sample transparent setting.
      * @returns The sample transparent setting.
+     * @since 2.8
      */
     function context_get_sample_transparent(): boolean;
     /**
@@ -3391,6 +3623,7 @@ export namespace Gimp {
      *
      * Returns the currently active stroke method.
      * @returns The active stroke method.
+     * @since 2.10
      */
     function context_get_stroke_method(): StrokeMethod;
     /**
@@ -3399,6 +3632,7 @@ export namespace Gimp {
      * Returns the transform direction. The return value is an integer
      * which corresponds to the values listed in the argument description.
      * @returns The transform direction.
+     * @since 2.8
      */
     function context_get_transform_direction(): TransformDirection;
     /**
@@ -3407,14 +3641,16 @@ export namespace Gimp {
      * Returns the transform resize setting. The return value is an integer
      * which corresponds to the values listed in the argument description.
      * @returns The transform resize type.
+     * @since 2.8
      */
     function context_get_transform_resize(): TransformResize;
     /**
      * Lists the available paint methods.
      *
      * Lists the names of the available paint methods. Any of the names can
-     * be used for gimp_context_set_paint_method().
+     * be used for `gimp_context_set_paint_method()`.
      * @returns TRUE on success.
+     * @since 2.4
      */
     function context_list_paint_methods(): [boolean, string[]];
     /**
@@ -3423,8 +3659,9 @@ export namespace Gimp {
      * Removes the topmost context from the plug-in's context stack. The
      * next context on the stack becomes the new current context of the
      * plug-in, that is, the context that was active before the
-     * corresponding call to gimp_context_push()
+     * corresponding call to `gimp_context_push()`
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_pop(): boolean;
     /**
@@ -3432,8 +3669,9 @@ export namespace Gimp {
      *
      * Creates a new context by copying the current context. The copy
      * becomes the new current context for the calling plug-in until it is
-     * popped again using gimp_context_pop().
+     * popped again using `gimp_context_pop()`.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_push(): boolean;
     /**
@@ -3445,13 +3683,14 @@ export namespace Gimp {
      * as TRUE most of the time unless a binary-only selection is wanted.
      *
      * This setting affects the following procedures:
-     * gimp_image_select_color(), gimp_image_select_contiguous_color(),
-     * gimp_image_select_round_rectangle(), gimp_image_select_ellipse(),
-     * gimp_image_select_polygon(), gimp_image_select_item(),
-     * gimp_drawable_edit_bucket_fill(), gimp_drawable_edit_stroke_item(),
-     * gimp_drawable_edit_stroke_selection().
+     * `gimp_image_select_color()`, `gimp_image_select_contiguous_color()`,
+     * `gimp_image_select_round_rectangle()`, `gimp_image_select_ellipse()`,
+     * `gimp_image_select_polygon()`, `gimp_image_select_item()`,
+     * `gimp_drawable_edit_bucket_fill()`, `gimp_drawable_edit_stroke_item()`,
+     * `gimp_drawable_edit_stroke_selection()`.
      * @param antialias The antialias setting.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_antialias(antialias: boolean): boolean;
     /**
@@ -3462,6 +3701,7 @@ export namespace Gimp {
      * clearing, and erasing (in non-alpha images) will use the new value.
      * @param background The background color.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_background(background: Gegl.Color): boolean;
     /**
@@ -3472,6 +3712,7 @@ export namespace Gimp {
      * brush data was uninstalled since the brush object was created.
      * @param brush The brush.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_brush(brush: Brush): boolean;
     /**
@@ -3480,6 +3721,7 @@ export namespace Gimp {
      * Set the angle in degrees for brush based paint tools.
      * @param angle Angle in degrees.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_brush_angle(angle: number): boolean;
     /**
@@ -3488,6 +3730,7 @@ export namespace Gimp {
      * Set the aspect ratio for brush based paint tools.
      * @param aspect Aspect ratio.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_brush_aspect_ratio(aspect: number): boolean;
     /**
@@ -3496,6 +3739,7 @@ export namespace Gimp {
      * Set the brush spacing to the default for paintbrush, airbrush, or
      * pencil tools.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_brush_default_hardness(): boolean;
     /**
@@ -3504,6 +3748,7 @@ export namespace Gimp {
      * Set the brush size to the default (max of width and height) for
      * paintbrush, airbrush, or pencil tools.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_brush_default_size(): boolean;
     /**
@@ -3512,6 +3757,7 @@ export namespace Gimp {
      * Set the brush spacing to the default for paintbrush, airbrush, or
      * pencil tools.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_brush_default_spacing(): boolean;
     /**
@@ -3520,6 +3766,7 @@ export namespace Gimp {
      * Set the brush application force for brush based paint tools.
      * @param force Brush application force.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_brush_force(force: number): boolean;
     /**
@@ -3528,6 +3775,7 @@ export namespace Gimp {
      * Set the brush hardness for brush based paint tools.
      * @param hardness Brush hardness.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_brush_hardness(hardness: number): boolean;
     /**
@@ -3536,6 +3784,7 @@ export namespace Gimp {
      * Set the brush size in pixels for brush based paint tools.
      * @param size Brush size in pixels.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_brush_size(size: number): boolean;
     /**
@@ -3545,6 +3794,7 @@ export namespace Gimp {
      * tools.
      * @param spacing Brush spacing as fraction of size.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_brush_spacing(spacing: number): boolean;
     /**
@@ -3554,6 +3804,7 @@ export namespace Gimp {
      * Sets the current GIMP foreground and background colors to their
      * initial default values, black and white.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_default_colors(): boolean;
     /**
@@ -3564,6 +3815,7 @@ export namespace Gimp {
      * script which calls procedures affected by context settings will not
      * be affected by changes in the global context.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_defaults(): boolean;
     /**
@@ -3577,24 +3829,26 @@ export namespace Gimp {
      * each pixel are considered.
      *
      * This setting affects the following procedures:
-     * gimp_image_select_contiguous_color(),
-     * gimp_drawable_edit_bucket_fill().
+     * `gimp_image_select_contiguous_color()`,
+     * `gimp_drawable_edit_bucket_fill()`.
      * @param diagonal_neighbors The diagonal neighbors setting.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_diagonal_neighbors(diagonal_neighbors: boolean): boolean;
     /**
      * Set the distance metric used in some computations.
      *
      * Modifies the distance metric used in some computations, such as
-     * gimp_drawable_edit_gradient_fill(). In particular, it does not
+     * `gimp_drawable_edit_gradient_fill()`. In particular, it does not
      * change the metric used in generic distance computation on canvas, as
      * in the Measure tool.
      *
      * This setting affects the following procedures:
-     * gimp_drawable_edit_gradient_fill().
+     * `gimp_drawable_edit_gradient_fill()`.
      * @param metric The distance metric.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_distance_metric(metric: Gegl.DistanceMetric | null): boolean;
     /**
@@ -3606,6 +3860,7 @@ export namespace Gimp {
      * no matching paint dynamics is found.
      * @param name A name of a paint dynamics.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_dynamics(name: string): boolean;
     /**
@@ -3614,15 +3869,16 @@ export namespace Gimp {
      * Modifies the feather setting. If the feather option is enabled,
      * selections will be blurred before combining. The blur is a gaussian
      * blur; its radii can be controlled using
-     * gimp_context_set_feather_radius().
+     * `gimp_context_set_feather_radius()`.
      *
      * This setting affects the following procedures:
-     * gimp_image_select_color(), gimp_image_select_contiguous_color(),
-     * gimp_image_select_rectangle(), gimp_image_select_round_rectangle(),
-     * gimp_image_select_ellipse(), gimp_image_select_polygon(),
-     * gimp_image_select_item().
+     * `gimp_image_select_color()`, `gimp_image_select_contiguous_color()`,
+     * `gimp_image_select_rectangle()`, `gimp_image_select_round_rectangle()`,
+     * `gimp_image_select_ellipse()`, `gimp_image_select_polygon()`,
+     * `gimp_image_select_item()`.
      * @param feather The feather setting.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_feather(feather: boolean): boolean;
     /**
@@ -3631,10 +3887,11 @@ export namespace Gimp {
      * Modifies the feather radius setting.
      *
      * This setting affects all procedures that are affected by
-     * gimp_context_set_feather().
+     * `gimp_context_set_feather()`.
      * @param feather_radius_x The horizontal feather radius.
      * @param feather_radius_y The vertical feather radius.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_feather_radius(feather_radius_x: number, feather_radius_y: number): boolean;
     /**
@@ -3645,6 +3902,7 @@ export namespace Gimp {
      * was uninstalled since the font object was created.
      * @param font The font.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_font(font: Font): boolean;
     /**
@@ -3655,6 +3913,7 @@ export namespace Gimp {
      * bucket fill will use the new value.
      * @param foreground The foreground color.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_foreground(foreground: Gegl.Color): boolean;
     /**
@@ -3665,6 +3924,7 @@ export namespace Gimp {
      * gradient data was uninstalled since the gradient object was created.
      * @param gradient The gradient.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_gradient(gradient: Gradient): boolean;
     /**
@@ -3674,6 +3934,7 @@ export namespace Gimp {
      * tool.
      * @param blend_color_space Blend color space.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_gradient_blend_color_space(blend_color_space: GradientBlendColorSpace | null): boolean;
     /**
@@ -3682,6 +3943,7 @@ export namespace Gimp {
      * Sets the built-in FG-BG HSV (ccw) gradient as the active gradient.
      * The gradient will be used for subsequent gradient operations.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_gradient_fg_bg_hsv_ccw(): boolean;
     /**
@@ -3690,6 +3952,7 @@ export namespace Gimp {
      * Sets the built-in FG-BG HSV (cw) gradient as the active gradient.
      * The gradient will be used for subsequent gradient operations.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_gradient_fg_bg_hsv_cw(): boolean;
     /**
@@ -3698,6 +3961,7 @@ export namespace Gimp {
      * Sets the built-in FG-BG RGB gradient as the active gradient. The
      * gradient will be used for subsequent gradient operations.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_gradient_fg_bg_rgb(): boolean;
     /**
@@ -3706,6 +3970,7 @@ export namespace Gimp {
      * Sets the built-in FG-Transparent gradient as the active gradient.
      * The gradient will be used for subsequent gradient operations.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_gradient_fg_transparent(): boolean;
     /**
@@ -3714,6 +3979,7 @@ export namespace Gimp {
      * Set the gradient repeat mode for paint tools and the gradient tool.
      * @param repeat_mode Repeat mode.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_gradient_repeat_mode(repeat_mode: RepeatMode | null): boolean;
     /**
@@ -3723,6 +3989,7 @@ export namespace Gimp {
      * tool.
      * @param reverse Reverse.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_gradient_reverse(reverse: boolean): boolean;
     /**
@@ -3731,6 +3998,7 @@ export namespace Gimp {
      * Set the ink angle in degrees for ink tool.
      * @param angle ink angle in degrees.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_ink_angle(angle: number): boolean;
     /**
@@ -3739,6 +4007,7 @@ export namespace Gimp {
      * Set the ink blob angle in degrees for ink tool.
      * @param angle ink blob angle in degrees.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_ink_blob_angle(angle: number): boolean;
     /**
@@ -3747,6 +4016,7 @@ export namespace Gimp {
      * Set the ink blob aspect ratio for ink tool.
      * @param aspect ink blob aspect ratio.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_ink_blob_aspect_ratio(aspect: number): boolean;
     /**
@@ -3755,6 +4025,7 @@ export namespace Gimp {
      * Set the ink blob type for ink tool.
      * @param type Ink blob type.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_ink_blob_type(type: InkBlobType | null): boolean;
     /**
@@ -3763,6 +4034,7 @@ export namespace Gimp {
      * Set the ink blob size in pixels for ink tool.
      * @param size ink blob size in pixels.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_ink_size(size: number): boolean;
     /**
@@ -3771,6 +4043,7 @@ export namespace Gimp {
      * Set the ink size sensitivity for ink tool.
      * @param size ink size sensitivity.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_ink_size_sensitivity(size: number): boolean;
     /**
@@ -3779,6 +4052,7 @@ export namespace Gimp {
      * Set the ink speed sensitivity for ink tool.
      * @param speed ink speed sensitivity.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_ink_speed_sensitivity(speed: number): boolean;
     /**
@@ -3787,6 +4061,7 @@ export namespace Gimp {
      * Set the ink tilt sensitivity for ink tool.
      * @param tilt ink tilt sensitivity.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_ink_tilt_sensitivity(tilt: number): boolean;
     /**
@@ -3795,13 +4070,14 @@ export namespace Gimp {
      * Modifies the interpolation setting.
      *
      * This setting affects affects the following procedures:
-     * gimp_item_transform_flip(), gimp_item_transform_perspective(),
-     * gimp_item_transform_rotate(), gimp_item_transform_scale(),
-     * gimp_item_transform_shear(), gimp_item_transform_2d(),
-     * gimp_item_transform_matrix(), gimp_image_scale(),
-     * gimp_layer_scale().
+     * `gimp_item_transform_flip()`, `gimp_item_transform_perspective()`,
+     * `gimp_item_transform_rotate()`, `gimp_item_transform_scale()`,
+     * `gimp_item_transform_shear()`, `gimp_item_transform_2d()`,
+     * `gimp_item_transform_matrix()`, `gimp_image_scale()`,
+     * `gimp_layer_scale()`.
      * @param interpolation The interpolation type.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_interpolation(interpolation: InterpolationType | null): boolean;
     /**
@@ -3810,10 +4086,11 @@ export namespace Gimp {
      * Modifies the line cap style setting for stroking lines.
      *
      * This setting affects the following procedures:
-     * gimp_drawable_edit_stroke_selection(),
-     * gimp_drawable_edit_stroke_item().
+     * `gimp_drawable_edit_stroke_selection()`,
+     * `gimp_drawable_edit_stroke_item()`.
      * @param cap_style The line cap style setting.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_line_cap_style(cap_style: CapStyle | null): boolean;
     /**
@@ -3822,10 +4099,11 @@ export namespace Gimp {
      * Modifies the line dash offset setting for stroking lines.
      *
      * This setting affects the following procedures:
-     * gimp_drawable_edit_stroke_selection(),
-     * gimp_drawable_edit_stroke_item().
+     * `gimp_drawable_edit_stroke_selection()`,
+     * `gimp_drawable_edit_stroke_item()`.
      * @param dash_offset The line dash offset setting.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_line_dash_offset(dash_offset: number): boolean;
     /**
@@ -3838,10 +4116,11 @@ export namespace Gimp {
      * results in a square segment shape (or gap shape).
      *
      * This setting affects the following procedures:
-     * gimp_drawable_edit_stroke_selection(),
-     * gimp_drawable_edit_stroke_item().
+     * `gimp_drawable_edit_stroke_selection()`,
+     * `gimp_drawable_edit_stroke_item()`.
      * @param dashes The line dash pattern setting.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_line_dash_pattern(dashes: number[]): boolean;
     /**
@@ -3849,10 +4128,11 @@ export namespace Gimp {
      *
      * Modifies the line join style setting for stroking lines.
      * This setting affects the following procedures:
-     * gimp_drawable_edit_stroke_selection(),
-     * gimp_drawable_edit_stroke_item().
+     * `gimp_drawable_edit_stroke_selection()`,
+     * `gimp_drawable_edit_stroke_item()`.
      * @param join_style The line join style setting.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_line_join_style(join_style: JoinStyle | null): boolean;
     /**
@@ -3864,10 +4144,11 @@ export namespace Gimp {
      * the actual join point.
      *
      * This setting affects the following procedures:
-     * gimp_drawable_edit_stroke_selection(),
-     * gimp_drawable_edit_stroke_item().
+     * `gimp_drawable_edit_stroke_selection()`,
+     * `gimp_drawable_edit_stroke_item()`.
      * @param miter_limit The line miter limit setting.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_line_miter_limit(miter_limit: number): boolean;
     /**
@@ -3876,10 +4157,11 @@ export namespace Gimp {
      * Modifies the line width setting for stroking lines.
      *
      * This setting affects the following procedures:
-     * gimp_drawable_edit_stroke_selection(),
-     * gimp_drawable_edit_stroke_item().
+     * `gimp_drawable_edit_stroke_selection()`,
+     * `gimp_drawable_edit_stroke_item()`.
      * @param line_width The line width setting.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_line_width(line_width: number): boolean;
     /**
@@ -3888,10 +4170,11 @@ export namespace Gimp {
      * Modifies the line width unit setting for stroking lines.
      *
      * This setting affects the following procedures:
-     * gimp_drawable_edit_stroke_selection(),
-     * gimp_drawable_edit_stroke_item().
+     * `gimp_drawable_edit_stroke_selection()`,
+     * `gimp_drawable_edit_stroke_item()`.
      * @param line_width_unit The line width setting unit.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_line_width_unit(line_width_unit: Unit): boolean;
     /**
@@ -3903,6 +4186,7 @@ export namespace Gimp {
      * no matching MyPaint brush is found.
      * @param name A name of a MyPaint brush.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_mypaint_brush(name: string): boolean;
     /**
@@ -3912,6 +4196,7 @@ export namespace Gimp {
      * number between 0 and 100.
      * @param opacity The opacity.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_opacity(opacity: number): boolean;
     /**
@@ -3923,6 +4208,7 @@ export namespace Gimp {
      * no matching paint method is found.
      * @param name The name of the paint method.
      * @returns TRUE on success.
+     * @since 2.4
      */
     function context_set_paint_method(name: string): boolean;
     /**
@@ -3931,6 +4217,7 @@ export namespace Gimp {
      * Modifies the paint_mode setting.
      * @param paint_mode The paint mode.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_paint_mode(paint_mode: LayerMode | null): boolean;
     /**
@@ -3941,6 +4228,7 @@ export namespace Gimp {
      * palette data was uninstalled since the palette object was created.
      * @param palette The palette.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_palette(palette: Palette): boolean;
     /**
@@ -3952,6 +4240,7 @@ export namespace Gimp {
      * created.
      * @param pattern The pattern.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_set_pattern(pattern: Pattern): boolean;
     /**
@@ -3963,10 +4252,11 @@ export namespace Gimp {
      * SELECT_CRITERION_COMPOSITE is the default value.
      *
      * This setting affects the following procedures:
-     * gimp_image_select_color(), gimp_image_select_contiguous_color(),
-     * gimp_drawable_edit_bucket_fill().
+     * `gimp_image_select_color()`, `gimp_image_select_contiguous_color()`,
+     * `gimp_drawable_edit_bucket_fill()`.
      * @param sample_criterion The sample criterion setting.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_sample_criterion(sample_criterion: SelectCriterion | null): boolean;
     /**
@@ -3980,10 +4270,11 @@ export namespace Gimp {
      * sampling for colors after merging all visible layers).
      *
      * This setting affects the following procedures:
-     * gimp_image_select_color(), gimp_image_select_contiguous_color(),
-     * gimp_drawable_edit_bucket_fill().
+     * `gimp_image_select_color()`, `gimp_image_select_contiguous_color()`,
+     * `gimp_drawable_edit_bucket_fill()`.
      * @param sample_merged The sample merged setting.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_sample_merged(sample_merged: boolean): boolean;
     /**
@@ -3996,19 +4287,21 @@ export namespace Gimp {
      * set explicitly, the default threshold set in gimprc will be used.
      *
      * This setting affects the following procedures:
-     * gimp_image_select_color(), gimp_image_select_contiguous_color(),
-     * gimp_drawable_edit_bucket_fill().
+     * `gimp_image_select_color()`, `gimp_image_select_contiguous_color()`,
+     * `gimp_drawable_edit_bucket_fill()`.
      * @param sample_threshold The sample threshold setting.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_sample_threshold(sample_threshold: number): boolean;
     /**
      * Set the sample threshold setting as an integer value.
      *
      * Modifies the sample threshold setting as an integer value. See
-     * gimp_context_set_sample_threshold().
+     * `gimp_context_set_sample_threshold()`.
      * @param sample_threshold The sample threshold setting.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_sample_threshold_int(sample_threshold: number): boolean;
     /**
@@ -4021,10 +4314,11 @@ export namespace Gimp {
      * transparent areas can be selected or filled.
      *
      * This setting affects the following procedures:
-     * gimp_image_select_color(), gimp_image_select_contiguous_color(),
-     * gimp_drawable_edit_bucket_fill().
+     * `gimp_image_select_color()`, `gimp_image_select_contiguous_color()`,
+     * `gimp_drawable_edit_bucket_fill()`.
      * @param sample_transparent The sample transparent setting.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_sample_transparent(sample_transparent: boolean): boolean;
     /**
@@ -4034,6 +4328,7 @@ export namespace Gimp {
      * subsequent stroke operations.
      * @param stroke_method The new stroke method.
      * @returns TRUE on success.
+     * @since 2.10
      */
     function context_set_stroke_method(stroke_method: StrokeMethod | null): boolean;
     /**
@@ -4042,12 +4337,13 @@ export namespace Gimp {
      * Modifies the transform direction setting.
      *
      * This setting affects affects the following procedures:
-     * gimp_item_transform_flip(), gimp_item_transform_perspective(),
-     * gimp_item_transform_rotate(), gimp_item_transform_scale(),
-     * gimp_item_transform_shear(), gimp_item_transform_2d(),
-     * gimp_item_transform_matrix().
+     * `gimp_item_transform_flip()`, `gimp_item_transform_perspective()`,
+     * `gimp_item_transform_rotate()`, `gimp_item_transform_scale()`,
+     * `gimp_item_transform_shear()`, `gimp_item_transform_2d()`,
+     * `gimp_item_transform_matrix()`.
      * @param transform_direction The transform direction.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_transform_direction(transform_direction: TransformDirection | null): boolean;
     /**
@@ -4059,13 +4355,14 @@ export namespace Gimp {
      * sized.
      *
      * This setting affects affects the following procedures:
-     * gimp_item_transform_flip(), gimp_item_transform_flip_simple(),
-     * gimp_item_transform_perspective(), gimp_item_transform_rotate(),
-     * gimp_item_transform_rotate_simple(), gimp_item_transform_scale(),
-     * gimp_item_transform_shear(), gimp_item_transform_2d(),
-     * gimp_item_transform_matrix().
+     * `gimp_item_transform_flip()`, `gimp_item_transform_flip_simple()`,
+     * `gimp_item_transform_perspective()`, `gimp_item_transform_rotate()`,
+     * `gimp_item_transform_rotate_simple()`, `gimp_item_transform_scale()`,
+     * `gimp_item_transform_shear()`, `gimp_item_transform_2d()`,
+     * `gimp_item_transform_matrix()`.
      * @param transform_resize The transform resize type.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function context_set_transform_resize(transform_resize: TransformResize | null): boolean;
     /**
@@ -4075,6 +4372,7 @@ export namespace Gimp {
      * new foreground color becomes the old background color and vice
      * versa.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function context_swap_colors(): boolean;
     /**
@@ -4101,7 +4399,7 @@ export namespace Gimp {
      *
      * This tool convolves the specified drawable with either a sharpening
      * or blurring kernel. This function performs exactly the same as the
-     * gimp_convolve() function except that the tools arguments are
+     * `gimp_convolve()` function except that the tools arguments are
      * obtained from the convolve option dialog. It this dialog has not
      * been activated then the dialogs default values will be used.
      * @param drawable The affected drawable.
@@ -4111,12 +4409,14 @@ export namespace Gimp {
     function convolve_default(drawable: Drawable, strokes: number[]): boolean;
     /**
      * Query for CPU acceleration support.
-     * @returns #GimpCpuAccelFlags as supported by the CPU.
+     * @returns {@link Gimp.CpuAccelFlags} as supported by the CPU.
+     * @since 2.4
      */
     function cpu_accel_get_support(): CpuAccelFlags;
     /**
      * This function is for internal use only.
      * @param use whether to use CPU acceleration features or not
+     * @since 2.4
      */
     function cpu_accel_set_use(use: boolean): void;
     /**
@@ -4143,10 +4443,10 @@ export namespace Gimp {
      * Finishes measuring elapsed time.
      *
      * This procedure stops the timer started by a previous
-     * gimp_debug_timer_start() call, and prints and returns the elapsed
+     * `gimp_debug_timer_start()` call, and prints and returns the elapsed
      * time.
      * If there was already an active timer at the time of corresponding
-     * call to gimp_debug_timer_start(), a dummy value is returned.
+     * call to `gimp_debug_timer_start()`, a dummy value is returned.
      *
      * This is a debug utility procedure. It is subject to change at any
      * point, and should not be used in production.
@@ -4158,9 +4458,9 @@ export namespace Gimp {
      *
      * This procedure starts a timer, measuring the elapsed time since the
      * call. Each call to this procedure should be matched by a call to
-     * gimp_debug_timer_end(), which returns the elapsed time.
+     * `gimp_debug_timer_end()`, which returns the elapsed time.
      * If there is already an active timer, it is not affected by the call,
-     * however, a matching gimp_debug_timer_end() call is still required.
+     * however, a matching `gimp_debug_timer_end()` call is still required.
      *
      * This is a debug utility procedure. It is subject to change at any
      * point, and should not be used in production.
@@ -4182,6 +4482,7 @@ export namespace Gimp {
      * values.
      * @param name The name of the parasite to detach.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function detach_parasite(name: string): boolean;
     /**
@@ -4190,7 +4491,7 @@ export namespace Gimp {
      * an absolute path, it is used as is.  If it is a relative path, it
      * is taken to be a subdirectory of the home directory. If it is a
      * relative path, and no home directory can be determined, it is taken
-     * to be a subdirectory of gimp_data_directory().
+     * to be a subdirectory of `gimp_data_directory()`.
      *
      * The usual case is that no GIMP3_DIRECTORY environment variable
      * exists, and then we use the GIMPDIR subdirectory of the local
@@ -4203,7 +4504,7 @@ export namespace Gimp {
      * - OSX (UNIX exception): the Application Support Directory.
      *
      * If neither the configuration nor home directory exist,
-     * g_get_user_config_dir() will return {tmp}/{user_name}/.config/ where
+     * `g_get_user_config_dir()` will return {tmp}/{user_name}/.config/ where
      * the temporary directory {tmp} and the {user_name} are determined
      * according to platform rules.
      *
@@ -4262,7 +4563,7 @@ export namespace Gimp {
     ): boolean;
     /**
      * Dodgeburn image with varying exposure. This is the same as the
-     * gimp_dodgeburn() function except that the exposure, type and mode
+     * `gimp_dodgeburn()` function except that the exposure, type and mode
      * are taken from the tools option dialog. If the dialog has not been
      * activated then the defaults as used by the dialog will be used.
      *
@@ -4313,7 +4614,8 @@ export namespace Gimp {
      * This procedure returns a list of the paint dynamics that are
      * currently available.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of paint dynamics names.          The returned value must be freed with g_strfreev().
+     * @returns The list of paint dynamics names.          The returned value must be freed with `g_strfreev()`.
+     * @since 2.8
      */
     function dynamics_get_list(filter: string): string[];
     /**
@@ -4323,6 +4625,7 @@ export namespace Gimp {
      * paint dynamics path and updates the paint dynamics dialogs
      * accordingly.
      * @returns TRUE on success.
+     * @since 2.8
      */
     function dynamics_refresh(): boolean;
     /**
@@ -4331,10 +4634,10 @@ export namespace Gimp {
      * If there is a selection in the image, then the area specified by the
      * selection is copied from the specified drawables and placed in an
      * internal GIMP edit buffer. It can subsequently be retrieved using
-     * the gimp_edit_paste() command. If there is no selection, then the
+     * the `gimp_edit_paste()` command. If there is no selection, then the
      * specified drawables' contents will be stored in the internal GIMP
      * edit buffer.
-     * This procedure will return %FALSE if the selected area lies
+     * This procedure will return `false` if the selected area lies
      * completely outside the bounds of the current drawables and there is
      * nothing to copy from.
      * All the drawables must belong to the same image.
@@ -4348,11 +4651,12 @@ export namespace Gimp {
      * If there is a selection in the image, then the area specified by the
      * selection is copied from the projection and placed in an internal
      * GIMP edit buffer. It can subsequently be retrieved using the
-     * gimp_edit_paste() command. If there is no selection, then the
+     * `gimp_edit_paste()` command. If there is no selection, then the
      * projection's contents will be stored in the internal GIMP edit
      * buffer.
      * @param image The image to copy from.
      * @returns TRUE if the copy was successful.
+     * @since 2.2
      */
     function edit_copy_visible(image: Image): boolean;
     /**
@@ -4361,10 +4665,10 @@ export namespace Gimp {
      * If there is a selection in the image, then the area specified by the
      * selection is cut from the specified drawables and placed in an
      * internal GIMP edit buffer. It can subsequently be retrieved using
-     * the gimp_edit_paste() command. If there is no selection and only one
+     * the `gimp_edit_paste()` command. If there is no selection and only one
      * specified drawable, then the specified drawable will be removed and
      * its contents stored in the internal GIMP edit buffer.
-     * This procedure will return %FALSE if the selected area lies
+     * This procedure will return `false` if the selected area lies
      * completely outside the bounds of the current drawables and there is
      * nothing to cut from.
      * @param drawables The drawables to cut from.
@@ -4374,57 +4678,62 @@ export namespace Gimp {
     /**
      * Copy into a named buffer.
      *
-     * This procedure works like gimp_edit_copy(), but additionally stores
+     * This procedure works like `gimp_edit_copy()`, but additionally stores
      * the copied buffer into a named buffer that will stay available for
      * later pasting, regardless of any intermediate copy or cut
      * operations.
      * @param drawables The drawables to copy from.
      * @param buffer_name The name of the buffer to create.
-     * @returns The real name given to the buffer, or NULL if the copy failed.          The returned value must be freed with g_free().
+     * @returns The real name given to the buffer, or NULL if the copy failed.          The returned value must be freed with `g_free()`.
+     * @since 2.4
      */
     function edit_named_copy(drawables: Item[], buffer_name: string): string;
     /**
      * Copy from the projection into a named buffer.
      *
-     * This procedure works like gimp_edit_copy_visible(), but additionally
+     * This procedure works like `gimp_edit_copy_visible()`, but additionally
      * stores the copied buffer into a named buffer that will stay
      * available for later pasting, regardless of any intermediate copy or
      * cut operations.
      * @param image The image to copy from.
      * @param buffer_name The name of the buffer to create.
-     * @returns The real name given to the buffer, or NULL if the copy failed.          The returned value must be freed with g_free().
+     * @returns The real name given to the buffer, or NULL if the copy failed.          The returned value must be freed with `g_free()`.
+     * @since 2.4
      */
     function edit_named_copy_visible(image: Image, buffer_name: string): string;
     /**
      * Cut into a named buffer.
      *
-     * This procedure works like gimp_edit_cut(), but additionally stores
+     * This procedure works like `gimp_edit_cut()`, but additionally stores
      * the cut buffer into a named buffer that will stay available for
      * later pasting, regardless of any intermediate copy or cut
      * operations.
      * @param drawables The drawables to cut from.
      * @param buffer_name The name of the buffer to create.
-     * @returns The real name given to the buffer, or NULL if the cut failed.          The returned value must be freed with g_free().
+     * @returns The real name given to the buffer, or NULL if the cut failed.          The returned value must be freed with `g_free()`.
+     * @since 2.4
      */
     function edit_named_cut(drawables: Item[], buffer_name: string): string;
     /**
      * Paste named buffer to the specified drawable.
      *
-     * This procedure works like gimp_edit_paste() but pastes a named
+     * This procedure works like `gimp_edit_paste()` but pastes a named
      * buffer instead of the global buffer.
      * @param drawable The drawable to paste to.
      * @param buffer_name The name of the buffer to paste.
      * @param paste_into Clear selection, or paste behind it?
      * @returns The new floating selection.
+     * @since 2.4
      */
     function edit_named_paste(drawable: Drawable, buffer_name: string, paste_into: boolean): Layer;
     /**
      * Paste named buffer to a new image.
      *
-     * This procedure works like gimp_edit_paste_as_new_image() but pastes
+     * This procedure works like `gimp_edit_paste_as_new_image()` but pastes
      * a named buffer instead of the global buffer.
      * @param buffer_name The name of the buffer to paste.
      * @returns The new image.
+     * @since 2.10
      */
     function edit_named_paste_as_new_image(buffer_name: string): Image;
     /**
@@ -4432,7 +4741,7 @@ export namespace Gimp {
      *
      * This procedure pastes a copy of the internal GIMP edit buffer to the
      * specified drawable. The GIMP edit buffer will be empty unless a call
-     * was previously made to either gimp_edit_cut() or gimp_edit_copy().
+     * was previously made to either `gimp_edit_cut()` or `gimp_edit_copy()`.
      * The \"paste_into\" option specifies whether to clear the current
      * image selection, or to paste the buffer \"behind\" the selection.
      * This allows the selection to act as a mask for the pasted buffer.
@@ -4447,7 +4756,7 @@ export namespace Gimp {
      * not needed.
      * @param drawable The drawable to paste to.
      * @param paste_into Clear selection, or paste behind it?
-     * @returns The list of pasted layers.          The returned value must be freed with g_free().
+     * @returns The list of pasted layers.          The returned value must be freed with `g_free()`.
      */
     function edit_paste(drawable: Drawable, paste_into: boolean): Layer[];
     /**
@@ -4455,82 +4764,93 @@ export namespace Gimp {
      *
      * This procedure pastes a copy of the internal GIMP edit buffer to a
      * new image. The GIMP edit buffer will be empty unless a call was
-     * previously made to either gimp_edit_cut() or gimp_edit_copy(). This
+     * previously made to either `gimp_edit_cut()` or `gimp_edit_copy()`. This
      * procedure returns the new image or -1 if the edit buffer was empty.
      * @returns The new image.
+     * @since 2.10
      */
     function edit_paste_as_new_image(): Image;
     /**
-     * Retrieves #GimpEnumDesc associated with the given value, or %NULL.
-     * @param enum_class a #GEnumClass
-     * @param value a value from @enum_class
-     * @returns the value's #GimpEnumDesc.
+     * Retrieves {@link Gimp.EnumDesc} associated with the given value, or `null`.
+     * @param enum_class a {@link GObject.EnumClass}
+     * @param value a value from `enum_class`
+     * @returns the value's {@link Gimp.EnumDesc}.
+     * @since 2.2
      */
     function enum_get_desc(enum_class: GObject.EnumClass, value: number): EnumDesc | null;
     /**
      * Checks if `value` is valid for the enum registered as `enum_type`.
      * If the value exists in that enum, its name, nick and its translated
-     * description and help are returned (if `value_name,` `value_nick,`
-     * `value_desc` and `value_help` are not %NULL).
-     * @param enum_type the #GType of a registered enum
+     * description and help are returned (if `value_name`, `value_nick`,
+     * `value_desc` and `value_help` are not `null`).
+     * @param enum_type the {@link GObject.GType} of a registered enum
      * @param value an integer value
-     * @returns %TRUE if @value is valid for the @enum_type, %FALSE otherwise
+     * @returns `true` if `value` is valid for the `enum_type`, `false` otherwise
+     * @since 2.2
      */
     function enum_get_value(enum_type: GObject.GType, value: number): [boolean, string, string, string, string];
     /**
      * Retrieves the array of human readable and translatable descriptions
      * and help texts for enum values.
-     * @param enum_type a #GType
-     * @returns a %NULL terminated constant array of #GimpEnumDesc
+     * @param enum_type a {@link GObject.GType}
+     * @returns a `null` terminated constant array of {@link Gimp.EnumDesc}
+     * @since 2.2
      */
     function enum_get_value_descriptions(enum_type: GObject.GType): EnumDesc;
     /**
      * Sets the array of human readable and translatable descriptions
      * and help texts for enum values.
-     * @param enum_type a #GType
-     * @param descriptions a %NULL terminated constant static array of #GimpEnumDesc
+     * @param enum_type a {@link GObject.GType}
+     * @param descriptions a `null` terminated constant static array of {@link Gimp.EnumDesc}
+     * @since 2.2
      */
     function enum_set_value_descriptions(enum_type: GObject.GType, descriptions: EnumDesc): void;
     /**
      * Retrieves the translated abbreviation for a given `enum_value`.
-     * @param enum_class a #GEnumClass
-     * @param enum_value a #GEnumValue from @enum_class
+     * @param enum_class a {@link GObject.EnumClass}
+     * @param enum_value a {@link GObject.EnumValue} from `enum_class`
      * @returns the translated abbreviation of the enum value
+     * @since 2.10
      */
     function enum_value_get_abbrev(enum_class: GObject.EnumClass, enum_value: GObject.EnumValue): string;
     /**
      * Retrieves the translated description for a given `enum_value`.
-     * @param enum_class a #GEnumClass
-     * @param enum_value a #GEnumValue from @enum_class
+     * @param enum_class a {@link GObject.EnumClass}
+     * @param enum_value a {@link GObject.EnumValue} from `enum_class`
      * @returns the translated description of the enum value
+     * @since 2.2
      */
     function enum_value_get_desc(enum_class: GObject.EnumClass, enum_value: GObject.EnumValue): string;
     /**
      * Retrieves the translated help for a given `enum_value`.
-     * @param enum_class a #GEnumClass
-     * @param enum_value a #GEnumValue from @enum_class
+     * @param enum_class a {@link GObject.EnumClass}
+     * @param enum_value a {@link GObject.EnumValue} from `enum_class`
      * @returns the translated help of the enum value
+     * @since 2.2
      */
     function enum_value_get_help(enum_class: GObject.EnumClass, enum_value: GObject.EnumValue): string;
     /**
      * This function gives access to the list of enums registered by libgimp.
      * The returned array is static and must not be modified.
      * @returns an array with type names
+     * @since 2.2
      */
     function enums_get_type_names(): string[];
     /**
      * This function makes sure all the enum types are registered
-     * with the #GType system. This is intended for use by language
+     * with the {@link GObject.GType} system. This is intended for use by language
      * bindings that need the symbols early, before gimp_main is run.
      * It's not necessary for plug-ins to call this directly, because
      * the normal plug-in initialization code will handle it implicitly.
+     * @since 2.4
      */
     function enums_init(): void;
     /**
      * You don't need to care about this function. It is being called for
      * you automatically (by means of the MAIN() macro that every plug-in
      * runs). Calling it again will cause a fatal error.
-     * @param plug_in must be %TRUE if this function is called from a plug-in
+     * @param plug_in must be `true` if this function is called from a plug-in
+     * @since 2.4
      */
     function env_init(plug_in: boolean): void;
     /**
@@ -4557,7 +4877,7 @@ export namespace Gimp {
      * Erase using the current brush.
      *
      * This tool erases using the current brush mask. This function
-     * performs exactly the same as the gimp_eraser() function except that
+     * performs exactly the same as the `gimp_eraser()` function except that
      * the tools arguments are obtained from the eraser option dialog. It
      * this dialog has not been activated then the dialogs default values
      * will be used.
@@ -4571,82 +4891,92 @@ export namespace Gimp {
      * to two adjacent underlines. This comes in handy when needing to display
      * strings with underlines (like filenames) in a place that would convert
      * them to mnemonics.
-     * @param str Underline infested string (or %NULL)
-     * @returns A (possibly escaped) copy of @str which should be freed using g_free() when it is not needed any longer.
+     * @param str Underline infested string (or `null`)
+     * @returns A (possibly escaped) copy of `str` which should be freed using `g_free()` when it is not needed any longer.
+     * @since 2.2
      */
     function escape_uline(str?: string | null): string;
     /**
      * Returns whether file plug-ins should default to exporting the
      * image's color profile.
      * @returns TRUE if preferences are set to export the color profile.
+     * @since 2.10.4
      */
     function export_color_profile(): boolean;
     /**
      * Returns whether file plug-ins should default to exporting the
      * image's comment.
      * @returns TRUE if preferences are set to export the comment.
+     * @since 3.0
      */
     function export_comment(): boolean;
     /**
      * Returns whether file plug-ins should default to exporting Exif
-     * metadata, according preferences (original settings is %FALSE since
+     * metadata, according preferences (original settings is `false` since
      * metadata can contain sensitive information).
      * @returns TRUE if preferences are set to export Exif.
+     * @since 2.10
      */
     function export_exif(): boolean;
     /**
      * Returns whether file plug-ins should default to exporting IPTC
-     * metadata, according preferences (original settings is %FALSE since
+     * metadata, according preferences (original settings is `false` since
      * metadata can contain sensitive information).
      * @returns TRUE if preferences are set to export IPTC.
+     * @since 2.10
      */
     function export_iptc(): boolean;
     /**
      * Returns whether file plug-ins should default to exporting the
      * image's comment.
      * @returns TRUE if preferences are set to export the thumbnail.
+     * @since 3.0
      */
     function export_thumbnail(): boolean;
     /**
      * Returns whether file plug-ins should default to exporting XMP
-     * metadata, according preferences (original settings is %FALSE since
+     * metadata, according preferences (original settings is `false` since
      * metadata can contain sensitive information).
      * @returns TRUE if preferences are set to export XMP.
+     * @since 2.10
      */
     function export_xmp(): boolean;
     /**
-     * Unexpands `file'`s path using gimp_config_path_unexpand() and
+     * Unexpands `file`'s path using `gimp_config_path_unexpand()` and
      * returns the unexpanded path.
      *
-     * The inverse operation of gimp_file_new_for_config_path().
-     * @param file a #GFile
-     * @returns a newly allocated NUL-terminated UTF-8 string, or %NULL if               unexpanding failed.
+     * The inverse operation of `gimp_file_new_for_config_path()`.
+     * @param file a {@link Gio.File}
+     * @returns a newly allocated NUL-terminated UTF-8 string, or `null` if               unexpanding failed.
+     * @since 2.10
      */
     function file_get_config_path(file: Gio.File): string;
     /**
-     * This function works like gimp_filename_to_utf8() and returns
+     * This function works like `gimp_filename_to_utf8()` and returns
      * a UTF-8 encoded string that does not need to be freed.
      *
-     * It converts a #GFile's path or uri to UTF-8 temporarily.  The
+     * It converts a {@link Gio.File}'s path or uri to UTF-8 temporarily.  The
      * return value is a pointer to a string that is guaranteed to be
      * valid only during the current iteration of the main loop or until
-     * the next call to gimp_file_get_utf8_name().
+     * the next call to `gimp_file_get_utf8_name()`.
      *
      * The only purpose of this function is to provide an easy way to pass
-     * a #GFile's name to a function that expects an UTF-8 encoded string.
+     * a {@link Gio.File}'s name to a function that expects an UTF-8 encoded string.
      *
-     * See g_file_get_parse_name().
-     * @param file a #GFile
-     * @returns A temporarily valid UTF-8 representation of @file's name.               This string must not be changed or freed.
+     * See `g_file_get_parse_name()`.
+     * @param file a {@link Gio.File}
+     * @returns A temporarily valid UTF-8 representation of `file`'s name.               This string must not be changed or freed.
+     * @since 2.10
      */
     function file_get_utf8_name(file: Gio.File): string;
     /**
-     * This function checks if `file'`s URI ends with `extension`. It behaves
-     * like g_str_has_suffix() on g_file_get_uri(), except that the string
-     * comparison is done case-insensitively using g_ascii_strcasecmp().
-     * @param file a #GFile
+     * This function checks if `file`'s URI ends with `extension`. It behaves
+     * like `g_str_has_suffix()` on `g_file_get_uri()`, except that the string
+     * comparison is done case-insensitively using `g_ascii_strcasecmp()`.
+     * @param file a {@link Gio.File}
      * @param extension an ASCII extension
-     * @returns %TRUE if @file's URI ends with @extension,               %FALSE otherwise.
+     * @returns `true` if `file`'s URI ends with `extension`,               `false` otherwise.
+     * @since 2.10
      */
     function file_has_extension(file: Gio.File, extension: string): boolean;
     /**
@@ -4666,11 +4996,12 @@ export namespace Gimp {
      * This procedure behaves like the file-load procedure but opens the
      * specified image as a layer for an existing image. The returned layer
      * needs to be added to the existing image with
-     * gimp_image_insert_layer().
+     * `gimp_image_insert_layer()`.
      * @param run_mode The run mode.
      * @param image Destination image.
      * @param file The file to load.
      * @returns The layer created when loading the image file.
+     * @since 2.4
      */
     function file_load_layer(run_mode: RunMode | null, image: Image, file: Gio.File): Layer;
     /**
@@ -4679,20 +5010,22 @@ export namespace Gimp {
      * This procedure behaves like the file-load procedure but opens the
      * specified image as layers for an existing image. The returned layers
      * needs to be added to the existing image with
-     * gimp_image_insert_layer().
+     * `gimp_image_insert_layer()`.
      * @param run_mode The run mode.
      * @param image Destination image.
      * @param file The file to load.
-     * @returns The list of loaded layers.          The returned value must be freed with g_free().
+     * @returns The list of loaded layers.          The returned value must be freed with `g_free()`.
+     * @since 2.4
      */
     function file_load_layers(run_mode: RunMode | null, image: Image, file: Gio.File): Layer[];
     /**
-     * Expands `path` using gimp_config_path_expand() and returns a #GFile
+     * Expands `path` using `gimp_config_path_expand()` and returns a {@link Gio.File}
      * for the expanded path.
      *
-     * To reverse the expansion, use gimp_file_get_config_path().
+     * To reverse the expansion, use `gimp_file_get_config_path()`.
      * @param path a NUL-terminated string in UTF-8 encoding
-     * @returns a newly allocated #GFile,          or %NULL if the expansion failed.
+     * @returns a newly allocated {@link Gio.File},          or `null` if the expansion failed.
+     * @since 2.10
      */
     function file_new_for_config_path(path: string): Gio.File | null;
     /**
@@ -4700,7 +5033,7 @@ export namespace Gimp {
      *
      * This procedure invokes the correct file save handler according to
      * the file's extension and/or prefix.
-     * The `options` argument is currently unused and should be set to %NULL
+     * The `options` argument is currently unused and should be set to `null`
      * right now.
      * @param run_mode The run mode.
      * @param image Input image.
@@ -4725,73 +5058,81 @@ export namespace Gimp {
     function file_save_thumbnail(image: Image, file: Gio.File): boolean;
     /**
      * Shows `file` in the system file manager.
-     * @param file a #GFile
-     * @returns %TRUE on success, %FALSE otherwise. On %FALSE, @error               is set.
+     * @param file a {@link Gio.File}
+     * @returns `true` on success, `false` otherwise. On `false`, `error`               is set.
+     * @since 2.10
      */
     function file_show_in_file_manager(file: Gio.File): boolean;
     /**
      * Convert a filename in the filesystem's encoding to UTF-8
      * temporarily.  The return value is a pointer to a string that is
      * guaranteed to be valid only during the current iteration of the
-     * main loop or until the next call to gimp_filename_to_utf8().
+     * main loop or until the next call to `gimp_filename_to_utf8()`.
      *
      * The only purpose of this function is to provide an easy way to pass
      * a filename in the filesystem encoding to a function that expects an
      * UTF-8 encoded filename.
      * @param filename The filename to be converted to UTF-8.
-     * @returns A temporarily valid UTF-8 representation of @filename.               This string must not be changed or freed.
+     * @returns A temporarily valid UTF-8 representation of `filename`.               This string must not be changed or freed.
      */
     function filename_to_utf8(filename: string): string;
     /**
-     * Retrieves the first #GimpFlagsDesc that matches the given value, or %NULL.
-     * @param flags_class a #GFlagsClass
-     * @param value a value from @flags_class
-     * @returns the value's #GimpFlagsDesc.
+     * Retrieves the first {@link Gimp.FlagsDesc} that matches the given value, or `null`.
+     * @param flags_class a {@link GObject.FlagsClass}
+     * @param value a value from `flags_class`
+     * @returns the value's {@link Gimp.FlagsDesc}.
+     * @since 2.2
      */
     function flags_get_first_desc(flags_class: GObject.FlagsClass, value: number): FlagsDesc | null;
     /**
      * Checks if `value` is valid for the flags registered as `flags_type`.
      * If the value exists in that flags, its name, nick and its
-     * translated description and help are returned (if `value_name,`
-     * `value_nick,` `value_desc` and `value_help` are not %NULL).
-     * @param flags_type the #GType of registered flags
+     * translated description and help are returned (if `value_name`,
+     * `value_nick`, `value_desc` and `value_help` are not `null`).
+     * @param flags_type the {@link GObject.GType} of registered flags
      * @param value an integer value
-     * @returns %TRUE if @value is valid for the @flags_type, %FALSE otherwise
+     * @returns `true` if `value` is valid for the `flags_type`, `false` otherwise
+     * @since 2.2
      */
     function flags_get_first_value(flags_type: GObject.GType, value: number): [boolean, string, string, string, string];
     /**
      * Retrieves the array of human readable and translatable descriptions
      * and help texts for flags values.
-     * @param flags_type a #GType
-     * @returns a %NULL terminated constant array of #GimpFlagsDesc
+     * @param flags_type a {@link GObject.GType}
+     * @returns a `null` terminated constant array of {@link Gimp.FlagsDesc}
+     * @since 2.2
      */
     function flags_get_value_descriptions(flags_type: GObject.GType): FlagsDesc;
     /**
      * Sets the array of human readable and translatable descriptions
      * and help texts for flags values.
-     * @param flags_type a #GType
-     * @param descriptions a %NULL terminated constant static array of #GimpFlagsDesc
+     * @param flags_type a {@link GObject.GType}
+     * @param descriptions a `null` terminated constant static array of {@link Gimp.FlagsDesc}
+     * @since 2.2
      */
     function flags_set_value_descriptions(flags_type: GObject.GType, descriptions: FlagsDesc): void;
     /**
      * Retrieves the translated abbreviation for a given `flags_value`.
-     * @param flags_class a #GFlagsClass
-     * @param flags_value a #GFlagsValue from @flags_class
+     * @param flags_class a {@link GObject.FlagsClass}
+     * @param flags_value a {@link GObject.FlagsValue} from `flags_class`
      * @returns the translated abbreviation of the flags value
+     * @since 2.10
      */
     function flags_value_get_abbrev(flags_class: GObject.FlagsClass, flags_value: GObject.FlagsValue): string;
     /**
      * Retrieves the translated description for a given `flags_value`.
-     * @param flags_class a #GFlagsClass
-     * @param flags_value a #GFlagsValue from @flags_class
+     * @param flags_class a {@link GObject.FlagsClass}
+     * @param flags_value a {@link GObject.FlagsValue} from `flags_class`
      * @returns the translated description of the flags value
+     * @since 2.2
      */
     function flags_value_get_desc(flags_class: GObject.FlagsClass, flags_value: GObject.FlagsValue): string;
     /**
      * Retrieves the translated help for a given `flags_value`.
-     * @param flags_class a #GFlagsClass
-     * @param flags_value a #GFlagsValue from @flags_class
+     * @param flags_class a {@link GObject.FlagsClass}
+     * @param flags_value a {@link GObject.FlagsValue} from `flags_class`
      * @returns the translated help of the flags value
+     * @since 2.2
      */
     function flags_value_get_help(flags_class: GObject.FlagsClass, flags_value: GObject.FlagsValue): string;
     /**
@@ -4853,7 +5194,8 @@ export namespace Gimp {
      *
      * Returns the fonts with the given name. There may be more than one.
      * @param name The name of the font.
-     * @returns The fonts with the given name.          The returned value must be freed with g_free().
+     * @returns The fonts with the given name.          The returned value must be freed with `g_free()`.
+     * @since 3.0
      */
     function fonts_get_by_name(name: string): Font[];
     /**
@@ -4862,7 +5204,7 @@ export namespace Gimp {
      * This procedure returns a list of the fonts that are currently
      * available.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of font names.          The returned value must be freed with g_strfreev().
+     * @returns The list of font names.          The returned value must be freed with `g_strfreev()`.
      */
     function fonts_get_list(filter: string): string[];
     /**
@@ -4901,14 +5243,15 @@ export namespace Gimp {
     function fonts_set_popup(font_callback: string, font: Font): boolean;
     /**
      * Retrieve a copy of the current color management configuration.
-     * @returns A copy of the core's #GimpColorConfig. You          should unref this copy if you don't need it any longer.
+     * @returns A copy of the core's {@link Gimp.ColorConfig}. You          should unref this copy if you don't need it any longer.
+     * @since 2.4
      */
     function get_color_configuration(): ColorConfig;
     /**
      * Get the default image comment as specified in the Preferences.
      *
      * Returns a copy of the default image comment.
-     * @returns Default image comment.          The returned value must be freed with g_free().
+     * @returns Default image comment.          The returned value must be freed with `g_free()`.
      */
     function get_default_comment(): string;
     /**
@@ -4916,20 +5259,21 @@ export namespace Gimp {
      *
      * Returns the default unit.
      * @returns Default unit.
+     * @since 2.4
      */
     function get_default_unit(): Unit;
     /**
      * Returns the list of images currently open.
      *
      * This procedure returns the list of images currently open in GIMP.
-     * @returns The list of images currently open.          The returned value must be freed with g_free().
+     * @returns The list of images currently open.          The returned value must be freed with `g_free()`.
      */
     function get_images(): Image[];
     /**
      * Get the list of modules which should not be loaded.
      *
      * Returns a copy of the list of modules which should not be loaded.
-     * @returns The list of modules.          The returned value must be freed with g_free().
+     * @returns The list of modules.          The returned value must be freed with `g_free()`.
      */
     function get_module_load_inhibit(): string;
     /**
@@ -4947,6 +5291,7 @@ export namespace Gimp {
      * preferences. This information can be used by plug-ins wishing to
      * follow user settings for multi-threaded implementations.
      * @returns the preferred number of threads to use.
+     * @since 3.0
      */
     function get_num_processors(): number;
     /**
@@ -4955,25 +5300,29 @@ export namespace Gimp {
      * Finds and returns the global parasite that was previously attached.
      * @param name The name of the parasite to find.
      * @returns The found parasite.
+     * @since 2.8
      */
     function get_parasite(name: string): Parasite;
     /**
      * List all parasites.
      *
      * Returns a list of all currently attached global parasites.
-     * @returns The names of currently attached parasites.          The returned value must be freed with g_strfreev().
+     * @returns The names of currently attached parasites.          The returned value must be freed with `g_strfreev()`.
+     * @since 2.8
      */
     function get_parasite_list(): string[];
     /**
-     * This function returns the plug-in's #GimpPDB instance, which is a
+     * This function returns the plug-in's {@link Gimp.PDB} instance, which is a
      * singleton that can exist exactly once per running plug-in.
-     * @returns The plug-in's #GimpPDB singleton.
+     * @returns The plug-in's {@link Gimp.PDB} singleton.
+     * @since 3.0
      */
     function get_pdb(): PDB | null;
     /**
-     * This function returns the plug-in's #GimpPlugIn instance, which is
+     * This function returns the plug-in's {@link Gimp.PlugIn} instance, which is
      * a a singleton that can exist exactly once per running plug-in.
-     * @returns The plug-in's #GimpPlugIn singleton.
+     * @returns The plug-in's {@link Gimp.PlugIn} singleton.
+     * @since 3.0
      */
     function get_plug_in(): PlugIn | null;
     /**
@@ -4986,6 +5335,7 @@ export namespace Gimp {
      *
      * This procedure returns the process ID of the currently running GIMP.
      * @returns The PID.
+     * @since 2.4
      */
     function getpid(): number;
     /**
@@ -5001,7 +5351,7 @@ export namespace Gimp {
      * string. Entries not corresponding to this format will cause warnings
      * to be issued on gimprc parsing and will not be queryable.
      * @param token The token to query for.
-     * @returns The value associated with the queried token.          The returned value must be freed with g_free().
+     * @returns The value associated with the queried token.          The returned value must be freed with `g_free()`.
      */
     function gimprc_query(token: string): string;
     /**
@@ -5010,7 +5360,7 @@ export namespace Gimp {
      * This procedure is used to add or change additional information in
      * the gimprc file that is considered extraneous to the operation of
      * GIMP. Plug-ins that need configuration information can use this
-     * function to store it, and gimp_gimprc_query() to retrieve it. This
+     * function to store it, and `gimp_gimprc_query()` to retrieve it. This
      * will accept _only_ string values in UTF-8 encoding.
      * @param token The token to add or modify.
      * @param value The value to set the token to.
@@ -5029,10 +5379,10 @@ export namespace Gimp {
      * Retrieve the list of loaded gradients.
      *
      * This procedure returns a list of the gradients that are currently
-     * loaded. You can later use the gimp_context_set_gradient() function
+     * loaded. You can later use the `gimp_context_set_gradient()` function
      * to set the active gradient.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of gradient names.          The returned value must be freed with g_strfreev().
+     * @returns The list of gradient names.          The returned value must be freed with `g_strfreev()`.
      */
     function gradients_get_list(filter: string): string[];
     /**
@@ -5083,6 +5433,7 @@ export namespace Gimp {
      * @param src_y The y coordinate in the source image.
      * @param strokes Array of stroke coordinates: { s1.x, s1.y, s2.x, s2.y, ..., sn.x, sn.y }.
      * @returns TRUE on success.
+     * @since 2.4
      */
     function heal(drawable: Drawable, src_drawable: Drawable, src_x: number, src_y: number, strokes: number[]): boolean;
     /**
@@ -5090,13 +5441,14 @@ export namespace Gimp {
      *
      * This tool heals from the source drawable starting at the specified
      * source coordinates to the dest drawable. This function performs
-     * exactly the same as the gimp_heal() function except that the tools
+     * exactly the same as the `gimp_heal()` function except that the tools
      * arguments are obtained from the healing option dialog. It this
      * dialog has not been activated then the dialogs default values will
      * be used.
      * @param drawable The affected drawable.
      * @param strokes Array of stroke coordinates: { s1.x, s1.y, s2.x, s2.y, ..., sn.x, sn.y }.
      * @returns TRUE on success.
+     * @since 2.4
      */
     function heal_default(drawable: Drawable, strokes: number[]): boolean;
     /**
@@ -5105,7 +5457,7 @@ export namespace Gimp {
      * This procedure loads the specified help page into the helpbrowser or
      * what ever is configured as help viewer. The help page is identified
      * by its domain and ID: if help_domain is NULL, we use the help_domain
-     * which was registered using the gimp_plugin_help_register()
+     * which was registered using the `gimp_plugin_help_register()`
      * procedure. If help_domain is NULL and no help domain was registered,
      * the help domain of the main GIMP installation is used.
      * @param help_domain The help domain in which help_id is registered.
@@ -5118,6 +5470,7 @@ export namespace Gimp {
      *
      * This is a constant value given at plug-in configuration time.
      * @returns the icon theme directory
+     * @since 2.10.4
      */
     function icon_theme_dir(): string;
     /**
@@ -5135,16 +5488,18 @@ export namespace Gimp {
      * GLib, which isn't necessarily UTF-8. (On Windows it always is
      * UTF-8.)
      * @returns The toplevel installation directory of GIMP.
+     * @since 2.8
      */
     function installation_directory(): string;
     /**
-     * Checks if `identifier` is canonical and non-%NULL.
+     * Checks if `identifier` is canonical and non-`null`.
      *
      * Canonical identifiers are e.g. expected by the PDB for procedure
      * and parameter names. Every character of the input string must be
      * either '-', 'a-z', 'A-Z' or '0-9'.
      * @param identifier The identifier string to check.
-     * @returns %TRUE if @identifier is canonical, %FALSE otherwise.
+     * @returns `true` if `identifier` is canonical, `false` otherwise.
+     * @since 3.0
      */
     function is_canonical_identifier(identifier: string): boolean;
     /**
@@ -5159,21 +5514,22 @@ export namespace Gimp {
      * is running: on UNIX it's in the encoding used for filenames by
      * the C library (which isn't necessarily UTF-8); on Windows it's UTF-8.
      *
-     * On UNIX the returned string can be passed directly to the bindtextdomain()
+     * On UNIX the returned string can be passed directly to the `bindtextdomain()`
      * function from libintl; on Windows the returned string can be converted to
-     * UTF-16 and passed to the wbindtextdomain() function from libintl.
+     * UTF-16 and passed to the `wbindtextdomain()` function from libintl.
      * @returns The top directory for GIMP locale files.
      */
     function locale_directory(): string;
     /**
      * The main plug-in function that must be called with the plug-in's
-     * #GimpPlugIn subclass #GType and the 'argc' and 'argv' that are passed
-     * to the platform's main().
+     * {@link Gimp.PlugIn} subclass {@link GObject.GType} and the 'argc' and 'argv' that are passed
+     * to the platform's `main()`.
      *
-     * See also: GIMP_MAIN(), #GimpPlugIn.
-     * @param plug_in_type the type of the #GimpPlugIn subclass of the plug-in
+     * See also: GIMP_MAIN(), {@link Gimp.PlugIn}.
+     * @param plug_in_type the type of the {@link Gimp.PlugIn} subclass of the plug-in
      * @param argv the arguments
      * @returns an exit status as defined by the C library,          on success EXIT_SUCCESS.
+     * @since 3.0
      */
     function main(plug_in_type: GObject.GType, argv: string[]): number;
     /**
@@ -5273,9 +5629,9 @@ export namespace Gimp {
      *
      * This procedure returns a complete listing of available palettes.
      * Each name returned can be used as input to the command
-     * gimp_context_set_palette().
+     * `gimp_context_set_palette()`.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of palette names.          The returned value must be freed with g_strfreev().
+     * @returns The list of palette names.          The returned value must be freed with `g_strfreev()`.
      */
     function palettes_get_list(filter: string): string[];
     /**
@@ -5312,15 +5668,16 @@ export namespace Gimp {
      */
     function palettes_set_popup(palette_callback: string, palette: Palette): boolean;
     /**
-     * Creates a new #GimpParamSpecArray specifying a
-     * [type`Array]` property.
+     * Creates a new {@link Gimp.ParamSpecArray} specifying a
+     * {@link Array} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecArray.
+     * @returns The newly created {@link Gimp.ParamSpecArray}.
+     * @since 3.0
      */
     function param_spec_array(
         name: string,
@@ -5329,16 +5686,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecBrush specifying a
-     * [type`Brush]` property. See also [func`Gimp`.param_spec_resource].
+     * Creates a new {@link Gimp.ParamSpecBrush} specifying a
+     * {@link Brush} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param none_ok Whether %NULL is a valid value.
+     * @param none_ok Whether `null` is a valid value.
      * @param default_value Default brush.
      * @param default_to_context Whether the context is the context's brush.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecBrush.
+     * @returns The newly created {@link Gimp.ParamSpecBrush}.
+     * @since 3.0
      */
     function param_spec_brush(
         name: string,
@@ -5350,16 +5708,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecChannel specifying a
-     * [type`Channel]` property.
+     * Creates a new {@link Gimp.ParamSpecChannel} specifying a
+     * {@link Channel} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecChannel.
+     * @returns The newly created {@link Gimp.ParamSpecChannel}.
+     * @since 3.0
      */
     function param_spec_channel(
         name: string,
@@ -5369,18 +5728,19 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecChoice specifying a
+     * Creates a new {@link Gimp.ParamSpecChoice} specifying a
      * #G_TYPE_STRING property.
      * This %GimpParamSpecChoice takes ownership of the reference on `choice`.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param choice the %GimpChoice describing allowed choices.
      * @param default_value
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecChoice.
+     * @returns The newly created {@link Gimp.ParamSpecChoice}.
+     * @since 3.0
      */
     function param_spec_choice(
         name: string,
@@ -5391,14 +5751,14 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglColor property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
      * Note that the `default_color` is duplicated, so reusing object will
      * not change the default color of the returned
-     * [struct`Gimp`.ParamSpecColor].
+     * {@link Gimp.ParamSpecColor}.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
-     * @param has_alpha %TRUE if the alpha channel has relevance.
+     * @param has_alpha `true` if the alpha channel has relevance.
      * @param default_color the default value for the property specified
      * @param flags flags for the property specified
      * @returns a newly created parameter specification
@@ -5412,11 +5772,11 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglColor property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
-     * @param has_alpha %TRUE if the alpha channel has relevance.
+     * @param has_alpha `true` if the alpha channel has relevance.
      * @param default_color_string the default value for the property specified
      * @param flags flags for the property specified
      * @returns a newly created parameter specification
@@ -5429,18 +5789,24 @@ export namespace Gimp {
         default_color_string: string,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
+    /**
+     * @param pspec a {@link GObject.ParamSpec} to hold an {@link Gegl.Color} value.
+     * @returns `true` if the alpha channel is relevant.
+     * @since 2.4
+     */
     function param_spec_color_has_alpha(pspec: GObject.ParamSpec): boolean;
     /**
      * Creates a param spec to hold a filename, dir name,
      * or list of file or dir names.
-     * See g_param_spec_internal() for more information.
+     * See `g_param_spec_internal()` for more information.
      * @param name Canonical name of the param
      * @param nick Nickname of the param
      * @param blurb Brief description of param.
-     * @param type a #GimpConfigPathType value.
+     * @param type a {@link Gimp.ConfigPathType} value.
      * @param default_value Value to use if none is assigned.
-     * @param flags a combination of #GParamFlags
-     * @returns a newly allocated #GParamSpec instance
+     * @param flags a combination of {@link GObject.ParamSpecFlags}
+     * @returns a newly allocated {@link GObject.ParamSpec} instance
+     * @since 2.4
      */
     function param_spec_config_path(
         name: string,
@@ -5453,21 +5819,23 @@ export namespace Gimp {
     /**
      * Tells whether the path param encodes a filename,
      * dir name, or list of file or dir names.
-     * @param pspec A #GParamSpec for a path param
-     * @returns a #GimpConfigPathType value
+     * @param pspec A {@link GObject.ParamSpec} for a path param
+     * @returns a {@link Gimp.ConfigPathType} value
+     * @since 2.4
      */
     function param_spec_config_path_type(pspec: GObject.ParamSpec): ConfigPathType;
     /**
-     * Creates a new #GimpParamSpecDisplay specifying a
-     * [type`Display]` property.
+     * Creates a new {@link Gimp.ParamSpecDisplay} specifying a
+     * {@link Display} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecDisplay.
+     * @returns The newly created {@link Gimp.ParamSpecDisplay}.
+     * @since 3.0
      */
     function param_spec_display(
         name: string,
@@ -5477,16 +5845,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecDrawable specifying a
-     * [type`Drawable]` property.
+     * Creates a new {@link Gimp.ParamSpecDrawable} specifying a
+     * {@link Drawable} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecDrawable.
+     * @returns The newly created {@link Gimp.ParamSpecDrawable}.
+     * @since 3.0
      */
     function param_spec_drawable(
         name: string,
@@ -5496,16 +5865,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecExportOptions specifying a
+     * Creates a new {@link Gimp.ParamSpecExportOptions} specifying a
      * #G_TYPE_INT property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param capabilities Int representing the image export capabilities
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecExportOptions.
+     * @returns The newly created {@link Gimp.ParamSpecExportOptions}.
+     * @since 3.0
      */
     function param_spec_export_options(
         name: string,
@@ -5515,15 +5885,16 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecFloatArray specifying a
-     * %GIMP_TYPE_FLOAT_ARRAY property.
+     * Creates a new {@link Gimp.ParamSpecFloatArray} specifying a
+     * `GIMP_TYPE_FLOAT_ARRAY` property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecFloatArray.
+     * @returns The newly created {@link Gimp.ParamSpecFloatArray}.
+     * @since 3.0
      */
     function param_spec_float_array(
         name: string,
@@ -5532,16 +5903,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecFont specifying a
-     * [type`Font]` property. See also [func`Gimp`.param_spec_resource].
+     * Creates a new {@link Gimp.ParamSpecFont} specifying a
+     * {@link Font} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param none_ok Whether %NULL is a valid value.
+     * @param none_ok Whether `null` is a valid value.
      * @param default_value Default font.
      * @param default_to_context Whether the context is the context's font.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecFont.
+     * @returns The newly created {@link Gimp.ParamSpecFont}.
+     * @since 3.0
      */
     function param_spec_font(
         name: string,
@@ -5553,16 +5925,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecGradient specifying a
-     * [type`Gradient]` property. See also [func`Gimp`.param_spec_resource].
+     * Creates a new {@link Gimp.ParamSpecGradient} specifying a
+     * {@link Gradient} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param none_ok Whether %NULL is a valid value.
+     * @param none_ok Whether `null` is a valid value.
      * @param default_value Default gradient.
      * @param default_to_context Whether the context is the context's gradient.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecGradient.
+     * @returns The newly created {@link Gimp.ParamSpecGradient}.
+     * @since 3.0
      */
     function param_spec_gradient(
         name: string,
@@ -5574,16 +5947,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecGroupLayer specifying a
-     * [type`GroupLayer]` property.
+     * Creates a new {@link Gimp.ParamSpecGroupLayer} specifying a
+     * {@link GroupLayer} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param none_ok Whether %NULL is a valid value.
+     * @param none_ok Whether `null` is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecGroupLayer.
+     * @returns The newly created {@link Gimp.ParamSpecGroupLayer}.
+     * @since 3.0
      */
     function param_spec_group_layer(
         name: string,
@@ -5593,16 +5967,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecImage specifying a
-     * [type`Image]` property.
+     * Creates a new {@link Gimp.ParamSpecImage} specifying a
+     * {@link Image} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecImage.
+     * @returns The newly created {@link Gimp.ParamSpecImage}.
+     * @since 3.0
      */
     function param_spec_image(
         name: string,
@@ -5612,15 +5987,16 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecInt32Array specifying a
-     * %GIMP_TYPE_INT32_ARRAY property.
+     * Creates a new {@link Gimp.ParamSpecInt32Array} specifying a
+     * `GIMP_TYPE_INT32_ARRAY` property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecInt32Array.
+     * @returns The newly created {@link Gimp.ParamSpecInt32Array}.
+     * @since 3.0
      */
     function param_spec_int32_array(
         name: string,
@@ -5629,16 +6005,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecItem specifying a
-     * [type`Item]` property.
+     * Creates a new {@link Gimp.ParamSpecItem} specifying a
+     * {@link Item} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecItem.
+     * @returns The newly created {@link Gimp.ParamSpecItem}.
+     * @since 3.0
      */
     function param_spec_item(
         name: string,
@@ -5648,16 +6025,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecLayer specifying a
-     * [type`Layer]` property.
+     * Creates a new {@link Gimp.ParamSpecLayer} specifying a
+     * {@link Layer} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecLayer.
+     * @returns The newly created {@link Gimp.ParamSpecLayer}.
+     * @since 3.0
      */
     function param_spec_layer(
         name: string,
@@ -5667,16 +6045,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecLayerMask specifying a
-     * [type`LayerMask]` property.
+     * Creates a new {@link Gimp.ParamSpecLayerMask} specifying a
+     * {@link LayerMask} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecLayerMask.
+     * @returns The newly created {@link Gimp.ParamSpecLayerMask}.
+     * @since 3.0
      */
     function param_spec_layer_mask(
         name: string,
@@ -5686,14 +6065,15 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a param spec to hold a #GimpMatrix2 value.
-     * See g_param_spec_internal() for more information.
+     * Creates a param spec to hold a {@link Gimp.Matrix2} value.
+     * See `g_param_spec_internal()` for more information.
      * @param name Canonical name of the param
      * @param nick Nickname of the param
      * @param blurb Brief description of param.
      * @param default_value Value to use if none is assigned.
-     * @param flags a combination of #GParamFlags
-     * @returns a newly allocated #GParamSpec instance
+     * @param flags a combination of {@link GObject.ParamSpecFlags}
+     * @returns a newly allocated {@link GObject.ParamSpec} instance
+     * @since 2.4
      */
     function param_spec_matrix2(
         name: string,
@@ -5703,14 +6083,15 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a param spec to hold a #GimpMatrix3 value.
-     * See g_param_spec_internal() for more information.
+     * Creates a param spec to hold a {@link Gimp.Matrix3} value.
+     * See `g_param_spec_internal()` for more information.
      * @param name Canonical name of the param
      * @param nick Nickname of the param
      * @param blurb Brief description of param.
      * @param default_value Value to use if none is assigned.
-     * @param flags a combination of #GParamFlags
-     * @returns a newly allocated #GParamSpec instance
+     * @param flags a combination of {@link GObject.ParamSpecFlags}
+     * @returns a newly allocated {@link GObject.ParamSpec} instance
+     * @since 2.8
      */
     function param_spec_matrix3(
         name: string,
@@ -5721,15 +6102,16 @@ export namespace Gimp {
     ): GObject.ParamSpec;
     /**
      * Creates a param spec to hold a memory size value.
-     * See g_param_spec_internal() for more information.
+     * See `g_param_spec_internal()` for more information.
      * @param name Canonical name of the param
      * @param nick Nickname of the param
      * @param blurb Brief description of param.
      * @param minimum Smallest allowed value of the parameter.
      * @param maximum Largest allowed value of the parameter.
      * @param default_value Value to use if none is assigned.
-     * @param flags a combination of #GParamFlags
-     * @returns a newly allocated #GParamSpec instance
+     * @param flags a combination of {@link GObject.ParamSpecFlags}
+     * @returns a newly allocated {@link GObject.ParamSpec} instance
+     * @since 2.4
      */
     function param_spec_memsize(
         name: string,
@@ -5741,16 +6123,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecObjectArray specifying a
-     * [type`ObjectArray]` property.
+     * Creates a new {@link Gimp.ParamSpecObjectArray} specifying a
+     * {@link ObjectArray} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param object_type GType of the array's elements.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecObjectArray.
+     * @returns The newly created {@link Gimp.ParamSpecObjectArray}.
+     * @since 3.0
      */
     function param_spec_object_array(
         name: string,
@@ -5762,7 +6145,7 @@ export namespace Gimp {
     /**
      * This function duplicates `pspec` appropriately, depending on the
      * accurate spec type.
-     * @param pspec a [struct@Gimp.ParamSpecObject].
+     * @param pspec a {@link Gimp.ParamSpecObject}.
      * @returns a newly created param spec.
      */
     function param_spec_object_duplicate(pspec: GObject.ParamSpec): GObject.ParamSpec;
@@ -5770,44 +6153,45 @@ export namespace Gimp {
      * Get the default object value of the param spec.
      *
      * If the `pspec` has been registered with a specific default (which can
-     * be verified with [func`Gimp`.ParamSpecObject.has_default]), it will be
+     * be verified with {@link Gimp.ParamSpecObject.has_default}), it will be
      * returned, though some specific subtypes may support returning dynamic
      * default (e.g. based on context).
-     * @param pspec a #GObject #GParamSpec
+     * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
      * @returns the default value.
      */
     function param_spec_object_get_default<T = GObject.Object>(pspec: GObject.ParamSpec): T;
     /**
      * This function tells whether a default was set, typically with
-     * [func`Gimp`.ParamSpecObject.set_default] or any other way. It
+     * {@link Gimp.ParamSpecObject.set_default} or any other way. It
      * does not guarantee that the default is an actual object (it may be
-     * %NULL if valid as a default).
-     * @param pspec a #GObject #GParamSpec
+     * `null` if valid as a default).
+     * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
      * @returns whether a default value was set.
      */
     function param_spec_object_has_default(pspec: GObject.ParamSpec): boolean;
     /**
      * Set the default object value of the param spec. This will switch the
-     * `has_default` flag so that [func`Gimp`.ParamSpecObject.has_default]
-     * will now return %TRUE.
+     * `has_default` flag so that {@link Gimp.ParamSpecObject.has_default}
+     * will now return `true`.
      *
-     * A %NULL `default_value` still counts as a default (unless the specific
-     * `pspec` does not allow %NULL as a default).
-     * @param pspec a #GObject #GParamSpec
+     * A `null` `default_value` still counts as a default (unless the specific
+     * `pspec` does not allow `null` as a default).
+     * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
      * @param default_value a default value.
      */
     function param_spec_object_set_default(pspec: GObject.ParamSpec, default_value?: GObject.Object | null): void;
     /**
-     * Creates a new #GimpParamSpecPalette specifying a
-     * [type`Palette]` property. See also [func`Gimp`.param_spec_resource].
+     * Creates a new {@link Gimp.ParamSpecPalette} specifying a
+     * {@link Palette} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param none_ok Whether %NULL is a valid value.
+     * @param none_ok Whether `null` is a valid value.
      * @param default_value Default palette.
      * @param default_to_context Whether the context is the context's palette.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecPalette.
+     * @returns The newly created {@link Gimp.ParamSpecPalette}.
+     * @since 3.0
      */
     function param_spec_palette(
         name: string,
@@ -5819,15 +6203,16 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecParasite specifying a
-     * [type`Parasite]` property.
+     * Creates a new {@link Gimp.ParamSpecParasite} specifying a
+     * {@link Parasite} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecParasite.
+     * @returns The newly created {@link Gimp.ParamSpecParasite}.
+     * @since 2.4
      */
     function param_spec_parasite(
         name: string,
@@ -5836,16 +6221,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecPath specifying a
-     * [type`Path]` property.
+     * Creates a new {@link Gimp.ParamSpecPath} specifying a
+     * {@link Path} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecPath.
+     * @returns The newly created {@link Gimp.ParamSpecPath}.
+     * @since 3.0
      */
     function param_spec_path(
         name: string,
@@ -5855,16 +6241,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecPattern specifying a
-     * [type`Pattern]` property. See also [func`Gimp`.param_spec_resource].
+     * Creates a new {@link Gimp.ParamSpecPattern} specifying a
+     * {@link Pattern} property. See also {@link Gimp.param_spec_resource}.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param none_ok Whether %NULL is a valid value.
+     * @param none_ok Whether `null` is a valid value.
      * @param default_value Default pattern.
      * @param default_to_context Whether the context is the context's pattern.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecPattern.
+     * @returns The newly created {@link Gimp.ParamSpecPattern}.
+     * @since 3.0
      */
     function param_spec_pattern(
         name: string,
@@ -5876,23 +6263,24 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecResource specifying a [type`Resource]` property.
-     * See [func`GObject`.ParamSpec.internal] for details on property names.
+     * Creates a new {@link Gimp.ParamSpecResource} specifying a {@link Resource} property.
+     * See {@link GObject.ParamSpec.internal} for details on property names.
      *
-     * `default_to_context` cannot be %TRUE for a `resource_type` of value
-     * [class`Gimp`.Resource], but only for specific subtypes. If it is
-     * %TRUE, `default_value` must be %NULL. Instead of a fixed default,
+     * `default_to_context` cannot be `true` for a `resource_type` of value
+     * {@link Gimp.Resource}, but only for specific subtypes. If it is
+     * `true`, `default_value` must be `null`. Instead of a fixed default,
      * whatever is the context's resource for the given type at run time
      * will be used as dynamic default.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param resource_type a %GType, subtype of [class@Gimp.Resource].
-     * @param none_ok Whether %NULL is a valid value.
+     * @param resource_type a %GType, subtype of {@link Gimp.Resource}.
+     * @param none_ok Whether `null` is a valid value.
      * @param default_value Default resource.
-     * @param default_to_context Whether the context is the context's resource                      for the given @resource_type.
+     * @param default_to_context Whether the context is the context's resource                      for the given `resource_type`.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecResource.
+     * @returns The newly created {@link Gimp.ParamSpecResource}.
+     * @since 3.0
      */
     function param_spec_resource(
         name: string,
@@ -5905,16 +6293,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecSelection specifying a
-     * [type`Selection]` property.
+     * Creates a new {@link Gimp.ParamSpecSelection} specifying a
+     * {@link Selection} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecSelection.
+     * @returns The newly created {@link Gimp.ParamSpecSelection}.
+     * @since 3.0
      */
     function param_spec_selection(
         name: string,
@@ -5924,16 +6313,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecTextLayer specifying a
-     * [type`TextLayer]` property.
+     * Creates a new {@link Gimp.ParamSpecTextLayer} specifying a
+     * {@link TextLayer} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
      * @param none_ok Whether no  is a valid value.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecTextLayer.
+     * @returns The newly created {@link Gimp.ParamSpecTextLayer}.
+     * @since 3.0
      */
     function param_spec_text_layer(
         name: string,
@@ -5944,15 +6334,16 @@ export namespace Gimp {
     ): GObject.ParamSpec;
     /**
      * Creates a param spec to hold a units param.
-     * See g_param_spec_internal() for more information.
+     * See `g_param_spec_internal()` for more information.
      * @param name Canonical name of the param
      * @param nick Nickname of the param
      * @param blurb Brief description of param.
      * @param allow_pixel Whether "pixels" is an allowed unit.
      * @param allow_percent Whether "percent" is an allowed unit.
      * @param default_value Unit to use if none is assigned.
-     * @param flags a combination of #GParamFlags
-     * @returns a newly allocated #GParamSpec instance
+     * @param flags a combination of {@link GObject.ParamSpecFlags}
+     * @returns a newly allocated {@link GObject.ParamSpec} instance
+     * @since 2.4
      */
     function param_spec_unit(
         name: string,
@@ -5964,16 +6355,17 @@ export namespace Gimp {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GimpParamSpecValueArray specifying a
-     * [type`GObject`.ValueArray] property.
+     * Creates a new {@link Gimp.ParamSpecValueArray} specifying a
+     * {@link GObject.ValueArray} property.
      *
-     * See g_param_spec_internal() for details on property names.
+     * See `g_param_spec_internal()` for details on property names.
      * @param name Canonical name of the property specified.
      * @param nick Nick name of the property specified.
      * @param blurb Description of the property specified.
-     * @param element_spec #GParamSpec the contained array's elements                have comply to, or %NULL.
+     * @param element_spec {@link GObject.ParamSpec} the contained array's elements                have comply to, or `null`.
      * @param flags Flags for the property specified.
-     * @returns The newly created #GimpParamSpecValueArray.
+     * @returns The newly created {@link Gimp.ParamSpecValueArray}.
+     * @since 3.0
      */
     function param_spec_value_array(
         name: string,
@@ -5995,9 +6387,9 @@ export namespace Gimp {
      *
      * This procedure returns a complete listing of available GIMP
      * patterns. Each name returned can be used as input to the
-     * gimp_context_set_pattern().
+     * `gimp_context_set_pattern()`.
      * @param filter An optional regular expression used to filter the list.
-     * @returns The list of pattern names.          The returned value must be freed with g_strfreev().
+     * @returns The list of pattern names.          The returned value must be freed with `g_strfreev()`.
      */
     function patterns_get_list(filter: string): string[];
     /**
@@ -6048,27 +6440,30 @@ export namespace Gimp {
      */
     function pencil(drawable: Drawable, strokes: number[]): boolean;
     /**
-     * Returns a #GeglBuffer that's either backed by the `pixbuf'`s pixels,
-     * or a copy of them. This function tries to not copy the `pixbuf'`s
+     * Returns a {@link Gegl.Buffer} that's either backed by the `pixbuf`'s pixels,
+     * or a copy of them. This function tries to not copy the `pixbuf`'s
      * pixels. If the pixbuf's rowstride is a multiple of its bpp, a
-     * simple reference to the `pixbuf'`s pixels is made and `pixbuf` will
+     * simple reference to the `pixbuf`'s pixels is made and `pixbuf` will
      * be kept around for as long as the buffer exists; otherwise the
      * pixels are copied.
-     * @param pixbuf a #GdkPixbuf
-     * @returns a new #GeglBuffer.
+     * @param pixbuf a {@link GdkPixbuf.Pixbuf}
+     * @returns a new {@link Gegl.Buffer}.
+     * @since 2.10
      */
     function pixbuf_create_buffer(pixbuf: GdkPixbuf.Pixbuf): Gegl.Buffer;
     /**
-     * Returns the Babl format that corresponds to the `pixbuf'`s pixel format.
-     * @param pixbuf a #GdkPixbuf
-     * @returns the @pixbuf's pixel format
+     * Returns the Babl format that corresponds to the `pixbuf`'s pixel format.
+     * @param pixbuf a {@link GdkPixbuf.Pixbuf}
+     * @returns the `pixbuf`'s pixel format
+     * @since 2.10
      */
     function pixbuf_get_format(pixbuf: GdkPixbuf.Pixbuf): Babl.Object;
     /**
-     * Returns the ICC profile attached to the `pixbuf,` or %NULL if there
+     * Returns the ICC profile attached to the `pixbuf`, or `null` if there
      * is none.
-     * @param pixbuf a #GdkPixbuf
-     * @returns The ICC profile data, or %NULL.          The value should be freed with g_free().
+     * @param pixbuf a {@link GdkPixbuf.Pixbuf}
+     * @returns The ICC profile data, or `null`.          The value should be freed with `g_free()`.
+     * @since 2.10
      */
     function pixbuf_get_icc_profile(pixbuf: GdkPixbuf.Pixbuf): Uint8Array | null;
     /**
@@ -6076,12 +6471,26 @@ export namespace Gimp {
      * @param pixels value in pixels
      * @param unit unit to convert to
      * @param resolution resolution in DPI
-     * @returns @pixels converted to units.
+     * @returns `pixels` converted to units.
+     * @since 2.8
      */
     function pixels_to_units(pixels: number, unit: Unit, resolution: number): number;
+    /**
+     * @param params
+     */
     function pixpipe_params_build(params: PixPipeParams): string;
+    /**
+     * @param params
+     */
     function pixpipe_params_free(params: PixPipeParams): void;
+    /**
+     * @param params
+     */
     function pixpipe_params_init(params: PixPipeParams): void;
+    /**
+     * @param parameters
+     * @param params
+     */
     function pixpipe_params_parse(parameters: string, params: PixPipeParams): void;
     /**
      * Cancels a running progress.
@@ -6089,6 +6498,7 @@ export namespace Gimp {
      * This function cancels the currently running progress.
      * @param progress_callback The name of the callback registered for this progress.
      * @returns TRUE on success.
+     * @since 2.2
      */
     function progress_cancel(progress_callback: string): boolean;
     /**
@@ -6098,6 +6508,7 @@ export namespace Gimp {
      * don't need to call this, they just exit when the work is done. It is
      * only valid to call this procedure from a plug-in.
      * @returns TRUE on success.
+     * @since 2.4
      */
     function progress_end(): boolean;
     /**
@@ -6112,6 +6523,7 @@ export namespace Gimp {
      * depending on the platform you are running on which is why it returns
      * a GBytes. There are usually no reasons to call this directly.
      * @returns The progress bar's toplevel window's handle.
+     * @since 2.2
      */
     function progress_get_window_handle(): GLib.Bytes;
     /**
@@ -6123,6 +6535,13 @@ export namespace Gimp {
      * @returns TRUE on success.
      */
     function progress_init(message: string): boolean;
+    /**
+     * @param vtable a pointer to a `GimpProgressVtable`.
+     * @param user_data a pointer that is passed as user_data to all vtable                     functions.
+     * @param user_data_destroy destroy function for `user_data`, or `null`.
+     * @returns the name of the temporary procedure that's been installed
+     * @since 2.4
+     */
     function progress_install_vtable(
         vtable: ProgressVtable,
         user_data?: any | null,
@@ -6133,26 +6552,29 @@ export namespace Gimp {
      *
      * Updates the progress bar for the current plug-in. It is only valid
      * to call this procedure from a plug-in. Use this function instead of
-     * gimp_progress_update() if you cannot tell how much progress has been
+     * `gimp_progress_update()` if you cannot tell how much progress has been
      * made. This usually causes the the progress bar to enter \"activity
      * mode\", where a block bounces back and forth.
      * @returns TRUE on success.
+     * @since 2.4
      */
     function progress_pulse(): boolean;
     /**
      * Changes the text in the progress bar for the current plug-in.
      *
      * This function changes the text in the progress bar for the current
-     * plug-in. Unlike gimp_progress_init() it does not change the
+     * plug-in. Unlike `gimp_progress_init()` it does not change the
      * displayed value.
      * @param message Message to use in the progress dialog.
      * @returns TRUE on success.
+     * @since 2.4
      */
     function progress_set_text(message: string): boolean;
     /**
      * Uninstalls a temporary progress procedure that was installed using
-     * gimp_progress_install().
+     * `gimp_progress_install()`.
      * @param progress_callback the name of the temporary procedure to uninstall
+     * @since 2.2
      */
     function progress_uninstall(progress_callback: string): void;
     /**
@@ -6174,8 +6596,8 @@ export namespace Gimp {
     function quit(): void;
     /**
      * This function proposes reasonable settings for increments and display
-     * digits. These can be used for instance on #GtkRange or other widgets
-     * using a #GtkAdjustment typically.
+     * digits. These can be used for instance on `GtkRange` or other widgets
+     * using a `GtkAdjustment` typically.
      * Note that it will never return `digits` with value 0. If you know that
      * your input needs to display integer values, there is no need to set
      * `digits`.
@@ -6201,7 +6623,8 @@ export namespace Gimp {
      * @param y2 origin of second rectangle
      * @param width2 width of second rectangle
      * @param height2 height of second rectangle
-     * @returns %TRUE if the intersection is non-empty, %FALSE otherwise
+     * @returns `true` if the intersection is non-empty, `false` otherwise
+     * @since 2.4
      */
     function rectangle_intersect(
         x1: number,
@@ -6223,6 +6646,7 @@ export namespace Gimp {
      * @param y2 origin of second rectangle
      * @param width2 width of second rectangle
      * @param height2 height of second rectangle
+     * @since 2.8
      */
     function rectangle_union(
         x1: number,
@@ -6234,17 +6658,21 @@ export namespace Gimp {
         width2: number,
         height2: number,
     ): [number, number, number, number];
+    /**
+     * @param rgba1
+     * @param rgba2
+     */
     function rgba_distance(rgba1: RGB, rgba2: RGB): number;
     /**
      * Gets the 8bit red, green, blue and alpha components of `rgba`.
-     * @param rgba a #GimpRGB struct
+     * @param rgba a {@link Gimp.RGB} struct
      */
     function rgba_get_uchar(rgba: RGB): [number, number, number, number];
     /**
      * Sets the red, green, blue and alpha components of `rgb`. The values
      * should be between 0.0 and 1.0 but there is no check to enforce this
      * and the values are set exactly as they are passed in.
-     * @param rgba a #GimpRGB struct
+     * @param rgba a {@link Gimp.RGB} struct
      * @param red the red component
      * @param green the green component
      * @param blue the blue component
@@ -6254,7 +6682,7 @@ export namespace Gimp {
     /**
      * Sets the red, green, blue and alpha components of `rgba` from 8bit
      * values (0 to 255).
-     * @param rgba a #GimpRGB struct
+     * @param rgba a {@link Gimp.RGB} struct
      * @param red the red component
      * @param green the green component
      * @param blue the blue component
@@ -6267,6 +6695,7 @@ export namespace Gimp {
      *
      * This is a constant value given at plug-in configuration time.
      * @returns the show_help_button boolean
+     * @since 2.2
      */
     function show_help_button(): boolean;
     /**
@@ -6285,7 +6714,7 @@ export namespace Gimp {
      * Smudge image with varying pressure.
      *
      * This tool simulates a smudge using the current brush. It behaves
-     * exactly the same as gimp_smudge() except that the pressure value is
+     * exactly the same as `gimp_smudge()` except that the pressure value is
      * taken from the smudge tool options or the options default if the
      * tools option dialog has not been activated.
      * @param drawable The affected drawable.
@@ -6294,18 +6723,19 @@ export namespace Gimp {
      */
     function smudge_default(drawable: Drawable, strokes: number[]): boolean;
     /**
-     * Returns %TRUE if we have dependencies to generate backtraces. If
-     * `optimal` is %TRUE, the function will return %TRUE only when we
+     * Returns `true` if we have dependencies to generate backtraces. If
+     * `optimal` is `true`, the function will return `true` only when we
      * are able to generate optimal traces (i.e. with GDB or LLDB);
-     * otherwise we return %TRUE even if only backtrace() API is available.
+     * otherwise we return `true` even if only `backtrace()` API is available.
      *
      * On Win32, we return TRUE if Dr. Mingw is built-in, FALSE otherwise.
      *
      * Note: this function is not crash-safe, i.e. you should not try to use
      * it in a callback when the program is already crashing. In such a
-     * case, call gimp_stack_trace_print() or gimp_stack_trace_query()
+     * case, call `gimp_stack_trace_print()` or `gimp_stack_trace_query()`
      * directly.
      * @param optimal whether we get optimal traces.
+     * @since 2.10
      */
     function stack_trace_available(optimal: boolean): boolean;
     /**
@@ -6315,11 +6745,11 @@ export namespace Gimp {
      * This function is not meant to generate stack trace for third-party
      * programs, and will attach the current process id only.
      * Internally, this function uses `gdb` or `lldb` if they are available,
-     * or the stacktrace() API on platforms where it is available. It always
+     * or the `stacktrace()` API on platforms where it is available. It always
      * fails on Win32.
      *
      * The stack trace, once generated, will either be printed to `stream` or
-     * returned as a newly allocated string in `trace,` if not %NULL.
+     * returned as a newly allocated string in `trace`, if not `null`.
      *
      * In some error cases (e.g. segmentation fault), trying to allocate
      * more memory will trigger more segmentation faults and therefore loop
@@ -6327,15 +6757,17 @@ export namespace Gimp {
      * file description is an implementation without any memory allocation.
      * @param prog_name the program to attach to.
      * @param stream a FILE* stream.
-     * @returns %TRUE if a stack trace could be generated, %FALSE otherwise.
+     * @returns `true` if a stack trace could be generated, `false` otherwise.
+     * @since 2.10
      */
     function stack_trace_print(prog_name: string, stream: any | null): [boolean, string];
     /**
-     * This is mostly the same as g_on_error_query() except that we use our
+     * This is mostly the same as `g_on_error_query()` except that we use our
      * own backtrace function, much more complete.
      * `prog_name` must be the current program name (argv[0]).
      * It does nothing on Win32.
      * @param prog_name the program to attach to.
+     * @since 2.10
      */
     function stack_trace_query(prog_name: string): void;
     /**
@@ -6347,8 +6779,8 @@ export namespace Gimp {
      * character in brackets (like "File (_F)"). This function recognizes
      * this construct and removes the whole bracket construction to get
      * rid of the mnemonic (see bug 157561).
-     * @param str underline infested string (or %NULL)
-     * @returns A (possibly stripped) copy of @str which should be               freed using g_free() when it is not needed any longer.
+     * @param str underline infested string (or `null`)
+     * @returns A (possibly stripped) copy of `str` which should be               freed using `g_free()` when it is not needed any longer.
      */
     function strip_uline(str?: string | null): string;
     /**
@@ -6372,7 +6804,7 @@ export namespace Gimp {
      * Returns the default top directory for GIMP temporary files. If the
      * environment variable GIMP3_TEMPDIR exists, that is used.  It
      * should be an absolute pathname.  Otherwise, a subdirectory of the
-     * directory returned by g_get_tmp_dir() is used.
+     * directory returned by `g_get_tmp_dir()` is used.
      *
      * In config files such as gimprc, the string ${gimp_temp_dir} expands
      * to this directory.
@@ -6385,6 +6817,7 @@ export namespace Gimp {
      * GLib, which isn't necessarily UTF-8. (On Windows it always is
      * UTF-8.).
      * @returns The default top directory for GIMP temporary files.
+     * @since 2.10.10
      */
     function temp_directory(): string;
     /**
@@ -6404,14 +6837,14 @@ export namespace Gimp {
      * text by specifying the upper left corner of the text bounding box.
      * If the specified drawable parameter is valid, the text will be
      * created as a floating selection attached to the drawable. If the
-     * drawable parameter is not valid (%NULL), the text will appear as a
+     * drawable parameter is not valid (`null`), the text will appear as a
      * new layer. Finally, a border can be specified around the final
      * rendered text. The border is measured in pixels.
      * The size is always in pixels. If you need to display a font in
      * points, divide the size in points by 72.0 and multiply it by the
      * image's vertical resolution.
      * @param image The image.
-     * @param drawable The affected drawable: (%NULL for a new text layer).
+     * @param drawable The affected drawable: (`null` for a new text layer).
      * @param x The x coordinate for the left of the text bounding box.
      * @param y The y coordinate for the top of the text bounding box.
      * @param text The text to generate (in UTF-8 encoding).
@@ -6419,7 +6852,7 @@ export namespace Gimp {
      * @param antialias Antialiasing.
      * @param size The size of text in pixels.
      * @param font The font.
-     * @returns The new text layer or %NULL if no layer was created.
+     * @returns The new text layer or `null` if no layer was created.
      */
     function text_font(
         image: Image,
@@ -6468,53 +6901,59 @@ export namespace Gimp {
     function tile_width(): number;
     /**
      * Retrieves the translation context that has been previously set
-     * using gimp_type_set_translation_context(). You should not need to
-     * use this function directly, use gimp_enum_get_value() or
-     * gimp_enum_value_get_desc() instead.
-     * @param type a #GType
-     * @returns the translation context associated with @type               or %NULL if no context was set
+     * using `gimp_type_set_translation_context()`. You should not need to
+     * use this function directly, use `gimp_enum_get_value()` or
+     * `gimp_enum_value_get_desc()` instead.
+     * @param type a {@link GObject.GType}
+     * @returns the translation context associated with `type`               or `null` if no context was set
+     * @since 2.8
      */
     function type_get_translation_context(type: GObject.GType): string;
     /**
      * Retrieves the gettext translation domain identifier that has been
-     * previously set using gimp_type_set_translation_domain(). You should
-     * not need to use this function directly, use gimp_enum_get_value()
-     * or gimp_enum_value_get_desc() instead.
-     * @param type a #GType
-     * @returns the translation domain associated with @type               or %NULL if no domain was set
+     * previously set using `gimp_type_set_translation_domain()`. You should
+     * not need to use this function directly, use `gimp_enum_get_value()`
+     * or `gimp_enum_value_get_desc()` instead.
+     * @param type a {@link GObject.GType}
+     * @returns the translation domain associated with `type`               or `null` if no domain was set
+     * @since 2.2
      */
     function type_get_translation_domain(type: GObject.GType): string;
     /**
      * This function attaches a constant string as a translation context
-     * to a #GType. The only purpose of this function is to use it when
+     * to a {@link GObject.GType}. The only purpose of this function is to use it when
      * registering a #G_TYPE_ENUM with translatable value names.
-     * @param type a #GType
-     * @param context a constant string that identifies a translation context or %NULL
+     * @param type a {@link GObject.GType}
+     * @param context a constant string that identifies a translation context or `null`
+     * @since 2.8
      */
     function type_set_translation_context(type: GObject.GType, context: string): void;
     /**
      * This function attaches a constant string as a gettext translation
-     * domain identifier to a #GType. The only purpose of this function is
+     * domain identifier to a {@link GObject.GType}. The only purpose of this function is
      * to use it when registering a #G_TYPE_ENUM with translatable value
      * names.
-     * @param type a #GType
-     * @param domain a constant string that identifies a translation domain or %NULL
+     * @param type a {@link GObject.GType}
+     * @param domain a constant string that identifies a translation domain or `null`
+     * @since 2.2
      */
     function type_set_translation_domain(type: GObject.GType, domain: string): void;
     /**
      * Converts a `value` specified in `unit` to pixels.
      * @param value value in units
-     * @param unit unit of @value
+     * @param unit unit of `value`
      * @param resolution resloution in DPI
-     * @returns @value converted to pixels.
+     * @returns `value` converted to pixels.
+     * @since 2.8
      */
     function units_to_pixels(value: number, unit: Unit, resolution: number): number;
     /**
      * Converts a `value` specified in `unit` to points.
      * @param value value in units
-     * @param unit unit of @value
+     * @param unit unit of `value`
      * @param resolution resloution in DPI
-     * @returns @value converted to points.
+     * @returns `value` converted to points.
+     * @since 2.8
      */
     function units_to_points(value: number, unit: Unit, resolution: number): number;
     /**
@@ -6524,60 +6963,69 @@ export namespace Gimp {
      *
      * This is a constant value given at plug-in configuration time.
      * @returns timestamp for plug-in window
+     * @since 2.6
      */
     function user_time(): number;
     /**
      * Creates a (possibly trimmed) copy of `str`. The string is cut if it
      * exceeds `max_chars` characters or on the first newline. The fact
      * that the string was trimmed is indicated by appending an ellipsis.
-     * @param str an UTF-8 encoded string (or %NULL)
+     * @param str an UTF-8 encoded string (or `null`)
      * @param max_chars the maximum number of characters before the string get trimmed
-     * @returns A (possibly trimmed) copy of @str which should be freed using g_free() when it is not needed any longer.
+     * @returns A (possibly trimmed) copy of `str` which should be freed using `g_free()` when it is not needed any longer.
      */
     function utf8_strtrim(str: string | null, max_chars: number): string;
     /**
-     * Gets the contents of a %GIMP_TYPE_FLOAT_ARRAY #GValue
-     * @param value A valid value of type %GIMP_TYPE_FLOAT_ARRAY
-     * @returns The contents of @value
+     * Gets the contents of a `GIMP_TYPE_FLOAT_ARRAY` {@link GObject.Value}
+     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
+     * @returns The contents of `value`
      */
     function value_dup_float_array(value: GObject.Value | any): number[];
     /**
-     * Gets the contents of a %GIMP_TYPE_INT32_ARRAY #GValue
-     * @param value A valid value of type %GIMP_TYPE_INT32_ARRAY
-     * @returns The contents of @value
+     * Gets the contents of a `GIMP_TYPE_INT32_ARRAY` {@link GObject.Value}
+     * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
+     * @returns The contents of `value`
      */
     function value_dup_int32_array(value: GObject.Value | any): number[];
+    /**
+     * @param value a {@link GObject.Value} holding a object {@link Gimp.ObjectArray}.
+     * @returns a deep copy of the array of objects.
+     */
     function value_dup_object_array<T = GObject.Object>(value: GObject.Value | any): T;
     /**
-     * Gets the contents of a %GIMP_TYPE_FLOAT_ARRAY #GValue
-     * @param value A valid value of type %GIMP_TYPE_FLOAT_ARRAY
-     * @returns The contents of @value
+     * Gets the contents of a `GIMP_TYPE_FLOAT_ARRAY` {@link GObject.Value}
+     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
+     * @returns The contents of `value`
      */
     function value_get_float_array(value: GObject.Value | any): number[];
     /**
-     * Gets the contents of a %GIMP_TYPE_INT32_ARRAY #GValue
-     * @param value A valid value of type %GIMP_TYPE_INT32_ARRAY
-     * @returns The contents of @value
+     * Gets the contents of a `GIMP_TYPE_INT32_ARRAY` {@link GObject.Value}
+     * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
+     * @returns The contents of `value`
      */
     function value_get_int32_array(value: GObject.Value | any): number[];
+    /**
+     * @param value a {@link GObject.Value} holding a object {@link Gimp.ObjectArray}.
+     * @returns the internal array of objects.
+     */
     function value_get_object_array<T = GObject.Object>(value: GObject.Value | any): T;
     /**
      * Sets the contents of `value` to `data`.
-     * @param value A valid value of type %GIMP_TYPE_FLOAT_ARRAY
-     * @param data A #gfloat array
+     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
+     * @param data A `gfloat` array
      */
     function value_set_float_array(value: GObject.Value | any, data: number[]): void;
     /**
      * Sets the contents of `value` to `data`.
-     * @param value A valid value of type %GIMP_TYPE_INT32_ARRAY
-     * @param data A #gint32 array
+     * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
+     * @param data A `gint32` array
      */
     function value_set_int32_array(value: GObject.Value | any, data: number[]): void;
     /**
      * Sets the contents of `value` to `data`.
-     * @param value A valid value of type %GIMP_TYPE_OBJECT_ARRAY
-     * @param object_type The #GType of the object elements
-     * @param data A #GObject array
+     * @param value A valid value of type `GIMP_TYPE_OBJECT_ARRAY`
+     * @param object_type The {@link GObject.GType} of the object elements
+     * @param data A {@link GObject.Object} array
      */
     function value_set_object_array(
         value: GObject.Value | any,
@@ -6585,22 +7033,22 @@ export namespace Gimp {
         data: GObject.Object[],
     ): void;
     /**
-     * Sets the contents of `value` to `data,` without copying the data.
-     * @param value A valid value of type %GIMP_TYPE_FLOAT_ARRAY
-     * @param data A #gfloat array
+     * Sets the contents of `value` to `data`, without copying the data.
+     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
+     * @param data A `gfloat` array
      */
     function value_set_static_float_array(value: GObject.Value | any, data: number[]): void;
     /**
-     * Sets the contents of `value` to `data,` without copying the data.
-     * @param value A valid value of type %GIMP_TYPE_INT32_ARRAY
-     * @param data A #gint32 array
+     * Sets the contents of `value` to `data`, without copying the data.
+     * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
+     * @param data A `gint32` array
      */
     function value_set_static_int32_array(value: GObject.Value | any, data: number[]): void;
     /**
-     * Sets the contents of `value` to `data,` without copying the data.
-     * @param value A valid value of type %GIMP_TYPE_OBJECT_ARRAY
-     * @param object_type The #GType of the object elements
-     * @param data A #GObject array
+     * Sets the contents of `value` to `data`, without copying the data.
+     * @param value A valid value of type `GIMP_TYPE_OBJECT_ARRAY`
+     * @param object_type The {@link GObject.GType} of the object elements
+     * @param data A {@link GObject.Object} array
      */
     function value_set_static_object_array(
         value: GObject.Value | any,
@@ -6608,22 +7056,22 @@ export namespace Gimp {
         data: GObject.Object[],
     ): void;
     /**
-     * Sets the contents of `value` to `data,` and takes ownership of `data`.
-     * @param value A valid value of type %GIMP_TYPE_FLOAT_ARRAY
-     * @param data A #gfloat array
+     * Sets the contents of `value` to `data`, and takes ownership of `data`.
+     * @param value A valid value of type `GIMP_TYPE_FLOAT_ARRAY`
+     * @param data A `gfloat` array
      */
     function value_take_float_array(value: GObject.Value | any, data: number[]): void;
     /**
-     * Sets the contents of `value` to `data,` and takes ownership of `data`.
+     * Sets the contents of `value` to `data`, and takes ownership of `data`.
      * @param value A valid value of type %GIMP_TYPE_int32_ARRAY
-     * @param data A #gint32 array
+     * @param data A `gint32` array
      */
     function value_take_int32_array(value: GObject.Value | any, data: number[]): void;
     /**
-     * Sets the contents of `value` to `data,` and takes ownership of `data`.
-     * @param value A valid value of type %GIMP_TYPE_OBJECT_ARRAY
-     * @param object_type The #GType of the object elements
-     * @param data A #GObject array
+     * Sets the contents of `value` to `data`, and takes ownership of `data`.
+     * @param value A valid value of type `GIMP_TYPE_OBJECT_ARRAY`
+     * @param object_type The {@link GObject.GType} of the object elements
+     * @param data A {@link GObject.Object} array
      */
     function value_take_object_array(
         value: GObject.Value | any,
@@ -6631,31 +7079,31 @@ export namespace Gimp {
         data: GObject.Object[],
     ): void;
     /**
-     * Computes the sum of two 2D vectors. The resulting #GimpVector2 is
+     * Computes the sum of two 2D vectors. The resulting {@link Gimp.Vector2} is
      * stored in `result`.
-     * @param vector1 a pointer to the first #GimpVector2.
-     * @param vector2 a pointer to the second #GimpVector2.
+     * @param vector1 a pointer to the first {@link Gimp.Vector2}.
+     * @param vector2 a pointer to the second {@link Gimp.Vector2}.
      */
     function vector2_add(vector1: Vector2, vector2: Vector2): Vector2;
     /**
      * Computes the difference of two 2D vectors (`vector1` minus `vector2`).
-     * The resulting #GimpVector2 is stored in `result`.
-     * @param vector1 a pointer to the first #GimpVector2.
-     * @param vector2 a pointer to the second #GimpVector2.
+     * The resulting {@link Gimp.Vector2} is stored in `result`.
+     * @param vector1 a pointer to the first {@link Gimp.Vector2}.
+     * @param vector2 a pointer to the second {@link Gimp.Vector2}.
      */
     function vector2_sub(vector1: Vector2, vector2: Vector2): Vector2;
     /**
-     * Computes the sum of two 3D vectors. The resulting #GimpVector3 is
+     * Computes the sum of two 3D vectors. The resulting {@link Gimp.Vector3} is
      * stored in `result`.
-     * @param vector1 a pointer to the first #GimpVector3.
-     * @param vector2 a pointer to the second #GimpVector3.
+     * @param vector1 a pointer to the first {@link Gimp.Vector3}.
+     * @param vector2 a pointer to the second {@link Gimp.Vector3}.
      */
     function vector3_add(vector1: Vector3, vector2: Vector3): Vector3;
     /**
      * Computes the difference of two 3D vectors (`vector1` minus `vector2`).
-     * The resulting #GimpVector3 is stored in `result`.
-     * @param vector1 a pointer to the first #GimpVector3.
-     * @param vector2 a pointer to the second #GimpVector3.
+     * The resulting {@link Gimp.Vector3} is stored in `result`.
+     * @param vector1 a pointer to the first {@link Gimp.Vector3}.
+     * @param vector2 a pointer to the second {@link Gimp.Vector3}.
      */
     function vector3_sub(vector1: Vector3, vector2: Vector3): Vector3;
     /**
@@ -6663,9 +7111,9 @@ export namespace Gimp {
      * mapping. The plane to map to is given in the z field of p. The
      * observer is located at position vp (vp->z != 0.0).\"
      *
-     * In other words, this computes the projection of the point (`x,` `y)`
-     * to the plane z = `p->`z (parallel to XY), from the `vp` point of view
-     * through the screen (`sx,` `sy)`->(`sx` + `w,` `sy` + `h)`
+     * In other words, this computes the projection of the point (`x`, `y`)
+     * to the plane z = `p`->z (parallel to XY), from the `vp` point of view
+     * through the screen (`sx`, `sy`)->(`sx` + `w`, `sy` + `h`)
      * @param sx the abscissa of the upper-left screen rectangle.
      * @param sy the ordinate of the upper-left screen rectangle.
      * @param w the width of the screen rectangle.
@@ -6686,7 +7134,7 @@ export namespace Gimp {
         p: Vector3,
     ): void;
     /**
-     * This function is identical to gimp_vector_2d_to_3d() but the
+     * This function is identical to `gimp_vector_2d_to_3d()` but the
      * position of the `observer` and the resulting point `p` are passed by
      * value rather than by reference.
      * @param sx the abscissa of the upper-left screen rectangle.
@@ -6697,7 +7145,7 @@ export namespace Gimp {
      * @param y the ordinate of the point in the screen rectangle to map.
      * @param vp position of the observer.
      * @param p the resulting point.
-     * @returns the computed #GimpVector3 point.
+     * @returns the computed {@link Gimp.Vector3} point.
      */
     function vector_2d_to_3d_val(
         sx: number,
@@ -6715,7 +7163,7 @@ export namespace Gimp {
      * be in the unit square (0, 0, z) - (1, 1, z). The viewpoint of the
      * observer is passed in vp.
      *
-     * This is basically the opposite of gimp_vector_2d_to_3d().
+     * This is basically the opposite of `gimp_vector_2d_to_3d()`.
      * @param sx the abscissa of the upper-left screen rectangle.
      * @param sy the ordinate of the upper-left screen rectangle.
      * @param w the width of the screen rectangle.
@@ -6729,7 +7177,7 @@ export namespace Gimp {
      *
      * This procedure returns the version number of the currently running
      * GIMP.
-     * @returns GIMP version number.          The returned value must be freed with g_free().
+     * @returns GIMP version number.          The returned value must be freed with `g_free()`.
      */
     function version(): string;
     /**
@@ -6739,12 +7187,21 @@ export namespace Gimp {
      * @returns the window manager class
      */
     function wm_class(): string;
+    /**
+     * @gir-type Callback
+     */
     interface BatchFunc {
         (procedure: Procedure, run_mode: RunMode, command: string, config: ProcedureConfig): ValueArray;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExportOptionsEditFunc {
         (procedure: Procedure, config: ProcedureConfig, options: ExportOptions): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ExtractVectorFunc {
         (
             procedure: Procedure,
@@ -6754,42 +7211,81 @@ export namespace Gimp {
             config: ProcedureConfig | null,
         ): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ModuleQueryFunc {
         (module: GObject.TypeModule): ModuleInfo;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ModuleRegisterFunc {
         (module: GObject.TypeModule): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProgressFunc {
         (min: number, max: number, current: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProgressVtableEndFunc {
         (user_data?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProgressVtableGetWindowFunc {
         (user_data?: any | null): GLib.Bytes;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProgressVtablePulseFunc {
         (user_data?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProgressVtableSetTextFunc {
         (message: string): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProgressVtableSetValueFunc {
         (percentage: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProgressVtableStartFunc {
         (message: string, cancelable: boolean): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface PutPixelFunc {
         (x: number, y: number, color: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RenderFunc {
         (x: number, y: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ResourceChoosedCallback {
         (resource: Resource, is_dialog_closing: boolean): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RunExportFunc {
         (
             procedure: Procedure,
@@ -6801,9 +7297,15 @@ export namespace Gimp {
             config: ProcedureConfig,
         ): ValueArray;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RunFunc {
         (procedure: Procedure, config: ProcedureConfig): ValueArray;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RunImageFunc {
         (
             procedure: Procedure,
@@ -6813,6 +7315,9 @@ export namespace Gimp {
             config: ProcedureConfig,
         ): ValueArray;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RunLoadFunc {
         (
             procedure: Procedure,
@@ -6823,9 +7328,15 @@ export namespace Gimp {
             config: ProcedureConfig,
         ): ValueArray;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RunThumbnailFunc {
         (procedure: Procedure, file: Gio.File, size: number, config: ProcedureConfig): ValueArray;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RunVectorLoadFunc {
         (
             procedure: Procedure,
@@ -6839,13 +7350,23 @@ export namespace Gimp {
             config: ProcedureConfig,
         ): ValueArray;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SignalHandlerFunc {
         (signum: number): void;
     }
+    /**
+     * @gir-type Alias
+     */
     type FloatArray = object | null;
+    /**
+     * @gir-type Alias
+     */
     type Int32Array = object | null;
     /**
      * The types of images and layers an export procedure can handle
+     * @gir-type Flags
      */
     enum ExportCapabilities {
         /**
@@ -6896,6 +7417,7 @@ export namespace Gimp {
 
     /**
      * What metadata to load when importing images.
+     * @gir-type Flags
      */
     enum MetadataLoadFlags {
         /**
@@ -6926,6 +7448,7 @@ export namespace Gimp {
 
     /**
      * What kinds of metadata to save when exporting images.
+     * @gir-type Flags
      */
     enum MetadataSaveFlags {
         /**
@@ -6965,7 +7488,8 @@ export namespace Gimp {
     }
 
     /**
-     * The cases when a #GimpProcedure should be shown as sensitive.
+     * The cases when a {@link Gimp.Procedure} should be shown as sensitive.
+     * @gir-type Flags
      */
     enum ProcedureSensitivityMask {
         /**
@@ -7011,6 +7535,7 @@ export namespace Gimp {
      * It makes GIMP usable on the command line, but also to process small scripts
      * (without making full-featured plug-ins), fully in command line without
      * graphical interface.
+     * @gir-type Class
      */
     class BatchProcedure extends Procedure {
         static $gtype: GObject.GType<BatchProcedure>;
@@ -7044,16 +7569,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BatchProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BatchProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BatchProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BatchProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BatchProcedure.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BatchProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7064,7 +7592,7 @@ export namespace Gimp {
 
         /**
          * Returns the procedure's interpreter name, as set with
-         * [method`BatchProcedure`.set_interpreter_name].
+         * {@link BatchProcedure.set_interpreter_name}.
          * @returns The procedure's interpreter name.
          */
         get_interpreter_name(): string;
@@ -7104,6 +7632,7 @@ export namespace Gimp {
 
     /**
      * Installable object used by painting and stroking tools.
+     * @gir-type Class
      */
     class Brush extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Brush>;
@@ -7127,16 +7656,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Brush.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Brush.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Brush.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Brush.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Brush.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Brush.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7148,11 +7680,14 @@ export namespace Gimp {
         /**
          * Returns the brush with the given name.
          *
-         * Return an existing brush having the given name. Returns %NULL when
+         * Return an existing brush having the given name. Returns `null` when
          * no brush exists of that name.
          * @param name The name of the brush.
          */
         static get_by_name(name: string): Brush | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gimp.Resource.get_by_name
         static get_by_name(...args: never[]): any;
 
@@ -7181,18 +7716,18 @@ export namespace Gimp {
          * size without changing its ratio. If the brush is smaller than this size to
          * begin with, it will not be scaled up.
          *
-         * If `max_width` or `max_height` are %NULL, the buffer is returned in the brush's
+         * If `max_width` or `max_height` are `null`, the buffer is returned in the brush's
          * native size.
          *
          * When the brush is parametric or a raster mask, only the mask (as returned by
-         * [method`Gimp`.Brush.get_mask]) will be set. The returned buffer will be NULL.
+         * {@link Gimp.Brush.get_mask}) will be set. The returned buffer will be NULL.
          *
-         * Make sure you called [func`Gegl`.init] before calling any function using
+         * Make sure you called {@link Gegl.init} before calling any function using
          * `GEGL`.
          * @param max_width a maximum width for the returned buffer.
          * @param max_height a maximum height for the returned buffer.
          * @param format an optional Babl format.
-         * @returns a [class@Gegl.Buffer] of %NULL if the brush is parametric                           or mask only.
+         * @returns a {@link Gegl.Buffer} of `null` if the brush is parametric                           or mask only.
          */
         get_buffer(max_width: number, max_height: number, format: Babl.Object): Gegl.Buffer;
         /**
@@ -7220,15 +7755,15 @@ export namespace Gimp {
          * size without changing its ratio. If the brush is smaller than this size to
          * begin with, it will not be scaled up.
          *
-         * If `max_width` or `max_height` are %NULL, the buffer is returned in the brush's
+         * If `max_width` or `max_height` are `null`, the buffer is returned in the brush's
          * native size.
          *
-         * Make sure you called [func`Gegl`.init] before calling any function using
+         * Make sure you called {@link Gegl.init} before calling any function using
          * `GEGL`.
          * @param max_width a maximum width for the returned buffer.
          * @param max_height a maximum height for the returned buffer.
          * @param format an optional Babl format.
-         * @returns a [class@Gegl.Buffer] representing the @brush mask.
+         * @returns a {@link Gegl.Buffer} representing the `brush` mask.
          */
         get_mask(max_width: number, max_height: number, format: Babl.Object): Gegl.Buffer;
         /**
@@ -7347,8 +7882,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         set_spikes(spikes_in: number): [boolean, number];
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7362,32 +7895,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7396,39 +7929,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7439,13 +7972,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7453,7 +7989,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7461,9 +7997,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7483,9 +8019,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7499,33 +8035,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7558,21 +8094,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -7582,8 +8118,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7600,10 +8136,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7618,13 +8154,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7655,21 +8191,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7679,33 +8215,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7714,6 +8251,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7722,12 +8260,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7736,20 +8276,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7761,6 +8303,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7803,6 +8346,7 @@ export namespace Gimp {
 
     /**
      * Functions for manipulating channels.
+     * @gir-type Class
      */
     class Channel extends Drawable {
         static $gtype: GObject.GType<Channel>;
@@ -7835,16 +8379,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7854,9 +8401,9 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Returns a #GimpChannel representing `channel_id`. This function
-         * calls gimp_item_get_by_id() and returns the item if it is channel
-         * or %NULL otherwise.
+         * Returns a {@link Gimp.Channel} representing `channel_id`. This function
+         * calls `gimp_item_get_by_id()` and returns the item if it is channel
+         * or `null` otherwise.
          * @param channel_id The channel id.
          */
         static get_by_id(channel_id: number): Channel | null;
@@ -7880,7 +8427,7 @@ export namespace Gimp {
          *
          * This procedure copies the specified channel and returns the copy.
          * The new channel still needs to be added to the image, as this is not
-         * automatic. Add the new channel with gimp_image_insert_channel().
+         * automatic. Add the new channel with `gimp_image_insert_channel()`.
          * @returns The newly copied channel.
          */
         copy(): Channel;
@@ -7938,6 +8485,9 @@ export namespace Gimp {
     namespace Choice {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'sensitivity-changed': (arg0: string) => void;
         }
 
@@ -7946,6 +8496,9 @@ export namespace Gimp {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Choice extends GObject.Object {
         static $gtype: GObject.GType<Choice>;
 
@@ -7968,16 +8521,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Choice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Choice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Choice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Choice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Choice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Choice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7990,27 +8546,35 @@ export namespace Gimp {
          * This procedure adds a new possible value to `choice` list of values.
          * The `id` is an optional integer identifier. This can be useful for instance
          * when you want to work with different enum values mapped to each `nick`.
-         * @param nick the nick of @choice.
-         * @param id optional integer ID for @nick.
-         * @param label the label of @choice.
-         * @param help optional longer help text for @nick.
+         * @param nick the nick of `choice`.
+         * @param id optional integer ID for `nick`.
+         * @param label the label of `choice`.
+         * @param help optional longer help text for `nick`.
          */
         add(nick: string, id: number, label: string, help: string): void;
         /**
          * Returns the documentation strings for `nick`.
          * @param nick the possible value's nick you need documentation for.
-         * @param label the label of @nick.
-         * @param help the help text of @nick.
-         * @returns %TRUE if @nick is found, %FALSE otherwise.
+         * @param label the label of `nick`.
+         * @param help the help text of `nick`.
+         * @returns `true` if `nick` is found, `false` otherwise.
          */
         get_documentation(nick: string, label: string, help: string): boolean;
         /**
          * Returns the longer documentation for `nick`.
          * @param nick the nick to lookup.
-         * @returns the help text of @nick.
+         * @returns the help text of `nick`.
          */
         get_help(nick: string): string;
+        /**
+         * @param nick the nick to lookup.
+         * @returns the ID of `nick`.
+         */
         get_id(nick: string): number;
+        /**
+         * @param nick the nick to lookup.
+         * @returns the label of `nick`.
+         */
         get_label(nick: string): string;
         /**
          * This procedure checks if the given `nick` is valid and refers to
@@ -8021,13 +8585,13 @@ export namespace Gimp {
         is_valid(nick: string): boolean;
         /**
          * This procedure returns the list of nicks allowed for `choice`.
-         * @returns The list of @choice's nicks.
+         * @returns The list of `choice`'s nicks.
          */
         list_nicks(): string[];
         /**
          * Change the sensitivity of a possible `nick`. Technically a non-sensitive `nick`
-         * means it cannot be chosen anymore (so [method`Gimp`.Choice.is_valid] will
-         * return %FALSE; nevertheless [method`Gimp`.Choice.list_nicks] and other
+         * means it cannot be chosen anymore (so {@link Gimp.Choice.is_valid} will
+         * return `false`; nevertheless {@link Gimp.Choice.list_nicks} and other
          * functions to get information about a choice will still function).
          * @param nick the nick to lookup.
          * @param sensitive
@@ -8098,6 +8662,7 @@ export namespace Gimp {
 
     /**
      * Color management settings.
+     * @gir-type Class
      */
     class ColorConfig extends GObject.Object implements ConfigInterface {
         static $gtype: GObject.GType<ColorConfig>;
@@ -8188,16 +8753,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ColorConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ColorConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ColorConfig.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ColorConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8206,23 +8774,39 @@ export namespace Gimp {
 
         // Methods
 
+        /**
+         * @returns the default CMYK color profile.
+         */
         get_cmyk_color_profile(): ColorProfile;
         get_display_bpc(): boolean;
+        /**
+         * @returns the default display color profile.
+         */
         get_display_color_profile(): ColorProfile;
         get_display_intent(): ColorRenderingIntent;
         get_display_optimize(): boolean;
         get_display_profile_from_gdk(): boolean;
+        /**
+         * @returns the default grayscale color profile.
+         */
         get_gray_color_profile(): ColorProfile;
         get_mode(): ColorManagementMode;
+        /**
+         * @returns the {@link Gegl.Color} to use to represent                           out-of-gamut pixels.
+         */
         get_out_of_gamut_color(): Gegl.Color;
+        /**
+         * @returns the default RGB color profile.
+         */
         get_rgb_color_profile(): ColorProfile;
         get_simulation_bpc(): boolean;
+        /**
+         * @returns the default soft-proofing color                                profile.
+         */
         get_simulation_color_profile(): ColorProfile;
         get_simulation_gamut_check(): boolean;
         get_simulation_intent(): ColorRenderingIntent;
         get_simulation_optimize(): boolean;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8236,32 +8820,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -8270,39 +8854,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -8313,13 +8897,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8327,7 +8914,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8335,9 +8922,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8357,9 +8944,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8373,33 +8960,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8432,21 +9019,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -8456,8 +9043,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8474,10 +9061,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8492,13 +9079,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8529,21 +9116,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8553,33 +9140,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8588,6 +9176,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8596,12 +9185,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8610,20 +9201,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8635,6 +9228,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8675,6 +9269,7 @@ export namespace Gimp {
 
     /**
      * Definitions and Functions relating to LCMS.
+     * @gir-type Class
      */
     class ColorProfile extends GObject.Object {
         static $gtype: GObject.GType<ColorProfile>;
@@ -8714,16 +9309,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ColorProfile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorProfile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ColorProfile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorProfile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ColorProfile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ColorProfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8733,28 +9331,34 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * This function takes a #Babl format and returns the lcms format to
-         * be used with that `format`. It also returns a #Babl format to be
-         * used instead of the passed `format,` which usually is the same as
-         * `format,` unless lcms doesn't support `format`.
+         * This function takes a {@link Babl.Object} format and returns the lcms format to
+         * be used with that `format`. It also returns a {@link Babl.Object} format to be
+         * used instead of the passed `format`, which usually is the same as
+         * `format`, unless lcms doesn't support `format`.
          *
          * Note that this function currently only supports RGB, RGBA, R'G'B',
          * R'G'B'A, Y, YA, Y', Y'A and the cairo-RGB24 and cairo-ARGB32 formats.
-         * @param format a #Babl format
+         * @param format a {@link Babl.Object} format
          */
         static get_lcms_format(format: Babl.Object): [Babl.Object | null, number];
 
         // Methods
 
+        /**
+         * @returns a string containing `profile`'s copyright. The               returned value belongs to `profile` and must not be               modified or freed.
+         */
         get_copyright(): string;
+        /**
+         * @returns a string containing `profile`'s description. The               returned value belongs to `profile` and must not be               modified or freed.
+         */
         get_description(): string;
         /**
-         * This function takes a #GimpColorProfile and a #Babl format and
-         * returns a new #Babl format with `profile'`s RGB primaries and TRC,
-         * and `format'`s pixel layout.
-         * @param format a #Babl format
-         * @param intent a #GimpColorRenderingIntent
-         * @returns the new #Babl format.
+         * This function takes a {@link Gimp.ColorProfile} and a {@link Babl.Object} format and
+         * returns a new {@link Babl.Object} format with `profile`'s RGB primaries and TRC,
+         * and `format`'s pixel layout.
+         * @param format a {@link Babl.Object} format
+         * @param intent a {@link Gimp.ColorRenderingIntent}
+         * @returns the new {@link Babl.Object} format.
          */
         get_format(format: Babl.Object, intent: ColorRenderingIntent | null): Babl.Object;
         /**
@@ -8764,69 +9368,84 @@ export namespace Gimp {
          */
         get_icc_profile(): Uint8Array;
         /**
-         * This function returns a string containing `profile'`s "title", a
+         * This function returns a string containing `profile`'s "title", a
          * string that can be used to label the profile in a user interface.
          *
-         * Unlike gimp_color_profile_get_description(), this function always
+         * Unlike `gimp_color_profile_get_description()`, this function always
          * returns a string (as a fallback, it returns "(unnamed profile)").
-         * @returns the @profile's label. The returned value belongs to               @profile and must not be modified or freed.
+         * @returns the `profile`'s label. The returned value belongs to               `profile` and must not be modified or freed.
          */
         get_label(): string;
         /**
-         * This function returns `profile'`s cmsHPROFILE. The returned
+         * This function returns `profile`'s cmsHPROFILE. The returned
          * value belongs to `profile` and must not be modified or freed.
          * @returns a pointer to the cmsHPROFILE.
          */
         get_lcms_profile(): any | null;
+        /**
+         * @returns a string containing `profile`'s manufacturer. The               returned value belongs to `profile` and must not be               modified or freed.
+         */
         get_manufacturer(): string;
+        /**
+         * @returns a string containing `profile`'s model. The returned               value belongs to `profile` and must not be modified or               freed.
+         */
         get_model(): string;
         /**
-         * This function returns the #Babl space of `profile,` for the
+         * This function returns the {@link Babl.Object} space of `profile`, for the
          * specified `intent`.
-         * @param intent a #GimpColorRenderingIntent
-         * @returns the new #Babl space.
+         * @param intent a {@link Gimp.ColorRenderingIntent}
+         * @returns the new {@link Babl.Object} space.
          */
         get_space(intent: ColorRenderingIntent | null): Babl.Object;
         /**
          * This function return a string containing a multi-line summary of
-         * `profile'`s description, model, manufacturer and copyright, to be
+         * `profile`'s description, model, manufacturer and copyright, to be
          * used as detailed information about the profile in a user
          * interface.
-         * @returns the @profile's summary. The returned value belongs to               @profile and must not be modified or freed.
+         * @returns the `profile`'s summary. The returned value belongs to               `profile` and must not be modified or freed.
          */
         get_summary(): string;
+        /**
+         * @returns `true` if the profile's color space is CMYK, `false` otherwise.
+         */
         is_cmyk(): boolean;
         /**
          * Compares two profiles.
-         * @param profile2 a #GimpColorProfile
-         * @returns %TRUE if the profiles are equal, %FALSE otherwise.
+         * @param profile2 a {@link Gimp.ColorProfile}
+         * @returns `true` if the profiles are equal, `false` otherwise.
          */
         is_equal(profile2: ColorProfile): boolean;
+        /**
+         * @returns `true` if the profile's color space is grayscale, `false` otherwise.
+         */
         is_gray(): boolean;
         /**
          * This function determines is the ICC profile represented by a GimpColorProfile
          * is a linear RGB profile or not, some profiles that are LUTs though linear
          * will also return FALSE;
-         * @returns %TRUE if the profile is a matrix shaping profile with linear TRCs, %FALSE otherwise.
+         * @returns `true` if the profile is a matrix shaping profile with linear TRCs, `false` otherwise.
          */
         is_linear(): boolean;
+        /**
+         * @returns `true` if the profile's color space is RGB, `false` otherwise.
+         */
         is_rgb(): boolean;
         /**
-         * This function creates a new RGB #GimpColorProfile with a linear TRC
-         * and `profile'`s RGB chromacities and whitepoint.
-         * @returns the new #GimpColorProfile, or %NULL if               @profile is not an RGB profile or not matrix-based.
+         * This function creates a new RGB {@link Gimp.ColorProfile} with a linear TRC
+         * and `profile`'s RGB chromacities and whitepoint.
+         * @returns the new {@link Gimp.ColorProfile}, or `null` if               `profile` is not an RGB profile or not matrix-based.
          */
         new_linear_from_color_profile(): ColorProfile | null;
         /**
-         * This function creates a new RGB #GimpColorProfile with a sRGB gamma
-         * TRC and `profile'`s RGB chromacities and whitepoint.
-         * @returns the new #GimpColorProfile, or %NULL if               @profile is not an RGB profile or not matrix-based.
+         * This function creates a new RGB {@link Gimp.ColorProfile} with a sRGB gamma
+         * TRC and `profile`'s RGB chromacities and whitepoint.
+         * @returns the new {@link Gimp.ColorProfile}, or `null` if               `profile` is not an RGB profile or not matrix-based.
          */
         new_srgb_trc_from_color_profile(): ColorProfile | null;
         /**
          * This function saves `profile` to `file` as ICC profile.
-         * @param file a #GFile
-         * @returns %TRUE on success, %FALSE if an error occurred.
+         * @param file a {@link Gio.File}
+         * @returns `true` on success, `false` if an error occurred.
          */
         save_to_file(file: Gio.File): boolean;
     }
@@ -8834,6 +9453,9 @@ export namespace Gimp {
     namespace ColorTransform {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             progress: (arg0: number) => void;
         }
 
@@ -8844,6 +9466,7 @@ export namespace Gimp {
 
     /**
      * Definitions and Functions relating to LCMS.
+     * @gir-type Class
      */
     class ColorTransform extends GObject.Object {
         static $gtype: GObject.GType<ColorTransform>;
@@ -8885,16 +9508,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ColorTransform.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorTransform.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ColorTransform.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorTransform.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ColorTransform.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ColorTransform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8905,13 +9531,17 @@ export namespace Gimp {
 
         /**
          * This function checks if a GimpColorTransform is needed at all.
-         * @param src_profile source #GimpColorProfile
-         * @param dest_profile destination #GimpColorProfile
+         * @param src_profile source {@link Gimp.ColorProfile}
+         * @param dest_profile destination {@link Gimp.ColorProfile}
          */
         static can_gegl_copy(src_profile: ColorProfile, dest_profile: ColorProfile): boolean;
 
         // Virtual methods
 
+        /**
+         * @param fraction
+         * @virtual
+         */
         vfunc_progress(fraction: number): void;
 
         // Methods
@@ -8919,14 +9549,14 @@ export namespace Gimp {
         /**
          * This function transforms buffer into another buffer.
          *
-         * See gimp_color_transform_new(): only the pixel encoding of
-         * `src_buffer'`s and `dest_buffer'`s formats honored, their color
+         * See `gimp_color_transform_new()`: only the pixel encoding of
+         * `src_buffer`'s and `dest_buffer`'s formats honored, their color
          * spaces are ignored. The transform always takes place between the
-         * color spaces determined by `transform'`s color profiles.
-         * @param src_buffer source #GeglBuffer
-         * @param src_rect rectangle in @src_buffer
-         * @param dest_buffer destination #GeglBuffer
-         * @param dest_rect rectangle in @dest_buffer
+         * color spaces determined by `transform`'s color profiles.
+         * @param src_buffer source {@link Gegl.Buffer}
+         * @param src_rect rectangle in `src_buffer`
+         * @param dest_buffer destination {@link Gegl.Buffer}
+         * @param dest_rect rectangle in `dest_buffer`
          */
         process_buffer(
             src_buffer: Gegl.Buffer,
@@ -8937,13 +9567,13 @@ export namespace Gimp {
         /**
          * This function transforms a contiguous line of pixels.
          *
-         * See gimp_color_transform_new(): only the pixel encoding of
+         * See `gimp_color_transform_new()`: only the pixel encoding of
          * `src_format` and `dest_format` is honored, their color spaces are
          * ignored. The transform always takes place between the color spaces
-         * determined by `transform'`s color profiles.
-         * @param src_format #Babl format of @src_pixels
+         * determined by `transform`'s color profiles.
+         * @param src_format {@link Babl.Object} format of `src_pixels`
          * @param src_pixels pointer to the source pixels
-         * @param dest_format #Babl format of @dest_pixels
+         * @param dest_format {@link Babl.Object} format of `dest_pixels`
          * @param dest_pixels pointer to the destination pixels
          * @param length number of pixels to process
          */
@@ -8961,6 +9591,9 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ConfigPath {
         static $gtype: GObject.GType<ConfigPath>;
 
@@ -8970,16 +9603,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ConfigPath.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConfigPath.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ConfigPath.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConfigPath.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ConfigPath.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ConfigPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8997,7 +9633,7 @@ export namespace Gimp {
          * variable substitution for you and can also attempt to convert to
          * the filesystem encoding.
          *
-         * To reverse the expansion, use gimp_config_path_unexpand().
+         * To reverse the expansion, use `gimp_config_path_unexpand()`.
          * @param path a NUL-terminated string in UTF-8 encoding
          * @param recode whether to convert to the filesystem's encoding
          */
@@ -9009,24 +9645,24 @@ export namespace Gimp {
          * filesystem may be in a different encoding than UTF-8 (which is what
          * is used for the gimprc).
          *
-         * This function runs `path` through gimp_config_path_expand() and
-         * gimp_path_parse(), then turns the filenames returned by
-         * gimp_path_parse() into GFile using g_file_new_for_path().
+         * This function runs `path` through `gimp_config_path_expand()` and
+         * `gimp_path_parse()`, then turns the filenames returned by
+         * `gimp_path_parse()` into GFile using `g_file_new_for_path()`.
          * @param path a NUL-terminated string in UTF-8 encoding
          */
         static expand_to_files(path: string): Gio.File[];
         /**
-         * The inverse operation of gimp_config_path_expand()
+         * The inverse operation of `gimp_config_path_expand()`
          *
          * This function takes a `path` and tries to substitute the first
          * elements by well-known special identifiers such as for example
          * ${gimp_dir}. The unexpanded path can then be stored in gimprc and
          * other config files.
          *
-         * If `recode` is %TRUE then `path` is in local filesystem encoding,
-         * if `recode` is %FALSE then `path` is assumed to be UTF-8.
+         * If `recode` is `true` then `path` is in local filesystem encoding,
+         * if `recode` is `false` then `path` is assumed to be UTF-8.
          * @param path a NUL-terminated string
-         * @param recode whether @path is in filesystem encoding or UTF-8
+         * @param recode whether `path` is in filesystem encoding or UTF-8
          */
         static unexpand(path: string, recode: boolean): string;
     }
@@ -9046,6 +9682,7 @@ export namespace Gimp {
 
     /**
      * Functions to create, delete and flush displays (views) on an image.
+     * @gir-type Class
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
@@ -9073,16 +9710,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9092,10 +9732,10 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Returns a #GimpDisplay representing `display_id`.
+         * Returns a {@link Gimp.Display} representing `display_id`.
          *
          * Note: in most use cases, you should not need to retrieve a
-         * #GimpDisplay by its ID, which is mostly internal data and not
+         * {@link Gimp.Display} by its ID, which is mostly internal data and not
          * reusable across sessions. Use the appropriate functions for your use
          * case instead.
          * @param display_id The display id.
@@ -9108,7 +9748,7 @@ export namespace Gimp {
          * an existing display.
          *
          * *Note*: in most use cases, you should not use this function. If you
-         * got a [class`Gimp`.Display] from the API, you should trust it is
+         * got a {@link Gimp.Display} from the API, you should trust it is
          * valid. This function is mostly for internal usage.
          * @param display_id The display ID to check.
          */
@@ -9117,7 +9757,7 @@ export namespace Gimp {
          * Returns the display to be used for plug-in windows.
          *
          * This is a constant value given at plug-in configuration time.
-         * Will return %NULL if GIMP has been started with no GUI, either
+         * Will return `null` if GIMP has been started with no GUI, either
          * via "--no-interface" flag, or a console build.
          */
         static name(): string;
@@ -9185,6 +9825,7 @@ export namespace Gimp {
 
     /**
      * Functions to manipulate drawables.
+     * @gir-type Class
      */
     abstract class Drawable extends Item {
         static $gtype: GObject.GType<Drawable>;
@@ -9206,16 +9847,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Drawable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Drawable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Drawable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Drawable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Drawable.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Drawable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9225,9 +9869,9 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Returns a #GimpDrawable representing `drawable_id`. This function
-         * calls gimp_item_get_by_id() and returns the item if it is drawable
-         * or %NULL otherwise.
+         * Returns a {@link Gimp.Drawable} representing `drawable_id`. This function
+         * calls `gimp_item_get_by_id()` and returns the item if it is drawable
+         * or `null` otherwise.
          * @param drawable_id The drawable id.
          */
         static get_by_id(drawable_id: number): Drawable | null;
@@ -9290,7 +9934,7 @@ export namespace Gimp {
          * drawable. The channel can be either an intensity component, or the
          * value. The 'values' parameter is an array of doubles which
          * explicitly defines how each pixel value in the drawable will be
-         * modified. Use the gimp_drawable_curves_spline() function to modify
+         * modified. Use the `gimp_drawable_curves_spline()` function to modify
          * intensity levels with Catmull Rom splines.
          * @param channel The channel to modify.
          * @param values The explicit curve.
@@ -9305,7 +9949,7 @@ export namespace Gimp {
          * value. The 'points' parameter is an array of doubles which define a
          * set of control points which describe a Catmull Rom spline which
          * yields the final intensity curve. Use the
-         * gimp_drawable_curves_explicit() function to explicitly modify
+         * `gimp_drawable_curves_explicit()` function to explicitly modify
          * intensity levels.
          * @param channel The channel to modify.
          * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
@@ -9333,12 +9977,12 @@ export namespace Gimp {
          * drawable's origin.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_opacity(), gimp_context_set_paint_mode(),
-         * gimp_context_set_foreground(), gimp_context_set_background(),
-         * gimp_context_set_pattern(), gimp_context_set_sample_threshold(),
-         * gimp_context_set_sample_merged(),
-         * gimp_context_set_sample_criterion(),
-         * gimp_context_set_diagonal_neighbors(), gimp_context_set_antialias().
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_pattern()`, `gimp_context_set_sample_threshold()`,
+         * `gimp_context_set_sample_merged()`,
+         * `gimp_context_set_sample_criterion()`,
+         * `gimp_context_set_diagonal_neighbors()`, `gimp_context_set_antialias()`.
          * @param fill_type The type of fill.
          * @param x The x coordinate of this bucket fill's application.
          * @param y The y coordinate of this bucket fill's application.
@@ -9355,7 +9999,7 @@ export namespace Gimp {
          * a selection if there is a selection active.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_background().
+         * `gimp_context_set_background()`.
          * @returns TRUE on success.
          */
         edit_clear(): boolean;
@@ -9365,12 +10009,12 @@ export namespace Gimp {
          * This procedure fills the specified drawable according to fill mode.
          * This procedure only affects regions within a selection if there is a
          * selection active. If you want to fill the whole drawable, regardless
-         * of the selection, use gimp_drawable_fill().
+         * of the selection, use `gimp_drawable_fill()`.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_opacity(), gimp_context_set_paint_mode(),
-         * gimp_context_set_foreground(), gimp_context_set_background(),
-         * gimp_context_set_pattern().
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_pattern()`.
          * @param fill_type The type of fill.
          * @returns TRUE on success.
          */
@@ -9383,13 +10027,13 @@ export namespace Gimp {
          * specified variety of gradient using the starting and ending
          * coordinates as defined for each gradient type. For shapeburst
          * gradient types, the context's distance metric is also relevant and
-         * can be updated with gimp_context_set_distance_metric().
+         * can be updated with `gimp_context_set_distance_metric()`.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_opacity(), gimp_context_set_paint_mode(),
-         * gimp_context_set_foreground(), gimp_context_set_background(),
-         * gimp_context_set_gradient() and all gradient property settings,
-         * gimp_context_set_distance_metric().
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_background()`,
+         * `gimp_context_set_gradient()` and all gradient property settings,
+         * `gimp_context_set_distance_metric()`.
          * @param gradient_type The type of gradient.
          * @param offset Offset relates to the starting and ending coordinates specified for the blend. This parameter is mode dependent.
          * @param supersample Do adaptive supersampling.
@@ -9423,12 +10067,12 @@ export namespace Gimp {
          * configurable properties.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_opacity(), gimp_context_set_paint_mode(),
-         * gimp_context_set_paint_method(), gimp_context_set_stroke_method(),
-         * gimp_context_set_foreground(), gimp_context_set_brush() and all
-         * brush property settings, gimp_context_set_gradient() and all
-         * gradient property settings, gimp_context_set_line_width() and all
-         * line property settings, gimp_context_set_antialias().
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
+         * brush property settings, `gimp_context_set_gradient()` and all
+         * gradient property settings, `gimp_context_set_line_width()` and all
+         * line property settings, `gimp_context_set_antialias()`.
          * @param item The item to stroke.
          * @returns TRUE on success.
          */
@@ -9442,12 +10086,12 @@ export namespace Gimp {
          * the specified drawable regardless of the active selection.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_opacity(), gimp_context_set_paint_mode(),
-         * gimp_context_set_paint_method(), gimp_context_set_stroke_method(),
-         * gimp_context_set_foreground(), gimp_context_set_brush() and all
-         * brush property settings, gimp_context_set_gradient() and all
-         * gradient property settings, gimp_context_set_line_width() and all
-         * line property settings, gimp_context_set_antialias().
+         * `gimp_context_set_opacity()`, `gimp_context_set_paint_mode()`,
+         * `gimp_context_set_paint_method()`, `gimp_context_set_stroke_method()`,
+         * `gimp_context_set_foreground()`, `gimp_context_set_brush()` and all
+         * brush property settings, `gimp_context_set_gradient()` and all
+         * gradient property settings, `gimp_context_set_line_width()` and all
+         * line property settings, `gimp_context_set_antialias()`.
          * @returns TRUE on success.
          */
         edit_stroke_selection(): boolean;
@@ -9485,7 +10129,7 @@ export namespace Gimp {
          * with an alpha channel, in which case the alpha channel is set to
          * transparent. If the drawable has no alpha channel, it is filled to
          * white. No fill leaves the drawable's contents undefined.
-         * This procedure is unlike gimp_drawable_edit_fill() or the bucket
+         * This procedure is unlike `gimp_drawable_edit_fill()` or the bucket
          * fill tool because it fills regardless of a selection. Its main
          * purpose is to fill a newly created drawable before adding it to the
          * image. This operation cannot be undone.
@@ -9521,16 +10165,16 @@ export namespace Gimp {
          */
         get_bpp(): number;
         /**
-         * Returns a #GeglBuffer of a specified drawable. The buffer can be used
+         * Returns a {@link Gegl.Buffer} of a specified drawable. The buffer can be used
          * like any other GEGL buffer. Its data will we synced back with the core
-         * drawable when the buffer gets destroyed, or when gegl_buffer_flush()
+         * drawable when the buffer gets destroyed, or when `gegl_buffer_flush()`
          * is called.
-         * @returns The #GeglBuffer. See Also: gimp_drawable_get_shadow_buffer()
+         * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
          */
         get_buffer(): Gegl.Buffer;
         /**
-         * Returns the #Babl format of the drawable.
-         * @returns The #Babl format.
+         * Returns the {@link Babl.Object} format of the drawable.
+         * @returns The {@link Babl.Object} format.
          */
         get_format(): Babl.Object;
         /**
@@ -9559,11 +10203,11 @@ export namespace Gimp {
          */
         get_pixel(x_coord: number, y_coord: number): Gegl.Color;
         /**
-         * Returns a #GeglBuffer of a specified drawable's shadow tiles. The
+         * Returns a {@link Gegl.Buffer} of a specified drawable's shadow tiles. The
          * buffer can be used like any other GEGL buffer. Its data will we
          * synced back with the core drawable's shadow tiles when the buffer
-         * gets destroyed, or when gegl_buffer_flush() is called.
-         * @returns The #GeglBuffer.
+         * gets destroyed, or when `gegl_buffer_flush()` is called.
+         * @returns The {@link Gegl.Buffer}.
          */
         get_shadow_buffer(): Gegl.Buffer;
         /**
@@ -9577,7 +10221,7 @@ export namespace Gimp {
          * @param dest_width the requested thumbnail width  (<= 1024 pixels)
          * @param dest_height the requested thumbnail height (<= 1024 pixels)
          * @param alpha how to handle an alpha channel
-         * @returns a new #GdkPixbuf
+         * @returns a new {@link GdkPixbuf.Pixbuf}
          */
         get_sub_thumbnail(
             src_x: number,
@@ -9597,7 +10241,7 @@ export namespace Gimp {
          * @param src_height the height of the area
          * @param dest_width the requested thumbnail width  (<= 1024 pixels)
          * @param dest_height the requested thumbnail height (<= 1024 pixels)
-         * @returns thumbnail data or %NULL if          @drawable is invalid.
+         * @returns thumbnail data or `null` if          `drawable` is invalid.
          */
         get_sub_thumbnail_data(
             src_x: number,
@@ -9614,7 +10258,7 @@ export namespace Gimp {
          * @param width the requested thumbnail width  (<= 1024 pixels)
          * @param height the requested thumbnail height (<= 1024 pixels)
          * @param alpha how to handle an alpha channel
-         * @returns a new #GdkPixbuf
+         * @returns a new {@link GdkPixbuf.Pixbuf}
          */
         get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
         /**
@@ -9622,12 +10266,12 @@ export namespace Gimp {
          * The thumbnail will be not larger than the requested size.
          * @param width the requested thumbnail width  (<= 1024 pixels)
          * @param height the requested thumbnail height (<= 1024 pixels)
-         * @returns thumbnail data or %NULL if          @drawable is invalid.
+         * @returns thumbnail data or `null` if          `drawable` is invalid.
          */
         get_thumbnail_data(width: number, height: number): [GLib.Bytes | null, number, number, number];
         /**
-         * Returns the #Babl thumbnail format of the drawable.
-         * @returns The #Babl thumbnail format.
+         * Returns the {@link Babl.Object} thumbnail format of the drawable.
+         * @returns The {@link Babl.Object} thumbnail format.
          */
         get_thumbnail_format(): Babl.Object;
         /**
@@ -9654,7 +10298,7 @@ export namespace Gimp {
          * intensity histogram of a drawable. A channel to examine is first
          * specified. This can be either value, red, green, or blue, depending
          * on whether the drawable is of type color or grayscale. Second, a
-         * range of intensities are specified. The gimp_drawable_histogram()
+         * range of intensities are specified. The `gimp_drawable_histogram()`
          * function returns statistics based on the pixels in the drawable that
          * fall under this range of values. Mean, standard deviation, median,
          * number of pixels, and percentile are all returned. Additionally, the
@@ -9790,7 +10434,7 @@ export namespace Gimp {
          * selection can be calculated as (x2 - x1), its height as (y2 - y1).
          * Note that the returned boolean does NOT correspond with the returned
          * region being empty or not, it always returns whether the selection
-         * is non_empty. See gimp_drawable_mask_intersect() for a boolean
+         * is non_empty. See `gimp_drawable_mask_intersect()` for a boolean
          * return value which is more useful in most cases.
          * @returns TRUE if there is a selection.
          */
@@ -9800,7 +10444,7 @@ export namespace Gimp {
          * specified drawable.
          *
          * This procedure returns whether there is an intersection between the
-         * drawable and the selection. Unlike gimp_drawable_mask_bounds(), the
+         * drawable and the selection. Unlike `gimp_drawable_mask_bounds()`, the
          * intersection's bounds are returned as x, y, width, height.
          * If there is no selection this function returns TRUE and the returned
          * bounds are the extents of the whole drawable.
@@ -9953,10 +10597,11 @@ export namespace Gimp {
      * Note: right now, GIMP does not provide any generic export option to
      * manipulate, and there is practically no reason for you to create this
      * object yourself. In Export PDB procedure, or again in functions such
-     * as [func`Gimp`.file_save], you may just pass %NULL.
+     * as {@link Gimp.file_save}, you may just pass `null`.
      *
      * In the future, this object will enable to pass various generic
      * options, such as ability to crop or resize images at export time.
+     * @gir-type Class
      */
     class ExportOptions extends GObject.Object {
         static $gtype: GObject.GType<ExportOptions>;
@@ -9964,7 +10609,8 @@ export namespace Gimp {
         // Properties
 
         /**
-         * What [flags`ExportCapabilities]` are supported.
+         * What {@link ExportCapabilities} are supported.
+         * @since 3.0.0
          */
         get capabilities(): number;
         set capabilities(val: number);
@@ -9986,16 +10632,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExportOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExportOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExportOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExportOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExportOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExportOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10011,19 +10660,19 @@ export namespace Gimp {
          *
          * If necessary, a copy is created, converted and modified, `image`
          * changed to point to the new image and the procedure returns
-         * [enum`Gimp`.ExportReturn.EXPORT].
+         * {@link Gimp.ExportReturn.EXPORT}.
          * In this case, you must take care of deleting the created image using
-         * [method`Image`.delete] once the image has been exported, unless you
-         * were planning to display it with [ctor`Display`.new], or you will leak
+         * {@link Image.delete} once the image has been exported, unless you
+         * were planning to display it with {@link Display.new}, or you will leak
          * memory.
          *
-         * If [enum`Gimp`.ExportReturn.IGNORE] is returned, then `image` is still the
+         * If {@link Gimp.ExportReturn.IGNORE} is returned, then `image` is still the
          * original image. You should neither modify it, nor should you delete
          * it in the end. If you wish to temporarily modify the image before
-         * export anyway, call [method`Image`.duplicate] when
-         * [enum`Gimp`.ExportReturn.IGNORE] was returned.
+         * export anyway, call {@link Image.duplicate} when
+         * {@link Gimp.ExportReturn.IGNORE} was returned.
          * @param image the image.
-         * @returns An enum of #GimpExportReturn.
+         * @returns An enum of {@link Gimp.ExportReturn}.
          */
         get_image(image: Image): [ExportReturn, Image];
     }
@@ -10068,7 +10717,8 @@ export namespace Gimp {
      * Registered export procedures will be automatically available in the export
      * interfaces and functions of GIMP. The detection (to decide which file is
      * redirected to which plug-in procedure) depends on the various methods set
-     * with [class`FileProcedure]` API.
+     * with {@link FileProcedure} API.
+     * @gir-type Class
      */
     class ExportProcedure extends FileProcedure {
         static $gtype: GObject.GType<ExportProcedure>;
@@ -10076,67 +10726,80 @@ export namespace Gimp {
         // Properties
 
         /**
-         * What #GimpExportCapabilities are supported
+         * What {@link Gimp.ExportCapabilities} are supported
+         * @since 3.0.0
          */
         get capabilities(): number;
         set capabilities(val: number);
         /**
          * Whether the export procedure supports storing a comment.
+         * @since 3.0.0
          */
         get supports_comment(): boolean;
         set supports_comment(val: boolean);
         /**
          * Whether the export procedure supports storing a comment.
+         * @since 3.0.0
          */
         get supportsComment(): boolean;
         set supportsComment(val: boolean);
         /**
          * Whether the export procedure supports EXIF.
+         * @since 3.0.0
          */
         get supports_exif(): boolean;
         set supports_exif(val: boolean);
         /**
          * Whether the export procedure supports EXIF.
+         * @since 3.0.0
          */
         get supportsExif(): boolean;
         set supportsExif(val: boolean);
         /**
          * Whether the export procedure supports IPTC.
+         * @since 3.0.0
          */
         get supports_iptc(): boolean;
         set supports_iptc(val: boolean);
         /**
          * Whether the export procedure supports IPTC.
+         * @since 3.0.0
          */
         get supportsIptc(): boolean;
         set supportsIptc(val: boolean);
         /**
          * Whether the export procedure supports ICC color profiles.
+         * @since 3.0.0
          */
         get supports_profile(): boolean;
         set supports_profile(val: boolean);
         /**
          * Whether the export procedure supports ICC color profiles.
+         * @since 3.0.0
          */
         get supportsProfile(): boolean;
         set supportsProfile(val: boolean);
         /**
          * Whether the export procedure supports storing a thumbnail.
+         * @since 3.0.0
          */
         get supports_thumbnail(): boolean;
         set supports_thumbnail(val: boolean);
         /**
          * Whether the export procedure supports storing a thumbnail.
+         * @since 3.0.0
          */
         get supportsThumbnail(): boolean;
         set supportsThumbnail(val: boolean);
         /**
          * Whether the export procedure supports XMP.
+         * @since 3.0.0
          */
         get supports_xmp(): boolean;
         set supports_xmp(val: boolean);
         /**
          * Whether the export procedure supports XMP.
+         * @since 3.0.0
          */
         get supportsXmp(): boolean;
         set supportsXmp(val: boolean);
@@ -10170,16 +10833,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExportProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExportProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExportProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExportProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExportProcedure.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExportProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10188,17 +10854,35 @@ export namespace Gimp {
 
         // Methods
 
+        /**
+         * @returns `true` if `procedure` supports comment exporting.
+         */
         get_support_comment(): boolean;
+        /**
+         * @returns `true` if `procedure` supports Exif exporting.
+         */
         get_support_exif(): boolean;
+        /**
+         * @returns `true` if `procedure` supports IPTC exporting.
+         */
         get_support_iptc(): boolean;
+        /**
+         * @returns `true` if `procedure` supports ICC color profile exporting.
+         */
         get_support_profile(): boolean;
+        /**
+         * @returns `true` if `procedure` supports thumbnail exporting.
+         */
         get_support_thumbnail(): boolean;
+        /**
+         * @returns `true` if `procedure` supports XMP exporting.
+         */
         get_support_xmp(): boolean;
         /**
-         * Sets default #GimpExportCapabilities for image export.
-         * @param capabilities a #GimpExportCapabilities enum
+         * Sets default {@link Gimp.ExportCapabilities} for image export.
+         * @param capabilities a {@link Gimp.ExportCapabilities} enum
          * @param edit_func callback function to update export options
-         * @param edit_data_destroy free function for @edit_data, or %NULL
+         * @param edit_data_destroy free function for `edit_data`, or `null`
          */
         set_capabilities(
             capabilities: ExportCapabilities | null,
@@ -10208,12 +10892,12 @@ export namespace Gimp {
         /**
          * Determine whether `procedure` supports exporting a comment. By default,
          * it won't (so there is usually no reason to run this function with
-         * %FALSE).
+         * `false`).
          *
          * This will have several consequences:
          *
          * - Automatically adds a standard auxiliary argument "save-comment"
-         *   in the end of the argument list of `procedure,` with relevant blurb
+         *   in the end of the argument list of `procedure`, with relevant blurb
          *   and description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
@@ -10221,24 +10905,24 @@ export namespace Gimp {
          * - Generated GimpExportProcedureDialog will contain the metadata
          *   options, once again always in the same order and with consistent
          *   GUI style across plug-ins.
-         * - API from [class`ProcedureConfig]` will automatically process these
+         * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
          * Note that since this is an auxiliary argument, it won't be part of
          * the PDB arguments. By default, the value will be
-         * [func`export_comment]`.
+         * {@link export_comment}.
          * @param supports whether a comment can be stored.
          */
         set_support_comment(supports: boolean): void;
         /**
          * Determine whether `procedure` supports exporting Exif data. By default,
          * it won't (so there is usually no reason to run this function with
-         * %FALSE).
+         * `false`).
          *
          * This will have several consequences:
          *
          * - Automatically adds a standard auxiliary argument "save-exif" in the
-         *   end of the argument list of `procedure,` with relevant blurb and
+         *   end of the argument list of `procedure`, with relevant blurb and
          *   description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
@@ -10246,23 +10930,23 @@ export namespace Gimp {
          * - Generated GimpExportProcedureDialog will contain the metadata
          *   options, once again always in the same order and with consistent
          *   GUI style across plug-ins.
-         * - API from [class`ProcedureConfig]` will automatically process these
+         * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
          * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be [func`export_exif]`.
+         * the PDB arguments. By default, the value will be {@link export_exif}.
          * @param supports whether Exif metadata are supported.
          */
         set_support_exif(supports: boolean): void;
         /**
          * Determine whether `procedure` supports exporting IPTC data. By default,
          * it won't (so there is usually no reason to run this function with
-         * %FALSE).
+         * `false`).
          *
          * This will have several consequences:
          *
          * - Automatically adds a standard auxiliary argument "save-iptc" in the
-         *   end of the argument list of `procedure,` with relevant blurb and
+         *   end of the argument list of `procedure`, with relevant blurb and
          *   description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
@@ -10270,23 +10954,23 @@ export namespace Gimp {
          * - Generated GimpExportProcedureDialog will contain the metadata
          *   options, once again always in the same order and with consistent
          *   GUI style across plug-ins.
-         * - API from [class`ProcedureConfig]` will automatically process these
+         * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
          * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be [func`export_iptc]`.
+         * the PDB arguments. By default, the value will be {@link export_iptc}.
          * @param supports whether IPTC metadata are supported.
          */
         set_support_iptc(supports: boolean): void;
         /**
          * Determine whether `procedure` supports exporting ICC color profiles. By
          * default, it won't (so there is usually no reason to run this function
-         * with %FALSE).
+         * with `false`).
          *
          * This will have several consequences:
          *
          * - Automatically adds a standard auxiliary argument
-         *   "save-color-profile" in the end of the argument list of `procedure,`
+         *   "save-color-profile" in the end of the argument list of `procedure`,
          *   with relevant blurb and description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
@@ -10294,23 +10978,23 @@ export namespace Gimp {
          * - Generated GimpExportProcedureDialog will contain the metadata
          *   options, once again always in the same order and with consistent
          *   GUI style across plug-ins.
-         * - API from [class`ProcedureConfig]` will automatically process these
+         * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
          * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be [func`export_color_profile]`.
+         * the PDB arguments. By default, the value will be {@link export_color_profile}.
          * @param supports whether color profiles can be stored.
          */
         set_support_profile(supports: boolean): void;
         /**
          * Determine whether `procedure` supports exporting a thumbnail. By default,
          * it won't (so there is usually no reason to run this function with
-         * %FALSE).
+         * `false`).
          *
          * This will have several consequences:
          *
          * - Automatically adds a standard auxiliary argument "save-thumbnail"
-         *   in the end of the argument list of `procedure,` with relevant blurb
+         *   in the end of the argument list of `procedure`, with relevant blurb
          *   and description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
@@ -10318,24 +11002,24 @@ export namespace Gimp {
          * - Generated GimpExportProcedureDialog will contain the metadata
          *   options, once again always in the same order and with consistent
          *   GUI style across plug-ins.
-         * - API from [class`ProcedureConfig]` will automatically process these
+         * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
          * Note that since this is an auxiliary argument, it won't be part of
          * the PDB arguments. By default, the value will be
-         * [func`export_thumbnail]`.
+         * {@link export_thumbnail}.
          * @param supports whether a thumbnail can be stored.
          */
         set_support_thumbnail(supports: boolean): void;
         /**
          * Determine whether `procedure` supports exporting XMP data. By default,
          * it won't (so there is usually no reason to run this function with
-         * %FALSE).
+         * `false`).
          *
          * This will have several consequences:
          *
          * - Automatically adds a standard auxiliary argument "save-xmp" in the
-         *   end of the argument list of `procedure,` with relevant blurb and
+         *   end of the argument list of `procedure`, with relevant blurb and
          *   description.
          * - If used with other gimp_export_procedure_set_support_*() functions,
          *   they will always be ordered the same (the order of the calls don't
@@ -10343,11 +11027,11 @@ export namespace Gimp {
          * - Generated GimpExportProcedureDialog will contain the metadata
          *   options, once again always in the same order and with consistent
          *   GUI style across plug-ins.
-         * - API from [class`ProcedureConfig]` will automatically process these
+         * - API from {@link ProcedureConfig} will automatically process these
          *   properties to decide whether to export a given metadata or not.
          *
          * Note that since this is an auxiliary argument, it won't be part of
-         * the PDB arguments. By default, the value will be [func`export_xmp]`.
+         * the PDB arguments. By default, the value will be {@link export_xmp}.
          * @param supports whether XMP metadata are supported.
          */
         set_support_xmp(supports: boolean): void;
@@ -10371,6 +11055,7 @@ export namespace Gimp {
      * Instead, you will create an instance of one of the sublasses (such as export
      * or load procedures). This provides a common interface for file-related
      * functions on these objects.
+     * @gir-type Class
      */
     abstract class FileProcedure extends Procedure {
         static $gtype: GObject.GType<FileProcedure>;
@@ -10392,16 +11077,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileProcedure.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10412,42 +11100,42 @@ export namespace Gimp {
 
         /**
          * Returns the procedure's extensions as set with
-         * [method`FileProcedure`.set_extensions].
+         * {@link FileProcedure.set_extensions}.
          * @returns The procedure's registered extensions.
          */
         get_extensions(): string;
         /**
          * Returns the procedure's format name, as set with
-         * [method`FileProcedure`.set_format_name].
+         * {@link FileProcedure.set_format_name}.
          * @returns The procedure's format name.
          */
         get_format_name(): string;
         /**
          * Returns the procedure's 'handles remote' flags as set with
-         * [method`FileProcedure`.set_handles_remote].
+         * {@link FileProcedure.set_handles_remote}.
          * @returns The procedure's 'handles remote' flag
          */
         get_handles_remote(): boolean;
         /**
-         * Returns the procedure's magics as set with [method`FileProcedure`.set_magics].
+         * Returns the procedure's magics as set with {@link FileProcedure.set_magics}.
          * @returns The procedure's registered magics.
          */
         get_magics(): string;
         /**
          * Returns the procedure's mime-type as set with
-         * [method`FileProcedure`.set_mime_types].
+         * {@link FileProcedure.set_mime_types}.
          * @returns The procedure's registered mime-types.
          */
         get_mime_types(): string;
         /**
          * Returns the procedure's prefixes as set with
-         * [method`FileProcedure`.set_prefixes].
+         * {@link FileProcedure.set_prefixes}.
          * @returns The procedure's registered prefixes.
          */
         get_prefixes(): string;
         /**
          * Returns the procedure's priority as set with
-         * [method`FileProcedure`.set_priority].
+         * {@link FileProcedure.set_priority}.
          * @returns The procedure's registered priority.
          */
         get_priority(): number;
@@ -10481,11 +11169,11 @@ export namespace Gimp {
          * Registers a file procedure as capable of handling arbitrary remote
          * URIs via GIO.
          *
-         * When `handles_remote` is set to %TRUE, the procedure will get a
-         * #GFile passed that can point to a remote file.
+         * When `handles_remote` is set to `true`, the procedure will get a
+         * {@link Gio.File} passed that can point to a remote file.
          *
-         * When `handles_remote` is set to %FALSE, the procedure will get a
-         * local [iface`Gio`.File] passed and can use [method`Gio`.File.get_path] to get
+         * When `handles_remote` is set to `false`, the procedure will get a
+         * local {@link Gio.File} passed and can use {@link Gio.File.get_path} to get
          * to a filename that can be used with whatever non-GIO means of dealing with
          * the file.
          * @param handles_remote The procedure's 'handles remote' flag.
@@ -10539,6 +11227,7 @@ export namespace Gimp {
 
     /**
      * Installable object used by text tools.
+     * @gir-type Class
      */
     class Font extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Font>;
@@ -10560,16 +11249,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Font.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Font.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Font.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Font.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10585,24 +11277,25 @@ export namespace Gimp {
          * this function should be considered random. This can be used when you
          * know you won't have multiple fonts of this name or that you don't
          * want to choose (non-interactive scripts, etc.).
-         * If you need more control, you should use gimp_fonts_get_by_name()
+         * If you need more control, you should use `gimp_fonts_get_by_name()`
          * instead.
-         * Returns %NULL when no font exists of that name.
+         * Returns `null` when no font exists of that name.
          * @param name The name of the font.
          */
         static get_by_name(name: string): Font | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gimp.Resource.get_by_name
         static get_by_name(...args: never[]): any;
 
         // Methods
 
         /**
-         * Returns a [struct`Pango`.FontDescription] representing `font`.
-         * @returns a %PangoFontDescription representing @font.
+         * Returns a {@link Pango.FontDescription} representing `font`.
+         * @returns a %PangoFontDescription representing `font`.
          */
         get_pango_font_description(): Pango.FontDescription;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -10616,32 +11309,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -10650,39 +11343,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -10693,13 +11386,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -10707,7 +11403,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -10715,9 +11411,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -10737,9 +11433,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -10753,33 +11449,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -10812,21 +11508,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -10836,8 +11532,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -10854,10 +11550,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -10872,13 +11568,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -10909,21 +11605,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -10933,33 +11629,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -10968,6 +11665,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -10976,12 +11674,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -10990,20 +11690,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -11015,6 +11717,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -11057,6 +11760,7 @@ export namespace Gimp {
 
     /**
      * Installable object used by the gradient rendering tool.
+     * @gir-type Class
      */
     class Gradient extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Gradient>;
@@ -11080,16 +11784,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Gradient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Gradient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Gradient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Gradient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Gradient.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Gradient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11101,11 +11808,14 @@ export namespace Gimp {
         /**
          * Returns the gradient with the given name.
          *
-         * Returns an existing gradient having the given name. Returns %NULL
+         * Returns an existing gradient having the given name. Returns `null`
          * when no gradient exists of that name.
          * @param name The name of the gradient.
          */
         static get_by_name(name: string): Gradient | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gimp.Resource.get_by_name
         static get_by_name(...args: never[]): any;
 
@@ -11365,7 +12075,7 @@ export namespace Gimp {
          * Sets the left endpoint color of a segment
          *
          * Sets the color of the left endpoint the indexed segment of the
-         * gradient. The alpha channel of the [class`Gegl`.Color] is taken into
+         * gradient. The alpha channel of the {@link Gegl.Color} is taken into
          * account.
          * Returns an error when gradient is not editable or index is out of
          * range.
@@ -11404,7 +12114,7 @@ export namespace Gimp {
          * Sets the right endpoint color of the segment
          *
          * Sets the right endpoint color of the segment of the gradient. The
-         * alpha channel of the [class`Gegl`.Color] is taken into account.
+         * alpha channel of the {@link Gegl.Color} is taken into account.
          * Returns an error when gradient is not editable or segment index is
          * out of range.
          * @param segment The index of a segment within the gradient.
@@ -11425,8 +12135,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         segment_set_right_pos(segment: number, pos: number): [boolean, number];
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -11440,32 +12148,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -11474,39 +12182,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -11517,13 +12225,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11531,7 +12242,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11539,9 +12250,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11561,9 +12272,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11577,33 +12288,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -11636,21 +12347,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -11660,8 +12371,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11678,10 +12389,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -11696,13 +12407,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11733,21 +12444,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11757,33 +12468,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -11792,6 +12504,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -11800,12 +12513,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -11814,20 +12529,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -11839,6 +12556,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -11881,6 +12599,7 @@ export namespace Gimp {
 
     /**
      * Operations on a group layer.
+     * @gir-type Class
      */
     class GroupLayer extends Layer {
         static $gtype: GObject.GType<GroupLayer>;
@@ -11904,16 +12623,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GroupLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GroupLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GroupLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GroupLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GroupLayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GroupLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11923,9 +12645,9 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Returns a #GimpGroupLayer representing `layer_id`. This function calls
-         * gimp_item_get_by_id() and returns the item if it is a group layer or
-         * %NULL otherwise.
+         * Returns a {@link Gimp.GroupLayer} representing `layer_id`. This function calls
+         * `gimp_item_get_by_id()` and returns the item if it is a group layer or
+         * `null` otherwise.
          * @param layer_id The layer id.
          */
         static get_by_id(layer_id: number): GroupLayer | null;
@@ -11959,6 +12681,7 @@ export namespace Gimp {
     /**
      * Operations on complete images: creation, resizing/rescaling, and
      * operations involving multiple layers.
+     * @gir-type Class
      */
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
@@ -11988,16 +12711,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12016,6 +12742,9 @@ export namespace Gimp {
          * @param matrix The matrix -- all values must be >= 1.
          */
         static convert_set_dither_matrix(width: number, height: number, matrix: GLib.Bytes | Uint8Array): boolean;
+        /**
+         * @param image_id The image id.
+         */
         static get_by_id(image_id: number): Image | null;
         /**
          * Returns TRUE if the image ID is valid.
@@ -12027,7 +12756,7 @@ export namespace Gimp {
         static id_is_valid(image_id: number): boolean;
         /**
          * Retrieves a thumbnail from metadata if present.
-         * @param file A #GFile image
+         * @param file A {@link Gio.File} image
          */
         static metadata_load_thumbnail(file: Gio.File): Image | null;
 
@@ -12238,22 +12967,22 @@ export namespace Gimp {
          *
          * This procedure creates an SVG file to save a Path object, that is, a
          * path. The resulting file can be edited using a vector graphics
-         * application, or later reloaded into GIMP. Pass %NULL as the 'path'
+         * application, or later reloaded into GIMP. Pass `null` as the 'path'
          * argument to export all paths in the image.
          * @param file The SVG file to create.
-         * @param path The path object to export, or %NULL for all in the image.
+         * @param path The path object to export, or `null` for all in the image.
          * @returns TRUE on success.
          */
         export_path_to_file(file: Gio.File, path?: Path | null): boolean;
         /**
          * Save a path as an SVG string.
          *
-         * This procedure works like [method`Gimp`.Image.export_path_to_file]
+         * This procedure works like {@link Gimp.Image.export_path_to_file}
          * but creates a string rather than a file. The string is
-         * NULL-terminated and holds a complete XML document. Pass %NULL as the
+         * NULL-terminated and holds a complete XML document. Pass `null` as the
          * 'path' argument to export all paths in the image.
-         * @param path The path object to export, or %NULL for all in the image.
-         * @returns A string whose contents are a complete SVG document.          The returned value must be freed with g_free().
+         * @param path The path object to export, or `null` for all in the image.
+         * @returns A string whose contents are a complete SVG document.          The returned value must be freed with `g_free()`.
          */
         export_path_to_string(path?: Path | null): string;
         /**
@@ -12316,8 +13045,8 @@ export namespace Gimp {
          * image's channels. This can significantly improve performance while
          * applying changes affecting the channel list.
          *
-         * Each call to gimp_image_freeze_channels() should be matched by a
-         * corresponding call to gimp_image_thaw_channels(), undoing its
+         * Each call to `gimp_image_freeze_channels()` should be matched by a
+         * corresponding call to `gimp_image_thaw_channels()`, undoing its
          * effects.
          * @returns TRUE on success.
          */
@@ -12330,8 +13059,8 @@ export namespace Gimp {
          * layers. This can significantly improve performance while applying
          * changes affecting the layer list.
          *
-         * Each call to gimp_image_freeze_layers() should be matched by a
-         * corresponding call to gimp_image_thaw_layers(), undoing its effects.
+         * Each call to `gimp_image_freeze_layers()` should be matched by a
+         * corresponding call to `gimp_image_thaw_layers()`, undoing its effects.
          * @returns TRUE on success.
          */
         freeze_layers(): boolean;
@@ -12343,7 +13072,7 @@ export namespace Gimp {
          * path. This can significantly improve performance while applying
          * changes affecting the path list.
          *
-         * Each call to gimp_image_freeze_paths() should be matched by a
+         * Each call to `gimp_image_freeze_paths()` should be matched by a
          * corresponding call to gimp_image_thaw_paths (), undoing its effects.
          * @returns TRUE on success.
          */
@@ -12382,7 +13111,7 @@ export namespace Gimp {
          * masks. The order is from topmost to bottommost. Note that
          * \"channels\" are custom channels and do not include the image's
          * color components.
-         * @returns The list of channels contained in the image.          The returned value must be freed with g_free().
+         * @returns The list of channels contained in the image.          The returned value must be freed with `g_free()`.
          */
         get_channels(): Channel[];
         /**
@@ -12390,7 +13119,7 @@ export namespace Gimp {
          *
          * This procedure returns the image's color profile, or NULL if the
          * image has no color profile assigned.
-         * @returns The image's color profile. The returned          value must be freed with g_object_unref().
+         * @returns The image's color profile. The returned          value must be freed with `g_object_unref()`.
          */
         get_color_profile(): ColorProfile;
         /**
@@ -12437,11 +13166,11 @@ export namespace Gimp {
          *
          * This procedure returns the color profile that is actually used for
          * this image, which is the profile returned by
-         * gimp_image_get_color_profile() if the image has a profile assigned,
+         * `gimp_image_get_color_profile()` if the image has a profile assigned,
          * or the default RGB profile from preferences if no profile is
          * assigned to the image. If there is no default RGB profile configured
          * in preferences either, a generated default RGB profile is returned.
-         * @returns The color profile. The returned value must          be freed with g_object_unref().
+         * @returns The color profile. The returned value must          be freed with `g_object_unref()`.
          */
         get_effective_color_profile(): ColorProfile;
         /**
@@ -12449,7 +13178,7 @@ export namespace Gimp {
          *
          * This procedure returns the file associated with the specified image
          * if the image was exported a non-native GIMP format. If the image was
-         * not exported, this procedure returns %NULL.
+         * not exported, this procedure returns `null`.
          * @returns The exported file.
          */
         get_exported_file(): Gio.File;
@@ -12459,7 +13188,7 @@ export namespace Gimp {
          * This procedure returns the file associated with the specified image.
          * The image has a file only if it was loaded or imported from a file
          * or has since been saved or exported. Otherwise, this function
-         * returns %NULL. See also gimp-image-get-imported-file to get the
+         * returns `null`. See also gimp-image-get-imported-file to get the
          * current file if it was imported from a non-GIMP file format and not
          * yet saved, or gimp-image-get-exported-file if the image has been
          * exported to a non-GIMP file format.
@@ -12500,6 +13229,9 @@ export namespace Gimp {
          * @returns The image's height.
          */
         get_height(): number;
+        /**
+         * @returns the image ID.
+         */
         get_id(): number;
         /**
          * Returns the imported file for the specified image.
@@ -12507,7 +13239,7 @@ export namespace Gimp {
          * This procedure returns the file associated with the specified image
          * if the image was imported from a non-native Gimp format. If the
          * image was not imported, or has since been saved in the native Gimp
-         * format, this procedure returns %NULL.
+         * format, this procedure returns `null`.
          * @returns The imported file.
          */
         get_imported_file(): Gio.File;
@@ -12548,17 +13280,17 @@ export namespace Gimp {
          * Note that this is not the full list of layers, but only the root
          * layers, i.e. layers with no parents themselves. If you need all
          * layers, it is up to you to verify that any of these layers is a
-         * group layer with gimp_item_is_group() and to obtain its children
-         * with gimp_item_get_children() (possibly recursively checking if
+         * group layer with `gimp_item_is_group()` and to obtain its children
+         * with `gimp_item_get_children()` (possibly recursively checking if
          * these have children too).
-         * @returns The list of layers contained in the image.          The returned value must be freed with g_free().
+         * @returns The list of layers contained in the image.          The returned value must be freed with `g_free()`.
          */
         get_layers(): Layer[];
         /**
          * Returns the image's metadata.
          *
          * Returns exif/iptc/xmp metadata from the image.
-         * @returns The exif/ptc/xmp metadata,          or %NULL if there is none.
+         * @returns The exif/ptc/xmp metadata,          or `null` if there is none.
          */
         get_metadata(): Metadata | null;
         /**
@@ -12571,14 +13303,14 @@ export namespace Gimp {
          * the image name in the image window title, it may contain '[]',
          * '(imported)' etc. and should only be used to label user interface
          * elements. Never use it to construct filenames.
-         * @returns The name.          The returned value must be freed with g_free().
+         * @returns The name.          The returned value must be freed with `g_free()`.
          */
         get_name(): string;
         /**
          * Returns the image's colormap
          *
          * This procedure returns the image's colormap as a GimpPalette. If the
-         * image is not in Indexed color mode, %NULL is returned.
+         * image is not in Indexed color mode, `null` is returned.
          * @returns The image's colormap.
          */
         get_palette(): Palette;
@@ -12595,9 +13327,9 @@ export namespace Gimp {
          * List all parasites.
          *
          * Returns a list of the names of all currently attached parasites.
-         * These names can later be used to get the actual #GimpParasite with
-         * gimp_image_get_parasite() when needed.
-         * @returns The names of currently attached parasites.          The returned value must be freed with g_strfreev().
+         * These names can later be used to get the actual {@link Gimp.Parasite} with
+         * `gimp_image_get_parasite()` when needed.
+         * @returns The names of currently attached parasites.          The returned value must be freed with `g_strfreev()`.
          */
         get_parasite_list(): string[];
         /**
@@ -12623,7 +13355,7 @@ export namespace Gimp {
          *
          * This procedure returns the list of paths contained in the specified
          * image.
-         * @returns The list of paths contained in the image.          The returned value must be freed with g_free().
+         * @returns The list of paths contained in the image.          The returned value must be freed with `g_free()`.
          */
         get_paths(): Path[];
         /**
@@ -12656,7 +13388,7 @@ export namespace Gimp {
          *
          * This procedure returns the list of selected channels in the
          * specified image.
-         * @returns The list of selected channels in the image.          The returned value must be freed with g_free().
+         * @returns The list of selected channels in the image.          The returned value must be freed with `g_free()`.
          */
         get_selected_channels(): Channel[];
         /**
@@ -12669,7 +13401,7 @@ export namespace Gimp {
          * none, these are the active image layers. If the active image layer
          * has a layer mask and the layer mask is in edit mode, then the layer
          * mask is the active drawable.
-         * @returns The list of selected drawables in the image.          The returned value must be freed with g_free().
+         * @returns The list of selected drawables in the image.          The returned value must be freed with `g_free()`.
          */
         get_selected_drawables(): Item[];
         /**
@@ -12677,7 +13409,7 @@ export namespace Gimp {
          *
          * This procedure returns the list of selected layers in the specified
          * image.
-         * @returns The list of selected layers in the image.          The returned value must be freed with g_free().
+         * @returns The list of selected layers in the image.          The returned value must be freed with `g_free()`.
          */
         get_selected_layers(): Layer[];
         /**
@@ -12685,7 +13417,7 @@ export namespace Gimp {
          *
          * This procedure returns the list of selected paths in the specified
          * image.
-         * @returns The list of selected paths in the image.          The returned value must be freed with g_free().
+         * @returns The list of selected paths in the image.          The returned value must be freed with `g_free()`.
          */
         get_selected_paths(): Path[];
         /**
@@ -12717,7 +13449,7 @@ export namespace Gimp {
          *
          * This procedure returns the image's simulation color profile, or NULL if
          * the image has no simulation color profile assigned.
-         * @returns The image's simulation color profile. The          returned value must be freed with g_object_unref().
+         * @returns The image's simulation color profile. The          returned value must be freed with `g_object_unref()`.
          */
         get_simulation_profile(): ColorProfile;
         /**
@@ -12735,7 +13467,7 @@ export namespace Gimp {
          * @param width the requested thumbnail width  (<= 1024 pixels)
          * @param height the requested thumbnail height (<= 1024 pixels)
          * @param alpha how to handle an alpha channel
-         * @returns a new #GdkPixbuf
+         * @returns a new {@link GdkPixbuf.Pixbuf}
          */
         get_thumbnail(width: number, height: number, alpha: PixbufTransparency | null): GdkPixbuf.Pixbuf;
         /**
@@ -12772,7 +13504,7 @@ export namespace Gimp {
          * Returns the XCF file for the specified image.
          *
          * This procedure returns the XCF file associated with the image. If
-         * there is no such file, this procedure returns %NULL.
+         * there is no such file, this procedure returns `null`.
          * @returns The imported XCF file.
          */
         get_xcf_file(): Gio.File;
@@ -12872,7 +13604,7 @@ export namespace Gimp {
         /**
          * Import paths from an SVG string.
          *
-         * This procedure works like [method`Gimp`.Image.import_paths_from_file]
+         * This procedure works like {@link Gimp.Image.import_paths_from_file}
          * but takes a string rather than reading the SVG from a file. This
          * allows you to write scripts that generate SVG and feed it to GIMP.
          * @param string A string that must be a complete and valid SVG document.
@@ -12902,7 +13634,7 @@ export namespace Gimp {
          *
          * This procedure adds the specified layer to the image at the given
          * position. If the specified parent is a valid layer group (See
-         * gimp_item_is_group() and gimp_layer_group_new()) then the layer is
+         * `gimp_item_is_group()` and `gimp_layer_group_new()`) then the layer is
          * added inside the group. If the parent is 0, the layer is added
          * inside the main stack, outside of any group. The position argument
          * specifies the location of the layer inside the stack (or the group,
@@ -12937,7 +13669,7 @@ export namespace Gimp {
          *
          * This procedure checks the specified image's dirty count to see if it
          * needs to be saved. Note that saving the image does not automatically
-         * set the dirty count to 0, you need to call gimp_image_clean_all()
+         * set the dirty count to 0, you need to call `gimp_image_clean_all()`
          * after calling a save procedure to make the image clean.
          * @returns TRUE if the image has unsaved changes.
          */
@@ -12999,7 +13731,7 @@ export namespace Gimp {
         merge_visible_layers(merge_type: MergeType | null): Layer;
         /**
          * Applies the `metadata` previously loaded with
-         * gimp_image_metadata_load_prepare() to the image, taking into account
+         * `gimp_image_metadata_load_prepare()` to the image, taking into account
          * the passed `flags`.
          * @param mime_type The loaded file's mime-type
          * @param metadata The metadata to set on the image
@@ -13008,7 +13740,7 @@ export namespace Gimp {
         metadata_load_finish(mime_type: string, metadata: Metadata, flags: MetadataLoadFlags | null): void;
         /**
          * Loads and returns metadata from `file` to be passed into
-         * gimp_image_metadata_load_finish().
+         * `gimp_image_metadata_load_finish()`.
          * @param mime_type The loaded file's mime-type
          * @param file The file to load the metadata from
          * @returns The file's metadata.
@@ -13016,11 +13748,11 @@ export namespace Gimp {
         metadata_load_prepare(mime_type: string, file: Gio.File): Metadata;
         /**
          * Filters the `metadata` retrieved from the image with
-         * gimp_image_metadata_save_prepare(),
+         * `gimp_image_metadata_save_prepare()`,
          * taking into account the passed `flags`.
          *
          * Note that the `image` passed to this function might be different
-         * from the image passed to gimp_image_metadata_save_prepare(), due
+         * from the image passed to `gimp_image_metadata_save_prepare()`, due
          * to whatever file export conversion happened in the meantime
          *
          * This is an alternative to gimp_image_metadata_save_finish when you
@@ -13028,8 +13760,8 @@ export namespace Gimp {
          * @param mime_type The saved file's mime-type
          * @param metadata The metadata to export
          * @param flags Flags to specify what of the metadata to save
-         * @param file The file @image was saved to or NULL if file was not saved yet
-         * @returns Filtered metadata or NULL in case of failure. Use g_object_unref() when returned metadata are no longer needed
+         * @param file The file `image` was saved to or NULL if file was not saved yet
+         * @returns Filtered metadata or NULL in case of failure. Use `g_object_unref()` when returned metadata are no longer needed
          */
         metadata_save_filter(
             mime_type: string,
@@ -13039,16 +13771,16 @@ export namespace Gimp {
         ): Metadata;
         /**
          * Saves the `metadata` retrieved from the image with
-         * gimp_image_metadata_save_prepare() to `file,` taking into account
+         * `gimp_image_metadata_save_prepare()` to `file`, taking into account
          * the passed `flags`.
          *
          * Note that the `image` passed to this function might be different
-         * from the image passed to gimp_image_metadata_save_prepare(), due
+         * from the image passed to `gimp_image_metadata_save_prepare()`, due
          * to whatever file export conversion happened in the meantime
          * @param mime_type The saved file's mime-type
-         * @param metadata The metadata to write to @file
+         * @param metadata The metadata to write to `file`
          * @param flags Flags to specify what of the metadata to save
-         * @param file The file @image was saved to
+         * @param file The file `image` was saved to
          * @returns Whether the save was successful.
          */
         metadata_save_finish(
@@ -13059,21 +13791,21 @@ export namespace Gimp {
         ): boolean;
         /**
          * Gets the image metadata for saving it using
-         * gimp_image_metadata_save_finish().
+         * `gimp_image_metadata_save_finish()`.
          *
          * The `suggested_flags` are determined from what kind of metadata
          * (Exif, XMP, ...) is actually present in the image and the preferences
          * for metadata exporting.
-         * The calling application may still update `available_flags,` for
+         * The calling application may still update `available_flags`, for
          * instance to follow the settings from a previous export in the same
          * session, or a previous export of the same image. But it should not
          * override the preferences without a good reason since it is a data
          * leak.
          *
-         * The suggested value for %GIMP_METADATA_SAVE_THUMBNAIL is determined by
+         * The suggested value for {@link Gimp.MetadataSaveFlags.THUMBNAIL} is determined by
          * whether there was a thumbnail in the previously imported image.
          * @param mime_type The saved file's mime-type
-         * @param suggested_flags Suggested default values for the @flags passed to                   gimp_image_metadata_save_finish()
+         * @param suggested_flags Suggested default values for the `flags` passed to                   `gimp_image_metadata_save_finish()`
          * @returns The image's metadata, prepared for saving.
          */
         metadata_save_prepare(mime_type: string, suggested_flags: MetadataSaveFlags | null): Metadata;
@@ -13137,7 +13869,7 @@ export namespace Gimp {
          * `Preferences`.
          * This function should be used only if you want to follow user
          * settings. If you intend to convert to a specific profile, call
-         * preferably gimp_image_convert_color_profile(). And if you wish to
+         * preferably `gimp_image_convert_color_profile()`. And if you wish to
          * leave whatever profile an image has, do not call any of these
          * functions.
          * Finally it is unnecessary to call this function in a format load
@@ -13268,7 +14000,7 @@ export namespace Gimp {
          * equal to the supplied parameters. All layers and channels within the
          * image are scaled according to the specified parameters; this
          * includes the image selection mask. The interpolation method used can
-         * be set with gimp_context_set_interpolation().
+         * be set with `gimp_context_set_interpolation()`.
          * @param new_width New image width.
          * @param new_height New image height.
          * @returns TRUE on success.
@@ -13287,11 +14019,11 @@ export namespace Gimp {
          * specified must also have minimum alpha.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_antialias(), gimp_context_set_feather(),
-         * gimp_context_set_feather_radius(), gimp_context_set_sample_merged(),
-         * gimp_context_set_sample_criterion(),
-         * gimp_context_set_sample_threshold(),
-         * gimp_context_set_sample_transparent().
+         * `gimp_context_set_antialias()`, `gimp_context_set_feather()`,
+         * `gimp_context_set_feather_radius()`, `gimp_context_set_sample_merged()`,
+         * `gimp_context_set_sample_criterion()`,
+         * `gimp_context_set_sample_threshold()`,
+         * `gimp_context_set_sample_transparent()`.
          *
          * In the case of a merged sampling, the supplied drawable is ignored.
          * @param operation The selection operation.
@@ -13318,12 +14050,12 @@ export namespace Gimp {
          * boundary.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_antialias(), gimp_context_set_feather(),
-         * gimp_context_set_feather_radius(), gimp_context_set_sample_merged(),
-         * gimp_context_set_sample_criterion(),
-         * gimp_context_set_sample_threshold(),
-         * gimp_context_set_sample_transparent(),
-         * gimp_context_set_diagonal_neighbors().
+         * `gimp_context_set_antialias()`, `gimp_context_set_feather()`,
+         * `gimp_context_set_feather_radius()`, `gimp_context_set_sample_merged()`,
+         * `gimp_context_set_sample_criterion()`,
+         * `gimp_context_set_sample_threshold()`,
+         * `gimp_context_set_sample_transparent()`,
+         * `gimp_context_set_diagonal_neighbors()`.
          *
          * In the case of a merged sampling, the supplied drawable is ignored.
          * If the sample is merged, the specified coordinates are relative to
@@ -13344,8 +14076,8 @@ export namespace Gimp {
          * replace the contents of the previous selection mask.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_antialias(), gimp_context_set_feather(),
-         * gimp_context_set_feather_radius().
+         * `gimp_context_set_antialias()`, `gimp_context_set_feather()`,
+         * `gimp_context_set_feather_radius()`.
          * @param operation The selection operation.
          * @param x x coordinate of upper-left corner of ellipse bounding box.
          * @param y y coordinate of upper-left corner of ellipse bounding box.
@@ -13363,8 +14095,8 @@ export namespace Gimp {
          * channel, for vectors the vector's shape.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_antialias(), gimp_context_set_feather(),
-         * gimp_context_set_feather_radius().
+         * `gimp_context_set_antialias()`, `gimp_context_set_feather()`,
+         * `gimp_context_set_feather_radius()`.
          * @param operation The desired operation with current selection.
          * @param item The item to render to the selection.
          * @returns TRUE on success.
@@ -13383,8 +14115,8 @@ export namespace Gimp {
          * starting point, a connecting segment is automatically added.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_antialias(), gimp_context_set_feather(),
-         * gimp_context_set_feather_radius().
+         * `gimp_context_set_antialias()`, `gimp_context_set_feather()`,
+         * `gimp_context_set_feather_radius()`.
          * @param operation The selection operation.
          * @param segs Array of points: { p1.x, p1.y, p2.x, p2.y, ..., pn.x, pn.y}.
          * @returns TRUE on success.
@@ -13398,7 +14130,7 @@ export namespace Gimp {
          * replace the contents of the previous selection mask.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_feather(), gimp_context_set_feather_radius().
+         * `gimp_context_set_feather()`, `gimp_context_set_feather_radius()`.
          * @param operation The selection operation.
          * @param x x coordinate of upper-left corner of rectangle.
          * @param y y coordinate of upper-left corner of rectangle.
@@ -13417,8 +14149,8 @@ export namespace Gimp {
          * mask.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_antialias(), gimp_context_set_feather(),
-         * gimp_context_set_feather_radius().
+         * `gimp_context_set_antialias()`, `gimp_context_set_feather()`,
+         * `gimp_context_set_feather_radius()`.
          * @param operation The selection operation.
          * @param x x coordinate of upper-left corner of rectangle.
          * @param y y coordinate of upper-left corner of rectangle.
@@ -13441,8 +14173,8 @@ export namespace Gimp {
          * Sets the image's color profile
          *
          * This procedure sets the image's color profile.
-         * @param profile A #GimpColorProfile, or %NULL.
-         * @returns %TRUE on success.
+         * @param profile A {@link Gimp.ColorProfile}, or `null`.
+         * @returns `true` on success.
          */
         set_color_profile(profile?: ColorProfile | null): boolean;
         /**
@@ -13509,7 +14241,7 @@ export namespace Gimp {
          * Set the image's metadata.
          *
          * Sets exif/iptc/xmp metadata on the image, or deletes it if
-         * `metadata` is %NULL.
+         * `metadata` is `null`.
          * @param metadata The exif/ptc/xmp metadata.
          * @returns TRUE on success.
          */
@@ -13577,8 +14309,8 @@ export namespace Gimp {
          * Sets the image's simulation color profile
          *
          * This procedure sets the image's simulation color profile.
-         * @param profile A #GimpColorProfile, or %NULL.
-         * @returns %TRUE on success.
+         * @param profile A {@link Gimp.ColorProfile}, or `null`.
+         * @returns `true` on success.
          */
         set_simulation_profile(profile: ColorProfile): boolean;
         /**
@@ -13654,7 +14386,7 @@ export namespace Gimp {
          * updates to the Channels dialog.
          *
          * This procedure should match a corresponding call to
-         * gimp_image_freeze_channels().
+         * `gimp_image_freeze_channels()`.
          * @returns TRUE on success.
          */
         thaw_channels(): boolean;
@@ -13665,7 +14397,7 @@ export namespace Gimp {
          * updates to the Layers dialog.
          *
          * This procedure should match a corresponding call to
-         * gimp_image_freeze_layers().
+         * `gimp_image_freeze_layers()`.
          * @returns TRUE on success.
          */
         thaw_layers(): boolean;
@@ -13676,7 +14408,7 @@ export namespace Gimp {
          * to the Paths dialog.
          *
          * This procedure should match a corresponding call to
-         * gimp_image_freeze_paths().
+         * `gimp_image_freeze_paths()`.
          * @returns TRUE on success.
          */
         thaw_paths(): boolean;
@@ -13685,7 +14417,7 @@ export namespace Gimp {
          *
          * This procedure disables the image's undo stack, allowing subsequent
          * operations to ignore their undo steps. This is generally called in
-         * conjunction with gimp_image_undo_enable() to temporarily disable an
+         * conjunction with `gimp_image_undo_enable()` to temporarily disable an
          * image undo stack. This is advantageous because saving undo steps can
          * be time and memory intensive.
          * @returns TRUE if the image undo has been disabled.
@@ -13696,7 +14428,7 @@ export namespace Gimp {
          *
          * This procedure enables the image's undo stack, allowing subsequent
          * operations to store their undo steps. This is generally called in
-         * conjunction with gimp_image_undo_disable() to temporarily disable an
+         * conjunction with `gimp_image_undo_disable()` to temporarily disable an
          * image undo stack.
          * @returns TRUE if the image undo has been enabled.
          */
@@ -13706,11 +14438,11 @@ export namespace Gimp {
          *
          * This procedure freezes the image's undo stack, allowing subsequent
          * operations to ignore their undo steps. This is generally called in
-         * conjunction with gimp_image_undo_thaw() to temporarily disable an
+         * conjunction with `gimp_image_undo_thaw()` to temporarily disable an
          * image undo stack. This is advantageous because saving undo steps can
-         * be time and memory intensive. gimp_image_undo_freeze() /
-         * gimp_image_undo_thaw() and gimp_image_undo_disable() /
-         * gimp_image_undo_enable() differ in that the former does not free up
+         * be time and memory intensive. `gimp_image_undo_freeze()` /
+         * `gimp_image_undo_thaw()` and `gimp_image_undo_disable()` /
+         * `gimp_image_undo_enable()` differ in that the former does not free up
          * all undo steps when undo is thawed, so is more suited to interactive
          * in-situ previews. It is important in this case that the image is
          * back to the same state it was frozen in before thawing, else 'undo'
@@ -13722,7 +14454,7 @@ export namespace Gimp {
          * Finish a group undo.
          *
          * This function must be called once for each
-         * gimp_image_undo_group_start() call that is made.
+         * `gimp_image_undo_group_start()` call that is made.
          * @returns TRUE on success.
          */
         undo_group_end(): boolean;
@@ -13731,7 +14463,7 @@ export namespace Gimp {
          *
          * This function is used to start a group undo--necessary for logically
          * combining two or more undo operations into a single operation. This
-         * call must be used in conjunction with a gimp_image_undo_group_end()
+         * call must be used in conjunction with a `gimp_image_undo_group_end()`
          * call.
          * @returns TRUE on success.
          */
@@ -13742,7 +14474,7 @@ export namespace Gimp {
          * This procedure checks if the image's undo stack is currently enabled
          * or disabled. This is useful when several plug-ins or scripts call
          * each other and want to check if their caller has already used
-         * gimp_image_undo_disable() or gimp_image_undo_freeze().
+         * `gimp_image_undo_disable()` or `gimp_image_undo_freeze()`.
          * @returns TRUE if undo is enabled for this image.
          */
         undo_is_enabled(): boolean;
@@ -13751,9 +14483,9 @@ export namespace Gimp {
          *
          * This procedure thaws the image's undo stack, allowing subsequent
          * operations to store their undo steps. This is generally called in
-         * conjunction with gimp_image_undo_freeze() to temporarily freeze an
-         * image undo stack. gimp_image_undo_thaw() does NOT free the undo
-         * stack as gimp_image_undo_enable() does, so is suited for situations
+         * conjunction with `gimp_image_undo_freeze()` to temporarily freeze an
+         * image undo stack. `gimp_image_undo_thaw()` does NOT free the undo
+         * stack as `gimp_image_undo_enable()` does, so is suited for situations
          * where one wishes to leave the undo stack in the same state in which
          * one found it despite non-destructively playing with the image in the
          * meantime. An example would be in-situ plug-in previews. Balancing
@@ -13788,20 +14520,21 @@ export namespace Gimp {
     }
 
     /**
-     * A [class`Procedure]` subclass that makes it easier to write standard plug-in
+     * A {@link Procedure} subclass that makes it easier to write standard plug-in
      * procedures that operate on drawables.
      *
      * It automatically adds the standard
      *
-     * ( [enum`RunMode]`, [class`Image]`, [class`Drawable]` )
+     * ( {@link RunMode}, {@link Image}, {@link Drawable} )
      *
      * arguments of an image procedure. It is possible to add additional
      * arguments.
      *
-     * When invoked via [method`Procedure`.run], it unpacks these standard
-     * arguments and calls `run_func` which is a [callback`RunImageFunc]`. The
-     * "args" [struct`ValueArray]` of [callback`RunImageFunc]` only contains
+     * When invoked via {@link Procedure.run}, it unpacks these standard
+     * arguments and calls `run_func` which is a {@link RunImageFunc}. The
+     * "args" {@link ValueArray} of {@link RunImageFunc} only contains
      * additionally added arguments.
+     * @gir-type Class
      */
     class ImageProcedure extends Procedure {
         static $gtype: GObject.GType<ImageProcedure>;
@@ -13834,16 +14567,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ImageProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ImageProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ImageProcedure.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ImageProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13866,6 +14602,7 @@ export namespace Gimp {
 
     /**
      * Functions to manipulate items.
+     * @gir-type Class
      */
     abstract class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
@@ -13891,16 +14628,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13910,11 +14650,11 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Returns a #GimpItem representing `item_id`. Since #GimpItem is an
+         * Returns a {@link Gimp.Item} representing `item_id`. Since {@link Gimp.Item} is an
          * abstract class, the real object type will actually be the proper
          * subclass.
          *
-         * Note: in most use cases, you should not need to retrieve a #GimpItem
+         * Note: in most use cases, you should not need to retrieve a {@link Gimp.Item}
          * by its ID, which is mostly internal data and not reusable across
          * sessions. Use the appropriate functions for your use case instead.
          * @param item_id The item id.
@@ -13923,42 +14663,42 @@ export namespace Gimp {
         /**
          * Returns whether the item ID is a channel.
          *
-         * This procedure returns %TRUE if the specified item ID is a channel.
+         * This procedure returns `true` if the specified item ID is a channel.
          *
          * *Note*: in most use cases, you should not use this function. See
-         * [func`Gimp`.Item.id_is_layer] for a discussion on alternatives.
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
          */
         static id_is_channel(item_id: number): boolean;
         /**
          * Returns whether the item ID is a drawable.
          *
-         * This procedure returns %TRUE if the specified item ID is a drawable.
+         * This procedure returns `true` if the specified item ID is a drawable.
          *
          * *Note*: in most use cases, you should not use this function. See
-         * [func`Gimp`.Item.id_is_layer] for a discussion on alternatives.
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
          */
         static id_is_drawable(item_id: number): boolean;
         /**
          * Returns whether the item ID is a group layer.
          *
-         * This procedure returns %TRUE if the specified item ID is a group
+         * This procedure returns `true` if the specified item ID is a group
          * layer.
          *
          * *Note*: in most use cases, you should not use this function. See
-         * [func`Gimp`.Item.id_is_layer] for a discussion on alternatives.
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
          */
         static id_is_group_layer(item_id: number): boolean;
         /**
          * Returns whether the item ID is a layer.
          *
-         * This procedure returns %TRUE if the specified item ID is a layer.
+         * This procedure returns `true` if the specified item ID is a layer.
          *
          * *Note*: in most use cases, you should not use this function. If the
-         * goal is to verify the accurate type for a [class`Gimp`.Item], you
-         * should either use [method`Gimp`.Item.is_layer] or the specific
+         * goal is to verify the accurate type for a {@link Gimp.Item}, you
+         * should either use {@link Gimp.Item.is_layer} or the specific
          * type-checking methods for the used language.
          *
          * For instance, in C:
@@ -13972,7 +14712,7 @@ export namespace Gimp {
          *
          * ```py3
          * if isinstance(item, Gimp.Layer):
-         *   do_something()
+         *   `do_something()`
          * ```
          * @param item_id The item ID.
          */
@@ -13980,54 +14720,54 @@ export namespace Gimp {
         /**
          * Returns whether the item ID is a layer mask.
          *
-         * This procedure returns %TRUE if the specified item ID is a layer
+         * This procedure returns `true` if the specified item ID is a layer
          * mask.
          *
          * *Note*: in most use cases, you should not use this function. See
-         * [func`Gimp`.Item.id_is_layer] for a discussion on alternatives.
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item.
          */
         static id_is_layer_mask(item_id: number): boolean;
         /**
          * Returns whether the item ID is a path.
          *
-         * This procedure returns %TRUE if the specified item ID is a path.
+         * This procedure returns `true` if the specified item ID is a path.
          *
          * *Note*: in most use cases, you should not use this function. See
-         * [func`Gimp`.Item.id_is_layer] for a discussion on alternatives.
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
          */
         static id_is_path(item_id: number): boolean;
         /**
          * Returns whether the item ID is a selection.
          *
-         * This procedure returns %TRUE if the specified item ID is a
+         * This procedure returns `true` if the specified item ID is a
          * selection.
          *
          * *Note*: in most use cases, you should not use this function. See
-         * [func`Gimp`.Item.id_is_layer] for a discussion on alternatives.
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
          */
         static id_is_selection(item_id: number): boolean;
         /**
          * Returns whether the item ID is a text layer.
          *
-         * This procedure returns %TRUE if the specified item ID is a text
+         * This procedure returns `true` if the specified item ID is a text
          * layer.
          *
          * *Note*: in most use cases, you should not use this function. See
-         * [func`Gimp`.Item.id_is_layer] for a discussion on alternatives.
+         * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
          */
         static id_is_text_layer(item_id: number): boolean;
         /**
-         * Returns %TRUE if the item ID is valid.
+         * Returns `true` if the item ID is valid.
          *
          * This procedure checks if the given item ID is valid and refers to an
          * existing item.
          *
          * *Note*: in most use cases, you should not use this function. If you
-         * got a [class`Gimp`.Item] from the API, you should trust it is valid.
+         * got a {@link Gimp.Item} from the API, you should trust it is valid.
          * This function is mostly for internal usage.
          * @param item_id The item ID to check.
          */
@@ -14069,7 +14809,7 @@ export namespace Gimp {
          *
          * This procedure returns the list of items which are children of the
          * specified item. The order is topmost to bottommost.
-         * @returns The item's list of children.          The returned value must be freed with g_free().
+         * @returns The item's list of children.          The returned value must be freed with `g_free()`.
          */
         get_children(): Item[];
         /**
@@ -14082,7 +14822,7 @@ export namespace Gimp {
         /**
          * Returns whether the item is expanded.
          *
-         * This procedure returns %TRUE if the specified item is expanded.
+         * This procedure returns `true` if the specified item is expanded.
          * @returns TRUE if the item is expanded, FALSE otherwise.
          */
         get_expanded(): boolean;
@@ -14124,7 +14864,7 @@ export namespace Gimp {
          * Get the name of the specified item.
          *
          * This procedure returns the specified item's name.
-         * @returns The item name.          The returned value must be freed with g_free().
+         * @returns The item name.          The returned value must be freed with `g_free()`.
          */
         get_name(): string;
         /**
@@ -14139,7 +14879,7 @@ export namespace Gimp {
          * List all parasites.
          *
          * Returns a list of all parasites currently attached the an item.
-         * @returns The names of currently attached parasites.          The returned value must be freed with g_strfreev().
+         * @returns The names of currently attached parasites.          The returned value must be freed with `g_strfreev()`.
          */
         get_parasite_list(): string[];
         /**
@@ -14182,7 +14922,7 @@ export namespace Gimp {
         /**
          * Returns whether the item is a group item.
          *
-         * This procedure returns %TRUE if the specified item is a group item
+         * This procedure returns `true` if the specified item is a group item
          * which can have children.
          * @returns TRUE if the item is a group, FALSE otherwise.
          */
@@ -14327,9 +15067,9 @@ export namespace Gimp {
          * The return value will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_interpolation(),
-         * gimp_context_set_transform_direction(),
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_interpolation()`,
+         * `gimp_context_set_transform_direction()`,
+         * `gimp_context_set_transform_resize()`.
          * @param source_x X coordinate of the transformation center.
          * @param source_y Y coordinate of the transformation center.
          * @param scale_x Amount to scale in x direction.
@@ -14364,9 +15104,9 @@ export namespace Gimp {
          * will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_interpolation(),
-         * gimp_context_set_transform_direction(),
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_interpolation()`,
+         * `gimp_context_set_transform_direction()`,
+         * `gimp_context_set_transform_resize()`.
          * @param x0 horz. coord. of one end of axis.
          * @param y0 vert. coord. of one end of axis.
          * @param x1 horz. coord. of other end of axis.
@@ -14392,7 +15132,7 @@ export namespace Gimp {
          * The return value will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_transform_resize()`.
          * @param flip_type Type of flip.
          * @param auto_center Whether to automatically position the axis in the selection center.
          * @param axis coord. of flip axis.
@@ -14418,9 +15158,9 @@ export namespace Gimp {
          * The return value will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_interpolation(),
-         * gimp_context_set_transform_direction(),
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_interpolation()`,
+         * `gimp_context_set_transform_direction()`,
+         * `gimp_context_set_transform_resize()`.
          * @param coeff_0_0 coefficient (0,0) of the transformation matrix.
          * @param coeff_0_1 coefficient (0,1) of the transformation matrix.
          * @param coeff_0_2 coefficient (0,2) of the transformation matrix.
@@ -14468,9 +15208,9 @@ export namespace Gimp {
          * The return value will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_interpolation(),
-         * gimp_context_set_transform_direction(),
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_interpolation()`,
+         * `gimp_context_set_transform_direction()`,
+         * `gimp_context_set_transform_resize()`.
          * @param x0 The new x coordinate of upper-left corner of original bounding box.
          * @param y0 The new y coordinate of upper-left corner of original bounding box.
          * @param x1 The new x coordinate of upper-right corner of original bounding box.
@@ -14512,9 +15252,9 @@ export namespace Gimp {
          * The return value will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_interpolation(),
-         * gimp_context_set_transform_direction(),
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_interpolation()`,
+         * `gimp_context_set_transform_direction()`,
+         * `gimp_context_set_transform_resize()`.
          * @param angle The angle of rotation (radians).
          * @param auto_center Whether to automatically rotate around the selection center.
          * @param center_x The hor. coordinate of the center of rotation.
@@ -14543,7 +15283,7 @@ export namespace Gimp {
          * The return value will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_transform_resize()`.
          * @param rotate_type Type of rotation.
          * @param auto_center Whether to automatically rotate around the selection center.
          * @param center_x The hor. coordinate of the center of rotation.
@@ -14574,9 +15314,9 @@ export namespace Gimp {
          * The return value will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_interpolation(),
-         * gimp_context_set_transform_direction(),
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_interpolation()`,
+         * `gimp_context_set_transform_direction()`,
+         * `gimp_context_set_transform_resize()`.
          * @param x0 The new x coordinate of the upper-left corner of the scaled region.
          * @param y0 The new y coordinate of the upper-left corner of the scaled region.
          * @param x1 The new x coordinate of the lower-right corner of the scaled region.
@@ -14604,9 +15344,9 @@ export namespace Gimp {
          * The return value will be equal to the item ID supplied as input.
          *
          * This procedure is affected by the following context setters:
-         * gimp_context_set_interpolation(),
-         * gimp_context_set_transform_direction(),
-         * gimp_context_set_transform_resize().
+         * `gimp_context_set_interpolation()`,
+         * `gimp_context_set_transform_direction()`,
+         * `gimp_context_set_transform_resize()`.
          * @param shear_type Type of shear.
          * @param magnitude The magnitude of the shear.
          * @returns The sheared item.
@@ -14639,6 +15379,7 @@ export namespace Gimp {
 
     /**
      * Operations on a single layer.
+     * @gir-type Class
      */
     class Layer extends Drawable {
         static $gtype: GObject.GType<Layer>;
@@ -14692,16 +15433,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Layer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Layer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Layer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14719,8 +15463,8 @@ export namespace Gimp {
          */
         static from_mask(mask: LayerMask): Layer;
         /**
-         * Returns a #GimpLayer representing `layer_id`. This function calls
-         * gimp_item_get_by_id() and returns the item if it is layer or %NULL
+         * Returns a {@link Gimp.Layer} representing `layer_id`. This function calls
+         * `gimp_item_get_by_id()` and returns the item if it is layer or `null`
          * otherwise.
          * @param layer_id The layer id.
          */
@@ -14734,6 +15478,7 @@ export namespace Gimp {
          * This procedure copies the specified layer and returns the copy. The
          * newly copied layer is for use within the original layer's image. It
          * should not be subsequently added to any other image.
+         * @virtual
          */
         vfunc_copy(): Layer;
 
@@ -14789,9 +15534,9 @@ export namespace Gimp {
          * - or a copy of the active channel.
          *
          * The layer mask still needs to be added to the layer. This can be
-         * done with a call to gimp_layer_add_mask().
+         * done with a call to `gimp_layer_add_mask()`.
          *
-         * gimp_layer_create_mask() will fail if there are no active channels
+         * `gimp_layer_create_mask()` will fail if there are no active channels
          * on the image, when called with 'ADD-CHANNEL-MASK'. It will return a
          * black mask when called with 'ADD-ALPHA-MASK' or
          * 'ADD-ALPHA-TRANSFER-MASK' on a layer with no alpha channels, or with
@@ -14937,7 +15682,7 @@ export namespace Gimp {
          * specifies whether to scale from the center of the layer, or from the
          * image origin. This operation only works if the layer has been added
          * to an image. The interpolation method used can be set with
-         * gimp_context_set_interpolation().
+         * `gimp_context_set_interpolation()`.
          * @param new_width New layer width.
          * @param new_height New layer height.
          * @param local_origin Use a local origin (as opposed to the image origin).
@@ -15050,6 +15795,9 @@ export namespace Gimp {
         interface ConstructorProps extends Channel.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LayerMask extends Channel {
         static $gtype: GObject.GType<LayerMask>;
 
@@ -15070,16 +15818,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LayerMask.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LayerMask.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LayerMask.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LayerMask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LayerMask.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LayerMask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15089,9 +15840,9 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Returns a #GimpLayerMask representing `layer_mask_id`. This function
-         * calls gimp_item_get_by_id() and returns the item if it is
-         * layer_mask or %NULL otherwise.
+         * Returns a {@link Gimp.LayerMask} representing `layer_mask_id`. This function
+         * calls `gimp_item_get_by_id()` and returns the item if it is
+         * layer_mask or `null` otherwise.
          * @param layer_mask_id The layer_mask id.
          */
         static get_by_id(layer_mask_id: number): LayerMask | null;
@@ -15111,24 +15862,25 @@ export namespace Gimp {
     }
 
     /**
-     * A [class`Procedure]` subclass that makes it easier to write file load
+     * A {@link Procedure} subclass that makes it easier to write file load
      * procedures.
      *
      * It automatically adds the standard
      *
-     * ( [enum`RunMode]`, [iface`Gio`.File] )
+     * ( {@link RunMode}, {@link Gio.File} )
      *
      * arguments and the standard
      *
-     * ( [class`Image]` )
+     * ( {@link Image} )
      *
      * return value of a load procedure. It is possible to add additional
      * arguments.
      *
-     * When invoked via [method`Procedure`.run], it unpacks these standard
-     * arguments and calls `run_func` which is a [callback`RunImageFunc]`. The
-     * "args" [struct`ValueArray]` of [callback`RunImageFunc]` only contains
+     * When invoked via {@link Procedure.run}, it unpacks these standard
+     * arguments and calls `run_func` which is a {@link RunImageFunc}. The
+     * "args" {@link ValueArray} of {@link RunImageFunc} only contains
      * additionally added arguments.
+     * @gir-type Class
      */
     class LoadProcedure extends FileProcedure {
         static $gtype: GObject.GType<LoadProcedure>;
@@ -15161,16 +15913,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LoadProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LoadProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LoadProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LoadProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LoadProcedure.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LoadProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15181,20 +15936,20 @@ export namespace Gimp {
 
         /**
          * Returns the procedure's 'handles raw' flag as set with
-         * [method`GimpLoadProcedure`.set_handles_raw].
+         * {@link GimpLoadProcedure.set_handles_raw}.
          * @returns The procedure's 'handles raw' flag.
          */
         get_handles_raw(): boolean;
         /**
          * Returns the procedure's thumbnail loader procedure as set with
-         * [method`GimpLoadProcedure`.set_thumbnail_loader].
+         * {@link GimpLoadProcedure.set_thumbnail_loader}.
          * @returns The procedure's thumbnail loader procedure
          */
         get_thumbnail_loader(): string;
         /**
          * Registers a load procedure as capable of handling raw digital camera loads.
          *
-         * Note that you cannot call this function on [class`VectorLoadProcedure]`
+         * Note that you cannot call this function on {@link VectorLoadProcedure}
          * subclass objects.
          * @param handles_raw The procedure's handles raw flag.
          */
@@ -15220,6 +15975,7 @@ export namespace Gimp {
 
     /**
      * Functions to (de)serialize a given memory size.
+     * @gir-type Class
      */
     class Memsize {
         static $gtype: GObject.GType<Memsize>;
@@ -15230,16 +15986,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Memsize.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Memsize.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Memsize.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Memsize.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Memsize.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Memsize.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15250,15 +16009,15 @@ export namespace Gimp {
 
         /**
          * Parses a string representation of a memory size as returned by
-         * gimp_memsize_serialize().
-         * @param string a string as returned by gimp_memsize_serialize()
+         * `gimp_memsize_serialize()`.
+         * @param string a string as returned by `gimp_memsize_serialize()`
          */
         static deserialize(string: string): [boolean, number];
         /**
          * Creates a string representation of a given memory size. This string
-         * can be parsed by gimp_memsize_deserialize() and can thus be used in
+         * can be parsed by `gimp_memsize_deserialize()` and can thus be used in
          * config files. It should not be displayed to the user. If you need a
-         * nice human-readable string please use g_format_size().
+         * nice human-readable string please use `g_format_size()`.
          * @param memsize memory size in bytes
          */
         static serialize(memsize: number): string;
@@ -15274,7 +16033,8 @@ export namespace Gimp {
     }
 
     /**
-     * Basic functions for handling #GimpMetadata objects.
+     * Basic functions for handling {@link Gimp.Metadata} objects.
+     * @gir-type Class
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
@@ -15298,16 +16058,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Metadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Metadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15318,7 +16081,7 @@ export namespace Gimp {
 
         /**
          * Deserializes a string of XML that has been created by
-         * gimp_metadata_serialize().
+         * `gimp_metadata_serialize()`.
          * @param metadata_xml A string of serialized metadata XML.
          */
         static deserialize(metadata_xml: string): Metadata;
@@ -15333,17 +16096,20 @@ export namespace Gimp {
          */
         static is_tag_supported(tag: string, mime_type: string): boolean;
         /**
-         * Loads #GimpMetadata from `file`.
-         * @param file The #GFile to load the metadata from
+         * Loads {@link Gimp.Metadata} from `file`.
+         * @param file The {@link Gio.File} to load the metadata from
          */
         static load_from_file(file: Gio.File): Metadata;
 
         // Methods
 
+        /**
+         * @param state_status
+         */
         add_xmp_history(state_status: string): void;
         /**
-         * Duplicates a #GimpMetadata instance.
-         * @returns The new #GimpMetadata, or %NULL if @metadata is %NULL.
+         * Duplicates a {@link Gimp.Metadata} instance.
+         * @returns The new {@link Gimp.Metadata}, or `null` if `metadata` is `null`.
          */
         duplicate(): Metadata;
         /**
@@ -15356,18 +16122,18 @@ export namespace Gimp {
         /**
          * Returns values based on Exif.Image.XResolution,
          * Exif.Image.YResolution and Exif.Image.ResolutionUnit of `metadata`.
-         * @returns %TRUE on success, %FALSE otherwise.
+         * @returns `true` on success, `false` otherwise.
          */
         get_resolution(): [boolean, number, number, Unit | null];
         /**
          * Saves `metadata` to `file`.
          * @param file The file to save the metadata to
-         * @returns %TRUE on success, %FALSE otherwise.
+         * @returns `true` on success, `false` otherwise.
          */
         save_to_file(file: Gio.File): boolean;
         /**
          * Serializes `metadata` into an XML string that can later be deserialized
-         * using gimp_metadata_deserialize().
+         * using `gimp_metadata_deserialize()`.
          * @returns The serialized XML string.
          */
         serialize(): string;
@@ -15386,19 +16152,19 @@ export namespace Gimp {
         /**
          * Sets the tags from a piece of Exif data on `metadata`.
          * @param exif_data The blob of Exif data to set
-         * @returns %TRUE on success, %FALSE otherwise.
+         * @returns `true` on success, `false` otherwise.
          */
         set_from_exif(exif_data: Uint8Array | string): boolean;
         /**
          * Sets the tags from a piece of IPTC data on `metadata`.
          * @param iptc_data The blob of Iptc data to set
-         * @returns %TRUE on success, %FALSE otherwise.
+         * @returns `true` on success, `false` otherwise.
          */
         set_from_iptc(iptc_data: Uint8Array | string): boolean;
         /**
          * Sets the tags from a piece of XMP data on `metadata`.
          * @param xmp_data The blob of XMP data to set
-         * @returns %TRUE on success, %FALSE otherwise.
+         * @returns `true` on success, `false` otherwise.
          */
         set_from_xmp(xmp_data: Uint8Array | string): boolean;
         /**
@@ -15437,11 +16203,12 @@ export namespace Gimp {
     }
 
     /**
-     * #GimpModule is a generic mechanism to dynamically load modules into
-     * GIMP. It is a #GTypeModule subclass, implementing module loading
-     * using #GModule.  #GimpModule does not know which functionality is
+     * {@link Gimp.Module} is a generic mechanism to dynamically load modules into
+     * GIMP. It is a {@link GObject.TypeModule} subclass, implementing module loading
+     * using {@link GModule.Module}.  {@link Gimp.Module} does not know which functionality is
      * implemented by the modules, it just provides a framework to get
-     * arbitrary #GType implementations loaded from disk.
+     * arbitrary {@link GObject.GType} implementations loaded from disk.
+     * @gir-type Class
      */
     class Module extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Module>;
@@ -15474,16 +16241,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Module.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Module.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Module.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Module.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15496,51 +16266,73 @@ export namespace Gimp {
          * This function is never called directly. Use GIMP_MODULE_ERROR() instead.
          */
         static error_quark(): GLib.Quark;
+        /**
+         * @param module
+         */
         static query(module: GObject.TypeModule): ModuleInfo;
+        /**
+         * @param module
+         */
         static register(module: GObject.TypeModule): boolean;
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_modified(): void;
 
         // Methods
 
         /**
          * Returns whether this `module` in automatically loaded at startup.
-         * @returns The @module's 'auto_load' property.
+         * @returns The `module`'s 'auto_load' property.
          */
         get_auto_load(): boolean;
         /**
-         * Returns #GFile of the `module,`
-         * @returns The @module's #GFile.
+         * Returns {@link Gio.File} of the `module`,
+         * @returns The `module`'s {@link Gio.File}.
          */
         get_file(): Gio.File;
+        /**
+         * @returns The `module`'s {@link Gimp.ModuleInfo} as provided          by the actual module, or `null`.
+         */
         get_info(): ModuleInfo;
+        /**
+         * @returns The `module`'s last error message.
+         */
         get_last_error(): string;
+        /**
+         * @returns The `module`'s state.
+         */
         get_state(): ModuleState;
+        /**
+         * @returns Whether the `module` is currently loaded.
+         */
         is_loaded(): boolean;
+        /**
+         * @returns Whether the `module` is present on diak.
+         */
         is_on_disk(): boolean;
         /**
          * Queries the module without actually registering any of the types it
-         * may implement. After successful query, gimp_module_get_info() can be
+         * may implement. After successful query, `gimp_module_get_info()` can be
          * used to get further about the module.
-         * @returns %TRUE on success.
+         * @returns `true` on success.
          */
         query_module(): boolean;
         /**
          * Sets the `auto_load` property of the module
-         * @param auto_load Pass %FALSE to exclude this module from auto-loading
+         * @param auto_load Pass `false` to exclude this module from auto-loading
          */
         set_auto_load(auto_load: boolean): void;
-
-        // Inherited methods
         /**
          * Calls the `complete_interface_info` function from the
-         * #GTypePluginClass of `plugin`. There should be no need to use this
+         * {@link GObject.TypePluginClass} of `plugin`. There should be no need to use this
          * function outside of the GObject type system itself.
-         * @param instance_type the #GType of an instantiatable type to which the interface  is added
-         * @param interface_type the #GType of the interface whose info is completed
-         * @param info the #GInterfaceInfo to fill in
+         * @param instance_type the {@link GObject.GType} of an instantiatable type to which the interface  is added
+         * @param interface_type the {@link GObject.GType} of the interface whose info is completed
+         * @param info the {@link GObject.InterfaceInfo} to fill in
          */
         complete_interface_info(
             instance_type: GObject.GType,
@@ -15548,26 +16340,29 @@ export namespace Gimp {
             info: GObject.InterfaceInfo,
         ): void;
         /**
-         * Calls the `complete_type_info` function from the #GTypePluginClass of `plugin`.
+         * Calls the `complete_type_info` function from the {@link GObject.TypePluginClass} of `plugin`.
          * There should be no need to use this function outside of the GObject
          * type system itself.
-         * @param g_type the #GType whose info is completed
-         * @param info the #GTypeInfo struct to fill in
-         * @param value_table the #GTypeValueTable to fill in
+         * @param g_type the {@link GObject.GType} whose info is completed
+         * @param info the {@link GObject.TypeInfo} struct to fill in
+         * @param value_table the {@link GObject.TypeValueTable} to fill in
          */
         complete_type_info(g_type: GObject.GType, info: GObject.TypeInfo, value_table: GObject.TypeValueTable): void;
         /**
-         * Calls the `unuse_plugin` function from the #GTypePluginClass of
+         * Calls the `unuse_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         unuse(): void;
         /**
-         * Calls the `use_plugin` function from the #GTypePluginClass of
+         * Calls the `use_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         use(): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
         /**
@@ -15583,32 +16378,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -15617,39 +16412,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -15660,13 +16455,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -15674,7 +16472,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -15682,9 +16480,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -15704,9 +16502,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -15720,33 +16518,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -15779,21 +16577,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -15803,8 +16601,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -15821,10 +16619,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -15839,13 +16637,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -15876,21 +16674,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -15900,33 +16698,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -15935,6 +16734,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -15943,12 +16743,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -15957,20 +16759,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -15982,6 +16786,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -16022,7 +16827,8 @@ export namespace Gimp {
     }
 
     /**
-     * Keeps a list of #GimpModule's found in a given searchpath.
+     * Keeps a list of {@link Gimp.Module}'s found in a given searchpath.
+     * @gir-type Class
      */
     class ModuleDB<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ModuleDB>;
@@ -16046,16 +16852,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ModuleDB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ModuleDB.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ModuleDB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ModuleDB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ModuleDB.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ModuleDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16067,7 +16876,7 @@ export namespace Gimp {
         /**
          * Return the #G_SEARCHPATH_SEPARATOR delimited list of module filenames
          * which are excluded from auto-loading.
-         * @returns the @db's @load_inhibit string.
+         * @returns the `db`'s `load_inhibit` string.
          */
         get_load_inhibit(): string;
         /**
@@ -16077,24 +16886,24 @@ export namespace Gimp {
         get_verbose(): boolean;
         /**
          * Scans the directories contained in `module_path` and creates a
-         * #GimpModule instance for every loadable module contained in the
+         * {@link Gimp.Module} instance for every loadable module contained in the
          * directories.
          * @param module_path A #G_SEARCHPATH_SEPARATOR delimited list of directories               to load modules from.
          */
         load(module_path: string): void;
         /**
-         * Does the same as gimp_module_db_load(), plus removes all #GimpModule
+         * Does the same as `gimp_module_db_load()`, plus removes all {@link Gimp.Module}
          * instances whose modules have been deleted from disk.
          *
-         * Note that the #GimpModule's will just be removed from the internal
-         * list and not freed as this is not possible with #GTypeModule
+         * Note that the {@link Gimp.Module}'s will just be removed from the internal
+         * list and not freed as this is not possible with {@link GObject.TypeModule}
          * instances which actually implement types.
          * @param module_path A #G_SEARCHPATH_SEPARATOR delimited list of directories               to load modules from.
          */
         refresh(module_path: string): void;
         /**
-         * Sets the `load_inhibit` flag for all #GimpModule's which are kept
-         * by `db` (using gimp_module_set_load_inhibit()).
+         * Sets the `load_inhibit` flag for all {@link Gimp.Module}'s which are kept
+         * by `db` (using `gimp_module_set_load_inhibit()`).
          * @param load_inhibit A #G_SEARCHPATH_SEPARATOR delimited list of module                filenames to exclude from auto-loading.
          */
         set_load_inhibit(load_inhibit: string): void;
@@ -16103,18 +16912,16 @@ export namespace Gimp {
          * @param verbose the new 'verbose' setting
          */
         set_verbose(verbose: boolean): void;
-
-        // Inherited methods
         /**
          * Gets the type of the items in `list`.
          *
-         * All items returned from g_list_model_get_item() are of the type
+         * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
          *
-         * The item type of a #GListModel can not change during the life of the
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
-         * @returns the #GType of the items contained in @list.
+         * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
         /**
@@ -16122,73 +16929,75 @@ export namespace Gimp {
          *
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
-         * `position` until g_list_model_get_item() returns %NULL.
-         * @returns the number of items in @list.
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @returns the number of items in `list`.
          */
         get_n_items(): number;
         /**
          * Get the item at `position`.
          *
-         * If `position` is greater than the number of items in `list,` %NULL is
+         * If `position` is greater than the number of items in `list`, `null` is
          * returned.
          *
-         * %NULL is never returned for an index that is smaller than the length
+         * `null` is never returned for an index that is smaller than the length
          * of the list.
          *
          * This function is meant to be used by language bindings in place
-         * of g_list_model_get_item().
+         * of `g_list_model_get_item()`.
          *
-         * See also: g_list_model_get_n_items()
+         * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
-         * @returns the object at @position.
+         * @returns the object at `position`.
          */
         get_item(position: number): A | null;
         /**
-         * Emits the #GListModel::items-changed signal on `list`.
+         * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
          *
          * This function should only be called by classes implementing
-         * #GListModel. It has to be called after the internal representation
+         * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
          *
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
-         * as #GListStore), changes can be reported in response to uses of that
+         * as {@link Gio.ListStore}), changes can be reported in response to uses of that
          * API.  For models that represent remote data, changes should only be
          * made from a fresh mainloop dispatch.  It is particularly not
-         * permitted to make changes in response to a call to the #GListModel
+         * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
          *
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
          * same contents of the model.
-         * @param position the position at which @list changed
+         * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
         /**
          * Get the item at `position`. If `position` is greater than the number of
-         * items in `list,` %NULL is returned.
+         * items in `list`, `null` is returned.
          *
-         * %NULL is never returned for an index that is smaller than the length
-         * of the list.  See g_list_model_get_n_items().
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.  See `g_list_model_get_n_items()`.
          *
-         * The same #GObject instance may not appear more than once in a #GListModel.
+         * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @virtual
          */
         vfunc_get_item(position: number): A | null;
         /**
          * Gets the type of the items in `list`.
          *
-         * All items returned from g_list_model_get_item() are of the type
+         * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
          *
-         * The item type of a #GListModel can not change during the life of the
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
         /**
@@ -16196,7 +17005,8 @@ export namespace Gimp {
          *
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
-         * `position` until g_list_model_get_item() returns %NULL.
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @virtual
          */
         vfunc_get_n_items(): number;
         /**
@@ -16212,32 +17022,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -16246,39 +17056,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -16289,13 +17099,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -16303,7 +17116,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -16311,9 +17124,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -16333,9 +17146,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -16349,33 +17162,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -16408,21 +17221,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -16432,8 +17245,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -16450,10 +17263,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -16468,13 +17281,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -16505,21 +17318,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -16529,33 +17342,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -16564,6 +17378,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -16572,12 +17387,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -16586,20 +17403,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -16611,6 +17430,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -16651,6 +17471,7 @@ export namespace Gimp {
 
     /**
      * Provides access to the Procedural DataBase (PDB).
+     * @gir-type Class
      */
     class PDB extends GObject.Object {
         static $gtype: GObject.GType<PDB>;
@@ -16672,16 +17493,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PDB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PDB.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PDB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PDB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PDB.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16705,7 +17529,7 @@ export namespace Gimp {
          *
          * If a procedure call fails, then it might pass an error message with
          * the return values. Plug-ins that are using the libgimp C wrappers
-         * don't access the procedure return values directly. Thus #GimpPDB
+         * don't access the procedure return values directly. Thus {@link Gimp.PDB}
          * stores the error message and makes it available with this
          * function. The next procedure call unsets the error message again.
          *
@@ -16716,23 +17540,23 @@ export namespace Gimp {
         get_last_error(): string;
         /**
          * Retrieves the status from the last procedure call.
-         * @returns the #GimpPDBStatusType.
+         * @returns the {@link Gimp.PDBStatusType}.
          */
         get_last_status(): PDBStatusType;
         /**
-         * This function returns the [class`Procedure]` which is registered
-         * with `procedure_name` if it exists, or returns %NULL otherwise.
+         * This function returns the {@link Procedure} which is registered
+         * with `procedure_name` if it exists, or returns `null` otherwise.
          *
-         * The returned [class`Procedure]` is owned by `pdb` and must not be modified.
+         * The returned {@link Procedure} is owned by `pdb` and must not be modified.
          * @param procedure_name A procedure name
-         * @returns A [class@Procedure], or %NULL.
+         * @returns A {@link Procedure}, or `null`.
          */
         lookup_procedure(procedure_name: string): Procedure | null;
         /**
          * This function checks if a procedure exists in the procedural
          * database.
          * @param procedure_name A procedure name
-         * @returns %TRUE if the procedure exists, %FALSE otherwise.
+         * @returns `true` if the procedure exists, `false` otherwise.
          */
         procedure_exists(procedure_name: string): boolean;
         /**
@@ -16761,7 +17585,7 @@ export namespace Gimp {
          * @param copyright The regex for procedure copyright.
          * @param date The regex for procedure date.
          * @param proc_type The regex for procedure type: { 'Internal GIMP procedure', 'GIMP Plug-in', 'GIMP Extension', 'Temporary Procedure' }.
-         * @returns The list          of procedure names. Free with g_strfreev().
+         * @returns The list          of procedure names. Free with `g_strfreev()`.
          */
         query_procedures(
             name: string,
@@ -16778,7 +17602,7 @@ export namespace Gimp {
          *
          * This function generates a temporary PDB entry name that is
          * guaranteed to be unique.
-         * @returns A unique temporary name for a temporary          PDB entry. The returned value must be freed with          g_free().
+         * @returns A unique temporary name for a temporary          PDB entry. The returned value must be freed with          `g_free()`.
          */
         temp_procedure_name(): string;
     }
@@ -16796,6 +17620,7 @@ export namespace Gimp {
 
     /**
      * Installable object, a small set of colors a user can choose from.
+     * @gir-type Class
      */
     class Palette extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Palette>;
@@ -16819,16 +17644,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Palette.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Palette.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Palette.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Palette.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Palette.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Palette.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16840,11 +17668,14 @@ export namespace Gimp {
         /**
          * Returns the palette with the given name.
          *
-         * Returns an existing palette having the given name. Returns %NULL
+         * Returns an existing palette having the given name. Returns `null`
          * when no palette exists of that name.
          * @param name The name of the palette.
          */
         static get_by_name(name: string): Palette | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gimp.Resource.get_by_name
         static get_by_name(...args: never[]): any;
 
@@ -16865,7 +17696,7 @@ export namespace Gimp {
         /**
          * Deletes an entry from the palette.
          *
-         * This function will fail and return %FALSE if the index is out or
+         * This function will fail and return `false` if the index is out or
          * range or if the palette is not editable.
          * Additionally if the palette belongs to an indexed image, it will
          * only be possible to delete palette colors not in use in the image.
@@ -16877,7 +17708,7 @@ export namespace Gimp {
          * Gets the color of an entry in the palette.
          *
          * Returns the color of the entry at the given zero-based index into
-         * the palette. Returns %NULL when the index is out of range.
+         * the palette. Returns `null` when the index is out of range.
          * @param entry_num The index of the entry to get the color of.
          * @returns The color at the index.
          */
@@ -16924,7 +17755,7 @@ export namespace Gimp {
          * Gets colors in the palette.
          *
          * Returns an array of colors in the palette. Free the returned array
-         * with gimp_color_array_free().
+         * with `gimp_color_array_free()`.
          * @returns The colors in the palette.
          */
         get_colors(): Gegl.Color[];
@@ -16945,8 +17776,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         set_columns(columns: number): boolean;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -16960,32 +17789,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -16994,39 +17823,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -17037,13 +17866,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -17051,7 +17883,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -17059,9 +17891,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -17081,9 +17913,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -17097,33 +17929,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -17156,21 +17988,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -17180,8 +18012,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -17198,10 +18030,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -17216,13 +18048,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -17253,21 +18085,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -17277,33 +18109,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -17312,6 +18145,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -17320,12 +18154,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -17334,20 +18170,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -17359,6 +18197,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -17393,6 +18232,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamBrush extends ParamResource {
         static $gtype: GObject.GType<ParamBrush>;
 
@@ -17402,16 +18244,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamBrush.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamBrush.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamBrush.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamBrush.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamBrush.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamBrush.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17424,6 +18269,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamDrawable.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamChannel extends ParamDrawable {
         static $gtype: GObject.GType<ParamChannel>;
 
@@ -17433,16 +18281,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17455,6 +18306,9 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamColor extends ParamObject {
         static $gtype: GObject.GType<ParamColor>;
 
@@ -17464,16 +18318,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamColor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamColor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamColor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamColor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamColor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamColor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17486,6 +18343,9 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamDrawable extends ParamItem {
         static $gtype: GObject.GType<ParamDrawable>;
 
@@ -17495,16 +18355,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamDrawable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamDrawable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamDrawable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamDrawable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamDrawable.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamDrawable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17517,6 +18380,9 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamFloatArray extends ParamArray {
         static $gtype: GObject.GType<ParamFloatArray>;
 
@@ -17526,16 +18392,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamFloatArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamFloatArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamFloatArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamFloatArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamFloatArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamFloatArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17548,6 +18417,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamFont extends ParamResource {
         static $gtype: GObject.GType<ParamFont>;
 
@@ -17557,16 +18429,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamFont.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamFont.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamFont.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamFont.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamFont.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamFont.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17579,6 +18454,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamGradient extends ParamResource {
         static $gtype: GObject.GType<ParamGradient>;
 
@@ -17588,16 +18466,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamGradient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamGradient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamGradient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamGradient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamGradient.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamGradient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17610,6 +18491,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamLayer.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamGroupLayer extends ParamLayer {
         static $gtype: GObject.GType<ParamGroupLayer>;
 
@@ -17619,16 +18503,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamGroupLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamGroupLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamGroupLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamGroupLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamGroupLayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamGroupLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17641,6 +18528,9 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamInt32Array extends ParamArray {
         static $gtype: GObject.GType<ParamInt32Array>;
 
@@ -17650,16 +18540,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamInt32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamInt32Array.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamInt32Array.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamInt32Array.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamInt32Array.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamInt32Array.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17672,6 +18565,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamDrawable.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamLayer extends ParamDrawable {
         static $gtype: GObject.GType<ParamLayer>;
 
@@ -17681,16 +18577,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamLayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17703,6 +18602,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamChannel.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamLayerMask extends ParamChannel {
         static $gtype: GObject.GType<ParamLayerMask>;
 
@@ -17712,16 +18614,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamLayerMask.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamLayerMask.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamLayerMask.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamLayerMask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamLayerMask.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamLayerMask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17734,6 +18639,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamPalette extends ParamResource {
         static $gtype: GObject.GType<ParamPalette>;
 
@@ -17743,16 +18651,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamPalette.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamPalette.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamPalette.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamPalette.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamPalette.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamPalette.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17765,6 +18676,9 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamPath extends ParamItem {
         static $gtype: GObject.GType<ParamPath>;
 
@@ -17774,16 +18688,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamPath.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamPath.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamPath.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamPath.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamPath.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17796,6 +18713,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamPattern extends ParamResource {
         static $gtype: GObject.GType<ParamPattern>;
 
@@ -17805,16 +18725,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamPattern.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamPattern.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamPattern.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamPattern.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamPattern.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamPattern.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17827,6 +18750,9 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamResource extends ParamObject {
         static $gtype: GObject.GType<ParamResource>;
 
@@ -17836,16 +18762,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamResource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamResource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamResource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamResource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamResource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17858,6 +18787,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamChannel.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamSelection extends ParamChannel {
         static $gtype: GObject.GType<ParamSelection>;
 
@@ -17867,16 +18799,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamSelection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamSelection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamSelection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamSelection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamSelection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamSelection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17889,6 +18824,9 @@ export namespace Gimp {
         interface SignalSignatures extends ParamLayer.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamTextLayer extends ParamLayer {
         static $gtype: GObject.GType<ParamTextLayer>;
 
@@ -17898,16 +18836,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamTextLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamTextLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamTextLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamTextLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamTextLayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamTextLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17920,6 +18861,9 @@ export namespace Gimp {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParamUnit extends ParamObject {
         static $gtype: GObject.GType<ParamUnit>;
 
@@ -17929,16 +18873,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamUnit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamUnit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamUnit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamUnit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamUnit.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamUnit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17959,6 +18906,7 @@ export namespace Gimp {
 
     /**
      * Functions for querying and manipulating path.
+     * @gir-type Class
      */
     class Path extends Item {
         static $gtype: GObject.GType<Path>;
@@ -17984,16 +18932,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Path.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Path.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Path.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Path.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18005,22 +18956,30 @@ export namespace Gimp {
         /**
          * This function frees the memory allocated for the list and the strings
          * it contains.
-         * @param path A list of directories as returned by gimp_path_parse().
+         * @param path A list of directories as returned by `gimp_path_parse()`.
          */
         static free(path: string[]): void;
         /**
-         * Returns a #GimpPath representing `path_id`. This function
-         * calls gimp_item_get_by_id() and returns the item if it is a path
-         * or %NULL otherwise.
+         * Returns a {@link Gimp.Path} representing `path_id`. This function
+         * calls `gimp_item_get_by_id()` and returns the item if it is a path
+         * or `null` otherwise.
          * @param path_id The path id.
          */
         static get_by_id(path_id: number): Path | null;
         /**
-         * Note that you have to g_free() the returned string.
-         * @param path A list of directories as returned by gimp_path_parse().
+         * Note that you have to `g_free()` the returned string.
+         * @param path A list of directories as returned by `gimp_path_parse()`.
          */
         static get_user_writable_dir(path: string[]): string;
+        /**
+         * @param path A list of directories separated by #G_SEARCHPATH_SEPARATOR.
+         * @param max_paths The maximum number of directories to return.
+         * @param check `true` if you want the directories to be checked.
+         */
         static parse(path: string, max_paths: number, check: boolean): [string[], string[]];
+        /**
+         * @param path A list of directories as returned by `gimp_path_parse()`.
+         */
         static to_str(path: string[]): string;
 
         // Methods
@@ -18105,7 +19064,7 @@ export namespace Gimp {
          *
          * Returns an Array with the stroke-IDs associated with the passed
          * path.
-         * @returns List of the strokes belonging to the path.          The returned value must be freed with g_free().
+         * @returns List of the strokes belonging to the path.          The returned value must be freed with `g_free()`.
          */
         get_strokes(): number[];
         /**
@@ -18193,7 +19152,7 @@ export namespace Gimp {
          * returns polygonal approximation of the stroke.
          * @param stroke_id The stroke ID.
          * @param precision The precision used for the approximation.
-         * @returns List of the coords along the path (x0, y0, x1, y1, ...).          The returned value must be freed with g_free().
+         * @returns List of the coords along the path (x0, y0, x1, y1, ...).          The returned value must be freed with `g_free()`.
          */
         stroke_interpolate(stroke_id: number, precision: number): [number[], boolean];
         /**
@@ -18266,6 +19225,7 @@ export namespace Gimp {
 
     /**
      * Installable object used by fill and clone tools.
+     * @gir-type Class
      */
     class Pattern extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Pattern>;
@@ -18287,16 +19247,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Pattern.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Pattern.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Pattern.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Pattern.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Pattern.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Pattern.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18308,11 +19271,14 @@ export namespace Gimp {
         /**
          * Returns the pattern with the given name.
          *
-         * Returns an existing pattern having the given name. Returns %NULL
+         * Returns an existing pattern having the given name. Returns `null`
          * when no pattern exists of that name.
          * @param name The name of the pattern.
          */
         static get_by_name(name: string): Pattern | null;
+        /**
+         * @param args
+         */
         // Conflicted with Gimp.Resource.get_by_name
         static get_by_name(...args: never[]): any;
 
@@ -18324,15 +19290,15 @@ export namespace Gimp {
          * size without changing its ratio. If the pattern is smaller than this size to
          * begin with, it will not be scaled up.
          *
-         * If `max_width` or `max_height` are %NULL, the buffer is returned in the pattern's
+         * If `max_width` or `max_height` are `null`, the buffer is returned in the pattern's
          * native size.
          *
-         * Make sure you called [func`Gegl`.init] before calling any function using
+         * Make sure you called {@link Gegl.init} before calling any function using
          * `GEGL`.
          * @param max_width a maximum width for the returned buffer.
          * @param max_height a maximum height for the returned buffer.
          * @param format an optional Babl format.
-         * @returns a [class@Gegl.Buffer].
+         * @returns a {@link Gegl.Buffer}.
          */
         get_buffer(max_width: number, max_height: number, format: Babl.Object): Gegl.Buffer;
         /**
@@ -18343,8 +19309,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         get_info(): [boolean, number, number, number];
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -18358,32 +19322,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -18392,39 +19356,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -18435,13 +19399,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -18449,7 +19416,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -18457,9 +19424,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -18479,9 +19446,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -18495,33 +19462,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -18554,21 +19521,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -18578,8 +19545,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -18596,10 +19563,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -18614,13 +19581,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -18651,21 +19618,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -18675,33 +19642,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -18710,6 +19678,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -18718,12 +19687,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -18732,20 +19703,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -18757,6 +19730,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -18809,55 +19783,57 @@ export namespace Gimp {
     /**
      * The base class for plug-ins to derive from.
      *
-     * GimpPlugIn manages the plug-in's [class`Procedure]` objects. The procedures a
+     * GimpPlugIn manages the plug-in's {@link Procedure} objects. The procedures a
      * plug-in implements are registered with GIMP by returning a list of their
-     * names from either [vfunc`GimpPlugIn`.query_procedures] or
-     * [vfunc`GimpPlugIn`.init_procedures].
+     * names from either {@link GimpPlugIn.query_procedures} or
+     * {@link GimpPlugIn.init_procedures}.
      *
      * Every GIMP plug-in has to be implemented as a subclass and make it known to
      * the libgimp infrastructure and the main GIMP application by passing its
-     * `GType` to [func`MAIN]`.
+     * {@link GObject.GType} to {@link MAIN}.
      *
-     * [func`MAIN]` passes the 'argc' and 'argv' of the platform's main() function,
-     * along with the `GType`, to [func`main]`, which creates an instance of the
-     * plug-in's `GimpPlugIn` subclass and calls its virtual functions, depending
+     * {@link MAIN} passes the 'argc' and 'argv' of the platform's `main()` function,
+     * along with the {@link GObject.GType}, to {@link main}, which creates an instance of the
+     * plug-in's {@link Gimp.PlugIn} subclass and calls its virtual functions, depending
      * on how the plug-in was called by GIMP.
      *
      * There are 3 different ways GIMP calls a plug-in: "query", "init" and "run".
      *
      * The plug-in is called in "query" mode once after it was installed, or when
      * the cached plug-in information in the config file "pluginrc" needs to be
-     * recreated. In "query" mode, [vfunc`GimpPlugIn`.query_procedures] is called
+     * recreated. In "query" mode, {@link GimpPlugIn.query_procedures} is called
      * and returns a list of procedure names the plug-in implements. This is the
      * "normal" place to register procedures, because the existence of most
      * procedures doesn't depend on things that change between GIMP sessions.
      *
      * The plug-in is called in "init" mode at each GIMP startup, and
-     * [vfunc`PlugIn`.init_procedures] is called and returns a list of procedure
+     * {@link PlugIn.init_procedures} is called and returns a list of procedure
      * names this plug-in implements. This only happens if the plug-in actually
-     * implements [vfunc`GimpPlugIn`.init_procedures]. A plug-in only needs to
+     * implements {@link GimpPlugIn.init_procedures}. A plug-in only needs to
      * implement init_procedures if the existence of its procedures can change
      * between GIMP sessions, for example if they depend on the presence of
      * external tools, or hardware like scanners, or online services, or whatever
      * variable circumstances.
      *
      * In order to register the plug-in's procedures with the main GIMP application
-     * in the plug-in's "query" and "init" modes, [class`PlugIn]` calls
-     * [vfunc`PlugIn`.create_procedure] on all procedure names in the exact order of
-     * the list returned by [vfunc`PlugIn`.query_procedures] or
-     * [vfunc`PlugIn`.init_procedures] and then registers the returned
-     * [class`Procedure]`.
+     * in the plug-in's "query" and "init" modes, {@link PlugIn} calls
+     * {@link PlugIn.create_procedure} on all procedure names in the exact order of
+     * the list returned by {@link PlugIn.query_procedures} or
+     * {@link PlugIn.init_procedures} and then registers the returned
+     * {@link Procedure}.
      *
      * The plug-in is called in "run" mode whenever one of the procedures it
      * implements is called by either the main GIMP application or any other
      * plug-in. In "run" mode, one of the procedure names returned by
-     * [vfunc`PlugIn`.query_procedures] or [vfunc`PlugIn`.init_procedures] is passed
-     * to [vfunc`PlugIn`.create_procedure] which must return a [class`Procedure]` for
+     * {@link PlugIn.query_procedures} or {@link PlugIn.init_procedures} is passed
+     * to {@link PlugIn.create_procedure} which must return a {@link Procedure} for
      * the passed name. The procedure is then executed by calling
-     * [method`Procedure`.run].
+     * {@link Procedure.run}.
      *
-     * In any of the three modes, [vfunc`PlugIn`.quit] is called before the plug-in
+     * In any of the three modes, {@link PlugIn.quit} is called before the plug-in
      * process exits, so the plug-in can perform whatever cleanup necessary.
+     * @gir-type Class
+     * @since 3.0
      */
     class PlugIn extends GObject.Object {
         static $gtype: GObject.GType<PlugIn>;
@@ -18873,19 +19849,19 @@ export namespace Gimp {
          */
         set programName(val: string);
         /**
-         * The [struct`GLib`.IOChannel] to read from GIMP
+         * The {@link GLib.IOChannel} to read from GIMP
          */
         get read_channel(): GLib.IOChannel;
         /**
-         * The [struct`GLib`.IOChannel] to read from GIMP
+         * The {@link GLib.IOChannel} to read from GIMP
          */
         get readChannel(): GLib.IOChannel;
         /**
-         * The [struct`GLib`.IOChannel] to write to GIMP
+         * The {@link GLib.IOChannel} to write to GIMP
          */
         get write_channel(): GLib.IOChannel;
         /**
-         * The [struct`GLib`.IOChannel] to write to GIMP
+         * The {@link GLib.IOChannel} to write to GIMP
          */
         get writeChannel(): GLib.IOChannel;
 
@@ -18906,16 +19882,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PlugIn.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlugIn.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PlugIn.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlugIn.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlugIn.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlugIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18944,12 +19923,12 @@ export namespace Gimp {
          */
         static directory(): string;
         /**
-         * Generic #GQuark error domain for plug-ins. Plug-ins are welcome to
+         * Generic {@link GLib.Quark} error domain for plug-ins. Plug-ins are welcome to
          * create their own domain when they want to handle advanced error
          * handling. Often, you just want to pass an error message to the core.
          * This domain can be used for such simple usage.
          *
-         * See #GError for information on error domains.
+         * See {@link GLib.Error} for information on error domains.
          */
         static error_quark(): GLib.Quark;
 
@@ -18957,42 +19936,46 @@ export namespace Gimp {
 
         /**
          * This method must be overridden by all plug-ins and return a newly
-         * allocated #GimpProcedure named `name`.
+         * allocated {@link Gimp.Procedure} named `name`.
          *
          * This method will be called for every `name` as returned by
-         * [vfunc`PlugIn`.query_procedures] and [vfunc`PlugIn`.init_procedures] so care
+         * {@link PlugIn.query_procedures} and {@link PlugIn.init_procedures} so care
          * must be taken to handle them all.  Upon procedure registration,
-         * [vfunc`PlugIn`.create_procedure] will be called in the order of the lists
-         * returned by [vfunc`PlugIn`.query_procedures] and
-         * [vfunc`PlugIn`.init_procedures]
+         * {@link PlugIn.create_procedure} will be called in the order of the lists
+         * returned by {@link PlugIn.query_procedures} and
+         * {@link PlugIn.init_procedures}
          * @param procedure_name procedure name.
+         * @virtual
          */
         vfunc_create_procedure(procedure_name: string): Procedure;
         /**
          * This method can be overridden by all plug-ins to return a newly allocated
          * list of allocated strings naming procedures registered by this plug-in.
-         * It is different from [vfunc`PlugIn`.query_procedures] in that init happens
+         * It is different from {@link PlugIn.query_procedures} in that init happens
          * at every startup, whereas query happens only once in the life of a plug-in
-         * (right after installation or update). Hence [vfunc`PlugIn`.init_procedures]
+         * (right after installation or update). Hence {@link PlugIn.init_procedures}
          * typically returns procedures dependent to runtime conditions (such as the
-         * presence of a third-party tool), whereas [vfunc`PlugIn`.query_procedures]
+         * presence of a third-party tool), whereas {@link PlugIn.query_procedures}
          * would usually return procedures that are always available unconditionally.
          *
          * Most of the time, you only want to override
-         * [vfunc`PlugIn`.query_procedures] and leave [vfunc`PlugIn`.init_procedures]
+         * {@link PlugIn.query_procedures} and leave {@link PlugIn.init_procedures}
          * untouched.
+         * @virtual
          */
         vfunc_init_procedures(): string[];
         /**
          * This method can be overridden by all plug-ins to return a newly allocated
          * list of allocated strings naming the procedures registered by this
-         * plug-in. See documentation of [vfunc`PlugIn`.init_procedures] for
+         * plug-in. See documentation of {@link PlugIn.init_procedures} for
          * differences.
+         * @virtual
          */
         vfunc_query_procedures(): string[];
         /**
          * This method can be overridden by a plug-in which needs to perform some
          * actions upon quitting.
+         * @virtual
          */
         vfunc_quit(): void;
         /**
@@ -19000,28 +19983,28 @@ export namespace Gimp {
          * internationalization of the plug-in.
          *
          * This method will be called before initializing, querying or running
-         * `procedure_name` (respectively with [vfunc`PlugIn`.init_procedures],
-         * [vfunc`PlugIn`.query_procedures] or with the `run()` function set in
+         * `procedure_name` (respectively with {@link PlugIn.init_procedures},
+         * {@link PlugIn.query_procedures} or with the `run()` function set in
          * `gimp_image_procedure_new()`).
          *
          * By default, GIMP plug-ins look up gettext compiled message catalogs
          * in the subdirectory `locale/` under the plug-in folder (same folder
          * as `gimp_get_progname()`) with a text domain equal to the plug-in
-         * name (regardless `procedure_name)`. It is unneeded to override this
+         * name (regardless `procedure_name`). It is unneeded to override this
          * method if you follow this localization scheme.
          *
          * If you wish to disable localization or localize with another system,
-         * simply set the method to %NULL, or possibly implement this method
-         * to do something useful for your usage while returning %FALSE.
+         * simply set the method to `null`, or possibly implement this method
+         * to do something useful for your usage while returning `false`.
          *
-         * If you wish to tweak the `gettext_domain` or the `catalog_dir,` return
-         * %TRUE and allocate appropriate `gettext_domain` and/or `catalog_dir`
-         * (these use the default if set %NULL).
+         * If you wish to tweak the `gettext_domain` or the `catalog_dir`, return
+         * `true` and allocate appropriate `gettext_domain` and/or `catalog_dir`
+         * (these use the default if set `null`).
          *
          * Note that `catalog_dir` must be a relative path, encoded as UTF-8,
          * subdirectory of the directory of `gimp_get_progname()`.
          * The domain names "gimp30-std-plug-ins", "gimp30-script-fu" and
-         * "gimp30-python" are reserved and can only be used with a %NULL
+         * "gimp30-python" are reserved and can only be used with a `null`
          * `catalog_dir`. These will use the translation catalogs installed for
          * core plug-ins, so you are not expected to use these for your
          * plug-ins, except if you are making a core plug-in. More domain
@@ -19031,6 +20014,7 @@ export namespace Gimp {
          * When localizing your plug-in this way, GIMP also binds
          * `gettext_domain` to the UTF-8 encoding.
          * @param procedure_name procedure name.
+         * @virtual
          */
         vfunc_set_i18n(procedure_name: string): [boolean, string, string];
 
@@ -19047,29 +20031,29 @@ export namespace Gimp {
          * untranslated, for example using N_("Submenu"). GIMP will look up
          * the translation in the textdomain registered for the plug-in.
          *
-         * See also: gimp_procedure_add_menu_path().
+         * See also: `gimp_procedure_add_menu_path()`.
          * @param menu_path The sub-menu's menu path.
          * @param menu_label The menu label of the sub-menu.
          */
         add_menu_branch(menu_path: string, menu_label: string): void;
         /**
          * This function adds a temporary procedure to `plug_in`. It is usually
-         * called from a %GIMP_PDB_PROC_TYPE_EXTENSION procedure's
-         * [vfunc`Procedure`.run].
+         * called from a {@link Gimp.PDBProcType.EXTENSION} procedure's
+         * {@link Procedure.run}.
          *
          * A temporary procedure is a procedure which is only available while
          * one of your plug-in's "real" procedures is running.
          *
          * The procedure's type _must_ be
-         * %GIMP_PDB_PROC_TYPE_TEMPORARY or the function will fail.
+         * {@link Gimp.PDBProcType.TEMPORARY} or the function will fail.
          *
          * NOTE: Normally, plug-in communication is triggered by the plug-in
          * and the GIMP core only responds to the plug-in's requests. You must
          * explicitly enable receiving of temporary procedure run requests
-         * using either [method`PlugIn`.extension_enable] or
-         * [method`PlugIn`.extension_process]. See their respective documentation
+         * using either {@link PlugIn.extension_enable} or
+         * {@link PlugIn.extension_process}. See their respective documentation
          * for details.
-         * @param procedure A #GimpProcedure of type %GIMP_PDB_PROC_TYPE_TEMPORARY.
+         * @param procedure A {@link Gimp.Procedure} of type {@link Gimp.PDBProcType.TEMPORARY}.
          */
         add_temp_procedure(procedure: Procedure): void;
         /**
@@ -19082,32 +20066,32 @@ export namespace Gimp {
          * plug-in are just answers to requests the plug-in made.
          *
          * If the plug-in however registered temporary procedures using
-         * [method`PlugIn`.add_temp_procedure], it needs to be able to receive
+         * {@link PlugIn.add_temp_procedure}, it needs to be able to receive
          * requests to execute them. Usually this will be done by running
-         * [method`PlugIn`.extension_process] in an endless loop.
+         * {@link PlugIn.extension_process} in an endless loop.
          *
-         * If the plug-in cannot use [method`PlugIn`.extension_process], i.e. if
-         * it has a GUI and is hanging around in a [struct`GLib`.MainLoop], it
-         * must call [method`PlugIn`.extension_enable].
+         * If the plug-in cannot use {@link PlugIn.extension_process}, i.e. if
+         * it has a GUI and is hanging around in a {@link GLib.MainLoop}, it
+         * must call {@link PlugIn.extension_enable}.
          *
          * Note that the plug-in does not need to be a
-         * [enum`Gimp`.PDBProcType.EXTENSION] to register temporary procedures.
+         * {@link Gimp.PDBProcType.EXTENSION} to register temporary procedures.
          *
-         * See also: [method`PlugIn`.add_temp_procedure].
+         * See also: {@link PlugIn.add_temp_procedure}.
          */
         extension_enable(): void;
         /**
          * Processes one message sent by GIMP and returns.
          *
          * Call this function in an endless loop after calling
-         * gimp_procedure_extension_ready() to process requests for running
+         * `gimp_procedure_extension_ready()` to process requests for running
          * temporary procedures.
          *
-         * See [method`PlugIn`.extension_enable] for an asynchronous way of
+         * See {@link PlugIn.extension_enable} for an asynchronous way of
          * doing the same if running an endless loop is not an option.
          *
-         * See also: [method`PlugIn`.add_temp_procedure].
-         * @param timeout The timeout (in ms) to use for the select() call.
+         * See also: {@link PlugIn.add_temp_procedure}.
+         * @param timeout The timeout (in ms) to use for the `select()` call.
          */
         extension_process(timeout: number): void;
         /**
@@ -19115,27 +20099,27 @@ export namespace Gimp {
          *
          * This procedure retrieves the currently active error handler for
          * procedure calls made by the calling plug-in. See
-         * gimp_plugin_set_pdb_error_handler() for details.
+         * `gimp_plugin_set_pdb_error_handler()` for details.
          * @returns Who is responsible for handling procedure call errors.
          */
         get_pdb_error_handler(): PDBErrorHandler;
         /**
          * This function retrieves a temporary procedure from `plug_in` by the
          * procedure's `procedure_name`.
-         * @param procedure_name The name of a [class@Procedure] added to @plug_in.
-         * @returns The procedure if registered, or %NULL.
+         * @param procedure_name The name of a {@link Procedure} added to `plug_in`.
+         * @returns The procedure if registered, or `null`.
          */
         get_temp_procedure(procedure_name: string): Procedure | null;
         /**
          * This function retrieves the list of temporary procedure of `plug_in` as
-         * added with [method`PlugIn`.add_temp_procedure].
+         * added with {@link PlugIn.add_temp_procedure}.
          * @returns The list of          procedures.
          */
         get_temp_procedures(): Procedure[];
         /**
          * This function removes a temporary procedure from `plug_in` by the
          * procedure's `procedure_name`.
-         * @param procedure_name The name of a [class@Procedure] added to @plug_in.
+         * @param procedure_name The name of a {@link Procedure} added to `plug_in`.
          */
         remove_temp_procedure(procedure_name: string): void;
         /**
@@ -19148,7 +20132,7 @@ export namespace Gimp {
          * that maps the help IDs to the actual help files.
          *
          * This function can only be called in the
-         * [vfunc`PlugIn`.query_procedures] function of a plug-in.
+         * {@link PlugIn.query_procedures} function of a plug-in.
          * @param domain_name The XML namespace of the plug-in's help pages.
          * @param domain_uri The root URI of the plug-in's help pages.
          */
@@ -19160,8 +20144,8 @@ export namespace Gimp {
          * handled. By default GIMP will raise an error dialog if a procedure
          * call made by a plug-in fails. Using this procedure the plug-in can
          * change this behavior. If the error handler is set to
-         * %GIMP_PDB_ERROR_HANDLER_PLUGIN, then the plug-in is responsible for
-         * calling gimp_pdb_get_last_error() and handling the error whenever
+         * {@link Gimp.PDBErrorHandler.PLUGIN}, then the plug-in is responsible for
+         * calling `gimp_pdb_get_last_error()` and handling the error whenever
          * one if its procedure calls fails. It can do this by displaying the
          * error message or by forwarding it in its own return values.
          * @param handler Who is responsible for handling procedure call errors.
@@ -19195,7 +20179,8 @@ export namespace Gimp {
      * procedure subclasses).
      *
      * A plug-in can also run procedures created by the core, but also the ones
-     * created by other plug-ins (see [class`PDB]`).
+     * created by other plug-ins (see {@link PDB}).
+     * @gir-type Class
      */
     class Procedure extends GObject.Object {
         static $gtype: GObject.GType<Procedure>;
@@ -19233,16 +20218,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Procedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Procedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Procedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Procedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Procedure.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Procedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19255,21 +20243,28 @@ export namespace Gimp {
          * called to install the procedure with the main GIMP
          *   application. This is an implementation detail and must never
          *   be called by any plug-in code.
+         * @virtual
          */
         vfunc_install(): void;
         /**
-         * called when the procedure is executed via gimp_procedure_run().
-         *   the default implementation simply calls the procedure's #GimpRunFunc,
-         *   #GimpProcedure subclasses are free to modify the passed `args` and
+         * called when the procedure is executed via `gimp_procedure_run()`.
+         *   the default implementation simply calls the procedure's {@link Gimp.RunFunc},
+         *   {@link Gimp.Procedure} subclasses are free to modify the passed `args` and
          *   call their own, subclass-specific run functions.
          * @param args
+         * @virtual
          */
         vfunc_run(args: ValueArray): ValueArray;
+        /**
+         * @param sensitivity_mask
+         * @virtual
+         */
         vfunc_set_sensitivity(sensitivity_mask: number): boolean;
         /**
          * called to uninstall the procedure from the main GIMP
          *   application. This is an implementation detail and must never
          *   be called by any plug-in code.
+         * @virtual
          */
         vfunc_uninstall(): void;
 
@@ -19278,7 +20273,7 @@ export namespace Gimp {
         /**
          * Add a new boolean argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
@@ -19293,7 +20288,7 @@ export namespace Gimp {
         /**
          * Add a new boolean auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
@@ -19308,7 +20303,7 @@ export namespace Gimp {
         /**
          * Add a new boolean return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
@@ -19321,11 +20316,11 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpBrush argument to `procedure`.
+         * Add a new {@link Gimp.Brush} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param none_ok whether %NULL is a valid value.
+         * @param none_ok whether `null` is a valid value.
          * @param default_value default value
          * @param default_to_context Use the context's brush as default value.
          * @param flags argument flags.
@@ -19340,9 +20335,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpBrush auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Brush} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param default_value default value
          * @param default_to_context Use the context's brush as default value.
@@ -19357,41 +20352,41 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpBrush return value to `procedure`.
+         * Add a new {@link Gimp.Brush} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_brush_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GBytes argument to `procedure`.
+         * Add a new {@link GLib.Bytes} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_bytes_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GBytes auxiliary argument to `procedure`.
+         * Add a new {@link GLib.Bytes} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_bytes_aux_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GBytes return value to `procedure`.
+         * Add a new {@link GLib.Bytes} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_bytes_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GimpChannel argument to `procedure`.
+         * Add a new {@link Gimp.Channel} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19404,9 +20399,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpChannel auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Channel} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19419,9 +20414,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpChannel return value to `procedure`.
+         * Add a new {@link Gimp.Channel} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19434,12 +20429,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpChoice argument to `procedure`.
+         * Add a new {@link Gimp.Choice} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param choice the #GimpChoice
-         * @param value the default value for #GimpChoice.
+         * @param choice the {@link Gimp.Choice}
+         * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
          */
         add_choice_argument(
@@ -19451,12 +20446,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpChoice auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Choice} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param choice the #GimpChoice
-         * @param value the default value for #GimpChoice.
+         * @param choice the {@link Gimp.Choice}
+         * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
          */
         add_choice_aux_argument(
@@ -19468,12 +20463,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpChoice return value to `procedure`.
+         * Add a new {@link Gimp.Choice} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param choice the #GimpChoice
-         * @param value the default value for #GimpChoice.
+         * @param choice the {@link Gimp.Choice}
+         * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
          */
         add_choice_return_value(
@@ -19485,12 +20480,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GeglColor argument to `procedure`.
+         * Add a new {@link Gegl.Color} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param has_alpha whether the argument has transparency.
-         * @param value the default #GeglColor value.
+         * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
         add_color_argument(
@@ -19502,12 +20497,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GeglColor auxiliary argument to `procedure`.
+         * Add a new {@link Gegl.Color} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param has_alpha whether the argument has transparency.
-         * @param value the default #GeglColor value.
+         * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
         add_color_aux_argument(
@@ -19519,12 +20514,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GeglColor argument to `procedure` from a string representation.
+         * Add a new {@link Gegl.Color} argument to `procedure` from a string representation.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param has_alpha whether the argument has transparency.
-         * @param value the default #GeglColor value.
+         * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
         add_color_from_string_argument(
@@ -19536,12 +20531,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GeglColor auxiliary argument to `procedure` from a string representation.
+         * Add a new {@link Gegl.Color} auxiliary argument to `procedure` from a string representation.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param has_alpha whether the argument has transparency.
-         * @param value the default #GeglColor value.
+         * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
         add_color_from_string_aux_argument(
@@ -19553,12 +20548,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GeglColor return value to `procedure` from a string representation.
+         * Add a new {@link Gegl.Color} return value to `procedure` from a string representation.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param has_alpha whether the argument has transparency.
-         * @param value the default #GeglColor value.
+         * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
         add_color_from_string_return_value(
@@ -19570,12 +20565,12 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GeglColor return value to `procedure`.
+         * Add a new {@link Gegl.Color} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param has_alpha whether the argument has transparency.
-         * @param value the default #GeglColor value.
+         * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
         add_color_return_value(
@@ -19587,9 +20582,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpDisplay argument to `procedure`.
+         * Add a new {@link Gimp.Display} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19602,9 +20597,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpDisplay auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Display} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19617,9 +20612,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpDisplay return value to `procedure`.
+         * Add a new {@link Gimp.Display} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19634,7 +20629,7 @@ export namespace Gimp {
         /**
          * Add a new double argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -19653,7 +20648,7 @@ export namespace Gimp {
         /**
          * Add a new double auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -19672,7 +20667,7 @@ export namespace Gimp {
         /**
          * Add a new double return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -19689,9 +20684,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpDrawable argument to `procedure`.
+         * Add a new {@link Gimp.Drawable} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19704,9 +20699,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpDrawable auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Drawable} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19719,9 +20714,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpDrawable return value to `procedure`.
+         * Add a new {@link Gimp.Drawable} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19736,9 +20731,9 @@ export namespace Gimp {
         /**
          * Add a new enum argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param enum_type the #GType for this argument
+         * @param enum_type the {@link GObject.GType} for this argument
          * @param value the default value.
          * @param flags argument flags.
          */
@@ -19753,9 +20748,9 @@ export namespace Gimp {
         /**
          * Add a new enum auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param enum_type the #GType for this argument
+         * @param enum_type the {@link GObject.GType} for this argument
          * @param value the default value.
          * @param flags argument flags.
          */
@@ -19770,9 +20765,9 @@ export namespace Gimp {
         /**
          * Add a new enum return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param enum_type the #GType for this argument
+         * @param enum_type the {@link GObject.GType} for this argument
          * @param value the default value.
          * @param flags argument flags.
          */
@@ -19785,25 +20780,25 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GFile argument to `procedure`.
+         * Add a new {@link Gio.File} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_file_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GFile auxiliary argument to `procedure`.
+         * Add a new {@link Gio.File} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_file_aux_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GFile return value to `procedure`.
+         * Add a new {@link Gio.File} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -19811,7 +20806,7 @@ export namespace Gimp {
         /**
          * Add a new float array argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -19819,7 +20814,7 @@ export namespace Gimp {
         /**
          * Add a new float array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -19827,17 +20822,17 @@ export namespace Gimp {
         /**
          * Add a new float array return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_float_array_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GimpFont argument to `procedure`.
+         * Add a new {@link Gimp.Font} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param none_ok whether %NULL is a valid value.
+         * @param none_ok whether `null` is a valid value.
          * @param default_value default value
          * @param default_to_context Use the context's font as default value.
          * @param flags argument flags.
@@ -19852,9 +20847,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpFont auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Font} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param default_value default value
          * @param default_to_context Use the context's font as default value.
@@ -19869,19 +20864,19 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpFont return value to `procedure`.
+         * Add a new {@link Gimp.Font} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_font_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GimpGradient argument to `procedure`.
+         * Add a new {@link Gimp.Gradient} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param none_ok whether %NULL is a valid value.
+         * @param none_ok whether `null` is a valid value.
          * @param default_value default value
          * @param default_to_context Use the context's gradient as default value.
          * @param flags argument flags.
@@ -19896,9 +20891,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpGradient auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Gradient} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param default_value default value
          * @param default_to_context Use the context's gradient as default value.
@@ -19913,17 +20908,17 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpGradient return value to `procedure`.
+         * Add a new {@link Gimp.Gradient} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_gradient_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new [class`GroupLayer]` argument to `procedure`.
+         * Add a new {@link GroupLayer} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19936,9 +20931,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new [class`GroupLayer]` auxiliary argument to `procedure`.
+         * Add a new {@link GroupLayer} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19951,9 +20946,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new [class`GroupLayer]` return value to `procedure`.
+         * Add a new {@link GroupLayer} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19966,9 +20961,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpImage argument to `procedure`.
+         * Add a new {@link Gimp.Image} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19981,9 +20976,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpImage auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Image} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -19996,9 +20991,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpImage return value to `procedure`.
+         * Add a new {@link Gimp.Image} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20013,7 +21008,7 @@ export namespace Gimp {
         /**
          * Add a new integer array argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -20021,7 +21016,7 @@ export namespace Gimp {
         /**
          * Add a new integer array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -20029,7 +21024,7 @@ export namespace Gimp {
         /**
          * Add a new integer array return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -20037,7 +21032,7 @@ export namespace Gimp {
         /**
          * Add a new integer argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -20056,7 +21051,7 @@ export namespace Gimp {
         /**
          * Add a new integer auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -20075,7 +21070,7 @@ export namespace Gimp {
         /**
          * Add a new integer return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -20092,9 +21087,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpItem argument to `procedure`.
+         * Add a new {@link Gimp.Item} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20107,9 +21102,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpItem auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Item} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20122,9 +21117,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpItem return value to `procedure`.
+         * Add a new {@link Gimp.Item} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20137,9 +21132,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpLayer argument to `procedure`.
+         * Add a new {@link Gimp.Layer} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20152,9 +21147,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpLayer auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Layer} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20167,9 +21162,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpLayerMask argument to `procedure`.
+         * Add a new {@link Gimp.LayerMask} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20182,9 +21177,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpLayerMask auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.LayerMask} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20197,9 +21192,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpLayerMask return value to `procedure`.
+         * Add a new {@link Gimp.LayerMask} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20212,9 +21207,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpLayer return value to `procedure`.
+         * Add a new {@link Gimp.Layer} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20244,7 +21239,7 @@ export namespace Gimp {
          * g_free (path);
          * ```
          *
-         * See also: gimp_plug_in_add_menu_branch().
+         * See also: `gimp_plug_in_add_menu_branch()`.
          *
          * GIMP menus also have a concept of named section. For instance, say you are
          * creating a plug-in which you want to show next to the "Export", "Export As"
@@ -20256,14 +21251,14 @@ export namespace Gimp {
          *
          * This function will place your procedure to the bottom of the selected path or
          * section. Order is not assured relatively to other plug-ins.
-         * @param menu_path The @procedure's additional menu path.
+         * @param menu_path The `procedure`'s additional menu path.
          */
         add_menu_path(menu_path: string): void;
         /**
          * Add a new object array argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
-         * @param blurb a more detailed help description. @object_type  the type of object stored in the array
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
          * @param object_type
          * @param flags argument flags.
          */
@@ -20277,8 +21272,8 @@ export namespace Gimp {
         /**
          * Add a new object array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
-         * @param blurb a more detailed help description. @object_type  the type of object stored in the array
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
          * @param object_type
          * @param flags argument flags.
          */
@@ -20292,8 +21287,8 @@ export namespace Gimp {
         /**
          * Add a new object array return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
-         * @param blurb a more detailed help description. @object_type  the type of object stored in the array
+         * @param nick the label used in `GimpProcedureDialog`.
+         * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
          * @param object_type
          * @param flags argument flags.
          */
@@ -20305,11 +21300,11 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpPalette argument to `procedure`.
+         * Add a new {@link Gimp.Palette} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param none_ok whether %NULL is a valid value.
+         * @param none_ok whether `null` is a valid value.
          * @param default_value default value
          * @param default_to_context Use the context's palette as default value.
          * @param flags argument flags.
@@ -20324,9 +21319,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpPalette auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Palette} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param default_value default value
          * @param default_to_context Use the context's palette as default value.
@@ -20341,9 +21336,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpPalette return value to `procedure`.
+         * Add a new {@link Gimp.Palette} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -20351,9 +21346,9 @@ export namespace Gimp {
         /**
          * Add a new param argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param param_type the #GPParamType for this argument
+         * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
          */
         add_param_argument(
@@ -20366,9 +21361,9 @@ export namespace Gimp {
         /**
          * Add a new param auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param param_type the #GPParamType for this argument
+         * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
          */
         add_param_aux_argument(
@@ -20381,9 +21376,9 @@ export namespace Gimp {
         /**
          * Add a new param return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param param_type the #GPParamType for this argument
+         * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
          */
         add_param_return_value(
@@ -20394,33 +21389,33 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpParasite argument to `procedure`.
+         * Add a new {@link Gimp.Parasite} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_parasite_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GimpParasite auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Parasite} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_parasite_aux_argument(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GimpParasite return value to `procedure`.
+         * Add a new {@link Gimp.Parasite} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_parasite_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GimpPath argument to `procedure`.
+         * Add a new {@link Gimp.Path} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20433,9 +21428,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpPath auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Path} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20448,9 +21443,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpPath return value to `procedure`.
+         * Add a new {@link Gimp.Path} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20463,11 +21458,11 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpPattern argument to `procedure`.
+         * Add a new {@link Gimp.Pattern} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param none_ok whether %NULL is a valid value.
+         * @param none_ok whether `null` is a valid value.
          * @param default_value default value
          * @param default_to_context Use the context's pattern as default value.
          * @param flags argument flags.
@@ -20482,9 +21477,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpPattern auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Pattern} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param default_value default value
          * @param default_to_context Use the context's pattern as default value.
@@ -20499,19 +21494,19 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpPattern return value to `procedure`.
+         * Add a new {@link Gimp.Pattern} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_pattern_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GimpResource argument to `procedure`.
+         * Add a new {@link Gimp.Resource} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
-         * @param none_ok whether %NULL is a valid value.
+         * @param none_ok whether `null` is a valid value.
          * @param default_value default value.
          * @param flags argument flags.
          */
@@ -20524,9 +21519,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpResource auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Resource} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param default_value default value.
          * @param flags argument flags.
@@ -20539,17 +21534,17 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpResource return value to `procedure`.
+         * Add a new {@link Gimp.Resource} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
         add_resource_return_value(name: string, nick: string, blurb: string, flags: GObject.ParamFlags | null): void;
         /**
-         * Add a new #GimpSelection argument to `procedure`.
+         * Add a new {@link Gimp.Selection} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20562,9 +21557,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpSelection auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Selection} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20577,9 +21572,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpSelection return value to `procedure`.
+         * Add a new {@link Gimp.Selection} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20594,7 +21589,7 @@ export namespace Gimp {
         /**
          * Add a new string argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
@@ -20609,7 +21604,7 @@ export namespace Gimp {
         /**
          * Add a new string array argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -20617,7 +21612,7 @@ export namespace Gimp {
         /**
          * Add a new string array auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -20630,7 +21625,7 @@ export namespace Gimp {
         /**
          * Add a new string array return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
@@ -20643,7 +21638,7 @@ export namespace Gimp {
         /**
          * Add a new string auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
@@ -20658,7 +21653,7 @@ export namespace Gimp {
         /**
          * Add a new string return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
@@ -20671,9 +21666,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpTextLayer argument to `procedure`.
+         * Add a new {@link Gimp.TextLayer} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20686,9 +21681,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpTextLayer auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.TextLayer} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20701,9 +21696,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpTextLayer return value to `procedure`.
+         * Add a new {@link Gimp.TextLayer} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
@@ -20718,7 +21713,7 @@ export namespace Gimp {
         /**
          * Add a new unsigned integer argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -20737,7 +21732,7 @@ export namespace Gimp {
         /**
          * Add a new unsigned integer auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -20756,7 +21751,7 @@ export namespace Gimp {
         /**
          * Add a new unsigned integer return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param min the minimum value for this argument
          * @param max the maximum value for this argument
@@ -20773,9 +21768,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpUnit argument to `procedure`.
+         * Add a new {@link Gimp.Unit} argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param show_pixels whether to allow pixels as a valid option
          * @param show_percent whether to allow percent as a valid option
@@ -20792,9 +21787,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpUnit auxiliary argument to `procedure`.
+         * Add a new {@link Gimp.Unit} auxiliary argument to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param show_pixels whether to allow pixels as a valid option
          * @param show_percent whether to allow percent as a valid option
@@ -20811,9 +21806,9 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Add a new #GimpUnit return value to `procedure`.
+         * Add a new {@link Gimp.Unit} return value to `procedure`.
          * @param name the name of the argument to be created.
-         * @param nick the label used in #GimpProcedureDialog.
+         * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param show_pixels whether to allow pixels as a valid option
          * @param show_percent whether to allow percent as a valid option
@@ -20830,152 +21825,201 @@ export namespace Gimp {
             flags: GObject.ParamFlags | null,
         ): void;
         /**
-         * Create a #GimpConfig with properties that match `procedure'`s arguments, to be
-         * used in [method`Procedure`.run_config] method.
-         * @returns The new #GimpConfig.
+         * Create a {@link Gimp.Config} with properties that match `procedure`'s arguments, to be
+         * used in {@link Procedure.run_config} method.
+         * @returns The new {@link Gimp.Config}.
          */
         create_config(): ProcedureConfig;
         /**
          * Notify the main GIMP application that the extension has been
          * properly initialized and is ready to run.
          *
-         * This function _must_ be called from every procedure's [callback`RunFunc]`
+         * This function _must_ be called from every procedure's {@link RunFunc}
          * that was created as #GIMP_PDB_PROC_TYPE_EXTENSION.
          *
          * Subsequently, extensions can process temporary procedure run
-         * requests using either [method`PlugIn`.extension_enable] or
-         * [method`PlugIn`.extension_process].
+         * requests using either {@link PlugIn.extension_enable} or
+         * {@link PlugIn.extension_process}.
          *
-         * See also: [ctor`Procedure`.new].
+         * See also: {@link Procedure.new}.
          */
         extension_ready(): void;
         /**
-         * Searches the `procedure'`s arguments for a #GParamSpec called `name`.
+         * Searches the `procedure`'s arguments for a {@link GObject.ParamSpec} called `name`.
          * @param name An argument name
-         * @returns The @procedure's argument with @name if it          exists, or %NULL otherwise.
+         * @returns The `procedure`'s argument with `name` if it          exists, or `null` otherwise.
          */
         find_argument(name: string): GObject.ParamSpec;
         /**
-         * Searches the `procedure'`s auxiliary arguments for a #GParamSpec
+         * Searches the `procedure`'s auxiliary arguments for a {@link GObject.ParamSpec}
          * called `name`.
          * @param name An auxiliary argument name
-         * @returns The @procedure's auxiliary argument with          @name if it exists, or %NULL otherwise.
+         * @returns The `procedure`'s auxiliary argument with          `name` if it exists, or `null` otherwise.
          */
         find_aux_argument(name: string): GObject.ParamSpec;
         /**
-         * Searches the `procedure'`s return values for a #GParamSpec called
+         * Searches the `procedure`'s return values for a {@link GObject.ParamSpec} called
          * `name`.
          * @param name A return value name
-         * @returns The @procedure's return values with @name          if it exists, or %NULL otherwise.
+         * @returns The `procedure`'s return values with `name`          if it exists, or `null` otherwise.
          */
         find_return_value(name: string): GObject.ParamSpec;
+        /**
+         * @param arg_name the name of one of `procedure`'s arguments or auxiliary arguments
+         * @returns The {@link Gimp.ArgumentSync} value set with          `gimp_procedure_set_argument_sync()`:
+         */
         get_argument_sync(arg_name: string): ArgumentSync;
+        /**
+         * @returns An array          of `GParamSpec` in the order they were added in.
+         */
         get_arguments(): GObject.ParamSpec[];
+        /**
+         * @returns The procedure's authors given in {@link Procedure.set_attribution}.
+         */
         get_authors(): string;
+        /**
+         * @returns An array          of `GParamSpec` in the order they were added in.
+         */
         get_aux_arguments(): GObject.ParamSpec[];
+        /**
+         * @returns The procedure's blurb given in {@link Procedure.set_documentation}.
+         */
         get_blurb(): string;
+        /**
+         * @returns The procedure's copyright given in {@link Procedure.set_attribution}.
+         */
         get_copyright(): string;
+        /**
+         * @returns The procedure's date given in {@link Procedure.set_attribution}.
+         */
         get_date(): string;
+        /**
+         * @returns The procedure's help text given in {@link Procedure.set_documentation}.
+         */
         get_help(): string;
+        /**
+         * @returns The procedure's help ID given in {@link Procedure.set_documentation}.
+         */
         get_help_id(): string;
         /**
          * Gets the file of the icon if one was set for `procedure`.
-         * @returns the icon #GFile or %NULL if no          file was set.
+         * @returns the icon {@link Gio.File} or `null` if no          file was set.
          */
         get_icon_file(): Gio.File | null;
         /**
          * Gets the name of the icon if one was set for `procedure`.
-         * @returns the icon name or %NULL if no icon name was set.
+         * @returns the icon name or `null` if no icon name was set.
          */
         get_icon_name(): string | null;
         /**
-         * Gets the #GdkPixbuf of the icon if an icon was set this way for
+         * Gets the {@link GdkPixbuf.Pixbuf} of the icon if an icon was set this way for
          * `procedure`.
-         * @returns the icon pixbuf or %NULL if no          icon name was set.
+         * @returns the icon pixbuf or `null` if no          icon name was set.
          */
         get_icon_pixbuf(): GdkPixbuf.Pixbuf | null;
         /**
-         * Gets the type of data set as `procedure'`s icon. Depending on the
+         * Gets the type of data set as `procedure`'s icon. Depending on the
          * result, you can call the relevant specific function, such as
-         * [method`Procedure`.get_icon_name].
-         * @returns the #GimpIconType of @procedure's icon.
+         * {@link Procedure.get_icon_name}.
+         * @returns the {@link Gimp.IconType} of `procedure`'s icon.
          */
         get_icon_type(): IconType;
         /**
          * This function retrieves the list of image types the procedure can
-         * operate on. See gimp_procedure_set_image_types().
+         * operate on. See `gimp_procedure_set_image_types()`.
          * @returns The image types.
          */
         get_image_types(): string;
+        /**
+         * @returns The procedure's menu label given in          `gimp_procedure_set_menu_label()`.
+         */
         get_menu_label(): string;
+        /**
+         * @returns the `procedure`'s          menu paths as added with `gimp_procedure_add_menu_path()`.
+         */
         get_menu_paths(): string[];
+        /**
+         * @returns The procedure's name given in {@link Procedure.new}.
+         */
         get_name(): string;
+        /**
+         * @returns The {@link Gimp.PlugIn} given in {@link Procedure.new}.
+         */
         get_plug_in(): PlugIn;
+        /**
+         * @returns The procedure's type given in {@link Procedure.new}.
+         */
         get_proc_type(): PDBProcType;
+        /**
+         * @returns An array          of `GParamSpec` in the order they were added in.
+         */
         get_return_values(): GObject.ParamSpec[];
+        /**
+         * @returns The procedure's sensitivity mask given in          {@link Procedure.set_sensitivity_mask}.
+         */
         get_sensitivity_mask(): number;
         /**
          * Format the expected return values from procedures.
          * @param status the success status of the procedure run.
-         * @param error an optional #GError. This parameter should be set if             @status is either #GIMP_PDB_EXECUTION_ERROR or             #GIMP_PDB_CALLING_ERROR.
-         * @returns the expected #GimpValueArray as could be returned by a [callback@RunFunc].
+         * @param error an optional {@link GLib.Error}. This parameter should be set if             `status` is either #GIMP_PDB_EXECUTION_ERROR or             #GIMP_PDB_CALLING_ERROR.
+         * @returns the expected {@link Gimp.ValueArray} as could be returned by a {@link RunFunc}.
          */
         new_return_values(status: PDBStatusType | null, error?: GLib.Error | null): ValueArray;
         /**
-         * Runs `procedure,` calling the run_func given in [ctor`Procedure`.new].
+         * Runs `procedure`, calling the run_func given in {@link Procedure.new}.
          *
          * Create `config` at default values with
-         * [method`Gimp`.Procedure.create_config] then set any argument you wish
-         * to change from defaults with [method`GObject`.Object.set].
+         * {@link Gimp.Procedure.create_config} then set any argument you wish
+         * to change from defaults with {@link GObject.Object.set}.
          *
-         * If `config` is %NULL, the default arguments of `procedure` will be used.
-         * @param config the @procedure's arguments.
-         * @returns The @procedure's return values.
+         * If `config` is `null`, the default arguments of `procedure` will be used.
+         * @param config the `procedure`'s arguments.
+         * @returns The `procedure`'s return values.
          */
         run(config?: ProcedureConfig | null): ValueArray;
         /**
-         * When the procedure's run() function exits, a #GimpProcedure's arguments
-         * or auxiliary arguments can be automatically synced with a #GimpParasite of
-         * the #GimpImage the procedure is running on.
+         * When the procedure's `run()` function exits, a {@link Gimp.Procedure}'s arguments
+         * or auxiliary arguments can be automatically synced with a {@link Gimp.Parasite} of
+         * the {@link Gimp.Image} the procedure is running on.
          *
-         * In order to enable this, set `sync` to %GIMP_ARGUMENT_SYNC_PARASITE.
+         * In order to enable this, set `sync` to {@link Gimp.ArgumentSync.PARASITE}.
          *
          * Currently, it is possible to sync a string argument of type
-         * #GParamSpecString with an image parasite of the same name, for
+         * {@link GObject.ParamSpecString} with an image parasite of the same name, for
          * example the "gimp-comment" parasite in file save procedures.
-         * @param arg_name the name of one of @procedure's arguments or auxiliary arguments.
+         * @param arg_name the name of one of `procedure`'s arguments or auxiliary arguments.
          * @param sync how to sync the argument or auxiliary argument.
          */
         set_argument_sync(arg_name: string, sync: ArgumentSync | null): void;
         /**
          * Sets various attribution strings on `procedure`.
-         * @param authors The @procedure's author(s).
-         * @param copyright The @procedure's copyright.
-         * @param date The @procedure's date (written or published).
+         * @param authors The `procedure`'s author(s).
+         * @param copyright The `procedure`'s copyright.
+         * @param date The `procedure`'s date (written or published).
          */
         set_attribution(authors: string, copyright: string, date: string): void;
         /**
-         * Sets various documentation strings on `procedure:`
+         * Sets various documentation strings on `procedure`:
          *
-         * * `blurb` is used for instance as the `procedure'`s tooltip when represented in
+         * * `blurb` is used for instance as the `procedure`'s tooltip when represented in
          *   the UI such as a menu entry.
          * * `help` is a free-form text that's meant as additional documentation for
          *   developers of scripts and plug-ins. If the `blurb` and the argument names
          *   and descriptions are enough for a quite self-explanatory procedure, you may
-         *   set `help` to %NULL, rather than setting an uninformative `help` (avoid
+         *   set `help` to `null`, rather than setting an uninformative `help` (avoid
          *   setting the same text as `blurb` or redundant information).
          *
          * Plug-ins are responsible for their own translations. You are expected to send
          * localized strings of `blurb` and `help` to GIMP if your plug-in is
          * internationalized.
-         * @param blurb The @procedure's blurb.
-         * @param help The @procedure's help text.
-         * @param help_id The @procedure's help ID.
+         * @param blurb The `procedure`'s blurb.
+         * @param help The `procedure`'s help text.
+         * @param help_id The `procedure`'s help ID.
          */
         set_documentation(blurb: string, help?: string | null, help_id?: string | null): void;
         /**
          * Sets the icon for `procedure` to the contents of an image file.
-         * @param file a #GFile pointing to an image file.
+         * @param file a {@link Gio.File} pointing to an image file.
          */
         set_icon_file(file?: Gio.File | null): void;
         /**
@@ -20985,7 +22029,7 @@ export namespace Gimp {
         set_icon_name(icon_name?: string | null): void;
         /**
          * Sets the icon for `procedure` to `pixbuf`.
-         * @param pixbuf a #GdkPixbuf.
+         * @param pixbuf a {@link GdkPixbuf.Pixbuf}.
          */
         set_icon_pixbuf(pixbuf?: GdkPixbuf.Pixbuf | null): void;
         /**
@@ -21000,13 +22044,13 @@ export namespace Gimp {
          */
         set_image_types(image_types: string): void;
         /**
-         * Sets the label to use for the `procedure'`s menu entry, The
+         * Sets the label to use for the `procedure`'s menu entry, The
          * location(s) where to register in the menu hierarchy is chosen using
-         * gimp_procedure_add_menu_path().
+         * `gimp_procedure_add_menu_path()`.
          *
          * Plug-ins are responsible for their own translations. You are expected to send
          * localized strings to GIMP if your plug-in is internationalized.
-         * @param menu_label The @procedure's menu label.
+         * @param menu_label The `procedure`'s menu label.
          */
         set_menu_label(menu_label: string): void;
         /**
@@ -21015,18 +22059,18 @@ export namespace Gimp {
          * procedure as sensitive (hence forbid running it otherwise), yet it
          * will not forbid thid-party plug-ins for instance to run manually your
          * registered procedure. Therefore you should still handle non-supported
-         * cases appropriately by returning with %GIMP_PDB_EXECUTION_ERROR and a
+         * cases appropriately by returning with {@link Gimp.PDBStatusType.EXECUTION_ERROR} and a
          * suitable error message.
          *
          * Similarly third-party plug-ins should verify they are allowed to call
-         * a procedure with [method`Procedure`.get_sensitivity_mask] when running
+         * a procedure with {@link Procedure.get_sensitivity_mask} when running
          * with dynamic contents.
          *
          * Note that by default, a procedure works on an image with a single
          * drawable selected. Hence not setting the mask, setting it with 0 or
-         * setting it with a mask of %GIMP_PROCEDURE_SENSITIVE_DRAWABLE only are
+         * setting it with a mask of {@link Gimp.ProcedureSensitivityMask.DRAWABLE} only are
          * equivalent.
-         * @param sensitivity_mask A binary mask of #GimpProcedureSensitivityMask.
+         * @param sensitivity_mask A binary mask of {@link Gimp.ProcedureSensitivityMask}.
          */
         set_sensitivity_mask(sensitivity_mask: number): void;
     }
@@ -21045,17 +22089,19 @@ export namespace Gimp {
     }
 
     /**
-     * The base class for [class`Procedure]` specific config objects and the main
-     * interface to manage aspects of [class`Procedure]`'s arguments such as
+     * The base class for {@link Procedure} specific config objects and the main
+     * interface to manage aspects of {@link Procedure}'s arguments such as
      * persistency of the last used arguments across GIMP sessions.
      *
-     * A procedure config is created by a [class`Procedure]` using
-     * [method`Procedure`.create_config] and its properties match the
+     * A procedure config is created by a {@link Procedure} using
+     * {@link Procedure.create_config} and its properties match the
      * procedure's arguments and auxiliary arguments in number, order and
      * type.
      *
-     * It implements the [struct`Config]` interface and therefore has all its
+     * It implements the {@link Config} interface and therefore has all its
      * serialization and deserialization features.
+     * @gir-type Class
+     * @since 3.0
      */
     abstract class ProcedureConfig extends GObject.Object {
         static $gtype: GObject.GType<ProcedureConfig>;
@@ -21081,16 +22127,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProcedureConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProcedureConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProcedureConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProcedureConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProcedureConfig.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProcedureConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21101,35 +22150,35 @@ export namespace Gimp {
 
         /**
          * A utility function which will get the current string value of a
-         * [struct`ParamSpecChoice]` property in `config` and convert it to the integer ID
+         * {@link ParamSpecChoice} property in `config` and convert it to the integer ID
          * mapped to this value.
          * This makes it easy to work with an Enum type locally, within a plug-in code.
-         * @param property_name the name of a [struct@ParamSpecChoice] property.
+         * @param property_name the name of a {@link ParamSpecChoice} property.
          */
         get_choice_id(property_name: string): number;
         /**
-         * This function returns the [class`Procedure]` which created `config,` see
-         * [method`Procedure`.create_config].
+         * This function returns the {@link Procedure} which created `config`, see
+         * {@link Procedure.create_config}.
          * @returns The procedure which created this config.
          */
         get_procedure(): Procedure;
         /**
          * Note: There is normally no need to call this function because it's
-         * already called by [class`ExportProcedure]` at the end of the `run()` callback.
+         * already called by {@link ExportProcedure} at the end of the `run()` callback.
          *
-         * Only use this function if the [class`Metadata]` passed as argument of a
-         * [class`ExportProcedure]`'s run() method needs to be written at a specific
+         * Only use this function if the {@link Metadata} passed as argument of a
+         * {@link ExportProcedure}'s `run()` method needs to be written at a specific
          * point of the export, other than its end.
          *
-         * This function syncs back `config'`s export properties to the
-         * metadata's [flags`MetadataSaveFlags]` and writes the metadata to `file`
-         * using [method`Image`.metadata_save_finish].
+         * This function syncs back `config`'s export properties to the
+         * metadata's {@link MetadataSaveFlags} and writes the metadata to `file`
+         * using {@link Image.metadata_save_finish}.
          *
          * The metadata is only ever written once. If this function has been
          * called explicitly, it will do nothing when called a second time at the end of
          * the `run()` callback.
          * @param exported_image the image that was actually exported
-         * @param file the file @exported_image was written to
+         * @param file the file `exported_image` was written to
          */
         save_metadata(exported_image: Image, file: Gio.File): void;
     }
@@ -21149,6 +22198,7 @@ export namespace Gimp {
 
     /**
      * Functions to manipulate resources.
+     * @gir-type Class
      */
     abstract class Resource extends GObject.Object implements ConfigInterface {
         static $gtype: GObject.GType<Resource>;
@@ -21174,16 +22224,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21193,12 +22246,12 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Returns a #GimpResource representing `resource_id`. Since #GimpResource is an
+         * Returns a {@link Gimp.Resource} representing `resource_id`. Since {@link Gimp.Resource} is an
          * abstract class, the real object type will actually be the proper
          * subclass.
          *
          * Note: in most use cases, you should not need to retrieve a
-         * #GimpResource by its ID, which is mostly internal data and not
+         * {@link Gimp.Resource} by its ID, which is mostly internal data and not
          * reusable across sessions. Use the appropriate functions for your use
          * case instead.
          * @param resource_id The resource id.
@@ -21207,7 +22260,7 @@ export namespace Gimp {
         /**
          * Returns the resource with the given `resource_type` and
          * `resource_name`.
-         * @param resource_type The #GType of the resource.
+         * @param resource_type The {@link GObject.GType} of the resource.
          * @param resource_name The name of the resource.
          */
         static get_by_name(resource_type: GObject.GType, resource_name: string): Resource | null;
@@ -21256,7 +22309,7 @@ export namespace Gimp {
          * to an existing resource.
          *
          * *Note*: in most use cases, you should not use this function. If you
-         * got a [class`Gimp`.Resource] from the API, you should trust it is
+         * got a {@link Gimp.Resource} from the API, you should trust it is
          * valid. This function is mostly for internal usage.
          * @param resource_id The resource ID to check.
          */
@@ -21269,7 +22322,7 @@ export namespace Gimp {
          * @param title Title of the resource selection dialog.
          * @param parent_handle
          * @param resource The resource to set as the initial choice.
-         * @param resource_type The type of the subclass of [class@Resource].
+         * @param resource_type The type of the subclass of {@link Resource}.
          */
         static select_new(
             title: string,
@@ -21277,6 +22330,10 @@ export namespace Gimp {
             resource: Resource,
             resource_type: GObject.GType,
         ): string;
+        /**
+         * @param callback_name
+         * @param resource
+         */
         static select_set(callback_name: string, resource: Resource): void;
 
         // Methods
@@ -21307,7 +22364,7 @@ export namespace Gimp {
          * Returns the resource's name.
          *
          * This procedure returns the resource's name.
-         * @returns The resource's name.          The returned value must be freed with g_free().
+         * @returns The resource's name.          The returned value must be freed with `g_free()`.
          */
         get_name(): string;
         /**
@@ -21370,8 +22427,6 @@ export namespace Gimp {
          * @returns TRUE on success.
          */
         rename(new_name: string): boolean;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -21385,32 +22440,32 @@ export namespace Gimp {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -21419,39 +22474,39 @@ export namespace Gimp {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -21462,13 +22517,16 @@ export namespace Gimp {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -21476,7 +22534,7 @@ export namespace Gimp {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -21484,9 +22542,9 @@ export namespace Gimp {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -21506,9 +22564,9 @@ export namespace Gimp {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -21522,33 +22580,33 @@ export namespace Gimp {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -21581,21 +22639,21 @@ export namespace Gimp {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -21605,8 +22663,8 @@ export namespace Gimp {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -21623,10 +22681,10 @@ export namespace Gimp {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -21641,13 +22699,13 @@ export namespace Gimp {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -21678,21 +22736,21 @@ export namespace Gimp {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -21702,33 +22760,34 @@ export namespace Gimp {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -21737,6 +22796,7 @@ export namespace Gimp {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -21745,12 +22805,14 @@ export namespace Gimp {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -21759,20 +22821,22 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -21784,6 +22848,7 @@ export namespace Gimp {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -21826,6 +22891,7 @@ export namespace Gimp {
 
     /**
      * Functions for manipulating selections.
+     * @gir-type Class
      */
     class Selection extends Channel {
         static $gtype: GObject.GType<Selection>;
@@ -21847,16 +22913,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Selection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Selection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Selection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Selection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21932,9 +23001,9 @@ export namespace Gimp {
          */
         static flood(image: Image): boolean;
         /**
-         * Returns a #GimpSelection representing `selection_id`. This function
-         * calls gimp_item_get_by_id() and returns the item if it is selection
-         * or %NULL otherwise.
+         * Returns a {@link Gimp.Selection} representing `selection_id`. This function
+         * calls `gimp_item_get_by_id()` and returns the item if it is selection
+         * or `null` otherwise.
          * @param selection_id The selection id.
          */
         static get_by_id(selection_id: number): Selection | null;
@@ -22038,6 +23107,7 @@ export namespace Gimp {
 
     /**
      * Functions for querying and manipulating text layers.
+     * @gir-type Class
      */
     class TextLayer extends Layer {
         static $gtype: GObject.GType<TextLayer>;
@@ -22064,16 +23134,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextLayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22083,8 +23156,8 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Returns a #GimpTextLayer representing `layer_id`. This function calls
-         * gimp_item_get_by_id() and returns the item if it is layer or %NULL
+         * Returns a {@link Gimp.TextLayer} representing `layer_id`. This function calls
+         * `gimp_item_get_by_id()` and returns the item if it is layer or `null`
          * otherwise.
          * @param layer_id The layer id.
          */
@@ -22169,7 +23242,7 @@ export namespace Gimp {
          *
          * This procedure returns the language string which is set for the text
          * in the text layer.
-         * @returns The language used in the text layer.          The returned value must be freed with g_free().
+         * @returns The language used in the text layer.          The returned value must be freed with `g_free()`.
          */
         get_language(): string;
         /**
@@ -22195,14 +23268,14 @@ export namespace Gimp {
          * The markup will be in the form of Pango's markup - See
          * https://www.pango.org/ for more information about Pango and its
          * markup.
-         * @returns The markup which represents the style of the specified text layer.          The returned value must be freed with g_free().
+         * @returns The markup which represents the style of the specified text layer.          The returned value must be freed with `g_free()`.
          */
         get_markup(): string;
         /**
          * Get the text from a text layer as string.
          *
          * This procedure returns the text from a text layer as a string.
-         * @returns The text from the specified text layer.          The returned value must be freed with g_free().
+         * @returns The text from the specified text layer.          The returned value must be freed with `g_free()`.
          */
         get_text(): string;
         /**
@@ -22210,7 +23283,7 @@ export namespace Gimp {
          *
          * This procedure changes the width and height of a text layer while
          * keeping it as a text layer and not converting it to a bitmap like
-         * gimp_layer_resize() would do.
+         * `gimp_layer_resize()` would do.
          * @param width The new box width in pixels.
          * @param height The new box height in pixels.
          * @returns TRUE on success.
@@ -22359,6 +23432,9 @@ export namespace Gimp {
         interface ConstructorProps extends Procedure.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ThumbnailProcedure extends Procedure {
         static $gtype: GObject.GType<ThumbnailProcedure>;
 
@@ -22390,16 +23466,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ThumbnailProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ThumbnailProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ThumbnailProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ThumbnailProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ThumbnailProcedure.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ThumbnailProcedure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22433,6 +23512,7 @@ export namespace Gimp {
     /**
      * Provides operations on units, a collection of predefined units and
      * functions to create new units.
+     * @gir-type Class
      */
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
@@ -22465,16 +23545,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Unit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Unit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Unit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Unit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Unit.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Unit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22496,8 +23579,8 @@ export namespace Gimp {
          */
         static format_string(format: string, unit: Unit): string;
         /**
-         * Returns the unique [class`Unit]` object corresponding to `unit_id,`
-         * which is the integer identifier as returned by [method`Unit`.get_id].
+         * Returns the unique {@link Unit} object corresponding to `unit_id`,
+         * which is the integer identifier as returned by {@link Unit.get_id}.
          * @param unit_id The unit id.
          */
         static get_by_id(unit_id: number): Unit;
@@ -22551,12 +23634,15 @@ export namespace Gimp {
          * This function returns the abbreviation of the unit (e.g. "in" for
          * inches).
          * It can be used as a short label for the unit in the interface.
-         * For long labels, use [method`Unit`.get_name].
+         * For long labels, use {@link Unit.get_name}.
          *
          * NOTE: This string must not be changed or freed.
          * @returns The unit's abbreviation.
          */
         get_abbreviation(): string;
+        /**
+         * @returns The unit's `deletion_flag`.
+         */
         get_deletion_flag(): boolean;
         /**
          * Returns the number of digits set for `unit`.
@@ -22566,14 +23652,14 @@ export namespace Gimp {
          * Note: the value is as-set by defaults or by the user and does not
          * necessary provide enough precision on high-resolution units.
          * When the information is needed for a specific unit, the use of
-         * gimp_unit_get_scaled_digits() may be more appropriate.
+         * `gimp_unit_get_scaled_digits()` may be more appropriate.
          *
          * Returns 0 for `unit` == GIMP_UNIT_PIXEL.
          * @returns The suggested number of digits.
          */
         get_digits(): number;
         /**
-         * A #GimpUnit's `factor` is defined to be:
+         * A {@link Gimp.Unit}'s `factor` is defined to be:
          *
          * distance_in_units == (`factor` * distance_in_inches)
          *
@@ -22582,7 +23668,7 @@ export namespace Gimp {
          */
         get_factor(): number;
         /**
-         * The ID can be used to retrieve the unit with [func`Unit`.get_by_id].
+         * The ID can be used to retrieve the unit with {@link Unit.get_by_id}.
          *
          * Note that this ID will be stable within a single session of GIMP, but
          * you should not expect this ID to stay the same across multiple runs.
@@ -22592,7 +23678,7 @@ export namespace Gimp {
         /**
          * This function returns the usual name of the unit (e.g. "inches").
          * It can be used as the long label for the unit in the interface.
-         * For short labels, use [method`Unit`.get_abbreviation].
+         * For short labels, use {@link Unit.get_abbreviation}.
          *
          * NOTE: This string must not be changed or freed.
          * @returns The unit's name.
@@ -22623,7 +23709,7 @@ export namespace Gimp {
          *
          * This procedure returns `unit` is a built-in unit. In particular the
          * deletion flag cannot be set on built-in units.
-         * @returns Whether @unit is built-in.
+         * @returns Whether `unit` is built-in.
          */
         is_built_in(): boolean;
         /**
@@ -22631,13 +23717,13 @@ export namespace Gimp {
          * that looks at the unit's factor and checks if it is 2.54 multiplied
          * by some common powers of 10. Currently it checks for mm, cm, dm, m.
          *
-         * See also: gimp_unit_get_factor()
-         * @returns %TRUE if the @unit is metric.
+         * See also: `gimp_unit_get_factor()`
+         * @returns `true` if the `unit` is metric.
          */
         is_metric(): boolean;
         /**
-         * Sets a #GimpUnit's `deletion_flag`. If the `deletion_flag` of a unit is
-         * %TRUE when GIMP exits, this unit will not be saved in the users's
+         * Sets a {@link Gimp.Unit}'s `deletion_flag`. If the `deletion_flag` of a unit is
+         * `true` when GIMP exits, this unit will not be saved in the users's
          * "unitrc" file.
          *
          * Trying to change the `deletion_flag` of a built-in unit will be silently
@@ -22661,20 +23747,21 @@ export namespace Gimp {
     }
 
     /**
-     * A [class`Procedure]` subclass that makes it easier to write load procedures
+     * A {@link Procedure} subclass that makes it easier to write load procedures
      * for vector image formats.
      *
      * It automatically adds the standard arguments:
-     * ([enum`RunMode]`, [iface`Gio`.File], int width, int height)
+     * ({@link RunMode}, {@link Gio.File}, int width, int height)
      *
-     * and the standard return value: ( [class`Image]` )
+     * and the standard return value: ( {@link Image} )
      *
      * It is possible to add additional arguments.
      *
-     * When invoked via [method`Procedure`.run], it unpacks these standard
-     * arguments and calls `run_func` which is a [callback`RunImageFunc]`. The
-     * [class`ProcedureConfig]` of [callback`Gimp`.RunVectorLoadFunc] contains
+     * When invoked via {@link Procedure.run}, it unpacks these standard
+     * arguments and calls `run_func` which is a {@link RunImageFunc}. The
+     * {@link ProcedureConfig} of {@link Gimp.RunVectorLoadFunc} contains
      * additionally added arguments but also the arguments added by this class.
+     * @gir-type Class
      */
     class VectorLoadProcedure extends LoadProcedure {
         static $gtype: GObject.GType<VectorLoadProcedure>;
@@ -22708,16 +23795,19 @@ export namespace Gimp {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VectorLoadProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorLoadProcedure.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VectorLoadProcedure.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorLoadProcedure.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VectorLoadProcedure.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VectorLoadProcedure.SignalSignatures[K]> extends [any, ...infer Q]
@@ -22729,15 +23819,18 @@ export namespace Gimp {
         // Methods
 
         /**
-         * Extracts native or suggested dimensions from `file,` which must be a vector
+         * Extracts native or suggested dimensions from `file`, which must be a vector
          * file in the right format supported by `procedure`. It is considered a
          * programming error to pass a file of invalid format.
-         * @param file a [iface@Gio.File] which can be processed by @procedure.
-         * @returns %TRUE if dimensions could be extracted.
+         * @param file a {@link Gio.File} which can be processed by `procedure`.
+         * @returns `true` if dimensions could be extracted.
          */
         extract_dimensions(file: Gio.File): [boolean, VectorLoadData];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Array {
         static $gtype: GObject.GType<Array>;
 
@@ -22765,14 +23858,41 @@ export namespace Gimp {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BatchProcedureClass = typeof BatchProcedure;
+    /**
+     * @gir-type Alias
+     */
     type BrushClass = typeof Brush;
+    /**
+     * @gir-type Alias
+     */
     type ChannelClass = typeof Channel;
+    /**
+     * @gir-type Alias
+     */
     type ChoiceClass = typeof Choice;
+    /**
+     * @gir-type Alias
+     */
     type ColorConfigClass = typeof ColorConfig;
+    /**
+     * @gir-type Alias
+     */
     type ColorManagedInterface = typeof ColorManaged;
+    /**
+     * @gir-type Alias
+     */
     type ColorProfileClass = typeof ColorProfile;
+    /**
+     * @gir-type Alias
+     */
     type ColorTransformClass = typeof ColorTransform;
+    /**
+     * @gir-type Struct
+     */
     abstract class Config {
         static $gtype: GObject.GType<Config>;
 
@@ -22784,24 +23904,24 @@ export namespace Gimp {
          * `src` to `dest`. If `flags` is 0, all differing read/write properties.
          *
          * Properties marked as "construct-only" are not touched.
-         * @param dest another #GObject of the same type as @a.
+         * @param dest another {@link GObject.Object} of the same type as `a`.
          * @param flags a mask of GParamFlags
-         * @returns %TRUE if @dest was modified, %FALSE otherwise
+         * @returns `true` if `dest` was modified, `false` otherwise
          */
         copy(dest: Config, flags: GObject.ParamFlags | null): boolean;
         /**
-         * Deserialize the #GimpConfig object.
-         * @param scanner the #GScanner to use.
+         * Deserialize the {@link Gimp.Config} object.
+         * @param scanner the {@link GLib.Scanner} to use.
          * @param nest_level the nest level.
          * @param data client data.
          * @returns Whether serialization succeeded.
          */
         deserialize(scanner: GLib.Scanner, nest_level: number, data?: any | null): boolean;
         /**
-         * Opens the file specified by `file,` reads configuration data from it
+         * Opens the file specified by `file`, reads configuration data from it
          * and configures `config` accordingly. Basically this function creates
-         * a properly configured [struct`GLib`.Scanner] for you and calls the deserialize
-         * function of the `config'`s [iface`ConfigInterface]`.
+         * a properly configured {@link GLib.Scanner} for you and calls the deserialize
+         * function of the `config`'s {@link ConfigInterface}.
          * @param file the file to read configuration from.
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
@@ -22809,34 +23929,34 @@ export namespace Gimp {
         deserialize_file(file: Gio.File, data?: any | null): boolean;
         /**
          * Configures `config` from `parasite`. Basically this function creates
-         * a properly configured #GScanner for you and calls the deserialize
-         * function of the `config'`s #GimpConfigInterface.
+         * a properly configured {@link GLib.Scanner} for you and calls the deserialize
+         * function of the `config`'s {@link Gimp.ConfigInterface}.
          * @param parasite parasite containing a serialized config string
          * @param data client data
-         * @returns %TRUE if deserialization succeeded, %FALSE otherwise.
+         * @returns `true` if deserialization succeeded, `false` otherwise.
          */
         deserialize_parasite(parasite: Parasite, data?: any | null): boolean;
         /**
          * This function uses the `scanner` to configure the properties of `config`.
-         * @param scanner a #GScanner.
+         * @param scanner a {@link GLib.Scanner}.
          * @param nest_level the nest level
-         * @returns %TRUE on success, %FALSE otherwise.
+         * @returns `true` on success, `false` otherwise.
          */
         deserialize_properties(scanner: GLib.Scanner, nest_level: number): boolean;
         /**
          * This function deserializes a single property of `config`. You
          * shouldn't need to call this function directly. If possible, use
-         * gimp_config_deserialize_properties() instead.
-         * @param scanner a #GScanner.
+         * `gimp_config_deserialize_properties()` instead.
+         * @param scanner a {@link GLib.Scanner}.
          * @param nest_level the nest level
-         * @returns %G_TOKEN_RIGHT_PAREN on success, otherwise the expected #GTokenType or %G_TOKEN_NONE if the expected token was found but couldn't be parsed.
+         * @returns {@link GLib.TokenType.RIGHT_PAREN} on success, otherwise the expected {@link GLib.TokenType} or {@link GLib.TokenType.NONE} if the expected token was found but couldn't be parsed.
          */
         deserialize_property(scanner: GLib.Scanner, nest_level: number): GLib.TokenType;
         /**
          * Reads configuration data from `input` and configures `config`
          * accordingly. Basically this function creates a properly configured
-         * #GScanner for you and calls the deserialize function of the
-         * `config'`s #GimpConfigInterface.
+         * {@link GLib.Scanner} for you and calls the deserialize function of the
+         * `config`'s {@link Gimp.ConfigInterface}.
          * @param input the input stream to read configuration from.
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
@@ -22844,39 +23964,39 @@ export namespace Gimp {
         deserialize_stream(input: Gio.InputStream, data?: any | null): boolean;
         /**
          * Configures `config` from `text`. Basically this function creates a
-         * properly configured #GScanner for you and calls the deserialize
-         * function of the `config'`s #GimpConfigInterface.
+         * properly configured {@link GLib.Scanner} for you and calls the deserialize
+         * function of the `config`'s {@link Gimp.ConfigInterface}.
          * @param text string to deserialize (in UTF-8 encoding)
          * @param data client data
-         * @returns %TRUE if deserialization succeeded, %FALSE otherwise.
+         * @returns `true` if deserialization succeeded, `false` otherwise.
          */
         deserialize_string(text: string[], data?: any | null): boolean;
         /**
          * Creates a copy of the passed object by copying all object
-         * properties. The default implementation of the #GimpConfigInterface
+         * properties. The default implementation of the {@link Gimp.ConfigInterface}
          * only works for objects that are completely defined by their
          * properties.
-         * @returns the duplicated #GimpConfig object
+         * @returns the duplicated {@link Gimp.Config} object
          */
         duplicate(): any | null;
         /**
          * Compares the two objects. The default implementation of the
-         * #GimpConfigInterface compares the object properties and thus only
+         * {@link Gimp.ConfigInterface} compares the object properties and thus only
          * works for objects that are completely defined by their
          * properties.
-         * @param b another #GObject of the same type as @a.
-         * @returns %TRUE if the two objects are equal.
+         * @param b another {@link GObject.Object} of the same type as `a`.
+         * @returns `true` if the two objects are equal.
          */
         is_equal_to(b: Config): boolean;
         /**
          * Resets the object to its default state. The default implementation of the
-         * #GimpConfigInterface only works for objects that are completely defined by
+         * {@link Gimp.ConfigInterface} only works for objects that are completely defined by
          * their properties.
          */
         reset(): void;
         /**
-         * Serialize the #GimpConfig object.
-         * @param writer the #GimpConfigWriter to use.
+         * Serialize the {@link Gimp.Config} object.
+         * @param writer the {@link Gimp.ConfigWriter} to use.
          * @param data client data
          * @returns Whether serialization succeeded.
          */
@@ -22884,28 +24004,28 @@ export namespace Gimp {
         /**
          * This function writes all object properties that have been changed from
          * their default values to the `writer`.
-         * @param writer a #GimpConfigWriter.
-         * @returns %TRUE if serialization succeeded, %FALSE otherwise
+         * @param writer a {@link Gimp.ConfigWriter}.
+         * @returns `true` if serialization succeeded, `false` otherwise
          */
         serialize_changed_properties(writer: ConfigWriter): boolean;
         /**
          * This function writes all object properties to the `writer`.
-         * @param writer a #GimpConfigWriter.
-         * @returns %TRUE if serialization succeeded, %FALSE otherwise
+         * @param writer a {@link Gimp.ConfigWriter}.
+         * @returns `true` if serialization succeeded, `false` otherwise
          */
         serialize_properties(writer: ConfigWriter): boolean;
         /**
          * This function serializes a single object property to the `writer`.
-         * @param param_spec a #GParamSpec.
-         * @param writer a #GimpConfigWriter.
-         * @returns %TRUE if serialization succeeded, %FALSE otherwise
+         * @param param_spec a {@link GObject.ParamSpec}.
+         * @param writer a {@link Gimp.ConfigWriter}.
+         * @returns `true` if serialization succeeded, `false` otherwise
          */
         serialize_property(param_spec: GObject.ParamSpec, writer: ConfigWriter): boolean;
         /**
          * This function serializes a single object property to the `writer`.
          * @param prop_name the property's name.
-         * @param writer a #GimpConfigWriter.
-         * @returns %TRUE if serialization succeeded, %FALSE otherwise
+         * @param writer a {@link Gimp.ConfigWriter}.
+         * @returns `true` if serialization succeeded, `false` otherwise
          */
         serialize_property_by_name(prop_name: string, writer: ConfigWriter): boolean;
         /**
@@ -22913,23 +24033,23 @@ export namespace Gimp {
          * descriptor.
          * @param fd a file descriptor, opened for writing
          * @param data user data passed to the serialize implementation.
-         * @returns %TRUE if serialization succeeded, %FALSE otherwise.
+         * @returns `true` if serialization succeeded, `false` otherwise.
          */
         serialize_to_fd(fd: number, data?: any | null): boolean;
         /**
          * Serializes the object properties of `config` to the file specified
          * by `file`. If a file with that name already exists, it is
          * overwritten. Basically this function opens `file` for you and calls
-         * the serialize function of the `config'`s [iface`ConfigInterface]`.
+         * the serialize function of the `config`'s {@link ConfigInterface}.
          * @param file the file to write the configuration to.
          * @param header optional file header (must be ASCII only)
          * @param footer optional file footer (must be ASCII only)
          * @param data user data passed to the serialize implementation.
-         * @returns %TRUE if serialization succeeded, %FALSE otherwise.
+         * @returns `true` if serialization succeeded, `false` otherwise.
          */
         serialize_to_file(file: Gio.File, header?: string | null, footer?: string | null, data?: any | null): boolean;
         /**
-         * Serializes the object properties of `config` to a [struct`Parasite]`.
+         * Serializes the object properties of `config` to a {@link Parasite}.
          * @param parasite_name the new parasite's name
          * @param parasite_flags the new parasite's flags
          * @param data user data passed to the serialize implementation.
@@ -22939,7 +24059,7 @@ export namespace Gimp {
         /**
          * Serializes the object properties of `config` to the stream specified
          * by `output`.
-         * @param output the #GOutputStream to write the configuration to.
+         * @param output the {@link Gio.OutputStream} to write the configuration to.
          * @param header optional file header (must be ASCII only)
          * @param footer optional file footer (must be ASCII only)
          * @param data user data passed to the serialize implementation.
@@ -22961,6 +24081,7 @@ export namespace Gimp {
 
     /**
      * Functions for writing config info to a file for libgimpconfig.
+     * @gir-type Struct
      */
     class ConfigWriter {
         static $gtype: GObject.GType<ConfigWriter>;
@@ -22980,7 +24101,7 @@ export namespace Gimp {
         // Methods
 
         /**
-         * Closes an element opened with gimp_config_writer_open().
+         * Closes an element opened with `gimp_config_writer_open()`.
          */
         close(): void;
         /**
@@ -22997,7 +24118,7 @@ export namespace Gimp {
          *
          * Since comments have to start at the beginning of a line, this
          * function will insert a newline if necessary.
-         * @param enable %TRUE to enable comment mode, %FALSE to disable it
+         * @param enable `true` to enable comment mode, `false` to disable it
          */
         comment_mode(enable: boolean): void;
         /**
@@ -23010,11 +24131,11 @@ export namespace Gimp {
          * afterwards.  It closes all open elements, appends an optional
          * comment and releases all resources allocated by `writer`.
          *
-         * Using any function except gimp_config_writer_ref() or
-         * gimp_config_writer_unref() after this function is forbidden
+         * Using any function except `gimp_config_writer_ref()` or
+         * `gimp_config_writer_unref()` after this function is forbidden
          * and will trigger warnings.
          * @param footer text to include as comment at the bottom of the file
-         * @returns %TRUE if everything could be successfully written,          %FALSE otherwise
+         * @returns `true` if everything could be successfully written,          `false` otherwise
          */
         finish(footer: string): boolean;
         /**
@@ -23027,7 +24148,7 @@ export namespace Gimp {
         /**
          * This function writes the opening parenthesis followed by `name`.
          * It also increases the indentation level and sets a mark that
-         * can be used by gimp_config_writer_revert().
+         * can be used by `gimp_config_writer_revert()`.
          * @param name name of the element to open
          */
         open(name: string): void;
@@ -23035,18 +24156,18 @@ export namespace Gimp {
          * Appends a space followed by `string` to the `writer`. Note that string
          * must not contain any special characters that might need to be escaped.
          * @param string a string to write
-         * @param len number of bytes from @string or -1 if @string is NUL-terminated.
+         * @param len number of bytes from `string` or -1 if `string` is NUL-terminated.
          */
         print(string: string, len: number): void;
         /**
-         * Adds a reference to a #GimpConfigWriter.
-         * @returns the same @writer.
+         * Adds a reference to a {@link Gimp.ConfigWriter}.
+         * @returns the same `writer`.
          */
         ref(): ConfigWriter;
         /**
          * Reverts all changes to `writer` that were done since the last call
-         * to gimp_config_writer_open(). This can only work if you didn't call
-         * gimp_config_writer_close() yet.
+         * to `gimp_config_writer_open()`. This can only work if you didn't call
+         * `gimp_config_writer_close()` yet.
          */
         revert(): void;
         /**
@@ -23056,20 +24177,27 @@ export namespace Gimp {
          */
         string(string: string): void;
         /**
-         * Unref a #GimpConfigWriter. If the reference count drops to zero, the
+         * Unref a {@link Gimp.ConfigWriter}. If the reference count drops to zero, the
          * writer is freed.
          *
          * Note that at least one of the references has to be dropped using
-         * gimp_config_writer_finish().
+         * `gimp_config_writer_finish()`.
          */
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DisplayClass = typeof Display;
+    /**
+     * @gir-type Alias
+     */
     type DrawableClass = typeof Drawable;
     /**
      * This structure is used to register translatable descriptions and
-     * help texts for enum values. See gimp_enum_set_value_descriptions().
+     * help texts for enum values. See `gimp_enum_set_value_descriptions()`.
+     * @gir-type Struct
      */
     class EnumDesc {
         static $gtype: GObject.GType<EnumDesc>;
@@ -23091,12 +24219,22 @@ export namespace Gimp {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ExportOptionsClass = typeof ExportOptions;
+    /**
+     * @gir-type Alias
+     */
     type ExportProcedureClass = typeof ExportProcedure;
+    /**
+     * @gir-type Alias
+     */
     type FileProcedureClass = typeof FileProcedure;
     /**
      * This structure is used to register translatable descriptions and
-     * help texts for flag values. See gimp_flags_set_value_descriptions().
+     * help texts for flag values. See `gimp_flags_set_value_descriptions()`.
+     * @gir-type Struct
      */
     class FlagsDesc {
         static $gtype: GObject.GType<FlagsDesc>;
@@ -23118,12 +24256,22 @@ export namespace Gimp {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FontClass = typeof Font;
+    /**
+     * @gir-type Alias
+     */
     type GradientClass = typeof Gradient;
+    /**
+     * @gir-type Alias
+     */
     type GroupLayerClass = typeof GroupLayer;
     /**
      * Used to keep HSL and HSLA colors. All components are in a range of
      * [0.0..1.0].
+     * @gir-type Struct
      */
     class HSL {
         static $gtype: GObject.GType<HSL>;
@@ -23148,7 +24296,15 @@ export namespace Gimp {
 
         // Methods
 
+        /**
+         * @param h
+         * @param s
+         * @param l
+         */
         set(h: number, s: number, l: number): void;
+        /**
+         * @param a
+         */
         set_alpha(a: number): void;
         /**
          * Convert a HSL color value to an RGB color value.
@@ -23156,14 +24312,33 @@ export namespace Gimp {
         to_rgb(): RGB;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ImageClass = typeof Image;
+    /**
+     * @gir-type Alias
+     */
     type ImageProcedureClass = typeof ImageProcedure;
+    /**
+     * @gir-type Alias
+     */
     type ItemClass = typeof Item;
+    /**
+     * @gir-type Alias
+     */
     type LayerClass = typeof Layer;
+    /**
+     * @gir-type Alias
+     */
     type LayerMaskClass = typeof LayerMask;
+    /**
+     * @gir-type Alias
+     */
     type LoadProcedureClass = typeof LoadProcedure;
     /**
      * A two by two matrix.
+     * @gir-type Struct
      */
     class Matrix2 {
         static $gtype: GObject.GType<Matrix2>;
@@ -23210,6 +24385,7 @@ export namespace Gimp {
 
     /**
      * A three by three matrix.
+     * @gir-type Struct
      */
     class Matrix3 {
         static $gtype: GObject.GType<Matrix3>;
@@ -23252,7 +24428,7 @@ export namespace Gimp {
         /**
          * Checks if two matrices are equal.
          * @param matrix2 The second matrix
-         * @returns %TRUE the matrices are equal, %FALSE otherwise
+         * @returns `true` the matrices are equal, `false` otherwise
          */
         equal(matrix2: Matrix3): boolean;
         /**
@@ -23265,23 +24441,23 @@ export namespace Gimp {
         invert(): void;
         /**
          * Checks if the given matrix defines an affine transformation.
-         * @returns %TRUE if the matrix defines an affine transformation,          %FALSE otherwise
+         * @returns `true` if the matrix defines an affine transformation,          `false` otherwise
          */
         is_affine(): boolean;
         /**
          * Checks if the given matrix is diagonal.
-         * @returns %TRUE if the matrix is diagonal, %FALSE otherwise
+         * @returns `true` if the matrix is diagonal, `false` otherwise
          */
         is_diagonal(): boolean;
         /**
          * Checks if the given matrix is the identity matrix.
-         * @returns %TRUE if the matrix is the identity matrix, %FALSE otherwise
+         * @returns `true` if the matrix is the identity matrix, `false` otherwise
          */
         is_identity(): boolean;
         /**
          * Checks if we'll need to interpolate when applying this matrix as
          * a transformation.
-         * @returns %TRUE if all entries of the upper left 2x2 matrix are          either 0 or 1, %FALSE otherwise
+         * @returns `true` if all entries of the upper left 2x2 matrix are          either 0 or 1, `false` otherwise
          */
         is_simple(): boolean;
         /**
@@ -23328,6 +24504,7 @@ export namespace Gimp {
 
     /**
      * A four by four matrix.
+     * @gir-type Struct
      */
     class Matrix4 {
         static $gtype: GObject.GType<Matrix4>;
@@ -23366,11 +24543,21 @@ export namespace Gimp {
         transform_point(x: number, y: number, z: number): [number, number, number, number];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MetadataClass = typeof Metadata;
+    /**
+     * @gir-type Alias
+     */
     type ModuleClass = typeof Module;
+    /**
+     * @gir-type Alias
+     */
     type ModuleDBClass = typeof ModuleDB;
     /**
      * This structure contains information about a loadable module.
+     * @gir-type Struct
      */
     class ModuleInfo {
         static $gtype: GObject.GType<ModuleInfo>;
@@ -23398,6 +24585,9 @@ export namespace Gimp {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ObjectArray {
         static $gtype: GObject.GType<ObjectArray>;
 
@@ -23417,27 +24607,45 @@ export namespace Gimp {
         // Methods
 
         /**
-         * Creates a new #GimpObjectArray containing a deep copy of `array`.
-         * @returns a new #GimpObjectArray.
+         * Creates a new {@link Gimp.ObjectArray} containing a deep copy of `array`.
+         * @returns a new {@link Gimp.ObjectArray}.
          */
         copy(): ObjectArray;
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PDBClass = typeof PDB;
+    /**
+     * @gir-type Alias
+     */
     type PaletteClass = typeof Palette;
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecArray {
         static $gtype: GObject.GType<ParamSpecArray>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecBrush {
         static $gtype: GObject.GType<ParamSpecBrush>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecChannel {
         static $gtype: GObject.GType<ParamSpecChannel>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecChoice {
         static $gtype: GObject.GType<ParamSpecChoice>;
 
@@ -23447,17 +24655,20 @@ export namespace Gimp {
         choice: Choice;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class ParamSpecColor {
         static $gtype: GObject.GType<ParamSpecColor>;
 
         // Static methods
 
         /**
-         * Creates a new #GParamSpec instance specifying a #GeglColor property.
+         * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
          * @param name canonical name of the property specified
          * @param nick nick name for the property specified
          * @param blurb description of the property specified
-         * @param has_alpha %TRUE if the alpha channel has relevance.
+         * @param has_alpha `true` if the alpha channel has relevance.
          * @param default_color_string the default value for the property specified
          * @param flags flags for the property specified
          */
@@ -23469,9 +24680,15 @@ export namespace Gimp {
             default_color_string: string,
             flags: GObject.ParamFlags,
         ): GObject.ParamSpec;
+        /**
+         * @param pspec a {@link GObject.ParamSpec} to hold an {@link Gegl.Color} value.
+         */
         static has_alpha(pspec: GObject.ParamSpec): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecDisplay {
         static $gtype: GObject.GType<ParamSpecDisplay>;
 
@@ -23480,10 +24697,16 @@ export namespace Gimp {
         none_ok: boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecDrawable {
         static $gtype: GObject.GType<ParamSpecDrawable>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecExportOptions {
         static $gtype: GObject.GType<ParamSpecExportOptions>;
 
@@ -23492,22 +24715,37 @@ export namespace Gimp {
         capabilities: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecFloatArray {
         static $gtype: GObject.GType<ParamSpecFloatArray>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecFont {
         static $gtype: GObject.GType<ParamSpecFont>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecGradient {
         static $gtype: GObject.GType<ParamSpecGradient>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecGroupLayer {
         static $gtype: GObject.GType<ParamSpecGroupLayer>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecImage {
         static $gtype: GObject.GType<ParamSpecImage>;
 
@@ -23516,10 +24754,16 @@ export namespace Gimp {
         none_ok: boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecInt32Array {
         static $gtype: GObject.GType<ParamSpecInt32Array>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecItem {
         static $gtype: GObject.GType<ParamSpecItem>;
 
@@ -23528,14 +24772,23 @@ export namespace Gimp {
         none_ok: boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecLayer {
         static $gtype: GObject.GType<ParamSpecLayer>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecLayerMask {
         static $gtype: GObject.GType<ParamSpecLayerMask>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecObject {
         static $gtype: GObject.GType<ParamSpecObject>;
 
@@ -23544,40 +24797,43 @@ export namespace Gimp {
         /**
          * This function duplicates `pspec` appropriately, depending on the
          * accurate spec type.
-         * @param pspec a [struct@Gimp.ParamSpecObject].
+         * @param pspec a {@link Gimp.ParamSpecObject}.
          */
         static duplicate(pspec: GObject.ParamSpec): GObject.ParamSpec;
         /**
          * Get the default object value of the param spec.
          *
          * If the `pspec` has been registered with a specific default (which can
-         * be verified with [func`Gimp`.ParamSpecObject.has_default]), it will be
+         * be verified with {@link Gimp.ParamSpecObject.has_default}), it will be
          * returned, though some specific subtypes may support returning dynamic
          * default (e.g. based on context).
-         * @param pspec a #GObject #GParamSpec
+         * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
          */
         static get_default<T = GObject.Object>(pspec: GObject.ParamSpec): T;
         /**
          * This function tells whether a default was set, typically with
-         * [func`Gimp`.ParamSpecObject.set_default] or any other way. It
+         * {@link Gimp.ParamSpecObject.set_default} or any other way. It
          * does not guarantee that the default is an actual object (it may be
-         * %NULL if valid as a default).
-         * @param pspec a #GObject #GParamSpec
+         * `null` if valid as a default).
+         * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
          */
         static has_default(pspec: GObject.ParamSpec): boolean;
         /**
          * Set the default object value of the param spec. This will switch the
-         * `has_default` flag so that [func`Gimp`.ParamSpecObject.has_default]
-         * will now return %TRUE.
+         * `has_default` flag so that {@link Gimp.ParamSpecObject.has_default}
+         * will now return `true`.
          *
-         * A %NULL `default_value` still counts as a default (unless the specific
-         * `pspec` does not allow %NULL as a default).
-         * @param pspec a #GObject #GParamSpec
+         * A `null` `default_value` still counts as a default (unless the specific
+         * `pspec` does not allow `null` as a default).
+         * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
          * @param default_value a default value.
          */
         static set_default(pspec: GObject.ParamSpec, default_value?: GObject.Object | null): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecObjectArray {
         static $gtype: GObject.GType<ParamSpecObjectArray>;
 
@@ -23586,26 +24842,44 @@ export namespace Gimp {
         object_type: GObject.GType;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecObjectClass {
         static $gtype: GObject.GType<ParamSpecObjectClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecPalette {
         static $gtype: GObject.GType<ParamSpecPalette>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class ParamSpecParasite {
         static $gtype: GObject.GType<ParamSpecParasite>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecPath {
         static $gtype: GObject.GType<ParamSpecPath>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecPattern {
         static $gtype: GObject.GType<ParamSpecPattern>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecResource {
         static $gtype: GObject.GType<ParamSpecResource>;
 
@@ -23615,14 +24889,23 @@ export namespace Gimp {
         default_to_context: boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecSelection {
         static $gtype: GObject.GType<ParamSpecSelection>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecTextLayer {
         static $gtype: GObject.GType<ParamSpecTextLayer>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecUnit {
         static $gtype: GObject.GType<ParamSpecUnit>;
 
@@ -23634,8 +24917,9 @@ export namespace Gimp {
     }
 
     /**
-     * A #GParamSpec derived structure that contains the meta data for
+     * A {@link GObject.ParamSpec} derived structure that contains the meta data for
      * value array properties.
+     * @gir-type Struct
      */
     class ParamSpecValueArray {
         static $gtype: GObject.GType<ParamSpecValueArray>;
@@ -23648,6 +24932,7 @@ export namespace Gimp {
 
     /**
      * Arbitrary pieces of data which can be attached to various GIMP objects.
+     * @gir-type Struct
      */
     class Parasite {
         static $gtype: GObject.GType<Parasite>;
@@ -23676,22 +24961,22 @@ export namespace Gimp {
 
         /**
          * Compare parasite's contents.
-         * @param b a #GimpParasite
-         * @returns %TRUE if @a and @b have same contents, %FALSE otherwise.
+         * @param b a {@link Gimp.Parasite}
+         * @returns `true` if `a` and `b` have same contents, `false` otherwise.
          */
         compare(b: Parasite): boolean;
         /**
          * Create a new parasite with all the same values.
-         * @returns a newly allocated #GimpParasite with same contents.
+         * @returns a newly allocated {@link Gimp.Parasite} with same contents.
          */
         copy(): Parasite;
         /**
-         * Free `parasite'`s dynamically allocated memory.
+         * Free `parasite`'s dynamically allocated memory.
          */
         free(): void;
         /**
          * Gets the parasite's data. It may not necessarily be text, nor is it
-         * guaranteed to be %NULL-terminated. It is your responsibility to know
+         * guaranteed to be `null`-terminated. It is your responsibility to know
          * how to deal with this data.
          * Even when you expect a nul-terminated string, it is advised not to
          * assume the returned data to be, as parasites can be edited by third
@@ -23701,23 +24986,46 @@ export namespace Gimp {
          * @returns parasite's data.
          */
         get_data(): number[];
+        /**
+         * @returns `parasite` flags.
+         */
         get_flags(): number;
+        /**
+         * @returns `parasite`'s name.
+         */
         get_name(): string;
+        /**
+         * @param flag a parasite flag
+         * @returns `true` if `parasite` has `flag` set, `false` otherwise.
+         */
         has_flag(flag: number): boolean;
+        /**
+         * @returns `true` if `parasite` is persistent, `false` otherwise.
+         */
         is_persistent(): boolean;
         /**
          * Compare parasite's names.
          * @param name a parasite name.
-         * @returns %TRUE if @parasite is named @name, %FALSE otherwise.
+         * @returns `true` if `parasite` is named `name`, `false` otherwise.
          */
         is_type(name: string): boolean;
+        /**
+         * @returns `true` if `parasite` is undoable, `false` otherwise.
+         */
         is_undoable(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PathClass = typeof Path;
+    /**
+     * @gir-type Alias
+     */
     type PatternClass = typeof Pattern;
     /**
      * PLease somebody help documenting this.
+     * @gir-type Struct
      */
     class PixPipeParams {
         static $gtype: GObject.GType<PixPipeParams>;
@@ -23753,9 +25061,21 @@ export namespace Gimp {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlugInClass = typeof PlugIn;
+    /**
+     * @gir-type Alias
+     */
     type ProcedureClass = typeof Procedure;
+    /**
+     * @gir-type Alias
+     */
     type ProcedureConfigClass = typeof ProcedureConfig;
+    /**
+     * @gir-type Struct
+     */
     class ProgressVtable {
         static $gtype: GObject.GType<ProgressVtable>;
 
@@ -23771,6 +25091,7 @@ export namespace Gimp {
 
     /**
      * Definitions and Functions relating to RGB colors.
+     * @gir-type Struct
      */
     class RGB {
         static $gtype: GObject.GType<RGB>;
@@ -23795,6 +25116,9 @@ export namespace Gimp {
 
         // Methods
 
+        /**
+         * @param rgba2
+         */
         _distance(rgba2: RGB): number;
         /**
          * Gets the 8bit red, green, blue and alpha components of `rgba`.
@@ -23819,16 +25143,26 @@ export namespace Gimp {
          * @param alpha the alpha component
          */
         _set_uchar(red: number, green: number, blue: number, alpha: number): void;
+        /**
+         * @param rgb2
+         */
         add(rgb2: RGB): void;
         clamp(): void;
+        /**
+         * @param color2
+         * @param mode
+         */
         composite(color2: RGB, mode: RGBCompositeMode | null): void;
         /**
          * Writes the red, green, blue and alpha components of `rgb` to the
-         * color components `red,` `green` and `blue`.
+         * color components `red`, `green` and `blue`.
          */
         get_uchar(): [number, number, number];
         max(): number;
         min(): number;
+        /**
+         * @param factor
+         */
         multiply(factor: number): void;
         /**
          * Sets the red, green and blue components of `rgb` and leaves the
@@ -23860,9 +25194,13 @@ export namespace Gimp {
         to_hsl(): HSL;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ResourceClass = typeof Resource;
     /**
-     * A wrapper around #GScanner with some convenience API.
+     * A wrapper around {@link GLib.Scanner} with some convenience API.
+     * @gir-type Struct
      */
     class Scanner {
         static $gtype: GObject.GType<Scanner>;
@@ -23879,38 +25217,86 @@ export namespace Gimp {
 
         // Methods
 
+        /**
+         * @returns `true` on success
+         */
         parse_boolean(): [boolean, boolean];
+        /**
+         * @returns `true` on success
+         */
         parse_color(): [boolean, Gegl.Color];
+        /**
+         * @returns `true` on success
+         */
         parse_data(): [boolean, Uint8Array];
+        /**
+         * @returns `true` on success
+         */
         parse_float(): [boolean, number];
+        /**
+         * @returns `true` if the next token is an identifier and if its value matches `identifier`.
+         */
         parse_identifier(): [boolean, string];
+        /**
+         * @returns `true` on success
+         */
         parse_int(): [boolean, number];
+        /**
+         * @returns `true` on success
+         */
         parse_int64(): [boolean, number];
+        /**
+         * @returns `true` on success
+         */
         parse_matrix2(): [boolean, Matrix2];
+        /**
+         * @returns `true` on success
+         */
         parse_string(): [boolean, string];
+        /**
+         * @returns `true` on success
+         */
         parse_string_no_validate(): [boolean, string];
+        /**
+         * @param token the {@link GLib.TokenType} expected as next token.
+         * @returns `true` if the next token is `token`, `false` otherwise.
+         */
         parse_token(token: GLib.TokenType | null): boolean;
         /**
-         * Adds a reference to a #GimpScanner.
-         * @returns the same @scanner.
+         * Adds a reference to a {@link Gimp.Scanner}.
+         * @returns the same `scanner`.
          */
         ref(): Scanner;
         /**
-         * Unref a #GimpScanner. If the reference count drops to zero, the
+         * Unref a {@link Gimp.Scanner}. If the reference count drops to zero, the
          * scanner is freed.
          */
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SelectionClass = typeof Selection;
+    /**
+     * @gir-type Alias
+     */
     type TextLayerClass = typeof TextLayer;
+    /**
+     * @gir-type Alias
+     */
     type ThumbnailProcedureClass = typeof ThumbnailProcedure;
+    /**
+     * @gir-type Alias
+     */
     type UnitClass = typeof Unit;
     /**
-     * The prime purpose of a #GimpValueArray is for it to be used as an
-     * object property that holds an array of values. A #GimpValueArray wraps
-     * an array of #GValue elements in order for it to be used as a boxed
-     * type through %GIMP_TYPE_VALUE_ARRAY.
+     * The prime purpose of a {@link Gimp.ValueArray} is for it to be used as an
+     * object property that holds an array of values. A {@link Gimp.ValueArray} wraps
+     * an array of {@link GObject.Value} elements in order for it to be used as a boxed
+     * type through `GIMP_TYPE_VALUE_ARRAY`.
+     * @gir-type Struct
+     * @since 2.10
      */
     class ValueArray {
         static $gtype: GObject.GType<ValueArray>;
@@ -23927,21 +25313,21 @@ export namespace Gimp {
 
         /**
          * Insert a copy of `value` as last element of `value_array`. If `value` is
-         * %NULL, an uninitialized value is appended.
-         * @param value #GValue to copy into #GimpValueArray, or %NULL
-         * @returns the #GimpValueArray passed in as @value_array
+         * `null`, an uninitialized value is appended.
+         * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
+         * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
         append(value?: GObject.Value | null): ValueArray;
         /**
-         * Return an exact copy of a #GimpValueArray by duplicating all its values.
-         * @returns a newly allocated #GimpValueArray.
+         * Return an exact copy of a {@link Gimp.ValueArray} by duplicating all its values.
+         * @returns a newly allocated {@link Gimp.ValueArray}.
          */
         copy(): ValueArray;
         /**
          * Return a pointer to the value at `index` contained in `value_array`. This value
-         * is supposed to be a [type`ColorArray]`.
+         * is supposed to be a {@link ColorArray}.
          * @param index index of the value of interest
-         * @returns the [type@ColorArray] stored at @index in @value_array.
+         * @returns the {@link ColorArray} stored at `index` in `value_array`.
          */
         get_color_array(index: number): Gegl.Color[];
         /**
@@ -23949,43 +25335,46 @@ export namespace Gimp {
          *
          * *Note*: in binding languages, some custom types fail to be correctly passed
          * through. For these types, you should use specific functions.
-         * For instance, in the Python binding, a [type`ColorArray]` `GValue`
+         * For instance, in the Python binding, a {@link ColorArray} {@link GObject.Value}
          * won't be usable with this function. You should use instead
-         * [method`ValueArray`.get_color_array].
+         * {@link ValueArray.get_color_array}.
          * @param index index of the value of interest
-         * @returns pointer to a value at @index in @value_array
+         * @returns pointer to a value at `index` in `value_array`
          */
         index(index: number): unknown;
         /**
          * Insert a copy of `value` at specified position into `value_array`. If `value`
-         * is %NULL, an uninitialized value is inserted.
-         * @param index insertion position, must be &lt;= gimp_value_array_length()
-         * @param value #GValue to copy into #GimpValueArray, or %NULL
-         * @returns the #GimpValueArray passed in as @value_array
+         * is `null`, an uninitialized value is inserted.
+         * @param index insertion position, must be &lt;= `gimp_value_array_length()`
+         * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
+         * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
         insert(index: number, value?: GObject.Value | null): ValueArray;
         length(): number;
         /**
          * Insert a copy of `value` as first element of `value_array`. If `value` is
-         * %NULL, an uninitialized value is prepended.
-         * @param value #GValue to copy into #GimpValueArray, or %NULL
-         * @returns the #GimpValueArray passed in as @value_array
+         * `null`, an uninitialized value is prepended.
+         * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
+         * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
         prepend(value?: GObject.Value | null): ValueArray;
         /**
-         * Adds a reference to a #GimpValueArray.
-         * @returns the same @value_array
+         * Adds a reference to a {@link Gimp.ValueArray}.
+         * @returns the same `value_array`
          */
         ref(): ValueArray;
         /**
          * Remove the value at position `index` from `value_array`.
-         * @param index position of value to remove, which must be less than         gimp_value_array_length()
-         * @returns the #GimpValueArray passed in as @value_array
+         * @param index position of value to remove, which must be less than         `gimp_value_array_length()`
+         * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
         remove(index: number): ValueArray;
+        /**
+         * @param n_values
+         */
         truncate(n_values: number): void;
         /**
-         * Unref a #GimpValueArray. If the reference count drops to zero, the
+         * Unref a {@link Gimp.ValueArray}. If the reference count drops to zero, the
          * array including its contents are freed.
          */
         unref(): void;
@@ -23993,6 +25382,7 @@ export namespace Gimp {
 
     /**
      * A two dimensional vector.
+     * @gir-type Struct
      */
     class Vector2 {
         static $gtype: GObject.GType<Vector2>;
@@ -24016,71 +25406,71 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Computes the sum of two 2D vectors. The resulting #GimpVector2 is
+         * Computes the sum of two 2D vectors. The resulting {@link Gimp.Vector2} is
          * stored in `result`.
-         * @param vector1 a pointer to the first #GimpVector2.
-         * @param vector2 a pointer to the second #GimpVector2.
+         * @param vector1 a pointer to the first {@link Gimp.Vector2}.
+         * @param vector2 a pointer to the second {@link Gimp.Vector2}.
          */
         static add(vector1: Vector2, vector2: Vector2): Vector2;
         /**
          * Computes the difference of two 2D vectors (`vector1` minus `vector2`).
-         * The resulting #GimpVector2 is stored in `result`.
-         * @param vector1 a pointer to the first #GimpVector2.
-         * @param vector2 a pointer to the second #GimpVector2.
+         * The resulting {@link Gimp.Vector2} is stored in `result`.
+         * @param vector1 a pointer to the first {@link Gimp.Vector2}.
+         * @param vector2 a pointer to the second {@link Gimp.Vector2}.
          */
         static sub(vector1: Vector2, vector2: Vector2): Vector2;
 
         // Methods
 
         /**
-         * This function is identical to gimp_vector2_add() but the vectors
+         * This function is identical to `gimp_vector2_add()` but the vectors
          * are passed by value rather than by reference.
-         * @param vector2 the second #GimpVector2.
-         * @returns the resulting #GimpVector2.
+         * @param vector2 the second {@link Gimp.Vector2}.
+         * @returns the resulting {@link Gimp.Vector2}.
          */
         add_val(vector2: Vector2): Vector2;
         /**
          * Compute the cross product of two vectors. The result is a
-         * #GimpVector2 which is orthogonal to both `vector1` and `vector2`. If
+         * {@link Gimp.Vector2} which is orthogonal to both `vector1` and `vector2`. If
          * `vector1` and `vector2` are parallel, the result will be the nul
          * vector.
          *
          * Note that in 2D, this function is useful to test if two vectors are
          * parallel or not, or to compute the area spawned by two vectors.
-         * @param vector2 a pointer to the second #GimpVector2.
+         * @param vector2 a pointer to the second {@link Gimp.Vector2}.
          * @returns The cross product.
          */
         cross_product(vector2: Vector2): Vector2;
         /**
-         * Identical to [method`Vector2`.cross_product], but the
+         * Identical to {@link Vector2.cross_product}, but the
          * vectors are passed by value rather than by reference.
-         * @param vector2 the second #GimpVector2.
+         * @param vector2 the second {@link Gimp.Vector2}.
          * @returns The cross product.
          */
         cross_product_val(vector2: Vector2): Vector2;
         /**
          * Computes the inner (dot) product of two 2D vectors.
          * This product is zero if and only if the two vectors are orthogonal.
-         * @param vector2 a pointer to the second #GimpVector2.
+         * @param vector2 a pointer to the second {@link Gimp.Vector2}.
          * @returns The inner product.
          */
         inner_product(vector2: Vector2): number;
         /**
-         * Identical to [method`Vector2`.inner_product], but the
+         * Identical to {@link Vector2.inner_product}, but the
          * vectors are passed by value rather than by reference.
-         * @param vector2 the second #GimpVector2.
+         * @param vector2 the second {@link Gimp.Vector2}.
          * @returns The inner product.
          */
         inner_product_val(vector2: Vector2): number;
         /**
          * Computes the length of a 2D vector.
-         * @returns the length of @vector (a positive gdouble).
+         * @returns the length of `vector` (a positive gdouble).
          */
         length(): number;
         /**
-         * Identical to [method`Vector2`.length], but the vector is passed by value
+         * Identical to {@link Vector2.length}, but the vector is passed by value
          * rather than by reference.
-         * @returns the length of @vector (a positive gdouble).
+         * @returns the length of `vector` (a positive gdouble).
          */
         length_val(): number;
         /**
@@ -24090,10 +25480,10 @@ export namespace Gimp {
          */
         mul(factor: number): void;
         /**
-         * Identical to [method`Vector2`.mul], but the vector is passed by value rather
+         * Identical to {@link Vector2.mul}, but the vector is passed by value rather
          * than by reference.
          * @param factor a scalar.
-         * @returns the resulting #GimpVector2.
+         * @returns the resulting {@link Gimp.Vector2}.
          */
         mul_val(factor: number): Vector2;
         /**
@@ -24101,20 +25491,20 @@ export namespace Gimp {
          */
         neg(): void;
         /**
-         * Identical to [method`Vector2`.neg], but the vector
+         * Identical to {@link Vector2.neg}, but the vector
          * is passed by value rather than by reference.
-         * @returns the negated #GimpVector2.
+         * @returns the negated {@link Gimp.Vector2}.
          */
         neg_val(): Vector2;
         /**
          * Compute a normalized perpendicular vector to `vector`
-         * @returns a #GimpVector2 perpendicular to @vector, with a length of 1.0.
+         * @returns a {@link Gimp.Vector2} perpendicular to `vector`, with a length of 1.0.
          */
         normal(): Vector2;
         /**
-         * Identical to [method`Vector2`.normal], but the vector
+         * Identical to {@link Vector2.normal}, but the vector
          * is passed by value rather than by reference.
-         * @returns a #GimpVector2 perpendicular to @vector, with a length of 1.0.
+         * @returns a {@link Gimp.Vector2} perpendicular to `vector`, with a length of 1.0.
          */
         normal_val(): Vector2;
         /**
@@ -24123,9 +25513,9 @@ export namespace Gimp {
          */
         normalize(): void;
         /**
-         * Identical to [method`Vector2`.normalize], but the
+         * Identical to {@link Vector2.normalize}, but the
          * vector is passed by value rather than by reference.
-         * @returns a #GimpVector2 parallel to @vector, pointing in the same direction but with a length of 1.0.
+         * @returns a {@link Gimp.Vector2} parallel to `vector`, pointing in the same direction but with a length of 1.0.
          */
         normalize_val(): Vector2;
         /**
@@ -24134,10 +25524,10 @@ export namespace Gimp {
          */
         rotate(alpha: number): void;
         /**
-         * Identical to [method`Vector2`.rotate], but the vector
+         * Identical to {@link Vector2.rotate}, but the vector
          * is passed by value rather than by reference.
          * @param alpha an angle (in radians).
-         * @returns a #GimpVector2 representing @vector rotated by @alpha radians.
+         * @returns a {@link Gimp.Vector2} representing `vector` rotated by `alpha` radians.
          */
         rotate_val(alpha: number): Vector2;
         /**
@@ -24147,16 +25537,17 @@ export namespace Gimp {
          */
         set(x: number, y: number): void;
         /**
-         * This function is identical to gimp_vector2_sub() but the vectors
+         * This function is identical to `gimp_vector2_sub()` but the vectors
          * are passed by value rather than by reference.
-         * @param vector2 the second #GimpVector2.
-         * @returns the resulting #GimpVector2.
+         * @param vector2 the second {@link Gimp.Vector2}.
+         * @returns the resulting {@link Gimp.Vector2}.
          */
         sub_val(vector2: Vector2): Vector2;
     }
 
     /**
      * A three dimensional vector.
+     * @gir-type Struct
      */
     class Vector3 {
         static $gtype: GObject.GType<Vector3>;
@@ -24182,71 +25573,71 @@ export namespace Gimp {
         // Static methods
 
         /**
-         * Computes the sum of two 3D vectors. The resulting #GimpVector3 is
+         * Computes the sum of two 3D vectors. The resulting {@link Gimp.Vector3} is
          * stored in `result`.
-         * @param vector1 a pointer to the first #GimpVector3.
-         * @param vector2 a pointer to the second #GimpVector3.
+         * @param vector1 a pointer to the first {@link Gimp.Vector3}.
+         * @param vector2 a pointer to the second {@link Gimp.Vector3}.
          */
         static add(vector1: Vector3, vector2: Vector3): Vector3;
         /**
          * Computes the difference of two 3D vectors (`vector1` minus `vector2`).
-         * The resulting #GimpVector3 is stored in `result`.
-         * @param vector1 a pointer to the first #GimpVector3.
-         * @param vector2 a pointer to the second #GimpVector3.
+         * The resulting {@link Gimp.Vector3} is stored in `result`.
+         * @param vector1 a pointer to the first {@link Gimp.Vector3}.
+         * @param vector2 a pointer to the second {@link Gimp.Vector3}.
          */
         static sub(vector1: Vector3, vector2: Vector3): Vector3;
 
         // Methods
 
         /**
-         * This function is identical to gimp_vector3_add() but the vectors
+         * This function is identical to `gimp_vector3_add()` but the vectors
          * are passed by value rather than by reference.
-         * @param vector2 a #GimpVector3.
-         * @returns the resulting #GimpVector3.
+         * @param vector2 a {@link Gimp.Vector3}.
+         * @returns the resulting {@link Gimp.Vector3}.
          */
         add_val(vector2: Vector3): Vector3;
         /**
          * Compute the cross product of two vectors. The result is a
-         * #GimpVector3 which is orthogonal to both `vector1` and `vector2`. If
+         * {@link Gimp.Vector3} which is orthogonal to both `vector1` and `vector2`. If
          * `vector1` and `vector2` and parallel, the result will be the nul
          * vector.
          *
          * This function can be used to compute the normal of the plane
          * defined by `vector1` and `vector2`.
-         * @param vector2 a pointer to the second #GimpVector3.
+         * @param vector2 a pointer to the second {@link Gimp.Vector3}.
          * @returns The cross product.
          */
         cross_product(vector2: Vector3): Vector3;
         /**
-         * Identical to [method`Vector3`.cross_product], but the
+         * Identical to {@link Vector3.cross_product}, but the
          * vectors are passed by value rather than by reference.
-         * @param vector2 the second #GimpVector3.
+         * @param vector2 the second {@link Gimp.Vector3}.
          * @returns The cross product.
          */
         cross_product_val(vector2: Vector3): Vector3;
         /**
          * Computes the inner (dot) product of two 3D vectors. This product
          * is zero if and only if the two vectors are orthogonal.
-         * @param vector2 a pointer to the second #GimpVector3.
+         * @param vector2 a pointer to the second {@link Gimp.Vector3}.
          * @returns The inner product.
          */
         inner_product(vector2: Vector3): number;
         /**
-         * Identical to [method`Vector3`.inner_product], but the
+         * Identical to {@link Vector3.inner_product}, but the
          * vectors are passed by value rather than by reference.
-         * @param vector2 the second #GimpVector3.
+         * @param vector2 the second {@link Gimp.Vector3}.
          * @returns The inner product.
          */
         inner_product_val(vector2: Vector3): number;
         /**
          * Computes the length of a 3D vector.
-         * @returns the length of @vector (a positive gdouble).
+         * @returns the length of `vector` (a positive gdouble).
          */
         length(): number;
         /**
-         * Identical to [method`Vector3`.length], but the vector
+         * Identical to {@link Vector3.length}, but the vector
          * is passed by value rather than by reference.
-         * @returns the length of @vector (a positive gdouble).
+         * @returns the length of `vector` (a positive gdouble).
          */
         length_val(): number;
         /**
@@ -24256,10 +25647,10 @@ export namespace Gimp {
          */
         mul(factor: number): void;
         /**
-         * Identical to [method`Vector3`.mul], but the vector is
+         * Identical to {@link Vector3.mul}, but the vector is
          * passed by value rather than by reference.
          * @param factor a scalar.
-         * @returns the resulting #GimpVector3.
+         * @returns the resulting {@link Gimp.Vector3}.
          */
         mul_val(factor: number): Vector3;
         /**
@@ -24267,9 +25658,9 @@ export namespace Gimp {
          */
         neg(): void;
         /**
-         * Identical to [method`Vector3`.neg], but the vector
+         * Identical to {@link Vector3.neg}, but the vector
          * is passed by value rather than by reference.
-         * @returns the negated #GimpVector3.
+         * @returns the negated {@link Gimp.Vector3}.
          */
         neg_val(): Vector3;
         /**
@@ -24278,26 +25669,26 @@ export namespace Gimp {
          */
         normalize(): void;
         /**
-         * Identical to [method`Vector3`.normalize], but the
+         * Identical to {@link Vector3.normalize}, but the
          * vector is passed by value rather than by reference.
-         * @returns a #GimpVector3 parallel to @vector, pointing in the same direction but with a length of 1.0.
+         * @returns a {@link Gimp.Vector3} parallel to `vector`, pointing in the same direction but with a length of 1.0.
          */
         normalize_val(): Vector3;
         /**
-         * Rotates the `vector` around the three axis (Z, Y, and X) by `alpha,`
-         * `beta` and `gamma,` respectively.
+         * Rotates the `vector` around the three axis (Z, Y, and X) by `alpha`,
+         * `beta` and `gamma`, respectively.
          *
          * Note that the order of the rotation is very important. If you
          * expect a vector to be rotated around X, and then around Y, you will
          * have to call this function twice. Also, it is often wise to call
-         * this function with only one of `alpha,` `beta` and `gamma` non-zero.
+         * this function with only one of `alpha`, `beta` and `gamma` non-zero.
          * @param alpha the angle (in radian) of rotation around the Z axis.
          * @param beta the angle (in radian) of rotation around the Y axis.
          * @param gamma the angle (in radian) of rotation around the X axis.
          */
         rotate(alpha: number, beta: number, gamma: number): void;
         /**
-         * Identical to [method`Vector3`.rotate], but the vectors
+         * Identical to {@link Vector3.rotate}, but the vectors
          * are passed by value rather than by reference.
          * @param alpha the angle (in radian) of rotation around the Z axis.
          * @param beta the angle (in radian) of rotation around the Y axis.
@@ -24306,23 +25697,24 @@ export namespace Gimp {
          */
         rotate_val(alpha: number, beta: number, gamma: number): Vector3;
         /**
-         * Sets the X, Y and Z coordinates of `vector` to `x,` `y` and `z`.
+         * Sets the X, Y and Z coordinates of `vector` to `x`, `y` and `z`.
          * @param x the X coordinate.
          * @param y the Y coordinate.
          * @param z the Z coordinate.
          */
         set(x: number, y: number, z: number): void;
         /**
-         * This function is identical to gimp_vector3_sub() but the vectors
+         * This function is identical to `gimp_vector3_sub()` but the vectors
          * are passed by value rather than by reference.
-         * @param vector2 a #GimpVector3.
-         * @returns the resulting #GimpVector3.
+         * @param vector2 a {@link Gimp.Vector3}.
+         * @returns the resulting {@link Gimp.Vector3}.
          */
         sub_val(vector2: Vector3): Vector3;
     }
 
     /**
      * A four dimensional vector.
+     * @gir-type Struct
      */
     class Vector4 {
         static $gtype: GObject.GType<Vector4>;
@@ -24346,6 +25738,9 @@ export namespace Gimp {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VectorLoadData {
         static $gtype: GObject.GType<VectorLoadData>;
 
@@ -24363,6 +25758,9 @@ export namespace Gimp {
         exact_density: boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VectorLoadProcedureClass = typeof VectorLoadProcedure;
     namespace ColorManaged {
         /**
@@ -24373,38 +25771,49 @@ export namespace Gimp {
             // Virtual methods
 
             /**
-             * This function always returns a #GimpColorProfile and falls back to
-             * gimp_color_profile_new_rgb_srgb() if the method is not implemented.
+             * This function always returns a {@link Gimp.ColorProfile} and falls back to
+             * `gimp_color_profile_new_rgb_srgb()` if the method is not implemented.
+             * @virtual
              */
             vfunc_get_color_profile(): ColorProfile;
+            /**
+             * @virtual
+             */
             vfunc_get_icc_profile(): Uint8Array;
             /**
              * This function always returns a gboolean representing whether
              * Black Point Compensation is enabled
+             * @virtual
              */
             vfunc_get_simulation_bpc(): boolean;
             /**
-             * This function always returns a #GimpColorRenderingIntent
+             * This function always returns a {@link Gimp.ColorRenderingIntent}
+             * @virtual
              */
             vfunc_get_simulation_intent(): ColorRenderingIntent;
             /**
-             * This function always returns a #GimpColorProfile
+             * This function always returns a {@link Gimp.ColorProfile}
+             * @virtual
              */
             vfunc_get_simulation_profile(): ColorProfile;
             /**
              * Emits the "profile-changed" signal.
+             * @virtual
              */
             vfunc_profile_changed(): void;
             /**
              * Emits the "simulation-bpc-changed" signal.
+             * @virtual
              */
             vfunc_simulation_bpc_changed(): void;
             /**
              * Emits the "simulation-intent-changed" signal.
+             * @virtual
              */
             vfunc_simulation_intent_changed(): void;
             /**
              * Emits the "simulation-profile-changed" signal.
+             * @virtual
              */
             vfunc_simulation_profile_changed(): void;
         }
@@ -24418,30 +25827,37 @@ export namespace Gimp {
         $gtype: GObject.GType<ColorManaged>;
         prototype: ColorManaged;
     }
+    /**
+     * An interface dealing with color profiles.
+     * @gir-type Interface
+     */
     interface ColorManaged extends GObject.Object, ColorManaged.Interface {
         // Methods
 
         /**
-         * This function always returns a #GimpColorProfile and falls back to
-         * gimp_color_profile_new_rgb_srgb() if the method is not implemented.
-         * @returns The @managed's #GimpColorProfile.
+         * This function always returns a {@link Gimp.ColorProfile} and falls back to
+         * `gimp_color_profile_new_rgb_srgb()` if the method is not implemented.
+         * @returns The `managed`'s {@link Gimp.ColorProfile}.
          */
         get_color_profile(): ColorProfile;
+        /**
+         * @returns A blob of data that represents an ICC color                              profile.
+         */
         get_icc_profile(): Uint8Array;
         /**
          * This function always returns a gboolean representing whether
          * Black Point Compensation is enabled
-         * @returns The @managed's simulation Black Point Compensation value.
+         * @returns The `managed`'s simulation Black Point Compensation value.
          */
         get_simulation_bpc(): boolean;
         /**
-         * This function always returns a #GimpColorRenderingIntent
-         * @returns The @managed's simulation #GimpColorRenderingIntent.
+         * This function always returns a {@link Gimp.ColorRenderingIntent}
+         * @returns The `managed`'s simulation {@link Gimp.ColorRenderingIntent}.
          */
         get_simulation_intent(): ColorRenderingIntent;
         /**
-         * This function always returns a #GimpColorProfile
-         * @returns The @managed's simulation #GimpColorProfile.
+         * This function always returns a {@link Gimp.ColorProfile}
+         * @returns The `managed`'s simulation {@link Gimp.ColorProfile}.
          */
         get_simulation_profile(): ColorProfile;
         /**
@@ -24478,58 +25894,63 @@ export namespace Gimp {
 
         /**
          * Creates a search path as it is used in the gimprc file.  The path
-         * returned by gimp_config_build_data_path() includes a directory
+         * returned by `gimp_config_build_data_path()` includes a directory
          * below the user's gimp directory and one in the system-wide data
          * directory.
          *
-         * Note that you cannot use this path directly with gimp_path_parse().
+         * Note that you cannot use this path directly with `gimp_path_parse()`.
          * As it is in the gimprc notation, you first need to expand and
-         * recode it using gimp_config_path_expand().
+         * recode it using `gimp_config_path_expand()`.
          * @param name directory name (in UTF-8 encoding)
          */
         build_data_path(name: string): string;
         /**
          * Creates a search path as it is used in the gimprc file.  The path
-         * returned by gimp_config_build_plug_in_path() includes a directory
+         * returned by `gimp_config_build_plug_in_path()` includes a directory
          * below the user's gimp directory and one in the system-wide plug-in
          * directory.
          *
-         * Note that you cannot use this path directly with gimp_path_parse().
+         * Note that you cannot use this path directly with `gimp_path_parse()`.
          * As it is in the gimprc notation, you first need to expand and
-         * recode it using gimp_config_path_expand().
+         * recode it using `gimp_config_path_expand()`.
          * @param name directory name (in UTF-8 encoding)
          */
         build_plug_in_path(name: string): string;
         /**
          * Creates a search path as it is used in the gimprc file.  The path
-         * returned by gimp_config_build_system_path() is just the read-only
-         * parts of the search path constructed by gimp_config_build_plug_in_path().
+         * returned by `gimp_config_build_system_path()` is just the read-only
+         * parts of the search path constructed by `gimp_config_build_plug_in_path()`.
          *
-         * Note that you cannot use this path directly with gimp_path_parse().
+         * Note that you cannot use this path directly with `gimp_path_parse()`.
          * As it is in the gimprc notation, you first need to expand and
-         * recode it using gimp_config_path_expand().
+         * recode it using `gimp_config_path_expand()`.
          * @param name directory name (in UTF-8 encoding)
          */
         build_system_path(name: string): string;
         /**
          * Creates a search path as it is used in the gimprc file.  The path
-         * returned by gimp_config_build_writable_path() is just the writable
-         * parts of the search path constructed by gimp_config_build_data_path().
+         * returned by `gimp_config_build_writable_path()` is just the writable
+         * parts of the search path constructed by `gimp_config_build_data_path()`.
          *
-         * Note that you cannot use this path directly with gimp_path_parse().
+         * Note that you cannot use this path directly with `gimp_path_parse()`.
          * As it is in the gimprc notation, you first need to expand and
-         * recode it using gimp_config_path_expand().
+         * recode it using `gimp_config_path_expand()`.
          * @param name directory name (in UTF-8 encoding)
          */
         build_writable_path(name: string): string;
+        /**
+         * @param scanner a {@link GLib.Scanner}
+         * @param expected_token the expected token
+         * @param nest_level the nest level
+         */
         deserialize_return(scanner: GLib.Scanner, expected_token: GLib.TokenType, nest_level: number): boolean;
         /**
-         * Sets `value` to new #GStrv.
+         * Sets `value` to new {@link GObject.Strv}.
          * Scans i.e. consumes serialization to fill the GStrv.
          *
          * Requires `value` to be initialized to hold type #G_TYPE_BOXED.
-         * @param value destination #GValue to hold a #GStrv
-         * @param scanner #GScanner positioned in serialization stream
+         * @param value destination {@link GObject.Value} to hold a {@link GObject.Strv}
+         * @param scanner {@link GLib.Scanner} positioned in serialization stream
          */
         deserialize_strv(value: GObject.Value | any, scanner: GLib.Scanner): GLib.TokenType;
         /**
@@ -24539,8 +25960,8 @@ export namespace Gimp {
          * If the two objects are not of the same type, only properties that
          * exist in both object classes and are of the same value_type are
          * compared.
-         * @param a a #GObject
-         * @param b another #GObject object
+         * @param a a {@link GObject.Object}
+         * @param b another {@link GObject.Object} object
          * @param flags a mask of GParamFlags
          */
         diff(a: GObject.Object, b: GObject.Object, flags: GObject.ParamFlags): GObject.ParamSpec[];
@@ -24549,50 +25970,50 @@ export namespace Gimp {
          */
         error_quark(): GLib.Quark;
         /**
-         * Creates an exact copy of `pspec,` with all its properties, returns
-         * %NULL if `pspec` is of an unknown type that can't be duplicated.
-         * @param pspec the #GParamSpec to duplicate
+         * Creates an exact copy of `pspec`, with all its properties, returns
+         * `null` if `pspec` is of an unknown type that can't be duplicated.
+         * @param pspec the {@link GObject.ParamSpec} to duplicate
          */
         param_spec_duplicate(pspec: GObject.ParamSpec): GObject.ParamSpec;
         /**
          * Resets all writable properties of `object` to the default values as
-         * defined in their #GParamSpec. Properties marked as "construct-only"
+         * defined in their {@link GObject.ParamSpec}. Properties marked as "construct-only"
          * are not touched.
          *
-         * If you want to reset a #GimpConfig object, please use gimp_config_reset().
-         * @param object a #GObject
+         * If you want to reset a {@link Gimp.Config} object, please use `gimp_config_reset()`.
+         * @param object a {@link GObject.Object}
          */
         reset_properties(object: GObject.Object): void;
         /**
          * Resets the property named `property_name` to its default value.  The
          * property must be writable and must not be marked as "construct-only".
-         * @param object a #GObject
+         * @param object a {@link GObject.Object}
          * @param property_name name of the property to reset
          */
         reset_property(object: GObject.Object, property_name: string): void;
         /**
-         * Appends a string repr of the #GStrv value of #GValue to `str`.
+         * Appends a string repr of the {@link GObject.Strv} value of {@link GObject.Value} to `str`.
          * Repr is an integer literal greater than or equal to zero,
          * followed by a possibly empty sequence
          * of quoted and escaped string literals.
-         * @param value source #GValue holding a #GStrv
+         * @param value source {@link GObject.Value} holding a {@link GObject.Strv}
          * @param str destination string
          */
         serialize_strv(value: GObject.Value | any, str: GLib.String): boolean;
         /**
-         * This utility function appends a string representation of #GValue to `str`.
-         * @param value a #GValue.
-         * @param str a #GString.
+         * This utility function appends a string representation of {@link GObject.Value} to `str`.
+         * @param value a {@link GObject.Value}.
+         * @param str a {@link GLib.String}.
          * @param escaped whether to escape string values.
          */
         serialize_value(value: GObject.Value | any, str: GLib.String, escaped: boolean): boolean;
         /**
          * Escapes and quotes `val` and appends it to `string`. The escape
-         * algorithm is different from the one used by g_strescape() since it
+         * algorithm is different from the one used by `g_strescape()` since it
          * leaves non-ASCII characters intact and thus preserves UTF-8
          * strings. Only control characters and quotes are being escaped.
-         * @param string pointer to a #GString
-         * @param val a string to append or %NULL
+         * @param string pointer to a {@link GLib.String}
+         * @param val a string to append or `null`
          */
         string_append_escaped(string: GLib.String, val: string): void;
         /**
@@ -24605,28 +26026,59 @@ export namespace Gimp {
          * If the two objects are not of the same type, only properties that
          * exist in both object classes and are of the same value_type are
          * synchronized
-         * @param src a #GObject
-         * @param dest another #GObject
+         * @param src a {@link GObject.Object}
+         * @param dest another {@link GObject.Object}
          * @param flags a mask of GParamFlags
          */
         sync(src: GObject.Object, dest: GObject.Object, flags: GObject.ParamFlags): boolean;
         /**
-         * This function is a fancy wrapper around g_type_register_static().
-         * It creates a new object type as subclass of `parent_type,` installs
-         * `pspecs` on it and makes the new type implement the #GimpConfig
+         * This function is a fancy wrapper around `g_type_register_static()`.
+         * It creates a new object type as subclass of `parent_type`, installs
+         * `pspecs` on it and makes the new type implement the {@link Gimp.Config}
          * interface.
          * @param parent_type type from which this type will be derived
          * @param type_name string used as the name of the new type
-         * @param pspecs array of #GParamSpec to install as properties on the new type
+         * @param pspecs array of {@link GObject.ParamSpec} to install as properties on the new type
          */
         type_register(parent_type: GObject.GType, type_name: string, pspecs: GObject.ParamSpec[]): GObject.GType;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ConfigInterface extends GObject.Object {}
 
     export const ConfigInterface: ConfigInterfaceNamespace & {
         new (): ConfigInterface; // This allows `obj instanceof ConfigInterface`
     };
 
+    /**
+     * A boxed type which is nothing more than an alias to a `null`-terminated array
+     * of {@link Gegl.Color}.
+     *
+     * The code fragments in the following example show the use of a property of
+     * type `GIMP_TYPE_COLOR_ARRAY` with `g_object_class_install_property()`,
+     * `g_object_set()` and `g_object_get()`.
+     *
+     * ```C
+     * g_object_class_install_property (object_class,
+     *                                  PROP_COLORS,
+     *                                  g_param_spec_boxed ("colors",
+     *                                                      _("Colors"),
+     *                                                      _("List of colors"),
+     *                                                      GIMP_TYPE_COLOR_ARRAY,
+     *                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+     *
+     * GeglColor *colors[] = { gegl_color_new ("red"), gegl_color_new ("blue"), NULL };
+     *
+     * g_object_set (obj, "colors", colors, NULL);
+     *
+     * GeglColors **colors;
+     *
+     * g_object_get (obj, "colors", &colors, NULL);
+     * gimp_color_array_free (colors);
+     * ```
+     * @gir-type Alias
+     */
     type ColorArray = Gegl.Color;
     /**
      * Name of the imported GIR library

@@ -36,6 +36,7 @@ export namespace Totem {
 
     /**
      * Represents a command which can be sent to a running Totem instance remotely.
+     * @gir-type Enum
      */
     enum RemoteCommand {
         /**
@@ -158,6 +159,7 @@ export namespace Totem {
 
     /**
      * Represents a boolean setting or preference on a remote Totem instance.
+     * @gir-type Enum
      */
     enum RemoteSetting {
         /**
@@ -171,17 +173,18 @@ export namespace Totem {
      */
     const GSETTINGS_SCHEMA: string;
     /**
-     * Return a %NULL-terminated array of paths to directories which can contain Totem plugins. This respects the GSettings disable_user_plugins setting.
-     * @returns a %NULL-terminated array of paths to plugin directories
+     * Return a `null`-terminated array of paths to directories which can contain Totem plugins. This respects the GSettings disable_user_plugins setting.
+     * @returns a `null`-terminated array of paths to plugin directories
+     * @since 2.90.0
      */
     function get_plugin_paths(): string[];
     /**
-     * Put the given `icon_name` into `button,` and pack `button` into `header`
+     * Put the given `icon_name` into `button`, and pack `button` into `header`
      * according to `pack_type`.
      * @param header The header widget to put the button in
      * @param button The button to use in the header
      * @param icon_name The icon name for the button image
-     * @param pack_type A #GtkPackType to tell us where to include the button
+     * @param pack_type A {@link Gtk.PackType} to tell us where to include the button
      * @returns the button passed as input
      */
     function interface_create_header_button(
@@ -195,25 +198,25 @@ export namespace Totem {
      * as its secondary text.
      * @param title the error title
      * @param reason the error reason (secondary text)
-     * @param parent the error dialogue's parent #GtkWindow
+     * @param parent the error dialogue's parent {@link Gtk.Window}
      */
     function interface_error(title: string, reason: string, parent: Gtk.Window): void;
     /**
-     * Display a modal error dialogue like totem_interface_error() which blocks until the user has
+     * Display a modal error dialogue like `totem_interface_error()` which blocks until the user has
      * dismissed it.
      * @param title the error title
      * @param reason the error reason (secondary text)
-     * @param parent the error dialogue's parent #GtkWindow
+     * @param parent the error dialogue's parent {@link Gtk.Window}
      */
     function interface_error_blocking(title: string, reason: string, parent: Gtk.Window): void;
     /**
-     * Display a modal error dialogue like totem_interface_error(),
+     * Display a modal error dialogue like `totem_interface_error()`,
      * but add a button which will open `uri` in a browser window.
      * @param title the error title
      * @param reason the error reason (secondary text)
      * @param uri the URI to open
-     * @param label a label for the URI's button, or %NULL to use @uri as the label
-     * @param parent the error dialogue's parent #GtkWindow
+     * @param label a label for the URI's button, or `null` to use `uri` as the label
+     * @param parent the error dialogue's parent {@link Gtk.Window}
      */
     function interface_error_with_link(
         title: string,
@@ -222,14 +225,17 @@ export namespace Totem {
         label: string,
         parent: Gtk.Window,
     ): void;
+    /**
+     * @param name
+     */
     function interface_get_full_path(name: string): string;
     /**
-     * Load a #GtkBuilder UI file with the given name and return the #GtkBuilder instance for it. If loading the file fails, an error dialogue is shown.
-     * @param name the #GtkBuilder UI file to load
-     * @param fatal %TRUE if errors loading the file should be fatal, %FALSE otherwise
-     * @param parent the parent window to use when displaying error dialogues, or %NULL
-     * @param user_data the user data to pass to gtk_builder_connect_signals(), or %NULL
-     * @returns the loaded #GtkBuilder object, or %NULL
+     * Load a {@link Gtk.Builder} UI file with the given name and return the {@link Gtk.Builder} instance for it. If loading the file fails, an error dialogue is shown.
+     * @param name the {@link Gtk.Builder} UI file to load
+     * @param fatal `true` if errors loading the file should be fatal, `false` otherwise
+     * @param parent the parent window to use when displaying error dialogues, or `null`
+     * @param user_data the user data to pass to `gtk_builder_connect_signals()`, or `null`
+     * @returns the loaded {@link Gtk.Builder} object, or `null`
      */
     function interface_load(
         name: string,
@@ -238,18 +244,18 @@ export namespace Totem {
         user_data?: any | null,
     ): Gtk.Builder;
     /**
-     * Load the image called `name` in the directory given by totem_interface_get_full_path() into a #GdkPixbuf.
+     * Load the image called `name` in the directory given by `totem_interface_get_full_path()` into a {@link GdkPixbuf.Pixbuf}.
      * @param name the image file name
-     * @returns the loaded pixbuf, or %NULL
+     * @returns the loaded pixbuf, or `null`
      */
     function interface_load_pixbuf(name: string): GdkPixbuf.Pixbuf;
     /**
-     * Load a #GtkBuilder UI file from the given path and return the #GtkBuilder instance for it. If loading the file fails, an error dialogue is shown.
-     * @param filename the #GtkBuilder UI file path to load
-     * @param fatal %TRUE if errors loading the file should be fatal, %FALSE otherwise
-     * @param parent the parent window to use when displaying error dialogues, or %NULL
-     * @param user_data the user data to pass to gtk_builder_connect_signals(), or %NULL
-     * @returns the loaded #GtkBuilder object, or %NULL
+     * Load a {@link Gtk.Builder} UI file from the given path and return the {@link Gtk.Builder} instance for it. If loading the file fails, an error dialogue is shown.
+     * @param filename the {@link Gtk.Builder} UI file path to load
+     * @param fatal `true` if errors loading the file should be fatal, `false` otherwise
+     * @param parent the parent window to use when displaying error dialogues, or `null`
+     * @param user_data the user data to pass to `gtk_builder_connect_signals()`, or `null`
+     * @returns the loaded {@link Gtk.Builder} object, or `null`
      */
     function interface_load_with_full_path(
         filename: string,
@@ -259,14 +265,14 @@ export namespace Totem {
     ): Gtk.Builder;
     /**
      * Finds the specified `file` by looking in the plugin paths
-     * listed by totem_get_plugin_paths() and then in the system
+     * listed by `totem_get_plugin_paths()` and then in the system
      * Totem data directory.
      *
      * This should be used by plugins to find plugin-specific
      * resource files.
      * @param plugin_name the plugin name
      * @param file the file to find
-     * @returns a newly-allocated absolute path for the file, or %NULL
+     * @returns a newly-allocated absolute path for the file, or `null`
      */
     function plugin_find_file(plugin_name: string, file: string): string;
     /**
@@ -276,10 +282,10 @@ export namespace Totem {
      * This should be used instead of attempting to load interfaces manually in plugins.
      * @param plugin_name the plugin name
      * @param name interface filename
-     * @param fatal %TRUE if it's a fatal error if the interface can't be loaded
-     * @param parent the interface's parent #GtkWindow
+     * @param fatal `true` if it's a fatal error if the interface can't be loaded
+     * @param parent the interface's parent {@link Gtk.Window}
      * @param user_data a pointer to be passed to each signal handler in the interface when they're called
-     * @returns the #GtkBuilder instance for the interface
+     * @returns the {@link Gtk.Builder} instance for the interface
      */
     function plugin_load_interface(
         plugin_name: string,
@@ -293,11 +299,38 @@ export namespace Totem {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
+            /**
+             * The {@link Totem.Object.SignalSignatures.file_closed | Totem.Object::file-closed} signal is emitted when Totem closes a stream.
+             * @signal
+             */
             'file-closed': () => void;
+            /**
+             * The {@link Totem.Object.SignalSignatures.file_has_played | Totem.Object::file-has-played} signal is emitted when a new stream has started playing in Totem.
+             * @signal
+             */
             'file-has-played': (arg0: string) => void;
+            /**
+             * The {@link Totem.Object.SignalSignatures.file_opened | Totem.Object::file-opened} signal is emitted when a new stream is opened by Totem.
+             * @signal
+             */
             'file-opened': (arg0: string) => void;
+            /**
+             * The {@link Totem.Object.SignalSignatures.get_text_subtitle | Totem.Object::get-text-subtitle} signal is emitted before opening a stream, so that plugins
+             * have the opportunity to detect or download text subtitles for the stream if necessary.
+             * @signal
+             */
             'get-text-subtitle': (arg0: string) => string;
+            /**
+             * The {@link Totem.Object.SignalSignatures.get_user_agent | Totem.Object::get-user-agent} signal is emitted before opening a stream, so that plugins
+             * have the opportunity to return the user-agent to be set.
+             * @signal
+             */
             'get-user-agent': (arg0: string) => string;
+            /**
+             * The {@link Totem.Object.SignalSignatures.metadata_updated | Totem.Object::metadata-updated} signal is emitted when the metadata of a stream is updated, typically
+             * when it's being loaded.
+             * @signal
+             */
             'metadata-updated': (arg0: string, arg1: string, arg2: string, arg3: number) => void;
             'notify::current-content-type': (pspec: GObject.ParamSpec) => void;
             'notify::current-display-name': (pspec: GObject.ParamSpec) => void;
@@ -347,7 +380,8 @@ export namespace Totem {
     }
 
     /**
-     * All the fields in the #TotemObject structure are private and should never be accessed directly.
+     * All the fields in the {@link Totem.Object} structure are private and should never be accessed directly.
+     * @gir-type Class
      */
     class Object extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Object>;
@@ -387,7 +421,7 @@ export namespace Totem {
          */
         get currentTime(): number;
         /**
-         * If %TRUE, Totem is in fullscreen mode.
+         * If `true`, Totem is in fullscreen mode.
          */
         get fullscreen(): boolean;
         /**
@@ -399,11 +433,11 @@ export namespace Totem {
          */
         get mainPage(): string;
         /**
-         * If %TRUE, Totem is playing an audio or video file.
+         * If `true`, Totem is playing an audio or video file.
          */
         get playing(): boolean;
         /**
-         * If %TRUE, the current stream is seekable.
+         * If `true`, the current stream is seekable.
          */
         get seekable(): boolean;
         /**
@@ -432,16 +466,19 @@ export namespace Totem {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -461,11 +498,37 @@ export namespace Totem {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_file_closed(): void;
+        /**
+         * @param mrl
+         * @virtual
+         */
         vfunc_file_has_played(mrl: string): void;
+        /**
+         * @param mrl
+         * @virtual
+         */
         vfunc_file_opened(mrl: string): void;
+        /**
+         * @param mrl
+         * @virtual
+         */
         vfunc_get_text_subtitle(mrl: string): string;
+        /**
+         * @param mrl
+         * @virtual
+         */
         vfunc_get_user_agent(mrl: string): string;
+        /**
+         * @param artist
+         * @param title
+         * @param album
+         * @param track_num
+         * @virtual
+         */
         vfunc_metadata_updated(artist: string, title: string, album: string, track_num: number): void;
 
         // Methods
@@ -479,16 +542,16 @@ export namespace Totem {
         add_to_playlist(uri: string, display_name: string, play: boolean): void;
         /**
          * Adds a local media file to the main view.
-         * @param file a #GFile representing a media
-         * @param title a title for the media, or %NULL
+         * @param file a {@link Gio.File} representing a media
+         * @param title a title for the media, or `null`
          */
         add_to_view(file: Gio.File, title: string): void;
         /**
-         * Returns true if totem_object_seek_next() would have an effect.
+         * Returns true if `totem_object_seek_next()` would have an effect.
          */
         can_seek_next(): boolean;
         /**
-         * Returns true if totem_object_seek_previous() would have an effect.
+         * Returns true if `totem_object_seek_previous()` would have an effect.
          */
         can_seek_previous(): boolean;
         /**
@@ -496,7 +559,7 @@ export namespace Totem {
          */
         clear_playlist(): void;
         /**
-         * Empty the GMenu section pointed to by `id,` and remove any
+         * Empty the GMenu section pointed to by `id`, and remove any
          * related actions. Note that menu items with specific target
          * will not have the associated action removed.
          * @param id the ID for the menu section to empty
@@ -507,8 +570,8 @@ export namespace Totem {
          */
         exit(): void;
         /**
-         * Get the MRL of the current stream, or %NULL if nothing's playing.
-         * Free with g_free().
+         * Get the MRL of the current stream, or `null` if nothing's playing.
+         * Free with `g_free()`.
          * @returns a newly-allocated string containing the MRL of the current stream
          */
         get_current_mrl(): string;
@@ -523,9 +586,9 @@ export namespace Totem {
          */
         get_main_window(): Gtk.Window;
         /**
-         * Get the #GMenu of the given `id` from the main Totem #GtkBuilder file.
+         * Get the {@link Gio.Menu} of the given `id` from the main Totem {@link Gtk.Builder} file.
          * @param id the ID for the menu section to look up
-         * @returns a #GMenu or %NULL on failure
+         * @returns a {@link Gio.Menu} or `null` on failure
          */
         get_menu_section(id: string): Gio.Menu | null;
         /**
@@ -546,13 +609,13 @@ export namespace Totem {
         get_rate(): number;
         /**
          * Gets the title of the current entry in the playlist.
-         * @returns the current entry's title, or %NULL; free with g_free()
+         * @returns the current entry's title, or `null`; free with `g_free()`
          */
         get_short_title(): string;
         /**
          * Gets the title of the playlist entry at `index`.
          * @param playlist_index the <code class="literal">0</code>-based entry index
-         * @returns the entry title at @index, or %NULL; free with g_free()
+         * @returns the entry title at `index`, or `null`; free with `g_free()`
          */
         get_title_at_playlist_pos(playlist_index: number): string;
         /**
@@ -566,23 +629,23 @@ export namespace Totem {
          */
         get_volume(): number;
         /**
-         * Returns %TRUE if Totem is fullscreened.
-         * @returns %TRUE if Totem is fullscreened
+         * Returns `true` if Totem is fullscreened.
+         * @returns `true` if Totem is fullscreened
          */
         is_fullscreen(): boolean;
         /**
-         * Returns %TRUE if playback is paused.
-         * @returns %TRUE if playback is paused, %FALSE otherwise
+         * Returns `true` if playback is paused.
+         * @returns `true` if playback is paused, `false` otherwise
          */
         is_paused(): boolean;
         /**
-         * Returns %TRUE if Totem is playing a stream.
-         * @returns %TRUE if Totem is playing a stream
+         * Returns `true` if Totem is playing a stream.
+         * @returns `true` if Totem is playing a stream
          */
         is_playing(): boolean;
         /**
-         * Returns %TRUE if the current stream is seekable.
-         * @returns %TRUE if the current stream is seekable
+         * Returns `true` if the current stream is seekable.
+         * @returns `true` if the current stream is seekable
          */
         is_seekable(): boolean;
         /**
@@ -607,24 +670,24 @@ export namespace Totem {
         play_pause(): void;
         /**
          * Executes the specified `cmd` on this instance of Totem. If `cmd`
-         * is an operation requiring an MRL, `url` is required; it can be %NULL
+         * is an operation requiring an MRL, `url` is required; it can be `null`
          * otherwise.
          *
          * If Totem's fullscreened and the operation is executed correctly,
          * the controls will appear as if the user had moved the mouse.
-         * @param cmd a #TotemRemoteCommand
-         * @param url an MRL to play, or %NULL
+         * @param cmd a {@link Totem.RemoteCommand}
+         * @param url an MRL to play, or `null`
          */
         remote_command(cmd: RemoteCommand | null, url: string): void;
         /**
          * Returns the value of `setting` for this instance of Totem.
-         * @param setting a #TotemRemoteSetting
-         * @returns %TRUE if the setting is enabled, %FALSE otherwise
+         * @param setting a {@link Totem.RemoteSetting}
+         * @returns `true` if the setting is enabled, `false` otherwise
          */
         remote_get_setting(setting: RemoteSetting | null): boolean;
         /**
          * Sets `setting` to `value` on this instance of Totem.
-         * @param setting a #TotemRemoteSetting
+         * @param setting a {@link Totem.RemoteSetting}
          * @param value the new value for the setting
          */
         remote_set_setting(setting: RemoteSetting | null, value: boolean): void;
@@ -662,7 +725,7 @@ export namespace Totem {
         /**
          * Sets the playback rate, with `1.0` being the normal playback rate.
          * @param rate the new absolute playback rate
-         * @returns %TRUE on success, %FALSE on failure.
+         * @returns `true` on success, `false` on failure.
          */
         set_rate(rate: number): boolean;
         /**
@@ -681,8 +744,6 @@ export namespace Totem {
          * Stops playback, and sets the playlist back at the start.
          */
         stop(): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -696,32 +757,32 @@ export namespace Totem {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -730,39 +791,39 @@ export namespace Totem {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -773,13 +834,16 @@ export namespace Totem {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -787,7 +851,7 @@ export namespace Totem {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -795,9 +859,9 @@ export namespace Totem {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -817,9 +881,9 @@ export namespace Totem {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -833,33 +897,33 @@ export namespace Totem {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -892,21 +956,21 @@ export namespace Totem {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -916,8 +980,8 @@ export namespace Totem {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -934,10 +998,10 @@ export namespace Totem {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -952,13 +1016,13 @@ export namespace Totem {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -989,21 +1053,21 @@ export namespace Totem {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1013,33 +1077,34 @@ export namespace Totem {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1048,6 +1113,7 @@ export namespace Totem {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1056,12 +1122,14 @@ export namespace Totem {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1070,20 +1138,22 @@ export namespace Totem {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1095,6 +1165,7 @@ export namespace Totem {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1124,6 +1195,9 @@ export namespace Totem {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ObjectClass = typeof Object;
     /**
      * Name of the imported GIR library

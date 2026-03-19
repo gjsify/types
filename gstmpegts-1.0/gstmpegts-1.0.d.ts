@@ -25,6 +25,7 @@ export namespace GstMpegts {
      * the various ATSC specifications.
      *
      * Consult the relevant specifications for more details.
+     * @gir-type Enum
      */
     enum ATSCDescriptorType {
         STUFFING,
@@ -55,6 +56,8 @@ export namespace GstMpegts {
      * Type of mpeg-ts streams for ATSC, as defined by the ATSC Code Points
      * Registry. For convenience, some stream types from %GstMpegtsScteStreamType
      * are also included.
+     * @gir-type Enum
+     * @since 1.20
      */
     enum ATSCStreamType {
         /**
@@ -87,6 +90,9 @@ export namespace GstMpegts {
         AUDIO_DTS_HD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AtscMGTTableType {
         EIT0,
         EIT127,
@@ -94,12 +100,18 @@ export namespace GstMpegts {
         ETT127,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CableOuterFECScheme {
         UNDEFINED,
         NONE,
         RS_204_188,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ComponentStreamContent {
         MPEG2_VIDEO,
         MPEG1_LAYER2_AUDIO,
@@ -111,6 +123,9 @@ export namespace GstMpegts {
         SRM_CPCM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ContentNibbleHi {
         MOVIE_DRAMA,
         NEWS_CURRENT_AFFAIRS,
@@ -125,6 +140,9 @@ export namespace GstMpegts {
         SPECIAL_CHARACTERISTICS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DVBCodeRate {
         NONE,
         '1_2',
@@ -142,12 +160,13 @@ export namespace GstMpegts {
     }
 
     /**
-     * The type of #GstMpegtsDescriptor
+     * The type of {@link GstMpegts.Descriptor}
      *
      * These values correspond to the registered descriptor type from
      * the various DVB specifications.
      *
      * Consult the relevant specifications for more details.
+     * @gir-type Enum
      */
     enum DVBDescriptorType {
         NETWORK_NAME,
@@ -188,7 +207,7 @@ export namespace GstMpegts {
         /**
          * Partial Transport Stream descriptor. Only present in SIT Sections.
          *
-         * See also: %GST_MPEGTS_SECTION_SIT, %GstMpegtsSIT
+         * See also: {@link GstMpegts.SectionType.SIT}, %GstMpegtsSIT
          */
         PARTIAL_TRANSPORT_STREAM,
         DATA_BROADCAST,
@@ -222,12 +241,13 @@ export namespace GstMpegts {
     }
 
     /**
-     * The type of #GstMpegtsDescriptor
+     * The type of {@link GstMpegts.Descriptor}
      *
      * These values correspond to the registered extended descriptor
      * type from the various DVB specifications.
      *
      * Consult the relevant specifications for more details.
+     * @gir-type Enum
      */
     enum DVBExtendedDescriptorType {
         IMAGE_ICON,
@@ -256,6 +276,9 @@ export namespace GstMpegts {
         AUDIO_PRESELECTION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DVBLinkageHandOverType {
         RESERVED,
         IDENTICAL,
@@ -265,6 +288,7 @@ export namespace GstMpegts {
 
     /**
      * Linkage Type (EN 300 468 v.1.13.1)
+     * @gir-type Enum
      */
     enum DVBLinkageType {
         RESERVED_00,
@@ -284,6 +308,9 @@ export namespace GstMpegts {
         EXTENDED_EVENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DVBScramblingModeType {
         RESERVED,
         CSA1,
@@ -300,6 +327,7 @@ export namespace GstMpegts {
      * The type of service of a channel.
      *
      * As specified in Table 87 of ETSI EN 300 468 v1.13.1
+     * @gir-type Enum
      */
     enum DVBServiceType {
         RESERVED_00,
@@ -336,6 +364,7 @@ export namespace GstMpegts {
      * The type of teletext page.
      *
      * As specified in Table 100 of ETSI EN 300 468 v1.13.1
+     * @gir-type Enum
      */
     enum DVBTeletextType {
         NITIAL_PAGE,
@@ -346,12 +375,13 @@ export namespace GstMpegts {
     }
 
     /**
-     * The type of #GstMpegtsDescriptor
+     * The type of {@link GstMpegts.Descriptor}
      *
      * These values correspond to the registered descriptor type from
      * the base MPEG-TS specifications (ITU H.222.0 | ISO/IEC 13818-1).
      *
      * Consult the relevant specifications for more details.
+     * @gir-type Enum
      */
     enum DescriptorType {
         RESERVED_00,
@@ -412,7 +442,9 @@ export namespace GstMpegts {
 
     /**
      * Type of mpeg-ts streams for Blu-ray formats. To be matched with the
-     * stream-type of a #GstMpegtsSection.
+     * stream-type of a {@link GstMpegts.Section}.
+     * @gir-type Enum
+     * @since 1.20
      */
     enum HdmvStreamType {
         AUDIO_LPCM,
@@ -435,6 +467,7 @@ export namespace GstMpegts {
      * the various ISDB specifications.
      *
      * Consult the relevant specifications for more details.
+     * @gir-type Enum
      */
     enum ISDBDescriptorType {
         HIERARCHICAL_TRANSMISSION,
@@ -471,6 +504,9 @@ export namespace GstMpegts {
         SERVICE_GROUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Iso639AudioType {
         UNDEFINED,
         CLEAN_EFFECTS,
@@ -480,6 +516,8 @@ export namespace GstMpegts {
 
     /**
      * metadata_descriptor metadata_format valid values. See ISO/IEC 13818-1:2018(E) Table 2-85.
+     * @gir-type Enum
+     * @since 1.24
      */
     enum MetadataFormat {
         /**
@@ -501,15 +539,19 @@ export namespace GstMpegts {
     }
 
     /**
-     * The type of #GstMpegtsDescriptor
+     * The type of {@link GstMpegts.Descriptor}
      *
      * These values correspond to miscellaneous descriptor types that are
      * not yet identified from known specifications.
+     * @gir-type Enum
      */
     enum MiscDescriptorType {
         MTS_DESC_DTG_LOGICAL_CHANNEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ModulationType {
         QPSK,
         QAM_16,
@@ -532,6 +574,7 @@ export namespace GstMpegts {
      * Running status of a service.
      *
      * Corresponds to table 6 of ETSI EN 300 468 (v1.13.0)
+     * @gir-type Enum
      */
     enum RunningStatus {
         UNDEFINED,
@@ -544,6 +587,8 @@ export namespace GstMpegts {
 
     /**
      * These values correspond to the ones defined by SCTE (amongst other in ANSI/SCTE 57)
+     * @gir-type Enum
+     * @since 1.20
      */
     enum SCTEDescriptorType {
         STUFFING,
@@ -556,6 +601,9 @@ export namespace GstMpegts {
         TRANSPORT_STREAM_ID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SCTESpliceCommandType {
         NULL,
         SCHEDULE,
@@ -565,6 +613,9 @@ export namespace GstMpegts {
         PRIVATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SCTESpliceDescriptor {
         AVAIL,
         DTMF,
@@ -573,6 +624,9 @@ export namespace GstMpegts {
         AUDIO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SatellitePolarizationType {
         LINEAR_HORIZONTAL,
         LINEAR_VERTICAL,
@@ -580,6 +634,9 @@ export namespace GstMpegts {
         CIRCULAR_RIGHT,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SatelliteRolloff {
         static $gtype: GObject.GType<SatelliteRolloff>;
 
@@ -594,7 +651,8 @@ export namespace GstMpegts {
 
     /**
      * Type of mpeg-ts streams for SCTE. Most users would want to use the
-     * #GstMpegtsATSCStreamType instead since it also covers these stream types
+     * {@link GstMpegts.ATSCStreamType} instead since it also covers these stream types
+     * @gir-type Enum
      */
     enum ScteStreamType {
         /**
@@ -635,12 +693,13 @@ export namespace GstMpegts {
     }
 
     /**
-     * Values for a #GstMpegtsSection table_id.
+     * Values for a {@link GstMpegts.Section} table_id.
      *
      * These are the registered ATSC section `table_id` variants. Unless specified
      * otherwise, they are defined in the "ATSC A/65" specification.
      *
-     * see also: #GstMpegtsSectionTableID and other variants.
+     * see also: {@link GstMpegts.SectionTableID} and other variants.
+     * @gir-type Enum
      */
     enum SectionATSCTableID {
         /**
@@ -709,12 +768,13 @@ export namespace GstMpegts {
     }
 
     /**
-     * Values for a #GstMpegtsSection table_id.
+     * Values for a {@link GstMpegts.Section} table_id.
      *
      * These are the registered DVB table_id variants. Unless specified otherwise,
      * they come from the DVB Specification for SI (ETSI EN 300 468).
      *
-     * see also: #GstMpegtsSectionTableID
+     * see also: {@link GstMpegts.SectionTableID}
+     * @gir-type Enum
      */
     enum SectionDVBTableID {
         /**
@@ -854,11 +914,12 @@ export namespace GstMpegts {
     }
 
     /**
-     * Values for a #GstMpegtsSection table_id.
+     * Values for a {@link GstMpegts.Section} table_id.
      *
      * These are the registered SCTE table_id variants.
      *
-     * see also: #GstMpegtsSectionTableID
+     * see also: {@link GstMpegts.SectionTableID}
+     * @gir-type Enum
      */
     enum SectionSCTETableID {
         /**
@@ -892,12 +953,13 @@ export namespace GstMpegts {
     }
 
     /**
-     * Values for a #GstMpegtsSection table_id
+     * Values for a {@link GstMpegts.Section} table_id
      *
      * These are the registered ITU H.222.0 | ISO/IEC 13818-1 table_id variants.
      *
-     * see also #GstMpegtsSectionATSCTableID, #GstMpegtsSectionDVBTableID, and
-     * #GstMpegtsSectionSCTETableID
+     * see also {@link GstMpegts.SectionATSCTableID}, {@link GstMpegts.SectionDVBTableID}, and
+     * {@link GstMpegts.SectionSCTETableID}
+     * @gir-type Enum
      */
     enum SectionTableID {
         /**
@@ -975,9 +1037,10 @@ export namespace GstMpegts {
     }
 
     /**
-     * Types of #GstMpegtsSection that the library handles. This covers all the
+     * Types of {@link GstMpegts.Section} that the library handles. This covers all the
      * MPEG-TS and derivate specification that the library can properly identify and
      * use.
+     * @gir-type Enum
      */
     enum SectionType {
         /**
@@ -1070,6 +1133,7 @@ export namespace GstMpegts {
      * types might also be used, but will not conflict with these.
      *
      * Corresponds to table 2-34 of ITU H.222.0 | ISO/IEC 13818-1
+     * @gir-type Enum
      */
     enum StreamType {
         /**
@@ -1257,6 +1321,9 @@ export namespace GstMpegts {
         USER_PRIVATE_EA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TerrestrialGuardInterval {
         '1_32',
         '1_16',
@@ -1271,6 +1338,9 @@ export namespace GstMpegts {
         PN945,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class TerrestrialHierarchy {
         static $gtype: GObject.GType<TerrestrialHierarchy>;
 
@@ -1283,6 +1353,9 @@ export namespace GstMpegts {
         static AUTO: number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TerrestrialTransmissionMode {
         '2K',
         '8K',
@@ -1296,18 +1369,19 @@ export namespace GstMpegts {
     }
 
     /**
-     * Creates a #GstMpegtsDescriptor with custom `tag` and `data`
+     * Creates a {@link GstMpegts.Descriptor} with custom `tag` and `data`
      * @param tag descriptor tag
      * @param data descriptor data (after tag and length field)
-     * @returns #GstMpegtsDescriptor
+     * @returns {@link GstMpegts.Descriptor}
      */
     function descriptor_from_custom(tag: number, data: Uint8Array | string): Descriptor;
     /**
-     * Creates a #GstMpegtsDescriptor with custom `tag,` `tag_extension` and `data`
+     * Creates a {@link GstMpegts.Descriptor} with custom `tag`, `tag_extension` and `data`
      * @param tag descriptor tag
      * @param tag_extension descriptor tag extension
      * @param data descriptor data (after tag and length field)
-     * @returns #GstMpegtsDescriptor
+     * @returns {@link GstMpegts.Descriptor}
+     * @since 1.20
      */
     function descriptor_from_custom_with_extension(
         tag: number,
@@ -1315,27 +1389,33 @@ export namespace GstMpegts {
         data: Uint8Array | string,
     ): Descriptor;
     /**
-     * Creates a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_NETWORK_NAME,
-     * with the network name `name`. The data field of the #GstMpegtsDescriptor
+     * Creates a {@link GstMpegts.Descriptor} to be a {@link GstMpegts.DVBDescriptorType.NETWORK_NAME},
+     * with the network name `name`. The data field of the {@link GstMpegts.Descriptor}
      * will be allocated, and transferred to the caller.
      * @param name the network name to set
-     * @returns the #GstMpegtsDescriptor or %NULL on fail
+     * @returns the {@link GstMpegts.Descriptor} or `null` on fail
      */
     function descriptor_from_dvb_network_name(name: string): Descriptor;
     /**
-     * Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
-     * The data field of the #GstMpegtsDescriptor will be allocated,
+     * Fills a {@link GstMpegts.Descriptor} to be a {@link GstMpegts.DVBDescriptorType.SERVICE}.
+     * The data field of the {@link GstMpegts.Descriptor} will be allocated,
      * and transferred to the caller.
-     * @param service_type Service type defined as a #GstMpegtsDVBServiceType
+     * @param service_type Service type defined as a {@link GstMpegts.DVBServiceType}
      * @param service_name Name of the service
      * @param service_provider Name of the service provider
-     * @returns the #GstMpegtsDescriptor or %NULL on fail
+     * @returns the {@link GstMpegts.Descriptor} or `null` on fail
      */
     function descriptor_from_dvb_service(
         service_type: DVBServiceType | null,
         service_name?: string | null,
         service_provider?: string | null,
     ): Descriptor;
+    /**
+     * @param lang a string containing the ISO639 language
+     * @param type subtitling type
+     * @param composition composition page id
+     * @param ancillary ancillary page id
+     */
     function descriptor_from_dvb_subtitling(
         lang: string,
         type: number,
@@ -1343,53 +1423,66 @@ export namespace GstMpegts {
         ancillary: number,
     ): Descriptor;
     /**
-     * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
+     * Creates a {@link GstMpegts.DescriptorType.ISO_639_LANGUAGE} {@link GstMpegts.Descriptor} with
      * a single language
      * @param language ISO-639-2 language 3-char code
-     * @returns #GstMpegtsDescriptor, %NULL on failure
+     * @returns {@link GstMpegts.Descriptor}, `null` on failure
      */
     function descriptor_from_iso_639_language(language: string): Descriptor;
     /**
-     * Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
+     * Creates a {@link GstMpegts.DescriptorType.REGISTRATION} {@link GstMpegts.Descriptor}
      * @param format_identifier a 4 character format identifier string
      * @param additional_info pointer to optional additional info
-     * @returns #GstMpegtsDescriptor, %NULL on failure
+     * @returns {@link GstMpegts.Descriptor}, `null` on failure
      */
     function descriptor_from_registration(format_identifier: string, additional_info?: Uint8Array | null): Descriptor;
+    /**
+     * @param source
+     * @since 1.20
+     */
     function descriptor_parse_audio_preselection_dump(source: AudioPreselectionDescriptor): void;
+    /**
+     * @param source
+     * @since 1.20
+     */
     function descriptor_parse_audio_preselection_free(source: AudioPreselectionDescriptor): void;
+    /**
+     * @param source
+     */
     function dvb_component_descriptor_free(source: ComponentDescriptor): void;
     /**
-     * Creates a new #GstEvent for a #GstMpegtsSection.
-     * @param section The #GstMpegtsSection to put in a message
-     * @returns The new custom #GstEvent.
+     * Creates a new {@link Gst.Event} for a {@link GstMpegts.Section}.
+     * @param section The {@link GstMpegts.Section} to put in a message
+     * @returns The new custom {@link Gst.Event}.
+     * @since 1.20
      */
     function event_new_mpegts_section(section: Section): Gst.Event;
     /**
-     * Extracts the #GstMpegtsSection contained in the `event` #GstEvent
-     * @param event #GstEvent containing a #GstMpegtsSection
-     * @returns The extracted #GstMpegtsSection , or %NULL if the event did not contain a valid #GstMpegtsSection.
+     * Extracts the {@link GstMpegts.Section} contained in the `event` {@link Gst.Event}
+     * @param event {@link Gst.Event} containing a {@link GstMpegts.Section}
+     * @returns The extracted {@link GstMpegts.Section} , or `null` if the event did not contain a valid {@link GstMpegts.Section}.
      */
     function event_parse_mpegts_section(event: Gst.Event): Section;
     /**
      * Finds the first descriptor of type `tag` in the array.
      *
      * Note: To look for descriptors that can be present more than once in an
-     * array of descriptors, iterate the #GArray manually.
-     * @param descriptors an array of #GstMpegtsDescriptor
+     * array of descriptors, iterate the {@link GLib.Array} manually.
+     * @param descriptors an array of {@link GstMpegts.Descriptor}
      * @param tag the tag to look for
-     * @returns the first descriptor matching @tag, else %NULL.
+     * @returns the first descriptor matching `tag`, else `null`.
      */
     function find_descriptor(descriptors: Descriptor[], tag: number): Descriptor;
     /**
      * Finds the first descriptor of type `tag` with `tag_extension` in the array.
      *
      * Note: To look for descriptors that can be present more than once in an
-     * array of descriptors, iterate the #GArray manually.
-     * @param descriptors an array of #GstMpegtsDescriptor
+     * array of descriptors, iterate the {@link GLib.Array} manually.
+     * @param descriptors an array of {@link GstMpegts.Descriptor}
      * @param tag the tag to look for
      * @param tag_extension
-     * @returns the first descriptor matchin @tag with @tag_extension, else %NULL.
+     * @returns the first descriptor matchin `tag` with `tag_extension`, else `null`.
+     * @since 1.20
      */
     function find_descriptor_with_extension(descriptors: Descriptor[], tag: number, tag_extension: number): Descriptor;
     /**
@@ -1398,16 +1491,16 @@ export namespace GstMpegts {
      */
     function initialize(): void;
     /**
-     * Creates a new #GstMessage for a `GstMpegtsSection`.
+     * Creates a new {@link Gst.Message} for a `GstMpegtsSection`.
      * @param parent The creator of the message
-     * @param section The #GstMpegtsSection to put in a message
-     * @returns The new #GstMessage to be posted, or %NULL if the section is not valid.
+     * @param section The {@link GstMpegts.Section} to put in a message
+     * @returns The new {@link Gst.Message} to be posted, or `null` if the section is not valid.
      */
     function message_new_mpegts_section(parent: Gst.Object, section: Section): Gst.Message;
     /**
-     * Returns the #GstMpegtsSection contained in a message.
-     * @param message a #GstMessage
-     * @returns the contained #GstMpegtsSection, or %NULL.
+     * Returns the {@link GstMpegts.Section} contained in a message.
+     * @param message a {@link Gst.Message}
+     * @returns the contained {@link GstMpegts.Section}, or `null`.
      */
     function message_parse_mpegts_section(message: Gst.Message): Section;
     /**
@@ -1416,52 +1509,54 @@ export namespace GstMpegts {
      *
      * Note: The data provided in `buffer` will not be copied.
      * @param buffer descriptors to parse
-     * @param buf_len Size of @buffer
-     * @returns an array of the parsed descriptors or %NULL if there was an error. Release with #g_array_unref when done with it.
+     * @param buf_len Size of `buffer`
+     * @returns an array of the parsed descriptors or `null` if there was an error. Release with `g_array_unref` when done with it.
      */
     function parse_descriptors(buffer: number, buf_len: number): Descriptor[];
     /**
-     * Allocates a new #GPtrArray for #GstMpegtsPatProgram. The array can be filled
-     * and then converted to a PAT section with gst_mpegts_section_from_pat().
-     * @returns A newly allocated #GPtrArray
+     * Allocates a new {@link GLib.PtrArray} for {@link GstMpegts.PatProgram}. The array can be filled
+     * and then converted to a PAT section with `gst_mpegts_section_from_pat()`.
+     * @returns A newly allocated {@link GLib.PtrArray}
      */
     function pat_new(): PatProgram[];
     /**
-     * Return the #GType associated with #GstMpegtsPESMetadataMeta
-     * @returns a #GType
+     * Return the {@link GObject.GType} associated with {@link GstMpegts.PESMetadataMeta}
+     * @returns a {@link GObject.GType}
+     * @since 1.24
      */
     function pes_metadata_meta_api_get_type(): GObject.GType;
     /**
-     * Gets the global #GstMetaInfo describing the #GstMpegtsPESMetadataMeta meta.
-     * @returns The #GstMetaInfo
+     * Gets the global {@link Gst.MetaInfo} describing the {@link GstMpegts.PESMetadataMeta} meta.
+     * @returns The {@link Gst.MetaInfo}
+     * @since 1.24
      */
     function pes_metadata_meta_get_info(): Gst.MetaInfo;
     /**
-     * Allocates and initializes a new INSERT command #GstMpegtsSCTESIT
+     * Allocates and initializes a new INSERT command {@link GstMpegts.SCTESIT}
      * setup to cancel the specified `event_id`.
      * @param event_id The event ID to cancel.
-     * @returns A newly allocated #GstMpegtsSCTESIT
+     * @returns A newly allocated {@link GstMpegts.SCTESIT}
      */
     function scte_cancel_new(event_id: number): SCTESIT;
     /**
-     * Allocates and initializes a NULL command #GstMpegtsSCTESIT.
-     * @returns A newly allocated #GstMpegtsSCTESIT
+     * Allocates and initializes a NULL command {@link GstMpegts.SCTESIT}.
+     * @returns A newly allocated {@link GstMpegts.SCTESIT}
      */
     function scte_null_new(): SCTESIT;
     /**
      * Allocates and initializes a new "Splice In" INSERT command
-     * #GstMpegtsSCTESIT for the given `event_id` and `splice_time`.
+     * {@link GstMpegts.SCTESIT} for the given `event_id` and `splice_time`.
      *
      * If the `splice_time` is #G_MAXUINT64 then the event will be
      * immediate as opposed to for the target `splice_time`.
      * @param event_id The event ID.
      * @param splice_time The running time for the splice event
-     * @returns A newly allocated #GstMpegtsSCTESIT
+     * @returns A newly allocated {@link GstMpegts.SCTESIT}
      */
     function scte_splice_in_new(event_id: number, splice_time: Gst.ClockTime): SCTESIT;
     /**
      * Allocates and initializes a new "Splice Out" INSERT command
-     * #GstMpegtsSCTESIT for the given `event_id,` `splice_time` and
+     * {@link GstMpegts.SCTESIT} for the given `event_id`, `splice_time` and
      * `duration`.
      *
      * If the `splice_time` is #G_MAXUINT64 then the event will be
@@ -1471,54 +1566,69 @@ export namespace GstMpegts {
      * @param event_id The event ID.
      * @param splice_time The running time for the splice event
      * @param duration The optional duration.
-     * @returns A newly allocated #GstMpegtsSCTESIT
+     * @returns A newly allocated {@link GstMpegts.SCTESIT}
      */
     function scte_splice_out_new(event_id: number, splice_time: Gst.ClockTime, duration: Gst.ClockTime): SCTESIT;
+    /**
+     * @param mgt a {@link GstMpegts.AtscMGT} to create the {@link GstMpegts.Section} from
+     * @returns the {@link GstMpegts.Section}
+     * @since 1.18
+     */
     function section_from_atsc_mgt(mgt: AtscMGT): Section;
+    /**
+     * @param rrt
+     */
     function section_from_atsc_rrt(rrt: AtscRRT): Section;
+    /**
+     * @param stt
+     */
     function section_from_atsc_stt(stt: AtscSTT): Section;
     /**
-     * Ownership of `nit` is taken. The data in `nit` is managed by the #GstMpegtsSection
-     * @param nit a #GstMpegtsNIT to create the #GstMpegtsSection from
-     * @returns the #GstMpegtsSection
+     * Ownership of `nit` is taken. The data in `nit` is managed by the {@link GstMpegts.Section}
+     * @param nit a {@link GstMpegts.NIT} to create the {@link GstMpegts.Section} from
+     * @returns the {@link GstMpegts.Section}
      */
     function section_from_nit(nit: NIT): Section;
     /**
-     * Creates a PAT #GstMpegtsSection from the `programs` array of #GstMpegtsPatPrograms
-     * @param programs an array of #GstMpegtsPatProgram
+     * Creates a PAT {@link GstMpegts.Section} from the `programs` array of `GstMpegtsPatPrograms`
+     * @param programs an array of {@link GstMpegts.PatProgram}
      * @param ts_id Transport stream ID of the PAT
-     * @returns a #GstMpegtsSection
+     * @returns a {@link GstMpegts.Section}
      */
     function section_from_pat(programs: PatProgram[], ts_id: number): Section;
     /**
-     * Creates a #GstMpegtsSection from `pmt` that is bound to `pid`
-     * @param pmt a #GstMpegtsPMT to create a #GstMpegtsSection from
-     * @param pid The PID that the #GstMpegtsPMT belongs to
-     * @returns #GstMpegtsSection
+     * Creates a {@link GstMpegts.Section} from `pmt` that is bound to `pid`
+     * @param pmt a {@link GstMpegts.PMT} to create a {@link GstMpegts.Section} from
+     * @param pid The PID that the {@link GstMpegts.PMT} belongs to
+     * @returns {@link GstMpegts.Section}
      */
     function section_from_pmt(pmt: PMT, pid: number): Section;
     /**
-     * Ownership of `sit` is taken. The data in `sit` is managed by the #GstMpegtsSection
-     * @param sit a #GstMpegtsSCTESIT to create the #GstMpegtsSection from
+     * Ownership of `sit` is taken. The data in `sit` is managed by the {@link GstMpegts.Section}
+     * @param sit a {@link GstMpegts.SCTESIT} to create the {@link GstMpegts.Section} from
      * @param pid
-     * @returns the #GstMpegtsSection
+     * @returns the {@link GstMpegts.Section}
      */
     function section_from_scte_sit(sit: SCTESIT, pid: number): Section;
     /**
-     * Ownership of `sdt` is taken. The data in `sdt` is managed by the #GstMpegtsSection
-     * @param sdt a #GstMpegtsSDT to create the #GstMpegtsSection from
-     * @returns the #GstMpegtsSection
+     * Ownership of `sdt` is taken. The data in `sdt` is managed by the {@link GstMpegts.Section}
+     * @param sdt a {@link GstMpegts.SDT} to create the {@link GstMpegts.Section} from
+     * @returns the {@link GstMpegts.Section}
      */
     function section_from_sdt(sdt: SDT): Section;
+    /**
+     * @gir-type Callback
+     */
     interface PacketizeFunc {
         (section: Section): boolean;
     }
     /**
      * Well-known registration ids, expressed as native-endian 32bit integers. These
-     * are used in descriptors of type %GST_MTS_DESC_REGISTRATION. Unless specified
+     * are used in descriptors of type {@link GstMpegts.DescriptorType.REGISTRATION}. Unless specified
      * otherwise (by use of the "OTHER" prefix), they are all registered by the
      * [SMPTE Registration Authority](https://smpte-ra.org/) or specified in
      * "official" documentation for the given format.
+     * @gir-type Struct
      */
     class RegistrationId {
         static $gtype: GObject.GType<RegistrationId>;
@@ -1603,6 +1713,7 @@ export namespace GstMpegts {
 
     /**
      * Event Information Table (ATSC)
+     * @gir-type Struct
      */
     class AtscEIT {
         static $gtype: GObject.GType<AtscEIT>;
@@ -1626,6 +1737,7 @@ export namespace GstMpegts {
 
     /**
      * An ATSC EIT Event
+     * @gir-type Struct
      */
     class AtscEITEvent {
         static $gtype: GObject.GType<AtscEITEvent>;
@@ -1655,6 +1767,7 @@ export namespace GstMpegts {
 
     /**
      * Extended Text Table (ATSC)
+     * @gir-type Struct
      */
     class AtscETT {
         static $gtype: GObject.GType<AtscETT>;
@@ -1680,6 +1793,7 @@ export namespace GstMpegts {
 
     /**
      * Master Guide Table (A65)
+     * @gir-type Struct
      */
     class AtscMGT {
         static $gtype: GObject.GType<AtscMGT>;
@@ -1707,6 +1821,7 @@ export namespace GstMpegts {
 
     /**
      * Source from a `GstMpegtsAtscMGT`
+     * @gir-type Struct
      */
     class AtscMGTTable {
         static $gtype: GObject.GType<AtscMGTTable>;
@@ -1732,6 +1847,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class AtscMultString {
         static $gtype: GObject.GType<AtscMultString>;
 
@@ -1752,6 +1870,8 @@ export namespace GstMpegts {
 
     /**
      * Region Rating Table (A65)
+     * @gir-type Struct
+     * @since 1.18
      */
     class AtscRRT {
         static $gtype: GObject.GType<AtscRRT>;
@@ -1779,6 +1899,10 @@ export namespace GstMpegts {
         static ['new'](): AtscRRT;
     }
 
+    /**
+     * @gir-type Struct
+     * @since 1.18
+     */
     class AtscRRTDimension {
         static $gtype: GObject.GType<AtscRRTDimension>;
 
@@ -1803,6 +1927,10 @@ export namespace GstMpegts {
         static ['new'](): AtscRRTDimension;
     }
 
+    /**
+     * @gir-type Struct
+     * @since 1.18
+     */
     class AtscRRTDimensionValue {
         static $gtype: GObject.GType<AtscRRTDimensionValue>;
 
@@ -1825,6 +1953,7 @@ export namespace GstMpegts {
 
     /**
      * System Time Table (A65)
+     * @gir-type Struct
      */
     class AtscSTT {
         static $gtype: GObject.GType<AtscSTT>;
@@ -1862,6 +1991,7 @@ export namespace GstMpegts {
 
     /**
      * A string segment
+     * @gir-type Struct
      */
     class AtscStringSegment {
         static $gtype: GObject.GType<AtscStringSegment>;
@@ -1889,6 +2019,11 @@ export namespace GstMpegts {
         // Methods
 
         get_string(): string;
+        /**
+         * @param string
+         * @param compression_type
+         * @param mode
+         */
         set_string(string: string, compression_type: number, mode: number): boolean;
     }
 
@@ -1896,6 +2031,7 @@ export namespace GstMpegts {
      * Represents both:
      *   Terrestrial Virtual Channel Table (A65)
      *   Cable Virtual Channel Table (A65)
+     * @gir-type Struct
      */
     class AtscVCT {
         static $gtype: GObject.GType<AtscVCT>;
@@ -1921,6 +2057,7 @@ export namespace GstMpegts {
 
     /**
      * Source from a %GstMpegtsAtscVCT, can be used both for TVCT and CVCT tables
+     * @gir-type Struct
      */
     class AtscVCTSource {
         static $gtype: GObject.GType<AtscVCTSource>;
@@ -1970,6 +2107,8 @@ export namespace GstMpegts {
 
     /**
      * Table 110: Audio Preselection Descriptor (ETSI EN 300 468 v1.16.1)
+     * @gir-type Struct
+     * @since 1.20
      */
     class AudioPreselectionDescriptor {
         static $gtype: GObject.GType<AudioPreselectionDescriptor>;
@@ -2011,6 +2150,7 @@ export namespace GstMpegts {
 
     /**
      * DVB Bouquet Association Table (EN 300 468)
+     * @gir-type Struct
      */
     class BAT {
         static $gtype: GObject.GType<BAT>;
@@ -2030,6 +2170,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BATStream {
         static $gtype: GObject.GType<BATStream>;
 
@@ -2052,6 +2195,7 @@ export namespace GstMpegts {
 
     /**
      * Cable Delivery System Descriptor (EN 300 468 v.1.13.1)
+     * @gir-type Struct
      */
     class CableDeliverySystemDescriptor {
         static $gtype: GObject.GType<CableDeliverySystemDescriptor>;
@@ -2069,6 +2213,9 @@ export namespace GstMpegts {
         free(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ComponentDescriptor {
         static $gtype: GObject.GType<ComponentDescriptor>;
 
@@ -2093,6 +2240,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Content {
         static $gtype: GObject.GType<Content>;
 
@@ -2103,6 +2253,9 @@ export namespace GstMpegts {
         user_byte: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DVBLinkageDescriptor {
         static $gtype: GObject.GType<DVBLinkageDescriptor>;
 
@@ -2118,11 +2271,23 @@ export namespace GstMpegts {
         // Methods
 
         free(): void;
+        /**
+         * @returns The {@link GstMpegts.DVBLinkageEvent} or `null` if an error happened
+         */
         get_event(): DVBLinkageEvent;
+        /**
+         * @returns an {@link GstMpegts.DVBLinkageExtendedEvent} array or `null` if an error happened
+         */
         get_extended_event(): DVBLinkageExtendedEvent[];
+        /**
+         * @returns The {@link GstMpegts.DVBLinkageMobileHandOver} or `null` if an error happened
+         */
         get_mobile_hand_over(): DVBLinkageMobileHandOver;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DVBLinkageEvent {
         static $gtype: GObject.GType<DVBLinkageEvent>;
 
@@ -2143,6 +2308,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DVBLinkageExtendedEvent {
         static $gtype: GObject.GType<DVBLinkageExtendedEvent>;
 
@@ -2179,6 +2347,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DVBLinkageMobileHandOver {
         static $gtype: GObject.GType<DVBLinkageMobileHandOver>;
 
@@ -2190,6 +2361,9 @@ export namespace GstMpegts {
         initial_service_id: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DVBParentalRatingItem {
         static $gtype: GObject.GType<DVBParentalRatingItem>;
 
@@ -2208,6 +2382,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DVBServiceListItem {
         static $gtype: GObject.GType<DVBServiceListItem>;
 
@@ -2217,6 +2394,9 @@ export namespace GstMpegts {
         type: DVBServiceType;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DataBroadcastDescriptor {
         static $gtype: GObject.GType<DataBroadcastDescriptor>;
 
@@ -2252,6 +2432,7 @@ export namespace GstMpegts {
      *
      * For more details, refer to the ITU H.222.0 or ISO/IEC 13818-1 specifications
      * and other specifications mentioned in the documentation.
+     * @gir-type Struct
      */
     class Descriptor {
         static $gtype: GObject.GType<Descriptor>;
@@ -2277,30 +2458,30 @@ export namespace GstMpegts {
         // Static methods
 
         /**
-         * Creates a #GstMpegtsDescriptor with custom `tag` and `data`
+         * Creates a {@link GstMpegts.Descriptor} with custom `tag` and `data`
          * @param tag descriptor tag
          * @param data descriptor data (after tag and length field)
          */
         static from_custom(tag: number, data: Uint8Array | string): Descriptor;
         /**
-         * Creates a #GstMpegtsDescriptor with custom `tag,` `tag_extension` and `data`
+         * Creates a {@link GstMpegts.Descriptor} with custom `tag`, `tag_extension` and `data`
          * @param tag descriptor tag
          * @param tag_extension descriptor tag extension
          * @param data descriptor data (after tag and length field)
          */
         static from_custom_with_extension(tag: number, tag_extension: number, data: Uint8Array | string): Descriptor;
         /**
-         * Creates a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_NETWORK_NAME,
-         * with the network name `name`. The data field of the #GstMpegtsDescriptor
+         * Creates a {@link GstMpegts.Descriptor} to be a {@link GstMpegts.DVBDescriptorType.NETWORK_NAME},
+         * with the network name `name`. The data field of the {@link GstMpegts.Descriptor}
          * will be allocated, and transferred to the caller.
          * @param name the network name to set
          */
         static from_dvb_network_name(name: string): Descriptor;
         /**
-         * Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
-         * The data field of the #GstMpegtsDescriptor will be allocated,
+         * Fills a {@link GstMpegts.Descriptor} to be a {@link GstMpegts.DVBDescriptorType.SERVICE}.
+         * The data field of the {@link GstMpegts.Descriptor} will be allocated,
          * and transferred to the caller.
-         * @param service_type Service type defined as a #GstMpegtsDVBServiceType
+         * @param service_type Service type defined as a {@link GstMpegts.DVBServiceType}
          * @param service_name Name of the service
          * @param service_provider Name of the service provider
          */
@@ -2309,20 +2490,32 @@ export namespace GstMpegts {
             service_name?: string | null,
             service_provider?: string | null,
         ): Descriptor;
+        /**
+         * @param lang a string containing the ISO639 language
+         * @param type subtitling type
+         * @param composition composition page id
+         * @param ancillary ancillary page id
+         */
         static from_dvb_subtitling(lang: string, type: number, composition: number, ancillary: number): Descriptor;
         /**
-         * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
+         * Creates a {@link GstMpegts.DescriptorType.ISO_639_LANGUAGE} {@link GstMpegts.Descriptor} with
          * a single language
          * @param language ISO-639-2 language 3-char code
          */
         static from_iso_639_language(language: string): Descriptor;
         /**
-         * Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
+         * Creates a {@link GstMpegts.DescriptorType.REGISTRATION} {@link GstMpegts.Descriptor}
          * @param format_identifier a 4 character format identifier string
          * @param additional_info pointer to optional additional info
          */
         static from_registration(format_identifier: string, additional_info?: Uint8Array | null): Descriptor;
+        /**
+         * @param source
+         */
         static parse_audio_preselection_dump(source: AudioPreselectionDescriptor): void;
+        /**
+         * @param source
+         */
         static parse_audio_preselection_free(source: AudioPreselectionDescriptor): void;
 
         // Methods
@@ -2333,142 +2526,145 @@ export namespace GstMpegts {
         free(): void;
         /**
          * Parses out a list of audio preselection from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_audio_preselection_list(): [boolean, AudioPreselectionDescriptor[]];
         /**
          * Extracts the Conditional Access information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_ca(): [boolean, number, number, Uint8Array | null];
         /**
          * Extracts the cable delivery system information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_cable_delivery_system(): [boolean, CableDeliverySystemDescriptor];
         /**
          * Extracts the bouquet name from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_dvb_bouquet_name(): [boolean, string];
         /**
          * Extracts ca id's from `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_ca_identifier(): [boolean, number[]];
         /**
          * Extracts the DVB component information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_dvb_component(): [boolean, ComponentDescriptor];
         /**
          * Extracts the DVB content information from `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_content(): [boolean, Content[]];
         /**
          * Parses out the data broadcast from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_data_broadcast(): [boolean, DataBroadcastDescriptor];
         /**
          * Parses out the data broadcast id from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_data_broadcast_id(): [boolean, number, Uint8Array];
         /**
          * Extracts the DVB extended event information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_dvb_extended_event(): [boolean, ExtendedEventDescriptor];
         /**
          * Parses out a list of frequencies from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_frequency_list(): [boolean, boolean, number[]];
         /**
          * Extracts the DVB linkage information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_dvb_linkage(): [boolean, DVBLinkageDescriptor];
         /**
          * Parses out the multilingual bouquet name from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_multilingual_bouquet_name(): [boolean, DvbMultilingualBouquetNameItem[]];
         /**
          * Parses out the multilingual component from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_multilingual_component(): [boolean, number, DvbMultilingualComponentItem[]];
         /**
          * Parses out the multilingual network name from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_multilingual_network_name(): [boolean, DvbMultilingualNetworkNameItem[]];
         /**
          * Parses out the multilingual service name from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_multilingual_service_name(): [boolean, DvbMultilingualServiceNameItem[]];
         /**
-         * Parses out the dvb network name from the `descriptor:`
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * Parses out the dvb network name from the `descriptor`:
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_network_name(): [boolean, string];
         /**
          * Extracts the DVB parental rating information from `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_parental_rating(): [boolean, DVBParentalRatingItem[]];
         /**
          * Parses out the private data specifier from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_private_data_specifier(): [boolean, number, Uint8Array | null];
         /**
          * Parses out the scrambling mode from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_scrambling(): [boolean, DVBScramblingModeType];
         /**
          * Extracts the dvb service information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_dvb_service(): [boolean, DVBServiceType | null, string, string];
         /**
-         * Parses out a list of services from the `descriptor:`
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * Parses out a list of services from the `descriptor`:
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_service_list(): [boolean, DVBServiceListItem[]];
         /**
          * Extracts the DVB short event information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_dvb_short_event(): [boolean, string, string, string];
         /**
          * Extracts the component tag from `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_stream_identifier(): [boolean, number];
         /**
          * Parses out the stuffing bytes from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_stuffing(): [boolean, number];
         /**
          * Extracts the DVB subtitling informatio from specific table id in `descriptor`.
          *
-         * Note: Use #gst_tag_get_language_code if you want to get the the
+         * Note: Use `gst_tag_get_language_code` if you want to get the the
          * ISO 639-1 language code from the returned ISO 639-2 one.
          * @param idx Table id of the entry to parse
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_dvb_subtitling_idx(idx: number): [boolean, string, number, number, number];
+        /**
+         * @returns The number of entries in `descriptor`
+         */
         parse_dvb_subtitling_nb(): number;
         /**
          * Parses out the DVB-T2 delivery system from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_dvb_t2_delivery_system(): [boolean, T2DeliverySystemDescriptor];
         /**
@@ -2485,24 +2681,27 @@ export namespace GstMpegts {
         /**
          * Extracts the iso 639-2 language information from `descriptor`.
          *
-         * Note: Use #gst_tag_get_language_code if you want to get the the
+         * Note: Use `gst_tag_get_language_code` if you want to get the the
          * ISO 639-1 language code from the returned ISO 639-2 one.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_iso_639_language(): [boolean, ISO639LanguageDescriptor];
         /**
          * Extracts the iso 639-2 language information from specific table id in `descriptor`.
          *
-         * Note: Use #gst_tag_get_language_code if you want to get the the
+         * Note: Use `gst_tag_get_language_code` if you want to get the the
          * ISO 639-1 language code from the returned ISO 639-2 one.
          * @param idx Table id of the language to parse
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_iso_639_language_idx(idx: number): [boolean, string, Iso639AudioType | null];
+        /**
+         * @returns The number of languages in `descriptor`
+         */
         parse_iso_639_language_nb(): number;
         /**
          * Extracts the logical channels from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_logical_channel(): [boolean, LogicalChannelDescriptor];
         /**
@@ -2511,7 +2710,7 @@ export namespace GstMpegts {
          * See ISO/IEC 13818-1:2018 Section 2.6.60 and 2.6.61 for details.
          * metadata_application_format is provided in Table 2-82. metadata_format is
          * provided in Table 2-85.
-         * @returns %TRUE if the parsing worked correctly, else %FALSE.
+         * @returns `true` if the parsing worked correctly, else `false`.
          */
         parse_metadata(): [boolean, MetadataDescriptor];
         /**
@@ -2521,7 +2720,7 @@ export namespace GstMpegts {
          * @param metadata_input_leak_rate
          * @param metadata_buffer_size
          * @param metadata_output_leak_rate
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_metadata_std(
             metadata_input_leak_rate: number,
@@ -2530,23 +2729,24 @@ export namespace GstMpegts {
         ): boolean;
         /**
          * Extracts the Registration information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_registration(): [boolean, number, Uint8Array | null];
         /**
          * Extracts the satellite delivery system information from `descriptor`.
-         * @returns %TRUE if parsing succeeded, else %FALSE.
+         * @returns `true` if parsing succeeded, else `false`.
          */
         parse_satellite_delivery_system(): [boolean, SatelliteDeliverySystemDescriptor];
         /**
          * Parses out the terrestrial delivery system from the `descriptor`.
-         * @returns %TRUE if the parsing happened correctly, else %FALSE.
+         * @returns `true` if the parsing happened correctly, else `false`.
          */
         parse_terrestrial_delivery_system(): [boolean, TerrestrialDeliverySystemDescriptor];
     }
 
     /**
      * a multilingual bouquet name entry
+     * @gir-type Struct
      */
     class DvbMultilingualBouquetNameItem {
         static $gtype: GObject.GType<DvbMultilingualBouquetNameItem>;
@@ -2566,6 +2766,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DvbMultilingualComponentItem {
         static $gtype: GObject.GType<DvbMultilingualComponentItem>;
 
@@ -2586,6 +2789,7 @@ export namespace GstMpegts {
 
     /**
      * a multilingual network name entry
+     * @gir-type Struct
      */
     class DvbMultilingualNetworkNameItem {
         static $gtype: GObject.GType<DvbMultilingualNetworkNameItem>;
@@ -2607,6 +2811,7 @@ export namespace GstMpegts {
 
     /**
      * a multilingual service name entry
+     * @gir-type Struct
      */
     class DvbMultilingualServiceNameItem {
         static $gtype: GObject.GType<DvbMultilingualServiceNameItem>;
@@ -2630,6 +2835,7 @@ export namespace GstMpegts {
 
     /**
      * Event Information Table (EN 300 468)
+     * @gir-type Struct
      */
     class EIT {
         static $gtype: GObject.GType<EIT>;
@@ -2646,6 +2852,7 @@ export namespace GstMpegts {
 
     /**
      * Event from a `GstMpegtsEIT`
+     * @gir-type Struct
      */
     class EITEvent {
         static $gtype: GObject.GType<EITEvent>;
@@ -2661,6 +2868,7 @@ export namespace GstMpegts {
 
     /**
      * Extended Event Descriptor (EN 300 468 v.1.13.1)
+     * @gir-type Struct
      */
     class ExtendedEventDescriptor {
         static $gtype: GObject.GType<ExtendedEventDescriptor>;
@@ -2690,6 +2898,9 @@ export namespace GstMpegts {
         free(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ExtendedEventItem {
         static $gtype: GObject.GType<ExtendedEventItem>;
 
@@ -2708,6 +2919,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ISO639LanguageDescriptor {
         static $gtype: GObject.GType<ISO639LanguageDescriptor>;
 
@@ -2722,6 +2936,9 @@ export namespace GstMpegts {
         descriptor_free(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class LogicalChannel {
         static $gtype: GObject.GType<LogicalChannel>;
 
@@ -2742,6 +2959,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class LogicalChannelDescriptor {
         static $gtype: GObject.GType<LogicalChannelDescriptor>;
 
@@ -2767,6 +2987,8 @@ export namespace GstMpegts {
      *
      * Note that this structure does not include all of the metadata_descriptor items, and will need extension to support DSM-CC and private data.
      * See ISO/IEC 13818-1:2018 Section 2.6.60 and Section 2.6.61 for more information.
+     * @gir-type Struct
+     * @since 1.24
      */
     class MetadataDescriptor {
         static $gtype: GObject.GType<MetadataDescriptor>;
@@ -2783,6 +3005,7 @@ export namespace GstMpegts {
 
     /**
      * Network Information Table (ISO/IEC 13818-1 / EN 300 468)
+     * @gir-type Struct
      */
     class NIT {
         static $gtype: GObject.GType<NIT>;
@@ -2808,6 +3031,9 @@ export namespace GstMpegts {
         static ['new'](): NIT;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class NITStream {
         static $gtype: GObject.GType<NITStream>;
 
@@ -2836,6 +3062,8 @@ export namespace GstMpegts {
      * ISO/IEC 13818-1:2018 Section 2.12.4.
      *
      * AU_cell_data_length is not provided, since it matches the length of the buffer
+     * @gir-type Struct
+     * @since 1.24
      */
     class PESMetadataMeta {
         static $gtype: GObject.GType<PESMetadataMeta>;
@@ -2848,7 +3076,7 @@ export namespace GstMpegts {
         // Static methods
 
         /**
-         * Gets the global #GstMetaInfo describing the #GstMpegtsPESMetadataMeta meta.
+         * Gets the global {@link Gst.MetaInfo} describing the {@link GstMpegts.PESMetadataMeta} meta.
          */
         static get_info(): Gst.MetaInfo;
     }
@@ -2858,7 +3086,8 @@ export namespace GstMpegts {
      * numbers and the program elements that comprise them.
      *
      * The program_number is contained in the subtable_extension field of the
-     * container #GstMpegtsSection.
+     * container {@link GstMpegts.Section}.
+     * @gir-type Struct
      */
     class PMT {
         static $gtype: GObject.GType<PMT>;
@@ -2885,7 +3114,8 @@ export namespace GstMpegts {
     }
 
     /**
-     * An individual stream definition of a #GstMpegtsPMT.
+     * An individual stream definition of a {@link GstMpegts.PMT}.
+     * @gir-type Struct
      */
     class PMTStream {
         static $gtype: GObject.GType<PMTStream>;
@@ -2911,6 +3141,7 @@ export namespace GstMpegts {
 
     /**
      * A program entry from a Program Association Table (ITU H.222.0, ISO/IEC 13818-1).
+     * @gir-type Struct
      */
     class PatProgram {
         static $gtype: GObject.GType<PatProgram>;
@@ -2932,6 +3163,9 @@ export namespace GstMpegts {
         static ['new'](): PatProgram;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SCTESIT {
         static $gtype: GObject.GType<SCTESIT>;
 
@@ -2976,6 +3210,8 @@ export namespace GstMpegts {
 
     /**
      * Per-PID splice information.
+     * @gir-type Struct
+     * @since 1.20
      */
     class SCTESpliceComponent {
         static $gtype: GObject.GType<SCTESpliceComponent>;
@@ -3001,6 +3237,9 @@ export namespace GstMpegts {
         static ['new'](tag: number): SCTESpliceComponent;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SCTESpliceEvent {
         static $gtype: GObject.GType<SCTESpliceEvent>;
 
@@ -3051,6 +3290,7 @@ export namespace GstMpegts {
 
     /**
      * Service Description Table (EN 300 468)
+     * @gir-type Struct
      */
     class SDT {
         static $gtype: GObject.GType<SDT>;
@@ -3075,6 +3315,9 @@ export namespace GstMpegts {
         static ['new'](): SDT;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SDTService {
         static $gtype: GObject.GType<SDTService>;
 
@@ -3105,6 +3348,8 @@ export namespace GstMpegts {
 
     /**
      * Selection Information Table (EN 300 468)
+     * @gir-type Struct
+     * @since 1.20
      */
     class SIT {
         static $gtype: GObject.GType<SIT>;
@@ -3116,6 +3361,8 @@ export namespace GstMpegts {
 
     /**
      * SIT Service entry
+     * @gir-type Struct
+     * @since 1.20
      */
     class SITService {
         static $gtype: GObject.GType<SITService>;
@@ -3129,6 +3376,7 @@ export namespace GstMpegts {
 
     /**
      * Satellite Delivery System Descriptor (EN 300 468 v.1.13.1)
+     * @gir-type Struct
      */
     class SatelliteDeliverySystemDescriptor {
         static $gtype: GObject.GType<SatelliteDeliverySystemDescriptor>;
@@ -3153,16 +3401,16 @@ export namespace GstMpegts {
      * PSI).
      *
      * Various elements can post those on the bus via %GstMessage of type
-     * %GST_MESSAGE_ELEMENT. The gst_message_parse_mpegts_section() function
+     * {@link Gst.MessageType.ELEMENT}. The `gst_message_parse_mpegts_section()` function
      * provides access to the section.
      *
      * Applications (or other elements) can create them either by using one of the
      * `gst_mpegts_section_from_*` functions, or by providing the raw SI data via
-     * gst_mpegts_section_new().
+     * `gst_mpegts_section_new()`.
      *
      * Elements outputting MPEG-TS streams can also create sections using the
      * various convenience functions and then get the packetized data (to be
-     * inserted in MPEG-TS packets) using gst_mpegts_section_packetize().
+     * inserted in MPEG-TS packets) using `gst_mpegts_section_packetize()`.
      *
      * For more details, refer to the ITU H.222.0 or ISO/IEC 13818-1 specifications
      * and other specifications mentioned in the documentation.
@@ -3172,25 +3420,26 @@ export namespace GstMpegts {
      *
      * ## Program Association Table (PAT)
      * See:
-     * * gst_mpegts_section_get_pat()
-     * * gst_mpegts_pat_program_new()
+     * * `gst_mpegts_section_get_pat()`
+     * * `gst_mpegts_pat_program_new()`
      * * %GstMpegtsPatProgram
      *
      * ## Conditional Access Table (CAT)
      * See:
-     * * gst_mpegts_section_get_cat()
+     * * `gst_mpegts_section_get_cat()`
      *
      * ## Program Map Table (PMT)
      * See:
      * * %GstMpegtsPMT
-     * * gst_mpegts_section_get_pmt()
-     * * gst_mpegts_pmt_new()
+     * * `gst_mpegts_section_get_pmt()`
+     * * `gst_mpegts_pmt_new()`
      * * %GstMpegtsPMTStream
      *
      * ## Transport Stream Description Table (TSDT)
      * See:
-     * * gst_mpegts_section_get_tsdt()
+     * * `gst_mpegts_section_get_tsdt()`
      * # API
+     * @gir-type Struct
      */
     class Section {
         static $gtype: GObject.GType<Section>;
@@ -3215,86 +3464,95 @@ export namespace GstMpegts {
 
         // Static methods
 
+        /**
+         * @param mgt a {@link GstMpegts.AtscMGT} to create the {@link GstMpegts.Section} from
+         */
         static from_atsc_mgt(mgt: AtscMGT): Section;
+        /**
+         * @param rrt
+         */
         static from_atsc_rrt(rrt: AtscRRT): Section;
+        /**
+         * @param stt
+         */
         static from_atsc_stt(stt: AtscSTT): Section;
         /**
-         * Ownership of `nit` is taken. The data in `nit` is managed by the #GstMpegtsSection
-         * @param nit a #GstMpegtsNIT to create the #GstMpegtsSection from
+         * Ownership of `nit` is taken. The data in `nit` is managed by the {@link GstMpegts.Section}
+         * @param nit a {@link GstMpegts.NIT} to create the {@link GstMpegts.Section} from
          */
         static from_nit(nit: NIT): Section;
         /**
-         * Creates a PAT #GstMpegtsSection from the `programs` array of #GstMpegtsPatPrograms
-         * @param programs an array of #GstMpegtsPatProgram
+         * Creates a PAT {@link GstMpegts.Section} from the `programs` array of `GstMpegtsPatPrograms`
+         * @param programs an array of {@link GstMpegts.PatProgram}
          * @param ts_id Transport stream ID of the PAT
          */
         static from_pat(programs: PatProgram[], ts_id: number): Section;
         /**
-         * Creates a #GstMpegtsSection from `pmt` that is bound to `pid`
-         * @param pmt a #GstMpegtsPMT to create a #GstMpegtsSection from
-         * @param pid The PID that the #GstMpegtsPMT belongs to
+         * Creates a {@link GstMpegts.Section} from `pmt` that is bound to `pid`
+         * @param pmt a {@link GstMpegts.PMT} to create a {@link GstMpegts.Section} from
+         * @param pid The PID that the {@link GstMpegts.PMT} belongs to
          */
         static from_pmt(pmt: PMT, pid: number): Section;
         /**
-         * Ownership of `sit` is taken. The data in `sit` is managed by the #GstMpegtsSection
-         * @param sit a #GstMpegtsSCTESIT to create the #GstMpegtsSection from
+         * Ownership of `sit` is taken. The data in `sit` is managed by the {@link GstMpegts.Section}
+         * @param sit a {@link GstMpegts.SCTESIT} to create the {@link GstMpegts.Section} from
          * @param pid
          */
         static from_scte_sit(sit: SCTESIT, pid: number): Section;
         /**
-         * Ownership of `sdt` is taken. The data in `sdt` is managed by the #GstMpegtsSection
-         * @param sdt a #GstMpegtsSDT to create the #GstMpegtsSection from
+         * Ownership of `sdt` is taken. The data in `sdt` is managed by the {@link GstMpegts.Section}
+         * @param sdt a {@link GstMpegts.SDT} to create the {@link GstMpegts.Section} from
          */
         static from_sdt(sdt: SDT): Section;
 
         // Methods
 
         /**
-         * Returns the #GstMpegtsAtscVCT contained in the `section`
-         * @returns The #GstMpegtsAtscVCT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.AtscVCT} contained in the `section`
+         * @returns The {@link GstMpegts.AtscVCT} contained in the section, or `null` if an error happened.
          */
         get_atsc_cvct(): AtscVCT;
         /**
-         * Returns the #GstMpegtsAtscEIT contained in the `section`.
-         * @returns The #GstMpegtsAtscEIT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.AtscEIT} contained in the `section`.
+         * @returns The {@link GstMpegts.AtscEIT} contained in the section, or `null` if an error happened.
          */
         get_atsc_eit(): AtscEIT;
         /**
-         * Returns the #GstMpegtsAtscETT contained in the `section`.
-         * @returns The #GstMpegtsAtscETT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.AtscETT} contained in the `section`.
+         * @returns The {@link GstMpegts.AtscETT} contained in the section, or `null` if an error happened.
          */
         get_atsc_ett(): AtscETT;
         /**
-         * Returns the #GstMpegtsAtscMGT contained in the `section`.
-         * @returns The #GstMpegtsAtscMGT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.AtscMGT} contained in the `section`.
+         * @returns The {@link GstMpegts.AtscMGT} contained in the section, or `null` if an error happened.
          */
         get_atsc_mgt(): AtscMGT;
         /**
-         * Returns the #GstMpegtsAtscRRT contained in the `section`.
-         * @returns The #GstMpegtsAtscRRT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.AtscRRT} contained in the `section`.
+         * @returns The {@link GstMpegts.AtscRRT} contained in the section, or `null` if an error happened.
          */
         get_atsc_rrt(): AtscRRT;
         /**
-         * Returns the #GstMpegtsAtscSTT contained in the `section`.
-         * @returns The #GstMpegtsAtscSTT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.AtscSTT} contained in the `section`.
+         * @returns The {@link GstMpegts.AtscSTT} contained in the section, or `null` if an error happened.
          */
         get_atsc_stt(): AtscSTT;
         /**
-         * Returns the #GstMpegtsAtscVCT contained in the `section`
-         * @returns The #GstMpegtsAtscVCT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.AtscVCT} contained in the `section`
+         * @returns The {@link GstMpegts.AtscVCT} contained in the section, or `null` if an error happened.
          */
         get_atsc_tvct(): AtscVCT;
         /**
-         * Returns the #GstMpegtsBAT contained in the `section`.
-         * @returns The #GstMpegtsBAT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.BAT} contained in the `section`.
+         * @returns The {@link GstMpegts.BAT} contained in the section, or `null` if an error happened.
          */
         get_bat(): BAT;
         /**
          * Parses a Conditional Access Table.
          *
-         * Returns the array of #GstMpegtsDescriptor contained in the Conditional
+         * Returns the array of {@link GstMpegts.Descriptor} contained in the Conditional
          * Access Table.
-         * @returns The array of #GstMpegtsDescriptor contained in the section, or %NULL if an error happened. Release with #g_array_unref when done.
+         * @returns The array of {@link GstMpegts.Descriptor} contained in the section, or `null` if an error happened. Release with `g_array_unref` when done.
          */
         get_cat(): Descriptor[];
         /**
@@ -3303,78 +3561,81 @@ export namespace GstMpegts {
          */
         get_data(): GLib.Bytes;
         /**
-         * Returns the #GstMpegtsEIT contained in the `section`.
-         * @returns The #GstMpegtsEIT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.EIT} contained in the `section`.
+         * @returns The {@link GstMpegts.EIT} contained in the section, or `null` if an error happened.
          */
         get_eit(): EIT;
         /**
-         * Returns the #GstMpegtsNIT contained in the `section`.
-         * @returns The #GstMpegtsNIT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.NIT} contained in the `section`.
+         * @returns The {@link GstMpegts.NIT} contained in the section, or `null` if an error happened.
          */
         get_nit(): NIT;
         /**
          * Parses a Program Association Table (ITU H.222.0, ISO/IEC 13818-1).
          *
-         * Returns the array of #GstMpegtsPatProgram contained in the section.
+         * Returns the array of {@link GstMpegts.PatProgram} contained in the section.
          *
          * Note: The PAT `transport_stream_id` field corresponds to the
          * "subtable_extension" field of the provided `section`.
-         * @returns The #GstMpegtsPatProgram contained in the section, or %NULL if an error happened or the @section did not contain a valid PAT. Release with #g_ptr_array_unref when done.
+         * @returns The {@link GstMpegts.PatProgram} contained in the section, or `null` if an error happened or the `section` did not contain a valid PAT. Release with `g_ptr_array_unref` when done.
          */
         get_pat(): PatProgram[];
         /**
          * Parses the Program Map Table contained in the `section`.
-         * @returns The #GstMpegtsPMT contained in the section, or %NULL if an error happened.
+         * @returns The {@link GstMpegts.PMT} contained in the section, or `null` if an error happened.
          */
         get_pmt(): PMT;
         /**
-         * Returns the #GstMpegtsSCTESIT contained in the `section`.
-         * @returns The #GstMpegtsSCTESIT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.SCTESIT} contained in the `section`.
+         * @returns The {@link GstMpegts.SCTESIT} contained in the section, or `null` if an error happened.
          */
         get_scte_sit(): SCTESIT;
         /**
-         * Returns the #GstMpegtsSDT contained in the `section`.
-         * @returns The #GstMpegtsSDT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.SDT} contained in the `section`.
+         * @returns The {@link GstMpegts.SDT} contained in the section, or `null` if an error happened.
          */
         get_sdt(): SDT;
         /**
-         * Returns the #GstMpegtsSIT contained in the `section`.
-         * @returns The #GstMpegtsSIT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.SIT} contained in the `section`.
+         * @returns The {@link GstMpegts.SIT} contained in the section, or `null` if an error happened.
          */
         get_sit(): SIT;
         /**
-         * Returns the #GstDateTime of the TDT
-         * @returns The #GstDateTime contained in the section, or %NULL if an error happened. Release with #gst_date_time_unref when done.
+         * Returns the {@link Gst.DateTime} of the TDT
+         * @returns The {@link Gst.DateTime} contained in the section, or `null` if an error happened. Release with `gst_date_time_unref` when done.
          */
         get_tdt(): Gst.DateTime;
         /**
-         * Returns the #GstMpegtsTOT contained in the `section`.
-         * @returns The #GstMpegtsTOT contained in the section, or %NULL if an error happened.
+         * Returns the {@link GstMpegts.TOT} contained in the `section`.
+         * @returns The {@link GstMpegts.TOT} contained in the section, or `null` if an error happened.
          */
         get_tot(): TOT;
         /**
          * Parses a Transport Stream Description Table.
          *
-         * Returns the array of #GstMpegtsDescriptor contained in the section
-         * @returns The array of #GstMpegtsDescriptor contained in the section, or %NULL if an error happened. Release with #g_array_unref when done.
+         * Returns the array of {@link GstMpegts.Descriptor} contained in the section
+         * @returns The array of {@link GstMpegts.Descriptor} contained in the section, or `null` if an error happened. Release with `g_array_unref` when done.
          */
         get_tsdt(): Descriptor[];
         /**
          * Packetize (i.e. serialize) the `section`. If the data in `section` has already
          * been packetized, the data pointer is returned immediately. Otherwise, the
          * data field is allocated and populated.
-         * @returns pointer to section data, or %NULL on failure.
+         * @returns pointer to section data, or `null` on failure.
          */
         packetize(): [number, number];
         /**
-         * Creates a custom #GstEvent with a `GstMpegtsSection` and send it the `element`
-         * #GstElement.
-         * @param element The #GstElement to send to section event to
-         * @returns %TRUE if the event was sent to the element.
+         * Creates a custom {@link Gst.Event} with a `GstMpegtsSection` and send it the `element`
+         * {@link Gst.Element}.
+         * @param element The {@link Gst.Element} to send to section event to
+         * @returns `true` if the event was sent to the element.
          */
         send_event(element: Gst.Element): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class T2DeliverySystemCell {
         static $gtype: GObject.GType<T2DeliverySystemCell>;
 
@@ -3395,6 +3656,9 @@ export namespace GstMpegts {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class T2DeliverySystemCellExtension {
         static $gtype: GObject.GType<T2DeliverySystemCellExtension>;
 
@@ -3415,6 +3679,7 @@ export namespace GstMpegts {
 
     /**
      * describe DVB-T2 transmissions according to EN 302 755
+     * @gir-type Struct
      */
     class T2DeliverySystemDescriptor {
         static $gtype: GObject.GType<T2DeliverySystemDescriptor>;
@@ -3438,6 +3703,7 @@ export namespace GstMpegts {
 
     /**
      * Time Offset Table (EN 300 468)
+     * @gir-type Struct
      */
     class TOT {
         static $gtype: GObject.GType<TOT>;
@@ -3449,6 +3715,7 @@ export namespace GstMpegts {
 
     /**
      * Terrestrial Delivery System Descriptor (EN 300 468 v.1.13.1)
+     * @gir-type Struct
      */
     class TerrestrialDeliverySystemDescriptor {
         static $gtype: GObject.GType<TerrestrialDeliverySystemDescriptor>;

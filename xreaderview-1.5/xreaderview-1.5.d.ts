@@ -34,6 +34,9 @@ export namespace XreaderView {
         export const $gtype: GObject.GType<JobPriority>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum JobPriority {
         PRIORITY_URGENT,
         PRIORITY_HIGH,
@@ -46,6 +49,9 @@ export namespace XreaderView {
         export const $gtype: GObject.GType<JobRunMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum JobRunMode {
         THREAD,
         MAIN_LOOP,
@@ -55,6 +61,9 @@ export namespace XreaderView {
         export const $gtype: GObject.GType<SizingMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SizingMode {
         BEST_FIT,
         FIT_WIDTH,
@@ -65,6 +74,9 @@ export namespace XreaderView {
         export const $gtype: GObject.GType<ViewSelectionMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ViewSelectionMode {
         TEXT,
         RECTANGLE,
@@ -88,12 +100,18 @@ export namespace XreaderView {
      * Creates a new icon factory, adding the base stock icons to it.
      */
     function stock_icons_init(): void;
+    /**
+     * @param screen
+     */
     function stock_icons_set_screen(screen: Gdk.Screen): void;
     function stock_icons_shutdown(): void;
     export namespace JobPageDataFlags {
         export const $gtype: GObject.GType<JobPageDataFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum JobPageDataFlags {
         NONE,
         LINKS,
@@ -109,6 +127,9 @@ export namespace XreaderView {
     namespace DocumentModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'page-changed': (arg0: number, arg1: number) => void;
             'notify::continuous': (pspec: GObject.ParamSpec) => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
@@ -144,6 +165,9 @@ export namespace XreaderView {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DocumentModel extends GObject.Object {
         static $gtype: GObject.GType<DocumentModel>;
 
@@ -201,16 +225,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DocumentModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -221,8 +248,8 @@ export namespace XreaderView {
 
         get_continuous(): boolean;
         /**
-         * Returns the #EvDocument referenced by the model.
-         * @returns a #EvDocument
+         * Returns the {@link XreaderDocument.Document} referenced by the model.
+         * @returns a {@link XreaderDocument.Document}
          */
         get_document(): XreaderDocument.Document;
         get_dual_page(): boolean;
@@ -236,26 +263,74 @@ export namespace XreaderView {
         get_rtl(): boolean;
         get_scale(): number;
         get_sizing_mode(): SizingMode;
+        /**
+         * @param continuous
+         */
         set_continuous(continuous: boolean): void;
+        /**
+         * @param document
+         */
         set_document(document: XreaderDocument.Document): void;
+        /**
+         * @param dual_page
+         */
         set_dual_page(dual_page: boolean): void;
+        /**
+         * @param odd_left
+         */
         set_dual_page_odd_pages_left(odd_left: boolean): void;
+        /**
+         * @param fullscreen
+         */
         set_fullscreen(fullscreen: boolean): void;
+        /**
+         * @param inverted_colors
+         */
         set_inverted_colors(inverted_colors: boolean): void;
+        /**
+         * @param max_scale
+         */
         set_max_scale(max_scale: number): void;
+        /**
+         * @param min_scale
+         */
         set_min_scale(min_scale: number): void;
+        /**
+         * @param page
+         */
         set_page(page: number): void;
+        /**
+         * @param page_label
+         */
         set_page_by_label(page_label: string): void;
+        /**
+         * @param rotation
+         */
         set_rotation(rotation: number): void;
+        /**
+         * @param rtl
+         */
         set_rtl(rtl: boolean): void;
+        /**
+         * @param scale
+         */
         set_scale(scale: number): void;
+        /**
+         * @param mode
+         */
         set_sizing_mode(mode: SizingMode | null): void;
     }
 
     namespace Job {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             cancelled: () => void;
+            /**
+             * @signal
+             */
             finished: () => void;
         }
 
@@ -264,6 +339,9 @@ export namespace XreaderView {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
 
@@ -295,16 +373,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Job.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Job.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Job.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Job.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -313,20 +394,41 @@ export namespace XreaderView {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_cancelled(): void;
+        /**
+         * @virtual
+         */
         vfunc_finished(): void;
+        /**
+         * @virtual
+         */
         vfunc_run(): boolean;
 
         // Methods
 
         cancel(): void;
+        /**
+         * @param error
+         */
         failed_from_error(error: GLib.Error): void;
         get_run_mode(): JobRunMode;
         is_failed(): boolean;
         is_finished(): boolean;
         run(): boolean;
+        /**
+         * @param priority
+         */
         scheduler_push_job(priority: JobPriority | null): void;
+        /**
+         * @param priority
+         */
         scheduler_update_job(priority: JobPriority | null): void;
+        /**
+         * @param run_mode
+         */
         set_run_mode(run_mode: JobRunMode | null): void;
         succeeded(): void;
     }
@@ -340,6 +442,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
 
@@ -366,16 +471,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobAnnots.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobAnnots.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobAnnots.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobAnnots.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -392,6 +500,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
 
@@ -418,16 +529,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobAttachments.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -444,6 +558,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
 
@@ -471,16 +588,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobExport.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobExport.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobExport.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobExport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -489,12 +609,18 @@ export namespace XreaderView {
 
         // Methods
 
+        /**
+         * @param page
+         */
         set_page(page: number): void;
     }
 
     namespace JobFind {
         // Signal signatures
         interface SignalSignatures extends Job.SignalSignatures {
+            /**
+             * @signal
+             */
             updated: (arg0: number) => void;
         }
 
@@ -503,6 +629,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
 
@@ -542,16 +671,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobFind.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobFind.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobFind.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobFind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -560,10 +692,17 @@ export namespace XreaderView {
 
         // Virtual methods
 
+        /**
+         * @param page
+         * @virtual
+         */
         vfunc_updated(page: number): void;
 
         // Methods
 
+        /**
+         * @param pages
+         */
         get_n_results(pages: number): number;
         get_progress(): number;
         get_text(): string;
@@ -573,6 +712,9 @@ export namespace XreaderView {
     namespace JobFonts {
         // Signal signatures
         interface SignalSignatures extends Job.SignalSignatures {
+            /**
+             * @signal
+             */
             updated: (arg0: number) => void;
         }
 
@@ -581,6 +723,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
 
@@ -607,16 +752,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobFonts.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobFonts.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobFonts.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobFonts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -625,6 +773,10 @@ export namespace XreaderView {
 
         // Virtual methods
 
+        /**
+         * @param progress
+         * @virtual
+         */
         vfunc_updated(progress: number): void;
     }
 
@@ -637,6 +789,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
 
@@ -663,16 +818,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobLayers.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobLayers.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobLayers.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobLayers.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -689,6 +847,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
 
@@ -715,16 +876,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobLinks.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobLinks.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobLinks.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobLinks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -741,6 +905,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
 
@@ -768,16 +935,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobLoad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -786,7 +956,13 @@ export namespace XreaderView {
 
         // Methods
 
+        /**
+         * @param password
+         */
         set_password(password: string): void;
+        /**
+         * @param uri
+         */
         set_uri(uri: string): void;
     }
 
@@ -799,6 +975,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
 
@@ -829,16 +1008,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobPageData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -855,6 +1037,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
 
@@ -881,16 +1066,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobPrint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobPrint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobPrint.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobPrint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -899,7 +1087,13 @@ export namespace XreaderView {
 
         // Methods
 
+        /**
+         * @param cr
+         */
         set_cairo(cr: cairo.Context): void;
+        /**
+         * @param page
+         */
         set_page(page: number): void;
     }
 
@@ -912,6 +1106,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
 
@@ -955,16 +1152,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobRender.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobRender.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobRender.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobRender.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobRender.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobRender.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -973,6 +1173,12 @@ export namespace XreaderView {
 
         // Methods
 
+        /**
+         * @param selection_points
+         * @param selection_style
+         * @param text
+         * @param base
+         */
         set_selection_info(
             selection_points: XreaderDocument.Rectangle,
             selection_style: XreaderDocument.SelectionStyle | null,
@@ -990,6 +1196,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
 
@@ -1017,16 +1226,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobSave.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobSave.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobSave.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobSave.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1043,6 +1255,9 @@ export namespace XreaderView {
         interface ConstructorProps extends Job.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
 
@@ -1072,16 +1287,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobThumbnail.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, JobThumbnail.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<JobThumbnail.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1092,8 +1310,17 @@ export namespace XreaderView {
     namespace PrintOperation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'begin-print': () => void;
+            /**
+             * @signal
+             */
             done: (arg0: Gtk.PrintOperationResult) => void;
+            /**
+             * @signal
+             */
             'status-changed': () => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
         }
@@ -1105,6 +1332,9 @@ export namespace XreaderView {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
 
@@ -1131,16 +1361,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1149,6 +1382,9 @@ export namespace XreaderView {
 
         // Static methods
 
+        /**
+         * @param document
+         */
         static exists_for_document(document: XreaderDocument.Document): boolean;
 
         // Methods
@@ -1159,26 +1395,74 @@ export namespace XreaderView {
         get_job_name(): string;
         get_progress(): number;
         get_status(): string;
+        /**
+         * @param parent
+         */
         run(parent: Gtk.Window): void;
+        /**
+         * @param current_page
+         */
         set_current_page(current_page: number): void;
+        /**
+         * @param page_setup
+         */
         set_default_page_setup(page_setup: Gtk.PageSetup): void;
+        /**
+         * @param embed
+         */
         set_embed_page_setup(embed: boolean): void;
+        /**
+         * @param job_name
+         */
         set_job_name(job_name: string): void;
+        /**
+         * @param print_settings
+         */
         set_print_settings(print_settings: Gtk.PrintSettings): void;
     }
 
     namespace View {
         // Signal signatures
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
+            /**
+             * @signal
+             */
             activate: () => void;
+            /**
+             * @signal
+             */
             'annot-added': (arg0: XreaderDocument.Annotation) => void;
+            /**
+             * @signal
+             */
             'annot-removed': (arg0: XreaderDocument.Annotation) => void;
+            /**
+             * @signal
+             */
             'binding-activated': (arg0: Gtk.ScrollType, arg1: boolean) => void;
+            /**
+             * @signal
+             */
             'external-link': (arg0: GObject.Object) => void;
+            /**
+             * @signal
+             */
             'handle-link': (arg0: GObject.Object) => void;
+            /**
+             * @signal
+             */
             'layers-changed': () => void;
+            /**
+             * @signal
+             */
             popup: (arg0: any | null) => void;
+            /**
+             * @signal
+             */
             'selection-changed': () => void;
+            /**
+             * @signal
+             */
             'sync-source': (arg0: any | null) => void;
             'notify::border-width': (pspec: GObject.ParamSpec) => void;
             'notify::child': (pspec: GObject.ParamSpec) => void;
@@ -1238,6 +1522,9 @@ export namespace XreaderView {
                 Gtk.Scrollable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
@@ -1260,16 +1547,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof View.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof View.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof View.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1280,11 +1570,17 @@ export namespace XreaderView {
 
         autoscroll_start(): void;
         autoscroll_stop(): void;
+        /**
+         * @param annot_type
+         */
         begin_add_annotation(annot_type: XreaderDocument.AnnotationType | null): void;
         can_zoom_in(): boolean;
         can_zoom_out(): boolean;
         cancel_add_annotation(): void;
         copy(): void;
+        /**
+         * @param action
+         */
         copy_link_address(action: XreaderDocument.LinkAction): void;
         /**
          * Disconnect all signal handlers from the model, to ensure error free operation of the webview,
@@ -1295,20 +1591,50 @@ export namespace XreaderView {
         find_next(): void;
         find_previous(): void;
         find_search_changed(): void;
+        /**
+         * @param value
+         */
         find_set_highlight_search(value: boolean): void;
+        /**
+         * @param annot_mapping
+         */
         focus_annotation(annot_mapping: XreaderDocument.Mapping): void;
         get_has_selection(): boolean;
+        /**
+         * @param page
+         * @param page_area
+         * @param border
+         */
         get_page_extents(page: number, page_area: Gdk.Rectangle, border: Gtk.Border): boolean;
+        /**
+         * @param link
+         */
         handle_link(link: XreaderDocument.Link): void;
         hide_cursor(): void;
+        /**
+         * @param link
+         */
         highlight_forward_search(link: XreaderDocument.SourceLink): void;
         next_page(): boolean;
         previous_page(): boolean;
         reload(): void;
+        /**
+         * @param annot
+         */
         remove_annotation(annot: XreaderDocument.Annotation): void;
+        /**
+         * @param scroll
+         * @param horizontal
+         */
         scroll(scroll: Gtk.ScrollType | null, horizontal: boolean): void;
         select_all(): void;
+        /**
+         * @param loading
+         */
         set_loading(loading: boolean): void;
+        /**
+         * @param model
+         */
         set_model(model: DocumentModel): void;
         /**
          * Sets the maximum size in bytes that will be used to cache
@@ -1316,104 +1642,112 @@ export namespace XreaderView {
          *
          * Note that this limit doesn't affect the current visible page range,
          * which will always be rendered. In order to limit the total memory used
-         * you have to use ev_document_model_set_max_scale() too.
+         * you have to use `ev_document_model_set_max_scale()` too.
          * @param cache_size
          */
         set_page_cache_size(cache_size: number): void;
         show_cursor(): void;
         zoom_in(): void;
         zoom_out(): void;
-
-        // Inherited properties
         /**
-         * Horizontal #GtkAdjustment of the scrollable widget. This adjustment is
+         * Horizontal {@link Gtk.Adjustment} of the scrollable widget. This adjustment is
          * shared between the scrollable widget and its parent.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hadjustment(): Gtk.Adjustment;
         set hadjustment(val: Gtk.Adjustment);
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
         set hscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
         set hscrollPolicy(val: Gtk.ScrollablePolicy);
         /**
-         * Verical #GtkAdjustment of the scrollable widget. This adjustment is shared
+         * Verical {@link Gtk.Adjustment} of the scrollable widget. This adjustment is shared
          * between the scrollable widget and its parent.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vadjustment(): Gtk.Adjustment;
         set vadjustment(val: Gtk.Adjustment);
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
         set vscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
         set vscrollPolicy(val: Gtk.ScrollablePolicy);
-
-        // Inherited methods
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
-         * @returns %TRUE if @border has been set
+         * @returns `true` if `border` has been set
          */
         get_border(): [boolean, Gtk.Border];
         /**
-         * Retrieves the #GtkAdjustment used for horizontal scrolling.
-         * @returns horizontal #GtkAdjustment.
+         * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
+         * @returns horizontal {@link Gtk.Adjustment}.
          */
         get_hadjustment(): Gtk.Adjustment;
         /**
-         * Gets the horizontal #GtkScrollablePolicy.
-         * @returns The horizontal #GtkScrollablePolicy.
+         * Gets the horizontal {@link Gtk.ScrollablePolicy}.
+         * @returns The horizontal {@link Gtk.ScrollablePolicy}.
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
         /**
-         * Retrieves the #GtkAdjustment used for vertical scrolling.
-         * @returns vertical #GtkAdjustment.
+         * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
+         * @returns vertical {@link Gtk.Adjustment}.
          */
         get_vadjustment(): Gtk.Adjustment;
         /**
-         * Gets the vertical #GtkScrollablePolicy.
-         * @returns The vertical #GtkScrollablePolicy.
+         * Gets the vertical {@link Gtk.ScrollablePolicy}.
+         * @returns The vertical {@link Gtk.ScrollablePolicy}.
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
         /**
-         * Sets the horizontal adjustment of the #GtkScrollable.
-         * @param hadjustment a #GtkAdjustment
+         * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
+         * @param hadjustment a {@link Gtk.Adjustment}
          */
         set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
         /**
-         * Sets the #GtkScrollablePolicy to determine whether
+         * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
-         * @param policy the horizontal #GtkScrollablePolicy
+         * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
-         * Sets the vertical adjustment of the #GtkScrollable.
-         * @param vadjustment a #GtkAdjustment
+         * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
+         * @param vadjustment a {@link Gtk.Adjustment}
          */
         set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
         /**
-         * Sets the #GtkScrollablePolicy to determine whether
+         * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
          * below the natural height.
-         * @param policy the vertical #GtkScrollablePolicy
+         * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
@@ -1422,6 +1756,7 @@ export namespace XreaderView {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
         /**
@@ -1437,32 +1772,32 @@ export namespace XreaderView {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1471,39 +1806,39 @@ export namespace XreaderView {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1514,13 +1849,16 @@ export namespace XreaderView {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1528,7 +1866,7 @@ export namespace XreaderView {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1536,9 +1874,9 @@ export namespace XreaderView {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1558,9 +1896,9 @@ export namespace XreaderView {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1574,33 +1912,33 @@ export namespace XreaderView {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1633,21 +1971,21 @@ export namespace XreaderView {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1657,8 +1995,8 @@ export namespace XreaderView {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1675,10 +2013,10 @@ export namespace XreaderView {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1693,13 +2031,13 @@ export namespace XreaderView {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1730,21 +2068,21 @@ export namespace XreaderView {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1754,33 +2092,34 @@ export namespace XreaderView {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1789,6 +2128,7 @@ export namespace XreaderView {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1797,12 +2137,14 @@ export namespace XreaderView {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1811,20 +2153,22 @@ export namespace XreaderView {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1836,6 +2180,7 @@ export namespace XreaderView {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1868,8 +2213,17 @@ export namespace XreaderView {
     namespace ViewPresentation {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * @signal
+             */
             'change-page': (arg0: Gtk.ScrollType) => void;
+            /**
+             * @signal
+             */
             'external-link': (arg0: GObject.Object) => void;
+            /**
+             * @signal
+             */
             finished: () => void;
             'notify::current-page': (pspec: GObject.ParamSpec) => void;
             'notify::document': (pspec: GObject.ParamSpec) => void;
@@ -1929,6 +2283,9 @@ export namespace XreaderView {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewPresentation>;
 
@@ -1966,16 +2323,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ViewPresentation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1988,33 +2348,37 @@ export namespace XreaderView {
         get_rotation(): number;
         next_page(): void;
         previous_page(): void;
+        /**
+         * @param rotation
+         */
         set_rotation(rotation: number): void;
+        /**
+         * @param rtl
+         */
         set_rtl(rtl: boolean): void;
-
-        // Inherited methods
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
-         * #GtkBuilder calls this function if a “constructor” has been
+         * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
-         * @param builder #GtkBuilder used to construct this object
+         * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
         /**
-         * This is similar to gtk_buildable_parser_finished() but is
+         * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a #GtkBuilder
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
@@ -2022,18 +2386,18 @@ export namespace XreaderView {
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
-         * @param builder #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
-         * @param builder a #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
-         * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
+         * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
         custom_tag_start(
             builder: Gtk.Builder,
@@ -2042,7 +2406,7 @@ export namespace XreaderView {
         ): [boolean, GLib.MarkupParser, any];
         /**
          * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
          */
@@ -2050,24 +2414,24 @@ export namespace XreaderView {
         /**
          * Gets the name of the `buildable` object.
          *
-         * #GtkBuilder sets the name based on the
+         * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
-         * @returns the name set with gtk_buildable_set_name()
+         * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
          * Note that this will be called once for each time
-         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
@@ -2080,27 +2444,30 @@ export namespace XreaderView {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
-         * #GtkBuilder calls this function if a “constructor” has been
+         * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
-         * @param builder #GtkBuilder used to construct this object
+         * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
         /**
-         * This is similar to gtk_buildable_parser_finished() but is
+         * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a #GtkBuilder
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -2111,10 +2478,11 @@ export namespace XreaderView {
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
-         * @param builder #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -2124,9 +2492,10 @@ export namespace XreaderView {
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
-         * @param builder a #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -2135,37 +2504,42 @@ export namespace XreaderView {
         ): [boolean, GLib.MarkupParser, any];
         /**
          * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Gets the name of the `buildable` object.
          *
-         * #GtkBuilder sets the name based on the
+         * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @virtual
          */
         vfunc_get_name(): string;
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
          * Note that this will be called once for each time
-         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @virtual
          */
         vfunc_set_name(name: string): void;
         /**
@@ -2181,32 +2555,32 @@ export namespace XreaderView {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2215,39 +2589,39 @@ export namespace XreaderView {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2258,13 +2632,16 @@ export namespace XreaderView {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2272,7 +2649,7 @@ export namespace XreaderView {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2280,9 +2657,9 @@ export namespace XreaderView {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2302,9 +2679,9 @@ export namespace XreaderView {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2318,33 +2695,33 @@ export namespace XreaderView {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2377,21 +2754,21 @@ export namespace XreaderView {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2401,8 +2778,8 @@ export namespace XreaderView {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2419,10 +2796,10 @@ export namespace XreaderView {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2437,13 +2814,13 @@ export namespace XreaderView {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2474,21 +2851,21 @@ export namespace XreaderView {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2498,33 +2875,34 @@ export namespace XreaderView {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2533,6 +2911,7 @@ export namespace XreaderView {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2541,12 +2920,14 @@ export namespace XreaderView {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2555,20 +2936,22 @@ export namespace XreaderView {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2580,6 +2963,7 @@ export namespace XreaderView {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2665,6 +3049,9 @@ export namespace XreaderView {
                 Gtk.Buildable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WebView extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
 
@@ -2687,16 +3074,19 @@ export namespace XreaderView {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2712,25 +3102,43 @@ export namespace XreaderView {
          */
         disconnect_handlers(): void;
         find_cancel(): void;
+        /**
+         * @param results
+         * @param text
+         * @param case_sensitive
+         */
         find_changed(results: number, text: string, case_sensitive: boolean): void;
         find_next(): void;
         find_previous(): void;
         find_search_changed(): void;
+        /**
+         * @param visible
+         */
         find_set_highlight_search(visible: boolean): void;
         get_has_selection(): boolean;
+        /**
+         * @param link
+         */
         handle_link(link: XreaderDocument.Link): void;
         next_page(): boolean;
         previous_page(): boolean;
         reload(): void;
+        /**
+         * @param page
+         */
         reload_page(page: number): void;
         select_all(): void;
+        /**
+         * @param visible
+         */
         set_handler(visible: boolean): void;
+        /**
+         * @param model
+         */
         set_model(model: DocumentModel): void;
         zoom_in(): boolean;
         zoom_out(): boolean;
         zoom_reset(): boolean;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2744,32 +3152,32 @@ export namespace XreaderView {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2778,39 +3186,39 @@ export namespace XreaderView {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2821,13 +3229,16 @@ export namespace XreaderView {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2835,7 +3246,7 @@ export namespace XreaderView {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2843,9 +3254,9 @@ export namespace XreaderView {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2865,9 +3276,9 @@ export namespace XreaderView {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2881,33 +3292,33 @@ export namespace XreaderView {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2940,21 +3351,21 @@ export namespace XreaderView {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2964,8 +3375,8 @@ export namespace XreaderView {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2982,10 +3393,10 @@ export namespace XreaderView {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3000,13 +3411,13 @@ export namespace XreaderView {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3037,21 +3448,21 @@ export namespace XreaderView {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3061,33 +3472,34 @@ export namespace XreaderView {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3096,6 +3508,7 @@ export namespace XreaderView {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3104,12 +3517,14 @@ export namespace XreaderView {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3118,20 +3533,22 @@ export namespace XreaderView {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3143,6 +3560,7 @@ export namespace XreaderView {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3172,32 +3590,95 @@ export namespace XreaderView {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DocumentModelClass = typeof DocumentModel;
+    /**
+     * @gir-type Alias
+     */
     type JobAnnotsClass = typeof JobAnnots;
+    /**
+     * @gir-type Alias
+     */
     type JobAttachmentsClass = typeof JobAttachments;
+    /**
+     * @gir-type Alias
+     */
     type JobClass = typeof Job;
+    /**
+     * @gir-type Alias
+     */
     type JobExportClass = typeof JobExport;
+    /**
+     * @gir-type Alias
+     */
     type JobFindClass = typeof JobFind;
+    /**
+     * @gir-type Alias
+     */
     type JobFontsClass = typeof JobFonts;
+    /**
+     * @gir-type Alias
+     */
     type JobLayersClass = typeof JobLayers;
+    /**
+     * @gir-type Alias
+     */
     type JobLinksClass = typeof JobLinks;
+    /**
+     * @gir-type Alias
+     */
     type JobLoadClass = typeof JobLoad;
+    /**
+     * @gir-type Alias
+     */
     type JobPageDataClass = typeof JobPageData;
+    /**
+     * @gir-type Alias
+     */
     type JobPrintClass = typeof JobPrint;
+    /**
+     * @gir-type Alias
+     */
     type JobRenderClass = typeof JobRender;
+    /**
+     * @gir-type Alias
+     */
     type JobSaveClass = typeof JobSave;
+    /**
+     * @gir-type Alias
+     */
     type JobThumbnailClass = typeof JobThumbnail;
+    /**
+     * @gir-type Struct
+     */
     abstract class JobWebThumbnail {
         static $gtype: GObject.GType<JobWebThumbnail>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class JobWebThumbnailClass {
         static $gtype: GObject.GType<JobWebThumbnailClass>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PrintOperationClass = typeof PrintOperation;
+    /**
+     * @gir-type Alias
+     */
     type ViewClass = typeof View;
+    /**
+     * @gir-type Alias
+     */
     type ViewPresentationClass = typeof ViewPresentation;
+    /**
+     * @gir-type Alias
+     */
     type WebViewClass = typeof WebView;
     /**
      * Name of the imported GIR library

@@ -28,6 +28,8 @@ export namespace GstAudio {
     /**
      * Different possible reasons for discontinuities. This enum is useful for the custom
      * slave method.
+     * @gir-type Enum
+     * @since 1.6
      */
     enum AudioBaseSinkDiscontReason {
         /**
@@ -51,7 +53,7 @@ export namespace GstAudio {
          */
         ALIGNMENT,
         /**
-         * Audio output device experienced and recovered from an error but introduced latency in the process (see also gst_audio_base_sink_report_device_failure())
+         * Audio output device experienced and recovered from an error but introduced latency in the process (see also `gst_audio_base_sink_report_device_failure()`)
          */
         DEVICE_FAILURE,
     }
@@ -63,6 +65,7 @@ export namespace GstAudio {
     /**
      * Different possible clock slaving algorithms used when the internal audio
      * clock is not selected as the pipeline master clock.
+     * @gir-type Enum
      */
     enum AudioBaseSinkSlaveMethod {
         /**
@@ -91,6 +94,7 @@ export namespace GstAudio {
     /**
      * Different possible clock slaving algorithms when the internal audio clock was
      * not selected as the pipeline clock.
+     * @gir-type Enum
      */
     enum AudioBaseSrcSlaveMethod {
         /**
@@ -120,6 +124,7 @@ export namespace GstAudio {
     /**
      * Mode in which the CD audio source operates. Influences timestamping,
      * EOS handling and seeking.
+     * @gir-type Enum
      */
     enum AudioCdSrcMode {
         /**
@@ -161,6 +166,7 @@ export namespace GstAudio {
      * As another special case it is allowed to have two channels without a channel mask.
      * This implicitly means that this is a stereo stream with a front left and front right
      * channel.
+     * @gir-type Enum
      */
     enum AudioChannelPosition {
         /**
@@ -298,6 +304,7 @@ export namespace GstAudio {
 
     /**
      * Set of available dithering methods.
+     * @gir-type Enum
      */
     enum AudioDitherMethod {
         /**
@@ -324,6 +331,7 @@ export namespace GstAudio {
 
     /**
      * Enum value describing the most common audio formats.
+     * @gir-type Enum
      */
     enum AudioFormat {
         /**
@@ -518,6 +526,7 @@ export namespace GstAudio {
 
     /**
      * Layout of the audio samples for the different channels.
+     * @gir-type Enum
      */
     enum AudioLayout {
         /**
@@ -536,6 +545,7 @@ export namespace GstAudio {
 
     /**
      * Set of available noise shaping methods
+     * @gir-type Enum
      */
     enum AudioNoiseShapingMethod {
         /**
@@ -566,6 +576,8 @@ export namespace GstAudio {
 
     /**
      * The different filter interpolation methods.
+     * @gir-type Enum
+     * @since 1.10
      */
     enum AudioResamplerFilterInterpolation {
         /**
@@ -590,12 +602,14 @@ export namespace GstAudio {
 
     /**
      * Select for the filter tables should be set up.
+     * @gir-type Enum
+     * @since 1.10
      */
     enum AudioResamplerFilterMode {
         /**
          * Use interpolated filter tables. This
          *     uses less memory but more CPU and is slightly less accurate but it allows for more
-         *     efficient variable rate resampling with gst_audio_resampler_update().
+         *     efficient variable rate resampling with `gst_audio_resampler_update()`.
          */
         INTERPOLATED,
         /**
@@ -616,6 +630,8 @@ export namespace GstAudio {
 
     /**
      * Different subsampling and upsampling methods
+     * @gir-type Enum
+     * @since 1.10
      */
     enum AudioResamplerMethod {
         /**
@@ -648,6 +664,7 @@ export namespace GstAudio {
 
     /**
      * The format of the samples in the ringbuffer.
+     * @gir-type Enum
      */
     enum AudioRingBufferFormatType {
         /**
@@ -718,6 +735,7 @@ export namespace GstAudio {
 
     /**
      * The state of the ringbuffer.
+     * @gir-type Enum
      */
     enum AudioRingBufferState {
         /**
@@ -741,11 +759,12 @@ export namespace GstAudio {
     }
 
     /**
-     * Different representations of a stream volume. gst_stream_volume_convert_volume()
+     * Different representations of a stream volume. `gst_stream_volume_convert_volume()`
      * allows to convert between the different representations.
      *
      * Formulas to convert from a linear to a cubic or dB volume are
      * cbrt(val) and 20 * log10 (val).
+     * @gir-type Enum
      */
     enum StreamVolumeFormat {
         /**
@@ -767,7 +786,7 @@ export namespace GstAudio {
      */
     const AUDIO_CHANNELS_RANGE: string;
     /**
-     * #GstAudioDitherMethod, The dither method to use when
+     * {@link GstAudio.AudioDitherMethod}, The dither method to use when
      * changing bit depth.
      * Default is #GST_AUDIO_DITHER_NONE.
      */
@@ -776,6 +795,7 @@ export namespace GstAudio {
      * Threshold for the output bit depth at/below which to apply dithering.
      *
      * Default is 20 bit.
+     * @since 1.22
      */
     const AUDIO_CONVERTER_OPT_DITHER_THRESHOLD: string;
     /**
@@ -811,7 +831,7 @@ export namespace GstAudio {
      */
     const AUDIO_CONVERTER_OPT_MIX_MATRIX: string;
     /**
-     * #GstAudioNoiseShapingMethod, The noise shaping method to use
+     * {@link GstAudio.AudioNoiseShapingMethod}, The noise shaping method to use
      * to mask noise from quantization errors.
      * Default is #GST_AUDIO_NOISE_SHAPING_NONE.
      */
@@ -823,7 +843,7 @@ export namespace GstAudio {
      */
     const AUDIO_CONVERTER_OPT_QUANTIZATION: string;
     /**
-     * #GstAudioResamplerMethod, The resampler method to use when
+     * {@link GstAudio.AudioResamplerMethod}, The resampler method to use when
      * changing sample rates.
      * Default is #GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL.
      */
@@ -945,14 +965,17 @@ export namespace GstAudio {
     const AUDIO_RESAMPLER_QUALITY_MIN: number;
     /**
      * This metadata stays relevant as long as channels are unchanged.
+     * @since 1.2
      */
     const META_TAG_AUDIO_CHANNELS_STR: string;
     /**
      * This metadata stays relevant as long as sample rate is unchanged.
+     * @since 1.8
      */
     const META_TAG_AUDIO_RATE_STR: string;
     /**
      * This metadata is relevant for audio streams.
+     * @since 1.2
      */
     const META_TAG_AUDIO_STR: string;
     /**
@@ -961,10 +984,10 @@ export namespace GstAudio {
      * After calling this function the caller does not own a reference to
      * `buffer` anymore.
      * @param buffer The buffer to clip.
-     * @param segment Segment in %GST_FORMAT_TIME or %GST_FORMAT_DEFAULT to which           the buffer should be clipped.
+     * @param segment Segment in {@link Gst.Format.TIME} or {@link Gst.Format.DEFAULT} to which           the buffer should be clipped.
      * @param rate sample rate.
      * @param bpf size of one audio frame in bytes. This is the size of one sample * number of channels.
-     * @returns %NULL if the buffer is completely outside the configured segment, otherwise the clipped buffer is returned. If the buffer has no timestamp, it is assumed to be inside the segment and is not clipped
+     * @returns `null` if the buffer is completely outside the configured segment, otherwise the clipped buffer is returned. If the buffer has no timestamp, it is assumed to be inside the segment and is not clipped
      */
     function audio_buffer_clip(buffer: Gst.Buffer, segment: Gst.Segment, rate: number, bpf: number): Gst.Buffer | null;
     /**
@@ -973,29 +996,30 @@ export namespace GstAudio {
      *
      * This is especially useful when the `gstbuffer` is in non-interleaved (planar)
      * layout, in which case this function will use the information in the
-     * `gstbuffer'`s attached #GstAudioMeta in order to map each channel in a
-     * separate "plane" in #GstAudioBuffer. If a #GstAudioMeta is not attached
-     * on the `gstbuffer,` then it must be in interleaved layout.
+     * `gstbuffer`'s attached {@link GstAudio.AudioMeta} in order to map each channel in a
+     * separate "plane" in {@link GstAudio.AudioBuffer}. If a {@link GstAudio.AudioMeta} is not attached
+     * on the `gstbuffer`, then it must be in interleaved layout.
      *
-     * If a #GstAudioMeta is attached, then the #GstAudioInfo on the meta is checked
+     * If a {@link GstAudio.AudioMeta} is attached, then the {@link GstAudio.AudioInfo} on the meta is checked
      * against `info`. Normally, they should be equal, but in case they are not,
-     * a g_critical will be printed and the #GstAudioInfo from the meta will be
+     * a g_critical will be printed and the {@link GstAudio.AudioInfo} from the meta will be
      * used.
      *
      * In non-interleaved buffers, it is possible to have each channel on a separate
-     * #GstMemory. In this case, each memory will be mapped separately to avoid
+     * {@link Gst.Memory}. In this case, each memory will be mapped separately to avoid
      * copying their contents in a larger memory area. Do note though that it is
      * not supported to have a single channel spanning over two or more different
-     * #GstMemory objects. Although the map operation will likely succeed in this
+     * {@link Gst.Memory} objects. Although the map operation will likely succeed in this
      * case, it will be highly sub-optimal and it is recommended to merge all the
      * memories in the buffer before calling this function.
      *
-     * Note: The actual #GstBuffer is not ref'ed, but it is required to stay valid
+     * Note: The actual {@link Gst.Buffer} is not ref'ed, but it is required to stay valid
      * as long as it's mapped.
      * @param info the audio properties of the buffer
-     * @param gstbuffer the #GstBuffer to be mapped
+     * @param gstbuffer the {@link Gst.Buffer} to be mapped
      * @param flags the access mode for the memory
-     * @returns %TRUE if the map operation succeeded or %FALSE on failure
+     * @returns `true` if the map operation succeeded or `false` on failure
+     * @since 1.16
      */
     function audio_buffer_map(
         info: AudioInfo,
@@ -1011,7 +1035,7 @@ export namespace GstAudio {
      * @param format The %GstAudioFormat of the buffer.
      * @param from The channel positions in the buffer.
      * @param to The channel positions to convert to.
-     * @returns %TRUE if the reordering was possible.
+     * @returns `true` if the reordering was possible.
      */
     function audio_buffer_reorder_channels(
         buffer: Gst.Buffer,
@@ -1037,6 +1061,7 @@ export namespace GstAudio {
      * @param trim the number of samples to remove from the beginning of the buffer
      * @param samples the final number of samples that should exist in this buffer or -1 to use all the remaining samples if you are only removing samples from the beginning.
      * @returns the truncated buffer
+     * @since 1.16
      */
     function audio_buffer_truncate(buffer: Gst.Buffer, bpf: number, trim: number, samples: number): Gst.Buffer;
     /**
@@ -1045,7 +1070,8 @@ export namespace GstAudio {
      * This function returns a reasonable fallback channel-mask and should be
      * called as a last resort when the specific channel map is unknown.
      * @param channels the number of channels
-     * @returns a fallback channel-mask for @channels or 0 when there is no mask and mono.
+     * @returns a fallback channel-mask for `channels` or 0 when there is no mask and mono.
+     * @since 1.8
      */
     function audio_channel_get_fallback_mask(channels: number): number;
     /**
@@ -1057,17 +1083,17 @@ export namespace GstAudio {
      * of channels is considered valid.
      * @param channel_mask The input channel_mask
      * @param position The   %GstAudioChannelPosition<!-- -->s
-     * @returns %TRUE if channel and channel mask are valid and could be converted
+     * @returns `true` if channel and channel mask are valid and could be converted
      */
     function audio_channel_positions_from_mask(channel_mask: number, position: AudioChannelPosition[] | null): boolean;
     /**
      * Convert the `position` array of `channels` channels to a bitmask.
      *
-     * If `force_order` is %TRUE it additionally checks if the channels are
+     * If `force_order` is `true` it additionally checks if the channels are
      * in the order required by GStreamer.
      * @param position The %GstAudioChannelPositions
      * @param force_order Only consider the GStreamer channel order.
-     * @returns %TRUE if the channel positions are valid and could be converted.
+     * @returns `true` if the channel positions are valid and could be converted.
      */
     function audio_channel_positions_to_mask(
         position: AudioChannelPosition[] | null,
@@ -1077,23 +1103,24 @@ export namespace GstAudio {
      * Converts `position` to a human-readable string representation for
      * debugging purposes.
      * @param position The %GstAudioChannelPositions   to convert.
-     * @returns a newly allocated string representing @position
+     * @returns a newly allocated string representing `position`
+     * @since 1.10
      */
     function audio_channel_positions_to_string(position: AudioChannelPosition[] | null): string;
     /**
      * Reorders the channel positions in `position` from any order to
      * the GStreamer channel order.
      * @param position The channel positions to   reorder to.
-     * @returns %TRUE if the channel positions are valid and reordering was successful.
+     * @returns `true` if the channel positions are valid and reordering was successful.
      */
     function audio_channel_positions_to_valid_order(position: AudioChannelPosition[] | null): boolean;
     /**
      * Checks if `position` contains valid channel positions for
-     * `channels` channels. If `force_order` is %TRUE it additionally
+     * `channels` channels. If `force_order` is `true` it additionally
      * checks if the channels are in the order required by GStreamer.
      * @param position The %GstAudioChannelPositions   to check.
      * @param force_order Only consider the GStreamer channel order.
-     * @returns %TRUE if the channel positions are valid.
+     * @returns `true` if the channel positions are valid.
      */
     function audio_check_valid_channel_positions(
         position: AudioChannelPosition[] | null,
@@ -1104,37 +1131,42 @@ export namespace GstAudio {
     function audio_downmix_meta_api_get_type(): GObject.GType;
     function audio_downmix_meta_get_info(): Gst.MetaInfo;
     /**
-     * Construct a #GstAudioFormat with given parameters.
+     * Construct a {@link GstAudio.AudioFormat} with given parameters.
      * @param sign signed or unsigned format
      * @param endianness G_LITTLE_ENDIAN or G_BIG_ENDIAN
      * @param width amount of bits used per sample
-     * @param depth amount of used bits in @width
-     * @returns a #GstAudioFormat or GST_AUDIO_FORMAT_UNKNOWN when no audio format exists with the given parameters.
+     * @param depth amount of used bits in `width`
+     * @returns a {@link GstAudio.AudioFormat} or GST_AUDIO_FORMAT_UNKNOWN when no audio format exists with the given parameters.
      */
     function audio_format_build_integer(sign: boolean, endianness: number, width: number, depth: number): AudioFormat;
     /**
      * Fill `length` bytes in `dest` with silence samples for `info`.
-     * @param info a #GstAudioFormatInfo
+     * @param info a {@link GstAudio.AudioFormatInfo}
      * @param dest a destination   to fill
+     * @deprecated since 1.20: Use `gst_audio_format_info_fill_silence()` instead.
      */
     function audio_format_fill_silence(info: AudioFormatInfo, dest: Uint8Array | string): void;
     /**
-     * Convert the `format` string to its #GstAudioFormat.
+     * Convert the `format` string to its {@link GstAudio.AudioFormat}.
      * @param format a format string
-     * @returns the #GstAudioFormat for @format or GST_AUDIO_FORMAT_UNKNOWN when the string is not a known format.
+     * @returns the {@link GstAudio.AudioFormat} for `format` or GST_AUDIO_FORMAT_UNKNOWN when the string is not a known format.
      */
     function audio_format_from_string(format: string): AudioFormat;
     /**
-     * Get the #GstAudioFormatInfo for `format`
-     * @param format a #GstAudioFormat
-     * @returns The #GstAudioFormatInfo for @format.
+     * Get the {@link GstAudio.AudioFormatInfo} for `format`
+     * @param format a {@link GstAudio.AudioFormat}
+     * @returns The {@link GstAudio.AudioFormatInfo} for `format`.
      */
     function audio_format_get_info(format: AudioFormat | null): AudioFormatInfo;
     function audio_format_info_get_type(): GObject.GType;
+    /**
+     * @param format
+     */
     function audio_format_to_string(format: AudioFormat | null): string;
     /**
      * Return all the raw audio formats supported by GStreamer.
-     * @returns an array of #GstAudioFormat
+     * @returns an array of {@link GstAudio.AudioFormat}
+     * @since 1.18
      */
     function audio_formats_raw(): AudioFormat[];
     /**
@@ -1149,7 +1181,7 @@ export namespace GstAudio {
      * @param from The channel positions to reorder from.
      * @param to The channel positions to reorder to.
      * @param reorder_map Pointer to the reorder map.
-     * @returns %TRUE if the channel positions are valid and reordering is possible.
+     * @returns `true` if the channel positions are valid and reordering is possible.
      */
     function audio_get_channel_reorder_map(
         from: AudioChannelPosition[] | null,
@@ -1157,10 +1189,10 @@ export namespace GstAudio {
         reorder_map: number[],
     ): boolean;
     /**
-     * Calculated the size of the buffer expected by gst_audio_iec61937_payload() for
+     * Calculated the size of the buffer expected by `gst_audio_iec61937_payload()` for
      * payloading type from `spec`.
      * @param spec the ringbufer spec
-     * @returns the size or 0 if the given @type is not supported or cannot be payloaded.
+     * @returns the size or 0 if the given `type` is not supported or cannot be payloaded.
      */
     function audio_iec61937_frame_size(spec: AudioRingBufferSpec): number;
     /**
@@ -1168,10 +1200,10 @@ export namespace GstAudio {
      * stores the result in `dst`. `src` must contain exactly one frame of data and
      * the frame is not checked for errors.
      * @param src a buffer containing the data to payload
-     * @param dst the destination buffer to store the       payloaded contents in. Should not overlap with @src
-     * @param spec the ringbufer spec for @src
+     * @param dst the destination buffer to store the       payloaded contents in. Should not overlap with `src`
+     * @param spec the ringbufer spec for `src`
      * @param endianness the expected byte order of the payloaded data
-     * @returns transfer-full: %TRUE if the payloading was successful, %FALSE otherwise.
+     * @returns transfer-full: `true` if the payloading was successful, `false` otherwise.
      */
     function audio_iec61937_payload(
         src: Uint8Array | string,
@@ -1181,8 +1213,8 @@ export namespace GstAudio {
     ): boolean;
     /**
      * Parse `caps` and update `info`.
-     * @param caps a #GstCaps
-     * @returns TRUE if @caps could be parsed
+     * @param caps a {@link Gst.Caps}
+     * @returns TRUE if `caps` could be parsed
      */
     function audio_info_from_caps(caps: Gst.Caps): [boolean, AudioInfo];
     /**
@@ -1190,22 +1222,25 @@ export namespace GstAudio {
      */
     function audio_info_init(): AudioInfo;
     /**
-     * Return the #GType associated with #GstAudioLevelMeta.
-     * @returns a #GType
+     * Return the {@link GObject.GType} associated with {@link GstAudio.AudioLevelMeta}.
+     * @returns a {@link GObject.GType}
+     * @since 1.20
      */
     function audio_level_meta_api_get_type(): GObject.GType;
     /**
-     * Return the #GstMetaInfo associated with #GstAudioLevelMeta.
-     * @returns a #GstMetaInfo
+     * Return the {@link Gst.MetaInfo} associated with {@link GstAudio.AudioLevelMeta}.
+     * @returns a {@link Gst.MetaInfo}
+     * @since 1.20
      */
     function audio_level_meta_get_info(): Gst.MetaInfo;
     /**
      * Return a generic raw audio caps for formats defined in `formats`.
-     * If `formats` is %NULL returns a caps for all the supported raw audio formats,
-     * see gst_audio_formats_raw().
-     * @param formats an array of raw #GstAudioFormat, or %NULL
+     * If `formats` is `null` returns a caps for all the supported raw audio formats,
+     * see `gst_audio_formats_raw()`.
+     * @param formats an array of raw {@link GstAudio.AudioFormat}, or `null`
      * @param layout the layout of audio samples
-     * @returns an audio @GstCaps
+     * @returns an audio `GstCaps`
+     * @since 1.18
      */
     function audio_make_raw_caps(formats: AudioFormat[] | null, layout: AudioLayout | null): Gst.Caps;
     function audio_meta_api_get_type(): GObject.GType;
@@ -1220,7 +1255,7 @@ export namespace GstAudio {
      * @param format The %GstAudioFormat of the buffer.
      * @param from The channel positions in the buffer.
      * @param to The channel positions to convert to.
-     * @returns %TRUE if the reordering was possible.
+     * @returns `true` if the reordering was possible.
      */
     function audio_reorder_channels(
         data: Uint8Array | string,
@@ -1230,14 +1265,14 @@ export namespace GstAudio {
     ): boolean;
     /**
      * Make a new resampler.
-     * @param method a #GstAudioResamplerMethod
-     * @param flags #GstAudioResamplerFlags
-     * @param format the #GstAudioFormat
+     * @param method a {@link GstAudio.AudioResamplerMethod}
+     * @param flags {@link GstAudio.AudioResamplerFlags}
+     * @param format the {@link GstAudio.AudioFormat}
      * @param channels the number of channels
      * @param in_rate input rate
      * @param out_rate output rate
      * @param options extra options
-     * @returns The new #GstAudioResampler.
+     * @returns The new {@link GstAudio.AudioResampler}.
      */
     function audio_resampler_new(
         method: AudioResamplerMethod | null,
@@ -1251,11 +1286,11 @@ export namespace GstAudio {
     /**
      * Set the parameters for resampling from `in_rate` to `out_rate` using `method`
      * for `quality` in `options`.
-     * @param method a #GstAudioResamplerMethod
+     * @param method a {@link GstAudio.AudioResamplerMethod}
      * @param quality the quality
      * @param in_rate the input rate
      * @param out_rate the output rate
-     * @param options a #GstStructure
+     * @param options a {@link Gst.Structure}
      */
     function audio_resampler_options_set_quality(
         method: AudioResamplerMethod | null,
@@ -1265,12 +1300,13 @@ export namespace GstAudio {
         options: Gst.Structure,
     ): void;
     /**
-     * Attaches #GstAudioClippingMeta metadata to `buffer` with the given parameters.
-     * @param buffer a #GstBuffer
-     * @param format GstFormat of @start and @stop, GST_FORMAT_DEFAULT is samples
+     * Attaches {@link GstAudio.AudioClippingMeta} metadata to `buffer` with the given parameters.
+     * @param buffer a {@link Gst.Buffer}
+     * @param format GstFormat of `start` and `stop`, GST_FORMAT_DEFAULT is samples
      * @param start Amount of audio to clip from start of buffer
      * @param end Amount of  to clip from end of buffer
-     * @returns the #GstAudioClippingMeta on @buffer.
+     * @returns the {@link GstAudio.AudioClippingMeta} on `buffer`.
+     * @since 1.8
      */
     function buffer_add_audio_clipping_meta(
         buffer: Gst.Buffer,
@@ -1279,17 +1315,17 @@ export namespace GstAudio {
         end: number,
     ): AudioClippingMeta;
     /**
-     * Attaches #GstAudioDownmixMeta metadata to `buffer` with the given parameters.
+     * Attaches {@link GstAudio.AudioDownmixMeta} metadata to `buffer` with the given parameters.
      *
      * `matrix` is an two-dimensional array of `to_channels` times `from_channels`
      * coefficients, i.e. the i-th output channels is constructed by multiplicating
-     * the input channels with the coefficients in `matrix[`i] and taking the sum
+     * the input channels with the coefficients in `matrix`[i] and taking the sum
      * of the results.
-     * @param buffer a #GstBuffer
+     * @param buffer a {@link Gst.Buffer}
      * @param from_position the channel positions   of the source
      * @param to_position the channel positions of   the destination
      * @param matrix The matrix coefficients.
-     * @returns the #GstAudioDownmixMeta on @buffer.
+     * @returns the {@link GstAudio.AudioDownmixMeta} on `buffer`.
      */
     function buffer_add_audio_downmix_meta(
         buffer: Gst.Buffer,
@@ -1299,10 +1335,11 @@ export namespace GstAudio {
     ): AudioDownmixMeta;
     /**
      * Attaches audio level information to `buffer`. (RFC 6464)
-     * @param buffer a #GstBuffer
+     * @param buffer a {@link Gst.Buffer}
      * @param level the -dBov from 0-127 (127 is silence).
      * @param voice_activity whether the buffer contains voice activity.
-     * @returns the #GstAudioLevelMeta on @buffer.
+     * @returns the {@link GstAudio.AudioLevelMeta} on `buffer`.
+     * @since 1.20
      */
     function buffer_add_audio_level_meta(
         buffer: Gst.Buffer,
@@ -1310,29 +1347,30 @@ export namespace GstAudio {
         voice_activity: boolean,
     ): AudioLevelMeta | null;
     /**
-     * Allocates and attaches a #GstAudioMeta on `buffer,` which must be writable
-     * for that purpose. The fields of the #GstAudioMeta are directly populated
+     * Allocates and attaches a {@link GstAudio.AudioMeta} on `buffer`, which must be writable
+     * for that purpose. The fields of the {@link GstAudio.AudioMeta} are directly populated
      * from the arguments of this function.
      *
-     * When `info->`layout is %GST_AUDIO_LAYOUT_NON_INTERLEAVED and `offsets` is
-     * %NULL, the offsets are calculated with a formula that assumes the planes are
+     * When `info`->layout is {@link GstAudio.AudioLayout.NON_INTERLEAVED} and `offsets` is
+     * `null`, the offsets are calculated with a formula that assumes the planes are
      * tightly packed and in sequence:
      * offsets[channel] = channel * `samples` * sample_stride
      *
      * It is not allowed for channels to overlap in memory,
      * i.e. for each i in [0, channels), the range
-     * [`offsets[`i], `offsets[`i] + `samples` * sample_stride) must not overlap
+     * [`offsets`[i], `offsets`[i] + `samples` * sample_stride) must not overlap
      * with any other such range. This function will assert if the parameters
      * specified cause this restriction to be violated.
      *
      * It is, obviously, also not allowed to specify parameters that would cause
      * out-of-bounds memory access on `buffer`. This is also checked, which means
      * that you must add enough memory on the `buffer` before adding this meta.
-     * @param buffer a #GstBuffer
+     * @param buffer a {@link Gst.Buffer}
      * @param info the audio properties of the buffer
      * @param samples the number of valid samples in the buffer
-     * @param offsets the offsets (in bytes) where each channel plane starts   in the buffer or %NULL to calculate it (see below); must be %NULL also   when @info->layout is %GST_AUDIO_LAYOUT_INTERLEAVED
-     * @returns the #GstAudioMeta that was attached on the @buffer
+     * @param offsets the offsets (in bytes) where each channel plane starts   in the buffer or `null` to calculate it (see below); must be `null` also   when `info`->layout is {@link GstAudio.AudioLayout.INTERLEAVED}
+     * @returns the {@link GstAudio.AudioMeta} that was attached on the `buffer`
+     * @since 1.16
      */
     function buffer_add_audio_meta(
         buffer: Gst.Buffer,
@@ -1341,27 +1379,37 @@ export namespace GstAudio {
         offsets?: number | null,
     ): AudioMeta;
     /**
-     * Find the #GstAudioDownmixMeta on `buffer` for the given destination
+     * Find the {@link GstAudio.AudioDownmixMeta} on `buffer` for the given destination
      * channel positions.
-     * @param buffer a #GstBuffer
+     * @param buffer a {@link Gst.Buffer}
      * @param to_position the channel positions of   the destination
-     * @returns the #GstAudioDownmixMeta on @buffer.
+     * @returns the {@link GstAudio.AudioDownmixMeta} on `buffer`.
      */
     function buffer_get_audio_downmix_meta_for_channels(
         buffer: Gst.Buffer,
         to_position: AudioChannelPosition[] | null,
     ): AudioDownmixMeta;
     /**
-     * Find the #GstAudioLevelMeta on `buffer`.
-     * @param buffer a #GstBuffer
-     * @returns the #GstAudioLevelMeta or %NULL when there is no such metadata on @buffer.
+     * Find the {@link GstAudio.AudioLevelMeta} on `buffer`.
+     * @param buffer a {@link Gst.Buffer}
+     * @returns the {@link GstAudio.AudioLevelMeta} or `null` when there is no such metadata on `buffer`.
+     * @since 1.20
      */
     function buffer_get_audio_level_meta(buffer: Gst.Buffer): AudioLevelMeta | null;
+    /**
+     * @param from {@link GstAudio.StreamVolumeFormat} to convert from
+     * @param to {@link GstAudio.StreamVolumeFormat} to convert to
+     * @param val Volume in `from` format that should be converted
+     * @returns the converted volume
+     */
     function stream_volume_convert_volume(
         from: StreamVolumeFormat | null,
         to: StreamVolumeFormat | null,
         val: number,
     ): number;
+    /**
+     * @gir-type Callback
+     */
     interface AudioBaseSinkCustomSlavingCallback {
         (
             sink: AudioBaseSink,
@@ -1371,9 +1419,15 @@ export namespace GstAudio {
             discont_reason: AudioBaseSinkDiscontReason,
         ): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AudioClockGetTimeFunc {
         (clock: Gst.Clock): Gst.ClockTime;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AudioFormatPack {
         (
             info: AudioFormatInfo,
@@ -1383,6 +1437,9 @@ export namespace GstAudio {
             length: number,
         ): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AudioFormatUnpack {
         (
             info: AudioFormatInfo,
@@ -1392,6 +1449,9 @@ export namespace GstAudio {
             length: number,
         ): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AudioRingBufferCallback {
         (rbuf: AudioRingBuffer, data: Uint8Array | string): void;
     }
@@ -1400,7 +1460,8 @@ export namespace GstAudio {
     }
 
     /**
-     * Flags passed to gst_audio_channel_mixer_new()
+     * Flags passed to `gst_audio_channel_mixer_new()`
+     * @gir-type Flags
      */
     enum AudioChannelMixerFlags {
         /**
@@ -1430,7 +1491,8 @@ export namespace GstAudio {
     }
 
     /**
-     * Extra flags passed to gst_audio_converter_new() and gst_audio_converter_samples().
+     * Extra flags passed to `gst_audio_converter_new()` and `gst_audio_converter_samples()`.
+     * @gir-type Flags
      */
     enum AudioConverterFlags {
         /**
@@ -1444,7 +1506,7 @@ export namespace GstAudio {
         IN_WRITABLE,
         /**
          * allow arbitrary rate updates with
-         *    gst_audio_converter_update_config().
+         *    `gst_audio_converter_update_config()`.
          */
         VARIABLE_RATE,
     }
@@ -1455,6 +1517,7 @@ export namespace GstAudio {
 
     /**
      * Extra audio flags
+     * @gir-type Flags
      */
     enum AudioFlags {
         /**
@@ -1474,6 +1537,7 @@ export namespace GstAudio {
 
     /**
      * The different audio flags that a format info can have.
+     * @gir-type Flags
      */
     enum AudioFormatFlags {
         /**
@@ -1494,7 +1558,7 @@ export namespace GstAudio {
         COMPLEX,
         /**
          * the format can be used in
-         * #GstAudioFormatUnpack and #GstAudioFormatPack functions
+         * {@link GstAudio.AudioFormatUnpack} and {@link GstAudio.AudioFormatPack} functions
          */
         UNPACK,
     }
@@ -1505,6 +1569,7 @@ export namespace GstAudio {
 
     /**
      * The different flags that can be used when packing and unpacking.
+     * @gir-type Flags
      */
     enum AudioPackFlags {
         /**
@@ -1526,7 +1591,8 @@ export namespace GstAudio {
     }
 
     /**
-     * Extra flags that can be passed to gst_audio_quantize_new()
+     * Extra flags that can be passed to `gst_audio_quantize_new()`
+     * @gir-type Flags
      */
     enum AudioQuantizeFlags {
         /**
@@ -1545,6 +1611,8 @@ export namespace GstAudio {
 
     /**
      * Different resampler flags.
+     * @gir-type Flags
+     * @since 1.10
      */
     enum AudioResamplerFlags {
         /**
@@ -1565,7 +1633,7 @@ export namespace GstAudio {
         NON_INTERLEAVED_OUT,
         /**
          * optimize for dynamic updates of the sample
-         *    rates with gst_audio_resampler_update(). This will select an interpolating filter
+         *    rates with `gst_audio_resampler_update()`. This will select an interpolating filter
          *    when #GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO is configured.
          */
         VARIABLE_RATE,
@@ -1608,24 +1676,24 @@ export namespace GstAudio {
     }
 
     /**
-     * Subclasses must use (a subclass of) #GstAudioAggregatorPad for both
+     * Subclasses must use (a subclass of) {@link GstAudio.AudioAggregatorPad} for both
      * their source and sink pads,
-     * gst_element_class_add_static_pad_template_with_gtype() is a convenient
+     * `gst_element_class_add_static_pad_template_with_gtype()` is a convenient
      * helper.
      *
-     * #GstAudioAggregator can perform conversion on the data arriving
+     * {@link GstAudio.AudioAggregator} can perform conversion on the data arriving
      * on its sink pads, based on the format expected downstream: in order
      * to enable that behaviour, the GType of the sink pads must either be
-     * a (subclass of) #GstAudioAggregatorConvertPad to use the default
-     * #GstAudioConverter implementation, or a subclass of #GstAudioAggregatorPad
-     * implementing #GstAudioAggregatorPadClass.convert_buffer.
+     * a (subclass of) {@link GstAudio.AudioAggregatorConvertPad} to use the default
+     * {@link GstAudio.AudioConverter} implementation, or a subclass of {@link GstAudio.AudioAggregatorPad}
+     * implementing {@link GstAudio.AudioAggregatorPadClass}.convert_buffer.
      *
      * To allow for the output caps to change, the mechanism is the same as
      * above, with the GType of the source pad.
      *
-     * See #GstAudioMixer for an example.
+     * See `GstAudioMixer` for an example.
      *
-     * When conversion is enabled, #GstAudioAggregator will accept
+     * When conversion is enabled, {@link GstAudio.AudioAggregator} will accept
      * any type of raw audio caps and perform conversion
      * on the data arriving on its sink pads, with whatever downstream
      * expects as the target format.
@@ -1639,19 +1707,21 @@ export namespace GstAudio {
      * or the first configured pad, or a combination of both (when
      * downstream specifies a range or a set of acceptable rates).
      *
-     * The #GstAggregator::samples-selected signal is provided with some
+     * The {@link GstBase.Aggregator.SignalSignatures.samples_selected | GstBase.Aggregator::samples-selected} signal is provided with some
      * additional information about the output buffer:
      * - "offset"  G_TYPE_UINT64   Offset in samples since segment start
      *   for the position that is next to be filled in the output buffer.
      * - "frames"  G_TYPE_UINT   Number of frames per output buffer.
      *
-     * In addition the gst_aggregator_peek_next_sample() function returns
-     * additional information in the info #GstStructure of the returned sample:
+     * In addition the `gst_aggregator_peek_next_sample()` function returns
+     * additional information in the info {@link Gst.Structure} of the returned sample:
      * - "output-offset"  G_TYPE_UINT64   Sample offset in output segment relative to
      *   the output segment's start where the current position of this input
      *   buffer would be placed
      * - "position"  G_TYPE_UINT   current position in the input buffer in samples
      * - "size"  G_TYPE_UINT   size of the input buffer in samples
+     * @gir-type Class
+     * @since 1.14
      */
     abstract class AudioAggregator extends GstBase.Aggregator {
         static $gtype: GObject.GType<AudioAggregator>;
@@ -1668,16 +1738,18 @@ export namespace GstAudio {
         set discontWait(val: number);
         /**
          * Causes the element to aggregate on a timeout even when no live source is
-         * connected to its sinks. See #GstAggregator:min-upstream-latency for a
+         * connected to its sinks. See {@link GstBase.Aggregator.min_upstream_latency} for a
          * companion property: in the vast majority of cases where you plan to plug in
          * live sources with a non-zero latency, you should set it to a non-zero value.
+         * @since 1.22
          */
         get force_live(): boolean;
         /**
          * Causes the element to aggregate on a timeout even when no live source is
-         * connected to its sinks. See #GstAggregator:min-upstream-latency for a
+         * connected to its sinks. See {@link GstBase.Aggregator.min_upstream_latency} for a
          * companion property: in the vast majority of cases where you plan to plug in
          * live sources with a non-zero latency, you should set it to a non-zero value.
+         * @since 1.22
          */
         get forceLive(): boolean;
         /**
@@ -1689,6 +1761,7 @@ export namespace GstAudio {
          * timeout when new pads are requested in advance of receiving
          * data flow, for example the user may decide to connect it later,
          * but wants to configure it already.
+         * @since 1.20
          */
         get ignore_inactive_pads(): boolean;
         set ignore_inactive_pads(val: boolean);
@@ -1701,6 +1774,7 @@ export namespace GstAudio {
          * timeout when new pads are requested in advance of receiving
          * data flow, for example the user may decide to connect it later,
          * but wants to configure it already.
+         * @since 1.20
          */
         get ignoreInactivePads(): boolean;
         set ignoreInactivePads(val: boolean);
@@ -1710,11 +1784,13 @@ export namespace GstAudio {
         set outputBufferDuration(val: number);
         /**
          * Output block size in nanoseconds, expressed as a fraction.
+         * @since 1.18
          */
         get output_buffer_duration_fraction(): Gst.Fraction;
         set output_buffer_duration_fraction(val: Gst.Fraction);
         /**
          * Output block size in nanoseconds, expressed as a fraction.
+         * @since 1.18
          */
         get outputBufferDurationFraction(): Gst.Fraction;
         set outputBufferDurationFraction(val: Gst.Fraction);
@@ -1736,16 +1812,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioAggregator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioAggregator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioAggregator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioAggregator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioAggregator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioAggregator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1754,6 +1833,15 @@ export namespace GstAudio {
 
         // Virtual methods
 
+        /**
+         * @param pad
+         * @param inbuf
+         * @param in_offset
+         * @param outbuf
+         * @param out_offset
+         * @param num_frames
+         * @virtual
+         */
         vfunc_aggregate_one_buffer(
             pad: AudioAggregatorPad,
             inbuf: Gst.Buffer,
@@ -1762,10 +1850,18 @@ export namespace GstAudio {
             out_offset: number,
             num_frames: number,
         ): boolean;
+        /**
+         * @param num_frames
+         * @virtual
+         */
         vfunc_create_output_buffer(num_frames: number): Gst.Buffer;
 
         // Methods
 
+        /**
+         * @param pad
+         * @param caps
+         */
         set_sink_caps(pad: AudioAggregatorPad, caps: Gst.Caps): void;
     }
 
@@ -1792,9 +1888,11 @@ export namespace GstAudio {
     }
 
     /**
-     * An implementation of GstPad that can be used with #GstAudioAggregator.
+     * An implementation of GstPad that can be used with {@link GstAudio.AudioAggregator}.
      *
-     * See #GstAudioAggregator for more details.
+     * See {@link GstAudio.AudioAggregator} for more details.
+     * @gir-type Class
+     * @since 1.14
      */
     class AudioAggregatorConvertPad extends AudioAggregatorPad {
         static $gtype: GObject.GType<AudioAggregatorConvertPad>;
@@ -1823,16 +1921,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioAggregatorConvertPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioAggregatorConvertPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioAggregatorConvertPad.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1864,7 +1965,9 @@ export namespace GstAudio {
     }
 
     /**
-     * The default implementation of GstPad used with #GstAudioAggregator
+     * The default implementation of GstPad used with {@link GstAudio.AudioAggregator}
+     * @gir-type Class
+     * @since 1.14
      */
     class AudioAggregatorPad extends GstBase.AggregatorPad {
         static $gtype: GObject.GType<AudioAggregatorPad>;
@@ -1873,11 +1976,13 @@ export namespace GstAudio {
 
         /**
          * Emit QoS messages when dropping buffers.
+         * @since 1.20
          */
         get qos_messages(): boolean;
         set qos_messages(val: boolean);
         /**
          * Emit QoS messages when dropping buffers.
+         * @since 1.20
          */
         get qosMessages(): boolean;
         set qosMessages(val: boolean);
@@ -1899,16 +2004,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioAggregatorPad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioAggregatorPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioAggregatorPad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioAggregatorPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioAggregatorPad.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioAggregatorPad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1917,7 +2025,16 @@ export namespace GstAudio {
 
         // Virtual methods
 
+        /**
+         * @param in_info
+         * @param out_info
+         * @param buffer
+         * @virtual
+         */
         vfunc_convert_buffer(in_info: AudioInfo, out_info: AudioInfo, buffer: Gst.Buffer): Gst.Buffer;
+        /**
+         * @virtual
+         */
         vfunc_update_conversion_info(): void;
     }
 
@@ -1975,6 +2092,7 @@ export namespace GstAudio {
      * This is the base class for audio sinks. Subclasses need to implement the
      * ::create_ringbuffer vmethod. This base class will then take care of
      * writing samples to the ringbuffer, synchronisation, clipping and flushing.
+     * @gir-type Class
      */
     class AudioBaseSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<AudioBaseSink>;
@@ -2055,16 +2173,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioBaseSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioBaseSink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioBaseSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioBaseSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioBaseSink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioBaseSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2074,46 +2195,51 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
-         * Create and return the #GstAudioRingBuffer for `sink`. This function will
+         * Create and return the {@link GstAudio.AudioRingBuffer} for `sink`. This function will
          * call the ::create_ringbuffer vmethod and will set `sink` as the parent of
-         * the returned buffer (see gst_object_set_parent()).
+         * the returned buffer (see `gst_object_set_parent()`).
+         * @virtual
          */
         vfunc_create_ringbuffer(): AudioRingBuffer | null;
+        /**
+         * @param buffer
+         * @virtual
+         */
         vfunc_payload(buffer: Gst.Buffer): Gst.Buffer;
 
         // Methods
 
         /**
-         * Create and return the #GstAudioRingBuffer for `sink`. This function will
+         * Create and return the {@link GstAudio.AudioRingBuffer} for `sink`. This function will
          * call the ::create_ringbuffer vmethod and will set `sink` as the parent of
-         * the returned buffer (see gst_object_set_parent()).
-         * @returns The new ringbuffer of @sink.
+         * the returned buffer (see `gst_object_set_parent()`).
+         * @returns The new ringbuffer of `sink`.
          */
         create_ringbuffer(): AudioRingBuffer | null;
         /**
          * Get the current alignment threshold, in nanoseconds, used by `sink`.
-         * @returns The current alignment threshold used by @sink.
+         * @returns The current alignment threshold used by `sink`.
          */
         get_alignment_threshold(): Gst.ClockTime;
         /**
          * Get the current discont wait, in nanoseconds, used by `sink`.
-         * @returns The current discont wait used by @sink.
+         * @returns The current discont wait used by `sink`.
          */
         get_discont_wait(): Gst.ClockTime;
         /**
          * Get the current drift tolerance, in microseconds, used by `sink`.
-         * @returns The current drift tolerance used by @sink.
+         * @returns The current drift tolerance used by `sink`.
          */
         get_drift_tolerance(): number;
         /**
          * Queries whether `sink` will provide a clock or not. See also
          * gst_audio_base_sink_set_provide_clock.
-         * @returns %TRUE if @sink will provide a clock.
+         * @returns `true` if `sink` will provide a clock.
          */
         get_provide_clock(): boolean;
         /**
          * Get the current slave method used by `sink`.
-         * @returns The current slave method used by @sink.
+         * @returns The current slave method used by `sink`.
          */
         get_slave_method(): AudioBaseSinkSlaveMethod;
         /**
@@ -2138,7 +2264,7 @@ export namespace GstAudio {
          * Setting the callback to NULL causes the sink to
          * behave as if the GST_AUDIO_BASE_SINK_SLAVE_NONE
          * method were used.
-         * @param callback a #GstAudioBaseSinkCustomSlavingCallback
+         * @param callback a {@link GstAudio.AudioBaseSinkCustomSlavingCallback}
          */
         set_custom_slaving_callback(callback: AudioBaseSinkCustomSlavingCallback): void;
         /**
@@ -2152,9 +2278,9 @@ export namespace GstAudio {
          */
         set_drift_tolerance(drift_tolerance: number): void;
         /**
-         * Controls whether `sink` will provide a clock or not. If `provide` is %TRUE,
-         * gst_element_provide_clock() will return a clock that reflects the datarate
-         * of `sink`. If `provide` is %FALSE, gst_element_provide_clock() will return
+         * Controls whether `sink` will provide a clock or not. If `provide` is `true`,
+         * `gst_element_provide_clock()` will return a clock that reflects the datarate
+         * of `sink`. If `provide` is `false`, `gst_element_provide_clock()` will return
          * NULL.
          * @param provide new state
          */
@@ -2206,6 +2332,7 @@ export namespace GstAudio {
      * This is the base class for audio sources. Subclasses need to implement the
      * ::create_ringbuffer vmethod. This base class will then take care of
      * reading samples from the ringbuffer, synchronisation and flushing.
+     * @gir-type Class
      */
     class AudioBaseSrc extends GstBase.PushSrc {
         static $gtype: GObject.GType<AudioBaseSrc>;
@@ -2269,16 +2396,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioBaseSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioBaseSrc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioBaseSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioBaseSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioBaseSrc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioBaseSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2288,36 +2418,37 @@ export namespace GstAudio {
         // Virtual methods
 
         /**
-         * Create and return the #GstAudioRingBuffer for `src`. This function will call
+         * Create and return the {@link GstAudio.AudioRingBuffer} for `src`. This function will call
          * the ::create_ringbuffer vmethod and will set `src` as the parent of the
-         * returned buffer (see gst_object_set_parent()).
+         * returned buffer (see `gst_object_set_parent()`).
+         * @virtual
          */
         vfunc_create_ringbuffer(): AudioRingBuffer | null;
 
         // Methods
 
         /**
-         * Create and return the #GstAudioRingBuffer for `src`. This function will call
+         * Create and return the {@link GstAudio.AudioRingBuffer} for `src`. This function will call
          * the ::create_ringbuffer vmethod and will set `src` as the parent of the
-         * returned buffer (see gst_object_set_parent()).
-         * @returns The new ringbuffer of @src.
+         * returned buffer (see `gst_object_set_parent()`).
+         * @returns The new ringbuffer of `src`.
          */
         create_ringbuffer(): AudioRingBuffer | null;
         /**
          * Queries whether `src` will provide a clock or not. See also
          * gst_audio_base_src_set_provide_clock.
-         * @returns %TRUE if @src will provide a clock.
+         * @returns `true` if `src` will provide a clock.
          */
         get_provide_clock(): boolean;
         /**
          * Get the current slave method used by `src`.
-         * @returns The current slave method used by @src.
+         * @returns The current slave method used by `src`.
          */
         get_slave_method(): AudioBaseSrcSlaveMethod;
         /**
-         * Controls whether `src` will provide a clock or not. If `provide` is %TRUE,
-         * gst_element_provide_clock() will return a clock that reflects the datarate
-         * of `src`. If `provide` is %FALSE, gst_element_provide_clock() will return NULL.
+         * Controls whether `src` will provide a clock or not. If `provide` is `true`,
+         * `gst_element_provide_clock()` will return a clock that reflects the datarate
+         * of `src`. If `provide` is `false`, `gst_element_provide_clock()` will return NULL.
          * @param provide new state
          */
         set_provide_clock(provide: boolean): void;
@@ -2359,14 +2490,14 @@ export namespace GstAudio {
      *
      * ## Using GstAudioCdSrc-based elements in applications
      *
-     * GstAudioCdSrc registers two #GstFormat<!-- -->s of its own, namely
+     * GstAudioCdSrc registers two {@link Gst.Format}<!-- -->s of its own, namely
      * the "track" format and the "sector" format. Applications will usually
-     * only find the "track" format interesting. You can retrieve that #GstFormat
+     * only find the "track" format interesting. You can retrieve that {@link Gst.Format}
      * for use in seek events or queries with gst_format_get_by_nick("track").
      *
      * In order to query the number of tracks, for example, an application would
      * set the CDDA source element to READY or PAUSED state and then query the
-     * the number of tracks via gst_element_query_duration() using the track
+     * the number of tracks via `gst_element_query_duration()` using the track
      * format acquired above. Applications can query the currently playing track
      * in the same way.
      *
@@ -2391,11 +2522,12 @@ export namespace GstAudio {
      * ## Tracks and Table of Contents (TOC)
      *
      * Applications will be informed of the available tracks via a TOC message
-     * on the pipeline's #GstBus. The #GstToc will contain a #GstTocEntry for
+     * on the pipeline's {@link Gst.Bus}. The {@link Gst.Toc} will contain a {@link Gst.TocEntry} for
      * each track, with information about each track. The duration for each
      * track can be retrieved via the #GST_TAG_DURATION tag from each entry's
-     * tag list, or calculated via gst_toc_entry_get_start_stop_times().
+     * tag list, or calculated via `gst_toc_entry_get_start_stop_times()`.
      * The track entries in the TOC will be sorted by track number.
+     * @gir-type Class
      */
     class AudioCdSrc extends GstBase.PushSrc implements Gst.URIHandler {
         static $gtype: GObject.GType<AudioCdSrc>;
@@ -2430,16 +2562,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioCdSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioCdSrc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioCdSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioCdSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioCdSrc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioCdSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2448,8 +2583,19 @@ export namespace GstAudio {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_close(): void;
+        /**
+         * @param device
+         * @virtual
+         */
         vfunc_open(device: string): boolean;
+        /**
+         * @param sector
+         * @virtual
+         */
         vfunc_read_sector(sector: number): Gst.Buffer;
 
         // Methods
@@ -2459,41 +2605,41 @@ export namespace GstAudio {
          * available data and audio tracks to the base source class. The caller
          * should allocate `track` on the stack, the base source will do a shallow
          * copy of the structure (and take ownership of the taglist if there is one).
-         * @param track address of #GstAudioCdSrcTrack to add
+         * @param track address of {@link GstAudio.AudioCdSrcTrack} to add
          * @returns FALSE on error, otherwise TRUE.
          */
         add_track(track: AudioCdSrcTrack): boolean;
-
-        // Inherited methods
         /**
          * Gets the list of protocols supported by `handler`. This list may not be
          * modified.
-         * @returns the     supported protocols.  Returns %NULL if the @handler isn't     implemented properly, or the @handler doesn't support any     protocols.
+         * @returns the     supported protocols.  Returns `null` if the `handler` isn't     implemented properly, or the `handler` doesn't support any     protocols.
          */
         get_protocols(): string[] | null;
         /**
          * Gets the currently handled URI.
-         * @returns the URI currently handled by   the @handler.  Returns %NULL if there are no URI currently   handled. The returned string must be freed with g_free() when no   longer needed.
+         * @returns the URI currently handled by   the `handler`.  Returns `null` if there are no URI currently   handled. The returned string must be freed with `g_free()` when no   longer needed.
          */
         get_uri(): string | null;
         /**
          * Gets the type of the given URI handler
-         * @returns the #GstURIType of the URI handler. Returns #GST_URI_UNKNOWN if the @handler isn't implemented correctly.
+         * @returns the {@link Gst.URIType} of the URI handler. Returns #GST_URI_UNKNOWN if the `handler` isn't implemented correctly.
          */
         get_uri_type(): Gst.URIType;
         /**
          * Tries to set the URI of the given handler.
          * @param uri URI to set
-         * @returns %TRUE if the URI was set successfully, else %FALSE.
+         * @returns `true` if the URI was set successfully, else `false`.
          */
         set_uri(uri: string): boolean;
         /**
          * Gets the currently handled URI.
+         * @virtual
          */
         vfunc_get_uri(): string | null;
         /**
          * Tries to set the URI of the given handler.
          * @param uri URI to set
+         * @virtual
          */
         vfunc_set_uri(uri: string): boolean;
         /**
@@ -2509,32 +2655,32 @@ export namespace GstAudio {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2543,39 +2689,39 @@ export namespace GstAudio {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2586,13 +2732,16 @@ export namespace GstAudio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2600,7 +2749,7 @@ export namespace GstAudio {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2608,9 +2757,9 @@ export namespace GstAudio {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2630,9 +2779,9 @@ export namespace GstAudio {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2646,33 +2795,33 @@ export namespace GstAudio {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2705,23 +2854,26 @@ export namespace GstAudio {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
+        /**
+         * @param args
+         */
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2731,8 +2883,8 @@ export namespace GstAudio {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2749,10 +2901,10 @@ export namespace GstAudio {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2767,13 +2919,13 @@ export namespace GstAudio {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2804,21 +2956,21 @@ export namespace GstAudio {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2828,33 +2980,34 @@ export namespace GstAudio {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2863,6 +3016,7 @@ export namespace GstAudio {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2871,12 +3025,14 @@ export namespace GstAudio {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2885,20 +3041,22 @@ export namespace GstAudio {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2910,6 +3068,7 @@ export namespace GstAudio {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2956,10 +3115,11 @@ export namespace GstAudio {
     }
 
     /**
-     * #GstAudioClock makes it easy for elements to implement a #GstClock, they
+     * {@link GstAudio.AudioClock} makes it easy for elements to implement a {@link Gst.Clock}, they
      * simply need to provide a function that returns the current clock time.
      *
-     * This object is internally used to implement the clock in #GstAudioBaseSink.
+     * This object is internally used to implement the clock in {@link GstAudio.AudioBaseSink}.
+     * @gir-type Class
      */
     class AudioClock extends Gst.SystemClock {
         static $gtype: GObject.GType<AudioClock>;
@@ -2990,16 +3150,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioClock.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioClock.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioClock.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioClock.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3010,19 +3173,19 @@ export namespace GstAudio {
 
         /**
          * Adjust `time` with the internal offset of the audio clock.
-         * @param time a #GstClockTime
-         * @returns @time adjusted with the internal offset.
+         * @param time a {@link Gst.ClockTime}
+         * @returns `time` adjusted with the internal offset.
          */
         adjust(time: Gst.ClockTime): Gst.ClockTime;
         /**
-         * Report the time as returned by the #GstAudioClockGetTimeFunc without applying
+         * Report the time as returned by the {@link GstAudio.AudioClockGetTimeFunc} without applying
          * any offsets.
          * @returns the time as reported by the time function of the audio clock
          */
         get_time(): Gst.ClockTime;
         /**
          * Invalidate the clock function. Call this function when the provided
-         * #GstAudioClockGetTimeFunc cannot be called anymore, for example, when the
+         * {@link GstAudio.AudioClockGetTimeFunc} cannot be called anymore, for example, when the
          * user_data becomes invalid.
          *
          * After calling this function, `clock` will return the last returned time for
@@ -3030,11 +3193,11 @@ export namespace GstAudio {
          */
         invalidate(): void;
         /**
-         * Inform `clock` that future calls to #GstAudioClockGetTimeFunc will return values
+         * Inform `clock` that future calls to {@link GstAudio.AudioClockGetTimeFunc} will return values
          * starting from `time`. The clock will update an internal offset to make sure that
          * future calls to internal_time will return an increasing result as required by
-         * the #GstClock object.
-         * @param time a #GstClockTime
+         * the {@link Gst.Clock} object.
+         * @param time a {@link Gst.ClockTime}
          */
         reset(time: Gst.ClockTime): void;
     }
@@ -3074,7 +3237,7 @@ export namespace GstAudio {
      *     is activated, which allows subclass to perform any global setup.
      *     Base class (context) parameters can already be set according to subclass
      *     capabilities (or possibly upon receive more information in subsequent
-     *     `set_format)`.
+     *     `set_format`).
      *   * GstAudioDecoder calls `set_format` to inform subclass of the format
      *     of input audio data that it is about to receive.
      *     While unlikely, it might be called more than once, if changing input
@@ -3119,12 +3282,12 @@ export namespace GstAudio {
      * In summary, above process should have subclass concentrating on
      * codec data processing while leaving other matters to base class,
      * such as most notably timestamp handling.  While it may exert more control
-     * in this area (see e.g. `pre_push)`, it is very much not recommended.
+     * in this area (see e.g. `pre_push`), it is very much not recommended.
      *
      * In particular, base class will try to arrange for perfect output timestamps
      * as much as possible while tracking upstream timestamps.
      * To this end, if deviation between the next ideal expected perfect timestamp
-     * and upstream exceeds #GstAudioDecoder:tolerance, then resync to upstream
+     * and upstream exceeds {@link GstAudio.AudioDecoder.tolerance}, then resync to upstream
      * occurs (which would happen always if the tolerance mechanism is disabled).
      *
      * In non-live pipelines, baseclass can also (configurably) arrange for
@@ -3152,6 +3315,7 @@ export namespace GstAudio {
      *      `gst_audio_decoder_finish_frame`.  If it is prepared to perform
      *      PLC, it should also accept NULL data in `handle_frame` and provide for
      *      data for indicated duration.
+     * @gir-type Class
      */
     abstract class AudioDecoder extends Gst.Element {
         static $gtype: GObject.GType<AudioDecoder>;
@@ -3160,13 +3324,15 @@ export namespace GstAudio {
 
         /**
          * Maximum number of tolerated consecutive decode errors. See
-         * gst_audio_decoder_set_max_errors() for more details.
+         * `gst_audio_decoder_set_max_errors()` for more details.
+         * @since 1.18
          */
         get max_errors(): number;
         set max_errors(val: number);
         /**
          * Maximum number of tolerated consecutive decode errors. See
-         * gst_audio_decoder_set_max_errors() for more details.
+         * `gst_audio_decoder_set_max_errors()` for more details.
+         * @since 1.18
          */
         get maxErrors(): number;
         set maxErrors(val: number);
@@ -3202,16 +3368,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioDecoder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3220,35 +3389,102 @@ export namespace GstAudio {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_close(): boolean;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
+        /**
+         * @param hard
+         * @virtual
+         */
         vfunc_flush(hard: boolean): void;
+        /**
+         * @param filter
+         * @virtual
+         */
         vfunc_getcaps(filter: Gst.Caps): Gst.Caps;
+        /**
+         * @param buffer
+         * @virtual
+         */
         vfunc_handle_frame(buffer: Gst.Buffer): Gst.FlowReturn;
         /**
-         * Negotiate with downstream elements to currently configured #GstAudioInfo.
+         * Negotiate with downstream elements to currently configured {@link GstAudio.AudioInfo}.
          * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
          * negotiate fails.
+         * @virtual
          */
         vfunc_negotiate(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_open(): boolean;
+        /**
+         * @param adapter
+         * @virtual
+         */
         vfunc_parse(adapter: GstBase.Adapter): [Gst.FlowReturn, number, number];
+        /**
+         * @param buffer
+         * @virtual
+         */
         vfunc_pre_push(buffer: Gst.Buffer): Gst.FlowReturn;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
+        /**
+         * @param caps
+         * @virtual
+         */
         vfunc_set_format(caps: Gst.Caps): boolean;
+        /**
+         * @param event
+         * @virtual
+         */
         vfunc_sink_event(event: Gst.Event): boolean;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_sink_query(query: Gst.Query): boolean;
+        /**
+         * @param event
+         * @virtual
+         */
         vfunc_src_event(event: Gst.Event): boolean;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_src_query(query: Gst.Query): boolean;
+        /**
+         * @virtual
+         */
         vfunc_start(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_stop(): boolean;
+        /**
+         * @param outbuf
+         * @param meta
+         * @param inbuf
+         * @virtual
+         */
         vfunc_transform_meta(outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer): boolean;
 
         // Methods
 
         /**
          * Helper function that allocates a buffer to hold an audio frame
-         * for `dec'`s current output format.
+         * for `dec`'s current output format.
          * @param size size of the buffer
          * @returns allocated buffer
          */
@@ -3262,11 +3498,11 @@ export namespace GstAudio {
          * Otherwise, source pad caps must be set when it is called with valid
          * data in `buf`.
          *
-         * Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
+         * Note that a frame received in {@link GstAudio.AudioDecoderClass}.handle_frame() may be
          * invalidated by a call to this function.
          * @param buf decoded data
          * @param frames number of decoded frames represented by decoded data
-         * @returns a #GstFlowReturn that should be escalated to caller (of caller)
+         * @returns a {@link Gst.FlowReturn} that should be escalated to caller (of caller)
          */
         finish_frame(buf: Gst.Buffer | null, frames: number): Gst.FlowReturn;
         /**
@@ -3274,39 +3510,51 @@ export namespace GstAudio {
          * multiple times for a given input frame.
          *
          * `buf` may be NULL in which case it is assumed that the current input frame is
-         * finished. This is equivalent to calling gst_audio_decoder_finish_subframe()
+         * finished. This is equivalent to calling `gst_audio_decoder_finish_subframe()`
          * with a NULL buffer and frames=1 after having pushed out all decoded audio
          * subframes using this function.
          *
          * When called with valid data in `buf` the source pad caps must have been set
          * already.
          *
-         * Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
+         * Note that a frame received in {@link GstAudio.AudioDecoderClass}.handle_frame() may be
          * invalidated by a call to this function.
          * @param buf decoded data
-         * @returns a #GstFlowReturn that should be escalated to caller (of caller)
+         * @returns a {@link Gst.FlowReturn} that should be escalated to caller (of caller)
          */
         finish_subframe(buf?: Gst.Buffer | null): Gst.FlowReturn;
         /**
-         * Lets #GstAudioDecoder sub-classes to know the memory `allocator`
+         * Lets {@link GstAudio.AudioDecoder} sub-classes to know the memory `allocator`
          * used by the base class and its `params`.
          *
          * Unref the `allocator` after use it.
          */
         get_allocator(): [Gst.Allocator | null, Gst.AllocationParams | null];
+        /**
+         * @returns a {@link GstAudio.AudioInfo} describing the input audio format
+         */
         get_audio_info(): AudioInfo;
+        /**
+         * @returns currently configured decoder delay
+         */
         get_delay(): number;
         /**
          * Queries decoder drain handling.
          * @returns TRUE if drainable handling is enabled. MT safe.
          */
         get_drainable(): boolean;
+        /**
+         * @returns currently configured byte to time conversion setting
+         */
         get_estimate_rate(): number;
         /**
          * Sets the variables pointed to by `min` and `max` to the currently configured
          * latency.
          */
         get_latency(): [Gst.ClockTime | null, Gst.ClockTime | null];
+        /**
+         * @returns currently configured decoder tolerated error count.
+         */
         get_max_errors(): number;
         /**
          * Queries decoder's latency aggregation.
@@ -3327,6 +3575,9 @@ export namespace GstAudio {
          * @returns TRUE if packet loss concealment is enabled. MT safe.
          */
         get_plc(): boolean;
+        /**
+         * @returns currently configured plc handling
+         */
         get_plc_aware(): number;
         /**
          * Queries current audio jitter tolerance threshold.
@@ -3336,19 +3587,19 @@ export namespace GstAudio {
         /**
          * Sets the audio decoder tags and how they should be merged with any
          * upstream stream tags. This will override any tags previously-set
-         * with gst_audio_decoder_merge_tags().
+         * with `gst_audio_decoder_merge_tags()`.
          *
          * Note that this is provided for convenience, and the subclass is
          * not required to use this and can still do tag handling on its own.
-         * @param tags a #GstTagList to merge, or NULL
-         * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
+         * @param tags a {@link Gst.TagList} to merge, or NULL
+         * @param mode the {@link Gst.TagMergeMode} to use, usually #GST_TAG_MERGE_REPLACE
          */
         merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode | null): void;
         /**
-         * Negotiate with downstream elements to currently configured #GstAudioInfo.
+         * Negotiate with downstream elements to currently configured {@link GstAudio.AudioInfo}.
          * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
          * negotiate fails.
-         * @returns %TRUE if the negotiation succeeded, else %FALSE.
+         * @returns `true` if the negotiation succeeded, else `false`.
          */
         negotiate(): boolean;
         /**
@@ -3357,15 +3608,15 @@ export namespace GstAudio {
          * elements.
          * @param caps initial caps
          * @param filter filter caps
-         * @returns a #GstCaps owned by caller
+         * @returns a {@link Gst.Caps} owned by caller
          */
         proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps;
         /**
          * Sets a caps in allocation query which are different from the set
          * pad's caps. Use this function before calling
-         * gst_audio_decoder_negotiate(). Setting to %NULL the allocation
+         * `gst_audio_decoder_negotiate()`. Setting to `null` the allocation
          * query will use the caps from the pad.
-         * @param allocation_caps a #GstCaps or %NULL
+         * @param allocation_caps a {@link Gst.Caps} or `null`
          */
         set_allocation_caps(allocation_caps?: Gst.Caps | null): void;
         /**
@@ -3420,17 +3671,17 @@ export namespace GstAudio {
         set_needs_format(enabled: boolean): void;
         /**
          * Configure output caps on the srcpad of `dec`. Similar to
-         * gst_audio_decoder_set_output_format(), but allows subclasses to specify
-         * output caps that can't be expressed via #GstAudioInfo e.g. caps that have
+         * `gst_audio_decoder_set_output_format()`, but allows subclasses to specify
+         * output caps that can't be expressed via {@link GstAudio.AudioInfo} e.g. caps that have
          * caps features.
-         * @param caps (fixed) #GstCaps
-         * @returns %TRUE on success.
+         * @param caps (fixed) {@link Gst.Caps}
+         * @returns `true` on success.
          */
         set_output_caps(caps: Gst.Caps): boolean;
         /**
          * Configure output info on the srcpad of `dec`.
-         * @param info #GstAudioInfo
-         * @returns %TRUE on success.
+         * @param info {@link GstAudio.AudioInfo}
+         * @returns `true` on success.
          */
         set_output_format(info: AudioInfo): boolean;
         /**
@@ -3454,12 +3705,12 @@ export namespace GstAudio {
          */
         set_tolerance(tolerance: Gst.ClockTime): void;
         /**
-         * Lets #GstAudioDecoder sub-classes decide if they want the sink pad
+         * Lets {@link GstAudio.AudioDecoder} sub-classes decide if they want the sink pad
          * to use the default pad query handler to reply to accept-caps queries.
          *
          * By setting this to true it is possible to further customize the default
-         * handler with %GST_PAD_SET_ACCEPT_INTERSECT and
-         * %GST_PAD_SET_ACCEPT_TEMPLATE
+         * handler with `GST_PAD_SET_ACCEPT_INTERSECT` and
+         * `GST_PAD_SET_ACCEPT_TEMPLATE`
          * @param use if the default pad accept-caps query handling should be used
          */
         set_use_default_pad_acceptcaps(use: boolean): void;
@@ -3520,9 +3771,9 @@ export namespace GstAudio {
      *     * Base class gathers input sample data (as directed by the context's
      *       frame_samples and frame_max) and provides this to subclass' `handle_frame`.
      *     * If codec processing results in encoded data, subclass should call
-     *       gst_audio_encoder_finish_frame() to have encoded data pushed
+     *       `gst_audio_encoder_finish_frame()` to have encoded data pushed
      *       downstream. Alternatively, it might also call
-     *       gst_audio_encoder_finish_frame() (with a NULL buffer and some number of
+     *       `gst_audio_encoder_finish_frame()` (with a NULL buffer and some number of
      *       dropped samples) to indicate dropped (non-encoded) samples.
      *     * Just prior to actually pushing a buffer downstream,
      *       it is passed to `pre_push`.
@@ -3544,22 +3795,22 @@ export namespace GstAudio {
      * In summary, above process should have subclass concentrating on
      * codec data processing while leaving other matters to base class,
      * such as most notably timestamp handling.  While it may exert more control
-     * in this area (see e.g. `pre_push)`, it is very much not recommended.
+     * in this area (see e.g. `pre_push`), it is very much not recommended.
      *
      * In particular, base class will either favor tracking upstream timestamps
      * (at the possible expense of jitter) or aim to arrange for a perfect stream of
-     * output timestamps, depending on #GstAudioEncoder:perfect-timestamp.
+     * output timestamps, depending on {@link GstAudio.AudioEncoder.perfect_timestamp}.
      * However, in the latter case, the input may not be so perfect or ideal, which
      * is handled as follows.  An input timestamp is compared with the expected
      * timestamp as dictated by input sample stream and if the deviation is less
-     * than #GstAudioEncoder:tolerance, the deviation is discarded.
+     * than {@link GstAudio.AudioEncoder.tolerance}, the deviation is discarded.
      * Otherwise, it is considered a discontuinity and subsequent output timestamp
      * is resynced to the new position after performing configured discontinuity
      * processing.  In the non-perfect-timestamp case, an upstream variation
      * exceeding tolerance only leads to marking DISCONT on subsequent outgoing
      * (while timestamps are adjusted to upstream regardless of variation).
      * While DISCONT is also marked in the perfect-timestamp case, this one
-     * optionally (see #GstAudioEncoder:hard-resync)
+     * optionally (see {@link GstAudio.AudioEncoder.hard_resync})
      * performs some additional steps, such as clipping of (early) input samples
      * or draining all currently remaining input data, depending on the direction
      * of the discontuinity.
@@ -3581,7 +3832,8 @@ export namespace GstAudio {
      *      implementing codec at hand, e.g. those controlling timestamp behaviour
      *      and discontinuity processing.
      *   * Accept data in `handle_frame` and provide encoded results to
-     *      gst_audio_encoder_finish_frame().
+     *      `gst_audio_encoder_finish_frame()`.
+     * @gir-type Class
      */
     abstract class AudioEncoder extends Gst.Element implements Gst.Preset {
         static $gtype: GObject.GType<AudioEncoder>;
@@ -3624,16 +3876,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioEncoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioEncoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioEncoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioEncoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioEncoder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioEncoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3642,34 +3897,96 @@ export namespace GstAudio {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_close(): boolean;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_decide_allocation(query: Gst.Query): boolean;
+        /**
+         * @virtual
+         */
         vfunc_flush(): void;
+        /**
+         * @param filter
+         * @virtual
+         */
         vfunc_getcaps(filter: Gst.Caps): Gst.Caps;
+        /**
+         * @param buffer
+         * @virtual
+         */
         vfunc_handle_frame(buffer: Gst.Buffer): Gst.FlowReturn;
         /**
-         * Negotiate with downstream elements to currently configured #GstCaps.
+         * Negotiate with downstream elements to currently configured {@link Gst.Caps}.
          * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
          * negotiate fails.
+         * @virtual
          */
         vfunc_negotiate(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_open(): boolean;
+        /**
+         * @param buffer
+         * @virtual
+         */
         vfunc_pre_push(buffer: Gst.Buffer): Gst.FlowReturn;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_propose_allocation(query: Gst.Query): boolean;
+        /**
+         * @param info
+         * @virtual
+         */
         vfunc_set_format(info: AudioInfo): boolean;
+        /**
+         * @param event
+         * @virtual
+         */
         vfunc_sink_event(event: Gst.Event): boolean;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_sink_query(query: Gst.Query): boolean;
+        /**
+         * @param event
+         * @virtual
+         */
         vfunc_src_event(event: Gst.Event): boolean;
+        /**
+         * @param query
+         * @virtual
+         */
         vfunc_src_query(query: Gst.Query): boolean;
+        /**
+         * @virtual
+         */
         vfunc_start(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_stop(): boolean;
+        /**
+         * @param outbuf
+         * @param meta
+         * @param inbuf
+         * @virtual
+         */
         vfunc_transform_meta(outbuf: Gst.Buffer, meta: Gst.Meta, inbuf: Gst.Buffer): boolean;
 
         // Methods
 
         /**
          * Helper function that allocates a buffer to hold an encoded audio frame
-         * for `enc'`s current output format.
+         * for `enc`'s current output format.
          * @param size size of the buffer
          * @returns allocated buffer
          */
@@ -3683,28 +4000,40 @@ export namespace GstAudio {
          * are considered discarded, e.g. as a result of discontinuous transmission,
          * and a discontinuity is marked.
          *
-         * Note that samples received in #GstAudioEncoderClass.handle_frame()
+         * Note that samples received in {@link GstAudio.AudioEncoderClass}.handle_frame()
          * may be invalidated by a call to this function.
          * @param buffer encoded data
          * @param samples number of samples (per channel) represented by encoded data
-         * @returns a #GstFlowReturn that should be escalated to caller (of caller)
+         * @returns a {@link Gst.FlowReturn} that should be escalated to caller (of caller)
          */
         finish_frame(buffer: Gst.Buffer | null, samples: number): Gst.FlowReturn;
         /**
-         * Lets #GstAudioEncoder sub-classes to know the memory `allocator`
+         * Lets {@link GstAudio.AudioEncoder} sub-classes to know the memory `allocator`
          * used by the base class and its `params`.
          *
          * Unref the `allocator` after use it.
          */
         get_allocator(): [Gst.Allocator | null, Gst.AllocationParams | null];
+        /**
+         * @returns a {@link GstAudio.AudioInfo} describing the input audio format
+         */
         get_audio_info(): AudioInfo;
         /**
          * Queries encoder drain handling.
          * @returns TRUE if drainable handling is enabled. MT safe.
          */
         get_drainable(): boolean;
+        /**
+         * @returns currently configured maximum handled frames
+         */
         get_frame_max(): number;
+        /**
+         * @returns currently maximum requested samples per frame
+         */
         get_frame_samples_max(): number;
+        /**
+         * @returns currently minimum requested samples per frame
+         */
         get_frame_samples_min(): number;
         /**
          * Queries encoder hard minimum handling.
@@ -3717,6 +4046,9 @@ export namespace GstAudio {
          * latency.
          */
         get_latency(): [Gst.ClockTime | null, Gst.ClockTime | null];
+        /**
+         * @returns currently configured encoder lookahead
+         */
         get_lookahead(): number;
         /**
          * Queries if the encoder will handle granule marking.
@@ -3736,21 +4068,21 @@ export namespace GstAudio {
         /**
          * Sets the audio encoder tags and how they should be merged with any
          * upstream stream tags. This will override any tags previously-set
-         * with gst_audio_encoder_merge_tags().
+         * with `gst_audio_encoder_merge_tags()`.
          *
          * Note that this is provided for convenience, and the subclass is
          * not required to use this and can still do tag handling on its own.
          *
          * MT safe.
-         * @param tags a #GstTagList to merge, or NULL to unset     previously-set tags
-         * @param mode the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE
+         * @param tags a {@link Gst.TagList} to merge, or NULL to unset     previously-set tags
+         * @param mode the {@link Gst.TagMergeMode} to use, usually #GST_TAG_MERGE_REPLACE
          */
         merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode | null): void;
         /**
-         * Negotiate with downstream elements to currently configured #GstCaps.
+         * Negotiate with downstream elements to currently configured {@link Gst.Caps}.
          * Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
          * negotiate fails.
-         * @returns %TRUE if the negotiation succeeded, else %FALSE.
+         * @returns `true` if the negotiation succeeded, else `false`.
          */
         negotiate(): boolean;
         /**
@@ -3759,15 +4091,15 @@ export namespace GstAudio {
          * (e.g. muxers).
          * @param caps initial caps
          * @param filter filter caps
-         * @returns a #GstCaps owned by caller
+         * @returns a {@link Gst.Caps} owned by caller
          */
         proxy_getcaps(caps?: Gst.Caps | null, filter?: Gst.Caps | null): Gst.Caps;
         /**
          * Sets a caps in allocation query which are different from the set
          * pad's caps. Use this function before calling
-         * gst_audio_encoder_negotiate(). Setting to %NULL the allocation
+         * `gst_audio_encoder_negotiate()`. Setting to `null` the allocation
          * query will use the caps from the pad.
-         * @param allocation_caps a #GstCaps or %NULL
+         * @param allocation_caps a {@link Gst.Caps} or `null`
          */
         set_allocation_caps(allocation_caps?: Gst.Caps | null): void;
         /**
@@ -3785,7 +4117,7 @@ export namespace GstAudio {
          * Requires `frame_samples_min` and `frame_samples_max` to be the equal.
          *
          * Note: This value will be reset to 0 every time before
-         * #GstAudioEncoderClass.set_format() is called.
+         * {@link GstAudio.AudioEncoderClass}.set_format() is called.
          * @param num number of frames
          */
         set_frame_max(num: number): void;
@@ -3793,11 +4125,11 @@ export namespace GstAudio {
          * Sets number of samples (per channel) subclass needs to be handed,
          * at most or will be handed all available if 0.
          *
-         * If an exact number of samples is required, gst_audio_encoder_set_frame_samples_min()
+         * If an exact number of samples is required, `gst_audio_encoder_set_frame_samples_min()`
          * must be called with the same number.
          *
          * Note: This value will be reset to 0 every time before
-         * #GstAudioEncoderClass.set_format() is called.
+         * {@link GstAudio.AudioEncoderClass}.set_format() is called.
          * @param num number of samples per frame
          */
         set_frame_samples_max(num: number): void;
@@ -3805,11 +4137,11 @@ export namespace GstAudio {
          * Sets number of samples (per channel) subclass needs to be handed,
          * at least or will be handed all available if 0.
          *
-         * If an exact number of samples is required, gst_audio_encoder_set_frame_samples_max()
+         * If an exact number of samples is required, `gst_audio_encoder_set_frame_samples_max()`
          * must be called with the same number.
          *
          * Note: This value will be reset to 0 every time before
-         * #GstAudioEncoderClass.set_format() is called.
+         * {@link GstAudio.AudioEncoderClass}.set_format() is called.
          * @param num number of samples per frame
          */
         set_frame_samples_min(num: number): void;
@@ -3823,10 +4155,13 @@ export namespace GstAudio {
          * @param enabled new state
          */
         set_hard_min(enabled: boolean): void;
+        /**
+         * @param enabled
+         */
         set_hard_resync(enabled: boolean): void;
         /**
          * Set the codec headers to be sent downstream whenever requested.
-         * @param headers a list of   #GstBuffer containing the codec header
+         * @param headers a list of   {@link Gst.Buffer} containing the codec header
          */
         set_headers(headers: Gst.Buffer[]): void;
         /**
@@ -3841,7 +4176,7 @@ export namespace GstAudio {
          * Sets encoder lookahead (in units of input rate samples)
          *
          * Note: This value will be reset to 0 every time before
-         * #GstAudioEncoderClass.set_format() is called.
+         * {@link GstAudio.AudioEncoderClass}.set_format() is called.
          * @param num lookahead
          */
         set_lookahead(num: number): void;
@@ -3854,8 +4189,8 @@ export namespace GstAudio {
         set_mark_granule(enabled: boolean): void;
         /**
          * Configure output caps on the srcpad of `enc`.
-         * @param caps #GstCaps
-         * @returns %TRUE on success.
+         * @param caps {@link Gst.Caps}
+         * @returns `true` on success.
          */
         set_output_format(caps: Gst.Caps): boolean;
         /**
@@ -3872,12 +4207,10 @@ export namespace GstAudio {
          * @param tolerance new tolerance
          */
         set_tolerance(tolerance: Gst.ClockTime): void;
-
-        // Inherited methods
         /**
          * Delete the given preset.
          * @param name preset name to remove
-         * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name
+         * @returns `true` for success, `false` if e.g. there is no preset with that `name`
          */
         delete_preset(name: string): boolean;
         /**
@@ -3885,28 +4218,28 @@ export namespace GstAudio {
          * something like e.g. "comment". Returned values need to be released when done.
          * @param name preset name
          * @param tag meta data item name
-         * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name or no value for the given @tag
+         * @returns `true` for success, `false` if e.g. there is no preset with that `name` or no value for the given `tag`
          */
         get_meta(name: string, tag: string): [boolean, string];
         /**
-         * Get a copy of preset names as a %NULL terminated string array.
-         * @returns list with names, use g_strfreev() after usage.
+         * Get a copy of preset names as a `null` terminated string array.
+         * @returns list with names, use `g_strfreev()` after usage.
          */
         get_preset_names(): string[];
         /**
          * Get a the names of the GObject properties that can be used for presets.
-         * @returns an   array of property names which should be freed with g_strfreev() after use.
+         * @returns an   array of property names which should be freed with `g_strfreev()` after use.
          */
         get_property_names(): string[];
         /**
          * Check if one can add new presets, change existing ones and remove presets.
-         * @returns %TRUE if presets are editable or %FALSE if they are static
+         * @returns `true` if presets are editable or `false` if they are static
          */
         is_editable(): boolean;
         /**
          * Load the given preset.
          * @param name preset name to load
-         * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name
+         * @returns `true` for success, `false` if e.g. there is no preset with that `name`
          */
         load_preset(name: string): boolean;
         /**
@@ -3914,29 +4247,30 @@ export namespace GstAudio {
          * overwritten.
          * @param old_name current preset name
          * @param new_name new preset name
-         * @returns %TRUE for success, %FALSE if e.g. there is no preset with @old_name
+         * @returns `true` for success, `false` if e.g. there is no preset with `old_name`
          */
         rename_preset(old_name: string, new_name: string): boolean;
         /**
          * Save the current object settings as a preset under the given name. If there
          * is already a preset by this `name` it will be overwritten.
          * @param name preset name to save
-         * @returns %TRUE for success, %FALSE
+         * @returns `true` for success, `false`
          */
         save_preset(name: string): boolean;
         /**
          * Sets a new `value` for an existing meta data item or adds a new item. Meta
-         * data `tag` names can be something like e.g. "comment". Supplying %NULL for the
+         * data `tag` names can be something like e.g. "comment". Supplying `null` for the
          * `value` will unset an existing value.
          * @param name preset name
          * @param tag meta data item name
          * @param value new value
-         * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name
+         * @returns `true` for success, `false` if e.g. there is no preset with that `name`
          */
         set_meta(name: string, tag: string, value?: string | null): boolean;
         /**
          * Delete the given preset.
          * @param name preset name to remove
+         * @virtual
          */
         vfunc_delete_preset(name: string): boolean;
         /**
@@ -3944,19 +4278,23 @@ export namespace GstAudio {
          * something like e.g. "comment". Returned values need to be released when done.
          * @param name preset name
          * @param tag meta data item name
+         * @virtual
          */
         vfunc_get_meta(name: string, tag: string): [boolean, string];
         /**
-         * Get a copy of preset names as a %NULL terminated string array.
+         * Get a copy of preset names as a `null` terminated string array.
+         * @virtual
          */
         vfunc_get_preset_names(): string[];
         /**
          * Get a the names of the GObject properties that can be used for presets.
+         * @virtual
          */
         vfunc_get_property_names(): string[];
         /**
          * Load the given preset.
          * @param name preset name to load
+         * @virtual
          */
         vfunc_load_preset(name: string): boolean;
         /**
@@ -3964,21 +4302,24 @@ export namespace GstAudio {
          * overwritten.
          * @param old_name current preset name
          * @param new_name new preset name
+         * @virtual
          */
         vfunc_rename_preset(old_name: string, new_name: string): boolean;
         /**
          * Save the current object settings as a preset under the given name. If there
          * is already a preset by this `name` it will be overwritten.
          * @param name preset name to save
+         * @virtual
          */
         vfunc_save_preset(name: string): boolean;
         /**
          * Sets a new `value` for an existing meta data item or adds a new item. Meta
-         * data `tag` names can be something like e.g. "comment". Supplying %NULL for the
+         * data `tag` names can be something like e.g. "comment". Supplying `null` for the
          * `value` will unset an existing value.
          * @param name preset name
          * @param tag meta data item name
          * @param value new value
+         * @virtual
          */
         vfunc_set_meta(name: string, tag: string, value?: string | null): boolean;
         /**
@@ -3994,32 +4335,32 @@ export namespace GstAudio {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4028,39 +4369,39 @@ export namespace GstAudio {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4071,13 +4412,16 @@ export namespace GstAudio {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4085,7 +4429,7 @@ export namespace GstAudio {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4093,9 +4437,9 @@ export namespace GstAudio {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4115,9 +4459,9 @@ export namespace GstAudio {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4131,33 +4475,33 @@ export namespace GstAudio {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4190,23 +4534,26 @@ export namespace GstAudio {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
+        /**
+         * @param args
+         */
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4216,8 +4563,8 @@ export namespace GstAudio {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4234,10 +4581,10 @@ export namespace GstAudio {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4252,13 +4599,13 @@ export namespace GstAudio {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4289,21 +4636,21 @@ export namespace GstAudio {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4313,33 +4660,34 @@ export namespace GstAudio {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4348,6 +4696,7 @@ export namespace GstAudio {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4356,12 +4705,14 @@ export namespace GstAudio {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4370,20 +4721,22 @@ export namespace GstAudio {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4395,6 +4748,7 @@ export namespace GstAudio {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4438,19 +4792,20 @@ export namespace GstAudio {
     }
 
     /**
-     * #GstAudioFilter is a #GstBaseTransform<!-- -->-derived base class for simple audio
+     * {@link GstAudio.AudioFilter} is a {@link GstBase.BaseTransform}<!-- -->-derived base class for simple audio
      * filters, ie. those that output the same format that they get as input.
      *
-     * #GstAudioFilter will parse the input format for you (with error checking)
+     * {@link GstAudio.AudioFilter} will parse the input format for you (with error checking)
      * before calling your setup function. Also, elements deriving from
-     * #GstAudioFilter may use gst_audio_filter_class_add_pad_templates() from
+     * {@link GstAudio.AudioFilter} may use `gst_audio_filter_class_add_pad_templates()` from
      * their class_init function to easily configure the set of caps/formats that
      * the element is able to handle.
      *
-     * Derived classes should override the #GstAudioFilterClass.setup() and
-     * #GstBaseTransformClass.transform_ip() and/or
-     * #GstBaseTransformClass.transform()
+     * Derived classes should override the {@link GstAudio.AudioFilterClass}.setup() and
+     * {@link GstBase.BaseTransformClass}.transform_ip() and/or
+     * {@link GstBase.BaseTransformClass}.transform()
      * virtual functions in their class_init function.
+     * @gir-type Class
      */
     abstract class AudioFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<AudioFilter>;
@@ -4476,16 +4831,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4494,10 +4852,17 @@ export namespace GstAudio {
 
         // Static methods
 
+        /**
+         * @param allowed_caps what formats the filter can handle, as {@link Gst.Caps}
+         */
         static add_pad_templates(allowed_caps: Gst.Caps): void;
 
         // Virtual methods
 
+        /**
+         * @param info
+         * @virtual
+         */
         vfunc_setup(info: AudioInfo): boolean;
     }
 
@@ -4522,6 +4887,7 @@ export namespace GstAudio {
      * manner. The base class is sufficiently flexible to be used as an
      * abstraction for DMA based ringbuffers as well as a pure software
      * implementations.
+     * @gir-type Class
      */
     abstract class AudioRingBuffer extends Gst.Object {
         static $gtype: GObject.GType<AudioRingBuffer>;
@@ -4557,16 +4923,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioRingBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioRingBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioRingBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioRingBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioRingBuffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioRingBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4588,7 +4957,7 @@ export namespace GstAudio {
         /**
          * Parse `caps` into `spec`.
          * @param spec a spec
-         * @param caps a #GstCaps
+         * @param caps a {@link Gst.Caps}
          */
         static parse_caps(spec: AudioRingBufferSpec, caps: Gst.Caps): boolean;
 
@@ -4596,9 +4965,10 @@ export namespace GstAudio {
 
         /**
          * Allocate the resources for the ringbuffer. This function fills
-         * in the data pointer of the ring buffer with a valid #GstBuffer
+         * in the data pointer of the ring buffer with a valid {@link Gst.Buffer}
          * to which samples can be written.
          * @param spec the specs of the buffer
+         * @virtual
          */
         vfunc_acquire(spec: AudioRingBufferSpec): boolean;
         /**
@@ -4606,17 +4976,20 @@ export namespace GstAudio {
          *
          * MT safe.
          * @param active the new mode
+         * @virtual
          */
         vfunc_activate(active: boolean): boolean;
         /**
          * Clear all samples from the ringbuffer.
          *
          * MT safe.
+         * @virtual
          */
         vfunc_clear_all(): void;
         /**
          * Close the audio device associated with the ring buffer. The ring buffer
-         * should already have been released via gst_audio_ring_buffer_release().
+         * should already have been released via `gst_audio_ring_buffer_release()`.
+         * @virtual
          */
         vfunc_close_device(): boolean;
         /**
@@ -4643,6 +5016,7 @@ export namespace GstAudio {
          * @param data the data to commit
          * @param out_samples the number of samples to write to the ringbuffer
          * @param accum accumulator for rate conversion.
+         * @virtual
          */
         vfunc_commit(
             sample: number,
@@ -4661,29 +5035,38 @@ export namespace GstAudio {
          *
          * For capture ringbuffers this is the amount of samples in the device that are
          * not yet transferred to the ringbuffer.
+         * @virtual
          */
         vfunc_delay(): number;
         /**
          * Open the audio device associated with the ring buffer. Does not perform any
          * setup on the device. You must open the device before acquiring the ring
          * buffer.
+         * @virtual
          */
         vfunc_open_device(): boolean;
         /**
          * Pause processing samples from the ringbuffer.
+         * @virtual
          */
         vfunc_pause(): boolean;
         /**
          * Free the resources of the ringbuffer.
+         * @virtual
          */
         vfunc_release(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_resume(): boolean;
         /**
          * Start processing samples from the ringbuffer.
+         * @virtual
          */
         vfunc_start(): boolean;
         /**
          * Stop processing samples from the ringbuffer.
+         * @virtual
          */
         vfunc_stop(): boolean;
 
@@ -4691,7 +5074,7 @@ export namespace GstAudio {
 
         /**
          * Allocate the resources for the ringbuffer. This function fills
-         * in the data pointer of the ring buffer with a valid #GstBuffer
+         * in the data pointer of the ring buffer with a valid {@link Gst.Buffer}
          * to which samples can be written.
          * @param spec the specs of the buffer
          * @returns TRUE if the device could be acquired, FALSE on error. MT safe.
@@ -4729,7 +5112,7 @@ export namespace GstAudio {
         clear_all(): void;
         /**
          * Close the audio device associated with the ring buffer. The ring buffer
-         * should already have been released via gst_audio_ring_buffer_release().
+         * should already have been released via `gst_audio_ring_buffer_release()`.
          * @returns TRUE if the device could be closed, FALSE on error. MT safe.
          */
         close_device(): boolean;
@@ -4757,7 +5140,7 @@ export namespace GstAudio {
          * @param data the data to commit
          * @param out_samples the number of samples to write to the ringbuffer
          * @param accum accumulator for rate conversion.
-         * @returns The number of samples written to the ringbuffer or -1 on error. The number of samples written can be less than @out_samples when @buf was interrupted with a flush or stop.
+         * @returns The number of samples written to the ringbuffer or -1 on error. The number of samples written can be less than `out_samples` when `buf` was interrupted with a flush or stop.
          */
         commit(sample: number, data: Uint8Array | string, out_samples: number, accum: number): [number, number, number];
         /**
@@ -4856,7 +5239,7 @@ export namespace GstAudio {
         /**
          * Get the number of samples that were processed by the ringbuffer
          * since it was last started. This does not include the number of samples not
-         * yet processed (see gst_audio_ring_buffer_delay()).
+         * yet processed (see `gst_audio_ring_buffer_delay()`).
          * @returns The number of samples processed by the ringbuffer. MT safe.
          */
         samples_done(): number;
@@ -4893,6 +5276,10 @@ export namespace GstAudio {
          * @param sample the sample number to set
          */
         set_sample(sample: number): void;
+        /**
+         * @param readseg
+         * @param timestamp
+         */
         set_timestamp(readseg: number, timestamp: Gst.ClockTime): void;
         /**
          * Start processing samples from the ringbuffer.
@@ -4959,8 +5346,9 @@ export namespace GstAudio {
      * * `close()` :Close the device.
      *
      * All scheduling of samples and timestamps is done in this base class
-     * together with #GstAudioBaseSink using a default implementation of a
-     * #GstAudioRingBuffer that uses threads.
+     * together with {@link GstAudio.AudioBaseSink} using a default implementation of a
+     * {@link GstAudio.AudioRingBuffer} that uses threads.
+     * @gir-type Class
      */
     class AudioSink extends AudioBaseSink {
         static $gtype: GObject.GType<AudioSink>;
@@ -4986,16 +5374,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioSink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioSink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5004,22 +5395,59 @@ export namespace GstAudio {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_close(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_delay(): number;
+        /**
+         * @virtual
+         */
         vfunc_open(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_pause(): void;
+        /**
+         * @param spec
+         * @virtual
+         */
         vfunc_prepare(spec: AudioRingBufferSpec): boolean;
+        /**
+         * @param args
+         * @virtual
+         */
         // Conflicted with GstBase.BaseSink.vfunc_prepare
         vfunc_prepare(...args: never[]): any;
+        /**
+         * @virtual
+         */
         vfunc_reset(): void;
+        /**
+         * @virtual
+         */
         vfunc_resume(): void;
+        /**
+         * @virtual
+         */
         vfunc_stop(): void;
+        /**
+         * @param args
+         * @virtual
+         */
         // Conflicted with GstBase.BaseSink.vfunc_stop
         vfunc_stop(...args: never[]): any;
+        /**
+         * @virtual
+         */
         vfunc_unprepare(): boolean;
         /**
          * Write samples to the device.
          * @param data the sample data
+         * @virtual
          */
         vfunc_write(data: Uint8Array | string): number;
     }
@@ -5060,8 +5488,9 @@ export namespace GstAudio {
      * * `close()` :Close the device.
      *
      * All scheduling of samples and timestamps is done in this base class
-     * together with #GstAudioBaseSrc using a default implementation of a
-     * #GstAudioRingBuffer that uses threads.
+     * together with {@link GstAudio.AudioBaseSrc} using a default implementation of a
+     * {@link GstAudio.AudioRingBuffer} that uses threads.
+     * @gir-type Class
      */
     class AudioSrc extends AudioBaseSrc {
         static $gtype: GObject.GType<AudioSrc>;
@@ -5087,16 +5516,19 @@ export namespace GstAudio {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioSrc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioSrc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5105,53 +5537,105 @@ export namespace GstAudio {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_close(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_delay(): number;
+        /**
+         * @virtual
+         */
         vfunc_open(): boolean;
+        /**
+         * @param spec
+         * @virtual
+         */
         vfunc_prepare(spec: AudioRingBufferSpec): boolean;
         /**
          * Read samples from the device.
          * @param data the sample data
+         * @virtual
          */
         vfunc_read(data: Uint8Array | string): [number, Gst.ClockTime];
+        /**
+         * @virtual
+         */
         vfunc_reset(): void;
+        /**
+         * @virtual
+         */
         vfunc_unprepare(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioAggregatorClass = typeof AudioAggregator;
+    /**
+     * @gir-type Alias
+     */
     type AudioAggregatorConvertPadClass = typeof AudioAggregatorConvertPad;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioAggregatorConvertPadPrivate {
         static $gtype: GObject.GType<AudioAggregatorConvertPadPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioAggregatorPadClass = typeof AudioAggregatorPad;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioAggregatorPadPrivate {
         static $gtype: GObject.GType<AudioAggregatorPadPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioAggregatorPrivate {
         static $gtype: GObject.GType<AudioAggregatorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioBaseSinkClass = typeof AudioBaseSink;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioBaseSinkPrivate {
         static $gtype: GObject.GType<AudioBaseSinkPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioBaseSrcClass = typeof AudioBaseSrc;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioBaseSrcPrivate {
         static $gtype: GObject.GType<AudioBaseSrcPrivate>;
     }
 
     /**
      * A structure containing the result of an audio buffer map operation,
-     * which is executed with gst_audio_buffer_map(). For non-interleaved (planar)
+     * which is executed with `gst_audio_buffer_map()`. For non-interleaved (planar)
      * buffers, the beginning of each channel in the buffer has its own pointer in
      * the `planes` array. For interleaved buffers, the `planes` array only contains
      * one item, which is the pointer to the beginning of the buffer, and `n_planes`
      * equals 1.
      *
      * The different channels in `planes` are always in the GStreamer channel order.
+     * @gir-type Struct
+     * @since 1.16
      */
     class AudioBuffer {
         static $gtype: GObject.GType<AudioBuffer>;
@@ -5170,7 +5654,7 @@ export namespace GstAudio {
          * After calling this function the caller does not own a reference to
          * `buffer` anymore.
          * @param buffer The buffer to clip.
-         * @param segment Segment in %GST_FORMAT_TIME or %GST_FORMAT_DEFAULT to which           the buffer should be clipped.
+         * @param segment Segment in {@link Gst.Format.TIME} or {@link Gst.Format.DEFAULT} to which           the buffer should be clipped.
          * @param rate sample rate.
          * @param bpf size of one audio frame in bytes. This is the size of one sample * number of channels.
          */
@@ -5181,27 +5665,27 @@ export namespace GstAudio {
          *
          * This is especially useful when the `gstbuffer` is in non-interleaved (planar)
          * layout, in which case this function will use the information in the
-         * `gstbuffer'`s attached #GstAudioMeta in order to map each channel in a
-         * separate "plane" in #GstAudioBuffer. If a #GstAudioMeta is not attached
-         * on the `gstbuffer,` then it must be in interleaved layout.
+         * `gstbuffer`'s attached {@link GstAudio.AudioMeta} in order to map each channel in a
+         * separate "plane" in {@link GstAudio.AudioBuffer}. If a {@link GstAudio.AudioMeta} is not attached
+         * on the `gstbuffer`, then it must be in interleaved layout.
          *
-         * If a #GstAudioMeta is attached, then the #GstAudioInfo on the meta is checked
+         * If a {@link GstAudio.AudioMeta} is attached, then the {@link GstAudio.AudioInfo} on the meta is checked
          * against `info`. Normally, they should be equal, but in case they are not,
-         * a g_critical will be printed and the #GstAudioInfo from the meta will be
+         * a g_critical will be printed and the {@link GstAudio.AudioInfo} from the meta will be
          * used.
          *
          * In non-interleaved buffers, it is possible to have each channel on a separate
-         * #GstMemory. In this case, each memory will be mapped separately to avoid
+         * {@link Gst.Memory}. In this case, each memory will be mapped separately to avoid
          * copying their contents in a larger memory area. Do note though that it is
          * not supported to have a single channel spanning over two or more different
-         * #GstMemory objects. Although the map operation will likely succeed in this
+         * {@link Gst.Memory} objects. Although the map operation will likely succeed in this
          * case, it will be highly sub-optimal and it is recommended to merge all the
          * memories in the buffer before calling this function.
          *
-         * Note: The actual #GstBuffer is not ref'ed, but it is required to stay valid
+         * Note: The actual {@link Gst.Buffer} is not ref'ed, but it is required to stay valid
          * as long as it's mapped.
          * @param info the audio properties of the buffer
-         * @param gstbuffer the #GstBuffer to be mapped
+         * @param gstbuffer the {@link Gst.Buffer} to be mapped
          * @param flags the access mode for the memory
          */
         static map(info: AudioInfo, gstbuffer: Gst.Buffer, flags: Gst.MapFlags): [boolean, AudioBuffer];
@@ -5245,12 +5729,18 @@ export namespace GstAudio {
 
         /**
          * Unmaps an audio buffer that was previously mapped with
-         * gst_audio_buffer_map().
+         * `gst_audio_buffer_map()`.
          */
         unmap(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioCdSrcClass = typeof AudioCdSrc;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioCdSrcPrivate {
         static $gtype: GObject.GType<AudioCdSrcPrivate>;
     }
@@ -5259,10 +5749,11 @@ export namespace GstAudio {
      * CD track abstraction to communicate TOC entries to the base class.
      *
      * This structure is only for use by sub-classed in connection with
-     * gst_audio_cd_src_add_track().
+     * `gst_audio_cd_src_add_track()`.
      *
      * Applications will be informed of the available tracks via a TOC message
-     * on the pipeline's #GstBus instead.
+     * on the pipeline's {@link Gst.Bus} instead.
+     * @gir-type Struct
      */
     class AudioCdSrcTrack {
         static $gtype: GObject.GType<AudioCdSrcTrack>;
@@ -5275,6 +5766,9 @@ export namespace GstAudio {
         end: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioChannelMixer {
         static $gtype: GObject.GType<AudioChannelMixer>;
 
@@ -5296,7 +5790,7 @@ export namespace GstAudio {
          * assignment of 0.0 or 1.0 to values within a user-defined
          * epsilon, this code doesn't make assumptions as to what may
          * constitute an appropriate epsilon.
-         * @returns %TRUE is @mix is passthrough.
+         * @returns `true` is `mix` is passthrough.
          */
         is_passthrough(): boolean;
         /**
@@ -5327,6 +5821,8 @@ export namespace GstAudio {
      *
      * Note: If clipping of the start is done by adjusting the segment, this meta
      * has to be dropped from buffers as otherwise clipping could happen twice.
+     * @gir-type Struct
+     * @since 1.8
      */
     class AudioClippingMeta {
         static $gtype: GObject.GType<AudioClippingMeta>;
@@ -5342,6 +5838,9 @@ export namespace GstAudio {
         static get_info(): Gst.MetaInfo;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioClockClass = typeof AudioClock;
     /**
      * This object is used to convert audio samples from one format to another.
@@ -5352,6 +5851,8 @@ export namespace GstAudio {
      *  * audio samplerate
      *
      *  * audio channels and channel layout
+     * @gir-type Struct
+     * @since 1.8
      */
     class AudioConverter {
         static $gtype: GObject.GType<AudioConverter>;
@@ -5370,12 +5871,12 @@ export namespace GstAudio {
         // Methods
 
         /**
-         * Convenience wrapper around gst_audio_converter_samples(), which will
+         * Convenience wrapper around `gst_audio_converter_samples()`, which will
          * perform allocation of the output buffer based on the result from
-         * gst_audio_converter_get_out_frames().
-         * @param flags extra #GstAudioConverterFlags
+         * `gst_audio_converter_get_out_frames()`.
+         * @param flags extra {@link GstAudio.AudioConverterFlags}
          * @param _in input data
-         * @returns %TRUE is the conversion could be performed.
+         * @returns `true` is the conversion could be performed.
          */
         convert(flags: AudioConverterFlags | null, _in: Uint8Array | string): [boolean, Uint8Array];
         /**
@@ -5384,7 +5885,7 @@ export namespace GstAudio {
         free(): void;
         /**
          * Get the current configuration of `convert`.
-         * @returns a #GstStructure that remains valid for as long as @convert is valid   or until gst_audio_converter_update_config() is called.
+         * @returns a {@link Gst.Structure} that remains valid for as long as `convert` is valid   or until `gst_audio_converter_update_config()` is called.
          */
         get_config(): [Gst.Structure, number, number];
         /**
@@ -5397,7 +5898,7 @@ export namespace GstAudio {
         /**
          * Get the maximum number of input frames that the converter would
          * need before producing output.
-         * @returns the latency of @convert as expressed in the number of frames.
+         * @returns the latency of `convert` as expressed in the number of frames.
          */
         get_max_latency(): number;
         /**
@@ -5409,8 +5910,8 @@ export namespace GstAudio {
         get_out_frames(in_frames: number): number;
         /**
          * Returns whether the audio converter will operate in passthrough mode.
-         * The return value would be typically input to gst_base_transform_set_passthrough()
-         * @returns %TRUE when no conversion will actually occur.
+         * The return value would be typically input to `gst_base_transform_set_passthrough()`
+         * @returns `true` when no conversion will actually occur.
          */
         is_passthrough(): boolean;
         /**
@@ -5428,19 +5929,19 @@ export namespace GstAudio {
          * If non-interleaved samples are used, `in` and `out` must point to an
          * array with pointers to memory blocks, one for each channel.
          *
-         * `in` may be %NULL, in which case `in_frames` of silence samples are processed
+         * `in` may be `null`, in which case `in_frames` of silence samples are processed
          * by the converter.
          *
          * This function always produces `out_frames` of output and consumes `in_frames` of
-         * input. Use gst_audio_converter_get_out_frames() and
-         * gst_audio_converter_get_in_frames() to make sure `in_frames` and `out_frames`
+         * input. Use `gst_audio_converter_get_out_frames()` and
+         * `gst_audio_converter_get_in_frames()` to make sure `in_frames` and `out_frames`
          * are matching and `in` and `out` point to enough memory.
-         * @param flags extra #GstAudioConverterFlags
+         * @param flags extra {@link GstAudio.AudioConverterFlags}
          * @param _in input frames
          * @param in_frames number of input frames
          * @param out output frames
          * @param out_frames number of output frames
-         * @returns %TRUE is the conversion could be performed.
+         * @returns `true` is the conversion could be performed.
          */
         samples(
             flags: AudioConverterFlags | null,
@@ -5451,34 +5952,40 @@ export namespace GstAudio {
         ): boolean;
         /**
          * Returns whether the audio converter can perform the conversion in-place.
-         * The return value would be typically input to gst_base_transform_set_in_place()
-         * @returns %TRUE when the conversion can be done in place.
+         * The return value would be typically input to `gst_base_transform_set_in_place()`
+         * @returns `true` when the conversion can be done in place.
          */
         supports_inplace(): boolean;
         /**
-         * Set `in_rate,` `out_rate` and `config` as extra configuration for `convert`.
+         * Set `in_rate`, `out_rate` and `config` as extra configuration for `convert`.
          *
          * `in_rate` and `out_rate` specify the new sample rates of input and output
          * formats. A value of 0 leaves the sample rate unchanged.
          *
-         * `config` can be %NULL, in which case, the current configuration is not
+         * `config` can be `null`, in which case, the current configuration is not
          * changed.
          *
          * If the parameters in `config` can not be set exactly, this function returns
-         * %FALSE and will try to update as much state as possible. The new state can
-         * then be retrieved and refined with gst_audio_converter_get_config().
+         * `false` and will try to update as much state as possible. The new state can
+         * then be retrieved and refined with `gst_audio_converter_get_config()`.
          *
          * Look at the `GST_AUDIO_CONVERTER_OPT_*` fields to check valid configuration
          * option and values.
          * @param in_rate input rate
          * @param out_rate output rate
-         * @param config a #GstStructure or %NULL
-         * @returns %TRUE when the new parameters could be set
+         * @param config a {@link Gst.Structure} or `null`
+         * @returns `true` when the new parameters could be set
          */
         update_config(in_rate: number, out_rate: number, config?: Gst.Structure | null): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioDecoderClass = typeof AudioDecoder;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioDecoderPrivate {
         static $gtype: GObject.GType<AudioDecoderPrivate>;
     }
@@ -5490,8 +5997,9 @@ export namespace GstAudio {
      *
      * `matrix` is an two-dimensional array of `to_channels` times `from_channels`
      * coefficients, i.e. the i-th output channels is constructed by multiplicating
-     * the input channels with the coefficients in `matrix[`i] and taking the sum
+     * the input channels with the coefficients in `matrix`[i] and taking the sum
      * of the results.
+     * @gir-type Struct
      */
     class AudioDownmixMeta {
         static $gtype: GObject.GType<AudioDownmixMeta>;
@@ -5509,14 +6017,24 @@ export namespace GstAudio {
         static get_info(): Gst.MetaInfo;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioEncoderClass = typeof AudioEncoder;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioEncoderPrivate {
         static $gtype: GObject.GType<AudioEncoderPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioFilterClass = typeof AudioFilter;
     /**
      * Information for an audio format.
+     * @gir-type Struct
      */
     class AudioFormatInfo {
         static $gtype: GObject.GType<AudioFormatInfo>;
@@ -5546,9 +6064,10 @@ export namespace GstAudio {
 
     /**
      * Information describing audio properties. This information can be filled
-     * in from GstCaps with gst_audio_info_from_caps().
+     * in from GstCaps with `gst_audio_info_from_caps()`.
      *
      * Use the provided macros to access the info in this structure.
+     * @gir-type Struct
      */
     class AudioInfo {
         static $gtype: GObject.GType<AudioInfo>;
@@ -5583,7 +6102,7 @@ export namespace GstAudio {
 
         /**
          * Parse `caps` and update `info`.
-         * @param caps a #GstCaps
+         * @param caps a {@link Gst.Caps}
          */
         static from_caps(caps: Gst.Caps): [boolean, AudioInfo];
         /**
@@ -5594,30 +6113,30 @@ export namespace GstAudio {
         // Methods
 
         /**
-         * Converts among various #GstFormat types.  This function handles
+         * Converts among various {@link Gst.Format} types.  This function handles
          * GST_FORMAT_BYTES, GST_FORMAT_TIME, and GST_FORMAT_DEFAULT.  For
          * raw audio, GST_FORMAT_DEFAULT corresponds to audio frames.  This
          * function can be used to handle pad queries of the type GST_QUERY_CONVERT.
-         * @param src_fmt #GstFormat of the @src_val
+         * @param src_fmt {@link Gst.Format} of the `src_val`
          * @param src_val value to convert
-         * @param dest_fmt #GstFormat of the @dest_val
+         * @param dest_fmt {@link Gst.Format} of the `dest_val`
          * @returns TRUE if the conversion was successful.
          */
         convert(src_fmt: Gst.Format | null, src_val: number, dest_fmt: Gst.Format | null): [boolean, number];
         /**
          * Copy a GstAudioInfo structure.
-         * @returns a new #GstAudioInfo. free with gst_audio_info_free.
+         * @returns a new {@link GstAudio.AudioInfo}. free with gst_audio_info_free.
          */
         copy(): AudioInfo;
         /**
-         * Free a GstAudioInfo structure previously allocated with gst_audio_info_new()
-         * or gst_audio_info_copy().
+         * Free a GstAudioInfo structure previously allocated with `gst_audio_info_new()`
+         * or `gst_audio_info_copy()`.
          */
         free(): void;
         /**
-         * Compares two #GstAudioInfo and returns whether they are equal or not
-         * @param other a #GstAudioInfo
-         * @returns %TRUE if @info and @other are equal, else %FALSE.
+         * Compares two {@link GstAudio.AudioInfo} and returns whether they are equal or not
+         * @param other a {@link GstAudio.AudioInfo}
+         * @returns `true` if `info` and `other` are equal, else `false`.
          */
         is_equal(other: AudioInfo): boolean;
         /**
@@ -5636,14 +6155,16 @@ export namespace GstAudio {
             position?: AudioChannelPosition[] | null,
         ): void;
         /**
-         * Convert the values of `info` into a #GstCaps.
-         * @returns the new #GstCaps containing the          info of @info.
+         * Convert the values of `info` into a {@link Gst.Caps}.
+         * @returns the new {@link Gst.Caps} containing the          info of `info`.
          */
         to_caps(): Gst.Caps;
     }
 
     /**
      * Meta containing Audio Level Indication: https://tools.ietf.org/html/rfc6464
+     * @gir-type Struct
+     * @since 1.20
      */
     class AudioLevelMeta {
         static $gtype: GObject.GType<AudioLevelMeta>;
@@ -5656,15 +6177,17 @@ export namespace GstAudio {
         // Static methods
 
         /**
-         * Return the #GstMetaInfo associated with #GstAudioLevelMeta.
+         * Return the {@link Gst.MetaInfo} associated with {@link GstAudio.AudioLevelMeta}.
          */
         static get_info(): Gst.MetaInfo;
     }
 
     /**
-     * #GstAudioDownmixMeta defines an audio downmix matrix to be send along with
+     * {@link GstAudio.AudioDownmixMeta} defines an audio downmix matrix to be send along with
      * audio buffers. These functions in this module help to create and attach the
      * meta as well as extracting it.
+     * @gir-type Struct
+     * @since 1.16
      */
     class AudioMeta {
         static $gtype: GObject.GType<AudioMeta>;
@@ -5679,13 +6202,16 @@ export namespace GstAudio {
         static get_info(): Gst.MetaInfo;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioQuantize {
         static $gtype: GObject.GType<AudioQuantize>;
 
         // Methods
 
         /**
-         * Free a #GstAudioQuantize.
+         * Free a {@link GstAudio.AudioQuantize}.
          */
         free(): void;
         /**
@@ -5712,8 +6238,10 @@ export namespace GstAudio {
     }
 
     /**
-     * #GstAudioResampler is a structure which holds the information
+     * {@link GstAudio.AudioResampler} is a structure which holds the information
      * required to perform various kinds of resampling filtering.
+     * @gir-type Struct
+     * @since 1.10
      */
     abstract class AudioResampler {
         static $gtype: GObject.GType<AudioResampler>;
@@ -5722,9 +6250,9 @@ export namespace GstAudio {
 
         /**
          * Make a new resampler.
-         * @param method a #GstAudioResamplerMethod
-         * @param flags #GstAudioResamplerFlags
-         * @param format the #GstAudioFormat
+         * @param method a {@link GstAudio.AudioResamplerMethod}
+         * @param flags {@link GstAudio.AudioResamplerFlags}
+         * @param format the {@link GstAudio.AudioFormat}
          * @param channels the number of channels
          * @param in_rate input rate
          * @param out_rate output rate
@@ -5742,11 +6270,11 @@ export namespace GstAudio {
         /**
          * Set the parameters for resampling from `in_rate` to `out_rate` using `method`
          * for `quality` in `options`.
-         * @param method a #GstAudioResamplerMethod
+         * @param method a {@link GstAudio.AudioResamplerMethod}
          * @param quality the quality
          * @param in_rate the input rate
          * @param out_rate the output rate
-         * @param options a #GstStructure
+         * @param options a {@link Gst.Structure}
          */
         static options_set_quality(
             method: AudioResamplerMethod,
@@ -5759,27 +6287,27 @@ export namespace GstAudio {
         // Methods
 
         /**
-         * Free a previously allocated #GstAudioResampler `resampler`.
+         * Free a previously allocated {@link GstAudio.AudioResampler} `resampler`.
          */
         free(): void;
         /**
          * Get the number of input frames that would currently be needed
          * to produce `out_frames` from `resampler`.
          * @param out_frames number of input frames
-         * @returns The number of input frames needed for producing @out_frames of data from @resampler.
+         * @returns The number of input frames needed for producing `out_frames` of data from `resampler`.
          */
         get_in_frames(out_frames: number): number;
         /**
          * Get the maximum number of input samples that the resampler would
          * need before producing output.
-         * @returns the latency of @resampler as expressed in the number of frames.
+         * @returns the latency of `resampler` as expressed in the number of frames.
          */
         get_max_latency(): number;
         /**
          * Get the number of output frames that would be currently available when
          * `in_frames` are given to `resampler`.
          * @param in_frames number of input frames
-         * @returns The number of frames that would be available after giving @in_frames as input to @resampler.
+         * @returns The number of frames that would be available after giving `in_frames` as input to `resampler`.
          */
         get_out_frames(in_frames: number): number;
         /**
@@ -5791,12 +6319,12 @@ export namespace GstAudio {
          * If non-interleaved samples are used, `in` and `out` must point to an
          * array with pointers to memory blocks, one for each channel.
          *
-         * `in` may be %NULL, in which case `in_frames` of silence samples are pushed
+         * `in` may be `null`, in which case `in_frames` of silence samples are pushed
          * into the resampler.
          *
          * This function always produces `out_frames` of output and consumes `in_frames` of
-         * input. Use gst_audio_resampler_get_out_frames() and
-         * gst_audio_resampler_get_in_frames() to make sure `in_frames` and `out_frames`
+         * input. Use `gst_audio_resampler_get_out_frames()` and
+         * `gst_audio_resampler_get_in_frames()` to make sure `in_frames` and `out_frames`
          * are matching and `in` and `out` point to enough memory.
          * @param _in input samples
          * @param in_frames number of input frames
@@ -5815,18 +6343,22 @@ export namespace GstAudio {
          *
          * When `in_rate` or `out_rate` is 0, its value is unchanged.
          *
-         * When `options` is %NULL, the previously configured options are reused.
+         * When `options` is `null`, the previously configured options are reused.
          * @param in_rate new input rate
          * @param out_rate new output rate
-         * @param options new options or %NULL
-         * @returns %TRUE if the new parameters could be set
+         * @param options new options or `null`
+         * @returns `true` if the new parameters could be set
          */
         update(in_rate: number, out_rate: number, options: Gst.Structure): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioRingBufferClass = typeof AudioRingBuffer;
     /**
      * The structure containing the format specification of the ringbuffer.
+     * @gir-type Struct
      */
     class AudioRingBufferSpec {
         static $gtype: GObject.GType<AudioRingBufferSpec>;
@@ -5841,19 +6373,30 @@ export namespace GstAudio {
         seglatency: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioSinkClass = typeof AudioSink;
+    /**
+     * @gir-type Struct
+     */
     class AudioSinkClassExtension {
         static $gtype: GObject.GType<AudioSinkClassExtension>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioSrcClass = typeof AudioSrc;
     /**
-     * #GstAudioStreamAlign provides a helper object that helps tracking audio
+     * {@link GstAudio.AudioStreamAlign} provides a helper object that helps tracking audio
      * stream alignment and discontinuities, and detects discontinuities if
      * possible.
      *
-     * See gst_audio_stream_align_new() for a description of its parameters and
-     * gst_audio_stream_align_process() for the details of the processing.
+     * See `gst_audio_stream_align_new()` for a description of its parameters and
+     * `gst_audio_stream_align_process()` for the details of the processing.
+     * @gir-type Struct
+     * @since 1.14
      */
     class AudioStreamAlign {
         static $gtype: GObject.GType<AudioStreamAlign>;
@@ -5868,12 +6411,12 @@ export namespace GstAudio {
 
         /**
          * Copy a GstAudioStreamAlign structure.
-         * @returns a new #GstAudioStreamAlign. free with gst_audio_stream_align_free.
+         * @returns a new {@link GstAudio.AudioStreamAlign}. free with gst_audio_stream_align_free.
          */
         copy(): AudioStreamAlign;
         /**
-         * Free a GstAudioStreamAlign structure previously allocated with gst_audio_stream_align_new()
-         * or gst_audio_stream_align_copy().
+         * Free a GstAudioStreamAlign structure previously allocated with `gst_audio_stream_align_new()`
+         * or `gst_audio_stream_align_copy()`.
          */
         free(): void;
         /**
@@ -5908,7 +6451,7 @@ export namespace GstAudio {
          */
         mark_discont(): void;
         /**
-         * Processes data with `timestamp` and `n_samples,` and returns the output
+         * Processes data with `timestamp` and `n_samples`, and returns the output
          * timestamp, duration and sample position together with a boolean to signal
          * whether a discontinuity was detected or not. All non-discontinuous data
          * will have perfect timestamps and durations.
@@ -5925,9 +6468,9 @@ export namespace GstAudio {
          * first sample of the previous buffer is discontinuous with the last sample
          * of the current one.
          * @param discont if this data is considered to be discontinuous
-         * @param timestamp a #GstClockTime of the start of the data
+         * @param timestamp a {@link Gst.ClockTime} of the start of the data
          * @param n_samples number of samples to process
-         * @returns %TRUE if a discontinuity was detected, %FALSE otherwise.
+         * @returns `true` if a discontinuity was detected, `false` otherwise.
          */
         process(
             discont: boolean,
@@ -5952,6 +6495,9 @@ export namespace GstAudio {
         set_rate(rate: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StreamVolumeInterface = typeof StreamVolume;
     namespace StreamVolume {
         // Constructor properties interface
@@ -5966,8 +6512,32 @@ export namespace GstAudio {
         $gtype: GObject.GType<StreamVolume>;
         prototype: StreamVolume;
 
+        /**
+         * @param from {@link GstAudio.StreamVolumeFormat} to convert from
+         * @param to {@link GstAudio.StreamVolumeFormat} to convert to
+         * @param val Volume in `from` format that should be converted
+         */
         convert_volume(from: StreamVolumeFormat, to: StreamVolumeFormat, val: number): number;
     }
+    /**
+     * This interface is implemented by elements that provide a stream volume. Examples for
+     * such elements are #volume and #playbin.
+     *
+     * Applications can use this interface to get or set the current stream volume. For this
+     * the "volume" {@link GObject.Object} property can be used or the helper functions `gst_stream_volume_set_volume()`
+     * and `gst_stream_volume_get_volume()`. This volume is always a linear factor, i.e. 0.0 is muted
+     * 1.0 is 100%. For showing the volume in a GUI it might make sense to convert it to
+     * a different format by using `gst_stream_volume_convert_volume()`. Volume sliders should usually
+     * use a cubic volume.
+     *
+     * Separate from the volume the stream can also be muted by the "mute" {@link GObject.Object} property or
+     * `gst_stream_volume_set_mute()` and `gst_stream_volume_get_mute()`.
+     *
+     * Elements that provide some kind of stream volume should implement the "volume" and
+     * "mute" {@link GObject.Object} properties and handle setting and getting of them properly.
+     * The volume property is defined to be a linear volume factor.
+     * @gir-type Interface
+     */
     interface StreamVolume extends GObject.Object {
         // Properties
 
@@ -5978,9 +6548,23 @@ export namespace GstAudio {
 
         // Methods
 
+        /**
+         * @returns Returns `true` if the stream is muted
+         */
         get_mute(): boolean;
+        /**
+         * @param format {@link GstAudio.StreamVolumeFormat} which should be returned
+         * @returns The current stream volume as linear factor
+         */
         get_volume(format: StreamVolumeFormat | null): number;
+        /**
+         * @param mute Mute state that should be set
+         */
         set_mute(mute: boolean): void;
+        /**
+         * @param format {@link GstAudio.StreamVolumeFormat} of `val`
+         * @param val Linear volume factor that should be set
+         */
         set_volume(format: StreamVolumeFormat | null, val: number): void;
     }
 

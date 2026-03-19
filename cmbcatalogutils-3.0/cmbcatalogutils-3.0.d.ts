@@ -29,6 +29,9 @@ export namespace CmbCatalogUtils {
      * CmbCatalogUtils-3.0
      */
 
+    /**
+     * @param accessible
+     */
     function a11y_action_get_name(accessible: Atk.Object): string;
     /**
      * Return internal child
@@ -50,11 +53,19 @@ export namespace CmbCatalogUtils {
      */
     function get_iface_properties(name: string): GObject.ParamSpec[];
     /**
-     * Return whether buildable implements add_child() or not
+     * Return whether buildable implements `add_child()` or not
      * @param buildable Object to check
      */
     function implements_buildable_add_child(buildable: GObject.Object): boolean;
+    /**
+     * @param gtype
+     * @param default_value
+     */
     function pspec_enum_get_default_nick(gtype: GObject.GType, default_value: number): string;
+    /**
+     * @param gtype
+     * @param default_value
+     */
     function pspec_flags_get_default_nick(gtype: GObject.GType, default_value: number): string;
     /**
      * Name of the imported GIR library

@@ -30,6 +30,9 @@ export namespace Gtk4LayerShell {
      * Gtk4LayerShell-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum Edge {
         /**
          * The left edge of the screen.
@@ -54,6 +57,9 @@ export namespace Gtk4LayerShell {
         ENTRY_NUMBER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum KeyboardMode {
         /**
          * This window should not receive keyboard events.
@@ -75,6 +81,9 @@ export namespace Gtk4LayerShell {
         ENTRY_NUMBER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Layer {
         /**
          * The background layer.
@@ -109,27 +118,62 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      */
     function auto_exclusive_zone_enable(window: Gtk.Window): void;
+    /**
+     * @param window A layer surface.
+     * @returns if the surface's exclusive zone is set to change based on the window's size
+     */
     function auto_exclusive_zone_is_enabled(window: Gtk.Window): boolean;
+    /**
+     * @param window A layer surface.
+     * @param edge the edge to which the surface may or may not be anchored
+     * @returns if this surface is anchored to the given edge.
+     */
     function get_anchor(window: Gtk.Window, edge: Edge | null): boolean;
+    /**
+     * @param window A layer surface.
+     * @returns the window's exclusive zone (which may have been set manually or automatically)
+     */
     function get_exclusive_zone(window: Gtk.Window): number;
+    /**
+     * @param window A layer surface.
+     * @returns current keyboard interactivity mode for `window`.
+     */
     function get_keyboard_mode(window: Gtk.Window): KeyboardMode;
+    /**
+     * @param window A layer surface.
+     * @returns the current layer.
+     */
     function get_layer(window: Gtk.Window): Layer;
+    /**
+     * @returns the major version number of the GTK Layer Shell library
+     */
     function get_major_version(): number;
+    /**
+     * @param window A layer surface.
+     * @param edge the margin edge to get
+     * @returns the size of the margin for the given edge.
+     */
     function get_margin(window: Gtk.Window, edge: Edge | null): number;
+    /**
+     * @returns the micro/patch version number of the GTK Layer Shell library
+     */
     function get_micro_version(): number;
+    /**
+     * @returns the minor version number of the GTK Layer Shell library
+     */
     function get_minor_version(): number;
     /**
      * NOTE: To get which monitor the surface is actually on, use
-     * gdk_display_get_monitor_at_window().
+     * `gdk_display_get_monitor_at_window()`.
      * @param window A layer surface.
-     * @returns the monitor this surface will/has requested to be on, can be %NULL.
+     * @returns the monitor this surface will/has requested to be on, can be `null`.
      */
     function get_monitor(window: Gtk.Window): Gdk.Monitor;
     /**
      * NOTE: this function does not return ownership of the string. Do not free the returned string.
      * Future calls into the library may invalidate the returned string.
      * @param window A layer surface.
-     * @returns a reference to the namespace property. If namespace is unset, returns the default namespace ("gtk4-layer-shell"). Never returns %NULL.
+     * @returns a reference to the namespace property. If namespace is unset, returns the default namespace ("gtk4-layer-shell"). Never returns `null`.
      */
     function get_namespace(window: Gtk.Window): string;
     /**
@@ -137,17 +181,25 @@ export namespace Gtk4LayerShell {
      * @returns version of the zwlr_layer_shell_v1 protocol supported by the compositor or 0 if the protocol is not supported.
      */
     function get_protocol_version(): number;
+    /**
+     * @param window A layer surface.
+     * @returns The underlying layer surface Wayland object
+     */
     function get_zwlr_layer_surface_v1(window: Gtk.Window): any | null;
     /**
      * Set the `window` up to be a layer surface once it is mapped. this must be called before
      * the `window` is realized.
-     * @param window A #GtkWindow to be turned into a layer surface.
+     * @param window A {@link Gtk.Window} to be turned into a layer surface.
      */
     function init_for_window(window: Gtk.Window): void;
+    /**
+     * @param window A {@link Gtk.Window} that may or may not have a layer surface.
+     * @returns if `window` has been initialized as a layer surface.
+     */
     function is_layer_window(window: Gtk.Window): boolean;
     /**
      * May block for a Wayland roundtrip the first time it's called.
-     * @returns %TRUE if the platform is Wayland and Wayland compositor supports the zwlr_layer_shell_v1 protocol.
+     * @returns `true` if the platform is Wayland and Wayland compositor supports the zwlr_layer_shell_v1 protocol.
      */
     function is_supported(): boolean;
     /**
@@ -155,10 +207,10 @@ export namespace Gtk4LayerShell {
      * - If two perpendicular edges are anchored, the surface with be anchored to that corner
      * - If two opposite edges are anchored, the window will be stretched across the screen in that direction
      *
-     * Default is %FALSE for each #GtkLayerShellEdge
+     * Default is `false` for each {@link Gtk4LayerShell.Edge}
      * @param window A layer surface.
-     * @param edge A #GtkLayerShellEdge this layer surface may be anchored to.
-     * @param anchor_to_edge Whether or not to anchor this layer surface to @edge.
+     * @param edge A {@link Gtk4LayerShell.Edge} this layer surface may be anchored to.
+     * @param anchor_to_edge Whether or not to anchor this layer surface to `edge`.
      */
     function set_anchor(window: Gtk.Window, edge: Edge | null, anchor_to_edge: boolean): void;
     /**
@@ -176,7 +228,7 @@ export namespace Gtk4LayerShell {
      * Sets if/when `window` should receive keyboard events from the compositor, see
      * GtkLayerShellKeyboardMode for details.
      *
-     * Default is %GTK_LAYER_SHELL_KEYBOARD_MODE_NONE
+     * Default is {@link Gtk4LayerShell.KeyboardMode.NONE}
      * @param window A layer surface.
      * @param mode The type of keyboard interactivity requested.
      */
@@ -186,7 +238,7 @@ export namespace Gtk4LayerShell {
      * be changed on-the-fly in the current version of the layer shell protocol, but on compositors that only support an
      * older version the `window` is remapped so the change can take effect.
      *
-     * Default is %GTK_LAYER_SHELL_LAYER_TOP
+     * Default is {@link Gtk4LayerShell.Layer.TOP}
      * @param window A layer surface.
      * @param layer The layer on which this surface appears.
      */
@@ -195,19 +247,19 @@ export namespace Gtk4LayerShell {
      * Set the margin for a specific `edge` of a `window`. Effects both surface's distance from
      * the edge and its exclusive zone size (if auto exclusive zone enabled).
      *
-     * Default is 0 for each #GtkLayerShellEdge
+     * Default is 0 for each {@link Gtk4LayerShell.Edge}
      * @param window A layer surface.
-     * @param edge The #GtkLayerShellEdge for which to set the margin.
-     * @param margin_size The margin for @edge to be set.
+     * @param edge The {@link Gtk4LayerShell.Edge} for which to set the margin.
+     * @param margin_size The margin for `edge` to be set.
      */
     function set_margin(window: Gtk.Window, edge: Edge | null, margin_size: number): void;
     /**
-     * Set the output for the window to be placed on, or %NULL to let the compositor choose.
+     * Set the output for the window to be placed on, or `null` to let the compositor choose.
      * If the window is currently mapped, it will get remapped so the change can take effect.
      *
-     * Default is %NULL
+     * Default is `null`
      * @param window A layer surface.
-     * @param monitor The output this layer surface will be placed on (%NULL to let the compositor decide).
+     * @param monitor The output this layer surface will be placed on (`null` to let the compositor decide).
      */
     function set_monitor(window: Gtk.Window, monitor: Gdk.Monitor): void;
     /**
@@ -218,7 +270,7 @@ export namespace Gtk4LayerShell {
      * ownership of original. If the window is currently mapped, it will get remapped so
      * the change can take effect.
      *
-     * Default is "gtk4-layer-shell" (which will be used if set to %NULL)
+     * Default is "gtk4-layer-shell" (which will be used if set to `null`)
      * @param window A layer surface.
      * @param name_space The namespace of this layer surface.
      */

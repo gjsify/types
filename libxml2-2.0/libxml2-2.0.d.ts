@@ -18,34 +18,58 @@ export namespace libxml2 {
      */
 
     function dummy(): void;
+    /**
+     * @gir-type Struct
+     */
     class Node {
         static $gtype: GObject.GType<Node>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class NodePtr {
         static $gtype: GObject.GType<NodePtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Doc {
         static $gtype: GObject.GType<Doc>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DocPtr {
         static $gtype: GObject.GType<DocPtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class NsPtr {
         static $gtype: GObject.GType<NsPtr>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Char {
         static $gtype: GObject.GType<Char>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class TextWriter {
         static $gtype: GObject.GType<TextWriter>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class TextReader {
         static $gtype: GObject.GType<TextReader>;
     }

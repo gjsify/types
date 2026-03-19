@@ -26,6 +26,10 @@ export namespace ECal {
      * ECal-2.0
      */
 
+    /**
+     * @gir-type Enum
+     * @since 3.2
+     */
     enum ClientError {
         /**
          * No such calendar
@@ -59,6 +63,8 @@ export namespace ECal {
 
     /**
      * Indicates the type of calendar
+     * @gir-type Enum
+     * @since 3.2
      */
     enum ClientSourceType {
         /**
@@ -81,6 +87,7 @@ export namespace ECal {
 
     /**
      * Alarm types
+     * @gir-type Enum
      */
     enum ComponentAlarmAction {
         /**
@@ -113,6 +120,9 @@ export namespace ECal {
         export const $gtype: GObject.GType<ComponentAlarmTriggerKind>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ComponentAlarmTriggerKind {
         NONE,
         RELATIVE_START,
@@ -126,6 +136,7 @@ export namespace ECal {
 
     /**
      * CLASSIFICATION property
+     * @gir-type Enum
      */
     enum ComponentClassification {
         /**
@@ -156,6 +167,7 @@ export namespace ECal {
 
     /**
      * Way in which a period of time is specified
+     * @gir-type Enum
      */
     enum ComponentPeriodKind {
         /**
@@ -174,6 +186,7 @@ export namespace ECal {
 
     /**
      * The kind of range
+     * @gir-type Enum
      */
     enum ComponentRangeKind {
         /**
@@ -196,6 +209,7 @@ export namespace ECal {
 
     /**
      * Time transparency
+     * @gir-type Enum
      */
     enum ComponentTransparency {
         /**
@@ -224,6 +238,7 @@ export namespace ECal {
      * Types of calendar components to be stored by a ECalComponent, as per RFC 2445.
      * We don't put the alarm component type here since we store alarms as separate
      * structures inside the other "real" components.
+     * @gir-type Enum
      */
     enum ComponentVType {
         /**
@@ -254,73 +269,90 @@ export namespace ECal {
 
     /**
      * An email address preferred for e-mail reminders by the calendar.
+     * @since 3.2
      */
     const BACKEND_PROPERTY_ALARM_EMAIL_ADDRESS: string;
     /**
      * An email address associated with the calendar.
+     * @since 3.2
      */
     const BACKEND_PROPERTY_CAL_EMAIL_ADDRESS: string;
     /**
      * A default object for the calendar. Calendars use VEVENT, memo lists VJOURNAL
      * and task lists VTODO, which can have prefilled values by the backend.
+     * @since 3.2
      */
     const BACKEND_PROPERTY_DEFAULT_OBJECT: string;
     /**
      * The current overall revision string, this can be used as
      * a quick check to see if data has changed at all since the
      * last time the calendar revision was observed.
+     * @since 3.4
      */
     const BACKEND_PROPERTY_REVISION: string;
     /**
      * Extension property for alarm components so that we can reference them by UID.
+     * @since 3.34
      */
     const EVOLUTION_ALARM_UID_PROPERTY: string;
     /**
      * The X parameter name being used to store the enddate in RRULE and EXRULE properties.
+     * @since 3.34
      */
     const EVOLUTION_ENDDATE_PARAMETER: string;
     const LIBICAL_GLIB_UNSTABLE_API: number;
     /**
      * Flag indicating that the backend supports alarm description
+     * @since 3.8
      */
     const STATIC_CAPABILITY_ALARM_DESCRIPTION: string;
     /**
      * Let the client know that it should store All Day event times as time
      * with a time zone, rather than as a date.
+     * @since 3.18
      */
     const STATIC_CAPABILITY_ALL_DAY_EVENT_AS_TIME: string;
     /**
      * Flag indicating that the backend supports bulk additions.
+     * @since 3.6
      */
     const STATIC_CAPABILITY_BULK_ADDS: string;
     /**
      * Flag indicating that the backend supports bulk modifications.
+     * @since 3.6
      */
     const STATIC_CAPABILITY_BULK_MODIFIES: string;
     /**
      * Flag indicating that the backend supports bulk removals.
+     * @since 3.6
      */
     const STATIC_CAPABILITY_BULK_REMOVES: string;
     /**
      * When the capability is set, the client supports storing color
      * for individual components.
+     * @since 3.30
      */
     const STATIC_CAPABILITY_COMPONENT_COLOR: string;
+    /**
+     * @since 2.26
+     */
     const STATIC_CAPABILITY_CREATE_MESSAGES: string;
     const STATIC_CAPABILITY_DELEGATE_SUPPORTED: string;
     const STATIC_CAPABILITY_DELEGATE_TO_MANY: string;
     const STATIC_CAPABILITY_HAS_UNACCEPTED_MEETING: string;
     /**
-     * Set, when the backend supports %E_CAL_STATIC_CAPABILITY_SAVE_SCHEDULES and
+     * Set, when the backend supports `E_CAL_STATIC_CAPABILITY_SAVE_SCHEDULES` and
      * it can suppress iTip message on component removal. The capability should
-     * be ignored when the %E_CAL_STATIC_CAPABILITY_SAVE_SCHEDULES is not present.
+     * be ignored when the `E_CAL_STATIC_CAPABILITY_SAVE_SCHEDULES` is not present.
      *
-     * The backend checks %E_CAL_OPERATION_FLAG_DISABLE_ITIP_MESSAGE flag when these
+     * The backend checks {@link ECal.OperationFlags.DISABLE_ITIP_MESSAGE} flag when these
      * capabilities are present and sends or does not send iTip message accordingly.
+     * @since 3.50
      */
     const STATIC_CAPABILITY_ITIP_SUPPRESS_ON_REMOVE_SUPPORTED: string;
     /**
      * Flag indicating that the backend does not support alarm after start the event
+     * @since 3.8
      */
     const STATIC_CAPABILITY_NO_ALARM_AFTER_START: string;
     const STATIC_CAPABILITY_NO_ALARM_REPEAT: string;
@@ -342,10 +374,14 @@ export namespace ECal {
     const STATIC_CAPABILITY_ORGANIZER_MUST_ATTEND: string;
     const STATIC_CAPABILITY_ORGANIZER_NOT_EMAIL_ADDRESS: string;
     const STATIC_CAPABILITY_RECURRENCES_NO_MASTER: string;
+    /**
+     * @since 2.30
+     */
     const STATIC_CAPABILITY_REFRESH_SUPPORTED: string;
     const STATIC_CAPABILITY_REMOVE_ALARMS: string;
     /**
      * FIXME: Document me.
+     * @since 3.2
      */
     const STATIC_CAPABILITY_REMOVE_ONLY_THIS: string;
     const STATIC_CAPABILITY_REQ_SEND_OPTIONS: string;
@@ -353,6 +389,7 @@ export namespace ECal {
      * Set, when the backend supports retract. That's a way to ask for a meeting
      * deletion with a comment, which is stored in a component as
      * X-EVOLUTION-RETRACT-COMMENT property.
+     * @since 3.50
      */
     const STATIC_CAPABILITY_RETRACT_SUPPORTED: string;
     const STATIC_CAPABILITY_SAVE_SCHEDULES: string;
@@ -360,36 +397,43 @@ export namespace ECal {
      * When the capability is set, the backend handles only simple memos,
      * which means it stores only memo description. The summary can be changed
      * by the backend, if needed.
+     * @since 3.38
      */
     const STATIC_CAPABILITY_SIMPLE_MEMO: string;
     /**
-     * Similar to the %E_CAL_STATIC_CAPABILITY_SIMPLE_MEMO, except the backend stores
+     * Similar to the `E_CAL_STATIC_CAPABILITY_SIMPLE_MEMO`, except the backend stores
      * the description and the summary separately.
+     * @since 3.42
      */
     const STATIC_CAPABILITY_SIMPLE_MEMO_WITH_SUMMARY: string;
     /**
      * When the capability is set, the client can store and provide recurring
      * tasks, otherwise it cannot.
+     * @since 3.30
      */
     const STATIC_CAPABILITY_TASK_CAN_RECUR: string;
     /**
      * Let the client know that the Task Start date, Due date and Completed date
      * can be entered only as dates. When the capability is not set, then these
      * can be date and time.
+     * @since 3.24
      */
     const STATIC_CAPABILITY_TASK_DATE_ONLY: string;
     /**
      * Set, when the backend supports ESTIMATED-DURATION property for tasks.
+     * @since 3.44
      */
     const STATIC_CAPABILITY_TASK_ESTIMATED_DURATION: string;
     /**
      * When the capability is set, the backend handles task recurrence
      * completion on its own. This does not imply E_CAL_STATIC_CAPABILITY_TASK_CAN_RECUR.
+     * @since 3.34
      */
     const STATIC_CAPABILITY_TASK_HANDLE_RECUR: string;
     /**
      * When the capability is set, the client cannot store reminders
      * on tasks, otherwise it can.
+     * @since 3.30
      */
     const STATIC_CAPABILITY_TASK_NO_ALARM: string;
     /**
@@ -400,9 +444,10 @@ export namespace ECal {
     function isodate_from_time_t(t: number): string;
     /**
      * Matches `tzid` against the system timezone definitions
-     * and returns the matching TZID, or %NULL if none found
+     * and returns the matching TZID, or `null` if none found
      * @param tzid a timezone ID
-     * @returns The matching TZID, or %NULL if none found or for UTC
+     * @returns The matching TZID, or `null` if none found or for UTC
+     * @since 2.24
      */
     function match_tzid(tzid: string): string | null;
     /**
@@ -413,14 +458,15 @@ export namespace ECal {
      * The `week_start_day` is used for weekly recurrences, to start the list of selected
      * days at that day.
      *
-     * Uses e_time_format_date_and_time() to format the date/time value in the string.
-     * Call e_cal_recur_describe_recurrence_ex() with a custom formatting function.
+     * Uses `e_time_format_date_and_time()` to format the date/time value in the string.
+     * Call `e_cal_recur_describe_recurrence_ex()` with a custom formatting function.
      *
-     * Free the returned string with g_free(), when no longer needed.
-     * @param icalcomp an #ICalComponent
+     * Free the returned string with `g_free()`, when no longer needed.
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param week_start_day a day when the week starts
-     * @param flags bit-or of #ECalRecurDescribeRecurrenceFlags
-     * @returns a newly allocated string, which    describes the recurrence of the @icalcomp, or #NULL, when the @icalcomp    doesn't recur or the recurrence is too complicated to describe, also    according to given @flags.
+     * @param flags bit-or of {@link ECal.RecurDescribeRecurrenceFlags}
+     * @returns a newly allocated string, which    describes the recurrence of the `icalcomp`, or `NULL`, when the `icalcomp`    doesn't recur or the recurrence is too complicated to describe, also    according to given `flags`.
+     * @since 3.30
      */
     function recur_describe_recurrence(
         icalcomp: ICalGLib.Component,
@@ -435,15 +481,16 @@ export namespace ECal {
      * The `week_start_day` is used for weekly recurrences, to start the list of selected
      * days at that day.
      *
-     * If `datetime_fmt_func` is %NULL, the e_time_format_date_and_time() is used
+     * If `datetime_fmt_func` is `null`, the `e_time_format_date_and_time()` is used
      * to format data/time value.
      *
-     * Free the returned string with g_free(), when no longer needed.
-     * @param icalcomp an #ICalComponent
+     * Free the returned string with `g_free()`, when no longer needed.
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param week_start_day a day when the week starts
-     * @param flags bit-or of #ECalRecurDescribeRecurrenceFlags
+     * @param flags bit-or of {@link ECal.RecurDescribeRecurrenceFlags}
      * @param datetime_fmt_func formatting function for date/time value
-     * @returns a newly allocated string, which    describes the recurrence of the @icalcomp, or #NULL, when the @icalcomp    doesn't recur or the recurrence is too complicated to describe, also    according to given @flags.
+     * @returns a newly allocated string, which    describes the recurrence of the `icalcomp`, or `NULL`, when the `icalcomp`    doesn't recur or the recurrence is too complicated to describe, also    according to given `flags`.
+     * @since 3.38
      */
     function recur_describe_recurrence_ex(
         icalcomp: ICalGLib.Component,
@@ -453,17 +500,18 @@ export namespace ECal {
     ): string | null;
     /**
      * This recalculates the end dates for recurrence & exception rules which use
-     * the COUNT property. If `refresh` is %TRUE it will recalculate all enddates
-     * for rules which use COUNT. If `refresh` is %FALSE, it will only calculate
-     * the enddate if it hasn't already been set. It returns %TRUE if the component
+     * the COUNT property. If `refresh` is `true` it will recalculate all enddates
+     * for rules which use COUNT. If `refresh` is `false`, it will only calculate
+     * the enddate if it hasn't already been set. It returns `true` if the component
      * was changed, i.e. if the component should be saved at some point.
-     * We store the enddate in the %E_CAL_EVOLUTION_ENDDATE_PARAMETER parameter of the RRULE
+     * We store the enddate in the `E_CAL_EVOLUTION_ENDDATE_PARAMETER` parameter of the RRULE
      * or EXRULE.
-     * @param comp an #ECalComponent
-     * @param refresh %TRUE to recalculate all end dates
+     * @param comp an {@link ECal.Component}
+     * @param refresh `true` to recalculate all end dates
      * @param tz_cb function to call to resolve timezones
-     * @param cancellable optional #GCancellable object, or %NULL
-     * @returns %TRUE if the component was changed, %FALSE otherwise
+     * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+     * @returns `true` if the component was changed, `false` otherwise
+     * @since 2.32
      */
     function recur_ensure_end_dates(
         comp: Component,
@@ -487,12 +535,13 @@ export namespace ECal {
      *
      * The default_timezone argument is used for DTSTART or DTEND properties that
      * are DATE values or do not have a TZID (i.e. floating times).
-     * @param icalcomp an #ICalComponent
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param interval_start an interval start, for which generate instances
      * @param interval_end an interval end, for which generate instances
-     * @param default_timezone a default #ICalTimezone
-     * @param cancellable a #GCancellable; can be %NULL
-     * @returns %TRUE if successful (when all instances had been returned), %FALSE otherwise.
+     * @param default_timezone a default {@link ICalGLib.Timezone}
+     * @param cancellable a {@link Gio.Cancellable}; can be `null`
+     * @returns `true` if successful (when all instances had been returned), `false` otherwise.
+     * @since 3.20
      */
     function recur_generate_instances_sync(
         icalcomp: ICalGLib.Component,
@@ -501,7 +550,18 @@ export namespace ECal {
         default_timezone: ICalGLib.Timezone,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
+    /**
+     * @param nth the nth index, counting from zero
+     * @returns Localized text for the nth position, counting from zero, which means    for '0' it'll return "1st", for '1' it'll return "2nd" and so on, up to 30,    when it'll return "31st".
+     * @since 3.28
+     */
     function recur_get_localized_nth(nth: number): string;
+    /**
+     * @param ir
+     * @param prop
+     * @param zone
+     * @param convert_end_date
+     */
     function recur_obtain_enddate(
         ir: ICalGLib.Recurrence,
         prop: ICalGLib.Property,
@@ -514,8 +574,9 @@ export namespace ECal {
      * Note: Since 3.4 the returned timezone location is either NULL or
      * an equivalent within known libical timezones.
      *
-     * The returned string should be freed with g_free().
-     * @returns system timezone location string, or %NULL on an error.
+     * The returned string should be freed with `g_free()`.
+     * @returns system timezone location string, or `null` on an error.
+     * @since 2.28
      */
     function system_timezone_get_location(): string | null;
     /**
@@ -523,12 +584,12 @@ export namespace ECal {
      * Note that if clocks go forward due to daylight savings time, there are
      * some non-existent local times, so the hour may be changed to make it a
      * valid time. This also means that it may not be wise to keep calling
-     * time_add_day() to step through a certain period - if the hour gets changed
-     * to make it valid time, any further calls to time_add_day() will also return
+     * `time_add_day()` to step through a certain period - if the hour gets changed
+     * to make it valid time, any further calls to `time_add_day()` will also return
      * this hour, which may not be what you want.
      * @param time A time_t value.
      * @param days Number of days to add.
-     * @returns a time_t value containing @time plus the days added.
+     * @returns a time_t value containing `time` plus the days added.
      */
     function time_add_day(time: number, days: number): number;
     /**
@@ -536,11 +597,11 @@ export namespace ECal {
      * the given timezone.
      * NOTE: this function is only here to make the transition to the timezone
      * functions easier. New code should use ICalTime values and
-     * i_cal_time_adjust() to add or subtract days, hours, minutes & seconds.
+     * `i_cal_time_adjust()` to add or subtract days, hours, minutes & seconds.
      * @param time A time_t value.
      * @param days Number of days to add.
      * @param zone Timezone to use.
-     * @returns a time_t value containing @time plus the days added.
+     * @returns a time_t value containing `time` plus the days added.
      */
     function time_add_day_with_zone(time: number, days: number, zone: ICalGLib.Timezone): number;
     /**
@@ -553,18 +614,18 @@ export namespace ECal {
      *
      * NOTE: this function is only here to make the transition to the timezone
      * functions easier. New code should use ICalTime values and
-     * i_cal_time_adjust() to add or subtract days, hours, minutes & seconds.
+     * `i_cal_time_adjust()` to add or subtract days, hours, minutes & seconds.
      * @param time A time_t value.
      * @param months Number of months to add.
      * @param zone Timezone to use.
-     * @returns a time_t value containing @time plus the months added.
+     * @returns a time_t value containing `time` plus the months added.
      */
     function time_add_month_with_zone(time: number, months: number, zone: ICalGLib.Timezone): number;
     /**
      * Adds the given number of weeks to a time value.
      * @param time A time_t value.
      * @param weeks Number of weeks to add.
-     * @returns a time_t value containing @time plus the weeks added.
+     * @returns a time_t value containing `time` plus the weeks added.
      */
     function time_add_week(time: number, weeks: number): number;
     /**
@@ -572,11 +633,11 @@ export namespace ECal {
      * the given timezone.
      * NOTE: this function is only here to make the transition to the timezone
      * functions easier. New code should use ICalTime values and
-     * i_cal_time_adjust() to add or subtract days, hours, minutes & seconds.
+     * `i_cal_time_adjust()` to add or subtract days, hours, minutes & seconds.
      * @param time A time_t value.
      * @param weeks Number of weeks to add.
      * @param zone Timezone to use.
-     * @returns a time_t value containing @time plus the weeks added.
+     * @returns a time_t value containing `time` plus the weeks added.
      */
     function time_add_week_with_zone(time: number, weeks: number, zone: ICalGLib.Timezone): number;
     /**
@@ -590,7 +651,7 @@ export namespace ECal {
      * timezone.
      * NOTE: this function is only here to make the transition to the timezone
      * functions easier. New code should use ICalTime values and
-     * i_cal_time_adjust() to add or subtract days, hours, minutes & seconds.
+     * `i_cal_time_adjust()` to add or subtract days, hours, minutes & seconds.
      * @param time A time_t value.
      * @param zone Timezone to use.
      * @returns the beginning of the day.
@@ -607,7 +668,7 @@ export namespace ECal {
      * timezone. (The end of the day is the start of the next day.)
      * NOTE: this function is only here to make the transition to the timezone
      * functions easier. New code should use ICalTime values and
-     * i_cal_time_adjust() to add or subtract days, hours, minutes & seconds.
+     * `i_cal_time_adjust()` to add or subtract days, hours, minutes & seconds.
      * @param time A time_t value.
      * @param zone Timezone to use.
      * @returns the end of the day.
@@ -665,27 +726,27 @@ export namespace ECal {
      * timezone.
      * NOTE: this function is only here to make the transition to the timezone
      * functions easier. New code should use ICalTime values and
-     * i_cal_time_adjust() to add or subtract days, hours, minutes & seconds.
+     * `i_cal_time_adjust()` to add or subtract days, hours, minutes & seconds.
      * @param time A time_t value.
      * @param zone Timezone to use.
      * @returns the beginning of the month.
      */
     function time_month_begin_with_zone(time: number, zone: ICalGLib.Timezone): number;
     /**
-     * Converts a time_t value to a #GDate structure using the specified timezone.
-     * This is analogous to g_date_set_time() but takes the timezone into account.
-     * @param date Destination #GDate value.
+     * Converts a time_t value to a {@link GLib.Date} structure using the specified timezone.
+     * This is analogous to `g_date_set_time()` but takes the timezone into account.
+     * @param date Destination {@link GLib.Date} value.
      * @param time A time value.
-     * @param zone Desired timezone for destination @date, or %NULL if    the UTC timezone is desired.
+     * @param zone Desired timezone for destination `date`, or `null` if    the UTC timezone is desired.
      */
     function time_to_gdate_with_zone(date: GLib.Date, time: number, zone?: ICalGLib.Timezone | null): void;
     /**
      * Returns the start of the week containing the given time_t, using the given
-     * timezone. week_start_day should use the same values as mktime(),
+     * timezone. week_start_day should use the same values as `mktime()`,
      * i.e. 0 (Sun) to 6 (Sat).
      * NOTE: this function is only here to make the transition to the timezone
      * functions easier. New code should use ICalTime values and
-     * i_cal_time_adjust() to add or subtract days, hours, minutes & seconds.
+     * `i_cal_time_adjust()` to add or subtract days, hours, minutes & seconds.
      * @param time A time_t value.
      * @param week_start_day Day to use as the starting of the week.
      * @param zone Timezone to use.
@@ -697,7 +758,7 @@ export namespace ECal {
      * timezone.
      * NOTE: this function is only here to make the transition to the timezone
      * functions easier. New code should use ICalTime values and
-     * i_cal_time_adjust() to add or subtract days, hours, minutes & seconds.
+     * `i_cal_time_adjust()` to add or subtract days, hours, minutes & seconds.
      * @param time A time_t value.
      * @param zone Timezone to use.
      * @returns the beginning of the year.
@@ -714,8 +775,9 @@ export namespace ECal {
      * Modifies the `vtimezone` to include only subcomponents influencing
      * the passed-in time interval between `from` and `to`.
      * @param vtimezone a VTIMEZONE component to modify
-     * @param from an #ICalTime for the minimum time
-     * @param to until which time to clamp, or %NULL for infinity
+     * @param from an {@link ICalGLib.Time} for the minimum time
+     * @param to until which time to clamp, or `null` for infinity
+     * @since 3.40
      */
     function util_clamp_vtimezone(
         vtimezone: ICalGLib.Component,
@@ -723,10 +785,11 @@ export namespace ECal {
         to?: ICalGLib.Time | null,
     ): ICalGLib.Component;
     /**
-     * Similar to e_cal_util_clamp_vtimezone(), only reads the clamp
+     * Similar to `e_cal_util_clamp_vtimezone()`, only reads the clamp
      * times from the `component`.
      * @param vtimezone a VTIMEZONE component to modify
-     * @param component an #ICalComponent to read the times from
+     * @param component an {@link ICalGLib.Component} to read the times from
+     * @since 3.40
      */
     function util_clamp_vtimezone_by_component(
         vtimezone: ICalGLib.Component,
@@ -735,25 +798,27 @@ export namespace ECal {
     /**
      * Searches for an X property named `x_name` within X properties
      * of `icalcomp` and returns its value as a newly allocated string.
-     * Free it with g_free(), when no longer needed.
-     * @param icalcomp an #ICalComponent
+     * Free it with `g_free()`, when no longer needed.
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param x_name name of the X property
-     * @returns Newly allocated value of the first @x_name    X property in @icalcomp, or %NULL, if not found.
+     * @returns Newly allocated value of the first `x_name`    X property in `icalcomp`, or `null`, if not found.
+     * @since 3.34
      */
     function util_component_dup_x_property(icalcomp: ICalGLib.Component, x_name: string): string | null;
     /**
      * Searches properties of kind `prop_kind` in the `icalcomp` and returns
-     * one, which is usable for the `locale`. When `locale` is %NULL,
+     * one, which is usable for the `locale`. When `locale` is `null`,
      * the current locale is assumed. If no such property for the locale
      * exists either the one with no language parameter or the first
      * found is returned.
      *
-     * Free the returned non-NULL #ICalProperty with g_object_unref(),
+     * Free the returned non-NULL {@link ICalGLib.Property} with `g_object_unref()`,
      * when no longer needed.
-     * @param icalcomp an #ICalComponent
-     * @param prop_kind an #ICalPropertyKind to traverse
-     * @param locale a locale identifier, or %NULL
-     * @returns a property of kind @prop_kind for the @locale,    %NULL if no such property is set on the @comp.
+     * @param icalcomp an {@link ICalGLib.Component}
+     * @param prop_kind an {@link ICalGLib.PropertyKind} to traverse
+     * @param locale a locale identifier, or `null`
+     * @returns a property of kind `prop_kind` for the `locale`,    `null` if no such property is set on the `comp`.
+     * @since 3.46
      */
     function util_component_find_property_for_locale(
         icalcomp: ICalGLib.Component,
@@ -763,80 +828,89 @@ export namespace ECal {
     /**
      * Searches for an X property named `x_name` within X properties
      * of `icalcomp` and returns it. Free the non-NULL object
-     * with g_object_unref(), when no longer needed.
-     * @param icalcomp an #ICalComponent
+     * with `g_object_unref()`, when no longer needed.
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param x_name name of the X property
-     * @returns the first X ICalProperty named    @x_name, or %NULL, when none found.
+     * @returns the first X ICalProperty named    `x_name`, or `null`, when none found.
+     * @since 3.34
      */
     function util_component_find_x_property(icalcomp: ICalGLib.Component, x_name: string): ICalGLib.Property | null;
+    /**
+     * @param icalcomp an {@link ICalGLib.Component}
+     * @returns a RECURRENCEID property as string,    or `null`, when the `icalcomp` is not an instance. Free the returned    string with `g_free()`, when no longer needed.
+     * @since 3.34
+     */
     function util_component_get_recurid_as_string(icalcomp: ICalGLib.Component): string | null;
     /**
-     * Checks whether an #ICalComponent has any alarm.
-     * @param icalcomp An #ICalComponent.
+     * Checks whether an {@link ICalGLib.Component} has any alarm.
+     * @param icalcomp An {@link ICalGLib.Component}.
      * @returns TRUE if it has alarms, FALSE otherwise.
      */
     function util_component_has_alarms(icalcomp: ICalGLib.Component): boolean;
     /**
-     * Checks if an #ICalComponent has any attendees.
-     * @param icalcomp An #ICalComponent.
+     * Checks if an {@link ICalGLib.Component} has any attendees.
+     * @param icalcomp An {@link ICalGLib.Component}.
      * @returns TRUE if there are attendees, FALSE if not.
      */
     function util_component_has_attendee(icalcomp: ICalGLib.Component): boolean;
     /**
-     * Checks whether an #ICalComponent has an organizer.
-     * @param icalcomp An #ICalComponent.
+     * Checks whether an {@link ICalGLib.Component} has an organizer.
+     * @param icalcomp An {@link ICalGLib.Component}.
      * @returns TRUE if there is an organizer, FALSE if not.
      */
     function util_component_has_organizer(icalcomp: ICalGLib.Component): boolean;
     /**
      * Returns, whether the `icalcomp` has a property of `prop_kind`. To check
-     * for a specific X property use e_cal_util_component_has_x_property().
-     * @param icalcomp an #ICalComponent
+     * for a specific X property use `e_cal_util_component_has_x_property()`.
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param prop_kind a property kind to look for, as an %ICalPropertyKind
-     * @returns whether the @icalcomp has a property of @prop_kind
+     * @returns whether the `icalcomp` has a property of `prop_kind`
+     * @since 3.34
      */
     function util_component_has_property(
         icalcomp: ICalGLib.Component,
         prop_kind: ICalGLib.PropertyKind | null,
     ): boolean;
     /**
-     * Checks if an #ICalComponent has recurrence dates.
-     * @param icalcomp An #ICalComponent.
+     * Checks if an {@link ICalGLib.Component} has recurrence dates.
+     * @param icalcomp An {@link ICalGLib.Component}.
      * @returns TRUE if there are recurrence dates, FALSE if not.
      */
     function util_component_has_rdates(icalcomp: ICalGLib.Component): boolean;
     /**
-     * Checks if an #ICalComponent has recurrence dates or rules.
-     * @param icalcomp An #ICalComponent.
+     * Checks if an {@link ICalGLib.Component} has recurrence dates or rules.
+     * @param icalcomp An {@link ICalGLib.Component}.
      * @returns TRUE if there are recurrence dates/rules, FALSE if not.
      */
     function util_component_has_recurrences(icalcomp: ICalGLib.Component): boolean;
     /**
-     * Checks if an #ICalComponent has recurrence rules.
-     * @param icalcomp An #ICalComponent.
+     * Checks if an {@link ICalGLib.Component} has recurrence rules.
+     * @param icalcomp An {@link ICalGLib.Component}.
      * @returns TRUE if there are recurrence rules, FALSE if not.
      */
     function util_component_has_rrules(icalcomp: ICalGLib.Component): boolean;
     /**
      * Returns, whether the `icalcomp` contains X property named `x_name`. To check
-     * for standard property use e_cal_util_component_has_property().
-     * @param icalcomp an #ICalComponent
+     * for standard property use `e_cal_util_component_has_property()`.
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param x_name name of the X property
-     * @returns whether the @icalcomp contains X property named @x_name
+     * @returns whether the `icalcomp` contains X property named `x_name`
+     * @since 3.34
      */
     function util_component_has_x_property(icalcomp: ICalGLib.Component, x_name: string): boolean;
     /**
-     * Checks whether an #ICalComponent is an instance of a recurring appointment.
-     * @param icalcomp An #ICalComponent.
+     * Checks whether an {@link ICalGLib.Component} is an instance of a recurring appointment.
+     * @param icalcomp An {@link ICalGLib.Component}.
      * @returns TRUE if it is an instance, FALSE if not.
      */
     function util_component_is_instance(icalcomp: ICalGLib.Component): boolean;
     /**
      * Removes all or only the first property of kind `kind` in `icalcomp`.
-     * @param icalcomp an #ICalComponent
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param kind the kind of the property to remove
-     * @param all %TRUE to remove all, or %FALSE to remove only the first property of the @kind
+     * @param all `true` to remove all, or `false` to remove only the first property of the `kind`
      * @returns How many properties had been removed.
+     * @since 3.30
      */
     function util_component_remove_property_by_kind(
         icalcomp: ICalGLib.Component,
@@ -845,64 +919,69 @@ export namespace ECal {
     ): number;
     /**
      * Removes the first X property named `x_name` in `icalcomp`.
-     * @param icalcomp an #ICalComponent
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param x_name name of the X property
-     * @returns %TRUE, when any such had been found and removed, %FALSE otherwise.
+     * @returns `true`, when any such had been found and removed, `false` otherwise.
+     * @since 3.34
      */
     function util_component_remove_x_property(icalcomp: ICalGLib.Component, x_name: string): boolean;
     /**
-     * Sets a value of the first X property named `x_name` in `icalcomp,`
+     * Sets a value of the first X property named `x_name` in `icalcomp`,
      * if any such already exists, or adds a new property with this name
-     * and value. As a special case, if `value` is %NULL, then removes
+     * and value. As a special case, if `value` is `null`, then removes
      * the first X property named `x_name` from `icalcomp` instead.
-     * @param icalcomp an #ICalComponent
+     * @param icalcomp an {@link ICalGLib.Component}
      * @param x_name name of the X property
-     * @param value a value to set, or %NULL
+     * @param value a value to set, or `null`
+     * @since 3.34
      */
     function util_component_set_x_property(icalcomp: ICalGLib.Component, x_name: string, value?: string | null): void;
     /**
-     * Encodes the #EConflictResolution into the bit-or of #ECalOperationFlags.
-     * The returned value can be bit-or-ed with other #ECalOperationFlags values.
-     * @param conflict_resolution an #EConflictResolution
-     * @returns a bit-or of #ECalOperationFlags, corresponding to the @conflict_resolution
+     * Encodes the {@link EDataServer.ConflictResolution} into the bit-or of {@link ECal.OperationFlags}.
+     * The returned value can be bit-or-ed with other {@link ECal.OperationFlags} values.
+     * @param conflict_resolution an {@link EDataServer.ConflictResolution}
+     * @returns a bit-or of {@link ECal.OperationFlags}, corresponding to the `conflict_resolution`
+     * @since 3.34
      */
     function util_conflict_resolution_to_operation_flags(
         conflict_resolution: EDataServer.ConflictResolution | null,
     ): number;
     /**
-     * This checks that `rid` indicates a valid recurrence of `icalcomp,` and
+     * This checks that `rid` indicates a valid recurrence of `icalcomp`, and
      * if so, generates a copy of `icalcomp` containing a RECURRENCE-ID of `rid`.
      *
-     * Free the returned non-NULL component with g_object_unref(), when
+     * Free the returned non-NULL component with `g_object_unref()`, when
      * no longer needed.
-     * @param icalcomp A recurring #ICalComponent
+     * @param icalcomp A recurring {@link ICalGLib.Component}
      * @param rid The RECURRENCE-ID to construct a component for
-     * @returns the instance as a new #ICalComponent, or %NULL.
+     * @returns the instance as a new {@link ICalGLib.Component}, or `null`.
      */
     function util_construct_instance(icalcomp: ICalGLib.Component, rid: ICalGLib.Time): ICalGLib.Component | null;
     /**
      * Copies the `zone` together with its inner component and
-     * returns it as a new #ICalTimezone object. Free it with
-     * g_object_unref(), when no longer needed.
+     * returns it as a new {@link ICalGLib.Timezone} object. Free it with
+     * `g_object_unref()`, when no longer needed.
      * @param zone an ICalTimezone
-     * @returns a copy of the @zone
+     * @returns a copy of the `zone`
+     * @since 3.34
      */
     function util_copy_timezone(zone: ICalGLib.Timezone): ICalGLib.Timezone;
     /**
      * Compares list of categories on the `old_comp` with the list of categories
      * on the `new_comp` and fills `out_added` categories and `out_removed` categories
      * accordingly, as if the `old_comp` is replaced with the `new_comp`. When either
-     * of the components is %NULL, it's considered as having no categories set.
-     * Rather than returning empty #GHashTable, the return argument is set to %NULL
+     * of the components is `null`, it's considered as having no categories set.
+     * Rather than returning empty {@link GLib.HashTable}, the return argument is set to `null`
      * when there are no added/removed categories.
      *
      * The key of the hash table is the category string, the value is an integer (1).
      * There is used the hash table only for speed.
      *
-     * The returned #GHashTable-s should be freed with g_hash_table_unref(),
+     * The returned {@link GLib.HashTable}-s should be freed with `g_hash_table_unref()`,
      * when no longer needed.
-     * @param old_comp an old #ICalComponent, or %NULL
-     * @param new_comp a new #ICalComponent, or %NULL
+     * @param old_comp an old {@link ICalGLib.Component}, or `null`
+     * @param new_comp a new {@link ICalGLib.Component}, or `null`
+     * @since 3.48
      */
     function util_diff_categories(
         old_comp: ICalGLib.Component | null,
@@ -915,23 +994,25 @@ export namespace ECal {
      * is compared case insensitively.
      * @param email1 the first email
      * @param email2 the second email
-     * @returns %TRUE, when the @email1 equals to @email2
+     * @returns `true`, when the `email1` equals to `email2`
+     * @since 3.50
      */
     function util_email_addresses_equal(email1?: string | null, email2?: string | null): boolean;
     /**
      * Calls `func` for each category stored in the `comp`.
-     * @param comp an #ICalComponent
-     * @param func an #ECalUtilForeachCategoryFunc callback to call for each category
+     * @param comp an {@link ICalGLib.Component}
+     * @param func an {@link ECal.UtilForeachCategoryFunc} callback to call for each category
+     * @since 3.48
      */
     function util_foreach_category(comp: ICalGLib.Component, func: UtilForeachCategoryFunc): void;
     /**
      * Generates alarm instances for a calendar component. Returns the instances
-     * structure, or %NULL if no alarm instances occurred in the specified time
-     * range. Free the returned structure with e_cal_component_alarms_free(),
+     * structure, or `null` if no alarm instances occurred in the specified time
+     * range. Free the returned structure with `e_cal_component_alarms_free()`,
      * when no longer needed.
      *
-     * See e_cal_util_generate_alarms_for_uid_sync()
-     * @param comp The #ECalComponent to generate alarms from
+     * See `e_cal_util_generate_alarms_for_uid_sync()`
+     * @param comp The {@link ECal.Component} to generate alarms from
      * @param start Start time
      * @param end End time
      * @param omit Alarm types to omit
@@ -953,8 +1034,8 @@ export namespace ECal {
      * with g_slist_free_full (comp_alarms, e_cal_component_alarms_free);, when
      * no longer neeed.
      *
-     * See e_cal_util_generate_alarms_for_uid_sync()
-     * @param comps List of #ECalComponent<!-- -->s
+     * See `e_cal_util_generate_alarms_for_uid_sync()`
+     * @param comps List of {@link ECal.Component}<!-- -->s
      * @param start Start time
      * @param end End time
      * @param omit Alarm types to omit
@@ -971,14 +1052,14 @@ export namespace ECal {
         default_timezone: ICalGLib.Timezone,
     ): [number, ComponentAlarms[]];
     /**
-     * Generates alarm instances for a calendar component with UID `uid,`
-     * which is stored within the `client`. In contrast to e_cal_util_generate_alarms_for_comp(),
+     * Generates alarm instances for a calendar component with UID `uid`,
+     * which is stored within the `client`. In contrast to `e_cal_util_generate_alarms_for_comp()`,
      * this function handles detached instances of recurring events properly.
      *
-     * Returns the instances structure, or %NULL if no alarm instances occurred in the specified
-     * time range. Free the returned structure with e_cal_component_alarms_free(),
+     * Returns the instances structure, or `null` if no alarm instances occurred in the specified
+     * time range. Free the returned structure with `e_cal_component_alarms_free()`,
      * when no longer needed.
-     * @param client an #ECalClient
+     * @param client an {@link ECal.Client}
      * @param uid a component UID to generate alarms for
      * @param start start time
      * @param end end time
@@ -987,6 +1068,7 @@ export namespace ECal {
      * @param default_timezone The timezone used to resolve DATE and floating DATE-TIME values
      * @param cancellable
      * @returns a list of all the alarms found    for the given component in the given time range.
+     * @since 3.48
      */
     function util_generate_alarms_for_uid_sync(
         client: any | null,
@@ -1003,16 +1085,18 @@ export namespace ECal {
      * the `attendee` has it set. The email can be read from an "EMAIL"
      * parameter, if present.
      * @param attendee an ECalComponentAttendee
-     * @returns email of the @attendee, or %NULL
+     * @returns email of the `attendee`, or `null`
+     * @since 3.50
      */
     function util_get_attendee_email(attendee?: ComponentAttendee | null): string | null;
     /**
      * Find out when the component starts and stops, being careful about
      * recurrences.
-     * @param comp an #ECalComponent
-     * @param tz_cb The #ECalRecurResolveTimezoneCb to call
+     * @param comp an {@link ECal.Component}
+     * @param tz_cb The {@link ECal.RecurResolveTimezoneCb} to call
      * @param default_timezone The default timezone
-     * @param kind the type of component, indicated with an #ICalComponentKind
+     * @param kind the type of component, indicated with an {@link ICalGLib.ComponentKind}
+     * @since 2.32
      */
     function util_get_component_occur_times(
         comp: Component,
@@ -1023,51 +1107,57 @@ export namespace ECal {
     /**
      * Returns the real name and email address of the default mail identity,
      * if available.  If no default mail identity is available, `out_name` and
-     * `out_address` are set to %NULL and the function returns %FALSE.
-     * @param registry an #ESourceRegistry
-     * @returns %TRUE if @out_name and/or @out_address were set
+     * `out_address` are set to `null` and the function returns `false`.
+     * @param registry an {@link EDataServer.SourceRegistry}
+     * @returns `true` if `out_name` and/or `out_address` were set
+     * @since 3.50
      */
     function util_get_default_name_and_address(registry: EDataServer.SourceRegistry): [boolean, string, string];
     /**
      * Returns an organizer email, without the "mailto:" prefix, if
      * the `organizer` has it set. The email can be read from an "EMAIL"
      * parameter, if present.
-     * @param organizer an #ECalComponentOrganizer
-     * @returns email of the @organizer, or %NULL
+     * @param organizer an {@link ECal.ComponentOrganizer}
+     * @returns email of the `organizer`, or `null`
+     * @since 3.50
      */
     function util_get_organizer_email(organizer?: ComponentOrganizer | null): string | null;
     /**
      * Returns an `prop` email, without the "mailto:" prefix, if
      * the `prop` has it set. The email can be read from an "EMAIL"
      * parameter, if present. Otherwise the `prop` can be only of
-     * type %I_CAL_ORGANIZER_PROPERTY or %I_CAL_ATTENDEE_PROPERTY.
+     * type {@link ICalGLib.PropertyKind.ORGANIZER_PROPERTY} or {@link ICalGLib.PropertyKind.ATTENDEE_PROPERTY}.
      *
-     * See also: e_cal_util_get_organizer_email(), e_cal_util_get_attendee_email()
-     * @param prop an #ICalProperty
-     * @returns email of the @prop, or %NULL
+     * See also: `e_cal_util_get_organizer_email()`, `e_cal_util_get_attendee_email()`
+     * @param prop an {@link ICalGLib.Property}
+     * @returns email of the `prop`, or `null`
+     * @since 3.50
      */
     function util_get_property_email(prop: ICalGLib.Property): string | null;
     /**
      * Fetches system timezone ICalTimezone object.
      *
      * The returned pointer is part of the built-in timezones and should not be freed.
-     * @returns The ICalTimezone object of the system timezone, or %NULL on an error.
+     * @returns The ICalTimezone object of the system timezone, or `null` on an error.
+     * @since 2.28
      */
     function util_get_system_timezone(): ICalGLib.Timezone | null;
     /**
      * Fetches system timezone localtion string.
-     * @returns system timezone location string, %NULL on an error.
+     * @returns system timezone location string, `null` on an error.
+     * @since 2.28
      */
     function util_get_system_timezone_location(): string | null;
     /**
      * Checks whether the `comp` has any alarms in the given time interval.
-     * @param comp an #ECalComponent to check alarms for
+     * @param comp an {@link ECal.Component} to check alarms for
      * @param start start time
      * @param end end time
      * @param omit alarm types to omit
      * @param resolve_tzid Callback for resolving timezones
      * @param default_timezone The timezone used to resolve DATE and floating DATE-TIME values.
-     * @returns %TRUE, when the #comp has any alarms in the given time interval
+     * @returns `true`, when the #comp has any alarms in the given time interval
+     * @since 3.48
      */
     function util_has_alarms_in_range(
         comp: Component,
@@ -1078,9 +1168,10 @@ export namespace ECal {
         default_timezone: ICalGLib.Timezone,
     ): boolean;
     /**
-     * Converts an #ICalTime into a GLibc's struct tm.
-     * @param itt An #ICalTime
+     * Converts an {@link ICalGLib.Time} into a GLibc's struct tm.
+     * @param itt An {@link ICalGLib.Time}
      * @returns The converted time as a struct tm. All fields will be    set properly except for tm.tm_yday.
+     * @since 2.22
      */
     function util_icaltime_to_tm(itt: ICalGLib.Time): any | null;
     /**
@@ -1090,6 +1181,7 @@ export namespace ECal {
      * @param from_zone Source timezone.
      * @param to_zone Destination timezone.
      * @returns The converted time as a struct tm. All fields will be    set properly except for tm.tm_yday.
+     * @since 2.22
      */
     function util_icaltime_to_tm_with_zone(
         itt: ICalGLib.Time,
@@ -1097,20 +1189,21 @@ export namespace ECal {
         to_zone: ICalGLib.Timezone,
     ): any | null;
     /**
-     * Initializes properties of a recurring `vtodo,` like normalizing
+     * Initializes properties of a recurring `vtodo`, like normalizing
      * the Due date and eventually the Start date. The function does
      * nothing when the `vtodo` is not recurring.
      *
      * The function doesn't change LAST-MODIFIED neither the SEQUENCE
      * property, it's up to the caller to do it.
      *
-     * Note the `cal_client,` `cancellable` and `error` is used only
+     * Note the `cal_client`, `cancellable` and `error` is used only
      * for timezone resolution. The function doesn't store the `vtodo`
-     * to the `cal_client,` it only updates the `vtodo` component.
+     * to the `cal_client`, it only updates the `vtodo` component.
      * @param vtodo a VTODO component
-     * @param cal_client an #ECalClient to which the @vtodo belongs
-     * @param cancellable optional #GCancellable object, or %NULL
+     * @param cal_client an {@link ECal.Client} to which the `vtodo` belongs
+     * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns Whether succeeded.
+     * @since 3.30
      */
     function util_init_recur_task_sync(
         vtodo: ICalGLib.Component,
@@ -1121,9 +1214,10 @@ export namespace ECal {
      * Changes all URL attachments which point to a local file in `component`
      * to inline attachments, aka adds the file content into the `component`.
      * It also populates FILENAME parameter on the attachment.
-     * @param component an #ICalComponent to work with
-     * @param cancellable optional #GCancellable object, or %NULL
+     * @param component an {@link ICalGLib.Component} to work with
+     * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns Whether succeeded.
+     * @since 3.40
      */
     function util_inline_local_attachments_sync(
         component: ICalGLib.Component,
@@ -1132,10 +1226,11 @@ export namespace ECal {
     /**
      * Returns whether the given `rid` is the first instance of
      * the recurrence defined in the `comp`.
-     * @param comp an #ECalComponent instance
+     * @param comp an {@link ECal.Component} instance
      * @param rid a recurrence ID
-     * @param tz_cb The #ECalRecurResolveTimezoneCb to call
-     * @returns Whether the @rid identifies the first instance of @comp.
+     * @param tz_cb The {@link ECal.RecurResolveTimezoneCb} to call
+     * @returns Whether the `rid` identifies the first instance of `comp`.
+     * @since 3.16
      */
     function util_is_first_instance(comp: Component, rid: ICalGLib.Time, tz_cb: RecurResolveTimezoneCb): boolean;
     /**
@@ -1145,20 +1240,21 @@ export namespace ECal {
      * the recurrence rule.
      *
      * When the `vtodo` is marked as completed, then the existing COMPLETED
-     * date-time is preserved if exists, otherwise it's set either to `completed_time,`
+     * date-time is preserved if exists, otherwise it's set either to `completed_time`,
      * or to the current time, when the `completed_time` is (time_t) -1.
      *
      * The function doesn't change LAST-MODIFIED neither the SEQUENCE
      * property, it's up to the caller to do it.
      *
-     * Note the `cal_client,` `cancellable` and `error` is used only
+     * Note the `cal_client`, `cancellable` and `error` is used only
      * for timezone resolution. The function doesn't store the `vtodo`
-     * to the `cal_client,` it only updates the `vtodo` component.
+     * to the `cal_client`, it only updates the `vtodo` component.
      * @param vtodo a VTODO component
      * @param completed_time completed time to set, or (time_t) -1 to use current time
-     * @param cal_client an #ECalClient to which the @vtodo belongs
-     * @param cancellable optional #GCancellable object, or %NULL
+     * @param cal_client an {@link ECal.Client} to which the `vtodo` belongs
+     * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns Whether succeeded.
+     * @since 3.30
      */
     function util_mark_task_complete_sync(
         vtodo: ICalGLib.Component,
@@ -1167,14 +1263,14 @@ export namespace ECal {
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
-     * Creates a new #ICalComponent of the specified kind. Free it
-     * with g_object_unref(), when no longer needed.
-     * @param kind Kind of the component to create, as #ICalComponentKind.
+     * Creates a new {@link ICalGLib.Component} of the specified kind. Free it
+     * with `g_object_unref()`, when no longer needed.
+     * @param kind Kind of the component to create, as {@link ICalGLib.ComponentKind}.
      * @returns the newly created component.
      */
     function util_new_component(kind: ICalGLib.ComponentKind | null): ICalGLib.Component;
     /**
-     * Creates a new VCALENDAR component. Free it with g_object_unref(),
+     * Creates a new VCALENDAR component. Free it with `g_object_unref()`,
      * when no longer needed.
      * @returns the newly created top level component.
      */
@@ -1183,9 +1279,10 @@ export namespace ECal {
      * Makes sure the `ttuntil` value matches the value type with
      * the DTSTART value, as required by RFC 5545 section 3.3.10.
      * Uses `tz_cb` with `tz_cb_data` to resolve time zones when needed.
-     * @param icalcomp An #ICalComponent
+     * @param icalcomp An {@link ICalGLib.Component}
      * @param ttuntil An UNTIL value to validate
-     * @param tz_cb The #ECalRecurResolveTimezoneCb to call
+     * @param tz_cb The {@link ECal.RecurResolveTimezoneCb} to call
+     * @since 3.38
      */
     function util_normalize_rrule_until_value(
         icalcomp: ICalGLib.Component,
@@ -1193,29 +1290,30 @@ export namespace ECal {
         tz_cb: RecurResolveTimezoneCb,
     ): void;
     /**
-     * Decodes the #EConflictResolution from the bit-or of #ECalOperationFlags.
-     * @param flags bit-or of #ECalOperationFlags
-     * @returns an #EConflictResolution as stored in the @flags
+     * Decodes the {@link EDataServer.ConflictResolution} from the bit-or of {@link ECal.OperationFlags}.
+     * @param flags bit-or of {@link ECal.OperationFlags}
+     * @returns an {@link EDataServer.ConflictResolution} as stored in the `flags`
+     * @since 3.34
      */
     function util_operation_flags_to_conflict_resolution(flags: number): EDataServer.ConflictResolution;
     /**
      * Parses the given file, and, if it contains a valid iCalendar object,
-     * parse it and return a new #ICalComponent.
+     * parse it and return a new {@link ICalGLib.Component}.
      *
-     * Free the returned non-NULL component with g_object_unref(), when no longer needed.
+     * Free the returned non-NULL component with `g_object_unref()`, when no longer needed.
      * @param filename Name of the file to be parsed.
-     * @returns a newly created #ICalComponent, or %NULL,    if the file doesn't contain a valid iCalendar object.
+     * @returns a newly created {@link ICalGLib.Component}, or `null`,    if the file doesn't contain a valid iCalendar object.
      */
     function util_parse_ics_file(filename: string): ICalGLib.Component | null;
     /**
-     * Parses an iCalendar string and returns a new #ICalComponent representing
+     * Parses an iCalendar string and returns a new {@link ICalGLib.Component} representing
      * that string. Note that this function deals with multiple VCALENDAR's in the
      * string, something that Mozilla used to do and which libical does not
      * support.
      *
-     * Free the returned non-NULL component with g_object_unref(), when no longer needed.
+     * Free the returned non-NULL component with `g_object_unref()`, when no longer needed.
      * @param string iCalendar string to be parsed.
-     * @returns a newly created #ICalComponent, or %NULL,    if the string isn't a valid iCalendar string.
+     * @returns a newly created {@link ICalGLib.Component}, or `null`,    if the string isn't a valid iCalendar string.
      */
     function util_parse_ics_string(string: string): ICalGLib.Component | null;
     /**
@@ -1233,25 +1331,28 @@ export namespace ECal {
     function util_priority_to_string(priority: number): string;
     /**
      * Returns, whether the `prop` has a parameter of `param_kind`.
-     * @param prop an #ICalProperty
+     * @param prop an {@link ICalGLib.Property}
      * @param param_kind a parameter kind to look for, as an %ICalParameterKind
-     * @returns whether the @prop has a parameter of @prop_kind
+     * @returns whether the `prop` has a parameter of `prop_kind`
+     * @since 3.34
      */
     function util_property_has_parameter(prop: ICalGLib.Property, param_kind: ICalGLib.ParameterKind | null): boolean;
     /**
      * Removes one or more instances from `icalcomp` according to `rid` and `mod`.
-     * @param icalcomp A (recurring) #ICalComponent
+     * @param icalcomp A (recurring) {@link ICalGLib.Component}
      * @param rid The base RECURRENCE-ID to remove
-     * @param mod How to interpret @rid
+     * @param mod How to interpret `rid`
+     * @deprecated since 3.38: Use `e_cal_util_remove_instances_ex()` instead, with provided    timezone resolve function.
      */
     function util_remove_instances(icalcomp: ICalGLib.Component, rid: ICalGLib.Time, mod: ObjModType | null): void;
     /**
      * Removes one or more instances from `icalcomp` according to `rid` and `mod`.
      * Uses `tz_cb` with `tz_cb_data` to resolve time zones when needed.
-     * @param icalcomp A (recurring) #ICalComponent
+     * @param icalcomp A (recurring) {@link ICalGLib.Component}
      * @param rid The base RECURRENCE-ID to remove
-     * @param mod How to interpret @rid
-     * @param tz_cb The #ECalRecurResolveTimezoneCb to call
+     * @param mod How to interpret `rid`
+     * @param tz_cb The {@link ECal.RecurResolveTimezoneCb} to call
+     * @since 3.38
      */
     function util_remove_instances_ex(
         icalcomp: ICalGLib.Component,
@@ -1264,35 +1365,39 @@ export namespace ECal {
      * and localized into the current locale. This can be used to convert event
      * duration to string or similar use cases.
      *
-     * Free the returned string with g_free(), when no longer needed.
+     * Free the returned string with `g_free()`, when no longer needed.
      * @param seconds actual time, in seconds
      * @returns a newly allocated string with localized description    of the given time in seconds.
+     * @since 3.30
      */
     function util_seconds_to_string(seconds: number): string;
     /**
-     * Sets the ACKNOWLEDGED property on the `component'`s alarm with UID `auid`
+     * Sets the ACKNOWLEDGED property on the `component`'s alarm with UID `auid`
      * to the time `when` (in UTC), or to the current time, when the `when` is 0.
-     * @param component an #ECalComponent
+     * @param component an {@link ECal.Component}
      * @param auid an alarm UID to modify
      * @param when a time, in UTC, when to set the acknowledged property, or 0 for the current time
      * @returns Whether succeeded.
+     * @since 3.40
      */
     function util_set_alarm_acknowledged(component: Component, auid: string, when: number): boolean;
     /**
-     * Splits a recurring `icalcomp` into two at time `rid`. The returned #ICalComponent
-     * is modified `icalcomp` which contains recurrences beginning at `rid,` inclusive.
+     * Splits a recurring `icalcomp` into two at time `rid`. The returned {@link ICalGLib.Component}
+     * is modified `icalcomp` which contains recurrences beginning at `rid`, inclusive.
      * The instance identified by `rid` should exist. The `master_dtstart` can be
      * a null time, then it is read from the `icalcomp`.
      *
-     * Use e_cal_util_remove_instances_ex() with E_CAL_OBJ_MOD_THIS_AND_FUTURE mode
+     * Use `e_cal_util_remove_instances_ex()` with E_CAL_OBJ_MOD_THIS_AND_FUTURE mode
      * on the `icalcomp` to remove the overlapping interval from it, if needed.
      *
-     * Free the returned non-NULL component with g_object_unref(), when
+     * Free the returned non-NULL component with `g_object_unref()`, when
      * done with it.
-     * @param icalcomp A (recurring) #ICalComponent
+     * @param icalcomp A (recurring) {@link ICalGLib.Component}
      * @param rid The base RECURRENCE-ID to remove
      * @param master_dtstart The DTSTART of the master object
-     * @returns the split @icalcomp, or %NULL.
+     * @returns the split `icalcomp`, or `null`.
+     * @since 3.16
+     * @deprecated since 3.38: Use `e_cal_util_split_at_instance_ex()` instead, with provided    timezone resolve function.
      */
     function util_split_at_instance(
         icalcomp: ICalGLib.Component,
@@ -1300,23 +1405,24 @@ export namespace ECal {
         master_dtstart?: ICalGLib.Time | null,
     ): ICalGLib.Component | null;
     /**
-     * Splits a recurring `icalcomp` into two at time `rid`. The returned #ICalComponent
-     * is modified `icalcomp` which contains recurrences beginning at `rid,` inclusive.
+     * Splits a recurring `icalcomp` into two at time `rid`. The returned {@link ICalGLib.Component}
+     * is modified `icalcomp` which contains recurrences beginning at `rid`, inclusive.
      * The instance identified by `rid` should exist. The `master_dtstart` can be
      * a null time, then it is read from the `icalcomp`.
      *
      * Uses `tz_cb` with `tz_cb_data` to resolve time zones when needed.
      *
-     * Use e_cal_util_remove_instances_ex() with E_CAL_OBJ_MOD_THIS_AND_FUTURE mode
+     * Use `e_cal_util_remove_instances_ex()` with E_CAL_OBJ_MOD_THIS_AND_FUTURE mode
      * on the `icalcomp` to remove the overlapping interval from it, if needed.
      *
-     * Free the returned non-NULL component with g_object_unref(), when
+     * Free the returned non-NULL component with `g_object_unref()`, when
      * done with it.
-     * @param icalcomp A (recurring) #ICalComponent
+     * @param icalcomp A (recurring) {@link ICalGLib.Component}
      * @param rid The base RECURRENCE-ID to remove
      * @param master_dtstart The DTSTART of the master object
-     * @param tz_cb The #ECalRecurResolveTimezoneCb to call
-     * @returns the split @icalcomp, or %NULL.
+     * @param tz_cb The {@link ECal.RecurResolveTimezoneCb} to call
+     * @returns the split `icalcomp`, or `null`.
+     * @since 3.38
      */
     function util_split_at_instance_ex(
         icalcomp: ICalGLib.Component,
@@ -1325,29 +1431,43 @@ export namespace ECal {
         tz_cb: RecurResolveTimezoneCb,
     ): ICalGLib.Component | null;
     /**
-     * Strips "mailto:" prefix from the `address,` if present. The returned
+     * Strips "mailto:" prefix from the `address`, if present. The returned
      * pointer is either the `address` or a shifted position within the `address`.
      * @param address an address with or without "mailto:" prefix
-     * @returns the @address without the "mailto:" prefix
+     * @returns the `address` without the "mailto:" prefix
+     * @since 3.50
      */
     function util_strip_mailto(address?: string | null): string;
     /**
-     * Converts a struct tm into an #ICalTime. Free the returned object
-     * with g_object_unref(), when no longer needed.
+     * Converts a struct tm into an {@link ICalGLib.Time}. Free the returned object
+     * with `g_object_unref()`, when no longer needed.
      * @param tm A struct tm.
      * @param is_date Whether the given time is a date only or not.
-     * @returns The converted time as an #ICalTime.
+     * @returns The converted time as an {@link ICalGLib.Time}.
+     * @since 2.22
      */
     function util_tm_to_icaltime(tm: any | null, is_date: boolean): ICalGLib.Time;
+    /**
+     * @gir-type Callback
+     */
     interface ComponentParameterBagFilterFunc {
         (parameter: ICalGLib.Parameter): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ComponentPropertyBagFilterFunc {
         (property: ICalGLib.Property): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RecurFormatDateTimeFunc {
         (itt: ICalGLib.Time, buffer: string, buffer_size: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RecurInstanceCb {
         (
             icomp: ICalGLib.Component,
@@ -1356,14 +1476,22 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RecurResolveTimezoneCb {
         (tzid: string, cancellable?: Gio.Cancellable | null): ICalGLib.Timezone | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface UtilForeachCategoryFunc {
         (comp: ICalGLib.Component, inout_category: string): boolean;
     }
     /**
-     * Flags that control the behaviour of an #ECalClientView.
+     * Flags that control the behaviour of an {@link ECal.ClientView}.
+     * @gir-type Flags
+     * @since 3.6
      */
     enum ClientViewFlags {
         /**
@@ -1373,7 +1501,7 @@ export namespace ECal {
         /**
          * If this flag is set then all objects matching the view's query will
          *   be sent as notifications when starting the view, otherwise only future
-         *   changes will be reported.  The default for an #ECalClientView is %TRUE.
+         *   changes will be reported.  The default for an {@link ECal.ClientView} is `true`.
          */
         NOTIFY_INITIAL,
     }
@@ -1384,6 +1512,8 @@ export namespace ECal {
 
     /**
      * Indicates the type of modification made to a calendar
+     * @gir-type Flags
+     * @since 3.8
      */
     enum ObjModType {
         /**
@@ -1417,6 +1547,8 @@ export namespace ECal {
      * resolution mode flags cannot be combined together, where the `E_CAL_OPERATION_FLAG_CONFLICT_KEEP_LOCAL`
      * is the default behavior (and it is used when no other conflict resolution flag is set).
      * The flags can be ignored when the operation or the backend don't support it.
+     * @gir-type Flags
+     * @since 3.34
      */
     enum OperationFlags {
         /**
@@ -1460,28 +1592,32 @@ export namespace ECal {
     }
 
     /**
-     * Influences behaviour of e_cal_recur_describe_recurrence().
+     * Influences behaviour of `e_cal_recur_describe_recurrence()`.
+     * @gir-type Flags
+     * @since 3.30
      */
     enum RecurDescribeRecurrenceFlags {
         /**
-         * no extra flags, either returns %NULL or the recurrence description,
+         * no extra flags, either returns `null` or the recurrence description,
          *    something like "Every 2 weeks..."
          */
         NONE,
         /**
-         * either returns %NULL or the recurrence description prefixed
+         * either returns `null` or the recurrence description prefixed
          *    with text like "The meeting recurs", forming something like "The meeting recurs every 2 weeks..."
          */
         PREFIXED,
         /**
-         * returns %NULL only if the component doesn't recur,
+         * returns `null` only if the component doesn't recur,
          *    otherwise returns either the recurrence description or at least text like "The meeting recurs"
          */
         FALLBACK,
     }
 
     /**
-     * Flags modifying behaviour of e_reminder_watcher_describe_data().
+     * Flags modifying behaviour of `e_reminder_watcher_describe_data()`.
+     * @gir-type Flags
+     * @since 3.30
      */
     enum ReminderWatcherDescribeFlags {
         /**
@@ -1498,6 +1634,9 @@ export namespace ECal {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
+            /**
+             * @signal
+             */
             'free-busy-data': (arg0: Component[]) => void;
             'notify::default-timezone': (pspec: GObject.ParamSpec) => void;
             'notify::source-type': (pspec: GObject.ParamSpec) => void;
@@ -1527,6 +1666,8 @@ export namespace ECal {
     /**
      * Contains only private data that should be read and manipulated using the
      * functions below.
+     * @gir-type Class
+     * @since 3.2
      */
     class Client extends EDataServer.Client implements TimezoneCache, Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
@@ -1557,16 +1698,19 @@ export namespace ECal {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1592,7 +1736,7 @@ export namespace ECal {
          * Some programs generate broken meeting invitations with TZID, but
          * without including the corresponding VTIMEZONE. Importing such
          * invitations unchanged causes problems later on (meeting displayed
-         * incorrectly, e_cal_component_get_as_string() fails). The situation
+         * incorrectly, `e_cal_component_get_as_string()` fails). The situation
          * where this occurred in the past (found by a SyncEvolution user) is
          * now handled via the location based mapping.
          *
@@ -1608,8 +1752,8 @@ export namespace ECal {
          * the TZID. All items referencing the renamed TZID are adapted
          * accordingly.
          * @param vcalendar a VCALENDAR containing a list of    VTIMEZONE and arbitrary other components, in    arbitrary order: these other components are    modified by this call
-         * @param icalcomps a list of #ICalComponent    instances which also have to be patched; may be %NULL
-         * @param cancellable a #GCancellable to use in @tzlookup function
+         * @param icalcomps a list of {@link ICalGLib.Component}    instances which also have to be patched; may be `null`
+         * @param cancellable a {@link Gio.Cancellable} to use in `tzlookup` function
          */
         static check_timezones_sync(
             vcalendar: ICalGLib.Component,
@@ -1617,7 +1761,7 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
-         * Asynchronously creates a new #ECalClient for `source` and `source_type`.
+         * Asynchronously creates a new {@link ECal.Client} for `source` and `source_type`.
          *
          * The `wait_for_connected_seconds` argument had been added since 3.16,
          * to let the caller decide how long to wait for the backend to fully
@@ -1628,16 +1772,16 @@ export namespace ECal {
          * within the set interval, then it is opened in an offline mode. A special
          * value -1 can be used to not wait for the connected state at all.
          *
-         * Unlike with e_cal_client_new(), there is no need to call e_client_open()
-         * after obtaining the #ECalClient.
+         * Unlike with `e_cal_client_new()`, there is no need to call `e_client_open()`
+         * after obtaining the {@link ECal.Client}.
          *
          * When the operation is finished, `callback` will be called.  You can then
-         * call e_cal_client_connect_finish() to get the result of the operation.
-         * @param source an #ESource
+         * call `e_cal_client_connect_finish()` to get the result of the operation.
+         * @param source an {@link EDataServer.Source}
          * @param source_type source tpe of the calendar
          * @param wait_for_connected_seconds timeout, in seconds, to wait for the backend to be fully connected
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the request            is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request            is satisfied
          */
         static connect(
             source: EDataServer.Source,
@@ -1646,21 +1790,24 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<Client> | null,
         ): void;
+        /**
+         * @param args
+         */
         static connect(...args: never[]): any;
         /**
-         * Finishes the operation started with e_cal_client_connect().  If an
+         * Finishes the operation started with `e_cal_client_connect()`.  If an
          * error occurs in connecting to the D-Bus service, the function sets
-         * `error` and returns %NULL.
+         * `error` and returns `null`.
          *
          * For error handling convenience, any error message returned by this
          * function will have a descriptive prefix that includes the display
-         * name of the #ESource passed to e_cal_client_connect().
-         * @param result a #GAsyncResult
+         * name of the {@link EDataServer.Source} passed to `e_cal_client_connect()`.
+         * @param result a {@link Gio.AsyncResult}
          */
         static connect_finish(result: Gio.AsyncResult): EDataServer.Client | null;
         /**
-         * Creates a new #ECalClient for `source` and `source_type`.  If an error
-         * occurs, the function will set `error` and return %FALSE.
+         * Creates a new {@link ECal.Client} for `source` and `source_type`.  If an error
+         * occurs, the function will set `error` and return `false`.
          *
          * The `wait_for_connected_seconds` argument had been added since 3.16,
          * to let the caller decide how long to wait for the backend to fully
@@ -1671,16 +1818,16 @@ export namespace ECal {
          * within the set interval, then it is opened in an offline mode. A special
          * value -1 can be used to not wait for the connected state at all.
          *
-         * Unlike with e_cal_client_new(), there is no need to call
-         * e_client_open_sync() after obtaining the #ECalClient.
+         * Unlike with `e_cal_client_new()`, there is no need to call
+         * `e_client_open_sync()` after obtaining the {@link ECal.Client}.
          *
          * For error handling convenience, any error message returned by this
          * function will have a descriptive prefix that includes the display
          * name of `source`.
-         * @param source an #ESource
+         * @param source an {@link EDataServer.Source}
          * @param source_type source type of the calendar
          * @param wait_for_connected_seconds timeout, in seconds, to wait for the backend to be fully connected
-         * @param cancellable optional #GCancellable object, or %NULL
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
         static connect_sync(
             source: EDataServer.Source,
@@ -1688,25 +1835,35 @@ export namespace ECal {
             wait_for_connected_seconds: number,
             cancellable?: Gio.Cancellable | null,
         ): EDataServer.Client | null;
+        /**
+         * @param code an {@link ECal.ClientError} code to create
+         * @param custom_msg custom message to use for the error; can be `null`
+         */
         static error_create(code: ClientError, custom_msg?: string | null): GLib.Error;
+        /**
+         * @param args
+         */
         // Conflicted with EDataServer.Client.error_create
         static error_create(...args: never[]): any;
         static error_quark(): GLib.Quark;
         /**
          * Get localized human readable description of the given error code.
-         * @param code an #ECalClientError error code
+         * @param code an {@link ECal.ClientError} error code
          */
         static error_to_string(code: ClientError): string;
+        /**
+         * @param args
+         */
         // Conflicted with EDataServer.Client.error_to_string
         static error_to_string(...args: never[]): any;
         /**
-         * An implementation of the #ECalRecurResolveTimezoneCb callback which clients
-         * can use. Calls e_cal_client_get_timezone_sync().
+         * An implementation of the {@link ECal.RecurResolveTimezoneCb} callback which clients
+         * can use. Calls `e_cal_client_get_timezone_sync()`.
          *
-         * The returned timezone object, if not %NULL, is owned by the `ecalclient`.
+         * The returned timezone object, if not `null`, is owned by the `ecalclient`.
          * @param tzid ID of the timezone to lookup
-         * @param ecalclient a valid #ECalClient pointer
-         * @param cancellable an optional #GCancellable to use, or %NULL
+         * @param ecalclient a valid {@link ECal.Client} pointer
+         * @param cancellable an optional {@link Gio.Cancellable} to use, or `null`
          */
         static tzlookup_cb(
             tzid: string,
@@ -1714,14 +1871,14 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
         ): ICalGLib.Timezone | null;
         /**
-         * An implementation of the #ECalRecurResolveTimezoneCb callback which
+         * An implementation of the {@link ECal.RecurResolveTimezoneCb} callback which
          * backends can use. Searches for the timezone in an %ICalComponent
          * associated with the `lookup_data` %ECalClientTzlookupICalCompData.
          *
          * The returned timezone object is owned by the `lookup_data`.
          * @param tzid ID of the timezone to lookup
-         * @param lookup_data an #ECalClientTzlookupICalCompData    strcture, created with e_cal_client_tzlookup_icalcomp_data_new()
-         * @param cancellable an optional #GCancellable to use, or %NULL
+         * @param lookup_data an {@link ECal.ClientTzlookupICalCompData}    strcture, created with `e_cal_client_tzlookup_icalcomp_data_new()`
+         * @param cancellable an optional {@link Gio.Cancellable} to use, or `null`
          */
         static tzlookup_icalcomp_cb(
             tzid: string,
@@ -1733,18 +1890,18 @@ export namespace ECal {
 
         /**
          * Add a VTIMEZONE object to the given calendar client.
-         * The call is finished by e_cal_client_add_timezone_finish() from
+         * The call is finished by `e_cal_client_add_timezone_finish()` from
          * the `callback`.
          * @param zone The timezone to add
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         add_timezone(zone: ICalGLib.Timezone, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Add a VTIMEZONE object to the given calendar client.
-         * The call is finished by e_cal_client_add_timezone_finish() from
+         * The call is finished by `e_cal_client_add_timezone_finish()` from
          * the `callback`.
          * @param zone The timezone to add
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         add_timezone(
@@ -1754,10 +1911,10 @@ export namespace ECal {
         ): void;
         /**
          * Add a VTIMEZONE object to the given calendar client.
-         * The call is finished by e_cal_client_add_timezone_finish() from
+         * The call is finished by `e_cal_client_add_timezone_finish()` from
          * the `callback`.
          * @param zone The timezone to add
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         add_timezone(
@@ -1765,19 +1922,22 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
+        /**
+         * @param args
+         */
         // Conflicted with ECal.TimezoneCache.add_timezone
         add_timezone(...args: never[]): any;
         /**
-         * Finishes previous call of e_cal_client_add_timezone().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_add_timezone()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         add_timezone_finish(result: Gio.AsyncResult): boolean;
         /**
          * Add a VTIMEZONE object to the given calendar client.
          * @param zone The timezone to add
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         add_timezone_sync(zone: ICalGLib.Timezone, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1810,11 +1970,11 @@ export namespace ECal {
          * Requests the calendar backend to create the object specified by the `icalcomp`
          * argument. Some backends would assign a specific UID to the newly created object,
          * but this function does not modify the original `icalcomp` if its UID changes.
-         * The call is finished by e_cal_client_create_object_finish() from
+         * The call is finished by `e_cal_client_create_object_finish()` from
          * the `callback`.
          * @param icalcomp The component to create
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         create_object(
             icalcomp: ICalGLib.Component,
@@ -1825,11 +1985,11 @@ export namespace ECal {
          * Requests the calendar backend to create the object specified by the `icalcomp`
          * argument. Some backends would assign a specific UID to the newly created object,
          * but this function does not modify the original `icalcomp` if its UID changes.
-         * The call is finished by e_cal_client_create_object_finish() from
+         * The call is finished by `e_cal_client_create_object_finish()` from
          * the `callback`.
          * @param icalcomp The component to create
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         create_object(
@@ -1842,11 +2002,11 @@ export namespace ECal {
          * Requests the calendar backend to create the object specified by the `icalcomp`
          * argument. Some backends would assign a specific UID to the newly created object,
          * but this function does not modify the original `icalcomp` if its UID changes.
-         * The call is finished by e_cal_client_create_object_finish() from
+         * The call is finished by `e_cal_client_create_object_finish()` from
          * the `callback`.
          * @param icalcomp The component to create
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         create_object(
@@ -1856,11 +2016,11 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes previous call of e_cal_client_create_object() and
+         * Finishes previous call of `e_cal_client_create_object()` and
          * sets `out_uid` to newly assigned UID for the created object.
-         * This `out_uid` should be freed with g_free().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * This `out_uid` should be freed with `g_free()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         create_object_finish(result: Gio.AsyncResult): [boolean, string];
         /**
@@ -1868,11 +2028,11 @@ export namespace ECal {
          * `icalcomp` argument. Some backends would assign a specific UID to the newly
          * created object, in those cases that UID would be returned in the `out_uid`
          * argument. This function does not modify the original `icalcomp` if its UID
-         * changes.  Returned `out_uid` should be freed with g_free().
+         * changes.  Returned `out_uid` should be freed with `g_free()`.
          * @param icalcomp The component to create
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         create_object_sync(
             icalcomp: ICalGLib.Component,
@@ -1883,11 +2043,11 @@ export namespace ECal {
          * Requests the calendar backend to create the objects specified by the `icalcomps`
          * argument. Some backends would assign a specific UID to the newly created object,
          * but this function does not modify the original `icalcomps` if their UID changes.
-         * The call is finished by e_cal_client_create_objects_finish() from
+         * The call is finished by `e_cal_client_create_objects_finish()` from
          * the `callback`.
          * @param icalcomps The components to create
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         create_objects(
             icalcomps: ICalGLib.Component[],
@@ -1898,11 +2058,11 @@ export namespace ECal {
          * Requests the calendar backend to create the objects specified by the `icalcomps`
          * argument. Some backends would assign a specific UID to the newly created object,
          * but this function does not modify the original `icalcomps` if their UID changes.
-         * The call is finished by e_cal_client_create_objects_finish() from
+         * The call is finished by `e_cal_client_create_objects_finish()` from
          * the `callback`.
          * @param icalcomps The components to create
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         create_objects(
@@ -1915,11 +2075,11 @@ export namespace ECal {
          * Requests the calendar backend to create the objects specified by the `icalcomps`
          * argument. Some backends would assign a specific UID to the newly created object,
          * but this function does not modify the original `icalcomps` if their UID changes.
-         * The call is finished by e_cal_client_create_objects_finish() from
+         * The call is finished by `e_cal_client_create_objects_finish()` from
          * the `callback`.
          * @param icalcomps The components to create
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         create_objects(
@@ -1929,11 +2089,11 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[] | null> | void;
         /**
-         * Finishes previous call of e_cal_client_create_objects() and
+         * Finishes previous call of `e_cal_client_create_objects()` and
          * sets `out_uids` to newly assigned UIDs for the created objects.
-         * This `out_uids` should be freed with e_client_util_free_string_slist().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * This `out_uids` should be freed with `e_client_util_free_string_slist()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         create_objects_finish(result: Gio.AsyncResult): [boolean, string[] | null];
         /**
@@ -1942,11 +2102,11 @@ export namespace ECal {
          * newly created objects, in those cases these UIDs would be returned in
          * the `out_uids` argument. This function does not modify the original
          * `icalcomps` if their UID changes.  Returned `out_uids` should be freed
-         * with e_client_util_free_string_slist().
+         * with `e_client_util_free_string_slist()`.
          * @param icalcomps The components to create
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         create_objects_sync(
             icalcomps: ICalGLib.Component[],
@@ -1955,13 +2115,13 @@ export namespace ECal {
         ): [boolean, string[] | null];
         /**
          * Discards alarm `auid` from a given component identified by `uid` and `rid`.
-         * The call is finished by e_cal_client_discard_alarm_finish() from
+         * The call is finished by `e_cal_client_discard_alarm_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
          * @param auid Alarm identifier to discard
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         discard_alarm(
             uid: string,
@@ -1972,13 +2132,13 @@ export namespace ECal {
         ): globalThis.Promise<boolean>;
         /**
          * Discards alarm `auid` from a given component identified by `uid` and `rid`.
-         * The call is finished by e_cal_client_discard_alarm_finish() from
+         * The call is finished by `e_cal_client_discard_alarm_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
          * @param auid Alarm identifier to discard
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         discard_alarm(
@@ -1991,13 +2151,13 @@ export namespace ECal {
         ): void;
         /**
          * Discards alarm `auid` from a given component identified by `uid` and `rid`.
-         * The call is finished by e_cal_client_discard_alarm_finish() from
+         * The call is finished by `e_cal_client_discard_alarm_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
          * @param auid Alarm identifier to discard
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         discard_alarm(
@@ -2009,9 +2169,9 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes previous call of e_cal_client_discard_alarm().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_discard_alarm()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         discard_alarm_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -2019,9 +2179,9 @@ export namespace ECal {
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
          * @param auid Alarm identifier to discard
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         discard_alarm_sync(
             uid: string,
@@ -2031,34 +2191,34 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
-         * Does a combination of e_cal_client_get_object_list() and
-         * e_cal_recur_generate_instances_sync(). Unlike
-         * e_cal_client_generate_instances_sync(), this returns immediately and the
+         * Does a combination of `e_cal_client_get_object_list()` and
+         * `e_cal_recur_generate_instances_sync()`. Unlike
+         * `e_cal_client_generate_instances_sync()`, this returns immediately and the
          * `cb` callback is called asynchronously.
          *
-         * The callback function should do a g_object_ref() of the calendar component
+         * The callback function should do a `g_object_ref()` of the calendar component
          * it gets passed if it intends to keep it around, since it will be unref'ed
          * as soon as the callback returns.
          * @param start Start time for query.
          * @param end End time for query.
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param cb Callback for each generated instance.
          */
         generate_instances(start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void;
         /**
-         * Does a combination of e_cal_client_get_object_list() and
-         * e_cal_recur_generate_instances_sync(), like
-         * e_cal_client_generate_instances(), but for a single object. Unlike
-         * e_cal_client_generate_instances_for_object_sync(), this returns immediately
+         * Does a combination of `e_cal_client_get_object_list()` and
+         * `e_cal_recur_generate_instances_sync()`, like
+         * `e_cal_client_generate_instances()`, but for a single object. Unlike
+         * `e_cal_client_generate_instances_for_object_sync()`, this returns immediately
          * and the `cb` callback is called asynchronously.
          *
-         * The callback function should do a g_object_ref() of the calendar component
+         * The callback function should do a `g_object_ref()` of the calendar component
          * it gets passed if it intends to keep it around, since it will be unref'ed
          * as soon as the callback returns.
          * @param icalcomp Object to generate instances from.
          * @param start Start time for query.
          * @param end End time for query.
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param cb Callback for each generated instance.
          */
         generate_instances_for_object(
@@ -2069,17 +2229,17 @@ export namespace ECal {
             cb: RecurInstanceCb,
         ): void;
         /**
-         * Does a combination of e_cal_client_get_object_list() and
-         * e_cal_recur_generate_instances_sync(), like
-         * e_cal_client_generate_instances_sync(), but for a single object.
+         * Does a combination of `e_cal_client_get_object_list()` and
+         * `e_cal_recur_generate_instances_sync()`, like
+         * `e_cal_client_generate_instances_sync()`, but for a single object.
          *
-         * The callback function should do a g_object_ref() of the calendar component
+         * The callback function should do a `g_object_ref()` of the calendar component
          * it gets passed if it intends to keep it around, since it will be unref'ed
          * as soon as the callback returns.
          * @param icalcomp Object to generate instances from
          * @param start Start time for query
          * @param end End time for query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param cb Callback for each generated instance
          */
         generate_instances_for_object_sync(
@@ -2090,17 +2250,17 @@ export namespace ECal {
             cb: RecurInstanceCb,
         ): void;
         /**
-         * Does a combination of e_cal_client_get_object_list() and
-         * e_cal_recur_generate_instances_sync(), like
-         * e_cal_client_generate_instances_sync(), but for a single object.
+         * Does a combination of `e_cal_client_get_object_list()` and
+         * `e_cal_recur_generate_instances_sync()`, like
+         * `e_cal_client_generate_instances_sync()`, but for a single object.
          *
-         * The callback function should do a g_object_ref() of the calendar component
+         * The callback function should do a `g_object_ref()` of the calendar component
          * it gets passed if it intends to keep it around, since it will be unref'ed
          * as soon as the callback returns.
          * @param uid A component UID to generate instances for
          * @param start Start time for query
          * @param end End time for query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param cb Callback for each generated instance
          */
         generate_instances_for_uid_sync(
@@ -2111,15 +2271,15 @@ export namespace ECal {
             cb: RecurInstanceCb,
         ): void;
         /**
-         * Does a combination of e_cal_client_get_object_list() and
-         * e_cal_recur_generate_instances_sync().
+         * Does a combination of `e_cal_client_get_object_list()` and
+         * `e_cal_recur_generate_instances_sync()`.
          *
-         * The callback function should do a g_object_ref() of the calendar component
+         * The callback function should do a `g_object_ref()` of the calendar component
          * it gets passed if it intends to keep it around, since it will be unreffed
          * as soon as the callback returns.
          * @param start Start time for query
          * @param end End time for query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param cb Callback for each generated instance
          */
         generate_instances_sync(
@@ -2130,11 +2290,11 @@ export namespace ECal {
         ): void;
         /**
          * Queries a calendar for a specified component's object attachment uris.
-         * The call is finished by e_cal_client_get_attachment_uris_finish() from
+         * The call is finished by `e_cal_client_get_attachment_uris_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_attachment_uris(
             uid: string,
@@ -2143,11 +2303,11 @@ export namespace ECal {
         ): globalThis.Promise<string[]>;
         /**
          * Queries a calendar for a specified component's object attachment uris.
-         * The call is finished by e_cal_client_get_attachment_uris_finish() from
+         * The call is finished by `e_cal_client_get_attachment_uris_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_attachment_uris(
@@ -2158,11 +2318,11 @@ export namespace ECal {
         ): void;
         /**
          * Queries a calendar for a specified component's object attachment uris.
-         * The call is finished by e_cal_client_get_attachment_uris_finish() from
+         * The call is finished by `e_cal_client_get_attachment_uris_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_attachment_uris(
@@ -2172,20 +2332,20 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string[]> | void;
         /**
-         * Finishes previous call of e_cal_client_get_attachment_uris() and
+         * Finishes previous call of `e_cal_client_get_attachment_uris()` and
          * sets `out_attachment_uris` to uris for component's attachments.
-         * The list should be freed with e_client_util_free_string_slist().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * The list should be freed with `e_client_util_free_string_slist()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_attachment_uris_finish(result: Gio.AsyncResult): [boolean, string[]];
         /**
          * Queries a calendar for a specified component's object attachment URIs.
-         * The list should be freed with e_client_util_free_string_slist().
+         * The list should be freed with `e_client_util_free_string_slist()`.
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_attachment_uris_sync(
             uid: string,
@@ -2196,29 +2356,29 @@ export namespace ECal {
          * Gets a calendar component as an iCalendar string, with a toplevel
          * VCALENDAR component and all VTIMEZONEs needed for the component.
          * @param icalcomp A calendar component object.
-         * @returns the component as a complete iCalendar string, or NULL on failure. The string should be freed with g_free().
+         * @returns the component as a complete iCalendar string, or NULL on failure. The string should be freed with `g_free()`.
          */
         get_component_as_string(icalcomp: ICalGLib.Component): string | null;
         /**
-         * Retrives an #ICalComponent from the backend that contains the default
+         * Retrives an {@link ICalGLib.Component} from the backend that contains the default
          * values for properties needed. The call is finished
-         * by e_cal_client_get_default_object_finish() from the `callback`.
-         * @param cancellable a #GCancellable; can be %NULL
+         * by `e_cal_client_get_default_object_finish()` from the `callback`.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_default_object(cancellable?: Gio.Cancellable | null): globalThis.Promise<ICalGLib.Component>;
         /**
-         * Retrives an #ICalComponent from the backend that contains the default
+         * Retrives an {@link ICalGLib.Component} from the backend that contains the default
          * values for properties needed. The call is finished
-         * by e_cal_client_get_default_object_finish() from the `callback`.
-         * @param cancellable a #GCancellable; can be %NULL
+         * by `e_cal_client_get_default_object_finish()` from the `callback`.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_default_object(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Retrives an #ICalComponent from the backend that contains the default
+         * Retrives an {@link ICalGLib.Component} from the backend that contains the default
          * values for properties needed. The call is finished
-         * by e_cal_client_get_default_object_finish() from the `callback`.
-         * @param cancellable a #GCancellable; can be %NULL
+         * by `e_cal_client_get_default_object_finish()` from the `callback`.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_default_object(
@@ -2226,39 +2386,39 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ICalGLib.Component> | void;
         /**
-         * Finishes previous call of e_cal_client_get_default_object() and
-         * sets `out_icalcomp` to an #ICalComponent from the backend that contains
+         * Finishes previous call of `e_cal_client_get_default_object()` and
+         * sets `out_icalcomp` to an {@link ICalGLib.Component} from the backend that contains
          * the default values for properties needed. This `out_icalcomp` should be
-         * freed with g_object_unref(), when no longer needed.
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * freed with `g_object_unref()`, when no longer needed.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_default_object_finish(result: Gio.AsyncResult): [boolean, ICalGLib.Component];
         /**
-         * Retrives an #ICalComponent from the backend that contains the default
+         * Retrives an {@link ICalGLib.Component} from the backend that contains the default
          * values for properties needed. This `out_icalcomp` should be freed with
-         * g_object_unref(), when no longer needed.
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * `g_object_unref()`, when no longer needed.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_default_object_sync(cancellable?: Gio.Cancellable | null): [boolean, ICalGLib.Component];
         /**
          * Returns the default timezone previously set with
-         * e_cal_client_set_default_timezone().  The returned pointer is owned by
+         * `e_cal_client_set_default_timezone()`.  The returned pointer is owned by
          * the `client` and should not be freed.
-         * @returns an #ICalTimezone
+         * @returns an {@link ICalGLib.Timezone}
          */
         get_default_timezone(): ICalGLib.Timezone;
         /**
          * Begins retrieval of free/busy information from the calendar server
-         * as a list of #ECalComponent-s. Connect to "free-busy-data" signal
+         * as a list of {@link ECal.Component}-s. Connect to "free-busy-data" signal
          * to receive chunks of free/busy components.
-         * The call is finished by e_cal_client_get_free_busy_finish() from
+         * The call is finished by `e_cal_client_get_free_busy_finish()` from
          * the `callback`.
          * @param start Start time for query
          * @param end End time for query
          * @param users List of users to retrieve free/busy information for
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_free_busy(
             start: number,
@@ -2268,14 +2428,14 @@ export namespace ECal {
         ): globalThis.Promise<Component[]>;
         /**
          * Begins retrieval of free/busy information from the calendar server
-         * as a list of #ECalComponent-s. Connect to "free-busy-data" signal
+         * as a list of {@link ECal.Component}-s. Connect to "free-busy-data" signal
          * to receive chunks of free/busy components.
-         * The call is finished by e_cal_client_get_free_busy_finish() from
+         * The call is finished by `e_cal_client_get_free_busy_finish()` from
          * the `callback`.
          * @param start Start time for query
          * @param end End time for query
          * @param users List of users to retrieve free/busy information for
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_free_busy(
@@ -2287,14 +2447,14 @@ export namespace ECal {
         ): void;
         /**
          * Begins retrieval of free/busy information from the calendar server
-         * as a list of #ECalComponent-s. Connect to "free-busy-data" signal
+         * as a list of {@link ECal.Component}-s. Connect to "free-busy-data" signal
          * to receive chunks of free/busy components.
-         * The call is finished by e_cal_client_get_free_busy_finish() from
+         * The call is finished by `e_cal_client_get_free_busy_finish()` from
          * the `callback`.
          * @param start Start time for query
          * @param end End time for query
          * @param users List of users to retrieve free/busy information for
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_free_busy(
@@ -2305,24 +2465,24 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Component[]> | void;
         /**
-         * Finishes previous call of e_cal_client_get_free_busy().
-         * The `out_freebusy` contains all VFREEBUSY #ECalComponent-s, which could be also
+         * Finishes previous call of `e_cal_client_get_free_busy()`.
+         * The `out_freebusy` contains all VFREEBUSY {@link ECal.Component}-s, which could be also
          * received by "free-busy-data" signal. The client is responsible to do a merge of
          * the components between this complete list and those received through the signal.
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_free_busy_finish(result: Gio.AsyncResult): [boolean, Component[]];
         /**
          * Gets free/busy information from the calendar server.
-         * The `out_freebusy` contains all VFREEBUSY #ECalComponent-s, which could be also
+         * The `out_freebusy` contains all VFREEBUSY {@link ECal.Component}-s, which could be also
          * received by "free-busy-data" signal. The client is responsible to do a merge of
          * the components between this complete list and those received through the signal.
          * @param start Start time for query
          * @param end End time for query
          * @param users List of users to retrieve free/busy information for
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_free_busy_sync(
             start: number,
@@ -2341,15 +2501,15 @@ export namespace ECal {
         get_local_attachment_store(): string;
         /**
          * Queries a calendar for a calendar component object based on its unique
-         * identifier. The call is finished by e_cal_client_get_object_finish()
+         * identifier. The call is finished by `e_cal_client_get_object_finish()`
          * from the `callback`.
          *
-         * Use e_cal_client_get_objects_for_uid() to get list of all
+         * Use `e_cal_client_get_objects_for_uid()` to get list of all
          * objects for the given uid, which includes master object and
          * all detached instances.
          * @param uid Unique identifier for a calendar component.
          * @param rid Recurrence identifier.
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_object(
             uid: string,
@@ -2358,15 +2518,15 @@ export namespace ECal {
         ): globalThis.Promise<ICalGLib.Component>;
         /**
          * Queries a calendar for a calendar component object based on its unique
-         * identifier. The call is finished by e_cal_client_get_object_finish()
+         * identifier. The call is finished by `e_cal_client_get_object_finish()`
          * from the `callback`.
          *
-         * Use e_cal_client_get_objects_for_uid() to get list of all
+         * Use `e_cal_client_get_objects_for_uid()` to get list of all
          * objects for the given uid, which includes master object and
          * all detached instances.
          * @param uid Unique identifier for a calendar component.
          * @param rid Recurrence identifier.
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_object(
@@ -2377,15 +2537,15 @@ export namespace ECal {
         ): void;
         /**
          * Queries a calendar for a calendar component object based on its unique
-         * identifier. The call is finished by e_cal_client_get_object_finish()
+         * identifier. The call is finished by `e_cal_client_get_object_finish()`
          * from the `callback`.
          *
-         * Use e_cal_client_get_objects_for_uid() to get list of all
+         * Use `e_cal_client_get_objects_for_uid()` to get list of all
          * objects for the given uid, which includes master object and
          * all detached instances.
          * @param uid Unique identifier for a calendar component.
          * @param rid Recurrence identifier.
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_object(
@@ -2395,34 +2555,34 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ICalGLib.Component> | void;
         /**
-         * Finishes previous call of e_cal_client_get_object() and
+         * Finishes previous call of `e_cal_client_get_object()` and
          * sets `out_icalcomp` to queried component. This function always returns
          * master object for a case of `rid` being NULL or an empty string.
-         * This component should be freed with g_object_unref(), when no longer needed.
+         * This component should be freed with `g_object_unref()`, when no longer needed.
          *
-         * Use e_cal_client_get_objects_for_uid() to get list of all
+         * Use `e_cal_client_get_objects_for_uid()` to get list of all
          * objects for the given uid, which includes master object and
          * all detached instances.
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_object_finish(result: Gio.AsyncResult): [boolean, ICalGLib.Component];
         /**
          * Gets a list of objects from the calendar that match the query specified
-         * by the `sexp` argument, returning matching objects as a list of #ICalComponent-s.
-         * The call is finished by e_cal_client_get_object_list_finish() from
+         * by the `sexp` argument, returning matching objects as a list of {@link ICalGLib.Component}-s.
+         * The call is finished by `e_cal_client_get_object_list_finish()` from
          * the `callback`.
          * @param sexp an S-expression representing the query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_object_list(sexp: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<ICalGLib.Component[]>;
         /**
          * Gets a list of objects from the calendar that match the query specified
-         * by the `sexp` argument, returning matching objects as a list of #ICalComponent-s.
-         * The call is finished by e_cal_client_get_object_list_finish() from
+         * by the `sexp` argument, returning matching objects as a list of {@link ICalGLib.Component}-s.
+         * The call is finished by `e_cal_client_get_object_list_finish()` from
          * the `callback`.
          * @param sexp an S-expression representing the query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_object_list(
@@ -2432,11 +2592,11 @@ export namespace ECal {
         ): void;
         /**
          * Gets a list of objects from the calendar that match the query specified
-         * by the `sexp` argument, returning matching objects as a list of #ICalComponent-s.
-         * The call is finished by e_cal_client_get_object_list_finish() from
+         * by the `sexp` argument, returning matching objects as a list of {@link ICalGLib.Component}-s.
+         * The call is finished by `e_cal_client_get_object_list_finish()` from
          * the `callback`.
          * @param sexp an S-expression representing the query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_object_list(
@@ -2446,20 +2606,20 @@ export namespace ECal {
         ): globalThis.Promise<ICalGLib.Component[]> | void;
         /**
          * Gets a list of objects from the calendar that match the query specified
-         * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
-         * The call is finished by e_cal_client_get_object_list_as_comps_finish() from
+         * by the `sexp` argument, returning matching objects as a list of {@link ECal.Component}-s.
+         * The call is finished by `e_cal_client_get_object_list_as_comps_finish()` from
          * the `callback`.
          * @param sexp an S-expression representing the query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_object_list_as_comps(sexp: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Component[]>;
         /**
          * Gets a list of objects from the calendar that match the query specified
-         * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
-         * The call is finished by e_cal_client_get_object_list_as_comps_finish() from
+         * by the `sexp` argument, returning matching objects as a list of {@link ECal.Component}-s.
+         * The call is finished by `e_cal_client_get_object_list_as_comps_finish()` from
          * the `callback`.
          * @param sexp an S-expression representing the query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_object_list_as_comps(
@@ -2469,11 +2629,11 @@ export namespace ECal {
         ): void;
         /**
          * Gets a list of objects from the calendar that match the query specified
-         * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
-         * The call is finished by e_cal_client_get_object_list_as_comps_finish() from
+         * by the `sexp` argument, returning matching objects as a list of {@link ECal.Component}-s.
+         * The call is finished by `e_cal_client_get_object_list_as_comps_finish()` from
          * the `callback`.
          * @param sexp an S-expression representing the query
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_object_list_as_comps(
@@ -2482,55 +2642,55 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Component[]> | void;
         /**
-         * Finishes previous call of e_cal_client_get_object_list_as_comps() and
-         * sets `out_ecalcomps` to a matching list of #ECalComponent-s.
-         * This list should be freed with e_client_util_free_object_slist().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_get_object_list_as_comps()` and
+         * sets `out_ecalcomps` to a matching list of {@link ECal.Component}-s.
+         * This list should be freed with `e_client_util_free_object_slist()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_object_list_as_comps_finish(result: Gio.AsyncResult): [boolean, Component[]];
         /**
          * Gets a list of objects from the calendar that match the query specified
          * by the `sexp` argument. The objects will be returned in the `out_ecalcomps`
-         * argument, which is a list of #ECalComponent.
-         * This list should be freed with e_client_util_free_object_slist().
+         * argument, which is a list of {@link ECal.Component}.
+         * This list should be freed with `e_client_util_free_object_slist()`.
          * @param sexp an S-expression representing the query
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_object_list_as_comps_sync(sexp: string, cancellable?: Gio.Cancellable | null): [boolean, Component[]];
         /**
-         * Finishes previous call of e_cal_client_get_object_list() and
-         * sets `out_icalcomps` to a matching list of #ICalComponent-s.
-         * This list should be freed with e_client_util_free_object_slist().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_get_object_list()` and
+         * sets `out_icalcomps` to a matching list of {@link ICalGLib.Component}-s.
+         * This list should be freed with `e_client_util_free_object_slist()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_object_list_finish(result: Gio.AsyncResult): [boolean, ICalGLib.Component[]];
         /**
          * Gets a list of objects from the calendar that match the query specified
          * by the `sexp` argument. The objects will be returned in the `out_icalcomps`
-         * argument, which is a list of #ICalComponent.
-         * This list should be freed with e_client_util_free_object_slist().
+         * argument, which is a list of {@link ICalGLib.Component}.
+         * This list should be freed with `e_client_util_free_object_slist()`.
          * @param sexp an S-expression representing the query
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_object_list_sync(sexp: string, cancellable?: Gio.Cancellable | null): [boolean, ICalGLib.Component[]];
         /**
          * Queries a calendar for a calendar component object based
          * on its unique identifier. This function always returns
          * master object for a case of `rid` being NULL or an empty string.
-         * This component should be freed with g_object_unref(),
+         * This component should be freed with `g_object_unref()`,
          * when no longer needed.
          *
-         * Use e_cal_client_get_objects_for_uid_sync() to get list of all
+         * Use `e_cal_client_get_objects_for_uid_sync()` to get list of all
          * objects for the given uid, which includes master object and
          * all detached instances.
          * @param uid Unique identifier for a calendar component.
          * @param rid Recurrence identifier.
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_object_sync(
             uid: string,
@@ -2541,20 +2701,20 @@ export namespace ECal {
          * Queries a calendar for all calendar components with the given unique
          * ID. This will return any recurring event and all its detached recurrences.
          * For non-recurring events, it will just return the object with that ID.
-         * The call is finished by e_cal_client_get_objects_for_uid_finish() from
+         * The call is finished by `e_cal_client_get_objects_for_uid_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_objects_for_uid(uid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<Component[]>;
         /**
          * Queries a calendar for all calendar components with the given unique
          * ID. This will return any recurring event and all its detached recurrences.
          * For non-recurring events, it will just return the object with that ID.
-         * The call is finished by e_cal_client_get_objects_for_uid_finish() from
+         * The call is finished by `e_cal_client_get_objects_for_uid_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_objects_for_uid(
@@ -2566,10 +2726,10 @@ export namespace ECal {
          * Queries a calendar for all calendar components with the given unique
          * ID. This will return any recurring event and all its detached recurrences.
          * For non-recurring events, it will just return the object with that ID.
-         * The call is finished by e_cal_client_get_objects_for_uid_finish() from
+         * The call is finished by `e_cal_client_get_objects_for_uid_finish()` from
          * the `callback`.
          * @param uid Unique identifier for a calendar component
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_objects_for_uid(
@@ -2578,43 +2738,43 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Component[]> | void;
         /**
-         * Finishes previous call of e_cal_client_get_objects_for_uid() and
-         * sets `out_ecalcomps` to a list of #ECalComponent<!-- -->s corresponding to
+         * Finishes previous call of `e_cal_client_get_objects_for_uid()` and
+         * sets `out_ecalcomps` to a list of {@link ECal.Component}<!-- -->s corresponding to
          * found components for a given uid of the same type as this client.
-         * This list should be freed with e_client_util_free_object_slist().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * This list should be freed with `e_client_util_free_object_slist()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_objects_for_uid_finish(result: Gio.AsyncResult): [boolean, Component[]];
         /**
          * Queries a calendar for all calendar components with the given unique
          * ID. This will return any recurring event and all its detached recurrences.
          * For non-recurring events, it will just return the object with that ID.
-         * This list should be freed with e_client_util_free_object_slist().
+         * This list should be freed with `e_client_util_free_object_slist()`.
          * @param uid Unique identifier for a calendar component
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_objects_for_uid_sync(uid: string, cancellable?: Gio.Cancellable | null): [boolean, Component[]];
         /**
          * Gets the source type of the calendar client.
-         * @returns an #ECalClientSourceType value corresponding to the source type of the calendar client.
+         * @returns an {@link ECal.ClientSourceType} value corresponding to the source type of the calendar client.
          */
         get_source_type(): ClientSourceType;
         /**
          * Retrieves a timezone object from the calendar backend.
-         * The call is finished by e_cal_client_get_timezone_finish() from
+         * The call is finished by `e_cal_client_get_timezone_finish()` from
          * the `callback`.
          * @param tzid ID of the timezone to retrieve
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_timezone(tzid: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<ICalGLib.Timezone>;
         /**
          * Retrieves a timezone object from the calendar backend.
-         * The call is finished by e_cal_client_get_timezone_finish() from
+         * The call is finished by `e_cal_client_get_timezone_finish()` from
          * the `callback`.
          * @param tzid ID of the timezone to retrieve
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_timezone(
@@ -2624,10 +2784,10 @@ export namespace ECal {
         ): void;
         /**
          * Retrieves a timezone object from the calendar backend.
-         * The call is finished by e_cal_client_get_timezone_finish() from
+         * The call is finished by `e_cal_client_get_timezone_finish()` from
          * the `callback`.
          * @param tzid ID of the timezone to retrieve
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_timezone(
@@ -2635,38 +2795,41 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ICalGLib.Timezone> | void;
+        /**
+         * @param args
+         */
         // Conflicted with ECal.TimezoneCache.get_timezone
         get_timezone(...args: never[]): any;
         /**
-         * Finishes previous call of e_cal_client_get_timezone() and
+         * Finishes previous call of `e_cal_client_get_timezone()` and
          * sets `out_zone` to a retrieved timezone object from the calendar backend.
-         * This object is owned by the `client,` thus do not free it.
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * This object is owned by the `client`, thus do not free it.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_timezone_finish(result: Gio.AsyncResult): [boolean, ICalGLib.Timezone];
         /**
          * Retrieves a timezone object from the calendar backend.
-         * This object is owned by the `client,` thus do not free it.
+         * This object is owned by the `client`, thus do not free it.
          * @param tzid ID of the timezone to retrieve
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_timezone_sync(tzid: string, cancellable?: Gio.Cancellable | null): [boolean, ICalGLib.Timezone];
         /**
-         * Query `client` with `sexp,` creating an #ECalClientView.
-         * The call is finished by e_cal_client_get_view_finish()
+         * Query `client` with `sexp`, creating an {@link ECal.ClientView}.
+         * The call is finished by `e_cal_client_get_view_finish()`
          * from the `callback`.
          * @param sexp an S-expression representing the query.
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         get_view(sexp: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<ClientView>;
         /**
-         * Query `client` with `sexp,` creating an #ECalClientView.
-         * The call is finished by e_cal_client_get_view_finish()
+         * Query `client` with `sexp`, creating an {@link ECal.ClientView}.
+         * The call is finished by `e_cal_client_get_view_finish()`
          * from the `callback`.
          * @param sexp an S-expression representing the query.
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_view(
@@ -2675,11 +2838,11 @@ export namespace ECal {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Query `client` with `sexp,` creating an #ECalClientView.
-         * The call is finished by e_cal_client_get_view_finish()
+         * Query `client` with `sexp`, creating an {@link ECal.ClientView}.
+         * The call is finished by `e_cal_client_get_view_finish()`
          * from the `callback`.
          * @param sexp an S-expression representing the query.
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         get_view(
@@ -2688,20 +2851,20 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ClientView> | void;
         /**
-         * Finishes previous call of e_cal_client_get_view().
-         * If successful, then the `out_view` is set to newly allocated #ECalClientView,
-         * which should be freed with g_object_unref().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_get_view()`.
+         * If successful, then the `out_view` is set to newly allocated {@link ECal.ClientView},
+         * which should be freed with `g_object_unref()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         get_view_finish(result: Gio.AsyncResult): [boolean, ClientView];
         /**
-         * Query `client` with `sexp,` creating an #ECalClientView.
-         * If successful, then the `out_view` is set to newly allocated #ECalClientView,
-         * which should be freed with g_object_unref().
+         * Query `client` with `sexp`, creating an {@link ECal.ClientView}.
+         * If successful, then the `out_view` is set to newly allocated {@link ECal.ClientView},
+         * which should be freed with `g_object_unref()`.
          * @param sexp an S-expression representing the query.
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         get_view_sync(sexp: string, cancellable?: Gio.Cancellable | null): [boolean, ClientView];
         /**
@@ -2713,12 +2876,12 @@ export namespace ECal {
          * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
          * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
          *
-         * The call is finished by e_cal_client_modify_object_finish() from
+         * The call is finished by `e_cal_client_modify_object_finish()` from
          * the `callback`.
          * @param icalcomp Component to modify
          * @param mod Type of modification
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         modify_object(
             icalcomp: ICalGLib.Component,
@@ -2735,12 +2898,12 @@ export namespace ECal {
          * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
          * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
          *
-         * The call is finished by e_cal_client_modify_object_finish() from
+         * The call is finished by `e_cal_client_modify_object_finish()` from
          * the `callback`.
          * @param icalcomp Component to modify
          * @param mod Type of modification
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         modify_object(
@@ -2759,12 +2922,12 @@ export namespace ECal {
          * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
          * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
          *
-         * The call is finished by e_cal_client_modify_object_finish() from
+         * The call is finished by `e_cal_client_modify_object_finish()` from
          * the `callback`.
          * @param icalcomp Component to modify
          * @param mod Type of modification
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         modify_object(
@@ -2775,9 +2938,9 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes previous call of e_cal_client_modify_object().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_modify_object()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         modify_object_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -2790,9 +2953,9 @@ export namespace ECal {
          * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
          * @param icalcomp Component to modify
          * @param mod Type of modification
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         modify_object_sync(
             icalcomp: ICalGLib.Component,
@@ -2809,12 +2972,12 @@ export namespace ECal {
          * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
          * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
          *
-         * The call is finished by e_cal_client_modify_objects_finish() from
+         * The call is finished by `e_cal_client_modify_objects_finish()` from
          * the `callback`.
          * @param icalcomps Components to modify
          * @param mod Type of modification
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         modify_objects(
             icalcomps: ICalGLib.Component[],
@@ -2831,12 +2994,12 @@ export namespace ECal {
          * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
          * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
          *
-         * The call is finished by e_cal_client_modify_objects_finish() from
+         * The call is finished by `e_cal_client_modify_objects_finish()` from
          * the `callback`.
          * @param icalcomps Components to modify
          * @param mod Type of modification
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         modify_objects(
@@ -2855,12 +3018,12 @@ export namespace ECal {
          * or a specific set of instances (#E_CAL_OBJ_MOD_THIS_AND_PRIOR and
          * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
          *
-         * The call is finished by e_cal_client_modify_objects_finish() from
+         * The call is finished by `e_cal_client_modify_objects_finish()` from
          * the `callback`.
          * @param icalcomps Components to modify
          * @param mod Type of modification
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         modify_objects(
@@ -2871,9 +3034,9 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes previous call of e_cal_client_modify_objects().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_modify_objects()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         modify_objects_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -2886,9 +3049,9 @@ export namespace ECal {
          * #E_CAL_OBJ_MOD_THIS_AND_FUTURE).
          * @param icalcomps Components to modify
          * @param mod Type of modification
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         modify_objects_sync(
             icalcomps: ICalGLib.Component[],
@@ -2901,11 +3064,11 @@ export namespace ECal {
          * `icalcomp` argument. This is used for iTIP confirmation/cancellation
          * messages for scheduled meetings.
          *
-         * The call is finished by e_cal_client_receive_objects_finish() from
+         * The call is finished by `e_cal_client_receive_objects_finish()` from
          * the `callback`.
-         * @param icalcomp An #ICalComponent
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param icalcomp An {@link ICalGLib.Component}
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         receive_objects(
             icalcomp: ICalGLib.Component,
@@ -2917,11 +3080,11 @@ export namespace ECal {
          * `icalcomp` argument. This is used for iTIP confirmation/cancellation
          * messages for scheduled meetings.
          *
-         * The call is finished by e_cal_client_receive_objects_finish() from
+         * The call is finished by `e_cal_client_receive_objects_finish()` from
          * the `callback`.
-         * @param icalcomp An #ICalComponent
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param icalcomp An {@link ICalGLib.Component}
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         receive_objects(
@@ -2935,11 +3098,11 @@ export namespace ECal {
          * `icalcomp` argument. This is used for iTIP confirmation/cancellation
          * messages for scheduled meetings.
          *
-         * The call is finished by e_cal_client_receive_objects_finish() from
+         * The call is finished by `e_cal_client_receive_objects_finish()` from
          * the `callback`.
-         * @param icalcomp An #ICalComponent
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param icalcomp An {@link ICalGLib.Component}
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         receive_objects(
@@ -2949,19 +3112,19 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes previous call of e_cal_client_receive_objects().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_receive_objects()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         receive_objects_finish(result: Gio.AsyncResult): boolean;
         /**
          * Makes the backend receive the set of iCalendar objects specified in the
          * `icalcomp` argument. This is used for iTIP confirmation/cancellation
          * messages for scheduled meetings.
-         * @param icalcomp An #ICalComponent
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param icalcomp An {@link ICalGLib.Component}
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         receive_objects_sync(
             icalcomp: ICalGLib.Component,
@@ -2970,18 +3133,18 @@ export namespace ECal {
         ): boolean;
         /**
          * This function allows the removal of instances of a recurrent
-         * appointment. By using a combination of the `uid,` `rid` and `mod`
+         * appointment. By using a combination of the `uid`, `rid` and `mod`
          * arguments, you can remove specific instances. If what you want
-         * is to remove all instances, use %NULL `rid` and #E_CAL_OBJ_MOD_ALL
+         * is to remove all instances, use `null` `rid` and #E_CAL_OBJ_MOD_ALL
          * for the `mod`.
          *
-         * The call is finished by e_cal_client_remove_object_finish() from
+         * The call is finished by `e_cal_client_remove_object_finish()` from
          * the `callback`.
          * @param uid UID of the object to remove
          * @param rid Recurrence ID of the specific recurrence to remove
          * @param mod Type of the removal
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         remove_object(
             uid: string,
@@ -2992,18 +3155,18 @@ export namespace ECal {
         ): globalThis.Promise<boolean>;
         /**
          * This function allows the removal of instances of a recurrent
-         * appointment. By using a combination of the `uid,` `rid` and `mod`
+         * appointment. By using a combination of the `uid`, `rid` and `mod`
          * arguments, you can remove specific instances. If what you want
-         * is to remove all instances, use %NULL `rid` and #E_CAL_OBJ_MOD_ALL
+         * is to remove all instances, use `null` `rid` and #E_CAL_OBJ_MOD_ALL
          * for the `mod`.
          *
-         * The call is finished by e_cal_client_remove_object_finish() from
+         * The call is finished by `e_cal_client_remove_object_finish()` from
          * the `callback`.
          * @param uid UID of the object to remove
          * @param rid Recurrence ID of the specific recurrence to remove
          * @param mod Type of the removal
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         remove_object(
@@ -3016,18 +3179,18 @@ export namespace ECal {
         ): void;
         /**
          * This function allows the removal of instances of a recurrent
-         * appointment. By using a combination of the `uid,` `rid` and `mod`
+         * appointment. By using a combination of the `uid`, `rid` and `mod`
          * arguments, you can remove specific instances. If what you want
-         * is to remove all instances, use %NULL `rid` and #E_CAL_OBJ_MOD_ALL
+         * is to remove all instances, use `null` `rid` and #E_CAL_OBJ_MOD_ALL
          * for the `mod`.
          *
-         * The call is finished by e_cal_client_remove_object_finish() from
+         * The call is finished by `e_cal_client_remove_object_finish()` from
          * the `callback`.
          * @param uid UID of the object to remove
          * @param rid Recurrence ID of the specific recurrence to remove
          * @param mod Type of the removal
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         remove_object(
@@ -3039,23 +3202,23 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes previous call of e_cal_client_remove_object().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_remove_object()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         remove_object_finish(result: Gio.AsyncResult): boolean;
         /**
          * This function allows the removal of instances of a recurrent
-         * appointment. By using a combination of the `uid,` `rid` and `mod`
+         * appointment. By using a combination of the `uid`, `rid` and `mod`
          * arguments, you can remove specific instances. If what you want
-         * is to remove all instances, use %NULL `rid` and #E_CAL_OBJ_MOD_ALL
+         * is to remove all instances, use `null` `rid` and #E_CAL_OBJ_MOD_ALL
          * for the `mod`.
          * @param uid UID of the object to remove
          * @param rid Recurrence ID of the specific recurrence to remove
          * @param mod Type of the removal
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         remove_object_sync(
             uid: string,
@@ -3066,16 +3229,16 @@ export namespace ECal {
         ): boolean;
         /**
          * This function allows the removal of instances of recurrent appointments.
-         * #ECalComponentId objects can identify specific instances (if rid is not
-         * %NULL).  If what you want is to remove all instances, use a %NULL rid in
-         * the #ECalComponentId and #E_CAL_OBJ_MOD_ALL for the `mod`.
+         * {@link ECal.ComponentId} objects can identify specific instances (if rid is not
+         * `null`).  If what you want is to remove all instances, use a `null` rid in
+         * the {@link ECal.ComponentId} and #E_CAL_OBJ_MOD_ALL for the `mod`.
          *
-         * The call is finished by e_cal_client_remove_objects_finish() from
+         * The call is finished by `e_cal_client_remove_objects_finish()` from
          * the `callback`.
-         * @param ids A list of #ECalComponentId objects identifying the objects to remove
+         * @param ids A list of {@link ECal.ComponentId} objects identifying the objects to remove
          * @param mod Type of the removal
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         remove_objects(
             ids: ComponentId[],
@@ -3085,16 +3248,16 @@ export namespace ECal {
         ): globalThis.Promise<boolean>;
         /**
          * This function allows the removal of instances of recurrent appointments.
-         * #ECalComponentId objects can identify specific instances (if rid is not
-         * %NULL).  If what you want is to remove all instances, use a %NULL rid in
-         * the #ECalComponentId and #E_CAL_OBJ_MOD_ALL for the `mod`.
+         * {@link ECal.ComponentId} objects can identify specific instances (if rid is not
+         * `null`).  If what you want is to remove all instances, use a `null` rid in
+         * the {@link ECal.ComponentId} and #E_CAL_OBJ_MOD_ALL for the `mod`.
          *
-         * The call is finished by e_cal_client_remove_objects_finish() from
+         * The call is finished by `e_cal_client_remove_objects_finish()` from
          * the `callback`.
-         * @param ids A list of #ECalComponentId objects identifying the objects to remove
+         * @param ids A list of {@link ECal.ComponentId} objects identifying the objects to remove
          * @param mod Type of the removal
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         remove_objects(
@@ -3106,16 +3269,16 @@ export namespace ECal {
         ): void;
         /**
          * This function allows the removal of instances of recurrent appointments.
-         * #ECalComponentId objects can identify specific instances (if rid is not
-         * %NULL).  If what you want is to remove all instances, use a %NULL rid in
-         * the #ECalComponentId and #E_CAL_OBJ_MOD_ALL for the `mod`.
+         * {@link ECal.ComponentId} objects can identify specific instances (if rid is not
+         * `null`).  If what you want is to remove all instances, use a `null` rid in
+         * the {@link ECal.ComponentId} and #E_CAL_OBJ_MOD_ALL for the `mod`.
          *
-         * The call is finished by e_cal_client_remove_objects_finish() from
+         * The call is finished by `e_cal_client_remove_objects_finish()` from
          * the `callback`.
-         * @param ids A list of #ECalComponentId objects identifying the objects to remove
+         * @param ids A list of {@link ECal.ComponentId} objects identifying the objects to remove
          * @param mod Type of the removal
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         remove_objects(
@@ -3126,21 +3289,21 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes previous call of e_cal_client_remove_objects().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Finishes previous call of `e_cal_client_remove_objects()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         remove_objects_finish(result: Gio.AsyncResult): boolean;
         /**
          * This function allows the removal of instances of recurrent
-         * appointments. #ECalComponentId objects can identify specific instances
-         * (if rid is not %NULL).  If what you want is to remove all instances, use
-         * a %NULL rid in the #ECalComponentId and #E_CAL_OBJ_MOD_ALL for the `mod`.
-         * @param ids a list of #ECalComponentId objects       identifying the objects to remove
+         * appointments. {@link ECal.ComponentId} objects can identify specific instances
+         * (if rid is not `null`).  If what you want is to remove all instances, use
+         * a `null` rid in the {@link ECal.ComponentId} and #E_CAL_OBJ_MOD_ALL for the `mod`.
+         * @param ids a list of {@link ECal.ComponentId} objects       identifying the objects to remove
          * @param mod Type of the removal
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         remove_objects_sync(
             ids: ComponentId[],
@@ -3151,11 +3314,11 @@ export namespace ECal {
         /**
          * Requests a calendar backend to send meeting information stored in `icalcomp`.
          * The backend can modify this component and request a send to particular users.
-         * The call is finished by e_cal_client_send_objects_finish() from
+         * The call is finished by `e_cal_client_send_objects_finish()` from
          * the `callback`.
-         * @param icalcomp An #ICalComponent to be sent
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param icalcomp An {@link ICalGLib.Component} to be sent
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
         send_objects(
             icalcomp: ICalGLib.Component,
@@ -3165,11 +3328,11 @@ export namespace ECal {
         /**
          * Requests a calendar backend to send meeting information stored in `icalcomp`.
          * The backend can modify this component and request a send to particular users.
-         * The call is finished by e_cal_client_send_objects_finish() from
+         * The call is finished by `e_cal_client_send_objects_finish()` from
          * the `callback`.
-         * @param icalcomp An #ICalComponent to be sent
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param icalcomp An {@link ICalGLib.Component} to be sent
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         send_objects(
@@ -3181,11 +3344,11 @@ export namespace ECal {
         /**
          * Requests a calendar backend to send meeting information stored in `icalcomp`.
          * The backend can modify this component and request a send to particular users.
-         * The call is finished by e_cal_client_send_objects_finish() from
+         * The call is finished by `e_cal_client_send_objects_finish()` from
          * the `callback`.
-         * @param icalcomp An #ICalComponent to be sent
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
+         * @param icalcomp An {@link ICalGLib.Component} to be sent
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
         send_objects(
@@ -3195,13 +3358,13 @@ export namespace ECal {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[string[], ICalGLib.Component]> | void;
         /**
-         * Finishes previous call of e_cal_client_send_objects() and
+         * Finishes previous call of `e_cal_client_send_objects()` and
          * populates `out_users` with a list of users to send `out_modified_icalcomp` to.
          *
-         * The `out_users` list should be freed with e_client_util_free_string_slist()
-         * and the `out_modified_icalcomp` should be freed with g_object_unref().
-         * @param result a #GAsyncResult
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * The `out_users` list should be freed with `e_client_util_free_string_slist()`
+         * and the `out_modified_icalcomp` should be freed with `g_object_unref()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if successful, `false` otherwise.
          */
         send_objects_finish(result: Gio.AsyncResult): [boolean, string[], ICalGLib.Component];
         /**
@@ -3209,12 +3372,12 @@ export namespace ECal {
          * The backend can modify this component and request a send to users in the
          * `out_users` list.
          *
-         * The `out_users` list should be freed with e_client_util_free_string_slist()
-         * and the `out_modified_icalcomp` should be freed with g_object_unref().
-         * @param icalcomp An #ICalComponent to be sent
-         * @param opflags bit-or of #ECalOperationFlags
-         * @param cancellable a #GCancellable; can be %NULL
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * The `out_users` list should be freed with `e_client_util_free_string_slist()`
+         * and the `out_modified_icalcomp` should be freed with `g_object_unref()`.
+         * @param icalcomp An {@link ICalGLib.Component} to be sent
+         * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @returns `true` if successful, `false` otherwise.
          */
         send_objects_sync(
             icalcomp: ICalGLib.Component,
@@ -3228,102 +3391,108 @@ export namespace ECal {
          * @param zone A timezone object.
          */
         set_default_timezone(zone: ICalGLib.Timezone): void;
-
-        // Inherited methods
         /**
-         * Returns a list of #ICalTimezone instances that were explicitly added to
-         * the `cache` through e_timezone_cache_add_timezone().  In particular, any
-         * built-in time zone data that e_timezone_cache_get_timezone() may use to
+         * Returns a list of {@link ICalGLib.Timezone} instances that were explicitly added to
+         * the `cache` through `e_timezone_cache_add_timezone()`.  In particular, any
+         * built-in time zone data that `e_timezone_cache_get_timezone()` may use to
          * match a TZID string is excluded from the returned list.
          *
-         * Free the returned list with g_list_free().  The list elements are owned
+         * Free the returned list with `g_list_free()`.  The list elements are owned
          * by the `cache` and should not be modified or freed.
-         * @returns a #GList of    #ICalTimezone instances
+         * @returns a {@link GLib.List} of    {@link ICalGLib.Timezone} instances
          */
         list_timezones(): ICalGLib.Timezone[];
+        /**
+         * @param zone
+         * @virtual
+         */
         vfunc_timezone_added(zone: ICalGLib.Timezone): void;
+        /**
+         * @param zone
+         * @virtual
+         */
         vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -3333,43 +3502,43 @@ export namespace ECal {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -3378,58 +3547,59 @@ export namespace ECal {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Client;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -3438,36 +3608,37 @@ export namespace ECal {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3477,40 +3648,40 @@ export namespace ECal {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3520,11 +3691,12 @@ export namespace ECal {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -3540,32 +3712,32 @@ export namespace ECal {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3574,39 +3746,39 @@ export namespace ECal {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3617,13 +3789,16 @@ export namespace ECal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3631,7 +3806,7 @@ export namespace ECal {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3639,9 +3814,9 @@ export namespace ECal {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3661,9 +3836,9 @@ export namespace ECal {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3677,33 +3852,33 @@ export namespace ECal {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3736,21 +3911,21 @@ export namespace ECal {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3760,8 +3935,8 @@ export namespace ECal {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3778,10 +3953,10 @@ export namespace ECal {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3796,13 +3971,13 @@ export namespace ECal {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3833,21 +4008,21 @@ export namespace ECal {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3857,33 +4032,34 @@ export namespace ECal {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3892,6 +4068,7 @@ export namespace ECal {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3900,12 +4077,14 @@ export namespace ECal {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3914,20 +4093,22 @@ export namespace ECal {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3939,6 +4120,7 @@ export namespace ECal {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3971,10 +4153,25 @@ export namespace ECal {
     namespace ClientView {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             complete: (arg0: GLib.Error) => void;
+            /**
+             * @signal
+             */
             'objects-added': (arg0: ICalGLib.Component[]) => void;
+            /**
+             * @signal
+             */
             'objects-modified': (arg0: ICalGLib.Component[]) => void;
+            /**
+             * @signal
+             */
             'objects-removed': (arg0: ComponentId[]) => void;
+            /**
+             * @signal
+             */
             progress: (arg0: number, arg1: string) => void;
             'notify::client': (pspec: GObject.ParamSpec) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
@@ -3994,6 +4191,8 @@ export namespace ECal {
     /**
      * Contains only private data that should be read and manipulated using the
      * functions below.
+     * @gir-type Class
+     * @since 3.2
      */
     class ClientView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<ClientView>;
@@ -4034,16 +4233,19 @@ export namespace ECal {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4052,14 +4254,23 @@ export namespace ECal {
 
         // Virtual methods
 
+        /**
+         * @param error
+         * @virtual
+         */
         vfunc_complete(error: GLib.Error): void;
+        /**
+         * @param percent
+         * @param message
+         * @virtual
+         */
         vfunc_progress(percent: number, message: string): void;
 
         // Methods
 
         /**
-         * Returns the #GDBusConnection used to create the D-Bus proxy.
-         * @returns the #GDBusConnection
+         * Returns the {@link Gio.DBusConnection} used to create the D-Bus proxy.
+         * @returns the {@link Gio.DBusConnection}
          */
         get_connection(): Gio.DBusConnection;
         /**
@@ -4073,11 +4284,11 @@ export namespace ECal {
          */
         is_running(): boolean;
         /**
-         * Returns the #ECalClientView:client associated with `client_view`.
+         * Returns the {@link ECal.ClientView.client} associated with `client_view`.
          *
-         * The returned #ECalClient is referenced for thread-safety.  Unreference
-         * the #ECalClient with g_object_unref() when finished with it.
-         * @returns an #ECalClient
+         * The returned {@link ECal.Client} is referenced for thread-safety.  Unreference
+         * the {@link ECal.Client} with `g_object_unref()` when finished with it.
+         * @returns an {@link ECal.Client}
          */
         ref_client(): Client;
         /**
@@ -4085,18 +4296,18 @@ export namespace ECal {
          * the server can return less data over the wire. The server can still return
          * complete objects, this is just a hint to it that the listed fields will
          * be used only. The UID/RID fields are returned always. Initial views has no
-         * fields of interest and using %NULL for `fields_of_interest` will unset any
+         * fields of interest and using `null` for `fields_of_interest` will unset any
          * previous changes.
          *
          * Some backends can use summary information of its cache to create artifical
          * objects, which will omit stored object parsing. If this cannot be done then
          * it will simply return object as is stored in the cache.
-         * @param fields_of_interest List of field names                      in which the client is interested, or %NULL to reset                      the fields of interest
+         * @param fields_of_interest List of field names                      in which the client is interested, or `null` to reset                      the fields of interest
          */
         set_fields_of_interest(fields_of_interest?: string[] | null): void;
         /**
          * Sets the `flags` which control the behaviour of `client_view`.
-         * @param flags the #ECalClientViewFlags for @client_view
+         * @param flags the {@link ECal.ClientViewFlags} for `client_view`
          */
         set_flags(flags: ClientViewFlags | null): void;
         /**
@@ -4107,34 +4318,32 @@ export namespace ECal {
          * Tells `client_view` to stop processing events.
          */
         stop(): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -4144,40 +4353,40 @@ export namespace ECal {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -4187,11 +4396,12 @@ export namespace ECal {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -4207,32 +4417,32 @@ export namespace ECal {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4241,39 +4451,39 @@ export namespace ECal {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4284,13 +4494,16 @@ export namespace ECal {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4298,7 +4511,7 @@ export namespace ECal {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4306,9 +4519,9 @@ export namespace ECal {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4328,9 +4541,9 @@ export namespace ECal {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4344,33 +4557,33 @@ export namespace ECal {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4403,21 +4616,21 @@ export namespace ECal {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4427,8 +4640,8 @@ export namespace ECal {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4445,10 +4658,10 @@ export namespace ECal {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4463,13 +4676,13 @@ export namespace ECal {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4500,21 +4713,21 @@ export namespace ECal {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4524,33 +4737,34 @@ export namespace ECal {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4559,6 +4773,7 @@ export namespace ECal {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4567,12 +4782,14 @@ export namespace ECal {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4581,20 +4798,22 @@ export namespace ECal {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4606,6 +4825,7 @@ export namespace ECal {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4644,6 +4864,9 @@ export namespace ECal {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
 
@@ -4672,16 +4895,19 @@ export namespace ECal {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Component.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Component.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Component.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Component.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Component.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4693,18 +4919,18 @@ export namespace ECal {
         /**
          * Aborts the sequence change needed in the given calendar component,
          * which means it will not require a sequence commit (via
-         * e_cal_component_commit_sequence()) even if the changes done require a
+         * `e_cal_component_commit_sequence()`) even if the changes done require a
          * sequence increment.
          */
         abort_sequence(): void;
         /**
          * Adds an alarm subcomponent to a calendar component.  You should have created
-         * the `alarm` by using e_cal_component_alarm_new(); it is invalid to use an
-         * #ECalComponentAlarm structure that came from e_cal_component_get_alarm().  After
+         * the `alarm` by using `e_cal_component_alarm_new()`; it is invalid to use an
+         * {@link ECal.ComponentAlarm} structure that came from `e_cal_component_get_alarm()`.  After
          * adding the alarm, the `alarm` structure is no longer valid because the
          * internal structures may change and you should get rid of it by using
-         * e_cal_component_alarm_free().
-         * @param alarm an alarm, as an #ECalComponentAlarm
+         * `e_cal_component_alarm_free()`.
+         * @param alarm an alarm, as an {@link ECal.ComponentAlarm}
          */
         add_alarm(alarm: ComponentAlarm): void;
         /**
@@ -4718,111 +4944,111 @@ export namespace ECal {
          * needs it.  This needs to be done when any of a number of properties listed in
          * RFC 2445 change values, such as the start and end dates of a component.
          *
-         * This function must be called before calling e_cal_component_get_as_string() to
+         * This function must be called before calling `e_cal_component_get_as_string()` to
          * ensure that the component is fully consistent.
          */
         commit_sequence(): void;
         /**
-         * Returns a comment for the given `locale`. When `locale` is %NULL,
+         * Returns a comment for the given `locale`. When `locale` is `null`,
          * the current locale is assumed. If no such comment for the locale
          * exists either a comment with no language parameter or the first
          * found is returned.
          *
-         * Free the returned non-NULL #ECalComponentText with e_cal_component_text_free(),
+         * Free the returned non-NULL {@link ECal.ComponentText} with `e_cal_component_text_free()`,
          * when no longer needed.
-         * @param locale a locale identifier, or %NULL
-         * @returns comment for the @locale, %NULL    if no comment is set on the @comp.
+         * @param locale a locale identifier, or `null`
+         * @returns comment for the `locale`, `null`    if no comment is set on the `comp`.
          */
         dup_comment_for_locale(locale?: string | null): ComponentText | null;
         /**
-         * Returns a description for the given `locale`. When `locale` is %NULL,
+         * Returns a description for the given `locale`. When `locale` is `null`,
          * the current locale is assumed. If no such description for the locale
          * exists either a description with no language parameter or the first
          * found is returned.
          *
-         * Free the returned non-NULL #ECalComponentText with e_cal_component_text_free(),
+         * Free the returned non-NULL {@link ECal.ComponentText} with `e_cal_component_text_free()`,
          * when no longer needed.
-         * @param locale a locale identifier, or %NULL
-         * @returns description for the @locale, %NULL    if no description is set on the @comp.
+         * @param locale a locale identifier, or `null`
+         * @returns description for the `locale`, `null`    if no description is set on the `comp`.
          */
         dup_description_for_locale(locale?: string | null): ComponentText | null;
         /**
          * Queries the summary of a calendar component object. There can be one summary
-         * property per locale. Free the returned #GSList with
+         * property per locale. Free the returned {@link GLib.SList} with
          * g_slist_free_full (slist, e_cal_component_text_free);, when no longer needed.
-         * @returns the summary    properties and their parameters, as a #GSList of #ECalComponentText structures.
+         * @returns the summary    properties and their parameters, as a {@link GLib.SList} of {@link ECal.ComponentText} structures.
          */
         dup_summaries(): ComponentText[] | null;
         /**
-         * Returns a summary for the given `locale`. When `locale` is %NULL,
+         * Returns a summary for the given `locale`. When `locale` is `null`,
          * the current locale is assumed. If no such summary for the locale
          * exists either a summary with no language parameter or the first
          * found is returned.
          *
-         * Free the returned non-NULL #ECalComponentText with e_cal_component_text_free(),
+         * Free the returned non-NULL {@link ECal.ComponentText} with `e_cal_component_text_free()`,
          * when no longer needed.
-         * @param locale a locale identifier, or %NULL
-         * @returns summary for the @locale, %NULL    if no summary is set on the @comp.
+         * @param locale a locale identifier, or `null`
+         * @returns summary for the `locale`, `null`    if no summary is set on the `comp`.
          */
         dup_summary_for_locale(locale?: string | null): ComponentText | null;
         /**
          * Queries a particular alarm subcomponent of a calendar component.
-         * Free the returned pointer with e_cal_component_alarm_free(),
+         * Free the returned pointer with `e_cal_component_alarm_free()`,
          * when no longer needed.
          * @param auid Unique identifier for the sought alarm subcomponent.
-         * @returns the alarm subcomponent that corresponds    to the specified @auid, or %NULL if no alarm exists with that UID
+         * @returns the alarm subcomponent that corresponds    to the specified `auid`, or `null` if no alarm exists with that UID
          */
         get_alarm(auid: string): ComponentAlarm | null;
         /**
          * Builds a list of the unique identifiers of the alarm subcomponents inside a
-         * calendar component. Free the returned #GSList with
+         * calendar component. Free the returned {@link GLib.SList} with
          * g_slist_free_full (slist, g_free);, when no longer needed.
-         * @returns a #GSList of unique    identifiers for alarms.
+         * @returns a {@link GLib.SList} of unique    identifiers for alarms.
          */
         get_alarm_uids(): string[] | null;
         /**
          * Queries all alarm subcomponents of a calendar component.
-         * Free the returned #GSList with g_slist_free_full (slist, e_cal_component_alarm_free);,
+         * Free the returned {@link GLib.SList} with g_slist_free_full (slist, e_cal_component_alarm_free);,
          * when no longer needed.
-         * @returns the alarm subcomponents    as a #GSList of #ECalComponentAlarm, or %NULL, if no alarm exists
+         * @returns the alarm subcomponents    as a {@link GLib.SList} of {@link ECal.ComponentAlarm}, or `null`, if no alarm exists
          */
         get_all_alarms(): ComponentAlarm[] | null;
         /**
          * Gets the iCalendar string representation of a calendar component.  You should
-         * call e_cal_component_commit_sequence() before this function to ensure that the
+         * call `e_cal_component_commit_sequence()` before this function to ensure that the
          * component's sequence number is consistent with the state of the object.
          * @returns String representation of the calendar component according to RFC 2445.
          */
         get_as_string(): string;
         /**
-         * Queries the attachment properties as #ICalAttach objects of the calendar
+         * Queries the attachment properties as {@link ICalGLib.Attach} objects of the calendar
          * component object. Changes on these objects are directly affecting the component.
-         * Free the returned #GSList with g_slist_free_full (slist, g_object_unref);,
+         * Free the returned {@link GLib.SList} with g_slist_free_full (slist, g_object_unref);,
          * when no longer needed.
-         * @returns a #GSList of    attachments, as #ICalAttach objects
+         * @returns a {@link GLib.SList} of    attachments, as {@link ICalGLib.Attach} objects
          */
         get_attachments(): ICalGLib.Attach[] | null;
         /**
          * Queries the attendee properties of the calendar component object.
-         * Free the returned #GSList with g_slist_free_full (slist, e_cal_component_attendee_free);,
+         * Free the returned {@link GLib.SList} with g_slist_free_full (slist, e_cal_component_attendee_free);,
          * when no longer needed.
-         * @returns the attendees, as a #GSList of an #ECalComponentAttendee, or %NULL,    when none are set
+         * @returns the attendees, as a {@link GLib.SList} of an {@link ECal.ComponentAttendee}, or `null`,    when none are set
          */
         get_attendees(): ComponentAttendee[] | null;
         /**
          * Queries the categories of the given calendar component. The categories
          * are returned in the `categories` argument, which, on success, will contain
          * a comma-separated list of all categories set in the component.
-         * Free the returned string with g_free(), when no longer needed.
-         * @returns the categories as string, or %NULL    if none are set
+         * Free the returned string with `g_free()`, when no longer needed.
+         * @returns the categories as string, or `null`    if none are set
          */
         get_categories(): string | null;
         /**
          * Queries the list of categories of a calendar component object. Each element
          * in the returned categ_list is a string with the corresponding category.
-         * Free the returned #GSList with g_slist_free_full (categories, g_free); , when
+         * Free the returned {@link GLib.SList} with g_slist_free_full (categories, g_free); , when
          * no longer needed.
-         * @returns the #GSList of strings, where each    string is a category, or %NULL, when no category is set.
+         * @returns the {@link GLib.SList} of strings, where each    string is a category, or `null`, when no category is set.
          */
         get_categories_list(): string[] | null;
         /**
@@ -4830,85 +5056,85 @@ export namespace ECal {
          * classification property is not set on this component, this function returns
          * #E_CAL_COMPONENT_CLASS_NONE.
          *
-         * Retuurns: a classification of the `comp,` as an #ECalComponentClassification
+         * Retuurns: a classification of the `comp`, as an {@link ECal.ComponentClassification}
          */
         get_classification(): ComponentClassification;
         /**
          * Queries the comments of a calendar component object.  The comment property can
          * appear several times inside a calendar component, and so a list of
-         * #ECalComponentText is returned. Free the returned #GSList with
+         * {@link ECal.ComponentText} is returned. Free the returned {@link GLib.SList} with
          * g_slist_free_full (slist, e_cal_component_text_free);, when no longer needed.
-         * @returns the comment properties    and their parameters, as a list of #ECalComponentText structures; or %NULL, when    the component doesn't contain any.
+         * @returns the comment properties    and their parameters, as a list of {@link ECal.ComponentText} structures; or `null`, when    the component doesn't contain any.
          */
         get_comments(): ComponentText[] | null;
         /**
          * Queries the date at which a calendar compoment object was completed.
-         * Free the returned non-NULL pointer with g_object_unref(), when
+         * Free the returned non-NULL pointer with `g_object_unref()`, when
          * no longer needed.
-         * @returns the completion date, as an #ICalTime, or %NULL, when none is set
+         * @returns the completion date, as an {@link ICalGLib.Time}, or `null`, when none is set
          */
         get_completed(): ICalGLib.Time | null;
         /**
          * Queries the contact of a calendar component object.  The contact property can
          * appear several times inside a calendar component, and so a list of
-         * #ECalComponentText is returned. Free the returned #GSList with
+         * {@link ECal.ComponentText} is returned. Free the returned {@link GLib.SList} with
          * g_slist_free_full (slist, e_cal_component_text_free);, when no longer needed.
-         * @returns the contact properties and    their parameters, as a #GSList of #ECalComponentText structures.
+         * @returns the contact properties and    their parameters, as a {@link GLib.SList} of {@link ECal.ComponentText} structures.
          */
         get_contacts(): ComponentText[];
         /**
          * Queries the date in which a calendar component object was created in the
-         * calendar store. Free the returned non-NULL pointer with g_object_unref(), when
+         * calendar store. Free the returned non-NULL pointer with `g_object_unref()`, when
          * no longer needed.
-         * @returns the creation date, as an #ICalTime, or %NULL, when none is set
+         * @returns the creation date, as an {@link ICalGLib.Time}, or `null`, when none is set
          */
         get_created(): ICalGLib.Time | null;
         /**
          * Queries the description of a calendar component object.  Journal components
          * may have more than one description, and as such this function returns a list
-         * of #ECalComponentText structures.  All other types of components can have at
-         * most one description for a single language. Free the returned #GSList with
+         * of {@link ECal.ComponentText} structures.  All other types of components can have at
+         * most one description for a single language. Free the returned {@link GLib.SList} with
          * g_slist_free_full (slist, e_cal_component_text_free);, when no longer needed.
-         * @returns the description    properties and their parameters, as a #GSList of #ECalComponentText structures.
+         * @returns the description    properties and their parameters, as a {@link GLib.SList} of {@link ECal.ComponentText} structures.
          */
         get_descriptions(): ComponentText[] | null;
         /**
          * Queries the date/time end of a calendar component object. In case there's no DTEND,
          * but only DTSTART and DURATION, then the end is computed from the later two.
-         * Free the returned #ECalComponentDateTime with e_cal_component_datetime_free(),
+         * Free the returned {@link ECal.ComponentDateTime} with `e_cal_component_datetime_free()`,
          * when no longer needed.
-         * @returns the date/time end, as an #ECalComponentDateTime
+         * @returns the date/time end, as an {@link ECal.ComponentDateTime}
          */
         get_dtend(): ComponentDateTime | null;
         /**
          * Queries the date/timestamp property of a calendar component object, which is
          * the last time at which the object was modified by a calendar user agent.
          *
-         * Free a non-NULL returned object with g_object_unref(),
+         * Free a non-NULL returned object with `g_object_unref()`,
          * when no longer needed.
-         * @returns A value for the date/timestamp, or %NULL, when none found.
+         * @returns A value for the date/timestamp, or `null`, when none found.
          */
         get_dtstamp(): ICalGLib.Time | null;
         /**
          * Queries the date/time start of a calendar component object.
-         * Free the returned #ECalComponentDateTime with e_cal_component_datetime_free(),
+         * Free the returned {@link ECal.ComponentDateTime} with `e_cal_component_datetime_free()`,
          * when no longer needed.
-         * @returns the date/time start, as an #ECalComponentDateTime
+         * @returns the date/time start, as an {@link ECal.ComponentDateTime}
          */
         get_dtstart(): ComponentDateTime | null;
         /**
          * Queries the due date/time of a calendar component object. In case there's no DUE,
          * but only DTSTART and DURATION, then the due is computed from the later two.
-         * Free the returned #ECalComponentDateTime with e_cal_component_datetime_free(),
+         * Free the returned {@link ECal.ComponentDateTime} with `e_cal_component_datetime_free()`,
          * when no longer needed.
-         * @returns the due date/time, as an #ECalComponentDateTime
+         * @returns the due date/time, as an {@link ECal.ComponentDateTime}
          */
         get_due(): ComponentDateTime | null;
         /**
          * Queries the list of exception date properties in a calendar component object.
-         * Free the returned #GSList with g_slist_free_full (exdates, e_cal_component_datetime_free);,
+         * Free the returned {@link GLib.SList} with g_slist_free_full (exdates, e_cal_component_datetime_free);,
          * when no longer needed.
-         * @returns the list of exception dates, as a #GSList of #ECalComponentDateTime
+         * @returns the list of exception dates, as a {@link GLib.SList} of {@link ECal.ComponentDateTime}
          */
         get_exdates(): ComponentDateTime[] | null;
         /**
@@ -4922,45 +5148,45 @@ export namespace ECal {
          * Queries the list of exception rule properties of a calendar component
          * object. Free the returned list with g_slist_free_full (slist, g_object_unref);,
          * when no longer needed.
-         * @returns a #GSList    of exception rules as #ICalRecurrence structures, or %NULL, when none exist.
+         * @returns a {@link GLib.SList}    of exception rules as {@link ICalGLib.Recurrence} structures, or `null`, when none exist.
          */
         get_exrules(): ICalGLib.Recurrence[] | null;
         /**
          * Gets the geographic position property of a calendar component object.
-         * Free the returned non-NULL object with g_object_unref(), when
+         * Free the returned non-NULL object with `g_object_unref()`, when
          * no longer needed.
-         * @returns the geographic position as #ICalGeo,    or %NULL, when none set.
+         * @returns the geographic position as {@link ICalGLib.Geo},    or `null`, when none set.
          */
         get_geo(): ICalGLib.Geo | null;
         /**
          * Queries the #icalcomponent structure that a calendar component object is
          * wrapping.
-         * @returns An #ICalComponent structure, or %NULL    if the @comp has no #ICalComponent set to it.
+         * @returns An {@link ICalGLib.Component} structure, or `null`    if the `comp` has no {@link ICalGLib.Component} set to it.
          */
         get_icalcomponent(): ICalGLib.Component | null;
         /**
-         * Get the ID of the component as an #ECalComponentId. The return value should
-         * be freed with e_cal_component_id_free(), when no longer needed.
+         * Get the ID of the component as an {@link ECal.ComponentId}. The return value should
+         * be freed with `e_cal_component_id_free()`, when no longer needed.
          * @returns the id of the component
          */
         get_id(): ComponentId;
         /**
          * Queries the time at which a calendar component object was last modified in
-         * the calendar store. Free the returned non-NULL pointer with g_object_unref(),
+         * the calendar store. Free the returned non-NULL pointer with `g_object_unref()`,
          * when no longer needed.
-         * @returns the last modified time, as an #ICalTime, or %NULL, when none is set
+         * @returns the last modified time, as an {@link ICalGLib.Time}, or `null`, when none is set
          */
         get_last_modified(): ICalGLib.Time | null;
         /**
          * Queries the location property of a calendar component object.
-         * @returns the locatio, or %NULL, if none is set
+         * @returns the locatio, or `null`, if none is set
          */
         get_location(): string | null;
         /**
          * Queries the organizer property of a calendar component object.
-         * Free the returned structure with e_cal_component_organizer_free(),
+         * Free the returned structure with `e_cal_component_organizer_free()`,
          * when no longer needed.
-         * @returns an #ECalComponentOrganizer structure    destribing the organizer, or %NULL, when none exists.
+         * @returns an {@link ECal.ComponentOrganizer} structure    destribing the organizer, or `null`, when none exists.
          */
         get_organizer(): ComponentOrganizer | null;
         /**
@@ -4975,16 +5201,16 @@ export namespace ECal {
         get_priority(): number;
         /**
          * Queries the list of recurrence date properties in a calendar component
-         * object. Free the returned #GSList with g_slist_free_full (slist, e_cal_component_period_free);,
+         * object. Free the returned {@link GLib.SList} with g_slist_free_full (slist, e_cal_component_period_free);,
          * when no longer needed.
-         * @returns the list    of recurrence dates, as a #GSList of #ECalComponentPeriod structures.
+         * @returns the list    of recurrence dates, as a {@link GLib.SList} of {@link ECal.ComponentPeriod} structures.
          */
         get_rdates(): ComponentPeriod[] | null;
         /**
          * Queries the recurrence id property of a calendar component object.
-         * Free the returned #ECalComponentRange with e_cal_component_range_free(),
+         * Free the returned {@link ECal.ComponentRange} with `e_cal_component_range_free()`,
          * whe no longer needed.
-         * @returns the recurrence id property, as an #ECalComponentRange
+         * @returns the recurrence id property, as an {@link ECal.ComponentRange}
          */
         get_recurid(): ComponentRange | null;
         /**
@@ -5003,7 +5229,7 @@ export namespace ECal {
          * Queries the list of recurrence rule properties of a calendar component
          * object. Free the returned list with g_slist_free_full (slist, g_object_unref);,
          * when no longer needed.
-         * @returns a #GSList    of recurrence rules as #ICalRecurrence structures, or %NULL, when none exist.
+         * @returns a {@link GLib.SList}    of recurrence rules as {@link ICalGLib.Recurrence} structures, or `null`, when none exist.
          */
         get_rrules(): ICalGLib.Recurrence[] | null;
         /**
@@ -5013,22 +5239,22 @@ export namespace ECal {
         get_sequence(): number;
         /**
          * Queries the status property of a calendar component object.
-         * @returns the status value; or %I_CAL_STATUS_NONE, if the component   has no status property
+         * @returns the status value; or {@link ICalGLib.PropertyStatus.NONE}, if the component   has no status property
          */
         get_status(): ICalGLib.PropertyStatus;
         /**
          * Queries the summary of a calendar component object. It returns the first
          * found summary property of the component. To get a summary suitable for a specific
-         * locale use e_cal_component_dup_summary_for_locale().
+         * locale use `e_cal_component_dup_summary_for_locale()`.
          *
-         * Free the returned pointer withe_cal_component_text_free(),
+         * Free the returned pointer `withe_cal_component_text_free()`,
          * when no longer needed.
-         * @returns the summary, as an #ECalComponentText,    or %NULL, when none is set
+         * @returns the summary, as an {@link ECal.ComponentText},    or `null`, when none is set
          */
         get_summary(): ComponentText | null;
         /**
          * Queries the time transparency of a calendar component object.
-         * @returns the time transparency, as an #ECalComponentTransparency;    value #E_CAL_COMPONENT_TRANSP_NONE is returned when none is set
+         * @returns the time transparency, as an {@link ECal.ComponentTransparency};    value #E_CAL_COMPONENT_TRANSP_NONE is returned when none is set
          */
         get_transparency(): ComponentTransparency;
         /**
@@ -5038,8 +5264,8 @@ export namespace ECal {
         get_uid(): string;
         /**
          * Queries the uniform resource locator property of a calendar component object.
-         * Free the returned URL with g_free(), when no longer needed.
-         * @returns the URL, or %NULL, when none is set
+         * Free the returned URL with `g_free()`, when no longer needed.
+         * @returns the URL, or `null`, when none is set
          */
         get_url(): string | null;
         /**
@@ -5118,8 +5344,8 @@ export namespace ECal {
         /**
          * Removes an alarm subcomponent from a calendar component.  If the alarm that
          * corresponds to the specified `auid` had been fetched with
-         * e_cal_component_get_alarm(), then those alarm structures will be invalid; you
-         * should get rid of them with e_cal_component_alarm_free() before using this
+         * `e_cal_component_get_alarm()`, then those alarm structures will be invalid; you
+         * should get rid of them with `e_cal_component_alarm_free()` before using this
          * function.
          * @param auid UID of the alarm to remove.
          */
@@ -5130,12 +5356,12 @@ export namespace ECal {
         remove_all_alarms(): void;
         /**
          * Sets the attachments of the calendar component object.
-         * @param attachments a #GSList of an #ICalAttach,    or %NULL to remove any existing
+         * @param attachments a {@link GLib.SList} of an {@link ICalGLib.Attach},    or `null` to remove any existing
          */
         set_attachments(attachments?: ICalGLib.Attach[] | null): void;
         /**
          * Sets the attendees of a calendar component object
-         * @param attendee_list Values for attendee    properties, or %NULL to unset
+         * @param attendee_list Values for attendee    properties, or `null` to unset
          */
         set_attendees(attendee_list?: ComponentAttendee[] | null): void;
         /**
@@ -5157,8 +5383,8 @@ export namespace ECal {
         /**
          * Sets the comments of a calendar component object.  The comment property can
          * appear several times inside a calendar component, and so a list of
-         * #ECalComponentText structures is used.
-         * @param text_list List of #ECalComponentText structures.
+         * {@link ECal.ComponentText} structures is used.
+         * @param text_list List of {@link ECal.ComponentText} structures.
          */
         set_comments(text_list: ComponentText[]): void;
         /**
@@ -5169,8 +5395,8 @@ export namespace ECal {
         /**
          * Sets the contact of a calendar component object.  The contact property can
          * appear several times inside a calendar component, and so a list of
-         * #ECalComponentText structures is used.
-         * @param text_list List of #ECalComponentText structures.
+         * {@link ECal.ComponentText} structures is used.
+         * @param text_list List of {@link ECal.ComponentText} structures.
          */
         set_contacts(text_list: ComponentText[]): void;
         /**
@@ -5183,14 +5409,14 @@ export namespace ECal {
         /**
          * Sets the description of a calendar component object.  Journal components may
          * have more than one description, and as such this function takes in a list of
-         * #ECalComponentText structures.  All other types of components can have
+         * {@link ECal.ComponentText} structures.  All other types of components can have
          * at most one description.
-         * @param text_list List of #ECalComponentText structures.
+         * @param text_list List of {@link ECal.ComponentText} structures.
          */
         set_descriptions(text_list: ComponentText[]): void;
         /**
          * Sets the date/time end property of a calendar component object.
-         * @param dt End date/time, or %NULL, to remove the property.
+         * @param dt End date/time, or `null`, to remove the property.
          */
         set_dtend(dt?: ComponentDateTime | null): void;
         /**
@@ -5202,37 +5428,37 @@ export namespace ECal {
         set_dtstamp(tt: ICalGLib.Time): void;
         /**
          * Sets the date/time start property of a calendar component object.
-         * @param dt Start date/time, or %NULL, to remove the property.
+         * @param dt Start date/time, or `null`, to remove the property.
          */
         set_dtstart(dt?: ComponentDateTime | null): void;
         /**
          * Sets the due date/time property of a calendar component object.
-         * @param dt End date/time, or %NULL, to remove the property.
+         * @param dt End date/time, or `null`, to remove the property.
          */
         set_due(dt?: ComponentDateTime | null): void;
         /**
          * Sets the list of exception dates in a calendar component object.
-         * @param exdate_list List of #ECalComponentDateTime structures.
+         * @param exdate_list List of {@link ECal.ComponentDateTime} structures.
          */
         set_exdates(exdate_list?: ComponentDateTime[] | null): void;
         /**
          * Sets the list of exception rules in a calendar component object.
-         * @param recur_list a #GSList    of #ICalRecurrence structures, or %NULL.
+         * @param recur_list a {@link GLib.SList}    of {@link ICalGLib.Recurrence} structures, or `null`.
          */
         set_exrules(recur_list?: ICalGLib.Recurrence[] | null): void;
         /**
          * Sets the geographic position property on a calendar component object.
-         * @param geo Value for the geographic position property, or %NULL to unset.
+         * @param geo Value for the geographic position property, or `null` to unset.
          */
         set_geo(geo?: ICalGLib.Geo | null): void;
         /**
-         * Sets the contents of a calendar component object from an #ICalComponent.
-         * If the `comp` already had an #ICalComponent set into it, it will
+         * Sets the contents of a calendar component object from an {@link ICalGLib.Component}.
+         * If the `comp` already had an {@link ICalGLib.Component} set into it, it will
          * be freed automatically.
          *
          * Supported component types are VEVENT, VTODO, VJOURNAL, VFREEBUSY, and VTIMEZONE.
-         * @param icalcomp An #ICalComponent.
-         * @returns %TRUE on success, %FALSE if @icalcomp is an unsupported component type.
+         * @param icalcomp An {@link ICalGLib.Component}.
+         * @returns `true` on success, `false` if `icalcomp` is an unsupported component type.
          */
         set_icalcomponent(icalcomp?: ICalGLib.Component | null): boolean;
         /**
@@ -5243,19 +5469,19 @@ export namespace ECal {
         set_last_modified(tt?: ICalGLib.Time | null): void;
         /**
          * Sets the location property of a calendar component object.
-         * @param location Location value. Use %NULL or empty string, to unset the property.
+         * @param location Location value. Use `null` or empty string, to unset the property.
          */
         set_location(location?: string | null): void;
         /**
          * Clears any existing component data from a calendar component object and
-         * creates a new #ICalComponent of the specified type for it.  The only property
+         * creates a new {@link ICalGLib.Component} of the specified type for it.  The only property
          * that will be set in the new component will be its unique identifier.
          * @param type Type of calendar component to create.
          */
         set_new_vtype(type: ComponentVType | null): void;
         /**
          * Sets the organizer of a calendar component object
-         * @param organizer Value for the organizer property, as an #ECalComponentOrganizer
+         * @param organizer Value for the organizer property, as an {@link ECal.ComponentOrganizer}
          */
         set_organizer(organizer?: ComponentOrganizer | null): void;
         /**
@@ -5273,17 +5499,17 @@ export namespace ECal {
         set_priority(priority: number): void;
         /**
          * Sets the list of recurrence dates in a calendar component object.
-         * @param rdate_list List of    #ECalComponentPeriod structures, or %NULL to set none
+         * @param rdate_list List of    {@link ECal.ComponentPeriod} structures, or `null` to set none
          */
         set_rdates(rdate_list?: ComponentPeriod[] | null): void;
         /**
          * Sets the recurrence id property of a calendar component object.
-         * @param recur_id Value for the recurrence id property, or %NULL, to remove the property.
+         * @param recur_id Value for the recurrence id property, or `null`, to remove the property.
          */
         set_recurid(recur_id?: ComponentRange | null): void;
         /**
          * Sets the list of recurrence rules in a calendar component object.
-         * @param recur_list List of #ICalRecurrence structures, or %NULL.
+         * @param recur_list List of {@link ICalGLib.Recurrence} structures, or `null`.
          */
         set_rrules(recur_list?: ICalGLib.Recurrence[] | null): void;
         /**
@@ -5297,7 +5523,7 @@ export namespace ECal {
         set_sequence(sequence: number): void;
         /**
          * Sets the status property of a calendar component object.
-         * @param status Status value, as an #ICalPropertyStatus. Use %I_CAL_STATUS_NONE, to unset the property
+         * @param status Status value, as an {@link ICalGLib.PropertyStatus}. Use {@link ICalGLib.PropertyStatus.NONE}, to unset the property
          */
         set_status(status: ICalGLib.PropertyStatus | null): void;
         /**
@@ -5305,7 +5531,7 @@ export namespace ECal {
          * different language, otherwise it's not allowed to have more than one summary property.
          *
          * This does not update any alarm subcomponent description.
-         * @param text_list List of #ECalComponentText structures.
+         * @param text_list List of {@link ECal.ComponentText} structures.
          */
         set_summaries(text_list: ComponentText[]): void;
         /**
@@ -5317,7 +5543,7 @@ export namespace ECal {
         set_summary(summary: ComponentText): void;
         /**
          * Sets the time transparency of a calendar component object.
-         * Use %E_CAL_COMPONENT_TRANSP_NONE to unset the property.
+         * Use {@link ECal.ComponentTransparency.NONE} to unset the property.
          * @param transp Time transparency value.
          */
         set_transparency(transp: ComponentTransparency | null): void;
@@ -5328,7 +5554,7 @@ export namespace ECal {
         set_uid(uid: string): void;
         /**
          * Sets the uniform resource locator property of a calendar component object.
-         * A %NULL or an empty string removes the property.
+         * A `null` or an empty string removes the property.
          * @param url URL value.
          */
         set_url(url?: string | null): void;
@@ -5343,8 +5569,27 @@ export namespace ECal {
     namespace ReminderWatcher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Signal is emitted when the list of past or snoozed reminders
+             * changes. It's called also when GSettings key for past reminders
+             * is notified as changed, because this list is not held in memory.
+             * @signal
+             * @since 3.30
+             */
             changed: () => void;
+            /**
+             * Formats time `itt` to a string and writes it to `inout_buffer`, which can hold
+             * up to `buffer_size` bytes. The first character of `inout_buffer` is the nul-byte
+             * when nothing wrote to it yet.
+             * @signal
+             * @since 3.30
+             */
             'format-time': (arg0: ReminderData, arg1: ICalGLib.Time, arg2: any, arg3: number) => void;
+            /**
+             * Signal is emitted when any reminder is either overdue or triggered.
+             * @signal
+             * @since 3.30
+             */
             triggered: (arg0: ReminderData[], arg1: boolean) => void;
             'notify::default-zone': (pspec: GObject.ParamSpec) => void;
             'notify::registry': (pspec: GObject.ParamSpec) => void;
@@ -5365,6 +5610,8 @@ export namespace ECal {
     /**
      * Contains only private data that should be read and manipulated using the
      * functions below.
+     * @gir-type Class
+     * @since 3.30
      */
     class ReminderWatcher extends GObject.Object {
         static $gtype: GObject.GType<ReminderWatcher>;
@@ -5372,34 +5619,39 @@ export namespace ECal {
         // Properties
 
         /**
-         * An #ICalTimezone to be used as the default time zone.
+         * An {@link ICalGLib.Timezone} to be used as the default time zone.
+         * @since 3.30
          */
         get default_zone(): ICalGLib.Timezone;
         set default_zone(val: ICalGLib.Timezone);
         /**
-         * An #ICalTimezone to be used as the default time zone.
+         * An {@link ICalGLib.Timezone} to be used as the default time zone.
+         * @since 3.30
          */
         get defaultZone(): ICalGLib.Timezone;
         set defaultZone(val: ICalGLib.Timezone);
         /**
-         * The #ESourceRegistry which manages #ESource instances.
+         * The {@link EDataServer.SourceRegistry} which manages {@link EDataServer.Source} instances.
+         * @since 3.30
          */
         get registry(): EDataServer.SourceRegistry;
         /**
-         * Whether timers are enabled for the #EReminderWatcher. See
-         * e_reminder_watcher_set_timers_enabled() for more information
+         * Whether timers are enabled for the {@link ECal.ReminderWatcher}. See
+         * `e_reminder_watcher_set_timers_enabled()` for more information
          * what it means.
          *
-         * Default: %TRUE
+         * Default: `true`
+         * @since 3.30
          */
         get timers_enabled(): boolean;
         set timers_enabled(val: boolean);
         /**
-         * Whether timers are enabled for the #EReminderWatcher. See
-         * e_reminder_watcher_set_timers_enabled() for more information
+         * Whether timers are enabled for the {@link ECal.ReminderWatcher}. See
+         * `e_reminder_watcher_set_timers_enabled()` for more information
          * what it means.
          *
-         * Default: %TRUE
+         * Default: `true`
+         * @since 3.30
          */
         get timersEnabled(): boolean;
         set timersEnabled(val: boolean);
@@ -5423,16 +5675,19 @@ export namespace ECal {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ReminderWatcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ReminderWatcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ReminderWatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5441,6 +5696,14 @@ export namespace ECal {
 
         // Virtual methods
 
+        /**
+         * @param source
+         * @param source_type
+         * @param wait_for_connected_seconds
+         * @param cancellable
+         * @param callback
+         * @virtual
+         */
         vfunc_cal_client_connect(
             source: EDataServer.Source,
             source_type: ClientSourceType,
@@ -5448,8 +5711,22 @@ export namespace ECal {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @virtual
+         */
         vfunc_changed(): void;
+        /**
+         * @param rd
+         * @param itt
+         * @param inout_buffer
+         * @param buffer_size
+         * @virtual
+         */
         vfunc_format_time(rd: ReminderData, itt: ICalGLib.Time, inout_buffer: string, buffer_size: number): void;
+        /**
+         * @param at_time
+         * @virtual
+         */
         vfunc_schedule_timer(at_time: number): void;
 
         // Methods
@@ -5458,31 +5735,31 @@ export namespace ECal {
          * Returns a new string with a text description of the `rd`. The text format
          * can be influenced with `flags`.
          *
-         * Free the returned string with g_free(), when no longer needed.
-         * @param rd an #EReminderData
-         * @param flags bit-or of #EReminderWatcherDescribeFlags
-         * @returns a new string with a text description of the @rd.
+         * Free the returned string with `g_free()`, when no longer needed.
+         * @param rd an {@link ECal.ReminderData}
+         * @param flags bit-or of {@link ECal.ReminderWatcherDescribeFlags}
+         * @returns a new string with a text description of the `rd`.
          */
         describe_data(rd: ReminderData, flags: number): string;
         /**
          * Asynchronously dismiss single reminder in the past or snoozed reminders.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call e_reminder_watcher_dismiss_finish() to get the result of
+         * then call `e_reminder_watcher_dismiss_finish()` to get the result of
          * the operation.
-         * @param rd an #EReminderData to dismiss
-         * @param cancellable optional #GCancellable object, or %NULL
+         * @param rd an {@link ECal.ReminderData} to dismiss
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
         dismiss(rd: ReminderData, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously dismiss single reminder in the past or snoozed reminders.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call e_reminder_watcher_dismiss_finish() to get the result of
+         * then call `e_reminder_watcher_dismiss_finish()` to get the result of
          * the operation.
-         * @param rd an #EReminderData to dismiss
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param rd an {@link ECal.ReminderData} to dismiss
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         dismiss(
             rd: ReminderData,
@@ -5493,11 +5770,11 @@ export namespace ECal {
          * Asynchronously dismiss single reminder in the past or snoozed reminders.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call e_reminder_watcher_dismiss_finish() to get the result of
+         * then call `e_reminder_watcher_dismiss_finish()` to get the result of
          * the operation.
-         * @param rd an #EReminderData to dismiss
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param rd an {@link ECal.ReminderData} to dismiss
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         dismiss(
             rd: ReminderData,
@@ -5508,37 +5785,37 @@ export namespace ECal {
          * Asynchronously dismiss all past reminders.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call e_reminder_watcher_dismiss_all_finish() to get the result
+         * then call `e_reminder_watcher_dismiss_all_finish()` to get the result
          * of the operation.
-         * @param cancellable optional #GCancellable object, or %NULL
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
         dismiss_all(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously dismiss all past reminders.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call e_reminder_watcher_dismiss_all_finish() to get the result
+         * then call `e_reminder_watcher_dismiss_all_finish()` to get the result
          * of the operation.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         dismiss_all(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously dismiss all past reminders.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call e_reminder_watcher_dismiss_all_finish() to get the result
+         * then call `e_reminder_watcher_dismiss_all_finish()` to get the result
          * of the operation.
-         * @param cancellable optional #GCancellable object, or %NULL
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         dismiss_all(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes the operation started with e_reminder_watcher_dismiss_all().
-         * @param result a #GAsyncResult
+         * Finishes the operation started with `e_reminder_watcher_dismiss_all()`.
+         * @param result a {@link Gio.AsyncResult}
          * @returns whether succeeded
          */
         dismiss_all_finish(result: Gio.AsyncResult): boolean;
@@ -5546,57 +5823,70 @@ export namespace ECal {
          * Synchronously dismiss all past reminders. The operation stops after
          * the first error is encountered, which can be before all the past
          * reminders are dismissed.
-         * @param cancellable optional #GCancellable object, or %NULL
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded.
          */
         dismiss_all_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Finishes the operation started with e_reminder_watcher_dismiss().
-         * @param result a #GAsyncResult
+         * Finishes the operation started with `e_reminder_watcher_dismiss()`.
+         * @param result a {@link Gio.AsyncResult}
          * @returns whether succeeded
          */
         dismiss_finish(result: Gio.AsyncResult): boolean;
         /**
          * Synchronously dismiss single reminder in the past or snoozed reminders.
-         * @param rd an #EReminderData to dismiss
-         * @param cancellable optional #GCancellable object, or %NULL
+         * @param rd an {@link ECal.ReminderData} to dismiss
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
         dismiss_sync(rd: ReminderData, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * @returns A copy of the currently set default time zone.    Free it with `g_object_unref()`, when no longer needed.
+         */
         dup_default_zone(): ICalGLib.Timezone;
         /**
-         * Gathers a #GSList of all past reminders which had not been removed after
+         * Gathers a {@link GLib.SList} of all past reminders which had not been removed after
          * EReminderWatcher::triggered signal. Such reminders are remembered
-         * across sessions, until they are dismissed by e_reminder_watcher_dismiss()
+         * across sessions, until they are dismissed by `e_reminder_watcher_dismiss()`
          * or its synchronous variant. These reminders can be also snoozed
-         * with e_reminder_watcher_snooze(), which removes them from the past
-         * reminders into the list of snoozed reminders, see e_reminder_watcher_dup_snoozed().
+         * with `e_reminder_watcher_snooze()`, which removes them from the past
+         * reminders into the list of snoozed reminders, see `e_reminder_watcher_dup_snoozed()`.
          *
-         * Free the returned #GSList with
+         * Free the returned {@link GLib.SList} with
          * g_slist_free_full (reminders, e_reminder_data_free);
          * when no longer needed.
-         * @returns a newly    allocated #GSList of the past reminders, or %NULL, when there are none
+         * @returns a newly    allocated {@link GLib.SList} of the past reminders, or `null`, when there are none
          */
         dup_past(): ReminderData[] | null;
         /**
-         * Gathers a #GSList of currently snoozed reminder with e_reminder_watcher_snooze().
+         * Gathers a {@link GLib.SList} of currently snoozed reminder with `e_reminder_watcher_snooze()`.
          * The snoozed reminders are remembered across sessions and they are re-triggered
          * when their snooze time elapses, which can move them back to the list of past reminders.
          *
-         * Free the returned #GSList with
+         * Free the returned {@link GLib.SList} with
          * g_slist_free_full (reminders, e_reminder_data_free);
          * when no longer needed.
-         * @returns a newly    allocated #GSList of the snoozed reminders, or %NULL, when there are none
+         * @returns a newly    allocated {@link GLib.SList} of the snoozed reminders, or `null`, when there are none
          */
         dup_snoozed(): ReminderData[] | null;
+        /**
+         * @returns an {@link EDataServer.SourceRegistry} with which the `watcher`    had been created
+         */
         get_registry(): EDataServer.SourceRegistry;
+        /**
+         * @returns whether timers are enabled for the `watcher`. See    `e_reminder_watcher_set_timers_enabled()` for more information    what it means.
+         */
         get_timers_enabled(): boolean;
+        /**
+         * @param source_uid an {@link EDataServer.Source} UID of the calendar to return
+         * @returns a referenced {@link ECal.Client} for the `source_uid`,    if any such is opened; `null` otherwise.
+         */
         ref_opened_client(source_uid: string): Client | null;
         /**
          * Sets the default zone for the `watcher`. This is used when calculating
-         * trigger times for floating component times. When the `zone` is %NULL,
+         * trigger times for floating component times. When the `zone` is `null`,
          * then sets a UTC time zone.
-         * @param zone an #ICalTimezone
+         * @param zone an {@link ICalGLib.Timezone}
          */
         set_default_zone(zone?: ICalGLib.Timezone | null): void;
         /**
@@ -5609,7 +5899,7 @@ export namespace ECal {
          */
         set_timers_enabled(enabled: boolean): void;
         /**
-         * Snoozes `rd` until `until,` which is an absolute time when the `rd`
+         * Snoozes `rd` until `until`, which is an absolute time when the `rd`
          * should be retriggered. This moves the `rd` from the list of past
          * reminders into the list of snoozed reminders and invokes the "changed"
          * signal.
@@ -5617,8 +5907,8 @@ export namespace ECal {
          * The `until` can be a special value 0, to set the time as the event start,
          * if it's in the future. The function does nothing when the event time
          * is in the past.
-         * @param rd an #EReminderData identifying the reminder
-         * @param until time_t as gint64, when the @rd should be retriggered
+         * @param rd an {@link ECal.ReminderData} identifying the reminder
+         * @param until time_t as gint64, when the `rd` should be retriggered
          */
         snooze(rd: ReminderData, until: number): void;
         /**
@@ -5635,13 +5925,21 @@ export namespace ECal {
         timer_elapsed(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
     }
 
     /**
-     * Contains data used as lookup_data of e_cal_client_tzlookup_icalcomp_cb().
+     * Contains data used as lookup_data of `e_cal_client_tzlookup_icalcomp_cb()`.
+     * @gir-type Struct
+     * @since 3.34
      */
     class ClientTzlookupICalCompData {
         static $gtype: GObject.GType<ClientTzlookupICalCompData>;
@@ -5655,21 +5953,30 @@ export namespace ECal {
         // Methods
 
         /**
-         * Copies given #ECalClientTzlookupICalCompData structure.
-         * When the `lookup_data` is %NULL, simply returns %NULL as well.
-         * @returns copy of the @lookup_data. Free the returned structure    with e_cal_client_tzlookup_icalcomp_data_free(), when no longer needed.
+         * Copies given {@link ECal.ClientTzlookupICalCompData} structure.
+         * When the `lookup_data` is `null`, simply returns `null` as well.
+         * @returns copy of the `lookup_data`. Free the returned structure    with `e_cal_client_tzlookup_icalcomp_data_free()`, when no longer needed.
          */
         copy(): ClientTzlookupICalCompData | null;
         /**
-         * Frees previously allocated #ECalClientTzlookupICalCompData structure
-         * with e_cal_client_tzlookup_icalcomp_data_new() or e_cal_client_tzlookup_icalcomp_data_copy().
-         * The function does nothing when `lookup_data` is %NULL.
+         * Frees previously allocated {@link ECal.ClientTzlookupICalCompData} structure
+         * with `e_cal_client_tzlookup_icalcomp_data_new()` or `e_cal_client_tzlookup_icalcomp_data_copy()`.
+         * The function does nothing when `lookup_data` is `null`.
          */
         free(): void;
+        /**
+         * @returns The {@link ICalGLib.Component} associated with the `lookup_data`
+         */
         get_icalcomponent(): ICalGLib.Component;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientViewClass = typeof ClientView;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClientViewPrivate {
         static $gtype: GObject.GType<ClientViewPrivate>;
     }
@@ -5677,6 +5984,7 @@ export namespace ECal {
     /**
      * Opaque structure, which represents alarm subcomponents.
      * Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentAlarm {
         static $gtype: GObject.GType<ComponentAlarm>;
@@ -5692,137 +6000,146 @@ export namespace ECal {
         // Methods
 
         /**
-         * Returns a newly allocated copy of `alarm,` which should be freed with
-         * e_cal_component_alarm_free(), when no longer needed.
-         * @returns a newly allocated copy of @alarm
+         * Returns a newly allocated copy of `alarm`, which should be freed with
+         * `e_cal_component_alarm_free()`, when no longer needed.
+         * @returns a newly allocated copy of `alarm`
          */
         copy(): ComponentAlarm;
         /**
          * Fills `component` with data from `alarm`. The `component` should
-         * be of %I_CAL_VALARM_COMPONENT kind - the function does nothing,
+         * be of {@link ICalGLib.ComponentKind.VALARM_COMPONENT} kind - the function does nothing,
          * if it's not. In case the `alarm` doesn't have set 'uid', a new
          * is assigned.
-         * @param component an #ICalComponent of %I_CAL_VALARM_COMPONENT kind
+         * @param component an {@link ICalGLib.Component} of {@link ICalGLib.ComponentKind.VALARM_COMPONENT} kind
          */
         fill_component(component: ICalGLib.Component): void;
         /**
          * Get the last time the alarm had been acknowledged, that is, when its
          * reminder had been triggered.
-         * The returned #ICalTime is owned by `alarm` and should not be modified,
+         * The returned {@link ICalGLib.Time} is owned by `alarm` and should not be modified,
          * neither its content.
-         * @returns the @alarm acknowledged time,    or %NULL, when none is set
+         * @returns the `alarm` acknowledged time,    or `null`, when none is set
          */
         get_acknowledged(): ICalGLib.Time | null;
         /**
-         * Get the `alarm` action, as an #ECalComponentAlarmAction.
-         * @returns the @alarm action, or %E_CAL_COMPONENT_ALARM_NONE, when none is set
+         * Get the `alarm` action, as an {@link ECal.ComponentAlarmAction}.
+         * @returns the `alarm` action, or {@link ECal.ComponentAlarmAction.NONE}, when none is set
          */
         get_action(): ComponentAlarmAction;
         /**
-         * Creates a VALARM #ICalComponent filled with data from the `alarm`.
+         * Creates a VALARM {@link ICalGLib.Component} filled with data from the `alarm`.
          * In case the `alarm` doesn't have set 'uid', a new is assigned.
-         * Free the returned component with g_object_unref(), when no longer
+         * Free the returned component with `g_object_unref()`, when no longer
          * needed.
-         * @returns a newly created #ICalComponent    of %I_CAL_VALARM_COMPONENT kind
+         * @returns a newly created {@link ICalGLib.Component}    of {@link ICalGLib.ComponentKind.VALARM_COMPONENT} kind
          */
         get_as_component(): ICalGLib.Component;
         /**
-         * Get the list of attachments, as #ICalAttach.
-         * The returned #GSList is owned by `alarm` and should not be modified,
+         * Get the list of attachments, as {@link ICalGLib.Attach}.
+         * The returned {@link GLib.SList} is owned by `alarm` and should not be modified,
          * neither its content.
-         * @returns the @alarm attachments,    as a #GSList of an #ICalAttach, or %NULL, when none is set
+         * @returns the `alarm` attachments,    as a {@link GLib.SList} of an {@link ICalGLib.Attach}, or `null`, when none is set
          */
         get_attachments(): ICalGLib.Attach[] | null;
         /**
-         * Get the list of attendees, as #ECalComponentAttendee.
-         * The returned #GSList is owned by `alarm` and should not be modified,
+         * Get the list of attendees, as {@link ECal.ComponentAttendee}.
+         * The returned {@link GLib.SList} is owned by `alarm` and should not be modified,
          * neither its content.
-         * @returns the @alarm attendees,    as a #GSList of an #ECalComponentAttendee, or %NULL when, none are set
+         * @returns the `alarm` attendees,    as a {@link GLib.SList} of an {@link ECal.ComponentAttendee}, or `null` when, none are set
          */
         get_attendees(): ComponentAttendee[] | null;
         /**
-         * Get the `alarm` description, as an #ECalComponentText.
-         * @returns the @alarm description, or %NULL, when none is set
+         * Get the `alarm` description, as an {@link ECal.ComponentText}.
+         * @returns the `alarm` description, or `null`, when none is set
          */
         get_description(): ComponentText | null;
+        /**
+         * @returns an {@link ECal.ComponentPropertyBag} with additional    properties stored with an alarm component, other than those accessible    with the other functions of the `alarm`.
+         */
         get_property_bag(): ComponentPropertyBag;
         /**
          * Get the `alarm` repeat information, as an ECalComponentAlarmRepeat.
-         * @returns the @alarm repeat information,    or %NULL, when none is set
+         * @returns the `alarm` repeat information,    or `null`, when none is set
          */
         get_repeat(): ComponentAlarmRepeat | null;
         /**
-         * Get the `alarm` summary, as an #ECalComponentText.
-         * @returns the @alarm summary, or %NULL, when none is set
+         * Get the `alarm` summary, as an {@link ECal.ComponentText}.
+         * @returns the `alarm` summary, or `null`, when none is set
          */
         get_summary(): ComponentText | null;
         /**
-         * Get the `alarm` trigger, as an #ECalComponentAlarmTrigger.
-         * @returns the @alarm trigger, or %NULL when, none is set
+         * Get the `alarm` trigger, as an {@link ECal.ComponentAlarmTrigger}.
+         * @returns the `alarm` trigger, or `null` when, none is set
          */
         get_trigger(): ComponentAlarmTrigger | null;
         /**
          * Get the `alarm` UID.
-         * @returns the @alarm UID, or %NULL, when none is set
+         * @returns the `alarm` UID, or `null`, when none is set
          */
         get_uid(): string | null;
+        /**
+         * @returns whether the `alarm` has any attachments
+         */
         has_attachments(): boolean;
+        /**
+         * @returns whether the `alarm` has any attendees
+         */
         has_attendees(): boolean;
         /**
-         * Set the acknowledged time of the `alarm`. Use %NULL to unset it.
-         * @param when an #ICalTime when the @alarm    had been acknowledged, or %NULL to unset
+         * Set the acknowledged time of the `alarm`. Use `null` to unset it.
+         * @param when an {@link ICalGLib.Time} when the `alarm`    had been acknowledged, or `null` to unset
          */
         set_acknowledged(when?: ICalGLib.Time | null): void;
         /**
-         * Set the `alarm` action, as an #ECalComponentAlarmAction.
-         * @param action an #ECalComponentAlarmAction
+         * Set the `alarm` action, as an {@link ECal.ComponentAlarmAction}.
+         * @param action an {@link ECal.ComponentAlarmAction}
          */
         set_action(action: ComponentAlarmAction | null): void;
         /**
-         * Set the list of attachments, as a #GSList of an #ICalAttach.
-         * @param attachments a #GSList    of an #ICalAttach objects to set as attachments, or %NULL to unset
+         * Set the list of attachments, as a {@link GLib.SList} of an {@link ICalGLib.Attach}.
+         * @param attachments a {@link GLib.SList}    of an {@link ICalGLib.Attach} objects to set as attachments, or `null` to unset
          */
         set_attachments(attachments?: ICalGLib.Attach[] | null): void;
         /**
-         * Set the list of attendees, as a #GSList of an #ECalComponentAttendee.
-         * @param attendees a #GSList    of an #ECalComponentAttendee objects to set as attendees, or %NULL to unset
+         * Set the list of attendees, as a {@link GLib.SList} of an {@link ECal.ComponentAttendee}.
+         * @param attendees a {@link GLib.SList}    of an {@link ECal.ComponentAttendee} objects to set as attendees, or `null` to unset
          */
         set_attendees(attendees?: ComponentAttendee[] | null): void;
         /**
-         * Set the `alarm` description, as an #ECalComponentText.
-         * @param description a description to set, or %NULL to unset
+         * Set the `alarm` description, as an {@link ECal.ComponentText}.
+         * @param description a description to set, or `null` to unset
          */
         set_description(description?: ComponentText | null): void;
         /**
          * Fill the `alarm` structure with the information from
-         * the `component,` which should be of %I_CAL_VALARM_COMPONENT kind.
-         * @param component an #ICalComponent
+         * the `component`, which should be of {@link ICalGLib.ComponentKind.VALARM_COMPONENT} kind.
+         * @param component an {@link ICalGLib.Component}
          */
         set_from_component(component: ICalGLib.Component): void;
         /**
-         * Set the `alarm` repeat information, as an #ECalComponentAlarmRepeat.
-         * @param repeat a repeat information to set, or %NULL to unset
+         * Set the `alarm` repeat information, as an {@link ECal.ComponentAlarmRepeat}.
+         * @param repeat a repeat information to set, or `null` to unset
          */
         set_repeat(repeat?: ComponentAlarmRepeat | null): void;
         /**
-         * Set the `alarm` summary, as an #ECalComponentText.
-         * @param summary a summary to set, or %NULL to unset
+         * Set the `alarm` summary, as an {@link ECal.ComponentText}.
+         * @param summary a summary to set, or `null` to unset
          */
         set_summary(summary?: ComponentText | null): void;
         /**
-         * Set the `alarm` trigger, as an #ECalComponentAlarmTrigger.
-         * @param trigger a trigger to set, or %NULL to unset
+         * Set the `alarm` trigger, as an {@link ECal.ComponentAlarmTrigger}.
+         * @param trigger a trigger to set, or `null` to unset
          */
         set_trigger(trigger?: ComponentAlarmTrigger | null): void;
         /**
-         * Set the `alarm` UID, or generates a new UID, if `uid` is %NULL or an empty string.
-         * @param uid a UID to set, or %NULL or empty string to generate new
+         * Set the `alarm` UID, or generates a new UID, if `uid` is `null` or an empty string.
+         * @param uid a UID to set, or `null` or empty string to generate new
          */
         set_uid(uid?: string | null): void;
         /**
-         * Set the acknowledged time of the `alarm`. Use %NULL to unset it.
+         * Set the acknowledged time of the `alarm`. Use `null` to unset it.
          * The function assumes ownership of the `when`.
-         * @param when an #ICalTime when the @alarm    had been acknowledged, or %NULL to unset
+         * @param when an {@link ICalGLib.Time} when the `alarm`    had been acknowledged, or `null` to unset
          */
         take_acknowledged(when?: ICalGLib.Time | null): void;
     }
@@ -5830,6 +6147,7 @@ export namespace ECal {
     /**
      * Opaque structure, which represents an alarm occurrence, i.e. a instance instance.
      * Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentAlarmInstance {
         static $gtype: GObject.GType<ComponentAlarmInstance>;
@@ -5848,21 +6166,39 @@ export namespace ECal {
         // Methods
 
         /**
-         * Returns a newly allocated copy of `instance,` which should be freed with
-         * e_cal_component_alarm_instance_free(), when no longer needed.
-         * @returns a newly allocated copy of @instance
+         * Returns a newly allocated copy of `instance`, which should be freed with
+         * `e_cal_component_alarm_instance_free()`, when no longer needed.
+         * @returns a newly allocated copy of `instance`
          */
         copy(): ComponentAlarmInstance;
+        /**
+         * @returns component associated with the instance, or `null`
+         */
         get_component(): any | null;
+        /**
+         * @returns actual event occurrence end to which this `instance` corresponds
+         */
         get_occur_end(): number;
+        /**
+         * @returns actual event occurrence start to which this `instance` corresponds
+         */
         get_occur_start(): number;
+        /**
+         * @returns the Recurrence ID of the component this `instance` was generated for.
+         */
         get_rid(): string | null;
+        /**
+         * @returns alarm instance time, i.e. "5 minutes before the appointment"
+         */
         get_time(): number;
+        /**
+         * @returns alarm UID, to which this `instance` corresponds
+         */
         get_uid(): string;
         /**
          * Sets `component` as the component associated with the `instance`.
-         * It can be %NULL to unset it.
-         * @param component an #ECalComponent or %NULL
+         * It can be `null` to unset it.
+         * @param component an {@link ECal.Component} or `null`
          */
         set_component(component?: any | null): void;
         /**
@@ -5877,7 +6213,7 @@ export namespace ECal {
         set_occur_start(occur_start: number): void;
         /**
          * Set the Recurrence ID of the component this `instance` was generated for.
-         * @param rid recurrence UID to set, or %NULL
+         * @param rid recurrence UID to set, or `null`
          */
         set_rid(rid?: string | null): void;
         /**
@@ -5895,6 +6231,7 @@ export namespace ECal {
     /**
      * A structure holding whether and how an alarm repeats.
      * Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentAlarmRepeat {
         static $gtype: GObject.GType<ComponentAlarmRepeat>;
@@ -5909,24 +6246,30 @@ export namespace ECal {
 
         // Methods
 
+        /**
+         * @returns a newly allocated {@link ECal.ComponentAlarmRepeat}, copy of `repeat`.    The returned structure should be freed with `e_cal_component_alarm_repeat_free()`,    when no longer needed.
+         */
         copy(): ComponentAlarmRepeat;
         /**
-         * Returns the interval between repetitions of the `repeat,` as an #ICalDuration
+         * Returns the interval between repetitions of the `repeat`, as an {@link ICalGLib.Duration}
          * object. This object is owned by `repeat` and should not be freed. It's valid until
-         * the `repeat` is not freed or its interval changed with either e_cal_component_alarm_repeat_set_interval()
-         * or e_cal_component_alarm_repeat_set_interval_seconds().
-         * @returns the interval between repetitions of the @repeat
+         * the `repeat` is not freed or its interval changed with either `e_cal_component_alarm_repeat_set_interval()`
+         * or `e_cal_component_alarm_repeat_set_interval_seconds()`.
+         * @returns the interval between repetitions of the `repeat`
          */
         get_interval(): ICalGLib.Duration;
         /**
          * Returns the interval between repetitions of the `repeat` in seconds.
-         * @returns the interval between repetitions of the @repeat
+         * @returns the interval between repetitions of the `repeat`
          */
         get_interval_seconds(): number;
+        /**
+         * @returns the repetitions count of the `repeat`
+         */
         get_repetitions(): number;
         /**
          * Set the `interval` between repetitions of the `repeat`.
-         * @param interval interval between repetitions, as an #ICalDuration
+         * @param interval interval between repetitions, as an {@link ICalGLib.Duration}
          */
         set_interval(interval: ICalGLib.Duration): void;
         /**
@@ -5944,6 +6287,7 @@ export namespace ECal {
     /**
      * Opaque structure, which represents when an alarm is supposed to be triggered.
      * Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentAlarmTrigger {
         static $gtype: GObject.GType<ComponentAlarmTrigger>;
@@ -5961,46 +6305,52 @@ export namespace ECal {
         // Methods
 
         /**
-         * Returns a newly allocated copy of `trigger,` which should be freed with
-         * e_cal_component_alarm_trigger_free(), when no longer needed.
-         * @returns a newly allocated copy of @trigger
+         * Returns a newly allocated copy of `trigger`, which should be freed with
+         * `e_cal_component_alarm_trigger_free()`, when no longer needed.
+         * @returns a newly allocated copy of `trigger`
          */
         copy(): ComponentAlarmTrigger;
         /**
          * Fill `property` with information from `trigger`. The `property`
-         * should be of kind %I_CAL_TRIGGER_PROPERTY.
-         * @param property an #ICalProperty
+         * should be of kind {@link ICalGLib.PropertyKind.TRIGGER_PROPERTY}.
+         * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): ICalGLib.Property;
         /**
-         * Returns the `trigger` absolute time for an absolute trigger, or %NULL, when
+         * Returns the `trigger` absolute time for an absolute trigger, or `null`, when
          * the `trigger` is a relative trigger. The object is owned by `trigger` and it's
          * valid until the `trigger` is freed or its absolute time changed.
-         * @returns the @trigger absolute time, as an #ICalTime, or %NULL
+         * @returns the `trigger` absolute time, as an {@link ICalGLib.Time}, or `null`
          */
         get_absolute_time(): ICalGLib.Time | null;
         /**
-         * Converts information stored in `trigger` into an #ICalProperty
-         * of %I_CAL_TRIGGER_PROPERTY kind. The caller is responsible to free
-         * the returned object with g_object_unref(), when no longer needed.
-         * @returns a newly created #ICalProperty, containing    information from the @trigger.
+         * Converts information stored in `trigger` into an {@link ICalGLib.Property}
+         * of {@link ICalGLib.PropertyKind.TRIGGER_PROPERTY} kind. The caller is responsible to free
+         * the returned object with `g_object_unref()`, when no longer needed.
+         * @returns a newly created {@link ICalGLib.Property}, containing    information from the `trigger`.
          */
         get_as_property(): ICalGLib.Property;
         /**
-         * Returns the `trigger` duration for a relative `trigger,` or %NULL, when
+         * Returns the `trigger` duration for a relative `trigger`, or `null`, when
          * the `trigger` is an absolute trigger.
-         * @returns the @trigger duration, as an #ICalDuration, or %NULL
+         * @returns the `trigger` duration, as an {@link ICalGLib.Duration}, or `null`
          */
         get_duration(): ICalGLib.Duration | null;
+        /**
+         * @returns the `trigger` kind, one of {@link ECal.ComponentAlarmTriggerKind}
+         */
         get_kind(): ComponentAlarmTriggerKind;
+        /**
+         * @returns an {@link ECal.ComponentParameterBag} with additional    parameters stored with the trigger property, other than those accessible    with the other functions of the `trigger`.
+         */
         get_parameter_bag(): ComponentParameterBag;
         /**
-         * Set the `trigegr` with the %E_CAL_COMPONENT_ALARM_TRIGGER_ABSOLUTE kind and
+         * Set the `trigegr` with the {@link ECal.ComponentAlarmTriggerKind.ABSOLUTE} kind and
          * the `absolute_time` as the time of the trigger. The `absolute_time`
          * should be date/time (not date) in UTC.
          *
-         * To set a relative trigger use e_cal_component_alarm_trigger_set_relative().
-         * @param absolute_time the absolute time when to trigger the alarm, as an #ICalTime
+         * To set a relative trigger use `e_cal_component_alarm_trigger_set_relative()`.
+         * @param absolute_time the absolute time when to trigger the alarm, as an {@link ICalGLib.Time}
          */
         set_absolute(absolute_time: ICalGLib.Time): void;
         /**
@@ -6008,37 +6358,37 @@ export namespace ECal {
          * should be date/time (not date) in UTC.
          *
          * The function does nothing, when the `trigger` is a relative trigger.
-         * @param absolute_time absolute time for an absolute trigger, as an #ICalTime
+         * @param absolute_time absolute time for an absolute trigger, as an {@link ICalGLib.Time}
          */
         set_absolute_time(absolute_time: ICalGLib.Time): void;
         /**
          * Sets the `trigger` duration for a relative trigger. The function does nothing, when
          * the `trigger` is an absolute trigger. The object is owned by `trigger` and it's
          * valid until the `trigger` is freed or its relative duration changed.
-         * @param duration duration for a relative trigger, as an #ICalDuration
+         * @param duration duration for a relative trigger, as an {@link ICalGLib.Duration}
          */
         set_duration(duration: ICalGLib.Duration): void;
         /**
          * Fill the `trigger` structure with the information from
-         * the `property,` which should be of %I_CAL_TRIGGER_PROPERTY kind.
-         * @param property an #ICalProperty
+         * the `property`, which should be of {@link ICalGLib.PropertyKind.TRIGGER_PROPERTY} kind.
+         * @param property an {@link ICalGLib.Property}
          */
         set_from_property(property: ICalGLib.Property): void;
         /**
          * Set the `trigger` kind to `kind`. This works only for other than
-         * the %E_CAL_COMPONENT_ALARM_TRIGGER_ABSOLUTE. To change the kind
+         * the {@link ECal.ComponentAlarmTriggerKind.ABSOLUTE}. To change the kind
          * from absolute to relative, or vice versa, use either
-         * e_cal_component_alarm_trigger_set_relative() or
-         * e_cal_component_alarm_trigger_set_absolute().
-         * @param kind the kind to set, one of #ECalComponentAlarmTriggerKind
+         * `e_cal_component_alarm_trigger_set_relative()` or
+         * `e_cal_component_alarm_trigger_set_absolute()`.
+         * @param kind the kind to set, one of {@link ECal.ComponentAlarmTriggerKind}
          */
         set_kind(kind: ComponentAlarmTriggerKind | null): void;
         /**
          * Set the `trigegr` with the given `kind` and `duration`. The `kind` can be any but
-         * the %E_CAL_COMPONENT_ALARM_TRIGGER_ABSOLUTE.
-         * To set an absolute trigger use e_cal_component_alarm_trigger_set_absolute().
-         * @param kind an #ECalComponentAlarmTriggerKind, any but the %E_CAL_COMPONENT_ALARM_TRIGGER_ABSOLUTE
-         * @param duration the duration relative to @kind, as an #ICalDuration
+         * the {@link ECal.ComponentAlarmTriggerKind.ABSOLUTE}.
+         * To set an absolute trigger use `e_cal_component_alarm_trigger_set_absolute()`.
+         * @param kind an {@link ECal.ComponentAlarmTriggerKind}, any but the {@link ECal.ComponentAlarmTriggerKind.ABSOLUTE}
+         * @param duration the duration relative to `kind`, as an {@link ICalGLib.Duration}
          */
         set_relative(kind: ComponentAlarmTriggerKind | null, duration: ICalGLib.Duration): void;
     }
@@ -6046,6 +6396,7 @@ export namespace ECal {
     /**
      * Opaque structure, which represents alarm trigger instances for a particular component.
      * Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentAlarms {
         static $gtype: GObject.GType<ComponentAlarms>;
@@ -6061,56 +6412,57 @@ export namespace ECal {
         /**
          * Add a copy of `instance` into the list of instances. It is added
          * in no particular order.
-         * @param instance an #ECalComponentAlarmInstance
+         * @param instance an {@link ECal.ComponentAlarmInstance}
          */
         add_instance(instance: ComponentAlarmInstance): void;
         /**
-         * Returns a newly allocated copy of `alarms,` which should be freed with
-         * e_cal_component_alarms_free(), when no longer needed.
-         * @returns a newly allocated copy of @alarms
+         * Returns a newly allocated copy of `alarms`, which should be freed with
+         * `e_cal_component_alarms_free()`, when no longer needed.
+         * @returns a newly allocated copy of `alarms`
          */
         copy(): ComponentAlarms;
         /**
          * The returned component is valid until the `alarms` is freed.
-         * @returns an #ECalComponent associated with the @alarms structure, or %NULL
+         * @returns an {@link ECal.Component} associated with the `alarms` structure, or `null`
          */
         get_component(): Component | null;
         /**
-         * The returned #GSList is owned by `alarms` and should not be modified.
+         * The returned {@link GLib.SList} is owned by `alarms` and should not be modified.
          * It's valid until the `alarms` is freed or the list of instances is not
-         * modified by other functions. The items are of type #ECalComponentAlarmInstance.
-         * @returns instances    of the @alarms structure; can be %NULL, when none had been added yet
+         * modified by other functions. The items are of type {@link ECal.ComponentAlarmInstance}.
+         * @returns instances    of the `alarms` structure; can be `null`, when none had been added yet
          */
         get_instances(): ComponentAlarmInstance[] | null;
         /**
          * Remove the `instance` from the list of instances. If found, the `instance`
          * is also freed.
-         * @param instance an #ECalComponentAlarmInstance
-         * @returns whether the @instance had been found and freed
+         * @param instance an {@link ECal.ComponentAlarmInstance}
+         * @returns whether the `instance` had been found and freed
          */
         remove_instance(instance: ComponentAlarmInstance): boolean;
         /**
          * Modifies the list of instances to copy of the given `instances`.
-         * @param instances #ECalComponentAlarmInstance objects to set
+         * @param instances {@link ECal.ComponentAlarmInstance} objects to set
          */
         set_instances(instances?: ComponentAlarmInstance[] | null): void;
         /**
          * Add the `instance` into the list of instances and assume ownership of it.
          * It is added in no particular order.
-         * @param instance an #ECalComponentAlarmInstance
+         * @param instance an {@link ECal.ComponentAlarmInstance}
          */
         take_instance(instance: ComponentAlarmInstance): void;
         /**
          * Replaces the list of instances with the given `instances` and
-         * assumes ownership of it. Neither the #GSList, nor its items, should
+         * assumes ownership of it. Neither the {@link GLib.SList}, nor its items, should
          * contain the same structures.
-         * @param instances #ECalComponentAlarmInstance objects to take
+         * @param instances {@link ECal.ComponentAlarmInstance} objects to take
          */
         take_instances(instances?: ComponentAlarmInstance[] | null): void;
     }
 
     /**
      * Describes an attendee. Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentAttendee {
         static $gtype: GObject.GType<ComponentAttendee>;
@@ -6140,85 +6492,121 @@ export namespace ECal {
         // Methods
 
         /**
-         * Returns a newly allocated copy of `attendee,` which should be freed with
-         * e_cal_component_attendee_free(), when no longer needed.
-         * @returns a newly allocated copy of @attendee
+         * Returns a newly allocated copy of `attendee`, which should be freed with
+         * `e_cal_component_attendee_free()`, when no longer needed.
+         * @returns a newly allocated copy of `attendee`
          */
         copy(): ComponentAttendee;
         /**
          * Fill `property` with information from `attendee`. The `property`
-         * should be of kind %I_CAL_ATTENDEE_PROPERTY.
-         * @param property an #ICalProperty
+         * should be of kind {@link ICalGLib.PropertyKind.ATTENDEE_PROPERTY}.
+         * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): ICalGLib.Property;
         /**
-         * Converts information stored in `attendee` into an #ICalProperty
-         * of %I_CAL_ATTENDEE_PROPERTY kind. The caller is responsible to free
-         * the returned object with g_object_unref(), when no longer needed.
-         * @returns a newly created #ICalProperty, containing    information from the @attendee.
+         * Converts information stored in `attendee` into an {@link ICalGLib.Property}
+         * of {@link ICalGLib.PropertyKind.ATTENDEE_PROPERTY} kind. The caller is responsible to free
+         * the returned object with `g_object_unref()`, when no longer needed.
+         * @returns a newly created {@link ICalGLib.Property}, containing    information from the `attendee`.
          */
         get_as_property(): ICalGLib.Property;
+        /**
+         * @returns the `attendee` common name (cn) parameter
+         */
         get_cn(): string | null;
+        /**
+         * @returns the `attendee` type, as an {@link ICalGLib.ParameterCutype}
+         */
         get_cutype(): ICalGLib.ParameterCutype;
+        /**
+         * @returns the `attendee` delegatedfrom parameter
+         */
         get_delegatedfrom(): string | null;
+        /**
+         * @returns the `attendee` delegatedto parameter
+         */
         get_delegatedto(): string | null;
+        /**
+         * @returns the `attendee` language parameter
+         */
         get_language(): string | null;
+        /**
+         * @returns the `attendee` member property
+         */
         get_member(): string | null;
+        /**
+         * @returns an {@link ECal.ComponentParameterBag} with additional    parameters stored with the attendee property, other than those accessible    with the other functions of the `attendee`.
+         */
         get_parameter_bag(): ComponentParameterBag;
+        /**
+         * @returns the `attendee` status, as an {@link ICalGLib.ParameterPartstat}
+         */
         get_partstat(): ICalGLib.ParameterPartstat;
+        /**
+         * @returns the `attendee` role, as an {@link ICalGLib.ParameterRole}
+         */
         get_role(): ICalGLib.ParameterRole;
+        /**
+         * @returns whether the `attendee` requires RSVP
+         */
         get_rsvp(): boolean;
+        /**
+         * @returns the `attendee` sentby parameter
+         */
         get_sentby(): string | null;
+        /**
+         * @returns the `attendee` URI, usually of "mailto:email" form
+         */
         get_value(): string | null;
         /**
-         * Set the `attendee` common name (cn) parameter. The %NULL
+         * Set the `attendee` common name (cn) parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param cn the value to set
          */
         set_cn(cn?: string | null): void;
         /**
-         * Set the `attendee` type, as an #ICalParameterCutype.
-         * @param cutype the value to set, as an #ICalParameterCutype
+         * Set the `attendee` type, as an {@link ICalGLib.ParameterCutype}.
+         * @param cutype the value to set, as an {@link ICalGLib.ParameterCutype}
          */
         set_cutype(cutype: ICalGLib.ParameterCutype | null): void;
         /**
-         * Set the `attendee` delegatedfrom parameter. The %NULL
+         * Set the `attendee` delegatedfrom parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param delegatedfrom the value to set
          */
         set_delegatedfrom(delegatedfrom?: string | null): void;
         /**
-         * Set the `attendee` delegatedto parameter. The %NULL
+         * Set the `attendee` delegatedto parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param delegatedto the value to set
          */
         set_delegatedto(delegatedto?: string | null): void;
         /**
          * Fill the `attendee` structure with the information from
-         * the `property,` which should be of %I_CAL_ATTENDEE_PROPERTY kind.
-         * @param property an #ICalProperty
+         * the `property`, which should be of {@link ICalGLib.PropertyKind.ATTENDEE_PROPERTY} kind.
+         * @param property an {@link ICalGLib.Property}
          */
         set_from_property(property: ICalGLib.Property): void;
         /**
-         * Set the `attendee` language parameter. The %NULL
+         * Set the `attendee` language parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param language the value to set
          */
         set_language(language?: string | null): void;
         /**
-         * Set the `attendee` member parameter. The %NULL
+         * Set the `attendee` member parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param member the value to set
          */
         set_member(member?: string | null): void;
         /**
-         * Set the `attendee` status, as an #ICalParameterPartstat.
-         * @param partstat the value to set, as an #ICalParameterPartstat
+         * Set the `attendee` status, as an {@link ICalGLib.ParameterPartstat}.
+         * @param partstat the value to set, as an {@link ICalGLib.ParameterPartstat}
          */
         set_partstat(partstat: ICalGLib.ParameterPartstat | null): void;
         /**
-         * Set the `attendee` role, as an #ICalParameterRole.
-         * @param role the value to set, as an #ICalParameterRole
+         * Set the `attendee` role, as an {@link ICalGLib.ParameterRole}.
+         * @param role the value to set, as an {@link ICalGLib.ParameterRole}
          */
         set_role(role: ICalGLib.ParameterRole | null): void;
         /**
@@ -6227,24 +6615,28 @@ export namespace ECal {
          */
         set_rsvp(rsvp: boolean): void;
         /**
-         * Set the `attendee` sentby parameter. The %NULL
+         * Set the `attendee` sentby parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param sentby the value to set
          */
         set_sentby(sentby?: string | null): void;
         /**
-         * Set the `attendee` URI, usually of "mailto:email" form. The %NULL
+         * Set the `attendee` URI, usually of "mailto:email" form. The `null`
          * and empty strings are treated as unset the value.
          * @param value the value to set
          */
         set_value(value?: string | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ComponentClass = typeof Component;
     /**
-     * An opaque structure containing an #ICalTime describing
+     * An opaque structure containing an {@link ICalGLib.Time} describing
      * the date/time value and also its TZID parameter. Use the functions
      * below to work with it.
+     * @gir-type Struct
      */
     class ComponentDateTime {
         static $gtype: GObject.GType<ComponentDateTime>;
@@ -6261,60 +6653,61 @@ export namespace ECal {
 
         /**
          * Creates a new copy of `dt`. The returned structure should be freed
-         * with e_cal_component_datetime_free() when no longer needed.
-         * @returns a new #ECalComponentDateTime, copy of @dt
+         * with `e_cal_component_datetime_free()` when no longer needed.
+         * @returns a new {@link ECal.ComponentDateTime}, copy of `dt`
          */
         copy(): ComponentDateTime;
         /**
          * Returns the TZID stored with the `dt`. The string is owned by `dt` and
          * it's valid until the `dt` is freed or its TZID overwritten. It never
          * returns an empty string, it returns either set TZID parameter value
-         * or %NULL, when none is set.
-         * @returns a TZID of @dt, or %NULL
+         * or `null`, when none is set.
+         * @returns a TZID of `dt`, or `null`
          */
         get_tzid(): string | null;
         /**
          * Returns the value stored with the `dt`. The object is owned by `dt` and
          * it's valid until the `dt` is freed or its value overwritten.
-         * @returns a value of @dt, as an #ICalTime
+         * @returns a value of `dt`, as an {@link ICalGLib.Time}
          */
         get_value(): ICalGLib.Time;
         /**
-         * Sets both `value` and `tzid` in one call. Use e_cal_component_datetime_set_value()
-         * and e_cal_component_datetime_set_tzid() to set them separately.
-         * @param value an #ICalTime as a value
-         * @param tzid timezone ID for the @value, or %NULL
+         * Sets both `value` and `tzid` in one call. Use `e_cal_component_datetime_set_value()`
+         * and `e_cal_component_datetime_set_tzid()` to set them separately.
+         * @param value an {@link ICalGLib.Time} as a value
+         * @param tzid timezone ID for the `value`, or `null`
          */
         set(value: ICalGLib.Time, tzid?: string | null): void;
         /**
          * Sets the `tzid` of the `dt`. Any previously set TZID is freed.
-         * An empty string or a %NULL as `tzid` is treated as none TZID.
-         * @param tzid the TZID to set, or %NULL
+         * An empty string or a `null` as `tzid` is treated as none TZID.
+         * @param tzid the TZID to set, or `null`
          */
         set_tzid(tzid?: string | null): void;
         /**
          * Sets the `value` of the `dt`. Any previously set value is freed.
-         * @param value the value to set, as an #ICalTime
+         * @param value the value to set, as an {@link ICalGLib.Time}
          */
         set_value(value: ICalGLib.Time): void;
         /**
          * Sets the `tzid` of the `dt` and assumes ownership of `tzid`. Any previously
-         * set TZID is freed. An empty string or a %NULL as `tzid` is treated as none TZID.
-         * @param tzid the TZID to take, or %NULL
+         * set TZID is freed. An empty string or a `null` as `tzid` is treated as none TZID.
+         * @param tzid the TZID to take, or `null`
          */
         take_tzid(tzid?: string | null): void;
         /**
          * Sets the `value` of the `dt` and assumes ownership of the `value`.
          * Any previously set value is freed.
-         * @param value the value to take, as an #ICalTime
+         * @param value the value to take, as an {@link ICalGLib.Time}
          */
         take_value(value: ICalGLib.Time): void;
     }
 
     /**
      * An opaque structure containing UID of a component and
-     * its recurrence ID (which can be %NULL). Use the functions
+     * its recurrence ID (which can be `null`). Use the functions
      * below to work with it.
+     * @gir-type Struct
      */
     class ComponentId {
         static $gtype: GObject.GType<ComponentId>;
@@ -6330,27 +6723,33 @@ export namespace ECal {
         // Methods
 
         /**
-         * Returns a newly allocated copy of `id,` which should be freed with
-         * e_cal_component_id_free().
-         * @returns a newly allocated copy of @id
+         * Returns a newly allocated copy of `id`, which should be freed with
+         * `e_cal_component_id_free()`.
+         * @returns a newly allocated copy of `id`
          */
         copy(): ComponentId;
         /**
-         * Compares two #ECalComponentId structs for equality.
-         * @param id2 the second #ECalComponentId
-         * @returns %TRUE if @id1 and @id2 are equal
+         * Compares two {@link ECal.ComponentId} structs for equality.
+         * @param id2 the second {@link ECal.ComponentId}
+         * @returns `true` if `id1` and `id2` are equal
          */
         equal(id2: ComponentId): boolean;
+        /**
+         * @returns The RECURRENCE-ID part of the `id`.    The returned string is owned by `id` and it's valid until it's    changed with `e_cal_component_id_set_rid()` or until the `id` is freed.
+         */
         get_rid(): string | null;
+        /**
+         * @returns The UID part of the `id`. The returned    string is owned by `id` and it's valid until it's changed    with `e_cal_component_id_set_uid()` or until the `id` is freed.
+         */
         get_uid(): string;
         /**
          * Generates a hash value for `id`.
-         * @returns a hash value for @id
+         * @returns a hash value for `id`
          */
         hash(): number;
         /**
-         * Sets the RECURRENCE-ID part of the `id`. The `rid` can be %NULL
-         * or an empty string, where both are treated as %NULL, which
+         * Sets the RECURRENCE-ID part of the `id`. The `rid` can be `null`
+         * or an empty string, where both are treated as `null`, which
          * means the `id` has not RECURRENCE-ID.
          * @param rid the RECURRENCE-ID to set
          */
@@ -6364,6 +6763,7 @@ export namespace ECal {
 
     /**
      * Describes an organizer. Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentOrganizer {
         static $gtype: GObject.GType<ComponentOrganizer>;
@@ -6386,55 +6786,70 @@ export namespace ECal {
         // Methods
 
         /**
-         * Returns a newly allocated copy of `organizer,` which should be freed with
-         * e_cal_component_organizer_free(), when no longer needed.
-         * @returns a newly allocated copy of @organizer
+         * Returns a newly allocated copy of `organizer`, which should be freed with
+         * `e_cal_component_organizer_free()`, when no longer needed.
+         * @returns a newly allocated copy of `organizer`
          */
         copy(): ComponentOrganizer;
         /**
          * Fill `property` with information from `organizer`. The `property`
-         * should be of kind %I_CAL_ORGANIZER_PROPERTY.
-         * @param property an #ICalProperty
+         * should be of kind {@link ICalGLib.PropertyKind.ORGANIZER_PROPERTY}.
+         * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): ICalGLib.Property;
         /**
-         * Converts information stored in `organizer` into an #ICalProperty
-         * of %I_CAL_ORGANIZER_PROPERTY kind. The caller is responsible to free
-         * the returned object with g_object_unref(), when no longer needed.
-         * @returns a newly created #ICalProperty, containing    information from the @organizer.
+         * Converts information stored in `organizer` into an {@link ICalGLib.Property}
+         * of {@link ICalGLib.PropertyKind.ORGANIZER_PROPERTY} kind. The caller is responsible to free
+         * the returned object with `g_object_unref()`, when no longer needed.
+         * @returns a newly created {@link ICalGLib.Property}, containing    information from the `organizer`.
          */
         get_as_property(): ICalGLib.Property;
+        /**
+         * @returns the `organizer` common name (cn) parameter
+         */
         get_cn(): string | null;
+        /**
+         * @returns the `organizer` language parameter
+         */
         get_language(): string | null;
+        /**
+         * @returns an {@link ECal.ComponentParameterBag} with additional    parameters stored with the organizer property, other than those accessible    with the other functions of the `organizer`.
+         */
         get_parameter_bag(): ComponentParameterBag;
+        /**
+         * @returns the `organizer` sentby parameter
+         */
         get_sentby(): string | null;
+        /**
+         * @returns the `organizer` URI, usually of "mailto:email" form
+         */
         get_value(): string | null;
         /**
-         * Set the `organizer` common name (cn) parameter. The %NULL
+         * Set the `organizer` common name (cn) parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param cn the value to set
          */
         set_cn(cn?: string | null): void;
         /**
          * Fill the `organizer` structure with the information from
-         * the `property,` which should be of %I_CAL_ORGANIZER_PROPERTY kind.
-         * @param property an #ICalProperty
+         * the `property`, which should be of {@link ICalGLib.PropertyKind.ORGANIZER_PROPERTY} kind.
+         * @param property an {@link ICalGLib.Property}
          */
         set_from_property(property: ICalGLib.Property): void;
         /**
-         * Set the `organizer` language parameter. The %NULL
+         * Set the `organizer` language parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param language the value to set
          */
         set_language(language?: string | null): void;
         /**
-         * Set the `organizer` sentby parameter. The %NULL
+         * Set the `organizer` sentby parameter. The `null`
          * and empty strings are treated as unset the value.
          * @param sentby the value to set
          */
         set_sentby(sentby?: string | null): void;
         /**
-         * Set the `organizer` URI, usually of "mailto:email" form. The %NULL
+         * Set the `organizer` URI, usually of "mailto:email" form. The `null`
          * and empty strings are treated as unset the value.
          * @param value the value to set
          */
@@ -6442,8 +6857,9 @@ export namespace ECal {
     }
 
     /**
-     * Opaque structure, which represents a bad (list) of #ICalParameter objects.
+     * Opaque structure, which represents a bad (list) of {@link ICalGLib.Parameter} objects.
      * Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentParameterBag {
         static $gtype: GObject.GType<ComponentParameterBag>;
@@ -6460,69 +6876,76 @@ export namespace ECal {
 
         /**
          * Adds a copy of the `param` into the `bag`.
-         * @param param an #ICalParameter
+         * @param param an {@link ICalGLib.Parameter}
          */
         add(param: ICalGLib.Parameter): void;
         /**
          * Assigns content of the `src_bag` into the `bag`.
-         * @param src_bag a source #ECalComponentParameterBag
+         * @param src_bag a source {@link ECal.ComponentParameterBag}
          */
         assign(src_bag: ComponentParameterBag): void;
         /**
-         * Removes all parameters from the `bag,` thus it doesn't contain any
+         * Removes all parameters from the `bag`, thus it doesn't contain any
          * parameter after this function returns.
          */
         clear(): void;
         /**
-         * Returns a newly allocated copy of `bag,` which should be freed with
-         * e_cal_component_parameter_bag_free(), when no longer needed.
-         * @returns a newly allocated copy of @bag
+         * Returns a newly allocated copy of `bag`, which should be freed with
+         * `e_cal_component_parameter_bag_free()`, when no longer needed.
+         * @returns a newly allocated copy of `bag`
          */
         copy(): ComponentParameterBag;
         /**
          * Adds all the stored parameters in the `bag` to the `property`.
          * The function replaces any existing parameter with the new value,
          * if any such exists. Otherwise the parameter is added.
-         * @param property an #ICalProperty
+         * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): void;
         /**
-         * Returns the #ICalParameter at the given `index`. If the `index` is
-         * out of bounds (not lower than e_cal_component_parameter_bag_get_count()),
-         * then %NULL is returned.
+         * Returns the {@link ICalGLib.Parameter} at the given `index`. If the `index` is
+         * out of bounds (not lower than `e_cal_component_parameter_bag_get_count()`),
+         * then `null` is returned.
          *
          * The returned parameter is owned by the `bag` and should not be freed
          * by the caller.
          * @param index an index of the parameter to get
-         * @returns the #ICalParameter at the given @index,    or %NULL on error
+         * @returns the {@link ICalGLib.Parameter} at the given `index`,    or `null` on error
          */
         get(index: number): ICalGLib.Parameter | null;
+        /**
+         * @returns how many parameters are stored in the `bag`
+         */
         get_count(): number;
+        /**
+         * @param kind an {@link ICalGLib.ParameterKind} to search for
+         * @returns the index of the first parameter of the given `kind`, or value    out of bounds, if such parameter cannot be found
+         */
         get_first_by_kind(kind: ICalGLib.ParameterKind | null): number;
         /**
-         * Removes the #ICalParameter at the given `index`. If the `index` is
-         * out of bounds (not lower than e_cal_component_parameter_bag_get_count()),
+         * Removes the {@link ICalGLib.Parameter} at the given `index`. If the `index` is
+         * out of bounds (not lower than `e_cal_component_parameter_bag_get_count()`),
          * then the function does nothing.
          * @param index an index of the parameter to remove
          */
         remove(index: number): void;
         /**
-         * Removes the first or all (depending on the `all)` parameters of the given `kind`.
-         * @param kind an #ICalParameterKind to remove
-         * @param all %TRUE to remove all parameters of the @kind, or %FALSE to only the first
+         * Removes the first or all (depending on the `all`) parameters of the given `kind`.
+         * @param kind an {@link ICalGLib.ParameterKind} to remove
+         * @param all `true` to remove all parameters of the `kind`, or `false` to only the first
          * @returns how many parameters had been removed
          */
         remove_by_kind(kind: ICalGLib.ParameterKind | null, all: boolean): number;
         /**
-         * Fills the `bag` with parameters from the `property,` for which the `func`
-         * returned %TRUE. When the `func` is %NULL, all the parameters are included.
+         * Fills the `bag` with parameters from the `property`, for which the `func`
+         * returned `true`. When the `func` is `null`, all the parameters are included.
          * The `bag` content is cleared before any parameter is added.
-         * @param property an #ICalProperty containing the parameters to fill the @bag with
+         * @param property an {@link ICalGLib.Property} containing the parameters to fill the `bag` with
          */
         set_from_property(property: ICalGLib.Property): void;
         /**
          * Adds the `param` into the `bag` and assumes ownership of the `param`.
-         * @param param an #ICalParameter
+         * @param param an {@link ICalGLib.Parameter}
          */
         take(param: ICalGLib.Parameter): void;
     }
@@ -6530,6 +6953,7 @@ export namespace ECal {
     /**
      * Period of time, can have explicit start/end times or start/duration instead.
      * Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentPeriod {
         static $gtype: GObject.GType<ComponentPeriod>;
@@ -6544,82 +6968,89 @@ export namespace ECal {
 
         // Methods
 
+        /**
+         * @returns a newly allocated {@link ECal.ComponentPeriod}, copy of `period`.    The returned structure should be freed with `e_cal_component_period_free()`,    when no longer needed.
+         */
         copy(): ComponentPeriod;
         /**
          * Returns the duration of the `period`. This can be called only on `period`
-         * objects of kind %E_CAL_COMPONENT_PERIOD_DURATION.
-         * The returned #ICalDuration object is owned by `period` and should not
+         * objects of kind {@link ECal.ComponentPeriodKind.DURATION}.
+         * The returned {@link ICalGLib.Duration} object is owned by `period` and should not
          * be freed. It's valid until the `period` is freed or its duration changed.
-         * @returns the duration of the period, as an #ICalDuration
+         * @returns the duration of the period, as an {@link ICalGLib.Duration}
          */
         get_duration(): ICalGLib.Duration;
         /**
          * Returns the end of the `period`. This can be called only on `period`
-         * objects of kind %E_CAL_COMPONENT_PERIOD_DATETIME. The end time can
+         * objects of kind {@link ECal.ComponentPeriodKind.DATETIME}. The end time can
          * be a null-time, in which case the `period` corresponds to a single
          * date/date-time value, not to a period.
          *
-         * The returned #ICalTime object is owned by `period` and should not
+         * The returned {@link ICalGLib.Time} object is owned by `period` and should not
          * be freed. It's valid until the `period` is freed or its end time changed.
-         * @returns the end of the period, as an #ICalTime
+         * @returns the end of the period, as an {@link ICalGLib.Time}
          */
         get_end(): ICalGLib.Time | null;
         /**
-         * Returns kind of the `period,` one of #ECalComponentPeriodKind. Depending
-         * on it either e_cal_component_period_get_end()/e_cal_component_period_set_end()
-         * or e_cal_component_period_get_duration()/e_cal_component_period_set_duration()
+         * Returns kind of the `period`, one of {@link ECal.ComponentPeriodKind}. Depending
+         * on it either `e_cal_component_period_get_end()`/e_cal_component_period_set_end()
+         * or `e_cal_component_period_get_duration()`/e_cal_component_period_set_duration()
          * can be used. The kind of an existing `period` canbe changed with
-         * e_cal_component_period_set_datetime_full() and e_cal_component_period_set_duration_full().
-         * @returns kind of the period, one of #ECalComponentPeriodKind
+         * `e_cal_component_period_set_datetime_full()` and `e_cal_component_period_set_duration_full()`.
+         * @returns kind of the period, one of {@link ECal.ComponentPeriodKind}
          */
         get_kind(): ComponentPeriodKind;
         /**
-         * Returns the start of the `period`. The returned #ICalTime object
+         * Returns the start of the `period`. The returned {@link ICalGLib.Time} object
          * is owned by `period` and should not be freed. It's valid until the `period`
          * is freed or its start time changed.
-         * @returns the start of the @period, as an #ICalTime
+         * @returns the start of the `period`, as an {@link ICalGLib.Time}
          */
         get_start(): ICalGLib.Time;
         /**
-         * Set the kind of `period` to be %E_CAL_COMPONENT_PERIOD_DATETIME
+         * Set the kind of `period` to be {@link ECal.ComponentPeriodKind.DATETIME}
          * and fills the content with `start` and `end`.
-         * @param start an #ICalTime, the start of the @period
-         * @param end an #ICalTime, the end of the @period
+         * @param start an {@link ICalGLib.Time}, the start of the `period`
+         * @param end an {@link ICalGLib.Time}, the end of the `period`
          */
         set_datetime_full(start: ICalGLib.Time, end?: ICalGLib.Time | null): void;
         /**
          * Set the duration of the `period`. This can be called only on `period`
-         * objects of kind %E_CAL_COMPONENT_PERIOD_DURATION.
-         * @param duration an #ICalDuration, the duration of the @period
+         * objects of kind {@link ECal.ComponentPeriodKind.DURATION}.
+         * @param duration an {@link ICalGLib.Duration}, the duration of the `period`
          */
         set_duration(duration: ICalGLib.Duration): void;
         /**
-         * Set the kind of `period` to be %E_CAL_COMPONENT_PERIOD_DURATION
+         * Set the kind of `period` to be {@link ECal.ComponentPeriodKind.DURATION}
          * and fills the content with `start` and `duration`.
-         * @param start an #ICalTime, the start of the @period
-         * @param duration an #ICalDuration, the duration of the @period
+         * @param start an {@link ICalGLib.Time}, the start of the `period`
+         * @param duration an {@link ICalGLib.Duration}, the duration of the `period`
          */
         set_duration_full(start: ICalGLib.Time, duration: ICalGLib.Duration): void;
         /**
          * Set the end of the `period`. This can be called only on `period`
-         * objects of kind %E_CAL_COMPONENT_PERIOD_DATETIME.
-         * @param end an #ICalTime, the end of the @period
+         * objects of kind {@link ECal.ComponentPeriodKind.DATETIME}.
+         * @param end an {@link ICalGLib.Time}, the end of the `period`
          */
         set_end(end?: ICalGLib.Time | null): void;
         /**
          * Set the `start` of the `period`. This can be called on any kind of the `period`.
-         * @param start an #ICalTime, the start of the @period
+         * @param start an {@link ICalGLib.Time}, the start of the `period`
          */
         set_start(start: ICalGLib.Time): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class ComponentPrivate {
         static $gtype: GObject.GType<ComponentPrivate>;
     }
 
     /**
-     * Opaque structure, which represents a bad (list) of #ICalProperty objects.
+     * Opaque structure, which represents a bad (list) of {@link ICalGLib.Property} objects.
      * Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentPropertyBag {
         static $gtype: GObject.GType<ComponentPropertyBag>;
@@ -6636,75 +7067,83 @@ export namespace ECal {
 
         /**
          * Adds a copy of the `prop` into the `bag`.
-         * @param prop an #ICalProperty
+         * @param prop an {@link ICalGLib.Property}
          */
         add(prop: ICalGLib.Property): void;
         /**
          * Assigns content of the `src_bag` into the `bag`.
-         * @param src_bag a source #ECalComponentPropertyBag
+         * @param src_bag a source {@link ECal.ComponentPropertyBag}
          */
         assign(src_bag: ComponentPropertyBag): void;
         /**
-         * Removes all properties from the `bag,` thus it doesn't contain any
+         * Removes all properties from the `bag`, thus it doesn't contain any
          * property after this function returns.
          */
         clear(): void;
         /**
-         * Returns a newly allocated copy of `bag,` which should be freed with
-         * e_cal_component_property_bag_free(), when no longer needed.
-         * @returns a newly allocated copy of @bag
+         * Returns a newly allocated copy of `bag`, which should be freed with
+         * `e_cal_component_property_bag_free()`, when no longer needed.
+         * @returns a newly allocated copy of `bag`
          */
         copy(): ComponentPropertyBag;
         /**
          * Adds all the stored properties in the `bag` to the `component`.
          * The function doesn't verify whether the `component` contains
          * the same property already.
-         * @param component an #ICalComponent
+         * @param component an {@link ICalGLib.Component}
          */
         fill_component(component: ICalGLib.Component): void;
         /**
-         * Returns the #ICalProperty at the given `index`. If the `index` is
-         * out of bounds (not lower than e_cal_component_property_bag_get_count()),
-         * then %NULL is returned.
+         * Returns the {@link ICalGLib.Property} at the given `index`. If the `index` is
+         * out of bounds (not lower than `e_cal_component_property_bag_get_count()`),
+         * then `null` is returned.
          *
          * The returned property is owned by the `bag` and should not be freed
          * by the caller.
          * @param index an index of the property to get
-         * @returns the #ICalProperty at the given @index,    or %NULL on error
+         * @returns the {@link ICalGLib.Property} at the given `index`,    or `null` on error
          */
         get(index: number): ICalGLib.Property | null;
+        /**
+         * @returns how many properties are stored in the `bag`
+         */
         get_count(): number;
+        /**
+         * @param kind an {@link ICalGLib.PropertyKind} to search for
+         * @returns the index of the first property of the given `kind`, or value    out of bounds, if such property cannot be found
+         */
         get_first_by_kind(kind: ICalGLib.PropertyKind | null): number;
         /**
-         * Removes the #ICalProperty at the given `index`. If the `index` is
-         * out of bounds (not lower than e_cal_component_property_bag_get_count()),
+         * Removes the {@link ICalGLib.Property} at the given `index`. If the `index` is
+         * out of bounds (not lower than `e_cal_component_property_bag_get_count()`),
          * then the function does nothing.
          * @param index an index of the property to remove
          */
         remove(index: number): void;
         /**
-         * Removes the first or all (depending on the `all)` properties of the given `kind`.
-         * @param kind an #ICalPropertyKind to remove
-         * @param all %TRUE to remove all properties of the @kind, or %FALSE to only the first
+         * Removes the first or all (depending on the `all`) properties of the given `kind`.
+         * @param kind an {@link ICalGLib.PropertyKind} to remove
+         * @param all `true` to remove all properties of the `kind`, or `false` to only the first
          * @returns how many properties had been removed
          */
         remove_by_kind(kind: ICalGLib.PropertyKind | null, all: boolean): number;
         /**
-         * Fills the `bag` with properties from the `component,` for which the `func`
-         * returned %TRUE. When the `func` is %NULL, all the properties are included.
+         * Fills the `bag` with properties from the `component`, for which the `func`
+         * returned `true`. When the `func` is `null`, all the properties are included.
          * The `bag` content is cleared before any property is added.
-         * @param component an #ICalComponent containing the properties to fill the @bag with
+         * @param component an {@link ICalGLib.Component} containing the properties to fill the `bag` with
          */
         set_from_component(component: ICalGLib.Component): void;
         /**
          * Adds the `prop` into the `bag` and assumes ownership of the `prop`.
-         * @param prop an #ICalProperty
+         * @param prop an {@link ICalGLib.Property}
          */
         take(prop: ICalGLib.Property): void;
     }
 
     /**
      * Describes a range. Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentRange {
         static $gtype: GObject.GType<ComponentRange>;
@@ -6717,23 +7156,29 @@ export namespace ECal {
 
         // Methods
 
+        /**
+         * @returns a newly allocated {@link ECal.ComponentRange}, copy of `range`.    The returned structure should be freed with `e_cal_component_range_free()`,    when no longer needed.
+         */
         copy(): ComponentRange;
         /**
-         * Returns the date/time of the `range`. The returned #ECalComponentDateTime
+         * Returns the date/time of the `range`. The returned {@link ECal.ComponentDateTime}
          * is owned by `range` and should not be freed. It's valid until the `range`
          * is freed or its date/time changed.
-         * @returns the date/time of the @range, as an #ECalComponentDateTime
+         * @returns the date/time of the `range`, as an {@link ECal.ComponentDateTime}
          */
         get_datetime(): ComponentDateTime;
+        /**
+         * @returns the {@link ECal.ComponentRangeKind} of the `range`
+         */
         get_kind(): ComponentRangeKind;
         /**
          * Set the date/time part of the `range`.
-         * @param datetime an #ECalComponentDateTime
+         * @param datetime an {@link ECal.ComponentDateTime}
          */
         set_datetime(datetime: ComponentDateTime): void;
         /**
          * Set the `kind` of the `range`.
-         * @param kind an #ECalComponentRangeKind
+         * @param kind an {@link ECal.ComponentRangeKind}
          */
         set_kind(kind: ComponentRangeKind | null): void;
     }
@@ -6741,6 +7186,7 @@ export namespace ECal {
     /**
      * Contains description string and an alternate representation URI
      * for text properties. Use the functions below to work with it.
+     * @gir-type Struct
      */
     class ComponentText {
         static $gtype: GObject.GType<ComponentText>;
@@ -6755,14 +7201,26 @@ export namespace ECal {
 
         // Methods
 
+        /**
+         * @returns a newly allocated {@link ECal.ComponentText}, copy of `text`.    The returned structure should be freed with `e_cal_component_text_free()`,    when no longer needed.
+         */
         copy(): ComponentText;
         /**
          * Fills the `property` with the content of the `text`.
-         * @param property an #ICalProperty
+         * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): void;
+        /**
+         * @returns the alternate representation URI of the `text`
+         */
         get_altrep(): string;
+        /**
+         * @returns the language of the `text`
+         */
         get_language(): string;
+        /**
+         * @returns the description string of the `text`
+         */
         get_value(): string;
         /**
          * Set the `altrep` as the alternate representation URI of the `text`.
@@ -6772,13 +7230,13 @@ export namespace ECal {
         /**
          * Fill the `text` structure with the information from the `property`.
          * The `property` should hold a text value.
-         * @param property an #ICalProperty
+         * @param property an {@link ICalGLib.Property}
          */
         set_from_property(property: ICalGLib.Property): void;
         /**
          * Set the `language` as the language of the `text`. The language tag
          * is defined in RFC 5646. For example `en-US`, not `en_US`.
-         * @param language language of the @text
+         * @param language language of the `text`
          */
         set_language(language?: string | null): void;
         /**
@@ -6790,6 +7248,8 @@ export namespace ECal {
 
     /**
      * Contains data related to single reminder occurrence.
+     * @gir-type Struct
+     * @since 3.30
      */
     class ReminderData {
         static $gtype: GObject.GType<ReminderData>;
@@ -6803,42 +7263,60 @@ export namespace ECal {
         // Methods
 
         /**
-         * Copies given #EReminderData structure. When the `rd` is %NULL, simply returns %NULL as well.
-         * @returns copy of @rd. Free the returned    structure with e_reminder_data_free() when no longer needed.
+         * Copies given {@link ECal.ReminderData} structure. When the `rd` is `null`, simply returns `null` as well.
+         * @returns copy of `rd`. Free the returned    structure with `e_reminder_data_free()` when no longer needed.
          */
         copy(): ReminderData | null;
         /**
-         * Frees previously allocated #EReminderData structure with e_reminder_data_new()
-         * or e_reminder_data_copy(). The function does nothing when `rd` is %NULL.
+         * Frees previously allocated {@link ECal.ReminderData} structure with `e_reminder_data_new()`
+         * or `e_reminder_data_copy()`. The function does nothing when `rd` is `null`.
          */
         free(): void;
+        /**
+         * @returns an {@link ECal.Component} for `rd`. It is owned by `rd`,    thus do not free it.
+         */
         get_component(): Component;
+        /**
+         * @returns an {@link ECal.ComponentAlarmInstance} for `rd`.    It is owned by `rd`, thus do not free it.
+         */
         get_instance(): ComponentAlarmInstance;
+        /**
+         * @returns an {@link EDataServer.Source} UID for `rd`
+         */
         get_source_uid(): string;
         /**
-         * Set an #ECalComponent `component` as associated with this `rd`.
+         * Set an {@link ECal.Component} `component` as associated with this `rd`.
          * The `rd` creates a copy of the `component`.
-         * @param component an #ECalComponent
+         * @param component an {@link ECal.Component}
          */
         set_component(component: Component): void;
         /**
-         * Set an #ECalComponentAlarmInstance `instance` as associated with this `rd`.
+         * Set an {@link ECal.ComponentAlarmInstance} `instance` as associated with this `rd`.
          * The `rd` creates a copy of the `instance`.
-         * @param instance an #ECalComponentAlarmInstance
+         * @param instance an {@link ECal.ComponentAlarmInstance}
          */
         set_instance(instance: ComponentAlarmInstance): void;
         /**
-         * Set an #ESource UID for `rd`.
-         * @param source_uid an #ESource UID
+         * Set an {@link EDataServer.Source} UID for `rd`.
+         * @param source_uid an {@link EDataServer.Source} UID
          */
         set_source_uid(source_uid: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ReminderWatcherClass = typeof ReminderWatcher;
+    /**
+     * @gir-type Struct
+     */
     abstract class ReminderWatcherPrivate {
         static $gtype: GObject.GType<ReminderWatcherPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TimezoneCacheInterface = typeof TimezoneCache;
     namespace TimezoneCache {
         /**
@@ -6848,7 +7326,15 @@ export namespace ECal {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param zone
+             * @virtual
+             */
             vfunc_timezone_added(zone: ICalGLib.Timezone): void;
+            /**
+             * @param zone
+             * @virtual
+             */
             vfunc_tzcache_add_timezone(zone: ICalGLib.Timezone): void;
         }
 
@@ -6861,39 +7347,43 @@ export namespace ECal {
         $gtype: GObject.GType<TimezoneCache>;
         prototype: TimezoneCache;
     }
+    /**
+     * @gir-type Interface
+     * @since 3.8
+     */
     interface TimezoneCache extends GObject.Object, TimezoneCache.Interface {
         // Methods
 
         /**
          * Adds a copy of `zone` to `cache` and emits an
-         * #ETimezoneCache::timezone-added signal.  The `cache` will use the TZID
-         * string returned by i_cal_timezone_get_tzid() as the lookup key, which can
-         * be passed to e_timezone_cache_get_timezone() to obtain `zone` again.
+         * {@link ECal.TimezoneCache.SignalSignatures.timezone_added | ECal.TimezoneCache::timezone-added} signal.  The `cache` will use the TZID
+         * string returned by `i_cal_timezone_get_tzid()` as the lookup key, which can
+         * be passed to `e_timezone_cache_get_timezone()` to obtain `zone` again.
          *
-         * If the `cache` already has an #ICalTimezone with the same TZID string
-         * as `zone,` the `cache` will remain unchanged to avoid invalidating any
-         * #ICalTimezone pointers which may have already been returned through
-         * e_timezone_cache_get_timezone().
-         * @param zone an #ICalTimezone
+         * If the `cache` already has an {@link ICalGLib.Timezone} with the same TZID string
+         * as `zone`, the `cache` will remain unchanged to avoid invalidating any
+         * {@link ICalGLib.Timezone} pointers which may have already been returned through
+         * `e_timezone_cache_get_timezone()`.
+         * @param zone an {@link ICalGLib.Timezone}
          */
         add_timezone(zone: ICalGLib.Timezone): void;
         /**
-         * Obtains an #ICalTimezone by its TZID string.  If no match is found,
-         * the function returns %NULL.  The returned #ICalTimezone is owned by
+         * Obtains an {@link ICalGLib.Timezone} by its TZID string.  If no match is found,
+         * the function returns `null`.  The returned {@link ICalGLib.Timezone} is owned by
          * the `cache` and should not be modified or freed.
          * @param tzid the TZID of a timezone
-         * @returns an #ICalTimezone, or %NULL
+         * @returns an {@link ICalGLib.Timezone}, or `null`
          */
         get_timezone(tzid: string): ICalGLib.Timezone | null;
         /**
-         * Returns a list of #ICalTimezone instances that were explicitly added to
-         * the `cache` through e_timezone_cache_add_timezone().  In particular, any
-         * built-in time zone data that e_timezone_cache_get_timezone() may use to
+         * Returns a list of {@link ICalGLib.Timezone} instances that were explicitly added to
+         * the `cache` through `e_timezone_cache_add_timezone()`.  In particular, any
+         * built-in time zone data that `e_timezone_cache_get_timezone()` may use to
          * match a TZID string is excluded from the returned list.
          *
-         * Free the returned list with g_list_free().  The list elements are owned
+         * Free the returned list with `g_list_free()`.  The list elements are owned
          * by the `cache` and should not be modified or freed.
-         * @returns a #GList of    #ICalTimezone instances
+         * @returns a {@link GLib.List} of    {@link ICalGLib.Timezone} instances
          */
         list_timezones(): ICalGLib.Timezone[];
     }

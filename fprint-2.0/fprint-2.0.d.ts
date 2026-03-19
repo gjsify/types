@@ -25,6 +25,7 @@ export namespace FPrint {
     /**
      * Error codes for device operations. More specific errors from other domains
      * such as #G_IO_ERROR or #G_USB_DEVICE_ERROR may also be reported.
+     * @gir-type Struct
      */
     class DeviceError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -98,6 +99,7 @@ export namespace FPrint {
     /**
      * Error codes representing scan failures resulting in the user needing to
      * retry.
+     * @gir-type Enum
      */
     enum DeviceRetry {
         /**
@@ -127,6 +129,9 @@ export namespace FPrint {
         export const $gtype: GObject.GType<DeviceType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DeviceType {
         /**
          * The device is a virtual device
@@ -146,6 +151,9 @@ export namespace FPrint {
         export const $gtype: GObject.GType<Finger>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Finger {
         /**
          * The finger is unknown
@@ -205,6 +213,9 @@ export namespace FPrint {
         export const $gtype: GObject.GType<ScanType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ScanType {
         /**
          * Sensor requires swiping the finger.
@@ -225,6 +236,7 @@ export namespace FPrint {
      * fprintd may want to ensure all devices on the system are cold before
      * shutting down in order to ensure that the cool-off period is not violated
      * because the internal libfprint state about the device is lost.
+     * @gir-type Enum
      */
     enum Temperature {
         /**
@@ -241,11 +253,23 @@ export namespace FPrint {
         HOT,
     }
 
+    /**
+     * @returns Quark representing a device error.
+     */
     function device_error_quark(): GLib.Quark;
+    /**
+     * @returns Quark representing a retryable error.
+     */
     function device_retry_quark(): GLib.Quark;
+    /**
+     * @gir-type Callback
+     */
     interface EnrollProgress {
         (device: Device, completed_stages: number, print?: Print | null, error?: GLib.Error | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface MatchCb {
         (device: Device, match?: Print | null, print?: Print | null, error?: GLib.Error | null): void;
     }
@@ -253,6 +277,9 @@ export namespace FPrint {
         export const $gtype: GObject.GType<DeviceFeature>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DeviceFeature {
         /**
          * Device does not support any feature
@@ -304,6 +331,9 @@ export namespace FPrint {
         export const $gtype: GObject.GType<FingerStatusFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum FingerStatusFlags {
         /**
          * Sensor has not the finger on it, nor requires it
@@ -322,7 +352,19 @@ export namespace FPrint {
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted when a fingerprint reader is added.
+             * @signal
+             */
             'device-added': (arg0: Device) => void;
+            /**
+             * This signal is emitted when a fingerprint reader is removed.
+             *
+             * It is guaranteed that the device has been closed before this signal
+             * is emitted. See the {@link FPrint.Device} removed signal documentation for more
+             * information.
+             * @signal
+             */
             'device-removed': (arg0: Device) => void;
         }
 
@@ -331,6 +373,9 @@ export namespace FPrint {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
@@ -353,16 +398,19 @@ export namespace FPrint {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -374,11 +422,13 @@ export namespace FPrint {
         /**
          * Called when a new device is added
          * @param device
+         * @virtual
          */
         vfunc_device_added(device: Device): void;
         /**
          * Called when a device is removed
          * @param device
+         * @virtual
          */
         vfunc_device_removed(device: Device): void;
 
@@ -391,8 +441,8 @@ export namespace FPrint {
          */
         enumerate(): void;
         /**
-         * Get all devices. fp_context_enumerate() will be called as needed.
-         * @returns a new #GPtrArray of #FpDevice's.
+         * Get all devices. `fp_context_enumerate()` will be called as needed.
+         * @returns a new {@link GLib.PtrArray} of {@link FPrint.Device}'s.
          */
         get_devices(): Device[];
     }
@@ -400,6 +450,21 @@ export namespace FPrint {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted after the device has been removed and no operation
+             * is pending anymore.
+             *
+             * The API user is still required to close a removed device. The above
+             * guarantee means that the call to close the device can be made immediately
+             * from the signal handler.
+             *
+             * The close operation will return FP_DEVICE_ERROR_REMOVED, but the device
+             * will still be considered closed afterwards.
+             *
+             * The device will only be removed from the {@link FPrint.Context} after it has been
+             * closed by the API user.
+             * @signal
+             */
             removed: () => void;
             'notify::device-id': (pspec: GObject.ParamSpec) => void;
             'notify::driver': (pspec: GObject.ParamSpec) => void;
@@ -446,6 +511,9 @@ export namespace FPrint {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
 
@@ -492,16 +560,19 @@ export namespace FPrint {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -513,17 +584,17 @@ export namespace FPrint {
         /**
          * Start an asynchronous operation to capture an image. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_capture_finish().
+         * `fp_device_capture_finish()`.
          * @param wait_for_finger Whether to wait for a finger or not
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         capture(wait_for_finger: boolean, cancellable?: Gio.Cancellable | null): globalThis.Promise<Image>;
         /**
          * Start an asynchronous operation to capture an image. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_capture_finish().
+         * `fp_device_capture_finish()`.
          * @param wait_for_finger Whether to wait for a finger or not
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         capture(
@@ -534,9 +605,9 @@ export namespace FPrint {
         /**
          * Start an asynchronous operation to capture an image. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_capture_finish().
+         * `fp_device_capture_finish()`.
          * @param wait_for_finger Whether to wait for a finger or not
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         capture(
@@ -546,50 +617,50 @@ export namespace FPrint {
         ): globalThis.Promise<Image> | void;
         /**
          * Finish an asynchronous operation to capture an image. You should check
-         * for an error of type %FP_DEVICE_RETRY to prompt the user again if there
+         * for an error of type `FP_DEVICE_RETRY` to prompt the user again if there
          * was an interaction issue.
          *
-         * See fp_device_capture().
-         * @param result A #GAsyncResult
-         * @returns #FpImage or %NULL on error
+         * See `fp_device_capture()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns {@link FPrint.Image} or `null` on error
          */
         capture_finish(result: Gio.AsyncResult): Image;
         /**
          * Start an synchronous operation to capture an image.
          * @param wait_for_finger Whether to wait for a finger or not
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns A new #FpImage or %NULL on error
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns A new {@link FPrint.Image} or `null` on error
          */
         capture_sync(wait_for_finger: boolean, cancellable?: Gio.Cancellable | null): Image;
         /**
          * Start an asynchronous operation to delete all prints from the device.
          * The callback will be called once the operation has finished. Retrieve
-         * the result with fp_device_clear_storage_finish().
+         * the result with `fp_device_clear_storage_finish()`.
          *
          * This only makes sense on devices that store prints on-chip, but is safe
          * to always call.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         clear_storage(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Start an asynchronous operation to delete all prints from the device.
          * The callback will be called once the operation has finished. Retrieve
-         * the result with fp_device_clear_storage_finish().
+         * the result with `fp_device_clear_storage_finish()`.
          *
          * This only makes sense on devices that store prints on-chip, but is safe
          * to always call.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         clear_storage(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Start an asynchronous operation to delete all prints from the device.
          * The callback will be called once the operation has finished. Retrieve
-         * the result with fp_device_clear_storage_finish().
+         * the result with `fp_device_clear_storage_finish()`.
          *
          * This only makes sense on devices that store prints on-chip, but is safe
          * to always call.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         clear_storage(
@@ -599,37 +670,37 @@ export namespace FPrint {
         /**
          * Finish an asynchronous operation to delete all enrolled prints.
          *
-         * See fp_device_clear_storage().
-         * @param result A #GAsyncResult
-         * @returns %FALSE on error, %TRUE otherwise
+         * See `fp_device_clear_storage()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
          */
         clear_storage_finish(result: Gio.AsyncResult): void;
         /**
          * Clear sensor storage.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `false` on error, `true` otherwise
          */
         clear_storage_sync(cancellable?: Gio.Cancellable | null): void;
         /**
          * Start an asynchronous operation to close the device. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_close_finish().
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_close_finish()`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         close(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Start an asynchronous operation to close the device. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_close_finish().
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_close_finish()`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         close(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Start an asynchronous operation to close the device. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_close_finish().
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_close_finish()`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         close(
@@ -638,37 +709,37 @@ export namespace FPrint {
         ): globalThis.Promise<void> | void;
         /**
          * Finish an asynchronous operation to close the device.
-         * See fp_device_close().
-         * @param result A #GAsyncResult
-         * @returns %FALSE on error, %TRUE otherwise
+         * See `fp_device_close()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
          */
         close_finish(result: Gio.AsyncResult): void;
         /**
          * Close the device synchronously.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `false` on error, `true` otherwise
          */
         close_sync(cancellable?: Gio.Cancellable | null): void;
         /**
          * Start an asynchronous operation to delete a print from the device.
          * The callback will be called once the operation has finished. Retrieve
-         * the result with fp_device_delete_print_finish().
+         * the result with `fp_device_delete_print_finish()`.
          *
          * This only makes sense on devices that store prints on-chip, but is safe
          * to always call.
-         * @param enrolled_print a #FpPrint to delete
-         * @param cancellable a #GCancellable, or %NULL
+         * @param enrolled_print a {@link FPrint.Print} to delete
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         delete_print(enrolled_print: Print, cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Start an asynchronous operation to delete a print from the device.
          * The callback will be called once the operation has finished. Retrieve
-         * the result with fp_device_delete_print_finish().
+         * the result with `fp_device_delete_print_finish()`.
          *
          * This only makes sense on devices that store prints on-chip, but is safe
          * to always call.
-         * @param enrolled_print a #FpPrint to delete
-         * @param cancellable a #GCancellable, or %NULL
+         * @param enrolled_print a {@link FPrint.Print} to delete
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         delete_print(
@@ -679,12 +750,12 @@ export namespace FPrint {
         /**
          * Start an asynchronous operation to delete a print from the device.
          * The callback will be called once the operation has finished. Retrieve
-         * the result with fp_device_delete_print_finish().
+         * the result with `fp_device_delete_print_finish()`.
          *
          * This only makes sense on devices that store prints on-chip, but is safe
          * to always call.
-         * @param enrolled_print a #FpPrint to delete
-         * @param cancellable a #GCancellable, or %NULL
+         * @param enrolled_print a {@link FPrint.Print} to delete
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         delete_print(
@@ -695,46 +766,46 @@ export namespace FPrint {
         /**
          * Finish an asynchronous operation to delete an enrolled print.
          *
-         * See fp_device_delete_print().
-         * @param result A #GAsyncResult
-         * @returns %FALSE on error, %TRUE otherwise
+         * See `fp_device_delete_print()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
          */
         delete_print_finish(result: Gio.AsyncResult): void;
         /**
          * Delete a given print from the device.
-         * @param enrolled_print a #FpPrint to verify
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param enrolled_print a {@link FPrint.Print} to verify
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `false` on error, `true` otherwise
          */
         delete_print_sync(enrolled_print: Print, cancellable?: Gio.Cancellable | null): void;
         /**
          * Start an asynchronous operation to enroll a print. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_enroll_finish().
+         * `fp_device_enroll_finish()`.
          *
-         * The `template_print` parameter is a #FpPrint with available metadata filled
+         * The `template_print` parameter is a {@link FPrint.Print} with available metadata filled
          * in and, optionally, with existing fingerprint data to be updated with newly
          * enrolled fingerprints if a device driver supports it. The driver may make use
          * of the metadata, when e.g. storing the print on device memory. It is undefined
          * whether this print is filled in by the driver and returned, or whether the
          * driver will return a newly created print after enrollment succeeded.
-         * @param template_print a #FpPrint
-         * @param cancellable a #GCancellable, or %NULL
+         * @param template_print a {@link FPrint.Print}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         enroll(template_print: Print, cancellable?: Gio.Cancellable | null): globalThis.Promise<Print>;
         /**
          * Start an asynchronous operation to enroll a print. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_enroll_finish().
+         * `fp_device_enroll_finish()`.
          *
-         * The `template_print` parameter is a #FpPrint with available metadata filled
+         * The `template_print` parameter is a {@link FPrint.Print} with available metadata filled
          * in and, optionally, with existing fingerprint data to be updated with newly
          * enrolled fingerprints if a device driver supports it. The driver may make use
          * of the metadata, when e.g. storing the print on device memory. It is undefined
          * whether this print is filled in by the driver and returned, or whether the
          * driver will return a newly created print after enrollment succeeded.
-         * @param template_print a #FpPrint
-         * @param cancellable a #GCancellable, or %NULL
+         * @param template_print a {@link FPrint.Print}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         enroll(
@@ -745,16 +816,16 @@ export namespace FPrint {
         /**
          * Start an asynchronous operation to enroll a print. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_enroll_finish().
+         * `fp_device_enroll_finish()`.
          *
-         * The `template_print` parameter is a #FpPrint with available metadata filled
+         * The `template_print` parameter is a {@link FPrint.Print} with available metadata filled
          * in and, optionally, with existing fingerprint data to be updated with newly
          * enrolled fingerprints if a device driver supports it. The driver may make use
          * of the metadata, when e.g. storing the print on device memory. It is undefined
          * whether this print is filled in by the driver and returned, or whether the
          * driver will return a newly created print after enrollment succeeded.
-         * @param template_print a #FpPrint
-         * @param cancellable a #GCancellable, or %NULL
+         * @param template_print a {@link FPrint.Print}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         enroll(
@@ -764,40 +835,49 @@ export namespace FPrint {
         ): globalThis.Promise<Print> | void;
         /**
          * Finish an asynchronous operation to enroll a print. You should check
-         * for an error of type %FP_DEVICE_RETRY to prompt the user again if there
+         * for an error of type `FP_DEVICE_RETRY` to prompt the user again if there
          * was an interaction issue.
-         * See fp_device_enroll().
-         * @param result A #GAsyncResult
-         * @returns The enrolled #FpPrint, or %NULL on error
+         * See `fp_device_enroll()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns The enrolled {@link FPrint.Print}, or `null` on error
          */
         enroll_finish(result: Gio.AsyncResult): Print;
         /**
-         * Enroll a new print. See fp_device_enroll(). It is undefined whether
-         * `template_print` is updated or a newly created #FpPrint is returned.
-         * @param template_print A #FpPrint to fill in or use   as a template.
-         * @param cancellable a #GCancellable, or %NULL
+         * Enroll a new print. See `fp_device_enroll()`. It is undefined whether
+         * `template_print` is updated or a newly created {@link FPrint.Print} is returned.
+         * @param template_print A {@link FPrint.Print} to fill in or use   as a template.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param progress_cb progress reporting callback
-         * @returns A #FpPrint on success, %NULL otherwise
+         * @returns A {@link FPrint.Print} on success, `null` otherwise
          */
         enroll_sync(
             template_print: Print,
             cancellable?: Gio.Cancellable | null,
             progress_cb?: EnrollProgress | null,
         ): Print;
+        /**
+         * @returns The ID of the device
+         */
         get_device_id(): string;
+        /**
+         * @returns The ID of the driver
+         */
         get_driver(): string;
         /**
-         * Gets the #FpDeviceFeature's supported by the `device`.
-         * @returns #FpDeviceFeature flags of supported features
+         * Gets the {@link FPrint.DeviceFeature}'s supported by the `device`.
+         * @returns {@link FPrint.DeviceFeature} flags of supported features
          */
         get_features(): DeviceFeature;
         /**
          * Retrieves the finger status flags for the device.
          * This can be used by the UI to present the relevant feedback, although it
          * is not guaranteed to be a relevant value when not performing any action.
-         * @returns The current #FpFingerStatusFlags
+         * @returns The current {@link FPrint.FingerStatusFlags}
          */
         get_finger_status(): FingerStatusFlags;
+        /**
+         * @returns The human readable name of the device
+         */
         get_name(): string;
         /**
          * Retrieves the number of enroll stages for this device.
@@ -806,7 +886,7 @@ export namespace FPrint {
         get_nr_enroll_stages(): number;
         /**
          * Retrieves the scan type of the device.
-         * @returns The #FpScanType
+         * @returns The {@link FPrint.ScanType}
          */
         get_scan_type(): ScanType;
         /**
@@ -816,25 +896,25 @@ export namespace FPrint {
          */
         get_temperature(): Temperature;
         /**
-         * Checks if `device` supports the requested #FpDeviceFeature's.
-         * See fp_device_get_features()
-         * @param feature #FpDeviceFeature flags to check against device supported features
-         * @returns %TRUE if supported, %FALSE otherwise
+         * Checks if `device` supports the requested {@link FPrint.DeviceFeature}'s.
+         * See `fp_device_get_features()`
+         * @param feature {@link FPrint.DeviceFeature} flags to check against device supported features
+         * @returns `true` if supported, `false` otherwise
          */
         has_feature(feature: DeviceFeature | null): boolean;
         /**
          * Whether the device has on-chip storage. If it has, you can list the
-         * prints stored on the with fp_device_list_prints() and you should
+         * prints stored on the with `fp_device_list_prints()` and you should
          * always delete prints from the device again using
-         * fp_device_delete_print().
+         * `fp_device_delete_print()`.
          */
         has_storage(): boolean;
         /**
          * Start an asynchronous operation to identify prints. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_identify_finish().
-         * @param prints #GPtrArray of #FpPrint
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_identify_finish()`.
+         * @param prints {@link GLib.PtrArray} of {@link FPrint.Print}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         identify(
             prints: Print[],
@@ -843,9 +923,9 @@ export namespace FPrint {
         /**
          * Start an asynchronous operation to identify prints. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_identify_finish().
-         * @param prints #GPtrArray of #FpPrint
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_identify_finish()`.
+         * @param prints {@link GLib.PtrArray} of {@link FPrint.Print}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         identify(
@@ -856,9 +936,9 @@ export namespace FPrint {
         /**
          * Start an asynchronous operation to identify prints. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_identify_finish().
-         * @param prints #GPtrArray of #FpPrint
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_identify_finish()`.
+         * @param prints {@link GLib.PtrArray} of {@link FPrint.Print}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         identify(
@@ -868,39 +948,42 @@ export namespace FPrint {
         ): globalThis.Promise<[void, Print | null, Print | null]> | void;
         /**
          * Finish an asynchronous operation to identify a print. You should check
-         * for an error of type %FP_DEVICE_RETRY to prompt the user again if there
+         * for an error of type `FP_DEVICE_RETRY` to prompt the user again if there
          * was an interaction issue.
          *
          * Use `match` to find the print that matched. With `print` you can fetch the
          * newly created print and retrieve the image data if available.
          *
-         * See fp_device_identify().
-         * @param result A #GAsyncResult
-         * @returns %FALSE on error, %TRUE otherwise
+         * See `fp_device_identify()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
          */
         identify_finish(result: Gio.AsyncResult): [Print | null, Print | null];
         /**
          * Identify a print synchronously.
-         * @param prints #GPtrArray of #FpPrint
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param prints {@link GLib.PtrArray} of {@link FPrint.Print}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `false` on error, `true` otherwise
          */
         identify_sync(prints: Print[], cancellable?: Gio.Cancellable | null): [Print | null, Print | null];
+        /**
+         * @returns Whether the device is open or not
+         */
         is_open(): boolean;
         /**
          * Start an asynchronous operation to list all prints stored on the device.
          * This only makes sense on devices that store prints on-chip.
          *
-         * Retrieve the result with fp_device_list_prints_finish().
-         * @param cancellable a #GCancellable, or %NULL
+         * Retrieve the result with `fp_device_list_prints_finish()`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         list_prints(cancellable?: Gio.Cancellable | null): globalThis.Promise<Print[]>;
         /**
          * Start an asynchronous operation to list all prints stored on the device.
          * This only makes sense on devices that store prints on-chip.
          *
-         * Retrieve the result with fp_device_list_prints_finish().
-         * @param cancellable a #GCancellable, or %NULL
+         * Retrieve the result with `fp_device_list_prints_finish()`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         list_prints(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -908,8 +991,8 @@ export namespace FPrint {
          * Start an asynchronous operation to list all prints stored on the device.
          * This only makes sense on devices that store prints on-chip.
          *
-         * Retrieve the result with fp_device_list_prints_finish().
-         * @param cancellable a #GCancellable, or %NULL
+         * Retrieve the result with `fp_device_list_prints_finish()`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         list_prints(
@@ -919,59 +1002,59 @@ export namespace FPrint {
         /**
          * Finish an asynchronous operation to list all device stored prints.
          *
-         * See fp_device_list_prints().
-         * @param result A #GAsyncResult
-         * @returns Array of prints or %NULL on error
+         * See `fp_device_list_prints()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns Array of prints or `null` on error
          */
         list_prints_finish(result: Gio.AsyncResult): Print[];
         /**
          * List device stored prints synchronously.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns Array of prints, or %NULL on error
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns Array of prints, or `null` on error
          */
         list_prints_sync(cancellable?: Gio.Cancellable | null): Print[];
         /**
          * Finish an asynchronous operation to open the device.
-         * See fp_device_open().
-         * @param result A #GAsyncResult
-         * @returns %FALSE on error, %TRUE otherwise
+         * See `fp_device_open()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
          */
         open_finish(result: Gio.AsyncResult): void;
         /**
          * Open the device synchronously.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `false` on error, `true` otherwise
          */
         open_sync(cancellable?: Gio.Cancellable | null): void;
         /**
          * Resume device after system suspend. Retrieve the result with
-         * fp_device_suspend_finish().
+         * `fp_device_suspend_finish()`.
          *
          * Note that it is not defined when any ongoing operation may return (success or
          * error). You must be ready to handle this before, during or after the
          * resume operation.
-         * @param cancellable a #GCancellable, or %NULL, currently not used
+         * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          */
         resume(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Resume device after system suspend. Retrieve the result with
-         * fp_device_suspend_finish().
+         * `fp_device_suspend_finish()`.
          *
          * Note that it is not defined when any ongoing operation may return (success or
          * error). You must be ready to handle this before, during or after the
          * resume operation.
-         * @param cancellable a #GCancellable, or %NULL, currently not used
+         * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          * @param callback the function to call on completion
          */
         resume(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Resume device after system suspend. Retrieve the result with
-         * fp_device_suspend_finish().
+         * `fp_device_suspend_finish()`.
          *
          * Note that it is not defined when any ongoing operation may return (success or
          * error). You must be ready to handle this before, during or after the
          * resume operation.
-         * @param cancellable a #GCancellable, or %NULL, currently not used
+         * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          * @param callback the function to call on completion
          */
         resume(
@@ -980,17 +1063,17 @@ export namespace FPrint {
         ): globalThis.Promise<void> | void;
         /**
          * Finish an asynchronous operation to resume the device after suspend.
-         * See fp_device_resume().
+         * See `fp_device_resume()`.
          *
          * The API user should accept an error of #FP_DEVICE_ERROR_NOT_SUPPORTED.
-         * @param result A #GAsyncResult
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
          */
         resume_finish(result: Gio.AsyncResult): void;
         /**
          * Resume device after suspend.
-         * @param cancellable a #GCancellable, or %NULL, currently not used
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
+         * @returns `false` on error, `true` otherwise
          */
         resume_sync(cancellable?: Gio.Cancellable | null): void;
         /**
@@ -1005,7 +1088,7 @@ export namespace FPrint {
         supports_identify(): boolean;
         /**
          * Prepare the device for system suspend. Retrieve the result with
-         * fp_device_suspend_finish().
+         * `fp_device_suspend_finish()`.
          *
          * The suspend method can be called at any time (even if the device is not
          * opened) and must be paired with a corresponding resume call. It is undefined
@@ -1019,12 +1102,12 @@ export namespace FPrint {
          *
          * Any operation started while the device is suspended will fail with
          * #FP_DEVICE_ERROR_BUSY, this includes calls to open or close the device.
-         * @param cancellable a #GCancellable, or %NULL, currently not used
+         * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          */
         suspend(cancellable?: Gio.Cancellable | null): globalThis.Promise<void>;
         /**
          * Prepare the device for system suspend. Retrieve the result with
-         * fp_device_suspend_finish().
+         * `fp_device_suspend_finish()`.
          *
          * The suspend method can be called at any time (even if the device is not
          * opened) and must be paired with a corresponding resume call. It is undefined
@@ -1038,13 +1121,13 @@ export namespace FPrint {
          *
          * Any operation started while the device is suspended will fail with
          * #FP_DEVICE_ERROR_BUSY, this includes calls to open or close the device.
-         * @param cancellable a #GCancellable, or %NULL, currently not used
+         * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          * @param callback the function to call on completion
          */
         suspend(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Prepare the device for system suspend. Retrieve the result with
-         * fp_device_suspend_finish().
+         * `fp_device_suspend_finish()`.
          *
          * The suspend method can be called at any time (even if the device is not
          * opened) and must be paired with a corresponding resume call. It is undefined
@@ -1058,7 +1141,7 @@ export namespace FPrint {
          *
          * Any operation started while the device is suspended will fail with
          * #FP_DEVICE_ERROR_BUSY, this includes calls to open or close the device.
-         * @param cancellable a #GCancellable, or %NULL, currently not used
+         * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          * @param callback the function to call on completion
          */
         suspend(
@@ -1067,25 +1150,25 @@ export namespace FPrint {
         ): globalThis.Promise<void> | void;
         /**
          * Finish an asynchronous operation to prepare the device for suspend.
-         * See fp_device_suspend().
+         * See `fp_device_suspend()`.
          *
          * The API user should accept an error of #FP_DEVICE_ERROR_NOT_SUPPORTED.
-         * @param result A #GAsyncResult
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
          */
         suspend_finish(result: Gio.AsyncResult): void;
         /**
          * Prepare device for suspend.
-         * @param cancellable a #GCancellable, or %NULL, currently not used
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
+         * @returns `false` on error, `true` otherwise
          */
         suspend_sync(cancellable?: Gio.Cancellable | null): void;
         /**
          * Start an asynchronous operation to verify a print. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_verify_finish().
-         * @param enrolled_print a #FpPrint to verify
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_verify_finish()`.
+         * @param enrolled_print a {@link FPrint.Print} to verify
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         verify(
             enrolled_print: Print,
@@ -1094,9 +1177,9 @@ export namespace FPrint {
         /**
          * Start an asynchronous operation to verify a print. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_verify_finish().
-         * @param enrolled_print a #FpPrint to verify
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_verify_finish()`.
+         * @param enrolled_print a {@link FPrint.Print} to verify
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         verify(
@@ -1107,9 +1190,9 @@ export namespace FPrint {
         /**
          * Start an asynchronous operation to verify a print. The callback will
          * be called once the operation has finished. Retrieve the result with
-         * fp_device_verify_finish().
-         * @param enrolled_print a #FpPrint to verify
-         * @param cancellable a #GCancellable, or %NULL
+         * `fp_device_verify_finish()`.
+         * @param enrolled_print a {@link FPrint.Print} to verify
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         verify(
@@ -1119,106 +1202,104 @@ export namespace FPrint {
         ): globalThis.Promise<[void, boolean, Print | null]> | void;
         /**
          * Finish an asynchronous operation to verify an enrolled print. You should check
-         * for an error of type %FP_DEVICE_RETRY to prompt the user again if there
+         * for an error of type `FP_DEVICE_RETRY` to prompt the user again if there
          * was an interaction issue.
          *
          * With `print` you can fetch the newly created print and retrieve the image data if available.
          *
-         * See fp_device_verify().
-         * @param result A #GAsyncResult
-         * @returns %FALSE on error, %TRUE otherwise
+         * See `fp_device_verify()`.
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `false` on error, `true` otherwise
          */
         verify_finish(result: Gio.AsyncResult): [boolean, Print | null];
         /**
          * Verify a given print synchronously.
-         * @param enrolled_print a #FpPrint to verify
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %FALSE on error, %TRUE otherwise
+         * @param enrolled_print a {@link FPrint.Print} to verify
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `false` on error, `true` otherwise
          */
         verify_sync(enrolled_print: Print, cancellable: Gio.Cancellable | null): [boolean, Print | null];
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -1228,43 +1309,43 @@ export namespace FPrint {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -1273,58 +1354,59 @@ export namespace FPrint {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Device;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -1333,8 +1415,9 @@ export namespace FPrint {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -1350,32 +1433,32 @@ export namespace FPrint {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1384,39 +1467,39 @@ export namespace FPrint {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1427,13 +1510,16 @@ export namespace FPrint {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1441,7 +1527,7 @@ export namespace FPrint {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1449,9 +1535,9 @@ export namespace FPrint {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1471,9 +1557,9 @@ export namespace FPrint {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1487,33 +1573,33 @@ export namespace FPrint {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1546,21 +1632,21 @@ export namespace FPrint {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1570,8 +1656,8 @@ export namespace FPrint {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1588,10 +1674,10 @@ export namespace FPrint {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1606,13 +1692,13 @@ export namespace FPrint {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1643,21 +1729,21 @@ export namespace FPrint {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1667,33 +1753,34 @@ export namespace FPrint {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1702,6 +1789,7 @@ export namespace FPrint {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1710,12 +1798,14 @@ export namespace FPrint {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1724,20 +1814,22 @@ export namespace FPrint {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1749,6 +1841,7 @@ export namespace FPrint {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1793,6 +1886,9 @@ export namespace FPrint {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
@@ -1820,16 +1916,19 @@ export namespace FPrint {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1840,18 +1939,18 @@ export namespace FPrint {
 
         /**
          * Detects the minutiae found in an image.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         detect_minutiae(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Detects the minutiae found in an image.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         detect_minutiae(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Detects the minutiae found in an image.
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to call on completion
          */
         detect_minutiae(
@@ -1860,14 +1959,14 @@ export namespace FPrint {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finish minutiae detection in an image
-         * @param result A #GAsyncResult
-         * @returns %TRUE on success
+         * @param result A {@link Gio.AsyncResult}
+         * @returns `true` on success
          */
         detect_minutiae_finish(result: Gio.AsyncResult): boolean;
         /**
          * Gets the binarized data for an image. This data must not be modified or
          * freed. You need to first detect the minutiae using
-         * fp_image_detect_minutiae().
+         * `fp_image_detect_minutiae()`.
          * @returns The binarized image data
          */
         get_binarized(): Uint8Array;
@@ -1877,6 +1976,9 @@ export namespace FPrint {
          * @returns The image data
          */
         get_data(): Uint8Array;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
@@ -1887,7 +1989,7 @@ export namespace FPrint {
         /**
          * Gets the minutiae for an image. This data must not be modified or
          * freed. You need to first detect the minutiae using
-         * fp_image_detect_minutiae().
+         * `fp_image_detect_minutiae()`.
          * @returns The detected minutiae
          */
         get_minutiae(): Minutia[];
@@ -1907,6 +2009,10 @@ export namespace FPrint {
     namespace ImageDevice {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
+            /**
+             * This signal is only for internal purposes.
+             * @signal
+             */
             'fpi-image-device-state-changed': (arg0: unknown) => void;
             'notify::device-id': (pspec: GObject.ParamSpec) => void;
             'notify::driver': (pspec: GObject.ParamSpec) => void;
@@ -1929,6 +2035,9 @@ export namespace FPrint {
         interface ConstructorProps extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class ImageDevice extends Device implements Gio.AsyncInitable<ImageDevice> {
         static $gtype: GObject.GType<ImageDevice>;
 
@@ -1949,104 +2058,105 @@ export namespace FPrint {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ImageDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -2056,43 +2166,43 @@ export namespace FPrint {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -2101,58 +2211,59 @@ export namespace FPrint {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): ImageDevice;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -2161,8 +2272,9 @@ export namespace FPrint {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -2178,32 +2290,32 @@ export namespace FPrint {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2212,39 +2324,39 @@ export namespace FPrint {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2255,13 +2367,16 @@ export namespace FPrint {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2269,7 +2384,7 @@ export namespace FPrint {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2277,9 +2392,9 @@ export namespace FPrint {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2299,9 +2414,9 @@ export namespace FPrint {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2315,33 +2430,33 @@ export namespace FPrint {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2374,21 +2489,21 @@ export namespace FPrint {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2398,8 +2513,8 @@ export namespace FPrint {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2416,10 +2531,10 @@ export namespace FPrint {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2434,13 +2549,13 @@ export namespace FPrint {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2471,21 +2586,21 @@ export namespace FPrint {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2495,33 +2610,34 @@ export namespace FPrint {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2530,6 +2646,7 @@ export namespace FPrint {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2538,12 +2655,14 @@ export namespace FPrint {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2552,20 +2671,22 @@ export namespace FPrint {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2577,6 +2698,7 @@ export namespace FPrint {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2642,6 +2764,9 @@ export namespace FPrint {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Print extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Print>;
 
@@ -2691,16 +2816,19 @@ export namespace FPrint {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Print.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Print.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Print.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Print.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Print.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Print.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2719,15 +2847,15 @@ export namespace FPrint {
 
         /**
          * Tests whether the prints is compatible with the given device.
-         * @param device A #FpDevice
-         * @returns %TRUE if the print is compatible with the device
+         * @param device A {@link FPrint.Device}
+         * @returns `true` if the print is compatible with the device
          */
         compatible(device: Device): boolean;
         /**
          * Tests whether the prints can be considered equal. This only compares the
          * actual information about the print, not the metadata.
-         * @param other Second #FpPrint
-         * @returns %TRUE if the prints are equal
+         * @param other Second {@link FPrint.Print}
+         * @returns `true` if the prints are equal
          */
         equal(other: Print): boolean;
         /**
@@ -2753,17 +2881,17 @@ export namespace FPrint {
         get_driver(): string;
         /**
          * Returns the user defined enroll date for the print.
-         * @returns The #GDate
+         * @returns The {@link GLib.Date}
          */
         get_enroll_date(): GLib.Date | null;
         /**
          * Returns the finger that the print was created for.
-         * @returns The #FpFinger
+         * @returns The {@link FPrint.Finger}
          */
         get_finger(): Finger;
         /**
-         * Returns the image that the print was created from, or %NULL
-         * @returns The #FpImage
+         * Returns the image that the print was created from, or `null`
+         * @returns The {@link FPrint.Image}
          */
         get_image(): Image | null;
         /**
@@ -2774,7 +2902,7 @@ export namespace FPrint {
         /**
          * Serialize a print definition for permanent storage. Note that this is
          * lossy in the sense that e.g. the image data is discarded.
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         serialize(): Uint8Array;
         /**
@@ -2789,7 +2917,7 @@ export namespace FPrint {
         set_enroll_date(enroll_date: GLib.Date): void;
         /**
          * Set the finger that the print is for.
-         * @param finger The #FpFinger
+         * @param finger The {@link FPrint.Finger}
          */
         set_finger(finger: Finger | null): void;
         /**
@@ -2799,10 +2927,25 @@ export namespace FPrint {
         set_username(username: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContextClass = typeof Context;
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
+    /**
+     * @gir-type Alias
+     */
     type ImageClass = typeof Image;
+    /**
+     * @gir-type Alias
+     */
     type ImageDeviceClass = typeof ImageDevice;
+    /**
+     * @gir-type Struct
+     */
     abstract class Minutia {
         static $gtype: GObject.GType<Minutia>;
 
@@ -2815,6 +2958,9 @@ export namespace FPrint {
         get_coords(): [number, number];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PrintClass = typeof Print;
     /**
      * Name of the imported GIR library

@@ -44,7 +44,7 @@ export namespace Thunarx {
      * compiled against.
      *
      * This function should be called by extensions in the
-     * thunar_extension_initialize() method to verify that the <systemitem
+     * `thunar_extension_initialize()` method to verify that the <systemitem
      * class="library">thunarx</systemitem> library used by file manager is
      * compatible with the version the extension was compiled with.
      *
@@ -62,23 +62,26 @@ export namespace Thunarx {
      * @param required_major the required major version.
      * @param required_minor the required minor version.
      * @param required_micro the required micro version.
-     * @returns %NULL if the library is compatible with the given version,               or a string describing the version mismatch. The returned               string is owned by the library and must not be freed or               modified by the caller.
+     * @returns `null` if the library is compatible with the given version,               or a string describing the version mismatch. The returned               string is owned by the library and must not be freed or               modified by the caller.
      */
     function check_version(required_major: number, required_minor: number, required_micro: number): string;
     /**
      * Does a deep copy of `file_infos` and returns the
      * new list.
-     * @param file_infos a #GList of #ThunarxFileInfo<!---->s.
-     * @returns a copy of @file_infos.
+     * @param file_infos a {@link GLib.List} of {@link Thunarx.FileInfo}<!---->s.
+     * @returns a copy of `file_infos`.
      */
     function file_info_list_copy(file_infos: FileInfo[]): FileInfo[];
     /**
      * Frees the resources allocated for the `file_infos`
      * list and decreases the reference count on the
-     * #ThunarxFileInfo<!---->s contained within.
-     * @param file_infos a #GList of #ThunarxFileInfo<!---->s.
+     * {@link Thunarx.FileInfo}<!---->s contained within.
+     * @param file_infos a {@link GLib.List} of {@link Thunarx.FileInfo}<!---->s.
      */
     function file_info_list_free(file_infos: FileInfo[]): void;
+    /**
+     * @gir-type Alias
+     */
     type FileInfoList = object | null;
     namespace Menu {
         // Signal signatures
@@ -89,6 +92,9 @@ export namespace Thunarx {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
 
@@ -111,16 +117,19 @@ export namespace Thunarx {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Menu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Menu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Menu.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -129,14 +138,26 @@ export namespace Thunarx {
 
         // Methods
 
+        /**
+         * @param item a {@link Thunarx.MenuItem}
+         */
         append_item(item: MenuItem): void;
+        /**
+         * @returns the provided {@link Thunarx.MenuItem} list Must be freed with `thunarx_menu_item_list_free()` after usage
+         */
         get_items(): MenuItem[];
+        /**
+         * @param item a {@link Thunarx.MenuItem}
+         */
         prepend_item(item: MenuItem): void;
     }
 
     namespace MenuItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
             'notify::label': (pspec: GObject.ParamSpec) => void;
@@ -160,6 +181,9 @@ export namespace Thunarx {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
@@ -198,16 +222,19 @@ export namespace Thunarx {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -216,10 +243,16 @@ export namespace Thunarx {
 
         // Static methods
 
+        /**
+         * @param items a list of {@link Thunarx.MenuItem}
+         */
         static list_free(items: MenuItem[]): void;
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_activate(): void;
 
         // Methods
@@ -234,12 +267,12 @@ export namespace Thunarx {
         get_sensitive(): boolean;
         /**
          * Attaches `menu` to menu item.
-         * @param menu pointer to a #ThunarxMenu instance
+         * @param menu pointer to a {@link Thunarx.Menu} instance
          */
         set_menu(menu: Menu): void;
         /**
          * Sets the ::sensitive property of the menu item to `sensitive`.
-         * @param sensitive %TRUE to make the menu item sensitive
+         * @param sensitive `true` to make the menu item sensitive
          */
         set_sensitive(sensitive: boolean): void;
     }
@@ -303,6 +336,9 @@ export namespace Thunarx {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PropertyPage extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PropertyPage>;
 
@@ -336,16 +372,19 @@ export namespace Thunarx {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -355,20 +394,20 @@ export namespace Thunarx {
         // Methods
 
         /**
-         * If the `property_page'`s label widget is a #GtkLabel, returns the text
-         * in the label widget (the `property_page` will have a #GtkLabel for the
-         * label widget if a non-%NULL argument was passed to thunarx_property_page_new()).
-         * @returns the text in the label or %NULL if there was no label widget or               the label widget was not a #GtkLabel. The returned string is               owned by the @property_page and must not be modified or freed.
+         * If the `property_page`'s label widget is a {@link Gtk.Label}, returns the text
+         * in the label widget (the `property_page` will have a {@link Gtk.Label} for the
+         * label widget if a non-`null` argument was passed to `thunarx_property_page_new()`).
+         * @returns the text in the label or `null` if there was no label widget or               the label widget was not a {@link Gtk.Label}. The returned string is               owned by the `property_page` and must not be modified or freed.
          */
         get_label(): string;
         /**
          * Returns the label widget for the `property_page`. See
-         * thunarx_property_page_set_label_widget().
-         * @returns the label widget or %NULL if there is none.
+         * `thunarx_property_page_set_label_widget()`.
+         * @returns the label widget or `null` if there is none.
          */
         get_label_widget(): Gtk.Widget;
         /**
-         * Sets the text of the label. If `label` is %NULL, the current label is
+         * Sets the text of the label. If `label` is `null`, the current label is
          * removed.
          * @param label the text to use as the label of the page.
          */
@@ -379,8 +418,6 @@ export namespace Thunarx {
          * @param label_widget the new label widget.
          */
         set_label_widget(label_widget: Gtk.Widget): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -394,32 +431,32 @@ export namespace Thunarx {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -428,39 +465,39 @@ export namespace Thunarx {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -471,13 +508,16 @@ export namespace Thunarx {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -485,7 +525,7 @@ export namespace Thunarx {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -493,9 +533,9 @@ export namespace Thunarx {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -515,9 +555,9 @@ export namespace Thunarx {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -531,33 +571,33 @@ export namespace Thunarx {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -590,21 +630,21 @@ export namespace Thunarx {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -614,8 +654,8 @@ export namespace Thunarx {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -632,10 +672,10 @@ export namespace Thunarx {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -650,13 +690,13 @@ export namespace Thunarx {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -687,21 +727,21 @@ export namespace Thunarx {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -711,33 +751,34 @@ export namespace Thunarx {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -746,6 +787,7 @@ export namespace Thunarx {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -754,12 +796,14 @@ export namespace Thunarx {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -768,20 +812,22 @@ export namespace Thunarx {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -793,6 +839,7 @@ export namespace Thunarx {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -831,6 +878,9 @@ export namespace Thunarx {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ProviderFactory extends GObject.Object {
         static $gtype: GObject.GType<ProviderFactory>;
 
@@ -851,16 +901,19 @@ export namespace Thunarx {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProviderFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProviderFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProviderFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProviderFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProviderFactory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProviderFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -870,11 +923,11 @@ export namespace Thunarx {
         // Static methods
 
         /**
-         * Returns a reference to the default #ThunarxProviderFactory
+         * Returns a reference to the default {@link Thunarx.ProviderFactory}
          * instance.
          *
          * The caller is responsible to free the returned object
-         * using g_object_unref() when no longer needed.
+         * using `g_object_unref()` when no longer needed.
          */
         static get_default(): ProviderFactory;
 
@@ -888,8 +941,8 @@ export namespace Thunarx {
          * <informalexample><programlisting>
          * g_list_free_full (list, g_object_unref);
          * </programlisting></informalexample>
-         * @param type the provider #GType.
-         * @returns the of providers for @type.
+         * @param type the provider {@link GObject.GType}.
+         * @returns the of providers for `type`.
          */
         list_providers(type: GObject.GType): GObject.Object[];
     }
@@ -909,6 +962,9 @@ export namespace Thunarx {
                 ProviderPlugin.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ProviderModule extends GObject.TypeModule implements GObject.TypePlugin, ProviderPlugin {
         static $gtype: GObject.GType<ProviderModule>;
 
@@ -931,16 +987,19 @@ export namespace Thunarx {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProviderModule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProviderModule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProviderModule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProviderModule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProviderModule.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProviderModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -950,30 +1009,27 @@ export namespace Thunarx {
         // Methods
 
         /**
-         * Determines the #GType<!---->s provided by `module` and returns
+         * Determines the {@link GObject.GType}<!---->s provided by `module` and returns
          * them in `types` and `n_types`.
-         * @param types return location for the #GType array pointer.
+         * @param types return location for the {@link GObject.GType} array pointer.
          * @param n_types return location for the number of types.
          */
         list_types(types: GObject.GType, n_types: number): void;
-
-        // Inherited properties
         /**
          * Tells whether a plugin must reside in memory once loaded for
-         * the first time. See thunarx_provider_plugin_get_resident() and
-         * thunarx_provider_plugin_set_resident() for more details.
+         * the first time. See `thunarx_provider_plugin_get_resident()` and
+         * `thunarx_provider_plugin_set_resident()` for more details.
+         * @category Inherited from Thunarx.ProviderPlugin
          */
         get resident(): boolean;
         set resident(val: boolean);
-
-        // Inherited methods
         /**
          * Calls the `complete_interface_info` function from the
-         * #GTypePluginClass of `plugin`. There should be no need to use this
+         * {@link GObject.TypePluginClass} of `plugin`. There should be no need to use this
          * function outside of the GObject type system itself.
-         * @param instance_type the #GType of an instantiatable type to which the interface  is added
-         * @param interface_type the #GType of the interface whose info is completed
-         * @param info the #GInterfaceInfo to fill in
+         * @param instance_type the {@link GObject.GType} of an instantiatable type to which the interface  is added
+         * @param interface_type the {@link GObject.GType} of the interface whose info is completed
+         * @param info the {@link GObject.InterfaceInfo} to fill in
          */
         complete_interface_info(
             instance_type: GObject.GType,
@@ -981,31 +1037,34 @@ export namespace Thunarx {
             info: GObject.InterfaceInfo,
         ): void;
         /**
-         * Calls the `complete_type_info` function from the #GTypePluginClass of `plugin`.
+         * Calls the `complete_type_info` function from the {@link GObject.TypePluginClass} of `plugin`.
          * There should be no need to use this function outside of the GObject
          * type system itself.
-         * @param g_type the #GType whose info is completed
-         * @param info the #GTypeInfo struct to fill in
-         * @param value_table the #GTypeValueTable to fill in
+         * @param g_type the {@link GObject.GType} whose info is completed
+         * @param info the {@link GObject.TypeInfo} struct to fill in
+         * @param value_table the {@link GObject.TypeValueTable} to fill in
          */
         complete_type_info(g_type: GObject.GType, info: GObject.TypeInfo, value_table: GObject.TypeValueTable): void;
         /**
-         * Calls the `unuse_plugin` function from the #GTypePluginClass of
+         * Calls the `unuse_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         unuse(): void;
         /**
-         * Calls the `use_plugin` function from the #GTypePluginClass of
+         * Calls the `use_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         use(): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
         /**
          * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
-         * If the interface was already registered for the type in this `plugin,` nothing will be done.
+         * If the interface was already registered for the type in this `plugin`, nothing will be done.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param instance_type type to which to add the interface.
@@ -1020,42 +1079,48 @@ export namespace Thunarx {
         /**
          * Determines whether the application is allowed to unload `plugin`
          * from memory when no longer needed and reload it on demand. If
-         * %FALSE is returned, then the application may unload `plugin,` else
-         * if %TRUE is returned the application will take care that `plugin`
+         * `false` is returned, then the application may unload `plugin`, else
+         * if `true` is returned the application will take care that `plugin`
          * is never unloaded from memory during the lifetime of the application.
-         * @returns %TRUE if @plugin will be kept in memory once loaded               for the first time.
+         * @returns `true` if `plugin` will be kept in memory once loaded               for the first time.
          */
         get_resident(): boolean;
         /**
          * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
-         * with name `name` was previously registered, the #GType identifier for the type is returned,
-         * otherwise the type is newly registered, and the resulting #GType identifier returned.
+         * with name `name` was previously registered, the {@link GObject.GType} identifier for the type is returned,
+         * otherwise the type is newly registered, and the resulting {@link GObject.GType} identifier returned.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name the name for the type.
-         * @param const_static_values an array of #GEnumValue structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
+         * @param const_static_values an array of {@link GObject.EnumValue} structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
          * @returns the new or existing type id.
          */
         register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.TypeModule.register_enum
         register_enum(...args: never[]): any;
         /**
          * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
-         * qname was previously registered, the #GType identifier for the type is returned, otherwise the type is newly
-         * registered, and the resulting #GType identifier returned.
+         * qname was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly
+         * registered, and the resulting {@link GObject.GType} identifier returned.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name name for the type.
-         * @param const_static_values an array of #GFlagsValue structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
+         * @param const_static_values an array of {@link GObject.FlagsValue} structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
          * @returns the new or existing type id.
          */
         register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.TypeModule.register_flags
         register_flags(...args: never[]): any;
         /**
          * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
-         * was previously registered, the #GType identifier for the type is returned, otherwise the type is newly registered,
-         * and the resulting #GType identifier returned.
+         * was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly registered,
+         * and the resulting {@link GObject.GType} identifier returned.
          *
          * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
          * `type_parent` must be the same as they were previously.
@@ -1076,21 +1141,22 @@ export namespace Thunarx {
          * kept in memory during the lifetime of the application. The default
          * is to allow the application to unload `plugin` from the memory when
          * no longer needed. If this method is invoked with a `resident` value
-         * of %TRUE then the application will never try to unload `plugin`.
+         * of `true` then the application will never try to unload `plugin`.
          *
          * This method has no effect unless called from the
          * %thunar_extension_initialize method of the `plugin`.
-         * @param resident %TRUE to make @plugin resident in memory.
+         * @param resident `true` to make `plugin` resident in memory.
          */
         set_resident(resident: boolean): void;
         /**
          * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
-         * If the interface was already registered for the type in this `plugin,` nothing will be done.
+         * If the interface was already registered for the type in this `plugin`, nothing will be done.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param instance_type type to which to add the interface.
          * @param interface_type interface type to add.
          * @param interface_info type information structure.
+         * @virtual
          */
         vfunc_add_interface(
             instance_type: GObject.GType,
@@ -1100,35 +1166,38 @@ export namespace Thunarx {
         /**
          * Determines whether the application is allowed to unload `plugin`
          * from memory when no longer needed and reload it on demand. If
-         * %FALSE is returned, then the application may unload `plugin,` else
-         * if %TRUE is returned the application will take care that `plugin`
+         * `false` is returned, then the application may unload `plugin`, else
+         * if `true` is returned the application will take care that `plugin`
          * is never unloaded from memory during the lifetime of the application.
+         * @virtual
          */
         vfunc_get_resident(): boolean;
         /**
          * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
-         * with name `name` was previously registered, the #GType identifier for the type is returned,
-         * otherwise the type is newly registered, and the resulting #GType identifier returned.
+         * with name `name` was previously registered, the {@link GObject.GType} identifier for the type is returned,
+         * otherwise the type is newly registered, and the resulting {@link GObject.GType} identifier returned.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name the name for the type.
-         * @param const_static_values an array of #GEnumValue structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
+         * @param const_static_values an array of {@link GObject.EnumValue} structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
+         * @virtual
          */
         vfunc_register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
         /**
          * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
-         * qname was previously registered, the #GType identifier for the type is returned, otherwise the type is newly
-         * registered, and the resulting #GType identifier returned.
+         * qname was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly
+         * registered, and the resulting {@link GObject.GType} identifier returned.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name name for the type.
-         * @param const_static_values an array of #GFlagsValue structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
+         * @param const_static_values an array of {@link GObject.FlagsValue} structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
+         * @virtual
          */
         vfunc_register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
         /**
          * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
-         * was previously registered, the #GType identifier for the type is returned, otherwise the type is newly registered,
-         * and the resulting #GType identifier returned.
+         * was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly registered,
+         * and the resulting {@link GObject.GType} identifier returned.
          *
          * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
          * `type_parent` must be the same as they were previously.
@@ -1136,6 +1205,7 @@ export namespace Thunarx {
          * @param type_name name for the type.
          * @param type_info type information structure.
          * @param type_flags flags field providing details about the type.
+         * @virtual
          */
         vfunc_register_type(
             type_parent: GObject.GType,
@@ -1148,11 +1218,12 @@ export namespace Thunarx {
          * kept in memory during the lifetime of the application. The default
          * is to allow the application to unload `plugin` from the memory when
          * no longer needed. If this method is invoked with a `resident` value
-         * of %TRUE then the application will never try to unload `plugin`.
+         * of `true` then the application will never try to unload `plugin`.
          *
          * This method has no effect unless called from the
          * %thunar_extension_initialize method of the `plugin`.
-         * @param resident %TRUE to make @plugin resident in memory.
+         * @param resident `true` to make `plugin` resident in memory.
+         * @virtual
          */
         vfunc_set_resident(resident: boolean): void;
         /**
@@ -1168,32 +1239,32 @@ export namespace Thunarx {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1202,39 +1273,39 @@ export namespace Thunarx {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1245,13 +1316,16 @@ export namespace Thunarx {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1259,7 +1333,7 @@ export namespace Thunarx {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1267,9 +1341,9 @@ export namespace Thunarx {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1289,9 +1363,9 @@ export namespace Thunarx {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1305,33 +1379,33 @@ export namespace Thunarx {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1364,21 +1438,21 @@ export namespace Thunarx {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1388,8 +1462,8 @@ export namespace Thunarx {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1406,10 +1480,10 @@ export namespace Thunarx {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1424,13 +1498,13 @@ export namespace Thunarx {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1461,21 +1535,21 @@ export namespace Thunarx {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1485,33 +1559,34 @@ export namespace Thunarx {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1520,6 +1595,7 @@ export namespace Thunarx {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1528,12 +1604,14 @@ export namespace Thunarx {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1542,20 +1620,22 @@ export namespace Thunarx {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1567,6 +1647,7 @@ export namespace Thunarx {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1599,6 +1680,15 @@ export namespace Thunarx {
     namespace Renamer {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            /**
+             * Derived classes should emit this signal using the
+             * `thunarx_renamer_changed()` method whenever the user
+             * changed a setting in the `renamer` GUI.
+             *
+             * The file manager will then invoke `thunarx_renamer_process()`
+             * for all files that should be renamed and update the preview.
+             * @signal
+             */
             changed: () => void;
             'notify::help-url': (pspec: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -1663,13 +1753,16 @@ export namespace Thunarx {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Renamer extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Renamer>;
 
         // Properties
 
         /**
-         * The URL to the documentation of this #ThunarxRenamer.
+         * The URL to the documentation of this {@link Thunarx.Renamer}.
          * Derived classes can set this property to point to the
          * documentation for the specific renamer. The documentation
          * of the specific renamer in turn should contain a link to
@@ -1682,7 +1775,7 @@ export namespace Thunarx {
         get help_url(): string;
         set help_url(val: string);
         /**
-         * The URL to the documentation of this #ThunarxRenamer.
+         * The URL to the documentation of this {@link Thunarx.Renamer}.
          * Derived classes can set this property to point to the
          * documentation for the specific renamer. The documentation
          * of the specific renamer in turn should contain a link to
@@ -1718,16 +1811,19 @@ export namespace Thunarx {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Renamer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renamer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Renamer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renamer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Renamer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Renamer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1741,36 +1837,37 @@ export namespace Thunarx {
          * to emit the "changed" signal for `renamer`. See
          * the documentation of the "changed" signal for
          * details.
+         * @virtual
          */
         vfunc_changed(): void;
         /**
-         * Returns the list of #ThunarxMenuItem<!---->s provided by `renamer` for
-         * the given list of `files`. By default, this method returns %NULL
+         * Returns the list of {@link Thunarx.MenuItem}<!---->s provided by `renamer` for
+         * the given list of `files`. By default, this method returns `null`
          * (the empty list), but derived classes may override this method
          * to provide additional items for files in the bulk renamer
          * dialog list.
          *
-         * The returned #ThunarxMenuItem<!---->s will be displayed in the file's
+         * The returned {@link Thunarx.MenuItem}<!---->s will be displayed in the file's
          * context menu of the bulk renamer dialog, when this `renamer` is
          * active. For example, an ID3-Tag based renamer may add an menu item
          * "Edit Tags" to the context menus of supported media files and,
          * when activated, display a dialog (which should be transient and
-         * modal for `window,` if not %NULL), which allows the users to edit
+         * modal for `window`, if not `null`), which allows the users to edit
          * media file tags on-the-fly.
          *
          * Derived classes that override this method should always check
-         * first if all the #ThunarxFileInfo<!---->s in the list of `files`
+         * first if all the {@link Thunarx.FileInfo}<!---->s in the list of `files`
          * are supported, and only return menu items that can be performed on
          * this specific list of `files`. For example, the ID3-Tag renamer
          * mentioned above, should first check whether all items in `files`
-         * are actually audio files. The thunarx_file_info_has_mime_type()
-         * of the #ThunarxFileInfo interface can be used to easily test
+         * are actually audio files. The `thunarx_file_info_has_mime_type()`
+         * of the {@link Thunarx.FileInfo} interface can be used to easily test
          * whether a file in the `files` list is of a certain MIME type.
          *
          * Some menu items may only work properly if only a single file is
          * selected (for example, the ID3-Tag renamer will probably only
          * supporting editing one file at a time). In this case you have
-         * basicly two options: Either you can return %NULL here if `files`
+         * basicly two options: Either you can return `null` here if `files`
          * does not contain exactly one item, or you can return the menu items
          * as usual, but make them insensitive, using:
          * <informalexample><programlisting>
@@ -1787,49 +1884,51 @@ export namespace Thunarx {
          * </programlisting></informalexample>
          *
          * As a special note, this method automatically takes a reference on the
-         * `renamer` for every #ThunarxMenuItem object returned from the real implementation
+         * `renamer` for every {@link Thunarx.MenuItem} object returned from the real implementation
          * of this method in `renamer`. This is to make sure that the extension stays
          * in memory for at least the time that the menu items are used.
          *
-         * The name of #ThunarxMenuItem<!---->s returned from this method must be namespaced with
+         * The name of {@link Thunarx.MenuItem}<!---->s returned from this method must be namespaced with
          * the module to avoid collision with internal file manager menu items and
          * menu items provided by other extensions. For example, the menu item
          * provided by the ID3-Tag renamer mentioned above, should be named
          * <literal>TagRenamer::edit-tags</literal> (if <literal>TagRenamer</literal>
-         * is the class name). For additional information about the way #ThunarxMenuItem<!---->s
+         * is the class name). For additional information about the way {@link Thunarx.MenuItem}<!---->s
          * should be returned from extensions and the way they are used, read the
-         * description of the #ThunarxMenuProvider interface or read the introduction
+         * description of the {@link Thunarx.MenuProvider} interface or read the introduction
          * provided with this reference manual.
          *
          * A note of warning concerning the `window` parameter. Plugins should
-         * avoid taking a reference on `window,` as that might introduce a
+         * avoid taking a reference on `window`, as that might introduce a
          * circular reference and can thereby cause a quite large memory leak.
-         * Instead, if `window` is not %NULL, add a weak reference using the
-         * g_object_weak_ref() or g_object_add_weak_pointer() method. But don't
+         * Instead, if `window` is not `null`, add a weak reference using the
+         * `g_object_weak_ref()` or `g_object_add_weak_pointer()` method. But don't
          * forget to release the weak reference if `window` survived the lifetime
          * of your menu item (which is likely to be the case in most situations).
-         * @param window a #GtkWindow or %NULL.
-         * @param files a #GList of #ThunarxFileInfo<!---->s.
+         * @param window a {@link Gtk.Window} or `null`.
+         * @param files a {@link GLib.List} of {@link Thunarx.FileInfo}<!---->s.
+         * @virtual
          */
         vfunc_get_menu_items(window: Gtk.Window, files: FileInfo[]): MenuItem[];
         /**
          * Tells `renamer` to load its internal settings from the specified
          * `settings`. The `settings` hash table contains previously saved
-         * settings, see thunarx_renamer_save(), as key/value pairs of
+         * settings, see `thunarx_renamer_save()`, as key/value pairs of
          * strings. That is, both the keys and the values are strings.
          *
-         * Implementations of #ThunarxRenamer may decide to override this
+         * Implementations of {@link Thunarx.Renamer} may decide to override this
          * method to perform custom loading of settings. If you do not
-         * override this method, the default method of #ThunarxRenamer
-         * will be used, which simply loads all #GObject properties
-         * provided by `renamer<`!---->s class (excluding the ones
+         * override this method, the default method of {@link Thunarx.Renamer}
+         * will be used, which simply loads all {@link GObject.Object} properties
+         * provided by `renamer`<!---->s class (excluding the ones
          * provided by the parent classes) from the `settings`. The
-         * #GObject properties must be transformable to strings and
+         * {@link GObject.Object} properties must be transformable to strings and
          * from strings.
          *
-         * If you decide to override this method for your #ThunarxRenamer
-         * implementation, you should also override thunarx_renamer_save().
-         * @param settings a #GHashTable which contains the previously saved             settings for @renamer as key/value pairs of strings.
+         * If you decide to override this method for your {@link Thunarx.Renamer}
+         * implementation, you should also override `thunarx_renamer_save()`.
+         * @param settings a {@link GLib.HashTable} which contains the previously saved             settings for `renamer` as key/value pairs of strings.
+         * @virtual
          */
         vfunc_load(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
@@ -1838,17 +1937,18 @@ export namespace Thunarx {
          * or the name and the suffix).
          *
          * The caller is responsible to free the returned string using
-         * g_free() when no longer needed.
-         * @param file the #ThunarxFileInfo for the file whose new            name - according to @renamer - should be            determined.
-         * @param text the part of the filename to which the            @renamer should be applied.
+         * `g_free()` when no longer needed.
+         * @param file the {@link Thunarx.FileInfo} for the file whose new            name - according to `renamer` - should be            determined.
+         * @param text the part of the filename to which the            `renamer` should be applied.
          * @param index the index of the file in the list, used            for renamers that work on numbering.
+         * @virtual
          */
         vfunc_process(file: FileInfo, text: string, index: number): string;
         /**
          * Tells `renamer` to save its internal settings to the specified
-         * `settings,` which can afterwards be loaded by thunarx_renamer_load().
+         * `settings`, which can afterwards be loaded by `thunarx_renamer_load()`.
          *
-         * The strings saved to `settings` must be allocated by g_strdup(),
+         * The strings saved to `settings` must be allocated by `g_strdup()`,
          * both the keys and the values. For example to store the string
          * <literal>Bar</literal> for the setting <literal>Foo</literal>,
          * you'd use:
@@ -1856,17 +1956,18 @@ export namespace Thunarx {
          * g_hash_table_replace (settings, g_strdup ("Foo"), g_strdup ("Bar"));
          * </programlisting></informalexample>
          *
-         * Implementations of #ThunarxRenamer may decide to override this
+         * Implementations of {@link Thunarx.Renamer} may decide to override this
          * method to perform custom saving of settings. If you do not overrride
-         * this method, the default method of #ThunarxRenamer will be used,
-         * which simply stores all #GObject properties provided by the
-         * `renamer<`!---->s class (excluding the ones provided by the parent
-         * classes) to the `settings`. The #GObject properties must be transformable
+         * this method, the default method of {@link Thunarx.Renamer} will be used,
+         * which simply stores all {@link GObject.Object} properties provided by the
+         * `renamer`<!---->s class (excluding the ones provided by the parent
+         * classes) to the `settings`. The {@link GObject.Object} properties must be transformable
          * to strings.
          *
-         * If you decide to override this method for your #ThunarxRenamer
-         * implementation, you should also override thunarx_renamer_load().
-         * @param settings a #GHashTable to which the current settings of @renamer             should be stored as key/value pairs of strings.
+         * If you decide to override this method for your {@link Thunarx.Renamer}
+         * implementation, you should also override `thunarx_renamer_load()`.
+         * @param settings a {@link GLib.HashTable} to which the current settings of `renamer`             should be stored as key/value pairs of strings.
+         * @virtual
          */
         vfunc_save(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
 
@@ -1881,40 +1982,40 @@ export namespace Thunarx {
         changed(): void;
         /**
          * Returns the URL of the documentation for `renamer`
-         * or %NULL if no specific documentation is available
+         * or `null` if no specific documentation is available
          * for `renamer` and the general documentation of the
          * Thunar renamers should be displayed instead.
-         * @returns the URL of the documentation for @renamer.
+         * @returns the URL of the documentation for `renamer`.
          */
         get_help_url(): string;
         /**
-         * Returns the list of #ThunarxMenuItem<!---->s provided by `renamer` for
-         * the given list of `files`. By default, this method returns %NULL
+         * Returns the list of {@link Thunarx.MenuItem}<!---->s provided by `renamer` for
+         * the given list of `files`. By default, this method returns `null`
          * (the empty list), but derived classes may override this method
          * to provide additional items for files in the bulk renamer
          * dialog list.
          *
-         * The returned #ThunarxMenuItem<!---->s will be displayed in the file's
+         * The returned {@link Thunarx.MenuItem}<!---->s will be displayed in the file's
          * context menu of the bulk renamer dialog, when this `renamer` is
          * active. For example, an ID3-Tag based renamer may add an menu item
          * "Edit Tags" to the context menus of supported media files and,
          * when activated, display a dialog (which should be transient and
-         * modal for `window,` if not %NULL), which allows the users to edit
+         * modal for `window`, if not `null`), which allows the users to edit
          * media file tags on-the-fly.
          *
          * Derived classes that override this method should always check
-         * first if all the #ThunarxFileInfo<!---->s in the list of `files`
+         * first if all the {@link Thunarx.FileInfo}<!---->s in the list of `files`
          * are supported, and only return menu items that can be performed on
          * this specific list of `files`. For example, the ID3-Tag renamer
          * mentioned above, should first check whether all items in `files`
-         * are actually audio files. The thunarx_file_info_has_mime_type()
-         * of the #ThunarxFileInfo interface can be used to easily test
+         * are actually audio files. The `thunarx_file_info_has_mime_type()`
+         * of the {@link Thunarx.FileInfo} interface can be used to easily test
          * whether a file in the `files` list is of a certain MIME type.
          *
          * Some menu items may only work properly if only a single file is
          * selected (for example, the ID3-Tag renamer will probably only
          * supporting editing one file at a time). In this case you have
-         * basicly two options: Either you can return %NULL here if `files`
+         * basicly two options: Either you can return `null` here if `files`
          * does not contain exactly one item, or you can return the menu items
          * as usual, but make them insensitive, using:
          * <informalexample><programlisting>
@@ -1931,56 +2032,56 @@ export namespace Thunarx {
          * </programlisting></informalexample>
          *
          * As a special note, this method automatically takes a reference on the
-         * `renamer` for every #ThunarxMenuItem object returned from the real implementation
+         * `renamer` for every {@link Thunarx.MenuItem} object returned from the real implementation
          * of this method in `renamer`. This is to make sure that the extension stays
          * in memory for at least the time that the menu items are used.
          *
-         * The name of #ThunarxMenuItem<!---->s returned from this method must be namespaced with
+         * The name of {@link Thunarx.MenuItem}<!---->s returned from this method must be namespaced with
          * the module to avoid collision with internal file manager menu items and
          * menu items provided by other extensions. For example, the menu item
          * provided by the ID3-Tag renamer mentioned above, should be named
          * <literal>TagRenamer::edit-tags</literal> (if <literal>TagRenamer</literal>
-         * is the class name). For additional information about the way #ThunarxMenuItem<!---->s
+         * is the class name). For additional information about the way {@link Thunarx.MenuItem}<!---->s
          * should be returned from extensions and the way they are used, read the
-         * description of the #ThunarxMenuProvider interface or read the introduction
+         * description of the {@link Thunarx.MenuProvider} interface or read the introduction
          * provided with this reference manual.
          *
          * A note of warning concerning the `window` parameter. Plugins should
-         * avoid taking a reference on `window,` as that might introduce a
+         * avoid taking a reference on `window`, as that might introduce a
          * circular reference and can thereby cause a quite large memory leak.
-         * Instead, if `window` is not %NULL, add a weak reference using the
-         * g_object_weak_ref() or g_object_add_weak_pointer() method. But don't
+         * Instead, if `window` is not `null`, add a weak reference using the
+         * `g_object_weak_ref()` or `g_object_add_weak_pointer()` method. But don't
          * forget to release the weak reference if `window` survived the lifetime
          * of your menu item (which is likely to be the case in most situations).
-         * @param window a #GtkWindow or %NULL.
-         * @param files a #GList of #ThunarxFileInfo<!---->s.
-         * @returns the list of          #ThunarxMenuItem<!---->s provided by @renamer for the given list of          @files.
+         * @param window a {@link Gtk.Window} or `null`.
+         * @param files a {@link GLib.List} of {@link Thunarx.FileInfo}<!---->s.
+         * @returns the list of          {@link Thunarx.MenuItem}<!---->s provided by `renamer` for the given list of          `files`.
          */
         get_menu_items(window: Gtk.Window, files: FileInfo[]): MenuItem[];
         /**
-         * Returns the user visible name for `renamer,` previously
-         * set with thunarx_renamer_set_name().
-         * @returns the user visible name for @renamer.
+         * Returns the user visible name for `renamer`, previously
+         * set with `thunarx_renamer_set_name()`.
+         * @returns the user visible name for `renamer`.
          */
         get_name(): string;
         /**
          * Tells `renamer` to load its internal settings from the specified
          * `settings`. The `settings` hash table contains previously saved
-         * settings, see thunarx_renamer_save(), as key/value pairs of
+         * settings, see `thunarx_renamer_save()`, as key/value pairs of
          * strings. That is, both the keys and the values are strings.
          *
-         * Implementations of #ThunarxRenamer may decide to override this
+         * Implementations of {@link Thunarx.Renamer} may decide to override this
          * method to perform custom loading of settings. If you do not
-         * override this method, the default method of #ThunarxRenamer
-         * will be used, which simply loads all #GObject properties
-         * provided by `renamer<`!---->s class (excluding the ones
+         * override this method, the default method of {@link Thunarx.Renamer}
+         * will be used, which simply loads all {@link GObject.Object} properties
+         * provided by `renamer`<!---->s class (excluding the ones
          * provided by the parent classes) from the `settings`. The
-         * #GObject properties must be transformable to strings and
+         * {@link GObject.Object} properties must be transformable to strings and
          * from strings.
          *
-         * If you decide to override this method for your #ThunarxRenamer
-         * implementation, you should also override thunarx_renamer_save().
-         * @param settings a #GHashTable which contains the previously saved             settings for @renamer as key/value pairs of strings.
+         * If you decide to override this method for your {@link Thunarx.Renamer}
+         * implementation, you should also override `thunarx_renamer_save()`.
+         * @param settings a {@link GLib.HashTable} which contains the previously saved             settings for `renamer` as key/value pairs of strings.
          */
         load(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
@@ -1989,18 +2090,18 @@ export namespace Thunarx {
          * or the name and the suffix).
          *
          * The caller is responsible to free the returned string using
-         * g_free() when no longer needed.
-         * @param file the #ThunarxFileInfo for the file whose new            name - according to @renamer - should be            determined.
-         * @param text the part of the filename to which the            @renamer should be applied.
+         * `g_free()` when no longer needed.
+         * @param file the {@link Thunarx.FileInfo} for the file whose new            name - according to `renamer` - should be            determined.
+         * @param text the part of the filename to which the            `renamer` should be applied.
          * @param index the index of the file in the list, used            for renamers that work on numbering.
-         * @returns the string with which to replace @text.
+         * @returns the string with which to replace `text`.
          */
         process(file: FileInfo, text: string, index: number): string;
         /**
          * Tells `renamer` to save its internal settings to the specified
-         * `settings,` which can afterwards be loaded by thunarx_renamer_load().
+         * `settings`, which can afterwards be loaded by `thunarx_renamer_load()`.
          *
-         * The strings saved to `settings` must be allocated by g_strdup(),
+         * The strings saved to `settings` must be allocated by `g_strdup()`,
          * both the keys and the values. For example to store the string
          * <literal>Bar</literal> for the setting <literal>Foo</literal>,
          * you'd use:
@@ -2008,21 +2109,21 @@ export namespace Thunarx {
          * g_hash_table_replace (settings, g_strdup ("Foo"), g_strdup ("Bar"));
          * </programlisting></informalexample>
          *
-         * Implementations of #ThunarxRenamer may decide to override this
+         * Implementations of {@link Thunarx.Renamer} may decide to override this
          * method to perform custom saving of settings. If you do not overrride
-         * this method, the default method of #ThunarxRenamer will be used,
-         * which simply stores all #GObject properties provided by the
-         * `renamer<`!---->s class (excluding the ones provided by the parent
-         * classes) to the `settings`. The #GObject properties must be transformable
+         * this method, the default method of {@link Thunarx.Renamer} will be used,
+         * which simply stores all {@link GObject.Object} properties provided by the
+         * `renamer`<!---->s class (excluding the ones provided by the parent
+         * classes) to the `settings`. The {@link GObject.Object} properties must be transformable
          * to strings.
          *
-         * If you decide to override this method for your #ThunarxRenamer
-         * implementation, you should also override thunarx_renamer_load().
-         * @param settings a #GHashTable to which the current settings of @renamer             should be stored as key/value pairs of strings.
+         * If you decide to override this method for your {@link Thunarx.Renamer}
+         * implementation, you should also override `thunarx_renamer_load()`.
+         * @param settings a {@link GLib.HashTable} to which the current settings of `renamer`             should be stored as key/value pairs of strings.
          */
         save(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
         /**
-         * The URL to the documentation of this #ThunarxRenamer.
+         * The URL to the documentation of this {@link Thunarx.Renamer}.
          * Derived classes can set this property to point to the
          * documentation for the specific renamer. The documentation
          * of the specific renamer in turn should contain a link to
@@ -2031,28 +2132,26 @@ export namespace Thunarx {
          * May also be unset, in which case the general Thunar renamer
          * documentation will be shown when the user clicks the "Help"
          * button.
-         * @param help_url the new URL to the documentation of @renamer.
+         * @param help_url the new URL to the documentation of `renamer`.
          */
         set_help_url(help_url: string): void;
         /**
          * Sets the user visible name for `renamer` to `name`. This method should
          * only be called by derived classes and prior to returning the `renamer`
-         * is returned from thunarx_renamer_provider_get_renamers().
-         * @param name the new user visible name for @renamer.
+         * is returned from `thunarx_renamer_provider_get_renamers()`.
+         * @param name the new user visible name for `renamer`.
          */
         set_name(name: string): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @since 2.16
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable.
+         * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -2073,32 +2172,32 @@ export namespace Thunarx {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2107,39 +2206,39 @@ export namespace Thunarx {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2150,13 +2249,16 @@ export namespace Thunarx {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2164,7 +2266,7 @@ export namespace Thunarx {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2172,9 +2274,9 @@ export namespace Thunarx {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2194,9 +2296,9 @@ export namespace Thunarx {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2210,33 +2312,33 @@ export namespace Thunarx {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2269,21 +2371,21 @@ export namespace Thunarx {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2293,8 +2395,8 @@ export namespace Thunarx {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2311,10 +2413,10 @@ export namespace Thunarx {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2329,13 +2431,13 @@ export namespace Thunarx {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2366,21 +2468,21 @@ export namespace Thunarx {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2390,33 +2492,34 @@ export namespace Thunarx {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2425,6 +2528,7 @@ export namespace Thunarx {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2433,12 +2537,14 @@ export namespace Thunarx {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2447,20 +2553,22 @@ export namespace Thunarx {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2472,6 +2580,7 @@ export namespace Thunarx {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2501,33 +2610,81 @@ export namespace Thunarx {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FileInfoIface = typeof FileInfo;
+    /**
+     * @gir-type Alias
+     */
     type MenuClass = typeof Menu;
+    /**
+     * @gir-type Alias
+     */
     type MenuItemClass = typeof MenuItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuItemPrivate {
         static $gtype: GObject.GType<MenuItemPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuProviderIface = typeof MenuProvider;
+    /**
+     * @gir-type Alias
+     */
     type PreferencesProviderIface = typeof PreferencesProvider;
+    /**
+     * @gir-type Alias
+     */
     type PropertyPageClass = typeof PropertyPage;
+    /**
+     * @gir-type Struct
+     */
     abstract class PropertyPagePrivate {
         static $gtype: GObject.GType<PropertyPagePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PropertyPageProviderIface = typeof PropertyPageProvider;
+    /**
+     * @gir-type Alias
+     */
     type ProviderFactoryClass = typeof ProviderFactory;
+    /**
+     * @gir-type Alias
+     */
     type ProviderModuleClass = typeof ProviderModule;
+    /**
+     * @gir-type Alias
+     */
     type ProviderPluginIface = typeof ProviderPlugin;
+    /**
+     * @gir-type Alias
+     */
     type RenamerClass = typeof Renamer;
+    /**
+     * @gir-type Struct
+     */
     abstract class RenamerPrivate {
         static $gtype: GObject.GType<RenamerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RenamerProviderIface = typeof RenamerProvider;
     namespace FileInfo {
         /**
@@ -2542,72 +2699,80 @@ export namespace Thunarx {
              * be invoked by Thunar plugins, instead the file manager itself
              * will use this method to emit ::changed whenever it notices a
              * change on `file_info`.
+             * @virtual
              */
             vfunc_changed(): void;
             /**
-             * Returns the #GFileInfo associated with `file_info,`
+             * Returns the {@link Gio.FileInfo} associated with `file_info`,
              * which includes additional information about the `file_info`
              * as queried from GIO earlier. The caller is responsible to free the
-             * returned #GFileInfo object using g_object_unref() when
+             * returned {@link Gio.FileInfo} object using `g_object_unref()` when
              * no longer needed.
+             * @virtual
              */
             vfunc_get_file_info(): Gio.FileInfo;
             /**
-             * Returns the #GFileInfo which includes additional information about
+             * Returns the {@link Gio.FileInfo} which includes additional information about
              * the filesystem `file_info` resides on. The caller is responsible to
-             * free the returned #GFileInfo object using g_object_unref() when
+             * free the returned {@link Gio.FileInfo} object using `g_object_unref()` when
              * no longer needed.
+             * @virtual
              */
             vfunc_get_filesystem_info(): Gio.FileInfo;
             /**
-             * Returns the #GFile `file_info` points to. The #GFile is a more
+             * Returns the {@link Gio.File} `file_info` points to. The {@link Gio.File} is a more
              * powerful tool than just the URI or the path. The caller
-             * is responsible to release the returned #GFile using g_object_unref()
+             * is responsible to release the returned {@link Gio.File} using `g_object_unref()`
              * when no longer needed.
+             * @virtual
              */
             vfunc_get_location(): Gio.File;
             /**
              * Returns the MIME-type of the file represented by
-             * `file_info` or %NULL if no MIME-type is known for
+             * `file_info` or `null` if no MIME-type is known for
              * `file_info`.
              *
              * The caller is responsible to free the returned
-             * string using g_free() when no longer needed.
+             * string using `g_free()` when no longer needed.
+             * @virtual
              */
             vfunc_get_mime_type(): string;
             /**
              * Returns the real name of the file represented
              * by `file_info` in the local file system encoding.
-             * You can use g_filename_display_name() or similar
+             * You can use `g_filename_display_name()` or similar
              * functions to generate an UTF-8 version of the
              * name, which is suitable for use in the user
              * interface.
              *
              * The caller is responsible to free the returned
-             * string using g_free() when no longer needed.
+             * string using `g_free()` when no longer needed.
+             * @virtual
              */
             vfunc_get_name(): string;
             /**
              * Returns the URI to the parent file of
-             * `file_info` or %NULL if `file_info` has
+             * `file_info` or `null` if `file_info` has
              * no parent. Note that the parent URI
              * may be of a different type than the
              * URI of `file_info`. For example, the
              * parent of "file:///" is "computer:///".
              *
              * The caller is responsible to free the
-             * returned string using g_free() when no
+             * returned string using `g_free()` when no
              * longer needed.
+             * @virtual
              */
             vfunc_get_parent_uri(): string;
             /**
              * Returns the escaped, fully qualified URI
              * of the file object represented by `file_info`.
-             * You may use g_filename_from_uri() and similar
+             * You may use `g_filename_from_uri()` and similar
              * functions to work with the returned URI.
              *
              * The caller is responsible to free the returned
-             * string using g_free() when no longer needed.
+             * string using `g_free()` when no longer needed.
+             * @virtual
              */
             vfunc_get_uri(): string;
             /**
@@ -2617,7 +2782,8 @@ export namespace Thunarx {
              * be "file".
              *
              * The caller is responsible to free the returned
-             * string using g_free() when no longer needed.
+             * string using `g_free()` when no longer needed.
+             * @virtual
              */
             vfunc_get_uri_scheme(): string;
             /**
@@ -2628,21 +2794,23 @@ export namespace Thunarx {
              * This is the preferred way for most extensions to check
              * whether they support a given file or not, and you should
              * consider using this method rather than
-             * thunarx_file_info_get_mime_type(). A simple example would
+             * `thunarx_file_info_get_mime_type()`. A simple example would
              * be a menu extension that performs a certain action on
              * text files. In this case you want to check whether a given
-             * #ThunarxFileInfo refers to any kind of text file, not only
+             * {@link Thunarx.FileInfo} refers to any kind of text file, not only
              * to "text/plain" (e.g. this also includes "text/xml" and
              * "application/x-desktop").
              *
              * But you should be aware that this method may take some
-             * time to test whether `mime_type` is valid for `file_info,`
+             * time to test whether `mime_type` is valid for `file_info`,
              * so don't call it too often.
              * @param mime_type a MIME-type (e.g. "text/plain").
+             * @virtual
              */
             vfunc_has_mime_type(mime_type: string): boolean;
             /**
              * Checks whether `file_info` refers to a directory.
+             * @virtual
              */
             vfunc_is_directory(): boolean;
             /**
@@ -2653,6 +2821,7 @@ export namespace Thunarx {
              * The plugins should instead connect to the ::renamed signal
              * and update it's internal state and it's user interface
              * after the file manager renamed a file.
+             * @virtual
              */
             vfunc_renamed(): void;
         }
@@ -2666,6 +2835,9 @@ export namespace Thunarx {
         $gtype: GObject.GType<FileInfo>;
         prototype: FileInfo;
     }
+    /**
+     * @gir-type Interface
+     */
     interface FileInfo extends GObject.Object, FileInfo.Interface {
         // Methods
 
@@ -2677,76 +2849,76 @@ export namespace Thunarx {
          */
         changed(): void;
         /**
-         * Returns the #GFileInfo associated with `file_info,`
+         * Returns the {@link Gio.FileInfo} associated with `file_info`,
          * which includes additional information about the `file_info`
          * as queried from GIO earlier. The caller is responsible to free the
-         * returned #GFileInfo object using g_object_unref() when
+         * returned {@link Gio.FileInfo} object using `g_object_unref()` when
          * no longer needed.
-         * @returns the #GFileInfo object associated with @file_info,          which MUST be freed using g_object_unref().
+         * @returns the {@link Gio.FileInfo} object associated with `file_info`,          which MUST be freed using `g_object_unref()`.
          */
         get_file_info(): Gio.FileInfo;
         /**
-         * Returns the #GFileInfo which includes additional information about
+         * Returns the {@link Gio.FileInfo} which includes additional information about
          * the filesystem `file_info` resides on. The caller is responsible to
-         * free the returned #GFileInfo object using g_object_unref() when
+         * free the returned {@link Gio.FileInfo} object using `g_object_unref()` when
          * no longer needed.
-         * @returns the #GFileInfo containing information about the          filesystem of @file_info or %NULL if no filesystem information is          available. It MUST be released using g_object_unref().
+         * @returns the {@link Gio.FileInfo} containing information about the          filesystem of `file_info` or `null` if no filesystem information is          available. It MUST be released using `g_object_unref()`.
          */
         get_filesystem_info(): Gio.FileInfo;
         /**
-         * Returns the #GFile `file_info` points to. The #GFile is a more
+         * Returns the {@link Gio.File} `file_info` points to. The {@link Gio.File} is a more
          * powerful tool than just the URI or the path. The caller
-         * is responsible to release the returned #GFile using g_object_unref()
+         * is responsible to release the returned {@link Gio.File} using `g_object_unref()`
          * when no longer needed.
-         * @returns the #GFile to which @file_info points. It MUST be          released using g_object_unref().
+         * @returns the {@link Gio.File} to which `file_info` points. It MUST be          released using `g_object_unref()`.
          */
         get_location(): Gio.File;
         /**
          * Returns the MIME-type of the file represented by
-         * `file_info` or %NULL if no MIME-type is known for
+         * `file_info` or `null` if no MIME-type is known for
          * `file_info`.
          *
          * The caller is responsible to free the returned
-         * string using g_free() when no longer needed.
-         * @returns the MIME-type for @file_info or               %NULL.
+         * string using `g_free()` when no longer needed.
+         * @returns the MIME-type for `file_info` or               `null`.
          */
         get_mime_type(): string;
         /**
          * Returns the real name of the file represented
          * by `file_info` in the local file system encoding.
-         * You can use g_filename_display_name() or similar
+         * You can use `g_filename_display_name()` or similar
          * functions to generate an UTF-8 version of the
          * name, which is suitable for use in the user
          * interface.
          *
          * The caller is responsible to free the returned
-         * string using g_free() when no longer needed.
-         * @returns the real name of the file represented               by @file_info.
+         * string using `g_free()` when no longer needed.
+         * @returns the real name of the file represented               by `file_info`.
          */
         get_name(): string;
         /**
          * Returns the URI to the parent file of
-         * `file_info` or %NULL if `file_info` has
+         * `file_info` or `null` if `file_info` has
          * no parent. Note that the parent URI
          * may be of a different type than the
          * URI of `file_info`. For example, the
          * parent of "file:///" is "computer:///".
          *
          * The caller is responsible to free the
-         * returned string using g_free() when no
+         * returned string using `g_free()` when no
          * longer needed.
-         * @returns the parent URI for @file_info               or %NULL.
+         * @returns the parent URI for `file_info`               or `null`.
          */
         get_parent_uri(): string;
         /**
          * Returns the escaped, fully qualified URI
          * of the file object represented by `file_info`.
-         * You may use g_filename_from_uri() and similar
+         * You may use `g_filename_from_uri()` and similar
          * functions to work with the returned URI.
          *
          * The caller is responsible to free the returned
-         * string using g_free() when no longer needed.
-         * @returns the fully qualified URI of @file_info.
+         * string using `g_free()` when no longer needed.
+         * @returns the fully qualified URI of `file_info`.
          */
         get_uri(): string;
         /**
@@ -2756,8 +2928,8 @@ export namespace Thunarx {
          * be "file".
          *
          * The caller is responsible to free the returned
-         * string using g_free() when no longer needed.
-         * @returns the URI scheme for @file_info.
+         * string using `g_free()` when no longer needed.
+         * @returns the URI scheme for `file_info`.
          */
         get_uri_scheme(): string;
         /**
@@ -2768,23 +2940,23 @@ export namespace Thunarx {
          * This is the preferred way for most extensions to check
          * whether they support a given file or not, and you should
          * consider using this method rather than
-         * thunarx_file_info_get_mime_type(). A simple example would
+         * `thunarx_file_info_get_mime_type()`. A simple example would
          * be a menu extension that performs a certain action on
          * text files. In this case you want to check whether a given
-         * #ThunarxFileInfo refers to any kind of text file, not only
+         * {@link Thunarx.FileInfo} refers to any kind of text file, not only
          * to "text/plain" (e.g. this also includes "text/xml" and
          * "application/x-desktop").
          *
          * But you should be aware that this method may take some
-         * time to test whether `mime_type` is valid for `file_info,`
+         * time to test whether `mime_type` is valid for `file_info`,
          * so don't call it too often.
          * @param mime_type a MIME-type (e.g. "text/plain").
-         * @returns %TRUE if @mime_type is valid for @file_info,               else %FALSE.
+         * @returns `true` if `mime_type` is valid for `file_info`,               else `false`.
          */
         has_mime_type(mime_type: string): boolean;
         /**
          * Checks whether `file_info` refers to a directory.
-         * @returns %TRUE if @file_info is a directory.
+         * @returns `true` if `file_info` is a directory.
          */
         is_directory(): boolean;
         /**
@@ -2813,6 +2985,9 @@ export namespace Thunarx {
         $gtype: GObject.GType<MenuProvider>;
         prototype: MenuProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MenuProvider extends GObject.Object {}
 
     export const MenuProvider: MenuProviderNamespace & {
@@ -2829,6 +3004,9 @@ export namespace Thunarx {
         $gtype: GObject.GType<PreferencesProvider>;
         prototype: PreferencesProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface PreferencesProvider extends GObject.Object {}
 
     export const PreferencesProvider: PreferencesProviderNamespace & {
@@ -2845,6 +3023,9 @@ export namespace Thunarx {
         $gtype: GObject.GType<PropertyPageProvider>;
         prototype: PropertyPageProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface PropertyPageProvider extends GObject.Object {}
 
     export const PropertyPageProvider: PropertyPageProviderNamespace & {
@@ -2861,12 +3042,13 @@ export namespace Thunarx {
 
             /**
              * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
-             * If the interface was already registered for the type in this `plugin,` nothing will be done.
+             * If the interface was already registered for the type in this `plugin`, nothing will be done.
              *
              * As long as any instances of the type exist, the type `plugin` will not be unloaded.
              * @param instance_type type to which to add the interface.
              * @param interface_type interface type to add.
              * @param interface_info type information structure.
+             * @virtual
              */
             vfunc_add_interface(
                 instance_type: GObject.GType,
@@ -2876,35 +3058,38 @@ export namespace Thunarx {
             /**
              * Determines whether the application is allowed to unload `plugin`
              * from memory when no longer needed and reload it on demand. If
-             * %FALSE is returned, then the application may unload `plugin,` else
-             * if %TRUE is returned the application will take care that `plugin`
+             * `false` is returned, then the application may unload `plugin`, else
+             * if `true` is returned the application will take care that `plugin`
              * is never unloaded from memory during the lifetime of the application.
+             * @virtual
              */
             vfunc_get_resident(): boolean;
             /**
              * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
-             * with name `name` was previously registered, the #GType identifier for the type is returned,
-             * otherwise the type is newly registered, and the resulting #GType identifier returned.
+             * with name `name` was previously registered, the {@link GObject.GType} identifier for the type is returned,
+             * otherwise the type is newly registered, and the resulting {@link GObject.GType} identifier returned.
              *
              * As long as any instances of the type exist, the type `plugin` will not be unloaded.
              * @param name the name for the type.
-             * @param const_static_values an array of #GEnumValue structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
+             * @param const_static_values an array of {@link GObject.EnumValue} structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
+             * @virtual
              */
             vfunc_register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
             /**
              * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
-             * qname was previously registered, the #GType identifier for the type is returned, otherwise the type is newly
-             * registered, and the resulting #GType identifier returned.
+             * qname was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly
+             * registered, and the resulting {@link GObject.GType} identifier returned.
              *
              * As long as any instances of the type exist, the type `plugin` will not be unloaded.
              * @param name name for the type.
-             * @param const_static_values an array of #GFlagsValue structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
+             * @param const_static_values an array of {@link GObject.FlagsValue} structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
+             * @virtual
              */
             vfunc_register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
             /**
              * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
-             * was previously registered, the #GType identifier for the type is returned, otherwise the type is newly registered,
-             * and the resulting #GType identifier returned.
+             * was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly registered,
+             * and the resulting {@link GObject.GType} identifier returned.
              *
              * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
              * `type_parent` must be the same as they were previously.
@@ -2912,6 +3097,7 @@ export namespace Thunarx {
              * @param type_name name for the type.
              * @param type_info type information structure.
              * @param type_flags flags field providing details about the type.
+             * @virtual
              */
             vfunc_register_type(
                 type_parent: GObject.GType,
@@ -2924,11 +3110,12 @@ export namespace Thunarx {
              * kept in memory during the lifetime of the application. The default
              * is to allow the application to unload `plugin` from the memory when
              * no longer needed. If this method is invoked with a `resident` value
-             * of %TRUE then the application will never try to unload `plugin`.
+             * of `true` then the application will never try to unload `plugin`.
              *
              * This method has no effect unless called from the
              * %thunar_extension_initialize method of the `plugin`.
-             * @param resident %TRUE to make @plugin resident in memory.
+             * @param resident `true` to make `plugin` resident in memory.
+             * @virtual
              */
             vfunc_set_resident(resident: boolean): void;
         }
@@ -2944,13 +3131,16 @@ export namespace Thunarx {
         $gtype: GObject.GType<ProviderPlugin>;
         prototype: ProviderPlugin;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ProviderPlugin extends GObject.Object, ProviderPlugin.Interface {
         // Properties
 
         /**
          * Tells whether a plugin must reside in memory once loaded for
-         * the first time. See thunarx_provider_plugin_get_resident() and
-         * thunarx_provider_plugin_set_resident() for more details.
+         * the first time. See `thunarx_provider_plugin_get_resident()` and
+         * `thunarx_provider_plugin_set_resident()` for more details.
          */
         get resident(): boolean;
         set resident(val: boolean);
@@ -2959,7 +3149,7 @@ export namespace Thunarx {
 
         /**
          * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
-         * If the interface was already registered for the type in this `plugin,` nothing will be done.
+         * If the interface was already registered for the type in this `plugin`, nothing will be done.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param instance_type type to which to add the interface.
@@ -2974,38 +3164,38 @@ export namespace Thunarx {
         /**
          * Determines whether the application is allowed to unload `plugin`
          * from memory when no longer needed and reload it on demand. If
-         * %FALSE is returned, then the application may unload `plugin,` else
-         * if %TRUE is returned the application will take care that `plugin`
+         * `false` is returned, then the application may unload `plugin`, else
+         * if `true` is returned the application will take care that `plugin`
          * is never unloaded from memory during the lifetime of the application.
-         * @returns %TRUE if @plugin will be kept in memory once loaded               for the first time.
+         * @returns `true` if `plugin` will be kept in memory once loaded               for the first time.
          */
         get_resident(): boolean;
         /**
          * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
-         * with name `name` was previously registered, the #GType identifier for the type is returned,
-         * otherwise the type is newly registered, and the resulting #GType identifier returned.
+         * with name `name` was previously registered, the {@link GObject.GType} identifier for the type is returned,
+         * otherwise the type is newly registered, and the resulting {@link GObject.GType} identifier returned.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name the name for the type.
-         * @param const_static_values an array of #GEnumValue structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
+         * @param const_static_values an array of {@link GObject.EnumValue} structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
          * @returns the new or existing type id.
          */
         register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
         /**
          * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
-         * qname was previously registered, the #GType identifier for the type is returned, otherwise the type is newly
-         * registered, and the resulting #GType identifier returned.
+         * qname was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly
+         * registered, and the resulting {@link GObject.GType} identifier returned.
          *
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name name for the type.
-         * @param const_static_values an array of #GFlagsValue structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
+         * @param const_static_values an array of {@link GObject.FlagsValue} structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
          * @returns the new or existing type id.
          */
         register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
         /**
          * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
-         * was previously registered, the #GType identifier for the type is returned, otherwise the type is newly registered,
-         * and the resulting #GType identifier returned.
+         * was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly registered,
+         * and the resulting {@link GObject.GType} identifier returned.
          *
          * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
          * `type_parent` must be the same as they were previously.
@@ -3026,11 +3216,11 @@ export namespace Thunarx {
          * kept in memory during the lifetime of the application. The default
          * is to allow the application to unload `plugin` from the memory when
          * no longer needed. If this method is invoked with a `resident` value
-         * of %TRUE then the application will never try to unload `plugin`.
+         * of `true` then the application will never try to unload `plugin`.
          *
          * This method has no effect unless called from the
          * %thunar_extension_initialize method of the `plugin`.
-         * @param resident %TRUE to make @plugin resident in memory.
+         * @param resident `true` to make `plugin` resident in memory.
          */
         set_resident(resident: boolean): void;
     }
@@ -3049,6 +3239,9 @@ export namespace Thunarx {
         $gtype: GObject.GType<RenamerProvider>;
         prototype: RenamerProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface RenamerProvider extends GObject.Object {}
 
     export const RenamerProvider: RenamerProviderNamespace & {

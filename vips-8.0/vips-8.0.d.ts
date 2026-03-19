@@ -23,13 +23,14 @@ export namespace Vips {
     }
 
     /**
-     * The type of access an operation has to supply. See vips_tilecache()
-     * and #VipsForeign.
+     * The type of access an operation has to supply. See `vips_tilecache()`
+     * and {@link Vips.Foreign}.
      *
      * `VIPS_ACCESS_RANDOM` means requests can come in any order.
      *
      * `VIPS_ACCESS_SEQUENTIAL` means requests will be top-to-bottom, but with some
      * amount of buffering behind the read point for small non-local accesses.
+     * @gir-type Enum
      */
     enum Access {
         /**
@@ -49,12 +50,13 @@ export namespace Vips {
     }
 
     /**
-     * See vips_join() and so on.
+     * See `vips_join()` and so on.
      *
-     * Operations like vips_join() need to be told whether to align images on the
+     * Operations like `vips_join()` need to be told whether to align images on the
      * low or high coordinate edge, or centre.
      *
-     * See also: vips_join().
+     * See also: `vips_join()`.
+     * @gir-type Enum
      */
     enum Align {
         /**
@@ -77,11 +79,12 @@ export namespace Vips {
     }
 
     /**
-     * See vips_rot() and so on.
+     * See `vips_rot()` and so on.
      *
      * Fixed rotate angles.
      *
-     * See also: vips_rot().
+     * See also: `vips_rot()`.
+     * @gir-type Enum
      */
     enum Angle {
         /**
@@ -108,11 +111,12 @@ export namespace Vips {
     }
 
     /**
-     * See vips_rot45() and so on.
+     * See `vips_rot45()` and so on.
      *
      * Fixed rotate angles.
      *
-     * See also: vips_rot45().
+     * See also: `vips_rot45()`.
+     * @gir-type Enum
      */
     enum Angle45 {
         /**
@@ -159,6 +163,7 @@ export namespace Vips {
      *
      * Each corresponds to a native C type for the current machine. For example,
      * #VIPS_FORMAT_USHORT is <type>unsigned short</type>.
+     * @gir-type Enum
      */
     enum BandFormat {
         /**
@@ -213,7 +218,7 @@ export namespace Vips {
     }
 
     /**
-     * The various Porter-Duff and PDF blend modes. See vips_composite(),
+     * The various Porter-Duff and PDF blend modes. See `vips_composite()`,
      * for example.
      *
      * The Cairo docs have a nice explanation of all the blend modes:
@@ -221,6 +226,7 @@ export namespace Vips {
      * https://www.cairographics.org/operators
      *
      * The non-separable modes are not implemented.
+     * @gir-type Enum
      */
     enum BlendMode {
         /**
@@ -339,6 +345,7 @@ export namespace Vips {
      *
      * The gaps in the numbering are historical and must be maintained. Allocate
      * new numbers from the end.
+     * @gir-type Enum
      */
     enum Coding {
         ERROR,
@@ -362,7 +369,8 @@ export namespace Vips {
     }
 
     /**
-     * How to combine values. See vips_compass(), for example.
+     * How to combine values. See `vips_compass()`, for example.
+     * @gir-type Enum
      */
     enum Combine {
         /**
@@ -385,12 +393,13 @@ export namespace Vips {
     }
 
     /**
-     * See vips_draw_image() and so on.
+     * See `vips_draw_image()` and so on.
      *
-     * Operations like vips_draw_image() need to be told how to combine images
+     * Operations like `vips_draw_image()` need to be told how to combine images
      * from two sources.
      *
-     * See also: vips_join().
+     * See also: `vips_join()`.
+     * @gir-type Enum
      */
     enum CombineMode {
         /**
@@ -409,7 +418,8 @@ export namespace Vips {
     }
 
     /**
-     * A direction on a compass. Used for vips_gravity(), for example.
+     * A direction on a compass. Used for `vips_gravity()`, for example.
+     * @gir-type Enum
      */
     enum CompassDirection {
         /**
@@ -456,13 +466,13 @@ export namespace Vips {
     }
 
     /**
-     * See vips_image_pipelinev(). Operations can hint
+     * See `vips_image_pipelinev()`. Operations can hint
      * the kind of demand geometry they prefer
      * to the VIPS image IO system.
      *
      * These demand styles are given below in order of increasing
      * specialisation.  When demanding output from a pipeline,
-     * vips_image_generate()
+     * `vips_image_generate()`
      * will use the most general style requested by the operations
      * in the pipeline.
      *
@@ -473,7 +483,7 @@ export namespace Vips {
      * #VIPS_DEMAND_STYLE_FATSTRIP --- This operation would like to output strips
      * the width of the image and as high as possible. This option is suitable
      * for area operations which do not violently transform coordinates, such
-     * as vips_conv().
+     * as `vips_conv()`.
      *
      * #VIPS_DEMAND_STYLE_THINSTRIP --- This operation would like to output strips
      * the width of the image and a few pels high. This option is suitable for
@@ -481,9 +491,10 @@ export namespace Vips {
      *
      * #VIPS_DEMAND_STYLE_ANY --- This image is not being demand-read from a disc
      * file (even indirectly) so any demand style is OK. It's used for things like
-     * vips_black() where the pixels are calculated.
+     * `vips_black()` where the pixels are calculated.
      *
-     * See also: vips_image_pipelinev().
+     * See also: `vips_image_pipelinev()`.
+     * @gir-type Enum
      */
     enum DemandStyle {
         ERROR,
@@ -510,12 +521,13 @@ export namespace Vips {
     }
 
     /**
-     * See vips_flip(), vips_join() and so on.
+     * See `vips_flip()`, `vips_join()` and so on.
      *
-     * Operations like vips_flip() need to be told whether to flip left-right or
+     * Operations like `vips_flip()` need to be told whether to flip left-right or
      * top-bottom.
      *
-     * See also: vips_flip(), vips_join().
+     * See also: `vips_flip()`, `vips_join()`.
+     * @gir-type Enum
      */
     enum Direction {
         /**
@@ -534,7 +546,7 @@ export namespace Vips {
     }
 
     /**
-     * See vips_embed(), vips_conv(), vips_affine() and so on.
+     * See `vips_embed()`, `vips_conv()`, `vips_affine()` and so on.
      *
      * When the edges of an image are extended, you can specify
      * how you want the extension done.
@@ -556,7 +568,8 @@ export namespace Vips {
      * We have to specify the exact value of each enum member since we have to
      * keep these frozen for back compat with vips7.
      *
-     * See also: vips_embed().
+     * See also: `vips_embed()`.
+     * @gir-type Enum
      */
     enum Extend {
         /**
@@ -596,6 +609,7 @@ export namespace Vips {
      *
      * Each one implies the ones before it, so #VIPS_FAIL_ON_ERROR implies
      * #VIPS_FAIL_ON_TRUNCATED.
+     * @gir-type Enum
      */
     enum FailOn {
         /**
@@ -623,6 +637,7 @@ export namespace Vips {
 
     /**
      * How many pyramid layers to create.
+     * @gir-type Enum
      */
     enum ForeignDzContainer {
         /**
@@ -646,6 +661,7 @@ export namespace Vips {
 
     /**
      * How many pyramid layers to create.
+     * @gir-type Enum
      */
     enum ForeignDzDepth {
         /**
@@ -669,6 +685,7 @@ export namespace Vips {
 
     /**
      * What directory layout and metadata standard to use.
+     * @gir-type Enum
      */
     enum ForeignDzLayout {
         /**
@@ -702,6 +719,7 @@ export namespace Vips {
      * The compression format to use inside a HEIF container.
      *
      * This is assumed to use the same numbering as %heif_compression_format.
+     * @gir-type Enum
      */
     enum ForeignHeifCompression {
         /**
@@ -731,6 +749,7 @@ export namespace Vips {
      * The selected encoder to use.
      * If libheif hasn't been compiled with the selected encoder,
      * we will fallback to the default encoder for the compression format.
+     * @gir-type Enum
      */
     enum ForeignHeifEncoder {
         /**
@@ -762,6 +781,8 @@ export namespace Vips {
 
     /**
      * Set jpeg subsampling mode.
+     * @gir-type Enum
+     * @deprecated use {@link Vips.ForeignSubsample}
      */
     enum ForeignJpegSubsample {
         /**
@@ -796,6 +817,7 @@ export namespace Vips {
      *
      * #VIPS_FOREIGN_PPM_FORMAT_PNM images are anymap images -- the image format
      * is used to pick the saver.
+     * @gir-type Enum
      */
     enum ForeignPpmFormat {
         /**
@@ -827,6 +849,7 @@ export namespace Vips {
 
     /**
      * Set subsampling mode.
+     * @gir-type Enum
      */
     enum ForeignSubsample {
         /**
@@ -858,6 +881,7 @@ export namespace Vips {
      * Use `lossless` to set WEBP lossless compression.
      *
      * Use `level` to set webp and zstd compression level.
+     * @gir-type Enum
      */
     enum ForeignTiffCompression {
         /**
@@ -906,6 +930,7 @@ export namespace Vips {
     /**
      * The predictor can help deflate and lzw compression. The values are fixed by
      * the tiff library.
+     * @gir-type Enum
      */
     enum ForeignTiffPredictor {
         /**
@@ -929,6 +954,7 @@ export namespace Vips {
 
     /**
      * Use inches or centimeters as the resolution unit for a tiff file.
+     * @gir-type Enum
      */
     enum ForeignTiffResunit {
         /**
@@ -948,6 +974,7 @@ export namespace Vips {
 
     /**
      * Tune lossy encoder settings for different image types.
+     * @gir-type Enum
      */
     enum ForeignWebpPreset {
         /**
@@ -981,6 +1008,9 @@ export namespace Vips {
         export const $gtype: GObject.GType<ImageType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ImageType {
         ERROR,
         NONE,
@@ -1001,6 +1031,7 @@ export namespace Vips {
      * The rendering intent. #VIPS_INTENT_ABSOLUTE is best for
      * scientific work, #VIPS_INTENT_RELATIVE is usually best for
      * accurate communication with other imaging libraries.
+     * @gir-type Enum
      */
     enum Intent {
         /**
@@ -1028,14 +1059,15 @@ export namespace Vips {
 
     /**
      * Pick the algorithm vips uses to decide image "interestingness". This is used
-     * by vips_smartcrop(), for example, to decide what parts of the image to
+     * by `vips_smartcrop()`, for example, to decide what parts of the image to
      * keep.
      *
      * #VIPS_INTERESTING_NONE and #VIPS_INTERESTING_LOW mean the same -- the
      * crop is positioned at the top or left. #VIPS_INTERESTING_HIGH positions at
      * the bottom or right.
      *
-     * See also: vips_smartcrop().
+     * See also: `vips_smartcrop()`.
+     * @gir-type Enum
      */
     enum Interesting {
         /**
@@ -1083,6 +1115,7 @@ export namespace Vips {
      *
      * The gaps in numbering are historical and must be maintained. Allocate
      * new numbers from the end.
+     * @gir-type Enum
      */
     enum Interpretation {
         ERROR,
@@ -1170,7 +1203,8 @@ export namespace Vips {
     }
 
     /**
-     * The resampling kernels vips supports. See vips_reduce(), for example.
+     * The resampling kernels vips supports. See `vips_reduce()`, for example.
+     * @gir-type Enum
      */
     enum Kernel {
         /**
@@ -1205,7 +1239,8 @@ export namespace Vips {
     }
 
     /**
-     * See also: vips_boolean().
+     * See also: `vips_boolean()`.
+     * @gir-type Enum
      */
     enum OperationBoolean {
         /**
@@ -1236,7 +1271,8 @@ export namespace Vips {
     }
 
     /**
-     * See also: vips_complex().
+     * See also: `vips_complex()`.
+     * @gir-type Enum
      */
     enum OperationComplex {
         /**
@@ -1259,7 +1295,8 @@ export namespace Vips {
     }
 
     /**
-     * See also: vips_complex2().
+     * See also: `vips_complex2()`.
+     * @gir-type Enum
      */
     enum OperationComplex2 {
         /**
@@ -1274,7 +1311,8 @@ export namespace Vips {
     }
 
     /**
-     * See also: vips_complexget().
+     * See also: `vips_complexget()`.
+     * @gir-type Enum
      */
     enum OperationComplexget {
         /**
@@ -1293,31 +1331,32 @@ export namespace Vips {
     }
 
     /**
-     * See also: vips_math().
+     * See also: `vips_math()`.
+     * @gir-type Enum
      */
     enum OperationMath {
         /**
-         * sin(), angles in degrees
+         * `sin()`, angles in degrees
          */
         SIN,
         /**
-         * cos(), angles in degrees
+         * `cos()`, angles in degrees
          */
         COS,
         /**
-         * tan(), angles in degrees
+         * `tan()`, angles in degrees
          */
         TAN,
         /**
-         * asin(), angles in degrees
+         * `asin()`, angles in degrees
          */
         ASIN,
         /**
-         * acos(), angles in degrees
+         * `acos()`, angles in degrees
          */
         ACOS,
         /**
-         * atan(), angles in degrees
+         * `atan()`, angles in degrees
          */
         ATAN,
         /**
@@ -1337,27 +1376,27 @@ export namespace Vips {
          */
         EXP10,
         /**
-         * sinh(), angles in radians
+         * `sinh()`, angles in radians
          */
         SINH,
         /**
-         * cosh(), angles in radians
+         * `cosh()`, angles in radians
          */
         COSH,
         /**
-         * tanh(), angles in radians
+         * `tanh()`, angles in radians
          */
         TANH,
         /**
-         * asinh(), angles in radians
+         * `asinh()`, angles in radians
          */
         ASINH,
         /**
-         * acosh(), angles in radians
+         * `acosh()`, angles in radians
          */
         ACOSH,
         /**
-         * atanh(), angles in radians
+         * `atanh()`, angles in radians
          */
         ATANH,
         LAST,
@@ -1368,7 +1407,8 @@ export namespace Vips {
     }
 
     /**
-     * See also: vips_math().
+     * See also: `vips_math()`.
+     * @gir-type Enum
      */
     enum OperationMath2 {
         /**
@@ -1393,7 +1433,8 @@ export namespace Vips {
     /**
      * More like hit-miss, really.
      *
-     * See also: vips_morph().
+     * See also: `vips_morph()`.
+     * @gir-type Enum
      */
     enum OperationMorphology {
         /**
@@ -1412,7 +1453,8 @@ export namespace Vips {
     }
 
     /**
-     * See also: vips_relational().
+     * See also: `vips_relational()`.
+     * @gir-type Enum
      */
     enum OperationRelational {
         /**
@@ -1447,7 +1489,8 @@ export namespace Vips {
     }
 
     /**
-     * See also: vips_round().
+     * See also: `vips_round()`.
+     * @gir-type Enum
      */
     enum OperationRound {
         /**
@@ -1470,9 +1513,10 @@ export namespace Vips {
     }
 
     /**
-     * Pick a Profile Connection Space for vips_icc_import() and
-     * vips_icc_export(). LAB is usually best, XYZ can be more convenient in some
+     * Pick a Profile Connection Space for `vips_icc_import()` and
+     * `vips_icc_export()`. LAB is usually best, XYZ can be more convenient in some
      * cases.
+     * @gir-type Enum
      */
     enum PCS {
         /**
@@ -1492,6 +1536,7 @@ export namespace Vips {
 
     /**
      * How accurate an operation should be.
+     * @gir-type Enum
      */
     enum Precision {
         /**
@@ -1515,6 +1560,7 @@ export namespace Vips {
 
     /**
      * How to calculate the output pixels when shrinking a 2x2 region.
+     * @gir-type Enum
      */
     enum RegionShrink {
         /**
@@ -1549,7 +1595,8 @@ export namespace Vips {
     }
 
     /**
-     * See also: #VipsForeignSave.
+     * See also: {@link Vips.ForeignSave}.
+     * @gir-type Enum
      */
     enum Saveable {
         /**
@@ -1587,7 +1634,8 @@ export namespace Vips {
      * Controls whether an operation should upsize, downsize, both up and
      * downsize, or force a size.
      *
-     * See also: vips_thumbnail().
+     * See also: `vips_thumbnail()`.
+     * @gir-type Enum
      */
     enum Size {
         /**
@@ -1614,10 +1662,11 @@ export namespace Vips {
     }
 
     /**
-     * Sets the word wrapping style for vips_text() when used with a maximum
+     * Sets the word wrapping style for `vips_text()` when used with a maximum
      * width.
      *
-     * See also: vips_text().
+     * See also: `vips_text()`.
+     * @gir-type Enum
      */
     enum TextWrap {
         /**
@@ -1643,6 +1692,9 @@ export namespace Vips {
         export const $gtype: GObject.GType<Token>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Token {
         LEFT,
         RIGHT,
@@ -1755,7 +1807,7 @@ export namespace Vips {
      * The name we use to attach an ICC profile. The file read and write
      * operations for TIFF, JPEG, PNG and others use this item of metadata to
      * attach and save ICC profiles. The profile is updated by the
-     * vips_icc_transform() operations.
+     * `vips_icc_transform()` operations.
      */
     const META_ICC_NAME: string;
     /**
@@ -1818,8 +1870,8 @@ export namespace Vips {
      */
     const META_RESOLUTION_UNIT: string;
     /**
-     * Images loaded via vips_sequential() have this int field defined. Some
-     * operations (eg. vips_shrinkv()) add extra caches if they see it on their
+     * Images loaded via `vips_sequential()` have this int field defined. Some
+     * operations (eg. `vips_shrinkv()`) add extra caches if they see it on their
      * input.
      */
     const META_SEQUENTIAL: string;
@@ -1840,6 +1892,12 @@ export namespace Vips {
     const TRANSFORM_SHIFT: number;
     const VERSION: string;
     const VERSION_STRING: string;
+    /**
+     * @param object
+     * @param pspec
+     * @param member
+     * @param argument
+     */
     function _object_set_member(
         object: Object,
         pspec: GObject.ParamSpec,
@@ -1849,43 +1907,47 @@ export namespace Vips {
     /**
      * Add the standard vips %GOptionEntry to a %GOptionGroup.
      *
-     * See also: g_option_group_new().
+     * See also: `g_option_group_new()`.
      * @param option_group group to add to
      */
     function add_option_entries(option_group: GLib.OptionGroup): void;
+    /**
+     * @param mem
+     * @param area
+     */
     function area_free_cb(mem: any | null, area: Area): number;
     /**
-     * Return %TRUE if `format` is uchar or schar.
+     * Return `true` if `format` is uchar or schar.
      * @param format format to test
      */
     function band_format_is8bit(format: BandFormat | null): boolean;
     /**
-     * Return %TRUE if `fmt` is one of the complex types.
+     * Return `true` if `fmt` is one of the complex types.
      * @param format format to test
      */
     function band_format_iscomplex(format: BandFormat | null): boolean;
     /**
-     * Return %TRUE if `format` is one of the float types.
+     * Return `true` if `format` is one of the float types.
      * @param format format to test
      */
     function band_format_isfloat(format: BandFormat | null): boolean;
     /**
-     * Return %TRUE if `format` is one of the integer types.
+     * Return `true` if `format` is one of the integer types.
      * @param format format to test
      */
     function band_format_isint(format: BandFormat | null): boolean;
     /**
-     * Return %TRUE if `format` is one of the unsigned integer types.
+     * Return `true` if `format` is one of the unsigned integer types.
      * @param format format to test
      */
     function band_format_isuint(format: BandFormat | null): boolean;
     /**
-     * Like vips_blob_new(), but take a copy of the data. Useful for bindings
+     * Like `vips_blob_new()`, but take a copy of the data. Useful for bindings
      * which struggle with callbacks.
      *
-     * See also: vips_blob_new().
+     * See also: `vips_blob_new()`.
      * @param data data to store
-     * @returns the new #VipsBlob.
+     * @returns the new {@link Vips.Blob}.
      */
     function blob_copy(data: Uint8Array | string): Blob;
     /**
@@ -1903,13 +1965,13 @@ export namespace Vips {
      * operations are marked as untrusted.
      *
      * Set the environment variable `VIPS_BLOCK_UNTRUSTED` to block all untrusted
-     * operations on vips_init().
+     * operations on `vips_init()`.
      * @param state the block state to set
      */
     function block_untrusted_set(state: boolean): void;
     /**
      * Drop the whole operation cache, handy for leak tracking. Also called
-     * automatically on vips_shutdown().
+     * automatically on `vips_shutdown()`.
      */
     function cache_drop_all(): void;
     /**
@@ -1919,21 +1981,21 @@ export namespace Vips {
     function cache_get_max(): number;
     /**
      * Get the maximum number of tracked files we allow before we start dropping
-     * cached operations. See vips_tracked_get_files().
+     * cached operations. See `vips_tracked_get_files()`.
      *
      * libvips only tracks file descriptors it allocates, it can't track ones
      * allocated by external libraries. If you use an operation like
-     * vips_magickload(), most of the descriptors it uses won't be included.
+     * `vips_magickload()`, most of the descriptors it uses won't be included.
      *
-     * See also: vips_tracked_get_files().
+     * See also: `vips_tracked_get_files()`.
      * @returns the maximum number of tracked files we allow
      */
     function cache_get_max_files(): number;
     /**
      * Get the maximum amount of tracked memory we allow before we start dropping
-     * cached operations. See vips_tracked_get_mem().
+     * cached operations. See `vips_tracked_get_mem()`.
      *
-     * See also: vips_tracked_get_mem().
+     * See also: `vips_tracked_get_mem()`.
      * @returns the maximum amount of tracked memory we allow
      */
     function cache_get_max_mem(): number;
@@ -1943,11 +2005,11 @@ export namespace Vips {
      */
     function cache_get_size(): number;
     /**
-     * A binding-friendly version of vips_cache_operation_buildp().
+     * A binding-friendly version of `vips_cache_operation_buildp()`.
      *
      * After calling this, `operation` has the same ref count as when it went in,
-     * and the result must be freed with vips_object_unref_outputs() and
-     * g_object_unref().
+     * and the result must be freed with `vips_object_unref_outputs()` and
+     * `g_object_unref()`.
      * @param operation operation to lookup
      * @returns The built operation.
      */
@@ -1959,8 +2021,8 @@ export namespace Vips {
     /**
      * Handy for debugging. Print the operation cache to stdout just before exit.
      *
-     * See also: vips_cache_set_trace().
-     * @param dump if %TRUE, dump the operation cache on exit
+     * See also: `vips_cache_set_trace()`.
+     * @param dump if `true`, dump the operation cache on exit
      */
     function cache_set_dump(dump: boolean): void;
     /**
@@ -1970,21 +2032,21 @@ export namespace Vips {
     function cache_set_max(max: number): void;
     /**
      * Set the maximum number of tracked files we allow before we start dropping
-     * cached operations. See vips_tracked_get_files().
+     * cached operations. See `vips_tracked_get_files()`.
      *
-     * See also: vips_tracked_get_files().
+     * See also: `vips_tracked_get_files()`.
      * @param max_files max open files we allow
      */
     function cache_set_max_files(max_files: number): void;
     /**
      * Set the maximum amount of tracked memory we allow before we start dropping
-     * cached operations. See vips_tracked_get_mem().
+     * cached operations. See `vips_tracked_get_mem()`.
      *
      * libvips only tracks memory it allocates, it can't track memory allocated by
-     * external libraries. If you use an operation like vips_magickload(), most of
+     * external libraries. If you use an operation like `vips_magickload()`, most of
      * the memory it uses won't be included.
      *
-     * See also: vips_tracked_get_mem().
+     * See also: `vips_tracked_get_mem()`.
      * @param max_mem maximum amount of tracked memory we use
      */
     function cache_set_max_mem(max_mem: number): void;
@@ -1994,18 +2056,27 @@ export namespace Vips {
      * You can set the environment variable `VIPS_TRACE` to turn this option on, or
      * use the command-line flag `--vips-cache-trace`.
      *
-     * See also: vips_cache_set_dump().
-     * @param trace if %TRUE, trace the operation cache
+     * See also: `vips_cache_set_dump()`.
+     * @param trace if `true`, trace the operation cache
      */
     function cache_set_trace(trace: boolean): void;
+    /**
+     * @param operation
+     * @param argc
+     * @param argv
+     */
     function call_argv(operation: Operation, argc: number, argv: string): number;
+    /**
+     * @param group
+     * @param operation
+     */
     function call_options(group: GLib.OptionGroup, operation: Operation): void;
     /**
      * Check that the image is 8 or 16-bit integer, signed or unsigned.
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2017,7 +2088,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @param bandno band number
@@ -2029,7 +2100,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @param bands must have this many bands
@@ -2041,7 +2112,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2053,7 +2124,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im1 first image to check
      * @param im2 second image to check
@@ -2062,11 +2133,11 @@ export namespace Vips {
     function check_bands_1orn(domain: string, im1: Image, im2: Image): number;
     /**
      * Check that an image has 1 or `n` bands. Handy for unary operations, cf.
-     * vips_check_bands_1orn().
+     * `vips_check_bands_1orn()`.
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_check_bands_1orn().
+     * See also: `vips_check_bands_1orn()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @param n number of bands, or 1
@@ -2078,7 +2149,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @param bands at least this many bands
@@ -2090,7 +2161,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im1 first image to check
      * @param im2 second image to check
@@ -2102,7 +2173,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @param coding required coding
@@ -2114,7 +2185,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 on OK, or -1 on error.
@@ -2125,7 +2196,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 on OK, or -1 on error.
@@ -2136,7 +2207,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im1 first image to check
      * @param im2 second image to check
@@ -2148,7 +2219,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2159,7 +2230,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @param fmt format to test for
@@ -2171,7 +2242,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im1 first image to check
      * @param im2 second image to check
@@ -2183,7 +2254,7 @@ export namespace Vips {
      * 65536 elements. Return 0 if the image will pass as a histogram, or -1 and
      * set an error message otherwise.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2194,7 +2265,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2211,7 +2282,7 @@ export namespace Vips {
      *
      * You must unref `out` when you are done with it.
      *
-     * See also: VIPS_MATRIX(), vips_object_local()
+     * See also: VIPS_MATRIX(), `vips_object_local()`
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2222,7 +2293,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2233,7 +2304,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2244,7 +2315,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2255,7 +2326,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param precision precision to check
      * @returns 0 on OK, or -1 on error.
@@ -2266,7 +2337,7 @@ export namespace Vips {
      * Return 0 if the image will pass, or -1 and
      * set an error message otherwise.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2277,7 +2348,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im1 first image to check
      * @param im2 second image to check
@@ -2290,7 +2361,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2301,7 +2372,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2311,7 +2382,7 @@ export namespace Vips {
      * Check that the image is 8 or 16-bit unsigned integer, or float.
      * Otherwise set an error message and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2322,7 +2393,7 @@ export namespace Vips {
      * Otherwise set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2332,7 +2403,7 @@ export namespace Vips {
      * Check that the image is unsigned int or float.
      * Otherwise set an error message and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 if OK, -1 otherwise.
@@ -2343,7 +2414,7 @@ export namespace Vips {
      * If not, set an error message
      * and return non-zero.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param im image to check
      * @returns 0 on OK, or -1 on error.
@@ -2354,7 +2425,7 @@ export namespace Vips {
      * the same number of elements as there are bands in the image, or a 1-band
      * image and a many-element vector.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param n number of elements in vector
      * @param im image to check against
@@ -2364,7 +2435,7 @@ export namespace Vips {
     /**
      * Check that `n` == `len`.
      *
-     * See also: vips_error().
+     * See also: `vips_error()`.
      * @param domain the originating domain for the error message
      * @param n number of elements in vector
      * @param len number of elements vector should have
@@ -2372,10 +2443,10 @@ export namespace Vips {
      */
     function check_vector_length(domain: string, n: number, len: number): number;
     /**
-     * Search below `basename,` return the first class whose name or `nickname`
+     * Search below `basename`, return the first class whose name or `nickname`
      * matches.
      *
-     * See also: vips_type_find()
+     * See also: `vips_type_find()`
      * @param basename name of base class
      * @param nickname search for a class with this nickname
      * @returns the found class.
@@ -2459,7 +2530,18 @@ export namespace Vips {
      * @param Z Input XYZ value
      */
     function col_XYZ2scRGB(X: number, Y: number, Z: number): [number, number, number, number];
+    /**
+     * @param a
+     * @param b
+     * @param C
+     * @param h
+     */
     function col_ab2Ch(a: number, b: number, C: number, h: number): void;
+    /**
+     * @param a CIE a
+     * @param b CIE b
+     * @returns Hue (degrees)
+     */
     function col_ab2h(a: number, b: number): number;
     /**
      * CIEDE2000, from:
@@ -2479,11 +2561,57 @@ export namespace Vips {
      * Make the lookup tables for cmc.
      */
     function col_make_tables_CMC(): void;
+    /**
+     * @param r
+     * @param g
+     * @param b
+     * @param R
+     * @param G
+     * @param B
+     */
     function col_sRGB2scRGB_16(r: number, g: number, b: number, R: number, G: number, B: number): number;
+    /**
+     * @param r
+     * @param g
+     * @param b
+     * @param R
+     * @param G
+     * @param B
+     */
     function col_sRGB2scRGB_16_noclip(r: number, g: number, b: number, R: number, G: number, B: number): number;
+    /**
+     * @param r
+     * @param g
+     * @param b
+     * @param R
+     * @param G
+     * @param B
+     */
     function col_sRGB2scRGB_8(r: number, g: number, b: number, R: number, G: number, B: number): number;
+    /**
+     * @param r
+     * @param g
+     * @param b
+     * @param R
+     * @param G
+     * @param B
+     */
     function col_sRGB2scRGB_8_noclip(r: number, g: number, b: number, R: number, G: number, B: number): number;
+    /**
+     * @param R
+     * @param G
+     * @param B
+     * @param g
+     * @param og
+     */
     function col_scRGB2BW_16(R: number, G: number, B: number, g: number, og: number): number;
+    /**
+     * @param R
+     * @param G
+     * @param B
+     * @param g
+     * @param og
+     */
     function col_scRGB2BW_8(R: number, G: number, B: number, g: number, og: number): number;
     /**
      * Turn scRGB into XYZ.
@@ -2494,19 +2622,37 @@ export namespace Vips {
      * @param B Input scRGB value
      */
     function col_scRGB2XYZ(R: number, G: number, B: number): [number, number, number, number];
+    /**
+     * @param R
+     * @param G
+     * @param B
+     * @param r
+     * @param g
+     * @param b
+     * @param og
+     */
     function col_scRGB2sRGB_16(R: number, G: number, B: number, r: number, g: number, b: number, og: number): number;
+    /**
+     * @param R
+     * @param G
+     * @param B
+     * @param r
+     * @param g
+     * @param b
+     * @param og
+     */
     function col_scRGB2sRGB_8(R: number, G: number, B: number, r: number, g: number, b: number, og: number): number;
     /**
      * Returns the number of worker threads that vips should use when running a
-     * #VipsThreadPool.
+     * `VipsThreadPool`.
      *
      * vips gets this values from these sources in turn:
      *
-     * If vips_concurrency_set() has been called, this value is used. The special
+     * If `vips_concurrency_set()` has been called, this value is used. The special
      * value 0 means "default". You can also use the command-line argument
      * "--vips-concurrency" to set this value.
      *
-     * If vips_concurrency_set() has not been called and no command-line argument
+     * If `vips_concurrency_set()` has not been called and no command-line argument
      * was used, vips uses the value of the environment variable VIPS_CONCURRENCY,
      *
      * If VIPS_CONCURRENCY has not been set, vips finds the number of hardware
@@ -2514,19 +2660,19 @@ export namespace Vips {
      *
      * The final value is clipped to the range 1 - 1024.
      *
-     * See also: vips_concurrency_get().
+     * See also: `vips_concurrency_get()`.
      * @returns number of worker threads to use.
      */
     function concurrency_get(): number;
     /**
      * Sets the number of worker threads that vips should use when running a
-     * #VipsThreadPool.
+     * `VipsThreadPool`.
      *
      * The special value 0 means "default". In this case, the number of threads
      * is set by the environment variable VIPS_CONCURRENCY, or if that is not
      * set, the number of threads available on the host machine.
      *
-     * See also: vips_concurrency_get().
+     * See also: `vips_concurrency_get()`.
      * @param concurrency number of threads to run
      */
     function concurrency_set(concurrency: number): void;
@@ -2534,7 +2680,7 @@ export namespace Vips {
      * Get a pointer to the start of the error buffer as a C string.
      * The string is owned by the error system and must not be freed.
      *
-     * See also: vips_error_clear().
+     * See also: `vips_error_clear()`.
      * @returns the error buffer as a C string which must not be freed
      */
     function error_buffer(): string;
@@ -2547,11 +2693,11 @@ export namespace Vips {
      * Clear and reset the error buffer. This is typically called after presenting
      * an error to the user.
      *
-     * See also: vips_error_buffer().
+     * See also: `vips_error_buffer()`.
      */
     function error_clear(): void;
     /**
-     * Stop errors being logged. Use vips_error_thaw() to unfreeze. You can
+     * Stop errors being logged. Use `vips_error_thaw()` to unfreeze. You can
      * nest freeze/thaw pairs.
      */
     function error_freeze(): void;
@@ -2559,9 +2705,9 @@ export namespace Vips {
      * This function sets the glib error pointer from the vips error buffer and
      * clears it. It's handy for returning errors to glib functions from vips.
      *
-     * See vips_g_error() for the inverse operation.
+     * See `vips_g_error()` for the inverse operation.
      *
-     * See also: g_set_error(), vips_g_error().
+     * See also: `g_set_error()`, `vips_g_error()`.
      */
     function error_g(): void;
     /**
@@ -2574,7 +2720,7 @@ export namespace Vips {
      *
      * Useful for language bindings.
      *
-     * See also: vips_filename_get_options().
+     * See also: `vips_filename_get_options()`.
      * @param vips_filename a filename including a set of options
      * @returns transfer full: just the filename component.
      */
@@ -2585,7 +2731,7 @@ export namespace Vips {
      *
      * Useful for language bindings.
      *
-     * See also: vips_filename_get_filename().
+     * See also: `vips_filename_get_filename()`.
      * @param vips_filename a filename including a set of options
      * @returns transfer full: just the options component.
      */
@@ -2595,15 +2741,19 @@ export namespace Vips {
      * `loader` is something like "tiffload" or "VipsForeignLoadTiff".
      * @param loader name of loader to use for test
      * @param filename file to test
-     * @returns the flags for @filename.
+     * @returns the flags for `filename`.
      */
     function foreign_flags(loader: string, filename: string): ForeignFlags;
+    /**
+     * @param format format type
+     * @returns number of bytes for a band format.
+     */
     function format_sizeof(format: BandFormat | null): number;
     /**
      * This function adds the %GError to the vips error buffer and clears it. It's
-     * the opposite of vips_error_g().
+     * the opposite of `vips_error_g()`.
      *
-     * See also: vips_error_g().
+     * See also: `vips_error_g()`.
      */
     function g_error(): void;
     /**
@@ -2615,7 +2765,7 @@ export namespace Vips {
      * Return the number of bytes at which we flip between open via memory and
      * open via disc. This defaults to 100mb, but can be changed with the
      * VIPS_DISC_THRESHOLD environment variable or the --vips-disc-threshold
-     * command-line flag. See vips_image_new_from_file().
+     * command-line flag. See `vips_image_new_from_file()`.
      * @returns disc threshold in bytes.
      */
     function get_disc_threshold(): number;
@@ -2627,40 +2777,45 @@ export namespace Vips {
      */
     function get_prgname(): string;
     /**
-     * vips_guess_libdir() tries to guess the install directory (usually the
+     * `vips_guess_libdir()` tries to guess the install directory (usually the
      * configure libdir, or $prefix/lib). You should pass
      * in the value of argv[0] (the name your program was run as) as a clue to
      * help it out, plus the name of the environment variable you let the user
      * override your package install area with (eg. "VIPSHOME").
      *
-     * On success, vips_guess_libdir() returns the libdir it discovered, and as a
+     * On success, `vips_guess_libdir()` returns the libdir it discovered, and as a
      * side effect, sets the prefix environment variable (if it's not set).
      *
      * Don't free the return string!
      *
-     * See also: vips_guess_prefix().
+     * See also: `vips_guess_prefix()`.
      * @param argv0 program name (typically argv[0])
      * @param env_name save prefix in this environment variable
      * @returns the libdir as a static string, do not free.
      */
     function guess_libdir(argv0: string, env_name: string): string;
     /**
-     * vips_guess_prefix() tries to guess the install directory. You should pass
+     * `vips_guess_prefix()` tries to guess the install directory. You should pass
      * in the value of argv[0] (the name your program was run as) as a clue to
      * help it out, plus the name of the environment variable you let the user
      * override your package install area with (eg. "VIPSHOME").
      *
-     * On success, vips_guess_prefix() returns the prefix it discovered, and as a
+     * On success, `vips_guess_prefix()` returns the prefix it discovered, and as a
      * side effect, sets the environment variable (if it's not set).
      *
      * Don't free the return string!
      *
-     * See also: vips_guess_libdir().
+     * See also: `vips_guess_libdir()`.
      * @param argv0 program name (typically argv[0])
      * @param env_name save prefix in this environment variable
      * @returns the install prefix as a static string, do not free.
      */
     function guess_prefix(argv0: string, env_name: string): string;
+    /**
+     * @param image
+     * @param data
+     * @param data_length
+     */
     function icc_is_compatible_profile(image: Image, data: any | null, data_length: number): boolean;
     /**
      * VIPS can optionally be built without the ICC library. Use this function to
@@ -2679,32 +2834,36 @@ export namespace Vips {
      * @returns 0 on success, -1 otherwise
      */
     function init(argv0: string): number;
+    /**
+     * @param interpretation image interpretation
+     * @returns the maximum alpha value for an interpretation.
+     */
     function interpretation_max_alpha(interpretation: Interpretation | null): number;
     /**
      * Turn on or off vips leak checking. See also --vips-leak,
-     * vips_add_option_entries() and the `VIPS_LEAK` environment variable.
+     * `vips_add_option_entries()` and the `VIPS_LEAK` environment variable.
      *
      * You should call this very early in your program.
      * @param leak turn leak checking on or off
      */
     function leak_set(leak: boolean): void;
     /**
-     * g_malloc() local to `object,` that is, the memory will be automatically
-     * freed for you when the object is closed. If `object` is %NULL, you need to
-     * free the memory explicitly with g_free().
+     * `g_malloc()` local to `object`, that is, the memory will be automatically
+     * freed for you when the object is closed. If `object` is `null`, you need to
+     * free the memory explicitly with `g_free()`.
      *
-     * This function cannot fail. See vips_tracked_malloc() if you are
+     * This function cannot fail. See `vips_tracked_malloc()` if you are
      * allocating large amounts of memory.
      *
-     * See also: vips_tracked_malloc().
-     * @param object allocate memory local to this #VipsObject, or %NULL
+     * See also: `vips_tracked_malloc()`.
+     * @param object allocate memory local to this {@link Vips.Object}, or `null`
      * @param size number of bytes to allocate
      * @returns a pointer to the allocated memory.
      */
     function malloc(object: Object | null, size: number): any | null;
     /**
      * Return the VIPS nickname for a %GType. Handy for language bindings.
-     * @param type #GType to search for
+     * @param type {@link GObject.GType} to search for
      * @returns the class nickname.
      */
     function nickname_find(type: GObject.GType): string;
@@ -2722,7 +2881,7 @@ export namespace Vips {
      * If set, vips will print messages about the progress of computation to
      * stdout. This can also be enabled with the --vips-progress option, or by
      * setting the environment variable VIPS_PROGRESS.
-     * @param progress %TRUE to enable progress messages
+     * @param progress `true` to enable progress messages
      */
     function progress_set(progress: boolean): void;
     /**
@@ -2739,26 +2898,26 @@ export namespace Vips {
      * Call this to drop caches, close plugins, terminate background threads, and
      * finalize any internal library testing.
      *
-     * vips_shutdown() is optional. If you don't call it, your platform will
+     * `vips_shutdown()` is optional. If you don't call it, your platform will
      * clean up for you. The only negative consequences are that the leak checker
      * and the profiler will not work.
      *
-     * You may call VIPS_INIT() many times and vips_shutdown() many times, but you
-     * must not call VIPS_INIT() after vips_shutdown(). In other words, you cannot
+     * You may call VIPS_INIT() many times and `vips_shutdown()` many times, but you
+     * must not call VIPS_INIT() after `vips_shutdown()`. In other words, you cannot
      * stop and restart libvips.
      *
-     * See also: vips_profile_set(), vips_leak_set().
+     * See also: `vips_profile_set()`, `vips_leak_set()`.
      */
     function shutdown(): void;
     /**
-     * g_strdup() a string. When `object` is freed, the string will be freed for
-     * you.  If `object` is %NULL, you need to
-     * free the memory yourself with g_free().
+     * `g_strdup()` a string. When `object` is freed, the string will be freed for
+     * you.  If `object` is `null`, you need to
+     * free the memory yourself with `g_free()`.
      *
      * This function cannot fail.
      *
-     * See also: vips_malloc().
-     * @param object allocate memory local to this #VipsObject, or %NULL
+     * See also: `vips_malloc()`.
+     * @param object allocate memory local to this {@link Vips.Object}, or `null`
      * @param str string to copy
      * @returns a pointer to the allocated memory
      */
@@ -2767,8 +2926,8 @@ export namespace Vips {
      * Free any thread-private data and flush any profiling information.
      *
      * This function needs to be called when a thread that has been using vips
-     * exits. It is called for you by vips_shutdown() and for any threads created
-     * within the #VipsThreadPool.
+     * exits. It is called for you by `vips_shutdown()` and for any threads created
+     * within the `VipsThreadPool`.
      *
      * You will need to call it from threads created in
      * other ways or there will be memory leaks. If you do not call it, vips
@@ -2780,48 +2939,48 @@ export namespace Vips {
     function thread_shutdown(): void;
     /**
      * Allocate an area of memory aligned on a boundary specified
-     * by `align` that will be tracked by vips_tracked_get_mem()
+     * by `align` that will be tracked by `vips_tracked_get_mem()`
      * and friends.
      *
-     * If allocation fails, vips_tracked_aligned_alloc() returns %NULL
+     * If allocation fails, `vips_tracked_aligned_alloc()` returns `null`
      * and sets an error message.
      *
-     * You must only free the memory returned with vips_tracked_aligned_free().
+     * You must only free the memory returned with `vips_tracked_aligned_free()`.
      *
-     * See also: vips_tracked_malloc(), vips_tracked_aligned_free(), vips_malloc().
+     * See also: `vips_tracked_malloc()`, `vips_tracked_aligned_free()`, `vips_malloc()`.
      * @param size number of bytes to allocate
      * @param align specifies the alignment
-     * @returns a pointer to the allocated memory, or %NULL on error.
+     * @returns a pointer to the allocated memory, or `null` on error.
      */
     function tracked_aligned_alloc(size: number, align: number): any | null;
     /**
      * Only use it to free memory that was
-     * previously allocated with vips_tracked_aligned_alloc()
-     * with a %NULL first argument.
+     * previously allocated with `vips_tracked_aligned_alloc()`
+     * with a `null` first argument.
      *
-     * See also: vips_tracked_aligned_alloc().
+     * See also: `vips_tracked_aligned_alloc()`.
      * @param s memory to free
      */
     function tracked_aligned_free(s?: any | null): void;
     /**
      * Exactly as close(2), but update the number of files currently open via
-     * vips_tracked_get_files(). This is used
+     * `vips_tracked_get_files()`. This is used
      * by the vips operation cache to drop cache when the number of files
      * available is low.
      *
-     * You must only close file descriptors opened with vips_tracked_open().
+     * You must only close file descriptors opened with `vips_tracked_open()`.
      *
-     * See also: vips_tracked_open(), vips_tracked_get_files().
-     * @param fd file to close()
+     * See also: `vips_tracked_open()`, `vips_tracked_get_files()`.
+     * @param fd file to `close()`
      * @returns a file descriptor, or -1 on error.
      */
     function tracked_close(fd: number): number;
     /**
      * Only use it to free memory that was
-     * previously allocated with vips_tracked_malloc()
-     * with a %NULL first argument.
+     * previously allocated with `vips_tracked_malloc()`
+     * with a `null` first argument.
      *
-     * See also: vips_tracked_malloc().
+     * See also: `vips_tracked_malloc()`.
      * @param s memory to free
      */
     function tracked_free(s?: any | null): void;
@@ -2836,59 +2995,62 @@ export namespace Vips {
      */
     function tracked_get_files(): number;
     /**
-     * Returns the number of bytes currently allocated via vips_malloc() and
+     * Returns the number of bytes currently allocated via `vips_malloc()` and
      * friends. vips uses this figure to decide when to start dropping cache, see
-     * #VipsOperation.
+     * {@link Vips.Operation}.
      * @returns the number of currently allocated bytes
      */
     function tracked_get_mem(): number;
     /**
      * Returns the largest number of bytes simultaneously allocated via
-     * vips_tracked_malloc(). Handy for estimating max memory requirements for a
+     * `vips_tracked_malloc()`. Handy for estimating max memory requirements for a
      * program.
      * @returns the largest number of currently allocated bytes
      */
     function tracked_get_mem_highwater(): number;
     /**
-     * Allocate an area of memory that will be tracked by vips_tracked_get_mem()
+     * Allocate an area of memory that will be tracked by `vips_tracked_get_mem()`
      * and friends.
      *
-     * If allocation fails, vips_tracked_malloc() returns %NULL and
+     * If allocation fails, `vips_tracked_malloc()` returns `null` and
      * sets an error message.
      *
-     * You must only free the memory returned with vips_tracked_free().
+     * You must only free the memory returned with `vips_tracked_free()`.
      *
-     * See also: vips_tracked_free(), vips_malloc().
+     * See also: `vips_tracked_free()`, `vips_malloc()`.
      * @param size number of bytes to allocate
-     * @returns a pointer to the allocated memory, or %NULL on error.
+     * @returns a pointer to the allocated memory, or `null` on error.
      */
     function tracked_malloc(size: number): any | null;
     /**
      * Exactly as open(2), but the number of files currently open via
-     * vips_tracked_open() is available via vips_tracked_get_files(). This is used
+     * `vips_tracked_open()` is available via `vips_tracked_get_files()`. This is used
      * by the vips operation cache to drop cache when the number of files
      * available is low.
      *
-     * You must only close the file descriptor with vips_tracked_close().
+     * You must only close the file descriptor with `vips_tracked_close()`.
      *
      * `pathname` should be utf8.
      *
-     * See also: vips_tracked_close(), vips_tracked_get_files().
+     * See also: `vips_tracked_close()`, `vips_tracked_get_files()`.
      * @param pathname name of file to open
-     * @param flags flags for open()
+     * @param flags flags for `open()`
      * @param mode open mode
      * @returns a file descriptor, or -1 on error.
      */
     function tracked_open(pathname: string, flags: number, mode: number): number;
+    /**
+     * @param type
+     */
     function type_depth(type: GObject.GType): number;
     /**
-     * Search below `basename,` return the %GType of the class whose name or
+     * Search below `basename`, return the %GType of the class whose name or
      * `nickname` matches, or 0 for not found.
-     * If `basename` is NULL, the whole of #VipsObject is searched.
+     * If `basename` is NULL, the whole of {@link Vips.Object} is searched.
      *
      * This function uses a cache, so it should be quick.
      *
-     * See also: vips_class_find()
+     * See also: `vips_class_find()`
      * @param basename name of base class
      * @param nickname search for a class with this nickname
      * @returns the %GType of the class, or 0 if the class is not found.
@@ -2897,15 +3059,15 @@ export namespace Vips {
     /**
      * Get the pointer from an area. Don't touch count (area is static).
      * @param value get from this value
-     * @returns The pointer held by @value.
+     * @returns The pointer held by `value`.
      */
     function value_get_area(value: GObject.Value | any): [any | null, number];
     /**
      * Return the pointer to the array held by `value`.
-     * Optionally return the other properties of the array in `n,` `type,`
+     * Optionally return the other properties of the array in `n`, `type`,
      * `sizeof_type`.
      *
-     * See also: vips_value_set_array().
+     * See also: `vips_value_set_array()`.
      * @param value %GValue to get from
      * @returns The array address.
      */
@@ -2914,7 +3076,7 @@ export namespace Vips {
      * Return the start of the array of doubles held by `value`.
      * optionally return the number of elements in `n`.
      *
-     * See also: vips_array_double_new().
+     * See also: `vips_array_double_new()`.
      * @param value %GValue to get from
      * @returns The array address.
      */
@@ -2923,7 +3085,7 @@ export namespace Vips {
      * Return the start of the array of images held by `value`.
      * optionally return the number of elements in `n`.
      *
-     * See also: vips_value_set_array_image().
+     * See also: `vips_value_set_array_image()`.
      * @param value %GValue to get from
      * @returns The array address.
      */
@@ -2932,7 +3094,7 @@ export namespace Vips {
      * Return the start of the array of ints held by `value`.
      * optionally return the number of elements in `n`.
      *
-     * See also: vips_array_int_new().
+     * See also: `vips_array_int_new()`.
      * @param value %GValue to get from
      * @returns The array address.
      */
@@ -2944,23 +3106,27 @@ export namespace Vips {
      * are saved to VIPS files for you coded as base64 inside the XML. They are
      * copied by copying reference-counted pointers.
      *
-     * See also: vips_value_set_blob()
+     * See also: `vips_value_set_blob()`
      * @param value GValue to set
-     * @returns The pointer held by @value.
+     * @returns The pointer held by `value`.
      */
     function value_get_blob(value: GObject.Value | any): Uint8Array;
     /**
      * Get the C string held internally by the %GValue.
      * @param value %GValue to get from
-     * @returns The C string held by @value.
+     * @returns The C string held by `value`.
      */
     function value_get_ref_string(value: GObject.Value | any): [string, number];
     /**
      * Get the C string held internally by the GValue.
      * @param value GValue to get from
-     * @returns The C string held by @value.
+     * @returns The C string held by `value`.
      */
     function value_get_save_string(value: GObject.Value | any): string;
+    /**
+     * @param psoec
+     * @param value
+     */
     function value_is_null(psoec: GObject.ParamSpec, value: GObject.Value | any): boolean;
     /**
      * Set value to be a ref-counted area of memory with a free function.
@@ -2981,7 +3147,7 @@ export namespace Vips {
     /**
      * Set `value` to hold a copy of `array`. Pass in the array length in `n`.
      *
-     * See also: vips_array_double_get().
+     * See also: `vips_array_double_get()`.
      * @param value %GValue to get from
      * @param array array of doubles
      */
@@ -2989,7 +3155,7 @@ export namespace Vips {
     /**
      * Set `value` to hold an array of images. Pass in the array length in `n`.
      *
-     * See also: vips_array_image_get().
+     * See also: `vips_array_image_get()`.
      * @param value %GValue to get from
      * @param n the number of elements
      */
@@ -2997,7 +3163,7 @@ export namespace Vips {
     /**
      * Set `value` to hold a copy of `array`. Pass in the array length in `n`.
      *
-     * See also: vips_array_int_get().
+     * See also: `vips_array_int_get()`.
      * @param value %GValue to get from
      * @param array array of ints
      */
@@ -3005,7 +3171,7 @@ export namespace Vips {
     /**
      * Set `value` to hold an array of %GObject. Pass in the array length in `n`.
      *
-     * See also: vips_value_get_array_object().
+     * See also: `vips_value_get_array_object()`.
      * @param n the number of elements
      */
     function value_set_array_object(n: number): unknown;
@@ -3018,19 +3184,19 @@ export namespace Vips {
      * are saved to VIPS files for you coded as base64 inside the XML. They are
      * copied by copying reference-counted pointers.
      *
-     * See also: vips_value_get_blob()
-     * @param free_fn free function for @data
+     * See also: `vips_value_get_blob()`
+     * @param free_fn free function for `data`
      * @param data pointer to area of memory
      */
     function value_set_blob(free_fn: CallbackFn | null, data: Uint8Array | string): unknown;
     /**
-     * Just like vips_value_set_blob(), but when
+     * Just like `vips_value_set_blob()`, but when
      * `value` is freed, `data` will be
-     * freed with g_free().
+     * freed with `g_free()`.
      *
      * This can be easier to call for language bindings.
      *
-     * See also: vips_value_set_blob()
+     * See also: `vips_value_set_blob()`
      * @param value GValue to set
      * @param data pointer to area of memory
      */
@@ -3069,6 +3235,9 @@ export namespace Vips {
      * @returns a static version string
      */
     function version_string(): string;
+    /**
+     * @gir-type Callback
+     */
     interface ArgumentClassMapFn {
         (
             object_class: typeof Object,
@@ -3078,6 +3247,9 @@ export namespace Vips {
             b?: any | null,
         ): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ArgumentMapFn {
         (
             object: Object,
@@ -3088,45 +3260,87 @@ export namespace Vips {
             b?: any | null,
         ): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface CallbackFn {
         (a?: any | null, b?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ClassMapFn {
         (cls: typeof Object, a?: any | null): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface GenerateFn {
         (out: Region, seq: any | null, a: any | null, b: any | null, stop: boolean): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ImageMapFn {
         (image: Image, name: string, value: GObject.Value | any, a?: any | null): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface InterpolateMethod {
         (interpolate: Interpolate, out: any | null, _in: Region, x: number, y: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ObjectSetArguments {
         (object: Object, a?: any | null, b?: any | null): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface OperationBuildFn {
         (object: Object): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SListFold2Fn {
         (item?: any | null, a?: any | null, b?: any | null, c?: any | null): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SListMap2Fn {
         (item?: any | null, a?: any | null, b?: any | null): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SListMap4Fn {
         (item?: any | null, a?: any | null, b?: any | null, c?: any | null, d?: any | null): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface StartFn {
         (out: Image, a?: any | null, b?: any | null): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface StopFn {
         (seq?: any | null, a?: any | null, b?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TypeMap2Fn {
         (type: GObject.GType, a?: any | null, b?: any | null): any | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TypeMapFn {
         (type: GObject.GType, a?: any | null): any | null;
     }
@@ -3158,6 +3372,7 @@ export namespace Vips {
      * `VIPS_ARGUMENT_NON_HASHABLE` stops the argument being used in hash and
      * equality tests. It's useful for arguments like `revalidate` which
      * control the behaviour of the operator cache.
+     * @gir-type Flags
      */
     enum ArgumentFlags {
         /**
@@ -3221,7 +3436,8 @@ export namespace Vips {
      *
      * #VIPS_FOREIGN_BIGENDIAN means that image pixels are most-significant byte
      * first. Depending on the native byte order of the host machine, you may
-     * need to swap bytes. See vips_copy().
+     * need to swap bytes. See `vips_copy()`.
+     * @gir-type Flags
      */
     enum ForeignFlags {
         /**
@@ -3249,6 +3465,7 @@ export namespace Vips {
 
     /**
      * Which metadata to retain.
+     * @gir-type Flags
      */
     enum ForeignKeep {
         /**
@@ -3288,6 +3505,7 @@ export namespace Vips {
     /**
      * http://www.w3.org/TR/PNG-Filters.html
      * The values mirror those of png.h in libpng.
+     * @gir-type Flags
      */
     enum ForeignPngFilter {
         /**
@@ -3323,7 +3541,7 @@ export namespace Vips {
     /**
      * Flags we associate with an operation.
      *
-     * `VIPS_OPERATION_SEQUENTIAL` means that the operation works like vips_conv():
+     * `VIPS_OPERATION_SEQUENTIAL` means that the operation works like `vips_conv()`:
      * it can process images top-to-bottom with only small non-local
      * references.
      *
@@ -3345,15 +3563,16 @@ export namespace Vips {
      *
      * `VIPS_OPERATION_UNTRUSTED` means the operation depends on external libraries
      * which have not been hardened against attack. It should probably not be used
-     * on untrusted input. Use vips_block_untrusted_set() to block all
+     * on untrusted input. Use `vips_block_untrusted_set()` to block all
      * untrusted operations.
      *
      * `VIPS_OPERATION_BLOCKED` means the operation is prevented from executing. Use
-     * vips_operation_block_set() to enable and disable groups of operations.
+     * `vips_operation_block_set()` to enable and disable groups of operations.
      *
      * `VIPS_OPERATION_REVALIDATE` force the operation to run, updating the cache
      * with the new value. This is used by eg. VipsForeignLoad to implement the
      * "revalidate" argument.
+     * @gir-type Flags
      */
     enum OperationFlags {
         /**
@@ -3399,6 +3618,9 @@ export namespace Vips {
         interface ConstructorProps extends Operation.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Foreign extends Operation {
         static $gtype: GObject.GType<Foreign>;
 
@@ -3423,16 +3645,19 @@ export namespace Vips {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Foreign.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Foreign.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Foreign.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Foreign.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Foreign.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Foreign.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3445,7 +3670,7 @@ export namespace Vips {
          * Searches for an operation you could use to load `filename`. Any trailing
          * options on `filename` are stripped and ignored.
          *
-         * See also: vips_foreign_find_load_buffer(), vips_image_new_from_file().
+         * See also: `vips_foreign_find_load_buffer()`, `vips_image_new_from_file()`.
          * @param filename file to find a loader for
          */
         static find_load(filename: string): string;
@@ -3455,7 +3680,7 @@ export namespace Vips {
          *
          * 	vips -l | grep load_buffer
          *
-         * See also: vips_image_new_from_buffer().
+         * See also: `vips_image_new_from_buffer()`.
          * @param data start of memory buffer
          */
         static find_load_buffer(data: Uint8Array | string): string;
@@ -3465,7 +3690,7 @@ export namespace Vips {
          *
          * 	vips -l | grep load_source
          *
-         * See also: vips_image_new_from_source().
+         * See also: `vips_image_new_from_source()`.
          * @param source source to load from
          */
         static find_load_source(source: Source): string;
@@ -3473,7 +3698,7 @@ export namespace Vips {
          * Searches for an operation you could use to write to `filename`.
          * Any trailing options on `filename` are stripped and ignored.
          *
-         * See also: vips_foreign_find_save_buffer(), vips_image_write_to_file().
+         * See also: `vips_foreign_find_save_buffer()`, `vips_image_write_to_file()`.
          * @param filename name to find a saver for
          */
         static find_save(filename: string): string | null;
@@ -3481,7 +3706,7 @@ export namespace Vips {
          * Searches for an operation you could use to write to a buffer in `suffix`
          * format.
          *
-         * See also: vips_image_write_to_buffer().
+         * See also: `vips_image_write_to_buffer()`.
          * @param suffix name to find a saver for
          */
         static find_save_buffer(suffix: string): string | null;
@@ -3489,53 +3714,53 @@ export namespace Vips {
          * Searches for an operation you could use to write to a target in `suffix`
          * format.
          *
-         * See also: vips_image_write_to_buffer().
+         * See also: `vips_image_write_to_buffer()`.
          * @param suffix format to find a saver for
          */
         static find_save_target(suffix: string): string | null;
         /**
-         * Get a %NULL-terminated array listing all the supported suffixes.
+         * Get a `null`-terminated array listing all the supported suffixes.
          *
          * This is not the same as all the supported file types, since libvips
          * detects image format for load by testing the first few bytes.
          *
-         * Use vips_foreign_find_load() to detect type for a specific file.
+         * Use `vips_foreign_find_load()` to detect type for a specific file.
          *
-         * Free the return result with g_strfreev().
+         * Free the return result with `g_strfreev()`.
          */
         static get_suffixes(): string[];
         /**
-         * Return %TRUE if `filename` can be loaded by `loader`. `loader` is something
+         * Return `true` if `filename` can be loaded by `loader`. `loader` is something
          * like "tiffload" or "VipsForeignLoadTiff".
          * @param loader name of loader to use for test
          * @param filename file to test
          */
         static is_a(loader: string, filename: string): boolean;
         /**
-         * Return %TRUE if `data` can be loaded by `loader`. `loader` is something
+         * Return `true` if `data` can be loaded by `loader`. `loader` is something
          * like "tiffload_buffer" or "VipsForeignLoadTiffBuffer".
          * @param loader name of loader to use for test
          * @param data pointer to the buffer to test
          */
         static is_a_buffer(loader: string, data: Uint8Array | string): boolean;
         /**
-         * Return %TRUE if `source` can be loaded by `loader`. `loader` is something
+         * Return `true` if `source` can be loaded by `loader`. `loader` is something
          * like "tiffload_source" or "VipsForeignLoadTiffSource".
          * @param loader name of loader to use for test
          * @param source source to test
          */
         static is_a_source(loader: string, source: Source): boolean;
         /**
-         * Apply a function to every #VipsForeignClass that VIPS knows about. Foreigns
+         * Apply a function to every {@link Vips.ForeignClass} that VIPS knows about. Foreigns
          * are presented to the function in priority order.
          *
-         * Like all VIPS map functions, if `fn` returns %NULL, iteration continues. If
-         * it returns non-%NULL, iteration terminates and that value is returned. The
-         * map function returns %NULL if all calls return %NULL.
+         * Like all VIPS map functions, if `fn` returns `null`, iteration continues. If
+         * it returns non-`null`, iteration terminates and that value is returned. The
+         * map function returns `null` if all calls return `null`.
          *
-         * See also: vips_slist_map().
+         * See also: `vips_slist_map()`.
          * @param base base class to search below (eg. "VipsForeignLoad")
-         * @param fn function to apply to each #VipsForeignClass
+         * @param fn function to apply to each {@link Vips.ForeignClass}
          * @param a user data
          * @param b user data
          */
@@ -3574,6 +3799,9 @@ export namespace Vips {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class ForeignLoad extends Foreign {
         static $gtype: GObject.GType<ForeignLoad>;
 
@@ -3624,16 +3852,19 @@ export namespace Vips {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ForeignLoad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ForeignLoad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ForeignLoad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3642,10 +3873,23 @@ export namespace Vips {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_flags(): ForeignFlags;
+        /**
+         * @param args
+         * @virtual
+         */
         // Conflicted with Vips.Operation.vfunc_get_flags
         vfunc_get_flags(...args: never[]): any;
+        /**
+         * @virtual
+         */
         vfunc_header(): number;
+        /**
+         * @virtual
+         */
         vfunc_load(): number;
     }
 
@@ -3675,6 +3919,9 @@ export namespace Vips {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class ForeignSave extends Foreign {
         static $gtype: GObject.GType<ForeignSave>;
 
@@ -3717,16 +3964,19 @@ export namespace Vips {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ForeignSave.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ForeignSave.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ForeignSave.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3737,11 +3987,58 @@ export namespace Vips {
     namespace Image {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
+            /**
+             * The ::eval signal is emitted once per work unit (typically a 128 x
+             * 128 area of pixels) during image computation.
+             *
+             * You can use this signal to update user-interfaces with progress
+             * feedback. Beware of updating too frequently: you will usually
+             * need some throttling mechanism.
+             *
+             * Use `vips_image_set_progress()` to turn on progress reporting for an
+             * image.
+             * @signal
+             */
             eval: (arg0: Progress) => void;
+            /**
+             * The ::invalidate signal is emitted when an image or one of it's
+             * upstream data sources has been destructively modified. See
+             * `vips_image_invalidate_all()`.
+             * @signal
+             */
             invalidate: () => void;
+            /**
+             * The ::minimise signal is emitted when an image has been asked to
+             * minimise memory usage. All non-essential caches are dropped.
+             * See `vips_image_minimise_all()`.
+             * @signal
+             */
             minimise: () => void;
+            /**
+             * The ::posteval signal is emitted once at the end of the computation
+             * of `image`. It's a good place to shut down evaluation feedback.
+             *
+             * Use `vips_image_set_progress()` to turn on progress reporting for an
+             * image.
+             * @signal
+             */
             posteval: (arg0: Progress) => void;
+            /**
+             * The ::preeval signal is emitted once before computation of `image`
+             * starts. It's a good place to set up evaluation feedback.
+             *
+             * Use `vips_image_set_progress()` to turn on progress reporting for an
+             * image.
+             * @signal
+             */
             preeval: (arg0: Progress) => void;
+            /**
+             * The ::written signal is emitted just after an image has been
+             * written to. It is
+             * used by vips to implement things like write to foreign file
+             * formats.
+             * @signal
+             */
             written: (arg0: number) => void;
             'notify::bands': (pspec: GObject.ParamSpec) => void;
             'notify::coding': (pspec: GObject.ParamSpec) => void;
@@ -3791,6 +4088,7 @@ export namespace Vips {
      * An image. These can represent an image on disc, a memory buffer, an image
      * in the process of being written to disc or a partially evaluated image
      * in memory.
+     * @gir-type Class
      */
     class Image extends Object {
         static $gtype: GObject.GType<Image>;
@@ -3885,16 +4183,19 @@ export namespace Vips {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3903,28 +4204,59 @@ export namespace Vips {
 
         // Static methods
 
+        /**
+         * @param format the format
+         */
         static get_format_max(format: BandFormat): number;
 
         // Virtual methods
 
+        /**
+         * @param progress
+         * @param data
+         * @virtual
+         */
         vfunc_eval(progress: Progress, data?: any | null): void;
+        /**
+         * @param data
+         * @virtual
+         */
         vfunc_invalidate(data?: any | null): void;
+        /**
+         * @param data
+         * @virtual
+         */
         vfunc_minimise(data?: any | null): void;
+        /**
+         * @param progress
+         * @param data
+         * @virtual
+         */
         vfunc_posteval(progress: Progress, data?: any | null): void;
+        /**
+         * @param progress
+         * @param data
+         * @virtual
+         */
         vfunc_preeval(progress: Progress, data?: any | null): void;
+        /**
+         * @param result
+         * @param data
+         * @virtual
+         */
         vfunc_written(result: number, data?: any | null): void;
 
         // Methods
 
         /**
          * Remove the orientation tag on `image`. Also remove any exif orientation tags.
-         * You must vips_copy() the image before calling this function since it
+         * You must `vips_copy()` the image before calling this function since it
          * modifies metadata.
          */
         autorot_remove_angle(): void;
         /**
-         * Test if `image` is in a colourspace that vips_colourspace() can process.
-         * @returns %TRUE if @image is in a supported colourspace.
+         * Test if `image` is in a colourspace that `vips_colourspace()` can process.
+         * @returns `true` if `image` is in a supported colourspace.
          */
         colourspace_issupported(): boolean;
         /**
@@ -3937,16 +4269,16 @@ export namespace Vips {
          * Call this before using the draw operations to make sure you have a
          * memory image that can be modified.
          *
-         * vips_copy() adds a null "copy" node to a pipeline. Use that
+         * `vips_copy()` adds a null "copy" node to a pipeline. Use that
          * instead if you want to change metadata and not pixels.
          *
-         * This operation is thread-safe, unlike vips_image_wio_input().
+         * This operation is thread-safe, unlike `vips_image_wio_input()`.
          *
          * If you are sure that `image` is not shared with another thread (perhaps you
-         * have made it yourself), use vips_image_wio_input() instead.
+         * have made it yourself), use `vips_image_wio_input()` instead.
          *
-         * See also: vips_image_wio_input().
-         * @returns the new #VipsImage, or %NULL on error.
+         * See also: `vips_image_wio_input()`.
+         * @returns the new {@link Vips.Image}, or `null` on error.
          */
         copy_memory(): Image;
         /**
@@ -3956,7 +4288,7 @@ export namespace Vips {
          * This unpacks LABQ to plain LAB. Use vips_LabQ2LabS() for a bit more speed
          * if you need it.
          *
-         * See also: vips_image_encode(), vips_LabQ2Lab(), vips_rad2float().
+         * See also: `vips_image_encode()`, vips_LabQ2Lab(), `vips_rad2float()`.
          * @returns 0 on success, or -1 on error.
          */
         decode(): [number, Image];
@@ -3964,14 +4296,14 @@ export namespace Vips {
          * We often need to know what an image will decode to without actually
          * decoding it, for example, in arg checking.
          *
-         * See also: vips_image_decode().
+         * See also: `vips_image_decode()`.
          */
         decode_predict(): [number, number, BandFormat];
         /**
          * A convenience function to pack to a coding. The inverse of
-         * vips_image_decode().
+         * `vips_image_decode()`.
          *
-         * See also: vips_image_decode().
+         * See also: `vips_image_decode()`.
          * @param coding coding to apply
          * @returns 0 on success, or -1 on error.
          */
@@ -3998,11 +4330,11 @@ export namespace Vips {
          * but uninitialised.
          *
          * This will return -1 and add a message to the error buffer if the field
-         * does not exist. Use vips_image_get_typeof() to test for the
+         * does not exist. Use `vips_image_get_typeof()` to test for the
          * existence of a field first if you are not certain it will be there.
          *
          * For example, to read a double from an image (though of course you would use
-         * vips_image_get_double() in practice):
+         * `vips_image_get_double()` in practice):
          *
          *
          * ```
@@ -4026,18 +4358,18 @@ export namespace Vips {
          * ```
          *
          *
-         * See also: vips_image_get_typeof(), vips_image_get_double().
+         * See also: `vips_image_get_typeof()`, `vips_image_get_double()`.
          * @param name the name to fetch
          * @returns 0 on success, -1 otherwise.
          */
         get(name: string): [number, unknown];
         /**
          * Gets `data` from `image` under the name `name`. A convenience
-         * function over vips_image_get(). Use vips_image_get_typeof() to test for
+         * function over `vips_image_get()`. Use `vips_image_get_typeof()` to test for
          * the existence of a piece of metadata.
          *
-         * See also: vips_image_set_area(), vips_image_get(),
-         * vips_image_get_typeof()
+         * See also: `vips_image_set_area()`, `vips_image_get()`,
+         * `vips_image_get_typeof()`
          * @param name metadata name
          * @returns 0 on success, -1 otherwise.
          */
@@ -4049,10 +4381,10 @@ export namespace Vips {
          *
          * Do not free `out`. `out` is valid as long as `image` is valid.
          *
-         * Use vips_image_get_typeof() to test for the
+         * Use `vips_image_get_typeof()` to test for the
          * existence of a piece of metadata.
          *
-         * See also: vips_image_get(), vips_image_set_image()
+         * See also: `vips_image_get()`, `vips_image_set_image()`
          * @param name metadata name
          * @returns 0 on success, -1 otherwise.
          */
@@ -4064,10 +4396,10 @@ export namespace Vips {
          *
          * Do not free `out`. `out` is valid as long as `image` is valid.
          *
-         * Use vips_image_get_typeof() to test for the
+         * Use `vips_image_get_typeof()` to test for the
          * existence of a piece of metadata.
          *
-         * See also: vips_image_get(), vips_image_set_image()
+         * See also: `vips_image_get()`, `vips_image_set_image()`
          * @param name metadata name
          * @returns 0 on success, -1 otherwise.
          */
@@ -4075,27 +4407,33 @@ export namespace Vips {
         /**
          * Returns `name` from `image` in `out`.
          * This function will read any field, returning it as a printable string.
-         * You need to free the string with g_free() when you are done with it.
+         * You need to free the string with `g_free()` when you are done with it.
          *
-         * This will base64-encode BLOBs, for example. Use vips_buf_appendgv() to
+         * This will base64-encode BLOBs, for example. Use `vips_buf_appendgv()` to
          * make a string that's for humans.
          *
-         * See also: vips_image_get(), vips_image_get_typeof(), vips_buf_appendgv().
+         * See also: `vips_image_get()`, `vips_image_get_typeof()`, `vips_buf_appendgv()`.
          * @param name field name
          * @returns 0 on success, -1 otherwise.
          */
         get_as_string(name: string): [number, string];
+        /**
+         * @returns the number of bands (channels) in the image.
+         */
         get_bands(): number;
         /**
-         * Gets `data` from `image` under the name `name,` optionally returns its
-         * length in `length`. Use vips_image_get_typeof() to test for the existence
+         * Gets `data` from `image` under the name `name`, optionally returns its
+         * length in `length`. Use `vips_image_get_typeof()` to test for the existence
          * of a piece of metadata.
          *
-         * See also: vips_image_get(), vips_image_get_typeof(), vips_blob_get(),
+         * See also: `vips_image_get()`, `vips_image_get_typeof()`, `vips_blob_get()`,
          * @param name metadata name
          * @returns 0 on success, -1 otherwise.
          */
         get_blob(name: string): [number, Uint8Array];
+        /**
+         * @returns the image coding
+         */
         get_coding(): Coding;
         /**
          * Fetch and sanity-check #VIPS_CONCURRENCY. Default to 1 if not present or
@@ -4109,10 +4447,10 @@ export namespace Vips {
          * allocating large amounts of memory and performing a long computation. Image
          * pixels are laid out in band-packed rows.
          *
-         * Since this function modifies `image,` it is not threadsafe. Only call it on
+         * Since this function modifies `image`, it is not threadsafe. Only call it on
          * images which you are sure have not been shared with another thread.
          *
-         * See also: vips_image_wio_input(), vips_image_copy_memory().
+         * See also: `vips_image_wio_input()`, `vips_image_copy_memory()`.
          * @returns a pointer to pixel data, if possible.
          */
         get_data(): any | null;
@@ -4121,22 +4459,31 @@ export namespace Vips {
          * The value will be transformed into
          * a double, if possible.
          *
-         * See also: vips_image_get(), vips_image_get_typeof()
+         * See also: `vips_image_get()`, `vips_image_get_typeof()`
          * @param name field name
          * @returns 0 on success, -1 otherwise.
          */
         get_double(name: string): [number, number];
         /**
-         * Get a %NULL-terminated array listing all the metadata field names on `image`.
-         * Free the return result with g_strfreev().
+         * Get a `null`-terminated array listing all the metadata field names on `image`.
+         * Free the return result with `g_strfreev()`.
          *
          * This is handy for language bindings. From C, it's usually more convenient to
-         * use vips_image_map().
-         * @returns metadata fields in image, as a %NULL-terminated array.
+         * use `vips_image_map()`.
+         * @returns metadata fields in image, as a `null`-terminated array.
          */
         get_fields(): string[];
+        /**
+         * @returns the name of the file the image was loaded from, or NULL if there is no filename.
+         */
         get_filename(): string;
+        /**
+         * @returns the format of each band element.
+         */
         get_format(): BandFormat;
+        /**
+         * @returns the number of pixels down the image.
+         */
         get_height(): number;
         /**
          * This function reads the image history as a C string. The string is owned
@@ -4144,22 +4491,22 @@ export namespace Vips {
          *
          * VIPS tracks the history of each image, that is, the sequence of operations
          * that generated that image. Applications built on VIPS need to call
-         * vips_image_history_printf() for each action they perform, setting the
+         * `vips_image_history_printf()` for each action they perform, setting the
          * command-line equivalent for the action.
          *
-         * See also: vips_image_history_printf().
-         * @returns The history of @image as a C string. Do not free!
+         * See also: `vips_image_history_printf()`.
+         * @returns The history of `image` as a C string. Do not free!
          */
         get_history(): string;
         /**
          * Gets `out` from `im` under the name `name`.
          * The field must be of type
-         * #VIPS_TYPE_IMAGE. You must unref `out` with g_object_unref().
+         * #VIPS_TYPE_IMAGE. You must unref `out` with `g_object_unref()`.
          *
-         * Use vips_image_get_typeof() to test for the
+         * Use `vips_image_get_typeof()` to test for the
          * existence of a piece of metadata.
          *
-         * See also: vips_image_get(), vips_image_set_image()
+         * See also: `vips_image_get()`, `vips_image_set_image()`
          * @param name metadata name
          * @returns 0 on success, -1 otherwise.
          */
@@ -4169,15 +4516,15 @@ export namespace Vips {
          * The value will be transformed into
          * an int, if possible.
          *
-         * See also: vips_image_get(), vips_image_get_typeof()
+         * See also: `vips_image_get()`, `vips_image_get_typeof()`
          * @param name field name
          * @returns 0 on success, -1 otherwise.
          */
         get_int(name: string): [number, number];
         /**
-         * Return the #VipsInterpretation set in the image header.
-         * Use vips_image_guess_interpretation() if you want a sanity-checked value.
-         * @returns the #VipsInterpretation from the image header.
+         * Return the {@link Vips.Interpretation} set in the image header.
+         * Use `vips_image_guess_interpretation()` if you want a sanity-checked value.
+         * @returns the {@link Vips.Interpretation} from the image header.
          */
         get_interpretation(): Interpretation;
         /**
@@ -4214,7 +4561,7 @@ export namespace Vips {
          */
         get_orientation(): number;
         /**
-         * Return %TRUE if applying the orientation would swap width and height.
+         * Return `true` if applying the orientation would swap width and height.
          * @returns if width/height will swap
          */
         get_orientation_swap(): boolean;
@@ -4237,9 +4584,9 @@ export namespace Vips {
          *
          * Do not free `out`.
          *
-         * Use vips_image_get_as_string() to fetch any field as a string.
+         * Use `vips_image_get_as_string()` to fetch any field as a string.
          *
-         * See also: vips_image_get(), vips_image_get_typeof()
+         * See also: `vips_image_get()`, `vips_image_get_typeof()`
          * @param name field name
          * @returns 0 on success, -1 otherwise.
          */
@@ -4248,28 +4595,43 @@ export namespace Vips {
          * Read the %GType for a header field. Returns zero if there is no
          * field of that name.
          *
-         * See also: vips_image_get().
+         * See also: `vips_image_get()`.
          * @param name the name to search for
          * @returns the %GType of the field, or zero if there is no field of that name.
          */
         get_typeof(name: string): GObject.GType;
+        /**
+         * @returns the number of pixels across the image.
+         */
         get_width(): number;
+        /**
+         * @returns the horizontal position of the image origin, in pixels.
+         */
         get_xoffset(): number;
+        /**
+         * @returns the horizontal image resolution in pixels per millimeter.
+         */
         get_xres(): number;
+        /**
+         * @returns the vertical position of the image origin, in pixels.
+         */
         get_yoffset(): number;
+        /**
+         * @returns the vertical image resolution in pixels per millimeter.
+         */
         get_yres(): number;
         /**
-         * Return the #VipsBandFormat for an image, guessing a sane value if
+         * Return the {@link Vips.BandFormat} for an image, guessing a sane value if
          * the set value looks crazy.
          *
          * For example, for a float image tagged as rgb16, we'd return ushort.
-         * @returns a sensible #VipsBandFormat for the image.
+         * @returns a sensible {@link Vips.BandFormat} for the image.
          */
         guess_format(): BandFormat;
         /**
-         * Return the #VipsInterpretation for an image, guessing a sane value if
+         * Return the {@link Vips.Interpretation} for an image, guessing a sane value if
          * the set value looks crazy.
-         * @returns a sensible #VipsInterpretation for the image.
+         * @returns a sensible {@link Vips.Interpretation} for the image.
          */
         guess_interpretation(): Interpretation;
         /**
@@ -4277,15 +4639,15 @@ export namespace Vips {
          * example, a 4-band #VIPS_INTERPRETATION_sRGB would, but a six-band
          * #VIPS_INTERPRETATION_MULTIBAND would not.
          *
-         * Return %TRUE if `image` has an alpha channel.
+         * Return `true` if `image` has an alpha channel.
          */
         hasalpha(): boolean;
         /**
          * Formats the name/argv as a single string and calls
-         * vips_image_history_printf(). A
+         * `vips_image_history_printf()`. A
          * convenience function for command-line prorams.
          *
-         * See also: vips_image_get_history().
+         * See also: `vips_image_get_history()`.
          * @param name program name
          * @param argv program arguments
          * @returns 0 on success, -1 on error.
@@ -4295,7 +4657,7 @@ export namespace Vips {
          * Transform an image from absolute to relative colorimetry using the
          * MediaWhitePoint stored in the ICC profile.
          *
-         * See also: vips_icc_transform(), vips_icc_import().
+         * See also: `vips_icc_transform()`, `vips_icc_import()`.
          * @param profile_filename use this profile
          * @returns 0 on success, -1 on error.
          */
@@ -4303,12 +4665,12 @@ export namespace Vips {
         /**
          * A convenience function to set the header fields after creating an image.
          * Normally you copy the fields from your input images with
-         * vips_image_pipelinev() and then make
+         * `vips_image_pipelinev()` and then make
          * any adjustments you need, but if you are creating an image from scratch,
-         * for example vips_black() or vips_jpegload(), you do need to set all the
+         * for example `vips_black()` or `vips_jpegload()`, you do need to set all the
          * fields yourself.
          *
-         * See also: vips_image_pipelinev().
+         * See also: `vips_image_pipelinev()`.
          * @param xsize image width
          * @param ysize image height
          * @param bands image bands
@@ -4329,19 +4691,19 @@ export namespace Vips {
             yres: number,
         ): void;
         /**
-         * Gets `image` ready for an in-place operation, such as vips_draw_circle().
+         * Gets `image` ready for an in-place operation, such as `vips_draw_circle()`.
          * After calling this function you can both read and write the image with
          * VIPS_IMAGE_ADDR().
          *
          * This method is called for you by the base class of the draw operations,
          * there's no need to call it yourself.
          *
-         * Since this function modifies `image,` it is not thread-safe. Only call it on
+         * Since this function modifies `image`, it is not thread-safe. Only call it on
          * images which you are sure have not been shared with another thread.
          * All in-place operations are inherently not thread-safe, so you need to take
          * great care in any case.
          *
-         * See also: vips_draw_circle(), vips_image_wio_input().
+         * See also: `vips_draw_circle()`, `vips_image_wio_input()`.
          * @returns 0 on success, or -1 on error.
          */
         inplace(): number;
@@ -4351,15 +4713,15 @@ export namespace Vips {
          * depend upon this image are dropped from the VIPS operation cache.
          *
          * You should call this function after
-         * destructively modifying an image with something like vips_draw_circle().
+         * destructively modifying an image with something like `vips_draw_circle()`.
          *
-         * The #VipsImage::invalidate signal is emitted for all invalidated images.
+         * The {@link Vips.Image.SignalSignatures.invalidate | Vips.Image::invalidate} signal is emitted for all invalidated images.
          *
-         * See also: vips_region_invalidate().
+         * See also: `vips_region_invalidate()`.
          */
         invalidate_all(): void;
         /**
-         * Return %TRUE if `image` is in most-significant-
+         * Return `true` if `image` is in most-significant-
          * byte first form. This is the byte order used on the SPARC
          * architecture and others.
          */
@@ -4368,38 +4730,38 @@ export namespace Vips {
          * TRUE if any of the images upstream from `image` were opened in sequential
          * mode. Some operations change behaviour slightly in sequential mode to
          * optimize memory behaviour.
-         * @returns %TRUE if @image is in sequential mode.
+         * @returns `true` if `image` is in sequential mode.
          */
         is_sequential(): boolean;
         /**
-         * Return %TRUE if `image` represents a file on disc in some way.
+         * Return `true` if `image` represents a file on disc in some way.
          */
         isfile(): boolean;
         /**
-         * If `image` has been killed (see vips_image_set_kill()), set an error message,
-         * clear the #VipsImage.kill flag and return %TRUE. Otherwise return %FALSE.
+         * If `image` has been killed (see `vips_image_set_kill()`), set an error message,
+         * clear the {@link Vips.Image}.kill flag and return `true`. Otherwise return `false`.
          *
          * Handy for loops which need to run sets of threads which can fail.
          *
-         * See also: vips_image_set_kill().
-         * @returns %TRUE if @image has been killed.
+         * See also: `vips_image_set_kill()`.
+         * @returns `true` if `image` has been killed.
          */
         iskilled(): boolean;
         /**
-         * Return %TRUE if `im` represents a partial image (a delayed calculation).
+         * Return `true` if `im` represents a partial image (a delayed calculation).
          */
         ispartial(): boolean;
         /**
          * This function calls `fn` for every header field, including every item of
          * metadata.
          *
-         * Like all _map functions, the user function should return %NULL to continue
-         * iteration, or a non-%NULL pointer to indicate early termination.
+         * Like all _map functions, the user function should return `null` to continue
+         * iteration, or a non-`null` pointer to indicate early termination.
          *
-         * See also: vips_image_get_typeof(), vips_image_get().
+         * See also: `vips_image_get_typeof()`, `vips_image_get()`.
          * @param fn function to call for each header field
          * @param a user data for function
-         * @returns %NULL on success, the failing pointer otherwise.
+         * @returns `null` on success, the failing pointer otherwise.
          */
         map(fn?: ImageMapFn | null, a?: any | null): any | null;
         /**
@@ -4407,23 +4769,23 @@ export namespace Vips {
          * which this image depends upon. This function is called automatically at the
          * end of a computation, but it might be useful to call at other times.
          *
-         * The #VipsImage::minimise signal is emitted for all minimised images.
+         * The {@link Vips.Image.SignalSignatures.minimise | Vips.Image::minimise} signal is emitted for all minimised images.
          */
         minimise_all(): void;
         /**
-         * Check that an image is readable with vips_region_prepare() and friends.
-         * If it isn't, try to transform the image so that vips_region_prepare() can
+         * Check that an image is readable with `vips_region_prepare()` and friends.
+         * If it isn't, try to transform the image so that `vips_region_prepare()` can
          * work.
          *
-         * See also: vips_image_pio_output(), vips_region_prepare().
+         * See also: `vips_image_pio_output()`, `vips_region_prepare()`.
          * @returns 0 on success, or -1 on error.
          */
         pio_input(): number;
         /**
-         * Check that an image is writeable with vips_image_generate(). If it isn't,
-         * try to transform the image so that vips_image_generate() can work.
+         * Check that an image is writeable with `vips_image_generate()`. If it isn't,
+         * try to transform the image so that `vips_image_generate()` can work.
          *
-         * See also: vips_image_pio_input().
+         * See also: `vips_image_pio_input()`.
          * @returns 0 on success, or -1 on error.
          */
         pio_output(): number;
@@ -4433,37 +4795,37 @@ export namespace Vips {
          */
         print_field(name: string): void;
         /**
-         * Find and remove an item of metadata. Return %FALSE if no metadata of that
+         * Find and remove an item of metadata. Return `false` if no metadata of that
          * name was found.
          *
-         * See also: vips_image_set(), vips_image_get_typeof().
+         * See also: `vips_image_set()`, `vips_image_get_typeof()`.
          * @param name the name to search for
-         * @returns %TRUE if an item of metadata of that name was found and removed
+         * @returns `true` if an item of metadata of that name was found and removed
          */
         remove(name: string): boolean;
         /**
-         * vips_reorder_margin_hint() sets a hint that `image` contains a margin, that
-         * is, that each vips_region_prepare() on `image` will request a slightly larger
+         * `vips_reorder_margin_hint()` sets a hint that `image` contains a margin, that
+         * is, that each `vips_region_prepare()` on `image` will request a slightly larger
          * region from it's inputs. A good value for `margin` is (width * height) for
          * the window the operation uses.
          *
-         * This information is used by vips_image_prepare_many() to attempt to reorder
+         * This information is used by `vips_image_prepare_many()` to attempt to reorder
          * computations to minimise recomputation.
          *
-         * See also: vips_image_prepare_many().
+         * See also: `vips_image_prepare_many()`.
          * @param margin the size of the margin this operation has added
          */
         reorder_margin_hint(margin: number): void;
         /**
-         * vips_reorder_prepare_many() runs vips_region_prepare() on each region in
-         * `regions,` requesting the pixels in `r`.
+         * `vips_reorder_prepare_many()` runs `vips_region_prepare()` on each region in
+         * `regions`, requesting the pixels in `r`.
          *
          * It tries to request the regions in the order which will cause least
          * recomputation. This can give a large speedup, in some cases.
          *
-         * See also: vips_region_prepare(), vips_reorder_margin_hint().
+         * See also: `vips_region_prepare()`, `vips_reorder_margin_hint()`.
          * @param regions the set of regions to prepare
-         * @param r the #VipsRect to prepare on each region
+         * @param r the {@link Vips.Rect} to prepare on each region
          * @returns 0 on success, or -1 on error.
          */
         reorder_prepare_many(regions: Region[], r: Rect): number;
@@ -4473,7 +4835,7 @@ export namespace Vips {
          * value when you're done with it.
          *
          * For example, to set an integer on an image (though you would use the
-         * convenience function vips_image_set_int() in practice), you would do:
+         * convenience function `vips_image_set_int()` in practice), you would do:
          *
          *
          * ```
@@ -4486,36 +4848,39 @@ export namespace Vips {
          * ```
          *
          *
-         * See also: vips_image_get().
+         * See also: `vips_image_get()`.
          * @param name the name to give the metadata
          * @param value the %GValue to copy into the image
          */
         set(name: string, value: GObject.Value | any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Attaches `data` as a metadata item on `image` under the name `name`. When
          * VIPS no longer needs the metadata, it will be freed with `free_fn`.
          *
-         * See also: vips_image_get_double(), vips_image_set()
+         * See also: `vips_image_get_double()`, `vips_image_set()`
          * @param name metadata name
-         * @param free_fn free function for @data
+         * @param free_fn free function for `data`
          */
         set_area(name: string, free_fn?: CallbackFn | null): void;
         /**
          * Attaches `array` as a metadata item on `image` as `name`.
-         * A convenience function over vips_image_set().
+         * A convenience function over `vips_image_set()`.
          *
-         * See also: vips_image_get_image(), vips_image_set().
+         * See also: `vips_image_get_image()`, `vips_image_set()`.
          * @param name metadata name
          * @param array array of doubles
          */
         set_array_double(name: string, array?: number[] | null): void;
         /**
          * Attaches `array` as a metadata item on `image` as `name`.
-         * A convenience function over vips_image_set().
+         * A convenience function over `vips_image_set()`.
          *
-         * See also: vips_image_get_image(), vips_image_set().
+         * See also: `vips_image_get_image()`, `vips_image_set()`.
          * @param name metadata name
          * @param array array of ints
          */
@@ -4523,47 +4888,47 @@ export namespace Vips {
         /**
          * Attaches `data` as a metadata item on `image` under the name `name`.
          *
-         * See also: vips_image_get_blob(), vips_image_set().
+         * See also: `vips_image_get_blob()`, `vips_image_set()`.
          * @param name metadata name
-         * @param free_fn free function for @data
+         * @param free_fn free function for `data`
          * @param data pointer to area of memory
          */
         set_blob(name: string, free_fn: CallbackFn | null, data: Uint8Array | string): void;
         /**
-         * Attaches `data` as a metadata item on `image` under the name `name,` taking
+         * Attaches `data` as a metadata item on `image` under the name `name`, taking
          * a copy of the memory area.
          *
-         * See also: vips_image_get_blob(), vips_image_set().
+         * See also: `vips_image_get_blob()`, `vips_image_set()`.
          * @param name metadata name
          * @param data pointer to area of memory
          */
         set_blob_copy(name: string, data: Uint8Array | string): void;
         /**
          * Sets the delete_on_close flag for the image. If this flag is set, when
-         * `image` is finalized, the filename held in `image->`filename at the time of
+         * `image` is finalized, the filename held in `image`->filename at the time of
          * this call is deleted.
          *
          * This function is clearly extremely dangerous, use with great caution.
          *
-         * See also: vips_image_new_temp_file().
+         * See also: `vips_image_new_temp_file()`.
          * @param delete_on_close format of file
          */
         set_delete_on_close(delete_on_close: boolean): void;
         /**
          * Attaches `d` as a metadata item on `image` as `name`. A
          * convenience
-         * function over vips_image_set().
+         * function over `vips_image_set()`.
          *
-         * See also: vips_image_get_double(), vips_image_set()
+         * See also: `vips_image_get_double()`, `vips_image_set()`
          * @param name metadata name
          * @param d metadata value
          */
         set_double(name: string, d: number): void;
         /**
          * Attaches `im` as a metadata item on `image` as `name`.
-         * A convenience function over vips_image_set().
+         * A convenience function over `vips_image_set()`.
          *
-         * See also: vips_image_get_image(), vips_image_set().
+         * See also: `vips_image_get_image()`, `vips_image_set()`.
          * @param name metadata name
          * @param im metadata value
          */
@@ -4571,35 +4936,35 @@ export namespace Vips {
         /**
          * Attaches `i` as a metadata item on `image` under the name `name`. A
          * convenience
-         * function over vips_image_set().
+         * function over `vips_image_set()`.
          *
-         * See also: vips_image_get_int(), vips_image_set()
+         * See also: `vips_image_get_int()`, `vips_image_set()`
          * @param name metadata name
          * @param i metadata value
          */
         set_int(name: string, i: number): void;
         /**
-         * Set the #VipsImage.kill flag on an image. Handy for stopping sets of
+         * Set the {@link Vips.Image}.kill flag on an image. Handy for stopping sets of
          * threads.
          *
-         * See also: vips_image_iskilled().
+         * See also: `vips_image_iskilled()`.
          * @param kill the kill state
          */
         set_kill(kill: boolean): void;
         /**
-         * vips signals evaluation progress via the #VipsImage::preeval,
-         * #VipsImage::eval and #VipsImage::posteval
+         * vips signals evaluation progress via the {@link Vips.Image.SignalSignatures.preeval | Vips.Image::preeval},
+         * {@link Vips.Image.SignalSignatures.eval | Vips.Image::eval} and {@link Vips.Image.SignalSignatures.posteval | Vips.Image::posteval}
          * signals. Progress is signalled on the most-downstream image for which
-         * vips_image_set_progress() was called.
+         * `vips_image_set_progress()` was called.
          * @param progress turn progress reporting on or off
          */
         set_progress(progress: boolean): void;
         /**
          * Attaches `str` as a metadata item on `image` as `name`.
          * A convenience
-         * function over vips_image_set() using #VIPS_TYPE_REF_STRING.
+         * function over `vips_image_set()` using #VIPS_TYPE_REF_STRING.
          *
-         * See also: vips_image_get_double(), vips_image_set().
+         * See also: `vips_image_get_double()`, `vips_image_set()`.
          * @param name metadata name
          * @param str metadata value
          */
@@ -4610,30 +4975,30 @@ export namespace Vips {
          * VIPS_IMAGE_ADDR().  If it
          * isn't, try to transform it so that VIPS_IMAGE_ADDR() can work.
          *
-         * Since this function modifies `image,` it is not thread-safe. Only call it on
+         * Since this function modifies `image`, it is not thread-safe. Only call it on
          * images which you are sure have not been shared with another thread. If the
          * image might have been shared, use the less efficient
-         * vips_image_copy_memory() instead.
+         * `vips_image_copy_memory()` instead.
          *
-         * See also: vips_image_copy_memory(), vips_image_pio_input(),
-         * vips_image_inplace(), VIPS_IMAGE_ADDR().
+         * See also: `vips_image_copy_memory()`, `vips_image_pio_input()`,
+         * `vips_image_inplace()`, VIPS_IMAGE_ADDR().
          * @returns 0 on success, or -1 on error.
          */
         wio_input(): number;
         /**
-         * Write `image` to `out`. Use vips_image_new() and friends to create the
-         * #VipsImage you want to write to.
+         * Write `image` to `out`. Use `vips_image_new()` and friends to create the
+         * {@link Vips.Image} you want to write to.
          *
-         * See also: vips_image_new(), vips_copy(), vips_image_write_to_file().
+         * See also: `vips_image_new()`, `vips_copy()`, `vips_image_write_to_file()`.
          * @returns 0 on success, or -1 on error.
          */
         write(): [number, Image];
         /**
          * Write a line of pixels to an image. This function must be called repeatedly
-         * with `ypos` increasing from 0 to #VipsImage::height .
+         * with `ypos` increasing from 0 to {@link Vips.Image.SignalSignatures.height | Vips.Image::height} .
          * `linebuffer` must be VIPS_IMAGE_SIZEOF_LINE() bytes long.
          *
-         * See also: vips_image_generate().
+         * See also: `vips_image_generate()`.
          * @param ypos vertical position of scan-line to write
          * @param linebuffer scanline of pixels
          * @returns 0 on success, or -1 on error.
@@ -4643,8 +5008,8 @@ export namespace Vips {
          * Call this after setting header fields (width, height, and so on) to
          * allocate resources ready for writing.
          *
-         * Normally this function is called for you by vips_image_generate() or
-         * vips_image_write_line(). You will need to call it yourself if you plan to
+         * Normally this function is called for you by `vips_image_generate()` or
+         * `vips_image_write_line()`. You will need to call it yourself if you plan to
          * write directly to the ->data member of a memory image.
          * @returns 0 on success, or -1 on error.
          */
@@ -4652,9 +5017,9 @@ export namespace Vips {
         /**
          * Writes `in` to memory as a simple, unformatted C-style array.
          *
-         * The caller is responsible for freeing this memory with g_free().
+         * The caller is responsible for freeing this memory with `g_free()`.
          *
-         * See also: vips_image_write_to_buffer().
+         * See also: `vips_image_write_to_buffer()`.
          * @returns return buffer start here
          */
         write_to_memory(): Uint8Array;
@@ -4672,6 +5037,9 @@ export namespace Vips {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Interpolate extends Object {
         static $gtype: GObject.GType<Interpolate>;
 
@@ -4698,16 +5066,19 @@ export namespace Vips {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Interpolate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Interpolate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Interpolate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4731,10 +5102,12 @@ export namespace Vips {
 
         /**
          * Look up an interpolators desired window offset.
+         * @virtual
          */
         vfunc_get_window_offset(): number;
         /**
          * Look up an interpolators desired window size.
+         * @virtual
          */
         vfunc_get_window_size(): number;
         /**
@@ -4743,6 +5116,7 @@ export namespace Vips {
          * @param _in read source pixels from here
          * @param x interpolate value at this position
          * @param y interpolate value at this position
+         * @virtual
          */
         vfunc_interpolate(out: any | null, _in: Region, x: number, y: number): void;
 
@@ -4763,9 +5137,29 @@ export namespace Vips {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::close signal is emitted once during object close. The object
+             * is dying and may not work.
+             * @signal
+             */
             close: () => void;
+            /**
+             * The ::postbuild signal is emitted once just after successful object
+             * construction. Return non-zero to cause object construction to fail.
+             * @signal
+             */
             postbuild: () => number;
+            /**
+             * The ::postclose signal is emitted once after object close. The
+             * object pointer is still valid, but nothing else.
+             * @signal
+             */
             postclose: () => void;
+            /**
+             * The ::preclose signal is emitted once just before object close
+             * starts. The object is still alive.
+             * @signal
+             */
             preclose: () => void;
             'notify::description': (pspec: GObject.ParamSpec) => void;
             'notify::nickname': (pspec: GObject.ParamSpec) => void;
@@ -4779,6 +5173,9 @@ export namespace Vips {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
@@ -4817,16 +5214,19 @@ export namespace Vips {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4835,6 +5235,12 @@ export namespace Vips {
 
         // Static methods
 
+        /**
+         * @param gobject
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         static get_property(
             gobject: GObject.Object,
             property_id: number,
@@ -4842,30 +5248,73 @@ export namespace Vips {
             pspec: GObject.ParamSpec,
         ): void;
         static print_all(): void;
+        /**
+         * @param klass
+         */
         static print_summary_class(klass: typeof Object): void;
         static sanity_all(): void;
+        /**
+         * @param gobject
+         * @param property_id
+         * @param value
+         * @param pspec
+         */
         static set_property(
             gobject: GObject.Object,
             property_id: number,
             value: GObject.Value | any,
             pspec: GObject.ParamSpec,
         ): void;
+        /**
+         * @param pspec
+         * @param flags
+         * @param priority
+         * @param offset
+         */
         static install_argument(pspec: GObject.ParamSpec, flags: ArgumentFlags, priority: number, offset: number): void;
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_build(): number;
+        /**
+         * @virtual
+         */
         vfunc_close(): void;
+        /**
+         * @param string
+         * @virtual
+         */
         vfunc_output_to_arg(string: string): number;
+        /**
+         * @param data
+         * @virtual
+         */
         vfunc_postbuild(data?: any | null): number;
+        /**
+         * @virtual
+         */
         vfunc_postclose(): void;
+        /**
+         * @virtual
+         */
         vfunc_preclose(): void;
+        /**
+         * @virtual
+         */
         vfunc_rewind(): void;
+        /**
+         * @param buf
+         * @virtual
+         */
         vfunc_sanity(buf: Buf): void;
         /**
-         * The inverse of vips_object_new_from_string(): turn `object` into eg.
+         * The inverse of `vips_object_new_from_string()`: turn `object` into eg.
          * "VipsInterpolateSnohalo1(blur=.333333)".
          * @param buf write string here
+         * @virtual
          */
         vfunc_to_string(buf: Buf): void;
 
@@ -4874,15 +5323,18 @@ export namespace Vips {
         /**
          * Convenience: has an argument been assigned. Useful for bindings.
          * @param name arg to fetch
-         * @returns %TRUE if the argument has been assigned.
+         * @returns `true` if the argument has been assigned.
          */
         argument_isset(name: string): boolean;
+        /**
+         * @param name
+         */
         argument_needsstring(name: string): boolean;
         build(): number;
         /**
          * Convenience: get the flags for an argument. Useful for bindings.
          * @param name arg to fetch
-         * @returns The #VipsArgumentFlags for this argument.
+         * @returns The {@link Vips.ArgumentFlags} for this argument.
          */
         get_argument_flags(name: string): ArgumentFlags;
         /**
@@ -4891,6 +5343,10 @@ export namespace Vips {
          * @returns The priority of this argument.
          */
         get_argument_priority(name: string): number;
+        /**
+         * @param name
+         * @param arg
+         */
         get_argument_to_string(name: string, arg: string): number;
         /**
          * Fetch the object description. Useful for language bindings.
@@ -4901,6 +5357,9 @@ export namespace Vips {
          * @returns the object description
          */
         get_description(): string;
+        /**
+         * @param gobject
+         */
         local_cb(gobject: GObject.Object): void;
         preclose(): void;
         print_dump(): void;
@@ -4908,6 +5367,10 @@ export namespace Vips {
         print_summary(): void;
         rewind(): void;
         sanity(): boolean;
+        /**
+         * @param name
+         * @param value
+         */
         set_argument_from_string(name: string, value: string): number;
         /**
          * Set object arguments from a string. The string can be something like
@@ -4916,16 +5379,22 @@ export namespace Vips {
          *
          * You'd typically use this between creating the object and building it.
          *
-         * See also: vips_object_set(), vips_object_build(),
-         * vips_cache_operation_buildp().
+         * See also: `vips_object_set()`, `vips_object_build()`,
+         * `vips_cache_operation_buildp()`.
          * @param string arguments as a string
          * @returns 0 on success, -1 on error
          */
         set_from_string(string: string): number;
+        /**
+         * @param value
+         */
         set_required(value: string): number;
+        /**
+         * @param static_object
+         */
         set_static(static_object: boolean): void;
         /**
-         * The inverse of vips_object_new_from_string(): turn `object` into eg.
+         * The inverse of `vips_object_new_from_string()`: turn `object` into eg.
          * "VipsInterpolateSnohalo1(blur=.333333)".
          * @param buf write string here
          */
@@ -4938,7 +5407,7 @@ export namespace Vips {
          * been made so far. This function can also be useful for callers when
          * they've finished processing outputs themselves.
          *
-         * See also: vips_cache_operation_build().
+         * See also: `vips_cache_operation_build()`.
          */
         unref_outputs(): void;
     }
@@ -4946,6 +5415,9 @@ export namespace Vips {
     namespace Operation {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
+            /**
+             * @signal
+             */
             invalidate: () => void;
             'notify::description': (pspec: GObject.ParamSpec) => void;
             'notify::nickname': (pspec: GObject.ParamSpec) => void;
@@ -4956,6 +5428,9 @@ export namespace Vips {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Operation extends Object {
         static $gtype: GObject.GType<Operation>;
 
@@ -4984,16 +5459,19 @@ export namespace Vips {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5021,7 +5499,7 @@ export namespace Vips {
          *
          * This call does nothing if the named operation is not found.
          *
-         * See also: vips_block_untrusted_set().
+         * See also: `vips_block_untrusted_set()`.
          * @param name set block state at this point and below
          * @param state the block state to set
          */
@@ -5031,8 +5509,12 @@ export namespace Vips {
 
         /**
          * Returns the set of flags for this operation.
+         * @virtual
          */
         vfunc_get_flags(): OperationFlags;
+        /**
+         * @virtual
+         */
         vfunc_invalidate(): void;
 
         // Methods
@@ -5058,10 +5540,11 @@ export namespace Vips {
     }
 
     /**
-     * A small part of a #VipsImage. `valid` holds the left/top/width/height of the
+     * A small part of a {@link Vips.Image}. `valid` holds the left/top/width/height of the
      * area of pixels that are available from the region.
      *
-     * See also: VIPS_REGION_ADDR(), vips_region_new(), vips_region_prepare().
+     * See also: VIPS_REGION_ADDR(), `vips_region_new()`, `vips_region_prepare()`.
+     * @gir-type Class
      */
     class Region extends Object {
         static $gtype: GObject.GType<Region>;
@@ -5091,16 +5574,19 @@ export namespace Vips {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Region.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Region.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Region.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Region.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Region.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Region.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5112,26 +5598,26 @@ export namespace Vips {
         /**
          * Paints 0 into the valid part of `reg`.
          *
-         * See also: vips_region_paint().
+         * See also: `vips_region_paint()`.
          */
         black(): void;
         /**
          * The region is transformed so that at least `r` pixels are available as a
          * memory buffer that can be written to.
-         * @param r #VipsRect of pixels you need to be able to address
+         * @param r {@link Vips.Rect} of pixels you need to be able to address
          * @returns 0 on success, or -1 for error.
          */
         buffer(r: Rect): number;
         /**
-         * Copy from one region to another. Copy area `r` from inside `reg` to `dest,`
-         * positioning the area of pixels at `x,` `y`. The two regions must have pixels
+         * Copy from one region to another. Copy area `r` from inside `reg` to `dest`,
+         * positioning the area of pixels at `x`, `y`. The two regions must have pixels
          * which are the same size.
          *
-         * See also: vips_region_paint().
+         * See also: `vips_region_paint()`.
          * @param dest destination region
-         * @param r #VipsRect of pixels you need to copy
-         * @param x position of @r in @dest
-         * @param y position of @r in @dest
+         * @param r {@link Vips.Rect} of pixels you need to copy
+         * @param x position of `r` in `dest`
+         * @param y position of `r` in `dest`
          */
         copy(dest: Region, r: Rect, x: number, y: number): Region;
         /**
@@ -5150,9 +5636,9 @@ export namespace Vips {
         equalsregion(reg2: Region): number;
         /**
          * Generate an area of pixels and return a copy. The result must be freed
-         * with g_free(). The requested area must be completely inside the image.
+         * with `g_free()`. The requested area must be completely inside the image.
          *
-         * This is equivalent to vips_region_prepare(), followed by a memcpy. It is
+         * This is equivalent to `vips_region_prepare()`, followed by a memcpy. It is
          * convenient for language bindings.
          * @param left area of pixels to fetch
          * @param top area of pixels to fetch
@@ -5162,51 +5648,54 @@ export namespace Vips {
          * @returns A copy of the pixel data.
          */
         fetch(left: number, top: number, width: number, height: number, len: number): Pel;
+        /**
+         * @returns Height of the pixels held in region.
+         */
         height(): number;
         /**
          * The region is transformed so that at least `r` pixels are available to be
          * read from the image. The image needs to be a memory buffer or represent a
          * file on disc that has been mapped or can be mapped.
-         * @param r #VipsRect of pixels you need to be able to address
+         * @param r {@link Vips.Rect} of pixels you need to be able to address
          * @returns 0 on success, or -1 for error.
          */
         image(r: Rect): number;
         /**
          * Mark a region as containing invalid pixels. Calling this function means
-         * that the next time vips_region_prepare() is called, the region will be
+         * that the next time `vips_region_prepare()` is called, the region will be
          * recalculated.
          *
-         * This is faster than calling vips_image_invalidate_all(), but obviously only
+         * This is faster than calling `vips_image_invalidate_all()`, but obviously only
          * affects a single region.
          *
-         * See also: vips_image_invalidate_all(), vips_region_prepare().
+         * See also: `vips_image_invalidate_all()`, `vips_region_prepare()`.
          */
         invalidate(): void;
         /**
          * Paints `value` into `reg` covering rectangle `r`.
          * `r` is clipped against
-         * `reg->`valid.
+         * `reg`->valid.
          *
          * For int images, `value` is
-         * passed to memset(), so it usually needs to be 0 or 255. For float images,
+         * passed to `memset()`, so it usually needs to be 0 or 255. For float images,
          * value is cast to a float and copied in to each band element.
          *
          * `r` is clipped against
-         * `reg->`valid.
+         * `reg`->valid.
          *
-         * See also: vips_region_black().
+         * See also: `vips_region_black()`.
          * @param r area to paint
          * @param value value to paint
          */
         paint(r: Rect, value: number): void;
         /**
          * Paints `ink` into `reg` covering rectangle `r`. `r` is clipped against
-         * `reg->`valid.
+         * `reg`->valid.
          *
          * `ink` should be a byte array of the same size as an image pixel containing
          * the binary value to write into the pixels.
          *
-         * See also: vips_region_paint().
+         * See also: `vips_region_paint()`.
          * @param r area to paint
          * @param ink value to paint
          */
@@ -5222,39 +5711,39 @@ export namespace Vips {
          */
         position(x: number, y: number): number;
         /**
-         * vips_region_prepare() fills `reg` with pixels. After calling,
+         * `vips_region_prepare()` fills `reg` with pixels. After calling,
          * you can address at least the area `r` with VIPS_REGION_ADDR() and get
          * valid pixels.
          *
-         * vips_region_prepare() runs in-line, that is, computation is done by
+         * `vips_region_prepare()` runs in-line, that is, computation is done by
          * the calling thread, no new threads are involved, and computation
          * blocks until the pixels are ready.
          *
-         * Use vips_sink_screen() to calculate an area of pixels in the
+         * Use `vips_sink_screen()` to calculate an area of pixels in the
          * background.
          *
-         * See also: vips_sink_screen(), vips_region_prepare_to().
-         * @param r #VipsRect of pixels you need to be able to address
+         * See also: `vips_sink_screen()`, `vips_region_prepare_to()`.
+         * @param r {@link Vips.Rect} of pixels you need to be able to address
          * @returns 0 on success, or -1 on error.
          */
         prepare(r: Rect): number;
         /**
-         * Like vips_region_prepare(): fill `reg` with the pixels in area `r`.
+         * Like `vips_region_prepare()`: fill `reg` with the pixels in area `r`.
          *
-         * Unlike vips_region_prepare(), rather than writing the result to `reg,` the
-         * pixels are written into `dest` at offset `x,` `y`.
+         * Unlike `vips_region_prepare()`, rather than writing the result to `reg`, the
+         * pixels are written into `dest` at offset `x`, `y`.
          *
-         * Also unlike vips_region_prepare(), `dest` is not set up for writing for
-         * you with vips_region_buffer(). You can
+         * Also unlike `vips_region_prepare()`, `dest` is not set up for writing for
+         * you with `vips_region_buffer()`. You can
          * point `dest` at anything, and pixels really will be written there.
-         * This makes vips_region_prepare_to() useful for making the ends of
+         * This makes `vips_region_prepare_to()` useful for making the ends of
          * pipelines.
          *
-         * See also: vips_region_prepare(), vips_sink_disc().
+         * See also: `vips_region_prepare()`, `vips_sink_disc()`.
          * @param dest region to write to
-         * @param r #VipsRect of pixels you need to be able to address
-         * @param x position of @r in @dest
-         * @param y position of @r in @dest
+         * @param r {@link Vips.Rect} of pixels you need to be able to address
+         * @param x position of `r` in `dest`
+         * @param y position of `r` in `dest`
          * @returns 0 on success, or -1 on error
          */
         prepare_to(dest: Region, r: Rect, x: number, y: number): number;
@@ -5262,38 +5751,44 @@ export namespace Vips {
          * Make VIPS_REGION_ADDR() on `reg` go to `dest` instead.
          *
          * `r` is the part of `reg` which you want to be able to address (this
-         * effectively becomes the valid field), (`x,` `y)` is the top LH corner of the
+         * effectively becomes the valid field), (`x`, `y`) is the top LH corner of the
          * corresponding area in `dest`.
          *
-         * Performs all clipping necessary to ensure that `reg->`valid is indeed
+         * Performs all clipping necessary to ensure that `reg`->valid is indeed
          * valid.
          *
          * If the region we attach to is moved or destroyed, we can be left with
          * dangling pointers! If the region we attach to is on another image, the
          * two images must have the same sizeof(pel).
          * @param dest region to connect to
-         * @param r #VipsRect of pixels you need to be able to address
-         * @param x position of @r in @dest
-         * @param y position of @r in @dest
+         * @param r {@link Vips.Rect} of pixels you need to be able to address
+         * @param x position of `r` in `dest`
+         * @param y position of `r` in `dest`
          * @returns 0 on success, or -1 for error.
          */
         region(dest: Region, r: Rect, x: number, y: number): number;
         /**
          * Write the pixels `target` in `to` from the x2 larger area in `from`.
          * Non-complex uncoded images and LABQ only. Images with alpha (see
-         * vips_image_hasalpha()) shrink with pixels scaled by alpha to avoid fringing.
+         * `vips_image_hasalpha()`) shrink with pixels scaled by alpha to avoid fringing.
          *
          * `method` selects the method used to do the 2x2 shrink.
          *
-         * See also: vips_region_copy().
+         * See also: `vips_region_copy()`.
          * @param to destination region
-         * @param target #VipsRect of pixels you need to copy
+         * @param target {@link Vips.Rect} of pixels you need to copy
          * @param method method to use when generating target pixels
          */
         shrink_method(to: Region, target: Rect, method: RegionShrink | null): [number, Region];
+        /**
+         * @returns Width of the pixels held in region.
+         */
         width(): number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Area {
         static $gtype: GObject.GType<Area>;
 
@@ -5315,6 +5810,10 @@ export namespace Vips {
 
         // Static methods
 
+        /**
+         * @param mem
+         * @param area
+         */
         static free_cb(mem: any | null, area: Area): number;
 
         // Methods
@@ -5322,14 +5821,17 @@ export namespace Vips {
         copy(): Area;
         /**
          * Return the data pointer plus optionally the length in bytes of an area,
-         * the number of elements, the %GType of each element and the sizeof() each
+         * the number of elements, the %GType of each element and the `sizeof()` each
          * element.
-         * @returns The pointer held by @area.
+         * @returns The pointer held by `area`.
          */
         get_data(): [any | null, number, number, GObject.GType | null, number];
         unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Argument {
         static $gtype: GObject.GType<Argument>;
 
@@ -5338,6 +5840,9 @@ export namespace Vips {
         pspec: GObject.ParamSpec;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ArgumentClass {
         static $gtype: GObject.GType<ArgumentClass>;
 
@@ -5352,6 +5857,9 @@ export namespace Vips {
         needsstring(): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ArgumentInstance {
         static $gtype: GObject.GType<ArgumentInstance>;
 
@@ -5363,6 +5871,9 @@ export namespace Vips {
         invalidate_id: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ArrayDouble {
         static $gtype: GObject.GType<ArrayDouble>;
 
@@ -5375,12 +5886,15 @@ export namespace Vips {
         // Methods
 
         /**
-         * Fetch a double array from a #VipsArrayDouble. Useful for language bindings.
+         * Fetch a double array from a {@link Vips.ArrayDouble}. Useful for language bindings.
          * @returns array of double
          */
         get(): number[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ArrayImage {
         static $gtype: GObject.GType<ArrayImage>;
 
@@ -5401,23 +5915,26 @@ export namespace Vips {
         // Methods
 
         /**
-         * Make a new #VipsArrayImage, one larger than `array,` with `image` appended
+         * Make a new {@link Vips.ArrayImage}, one larger than `array`, with `image` appended
          * to the end.
-         * Handy with vips_array_image_empty() for bindings
+         * Handy with `vips_array_image_empty()` for bindings
          * which can't handle object array arguments.
          *
-         * See also: vips_array_image_empty().
+         * See also: `vips_array_image_empty()`.
          * @param image add this
-         * @returns A new #VipsArrayImage.
+         * @returns A new {@link Vips.ArrayImage}.
          */
         append(image: Image): ArrayImage;
         /**
-         * Fetch an image array from a #VipsArrayImage. Useful for language bindings.
-         * @returns array of #VipsImage
+         * Fetch an image array from a {@link Vips.ArrayImage}. Useful for language bindings.
+         * @returns array of {@link Vips.Image}
          */
         get(): Image[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ArrayInt {
         static $gtype: GObject.GType<ArrayInt>;
 
@@ -5430,12 +5947,15 @@ export namespace Vips {
         // Methods
 
         /**
-         * Fetch an int array from a #VipsArrayInt. Useful for language bindings.
+         * Fetch an int array from a {@link Vips.ArrayInt}. Useful for language bindings.
          * @returns array of int
          */
         get(): number[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Blob {
         static $gtype: GObject.GType<Blob>;
 
@@ -5448,10 +5968,10 @@ export namespace Vips {
         // Static methods
 
         /**
-         * Like vips_blob_new(), but take a copy of the data. Useful for bindings
+         * Like `vips_blob_new()`, but take a copy of the data. Useful for bindings
          * which struggle with callbacks.
          *
-         * See also: vips_blob_new().
+         * See also: `vips_blob_new()`.
          * @param data data to store
          */
         static copy(data: Uint8Array | string): Blob;
@@ -5459,9 +5979,9 @@ export namespace Vips {
         // Methods
 
         /**
-         * Get the data from a #VipsBlob.
+         * Get the data from a {@link Vips.Blob}.
          *
-         * See also: vips_blob_new().
+         * See also: `vips_blob_new()`.
          * @returns the data
          */
         get(): Uint8Array;
@@ -5471,27 +5991,52 @@ export namespace Vips {
          * It's sometimes useful to be able to create blobs as empty and then fill
          * them later.
          *
-         * See also: vips_blob_new().
-         * @param free_fn @data will be freed with this function
+         * See also: `vips_blob_new()`.
+         * @param free_fn `data` will be freed with this function
          * @param data data to store
          */
         set(free_fn: CallbackFn | null, data: Uint8Array | string): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Buf {
         static $gtype: GObject.GType<Buf>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ForeignClass = typeof Foreign;
+    /**
+     * @gir-type Alias
+     */
     type ForeignLoadClass = typeof ForeignLoad;
+    /**
+     * @gir-type Alias
+     */
     type ForeignSaveClass = typeof ForeignSave;
+    /**
+     * @gir-type Alias
+     */
     type ImageClass = typeof Image;
+    /**
+     * @gir-type Alias
+     */
     type InterpolateClass = typeof Interpolate;
+    /**
+     * @gir-type Alias
+     */
     type ObjectClass = typeof Object;
+    /**
+     * @gir-type Alias
+     */
     type OperationClass = typeof Operation;
     /**
      * A structure available to eval callbacks giving information on evaluation
-     * progress. See #VipsImage::eval.
+     * progress. See {@link Vips.Image.SignalSignatures.eval | Vips.Image::eval}.
+     * @gir-type Struct
      */
     class Progress {
         static $gtype: GObject.GType<Progress>;
@@ -5510,14 +6055,15 @@ export namespace Vips {
          * If set, vips will print messages about the progress of computation to
          * stdout. This can also be enabled with the --vips-progress option, or by
          * setting the environment variable VIPS_PROGRESS.
-         * @param progress %TRUE to enable progress messages
+         * @param progress `true` to enable progress messages
          */
         static set(progress: boolean): void;
     }
 
     /**
-     * A #VipsRect is a rectangular area of pixels. This is a struct for
+     * A {@link Vips.Rect} is a rectangular area of pixels. This is a struct for
      * performing simple rectangle algebra.
+     * @gir-type Struct
      */
     class Rect {
         static $gtype: GObject.GType<Rect>;
@@ -5545,20 +6091,20 @@ export namespace Vips {
         /**
          * Is `r1` equal to `r2`?
          * @param r2 second rectangle
-         * @returns %TRUE if @r1 is equal to @r2.
+         * @returns `true` if `r1` is equal to `r2`.
          */
         equalsrect(r2: Rect): boolean;
         /**
-         * Does `r` contain point (`x,` `y)`?
+         * Does `r` contain point (`x`, `y`)?
          * @param x position to test for
          * @param y position to test for
-         * @returns %TRUE if @r contains (@x, @y).
+         * @returns `true` if `r` contains (`x`, `y`).
          */
         includespoint(x: number, y: number): boolean;
         /**
          * Is `r2` a subset of `r1`?
          * @param r2 inner rectangle
-         * @returns %TRUE if @r2 is a subset of @r1.
+         * @returns `true` if `r2` is a subset of `r1`.
          */
         includesrect(r2: Rect): boolean;
         /**
@@ -5568,7 +6114,7 @@ export namespace Vips {
         intersectrect(r2: Rect): Rect;
         /**
          * Is `r` empty? ie. zero width or height.
-         * @returns %TRUE if @r contains no pixels.
+         * @returns `true` if `r` contains no pixels.
          */
         isempty(): boolean;
         /**
@@ -5584,7 +6130,7 @@ export namespace Vips {
         /**
          * Do `r1` and `r2` have a non-empty intersection?
          * @param r2 second rectangle
-         * @returns %TRUE if @r2 and @r1 overlap.
+         * @returns `true` if `r2` and `r1` overlap.
          */
         overlapsrect(r2: Rect): boolean;
         /**
@@ -5594,6 +6140,9 @@ export namespace Vips {
         unionrect(r2: Rect): Rect;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RefString {
         static $gtype: GObject.GType<RefString>;
 
@@ -5609,13 +6158,19 @@ export namespace Vips {
          * Get a pointer to the private string inside a refstr. Handy for language
          * bindings.
          *
-         * See also: vips_value_get_ref_string().
-         * @returns The C string held by @refstr.
+         * See also: `vips_value_get_ref_string()`.
+         * @returns The C string held by `refstr`.
          */
         get(): [string, number];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RegionClass = typeof Region;
+    /**
+     * @gir-type Struct
+     */
     class SaveString {
         static $gtype: GObject.GType<SaveString>;
 
@@ -5632,14 +6187,23 @@ export namespace Vips {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Source {
         static $gtype: GObject.GType<Source>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Target {
         static $gtype: GObject.GType<Target>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Thing {
         static $gtype: GObject.GType<Thing>;
 
@@ -5658,7 +6222,15 @@ export namespace Vips {
         static ['new'](i: number): Thing;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ArgumentTable = GLib.HashTable;
+    /**
+     * A picture element. Cast this to whatever the associated VipsBandFormat says
+     * to get the value.
+     * @gir-type Alias
+     */
     type Pel = number;
     /**
      * Name of the imported GIR library

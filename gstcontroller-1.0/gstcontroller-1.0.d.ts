@@ -26,6 +26,7 @@ export namespace GstController {
 
     /**
      * The various interpolation modes available.
+     * @gir-type Enum
      */
     enum InterpolationMode {
         /**
@@ -55,6 +56,7 @@ export namespace GstController {
 
     /**
      * The various waveform modes available.
+     * @gir-type Enum
      */
     enum LFOWaveform {
         /**
@@ -81,12 +83,18 @@ export namespace GstController {
 
     /**
      * Reset the controlled value cache.
-     * @param self the #GstTimedValueControlSource
+     * @param self the {@link GstController.TimedValueControlSource}
      */
     function timed_value_control_invalidate_cache(self: TimedValueControlSource): void;
+    /**
+     * @gir-type Callback
+     */
     interface DirectControlBindingConvertGValue {
         (self: DirectControlBinding, src_value: number, dest_value: GObject.Value | any): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DirectControlBindingConvertValue {
         (self: DirectControlBinding, src_value: number, dest_value?: any | null): void;
     }
@@ -120,6 +128,7 @@ export namespace GstController {
      * A value mapping object that attaches multiple control sources to a guint
      * gobject properties representing a color. A control value of 0.0 will turn the
      * color component off and a value of 1.0 will be the color level.
+     * @gir-type Class
      */
     class ARGBControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ARGBControlBinding>;
@@ -169,16 +178,19 @@ export namespace GstController {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ARGBControlBinding.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ARGBControlBinding.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ARGBControlBinding.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -212,6 +224,7 @@ export namespace GstController {
      * is mapped to full target property range, and all values outside the range
      * will be clipped. An absolute control binding will not do any value
      * transformations.
+     * @gir-type Class
      */
     class DirectControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<DirectControlBinding>;
@@ -245,16 +258,19 @@ export namespace GstController {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectControlBinding.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectControlBinding.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DirectControlBinding.SignalSignatures[K]> extends [any, ...infer Q]
@@ -280,14 +296,15 @@ export namespace GstController {
     }
 
     /**
-     * #GstInterpolationControlSource is a #GstControlSource, that interpolates values between user-given
+     * {@link GstController.InterpolationControlSource} is a {@link Gst.ControlSource}, that interpolates values between user-given
      * control points. It supports several interpolation modes and property types.
      *
-     * To use #GstInterpolationControlSource get a new instance by calling
-     * gst_interpolation_control_source_new(), bind it to a #GParamSpec and set some
-     * control points by calling gst_timed_value_control_source_set().
+     * To use {@link GstController.InterpolationControlSource} get a new instance by calling
+     * `gst_interpolation_control_source_new()`, bind it to a {@link GObject.ParamSpec} and set some
+     * control points by calling `gst_timed_value_control_source_set()`.
      *
      * All functions are MT-safe.
+     * @gir-type Class
      */
     class InterpolationControlSource extends TimedValueControlSource {
         static $gtype: GObject.GType<InterpolationControlSource>;
@@ -316,16 +333,19 @@ export namespace GstController {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InterpolationControlSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InterpolationControlSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InterpolationControlSource.SignalSignatures[K]> extends [any, ...infer Q]
@@ -359,14 +379,15 @@ export namespace GstController {
     }
 
     /**
-     * #GstLFOControlSource is a #GstControlSource, that provides several periodic
+     * {@link GstController.LFOControlSource} is a {@link Gst.ControlSource}, that provides several periodic
      * waveforms as control values.
      *
-     * To use #GstLFOControlSource get a new instance by calling
-     * gst_lfo_control_source_new(), bind it to a #GParamSpec and set the relevant
+     * To use {@link GstController.LFOControlSource} get a new instance by calling
+     * `gst_lfo_control_source_new()`, bind it to a {@link GObject.ParamSpec} and set the relevant
      * properties.
      *
      * All functions are MT-safe.
+     * @gir-type Class
      */
     class LFOControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<LFOControlSource>;
@@ -374,25 +395,25 @@ export namespace GstController {
         // Properties
 
         /**
-         * Specifies the amplitude for the waveform of this #GstLFOControlSource.
+         * Specifies the amplitude for the waveform of this {@link GstController.LFOControlSource}.
          */
         get amplitude(): number;
         set amplitude(val: number);
         /**
          * Specifies the frequency that should be used for the waveform
-         * of this #GstLFOControlSource. It should be large enough
+         * of this {@link GstController.LFOControlSource}. It should be large enough
          * so that the period is longer than one nanosecond.
          */
         get frequency(): number;
         set frequency(val: number);
         /**
-         * Specifies the value offset for the waveform of this #GstLFOControlSource.
+         * Specifies the value offset for the waveform of this {@link GstController.LFOControlSource}.
          */
         get offset(): number;
         set offset(val: number);
         /**
          * Specifies the timeshift to the right that should be used for the waveform
-         * of this #GstLFOControlSource in nanoseconds.
+         * of this {@link GstController.LFOControlSource} in nanoseconds.
          *
          * To get a n nanosecond shift to the left use
          * "(GST_SECOND / frequency) - n".
@@ -400,7 +421,7 @@ export namespace GstController {
         get timeshift(): number;
         set timeshift(val: number);
         /**
-         * Specifies the waveform that should be used for this #GstLFOControlSource.
+         * Specifies the waveform that should be used for this {@link GstController.LFOControlSource}.
          */
         get waveform(): LFOWaveform;
         set waveform(val: LFOWaveform);
@@ -424,16 +445,19 @@ export namespace GstController {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LFOControlSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LFOControlSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LFOControlSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -455,7 +479,8 @@ export namespace GstController {
     }
 
     /**
-     * A #GstControlBinding that forwards requests to another #GstControlBinding
+     * A {@link Gst.ControlBinding} that forwards requests to another {@link Gst.ControlBinding}
+     * @gir-type Class
      */
     class ProxyControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ProxyControlBinding>;
@@ -484,16 +509,19 @@ export namespace GstController {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProxyControlBinding.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProxyControlBinding.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProxyControlBinding.SignalSignatures[K]> extends [any, ...infer Q]
@@ -506,8 +534,23 @@ export namespace GstController {
     namespace TimedValueControlSource {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlSource.SignalSignatures {
+            /**
+             * Emitted right after the new value has been added to `self`
+             * @signal
+             * @since 1.6
+             */
             'value-added': (arg0: ControlPoint) => void;
+            /**
+             * Emitted right after the new value has been set on `timed_signals`
+             * @signal
+             * @since 1.6
+             */
             'value-changed': (arg0: ControlPoint) => void;
+            /**
+             * Emitted when `timed_value` is removed from `self`
+             * @signal
+             * @since 1.6
+             */
             'value-removed': (arg0: ControlPoint) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
             'notify::parent': (pspec: GObject.ParamSpec) => void;
@@ -519,12 +562,13 @@ export namespace GstController {
     }
 
     /**
-     * Base class for #GstControlSource that use time-stamped values.
+     * Base class for {@link Gst.ControlSource} that use time-stamped values.
      *
      * When overriding bind, chain up first to give this bind implementation a
      * chance to setup things.
      *
      * All functions are MT-safe.
+     * @gir-type Class
      */
     abstract class TimedValueControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<TimedValueControlSource>;
@@ -551,16 +595,19 @@ export namespace GstController {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimedValueControlSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimedValueControlSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimedValueControlSource.SignalSignatures[K]> extends [any, ...infer Q]
@@ -574,17 +621,17 @@ export namespace GstController {
         /**
          * Find last value before given timestamp in control point list.
          * If all values in the control point list come after the given
-         * timestamp or no values exist, %NULL is returned.
+         * timestamp or no values exist, `null` is returned.
          *
          * For use in control source implementations.
          * @param timestamp the search key
-         * @returns the found #GSequenceIter or %NULL
+         * @returns the found {@link GLib.SequenceIter} or `null`
          */
         find_control_point_iter(timestamp: Gst.ClockTime): GLib.SequenceIter | null;
         /**
-         * Returns a read-only copy of the list of #GstTimedValue for the given property.
+         * Returns a read-only copy of the list of {@link Gst.TimedValue} for the given property.
          * Free the list after done with it.
-         * @returns a copy of the list, or %NULL if the property isn't handled by the controller
+         * @returns a copy of the list, or `null` if the property isn't handled by the controller
          */
         get_all(): Gst.TimedValue[];
         /**
@@ -599,11 +646,14 @@ export namespace GstController {
          * @returns FALSE if the values couldn't be set, TRUE otherwise.
          */
         set(timestamp: Gst.ClockTime, value: number): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets multiple timed values at once.
-         * @param timedvalues a list with #GstTimedValue items
+         * @param timedvalues a list with {@link Gst.TimedValue} items
          * @returns FALSE if the values couldn't be set, TRUE otherwise.
          */
         set_from_list(timedvalues: Gst.TimedValue[]): boolean;
@@ -636,14 +686,15 @@ export namespace GstController {
     }
 
     /**
-     * #GstTriggerControlSource is a #GstControlSource, that returns values from user-given
+     * {@link GstController.TriggerControlSource} is a {@link Gst.ControlSource}, that returns values from user-given
      * control points. It allows for a tolerance on the time-stamps.
      *
-     * To use #GstTriggerControlSource get a new instance by calling
-     * gst_trigger_control_source_new(), bind it to a #GParamSpec and set some
-     * control points by calling gst_timed_value_control_source_set().
+     * To use {@link GstController.TriggerControlSource} get a new instance by calling
+     * `gst_trigger_control_source_new()`, bind it to a {@link GObject.ParamSpec} and set some
+     * control points by calling `gst_timed_value_control_source_set()`.
      *
      * All functions are MT-safe.
+     * @gir-type Class
      */
     class TriggerControlSource extends TimedValueControlSource {
         static $gtype: GObject.GType<TriggerControlSource>;
@@ -672,16 +723,19 @@ export namespace GstController {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TriggerControlSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TriggerControlSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TriggerControlSource.SignalSignatures[K]> extends [any, ...infer Q]
@@ -691,11 +745,15 @@ export namespace GstController {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ARGBControlBindingClass = typeof ARGBControlBinding;
     /**
      * An internal structure for value+time and various temporary
      * values used for interpolation. This "inherits" from
      * GstTimedValue.
+     * @gir-type Struct
      */
     class ControlPoint {
         static $gtype: GObject.GType<ControlPoint>;
@@ -717,34 +775,64 @@ export namespace GstController {
         // Methods
 
         /**
-         * Copies a #GstControlPoint
-         * @returns A copy of @cp
+         * Copies a {@link GstController.ControlPoint}
+         * @returns A copy of `cp`
          */
         copy(): ControlPoint;
         /**
-         * Frees all data allocated by a #GstControlPoint instance.
+         * Frees all data allocated by a {@link GstController.ControlPoint} instance.
          */
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DirectControlBindingClass = typeof DirectControlBinding;
+    /**
+     * @gir-type Alias
+     */
     type InterpolationControlSourceClass = typeof InterpolationControlSource;
+    /**
+     * @gir-type Struct
+     */
     abstract class InterpolationControlSourcePrivate {
         static $gtype: GObject.GType<InterpolationControlSourcePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LFOControlSourceClass = typeof LFOControlSource;
+    /**
+     * @gir-type Struct
+     */
     abstract class LFOControlSourcePrivate {
         static $gtype: GObject.GType<LFOControlSourcePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProxyControlBindingClass = typeof ProxyControlBinding;
+    /**
+     * @gir-type Alias
+     */
     type TimedValueControlSourceClass = typeof TimedValueControlSource;
+    /**
+     * @gir-type Struct
+     */
     abstract class TimedValueControlSourcePrivate {
         static $gtype: GObject.GType<TimedValueControlSourcePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TriggerControlSourceClass = typeof TriggerControlSource;
+    /**
+     * @gir-type Struct
+     */
     abstract class TriggerControlSourcePrivate {
         static $gtype: GObject.GType<TriggerControlSourcePrivate>;
     }

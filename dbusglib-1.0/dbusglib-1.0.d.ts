@@ -27,6 +27,9 @@ export namespace DBusGLib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
 
@@ -47,16 +50,19 @@ export namespace DBusGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -64,14 +70,23 @@ export namespace DBusGLib {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Connection {
         static $gtype: GObject.GType<Connection>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MethodInvocation {
         static $gtype: GObject.GType<MethodInvocation>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ProxyClass {
         static $gtype: GObject.GType<ProxyClass>;
     }

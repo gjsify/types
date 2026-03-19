@@ -23,6 +23,9 @@ export namespace Gegl {
         export const $gtype: GObject.GType<AbyssPolicy>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AbyssPolicy {
         NONE,
         CLAMP,
@@ -35,6 +38,9 @@ export namespace Gegl {
         export const $gtype: GObject.GType<BablVariant>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum BablVariant {
         FLOAT,
         LINEAR,
@@ -51,6 +57,9 @@ export namespace Gegl {
         export const $gtype: GObject.GType<CachePolicy>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CachePolicy {
         AUTO,
         NEVER,
@@ -61,6 +70,9 @@ export namespace Gegl {
         export const $gtype: GObject.GType<DistanceMetric>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DistanceMetric {
         EUCLIDEAN,
         MANHATTAN,
@@ -71,6 +83,9 @@ export namespace Gegl {
         export const $gtype: GObject.GType<DitherMethod>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DitherMethod {
         NONE,
         FLOYD_STEINBERG,
@@ -87,6 +102,7 @@ export namespace Gegl {
 
     /**
      * Flags controlling the mapping strategy.
+     * @gir-type Enum
      */
     enum MapFlags {
         /**
@@ -99,6 +115,9 @@ export namespace Gegl {
         export const $gtype: GObject.GType<Orientation>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Orientation {
         HORIZONTAL,
         VERTICAL,
@@ -108,6 +127,9 @@ export namespace Gegl {
         export const $gtype: GObject.GType<RectangleAlignment>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum RectangleAlignment {
         SUBSET,
         SUPERSET,
@@ -121,6 +143,7 @@ export namespace Gegl {
     /**
      * An enumerated type specifying resolution (density) units.  If resolution
      * units are unknown, X and Y resolution specify the pixel aspect ratio.
+     * @gir-type Enum
      */
     enum ResolutionUnit {
         /**
@@ -141,6 +164,9 @@ export namespace Gegl {
         export const $gtype: GObject.GType<SamplerType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SamplerType {
         NEAREST,
         LINEAR,
@@ -149,12 +175,18 @@ export namespace Gegl {
         LOHALO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SplitStrategy {
         AUTO,
         HORIZONTAL,
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TileCommand {
         EGL_TILE_IDLE,
         EGL_TILE_SET,
@@ -231,6 +263,10 @@ export namespace Gegl {
     const MICRO_VERSION: number;
     const MINOR_VERSION: number;
     const PARAM_NO_VALIDATE: number;
+    /**
+     * @param format
+     * @param variant
+     */
     function babl_variant(format: Babl.Object, variant: BablVariant | null): Babl.Object;
     /**
      * Disable OpenCL
@@ -250,7 +286,7 @@ export namespace Gegl {
     /**
      * Returns a GeglConfig object with properties that can be manipulated to control
      * GEGLs behavior.
-     * @returns a #GeglConfig
+     * @returns a {@link Gegl.Config}
      */
     function config(): Config;
     /**
@@ -300,6 +336,10 @@ export namespace Gegl {
      * @returns the format pointer
      */
     function format(format_name: string): GObject.Value | null;
+    /**
+     * @param format A Babl pointer
+     * @returns the format name
+     */
     function format_get_name(format: GObject.Value | any): string | null;
     /**
      * This function fetches the version of the GEGL library being used by
@@ -318,6 +358,10 @@ export namespace Gegl {
      * @param roi The request rectangle
      */
     function graph_dump_request(node: Node, roi: Rectangle): void;
+    /**
+     * @param operation_type the name of the operation
+     * @returns A boolean telling whether the operation is present or not. This also returns true for any compat-name registered by operations.
+     */
     function has_operation(operation_type: string): boolean;
     /**
      * Call this function before using any other GEGL functions. It will
@@ -327,12 +371,15 @@ export namespace Gegl {
      * arguments.
      *
      * Note that there is an alternative way to initialize GEGL: if you
-     * are calling g_option_context_parse() with the option group returned
-     * by #gegl_get_option_group(), you don't have to call #gegl_init().
+     * are calling `g_option_context_parse()` with the option group returned
+     * by `gegl_get_option_group`(), you don't have to call `gegl_init`().
      * @param argv a pointer to the array of command line arguments.
      */
     function init(argv?: string[] | null): string[] | null;
     function is_main_thread(): boolean;
+    /**
+     * @returns An alphabetically sorted array of available operation names. This excludes any compat-name registered by operations. The list should be freed with g_free after use. --- gchar **operations; guint   n_operations; gint i; operations = gegl_list_operations (&n_operations); g_print ("Available operations:\n"); for (i=0; i < n_operations; i++)   {     g_print ("\t%s\n", operations[i]);   } g_free (operations);
+     */
     function list_operations(): string[];
     /**
      * Load all gegl modules found in the given directory.
@@ -371,7 +418,7 @@ export namespace Gegl {
      */
     function parallel_distribute_range(size: number, thread_cost: number, func: ParallelDistributeRangeFunc): void;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglAudioFragment property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.AudioFragment} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -385,7 +432,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglColor property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -401,7 +448,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglColor property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -418,12 +465,12 @@ export namespace Gegl {
     ): GObject.ParamSpec;
     /**
      * Get the default color value of the param spec
-     * @param self a #GeglColor #GParamSpec
-     * @returns the default #GeglColor
+     * @param self a {@link Gegl.Color} {@link GObject.ParamSpec}
+     * @returns the default {@link Gegl.Color}
      */
     function param_spec_color_get_default(self: GObject.ParamSpec): Color;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglCurve property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Curve} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -439,7 +486,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecDouble instance.
+     * Creates a new {@link Gegl.ParamSpecDouble} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -465,7 +512,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecEnum instance.
+     * Creates a new {@link Gegl.ParamSpecEnum} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -483,7 +530,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecFilePath instance.
+     * Creates a new {@link Gegl.ParamSpecFilePath} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -503,7 +550,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecFormat instance specifying a Babl format.
+     * Creates a new {@link Gegl.ParamSpecFormat} instance specifying a Babl format.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -516,9 +563,13 @@ export namespace Gegl {
         blurb: string,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
+    /**
+     * @param pspec
+     * @param key_name
+     */
     function param_spec_get_property_key(pspec: GObject.ParamSpec, key_name: string): string;
     /**
-     * Creates a new #GeglParamSpecInt instance.
+     * Creates a new {@link Gegl.ParamSpecInt} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -544,7 +595,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglPath property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Path} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -560,7 +611,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecSeed instance specifying an integer random seed.
+     * Creates a new {@link Gegl.ParamSpecSeed} instance specifying an integer random seed.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -573,9 +624,14 @@ export namespace Gegl {
         blurb: string,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
+    /**
+     * @param pspec
+     * @param key_name
+     * @param value
+     */
     function param_spec_set_property_key(pspec: GObject.ParamSpec, key_name: string, value: string): void;
     /**
-     * Creates a new #GeglParamSpecString instance.
+     * Creates a new {@link Gegl.ParamSpecString} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -595,7 +651,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecUri instance.
+     * Creates a new {@link Gegl.ParamSpecUri} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -619,38 +675,68 @@ export namespace Gegl {
      */
     function rectangle_infinite_plane(): Rectangle;
     /**
-     * Resets the cumulative data gathered by the #GeglStats object returned
-     * by #gegl_stats().
+     * Resets the cumulative data gathered by the {@link Gegl.Stats} object returned
+     * by `gegl_stats`().
      */
     function reset_stats(): void;
+    /**
+     * @param start first node in chain to serialize
+     * @param end last node in chain to serialize
+     * @param basepath top-level absolute path to turn into relative root
+     * @param serialize_flags anded together combination of: GEGL_SERIALIZE_TRIM_DEFAULTS, GEGL_SERIALIZE_VERSION, GEGL_SERIALIZE_INDENT.
+     */
     function serialize(start: Node, end: Node, basepath: string, serialize_flags: SerializeFlag | null): string;
     /**
      * Returns a GeglStats object with properties that can be read to monitor
      * GEGL statistics.
-     * @returns a #GeglStats
+     * @returns a {@link Gegl.Stats}
      */
     function stats(): Stats;
+    /**
+     * @gir-type Callback
+     */
     interface LookupFunction {
         (value: number, data?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface NodeFunction {
         (node: PathItem): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ParallelDistributeAreaFunc {
         (area: Rectangle): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ParallelDistributeFunc {
         (i: number, n: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ParallelDistributeRangeFunc {
         (offset: number, size: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SamplerGetFun {
         (self: Sampler, x: number, y: number, scale: BufferMatrix2, output: any | null, repeat_mode: AbyssPolicy): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TileCallback {
         (tile: Tile): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TileSourceCommand {
         (
             gegl_tile_source: TileSource,
@@ -665,23 +751,35 @@ export namespace Gegl {
         export const $gtype: GObject.GType<AccessMode>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum AccessMode {
         READ,
         WRITE,
         READWRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum BlitFlags {
         DEFAULT,
         CACHE,
         DIRTY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum PadType {
         OUTPUT,
         INPUT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum SerializeFlag {
         TRIM_DEFAULTS,
         VERSION,
@@ -702,6 +800,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AudioFragment extends GObject.Object {
         static $gtype: GObject.GType<AudioFragment>;
 
@@ -738,16 +839,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioFragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioFragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioFragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -762,17 +866,38 @@ export namespace Gegl {
         get_pos(): number;
         get_sample_count(): number;
         get_sample_rate(): number;
+        /**
+         * @param channel_layout
+         */
         set_channel_layout(channel_layout: number): void;
+        /**
+         * @param channels
+         */
         set_channels(channels: number): void;
+        /**
+         * @param max_samples
+         */
         set_max_samples(max_samples: number): void;
+        /**
+         * @param pos
+         */
         set_pos(pos: number): void;
+        /**
+         * @param sample_count
+         */
         set_sample_count(sample_count: number): void;
+        /**
+         * @param sample_rate
+         */
         set_sample_rate(sample_rate: number): void;
     }
 
     namespace Buffer {
         // Signal signatures
         interface SignalSignatures extends TileHandler.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: (arg0: Rectangle) => void;
             'notify::abyss-height': (pspec: GObject.ParamSpec) => void;
             'notify::abyss-width': (pspec: GObject.ParamSpec) => void;
@@ -828,6 +953,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Buffer extends TileHandler {
         static $gtype: GObject.GType<Buffer>;
 
@@ -887,16 +1015,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -922,22 +1053,22 @@ export namespace Gegl {
         /**
          * Generates a unique filename in the GEGL swap directory, suitable for
          * using as swap space.  When the file is no longer needed, it may be
-         * removed with gegl_buffer_swap_remove_file(); otherwise, it will be
-         * removed when gegl_exit() is called.
-         * @param suffix a string to suffix the filename with, for          identification purposes, or %NULL.
+         * removed with `gegl_buffer_swap_remove_file()`; otherwise, it will be
+         * removed when `gegl_exit()` is called.
+         * @param suffix a string to suffix the filename with, for          identification purposes, or `null`.
          */
         static swap_create_file(suffix?: string | null): string | null;
         /**
          * Tests if `path` is a swap file, that is, if it has been created
-         * with gegl_buffer_swap_create_file(), and hasn't been removed
+         * with `gegl_buffer_swap_create_file()`, and hasn't been removed
          * yet.
          * @param path a filename
          */
         static swap_has_file(path: string): boolean;
         /**
-         * Removes a swap file, generated using gegl_buffer_swap_create_file(),
+         * Removes a swap file, generated using `gegl_buffer_swap_create_file()`,
          * unlinking the file, if exists.
-         * @param path the swap file to remove, as returned by        gegl_buffer_swap_create_file()
+         * @param path the swap file to remove, as returned by        `gegl_buffer_swap_create_file()`
          */
         static swap_remove_file(path: string): void;
 
@@ -945,7 +1076,7 @@ export namespace Gegl {
 
         /**
          * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
-         * @param handler a #GeglTileHandler
+         * @param handler a {@link Gegl.TileHandler}
          */
         add_handler(handler?: any | null): void;
         /**
@@ -965,7 +1096,7 @@ export namespace Gegl {
          * @param src_rect source rectangle (or NULL to copy entire source buffer)
          * @param repeat_mode the abyss policy to be using if src_rect is outside src's extent.
          * @param dst destination buffer.
-         * @param dst_rect position of upper left destination pixel (or NULL to match @src_rect)
+         * @param dst_rect position of upper left destination pixel (or NULL to match `src_rect`)
          */
         copy(src_rect: Rectangle, repeat_mode: AbyssPolicy | null, dst: Buffer, dst_rect: Rectangle): void;
         /**
@@ -998,7 +1129,7 @@ export namespace Gegl {
          * Blocks emission of the "changed" signal for `buffer`.
          *
          * While the signal is blocked, changes to `buffer` are accumulated, and will
-         * be emitted once the signal is unblocked, using gegl_buffer_thaw_changed().
+         * be emitted once the signal is unblocked, using `gegl_buffer_thaw_changed()`.
          */
         freeze_changed(): void;
         /**
@@ -1025,9 +1156,12 @@ export namespace Gegl {
          * Store a linear raster buffer into the GeglBuffer.
          * @param rect the rectangle to write.
          * @param format_name the format of the input data.
-         * @param src pixel data to write to @buffer.
+         * @param src pixel data to write to `buffer`.
          */
         set(rect: Rectangle, format_name: string, src: Uint8Array | string): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
@@ -1040,7 +1174,7 @@ export namespace Gegl {
         linear_close(linear?: any | null): void;
         /**
          * Remove the provided tile handler in the existing chain of tile handler of a GeglBuffer.
-         * @param handler a #GeglTileHandler
+         * @param handler a {@link Gegl.TileHandler}
          */
         remove_handler(handler?: any | null): void;
         /**
@@ -1086,8 +1220,8 @@ export namespace Gegl {
          * Fill a region with a repeating pattern. Offsets parameters are
          * relative to the origin (0, 0) and not to the rectangle. So be carefull
          * about the origin of `pattern` and `buffer` extents.
-         * @param rect the region of @buffer to fill
-         * @param pattern a #GeglBuffer to be repeated as a pattern
+         * @param rect the region of `buffer` to fill
+         * @param pattern a {@link Gegl.Buffer} to be repeated as a pattern
          * @param x_offset where the pattern starts horizontally
          * @param y_offset where the pattern starts vertical
          */
@@ -1096,7 +1230,7 @@ export namespace Gegl {
          * Checks if a pair of buffers share the same underlying tile storage.
          *
          * Returns TRUE if `buffer1` and `buffer2` share the same storage.
-         * @param buffer2 a #GeglBuffer.
+         * @param buffer2 a {@link Gegl.Buffer}.
          */
         share_storage(buffer2: Buffer): boolean;
         /**
@@ -1113,8 +1247,8 @@ export namespace Gegl {
         /**
          * Unblocks emission of the "changed" signal for `buffer`.
          *
-         * Once all calls to gegl_buffer_freeze_changed() are matched by corresponding
-         * calls to gegl_buffer_freeze_changed(), all accumulated changes are emitted.
+         * Once all calls to `gegl_buffer_freeze_changed()` are matched by corresponding
+         * calls to `gegl_buffer_freeze_changed()`, all accumulated changes are emitted.
          */
         thaw_changed(): void;
     }
@@ -1132,6 +1266,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
 
@@ -1159,16 +1296,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Color.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Color.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Color.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Color.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1179,13 +1319,17 @@ export namespace Gegl {
 
         /**
          * Creates a copy of `color`.
-         * @returns A new copy of @color.
+         * @returns A new copy of `color`.
          */
         duplicate(): Color;
+        /**
+         * @param format a babl pixel format
+         * @returns the color in the given `format`.
+         */
         get_bytes(format: Babl.Object): GLib.Bytes;
         /**
          * Retrieves the current set color stored as `space`.
-         * If `space` is %NULL, this is equivalent to requesting color in the default
+         * If `space` is `null`, this is equivalent to requesting color in the default
          * naive CMYK space.
          * @param space CMYK space.
          */
@@ -1196,6 +1340,9 @@ export namespace Gegl {
          * @returns The color components If value format not supported return NULL and components_length set to 0.
          */
         get_components(format: GObject.Value | any): number[];
+        /**
+         * @returns the pixel format encoding of the set color.
+         */
         get_format(): Babl.Object;
         /**
          * Retrieves the current set color as linear light non premultipled RGBA data,
@@ -1204,18 +1351,18 @@ export namespace Gegl {
         get_rgba(): [number, number, number, number];
         /**
          * Retrieves the current set color stored as `space`.
-         * If `space` is %NULL, this is equivalent to requesting color in sRGB.
+         * If `space` is `null`, this is equivalent to requesting color in sRGB.
          * @param space RGB space.
          */
         get_rgba_with_space(space: Babl.Object): [number, number, number, number];
         /**
          * Set a GeglColor from a pixel stored in a %GBytes and it's babl format.
          * @param format a babl pixel format
-         * @param bytes color stored as @format
+         * @param bytes color stored as `format`
          */
         set_bytes(format: Babl.Object, bytes: GLib.Bytes | Uint8Array): void;
         /**
-         * Set color as CMYK data stored as `space`. If `space` is %NULL, this is
+         * Set color as CMYK data stored as `space`. If `space` is `null`, this is
          * equivalent to storing with the default naive CMYK space.
          * @param cyan cyan value
          * @param magenta magenta value
@@ -1247,7 +1394,7 @@ export namespace Gegl {
          */
         set_rgba(red: number, green: number, blue: number, alpha: number): void;
         /**
-         * Set color as RGBA data stored as `space`. If `space` is %NULL, this is
+         * Set color as RGBA data stored as `space`. If `space` is `null`, this is
          * equivalent to storing as sRGB.
          * @param red red value
          * @param green green value
@@ -1302,6 +1449,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
@@ -1367,16 +1517,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1393,6 +1546,9 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Curve extends GObject.Object {
         static $gtype: GObject.GType<Curve>;
 
@@ -1417,16 +1573,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Curve.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Curve.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Curve.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Curve.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Curve.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Curve.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1451,7 +1610,7 @@ export namespace Gegl {
         calc_value(x: number): number;
         /**
          * Create a copy of `curve`.
-         * @returns A new copy of @curve.
+         * @returns A new copy of `curve`.
          */
         duplicate(): Curve;
         /**
@@ -1503,6 +1662,9 @@ export namespace Gegl {
         interface ConstructorProps extends MetadataStore.ConstructorProps, Metadata.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MetadataHash extends MetadataStore implements Metadata {
         static $gtype: GObject.GType<MetadataHash>;
 
@@ -1525,71 +1687,72 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MetadataHash.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataHash.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MetadataHash.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataHash.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MetadataHash.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MetadataHash.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Retrieve resolution from the application image metadata.  Intended for use
          * by the image file writer.  If resolution is not supported by the application
-         * or if the operation fails %FALSE is returned and the resolution values are
+         * or if the operation fails `false` is returned and the resolution values are
          * not updated.
-         * @param unit #GeglResolutionUnit return location
+         * @param unit {@link Gegl.ResolutionUnit} return location
          * @param x X resolution return location
          * @param y Y resolution return location
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         get_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
         /**
          * Retrieve image file metadata from the application.  Intended for use by the
-         * image file writer. If the operation fails it returns %FALSE and `value` is
+         * image file writer. If the operation fails it returns `false` and `value` is
          * not updated.
-         * @param iter #GeglMetadataIter referencing the value to get
+         * @param iter {@link Gegl.MetadataIter} referencing the value to get
          * @param value Value to set in the interface
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
-         * @param iter #GeglMetadataIter to be initialised
+         * @param iter {@link Gegl.MetadataIter} to be initialised
          */
         iter_init(iter: MetadataIter): void;
         /**
          * Look up the specified key and initialise an iterator to reference the
          * associated metadata. The iterator is used in conjunction with
-         * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
-         * iterator is not valid for gegl_metadata_iter_next().
-         * @param iter #GeglMetadataIter to be initialised
+         * `gegl_metadata_set_value()` and `gegl_metadata_get_value()`. Note that this
+         * iterator is not valid for `gegl_metadata_iter_next()`.
+         * @param iter {@link Gegl.MetadataIter} to be initialised
          * @param key Name of the value look up
-         * @returns %TRUE if key is found.
+         * @returns `true` if key is found.
          */
         iter_lookup(iter: MetadataIter, key: string): boolean;
         /**
          * Move the iterator to the next metadata item
-         * @param iter #GeglMetadataIter to be updated
-         * @returns key name if found, else %NULL
+         * @param iter {@link Gegl.MetadataIter} to be updated
+         * @returns key name if found, else `null`
          */
         iter_next(iter: MetadataIter): string;
         /**
          * Set application data retrieved from image file's metadata.  Intended for use
-         * by the image file reader.  If the operation fails it returns %FALSE and
+         * by the image file reader.  If the operation fails it returns `false` and
          * `value` is ignored.
-         * @param iter #GeglMetadataIter referencing the value to set
+         * @param iter {@link Gegl.MetadataIter} referencing the value to set
          * @param value Value to set in the interface
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
@@ -1604,11 +1767,11 @@ export namespace Gegl {
         /**
          * Set resolution retrieved from image file's metadata.  Intended for use by
          * the image file reader.  If resolution is not supported by the application or
-         * if the operation fails %FALSE is returned and the values are ignored.
-         * @param unit Specify #GeglResolutionUnit
+         * if the operation fails `false` is returned and the values are ignored.
+         * @param unit Specify {@link Gegl.ResolutionUnit}
          * @param x X resolution
          * @param y Y resolution
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         set_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
         /**
@@ -1620,46 +1783,52 @@ export namespace Gegl {
         /**
          * Retrieve resolution from the application image metadata.  Intended for use
          * by the image file writer.  If resolution is not supported by the application
-         * or if the operation fails %FALSE is returned and the resolution values are
+         * or if the operation fails `false` is returned and the resolution values are
          * not updated.
-         * @param unit #GeglResolutionUnit return location
+         * @param unit {@link Gegl.ResolutionUnit} return location
          * @param x X resolution return location
          * @param y Y resolution return location
+         * @virtual
          */
         vfunc_get_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
          * Retrieve image file metadata from the application.  Intended for use by the
-         * image file writer. If the operation fails it returns %FALSE and `value` is
+         * image file writer. If the operation fails it returns `false` and `value` is
          * not updated.
-         * @param iter #GeglMetadataIter referencing the value to get
+         * @param iter {@link Gegl.MetadataIter} referencing the value to get
          * @param value Value to set in the interface
+         * @virtual
          */
         vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
-         * @param iter #GeglMetadataIter to be initialised
+         * @param iter {@link Gegl.MetadataIter} to be initialised
+         * @virtual
          */
         vfunc_iter_init(iter: MetadataIter): void;
         /**
          * Look up the specified key and initialise an iterator to reference the
          * associated metadata. The iterator is used in conjunction with
-         * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
-         * iterator is not valid for gegl_metadata_iter_next().
-         * @param iter #GeglMetadataIter to be initialised
+         * `gegl_metadata_set_value()` and `gegl_metadata_get_value()`. Note that this
+         * iterator is not valid for `gegl_metadata_iter_next()`.
+         * @param iter {@link Gegl.MetadataIter} to be initialised
          * @param key Name of the value look up
+         * @virtual
          */
         vfunc_iter_lookup(iter: MetadataIter, key: string): boolean;
         /**
          * Move the iterator to the next metadata item
-         * @param iter #GeglMetadataIter to be updated
+         * @param iter {@link Gegl.MetadataIter} to be updated
+         * @virtual
          */
         vfunc_iter_next(iter: MetadataIter): string;
         /**
          * Set application data retrieved from image file's metadata.  Intended for use
-         * by the image file reader.  If the operation fails it returns %FALSE and
+         * by the image file reader.  If the operation fails it returns `false` and
          * `value` is ignored.
-         * @param iter #GeglMetadataIter referencing the value to set
+         * @param iter {@link Gegl.MetadataIter} referencing the value to set
          * @param value Value to set in the interface
+         * @virtual
          */
         vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
@@ -1669,15 +1838,17 @@ export namespace Gegl {
          * @param file_module String identifying the file module, e.g, `"gegl:png-save"`
          * @param flags Flags specifying capabilities of underlying file format
          * @param map Array of mappings from file module metadata              names to Gegl well-known names.
+         * @virtual
          */
         vfunc_register_map(file_module: string, flags: number, map: MetadataMap[]): void;
         /**
          * Set resolution retrieved from image file's metadata.  Intended for use by
          * the image file reader.  If resolution is not supported by the application or
-         * if the operation fails %FALSE is returned and the values are ignored.
-         * @param unit Specify #GeglResolutionUnit
+         * if the operation fails `false` is returned and the values are ignored.
+         * @param unit Specify {@link Gegl.ResolutionUnit}
          * @param x X resolution
          * @param y Y resolution
+         * @virtual
          */
         vfunc_set_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
@@ -1693,32 +1864,32 @@ export namespace Gegl {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1727,39 +1898,39 @@ export namespace Gegl {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1770,13 +1941,16 @@ export namespace Gegl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1784,7 +1958,7 @@ export namespace Gegl {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1792,9 +1966,9 @@ export namespace Gegl {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1814,9 +1988,9 @@ export namespace Gegl {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1830,35 +2004,38 @@ export namespace Gegl {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gegl.MetadataStore.notify
         notify(...args: never[]): any;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1891,21 +2068,21 @@ export namespace Gegl {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1915,8 +2092,8 @@ export namespace Gegl {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1933,10 +2110,10 @@ export namespace Gegl {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1951,13 +2128,13 @@ export namespace Gegl {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1988,21 +2165,21 @@ export namespace Gegl {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2012,33 +2189,34 @@ export namespace Gegl {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2047,6 +2225,7 @@ export namespace Gegl {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2055,12 +2234,14 @@ export namespace Gegl {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2069,20 +2250,22 @@ export namespace Gegl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2094,6 +2277,7 @@ export namespace Gegl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2126,10 +2310,48 @@ export namespace Gegl {
     namespace MetadataStore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             changed: (arg0: GObject.ParamSpec) => void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * `::mapped` is emitted after a file module registers a mapping and before
+             * other processing takes place.  An application may respond to the signal by
+             * registering additional mappings or overriding existing values, for example
+             * it might override the TIFF ImageDescription tag to format multiple metadata
+             * values into the description.
+             * @signal
+             */
             mapped: (arg0: string, arg1: boolean) => void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * `::unmapped` is emitted when a file module tries to look up an unmapped
+             * metadata name. When the handler returns a second attempt is made to look
+             * up the metadata.
+             * @signal
+             */
             unmapped: (arg0: string, arg1: string) => void;
             'notify::artist': (pspec: GObject.ParamSpec) => void;
             'notify::comment': (pspec: GObject.ParamSpec) => void;
@@ -2145,47 +2367,383 @@ export namespace Gegl {
             'notify::timestamp': (pspec: GObject.ParamSpec) => void;
             'notify::title': (pspec: GObject.ParamSpec) => void;
             'notify::warning': (pspec: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::artist': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::comment': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::copyright': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::description': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::disclaimer': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::file-module-name': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::resolution-unit': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::resolution-x': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::resolution-y': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::software': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::source': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::timestamp': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::title': (arg0: GObject.ParamSpec) => void;
+            /**
+             * `::changed` is emitted when a metadata value is changed. This is analogous
+             * to the `GObject.Object::notify` signal.
+             * @signal
+             */
             'changed::warning': (arg0: GObject.ParamSpec) => void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::artist': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::comment': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::copyright': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::description': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::disclaimer': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::file-module-name': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::resolution-unit': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::resolution-x': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::resolution-y': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::software': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::source': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::timestamp': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::title': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::generate-value` a signal is emitted
+             * when the file module accesses a value using `gegl_metadata_get_value()`.
+             * The signal handler must generate a value of the type specified in the pspec
+             * argument. The signal handler's return value indicates the success of the
+             * operation.
+             *
+             * If no handler is connected the mapped metadata value is accessed normally,
+             * @signal
+             */
             'generate-value::warning': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::artist': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::comment': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::copyright': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::description': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::disclaimer': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::file-module-name': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::resolution-unit': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::resolution-x': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::resolution-y': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::software': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::source': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::timestamp': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::title': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            /**
+             * If a signal handler is connected to `::parse-value` a signal is emitted when
+             * the file module accesses a value using `gegl_metadata_set_value()`.  The
+             * signal handler should parse the value supplied in the {@link GObject.Value} and may set
+             * any number of metadata values using `gegl_metadata_store_set_value()`.
+             *
+             * If no handler is connected the mapped metadata value is set normally,
+             * @signal
+             */
             'parse-value::warning': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
         }
 
@@ -2213,6 +2771,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MetadataStore extends GObject.Object implements Metadata {
         static $gtype: GObject.GType<MetadataStore>;
 
@@ -2244,24 +2805,24 @@ export namespace Gegl {
         get disclaimer(): string;
         set disclaimer(val: string);
         /**
-         * Current file loader/saver module name. Valid only while a #GeglMetadata
+         * Current file loader/saver module name. Valid only while a {@link Gegl.Metadata}
          * mapping is registered. This property is mainly provided for use in signal
          * handlers.
          */
         get file_module_name(): string;
         /**
-         * Current file loader/saver module name. Valid only while a #GeglMetadata
+         * Current file loader/saver module name. Valid only while a {@link Gegl.Metadata}
          * mapping is registered. This property is mainly provided for use in signal
          * handlers.
          */
         get fileModuleName(): string;
         /**
-         * A #GeglResolutionUnit specifying units for the image resolution (density).
+         * A {@link Gegl.ResolutionUnit} specifying units for the image resolution (density).
          */
         get resolution_unit(): ResolutionUnit;
         set resolution_unit(val: ResolutionUnit);
         /**
-         * A #GeglResolutionUnit specifying units for the image resolution (density).
+         * A {@link Gegl.ResolutionUnit} specifying units for the image resolution (density).
          */
         get resolutionUnit(): ResolutionUnit;
         set resolutionUnit(val: ResolutionUnit);
@@ -2328,16 +2889,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MetadataStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MetadataStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MetadataStore.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MetadataStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2348,92 +2912,97 @@ export namespace Gegl {
 
         /**
          * The _declare virtual method creates a metadata variable in the
-         * underlying data store. It implements gegl_metadata_store_declare(). A
-         * #GParamSpec is used to describe the variable.  If the metadata shadows an
-         * object property, shadow should be %TRUE, otherwise %FALSE.  It is acceptable
+         * underlying data store. It implements `gegl_metadata_store_declare()`. A
+         * {@link GObject.ParamSpec} is used to describe the variable.  If the metadata shadows an
+         * object property, shadow should be `true`, otherwise `false`.  It is acceptable
          * for a subclass to provide additional variables which are implicitly
          * declared, that is, they need not be declared using
-         * gegl_metadata_store_declare(), however the `pspec` method must still retrieve
-         * a #GParamSpec describing such variables.  This method MUST be provided by
+         * `gegl_metadata_store_declare()`, however the `pspec` method must still retrieve
+         * a {@link GObject.ParamSpec} describing such variables.  This method MUST be provided by
          * the subclass.
          * @param pspec
          * @param shadow
+         * @virtual
          */
         vfunc__declare(pspec: GObject.ParamSpec, shadow: boolean): void;
         /**
-         * Return a pointer to a #GValue with the value of the metadata
-         * variable or %NULL if not declared or the variable does not contain a valid
-         * value.  Implements gegl_metadata_store_get_value().  This method MUST be
+         * Return a pointer to a {@link GObject.Value} with the value of the metadata
+         * variable or `null` if not declared or the variable does not contain a valid
+         * value.  Implements `gegl_metadata_store_get_value()`.  This method MUST be
          * provided by the subclass.
          * @param name
+         * @virtual
          */
         vfunc__get_value(name: string): unknown;
         /**
-         * Test whether the #GeglMetadataStore contains a value for the specified name.
+         * Test whether the {@link Gegl.MetadataStore} contains a value for the specified name.
          * @param name Metadata name
+         * @virtual
          */
         vfunc_has_value(name: string): boolean;
         /**
          * This method is called after a file loader or saver registers
-         * a #GeglMetadataMap and before any further processing takes place.  It is
+         * a {@link Gegl.MetadataMap} and before any further processing takes place.  It is
          * intended to allow an application to create further application-specific
-         * mappings using gegl_metadata_store_register().  #GeglMetadataStore provides
+         * mappings using `gegl_metadata_store_register()`.  {@link Gegl.MetadataStore} provides
          * a default method which emits the `::mapped` signal.
          * @param file_module_name
          * @param flags
+         * @virtual
          */
         vfunc_register_hook(file_module_name: string, flags: number): void;
         /**
-         * Set the specified metadata value. If `value` is %NULL the default value from
-         * the associated #GParamSpec is used. This operation will fail if the value
+         * Set the specified metadata value. If `value` is `null` the default value from
+         * the associated {@link GObject.ParamSpec} is used. This operation will fail if the value
          * has not been previously declared.  A `changed::name` signal is emitted when
          * the value is set. If the value is shadowed by a property a `notify::name`
          * signal is also emitted.
          * @param name Metadata name
-         * @param value (nullable): A valid #GValue or %NULL
+         * @param value (nullable): A valid {@link GObject.Value} or `null`
+         * @virtual
          */
         vfunc_set_value(name: string, value: GObject.Value | any): void;
 
         // Methods
 
         /**
-         * Declare a metadata value using a #GParamSpec.
-         * @param pspec A #GParamSpec
+         * Declare a metadata value using a {@link GObject.ParamSpec}.
+         * @param pspec A {@link GObject.ParamSpec}
          */
         declare(pspec: GObject.ParamSpec): void;
         /**
          * Get name of image creator.
-         * @returns Artist or %NULL if not set
+         * @returns Artist or `null` if not set
          */
         get_artist(): string;
         /**
          * Get the comment.
-         * @returns Comment or %NULL if not set
+         * @returns Comment or `null` if not set
          */
         get_comment(): string;
         /**
          * Get the copyright notice.
-         * @returns Copyright or %NULL if not set
+         * @returns Copyright or `null` if not set
          */
         get_copyright(): string;
         /**
          * Get description of image.
-         * @returns Description or %NULL if not set
+         * @returns Description or `null` if not set
          */
         get_description(): string;
         /**
          * Get the legal disclaimer.
-         * @returns Disclaimer or %NULL if not set
+         * @returns Disclaimer or `null` if not set
          */
         get_disclaimer(): string;
         /**
          * Return the name registered by the current file module.
-         * @returns Current file module name or %NULL.
+         * @returns Current file module name or `null`.
          */
         get_file_module_name(): string;
         /**
          * Get the units used for resolution.
-         * @returns a #GeglResolutionUnit.
+         * @returns a {@link Gegl.ResolutionUnit}.
          */
         get_resolution_unit(): ResolutionUnit;
         /**
@@ -2448,30 +3017,30 @@ export namespace Gegl {
         get_resolution_y(): number;
         /**
          * Get software used to create the image.
-         * @returns Software or %NULL if not set
+         * @returns Software or `null` if not set
          */
         get_software(): string;
         /**
          * Get device used to create the image.
-         * @returns source or %NULL if not set
+         * @returns source or `null` if not set
          */
         get_source(): string;
         /**
-         * A slightly more efficient version of gegl_metadata_store_get_value()
+         * A slightly more efficient version of `gegl_metadata_store_get_value()`
          * for string values avoiding a duplication. Otherwise it behaves the same
-         * gegl_metadata_store_get_value().
+         * `gegl_metadata_store_get_value()`.
          * @param name Metadata name
-         * @returns String or %NULL.
+         * @returns String or `null`.
          */
         get_string(name: string): string;
         /**
          * Get time of original image creation.
-         * @returns #GDateTime or %NULL if not set. Free with                           g_date_time_unref() when done.
+         * @returns {@link GLib.DateTime} or `null` if not set. Free with                           `g_date_time_unref()` when done.
          */
         get_timestamp(): GLib.DateTime;
         /**
          * Get title or caption for image.
-         * @returns Title or %NULL if not set
+         * @returns Title or `null` if not set
          */
         get_title(): string;
         /**
@@ -2479,32 +3048,40 @@ export namespace Gegl {
          * type. If the value is unset or has not been previously declared `value` is
          * unchanged and an error message is logged.
          * @param name Metadata name
-         * @param value An initialised #GValue.
+         * @param value An initialised {@link GObject.Value}.
          */
         get_value(name: string, value: GObject.Value | any): unknown;
         /**
          * Get warning.
-         * @returns Warning or %NULL if not set
+         * @returns Warning or `null` if not set
          */
         get_warning(): string;
         /**
-         * Test whether the #GeglMetadataStore contains a value for the specified name.
+         * Test whether the {@link Gegl.MetadataStore} contains a value for the specified name.
          * @param name Metadata name
-         * @returns %TRUE if metadata is declared and contains a valid value.
+         * @returns `true` if metadata is declared and contains a valid value.
          */
         has_value(name: string): boolean;
         /**
-         * gegl_metadata_store_notify() is called by subclasses when the value of a
+         * `gegl_metadata_store_notify()` is called by subclasses when the value of a
          * metadata variable changes. It emits the `::changed` signal with the variable
-         * name as the detail parameter.  Set `shadow` = %TRUE if variable is shadowed
+         * name as the detail parameter.  Set `shadow` = `true` if variable is shadowed
          * by a property so that a notify signal is emitted with the property name as
          * the detail parameter.
-         * @param pspec The #GParamSpec used to declare the variable.
+         * @param pspec The {@link GObject.ParamSpec} used to declare the variable.
          * @param shadow The metadata variable shadows a property.
          */
         notify(pspec: GObject.ParamSpec, shadow: boolean): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.notify
         notify(...args: never[]): any;
+        /**
+         * @param local_name Metadata name known to file module
+         * @param name Metadata name
+         * @param transform A {@link GObject.ValueTransform} function or `null`
+         */
         register(local_name: string, name: string, transform: GObject.ValueTransform): void;
         /**
          * Set name of image creator.
@@ -2533,7 +3110,7 @@ export namespace Gegl {
         set_disclaimer(disclaimer: string): void;
         /**
          * Set the units used for the resolution (density) values.
-         * @param unit Units as a #GeglResolutionUnit
+         * @param unit Units as a {@link Gegl.ResolutionUnit}
          */
         set_resolution_unit(unit: ResolutionUnit | null): void;
         /**
@@ -2557,16 +3134,16 @@ export namespace Gegl {
          */
         set_source(source: string): void;
         /**
-         * A slightly more efficient version of gegl_metadata_store_set_value()
+         * A slightly more efficient version of `gegl_metadata_store_set_value()`
          * for string values avoiding a duplication. Otherwise it behaves the same
-         * gegl_metadata_store_set_value().
+         * `gegl_metadata_store_set_value()`.
          * @param name Metadata name
          * @param string String value to set
          */
         set_string(name: string, string: string): void;
         /**
          * Set time of original image creation.
-         * @param timestamp A #GDateTime
+         * @param timestamp A {@link GLib.DateTime}
          */
         set_timestamp(timestamp: GLib.DateTime): void;
         /**
@@ -2575,13 +3152,13 @@ export namespace Gegl {
          */
         set_title(title: string): void;
         /**
-         * Set the specified metadata value. If `value` is %NULL the default value from
-         * the associated #GParamSpec is used. This operation will fail if the value
+         * Set the specified metadata value. If `value` is `null` the default value from
+         * the associated {@link GObject.ParamSpec} is used. This operation will fail if the value
          * has not been previously declared.  A `changed::name` signal is emitted when
          * the value is set. If the value is shadowed by a property a `notify::name`
          * signal is also emitted.
          * @param name Metadata name
-         * @param value (nullable): A valid #GValue or %NULL
+         * @param value (nullable): A valid {@link GObject.Value} or `null`
          */
         set_value(name: string, value: GObject.Value | any): void;
         /**
@@ -2590,61 +3167,59 @@ export namespace Gegl {
          */
         set_warning(warning: string): void;
         /**
-         * Get the declared type of the value in the #GeglMetadataStore.
+         * Get the declared type of the value in the {@link Gegl.MetadataStore}.
          * @param name Metadata name
-         * @returns Declared #GType of metadata value or %G_TYPE_INVALID.
+         * @returns Declared {@link GObject.GType} of metadata value or `G_TYPE_INVALID`.
          */
         typeof_value(name: string): GObject.GType;
-
-        // Inherited methods
         /**
          * Retrieve resolution from the application image metadata.  Intended for use
          * by the image file writer.  If resolution is not supported by the application
-         * or if the operation fails %FALSE is returned and the resolution values are
+         * or if the operation fails `false` is returned and the resolution values are
          * not updated.
-         * @param unit #GeglResolutionUnit return location
+         * @param unit {@link Gegl.ResolutionUnit} return location
          * @param x X resolution return location
          * @param y Y resolution return location
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         get_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
         /**
          * Retrieve image file metadata from the application.  Intended for use by the
-         * image file writer. If the operation fails it returns %FALSE and `value` is
+         * image file writer. If the operation fails it returns `false` and `value` is
          * not updated.
-         * @param iter #GeglMetadataIter referencing the value to get
+         * @param iter {@link Gegl.MetadataIter} referencing the value to get
          * @param value Value to set in the interface
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
-         * @param iter #GeglMetadataIter to be initialised
+         * @param iter {@link Gegl.MetadataIter} to be initialised
          */
         iter_init(iter: MetadataIter): void;
         /**
          * Look up the specified key and initialise an iterator to reference the
          * associated metadata. The iterator is used in conjunction with
-         * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
-         * iterator is not valid for gegl_metadata_iter_next().
-         * @param iter #GeglMetadataIter to be initialised
+         * `gegl_metadata_set_value()` and `gegl_metadata_get_value()`. Note that this
+         * iterator is not valid for `gegl_metadata_iter_next()`.
+         * @param iter {@link Gegl.MetadataIter} to be initialised
          * @param key Name of the value look up
-         * @returns %TRUE if key is found.
+         * @returns `true` if key is found.
          */
         iter_lookup(iter: MetadataIter, key: string): boolean;
         /**
          * Move the iterator to the next metadata item
-         * @param iter #GeglMetadataIter to be updated
-         * @returns key name if found, else %NULL
+         * @param iter {@link Gegl.MetadataIter} to be updated
+         * @returns key name if found, else `null`
          */
         iter_next(iter: MetadataIter): string;
         /**
          * Set application data retrieved from image file's metadata.  Intended for use
-         * by the image file reader.  If the operation fails it returns %FALSE and
+         * by the image file reader.  If the operation fails it returns `false` and
          * `value` is ignored.
-         * @param iter #GeglMetadataIter referencing the value to set
+         * @param iter {@link Gegl.MetadataIter} referencing the value to set
          * @param value Value to set in the interface
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
@@ -2659,11 +3234,11 @@ export namespace Gegl {
         /**
          * Set resolution retrieved from image file's metadata.  Intended for use by
          * the image file reader.  If resolution is not supported by the application or
-         * if the operation fails %FALSE is returned and the values are ignored.
-         * @param unit Specify #GeglResolutionUnit
+         * if the operation fails `false` is returned and the values are ignored.
+         * @param unit Specify {@link Gegl.ResolutionUnit}
          * @param x X resolution
          * @param y Y resolution
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         set_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
         /**
@@ -2675,46 +3250,52 @@ export namespace Gegl {
         /**
          * Retrieve resolution from the application image metadata.  Intended for use
          * by the image file writer.  If resolution is not supported by the application
-         * or if the operation fails %FALSE is returned and the resolution values are
+         * or if the operation fails `false` is returned and the resolution values are
          * not updated.
-         * @param unit #GeglResolutionUnit return location
+         * @param unit {@link Gegl.ResolutionUnit} return location
          * @param x X resolution return location
          * @param y Y resolution return location
+         * @virtual
          */
         vfunc_get_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
          * Retrieve image file metadata from the application.  Intended for use by the
-         * image file writer. If the operation fails it returns %FALSE and `value` is
+         * image file writer. If the operation fails it returns `false` and `value` is
          * not updated.
-         * @param iter #GeglMetadataIter referencing the value to get
+         * @param iter {@link Gegl.MetadataIter} referencing the value to get
          * @param value Value to set in the interface
+         * @virtual
          */
         vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
-         * @param iter #GeglMetadataIter to be initialised
+         * @param iter {@link Gegl.MetadataIter} to be initialised
+         * @virtual
          */
         vfunc_iter_init(iter: MetadataIter): void;
         /**
          * Look up the specified key and initialise an iterator to reference the
          * associated metadata. The iterator is used in conjunction with
-         * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
-         * iterator is not valid for gegl_metadata_iter_next().
-         * @param iter #GeglMetadataIter to be initialised
+         * `gegl_metadata_set_value()` and `gegl_metadata_get_value()`. Note that this
+         * iterator is not valid for `gegl_metadata_iter_next()`.
+         * @param iter {@link Gegl.MetadataIter} to be initialised
          * @param key Name of the value look up
+         * @virtual
          */
         vfunc_iter_lookup(iter: MetadataIter, key: string): boolean;
         /**
          * Move the iterator to the next metadata item
-         * @param iter #GeglMetadataIter to be updated
+         * @param iter {@link Gegl.MetadataIter} to be updated
+         * @virtual
          */
         vfunc_iter_next(iter: MetadataIter): string;
         /**
          * Set application data retrieved from image file's metadata.  Intended for use
-         * by the image file reader.  If the operation fails it returns %FALSE and
+         * by the image file reader.  If the operation fails it returns `false` and
          * `value` is ignored.
-         * @param iter #GeglMetadataIter referencing the value to set
+         * @param iter {@link Gegl.MetadataIter} referencing the value to set
          * @param value Value to set in the interface
+         * @virtual
          */
         vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
@@ -2724,15 +3305,17 @@ export namespace Gegl {
          * @param file_module String identifying the file module, e.g, `"gegl:png-save"`
          * @param flags Flags specifying capabilities of underlying file format
          * @param map Array of mappings from file module metadata              names to Gegl well-known names.
+         * @virtual
          */
         vfunc_register_map(file_module: string, flags: number, map: MetadataMap[]): void;
         /**
          * Set resolution retrieved from image file's metadata.  Intended for use by
          * the image file reader.  If resolution is not supported by the application or
-         * if the operation fails %FALSE is returned and the values are ignored.
-         * @param unit Specify #GeglResolutionUnit
+         * if the operation fails `false` is returned and the values are ignored.
+         * @param unit Specify {@link Gegl.ResolutionUnit}
          * @param x X resolution
          * @param y Y resolution
+         * @virtual
          */
         vfunc_set_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         /**
@@ -2748,32 +3331,32 @@ export namespace Gegl {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2782,39 +3365,39 @@ export namespace Gegl {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2825,13 +3408,16 @@ export namespace Gegl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2839,7 +3425,7 @@ export namespace Gegl {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2847,9 +3433,9 @@ export namespace Gegl {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2869,9 +3455,9 @@ export namespace Gegl {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2885,19 +3471,19 @@ export namespace Gegl {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2930,21 +3516,21 @@ export namespace Gegl {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2954,8 +3540,8 @@ export namespace Gegl {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2972,10 +3558,10 @@ export namespace Gegl {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2990,13 +3576,13 @@ export namespace Gegl {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3027,21 +3613,21 @@ export namespace Gegl {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3051,33 +3637,34 @@ export namespace Gegl {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3086,6 +3673,7 @@ export namespace Gegl {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3094,12 +3682,14 @@ export namespace Gegl {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3108,20 +3698,22 @@ export namespace Gegl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3133,6 +3725,7 @@ export namespace Gegl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3165,8 +3758,17 @@ export namespace Gegl {
     namespace Node {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             computed: (arg0: Rectangle) => void;
+            /**
+             * @signal
+             */
             invalidated: (arg0: Rectangle) => void;
+            /**
+             * @signal
+             */
             progress: (arg0: number) => void;
             'notify::cache-policy': (pspec: GObject.ParamSpec) => void;
             'notify::dont-cache': (pspec: GObject.ParamSpec) => void;
@@ -3194,6 +3796,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
@@ -3247,16 +3852,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Node.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Node.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3266,7 +3874,7 @@ export namespace Gegl {
         // Methods
 
         /**
-         * Make the GeglNode `graph,` take a reference on child. This reference
+         * Make the GeglNode `graph`, take a reference on child. This reference
          * will be dropped when the reference count on the graph reaches zero.
          * @param child a GeglNode.
          * @returns the child.
@@ -3274,7 +3882,7 @@ export namespace Gegl {
         add_child(child: Node): Node;
         /**
          * Render a rectangular region from a node to the given buffer.
-         * @param buffer the #GeglBuffer to render to.
+         * @param buffer the {@link Gegl.Buffer} to render to.
          * @param roi the rectangle to render.
          * @param level mipmap level to render (0 for all)
          * @param abyss_policy
@@ -3295,6 +3903,9 @@ export namespace Gegl {
          * @param b_pad_name and its pad to be connected.
          */
         connect(a_pad_name: string, b: Node, b_pad_name: string): boolean;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Makes a connection between the pads of two nodes.
@@ -3317,7 +3928,7 @@ export namespace Gegl {
         /**
          * Creates a new processing node that performs the specified operation.
          * All properties of the operation will have their default values. This
-         * is included as an addition to #gegl_node_new_child in the public API to have
+         * is included as an addition to `gegl_node_new_child` in the public API to have
          * a non varargs entry point for bindings as well as sometimes simpler more
          * readable code.
          * @param operation the type of node to create.
@@ -3330,7 +3941,7 @@ export namespace Gegl {
          * pixel data.
          * @param x x coordinate
          * @param y y coordinate
-         * @returns the GeglNode providing the data ending up at @x,@y in the output of @node.
+         * @returns the GeglNode providing the data ending up at `x`,`y` in the output of `node`.
          */
         detect(x: number, y: number): Node;
         /**
@@ -3340,9 +3951,19 @@ export namespace Gegl {
          * @param input_pad the input pad to disconnect.
          */
         disconnect(input_pad: string): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
+        /**
+         * @param property_name the name of the property to get a paramspec for.
+         * @returns the GParamSpec of property or NULL if no such property exists.
+         */
         find_property(property_name: string): GObject.ParamSpec;
+        /**
+         * @returns a list of the nodes contained within a GeglNode that is a subgraph. Use g_list_free () on the list when done.
+         */
         get_children(): Node[];
         /**
          * Retrieve which pads on which nodes are connected to a named output_pad,
@@ -3354,6 +3975,9 @@ export namespace Gegl {
          * @param output_pad the output pad we want to know who uses.
          */
         get_consumers(output_pad: string): [number, Node[] | null, string[] | null];
+        /**
+         * @returns The operation object associated with this node or NULL if there is no op associated.
+         */
         get_gegl_operation(): Operation | null;
         /**
          * Proxies are used to route between nodes of a subgraph contained within
@@ -3362,6 +3986,9 @@ export namespace Gegl {
          * @returns Returns an input proxy for the named pad. If no input proxy exists with this name a new one will be created.
          */
         get_input_proxy(pad_name: string): Node;
+        /**
+         * @returns The type of processing operation associated with this node, or NULL if there is no op associated. The special name "GraphNode" is returned if the node is the container of a subgraph.
+         */
         get_operation(): string;
         /**
          * Proxies are used to route between nodes of a subgraph contained within
@@ -3376,6 +4003,11 @@ export namespace Gegl {
          */
         get_parent(): Node;
         get_passthrough(): boolean;
+        /**
+         * @param input_pad_name the input pad we want to get the producer for
+         * @param output_pad_name optional pointer to a location where we can store a                   freshly allocated string with the name of the output pad.
+         * @returns the node providing data or NULL if no node is connected to the input_pad.
+         */
         get_producer(input_pad_name: string, output_pad_name?: string | null): Node;
         /**
          * Returns TRUE if the node has a pad with the specified name
@@ -3385,10 +4017,17 @@ export namespace Gegl {
         /**
          * Returns the position and dimensions of a rectangle spanning the area
          * defined by a node.
-         * @returns pointer a #GeglRectangle
+         * @returns pointer a {@link Gegl.Rectangle}
          */
         get_bounding_box(): Rectangle;
+        /**
+         * @param property_name the name of the property to get
+         * @returns pointer to a GValue containing the value of the property
+         */
         get_property(property_name: string): unknown;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         is_graph(): boolean;
@@ -3400,22 +4039,26 @@ export namespace Gegl {
         /**
          * If the node has any input pads this function returns a null terminated
          * array of pad names, otherwise it returns NULL. The return value can be
-         * freed with g_strfreev().
+         * freed with `g_strfreev()`.
          */
         list_input_pads(): string[];
         /**
          * If the node has any output pads this function returns a null terminated
          * array of pad names, otherwise it returns NULL. The return value can be
-         * freed with g_strfreev().
+         * freed with `g_strfreev()`.
          */
         list_output_pads(): string[];
+        /**
+         * @param rectangle the {@link Gegl.Rectangle} to work on or NULL to work on all available data.
+         * @returns a new {@link Gegl.Processor}.
+         */
         new_processor(rectangle: Rectangle): Processor;
         /**
          * Render a composition. This can be used for instance on a node with a "png-save"
          * operation to render all necessary data, and make it be written to file. This
          * function wraps the usage of a GeglProcessor in a single blocking function
          * call. If you need a non-blocking operation, then make a direct use of
-         * #gegl_processor_work. See #GeglProcessor.
+         * `gegl_processor_work`. See {@link Gegl.Processor}.
          *
          * ---
          * GeglNode      *gegl;
@@ -3445,6 +4088,10 @@ export namespace Gegl {
          *                 GEGL_BLIT_DEFAULT);
          */
         process(): void;
+        /**
+         * @param progress
+         * @param message
+         */
         progress(progress: number, message: string): void;
         /**
          * Removes a child from a GeglNode. The reference previously held will be
@@ -3454,10 +4101,17 @@ export namespace Gegl {
          * @returns the child.
          */
         remove_child(child: Node): Node;
+        /**
+         * @param key
+         * @param value
+         */
         set_enum_as_string(key: string, value: string): void;
+        /**
+         * @param passthrough
+         */
         set_passthrough(passthrough: boolean): void;
         /**
-         * This is mainly included for language bindings. Using #gegl_node_set is
+         * This is mainly included for language bindings. Using `gegl_node_set` is
          * more convenient when programming in C.
          * @param property_name the name of the property to set
          * @param value a GValue containing the value to be set in the property.
@@ -3474,7 +4128,7 @@ export namespace Gegl {
          * serialization of the composition produced by a node (and thus also
          * the nodes contributing data to the specified node). To export a
          * gegl graph, connect the internal output node to an output proxy (see
-         * #gegl_node_get_output_proxy.) and use the proxy node as the basis
+         * `gegl_node_get_output_proxy`.) and use the proxy node as the basis
          * for the serialization.
          * @param path_root filesystem path to construct relative paths from.
          */
@@ -3482,8 +4136,8 @@ export namespace Gegl {
         /**
          * Returns a freshly allocated \0 terminated string containing a XML
          * serialization of a segment of a graph from `head` to `tail` nodes.
-         * If `tail` is %NULL then this behaves just like #gegl_node_to_xml.
-         * @param tail a #GeglNode
+         * If `tail` is `null` then this behaves just like `gegl_node_to_xml`.
+         * @param tail a {@link Gegl.Node}
          * @param path_root filesystem path to construct relative paths from.
          * @returns XML serialization of a graph segment.
          */
@@ -3499,6 +4153,9 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Operation extends GObject.Object {
         static $gtype: GObject.GType<Operation>;
 
@@ -3519,16 +4176,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3537,22 +4197,57 @@ export namespace Gegl {
 
         // Static methods
 
+        /**
+         * @param operation_type the name of the operation type we want to locate a property on.
+         * @param property_name the name of the property we seek.
+         */
         static find_property(operation_type: string, property_name: string): GObject.ParamSpec;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.find_property
         static find_property(...args: never[]): any;
+        /**
+         * @param operation_type
+         * @param key_name
+         */
         static get_key(operation_type: string, key_name: string): string;
+        /**
+         * @param op_name
+         */
         static get_op_version(op_name: string): string;
+        /**
+         * @param operation_type the name of the operation type we want to query to property keys for.
+         * @param property_name the property to query a key for.
+         * @param property_key_name the property mata data key to query
+         */
         static get_property_key(operation_type: string, property_name: string, property_key_name: string): string;
+        /**
+         * @param operation_type the name of the operation type we want to query to property keys for.
+         */
         static list_keys(operation_type: string): string[];
+        /**
+         * @param operation_type the name of the operation type we want to query to properties of.
+         */
         static list_properties(operation_type: string): GObject.ParamSpec[];
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.list_properties
         static list_properties(...args: never[]): any;
+        /**
+         * @param operation_type the name of the operation type we want to query to property keys for.
+         * @param property_name the property to query a key for.
+         */
         static list_property_keys(operation_type: string, property_name: string): string[];
     }
 
     namespace Path {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             changed: (arg0: any | null) => void;
         }
 
@@ -3561,6 +4256,9 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
 
@@ -3585,16 +4283,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Path.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Path.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Path.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Path.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3659,7 +4360,7 @@ export namespace Gegl {
         foreach_flat(each_item: NodeFunction): void;
         /**
          * Make the `GeglPath` stop firing signals as it changes must be paired with a
-         * gegl_path_thaw() for the signals to start again.
+         * `gegl_path_thaw()` for the signals to start again.
          */
         freeze(): void;
         /**
@@ -3702,7 +4403,7 @@ export namespace Gegl {
         is_empty(): boolean;
         /**
          * Parses `instructions` and appends corresponding nodes to path (call
-         * gegl_path_clean() first if you want to replace the existing path.
+         * `gegl_path_clean()` first if you want to replace the existing path.
          * @param instructions a string describing a path.
          */
         parse_string(instructions: string): void;
@@ -3722,7 +4423,7 @@ export namespace Gegl {
          *
          * The path is transformed through this matrix when being evaluated,
          * causing the calculated positions and length to be changed by the transform.
-         * @param matrix a #GeglMatrix3 to copy the matrix from
+         * @param matrix a {@link Gegl.Matrix3} to copy the matrix from
          */
         set_matrix(matrix: Matrix3): void;
         /**
@@ -3731,7 +4432,7 @@ export namespace Gegl {
         thaw(): void;
         /**
          * Serialize the paths nodes to a string.
-         * @returns return a string with instructions describing the string you need to free this with g_free().
+         * @returns return a string with instructions describing the string you need to free this with `g_free()`.
          */
         to_string(): string;
     }
@@ -3755,6 +4456,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Processor extends GObject.Object {
         static $gtype: GObject.GType<Processor>;
 
@@ -3784,16 +4488,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Processor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Processor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Processor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Processor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Processor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Processor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3806,15 +4513,21 @@ export namespace Gegl {
          * Returns the (cache) buffer the processor is rendering into, another way of
          * getting to the same pixel data is calling gegl_node_blit with flags
          * indicating that we want caching and accept dirty data.
-         * @returns the #GeglBuffer rendered into.
+         * @returns the {@link Gegl.Buffer} rendered into.
          */
         get_buffer(): Buffer;
+        /**
+         * @param level
+         */
         set_level(level: number): void;
         /**
-         * Change the rectangle a #GeglProcessor is working on.
-         * @param rectangle the new #GeglRectangle the processor shold work on or NULL to make it work on all data in the buffer.
+         * Change the rectangle a {@link Gegl.Processor} is working on.
+         * @param rectangle the new {@link Gegl.Rectangle} the processor shold work on or NULL to make it work on all data in the buffer.
          */
         set_rectangle(rectangle: Rectangle): void;
+        /**
+         * @param scale
+         */
         set_scale(scale: number): void;
         /**
          * Do an iteration of work for the processor.
@@ -3906,6 +4619,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Stats extends GObject.Object {
         static $gtype: GObject.GType<Stats>;
 
@@ -3971,16 +4687,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Stats.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stats.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Stats.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stats.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Stats.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Stats.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4016,6 +4735,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TileBackend extends TileSource {
         static $gtype: GObject.GType<TileBackend>;
 
@@ -4052,16 +4774,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TileBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4083,12 +4808,21 @@ export namespace Gegl {
         // Methods
 
         get_flush_on_destroy(): boolean;
+        /**
+         * @returns the height of tile from this backend
+         */
         get_tile_height(): number;
+        /**
+         * @returns the size in bytes for a tile from this backend
+         */
         get_tile_size(): number;
+        /**
+         * @returns the width of tile from this backend
+         */
         get_tile_width(): number;
         /**
          * Gets a pointer to the GeglTileStorage that uses the backend
-         * @returns the #GeglTileStorage
+         * @returns the `GeglTileStorage`
          */
         peek_storage(): TileSource;
         /**
@@ -4119,6 +4853,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TileHandler extends TileSource {
         static $gtype: GObject.GType<TileHandler>;
 
@@ -4144,16 +4881,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileHandler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileHandler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TileHandler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4162,9 +4902,21 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param rect
+         */
         damage_rect(rect: Rectangle): void;
+        /**
+         * @param x
+         * @param y
+         * @param z
+         * @param damage
+         */
         damage_tile(x: number, y: number, z: number, damage: number): void;
         lock(): void;
+        /**
+         * @param source
+         */
         set_source(source: TileSource): void;
         unlock(): void;
     }
@@ -4178,6 +4930,9 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TileSource extends GObject.Object {
         static $gtype: GObject.GType<TileSource>;
 
@@ -4203,16 +4958,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TileSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TileSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TileSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4220,11 +4978,20 @@ export namespace Gegl {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioFragmentClass = typeof AudioFragment;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioFragmentPrivate {
         static $gtype: GObject.GType<AudioFragmentPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BufferIterator {
         static $gtype: GObject.GType<BufferIterator>;
 
@@ -4234,6 +5001,9 @@ export namespace Gegl {
         items: BufferIteratorItem[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BufferIteratorItem {
         static $gtype: GObject.GType<BufferIteratorItem>;
 
@@ -4252,10 +5022,16 @@ export namespace Gegl {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class BufferIteratorPriv {
         static $gtype: GObject.GType<BufferIteratorPriv>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BufferMatrix2 {
         static $gtype: GObject.GType<BufferMatrix2>;
 
@@ -4278,12 +5054,24 @@ export namespace Gegl {
         is_scale(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ColorClass = typeof Color;
+    /**
+     * @gir-type Struct
+     */
     abstract class ColorPrivate {
         static $gtype: GObject.GType<ColorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CurveClass = typeof Curve;
+    /**
+     * @gir-type Struct
+     */
     class Lookup {
         static $gtype: GObject.GType<Lookup>;
 
@@ -4300,6 +5088,9 @@ export namespace Gegl {
         table: number[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Matrix3 {
         static $gtype: GObject.GType<Matrix3>;
 
@@ -4325,7 +5116,7 @@ export namespace Gegl {
         copy(): Matrix3;
         /**
          * Copies the matrix in `src` into `dst`.
-         * @param src a #GeglMatrix3
+         * @param src a {@link Gegl.Matrix3}
          */
         copy_into(src: Matrix3): void;
         /**
@@ -4336,7 +5127,7 @@ export namespace Gegl {
          * Check if two matrices are equal.
          *
          * Returns TRUE if the matrices are equal.
-         * @param matrix2 a #GeglMatrix3
+         * @param matrix2 a {@link Gegl.Matrix3}
          */
         equal(matrix2: Matrix3): boolean;
         /**
@@ -4373,19 +5164,19 @@ export namespace Gegl {
         is_translate(): boolean;
         /**
          * Multiples `product` = `left` · `right`
-         * @param right a #GeglMatrix3
-         * @param product a #GeglMatrix3 to store the result in.
+         * @param right a {@link Gegl.Matrix3}
+         * @param product a {@link Gegl.Matrix3} to store the result in.
          */
         multiply(right: Matrix3, product: Matrix3): void;
         /**
          * Shift the origin of the transformation specified by `matrix`
-         * to (`x,` `y)`. In other words, calculate the matrix that:
+         * to (`x`, `y`). In other words, calculate the matrix that:
          *
-         * 1. Translates the input by (-`x,` -`y)`.
+         * 1. Translates the input by (-`x`, -`y`).
          *
          * 2. Transforms the result using the original `matrix`.
          *
-         * 3. Translates the result by (`x,` `y)`.
+         * 3. Translates the result by (`x`, `y`).
          * @param x x coordinate of new origin
          * @param y y coordinate of new origin.
          */
@@ -4400,10 +5191,10 @@ export namespace Gegl {
          */
         round_error(): void;
         /**
-         * Serialize a #GeglMatrix3 to a string.
+         * Serialize a {@link Gegl.Matrix3} to a string.
          *
-         * Returns a freshly allocated string representing that #GeglMatrix3, the
-         * returned string should be g_free()'d.
+         * Returns a freshly allocated string representing that {@link Gegl.Matrix3}, the
+         * returned string should be `g_free()`'d.
          */
         to_string(): string;
         /**
@@ -4415,10 +5206,17 @@ export namespace Gegl {
         transform_point(x: number, y: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MetadataHashClass = typeof MetadataHash;
+    /**
+     * @gir-type Alias
+     */
     type MetadataInterface = typeof Metadata;
     /**
      * An opaque type representing a metadata iterator.
+     * @gir-type Struct
      */
     class MetadataIter {
         static $gtype: GObject.GType<MetadataIter>;
@@ -4431,7 +5229,8 @@ export namespace Gegl {
     /**
      * Struct to describe how a metadata variable is mapped from the name used by
      * the image file module to the name used by Gegl.  An optional transform
-     * function may be specified, e.g. to transform from a #GDatetime to a string.
+     * function may be specified, e.g. to transform from a `GDatetime` to a string.
+     * @gir-type Struct
      */
     class MetadataMap {
         static $gtype: GObject.GType<MetadataMap>;
@@ -4443,11 +5242,20 @@ export namespace Gegl {
         transform: GObject.ValueTransform;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MetadataStoreClass = typeof MetadataStore;
+    /**
+     * @gir-type Struct
+     */
     abstract class OperationContext {
         static $gtype: GObject.GType<OperationContext>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecDouble {
         static $gtype: GObject.GType<ParamSpecDouble>;
 
@@ -4462,10 +5270,20 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param digits
+         */
         set_digits(digits: number): void;
+        /**
+         * @param small_step
+         * @param big_step
+         */
         set_steps(small_step: number, big_step: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecEnum {
         static $gtype: GObject.GType<ParamSpecEnum>;
 
@@ -4475,9 +5293,15 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param value
+         */
         exclude_value(value: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecFilePath {
         static $gtype: GObject.GType<ParamSpecFilePath>;
 
@@ -4487,10 +5311,16 @@ export namespace Gegl {
         null_ok: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecFormat {
         static $gtype: GObject.GType<ParamSpecFormat>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecInt {
         static $gtype: GObject.GType<ParamSpecInt>;
 
@@ -4504,9 +5334,16 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param small_step
+         * @param big_step
+         */
         set_steps(small_step: number, big_step: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecSeed {
         static $gtype: GObject.GType<ParamSpecSeed>;
 
@@ -4516,6 +5353,9 @@ export namespace Gegl {
         ui_maximum: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecString {
         static $gtype: GObject.GType<ParamSpecString>;
 
@@ -4525,6 +5365,9 @@ export namespace Gegl {
         null_ok: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecUri {
         static $gtype: GObject.GType<ParamSpecUri>;
 
@@ -4534,7 +5377,13 @@ export namespace Gegl {
         null_ok: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PathClass = typeof Path;
+    /**
+     * @gir-type Struct
+     */
     class PathItem {
         static $gtype: GObject.GType<PathItem>;
 
@@ -4553,6 +5402,9 @@ export namespace Gegl {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PathList {
         static $gtype: GObject.GType<PathList>;
 
@@ -4571,6 +5423,9 @@ export namespace Gegl {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PathPoint {
         static $gtype: GObject.GType<PathPoint>;
 
@@ -4589,6 +5444,9 @@ export namespace Gegl {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Random {
         static $gtype: GObject.GType<Random>;
 
@@ -4627,8 +5485,8 @@ export namespace Gegl {
          */
         float_range(x: number, y: number, z: number, n: number, min: number, max: number): number;
         /**
-         * Free a GeglRandom structure created with gegl_random_new() or
-         * gegl_random_new_with_seed()
+         * Free a GeglRandom structure created with `gegl_random_new()` or
+         * `gegl_random_new_with_seed()`
          */
         free(): void;
         /**
@@ -4658,6 +5516,9 @@ export namespace Gegl {
         set_seed(seed: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
@@ -4708,23 +5569,23 @@ export namespace Gegl {
          * `destination` may point to the same object as `rectangle` or `tile`.
          *
          * Returns TRUE if the result is not empty.
-         * @param rectangle a #GeglRectangle
-         * @param tile a #GeglRectangle
-         * @param alignment a #GeglRectangleAlignment value
+         * @param rectangle a {@link Gegl.Rectangle}
+         * @param tile a {@link Gegl.Rectangle}
+         * @param alignment a {@link Gegl.RectangleAlignment} value
          */
         align(rectangle: Rectangle, tile: Rectangle, alignment: RectangleAlignment | null): boolean;
         /**
-         * Aligns `rectangle` to the tile grid of `buffer,` and stores the result in
+         * Aligns `rectangle` to the tile grid of `buffer`, and stores the result in
          * `destination`.
          *
-         * `alignment` has the same meaning as for gegl_rectangle_align().
+         * `alignment` has the same meaning as for `gegl_rectangle_align()`.
          *
          * `destination` may point to the same object as `rectangle`.
          *
          * Returns TRUE if the result is not empty.
-         * @param rectangle a #GeglRectangle
-         * @param buffer a #GeglBuffer
-         * @param alignment a #GeglRectangleAlignment value
+         * @param rectangle a {@link Gegl.Rectangle}
+         * @param buffer a {@link Gegl.Buffer}
+         * @param alignment a {@link Gegl.RectangleAlignment} value
          */
         align_to_buffer(rectangle: Rectangle, buffer: Buffer, alignment: RectangleAlignment | null): boolean;
         /**
@@ -4732,15 +5593,15 @@ export namespace Gegl {
          * resulting bounding box in `destination`.
          *
          * `destination` may point to the same object as `source1` or `source2`.
-         * @param source1 a #GeglRectangle
-         * @param source2 a #GeglRectangle
+         * @param source1 a {@link Gegl.Rectangle}
+         * @param source2 a {@link Gegl.Rectangle}
          */
         bounding_box(source1: Rectangle, source2: Rectangle): void;
         /**
-         * Checks if the #GeglRectangle `child` is fully contained within `parent`.
+         * Checks if the {@link Gegl.Rectangle} `child` is fully contained within `parent`.
          *
          * Returns TRUE if the `child` is fully contained in `parent`.
-         * @param child a #GeglRectangle
+         * @param child a {@link Gegl.Rectangle}
          */
         contains(child: Rectangle): boolean;
         /**
@@ -4748,7 +5609,7 @@ export namespace Gegl {
          * `destination`.
          *
          * `destination` may point to the same object as `source`.
-         * @param source a #GeglRectangle
+         * @param source a {@link Gegl.Rectangle}
          */
         copy(source: Rectangle): void;
         /**
@@ -4757,20 +5618,20 @@ export namespace Gegl {
         dump(): void;
         /**
          * Create a new copy of `rectangle`.
-         * @returns a #GeglRectangle
+         * @returns a {@link Gegl.Rectangle}
          */
         dup(): Rectangle;
         /**
-         * Check if two #GeglRectangles are equal.
+         * Check if two `GeglRectangles` are equal.
          *
          * Returns TRUE if `rectangle` and `rectangle2` are equal.
-         * @param rectangle2 a #GeglRectangle
+         * @param rectangle2 a {@link Gegl.Rectangle}
          */
         equal(rectangle2: Rectangle): boolean;
         /**
          * Check if a rectangle is equal to a set of parameters.
          *
-         * Returns TRUE if `rectangle` and `x,``y` `width` x `height` are equal.
+         * Returns TRUE if `rectangle` and `x`,`y` `width` x `height` are equal.
          * @param x X coordinate
          * @param y Y coordinate
          * @param width width of rectangle
@@ -4785,8 +5646,8 @@ export namespace Gegl {
          * `dest` may point to the same object as `src1` or `src2`.
          *
          * Returns TRUE if the rectangles intersect.
-         * @param src1 a #GeglRectangle
-         * @param src2 a #GeglRectangle
+         * @param src1 a {@link Gegl.Rectangle}
+         * @param src2 a {@link Gegl.Rectangle}
          */
         intersect(src1: Rectangle, src2: Rectangle): boolean;
         /**
@@ -4801,7 +5662,7 @@ export namespace Gegl {
          */
         is_infinite_plane(): boolean;
         /**
-         * Sets the `x,` `y,` `width` and `height` on `rectangle`.
+         * Sets the `x`, `y`, `width` and `height` on `rectangle`.
          * @param x upper left x coordinate
          * @param y upper left y coordinate
          * @param width width in pixels.
@@ -4809,25 +5670,25 @@ export namespace Gegl {
          */
         set(x: number, y: number, width: number, height: number): void;
         /**
-         * Subtracts `subtrahend` from `minuend,` and stores the resulting rectangles in
+         * Subtracts `subtrahend` from `minuend`, and stores the resulting rectangles in
          * `destination`.  Between 0 and 4 disjoint rectangles may be produced.
          *
          * `destination` may contain `minuend` or `subtrahend`.
          *
          * Returns the number of resulting rectangles.
-         * @param minuend a #GeglRectangle
-         * @param subtrahend a #GeglRectangle
+         * @param minuend a {@link Gegl.Rectangle}
+         * @param subtrahend a {@link Gegl.Rectangle}
          */
         subtract(minuend: Rectangle, subtrahend: Rectangle): number;
         /**
          * Computes the bounding box of the area formed by subtracting `subtrahend`
-         * from `minuend,` and stores the result in `destination`.
+         * from `minuend`, and stores the result in `destination`.
          *
          * `destination` may point to the same object as `minuend` or `subtrahend`.
          *
          * Returns TRUE if the result is not empty.
-         * @param minuend a #GeglRectangle
-         * @param subtrahend a #GeglRectangle
+         * @param minuend a {@link Gegl.Rectangle}
+         * @param subtrahend a {@link Gegl.Rectangle}
          */
         subtract_bounding_box(minuend: Rectangle, subtrahend: Rectangle): boolean;
         /**
@@ -4838,12 +5699,15 @@ export namespace Gegl {
          * `destination` may contain `rectangle1` or `rectangle2`.
          *
          * Returns the number of resulting rectangles.
-         * @param source1 a #GeglRectangle
-         * @param source2 a #GeglRectangle
+         * @param source1 a {@link Gegl.Rectangle}
+         * @param source2 a {@link Gegl.Rectangle}
          */
         xor(source1: Rectangle, source2: Rectangle): number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Sampler {
         static $gtype: GObject.GType<Sampler>;
 
@@ -4858,18 +5722,33 @@ export namespace Gegl {
          * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
          */
         get(x: number, y: number, scale: BufferMatrix2, output: any | null, repeat_mode: AbyssPolicy | null): void;
+        /**
+         * @returns The context rectangle of the given `sampler`.
+         */
         get_context_rect(): Rectangle;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Tile {
         static $gtype: GObject.GType<Tile>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TileBackendClass = typeof TileBackend;
+    /**
+     * @gir-type Struct
+     */
     abstract class TileBackendPrivate {
         static $gtype: GObject.GType<TileBackendPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class TileCopyParams {
         static $gtype: GObject.GType<TileCopyParams>;
 
@@ -4881,11 +5760,20 @@ export namespace Gegl {
         dst_z: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TileHandlerClass = typeof TileHandler;
+    /**
+     * @gir-type Struct
+     */
     abstract class TileHandlerPrivate {
         static $gtype: GObject.GType<TileHandlerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TileSourceClass = typeof TileSource;
     namespace Metadata {
         /**
@@ -4898,46 +5786,52 @@ export namespace Gegl {
             /**
              * Retrieve resolution from the application image metadata.  Intended for use
              * by the image file writer.  If resolution is not supported by the application
-             * or if the operation fails %FALSE is returned and the resolution values are
+             * or if the operation fails `false` is returned and the resolution values are
              * not updated.
-             * @param unit #GeglResolutionUnit return location
+             * @param unit {@link Gegl.ResolutionUnit} return location
              * @param x X resolution return location
              * @param y Y resolution return location
+             * @virtual
              */
             vfunc_get_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
             /**
              * Retrieve image file metadata from the application.  Intended for use by the
-             * image file writer. If the operation fails it returns %FALSE and `value` is
+             * image file writer. If the operation fails it returns `false` and `value` is
              * not updated.
-             * @param iter #GeglMetadataIter referencing the value to get
+             * @param iter {@link Gegl.MetadataIter} referencing the value to get
              * @param value Value to set in the interface
+             * @virtual
              */
             vfunc_iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
             /**
              * Initialise an iterator to find all supported metadata keys.
-             * @param iter #GeglMetadataIter to be initialised
+             * @param iter {@link Gegl.MetadataIter} to be initialised
+             * @virtual
              */
             vfunc_iter_init(iter: MetadataIter): void;
             /**
              * Look up the specified key and initialise an iterator to reference the
              * associated metadata. The iterator is used in conjunction with
-             * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
-             * iterator is not valid for gegl_metadata_iter_next().
-             * @param iter #GeglMetadataIter to be initialised
+             * `gegl_metadata_set_value()` and `gegl_metadata_get_value()`. Note that this
+             * iterator is not valid for `gegl_metadata_iter_next()`.
+             * @param iter {@link Gegl.MetadataIter} to be initialised
              * @param key Name of the value look up
+             * @virtual
              */
             vfunc_iter_lookup(iter: MetadataIter, key: string): boolean;
             /**
              * Move the iterator to the next metadata item
-             * @param iter #GeglMetadataIter to be updated
+             * @param iter {@link Gegl.MetadataIter} to be updated
+             * @virtual
              */
             vfunc_iter_next(iter: MetadataIter): string;
             /**
              * Set application data retrieved from image file's metadata.  Intended for use
-             * by the image file reader.  If the operation fails it returns %FALSE and
+             * by the image file reader.  If the operation fails it returns `false` and
              * `value` is ignored.
-             * @param iter #GeglMetadataIter referencing the value to set
+             * @param iter {@link Gegl.MetadataIter} referencing the value to set
              * @param value Value to set in the interface
+             * @virtual
              */
             vfunc_iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
             /**
@@ -4947,15 +5841,17 @@ export namespace Gegl {
              * @param file_module String identifying the file module, e.g, `"gegl:png-save"`
              * @param flags Flags specifying capabilities of underlying file format
              * @param map Array of mappings from file module metadata              names to Gegl well-known names.
+             * @virtual
              */
             vfunc_register_map(file_module: string, flags: number, map: MetadataMap[]): void;
             /**
              * Set resolution retrieved from image file's metadata.  Intended for use by
              * the image file reader.  If resolution is not supported by the application or
-             * if the operation fails %FALSE is returned and the values are ignored.
-             * @param unit Specify #GeglResolutionUnit
+             * if the operation fails `false` is returned and the values are ignored.
+             * @param unit Specify {@link Gegl.ResolutionUnit}
              * @param x X resolution
              * @param y Y resolution
+             * @virtual
              */
             vfunc_set_resolution(unit: ResolutionUnit, x: number, y: number): boolean;
         }
@@ -4969,57 +5865,60 @@ export namespace Gegl {
         $gtype: GObject.GType<Metadata>;
         prototype: Metadata;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Metadata extends GObject.Object, Metadata.Interface {
         // Methods
 
         /**
          * Retrieve resolution from the application image metadata.  Intended for use
          * by the image file writer.  If resolution is not supported by the application
-         * or if the operation fails %FALSE is returned and the resolution values are
+         * or if the operation fails `false` is returned and the resolution values are
          * not updated.
-         * @param unit #GeglResolutionUnit return location
+         * @param unit {@link Gegl.ResolutionUnit} return location
          * @param x X resolution return location
          * @param y Y resolution return location
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         get_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
         /**
          * Retrieve image file metadata from the application.  Intended for use by the
-         * image file writer. If the operation fails it returns %FALSE and `value` is
+         * image file writer. If the operation fails it returns `false` and `value` is
          * not updated.
-         * @param iter #GeglMetadataIter referencing the value to get
+         * @param iter {@link Gegl.MetadataIter} referencing the value to get
          * @param value Value to set in the interface
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         iter_get_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
          * Initialise an iterator to find all supported metadata keys.
-         * @param iter #GeglMetadataIter to be initialised
+         * @param iter {@link Gegl.MetadataIter} to be initialised
          */
         iter_init(iter: MetadataIter): void;
         /**
          * Look up the specified key and initialise an iterator to reference the
          * associated metadata. The iterator is used in conjunction with
-         * gegl_metadata_set_value() and gegl_metadata_get_value(). Note that this
-         * iterator is not valid for gegl_metadata_iter_next().
-         * @param iter #GeglMetadataIter to be initialised
+         * `gegl_metadata_set_value()` and `gegl_metadata_get_value()`. Note that this
+         * iterator is not valid for `gegl_metadata_iter_next()`.
+         * @param iter {@link Gegl.MetadataIter} to be initialised
          * @param key Name of the value look up
-         * @returns %TRUE if key is found.
+         * @returns `true` if key is found.
          */
         iter_lookup(iter: MetadataIter, key: string): boolean;
         /**
          * Move the iterator to the next metadata item
-         * @param iter #GeglMetadataIter to be updated
-         * @returns key name if found, else %NULL
+         * @param iter {@link Gegl.MetadataIter} to be updated
+         * @returns key name if found, else `null`
          */
         iter_next(iter: MetadataIter): string;
         /**
          * Set application data retrieved from image file's metadata.  Intended for use
-         * by the image file reader.  If the operation fails it returns %FALSE and
+         * by the image file reader.  If the operation fails it returns `false` and
          * `value` is ignored.
-         * @param iter #GeglMetadataIter referencing the value to set
+         * @param iter {@link Gegl.MetadataIter} referencing the value to set
          * @param value Value to set in the interface
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         iter_set_value(iter: MetadataIter, value: GObject.Value | any): boolean;
         /**
@@ -5034,11 +5933,11 @@ export namespace Gegl {
         /**
          * Set resolution retrieved from image file's metadata.  Intended for use by
          * the image file reader.  If resolution is not supported by the application or
-         * if the operation fails %FALSE is returned and the values are ignored.
-         * @param unit Specify #GeglResolutionUnit
+         * if the operation fails `false` is returned and the values are ignored.
+         * @param unit Specify {@link Gegl.ResolutionUnit}
          * @param x X resolution
          * @param y Y resolution
-         * @returns %TRUE if successful.
+         * @returns `true` if successful.
          */
         set_resolution(unit: ResolutionUnit | null, x: number, y: number): boolean;
         /**

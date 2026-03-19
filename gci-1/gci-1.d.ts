@@ -43,6 +43,9 @@ export namespace GCi {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class EntryController extends GObject.Object {
         static $gtype: GObject.GType<EntryController>;
 
@@ -72,16 +75,19 @@ export namespace GCi {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EntryController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EntryController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EntryController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EntryController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EntryController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EntryController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -91,10 +97,19 @@ export namespace GCi {
         // Methods
 
         get_entry(): Gtk.Entry;
+        /**
+         * @param value
+         */
         set_entry(value: Gtk.Entry): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EntryControllerClass = typeof EntryController;
+    /**
+     * @gir-type Struct
+     */
     abstract class EntryControllerPrivate {
         static $gtype: GObject.GType<EntryControllerPrivate>;
     }

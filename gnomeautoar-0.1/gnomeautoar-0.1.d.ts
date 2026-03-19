@@ -20,6 +20,9 @@ export namespace GnomeAutoar {
      * GnomeAutoar-0.1
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum ConflictAction {
         UNHANDLED,
         SKIP,
@@ -31,46 +34,47 @@ export namespace GnomeAutoar {
      * This is a non-negative number which represents filters supported by
      * libarchive. A libarchive filter is a filter which can convert a
      * regular file into a compressed file.
+     * @gir-type Enum
      */
     enum Filter {
         /**
-         * %ARCHIVE_FILTER_NONE: No filter
+         * `ARCHIVE_FILTER_NONE`: No filter
          */
         NONE,
         /**
-         * %ARCHIVE_FILTER_COMPRESS: UNIX-compressed
+         * `ARCHIVE_FILTER_COMPRESS`: UNIX-compressed
          */
         COMPRESS,
         /**
-         * %ARCHIVE_FILTER_GZIP: Gzip
+         * `ARCHIVE_FILTER_GZIP`: Gzip
          */
         GZIP,
         /**
-         * %ARCHIVE_FILTER_BZIP2: Bzip2
+         * `ARCHIVE_FILTER_BZIP2`: Bzip2
          */
         BZIP2,
         /**
-         * %ARCHIVE_FILTER_XZ: XZ
+         * `ARCHIVE_FILTER_XZ`: XZ
          */
         XZ,
         /**
-         * %ARCHIVE_FILTER_LZMA: LZMA
+         * `ARCHIVE_FILTER_LZMA`: LZMA
          */
         LZMA,
         /**
-         * %ARCHIVE_FILTER_LZIP: Lzip
+         * `ARCHIVE_FILTER_LZIP`: Lzip
          */
         LZIP,
         /**
-         * %ARCHIVE_FILTER_LZOP: LZO
+         * `ARCHIVE_FILTER_LZOP`: LZO
          */
         LZOP,
         /**
-         * %ARCHIVE_FILTER_GRZIP: GRZip
+         * `ARCHIVE_FILTER_GRZIP`: GRZip
          */
         GRZIP,
         /**
-         * %ARCHIVE_FILTER_LRZIP: Long Range ZIP (lrzip)
+         * `ARCHIVE_FILTER_LRZIP`: Long Range ZIP (lrzip)
          */
         LRZIP,
     }
@@ -79,64 +83,65 @@ export namespace GnomeAutoar {
      * This is a non-negative number which represents formats supported by
      * libarchive. A libarchive format is a file format which can store many
      * files as a archive file.
+     * @gir-type Enum
      */
     enum Format {
         /**
-         * %ARCHIVE_FORMAT_ZIP: Zip archive
+         * `ARCHIVE_FORMAT_ZIP`: Zip archive
          */
         ZIP,
         /**
-         * %ARCHIVE_FORMAT_TAR_PAX_RESTRICTED: Tar archive, use
+         * `ARCHIVE_FORMAT_TAR_PAX_RESTRICTED`: Tar archive, use
          *   ustar format is possible. If there are extended headers which cannot be
          *   represented in the ustar format, libarchive will use pax interchage format
          *   instead.
          */
         TAR,
         /**
-         * %ARCHIVE_FORMAT_CPIO_POSIX: CPIO archive, POSIX
+         * `ARCHIVE_FORMAT_CPIO_POSIX`: CPIO archive, POSIX
          *   standard cpio interchage format.
          */
         CPIO,
         /**
-         * %ARCHIVE_FORMAT_7ZIP: 7-zip archive
+         * `ARCHIVE_FORMAT_7ZIP`: 7-zip archive
          */
         '7ZIP',
         /**
-         * %ARCHIVE_FORMAT_AR_BSD: BSD variant of Unix archive
+         * `ARCHIVE_FORMAT_AR_BSD`: BSD variant of Unix archive
          *   format. This format does not support storing directories.
          */
         AR_BSD,
         /**
-         * %ARCHIVE_FORMAT_AR_GNU: GNU/SVR4 variant of Unix
+         * `ARCHIVE_FORMAT_AR_GNU`: GNU/SVR4 variant of Unix
          *   archive format. This format does not support storing directories.
          */
         AR_SVR4,
         /**
-         * %ARCHIVE_FORMAT_CPIO_SVR4_NOCRC: CPIO archive,
+         * `ARCHIVE_FORMAT_CPIO_SVR4_NOCRC`: CPIO archive,
          *   SVR4 non-CRC variant
          */
         CPIO_NEWC,
         /**
-         * %ARCHIVE_FORMAT_TAR_GNUTAR: Tar archive, support
+         * `ARCHIVE_FORMAT_TAR_GNUTAR`: Tar archive, support
          *   most popular GNU extensions.
          */
         GNUTAR,
         /**
-         * %ARCHIVE_FORMAT_ISO9660: Raw CD image
+         * `ARCHIVE_FORMAT_ISO9660`: Raw CD image
          */
         ISO9660,
         /**
-         * %ARCHIVE_FORMAT_TAR_PAX_INTERCHANGE: Tar archive, use
+         * `ARCHIVE_FORMAT_TAR_PAX_INTERCHANGE`: Tar archive, use
          *   pax interchage format
          */
         PAX,
         /**
-         * %ARCHIVE_FORMAT_TAR_USTAR: Tar archive, use old
+         * `ARCHIVE_FORMAT_TAR_USTAR`: Tar archive, use old
          *   ustar format
          */
         USTAR,
         /**
-         * %ARCHIVE_FORMAT_XAR: Xar archive
+         * `ARCHIVE_FORMAT_XAR`: Xar archive
          */
         XAR,
     }
@@ -148,66 +153,66 @@ export namespace GnomeAutoar {
      * Checks whether a mime type is supported by autoar. This function does no
      * blocking IO.
      * @param mime_type a string representing the mime type
-     * @returns %TRUE if the mime type is supported
+     * @returns `true` if the mime type is supported
      */
     function check_mime_type_supported(mime_type: string): boolean;
     /**
      * Gets description of the filter from the internal static data.
-     * @param filter an #AutoarFilter
+     * @param filter an {@link GnomeAutoar.Filter}
      * @returns description about the filter
      */
     function filter_get_description(filter: Filter | null): string;
     /**
      * Gets description of the filter from libarchive. This function creates
      * and destroys an archive object in order to get the description string.
-     * @param filter an #AutoarFilter
-     * @returns description about the filter. Free the returned string with g_free().
+     * @param filter an {@link GnomeAutoar.Filter}
+     * @returns description about the filter. Free the returned string with `g_free()`.
      */
     function filter_get_description_libarchive(filter: Filter | null): string;
     /**
      * Gets the file name extension of the filter from the internal static data.
-     * @param filter an #AutoarFilter
+     * @param filter an {@link GnomeAutoar.Filter}
      * @returns a file name extension
      */
     function filter_get_extension(filter: Filter | null): string;
     /**
      * Gets the filter code used by libarchive. You can use the return value
-     * as the argument for archive_write_add_filter().
-     * @param filter an #AutoarFilter
+     * as the argument for `archive_write_add_filter()`.
+     * @param filter an {@link GnomeAutoar.Filter}
      * @returns an integer
      */
     function filter_get_filter_libarchive(filter: Filter | null): number;
     /**
      * Gets the MIME type of the filter from the internal static data.
-     * @param filter an #AutoarFilter
+     * @param filter an {@link GnomeAutoar.Filter}
      * @returns an MIME type
      */
     function filter_get_mime_type(filter: Filter | null): string;
     /**
-     * Checks whether an #AutoarFilter is valid.
-     * @param filter an #AutoarFilter
-     * @returns %TRUE if the value of @filter is valid
+     * Checks whether an {@link GnomeAutoar.Filter} is valid.
+     * @param filter an {@link GnomeAutoar.Filter}
+     * @returns `true` if the value of `filter` is valid
      */
     function filter_is_valid(filter: Filter | null): boolean;
     /**
-     * Gets the maximal allowed values of #AutoarFilter
-     * @returns maximal allowed values of #AutoarFilter
+     * Gets the maximal allowed values of {@link GnomeAutoar.Filter}
+     * @returns maximal allowed values of {@link GnomeAutoar.Filter}
      */
     function filter_last(): number;
     /**
      * Gets the description for an archive `format` compressed by
-     * `filter` using #GContentType and autoar_format_filter_get_mime_type().
-     * @param format an #AutoarFormat
-     * @param filter an #AutoarFilter
-     * @returns description about the archive. Free the returned string with g_free().
+     * `filter` using `GContentType` and `autoar_format_filter_get_mime_type()`.
+     * @param format an {@link GnomeAutoar.Format}
+     * @param filter an {@link GnomeAutoar.Filter}
+     * @returns description about the archive. Free the returned string with `g_free()`.
      */
     function format_filter_get_description(format: Format | null, filter: Filter | null): string;
     /**
      * Gets the file name extension for an archive `format` compressed by
      * `filter`. The first character of the returned string is always '.'
-     * @param format an #AutoarFormat
-     * @param filter an #AutoarFilter
-     * @returns a file name extension. Free the returned string with g_free().
+     * @param format an {@link GnomeAutoar.Format}
+     * @param filter an {@link GnomeAutoar.Filter}
+     * @returns a file name extension. Free the returned string with `g_free()`.
      */
     function format_filter_get_extension(format: Format | null, filter: Filter | null): string;
     /**
@@ -217,84 +222,119 @@ export namespace GnomeAutoar {
      * Some combination of format and filter seldom exists in application,
      * so this function can only generate the string based on some
      * non-standard rules.
-     * @param format an #AutoarFormat
-     * @param filter an #AutoarFilter
-     * @returns an MIME type. Free the returned string with g_free().
+     * @param format an {@link GnomeAutoar.Format}
+     * @param filter an {@link GnomeAutoar.Filter}
+     * @returns an MIME type. Free the returned string with `g_free()`.
      */
     function format_filter_get_mime_type(format: Format | null, filter: Filter | null): string;
     /**
      * Gets description of the format from the internal static data.
-     * @param format an #AutoarFormat
+     * @param format an {@link GnomeAutoar.Format}
      * @returns description about the format
      */
     function format_get_description(format: Format | null): string;
     /**
      * Gets description of the format from libarchive. This function creates
      * and destroys an archive object in order to get the description string.
-     * @param format an #AutoarFormat
-     * @returns description about the format. Free the returned string with g_free().
+     * @param format an {@link GnomeAutoar.Format}
+     * @returns description about the format. Free the returned string with `g_free()`.
      */
     function format_get_description_libarchive(format: Format | null): string;
     /**
      * Gets the file name extension of the format from the internal static data.
-     * @param format an #AutoarFormat
+     * @param format an {@link GnomeAutoar.Format}
      * @returns a file name extension
      */
     function format_get_extension(format: Format | null): string;
     /**
      * Gets the format code used by libarchive. You can use the return value
-     * as the argument for archive_read_support_format_by_code() and
-     * archive_write_set_format(). However, some format cannot be set using
+     * as the argument for `archive_read_support_format_by_code()` and
+     * `archive_write_set_format()`. However, some format cannot be set using
      * these two functions because of problems inside libarchive. Use
-     * autoar_format_get_libarchive_read() and
-     * autoar_format_get_libarchive_write() to get the function pointer
+     * `autoar_format_get_libarchive_read()` and
+     * `autoar_format_get_libarchive_write()` to get the function pointer
      * is the more reliable way to set format on the archive object.
-     * @param format an #AutoarFormat
+     * @param format an {@link GnomeAutoar.Format}
      * @returns an integer
      */
     function format_get_format_libarchive(format: Format | null): number;
     /**
      * Gets the MIME type of the format from the internal static data.
-     * @param format an #AutoarFormat
+     * @param format an {@link GnomeAutoar.Format}
      * @returns an MIME type
      */
     function format_get_mime_type(format: Format | null): string;
     /**
-     * Checks whether an #AutoarFormat is valid.
-     * @param format an #AutoarFormat
-     * @returns %TRUE if the value of @format is valid
+     * Checks whether an {@link GnomeAutoar.Format} is valid.
+     * @param format an {@link GnomeAutoar.Format}
+     * @returns `true` if the value of `format` is valid
      */
     function format_is_valid(format: Format | null): boolean;
     /**
-     * Gets the maximal allowed values of #AutoarFormat
-     * @returns maximal allowed values of #AutoarFormat
+     * Gets the maximal allowed values of {@link GnomeAutoar.Format}
+     * @returns maximal allowed values of {@link GnomeAutoar.Format}
      */
     function format_last(): number;
     /**
      * Gets the libarchive Error Quark.
-     * @returns a #GQuark.
+     * @returns a {@link GLib.Quark}.
      */
     function libarchive_quark(): GLib.Quark;
     /**
      * This function will query the file's mime type and then call
-     * autoar_check_mime_type_supported(), so it does blocking IO.
-     * @param file a #GFile to check if its mime type is supported
-     * @returns %TRUE if the mime type of the #GFile is supported
+     * `autoar_check_mime_type_supported()`, so it does blocking IO.
+     * @param file a {@link Gio.File} to check if its mime type is supported
+     * @returns `true` if the mime type of the {@link Gio.File} is supported
      */
     function query_mime_type_supported(file: Gio.File): boolean;
+    /**
+     * @gir-type Callback
+     */
     interface FilterFunc {
         (a?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface FormatFunc {
         (a?: any | null): number;
     }
     namespace Compressor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted after archive creating job is cancelled by the
+             * {@link Gio.Cancellable}.
+             * @signal
+             */
             cancelled: () => void;
+            /**
+             * This signal is emitted after the archive creating job is successfully
+             * completed.
+             * @signal
+             */
             completed: () => void;
+            /**
+             * This signal is emitted when the location of the new archive is determined.
+             * @signal
+             */
             'decide-dest': (arg0: Gio.File) => void;
+            /**
+             * This signal is emitted when error occurs and all jobs should be terminated.
+             * Possible error domains are `AUTOAR_COMPRESSOR_ERROR`, `G_IO_ERROR`, and
+             * `AUTOAR_LIBARCHIVE_ERROR`, which represent error occurs in {@link GnomeAutoar.Compressor},
+             * GIO, and libarchive, respectively. The {@link GLib.Error} is owned by {@link GnomeAutoar.Compressor}
+             * and should not be freed.
+             * @signal
+             */
             error: (arg0: GLib.Error) => void;
+            /**
+             * This signal is used to report progress of creating archives. The value of
+             * `completed_size` and `completed_files` are the same as the
+             * {@link GnomeAutoar.Compressor.completed_size} and {@link GnomeAutoar.Compressor.completed_files} properties,
+             * respectively.
+             * @signal
+             */
             progress: (arg0: number, arg1: number) => void;
             'notify::completed-files': (pspec: GObject.ParamSpec) => void;
             'notify::completed-size': (pspec: GObject.ParamSpec) => void;
@@ -329,6 +369,9 @@ export namespace GnomeAutoar {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Compressor extends GObject.Object {
         static $gtype: GObject.GType<Compressor>;
 
@@ -382,16 +425,19 @@ export namespace GnomeAutoar {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Compressor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Compressor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Compressor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Compressor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -401,7 +447,7 @@ export namespace GnomeAutoar {
         // Static methods
 
         /**
-         * Gets the #AutoarCompressor Error Quark.
+         * Gets the {@link GnomeAutoar.Compressor} Error Quark.
          */
         static quark(): GLib.Quark;
 
@@ -439,20 +485,20 @@ export namespace GnomeAutoar {
          */
         get_format(): Format;
         /**
-         * See autoar_compressor_set_notify_interval().
-         * @returns the minimal interval in microseconds between the emission of the #AutoarCompressor::progress signal.
+         * See `autoar_compressor_set_notify_interval()`.
+         * @returns the minimal interval in microseconds between the emission of the {@link GnomeAutoar.Compressor.SignalSignatures.progress | GnomeAutoar.Compressor::progress} signal.
          */
         get_notify_interval(): number;
         /**
-         * If #AutoarCompressor:output_is_dest is %FALSE, gets the directory which
+         * If {@link GnomeAutoar.Compressor.output_is_dest} is `false`, gets the directory which
          * contains the new archive. Otherwise, gets the the new archive. See
-         * autoar_compressor_set_output_is_dest().
-         * @returns a #GFile
+         * `autoar_compressor_set_output_is_dest()`.
+         * @returns a {@link Gio.File}
          */
         get_output_file(): Gio.File;
         /**
-         * See autoar_compressor_set_output_is_dest().
-         * @returns %TRUE if #AutoarCompressor:output is the location of the new archive.
+         * See `autoar_compressor_set_output_is_dest()`.
+         * @returns `true` if {@link GnomeAutoar.Compressor.output} is the location of the new archive.
          */
         get_output_is_dest(): boolean;
         /**
@@ -463,11 +509,11 @@ export namespace GnomeAutoar {
         get_size(): number;
         /**
          * Gets the list of source files.
-         * @returns a #GList with the source files
+         * @returns a {@link GLib.List} with the source files
          */
         get_source_files(): Gio.File[];
         /**
-         * Sets the minimal interval between emission of #AutoarCompressor::progress
+         * Sets the minimal interval between emission of {@link GnomeAutoar.Compressor.SignalSignatures.progress | GnomeAutoar.Compressor::progress}
          * signal. This prevent too frequent signal emission, which may cause
          * performance impact. If you do not want this feature, you can set the
          * interval to 0, so you will receive every progress update.
@@ -475,39 +521,39 @@ export namespace GnomeAutoar {
          */
         set_notify_interval(notify_interval: number): void;
         /**
-         * By default #AutoarCompressor:output-is-dest is set to %FALSE, which means
+         * By default {@link GnomeAutoar.Compressor.output_is_dest} is set to `false`, which means
          * the new archive will be created as a regular file under
-         * #AutoarCompressor:output directory. The name of the new archive will be
+         * {@link GnomeAutoar.Compressor.output} directory. The name of the new archive will be
          * automatically generated and you will be notified via
-         * #AutoarCompressor::decide-dest when the name is decided. If you have already
+         * {@link GnomeAutoar.Compressor.SignalSignatures.decide_dest | GnomeAutoar.Compressor::decide-dest} when the name is decided. If you have already
          * decided the location of the new archive, and you do not want
-         * #AutoarCompressor to decide it for you, you can set
-         * #AutoarCompressor:output-is-dest to %TRUE. #AutoarCompressor will use
-         * #AutoarCompressor:output as the location of the new archive, and it will
+         * {@link GnomeAutoar.Compressor} to decide it for you, you can set
+         * {@link GnomeAutoar.Compressor.output_is_dest} to `true`. {@link GnomeAutoar.Compressor} will use
+         * {@link GnomeAutoar.Compressor.output} as the location of the new archive, and it will
          * neither check whether the file exists nor create the necessary
          * directories for you. This function should only be called before calling
-         * autoar_compressor_start() or autoar_compressor_start_async().
-         * @param output_is_dest %TRUE if the location of the new archive has been already decided
+         * `autoar_compressor_start()` or `autoar_compressor_start_async()`.
+         * @param output_is_dest `true` if the location of the new archive has been already decided
          */
         set_output_is_dest(output_is_dest: boolean): void;
         /**
-         * Sets the archive passphrase. It works only with %ARCHIVE_FORMAT_ZIP.
+         * Sets the archive passphrase. It works only with `ARCHIVE_FORMAT_ZIP`.
          * @param passphrase the archive passphrase
          */
         set_passphrase(passphrase: string): void;
         /**
          * Runs the archive creating work. All callbacks will be called in the same
          * thread as the caller of this functions.
-         * @param cancellable optional #GCancellable object, or %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
         start(cancellable?: Gio.Cancellable | null): void;
         /**
          * Asynchronously runs the archive creating work. You should connect to
-         * #AutoarCompressor::cancelled, #AutoarCompressor::error, and
-         * #AutoarCompressor::completed signal to get notification when the work is
+         * {@link GnomeAutoar.Compressor.SignalSignatures.cancelled | GnomeAutoar.Compressor::cancelled}, {@link GnomeAutoar.Compressor.SignalSignatures.error | GnomeAutoar.Compressor::error}, and
+         * {@link GnomeAutoar.Compressor.SignalSignatures.completed | GnomeAutoar.Compressor::completed} signal to get notification when the work is
          * terminated. All callbacks will be called in the main thread, so you can
          * safely manipulate GTK+ widgets in the callbacks.
-         * @param cancellable optional #GCancellable object, or %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
         start_async(cancellable?: Gio.Cancellable | null): void;
     }
@@ -515,13 +561,51 @@ export namespace GnomeAutoar {
     namespace Extractor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted after archive extracting job is cancelled by the
+             * {@link Gio.Cancellable}.
+             * @signal
+             */
             cancelled: () => void;
+            /**
+             * This signal is emitted after the archive extracting job is successfully
+             * completed.
+             * @signal
+             */
             completed: () => void;
+            /**
+             * @signal
+             */
             conflict: (arg0: Gio.File, arg1: any | null) => number;
+            /**
+             * @signal
+             */
             'decide-destination': (arg0: Gio.File, arg1: any | null) => GObject.Object;
+            /**
+             * This signal is emitted when error occurs and all jobs should be terminated.
+             * Possible error domains are `AUTOAR_EXTRACTOR_ERROR`, `G_IO_ERROR`, and
+             * `AUTOAR_LIBARCHIVE_ERROR`, which represent error occurs in {@link GnomeAutoar.Extractor},
+             * GIO, and libarchive, respectively. The {@link GLib.Error} is owned by {@link GnomeAutoar.Extractor}
+             * and should not be freed.
+             * @signal
+             */
             error: (arg0: GLib.Error) => void;
+            /**
+             * This signal is used to report progress of extraction.
+             * @signal
+             */
             progress: (arg0: number, arg1: number) => void;
+            /**
+             * This signal is emitted when the archive extracting job needs a
+             * passphrase.
+             * @signal
+             */
             'request-passphrase': () => string;
+            /**
+             * This signal is emitted when {@link GnomeAutoar.Extractor} finish scanning filename entries
+             * in the source archive.
+             * @signal
+             */
             scanned: (arg0: number) => void;
             'notify::completed-files': (pspec: GObject.ParamSpec) => void;
             'notify::completed-size': (pspec: GObject.ParamSpec) => void;
@@ -558,6 +642,9 @@ export namespace GnomeAutoar {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Extractor extends GObject.Object {
         static $gtype: GObject.GType<Extractor>;
 
@@ -607,16 +694,19 @@ export namespace GnomeAutoar {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Extractor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Extractor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Extractor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Extractor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -626,7 +716,7 @@ export namespace GnomeAutoar {
         // Static methods
 
         /**
-         * Gets the #AutoarExtractor Error Quark.
+         * Gets the {@link GnomeAutoar.Extractor} Error Quark.
          */
         static quark(): GLib.Quark;
 
@@ -644,30 +734,30 @@ export namespace GnomeAutoar {
         get_completed_size(): number;
         /**
          * Whether the source archive will be deleted after a successful extraction.
-         * @returns %TRUE if the source archive will be deleted after a succesful extraction
+         * @returns `true` if the source archive will be deleted after a succesful extraction
          */
         get_delete_after_extraction(): boolean;
         /**
-         * See autoar_extractor_set_notify_interval().
-         * @returns the minimal interval in microseconds between the emission of the #AutoarExtractor::progress signal.
+         * See `autoar_extractor_set_notify_interval()`.
+         * @returns the minimal interval in microseconds between the emission of the {@link GnomeAutoar.Extractor.SignalSignatures.progress | GnomeAutoar.Extractor::progress} signal.
          */
         get_notify_interval(): number;
         /**
-         * Gets the #GFile object which represents the output directory of extracted
+         * Gets the {@link Gio.File} object which represents the output directory of extracted
          * file or directory, or the extracted file or directory itself if you set
-         * #AutoarExtractor:output-is-dest on the returned object.
-         * @returns a #GFile
+         * {@link GnomeAutoar.Extractor.output_is_dest} on the returned object.
+         * @returns a {@link Gio.File}
          */
         get_output_file(): Gio.File;
         /**
-         * See autoar_extractor_set_output_is_dest().
-         * @returns %TRUE if #AutoarExtractor:output-file is the destination for extracted files
+         * See `autoar_extractor_set_output_is_dest()`.
+         * @returns `true` if {@link GnomeAutoar.Extractor.output_file} is the destination for extracted files
          */
         get_output_is_dest(): boolean;
         /**
-         * Gets the #GFile object which represents the source archive that will be
+         * Gets the {@link Gio.File} object which represents the source archive that will be
          * extracted for this object.
-         * @returns a #GFile
+         * @returns a {@link Gio.File}
          */
         get_source_file(): Gio.File;
         /**
@@ -682,13 +772,13 @@ export namespace GnomeAutoar {
          */
         get_total_size(): number;
         /**
-         * By default #AutoarExtractor:delete-after-extraction is set to %FALSE so the
+         * By default {@link GnomeAutoar.Extractor.delete_after_extraction} is set to `false` so the
          * source archive will not be automatically deleted if extraction succeeds.
-         * @param delete_after_extraction %TRUE if the source archive should be deleted after a successful extraction
+         * @param delete_after_extraction `true` if the source archive should be deleted after a successful extraction
          */
         set_delete_after_extraction(delete_after_extraction: boolean): void;
         /**
-         * Sets the minimal interval between emission of #AutoarExtractor::progress
+         * Sets the minimal interval between emission of {@link GnomeAutoar.Extractor.SignalSignatures.progress | GnomeAutoar.Extractor::progress}
          * signal. This prevent too frequent signal emission, which may cause
          * performance impact. If you do not want this feature, you can set the interval
          * to 0, so you will receive every progress update.
@@ -696,21 +786,21 @@ export namespace GnomeAutoar {
          */
         set_notify_interval(notify_interval: number): void;
         /**
-         * By default #AutoarExtractor:output-is-dest is set to %FALSE, which means
-         * only one file or directory will be created in #AutoarExtractor:output-file.
+         * By default {@link GnomeAutoar.Extractor.output_is_dest} is set to `false`, which means
+         * only one file or directory will be created in {@link GnomeAutoar.Extractor.output_file}.
          * The destination is internally determined by analyzing the contents of the
-         * archive. If this is not wanted, #AutoarExtractor:output-is-dest can be set to
-         * %TRUE, which will make #AutoarExtractor:output-file the destination for
+         * archive. If this is not wanted, {@link GnomeAutoar.Extractor.output_is_dest} can be set to
+         * `true`, which will make {@link GnomeAutoar.Extractor.output_file} the destination for
          * extracted files. In any case, the destination will be notified via
-         * #AutoarExtractor::decide-destination, when it is possible to set a new
+         * {@link GnomeAutoar.Extractor.SignalSignatures.decide_destination | GnomeAutoar.Extractor::decide-destination}, when it is possible to set a new
          * destination.
          *
-         * #AutoarExtractor will attempt to create the destination regardless to whether
+         * {@link GnomeAutoar.Extractor} will attempt to create the destination regardless to whether
          * its path was internally decided or not.
          *
-         * This function should only be called before calling autoar_extractor_start() or
-         * autoar_extractor_start_async().
-         * @param output_is_dest %TRUE if #AutoarExtractor:output-file is the destination for extracted files
+         * This function should only be called before calling `autoar_extractor_start()` or
+         * `autoar_extractor_start_async()`.
+         * @param output_is_dest `true` if {@link GnomeAutoar.Extractor.output_file} is the destination for extracted files
          */
         set_output_is_dest(output_is_dest: boolean): void;
         /**
@@ -721,21 +811,27 @@ export namespace GnomeAutoar {
         /**
          * Runs the archive extracting work. All callbacks will be called in the same
          * thread as the caller of this functions.
-         * @param cancellable optional #GCancellable object, or %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
         start(cancellable?: Gio.Cancellable | null): void;
         /**
          * Asynchronously runs the archive extracting work. You should connect to
-         * #AutoarExtractor::cancelled, #AutoarExtractor::error, and
-         * #AutoarExtractor::completed signal to get notification when the work is
+         * {@link GnomeAutoar.Extractor.SignalSignatures.cancelled | GnomeAutoar.Extractor::cancelled}, {@link GnomeAutoar.Extractor.SignalSignatures.error | GnomeAutoar.Extractor::error}, and
+         * {@link GnomeAutoar.Extractor.SignalSignatures.completed | GnomeAutoar.Extractor::completed} signal to get notification when the work is
          * terminated. All callbacks will be called in the main thread, so you can
          * safely manipulate GTK+ widgets in the callbacks.
-         * @param cancellable optional #GCancellable object, or %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
         start_async(cancellable?: Gio.Cancellable | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CompressorClass = typeof Compressor;
+    /**
+     * @gir-type Alias
+     */
     type ExtractorClass = typeof Extractor;
     /**
      * Name of the imported GIR library

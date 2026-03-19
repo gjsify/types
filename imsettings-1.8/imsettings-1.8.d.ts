@@ -22,6 +22,7 @@ export namespace IMSettings {
 
     /**
      * Error codes used in imsettings.
+     * @gir-type Enum
      */
     enum Error {
         /**
@@ -60,7 +61,7 @@ export namespace IMSettings {
     const INTERFACE_DBUS: string;
     /**
      * The configuration filename used for "disabled".
-     * The real filename would be %IMSETTINGS_NONE_CONF + something specified
+     * The real filename would be `IMSETTINGS_NONE_CONF` + something specified
      * with --xinput-suffix build option that the default value is ".conf".
      */
     const NONE_CONF: string;
@@ -82,7 +83,7 @@ export namespace IMSettings {
     const USER_XINPUT_CONF: string;
     /**
      * The configuration filename used for XIM.
-     * The real filename would be %IMSETTINGS_XIM_CONF + something specified
+     * The real filename would be `IMSETTINGS_XIM_CONF` + something specified
      * with --xinput-suffix build option that the default value is ".conf".
      */
     const XIM_CONF: string;
@@ -100,16 +101,16 @@ export namespace IMSettings {
     const XIM_SERVICE_DBUS: string;
     function g_error_quark(): GLib.Quark;
     /**
-     * Returns the #GDBusInterfaceInfo, if any, specifying the minimal
+     * Returns the {@link Gio.DBusInterfaceInfo}, if any, specifying the minimal
      * interface that imsettings conforms to.
      *
-     * See the #GDBusProxy:g-interface-info property for more details.
-     * @returns a #GDBusInterfaceInfo or %NULL.  Do not unref the returned object, it is owned by an instance of #GDBusProxy.
+     * See the {@link Gio.DBusProxy.g_interface_info} property for more details.
+     * @returns a {@link Gio.DBusInterfaceInfo} or `null`.  Do not unref the returned object, it is owned by an instance of {@link Gio.DBusProxy}.
      */
     function get_interface_info(): Gio.DBusInterfaceInfo;
     /**
      * Check if current environment are supposed to work with imsettings.
-     * @returns %TRUE if imsettings is enabled, otherwise %FALSE.
+     * @returns `true` if imsettings is enabled, otherwise `false`.
      */
     function is_enabled(): boolean;
     namespace Client {
@@ -127,6 +128,9 @@ export namespace IMSettings {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
@@ -156,16 +160,19 @@ export namespace IMSettings {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -188,21 +195,21 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns if supported, returns %TRUE otherwise %FALSE.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns if supported, returns `true` otherwise `false`.
          */
         can_x_display_open(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Obtains the result of the request from
-         * imsettings_client_can_x_display_open_start().
-         * @param result a #GAsyncResult pushed through #GAsyncReadyCallback.
-         * @returns if the operation is successfully done, returns %TRUE          otherwise %FALSE
+         * `imsettings_client_can_x_display_open_start()`.
+         * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
+         * @returns if the operation is successfully done, returns `true`          otherwise `false`
          */
         can_x_display_open_finish(result: Gio.AsyncResult): boolean;
         /**
          * Request asking if current desktop is supported or not asynchronously
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         can_x_display_open_start(
             cancellable?: Gio.Cancellable | null,
@@ -222,21 +229,21 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns a #IMSettingsInfo for active Input Method. if not, %NULL then.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns a {@link IMSettings.Info} for active Input Method. if not, `null` then.
          */
         get_active_im_info(cancellable?: Gio.Cancellable | null): Info;
         /**
          * Obtains current desktop information in `client`.
-         * @returns a reference to the desktop name in @client. it shouldn't be freed          in applications.
+         * @returns a reference to the desktop name in `client`. it shouldn't be freed          in applications.
          */
         get_desktop(): string;
         /**
-         * A convenient function to get #IMSettingsInfo from the result of
-         * imsettings_client_get_info_variant().
+         * A convenient function to get {@link IMSettings.Info} from the result of
+         * `imsettings_client_get_info_variant()`.
          * @param module an Input Method name to obtain the information.
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns a #IMSettingsInfo or %NULL.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns a {@link IMSettings.Info} or `null`.
          */
         get_info_object(module: string, cancellable?: Gio.Cancellable | null): Info;
         /**
@@ -256,22 +263,22 @@ export namespace IMSettings {
          * ```
          *
          * @param module an Input Method name to obtain the information.
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns a #GVariant that can converts to #IMSettingsInfo through          imsettings_info_new(). otherwise %NULL.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
         get_info_variant(module: string, cancellable?: Gio.Cancellable | null): GLib.Variant;
         /**
          * Obtains the result of the request from
-         * imsettings_client_get_info_variant_start().
-         * @param result a #GAsyncResult pushed through #GAsyncReadyCallback.
-         * @returns a #GVariant that can converts to #IMSettingsInfo through          imsettings_info_new(). otherwise %NULL.
+         * `imsettings_client_get_info_variant_start()`.
+         * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
+         * @returns a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
         get_info_variant_finish(result: Gio.AsyncResult): GLib.Variant;
         /**
          * Request obtaining asynchronously the Input Method information for `module`.
          * @param module an Input Method name to obtain the information.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         get_info_variant_start(
             module: string,
@@ -293,22 +300,22 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns a #GVariant contains some pairs of an Input Method name and          a #GVariant that can converts to #IMSettingsInfo through          imsettings_info_new(). otherwise %NULL.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns a {@link GLib.Variant} contains some pairs of an Input Method name and          a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
         get_info_variants(cancellable?: Gio.Cancellable | null): GLib.Variant;
         /**
          * Obtains the result of the request from
-         * imsettings_client_get_info_variants_start().
-         * @param result a #GAsyncResult pushed through #GAsyncReadyCallback.
-         * @returns a #GVariant contains some pairs of an Input Method name and          a #GVariant that can converts to #IMSettingsInfo through          imsettings_info_new(). otherwise %NULL.
+         * `imsettings_client_get_info_variants_start()`.
+         * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
+         * @returns a {@link GLib.Variant} contains some pairs of an Input Method name and          a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
         get_info_variants_finish(result: Gio.AsyncResult): any | null;
         /**
          * Request obtaining asynchronously all of the Input Method information
          * available on the system.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         get_info_variants_start(
             cancellable?: Gio.Cancellable | null,
@@ -316,7 +323,7 @@ export namespace IMSettings {
         ): void;
         /**
          * Obtains current locale information in `client`.
-         * @returns a reference to the locale string in @client. it shouldn't be freed          in applications.
+         * @returns a reference to the locale string in `client`. it shouldn't be freed          in applications.
          */
         get_locale(): string;
         /**
@@ -333,8 +340,8 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns a #GVariant that contains some pairs of the module name and          the Input Method name.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns a {@link GLib.Variant} that contains some pairs of the module name and          the Input Method name.
          */
         get_module_settings(cancellable?: Gio.Cancellable | null): GLib.Variant;
         /**
@@ -354,28 +361,28 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns an Input Method name or %NULL.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns an Input Method name or `null`.
          */
         get_system_im(cancellable?: Gio.Cancellable | null): string;
         /**
          * Obtains the result of the request from
-         * imsettings_client_get_system_im_start().
-         * @param result a #GAsyncResult pushed through #GAsyncReadyCallback.
-         * @returns an Input Method name or %NULL.
+         * `imsettings_client_get_system_im_start()`.
+         * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
+         * @returns an Input Method name or `null`.
          */
         get_system_im_finish(result: Gio.AsyncResult): string;
         /**
          * Request obtaining asynchronously an input method name that currently is
          * active for the system-wide.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         get_system_im_start(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Obtains an Input Method name that currently is active for the user.
          * If one doesn't have the user xinputrc on their home, this simply returns the same
-         * value to what imsettings_client_get_system_im() returns.
+         * value to what `imsettings_client_get_system_im()` returns.
          *
          * You could access through DBus API instead:
          *
@@ -391,28 +398,28 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns an Input Method name or %NULL.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns an Input Method name or `null`.
          */
         get_user_im(cancellable?: Gio.Cancellable | null): string;
         /**
          * Obtains the result of the request from
-         * imsettings_client_get_user_im_start().
-         * @param result a #GAsyncResult pushed through #GAsyncReadyCallback.
-         * @returns an Input Method name or %NULL.
+         * `imsettings_client_get_user_im_start()`.
+         * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
+         * @returns an Input Method name or `null`.
          */
         get_user_im_finish(result: Gio.AsyncResult): string;
         /**
          * Request obtaining asynchronously an input method name that currently is
          * active for the user.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         get_user_im_start(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Obtains the version information of imsettings-daemon running.
          * This is expected to invoke at first if the return value is same to
-         * %IMSETTINGS_SETTINGS_API_VERSION. otherwise it may not works as expected
+         * `IMSETTINGS_SETTINGS_API_VERSION`. otherwise it may not works as expected
          * due to the changes of the implementation between imsettings-daemon and
          * client APIs.
          *
@@ -427,7 +434,7 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param cancellable a #GCancellable or %NULL.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a version number.
          */
         get_version(cancellable?: Gio.Cancellable | null): number;
@@ -448,8 +455,8 @@ export namespace IMSettings {
          * ```
          *
          * @param module an Input Method name to ask.
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns %TRUE if it is, otherwise %FALSE.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns `true` if it is, otherwise `false`.
          */
         im_is_system_default(module: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -469,8 +476,8 @@ export namespace IMSettings {
          * ```
          *
          * @param module an Input Method name to ask.
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns %TRUE if it is, otherwise %FALSE.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns `true` if it is, otherwise `false`.
          */
         im_is_user_default(module: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -490,8 +497,8 @@ export namespace IMSettings {
          * ```
          *
          * @param module an Input Method name to ask.
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns %TRUE if it is, otherwise %FALSE.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns `true` if it is, otherwise `false`.
          */
         im_is_xim(module: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -512,22 +519,22 @@ export namespace IMSettings {
          * ```
          *
          * @param module
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns if any actions needed, returns %TRUE otherwise %FALSE.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns if any actions needed, returns `true` otherwise `false`.
          */
         is_action_needed(module: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Obtains the result of the request from
-         * imsettings_client_is_action_needed_start().
-         * @param result a #GAsyncResult pushed through #GAsyncReadyCallback.
-         * @returns if the operation is successfully done, returns %TRUE          otherwise %FALSE
+         * `imsettings_client_is_action_needed_start()`.
+         * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
+         * @returns if the operation is successfully done, returns `true`          otherwise `false`
          */
         is_action_needed_finish(result: Gio.AsyncResult): boolean;
         /**
          * Request asking if IMSettings is supposed to be taken any actions
          * @param module
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         is_action_needed_start(
             module: string,
@@ -549,21 +556,21 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns if supported, returns %TRUE otherwise %FALSE.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns if supported, returns `true` otherwise `false`.
          */
         is_supported_desktop(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Obtains the result of the request from
-         * imsettings_client_is_supported_desktop_start().
-         * @param result a #GAsyncResult pushed through #GAsyncReadyCallback.
-         * @returns if the operation is successfully done, returns %TRUE          otherwise %FALSE
+         * `imsettings_client_is_supported_desktop_start()`.
+         * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
+         * @returns if the operation is successfully done, returns `true`          otherwise `false`
          */
         is_supported_desktop_finish(result: Gio.AsyncResult): boolean;
         /**
          * Request asking if current desktop is supported or not asynchronously
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         is_supported_desktop_start(
             cancellable?: Gio.Cancellable | null,
@@ -571,14 +578,14 @@ export namespace IMSettings {
         ): void;
         /**
          * Check whether the process is running.
-         * @returns %TRUE if imsettings-daemon is running. otherwise %FALSE.
+         * @returns `true` if imsettings-daemon is running. otherwise `false`.
          */
         ping(): boolean;
         /**
          * Reloads imsettings-daemon.
          *
          * Note that `send_signal` option is for the backward compatibility.
-         * imsettings-daemon doesn't do anything since %IMSETTINGS_SETTINGS_API_VERSION
+         * imsettings-daemon doesn't do anything since `IMSETTINGS_SETTINGS_API_VERSION`
          * is 4. so you will get the expected behavior with:
          *
          *
@@ -605,22 +612,22 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param send_signal %TRUE to send a signal instead of invoking a method.
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns %TRUE if the operation is successfully done, otherwise %FALSE.
+         * @param send_signal `true` to send a signal instead of invoking a method.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the operation is successfully done, otherwise `false`.
          */
         reload(send_signal: boolean, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Update the desktop name in `client` to `desktop`. if `desktop` is %NULL,
+         * Update the desktop name in `client` to `desktop`. if `desktop` is `null`,
          * the desktop detection will be done in the server side.
          * @param desktop a current desktop name going to operate.
-         * @returns %TRUE if successfully updated, otherwise %FALSE.
+         * @returns `true` if successfully updated, otherwise `false`.
          */
         set_desktop(desktop: string): boolean;
         /**
          * Update the locale information in `client` with `locale`.
-         * @param locale a locale to obtain information for or to give it for Input Method.          or %NULL if you want to pass current locale.
-         * @returns %TRUE if successfully updated, otherwise %FALSE.
+         * @param locale a locale to obtain information for or to give it for Input Method.          or `null` if you want to pass current locale.
+         * @returns `true` if successfully updated, otherwise `false`.
          */
         set_locale(locale: string): boolean;
         /**
@@ -640,25 +647,25 @@ export namespace IMSettings {
          *   &lt;/interface&gt;
          * ```
          *
-         * @param module an Input Method name changing to, or %NULL to disable          the Input Method.
-         * @param update_xinputrc %TRUE to update the user xinputrc, otherwise %FALSE.
-         * @param cancellable a #GCancellable or %NULL.
-         * @returns if the operation is successfully done, returns %TRUE          otherwise %FALSE.
+         * @param module an Input Method name changing to, or `null` to disable          the Input Method.
+         * @param update_xinputrc `true` to update the user xinputrc, otherwise `false`.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @returns if the operation is successfully done, returns `true`          otherwise `false`.
          */
         switch_im(module: string, update_xinputrc: boolean, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Obtains the result of the request from
-         * imsettings_client_switch_im_start().
-         * @param result a #GAsyncResult pushed through #GAsyncReadyCallback.
-         * @returns if the operation is successfully done, returns %TRUE          otherwise %FALSE.
+         * `imsettings_client_switch_im_start()`.
+         * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
+         * @returns if the operation is successfully done, returns `true`          otherwise `false`.
          */
         switch_im_finish(result: Gio.AsyncResult): boolean;
         /**
          * Request changing asynchronously the Input Method to `module`.
-         * @param module an Input Method name changing to, or %NULL to disable          the Input Method.
-         * @param update_xinputrc %TRUE to update the user xinputrc, otherwise %FALSE.
-         * @param cancellable a #GCancellable or %NULL.
-         * @param callback a #GAsyncReadyCallback.
+         * @param module an Input Method name changing to, or `null` to disable          the Input Method.
+         * @param update_xinputrc `true` to update the user xinputrc, otherwise `false`.
+         * @param cancellable a {@link Gio.Cancellable} or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
          */
         switch_im_start(
             module: string,
@@ -677,6 +684,9 @@ export namespace IMSettings {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
 
@@ -699,16 +709,19 @@ export namespace IMSettings {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Info.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Info.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Info.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -718,7 +731,7 @@ export namespace IMSettings {
         // Static methods
 
         /**
-         * Generates a #GVariant from the content of `filename`.
+         * Generates a {@link GLib.Variant} from the content of `filename`.
          * This API is mainly used in imsettings-daemon and not supposed to
          * be used in any applications.
          * @param filename a filename to the xinput configuration file.
@@ -726,7 +739,7 @@ export namespace IMSettings {
          */
         static variant_new(filename: string, language: string): GLib.Variant;
         /**
-         * Generates a #GVariant from the content of `filename`.
+         * Generates a {@link GLib.Variant} from the content of `filename`.
          * This API is mainly used in imsettings-daemon and not supposed to
          * be used in any applications.
          * @param filename a filename to the xinput configuration file.
@@ -738,32 +751,32 @@ export namespace IMSettings {
         // Methods
 
         /**
-         * Compares two #IMSettingsInfo instance.
+         * Compares two {@link IMSettings.Info} instance.
          * This function would simply compares the result of the real value in
          * the xinput configuration file. so the result of
-         * imsettings_info_is_script(), imsettings_info_get_language(),
-         * imsettings_info_get_filename(), imsettings_info_is_xim()
-         * imsettings_info_get_im_name() and imsettings_info_get_sub_im_name()
+         * `imsettings_info_is_script()`, `imsettings_info_get_language()`,
+         * `imsettings_info_get_filename()`, `imsettings_info_is_xim()`
+         * `imsettings_info_get_im_name()` and `imsettings_info_get_sub_im_name()`
          * will be ignored.
-         * @param info2 a #IMSettingsInfo to compare with @i1.
-         * @returns %TRUE if @i1 and @i2 match, otherwise %FALSE.
+         * @param info2 a {@link IMSettings.Info} to compare with `i1`.
+         * @returns `true` if `i1` and `i2` match, otherwise `false`.
          */
         compare(info2: Info): boolean;
         /**
          * Obtains the arguments of the auxiliary program.
          *
-         * This gives you same value of %AUXILIARY_ARGS parameter in the xinput
+         * This gives you same value of `AUXILIARY_ARGS` parameter in the xinput
          * configuration file.
-         * @returns a string or %NULL if it's not specified. this shouldn't be freed.
+         * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_aux_args(): string;
         /**
          * Obtains the auxiliary program name, which will be invoked by imsettings-daemon
-         * with the arguments from imsettings_info_get_aux_args().
+         * with the arguments from `imsettings_info_get_aux_args()`.
          *
-         * This gives you same value of %AUXILIARY_PROGRAM parameter in the xinput
+         * This gives you same value of `AUXILIARY_PROGRAM` parameter in the xinput
          * configuration file.
-         * @returns a string or %NULL if it's not specified. this shouldn't be freed.
+         * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_aux_program(): string;
         /**
@@ -772,7 +785,7 @@ export namespace IMSettings {
          */
         get_filename(): string;
         /**
-         * Obtains the GTK+ immodule name. this is same value of %GTK_IM_MODULE
+         * Obtains the GTK+ immodule name. this is same value of `GTK_IM_MODULE`
          * parameter in the xinput configuration file.
          * @returns a string. this shouldn't be freed.
          */
@@ -780,13 +793,13 @@ export namespace IMSettings {
         /**
          * Obtains the icon filename for the Input Method.
          *
-         * This gives you same value of %ICON parameter in the xinput
+         * This gives you same value of `ICON` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
         get_icon_file(): string;
         /**
-         * Obtains the Input Method name. this is same value of %SHORT_DESC
+         * Obtains the Input Method name. this is same value of `SHORT_DESC`
          * if it doesn't contain the sub module information that is separate with ':'
          * like:
          *
@@ -806,15 +819,15 @@ export namespace IMSettings {
         /**
          * Obtains the long description for Input Method.
          *
-         * This gives you same value of %LONG_DESC parameter in the xinput
+         * This gives you same value of `LONG_DESC` parameter in the xinput
          * configuration file.
-         * @returns a string or %NULL if it's not specified. this shouldn't be freed.
+         * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_long_desc(): string;
         /**
          * Obtains non-targeted desktop session for the Input Method.
          *
-         * This gives you same value of %NOT_RUN parameter in the xinput
+         * This gives you same value of `NOT_RUN` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
@@ -822,23 +835,23 @@ export namespace IMSettings {
         /**
          * Obtains the arguments of the preference program.
          *
-         * This gives you same value of %PREFERENCE_ARGS parameter in the xinput
+         * This gives you same value of `PREFERENCE_ARGS` parameter in the xinput
          * configuration file.
-         * @returns a string or %NULL if it's not specified. this shouldn't be freed.
+         * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_prefs_args(): string;
         /**
          * Obtains the preference program name for the Input Method.
          *
-         * This gives you same value of %PREFERENCE_PROGRAM parameter in the xinput
+         * This gives you same value of `PREFERENCE_PROGRAM` parameter in the xinput
          * configuration file.
-         * @returns a string or %NULL if it's not specified. this shouldn't be freed.
+         * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_prefs_program(): string;
         /**
          * Obtains the Qt immodule name.
          *
-         * This gives you same value of %QT_IM_MODULE parameter in the xinput
+         * This gives you same value of `QT_IM_MODULE` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
@@ -846,21 +859,21 @@ export namespace IMSettings {
         /**
          * Obtains the short description for Input Method.
          *
-         * This gives you same value of %SHORT_DESC parameter in the xinput
+         * This gives you same value of `SHORT_DESC` parameter in the xinput
          * configuration file.  If it doesn't contain, the result would be same
-         * to what imsettings_info_get_xim() returns.
+         * to what `imsettings_info_get_xim()` returns.
          * @returns a string. this shouldn't be freed.
          */
         get_short_desc(): string;
         /**
          * Obtains the sub Input Method name.
-         * @returns a string or %NULL if %SHORT_DESC doesn't contain any information          for sub Input Method.
+         * @returns a string or `null` if `SHORT_DESC` doesn't contain any information          for sub Input Method.
          */
         get_sub_im_name(): string;
         /**
-         * Obtains the XIM atom that is supposed to be used with XMODIFIERS=\`im=`.
+         * Obtains the XIM atom that is supposed to be used with XMODIFIERS=\`im`=.
          *
-         * This gives you same value of %XIM parameter in the xinput
+         * This gives you same value of `XIM` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
@@ -868,29 +881,29 @@ export namespace IMSettings {
         /**
          * Obtains the arguments of XIM program.
          *
-         * This gives you same value of %XIM_ARGS parameter in the xinput
+         * This gives you same value of `XIM_ARGS` parameter in the xinput
          * configuration file.
-         * @returns a string or %NULL if it's not specified. this shouldn't be freed.
+         * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_xim_args(): string;
         /**
          * Obtains the XIM program name, which will be invoked by imsettings-daemon
-         * with the arguments from imsettings_info_get_xim_args().
+         * with the arguments from `imsettings_info_get_xim_args()`.
          *
-         * This gives you same value of %XIM_PROGRAM parameter in the xinput
+         * This gives you same value of `XIM_PROGRAM` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
         get_xim_program(): string;
         /**
          * Checks whether the IMSettings need to be taken any actions for.
-         * @returns %TRUE if it is, otherwise %FALSE.
+         * @returns `true` if it is, otherwise `false`.
          */
         is_action_needed(): boolean;
         /**
          * Checks whether the Input Method in `info` is supposed to work for
          * immodule only.
-         * @returns %TRUE if it is. otherwise %FALSE.
+         * @returns `true` if it is. otherwise `false`.
          */
         is_immodule_only(): boolean;
         /**
@@ -898,40 +911,52 @@ export namespace IMSettings {
          *
          * This is useful to see if the result may be different when the condition
          * is changed.
-         * @returns %TRUE if the xinput configuration file is the scripting language.          otherwise %FALSE.
+         * @returns `true` if the xinput configuration file is the scripting language.          otherwise `false`.
          */
         is_script(): boolean;
         /**
          * Checks whether the Input Method in `info` is the system default.
-         * @returns %TRUE if it is. otherwise %FALSE.
+         * @returns `true` if it is. otherwise `false`.
          */
         is_system_default(): boolean;
         /**
          * Checks whether the Input Method in `info` is the user default.
-         * @returns %TRUE if it is. otherwise %FALSE.
+         * @returns `true` if it is. otherwise `false`.
          */
         is_user_default(): boolean;
         /**
          * Checks whether the Input Method is visible.
          *
          * The result would be same what the xinput configuration file specifies in
-         * %IMSETTINGS_IGNORE_ME.
-         * @returns %TRUE if it's visible, otherwise %FALSE.
+         * `IMSETTINGS_IGNORE_ME`.
+         * @returns `true` if it's visible, otherwise `false`.
          */
         is_visible(): boolean;
         /**
          * Checks whether the Input Method in `info` is supposed to work on XIM only.
-         * @returns %TRUE if it is, otherwise %FALSE.
+         * @returns `true` if it is, otherwise `false`.
          */
         is_xim(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InfoClass = typeof Info;
+    /**
+     * @gir-type Struct
+     */
     abstract class InfoPrivate {
         static $gtype: GObject.GType<InfoPrivate>;
     }

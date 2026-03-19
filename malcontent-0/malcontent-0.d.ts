@@ -22,6 +22,8 @@ export namespace Malcontent {
 
     /**
      * Different semantics for interpreting an application list.
+     * @gir-type Enum
+     * @since 0.2.0
      */
     enum AppFilterListType {
         /**
@@ -42,8 +44,10 @@ export namespace Malcontent {
 
     /**
      * Rating values of the intensity of a given section in an app or game.
-     * These are directly equivalent to the values in the #AsContentRatingValue
+     * These are directly equivalent to the values in the `AsContentRatingValue`
      * enumeration in libappstream.
+     * @gir-type Enum
+     * @since 0.2.0
      */
     enum AppFilterOarsValue {
         /**
@@ -72,7 +76,8 @@ export namespace Malcontent {
     }
 
     /**
-     * Errors relating to get/set operations on an #MctManager instance.
+     * Errors relating to get/set operations on an {@link Malcontent.Manager} instance.
+     * @gir-type Struct
      */
     class ManagerError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -110,6 +115,8 @@ export namespace Malcontent {
     /**
      * Types of session limit which can be imposed on an account. Additional types
      * may be added in future.
+     * @gir-type Enum
+     * @since 0.5.0
      */
     enum SessionLimitsType {
         /**
@@ -125,28 +132,30 @@ export namespace Malcontent {
 
     /**
      * Deserialize an app filter previously serialized with
-     * mct_app_filter_serialize(). This function guarantees to be able to
+     * `mct_app_filter_serialize()`. This function guarantees to be able to
      * deserialize any serialized form from this version or older versions of
      * libmalcontent.
      *
-     * If deserialization fails, %MCT_MANAGER_ERROR_INVALID_DATA will be returned.
+     * If deserialization fails, {@link Malcontent.ManagerError.INVALID_DATA} will be returned.
      * @param variant a serialized app filter variant
      * @param user_id the ID of the user the app filter relates to
      * @returns deserialized app filter
+     * @since 0.7.0
      */
     function app_filter_deserialize(variant: GLib.Variant, user_id: number): AppFilter;
     function app_filter_error_quark(): GLib.Quark;
     function manager_error_quark(): GLib.Quark;
     /**
      * Deserialize a set of session limits previously serialized with
-     * mct_session_limits_serialize(). This function guarantees to be able to
+     * `mct_session_limits_serialize()`. This function guarantees to be able to
      * deserialize any serialized form from this version or older versions of
      * libmalcontent.
      *
-     * If deserialization fails, %MCT_MANAGER_ERROR_INVALID_DATA will be returned.
+     * If deserialization fails, {@link Malcontent.ManagerError.INVALID_DATA} will be returned.
      * @param variant a serialized session limits variant
      * @param user_id the ID of the user the session limits relate to
      * @returns deserialized session limits
+     * @since 0.7.0
      */
     function session_limits_deserialize(variant: GLib.Variant, user_id: number): SessionLimits;
     export namespace ManagerGetValueFlags {
@@ -155,7 +164,9 @@ export namespace Malcontent {
 
     /**
      * Flags to control the behaviour of getter functions like
-     * mct_manager_get_app_filter() and mct_manager_get_app_filter_async().
+     * `mct_manager_get_app_filter()` and `mct_manager_get_app_filter_async()`.
+     * @gir-type Flags
+     * @since 0.5.0
      */
     enum ManagerGetValueFlags {
         /**
@@ -175,7 +186,9 @@ export namespace Malcontent {
 
     /**
      * Flags to control the behaviour of setter functions like
-     * mct_manager_set_app_filter() and mct_manager_set_app_filter_async().
+     * `mct_manager_set_app_filter()` and `mct_manager_set_app_filter_async()`.
+     * @gir-type Flags
+     * @since 0.5.0
      */
     enum ManagerSetValueFlags {
         /**
@@ -192,6 +205,13 @@ export namespace Malcontent {
     namespace Manager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the app filter stored for a user changes.
+             * The new app filter for the user should be requested again from
+             * the {@link Malcontent.Manager} instance.
+             * @signal
+             * @since 0.3.0
+             */
             'app-filter-changed': (arg0: number) => void;
             'notify::connection': (pspec: GObject.ParamSpec) => void;
         }
@@ -204,8 +224,10 @@ export namespace Malcontent {
     }
 
     /**
-     * #MctManager is a top-level management object which is used to query and
-     * monitor #MctAppFilters for different users.
+     * {@link Malcontent.Manager} is a top-level management object which is used to query and
+     * monitor `MctAppFilters` for different users.
+     * @gir-type Class
+     * @since 0.3.0
      */
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
@@ -216,6 +238,7 @@ export namespace Malcontent {
          * A connection to the system bus, where accounts-service runs. It’s provided
          * mostly for testing purposes, or to allow an existing connection to be
          * re-used.
+         * @since 0.3.0
          */
         get connection(): Gio.DBusConnection;
 
@@ -238,16 +261,19 @@ export namespace Malcontent {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -257,10 +283,10 @@ export namespace Malcontent {
         // Methods
 
         /**
-         * Synchronous version of mct_manager_get_app_filter_async().
-         * @param user_id ID of the user to query, typically coming from getuid()
+         * Synchronous version of `mct_manager_get_app_filter_async()`.
+         * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns app filter for the queried user
          */
         get_app_filter(
@@ -272,11 +298,11 @@ export namespace Malcontent {
          * Asynchronously get a snapshot of the app filter settings for the given
          * `user_id`.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
          * returned.
-         * @param user_id ID of the user to query, typically coming from getuid()
+         * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         get_app_filter_async(
             user_id: number,
@@ -287,12 +313,12 @@ export namespace Malcontent {
          * Asynchronously get a snapshot of the app filter settings for the given
          * `user_id`.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
          * returned.
-         * @param user_id ID of the user to query, typically coming from getuid()
+         * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         get_app_filter_async(
             user_id: number,
@@ -304,12 +330,12 @@ export namespace Malcontent {
          * Asynchronously get a snapshot of the app filter settings for the given
          * `user_id`.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
          * returned.
-         * @param user_id ID of the user to query, typically coming from getuid()
+         * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         get_app_filter_async(
             user_id: number,
@@ -319,16 +345,16 @@ export namespace Malcontent {
         ): globalThis.Promise<AppFilter> | void;
         /**
          * Finish an asynchronous operation to get the app filter for a user, started
-         * with mct_manager_get_app_filter_async().
-         * @param result a #GAsyncResult
+         * with `mct_manager_get_app_filter_async()`.
+         * @param result a {@link Gio.AsyncResult}
          * @returns app filter for the queried user
          */
         get_app_filter_finish(result: Gio.AsyncResult): AppFilter;
         /**
-         * Synchronous version of mct_manager_get_session_limits_async().
-         * @param user_id ID of the user to query, typically coming from getuid()
+         * Synchronous version of `mct_manager_get_session_limits_async()`.
+         * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns session limits for the queried user
          */
         get_session_limits(
@@ -340,11 +366,11 @@ export namespace Malcontent {
          * Asynchronously get a snapshot of the session limit settings for the given
          * `user_id`.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
-         * returned via mct_manager_get_session_limits_finish().
-         * @param user_id ID of the user to query, typically coming from getuid()
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
+         * returned via `mct_manager_get_session_limits_finish()`.
+         * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         get_session_limits_async(
             user_id: number,
@@ -355,12 +381,12 @@ export namespace Malcontent {
          * Asynchronously get a snapshot of the session limit settings for the given
          * `user_id`.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
-         * returned via mct_manager_get_session_limits_finish().
-         * @param user_id ID of the user to query, typically coming from getuid()
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
+         * returned via `mct_manager_get_session_limits_finish()`.
+         * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         get_session_limits_async(
             user_id: number,
@@ -372,12 +398,12 @@ export namespace Malcontent {
          * Asynchronously get a snapshot of the session limit settings for the given
          * `user_id`.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
-         * returned via mct_manager_get_session_limits_finish().
-         * @param user_id ID of the user to query, typically coming from getuid()
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
+         * returned via `mct_manager_get_session_limits_finish()`.
+         * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         get_session_limits_async(
             user_id: number,
@@ -387,18 +413,18 @@ export namespace Malcontent {
         ): globalThis.Promise<SessionLimits> | void;
         /**
          * Finish an asynchronous operation to get the session limits for a user,
-         * started with mct_manager_get_session_limits_async().
-         * @param result a #GAsyncResult
+         * started with `mct_manager_get_session_limits_async()`.
+         * @param result a {@link Gio.AsyncResult}
          * @returns session limits for the queried user
          */
         get_session_limits_finish(result: Gio.AsyncResult): SessionLimits;
         /**
-         * Synchronous version of mct_manager_set_app_filter_async().
-         * @param user_id ID of the user to set the filter for, typically coming from getuid()
+         * Synchronous version of `mct_manager_set_app_filter_async()`.
+         * @param user_id ID of the user to set the filter for, typically coming from `getuid()`
          * @param app_filter the app filter to set for the user
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %TRUE on success, %FALSE otherwise
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `true` on success, `false` otherwise
          */
         set_app_filter(
             user_id: number,
@@ -410,12 +436,12 @@ export namespace Malcontent {
          * Asynchronously set the app filter settings for the given `user_id` to the
          * given `app_filter` instance. This will set all fields of the app filter.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
          * returned. The user’s app filter settings will be left in an undefined state.
-         * @param user_id ID of the user to set the filter for, typically coming from getuid()
+         * @param user_id ID of the user to set the filter for, typically coming from `getuid()`
          * @param app_filter the app filter to set for the user
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         set_app_filter_async(
             user_id: number,
@@ -427,13 +453,13 @@ export namespace Malcontent {
          * Asynchronously set the app filter settings for the given `user_id` to the
          * given `app_filter` instance. This will set all fields of the app filter.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
          * returned. The user’s app filter settings will be left in an undefined state.
-         * @param user_id ID of the user to set the filter for, typically coming from getuid()
+         * @param user_id ID of the user to set the filter for, typically coming from `getuid()`
          * @param app_filter the app filter to set for the user
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         set_app_filter_async(
             user_id: number,
@@ -446,13 +472,13 @@ export namespace Malcontent {
          * Asynchronously set the app filter settings for the given `user_id` to the
          * given `app_filter` instance. This will set all fields of the app filter.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
          * returned. The user’s app filter settings will be left in an undefined state.
-         * @param user_id ID of the user to set the filter for, typically coming from getuid()
+         * @param user_id ID of the user to set the filter for, typically coming from `getuid()`
          * @param app_filter the app filter to set for the user
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         set_app_filter_async(
             user_id: number,
@@ -463,18 +489,18 @@ export namespace Malcontent {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to set the app filter for a user, started
-         * with mct_manager_set_app_filter_async().
-         * @param result a #GAsyncResult
-         * @returns %TRUE on success, %FALSE otherwise
+         * with `mct_manager_set_app_filter_async()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` on success, `false` otherwise
          */
         set_app_filter_finish(result: Gio.AsyncResult): boolean;
         /**
-         * Synchronous version of mct_manager_set_session_limits_async().
-         * @param user_id ID of the user to set the limits for, typically coming from getuid()
+         * Synchronous version of `mct_manager_set_session_limits_async()`.
+         * @param user_id ID of the user to set the limits for, typically coming from `getuid()`
          * @param session_limits the session limits to set for the user
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %TRUE on success, %FALSE otherwise
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `true` on success, `false` otherwise
          */
         set_session_limits(
             user_id: number,
@@ -486,13 +512,13 @@ export namespace Malcontent {
          * Asynchronously set the session limits settings for the given `user_id` to the
          * given `session_limits` instance.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
-         * returned via mct_manager_set_session_limits_finish(). The user’s session
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
+         * returned via `mct_manager_set_session_limits_finish()`. The user’s session
          * limits settings will be left in an undefined state.
-         * @param user_id ID of the user to set the limits for, typically coming from getuid()
+         * @param user_id ID of the user to set the limits for, typically coming from `getuid()`
          * @param session_limits the session limits to set for the user
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         set_session_limits_async(
             user_id: number,
@@ -504,14 +530,14 @@ export namespace Malcontent {
          * Asynchronously set the session limits settings for the given `user_id` to the
          * given `session_limits` instance.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
-         * returned via mct_manager_set_session_limits_finish(). The user’s session
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
+         * returned via `mct_manager_set_session_limits_finish()`. The user’s session
          * limits settings will be left in an undefined state.
-         * @param user_id ID of the user to set the limits for, typically coming from getuid()
+         * @param user_id ID of the user to set the limits for, typically coming from `getuid()`
          * @param session_limits the session limits to set for the user
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         set_session_limits_async(
             user_id: number,
@@ -524,14 +550,14 @@ export namespace Malcontent {
          * Asynchronously set the session limits settings for the given `user_id` to the
          * given `session_limits` instance.
          *
-         * On failure, an #MctManagerError, a #GDBusError or a #GIOError will be
-         * returned via mct_manager_set_session_limits_finish(). The user’s session
+         * On failure, an {@link Malcontent.ManagerError}, a {@link Gio.DBusError} or a {@link GLib.IOError} will be
+         * returned via `mct_manager_set_session_limits_finish()`. The user’s session
          * limits settings will be left in an undefined state.
-         * @param user_id ID of the user to set the limits for, typically coming from getuid()
+         * @param user_id ID of the user to set the limits for, typically coming from `getuid()`
          * @param session_limits the session limits to set for the user
          * @param flags flags to affect the behaviour of the call
-         * @param cancellable a #GCancellable, or %NULL
-         * @param callback a #GAsyncReadyCallback
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}
          */
         set_session_limits_async(
             user_id: number,
@@ -542,21 +568,23 @@ export namespace Malcontent {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finish an asynchronous operation to set the session limits for a user,
-         * started with mct_manager_set_session_limits_async().
-         * @param result a #GAsyncResult
-         * @returns %TRUE on success, %FALSE otherwise
+         * started with `mct_manager_set_session_limits_async()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` on success, `false` otherwise
          */
         set_session_limits_finish(result: Gio.AsyncResult): boolean;
     }
 
     /**
-     * #MctAppFilter is an opaque, immutable structure which contains a snapshot of
+     * {@link Malcontent.AppFilter} is an opaque, immutable structure which contains a snapshot of
      * the app filtering settings for a user at a given time. This includes a list
      * of apps which are explicitly banned or allowed to be run by that user.
      *
      * Typically, app filter settings can only be changed by the administrator, and
      * are read-only for non-administrative users. The precise policy is set using
      * polkit.
+     * @gir-type Struct
+     * @since 0.2.0
      */
     class AppFilter {
         static $gtype: GObject.GType<AppFilter>;
@@ -574,11 +602,11 @@ export namespace Malcontent {
 
         /**
          * Deserialize an app filter previously serialized with
-         * mct_app_filter_serialize(). This function guarantees to be able to
+         * `mct_app_filter_serialize()`. This function guarantees to be able to
          * deserialize any serialized form from this version or older versions of
          * libmalcontent.
          *
-         * If deserialization fails, %MCT_MANAGER_ERROR_INVALID_DATA will be returned.
+         * If deserialization fails, {@link Malcontent.ManagerError.INVALID_DATA} will be returned.
          * @param variant a serialized app filter variant
          * @param user_id the ID of the user the app filter relates to
          */
@@ -589,42 +617,42 @@ export namespace Malcontent {
 
         /**
          * Check whether app filters `a` and `b` are equal.
-         * @param b an #MctAppFilter
-         * @returns %TRUE if @a and @b are equal, %FALSE otherwise
+         * @param b an {@link Malcontent.AppFilter}
+         * @returns `true` if `a` and `b` are equal, `false` otherwise
          */
         equal(b: AppFilter): boolean;
         /**
          * List the OARS sections present in this app filter. The sections are returned
          * in lexicographic order. A section will be listed even if its stored value is
-         * %MCT_APP_FILTER_OARS_VALUE_UNKNOWN. The returned list may be empty.
-         * @returns %NULL-terminated    array of OARS sections
+         * {@link Malcontent.AppFilterOarsValue.UNKNOWN}. The returned list may be empty.
+         * @returns `null`-terminated    array of OARS sections
          */
         get_oars_sections(): string[];
         /**
          * Get the value assigned to the given `oars_section` in the OARS filter stored
          * within `filter`. If that section has no value explicitly defined,
-         * %MCT_APP_FILTER_OARS_VALUE_UNKNOWN is returned.
+         * {@link Malcontent.AppFilterOarsValue.UNKNOWN} is returned.
          *
          * This value is the most intense value allowed for apps to have in this
          * section, inclusive. Any app with a more intense value for this section must
          * be hidden from the user whose `filter` this is.
          *
-         * This does not factor in mct_app_filter_is_system_installation_allowed().
+         * This does not factor in `mct_app_filter_is_system_installation_allowed()`.
          * @param oars_section name of the OARS section to get the value from
-         * @returns an #MctAppFilterOarsValue
+         * @returns an {@link Malcontent.AppFilterOarsValue}
          */
         get_oars_value(oars_section: string): AppFilterOarsValue;
         /**
-         * Get the user ID of the user this #MctAppFilter is for.
+         * Get the user ID of the user this {@link Malcontent.AppFilter} is for.
          * @returns user ID of the relevant user, or `(uid_t) -1` if unknown
          */
         get_user_id(): number;
         /**
          * Check whether the app with the given `app_info` is allowed to be run
          * according to this app filter. This matches on multiple keys potentially
-         * present in the #GAppInfo, including the path of the executable.
+         * present in the {@link Gio.AppInfo}, including the path of the executable.
          * @param app_info application information
-         * @returns %TRUE if the user this @filter corresponds to is allowed to run the    app represented by @app_info according to the @filter policy; %FALSE    otherwise
+         * @returns `true` if the user this `filter` corresponds to is allowed to run the    app represented by `app_info` according to the `filter` policy; `false`    otherwise
          */
         is_appinfo_allowed(app_info: Gio.AppInfo): boolean;
         /**
@@ -635,14 +663,14 @@ export namespace Malcontent {
          * `application/xml` is added to the blocklist but `application/xspf+xml` is not,
          * a check for whether `application/xspf+xml` is blocklisted would return false.
          * @param content_type content type to check
-         * @returns %TRUE if the user this @filter corresponds to is allowed to run    programs handling @content_type according to the @filter policy;    %FALSE otherwise
+         * @returns `true` if the user this `filter` corresponds to is allowed to run    programs handling `content_type` according to the `filter` policy;    `false` otherwise
          */
         is_content_type_allowed(content_type: string): boolean;
         /**
          * Check whether the app filter is enabled and is going to impose at least one
          * restriction on the user. This gives a high level view of whether app filter
          * parental controls are ‘enabled’ for the given user.
-         * @returns %TRUE if the app filter contains at least one non-default value,    %FALSE if it’s entirely default
+         * @returns `true` if the app filter contains at least one non-default value,    `false` if it’s entirely default
          */
         is_enabled(): boolean;
         /**
@@ -653,51 +681,51 @@ export namespace Malcontent {
          * which contain architecture and branch information. App IDs (for example,
          * `org.gnome.Builder`) do not contain architecture or branch information.
          * @param app_id flatpak ID for the app, for example `org.gnome.Builder`
-         * @returns %TRUE if the user this @filter corresponds to is allowed to run the    flatpak called @app_id according to the @filter policy; %FALSE otherwise
+         * @returns `true` if the user this `filter` corresponds to is allowed to run the    flatpak called `app_id` according to the `filter` policy; `false` otherwise
          */
         is_flatpak_app_allowed(app_id: string): boolean;
         /**
          * Check whether the flatpak app with the given `app_ref` is allowed to be run
          * according to this app filter.
          * @param app_ref flatpak ref for the app, for example `app/org.gnome.Builder/x86_64/master`
-         * @returns %TRUE if the user this @filter corresponds to is allowed to run the    flatpak called @app_ref according to the @filter policy; %FALSE otherwise
+         * @returns `true` if the user this `filter` corresponds to is allowed to run the    flatpak called `app_ref` according to the `filter` policy; `false` otherwise
          */
         is_flatpak_ref_allowed(app_ref: string): boolean;
         /**
          * Check whether the program at `path` is allowed to be run according to this
          * app filter. `path` will be canonicalised without doing any I/O.
          * @param path absolute path of a program to check
-         * @returns %TRUE if the user this @filter corresponds to is allowed to run the    program at @path according to the @filter policy; %FALSE otherwise
+         * @returns `true` if the user this `filter` corresponds to is allowed to run the    program at `path` according to the `filter` policy; `false` otherwise
          */
         is_path_allowed(path: string): boolean;
         /**
          * Get whether the user is allowed to install to the flatpak system repository.
          * This should be queried in addition to the OARS values
-         * (mct_app_filter_get_oars_value()) — if it returns %FALSE, the OARS values
+         * (mct_app_filter_get_oars_value()) — if it returns `false`, the OARS values
          * should be ignored and app installation should be unconditionally disallowed.
-         * @returns %TRUE if app installation is allowed to the system repository for    this user; %FALSE if it is unconditionally disallowed for this user
+         * @returns `true` if app installation is allowed to the system repository for    this user; `false` if it is unconditionally disallowed for this user
          */
         is_system_installation_allowed(): boolean;
         /**
          * Get whether the user is allowed to install to their flatpak user repository.
          * This should be queried in addition to the OARS values
-         * (mct_app_filter_get_oars_value()) — if it returns %FALSE, the OARS values
+         * (mct_app_filter_get_oars_value()) — if it returns `false`, the OARS values
          * should be ignored and app installation should be unconditionally disallowed.
-         * @returns %TRUE if app installation is allowed to the user repository for    this user; %FALSE if it is unconditionally disallowed for this user
+         * @returns `true` if app installation is allowed to the user repository for    this user; `false` if it is unconditionally disallowed for this user
          */
         is_user_installation_allowed(): boolean;
         /**
-         * Increment the reference count of `filter,` and return the same pointer to it.
-         * @returns the same pointer as @filter
+         * Increment the reference count of `filter`, and return the same pointer to it.
+         * @returns the same pointer as `filter`
          */
         ref(): AppFilter;
         /**
-         * Build a #GVariant which contains the app filter from `filter,` in an opaque
+         * Build a {@link GLib.Variant} which contains the app filter from `filter`, in an opaque
          * variant format. This format may change in future, but
-         * mct_app_filter_deserialize() is guaranteed to always be able to load any
+         * `mct_app_filter_deserialize()` is guaranteed to always be able to load any
          * variant produced by the current or any previous version of
-         * mct_app_filter_serialize().
-         * @returns a new, floating #GVariant containing the app    filter
+         * `mct_app_filter_serialize()`.
+         * @returns a new, floating {@link GLib.Variant} containing the app    filter
          */
         serialize(): GLib.Variant;
         /**
@@ -708,10 +736,12 @@ export namespace Malcontent {
     }
 
     /**
-     * #MctAppFilterBuilder is a stack-allocated mutable structure used to build an
-     * #MctAppFilter instance. Use mct_app_filter_builder_init(), various method
+     * {@link Malcontent.AppFilterBuilder} is a stack-allocated mutable structure used to build an
+     * {@link Malcontent.AppFilter} instance. Use `mct_app_filter_builder_init()`, various method
      * calls to set properties of the app filter, and then
-     * mct_app_filter_builder_end(), to construct an #MctAppFilter.
+     * `mct_app_filter_builder_end()`, to construct an {@link Malcontent.AppFilter}.
+     * @gir-type Struct
+     * @since 0.2.0
      */
     class AppFilterBuilder {
         static $gtype: GObject.GType<AppFilterBuilder>;
@@ -750,74 +780,77 @@ export namespace Malcontent {
          */
         blocklist_path(path: string): void;
         /**
-         * Clear `builder,` freeing any internal state in it. This will not free the
+         * Clear `builder`, freeing any internal state in it. This will not free the
          * top-level storage for `builder` itself, which is assumed to be allocated on
          * the stack.
          *
-         * If called on an already-cleared #MctAppFilterBuilder, this function is
+         * If called on an already-cleared {@link Malcontent.AppFilterBuilder}, this function is
          * idempotent.
          */
         clear(): void;
         /**
-         * Copy the given `builder` to a newly-allocated #MctAppFilterBuilder on the
+         * Copy the given `builder` to a newly-allocated {@link Malcontent.AppFilterBuilder} on the
          * heap. This is safe to use with cleared, stack-allocated
-         * #MctAppFilterBuilders.
-         * @returns a copy of @builder
+         * `MctAppFilterBuilders`.
+         * @returns a copy of `builder`
          */
         copy(): AppFilterBuilder;
         /**
-         * Finish constructing an #MctAppFilter with the given `builder,` and return it.
-         * The #MctAppFilterBuilder will be cleared as if mct_app_filter_builder_clear()
+         * Finish constructing an {@link Malcontent.AppFilter} with the given `builder`, and return it.
+         * The {@link Malcontent.AppFilterBuilder} will be cleared as if `mct_app_filter_builder_clear()`
          * had been called.
-         * @returns a newly constructed #MctAppFilter
+         * @returns a newly constructed {@link Malcontent.AppFilter}
          */
         end(): AppFilter;
         /**
-         * Free an #MctAppFilterBuilder originally allocated using
-         * mct_app_filter_builder_new(). This must not be called on stack-allocated
-         * builders initialised using mct_app_filter_builder_init().
+         * Free an {@link Malcontent.AppFilterBuilder} originally allocated using
+         * `mct_app_filter_builder_new()`. This must not be called on stack-allocated
+         * builders initialised using `mct_app_filter_builder_init()`.
          */
         free(): void;
         /**
          * Initialise the given `builder` so it can be used to construct a new
-         * #MctAppFilter. `builder` must have been allocated on the stack, and must not
+         * {@link Malcontent.AppFilter}. `builder` must have been allocated on the stack, and must not
          * already be initialised.
          *
-         * Construct the #MctAppFilter by calling methods on `builder,` followed by
-         * mct_app_filter_builder_end(). To abort construction, use
-         * mct_app_filter_builder_clear().
+         * Construct the {@link Malcontent.AppFilter} by calling methods on `builder`, followed by
+         * `mct_app_filter_builder_end()`. To abort construction, use
+         * `mct_app_filter_builder_clear()`.
          */
         init(): void;
         /**
          * Set whether the user is allowed to install to the flatpak system repository.
-         * If this is %TRUE, app installation is still subject to the OARS values
-         * (mct_app_filter_builder_set_oars_value()). If it is %FALSE, app installation
+         * If this is `true`, app installation is still subject to the OARS values
+         * (mct_app_filter_builder_set_oars_value()). If it is `false`, app installation
          * is unconditionally disallowed for this user.
-         * @param allow_system_installation %TRUE to allow app installation; %FALSE to    unconditionally disallow it
+         * @param allow_system_installation `true` to allow app installation; `false` to    unconditionally disallow it
          */
         set_allow_system_installation(allow_system_installation: boolean): void;
         /**
          * Set whether the user is allowed to install to their flatpak user repository.
-         * If this is %TRUE, app installation is still subject to the OARS values
-         * (mct_app_filter_builder_set_oars_value()). If it is %FALSE, app installation
+         * If this is `true`, app installation is still subject to the OARS values
+         * (mct_app_filter_builder_set_oars_value()). If it is `false`, app installation
          * is unconditionally disallowed for this user.
-         * @param allow_user_installation %TRUE to allow app installation; %FALSE to    unconditionally disallow it
+         * @param allow_user_installation `true` to allow app installation; `false` to    unconditionally disallow it
          */
         set_allow_user_installation(allow_user_installation: boolean): void;
         /**
-         * Set the OARS value for the given `oars_section,` indicating the intensity of
+         * Set the OARS value for the given `oars_section`, indicating the intensity of
          * content covered by that section which the user is allowed to see (inclusive).
          * Any apps which have more intense content in this section should not be usable
          * by the user.
          * @param oars_section name of the OARS section to set the value for
-         * @param value value to set for the @oars_section
+         * @param value value to set for the `oars_section`
          */
         set_oars_value(oars_section: string, value: AppFilterOarsValue | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ManagerClass = typeof Manager;
     /**
-     * #MctSessionLimits is an opaque, immutable structure which contains a snapshot
+     * {@link Malcontent.SessionLimits} is an opaque, immutable structure which contains a snapshot
      * of the session limits settings for a user at a given time. This includes
      * whether session limits are being enforced, and the limit policy — for
      * example, the times of day when a user is allowed to use the computer.
@@ -825,6 +858,8 @@ export namespace Malcontent {
      * Typically, session limits settings can only be changed by the administrator,
      * and are read-only for non-administrative users. The precise policy is set
      * using polkit.
+     * @gir-type Struct
+     * @since 0.5.0
      */
     class SessionLimits {
         static $gtype: GObject.GType<SessionLimits>;
@@ -841,11 +876,11 @@ export namespace Malcontent {
 
         /**
          * Deserialize a set of session limits previously serialized with
-         * mct_session_limits_serialize(). This function guarantees to be able to
+         * `mct_session_limits_serialize()`. This function guarantees to be able to
          * deserialize any serialized form from this version or older versions of
          * libmalcontent.
          *
-         * If deserialization fails, %MCT_MANAGER_ERROR_INVALID_DATA will be returned.
+         * If deserialization fails, {@link Malcontent.ManagerError.INVALID_DATA} will be returned.
          * @param variant a serialized session limits variant
          * @param user_id the ID of the user the session limits relate to
          */
@@ -861,12 +896,12 @@ export namespace Malcontent {
          * This will return whether the user is allowed to use the computer now; further
          * information about the policy and remaining time is provided in
          * `time_remaining_secs_out` and `time_limit_enabled_out`.
-         * @param now_usecs current time as microseconds since the Unix epoch (UTC),     typically queried using g_get_real_time()
-         * @returns %TRUE if the user this @limits corresponds to is allowed to be in     an active session at the given time; %FALSE otherwise
+         * @param now_usecs current time as microseconds since the Unix epoch (UTC),     typically queried using `g_get_real_time()`
+         * @returns `true` if the user this `limits` corresponds to is allowed to be in     an active session at the given time; `false` otherwise
          */
         check_time_remaining(now_usecs: number): [boolean, number, boolean];
         /**
-         * Get the user ID of the user this #MctSessionLimits is for.
+         * Get the user ID of the user this {@link Malcontent.SessionLimits} is for.
          * @returns user ID of the relevant user, or `(uid_t) -1` if unknown
          */
         get_user_id(): number;
@@ -877,22 +912,22 @@ export namespace Malcontent {
          *
          * This function is equivalent to the value returned by the
          * `time_limit_enabled_out` argument of
-         * mct_session_limits_check_time_remaining().
-         * @returns %TRUE if the session limits object contains at least one restrictive    session limit, %FALSE if there are no limits in place
+         * `mct_session_limits_check_time_remaining()`.
+         * @returns `true` if the session limits object contains at least one restrictive    session limit, `false` if there are no limits in place
          */
         is_enabled(): boolean;
         /**
-         * Increment the reference count of `limits,` and return the same pointer to it.
-         * @returns the same pointer as @limits
+         * Increment the reference count of `limits`, and return the same pointer to it.
+         * @returns the same pointer as `limits`
          */
         ref(): SessionLimits;
         /**
-         * Build a #GVariant which contains the session limits from `limits,` in an
+         * Build a {@link GLib.Variant} which contains the session limits from `limits`, in an
          * opaque variant format. This format may change in future, but
-         * mct_session_limits_deserialize() is guaranteed to always be able to load any
+         * `mct_session_limits_deserialize()` is guaranteed to always be able to load any
          * variant produced by the current or any previous version of
-         * mct_session_limits_serialize().
-         * @returns a new, floating #GVariant containing the    session limits
+         * `mct_session_limits_serialize()`.
+         * @returns a new, floating {@link GLib.Variant} containing the    session limits
          */
         serialize(): GLib.Variant;
         /**
@@ -903,10 +938,12 @@ export namespace Malcontent {
     }
 
     /**
-     * #MctSessionLimitsBuilder is a stack-allocated mutable structure used to build
-     * an #MctSessionLimits instance. Use mct_session_limits_builder_init(), various
+     * {@link Malcontent.SessionLimitsBuilder} is a stack-allocated mutable structure used to build
+     * an {@link Malcontent.SessionLimits} instance. Use `mct_session_limits_builder_init()`, various
      * method calls to set properties of the session limits, and then
-     * mct_session_limits_builder_end(), to construct an #MctSessionLimits.
+     * `mct_session_limits_builder_end()`, to construct an {@link Malcontent.SessionLimits}.
+     * @gir-type Struct
+     * @since 0.5.0
      */
     class SessionLimitsBuilder {
         static $gtype: GObject.GType<SessionLimitsBuilder>;
@@ -920,42 +957,42 @@ export namespace Malcontent {
         // Methods
 
         /**
-         * Clear `builder,` freeing any internal state in it. This will not free the
+         * Clear `builder`, freeing any internal state in it. This will not free the
          * top-level storage for `builder` itself, which is assumed to be allocated on
          * the stack.
          *
-         * If called on an already-cleared #MctSessionLimitsBuilder, this function is
+         * If called on an already-cleared {@link Malcontent.SessionLimitsBuilder}, this function is
          * idempotent.
          */
         clear(): void;
         /**
-         * Copy the given `builder` to a newly-allocated #MctSessionLimitsBuilder on the
+         * Copy the given `builder` to a newly-allocated {@link Malcontent.SessionLimitsBuilder} on the
          * heap. This is safe to use with cleared, stack-allocated
-         * #MctSessionLimitsBuilders.
-         * @returns a copy of @builder
+         * `MctSessionLimitsBuilders`.
+         * @returns a copy of `builder`
          */
         copy(): SessionLimitsBuilder;
         /**
-         * Finish constructing an #MctSessionLimits with the given `builder,` and return
-         * it. The #MctSessionLimitsBuilder will be cleared as if
-         * mct_session_limits_builder_clear() had been called.
-         * @returns a newly constructed #MctSessionLimits
+         * Finish constructing an {@link Malcontent.SessionLimits} with the given `builder`, and return
+         * it. The {@link Malcontent.SessionLimitsBuilder} will be cleared as if
+         * `mct_session_limits_builder_clear()` had been called.
+         * @returns a newly constructed {@link Malcontent.SessionLimits}
          */
         end(): SessionLimits;
         /**
-         * Free an #MctSessionLimitsBuilder originally allocated using
-         * mct_session_limits_builder_new(). This must not be called on stack-allocated
-         * builders initialised using mct_session_limits_builder_init().
+         * Free an {@link Malcontent.SessionLimitsBuilder} originally allocated using
+         * `mct_session_limits_builder_new()`. This must not be called on stack-allocated
+         * builders initialised using `mct_session_limits_builder_init()`.
          */
         free(): void;
         /**
          * Initialise the given `builder` so it can be used to construct a new
-         * #MctSessionLimits. `builder` must have been allocated on the stack, and must
+         * {@link Malcontent.SessionLimits}. `builder` must have been allocated on the stack, and must
          * not already be initialised.
          *
-         * Construct the #MctSessionLimits by calling methods on `builder,` followed by
-         * mct_session_limits_builder_end(). To abort construction, use
-         * mct_session_limits_builder_clear().
+         * Construct the {@link Malcontent.SessionLimits} by calling methods on `builder`, followed by
+         * `mct_session_limits_builder_end()`. To abort construction, use
+         * `mct_session_limits_builder_clear()`.
          */
         init(): void;
         /**
@@ -976,8 +1013,17 @@ export namespace Malcontent {
         set_none(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AppFilterError = ManagerError;
+    /**
+     * @gir-type Alias
+     */
     type GetAppFilterFlags = ManagerGetValueFlags;
+    /**
+     * @gir-type Alias
+     */
     type SetAppFilterFlags = ManagerSetValueFlags;
     /**
      * Name of the imported GIR library

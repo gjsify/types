@@ -35,6 +35,9 @@ export namespace Plasma {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
@@ -61,16 +64,19 @@ export namespace Plasma {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -79,10 +85,27 @@ export namespace Plasma {
 
         // Methods
 
+        /**
+         * @param id The ID for a newly created object.
+         * @param data_size The number of bytes of data for a newly created object.
+         * @param options The option for creating an object.
+         * @returns A newly created {@link Plasma.CreatedObject}   on success, `null` on error.
+         */
         create(id: ObjectID, data_size: number, options?: ClientCreateOptions | null): CreatedObject | null;
+        /**
+         * @returns `true` on success, `false` if there was an error.
+         */
         disconnect(): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
+        /**
+         * @param id The ID of the target object.
+         * @param timeout_ms The timeout in milliseconds. -1 means no timeout.
+         * @returns A found {@link Plasma.ReferredObject}   on success, `null` on error.
+         */
         refer_object(id: ObjectID, timeout_ms: number): ReferredObject | null;
     }
 
@@ -100,6 +123,9 @@ export namespace Plasma {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientCreateOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientCreateOptions>;
 
@@ -129,16 +155,19 @@ export namespace Plasma {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientCreateOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientCreateOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientCreateOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -149,7 +178,13 @@ export namespace Plasma {
 
         // Methods
 
+        /**
+         * @returns The metadata of a created object.
+         */
         get_metadata(): Uint8Array | null;
+        /**
+         * @param metadata The metadata of a created object.
+         */
         set_metadata(metadata?: Uint8Array | null): void;
     }
 
@@ -167,6 +202,9 @@ export namespace Plasma {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
 
@@ -196,16 +234,19 @@ export namespace Plasma {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -214,7 +255,13 @@ export namespace Plasma {
 
         // Methods
 
+        /**
+         * @returns The number of retries on connect.
+         */
         get_n_retries(): number;
+        /**
+         * @param n_retries The number of retires on connect.
+         */
         set_n_retries(n_retries: number): void;
     }
 
@@ -235,6 +282,9 @@ export namespace Plasma {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CreatedObject extends Object {
         static $gtype: GObject.GType<CreatedObject>;
 
@@ -255,16 +305,19 @@ export namespace Plasma {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CreatedObject.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CreatedObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CreatedObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -276,13 +329,13 @@ export namespace Plasma {
         /**
          * Aborts the object in the object store. You can't use the aborted
          * object anymore.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         abort(): boolean;
         /**
          * Seals the object in the object store. You can't use the sealed
          * object anymore.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         seal(): boolean;
     }
@@ -315,6 +368,9 @@ export namespace Plasma {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
@@ -348,16 +404,19 @@ export namespace Plasma {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -374,6 +433,9 @@ export namespace Plasma {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ObjectID extends GObject.Object {
         static $gtype: GObject.GType<ObjectID>;
 
@@ -396,16 +458,19 @@ export namespace Plasma {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ObjectID.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ObjectID.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ObjectID.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ObjectID.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ObjectID.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ObjectID.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -414,7 +479,13 @@ export namespace Plasma {
 
         // Methods
 
+        /**
+         * @returns The byte string of the object ID.
+         */
         to_binary(): Uint8Array;
+        /**
+         * @returns The hex representation of the object ID.   It should be freed with `g_free()` when no longer needed.
+         */
         to_hex(): string;
     }
 
@@ -435,6 +506,9 @@ export namespace Plasma {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ReferredObject extends Object {
         static $gtype: GObject.GType<ReferredObject>;
 
@@ -455,16 +529,19 @@ export namespace Plasma {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ReferredObject.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ReferredObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ReferredObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -475,17 +552,38 @@ export namespace Plasma {
 
         /**
          * Releases the object explicitly. The object is no longer valid.
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         release(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type ClientCreateOptionsClass = typeof ClientCreateOptions;
+    /**
+     * @gir-type Alias
+     */
     type ClientOptionsClass = typeof ClientOptions;
+    /**
+     * @gir-type Alias
+     */
     type CreatedObjectClass = typeof CreatedObject;
+    /**
+     * @gir-type Alias
+     */
     type ObjectClass = typeof Object;
+    /**
+     * @gir-type Alias
+     */
     type ObjectIDClass = typeof ObjectID;
+    /**
+     * @gir-type Alias
+     */
     type ReferredObjectClass = typeof ReferredObject;
     /**
      * Name of the imported GIR library

@@ -30,6 +30,9 @@ export namespace SugarExt {
      * SugarExt-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum ClientEndStyle {
         END_SESSION_DEFAULT,
         LOGOUT,
@@ -37,12 +40,18 @@ export namespace SugarExt {
         SHUTDOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClientMode {
         DISABLED,
         NO_RESTART,
         NORMAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClientXSMPState {
         START,
         IDLE,
@@ -54,17 +63,26 @@ export namespace SugarExt {
         CONNECTION_CLOSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SessionLogoutMode {
         NORMAL,
         NO_CONFIRMATION,
         FORCE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SessionLogoutType {
         LOGOUT,
         SHUTDOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SessionPhase {
         STARTUP,
         INITIALIZATION,
@@ -80,11 +98,11 @@ export namespace SugarExt {
      * Virtually sets the contents of the specified clipboard by providing
      * a list of supported formats for the clipboard data and a function
      * to call to get the actual data when it is requested.
-     * @param clipboard a #GtkClipboard
+     * @param clipboard a {@link Gtk.Clipboard}
      * @param targets array containing information     about the available forms for the clipboard data
      * @param get_func function to call to get the     actual clipboard data
-     * @param clear_func when the clipboard     contents are set again, this function will be called, and @get_func     will not be subsequently called.
-     * @returns %TRUE if setting the clipboard data succeeded.    If setting the clipboard data failed the provided callback    functions will be ignored.
+     * @param clear_func when the clipboard     contents are set again, this function will be called, and `get_func`     will not be subsequently called.
+     * @returns `true` if setting the clipboard data succeeded.    If setting the clipboard data failed the provided callback    functions will be ignored.
      */
     function clipboard_set_with_data(
         clipboard: Gtk.Clipboard,
@@ -97,9 +115,23 @@ export namespace SugarExt {
      * @param file
      */
     function fat_set_hidden_attrib(file: string): boolean;
+    /**
+     * @param window
+     */
     function wm_get_activity_id(window: xlib.Window): string;
+    /**
+     * @param window
+     */
     function wm_get_bundle_id(window: xlib.Window): string;
+    /**
+     * @param window
+     * @param activity_id
+     */
     function wm_set_activity_id(window: xlib.Window, activity_id: string): void;
+    /**
+     * @param window
+     * @param bundle_id
+     */
     function wm_set_bundle_id(window: xlib.Window, bundle_id: string): void;
     /**
      * Generates a new XSMP client ID.
@@ -122,9 +154,31 @@ export namespace SugarExt {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the session manager wants the application to quit
+             * (generally because the user is logging out). The application
+             * should exit as soon as possible after receiving this signal; if
+             * it does not, the session manager may choose to forcibly kill it.
+             *
+             * Normally a GUI application would only be sent a ::quit if it
+             * agreed to quit in response to a ::quit_requested signal. However,
+             * this is not guaranteed; in some situations the session manager
+             * may decide to end the session without giving applications a
+             * chance to object.
+             * @signal
+             */
             quit: () => void;
+            /**
+             * @signal
+             */
             'quit-cancelled': () => void;
+            /**
+             * @signal
+             */
             'quit-requested': () => void;
+            /**
+             * @signal
+             */
             'save-state': (arg0: any | null) => void;
         }
 
@@ -133,6 +187,9 @@ export namespace SugarExt {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
@@ -153,16 +210,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -171,14 +231,36 @@ export namespace SugarExt {
 
         // Static methods
 
+        /**
+         * @param style
+         * @param request_confirmation
+         */
         static end_session(style: ClientEndStyle, request_confirmation: boolean): boolean;
 
         // Virtual methods
 
+        /**
+         * @param style
+         * @param request_confirmation
+         * @virtual
+         */
         vfunc_end_session(style: ClientEndStyle, request_confirmation: boolean): boolean;
+        /**
+         * @virtual
+         */
         vfunc_quit(): void;
+        /**
+         * @virtual
+         */
         vfunc_quit_cancelled(): void;
+        /**
+         * @virtual
+         */
         vfunc_quit_requested(): void;
+        /**
+         * @param state_file
+         * @virtual
+         */
         vfunc_save_state(state_file: GLib.KeyFile): void;
         /**
          * Sets the command used to restart `client` if it does not have a
@@ -187,10 +269,15 @@ export namespace SugarExt {
          * This can also be used when handling the ::save_state signal, to
          * save the current state via an updated command line. (Eg, providing
          * a list of filenames to open when the application is resumed.)
-         * @param argc the length of @argv
+         * @param argc the length of `argv`
          * @param argv argument vector
+         * @virtual
          */
         vfunc_set_restart_command(argc: number, argv: string): void;
+        /**
+         * @param client_id
+         * @virtual
+         */
         vfunc_startup(client_id: string): void;
         /**
          * This MUST be called in response to the ::quit_requested signal, to
@@ -200,12 +287,13 @@ export namespace SugarExt {
          * user).
          *
          * If the application does not connect to ::quit_requested,
-         * #EggSMClient will call this method on its behalf (passing %TRUE
-         * for `will_quit)`.
+         * {@link SugarExt.Client} will call this method on its behalf (passing `true`
+         * for `will_quit`).
          *
          * After calling this method, the application should wait to receive
          * either ::quit_cancelled or ::quit.
          * @param will_quit whether or not the application is willing to quit
+         * @virtual
          */
         vfunc_will_quit(will_quit: boolean): void;
 
@@ -213,24 +301,24 @@ export namespace SugarExt {
 
         /**
          * If the application was resumed by the session manager, this will
-         * return the #GKeyFile containing its state from the previous
+         * return the {@link GLib.KeyFile} containing its state from the previous
          * session.
          *
-         * Note that other libraries and #EggSMClient itself may also store
-         * state in the key file, so if you call egg_sm_client_get_groups(),
+         * Note that other libraries and {@link SugarExt.Client} itself may also store
+         * state in the key file, so if you call `egg_sm_client_get_groups()`,
          * on it, the return value will likely include groups that you did not
          * put there yourself. (It is also not guaranteed that the first
          * group created by the application will still be the "start group"
          * when it is resumed.)
-         * @returns the #GKeyFile containing the application's earlier state, or %NULL on error. You should not free this key file; it is owned by @client.
+         * @returns the {@link GLib.KeyFile} containing the application's earlier state, or `null` on error. You should not free this key file; it is owned by `client`.
          */
         get_state_file(): GLib.KeyFile;
         /**
          * Checks whether or not the current session has been resumed from
          * a previous saved session. If so, the application should call
-         * egg_sm_client_get_state_file() and restore its state from the
-         * returned #GKeyFile.
-         * @returns %TRUE if the session has been resumed
+         * `egg_sm_client_get_state_file()` and restore its state from the
+         * returned {@link GLib.KeyFile}.
+         * @returns `true` if the session has been resumed
          */
         is_resumed(): boolean;
         /**
@@ -240,7 +328,7 @@ export namespace SugarExt {
          * This can also be used when handling the ::save_state signal, to
          * save the current state via an updated command line. (Eg, providing
          * a list of filenames to open when the application is resumed.)
-         * @param argc the length of @argv
+         * @param argc the length of `argv`
          * @param argv argument vector
          */
         set_restart_command(argc: number, argv: string): void;
@@ -253,8 +341,8 @@ export namespace SugarExt {
          * user).
          *
          * If the application does not connect to ::quit_requested,
-         * #EggSMClient will call this method on its behalf (passing %TRUE
-         * for `will_quit)`.
+         * {@link SugarExt.Client} will call this method on its behalf (passing `true`
+         * for `will_quit`).
          *
          * After calling this method, the application should wait to receive
          * either ::quit_cancelled or ::quit.
@@ -272,6 +360,9 @@ export namespace SugarExt {
         interface ConstructorProps extends Client.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientXSMP extends Client {
         static $gtype: GObject.GType<ClientXSMP>;
 
@@ -311,16 +402,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientXSMP.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientXSMP.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientXSMP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -337,6 +431,9 @@ export namespace SugarExt {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
 
@@ -359,16 +456,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CursorTracker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -385,6 +485,9 @@ export namespace SugarExt {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GestureGrabber extends GObject.Object {
         static $gtype: GObject.GType<GestureGrabber>;
 
@@ -407,16 +510,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GestureGrabber.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GestureGrabber.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GestureGrabber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -425,7 +531,14 @@ export namespace SugarExt {
 
         // Methods
 
+        /**
+         * @param controller
+         * @param rect
+         */
         add(controller: SugarGestures.EventController, rect: Gdk.Rectangle): void;
+        /**
+         * @param controller
+         */
         remove(controller: SugarGestures.EventController): void;
     }
 
@@ -438,6 +551,9 @@ export namespace SugarExt {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Grid extends GObject.Object {
         static $gtype: GObject.GType<Grid>;
 
@@ -465,16 +581,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Grid.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Grid.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Grid.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Grid.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Grid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -483,16 +602,35 @@ export namespace SugarExt {
 
         // Methods
 
+        /**
+         * @param rect
+         */
         add_weight(rect: Gdk.Rectangle): void;
+        /**
+         * @param rect
+         */
         compute_weight(rect: Gdk.Rectangle): number;
+        /**
+         * @param rect
+         */
         remove_weight(rect: Gdk.Rectangle): void;
+        /**
+         * @param width
+         * @param height
+         */
         setup(width: number, height: number): void;
     }
 
     namespace KeyGrabber {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'key-pressed': (arg0: number, arg1: number, arg2: number) => boolean | void;
+            /**
+             * @signal
+             */
             'key-released': (arg0: number, arg1: number, arg2: number) => boolean | void;
         }
 
@@ -501,6 +639,9 @@ export namespace SugarExt {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class KeyGrabber extends GObject.Object {
         static $gtype: GObject.GType<KeyGrabber>;
 
@@ -527,16 +668,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyGrabber.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyGrabber.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyGrabber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -545,23 +689,44 @@ export namespace SugarExt {
 
         // Virtual methods
 
+        /**
+         * @param keycode
+         * @param state
+         * @virtual
+         */
         vfunc_key_pressed(keycode: number, state: number): boolean;
+        /**
+         * @param keycode
+         * @param state
+         * @virtual
+         */
         vfunc_key_released(keycode: number, state: number): boolean;
 
         // Methods
 
+        /**
+         * @param keycode
+         * @param state
+         */
         get_key(keycode: number, state: number): string;
         /**
          * Pass to the key grabber the keys it should listen to.
          * @param keys array of     keys the grabber will listen to
          */
         grab_keys(keys: string[]): void;
+        /**
+         * @param keycode
+         * @param mask
+         */
         is_modifier(keycode: number, mask: number): boolean;
     }
 
     namespace Session {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'shutdown-completed': () => void;
         }
 
@@ -570,6 +735,9 @@ export namespace SugarExt {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
 
@@ -590,16 +758,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -618,6 +789,10 @@ export namespace SugarExt {
         cancel_shutdown(): void;
         get_phase(): SessionPhase;
         initiate_shutdown(): void;
+        /**
+         * @param client
+         * @param previous_id
+         */
         register_client(client: Client, previous_id: string): string;
         /**
          * Sets the name of a running session.
@@ -636,6 +811,9 @@ export namespace SugarExt {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Volume extends GObject.Object {
         static $gtype: GObject.GType<Volume>;
 
@@ -658,16 +836,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Volume.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Volume.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Volume.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Volume.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Volume.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -676,10 +857,27 @@ export namespace SugarExt {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_mute(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_threshold(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_volume(): number;
+        /**
+         * @param val
+         * @virtual
+         */
         vfunc_set_mute(val: boolean): void;
+        /**
+         * @param val
+         * @virtual
+         */
         vfunc_set_volume(val: number): void;
 
         // Methods
@@ -688,7 +886,13 @@ export namespace SugarExt {
         get_threshold(): number;
         get_volume(): number;
         mute_toggle(): void;
+        /**
+         * @param val
+         */
         set_mute(val: boolean): void;
+        /**
+         * @param val
+         */
         set_volume(val: number): void;
     }
 
@@ -701,6 +905,9 @@ export namespace SugarExt {
         interface ConstructorProps extends Volume.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VolumeAlsa extends Volume {
         static $gtype: GObject.GType<VolumeAlsa>;
 
@@ -726,16 +933,19 @@ export namespace SugarExt {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VolumeAlsa.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VolumeAlsa.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VolumeAlsa.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -743,13 +953,28 @@ export namespace SugarExt {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientXSMPClass = typeof ClientXSMP;
+    /**
+     * @gir-type Alias
+     */
     type CursorTrackerClass = typeof CursorTracker;
+    /**
+     * @gir-type Struct
+     */
     class CursorTrackerPrivate {
         static $gtype: GObject.GType<CursorTrackerPrivate>;
 
@@ -759,7 +984,13 @@ export namespace SugarExt {
         cursor_shown: boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GestureGrabberClass = typeof GestureGrabber;
+    /**
+     * @gir-type Struct
+     */
     class GestureGrabberPrivate {
         static $gtype: GObject.GType<GestureGrabberPrivate>;
 
@@ -771,18 +1002,39 @@ export namespace SugarExt {
         cancel_timeout_id: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GridClass = typeof Grid;
+    /**
+     * @gir-type Alias
+     */
     type KeyGrabberClass = typeof KeyGrabber;
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyGrabberPrivate {
         static $gtype: GObject.GType<KeyGrabberPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SessionClass = typeof Session;
+    /**
+     * @gir-type Alias
+     */
     type VolumeAlsaClass = typeof VolumeAlsa;
+    /**
+     * @gir-type Struct
+     */
     abstract class VolumeAlsaPrivate {
         static $gtype: GObject.GType<VolumeAlsaPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VolumeClass = typeof Volume;
     /**
      * Name of the imported GIR library

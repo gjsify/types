@@ -43,6 +43,9 @@ export namespace Shew {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExternalWindow extends GObject.Object {
         static $gtype: GObject.GType<ExternalWindow>;
 
@@ -69,16 +72,19 @@ export namespace Shew {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExternalWindow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExternalWindow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExternalWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -87,11 +93,18 @@ export namespace Shew {
 
         // Virtual methods
 
+        /**
+         * @param child_surface
+         * @virtual
+         */
         vfunc_set_parent_of(child_surface: Gdk.Surface): void;
 
         // Methods
 
         get_display(): Gdk.Display;
+        /**
+         * @param child_surface
+         */
         set_parent_of(child_surface: Gdk.Surface): void;
     }
 
@@ -108,6 +121,9 @@ export namespace Shew {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WindowExporter extends GObject.Object {
         static $gtype: GObject.GType<WindowExporter>;
 
@@ -134,16 +150,19 @@ export namespace Shew {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowExporter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowExporter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WindowExporter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -153,13 +172,31 @@ export namespace Shew {
         // Methods
 
         ['export'](): globalThis.Promise<string>;
+        /**
+         * @param callback
+         */
         ['export'](callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param callback
+         */
         ['export'](callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
+        /**
+         * @param result
+         */
         export_finish(result: Gio.AsyncResult): string;
+        /**
+         * @param handle
+         */
         unexport(handle: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ExternalWindowClass = typeof ExternalWindow;
+    /**
+     * @gir-type Alias
+     */
     type WindowExporterClass = typeof WindowExporter;
     /**
      * Name of the imported GIR library

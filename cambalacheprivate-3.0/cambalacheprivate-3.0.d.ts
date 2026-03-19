@@ -30,12 +30,23 @@ export namespace CambalachePrivate {
      */
 
     function builder_init(): void;
+    /**
+     * @param container
+     * @param child
+     * @param property_name
+     * @param value
+     */
     function container_child_set_property_from_string(
         container: Gtk.Container,
         child: Gtk.Widget,
         property_name: string,
         value?: string | null,
     ): void;
+    /**
+     * @param object
+     * @param property_name
+     * @param value
+     */
     function object_set_property_from_string(
         object: GObject.Object,
         property_name: string,

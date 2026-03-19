@@ -35,6 +35,7 @@ export namespace Retro {
 
     /**
      * Represents the axes of the analog sticks for the Libretro gamepad.
+     * @gir-type Enum
      */
     enum AnalogId {
         /**
@@ -53,6 +54,7 @@ export namespace Retro {
 
     /**
      * Represents the analog sticks for the Libretro gamepad.
+     * @gir-type Enum
      */
     enum AnalogIndex {
         /**
@@ -71,6 +73,7 @@ export namespace Retro {
 
     /**
      * Represents the base types for Libretro controllers.
+     * @gir-type Enum
      */
     enum ControllerType {
         /**
@@ -118,6 +121,7 @@ export namespace Retro {
      * <ulink url="https://w3c.github.io/gamepad/">W3C Gamepad Specification</ulink>
      * and the <ulink url="https://wiki.libsdl.org/CategoryGameController">SDL
      * GamepadController definition</ulink> for more information.
+     * @gir-type Enum
      */
     enum JoypadId {
         /**
@@ -192,6 +196,7 @@ export namespace Retro {
 
     /**
      * Represents the inputs for the Libretro lightgun.
+     * @gir-type Enum
      */
     enum LightgunId {
         /**
@@ -226,6 +231,7 @@ export namespace Retro {
 
     /**
      * Represents the memory types for the Libretro core.
+     * @gir-type Enum
      */
     enum MemoryType {
         /**
@@ -252,6 +258,7 @@ export namespace Retro {
 
     /**
      * Represents the inputs for the Libretro mouse.
+     * @gir-type Enum
      */
     enum MouseId {
         /**
@@ -306,6 +313,7 @@ export namespace Retro {
 
     /**
      * Represents the inputs for the Libretro pointer.
+     * @gir-type Enum
      */
     enum PointerId {
         /**
@@ -328,6 +336,7 @@ export namespace Retro {
 
     /**
      * Represents the strength of the rumble effect.
+     * @gir-type Enum
      */
     enum RumbleEffect {
         /**
@@ -346,6 +355,7 @@ export namespace Retro {
 
     /**
      * Represents the filters that can be applied to the video output.
+     * @gir-type Enum
      */
     enum VideoFilter {
         /**
@@ -362,16 +372,22 @@ export namespace Retro {
         CRT,
     }
 
+    /**
+     * @param type
+     */
     function controller_type_get_id_count(type: ControllerType | null): number;
+    /**
+     * @param type
+     */
     function controller_type_get_index_count(type: ControllerType | null): number;
     /**
      * Logs an error or debugging message.
      *
-     * This is a convenience function to forward the #RetroCore::log signal of
-     * #RetroCore to g_log(), see it for more information.
-     * @param sender a #RetroCore
-     * @param log_domain the log domain, usually #G_LOG_DOMAIN, or %NULL
-     * @param log_level the log level, either from #GLogLevelFlags or a user-defined level
+     * This is a convenience function to forward the {@link Retro.Core.SignalSignatures.log | Retro.Core::log} signal of
+     * {@link Retro.Core} to `g_log()`, see it for more information.
+     * @param sender a {@link Retro.Core}
+     * @param log_domain the log domain, usually #G_LOG_DOMAIN, or `null`
+     * @param log_level the log level, either from {@link GLib.LogLevelFlags} or a user-defined level
      * @param message the message to log
      */
     function g_log(
@@ -381,26 +397,34 @@ export namespace Retro {
         message: string,
     ): void;
     function gtk_get_resource(): Gio.Resource;
+    /**
+     * @param button_code a button code
+     * @returns the corresponding joypad id
+     */
     function joypad_id_from_button_code(button_code: number): JoypadId;
+    /**
+     * @param joypad_id a {@link Retro.JoypadId}
+     * @returns the corresponding button code
+     */
     function joypad_id_to_button_code(joypad_id: JoypadId | null): number;
     /**
      * Gets the aspect ratio of `pixbuf` by reading the 'aspect-ratio' pixbuf option.
-     * @param pixbuf a #GdkPixbuf
+     * @param pixbuf a {@link GdkPixbuf.Pixbuf}
      * @returns the aspect ratio, or 0 if the option is not set or its value is invalid.
      */
     function pixbuf_get_aspect_ratio(pixbuf: GdkPixbuf.Pixbuf): number;
     /**
      * Sets the aspect ratio of `pixbuf` by setting the 'aspect-ratio' pixbuf option.
-     * Use retro_pixbuf_get_aspect_ratio() to retrieve it.
-     * @param pixbuf a #GdkPixbuf
+     * Use `retro_pixbuf_get_aspect_ratio()` to retrieve it.
+     * @param pixbuf a {@link GdkPixbuf.Pixbuf}
      * @param aspect_ratio the aspect ratio value
      */
     function pixbuf_set_aspect_ratio(pixbuf: GdkPixbuf.Pixbuf, aspect_ratio: number): void;
     /**
-     * Gets a #RetroVideoFilter from it's name. It defaults to
+     * Gets a {@link Retro.VideoFilter} from it's name. It defaults to
      * RETRO_VIDEO_FILTER_SMOOTH in case of error.
      * @param filter a filter name
-     * @returns a #RetroVideoFilter
+     * @returns a {@link Retro.VideoFilter}
      */
     function video_filter_from_string(filter: string): VideoFilter;
     namespace ControllerIterator {
@@ -412,6 +436,9 @@ export namespace Retro {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ControllerIterator extends GObject.Object {
         static $gtype: GObject.GType<ControllerIterator>;
 
@@ -432,16 +459,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ControllerIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -451,8 +481,8 @@ export namespace Retro {
         // Methods
 
         /**
-         * Fetch the next #RetroController and the port number it is plugged into.
-         * @returns %FALSE if it reached the end, %TRUE otherwise
+         * Fetch the next {@link Retro.Controller} and the port number it is plugged into.
+         * @returns `false` if it reached the end, `true` otherwise
          */
         next(): [boolean, number, Controller | null];
     }
@@ -460,10 +490,37 @@ export namespace Retro {
     namespace Core {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::crash signal is emitted when the core crashes.
+             * @signal
+             */
             crashed: (arg0: string) => void;
+            /**
+             * The ::log signal is emitted each time the core emits a message to log.
+             * @signal
+             */
             log: (arg0: string, arg1: GLib.LogLevelFlags, arg2: string) => void;
+            /**
+             * The ::message signal is emitted each time the core emits a message to
+             * display during a given amount of frames.
+             * @signal
+             */
             message: (arg0: string, arg1: number) => void;
+            /**
+             * The ::shutdown signal is emitted when the core shut down.
+             *
+             * The core must be released or re-started in order to function anew.
+             * @signal
+             */
             shutdown: () => void;
+            /**
+             * The ::video-output signal is emitted each time a new video frame is emitted
+             * by the core.
+             *
+             * `pixdata` will be invalid after the signal emission, copy it in some way if
+             * you want to keep it.
+             * @signal
+             */
             'video-output': (arg0: Pixdata) => void;
             'notify::api-version': (pspec: GObject.ParamSpec) => void;
             'notify::content-directory': (pspec: GObject.ParamSpec) => void;
@@ -507,6 +564,9 @@ export namespace Retro {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Core extends GObject.Object {
         static $gtype: GObject.GType<Core>;
 
@@ -642,16 +702,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Core.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Core.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Core.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -661,7 +724,7 @@ export namespace Retro {
         // Methods
 
         /**
-         * This initializes `self,` loads its available options and loads the medias. You
+         * This initializes `self`, loads its available options and loads the medias. You
          * need to boot `self` before using some of its methods.
          */
         boot(): void;
@@ -672,7 +735,7 @@ export namespace Retro {
         get_api_version(): number;
         /**
          * Gets whether the state of `self` can be accessed.
-         * @returns whether the state of @self can be accessed
+         * @returns whether the state of `self` can be accessed
          */
         get_can_access_state(): boolean;
         get_content_directory(): string;
@@ -746,15 +809,15 @@ export namespace Retro {
          */
         has_option(key: string): boolean;
         /**
-         * Creates a new #RetroControllerIterator which can be used to iterate through
+         * Creates a new {@link Retro.ControllerIterator} which can be used to iterate through
          * the controllers plugged into `self`.
-         * @returns a new #RetroControllerIterator
+         * @returns a new {@link Retro.ControllerIterator}
          */
         iterate_controllers(): ControllerIterator;
         /**
-         * Creates a new #RetroOptionIterator which can be used to iterate through the
+         * Creates a new {@link Retro.OptionIterator} which can be used to iterate through the
          * options of `self`.
-         * @returns a new #RetroOptionIterator
+         * @returns a new {@link Retro.OptionIterator}
          */
         iterate_options(): OptionIterator;
         /**
@@ -801,11 +864,14 @@ export namespace Retro {
          * @param filename the file to save the state to
          */
         save_state(filename: string): void;
+        /**
+         * @param content_directory
+         */
         set_content_directory(content_directory: string): void;
         /**
          * Plugs `controller` into the specified port number of `self`.
          * @param port the port number
-         * @param controller a #RetroController
+         * @param controller a {@link Retro.Controller}
          */
         set_controller(port: number, controller?: Controller | null): void;
         /**
@@ -819,13 +885,13 @@ export namespace Retro {
          * Uses `controller` as the default controller for the given type. When a port
          * has no controller plugged plugged into it, the core will use the default
          * controllers instead.
-         * @param controller_type a #RetroControllerType
-         * @param controller a #RetroController
+         * @param controller_type a {@link Retro.ControllerType}
+         * @param controller a {@link Retro.Controller}
          */
         set_default_controller(controller_type: ControllerType | null, controller?: Controller | null): void;
         /**
          * Sets the widget whose key events will be forwarded to `self`.
-         * @param widget a #GtkWidget, or %NULL
+         * @param widget a {@link Gtk.Widget}, or `null`
          */
         set_keyboard(widget?: Gtk.Widget | null): void;
         /**
@@ -835,6 +901,9 @@ export namespace Retro {
          * @param uris the URIs
          */
         set_medias(uris: string[]): void;
+        /**
+         * @param runahead
+         */
         set_runahead(runahead: number): void;
         /**
          * Sets the save directory of the core.
@@ -876,6 +945,9 @@ export namespace Retro {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CoreDescriptor extends GObject.Object {
         static $gtype: GObject.GType<CoreDescriptor>;
 
@@ -898,16 +970,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CoreDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -917,37 +992,37 @@ export namespace Retro {
         // Methods
 
         /**
-         * Gets the MD5 fingerprint of the firmware file, or %NULL.
+         * Gets the MD5 fingerprint of the firmware file, or `null`.
          * @param firmware a firmware name
-         * @returns a string or %NULL, free it with g_free()
+         * @returns a string or `null`, free it with `g_free()`
          */
         get_firmware_md5(firmware: string): string | null;
         /**
-         * Gets the demanded path to the firmware file, or %NULL.
+         * Gets the demanded path to the firmware file, or `null`.
          * @param firmware a firmware name
-         * @returns a string or %NULL, free it with g_free()
+         * @returns a string or `null`, free it with `g_free()`
          */
         get_firmware_path(firmware: string): string | null;
         /**
-         * Gets the SHA512 fingerprint of the firmware file, or %NULL.
+         * Gets the SHA512 fingerprint of the firmware file, or `null`.
          * @param firmware a firmware name
-         * @returns a string or %NULL, free it with g_free()
+         * @returns a string or `null`, free it with `g_free()`
          */
         get_firmware_sha512(firmware: string): string | null;
         /**
          * Gets the list of firmwares used by the core for this platform.
          * @param platform a platform name
-         * @returns a %NULL-terminated string array or %NULL, the array should be freed with g_strfreev()
+         * @returns a `null`-terminated string array or `null`, the array should be freed with `g_strfreev()`
          */
         get_firmwares(platform: string): string[];
         /**
-         * Gets the icon, or %NULL if it doesn't exist.
-         * @returns a #GIcon or %NULL
+         * Gets the icon, or `null` if it doesn't exist.
+         * @returns a {@link Gio.Icon} or `null`
          */
         get_icon(): Gio.Icon | null;
         /**
          * Gets the ID of `self`.
-         * @returns the ID of @self, free it with g_free()
+         * @returns the ID of `self`, free it with `g_free()`
          */
         get_id(): string;
         /**
@@ -969,22 +1044,22 @@ export namespace Retro {
         /**
          * Gets the list of MIME types accepted used by the core for this platform.
          * @param platform a platform name
-         * @returns a %NULL-terminated string array or %NULL, the array should be freed with g_strfreev()
+         * @returns a `null`-terminated string array or `null`, the array should be freed with `g_strfreev()`
          */
         get_mime_type(platform: string): string[];
         /**
-         * Gets the module file name, or %NULL if it doesn't exist.
-         * @returns a string or %NULL, free it with g_free()
+         * Gets the module file name, or `null` if it doesn't exist.
+         * @returns a string or `null`, free it with `g_free()`
          */
         get_module(): string | null;
         /**
-         * Gets the module file, or %NULL if it doesn't exist.
-         * @returns a #GFile or %NULL
+         * Gets the module file, or `null` if it doesn't exist.
+         * @returns a {@link Gio.File} or `null`
          */
         get_module_file(): Gio.File | null;
         /**
-         * Gets the name, or %NULL if it doesn't exist.
-         * @returns a string or %NULL, free it with g_free()
+         * Gets the name, or `null` if it doesn't exist.
+         * @returns a string or `null`, free it with `g_free()`
          */
         get_name(): string | null;
         /**
@@ -996,7 +1071,7 @@ export namespace Retro {
         get_platform_supports_mime_types(platform: string, mime_types: string[]): boolean;
         /**
          * Gets the URI of the file of `self`.
-         * @returns the URI of the file of @self, free it with g_free()
+         * @returns the URI of the file of `self`, free it with `g_free()`
          */
         get_uri(): string;
         /**
@@ -1033,6 +1108,14 @@ export namespace Retro {
     namespace CoreView {
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            /**
+             * The ::controller-state-changed signal is emitted when a key is pressed
+             * or released, mouse pointer is moved, or a mouse button is pressed or
+             * released.
+             *
+             * Applications should not connect to it.
+             * @signal
+             */
             'controller-state-changed': () => void;
             'notify::can-grab-pointer': (pspec: GObject.ParamSpec) => void;
             'notify::snap-pointer-to-borders': (pspec: GObject.ParamSpec) => void;
@@ -1096,6 +1179,9 @@ export namespace Retro {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CoreView extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CoreView>;
 
@@ -1129,16 +1215,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CoreView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CoreView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CoreView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CoreView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1148,12 +1237,12 @@ export namespace Retro {
         // Methods
 
         /**
-         * Creates a new #RetroController exposing `self` as the specified controller
+         * Creates a new {@link Retro.Controller} exposing `self` as the specified controller
          * type. The valid controller types are RETRO_CONTROLLER_TYPE_JOYPAD,
          * RETRO_CONTROLLER_TYPE_MOUSE, RETRO_CONTROLLER_TYPE_KEYBOARD and
          * RETRO_CONTROLLER_TYPE_POINTER.
-         * @param controller_type the controller type to expose @self as
-         * @returns a new #RetroController
+         * @param controller_type the controller type to expose `self` as
+         * @returns a new {@link Retro.Controller}
          */
         as_controller(controller_type: ControllerType | null): Controller;
         /**
@@ -1165,28 +1254,28 @@ export namespace Retro {
         get_can_grab_pointer(): boolean;
         /**
          * Gets a flag representing the capabilities of `self` when exposed as a
-         * controller. See retro_controller_get_capabilities() for more information on
+         * controller. See `retro_controller_get_capabilities()` for more information on
          * the flag.
          *
-         * See retro_core_view_as_controller() to know the capabilities of
-         * #RetroCoreView when exposed as a controller.
-         * @returns the capabilities flag of @self when exposed as a controller
+         * See `retro_core_view_as_controller()` to know the capabilities of
+         * {@link Retro.CoreView} when exposed as a controller.
+         * @returns the capabilities flag of `self` when exposed as a controller
          */
         get_controller_capabilities(): number;
         /**
          * Gets the state of an input of `self`.
-         * @param input a #RetroInput to query @self
+         * @param input a {@link Retro.Input} to query `self`
          * @returns the input's state
          */
         get_input_state(input: Input): number;
         /**
          * Gets the currently set key joypad mapping.
-         * @returns a #RetroKeyJoypadMapping
+         * @returns a {@link Retro.KeyJoypadMapping}
          */
         get_key_joypad_mapping(): KeyJoypadMapping;
         /**
          * Gets the currently displayed video frame.
-         * @returns a #GdkPixbuf
+         * @returns a {@link GdkPixbuf.Pixbuf}
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
         /**
@@ -1198,7 +1287,7 @@ export namespace Retro {
         get_snap_pointer_to_borders(): boolean;
         /**
          * Sets the `self` as the default controllers of `core`.
-         * @param core a #RetroCore
+         * @param core a {@link Retro.Core}
          */
         set_as_default_controller(core?: Core | null): void;
         /**
@@ -1209,27 +1298,27 @@ export namespace Retro {
          */
         set_can_grab_pointer(can_grab_pointer: boolean): void;
         /**
-         * Sets `core` as the #RetroCore handled by `self`.
-         * @param core a #RetroCore, or %NULL
+         * Sets `core` as the {@link Retro.Core} handled by `self`.
+         * @param core a {@link Retro.Core}, or `null`
          */
         set_core(core?: Core | null): void;
         /**
          * Sets the video filter to use to render the core's video on `self`.
-         * @param filter a #RetroVideoFilter
+         * @param filter a {@link Retro.VideoFilter}
          */
         set_filter(filter: VideoFilter | null): void;
         /**
-         * Sets the key joypad mapping on `self`. If given mapping is %NULL, then set to
+         * Sets the key joypad mapping on `self`. If given mapping is `null`, then set to
          * an empty configuration.
-         * @param mapping a #RetroKeyJoypadMapping
+         * @param mapping a {@link Retro.KeyJoypadMapping}
          */
         set_key_joypad_mapping(mapping?: KeyJoypadMapping | null): void;
         /**
          * Sets `pixbuf` as the currently displayed video frame.
          *
-         * retro_pixbuf_set_aspect_ratio() can be used to specify the aspect ratio for
+         * `retro_pixbuf_set_aspect_ratio()` can be used to specify the aspect ratio for
          * the pixbuf. Otherwise the core's aspect ratio will be used.
-         * @param pixbuf a #GdkPixbuf
+         * @param pixbuf a {@link GdkPixbuf.Pixbuf}
          */
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
         /**
@@ -1239,8 +1328,6 @@ export namespace Retro {
          * @param snap_pointer_to_borders whether the pointer should snap to the borders
          */
         set_snap_pointer_to_borders(snap_pointer_to_borders: boolean): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1254,32 +1341,32 @@ export namespace Retro {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1288,39 +1375,39 @@ export namespace Retro {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1331,13 +1418,16 @@ export namespace Retro {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1345,7 +1435,7 @@ export namespace Retro {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1353,9 +1443,9 @@ export namespace Retro {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1375,9 +1465,9 @@ export namespace Retro {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1391,33 +1481,33 @@ export namespace Retro {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1450,21 +1540,21 @@ export namespace Retro {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1474,8 +1564,8 @@ export namespace Retro {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1492,10 +1582,10 @@ export namespace Retro {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1510,13 +1600,13 @@ export namespace Retro {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1547,21 +1637,21 @@ export namespace Retro {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1571,33 +1661,34 @@ export namespace Retro {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1606,6 +1697,7 @@ export namespace Retro {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1614,12 +1706,14 @@ export namespace Retro {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1628,20 +1722,22 @@ export namespace Retro {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1653,6 +1749,7 @@ export namespace Retro {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1691,6 +1788,9 @@ export namespace Retro {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class KeyJoypadMapping extends GObject.Object {
         static $gtype: GObject.GType<KeyJoypadMapping>;
 
@@ -1715,16 +1815,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyJoypadMapping.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1756,6 +1859,9 @@ export namespace Retro {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ModuleIterator extends GObject.Object {
         static $gtype: GObject.GType<ModuleIterator>;
 
@@ -1778,16 +1884,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ModuleIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1797,14 +1906,14 @@ export namespace Retro {
         // Methods
 
         /**
-         * Gets the last #RetroCoreDescriptor fetched by retro_module_iterator_next(),
-         * or %NULL if the end was reached.
-         * @returns a #RetroCoreDescriptor, or %NULL
+         * Gets the last {@link Retro.CoreDescriptor} fetched by `retro_module_iterator_next()`,
+         * or `null` if the end was reached.
+         * @returns a {@link Retro.CoreDescriptor}, or `null`
          */
         get(): CoreDescriptor | null;
         /**
-         * Fetch the next #RetroModuleIterator.
-         * @returns %FALSE if it reached the end, %TRUE otherwise
+         * Fetch the next {@link Retro.ModuleIterator}.
+         * @returns `false` if it reached the end, `true` otherwise
          */
         next(): boolean;
     }
@@ -1818,6 +1927,9 @@ export namespace Retro {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ModuleQuery extends GObject.Object {
         static $gtype: GObject.GType<ModuleQuery>;
 
@@ -1840,16 +1952,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ModuleQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1859,8 +1974,8 @@ export namespace Retro {
         // Methods
 
         /**
-         * Creates a new #RetroModuleIterator.
-         * @returns a new #RetroModuleIterator
+         * Creates a new {@link Retro.ModuleIterator}.
+         * @returns a new {@link Retro.ModuleIterator}
          */
         iterator(): ModuleIterator;
     }
@@ -1868,6 +1983,9 @@ export namespace Retro {
     namespace Option {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'value-changed': () => void;
         }
 
@@ -1876,6 +1994,9 @@ export namespace Retro {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Option extends GObject.Object {
         static $gtype: GObject.GType<Option>;
 
@@ -1896,16 +2017,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Option.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Option.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Option.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Option.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1916,22 +2040,22 @@ export namespace Retro {
 
         /**
          * Gets the description of `self`.
-         * @returns the description of @self
+         * @returns the description of `self`
          */
         get_description(): string;
         /**
          * Gets the key of `self`.
-         * @returns the key of @self
+         * @returns the key of `self`
          */
         get_key(): string;
         /**
          * Gets the value of `self`.
-         * @returns the value of @self
+         * @returns the value of `self`
          */
         get_value(): string;
         /**
          * Gets the value of `self`.
-         * @returns the value of @self
+         * @returns the value of `self`
          */
         get_values(): string[];
         /**
@@ -1951,6 +2075,9 @@ export namespace Retro {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OptionIterator extends GObject.Object {
         static $gtype: GObject.GType<OptionIterator>;
 
@@ -1971,16 +2098,19 @@ export namespace Retro {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OptionIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1990,34 +2120,67 @@ export namespace Retro {
         // Methods
 
         /**
-         * Fetch the next #RetroOption and its key.
-         * @returns %FALSE if it reached the end, %TRUE otherwise
+         * Fetch the next {@link Retro.Option} and its key.
+         * @returns `false` if it reached the end, `true` otherwise
          */
         next(): [boolean, number, Option | null];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ControllerInterface = typeof Controller;
+    /**
+     * @gir-type Alias
+     */
     type ControllerIteratorClass = typeof ControllerIterator;
+    /**
+     * @gir-type Alias
+     */
     type CoreClass = typeof Core;
+    /**
+     * @gir-type Alias
+     */
     type CoreDescriptorClass = typeof CoreDescriptor;
+    /**
+     * @gir-type Alias
+     */
     type CoreViewClass = typeof CoreView;
+    /**
+     * @gir-type Alias
+     */
     type KeyJoypadMappingClass = typeof KeyJoypadMapping;
+    /**
+     * @gir-type Alias
+     */
     type ModuleIteratorClass = typeof ModuleIterator;
+    /**
+     * @gir-type Alias
+     */
     type ModuleQueryClass = typeof ModuleQuery;
+    /**
+     * @gir-type Alias
+     */
     type OptionClass = typeof Option;
+    /**
+     * @gir-type Alias
+     */
     type OptionIteratorClass = typeof OptionIterator;
+    /**
+     * @gir-type Struct
+     */
     class Pixdata {
         static $gtype: GObject.GType<Pixdata>;
 
         // Methods
 
         /**
-         * Copies `self` into a new #RetroPixdata.
-         * @returns a new #RetroPixdata, use retro_pixdata_free() to free it
+         * Copies `self` into a new {@link Retro.Pixdata}.
+         * @returns a new {@link Retro.Pixdata}, use `retro_pixdata_free()` to free it
          */
         copy(): Pixdata;
         /**
-         * Frees the given #RetroPixdata object.
+         * Frees the given {@link Retro.Pixdata} object.
          */
         free(): void;
         /**
@@ -2041,15 +2204,18 @@ export namespace Retro {
          */
         load_gl_texture(): boolean;
         /**
-         * Creates a new #GdkPixbuf from `self`.
+         * Creates a new {@link GdkPixbuf.Pixbuf} from `self`.
          *
-         * The #GdkPixbuf stores the intended aspect-ratio, you can access it via
-         * retro_pixbuf_get_aspect_ratio().
-         * @returns a new #RetroPixdata
+         * The {@link GdkPixbuf.Pixbuf} stores the intended aspect-ratio, you can access it via
+         * `retro_pixbuf_get_aspect_ratio()`.
+         * @returns a new {@link Retro.Pixdata}
          */
         to_pixbuf(): GdkPixbuf.Pixbuf;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Input {
         static $gtype: GObject.GType<Input>;
 
@@ -2062,41 +2228,41 @@ export namespace Retro {
         // Methods
 
         /**
-         * Copies `self` into a new #RetroInput.
-         * @returns a new #RetroInput, use retro_input_free() to free it
+         * Copies `self` into a new {@link Retro.Input}.
+         * @returns a new {@link Retro.Input}, use `retro_input_free()` to free it
          */
         copy(): Input;
         /**
-         * Frees the given #RetroInput.
+         * Frees the given {@link Retro.Input}.
          */
         free(): void;
         /**
-         * Gets the analog id and index of `self,` if any.
+         * Gets the analog id and index of `self`, if any.
          * @returns whether the id and the index were retrieved
          */
         get_analog(): [boolean, AnalogId, AnalogIndex];
         /**
          * Gets the controller type of `self`.
-         * @returns the controller type of @self
+         * @returns the controller type of `self`
          */
         get_controller_type(): ControllerType;
         /**
-         * Gets the joypad id of `self,` if any.
+         * Gets the joypad id of `self`, if any.
          * @returns whether the id was retrieved
          */
         get_joypad(): [boolean, JoypadId];
         /**
-         * Gets the lightgun id of `self,` if any.
+         * Gets the lightgun id of `self`, if any.
          * @returns whether the id was retrieved
          */
         get_lightgun(): [boolean, LightgunId];
         /**
-         * Gets the mouse id of `self,` if any.
+         * Gets the mouse id of `self`, if any.
          * @returns whether the id was retrieved
          */
         get_mouse(): [boolean, MouseId];
         /**
-         * Gets the pointer id of `self,` if any.
+         * Gets the pointer id of `self`, if any.
          * @returns whether the id was retrieved
          */
         get_pointer(): [boolean, PointerId];
@@ -2112,29 +2278,34 @@ export namespace Retro {
 
             /**
              * Gets a flag representing the capabilities of `self`. Each bit index matches
-             * the #RetroControllerType of same number.
+             * the {@link Retro.ControllerType} of same number.
              *
              * For example, if `self` is an analog gamepad, the value would be: (1 <<
              * RETRO_CONTROLLER_TYPE_JOYPAD) | (1 << RETRO_CONTROLLER_TYPE_ANALOG).
+             * @virtual
              */
             vfunc_get_capabilities(): number;
             /**
              * Gets the main type of the controller.
+             * @virtual
              */
             vfunc_get_controller_type(): ControllerType;
             /**
              * Gets the state of an input of `self`.
-             * @param input a #RetroInput to query @self
+             * @param input a {@link Retro.Input} to query `self`
+             * @virtual
              */
             vfunc_get_input_state(input: Input): number;
             /**
              * Gets whether `self` supports rumble effects.
+             * @virtual
              */
             vfunc_get_supports_rumble(): boolean;
             /**
              * Sets the rumble state of `self`.
              * @param effect the rumble effect
              * @param strength the rumble effect strength
+             * @virtual
              */
             vfunc_set_rumble_state(effect: RumbleEffect, strength: number): void;
         }
@@ -2148,39 +2319,42 @@ export namespace Retro {
         $gtype: GObject.GType<Controller>;
         prototype: Controller;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Controller extends GObject.Object, Controller.Interface {
         // Methods
 
         emit_state_changed(): void;
         /**
          * Gets a flag representing the capabilities of `self`. Each bit index matches
-         * the #RetroControllerType of same number.
+         * the {@link Retro.ControllerType} of same number.
          *
          * For example, if `self` is an analog gamepad, the value would be: (1 <<
          * RETRO_CONTROLLER_TYPE_JOYPAD) | (1 << RETRO_CONTROLLER_TYPE_ANALOG).
-         * @returns the capabilities flag of @self
+         * @returns the capabilities flag of `self`
          */
         get_capabilities(): number;
         /**
          * Gets the main type of the controller.
-         * @returns the controller type of @self
+         * @returns the controller type of `self`
          */
         get_controller_type(): ControllerType;
         /**
          * Gets the state of an input of `self`.
-         * @param input a #RetroInput to query @self
+         * @param input a {@link Retro.Input} to query `self`
          * @returns the input's state
          */
         get_input_state(input: Input): number;
         /**
          * Gets whether `self` supports rumble effects.
-         * @returns whether @self supports rumble effects.
+         * @returns whether `self` supports rumble effects.
          */
         get_supports_rumble(): boolean;
         /**
          * Gets whether `self` has the capability to represent the given controller type.
-         * @param controller_type a #RetroControllerType
-         * @returns whether @self has the capability
+         * @param controller_type a {@link Retro.ControllerType}
+         * @returns whether `self` has the capability
          */
         has_capability(controller_type: ControllerType | null): boolean;
         /**

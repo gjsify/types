@@ -30,6 +30,7 @@ export namespace PangoOT {
      * The PangoOTTableType enumeration values are used to
      * identify the various OpenType tables in the
      * pango_ot_info_… functions.
+     * @gir-type Enum
      */
     enum TableType {
         /**
@@ -43,79 +44,87 @@ export namespace PangoOT {
     }
 
     /**
-     * This is used as the property bit in pango_ot_ruleset_add_feature() when a
+     * This is used as the property bit in `pango_ot_ruleset_add_feature()` when a
      * feature should be applied to all glyphs.
+     * @since 1.16
      */
     const ALL_GLYPHS: number;
     /**
-     * This is used as the language index in pango_ot_info_find_feature() when
+     * This is used as the language index in `pango_ot_info_find_feature()` when
      * the default language system of the script is desired.
      *
-     * It is also returned by pango_ot_info_find_language() if the requested language
+     * It is also returned by `pango_ot_info_find_language()` if the requested language
      * is not found, or the requested language tag was PANGO_OT_TAG_DEFAULT_LANGUAGE.
-     * The end result is that one can always call pango_ot_tag_from_language()
-     * followed by pango_ot_info_find_language() and pass the result to
-     * pango_ot_info_find_feature() without having to worry about falling back to
+     * The end result is that one can always call `pango_ot_tag_from_language()`
+     * followed by `pango_ot_info_find_language()` and pass the result to
+     * `pango_ot_info_find_feature()` without having to worry about falling back to
      * default language system explicitly.
+     * @since 1.16
      */
     const DEFAULT_LANGUAGE: number;
     /**
      * This is used as a feature index that represent no feature, that is, should be
-     * skipped.  It may be returned as feature index by pango_ot_info_find_feature()
-     * if the feature is not found, and pango_ot_ruleset_add_feature() function
+     * skipped.  It may be returned as feature index by `pango_ot_info_find_feature()`
+     * if the feature is not found, and `pango_ot_ruleset_add_feature()` function
      * automatically skips this value, so no special handling is required by the user.
+     * @since 1.18
      */
     const NO_FEATURE: number;
     /**
      * This is used as a script index that represent no script, that is, when the
      * requested script was not found, and a default ('DFLT') script was not found
-     * either.  It may be returned as script index by pango_ot_info_find_script()
+     * either.  It may be returned as script index by `pango_ot_info_find_script()`
      * if the script or a default script are not found, all other functions
      * taking a script index essentially return if the input script index is
      * this value, so no special handling is required by the user.
+     * @since 1.18
      */
     const NO_SCRIPT: number;
     /**
      * Finds the OpenType language-system tag best describing `language`.
-     * @param language A `PangoLanguage`
-     * @returns `PangoOTTag` best matching @language or %PANGO_OT_TAG_DEFAULT_LANGUAGE if none found or if @language is %NULL.
+     * @param language A {@link Pango.Language}
+     * @returns {@link PangoOT.Tag} best matching `language` or `PANGO_OT_TAG_DEFAULT_LANGUAGE` if none found or if `language` is `null`.
+     * @since 1.18
      */
     function tag_from_language(language?: Pango.Language | null): Tag;
     /**
      * Finds the OpenType script tag corresponding to `script`.
      *
-     * The %PANGO_SCRIPT_COMMON, %PANGO_SCRIPT_INHERITED, and
-     * %PANGO_SCRIPT_UNKNOWN scripts are mapped to the OpenType
+     * The {@link Pango.Script.COMMON}, {@link Pango.Script.INHERITED}, and
+     * {@link Pango.Script.UNKNOWN} scripts are mapped to the OpenType
      * 'DFLT' script tag that is also defined as
-     * %PANGO_OT_TAG_DEFAULT_SCRIPT.
+     * `PANGO_OT_TAG_DEFAULT_SCRIPT`.
      *
-     * Note that multiple `PangoScript` values may map to the same
-     * OpenType script tag.  In particular, %PANGO_SCRIPT_HIRAGANA
-     * and %PANGO_SCRIPT_KATAKANA both map to the OT tag 'kana'.
-     * @param script A `PangoScript`
-     * @returns `PangoOTTag` corresponding to @script or %PANGO_OT_TAG_DEFAULT_SCRIPT if none found.
+     * Note that multiple {@link Pango.Script} values may map to the same
+     * OpenType script tag.  In particular, {@link Pango.Script.HIRAGANA}
+     * and {@link Pango.Script.KATAKANA} both map to the OT tag 'kana'.
+     * @param script A {@link Pango.Script}
+     * @returns {@link PangoOT.Tag} corresponding to `script` or `PANGO_OT_TAG_DEFAULT_SCRIPT` if none found.
+     * @since 1.18
      */
     function tag_from_script(script: Pango.Script | null): Tag;
     /**
-     * Finds a `PangoLanguage` corresponding to `language_tag`.
-     * @param language_tag A `PangoOTTag` OpenType language-system tag
-     * @returns `PangoLanguage` best matching @language_tag or `PangoLanguage` corresponding to the string "xx" if none found.
+     * Finds a {@link Pango.Language} corresponding to `language_tag`.
+     * @param language_tag A {@link PangoOT.Tag} OpenType language-system tag
+     * @returns {@link Pango.Language} best matching `language_tag` or {@link Pango.Language} corresponding to the string "xx" if none found.
+     * @since 1.18
      */
     function tag_to_language(language_tag: Tag): Pango.Language;
     /**
-     * Finds the `PangoScript` corresponding to `script_tag`.
+     * Finds the {@link Pango.Script} corresponding to `script_tag`.
      *
-     * The 'DFLT' script tag is mapped to %PANGO_SCRIPT_COMMON.
+     * The 'DFLT' script tag is mapped to {@link Pango.Script.COMMON}.
      *
      * Note that an OpenType script tag may correspond to multiple
-     * `PangoScript` values.  In such cases, the `PangoScript` value
+     * {@link Pango.Script} values.  In such cases, the {@link Pango.Script} value
      * with the smallest value is returned.
-     * In particular, %PANGO_SCRIPT_HIRAGANA
-     * and %PANGO_SCRIPT_KATAKANA both map to the OT tag 'kana'.
-     * This function will return %PANGO_SCRIPT_HIRAGANA for
+     * In particular, {@link Pango.Script.HIRAGANA}
+     * and {@link Pango.Script.KATAKANA} both map to the OT tag 'kana'.
+     * This function will return {@link Pango.Script.HIRAGANA} for
      * 'kana'.
-     * @param script_tag A `PangoOTTag` OpenType script tag
-     * @returns `PangoScript` corresponding to @script_tag or %PANGO_SCRIPT_UNKNOWN if none found.
+     * @param script_tag A {@link PangoOT.Tag} OpenType script tag
+     * @returns {@link Pango.Script} corresponding to `script_tag` or {@link Pango.Script.UNKNOWN} if none found.
+     * @since 1.18
      */
     function tag_to_script(script_tag: Tag): Pango.Script;
     namespace Info {
@@ -127,6 +136,9 @@ export namespace PangoOT {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
 
@@ -147,16 +159,19 @@ export namespace PangoOT {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Info.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Info.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Info.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -166,7 +181,7 @@ export namespace PangoOT {
         // Static methods
 
         /**
-         * Returns the `PangoOTInfo` structure for the given FreeType font face.
+         * Returns the {@link PangoOT.Info} structure for the given FreeType font face.
          * @param face a `FT_Face`
          */
         static get(face: freetype2.Face): Info;
@@ -177,19 +192,19 @@ export namespace PangoOT {
          * Finds the index of a feature.
          *
          * If the feature is not found, sets `feature_index` to PANGO_OT_NO_FEATURE,
-         * which is safe to pass to [method`PangoOT`.Ruleset.add_feature] and similar
+         * which is safe to pass to {@link PangoOT.Ruleset.add_feature} and similar
          * functions.
          *
          * In the future, this may set `feature_index` to an special value that if
-         * used in [method`PangoOT`.Ruleset.add_feature] will ask Pango to synthesize
+         * used in {@link PangoOT.Ruleset.add_feature} will ask Pango to synthesize
          * the requested feature based on Unicode properties and data. However, this
-         * function will still return %FALSE in those cases. So, users may want to
+         * function will still return `false` in those cases. So, users may want to
          * ignore the return value of this function in certain cases.
          * @param table_type the table type to obtain information about
          * @param feature_tag the tag of the feature to find
          * @param script_index the index of the script
-         * @param language_index the index of the language whose features are searched,   or %PANGO_OT_DEFAULT_LANGUAGE to use the default language of the script
-         * @returns %TRUE if the feature was found
+         * @param language_index the index of the language whose features are searched,   or `PANGO_OT_DEFAULT_LANGUAGE` to use the default language of the script
+         * @returns `true` if the feature was found
          */
         find_feature(
             table_type: TableType | null,
@@ -200,7 +215,7 @@ export namespace PangoOT {
         /**
          * Finds the index of a language and its required feature index.
          *
-         * If the language is not found, sets `language_index` to %PANGO_OT_DEFAULT_LANGUAGE
+         * If the language is not found, sets `language_index` to `PANGO_OT_DEFAULT_LANGUAGE`
          * and the required feature of the default language system is returned in
          * required_feature_index. For best compatibility with some fonts, also
          * searches the language system tag 'dflt' before falling back to the default
@@ -210,7 +225,7 @@ export namespace PangoOT {
          * @param table_type the table type to obtain information about
          * @param script_index the index of the script whose languages are searched
          * @param language_tag the tag of the language to find
-         * @returns %TRUE if the language was found
+         * @returns `true` if the language was found
          */
         find_language(table_type: TableType | null, script_index: number, language_tag: Tag): [boolean, number, number];
         /**
@@ -218,15 +233,15 @@ export namespace PangoOT {
          *
          * If not found, tries to find the 'DFLT' and then 'dflt' scripts and
          * return the index of that in `script_index`. If none of those is found
-         * either, %PANGO_OT_NO_SCRIPT is placed in `script_index`.
+         * either, `PANGO_OT_NO_SCRIPT` is placed in `script_index`.
          *
          * All other functions taking an input script_index parameter know
-         * how to handle %PANGO_OT_NO_SCRIPT, so one can ignore the return
+         * how to handle `PANGO_OT_NO_SCRIPT`, so one can ignore the return
          * value of this function completely and proceed, to enjoy the automatic
          * fallback to the 'DFLT'/'dflt' script.
          * @param table_type the table type to obtain information about
          * @param script_tag the tag of the script to find
-         * @returns %TRUE if the script was found
+         * @returns `true` if the script was found
          */
         find_script(table_type: TableType | null, script_tag: Tag): [boolean, number];
         /**
@@ -234,7 +249,7 @@ export namespace PangoOT {
          * @param table_type the table type to obtain information about
          * @param tag unused parameter
          * @param script_index the index of the script to obtain information about
-         * @param language_index the index of the language to list features for, or   %PANGO_OT_DEFAULT_LANGUAGE, to list features for the default   language of the script
+         * @param language_index the index of the language to list features for, or   `PANGO_OT_DEFAULT_LANGUAGE`, to list features for the default   language of the script
          * @returns a newly-allocated zero-terminated   array containing the tags of the available features
          */
         list_features(table_type: TableType | null, tag: Tag, script_index: number, language_index: number): Tag;
@@ -264,17 +279,18 @@ export namespace PangoOT {
     }
 
     /**
-     * The `PangoOTRuleset` structure holds a set of features selected
+     * The {@link PangoOT.Ruleset} structure holds a set of features selected
      * from the tables in an OpenType font.
      *
      * A feature is an operation such as adjusting glyph positioning
      * that should be applied to a text feature such as a certain
      * type of accent.
      *
-     * A `PangoOTRuleset` is created with [ctor`PangoOT`.Ruleset.new],
-     * features are added to it with [method`PangoOT`.Ruleset.add_feature],
-     * then it is applied to a `PangoGlyphString` with
-     * [method`PangoOT`.Ruleset.position].
+     * A {@link PangoOT.Ruleset} is created with {@link PangoOT.Ruleset.new},
+     * features are added to it with {@link PangoOT.Ruleset.add_feature},
+     * then it is applied to a {@link Pango.GlyphString} with
+     * {@link PangoOT.Ruleset.position}.
+     * @gir-type Class
      */
     class Ruleset extends GObject.Object {
         static $gtype: GObject.GType<Ruleset>;
@@ -302,16 +318,19 @@ export namespace PangoOT {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Ruleset.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ruleset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Ruleset.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ruleset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Ruleset.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Ruleset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -325,13 +344,13 @@ export namespace PangoOT {
          * description.
          *
          * Rulesets are created on demand using
-         * [ctor`PangoOT`.Ruleset.new_from_description].
+         * {@link PangoOT.Ruleset.new_from_description}.
          * The returned ruleset should not be modified or destroyed.
          *
          * The static feature map members of `desc` should be alive as
          * long as `info` is.
-         * @param info a `PangoOTInfo`
-         * @param desc a `PangoOTRulesetDescription`
+         * @param info a {@link PangoOT.Info}
+         * @param desc a {@link PangoOT.RulesetDescription}
          */
         static get_for_description(info: Info, desc: RulesetDescription): Ruleset;
 
@@ -341,53 +360,56 @@ export namespace PangoOT {
          * Adds a feature to the ruleset.
          * @param table_type the table type to add a feature to
          * @param feature_index the index of the feature to add
-         * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   %PANGO_OT_ALL_GLYPHS if it should be applied to all glyphs.
+         * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   `PANGO_OT_ALL_GLYPHS` if it should be applied to all glyphs.
          */
         add_feature(table_type: TableType | null, feature_index: number, property_bit: number): void;
         /**
          * Gets the number of GSUB and GPOS features in the ruleset.
-         * @returns Total number of features in the @ruleset
+         * @returns Total number of features in the `ruleset`
          */
         get_feature_count(): [number, number, number];
         /**
          * This is a convenience function that first tries to find the feature
-         * using [method`PangoOT`.Info.find_feature] and the ruleset script and
-         * language passed to [ctor`PangoOT`.Ruleset.new_for] and if the feature
+         * using {@link PangoOT.Info.find_feature} and the ruleset script and
+         * language passed to {@link PangoOT.Ruleset.new_for} and if the feature
          * is found, adds it to the ruleset.
          *
-         * If `ruleset` was not created using [ctor`PangoOT`.Ruleset.new_for],
+         * If `ruleset` was not created using {@link PangoOT.Ruleset.new_for},
          * this function does nothing.
          * @param table_type the table type to add a feature to
          * @param feature_tag the tag of the feature to add
-         * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   %PANGO_OT_ALL_GLYPHS if it should be applied to all glyphs.
-         * @returns %TRUE if the feature was found and added to ruleset,   %FALSE otherwise
+         * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   `PANGO_OT_ALL_GLYPHS` if it should be applied to all glyphs.
+         * @returns `true` if the feature was found and added to ruleset,   `false` otherwise
          */
         maybe_add_feature(table_type: TableType | null, feature_tag: Tag, property_bit: number): boolean;
         /**
          * This is a convenience function that for each feature in the feature map
-         * array `features` converts the feature name to a `PangoOTTag` feature tag
-         * using PANGO_OT_TAG_MAKE() and calls [method`PangoOT`.Ruleset.maybe_add_feature]
+         * array `features` converts the feature name to a {@link PangoOT.Tag} feature tag
+         * using PANGO_OT_TAG_MAKE() and calls {@link PangoOT.Ruleset.maybe_add_feature}
          * on it.
          * @param table_type the table type to add features to
          * @param features array of feature name and property bits to add
-         * @param n_features number of feature records in @features array
-         * @returns The number of features in @features that were found   and added to @ruleset
+         * @param n_features number of feature records in `features` array
+         * @returns The number of features in `features` that were found   and added to `ruleset`
          */
         maybe_add_features(table_type: TableType | null, features: FeatureMap, n_features: number): number;
         /**
          * Performs the OpenType GPOS positioning on `buffer` using
          * the features in `ruleset`.
-         * @param buffer a `PangoOTBuffer`
+         * @param buffer a {@link PangoOT.Buffer}
          */
         position(buffer: Buffer): void;
         /**
          * Performs the OpenType GSUB substitution on `buffer` using
          * the features in `ruleset`.
-         * @param buffer a `PangoOTBuffer`
+         * @param buffer a {@link PangoOT.Buffer}
          */
         substitute(buffer: Buffer): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Buffer {
         static $gtype: GObject.GType<Buffer>;
 
@@ -400,37 +422,37 @@ export namespace PangoOT {
         // Methods
 
         /**
-         * Appends a glyph to a `PangoOTBuffer`, with `properties` identifying which
+         * Appends a glyph to a {@link PangoOT.Buffer}, with `properties` identifying which
          * features should be applied on this glyph.
          *
-         * See [method`PangoOT`.Ruleset.add_feature].
-         * @param glyph the glyph index to add, like a `PangoGlyph`
+         * See {@link PangoOT.Ruleset.add_feature}.
+         * @param glyph the glyph index to add, like a {@link Pango.Glyph}
          * @param properties the glyph properties
          * @param cluster the cluster that this glyph belongs to
          */
         add_glyph(glyph: number, properties: number, cluster: number): void;
         /**
-         * Empties a `PangoOTBuffer`, make it ready to add glyphs to.
+         * Empties a {@link PangoOT.Buffer}, make it ready to add glyphs to.
          */
         clear(): void;
         /**
-         * Destroys a `PangoOTBuffer` and free all associated memory.
+         * Destroys a {@link PangoOT.Buffer} and free all associated memory.
          */
         destroy(): void;
         /**
-         * Gets the glyph array contained in a `PangoOTBuffer`.
+         * Gets the glyph array contained in a {@link PangoOT.Buffer}.
          *
          * The glyphs are owned by the buffer and should not be freed,
          * and are only valid as long as buffer is not modified.
          */
         get_glyphs(): Glyph[] | null;
         /**
-         * Exports the glyphs in a `PangoOTBuffer` into a `PangoGlyphString`.
+         * Exports the glyphs in a {@link PangoOT.Buffer} into a {@link Pango.GlyphString}.
          *
          * This is typically used after the OpenType layout processing
          * is over, to convert the resulting glyphs into a generic Pango
          * glyph string.
-         * @param glyphs a `PangoGlyphString`
+         * @param glyphs a {@link Pango.GlyphString}
          */
         output(glyphs: Pango.GlyphString): void;
         /**
@@ -438,7 +460,7 @@ export namespace PangoOT {
          *
          * This setting is needed for proper horizontal positioning
          * of right-to-left scripts.
-         * @param rtl %TRUE for right-to-left text
+         * @param rtl `true` for right-to-left text
          */
         set_rtl(rtl: boolean): void;
         /**
@@ -447,15 +469,17 @@ export namespace PangoOT {
          * This setting is needed for proper positioning of Arabic accents,
          * but will produce incorrect results with standard OpenType Indic
          * fonts.
-         * @param zero_width_marks %TRUE if characters with a mark class should   be forced to zero width
+         * @param zero_width_marks `true` if characters with a mark class should   be forced to zero width
          */
         set_zero_width_marks(zero_width_marks: boolean): void;
     }
 
     /**
-     * The `PangoOTFeatureMap` typedef is used to represent an OpenType
+     * The {@link PangoOT.FeatureMap} typedef is used to represent an OpenType
      * feature with the property bit associated with it.  The feature tag is
-     * represented as a char array instead of a `PangoOTTag` for convenience.
+     * represented as a char array instead of a {@link PangoOT.Tag} for convenience.
+     * @gir-type Struct
+     * @since 1.18
      */
     class FeatureMap {
         static $gtype: GObject.GType<FeatureMap>;
@@ -476,9 +500,10 @@ export namespace PangoOT {
     }
 
     /**
-     * The `PangoOTGlyph` structure represents a single glyph together with
+     * The {@link PangoOT.Glyph} structure represents a single glyph together with
      * information used for OpenType layout processing of the glyph.
      * It contains the following fields.
+     * @gir-type Struct
      */
     class Glyph {
         static $gtype: GObject.GType<Glyph>;
@@ -507,12 +532,14 @@ export namespace PangoOT {
     }
 
     /**
-     * The `PangoOTRuleset` structure holds all the information needed
-     * to build a complete `PangoOTRuleset` from an OpenType font.
+     * The {@link PangoOT.Ruleset} structure holds all the information needed
+     * to build a complete {@link PangoOT.Ruleset} from an OpenType font.
      * The main use of this struct is to act as the key for a per-font
      * hash of rulesets.  The user populates a ruleset description and
-     * gets the ruleset using pango_ot_ruleset_get_for_description()
-     * or create a new one using pango_ot_ruleset_new_from_description().
+     * gets the ruleset using `pango_ot_ruleset_get_for_description()`
+     * or create a new one using `pango_ot_ruleset_new_from_description()`.
+     * @gir-type Struct
+     * @since 1.18
      */
     class RulesetDescription {
         static $gtype: GObject.GType<RulesetDescription>;
@@ -530,12 +557,12 @@ export namespace PangoOT {
         // Methods
 
         /**
-         * Creates a copy of `desc,` which should be freed with
-         * [method`PangoOT`.RulesetDescription.free].
+         * Creates a copy of `desc`, which should be freed with
+         * {@link PangoOT.RulesetDescription.free}.
          *
-         * Primarily used internally by [func`PangoOT`.Ruleset.get_for_description]
+         * Primarily used internally by {@link PangoOT.Ruleset.get_for_description}
          * to cache rulesets for ruleset descriptions.
-         * @returns the newly allocated `PangoOTRulesetDescription`
+         * @returns the newly allocated {@link PangoOT.RulesetDescription}
          */
         copy(): RulesetDescription;
         /**
@@ -548,24 +575,30 @@ export namespace PangoOT {
          * For static feature sets, the array addresses are compared directly,
          * while for other features, the list of features is compared one by
          * one.(Two ruleset descriptions may result in identical rulesets
-         * being created, but still compare %FALSE.)
+         * being created, but still compare `false`.)
          * @param desc2 a ruleset description
-         * @returns %TRUE if two ruleset descriptions are identical,   %FALSE otherwise
+         * @returns `true` if two ruleset descriptions are identical,   `false` otherwise
          */
         equal(desc2: RulesetDescription): boolean;
         /**
          * Frees a ruleset description allocated by
-         * pango_ot_ruleset_description_copy().
+         * `pango_ot_ruleset_description_copy()`.
          */
         free(): void;
         /**
-         * Computes a hash of a `PangoOTRulesetDescription` structure suitable
-         * to be used, for example, as an argument to g_hash_table_new().
+         * Computes a hash of a {@link PangoOT.RulesetDescription} structure suitable
+         * to be used, for example, as an argument to `g_hash_table_new()`.
          * @returns the hash value
          */
         hash(): number;
     }
 
+    /**
+     * The {@link PangoOT.Tag} typedef is used to represent TrueType and OpenType
+     * four letter tags inside Pango. Use PANGO_OT_TAG_MAKE()
+     * or PANGO_OT_TAG_MAKE_FROM_STRING() macros to create PangoOTTags manually.
+     * @gir-type Alias
+     */
     type Tag = number;
     /**
      * Name of the imported GIR library

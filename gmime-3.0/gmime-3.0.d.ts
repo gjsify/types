@@ -22,6 +22,7 @@ export namespace GMime {
 
     /**
      * An address type.
+     * @gir-type Enum
      */
     enum AddressType {
         /**
@@ -52,6 +53,7 @@ export namespace GMime {
 
     /**
      * A description of the user's preference for encrypted messaging.
+     * @gir-type Enum
      */
     enum AutocryptPreferEncrypt {
         /**
@@ -66,6 +68,7 @@ export namespace GMime {
 
     /**
      * A cipher algorithm.
+     * @gir-type Enum
      */
     enum CipherAlgo {
         /**
@@ -120,6 +123,7 @@ export namespace GMime {
 
     /**
      * A Content-Transfer-Encoding enumeration.
+     * @gir-type Enum
      */
     enum ContentEncoding {
         /**
@@ -154,6 +158,7 @@ export namespace GMime {
 
     /**
      * A hash algorithm.
+     * @gir-type Enum
      */
     enum DigestAlgo {
         /**
@@ -219,10 +224,11 @@ export namespace GMime {
     }
 
     /**
-     * Used with functions like g_mime_filter_best_encoding() and
-     * g_mime_object_encode() as the 'constraint' argument. These values
+     * Used with functions like `g_mime_filter_best_encoding()` and
+     * `g_mime_object_encode()` as the 'constraint' argument. These values
      * provide a means of letting the filter know what the encoding
      * constraints are for the stream.
+     * @gir-type Enum
      */
     enum EncodingConstraint {
         /**
@@ -240,7 +246,8 @@ export namespace GMime {
     }
 
     /**
-     * The mode for a #GMimeFilterFrom filter.
+     * The mode for a {@link GMime.FilterFrom} filter.
+     * @gir-type Enum
      */
     enum FilterFromMode {
         /**
@@ -258,7 +265,8 @@ export namespace GMime {
     }
 
     /**
-     * The mode for the #GMimeFilterGZip filter.
+     * The mode for the {@link GMime.FilterGZip} filter.
+     * @gir-type Enum
      */
     enum FilterGZipMode {
         /**
@@ -273,6 +281,7 @@ export namespace GMime {
 
     /**
      * An enum of formats.
+     * @gir-type Enum
      */
     enum Format {
         /**
@@ -295,6 +304,7 @@ export namespace GMime {
      * to represent the end of line where-as Windows (or DOS) uses a sequence of two
      * characters ("\r\n" aka CRLF). Most text-based network protocols such as SMTP,
      * POP3, and IMAP use the CRLF sequence as well.
+     * @gir-type Enum
      */
     enum NewLineFormat {
         /**
@@ -309,6 +319,7 @@ export namespace GMime {
 
     /**
      * The type of OpenPGP data found, if any.
+     * @gir-type Enum
      */
     enum OpenPGPData {
         /**
@@ -339,10 +350,11 @@ export namespace GMime {
      * <ulink url="https://tools.ietf.org/html/rfc2231">rfc2231</ulink>. However, it is common for
      * some older email clients to improperly encode using the method described in
      * <ulink url="https://tools.ietf.org/html/rfc2047">rfc2047</ulink> instead.
+     * @gir-type Enum
      */
     enum ParamEncodingMethod {
         /**
-         * Use the default encoding method set on the #GMimeFormatOptions.
+         * Use the default encoding method set on the {@link GMime.FormatOptions}.
          */
         DEFAULT,
         /**
@@ -358,6 +370,7 @@ export namespace GMime {
     /**
      * Issues the `GMimeParser` detects. Note that the `GMIME_CRIT_*` issues indicate that some parts of the `GMimeParser` input may
      * be ignored or will be interpreted differently by other software products.
+     * @gir-type Enum
      */
     enum ParserWarning {
         /**
@@ -432,6 +445,7 @@ export namespace GMime {
 
     /**
      * A public-key algorithm.
+     * @gir-type Enum
      */
     enum PubKeyAlgo {
         /**
@@ -482,6 +496,7 @@ export namespace GMime {
 
     /**
      * An RFC compliance mode.
+     * @gir-type Enum
      */
     enum RfcComplianceMode {
         /**
@@ -496,6 +511,7 @@ export namespace GMime {
 
     /**
      * The S/MIME data type.
+     * @gir-type Enum
      */
     enum SecureMimeType {
         /**
@@ -522,6 +538,7 @@ export namespace GMime {
 
     /**
      * Relative seek position.
+     * @gir-type Enum
      */
     enum SeekWhence {
         /**
@@ -540,7 +557,8 @@ export namespace GMime {
 
     /**
      * A value representing the signature status bit flags for a particular
-     * #GMimeSignature.
+     * {@link GMime.Signature}.
+     * @gir-type Enum
      */
     enum SignatureStatus {
         /**
@@ -594,7 +612,8 @@ export namespace GMime {
     }
 
     /**
-     * The buffering mode for a #GMimeStreamBuffer stream.
+     * The buffering mode for a {@link GMime.StreamBuffer} stream.
+     * @gir-type Enum
      */
     enum StreamBufferMode {
         /**
@@ -613,10 +632,11 @@ export namespace GMime {
      * identity assertions made by the owner of this certificate?"
      *
      * By way of comparison with web browser X.509 certificate validation
-     * stacks, the certificate of a "Root CA" has `GMIME_TRUST_ULTIMATE,`
-     * while the certificate of an intermediate CA has `GMIME_TRUST_FULL,`
+     * stacks, the certificate of a "Root CA" has `GMIME_TRUST_ULTIMATE`,
+     * while the certificate of an intermediate CA has `GMIME_TRUST_FULL`,
      * and an end-entity certificate (e.g., with CA:FALSE set) would have
      * `GMIME_TRUST_NEVER`.
+     * @gir-type Enum
      */
     enum Trust {
         /**
@@ -661,6 +681,7 @@ export namespace GMime {
      *
      * Note that the GMime API currently only exposes the highest-validty
      * User ID for any given certificate.
+     * @gir-type Enum
      */
     enum Validity {
         /**
@@ -702,7 +723,7 @@ export namespace GMime {
      */
     const DISPOSITION_INLINE: string;
     /**
-     * A bit flag for g_mime_filter_enriched_new() which signifies that
+     * A bit flag for `g_mime_filter_enriched_new()` which signifies that
      * the filter should expect Rich Text (aka RTF).
      */
     const FILTER_ENRICHED_IS_RICHTEXT: number;
@@ -764,17 +785,17 @@ export namespace GMime {
      */
     const SIGNATURE_STATUS_ERROR_MASK: number;
     /**
-     * State for the g_mime_encoding_uudecode_step() function, denoting that
+     * State for the `g_mime_encoding_uudecode_step()` function, denoting that
      * the 'begin' line has been found.
      */
     const UUDECODE_STATE_BEGIN: number;
     /**
-     * State for the g_mime_encoding_uudecode_step() function, denoting that
+     * State for the `g_mime_encoding_uudecode_step()` function, denoting that
      * the end of the UU encoded block has been found.
      */
     const UUDECODE_STATE_END: number;
     /**
-     * Initial state for the g_mime_encoding_uudecode_step() function.
+     * Initial state for the `g_mime_encoding_uudecode_step()` function.
      */
     const UUDECODE_STATE_INIT: number;
     const UUDECODE_STATE_MASK: number;
@@ -789,7 +810,7 @@ export namespace GMime {
      */
     const YDECODE_STATE_DECODE: number;
     /**
-     * State bit that denoates that g_mime_ydecode_step() has finished
+     * State bit that denoates that `g_mime_ydecode_step()` has finished
      * decoding.
      */
     const YDECODE_STATE_END: number;
@@ -807,7 +828,7 @@ export namespace GMime {
      */
     const YDECODE_STATE_ESCAPE: number;
     /**
-     * Initial state for the g_mime_ydecode_step() function.
+     * Initial state for the `g_mime_ydecode_step()` function.
      */
     const YDECODE_STATE_INIT: number;
     /**
@@ -820,31 +841,31 @@ export namespace GMime {
      */
     const YENCODE_CRC_INIT: number;
     /**
-     * Initial state for the g_mime_ydecode_step() function.
+     * Initial state for the `g_mime_ydecode_step()` function.
      */
     const YENCODE_STATE_INIT: number;
     /**
      * Computes the best charset to use to encode this text buffer.
      * @param inbuf a UTF-8 text buffer
      * @param inlen input buffer length
-     * @returns the charset name best suited for the input text or %NULL if it is ascii-safe.
+     * @returns the charset name best suited for the input text or `null` if it is ascii-safe.
      */
     function charset_best(inbuf: string, inlen: number): string | null;
     /**
      * Attempts to find a canonical charset name for `charset`.
      *
      * Note: Will normally return the same value as
-     * g_mime_charset_iconv_name() unless the system iconv does not use
+     * `g_mime_charset_iconv_name()` unless the system iconv does not use
      * the canonical ISO charset names (such as using ISO8859-1 rather
      * than the canonical form ISO-8859-1).
      * @param charset charset name
-     * @returns a canonical charset name for @charset.
+     * @returns a canonical charset name for `charset`.
      */
     function charset_canon_name(charset: string): string;
     /**
      * Attempts to find an iconv-friendly charset name for `charset`.
      * @param charset charset name
-     * @returns an iconv-friendly charset name for @charset.
+     * @returns an iconv-friendly charset name for `charset`.
      */
     function charset_iconv_name(charset: string): string;
     /**
@@ -857,15 +878,15 @@ export namespace GMime {
     /**
      * Attempts to find a specific language code that is specific to
      * `charset`. Currently only handles CJK and Russian/Ukranian
-     * charset->lang mapping. Everything else will return %NULL.
+     * charset->lang mapping. Everything else will return `null`.
      * @param charset charset name
-     * @returns a language code that is specific to @charset, or %NULL on fail.
+     * @returns a language code that is specific to `charset`, or `null` on fail.
      */
     function charset_language(charset: string): string | null;
     /**
      * Gets the user's locale charset (or iso-8859-1 by default).
      *
-     * Note: This function is deprecated. Use g_mime_locale_charset()
+     * Note: This function is deprecated. Use `g_mime_locale_charset()`
      * instead.
      * @returns the user's locale charset (or iso-8859-1 by default).
      */
@@ -873,20 +894,20 @@ export namespace GMime {
     /**
      * Initializes character set maps.
      *
-     * Note: g_mime_init() calls this routine for you.
+     * Note: `g_mime_init()` calls this routine for you.
      */
     function charset_map_init(): void;
     /**
-     * Frees internal lookup tables created in g_mime_charset_map_init().
+     * Frees internal lookup tables created in `g_mime_charset_map_init()`.
      */
     function charset_map_shutdown(): void;
     /**
      * Attempts to find an iconv-friendly charset name for `charset`.
      *
-     * Note: This function is deprecated. Use g_mime_charset_iconv_name()
+     * Note: This function is deprecated. Use `g_mime_charset_iconv_name()`
      * instead.
      * @param charset charset name
-     * @returns an iconv-friendly charset name for @charset.
+     * @returns an iconv-friendly charset name for `charset`.
      */
     function charset_name(charset: string): string;
     /**
@@ -895,20 +916,20 @@ export namespace GMime {
      * @param major Minimum major version
      * @param minor Minimum minor version
      * @param micro Minimum micro version
-     * @returns %TRUE if the requirement is met or %FALSE otherwise.
+     * @returns `true` if the requirement is met or `false` otherwise.
      */
     function check_version(major: number, minor: number, micro: number): boolean;
     /**
-     * Gets the appropriate #GMimeContentEncoding enumeration value based
+     * Gets the appropriate {@link GMime.ContentEncoding} enumeration value based
      * on the input string.
      * @param str a string representing a Content-Transfer-Encoding value
-     * @returns the #GMimeContentEncoding specified by @str or #GMIME_CONTENT_ENCODING_DEFAULT on error.
+     * @returns the {@link GMime.ContentEncoding} specified by `str` or #GMIME_CONTENT_ENCODING_DEFAULT on error.
      */
     function content_encoding_from_string(str: string): ContentEncoding;
     /**
      * Gets the string value of the content encoding.
-     * @param encoding a #GMimeContentEncoding
-     * @returns the encoding type as a string or %NULL on error. Available values for the encoding are: #GMIME_CONTENT_ENCODING_DEFAULT, #GMIME_CONTENT_ENCODING_7BIT, #GMIME_CONTENT_ENCODING_8BIT, #GMIME_CONTENT_ENCODING_BINARY, #GMIME_CONTENT_ENCODING_BASE64, #GMIME_CONTENT_ENCODING_QUOTEDPRINTABLE and #GMIME_CONTENT_ENCODING_UUENCODE.
+     * @param encoding a {@link GMime.ContentEncoding}
+     * @returns the encoding type as a string or `null` on error. Available values for the encoding are: #GMIME_CONTENT_ENCODING_DEFAULT, #GMIME_CONTENT_ENCODING_7BIT, #GMIME_CONTENT_ENCODING_8BIT, #GMIME_CONTENT_ENCODING_BINARY, #GMIME_CONTENT_ENCODING_BASE64, #GMIME_CONTENT_ENCODING_QUOTEDPRINTABLE and #GMIME_CONTENT_ENCODING_UUENCODE.
      */
     function content_encoding_to_string(encoding: ContentEncoding | null): string;
     /**
@@ -916,9 +937,9 @@ export namespace GMime {
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been decoded
-     * @returns the number of bytes decoded (which have been dumped in @outbuf).
+     * @returns the number of bytes decoded (which have been dumped in `outbuf`).
      */
     function encoding_base64_decode_step(
         inbuf: number,
@@ -929,12 +950,12 @@ export namespace GMime {
     ): number;
     /**
      * Base64 encodes the input stream to the output stream. Call this
-     * when finished encoding data with g_mime_encoding_base64_encode_step()
+     * when finished encoding data with `g_mime_encoding_base64_encode_step()`
      * to flush off the last little bit.
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded.
      */
@@ -953,7 +974,7 @@ export namespace GMime {
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded.
      */
@@ -970,7 +991,7 @@ export namespace GMime {
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes decoded.
      */
@@ -983,12 +1004,12 @@ export namespace GMime {
     ): number;
     /**
      * Quoted-printable encodes a block of text. Call this when finished
-     * encoding data with g_mime_encoding_quoted_encode_step() to flush off
+     * encoding data with `g_mime_encoding_quoted_encode_step()` to flush off
      * the last little bit.
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded.
      */
@@ -1006,7 +1027,7 @@ export namespace GMime {
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded.
      */
@@ -1024,19 +1045,19 @@ export namespace GMime {
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes decoded.
      */
     function encoding_uudecode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
     /**
      * Uuencodes a chunk of data. Call this when finished encoding data
-     * with g_mime_encoding_uuencode_step() to flush off the last little bit.
+     * with `g_mime_encoding_uuencode_step()` to flush off the last little bit.
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
      * @param uubuf temporary buffer of 60 bytes
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded.
      */
@@ -1051,13 +1072,13 @@ export namespace GMime {
     /**
      * Uuencodes a chunk of data. Performs an 'encode step', only encodes
      * blocks of 45 characters to the output at a time, saves left-over
-     * state in `uubuf,` `state` and `save` (initialize to 0 on first
+     * state in `uubuf`, `state` and `save` (initialize to 0 on first
      * invocation).
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output stream
      * @param uubuf temporary buffer of 60 bytes
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded.
      */
@@ -1077,7 +1098,7 @@ export namespace GMime {
     /**
      * Allocates a new string buffer containing `str` in UTF-8.
      * @param str string in locale charset
-     * @returns a new string buffer containing @str converted to UTF-8.
+     * @returns a new string buffer containing `str` converted to UTF-8.
      */
     function iconv_locale_to_utf8(str: string): string;
     /**
@@ -1085,14 +1106,14 @@ export namespace GMime {
      * `str` converted to UTF-8.
      * @param str string in locale charset
      * @param n number of bytes to convert
-     * @returns a new string buffer containing the first @n bytes of @str converted to UTF-8.
+     * @returns a new string buffer containing the first `n` bytes of `str` converted to UTF-8.
      */
     function iconv_locale_to_utf8_length(str: string, n: number): string;
     /**
      * Allocates a new string buffer containing `str` converted to the
      * user's locale charset.
      * @param str string in UTF-8 charset
-     * @returns a new string buffer containing @str converted to the user's locale charset.
+     * @returns a new string buffer containing `str` converted to the user's locale charset.
      */
     function iconv_utf8_to_locale(str: string): string;
     /**
@@ -1100,7 +1121,7 @@ export namespace GMime {
      * `str` converted to the user's locale charset.
      * @param str string in UTF-8 charset
      * @param n number of bytes to convert
-     * @returns a new string buffer containing the first @n bytes of @str converted to the user's locale charset.
+     * @returns a new string buffer containing the first `n` bytes of `str` converted to the user's locale charset.
      */
     function iconv_utf8_to_locale_length(str: string, n: number): string;
     /**
@@ -1113,8 +1134,8 @@ export namespace GMime {
      */
     function locale_charset(): string;
     /**
-     * Gets the user's locale language code (or %NULL by default).
-     * @returns the user's locale language code (or %NULL by default).
+     * Gets the user's locale language code (or `null` by default).
+     * @returns the user's locale language code (or `null` by default).
      */
     function locale_language(): string | null;
     /**
@@ -1125,20 +1146,20 @@ export namespace GMime {
     /**
      * Decodes a list of msg-ids as in the References and/or In-Reply-To
      * headers defined in rfc822.
-     * @param options a #GMimeParserOptions or %NULL
+     * @param options a {@link GMime.ParserOptions} or `null`
      * @param text string containing a list of msg-ids
-     * @returns a new #GMimeReferences containing the parsed message ids.
+     * @returns a new {@link GMime.References} containing the parsed message ids.
      */
     function references_parse(options: ParserOptions | null, text: string): References;
     /**
-     * Frees internally allocated tables created in g_mime_init().
+     * Frees internally allocated tables created in `g_mime_init()`.
      */
     function shutdown(): void;
     /**
      * Determines the best content encoding for the first `len` bytes of
      * `text`.
      * @param text text to encode
-     * @returns a #GMimeContentEncoding that is determined to be the best encoding type for the specified block of text. ("best" in this particular case means smallest output size)
+     * @returns a {@link GMime.ContentEncoding} that is determined to be the best encoding type for the specified block of text. ("best" in this particular case means smallest output size)
      */
     function utils_best_encoding(text: Uint8Array | string): ContentEncoding;
     /**
@@ -1147,9 +1168,9 @@ export namespace GMime {
      * valid UTF-8 characters as possible. If no exact match can be found,
      * it will choose the best match and convert invalid byte sequences
      * into question-marks (?) in the returned string buffer.
-     * @param options a #GMimeParserOptions or %NULL
+     * @param options a {@link GMime.ParserOptions} or `null`
      * @param text input text in   unknown 8bit/multibyte character set
-     * @returns a UTF-8 string representation of @text.
+     * @returns a UTF-8 string representation of `text`.
      */
     function utils_decode_8bit(options: ParserOptions | null, text: Uint8Array | string): string;
     /**
@@ -1167,43 +1188,43 @@ export namespace GMime {
     /**
      * Parses the rfc822 date string.
      * @param str input date string
-     * @returns the #GDateTime representation of the date string specified by @str or %NULL on error.
+     * @returns the {@link GLib.DateTime} representation of the date string specified by `str` or `null` on error.
      */
     function utils_header_decode_date(str: string): GLib.DateTime | null;
     /**
      * Decodes an rfc2047 encoded 'phrase' header.
-     * @param options a #GMimeParserOptions or %NULL
+     * @param options a {@link GMime.ParserOptions} or `null`
      * @param phrase header to decode
      * @returns a newly allocated UTF-8 string representing the the decoded header.
      */
     function utils_header_decode_phrase(options: ParserOptions | null, phrase: string): string;
     /**
      * Decodes an rfc2047 encoded 'text' header.
-     * @param options a #GMimeParserOptions or %NULL
+     * @param options a {@link GMime.ParserOptions} or `null`
      * @param text header text to decode
      * @returns a newly allocated UTF-8 string representing the the decoded header.
      */
     function utils_header_decode_text(options: ParserOptions | null, text: string): string;
     /**
      * Encodes a 'phrase' header according to the rules in rfc2047.
-     * @param options a #GMimeFormatOptions or %NULL
+     * @param options a {@link GMime.FormatOptions} or `null`
      * @param phrase phrase to encode
-     * @param charset the charset to use or %NULL to use the default
+     * @param charset the charset to use or `null` to use the default
      * @returns the encoded 'phrase'. Useful for encoding internet addresses.
      */
     function utils_header_encode_phrase(options: FormatOptions | null, phrase: string, charset?: string | null): string;
     /**
      * Encodes a 'text' header according to the rules in rfc2047.
-     * @param options a #GMimeFormatOptions or %NULL
+     * @param options a {@link GMime.FormatOptions} or `null`
      * @param text text to encode
-     * @param charset the charset to use or %NULL to use the default
+     * @param charset the charset to use or `null` to use the default
      * @returns the encoded header. Useful for encoding headers like "Subject".
      */
     function utils_header_encode_text(options: FormatOptions | null, text: string, charset?: string | null): string;
     /**
      * Allocates a string buffer containing the rfc822 formatted date
      * string represented by `date`.
-     * @param date a #GDateTime
+     * @param date a {@link GLib.DateTime}
      * @returns a valid string representation of the date.
      */
     function utils_header_format_date(date: GLib.DateTime): string;
@@ -1221,8 +1242,8 @@ export namespace GMime {
     function utils_quote_string(str: string): string;
     /**
      * Folds a structured header according to the rules in rfc822.
-     * @param options a #GMimeParserOptions or %NULL
-     * @param format a #GMimeFormatOptions or %NULL
+     * @param options a {@link GMime.ParserOptions} or `null`
+     * @param format a {@link GMime.FormatOptions} or `null`
      * @param header header field and value string
      * @returns an allocated string containing the folded header.
      */
@@ -1235,7 +1256,7 @@ export namespace GMime {
      * Determines if `text` contains 8bit characters within the first `len`
      * bytes.
      * @param text text to check for 8bit chars
-     * @returns %TRUE if the text contains 8bit characters or %FALSE otherwise.
+     * @returns `true` if the text contains 8bit characters or `false` otherwise.
      */
     function utils_text_is_8bit(text: Uint8Array | string): boolean;
     /**
@@ -1245,8 +1266,8 @@ export namespace GMime {
     function utils_unquote_string(str: string): void;
     /**
      * Folds an unstructured header according to the rules in rfc822.
-     * @param options a #GMimeParserOptions or %NULL
-     * @param format a #GMimeFormatOptions or %NULL
+     * @param options a {@link GMime.ParserOptions} or `null`
+     * @param format a {@link GMime.FormatOptions} or `null`
      * @param header header field and value string
      * @returns an allocated string containing the folded header.
      */
@@ -1261,10 +1282,10 @@ export namespace GMime {
      * and =ypart lines have already been stripped off.
      *
      * To get the crc32 value of the part, use #GMIME_YENCODE_CRC_FINAL
-     * (`pcrc)`. If there are more parts, you should reuse `crc` without
+     * (`pcrc`). If there are more parts, you should reuse `crc` without
      * re-initializing. Once all parts have been decoded, you may get the
      * combined crc32 value of all the parts using #GMIME_YENCODE_CRC_FINAL
-     * (`crc)`.
+     * (`crc`).
      * @param inbuf input buffer
      * @param inlen input buffer length
      * @param outbuf output buffer
@@ -1283,12 +1304,12 @@ export namespace GMime {
     ): number;
     /**
      * Call this function when finished encoding data with
-     * g_mime_yencode_step() to flush off the remaining state.
+     * `g_mime_yencode_step()` to flush off the remaining state.
      *
-     * #GMIME_YENCODE_CRC_FINAL (`pcrc)` will give you the crc32 of the
+     * #GMIME_YENCODE_CRC_FINAL (`pcrc`) will give you the crc32 of the
      * encoded "part". If there are more "parts" to encode, you should
      * re-use `crc` when encoding the next "parts" and then use
-     * #GMIME_YENCODE_CRC_FINAL (`crc)` to get the combined crc32 value of
+     * #GMIME_YENCODE_CRC_FINAL (`crc`) to get the combined crc32 value of
      * all the parts.
      * @param inbuf input buffer
      * @param inlen input buffer length
@@ -1332,23 +1353,39 @@ export namespace GMime {
         pcrc: number,
         crc: number,
     ): number;
+    /**
+     * @gir-type Callback
+     */
     interface HeaderRawValueFormatter {
         (header: Header, options: FormatOptions, value: string, charset: string): string;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ObjectForeachFunc {
         (parent: Object, part: Object): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ParserHeaderRegexFunc {
         (parser: Parser, header: string, value: string, offset: number): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ParserWarningFunc {
         (offset: number, errcode: ParserWarning, item: string): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface PasswordRequestFunc {
         (ctx: CryptoContext, user_id: string, prompt: string, reprompt: boolean, response: Stream): boolean;
     }
     /**
      * Decryption flags.
+     * @gir-type Flags
      */
     enum DecryptFlags {
         /**
@@ -1375,6 +1412,7 @@ export namespace GMime {
 
     /**
      * Encryption flags.
+     * @gir-type Flags
      */
     enum EncryptFlags {
         /**
@@ -1403,6 +1441,7 @@ export namespace GMime {
      * Bit flags to enable charset and/or encoding scanning to make
      * educated guesses as to what the best charset and/or encodings to
      * use for the content passed through the filter.
+     * @gir-type Flags
      */
     enum FilterBestFlags {
         /**
@@ -1416,7 +1455,9 @@ export namespace GMime {
     }
 
     /**
-     * The current state of the #GMimeFilterOpenPGP filter.
+     * The current state of the {@link GMime.FilterOpenPGP} filter.
+     * @gir-type Flags
+     * @since 3.2
      */
     enum OpenPGPState {
         /**
@@ -1463,6 +1504,7 @@ export namespace GMime {
 
     /**
      * Signature verification flags.
+     * @gir-type Flags
      */
     enum VerifyFlags {
         /**
@@ -1490,6 +1532,7 @@ export namespace GMime {
 
     /**
      * An application/pkcs7-mime MIME part.
+     * @gir-type Class
      */
     class ApplicationPkcs7Mime extends Part {
         static $gtype: GObject.GType<ApplicationPkcs7Mime>;
@@ -1521,16 +1564,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ApplicationPkcs7Mime.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationPkcs7Mime.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ApplicationPkcs7Mime.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationPkcs7Mime.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ApplicationPkcs7Mime.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ApplicationPkcs7Mime.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1544,15 +1590,15 @@ export namespace GMime {
         /**
          * Attempts to encrypt the `entity` MIME part to the public keys of `recipients`
          * using S/MIME. If successful, a new application/pkcs7-mime object is returned.
-         * @param entity a #GMimeObject to encrypt
-         * @param flags a #GMimeEncryptFlags
+         * @param entity a {@link GMime.Object} to encrypt
+         * @param flags a {@link GMime.EncryptFlags}
          * @param recipients an array of recipients to encrypt to
          */
         static encrypt(entity: Object, flags: EncryptFlags, recipients: string[]): ApplicationPkcs7Mime | null;
         /**
-         * Attempts to sign the `entity` MIME part with `userid'`s private key using
+         * Attempts to sign the `entity` MIME part with `userid`'s private key using
          * S/MIME. If successful, a new application/pkcs7-mime object is returned.
-         * @param entity a #GMimeObject
+         * @param entity a {@link GMime.Object}
          * @param userid the user id to sign with
          */
         static sign(entity: Object, userid: string): ApplicationPkcs7Mime | null;
@@ -1562,19 +1608,19 @@ export namespace GMime {
         /**
          * Attempts to decrypt the encrypted application/pkcs7-mime part.
          *
-         * When non-%NULL, `session_key` should be a %NULL-terminated string,
-         * such as the one returned by g_mime_decrypt_result_get_session_key()
+         * When non-`null`, `session_key` should be a `null`-terminated string,
+         * such as the one returned by `g_mime_decrypt_result_get_session_key()`
          * from a previous decryption. If the `session_key` is not valid, decryption
          * will fail.
          *
-         * If `result` is non-%NULL, then on a successful decrypt operation, it will be
-         * updated to point to a newly-allocated #GMimeDecryptResult with signature
+         * If `result` is non-`null`, then on a successful decrypt operation, it will be
+         * updated to point to a newly-allocated {@link GMime.DecryptResult} with signature
          * status information as well as a list of recipients that the part was
          * encrypted to.
-         * @param flags a #GMimeDecryptFlags
-         * @param session_key session key to use or %NULL
+         * @param flags a {@link GMime.DecryptFlags}
+         * @param session_key session key to use or `null`
          * @param result the decryption result
-         * @returns the decrypted MIME part on success or %NULL on fail. If the decryption fails, an exception will be set on @err to provide information as to why the failure occurred.
+         * @returns the decrypted MIME part on success or `null` on fail. If the decryption fails, an exception will be set on `err` to provide information as to why the failure occurred.
          */
         decrypt(flags: DecryptFlags | null, session_key: string, result: DecryptResult): Object | null;
         /**
@@ -1583,10 +1629,10 @@ export namespace GMime {
          */
         get_smime_type(): SecureMimeType;
         /**
-         * Attempts to verify the signed `pkcs7`_mime part and extract the original
+         * Attempts to verify the signed `pkcs7_mime` part and extract the original
          * MIME entity.
-         * @param flags a #GMimeVerifyFlags
-         * @returns a new #GMimeSignatureList object on success or %NULL on fail. If the verification fails, an exception will be set on @err to provide information as to why the failure occurred.
+         * @param flags a {@link GMime.VerifyFlags}
+         * @returns a new {@link GMime.SignatureList} object on success or `null` on fail. If the verification fails, an exception will be set on `err` to provide information as to why the failure occurred.
          */
         verify(flags: VerifyFlags | null): [SignatureList | null, Object];
     }
@@ -1605,6 +1651,7 @@ export namespace GMime {
      * address, as derived from a message header.
      *
      * See https://autocrypt.org/ for details and motivation.
+     * @gir-type Class
      */
     class AutocryptHeader extends GObject.Object {
         static $gtype: GObject.GType<AutocryptHeader>;
@@ -1636,16 +1683,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AutocryptHeader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AutocryptHeader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AutocryptHeader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AutocryptHeader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AutocryptHeader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AutocryptHeader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1655,9 +1705,9 @@ export namespace GMime {
         // Methods
 
         /**
-         * If address and type already match between `src` and `dst,` copy
+         * If address and type already match between `src` and `dst`, copy
          * keydata, prefer_encrypt, effective_date from `src` to `dst`.
-         * @param src a #GMimeAutocryptHeader object
+         * @param src a {@link GMime.AutocryptHeader} object
          */
         clone(src: AutocryptHeader): void;
         /**
@@ -1668,27 +1718,27 @@ export namespace GMime {
          *  - effective_date
          *  - keydata
          *  - prefer_encrypt
-         * @param ah2 a #GMimeAutocryptHeader object
-         * @returns -1, 0, or 1 when @ah1 is less than, equal to, or greater than @ah2.
+         * @param ah2 a {@link GMime.AutocryptHeader} object
+         * @returns -1, 0, or 1 when `ah1` is less than, equal to, or greater than `ah2`.
          */
         compare(ah2: AutocryptHeader): number;
         /**
-         * Gets the internal address of the Autocrypt header, or %NULL if not set.
+         * Gets the internal address of the Autocrypt header, or `null` if not set.
          * @returns the address associated with the Autocrypt header
          */
         get_address(): InternetAddressMailbox;
         /**
-         * Gets the internal address of the Autocrypt header as a C string, or %NULL if not set.
+         * Gets the internal address of the Autocrypt header as a C string, or `null` if not set.
          * @returns the address associated with the Autocrypt header
          */
         get_address_as_string(): string;
         /**
-         * Gets the effective date of the Autocrypt header, or %NULL if not set.
+         * Gets the effective date of the Autocrypt header, or `null` if not set.
          * @returns the effective date associated with the Autocrypt header
          */
         get_effective_date(): GLib.DateTime;
         /**
-         * Gets the raw keydata of the Autocrypt header, or %NULL if not set.
+         * Gets the raw keydata of the Autocrypt header, or `null` if not set.
          * @returns the raw key data associated with the Autocrypt header
          */
         get_keydata(): GLib.Bytes;
@@ -1703,44 +1753,44 @@ export namespace GMime {
          * associated with them.  When a given sender address has no complete
          * header of a specific type, it should "reset" the state of the
          * associated address.
-         * @returns %TRUE if the header is complete, or %FALSE if it is incomplete.
+         * @returns `true` if the header is complete, or `false` if it is incomplete.
          */
         is_complete(): boolean;
         /**
          * Set the address associated with the autocrypt_header.
-         * @param address a #InternetAddressMailbox value
+         * @param address a {@link GMime.InternetAddressMailbox} value
          */
         set_address(address: InternetAddressMailbox): void;
         /**
          * Set the address associated with the autocrypt_header.
-         * @param address a %NULL-terminated string that is a raw e-mail address
+         * @param address a `null`-terminated string that is a raw e-mail address
          */
         set_address_from_string(address: string): void;
         /**
          * Set the effective date associated with the Autocrypt header.
-         * @param effective_date a #GDateTime object
+         * @param effective_date a {@link GLib.DateTime} object
          */
         set_effective_date(effective_date: GLib.DateTime): void;
         /**
          * Set the raw key data associated with the Autocrypt header.
-         * @param keydata a #GBytes object
+         * @param keydata a {@link GLib.Bytes} object
          */
         set_keydata(keydata: GLib.Bytes | Uint8Array): void;
         /**
          * Set the encryption preference associated with the Autocrypt header.
-         * @param pref a #GMimeAutocryptPreferEncrypt value
+         * @param pref a {@link GMime.AutocryptPreferEncrypt} value
          */
         set_prefer_encrypt(pref: AutocryptPreferEncrypt | null): void;
         /**
-         * Gets the string representation of the Autocrypt header, or %NULL on
+         * Gets the string representation of the Autocrypt header, or `null` on
          * error.  For example, it might return:
          *
          *     prefer-encrypt=mutual; addr=bob\`example`.com; keydata=AAAB15BE...
          *
          * If you are using this object to populate an Autocrypt-Gossip
-         * header, you should set `gossip` to %TRUE (this will suppress
+         * header, you should set `gossip` to `true` (this will suppress
          * inclusion of prefer-encrypt).
-         * @param gossip a #gboolean, indicating whether this header is for use with gossip
+         * @param gossip a `gboolean`, indicating whether this header is for use with gossip
          * @returns the string representation of the Autocrypt header.
          */
         to_string(gossip: boolean): string;
@@ -1757,6 +1807,7 @@ export namespace GMime {
 
     /**
      * A list of Autocrypt headers, typically extracted from a GMimeMessage.
+     * @gir-type Class
      */
     class AutocryptHeaderList extends GObject.Object {
         static $gtype: GObject.GType<AutocryptHeaderList>;
@@ -1784,16 +1835,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AutocryptHeaderList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AutocryptHeaderList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AutocryptHeaderList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AutocryptHeaderList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AutocryptHeaderList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AutocryptHeaderList.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1805,14 +1859,14 @@ export namespace GMime {
         // Methods
 
         /**
-         * Adds a the passed #GMimeAutocryptHeader to the list.
-         * @param header a #GMimeAutocryptHeader object
+         * Adds a the passed {@link GMime.AutocryptHeader} to the list.
+         * @param header a {@link GMime.AutocryptHeader} object
          */
         add(header: AutocryptHeader): void;
         /**
-         * Adds a new incomplete #GMimeAutocryptHeader object for each
+         * Adds a new incomplete {@link GMime.AutocryptHeader} object for each
          * InternetAddressMailbox found in #addresses.
-         * @param addresses an #InternetAddressList object
+         * @param addresses an {@link GMime.InternetAddressList} object
          * @returns the number of addresses added
          */
         add_missing_addresses(addresses: InternetAddressList): number;
@@ -1822,15 +1876,15 @@ export namespace GMime {
          */
         get_count(): number;
         /**
-         * Get the Nth header in the list (returns %NULL on error, or if `index` is out of bounds)
+         * Get the Nth header in the list (returns `null` on error, or if `index` is out of bounds)
          * @param index an index into the list
          * @returns a pointer to the Nth header in the list.
          */
         get_header_at(index: number): AutocryptHeader;
         /**
          * Gets the Autocrypt header corresponding to the given `mailbox`.
-         * @param mailbox an #InternetAddressMailbox object
-         * @returns a pointer to the header in the list which matches the requested address, or %NULL if no such header exists in the list.
+         * @param mailbox an {@link GMime.InternetAddressMailbox} object
+         * @returns a pointer to the header in the list which matches the requested address, or `null` if no such header exists in the list.
          */
         get_header_for_address(mailbox: InternetAddressMailbox): AutocryptHeader;
         /**
@@ -1850,6 +1904,7 @@ export namespace GMime {
 
     /**
      * An object containing useful information about a certificate.
+     * @gir-type Class
      */
     class Certificate extends GObject.Object {
         static $gtype: GObject.GType<Certificate>;
@@ -1890,16 +1945,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Certificate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Certificate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Certificate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Certificate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Certificate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Certificate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1931,7 +1989,7 @@ export namespace GMime {
          * returned.  If more than one email address appears in the
          * certificate with the same (highest) validity, the first such email
          * address will be returned.
-         * @returns the relevant e-mail address, or %NULL if unspecified.
+         * @returns the relevant e-mail address, or `null` if unspecified.
          */
         get_email(): string;
         /**
@@ -1948,7 +2006,7 @@ export namespace GMime {
         get_expires64(): number;
         /**
          * Get the certificate's key fingerprint.
-         * @returns the certificate's key fingerprint or %NULL if unspecified.
+         * @returns the certificate's key fingerprint or `null` if unspecified.
          */
         get_fingerprint(): string;
         /**
@@ -1960,17 +2018,17 @@ export namespace GMime {
         get_id_validity(): Validity;
         /**
          * Get the certificate's issuer name.
-         * @returns the certificate's issuer name or %NULL if unspecified.
+         * @returns the certificate's issuer name or `null` if unspecified.
          */
         get_issuer_name(): string;
         /**
          * Get the certificate's issuer serial.
-         * @returns the certificate's issuer serial or %NULL if unspecified.
+         * @returns the certificate's issuer serial or `null` if unspecified.
          */
         get_issuer_serial(): string;
         /**
          * Get the certificate's key id.
-         * @returns the certificate's key id or %NULL if unspecified.
+         * @returns the certificate's key id or `null` if unspecified.
          */
         get_key_id(): string;
         /**
@@ -1981,7 +2039,7 @@ export namespace GMime {
          * highest validity is returned.  If more than one name appears in the
          * certificate with the same (highest) validity, the first such name
          * will be returned.
-         * @returns the the relevant name or %NULL if unspecified.
+         * @returns the the relevant name or `null` if unspecified.
          */
         get_name(): string;
         /**
@@ -2000,7 +2058,7 @@ export namespace GMime {
          * the highest validity is returned.  If more than one User ID appears
          * in the certificate with the same (highest) validity, the first such
          * User ID will be returned.
-         * @returns the relevant User ID or %NULL if unspecified.
+         * @returns the relevant User ID or `null` if unspecified.
          */
         get_user_id(): string;
         /**
@@ -2010,7 +2068,7 @@ export namespace GMime {
         set_created(created: number): void;
         /**
          * Set the digest algorithm used by the certificate.
-         * @param algo a #GMimeDigestAlgo
+         * @param algo a {@link GMime.DigestAlgo}
          */
         set_digest_algo(algo: DigestAlgo | null): void;
         /**
@@ -2031,7 +2089,7 @@ export namespace GMime {
         set_fingerprint(fingerprint: string): void;
         /**
          * Set the validity associated with the certificate's name, email, and user_id.
-         * @param validity a #GMimeValidity representing the validity of the certificate's identity information.
+         * @param validity a {@link GMime.Validity} representing the validity of the certificate's identity information.
          */
         set_id_validity(validity: Validity | null): void;
         /**
@@ -2058,12 +2116,12 @@ export namespace GMime {
         set_name(name: string): void;
         /**
          * Set the public-key algorithm used by the certificate.
-         * @param algo a #GMimePubKeyAlgo
+         * @param algo a {@link GMime.PubKeyAlgo}
          */
         set_pubkey_algo(algo: PubKeyAlgo | null): void;
         /**
          * Set the certificate trust.
-         * @param trust a #GMimeTrust value
+         * @param trust a {@link GMime.Trust} value
          */
         set_trust(trust: Trust | null): void;
         /**
@@ -2085,7 +2143,8 @@ export namespace GMime {
     }
 
     /**
-     * A collection of #GMimeCertificate objects.
+     * A collection of {@link GMime.Certificate} objects.
+     * @gir-type Class
      */
     class CertificateList extends GObject.Object {
         static $gtype: GObject.GType<CertificateList>;
@@ -2114,16 +2173,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CertificateList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CertificateList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CertificateList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CertificateList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CertificateList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CertificateList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2133,9 +2195,9 @@ export namespace GMime {
         // Methods
 
         /**
-         * Adds a #GMimeCertificate to the #GMimeCertificateList.
-         * @param cert a #GMimeCertificate
-         * @returns the index of the added #GMimeCertificate.
+         * Adds a {@link GMime.Certificate} to the {@link GMime.CertificateList}.
+         * @param cert a {@link GMime.Certificate}
+         * @returns the index of the added {@link GMime.Certificate}.
          */
         add(cert: Certificate): number;
         /**
@@ -2143,54 +2205,54 @@ export namespace GMime {
          */
         clear(): void;
         /**
-         * Checks whether or not the specified #GMimeCertificate is contained within
-         * the #GMimeCertificateList.
-         * @param cert a #GMimeCertificate
-         * @returns %TRUE if the specified #GMimeCertificate is contained within the specified #GMimeCertificateList or %FALSE otherwise.
+         * Checks whether or not the specified {@link GMime.Certificate} is contained within
+         * the {@link GMime.CertificateList}.
+         * @param cert a {@link GMime.Certificate}
+         * @returns `true` if the specified {@link GMime.Certificate} is contained within the specified {@link GMime.CertificateList} or `false` otherwise.
          */
         contains(cert: Certificate): boolean;
         /**
-         * Gets the #GMimeCertificate at the specified index.
-         * @param index index of #GMimeCertificate to get
-         * @returns the #GMimeCertificate at the specified index or %NULL if the index is out of range.
+         * Gets the {@link GMime.Certificate} at the specified index.
+         * @param index index of {@link GMime.Certificate} to get
+         * @returns the {@link GMime.Certificate} at the specified index or `null` if the index is out of range.
          */
         get_certificate(index: number): Certificate;
         /**
-         * Gets the index of the specified #GMimeCertificate inside the
-         * #GMimeCertificateList.
-         * @param cert a #GMimeCertificate
-         * @returns the index of the requested #GMimeCertificate within the #GMimeCertificateList or %-1 if it is not contained within the #GMimeCertificateList.
+         * Gets the index of the specified {@link GMime.Certificate} inside the
+         * {@link GMime.CertificateList}.
+         * @param cert a {@link GMime.Certificate}
+         * @returns the index of the requested {@link GMime.Certificate} within the {@link GMime.CertificateList} or %-1 if it is not contained within the {@link GMime.CertificateList}.
          */
         index_of(cert: Certificate): number;
         /**
-         * Inserts a #GMimeCertificate into the #GMimeCertificateList at the specified
+         * Inserts a {@link GMime.Certificate} into the {@link GMime.CertificateList} at the specified
          * index.
          * @param index index to insert at
-         * @param cert a #GMimeCertificate
+         * @param cert a {@link GMime.Certificate}
          */
         insert(index: number, cert: Certificate): void;
         /**
          * Gets the length of the list.
-         * @returns the number of #GMimeCertificate objects in the list.
+         * @returns the number of {@link GMime.Certificate} objects in the list.
          */
         length(): number;
         /**
-         * Removes a #GMimeCertificate from the #GMimeCertificateList.
-         * @param cert a #GMimeCertificate
-         * @returns %TRUE if the specified #GMimeCertificate was removed or %FALSE otherwise.
+         * Removes a {@link GMime.Certificate} from the {@link GMime.CertificateList}.
+         * @param cert a {@link GMime.Certificate}
+         * @returns `true` if the specified {@link GMime.Certificate} was removed or `false` otherwise.
          */
         remove(cert: Certificate): boolean;
         /**
-         * Removes a #GMimeCertificate from the #GMimeCertificateList at the specified
+         * Removes a {@link GMime.Certificate} from the {@link GMime.CertificateList} at the specified
          * index.
          * @param index index of the certificate to remove
-         * @returns %TRUE if a #GMimeCertificate was removed or %FALSE otherwise.
+         * @returns `true` if a {@link GMime.Certificate} was removed or `false` otherwise.
          */
         remove_at(index: number): boolean;
         /**
-         * Sets the #GMimeCertificate at the specified index to `cert`.
-         * @param index index of #GMimeCertificate to set
-         * @param cert a #GMimeCertificate
+         * Sets the {@link GMime.Certificate} at the specified index to `cert`.
+         * @param index index of {@link GMime.Certificate} to set
+         * @param cert a {@link GMime.Certificate}
          */
         set_certificate(index: number, cert: Certificate): void;
     }
@@ -2206,6 +2268,7 @@ export namespace GMime {
 
     /**
      * A data structure representing a Content-Disposition.
+     * @gir-type Class
      */
     class ContentDisposition extends GObject.Object {
         static $gtype: GObject.GType<ContentDisposition>;
@@ -2235,16 +2298,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContentDisposition.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentDisposition.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContentDisposition.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentDisposition.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContentDisposition.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContentDisposition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2254,8 +2320,8 @@ export namespace GMime {
         // Static methods
 
         /**
-         * Parses the input string into a #GMimeContentDisposition object.
-         * @param options a #GMimeParserOptions or %NULL
+         * Parses the input string into a {@link GMime.ContentDisposition} object.
+         * @param options a {@link GMime.ParserOptions} or `null`
          * @param str Content-Disposition field value
          */
         static parse(options: ParserOptions | null, str: string): ContentDisposition;
@@ -2264,19 +2330,19 @@ export namespace GMime {
 
         /**
          * Encodes the Content-Disposition header.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @returns a new string containing the encoded header value.
          */
         encode(options?: FormatOptions | null): string;
         /**
-         * Gets the disposition or %NULL on fail.
+         * Gets the disposition or `null` on fail.
          * @returns the disposition string which is probably one of #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE.
          */
         get_disposition(): string;
         /**
          * Gets the parameter value specified by `name` if it's available.
          * @param name parameter name
-         * @returns the value of the requested parameter or %NULL if the parameter is not set. If the parameter is set, the returned string will be in UTF-8.
+         * @returns the value of the requested parameter or `null` if the parameter is not set. If the parameter is set, the returned string will be in UTF-8.
          */
         get_parameter(name: string): string;
         /**
@@ -2286,7 +2352,7 @@ export namespace GMime {
         get_parameters(): ParamList;
         /**
          * Determines if a Content-Disposition has a value of "attachment".
-         * @returns %TRUE if the value matches "attachment", otherwise %FALSE.
+         * @returns `true` if the value matches "attachment", otherwise `false`.
          */
         is_attachment(): boolean;
         /**
@@ -2319,6 +2385,7 @@ export namespace GMime {
 
     /**
      * A data structure representing a Content-Type.
+     * @gir-type Class
      */
     class ContentType extends GObject.Object {
         static $gtype: GObject.GType<ContentType>;
@@ -2349,16 +2416,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContentType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentType.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContentType.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentType.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContentType.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContentType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2368,8 +2438,8 @@ export namespace GMime {
         // Static methods
 
         /**
-         * Parses the input string into a #GMimeContentType object.
-         * @param options a #GMimeParserOptions or %NULL
+         * Parses the input string into a {@link GMime.ContentType} object.
+         * @param options a {@link GMime.ParserOptions} or `null`
          * @param str input string containing a content-type (and params)
          */
         static parse(options: ParserOptions | null, str: string): ContentType;
@@ -2378,7 +2448,7 @@ export namespace GMime {
 
         /**
          * Encodes the Content-Disposition header.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @returns a new string containing the encoded header value.
          */
         encode(options?: FormatOptions | null): string;
@@ -2401,7 +2471,7 @@ export namespace GMime {
         /**
          * Gets the parameter value specified by `name` if it's available.
          * @param name parameter name (aka attribute)
-         * @returns the value of the requested parameter or %NULL if the parameter is not set. If the parameter is set, the returned string will be in UTF-8.
+         * @returns the value of the requested parameter or `null` if the parameter is not set. If the parameter is set, the returned string will be in UTF-8.
          */
         get_parameter(name: string): string;
         /**
@@ -2414,7 +2484,7 @@ export namespace GMime {
          * type object.
          * @param type MIME type to compare against
          * @param subtype MIME subtype to compare against
-         * @returns %TRUE if the MIME types match or %FALSE otherwise. You may use "*" in place of @type and/or @subtype as a wilcard.
+         * @returns `true` if the MIME types match or `false` otherwise. You may use "*" in place of `type` and/or `subtype` as a wilcard.
          */
         is_type(type: string, subtype: string): boolean;
         /**
@@ -2449,6 +2519,7 @@ export namespace GMime {
 
     /**
      * A crypto context for use with MIME.
+     * @gir-type Class
      */
     class CryptoContext extends GObject.Object {
         static $gtype: GObject.GType<CryptoContext>;
@@ -2477,16 +2548,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CryptoContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CryptoContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CryptoContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CryptoContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CryptoContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CryptoContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2499,47 +2573,51 @@ export namespace GMime {
          * Decrypts the ciphertext input stream and writes the resulting cleartext
          * to the output stream.
          *
-         * When non-%NULL, `session_key` should be a %NULL-terminated string,
-         * such as the one returned by g_mime_decrypt_result_get_session_key()
+         * When non-`null`, `session_key` should be a `null`-terminated string,
+         * such as the one returned by `g_mime_decrypt_result_get_session_key()`
          * from a previous decryption. If the `session_key` is not valid, decryption
          * will fail.
          *
          * If the encrypted input stream was also signed, the returned
-         * #GMimeDecryptResult will have a non-%NULL list of signatures, each with a
-         * #GMimeSignatureStatus (among other details about each signature).
+         * {@link GMime.DecryptResult} will have a non-`null` list of signatures, each with a
+         * {@link GMime.SignatureStatus} (among other details about each signature).
          *
-         * On success, the returned #GMimeDecryptResult will contain a list of
+         * On success, the returned {@link GMime.DecryptResult} will contain a list of
          * certificates, one for each recipient, that the original encrypted stream
          * was encrypted to.
          *
          * Note: It *may* be possible to maliciously design an encrypted stream such
          * that recursively decrypting it will result in an endless loop, causing
          * a denial of service attack on your application.
-         * @param flags a set of #GMimeDecryptFlags
-         * @param session_key the session key to use or %NULL
+         * @param flags a set of {@link GMime.DecryptFlags}
+         * @param session_key the session key to use or `null`
          * @param istream input/ciphertext stream
          * @param ostream output/cleartext stream
+         * @virtual
          */
         vfunc_decrypt(flags: DecryptFlags, session_key: string | null, istream: Stream, ostream: Stream): DecryptResult;
         /**
          * Gets the digest id based on the digest name.
          * @param name digest name
+         * @virtual
          */
         vfunc_digest_id(name: string): DigestAlgo;
         /**
          * Gets the digest name based on the digest id `digest`.
          * @param digest digest id
+         * @virtual
          */
         vfunc_digest_name(digest: DigestAlgo): string | null;
         /**
          * Encrypts (and optionally signs) the cleartext input stream and
          * writes the resulting ciphertext to the output stream.
          * @param sign sign as well as encrypt
-         * @param userid the key id (or email address) to use when signing (assuming @sign is %TRUE)
-         * @param flags a set of #GMimeEncryptFlags
+         * @param userid the key id (or email address) to use when signing (assuming `sign` is `true`)
+         * @param flags a set of {@link GMime.EncryptFlags}
          * @param recipients an array of recipient key ids and/or email addresses
          * @param istream cleartext input stream
          * @param ostream ciphertext output stream
+         * @virtual
          */
         vfunc_encrypt(
             sign: boolean,
@@ -2553,48 +2631,55 @@ export namespace GMime {
          * Exports the keys/certificates in `keys` to the stream `ostream` from
          * the key/certificate database controlled by `ctx`.
          *
-         * If `keys` is %NULL or contains only a %NULL element, then all keys
+         * If `keys` is `null` or contains only a `null` element, then all keys
          * will be exported.
-         * @param keys an array of key ids, terminated by a %NULL element
+         * @param keys an array of key ids, terminated by a `null` element
          * @param ostream output stream
+         * @virtual
          */
         vfunc_export_keys(keys: string[], ostream: Stream): number;
         /**
          * Gets the encryption protocol for the crypto context.
+         * @virtual
          */
         vfunc_get_encryption_protocol(): string | null;
         /**
          * Gets the key exchange protocol for the crypto context.
+         * @virtual
          */
         vfunc_get_key_exchange_protocol(): string | null;
         /**
          * Gets the signature protocol for the crypto context.
+         * @virtual
          */
         vfunc_get_signature_protocol(): string | null;
         /**
          * Imports a stream of keys/certificates contained within `istream`
          * into the key/certificate database controlled by `ctx`.
          * @param istream input stream (containing keys)
+         * @virtual
          */
         vfunc_import_keys(istream: Stream): number;
         /**
          * Signs the input stream and writes the resulting signature to the output stream.
-         * @param detach %TRUE if @ostream should be the detached signature; otherwise, %FALSE
+         * @param detach `true` if `ostream` should be the detached signature; otherwise, `false`
          * @param userid private key to use to sign the stream
          * @param istream input stream
          * @param ostream output stream
+         * @virtual
          */
         vfunc_sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number;
         /**
          * Verifies the signature. If `istream` is a clearsigned stream, you
-         * should pass %NULL as the `sigstream` parameter and may wish to
+         * should pass `null` as the `sigstream` parameter and may wish to
          * provide an `ostream` argument for GMime to output the original
          * plaintext into. Otherwise `sigstream` is assumed to be the signature
          * stream and is used to verify the integirity of the `istream`.
-         * @param flags a #GMimeVerifyFlags
+         * @param flags a {@link GMime.VerifyFlags}
          * @param istream input stream
          * @param sigstream detached-signature stream
          * @param ostream output stream for use with encapsulated signature input streams
+         * @virtual
          */
         vfunc_verify(
             flags: VerifyFlags,
@@ -2609,27 +2694,27 @@ export namespace GMime {
          * Decrypts the ciphertext input stream and writes the resulting cleartext
          * to the output stream.
          *
-         * When non-%NULL, `session_key` should be a %NULL-terminated string,
-         * such as the one returned by g_mime_decrypt_result_get_session_key()
+         * When non-`null`, `session_key` should be a `null`-terminated string,
+         * such as the one returned by `g_mime_decrypt_result_get_session_key()`
          * from a previous decryption. If the `session_key` is not valid, decryption
          * will fail.
          *
          * If the encrypted input stream was also signed, the returned
-         * #GMimeDecryptResult will have a non-%NULL list of signatures, each with a
-         * #GMimeSignatureStatus (among other details about each signature).
+         * {@link GMime.DecryptResult} will have a non-`null` list of signatures, each with a
+         * {@link GMime.SignatureStatus} (among other details about each signature).
          *
-         * On success, the returned #GMimeDecryptResult will contain a list of
+         * On success, the returned {@link GMime.DecryptResult} will contain a list of
          * certificates, one for each recipient, that the original encrypted stream
          * was encrypted to.
          *
          * Note: It *may* be possible to maliciously design an encrypted stream such
          * that recursively decrypting it will result in an endless loop, causing
          * a denial of service attack on your application.
-         * @param flags a set of #GMimeDecryptFlags
-         * @param session_key the session key to use or %NULL
+         * @param flags a set of {@link GMime.DecryptFlags}
+         * @param session_key the session key to use or `null`
          * @param istream input/ciphertext stream
          * @param ostream output/cleartext stream
-         * @returns a #GMimeDecryptResult on success or %NULL on error.
+         * @returns a {@link GMime.DecryptResult} on success or `null` on error.
          */
         decrypt(
             flags: DecryptFlags | null,
@@ -2646,15 +2731,15 @@ export namespace GMime {
         /**
          * Gets the digest name based on the digest id `digest`.
          * @param digest digest id
-         * @returns the equivalent digest name or %NULL on fail.
+         * @returns the equivalent digest name or `null` on fail.
          */
         digest_name(digest: DigestAlgo | null): string | null;
         /**
          * Encrypts (and optionally signs) the cleartext input stream and
          * writes the resulting ciphertext to the output stream.
          * @param sign sign as well as encrypt
-         * @param userid the key id (or email address) to use when signing (assuming @sign is %TRUE)
-         * @param flags a set of #GMimeEncryptFlags
+         * @param userid the key id (or email address) to use when signing (assuming `sign` is `true`)
+         * @param flags a set of {@link GMime.EncryptFlags}
          * @param recipients an array of recipient key ids and/or email addresses
          * @param istream cleartext input stream
          * @param ostream ciphertext output stream
@@ -2672,26 +2757,26 @@ export namespace GMime {
          * Exports the keys/certificates in `keys` to the stream `ostream` from
          * the key/certificate database controlled by `ctx`.
          *
-         * If `keys` is %NULL or contains only a %NULL element, then all keys
+         * If `keys` is `null` or contains only a `null` element, then all keys
          * will be exported.
-         * @param keys an array of key ids, terminated by a %NULL element
+         * @param keys an array of key ids, terminated by a `null` element
          * @param ostream output stream
          * @returns %0 on success or %-1 on fail.
          */
         export_keys(keys: string[], ostream: Stream): number;
         /**
          * Gets the encryption protocol for the crypto context.
-         * @returns the encryption protocol or %NULL if not supported.
+         * @returns the encryption protocol or `null` if not supported.
          */
         get_encryption_protocol(): string | null;
         /**
          * Gets the key exchange protocol for the crypto context.
-         * @returns the key exchange protocol or %NULL if not supported.
+         * @returns the key exchange protocol or `null` if not supported.
          */
         get_key_exchange_protocol(): string | null;
         /**
          * Gets the signature protocol for the crypto context.
-         * @returns the signature protocol or %NULL if not supported.
+         * @returns the signature protocol or `null` if not supported.
          */
         get_signature_protocol(): string | null;
         /**
@@ -2703,24 +2788,24 @@ export namespace GMime {
         import_keys(istream: Stream): number;
         /**
          * Signs the input stream and writes the resulting signature to the output stream.
-         * @param detach %TRUE if @ostream should be the detached signature; otherwise, %FALSE
+         * @param detach `true` if `ostream` should be the detached signature; otherwise, `false`
          * @param userid private key to use to sign the stream
          * @param istream input stream
          * @param ostream output stream
-         * @returns the #GMimeDigestAlgo used on success or %-1 on fail.
+         * @returns the {@link GMime.DigestAlgo} used on success or %-1 on fail.
          */
         sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number;
         /**
          * Verifies the signature. If `istream` is a clearsigned stream, you
-         * should pass %NULL as the `sigstream` parameter and may wish to
+         * should pass `null` as the `sigstream` parameter and may wish to
          * provide an `ostream` argument for GMime to output the original
          * plaintext into. Otherwise `sigstream` is assumed to be the signature
          * stream and is used to verify the integirity of the `istream`.
-         * @param flags a #GMimeVerifyFlags
+         * @param flags a {@link GMime.VerifyFlags}
          * @param istream input stream
          * @param sigstream detached-signature stream
          * @param ostream output stream for use with encapsulated signature input streams
-         * @returns a #GMimeSignatureList object containing the status of each signature or %NULL on error.
+         * @returns a {@link GMime.SignatureList} object containing the status of each signature or `null` on error.
          */
         verify(
             flags: VerifyFlags | null,
@@ -2741,6 +2826,7 @@ export namespace GMime {
 
     /**
      * A wrapper for a stream which may be encoded.
+     * @gir-type Class
      */
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
@@ -2772,16 +2858,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataWrapper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataWrapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DataWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2793,6 +2882,7 @@ export namespace GMime {
         /**
          * Writes the raw (decoded) data to the output stream.
          * @param stream output stream
+         * @virtual
          */
         vfunc_write_to_stream(stream: Stream): number;
 
@@ -2816,11 +2906,11 @@ export namespace GMime {
         /**
          * Replaces the wrapper's internal stream with `stream`. Don't forget,
          * if `stream` is not of the same encoding as the old stream, you'll
-         * want to call g_mime_data_wrapper_set_encoding() as well.
+         * want to call `g_mime_data_wrapper_set_encoding()` as well.
          *
          * Note: caller is responsible for its own reference on
          * `stream`.
-         * @param stream a #GMimeStream
+         * @param stream a {@link GMime.Stream}
          */
         set_stream(stream: Stream): void;
         /**
@@ -2842,6 +2932,7 @@ export namespace GMime {
 
     /**
      * An object containing the results from decrypting an encrypted stream.
+     * @gir-type Class
      */
     class DecryptResult extends GObject.Object {
         static $gtype: GObject.GType<DecryptResult>;
@@ -2874,16 +2965,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DecryptResult.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DecryptResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DecryptResult.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DecryptResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DecryptResult.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DecryptResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2904,42 +2998,42 @@ export namespace GMime {
         get_mdc(): DigestAlgo;
         /**
          * Gets the list of certificates that the stream had been encrypted to.
-         * @returns a #GMimeCertificateList.
+         * @returns a {@link GMime.CertificateList}.
          */
         get_recipients(): CertificateList;
         /**
          * Get the session key used for this decryption.
-         * @returns the session key digest algorithm used, or %NULL if no session key was requested or found.
+         * @returns the session key digest algorithm used, or `null` if no session key was requested or found.
          */
         get_session_key(): string | null;
         /**
          * Gets a list of signatures if the encrypted stream had also been signed.
-         * @returns a #GMimeSignatureList or %NULL if the stream was not signed.
+         * @returns a {@link GMime.SignatureList} or `null` if the stream was not signed.
          */
         get_signatures(): SignatureList | null;
         /**
          * Set the cipher algorithm used.
-         * @param cipher a #GMimeCipherAlgo
+         * @param cipher a {@link GMime.CipherAlgo}
          */
         set_cipher(cipher: CipherAlgo | null): void;
         /**
          * Set the mdc digest algorithm used.
-         * @param mdc a #GMimeDigestAlgo
+         * @param mdc a {@link GMime.DigestAlgo}
          */
         set_mdc(mdc: DigestAlgo | null): void;
         /**
          * Sets the list of certificates that the stream had been encrypted to.
-         * @param recipients A #GMimeCertificateList
+         * @param recipients A {@link GMime.CertificateList}
          */
         set_recipients(recipients: CertificateList): void;
         /**
          * Set the session key to be returned by this decryption result.
-         * @param session_key a string representing the session key or %NULL to unset the key
+         * @param session_key a string representing the session key or `null` to unset the key
          */
         set_session_key(session_key?: string | null): void;
         /**
          * Sets the list of signatures.
-         * @param signatures A #GMimeSignatureList
+         * @param signatures A {@link GMime.SignatureList}
          */
         set_signatures(signatures: SignatureList): void;
     }
@@ -2954,7 +3048,8 @@ export namespace GMime {
     }
 
     /**
-     * Base class for filters used by #GMimeStreamFilter.
+     * Base class for filters used by {@link GMime.StreamFilter}.
+     * @gir-type Class
      */
     abstract class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
@@ -2989,16 +3084,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Filter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Filter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Filter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3011,20 +3109,24 @@ export namespace GMime {
          * Completes the filtering.
          * @param inbuf input buffer
          * @param prespace prespace buffer length
+         * @virtual
          */
         vfunc_complete(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
-         * Copies `filter` into a new #GMimeFilter object.
+         * Copies `filter` into a new {@link GMime.Filter} object.
+         * @virtual
          */
         vfunc_copy(): Filter;
         /**
          * Filters the input data and writes it to `out`.
          * @param inbuf input buffer
          * @param prespace prespace buffer length
+         * @virtual
          */
         vfunc_filter(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
          * Resets the filter.
+         * @virtual
          */
         vfunc_reset(): void;
 
@@ -3043,8 +3145,8 @@ export namespace GMime {
          */
         complete(inbuf: Uint8Array | string, prespace: number): [Uint8Array, number];
         /**
-         * Copies `filter` into a new #GMimeFilter object.
-         * @returns a duplicate of @filter.
+         * Copies `filter` into a new {@link GMime.Filter} object.
+         * @returns a duplicate of `filter`.
          */
         copy(): Filter;
         /**
@@ -3060,7 +3162,7 @@ export namespace GMime {
         /**
          * Ensure this much size is available for filter output (if required)
          * @param size requested size for the output buffer
-         * @param keep %TRUE if existing data in the output buffer should be kept
+         * @param keep `true` if existing data in the output buffer should be kept
          */
         set_size(size: number, keep: boolean): void;
     }
@@ -3076,6 +3178,7 @@ export namespace GMime {
 
     /**
      * A basic encoder/decoder filter for the MIME encodings.
+     * @gir-type Class
      */
     class FilterBasic extends Filter {
         static $gtype: GObject.GType<FilterBasic>;
@@ -3103,16 +3206,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterBasic.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterBasic.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterBasic.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterBasic.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterBasic.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3132,6 +3238,7 @@ export namespace GMime {
     /**
      * A filter for calculating the best encoding and/or charset to encode
      * the data passed through it.
+     * @gir-type Class
      */
     class FilterBest extends Filter {
         static $gtype: GObject.GType<FilterBest>;
@@ -3170,16 +3277,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterBest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterBest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterBest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterBest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterBest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterBest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3191,15 +3301,15 @@ export namespace GMime {
         /**
          * Calculates the best charset for encoding the content filtered
          * through the `best` filter.
-         * @returns the name of the charset most suitable for encoding the content that has been passed through the filter or %NULL if the filter was not configured to detect this.
+         * @returns the name of the charset most suitable for encoding the content that has been passed through the filter or `null` if the filter was not configured to detect this.
          */
         charset(): string;
         /**
          * Calculates the most efficient Content-Transfer-Encoding for the
          * content filtered through `best` that fits within the encoding
          * `constraint`.
-         * @param constraint a #GMimeEncodingConstraint
-         * @returns the best encoding for the content filtered by @best.
+         * @param constraint a {@link GMime.EncodingConstraint}
+         * @returns the best encoding for the content filtered by `best`.
          */
         encoding(constraint: EncodingConstraint | null): ContentEncoding;
     }
@@ -3215,6 +3325,7 @@ export namespace GMime {
 
     /**
      * A filter to convert between charsets.
+     * @gir-type Class
      */
     class FilterCharset extends Filter {
         static $gtype: GObject.GType<FilterCharset>;
@@ -3245,16 +3356,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterCharset.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterCharset.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterCharset.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterCharset.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterCharset.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterCharset.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3273,6 +3387,7 @@ export namespace GMime {
 
     /**
      * A filter for calculating the checksum of a stream.
+     * @gir-type Class
      */
     class FilterChecksum extends Filter {
         static $gtype: GObject.GType<FilterChecksum>;
@@ -3300,16 +3415,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterChecksum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterChecksum.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterChecksum.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterChecksum.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterChecksum.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterChecksum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3321,12 +3439,12 @@ export namespace GMime {
         /**
          * Outputs the checksum digest into `digest`.
          * @param digest the digest buffer
-         * @returns the number of bytes used of the @digest buffer.
+         * @returns the number of bytes used of the `digest` buffer.
          */
         get_digest(digest: Uint8Array | string): number;
         /**
          * Outputs the checksum digest as a newly allocated hexadecimal string.
-         * @returns the hexadecimal representation of the checksum. The returned string should be freed with g_free() when no longer needed.
+         * @returns the hexadecimal representation of the checksum. The returned string should be freed with `g_free()` when no longer needed.
          */
         get_string(): string;
     }
@@ -3342,6 +3460,7 @@ export namespace GMime {
 
     /**
      * A filter to convert a stream from Windows/DOS line endings to Unix line endings.
+     * @gir-type Class
      */
     class FilterDos2Unix extends Filter {
         static $gtype: GObject.GType<FilterDos2Unix>;
@@ -3371,16 +3490,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterDos2Unix.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterDos2Unix.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterDos2Unix.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterDos2Unix.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterDos2Unix.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterDos2Unix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3400,6 +3522,7 @@ export namespace GMime {
     /**
      * A filter for converting text/enriched or text/richtext textual
      * streams into text/html.
+     * @gir-type Class
      */
     class FilterEnriched extends Filter {
         static $gtype: GObject.GType<FilterEnriched>;
@@ -3429,16 +3552,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterEnriched.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterEnriched.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterEnriched.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterEnriched.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterEnriched.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterEnriched.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3457,6 +3583,7 @@ export namespace GMime {
 
     /**
      * A filter for armoring or escaping lines beginning with "From ".
+     * @gir-type Class
      */
     class FilterFrom extends Filter {
         static $gtype: GObject.GType<FilterFrom>;
@@ -3486,16 +3613,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterFrom.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterFrom.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterFrom.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterFrom.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterFrom.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterFrom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3514,6 +3644,7 @@ export namespace GMime {
 
     /**
      * A filter for compresing or decompressing a gzip stream.
+     * @gir-type Class
      */
     class FilterGZip extends Filter {
         static $gtype: GObject.GType<FilterGZip>;
@@ -3544,16 +3675,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterGZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterGZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterGZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterGZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterGZip.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3595,6 +3729,7 @@ export namespace GMime {
 
     /**
      * A filter for converting text/plain into text/html.
+     * @gir-type Class
      */
     class FilterHTML extends Filter {
         static $gtype: GObject.GType<FilterHTML>;
@@ -3628,16 +3763,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterHTML.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterHTML.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterHTML.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterHTML.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterHTML.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterHTML.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3656,6 +3794,8 @@ export namespace GMime {
 
     /**
      * A filter to detect OpenPGP markers.
+     * @gir-type Class
+     * @since 3.2
      */
     class FilterOpenPGP extends Filter {
         static $gtype: GObject.GType<FilterOpenPGP>;
@@ -3683,16 +3823,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterOpenPGP.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterOpenPGP.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterOpenPGP.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterOpenPGP.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterOpenPGP.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterOpenPGP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3708,7 +3851,7 @@ export namespace GMime {
         get_begin_offset(): number;
         /**
          * Gets the type of OpenPGP data that has been detected.
-         * @returns a #GMimeOpenPGPData value.
+         * @returns a {@link GMime.OpenPGPData} value.
          */
         get_data_type(): OpenPGPData;
         /**
@@ -3729,6 +3872,7 @@ export namespace GMime {
 
     /**
      * A filter to byte-stuff SMTP DATA.
+     * @gir-type Class
      */
     class FilterSmtpData extends Filter {
         static $gtype: GObject.GType<FilterSmtpData>;
@@ -3757,16 +3901,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterSmtpData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterSmtpData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterSmtpData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterSmtpData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterSmtpData.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterSmtpData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3785,6 +3932,7 @@ export namespace GMime {
 
     /**
      * A filter for stripping whitespace from the end of lines.
+     * @gir-type Class
      */
     class FilterStrip extends Filter {
         static $gtype: GObject.GType<FilterStrip>;
@@ -3812,16 +3960,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterStrip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterStrip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterStrip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterStrip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterStrip.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterStrip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3840,6 +3991,7 @@ export namespace GMime {
 
     /**
      * A filter to convert a stream from Windows/DOS line endings to Unix line endings.
+     * @gir-type Class
      */
     class FilterUnix2Dos extends Filter {
         static $gtype: GObject.GType<FilterUnix2Dos>;
@@ -3869,16 +4021,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterUnix2Dos.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterUnix2Dos.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterUnix2Dos.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterUnix2Dos.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterUnix2Dos.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterUnix2Dos.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3899,6 +4054,7 @@ export namespace GMime {
      * A filter for detecting whether or not a text stream claimed to be
      * iso-8859-X is really that charset or if it is really a
      * Windows-CP125x charset.
+     * @gir-type Class
      */
     class FilterWindows extends Filter {
         static $gtype: GObject.GType<FilterWindows>;
@@ -3928,16 +4084,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterWindows.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterWindows.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterWindows.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterWindows.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterWindows.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterWindows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3949,7 +4108,7 @@ export namespace GMime {
         /**
          * Determines whether or not a Windows-CP125# charset has been
          * detected so far.
-         * @returns %TRUE if the filtered stream has been detected to contain Windows-CP125# characters or %FALSE otherwise.
+         * @returns `true` if the filtered stream has been detected to contain Windows-CP125# characters or `false` otherwise.
          */
         is_windows_charset(): boolean;
         /**
@@ -3970,6 +4129,7 @@ export namespace GMime {
 
     /**
      * A filter for yEncoding or yDecoding a stream.
+     * @gir-type Class
      */
     class FilterYenc extends Filter {
         static $gtype: GObject.GType<FilterYenc>;
@@ -4002,16 +4162,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FilterYenc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterYenc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FilterYenc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FilterYenc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FilterYenc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FilterYenc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4053,6 +4216,7 @@ export namespace GMime {
 
     /**
      * A GnuPG crypto context.
+     * @gir-type Class
      */
     class GpgContext extends CryptoContext {
         static $gtype: GObject.GType<GpgContext>;
@@ -4076,16 +4240,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GpgContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GpgContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GpgContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4104,6 +4271,7 @@ export namespace GMime {
 
     /**
      * A message or mime-part header.
+     * @gir-type Class
      */
     class Header extends GObject.Object {
         static $gtype: GObject.GType<Header>;
@@ -4125,16 +4293,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Header.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Header.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Header.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Header.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Header.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Header.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4146,7 +4317,7 @@ export namespace GMime {
         /**
          * Parses the `value` and then re-formats it to conform to the formatting options,
          * folding the value if necessary.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value a Sender, From, Reply-To, To, Cc, or Bcc header value
          * @param charset a charset (note: unused)
          * @returns a newly allocated string containing the reformatted value.
@@ -4155,7 +4326,7 @@ export namespace GMime {
         /**
          * Parses the `value` and then re-formats it to conform to the formatting options,
          * folding the value if necessary.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value a Content-Disposition header value
          * @param charset a charset (note: unused)
          * @returns a newly allocated string containing the reformatted value.
@@ -4164,7 +4335,7 @@ export namespace GMime {
         /**
          * Parses the `value` and then re-formats it to conform to the formatting options,
          * folding the value if necessary.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value a Content-Type header value
          * @param charset a charset (note: unused)
          * @returns a newly allocated string containing the reformatted value.
@@ -4173,16 +4344,16 @@ export namespace GMime {
         /**
          * Parses the `value` and then re-formats it to conform to the formatting options,
          * folding the value if necessary.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value a header value
-         * @param charset a charset to use when encoding the @value
+         * @param charset a charset to use when encoding the `value`
          * @returns a newly allocated string containing the reformatted value.
          */
         format_default(options: FormatOptions | null, value: string, charset: string): string;
         /**
          * Parses the `value` and then re-formats it to conform to the formatting options,
          * folding the value if necessary.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value a Message-Id or Content-Id header value
          * @param charset a charset (note: unused)
          * @returns a newly allocated string containing the reformatted value.
@@ -4191,7 +4362,7 @@ export namespace GMime {
         /**
          * Parses the `value` and then re-formats it to conform to the formatting options,
          * folding the value if necessary.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value a Received header value
          * @param charset a charset (note: unused)
          * @returns a newly allocated string containing the reformatted value.
@@ -4200,7 +4371,7 @@ export namespace GMime {
         /**
          * Parses the `value` and then re-formats it to conform to the formatting options,
          * folding the value if necessary.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value a References or In-Reply-To header value
          * @param charset a charset (note: unused)
          * @returns a newly allocated string containing the reformatted value.
@@ -4208,7 +4379,7 @@ export namespace GMime {
         format_references(options: FormatOptions | null, value: string, charset: string): string;
         /**
          * Gets the header's name.
-         * @returns the header name or %NULL if invalid.
+         * @returns the header name or `null` if invalid.
          */
         get_name(): string;
         /**
@@ -4219,7 +4390,7 @@ export namespace GMime {
         /**
          * Gets the header's raw name. The raw header name is the complete string up to
          * (but not including) the ':' separating the header's name from its value. This
-         * string may be different from the value returned by g_mime_header_get_name()
+         * string may be different from the value returned by `g_mime_header_get_name()`
          * if the parsed message's header contained trailing whitespace after the header
          * name, such as: "Subject : this is the subject\r\n".
          * @returns the raw header name.
@@ -4227,12 +4398,12 @@ export namespace GMime {
         get_raw_name(): string;
         /**
          * Gets the header's raw (folded) value.
-         * @returns the header value or %NULL if invalid.
+         * @returns the header value or `null` if invalid.
          */
         get_raw_value(): string;
         /**
          * Gets the header's unfolded value.
-         * @returns the header's decoded value or %NULL if invalid.
+         * @returns the header's decoded value or `null` if invalid.
          */
         get_value(): string;
         /**
@@ -4242,15 +4413,15 @@ export namespace GMime {
         set_raw_value(raw_value: string): void;
         /**
          * Sets the header's decoded value.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param value the new header value
          * @param charset a charset
          */
         set_value(options: FormatOptions | null, value: string, charset?: string | null): void;
         /**
          * Write the header to the specified stream.
-         * @param options a #GMimeFormatOptions or %NULL
-         * @param stream a #GMimeStream
+         * @param options a {@link GMime.FormatOptions} or `null`
+         * @param stream a {@link GMime.Stream}
          * @returns the number of bytes written, or %-1 on fail.
          */
         write_to_stream(options: FormatOptions | null, stream: Stream): number;
@@ -4267,6 +4438,7 @@ export namespace GMime {
 
     /**
      * A list of message or mime-part headers.
+     * @gir-type Class
      */
     class HeaderList extends GObject.Object {
         static $gtype: GObject.GType<HeaderList>;
@@ -4294,16 +4466,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HeaderList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HeaderList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HeaderList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HeaderList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HeaderList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HeaderList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4313,7 +4488,7 @@ export namespace GMime {
         // Methods
 
         /**
-         * Appends a header. If `value` is %NULL, a space will be set aside for it
+         * Appends a header. If `value` is `null`, a space will be set aside for it
          * (useful for setting the order of headers before values can be
          * obtained for them) otherwise the header will be unset.
          * @param name header name
@@ -4322,13 +4497,13 @@ export namespace GMime {
          */
         append(name: string, value: string, charset?: string | null): void;
         /**
-         * Removes all of the headers from the #GMimeHeaderList.
+         * Removes all of the headers from the {@link GMime.HeaderList}.
          */
         clear(): void;
         /**
          * Checks whether or not a header exists.
          * @param name header name
-         * @returns %TRUE if the specified header exists or %FALSE otherwise.
+         * @returns `true` if the specified header exists or `false` otherwise.
          */
         contains(name: string): boolean;
         /**
@@ -4339,17 +4514,17 @@ export namespace GMime {
         /**
          * Gets the first header with the specified name.
          * @param name header name
-         * @returns a #GMimeHeader for the specified @name.
+         * @returns a {@link GMime.Header} for the specified `name`.
          */
         get_header(name: string): Header;
         /**
          * Gets the header at the specified `index` within the list.
          * @param index the 0-based index of the header
-         * @returns the header at position @index.
+         * @returns the header at position `index`.
          */
         get_header_at(index: number): Header;
         /**
-         * Prepends a header. If `value` is %NULL, a space will be set aside
+         * Prepends a header. If `value` is `null`, a space will be set aside
          * for it (useful for setting the order of headers before values can
          * be obtained for them) otherwise the header will be unset.
          * @param name header name
@@ -4360,7 +4535,7 @@ export namespace GMime {
         /**
          * Remove the first instance of the specified header.
          * @param name header name
-         * @returns %TRUE if the header was successfully removed or %FALSE if the specified header could not be found.
+         * @returns `true` if the header was successfully removed or `false` if the specified header could not be found.
          */
         remove(name: string): boolean;
         /**
@@ -4369,8 +4544,8 @@ export namespace GMime {
          */
         remove_at(index: number): void;
         /**
-         * Set the value of the specified header. If `value` is %NULL and the
-         * header, `name,` had not been previously set, a space will be set
+         * Set the value of the specified header. If `value` is `null` and the
+         * header, `name`, had not been previously set, a space will be set
          * aside for it (useful for setting the order of headers before values
          * can be obtained for them) otherwise the header will be unset.
          *
@@ -4382,18 +4557,21 @@ export namespace GMime {
          * @param charset a charset
          */
         set(name: string, value: string, charset?: string | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Allocates a string buffer containing the raw rfc822 headers
          * contained in `headers`.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @returns a string containing the header block.
          */
         to_string(options?: FormatOptions | null): string;
         /**
          * Write the headers to a stream.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param stream output stream
          * @returns the number of bytes written or %-1 on fail.
          */
@@ -4411,6 +4589,7 @@ export namespace GMime {
 
     /**
      * An RFC 2822 Address object.
+     * @gir-type Class
      */
     abstract class InternetAddress extends GObject.Object {
         static $gtype: GObject.GType<InternetAddress>;
@@ -4438,16 +4617,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternetAddress.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternetAddress.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InternetAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4456,38 +4638,45 @@ export namespace GMime {
 
         // Virtual methods
 
+        /**
+         * @param options
+         * @param flags
+         * @param linelen
+         * @param str
+         * @virtual
+         */
         vfunc_to_string(options: FormatOptions, flags: number, linelen: number, str: GLib.String): void;
 
         // Methods
 
         /**
          * Gets the charset to be used when encoding the name of the mailbox or group.
-         * @returns the charset to be used when encoding the name of the mailbox or group if available or %NULL otherwise.
+         * @returns the charset to be used when encoding the name of the mailbox or group if available or `null` otherwise.
          */
         get_charset(): string | null;
         /**
-         * Gets the display name of the #InternetAddress.
-         * @returns the name of the mailbox or group in a form suitable for display if available or %NULL otherwise. If the name is available, the returned string will be in UTF-8.
+         * Gets the display name of the {@link GMime.InternetAddress}.
+         * @returns the name of the mailbox or group in a form suitable for display if available or `null` otherwise. If the name is available, the returned string will be in UTF-8.
          */
         get_name(): string | null;
         /**
          * Set the charset to use for encoding the name of the mailbox or group.
-         * @param charset the charset to use when encoding the name or %NULL to use the defaults
+         * @param charset the charset to use when encoding the name or `null` to use the defaults
          */
         set_charset(charset?: string | null): void;
         /**
-         * Set the display name of the #InternetAddress.
+         * Set the display name of the {@link GMime.InternetAddress}.
          *
          * Note: The `name` string should be in UTF-8.
          * @param name the display name for the address group or mailbox
          */
         set_name(name: string): void;
         /**
-         * Allocates a string containing the contents of the #InternetAddress
+         * Allocates a string containing the contents of the {@link GMime.InternetAddress}
          * object.
-         * @param options a #GMimeFormatOptions or %NULL
-         * @param encode %TRUE if the address should be rfc2047 encoded
-         * @returns the #InternetAddress object as an allocated string in rfc822 format.
+         * @param options a {@link GMime.FormatOptions} or `null`
+         * @param encode `true` if the address should be rfc2047 encoded
+         * @returns the {@link GMime.InternetAddress} object as an allocated string in rfc822 format.
          */
         to_string(options: FormatOptions | null, encode: boolean): string;
     }
@@ -4503,6 +4692,7 @@ export namespace GMime {
 
     /**
      * An RFC 2822 Group address.
+     * @gir-type Class
      */
     class InternetAddressGroup extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressGroup>;
@@ -4531,16 +4721,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InternetAddressGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternetAddressGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InternetAddressGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternetAddressGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InternetAddressGroup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InternetAddressGroup.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4553,19 +4746,19 @@ export namespace GMime {
 
         /**
          * Add a contact to the internet address group.
-         * @param member a #InternetAddress
+         * @param member a {@link GMime.InternetAddress}
          * @returns the index of the newly added member.
          */
         add_member(member: InternetAddress): number;
         /**
-         * Gets the #InternetAddressList containing the group members of an
+         * Gets the {@link GMime.InternetAddressList} containing the group members of an
          * rfc822 group address.
-         * @returns a #InternetAddressList containing the members of @group.
+         * @returns a {@link GMime.InternetAddressList} containing the members of `group`.
          */
         get_members(): InternetAddressList;
         /**
          * Set the members of the internet address group.
-         * @param members a #InternetAddressList
+         * @param members a {@link GMime.InternetAddressList}
          */
         set_members(members: InternetAddressList): void;
     }
@@ -4580,7 +4773,8 @@ export namespace GMime {
     }
 
     /**
-     * A collection of #InternetAddress objects.
+     * A collection of {@link GMime.InternetAddress} objects.
+     * @gir-type Class
      */
     class InternetAddressList extends GObject.Object {
         static $gtype: GObject.GType<InternetAddressList>;
@@ -4609,16 +4803,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InternetAddressList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternetAddressList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InternetAddressList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternetAddressList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InternetAddressList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InternetAddressList.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4631,7 +4828,7 @@ export namespace GMime {
 
         /**
          * Construct a list of internet addresses from the given string.
-         * @param options a #GMimeParserOptions or %NULL
+         * @param options a {@link GMime.ParserOptions} or `null`
          * @param str a string containing internet addresses
          */
         static parse(options: ParserOptions | null, str: string): InternetAddressList | null;
@@ -4639,19 +4836,19 @@ export namespace GMime {
         // Methods
 
         /**
-         * Adds an #InternetAddress to the #InternetAddressList.
-         * @param ia a #InternetAddress
-         * @returns the index of the added #InternetAddress.
+         * Adds an {@link GMime.InternetAddress} to the {@link GMime.InternetAddressList}.
+         * @param ia a {@link GMime.InternetAddress}
+         * @returns the index of the added {@link GMime.InternetAddress}.
          */
         add(ia: InternetAddress): number;
         /**
          * Adds all of the addresses in `append` to `list`.
-         * @param append a #InternetAddressList
+         * @param append a {@link GMime.InternetAddressList}
          */
         append(append: InternetAddressList): void;
         /**
          * Adds all of the addresses in `str` to `list`.
-         * @param options a #GMimeParserOptions or %NULL
+         * @param options a {@link GMime.ParserOptions} or `null`
          * @param str a string containing internet addresses
          */
         append_parse(options: ParserOptions | null, str: string): void;
@@ -4660,74 +4857,74 @@ export namespace GMime {
          */
         clear(): void;
         /**
-         * Checks whether or not the specified #InternetAddress is contained
-         * within the #InternetAddressList.
-         * @param ia a #InternetAddress
-         * @returns %TRUE if the specified #InternetAddress is contained within the specified #InternetAddressList or %FALSE otherwise.
+         * Checks whether or not the specified {@link GMime.InternetAddress} is contained
+         * within the {@link GMime.InternetAddressList}.
+         * @param ia a {@link GMime.InternetAddress}
+         * @returns `true` if the specified {@link GMime.InternetAddress} is contained within the specified {@link GMime.InternetAddressList} or `false` otherwise.
          */
         contains(ia: InternetAddress): boolean;
         /**
          * Writes the rfc2047-encoded rfc822 formatted addresses in `list` to
-         * `str,` folding appropriately.
-         * @param options a #GMimeFormatOptions or %NULL
+         * `str`, folding appropriately.
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param str string to write to
          */
         encode(options: FormatOptions | null, str: GLib.String): void;
         /**
-         * Gets the #InternetAddress at the specified index.
-         * @param index index of #InternetAddress to get
-         * @returns the #InternetAddress at the specified index or %NULL if the index is out of range.
+         * Gets the {@link GMime.InternetAddress} at the specified index.
+         * @param index index of {@link GMime.InternetAddress} to get
+         * @returns the {@link GMime.InternetAddress} at the specified index or `null` if the index is out of range.
          */
         get_address(index: number): InternetAddress;
         /**
-         * Gets the index of the specified #InternetAddress inside the
-         * #InternetAddressList.
-         * @param ia a #InternetAddress
-         * @returns the index of the requested #InternetAddress within the #InternetAddressList or %-1 if it is not contained within the #InternetAddressList.
+         * Gets the index of the specified {@link GMime.InternetAddress} inside the
+         * {@link GMime.InternetAddressList}.
+         * @param ia a {@link GMime.InternetAddress}
+         * @returns the index of the requested {@link GMime.InternetAddress} within the {@link GMime.InternetAddressList} or %-1 if it is not contained within the {@link GMime.InternetAddressList}.
          */
         index_of(ia: InternetAddress): number;
         /**
-         * Inserts an #InternetAddress into the #InternetAddressList at the
+         * Inserts an {@link GMime.InternetAddress} into the {@link GMime.InternetAddressList} at the
          * specified index.
          * @param index index to insert at
-         * @param ia a #InternetAddress
+         * @param ia a {@link GMime.InternetAddress}
          */
         insert(index: number, ia: InternetAddress): void;
         /**
          * Gets the length of the list.
-         * @returns the number of #InternetAddress objects in the list.
+         * @returns the number of {@link GMime.InternetAddress} objects in the list.
          */
         length(): number;
         /**
          * Inserts all of the addresses in `prepend` to the beginning of `list`.
-         * @param prepend a #InternetAddressList
+         * @param prepend a {@link GMime.InternetAddressList}
          */
         prepend(prepend: InternetAddressList): void;
         /**
-         * Removes an #InternetAddress from the #InternetAddressList.
-         * @param ia a #InternetAddress
-         * @returns %TRUE if the specified #InternetAddress was removed or %FALSE otherwise.
+         * Removes an {@link GMime.InternetAddress} from the {@link GMime.InternetAddressList}.
+         * @param ia a {@link GMime.InternetAddress}
+         * @returns `true` if the specified {@link GMime.InternetAddress} was removed or `false` otherwise.
          */
         remove(ia: InternetAddress): boolean;
         /**
-         * Removes an #InternetAddress from the #InternetAddressList at the
+         * Removes an {@link GMime.InternetAddress} from the {@link GMime.InternetAddressList} at the
          * specified index.
          * @param index index to remove
-         * @returns %TRUE if an #InternetAddress was removed or %FALSE otherwise.
+         * @returns `true` if an {@link GMime.InternetAddress} was removed or `false` otherwise.
          */
         remove_at(index: number): boolean;
         /**
-         * Sets the #InternetAddress at the specified index to `ia`.
-         * @param index index of #InternetAddress to set
-         * @param ia a #InternetAddress
+         * Sets the {@link GMime.InternetAddress} at the specified index to `ia`.
+         * @param index index of {@link GMime.InternetAddress} to set
+         * @param ia a {@link GMime.InternetAddress}
          */
         set_address(index: number, ia: InternetAddress): void;
         /**
          * Allocates a string buffer containing the rfc822 formatted addresses
          * in `list`.
-         * @param options a #GMimeFormatOptions or %NULL
-         * @param encode %TRUE if the address should be rfc2047 encoded
-         * @returns a string containing the list of addresses in rfc822 format or %NULL if no addresses are contained in the list.
+         * @param options a {@link GMime.FormatOptions} or `null`
+         * @param encode `true` if the address should be rfc2047 encoded
+         * @returns a string containing the list of addresses in rfc822 format or `null` if no addresses are contained in the list.
          */
         to_string(options: FormatOptions | null, encode: boolean): string | null;
     }
@@ -4743,6 +4940,7 @@ export namespace GMime {
 
     /**
      * An RFC 2822 Mailbox address.
+     * @gir-type Class
      */
     class InternetAddressMailbox extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressMailbox>;
@@ -4773,16 +4971,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InternetAddressMailbox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternetAddressMailbox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InternetAddressMailbox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternetAddressMailbox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InternetAddressMailbox.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InternetAddressMailbox.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4821,6 +5022,7 @@ export namespace GMime {
 
     /**
      * A MIME Message object.
+     * @gir-type Class
      */
     class Message extends Object {
         static $gtype: GObject.GType<Message>;
@@ -4855,16 +5057,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4876,9 +5081,9 @@ export namespace GMime {
         /**
          * Add a mailbox of a chosen type to the MIME message.
          *
-         * Note: The `name` (and `addr)` strings should be in UTF-8.
-         * @param type A #GMimeAddressType
-         * @param name The name of the mailbox (or %NULL)
+         * Note: The `name` (and `addr`) strings should be in UTF-8.
+         * @param type A {@link GMime.AddressType}
+         * @param name The name of the mailbox (or `null`)
          * @param addr The address of the mailbox
          */
         add_mailbox(type: AddressType | null, name: string | null, addr: string): void;
@@ -4889,36 +5094,36 @@ export namespace GMime {
         foreach(callback: ObjectForeachFunc): void;
         /**
          * Gets a list of addresses of the specified `type` from the `message`.
-         * @param type A #GMimeAddressType
-         * @returns a list of addresses of the specified @type from the @message.
+         * @param type A {@link GMime.AddressType}
+         * @returns a list of addresses of the specified `type` from the `message`.
          */
         get_addresses(type: AddressType | null): InternetAddressList;
         /**
          * Gets the complete list of recipients for `message`.
-         * @returns a newly allocated #InternetAddressList containing all recipients of the message or %NULL if no recipients are set.
+         * @returns a newly allocated {@link GMime.InternetAddressList} containing all recipients of the message or `null` if no recipients are set.
          */
         get_all_recipients(): InternetAddressList;
         /**
-         * Creates a new #GMimeAutocryptHeaderList of relevant headers of the
+         * Creates a new {@link GMime.AutocryptHeaderList} of relevant headers of the
          * given type based on the recipient(s) of an e-mail message.
          *
          * Returns the same object as
-         * #g_mime_message_get_autocrypt_gossip_headers_with_inner_part , but
+         * `g_mime_message_get_autocrypt_gossip_headers_with_inner_part` , but
          * handles decryption and cleanup automatically.
          *
          * `flags` and `session_key` are passed through to
-         * #g_mime_multipart_encrypted_decrypt, as needed.
+         * `g_mime_multipart_encrypted_decrypt`, as needed.
          *
-         * If the message is not actually an encrypted message, returns %NULL:
+         * If the message is not actually an encrypted message, returns `null`:
          * it should be ignored for purposes of evaluating gossip.
          *
-         * If decryption fails, returns %NULL.  In this case, an exception
+         * If decryption fails, returns `null`.  In this case, an exception
          * will be set on `err` to provide information about the decryption
          * failure.
-         * @param now a #GDateTime object, or %NULL
-         * @param flags a #GMimeDecryptFlags, to be used during decryption
-         * @param session_key session key to use or %NULL
-         * @returns a new #GMimeAutocryptHeaderList object, or %NULL on error.
+         * @param now a {@link GLib.DateTime} object, or `null`
+         * @param flags a {@link GMime.DecryptFlags}, to be used during decryption
+         * @param session_key session key to use or `null`
+         * @returns a new {@link GMime.AutocryptHeaderList} object, or `null` on error.
          */
         get_autocrypt_gossip_headers(
             now: GLib.DateTime | null,
@@ -4926,7 +5131,7 @@ export namespace GMime {
             session_key?: string | null,
         ): AutocryptHeaderList | null;
         /**
-         * Creates a new #GMimeAutocryptHeaderList of relevant headers of the
+         * Creates a new {@link GMime.AutocryptHeaderList} of relevant headers of the
          * given type based on the recipient(s) of an e-mail message.
          *
          * You must pass the decrypted inner part of the message to this
@@ -4935,7 +5140,7 @@ export namespace GMime {
          *
          * If you don't already have the decrypted inner part available to
          * you, you probably want to use
-         * #g_mime_message_get_autocrypt_gossip_headers instead.
+         * `g_mime_message_get_autocrypt_gossip_headers` instead.
          *
          * Each header in the returned list will:
          *
@@ -4944,7 +5149,7 @@ export namespace GMime {
          *  - be complete
          *
          * If no Autocrypt header is found for a recipient, no
-         * #GMimeAutocryptHeader will be in the list associated with that e-mail address.
+         * {@link GMime.AutocryptHeader} will be in the list associated with that e-mail address.
          *
          * Note that the following types of Autocrypt headers will not be
          * returned by this function:
@@ -4957,33 +5162,33 @@ export namespace GMime {
          *
          * On error (e.g. if this version of GMime cannot handle the requested
          * Autocrypt type, or if a parameter is missing or malformed), returns
-         * %NULL
+         * `null`
          *
          * The returned Autocrypt headers will have their effective_date set
          * to the earliest of either:
          *
          * - the Date: header of the message or
-         * - `now` (or the current time, if `now` is %NULL)
-         * @param now a #GDateTime object, or %NULL
-         * @param inner_part a #GMimeObject which is the cleartext part of the inner message
-         * @returns a new #GMimeAutocryptHeaderList object, or %NULL on error.
+         * - `now` (or the current time, if `now` is `null`)
+         * @param now a {@link GLib.DateTime} object, or `null`
+         * @param inner_part a {@link GMime.Object} which is the cleartext part of the inner message
+         * @returns a new {@link GMime.AutocryptHeaderList} object, or `null` on error.
          */
         get_autocrypt_gossip_headers_from_inner_part(
             now: GLib.DateTime | null,
             inner_part: Object,
         ): AutocryptHeaderList | null;
         /**
-         * Creates a new #GMimeAutocryptHeader based on the relevant Autocrypt
+         * Creates a new {@link GMime.AutocryptHeader} based on the relevant Autocrypt
          * header associated with the sender of an e-mail message.
          *
          * If the message has no sender in the From: field, or has more than
-         * one sender, then this function will return %NULL.  Autocrypt should
+         * one sender, then this function will return `null`.  Autocrypt should
          * ignore the message entirely.
          *
          * If there is one sender, but no single Autocrypt header is found
-         * that matches that e-mail address, a #GMimeAutocryptHeader will be
+         * that matches that e-mail address, a {@link GMime.AutocryptHeader} will be
          * returned for the sender, but it will be incomplete (see
-         * #g_mime_autocrypt_header_is_complete).
+         * `g_mime_autocrypt_header_is_complete`).
          *
          * Note that the following types of Autocrypt headers will not be
          * returned by this function:
@@ -4997,9 +5202,9 @@ export namespace GMime {
          * the earliest of either:
          *
          * - the Date: header of the message or
-         * - `now` (or the current time, if `now` is %NULL)
-         * @param now a #GDateTime object, or %NULL
-         * @returns a new #GMimeAutocryptHeader object, or %NULL if the message should be ignored for purposes of Autocrypt.
+         * - `now` (or the current time, if `now` is `null`)
+         * @param now a {@link GLib.DateTime} object, or `null`
+         * @returns a new {@link GMime.AutocryptHeader} object, or `null` if the message should be ignored for purposes of Autocrypt.
          */
         get_autocrypt_header(now?: GLib.DateTime | null): AutocryptHeader | null;
         /**
@@ -5010,7 +5215,7 @@ export namespace GMime {
         /**
          * Attempts to identify the MIME part containing the body of the
          * message.
-         * @returns a #GMimeObject containing the textual content that appears to be the main body of the message, or %NULL if no body part has been set. Note: This function is NOT guaranteed to always work as it makes some assumptions that are not necessarily true. It is recommended that you traverse the MIME structure yourself.
+         * @returns a {@link GMime.Object} containing the textual content that appears to be the main body of the message, or `null` if no body part has been set. Note: This function is NOT guaranteed to always work as it makes some assumptions that are not necessarily true. It is recommended that you traverse the MIME structure yourself.
          */
         get_body(): Object | null;
         /**
@@ -5020,7 +5225,7 @@ export namespace GMime {
         get_cc(): InternetAddressList;
         /**
          * Gets the parsed date and time value from the Date header.
-         * @returns a #GDateTime on success or %NULL if the date could not be parsed.
+         * @returns a {@link GLib.DateTime} on success or `null` if the date could not be parsed.
          */
         get_date(): GLib.DateTime | null;
         /**
@@ -5030,12 +5235,12 @@ export namespace GMime {
         get_from(): InternetAddressList;
         /**
          * Gets the Message-Id header of `message`.
-         * @returns the Message-Id of a message, or %NULL if not specified.
+         * @returns the Message-Id of a message, or `null` if not specified.
          */
         get_message_id(): string | null;
         /**
          * Gets the toplevel MIME part contained within `message`.
-         * @returns the toplevel MIME part of @message, or %NULL if none is present.
+         * @returns the toplevel MIME part of `message`, or `null` if none is present.
          */
         get_mime_part(): Object | null;
         /**
@@ -5050,7 +5255,7 @@ export namespace GMime {
         get_sender(): InternetAddressList;
         /**
          * Gets the subject of the `message`.
-         * @returns the subject of the @message in a form suitable for display or %NULL if no subject is set. If not %NULL, the returned string will be in UTF-8.
+         * @returns the subject of the `message` in a form suitable for display or `null` if no subject is set. If not `null`, the returned string will be in UTF-8.
          */
         get_subject(): string | null;
         /**
@@ -5059,12 +5264,12 @@ export namespace GMime {
          */
         get_to(): InternetAddressList;
         /**
-         * Splits `message` into an array of #GMimeMessage objects each
-         * containing a single #GMimeMessagePartial object containing
+         * Splits `message` into an array of {@link GMime.Message} objects each
+         * containing a single {@link GMime.MessagePartial} object containing
          * `max_size` bytes or fewer. `nparts` is set to the number of
-         * #GMimeMessagePartial objects created.
+         * {@link GMime.MessagePartial} objects created.
          * @param max_size max size
-         * @returns an array of #GMimeMessage objects and sets @nparts to the number of messages returned or %NULL on fail.
+         * @returns an array of {@link GMime.Message} objects and sets `nparts` to the number of messages returned or `null` on fail.
          */
         partial_split_message(max_size: number): Message[] | null;
         /**
@@ -5087,7 +5292,7 @@ export namespace GMime {
          *
          * Note: The `subject` string should be in UTF-8.
          * @param subject Subject string
-         * @param charset The charset to use for encoding the subject or %NULL to use the default
+         * @param charset The charset to use for encoding the subject or `null` to use the default
          */
         set_subject(subject: string, charset?: string | null): void;
     }
@@ -5103,6 +5308,7 @@ export namespace GMime {
 
     /**
      * A message/rfc822 or message/news MIME part.
+     * @gir-type Class
      */
     class MessagePart extends Object {
         static $gtype: GObject.GType<MessagePart>;
@@ -5136,16 +5342,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MessagePart.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessagePart.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MessagePart.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessagePart.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MessagePart.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MessagePart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5156,7 +5365,7 @@ export namespace GMime {
 
         /**
          * Gets the message object on the message part object `part`.
-         * @returns the message part contained within @part.
+         * @returns the message part contained within `part`.
          */
         get_message(): Message;
         /**
@@ -5177,6 +5386,7 @@ export namespace GMime {
 
     /**
      * A message/partial MIME part.
+     * @gir-type Class
      */
     class MessagePartial extends Part {
         static $gtype: GObject.GType<MessagePartial>;
@@ -5210,16 +5420,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MessagePartial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessagePartial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MessagePartial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessagePartial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MessagePartial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MessagePartial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5239,7 +5452,7 @@ export namespace GMime {
 
         /**
          * Gets the message/partial id parameter value.
-         * @returns the message/partial id or %NULL on fail.
+         * @returns the message/partial id or `null` on fail.
          */
         get_id(): string;
         /**
@@ -5266,6 +5479,7 @@ export namespace GMime {
 
     /**
      * A base MIME multipart object.
+     * @gir-type Class
      */
     class Multipart extends Object {
         static $gtype: GObject.GType<Multipart>;
@@ -5299,16 +5513,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Multipart.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Multipart.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Multipart.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Multipart.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Multipart.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Multipart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5319,58 +5536,69 @@ export namespace GMime {
 
         /**
          * Appends a mime part to `multipart`.
-         * @param part a #GMimeObject
+         * @param part a {@link GMime.Object}
+         * @virtual
          */
         vfunc_add(part: Object): void;
         /**
          * Removes all subparts from `multipart`.
+         * @virtual
          */
         vfunc_clear(): void;
         /**
          * Checks if `part` is contained within `multipart`.
-         * @param part a #GMimeObject
+         * @param part a {@link GMime.Object}
+         * @virtual
          */
         vfunc_contains(part: Object): boolean;
         /**
          * Gets the boundary on the multipart. If the internal boundary is
-         * %NULL, then an auto-generated boundary will be set on the multipart
+         * `null`, then an auto-generated boundary will be set on the multipart
          * and returned.
+         * @virtual
          */
         vfunc_get_boundary(): string;
         /**
          * Gets the number of parts contained within `multipart`.
+         * @virtual
          */
         vfunc_get_count(): number;
         /**
          * Gets the part at the specified `index` within the multipart.
          * @param index the 0-based index of the part
+         * @virtual
          */
         vfunc_get_part(index: number): Object;
         /**
          * Gets the 0-based index of `part` within `multipart`.
-         * @param part a #GMimeObject
+         * @param part a {@link GMime.Object}
+         * @virtual
          */
         vfunc_index_of(part: Object): number;
         /**
          * Inserts `part` into `multipart` at the specified `index`.
          * @param index the 0-based index to insert the part
-         * @param part a #GMimeObject
+         * @param part a {@link GMime.Object}
+         * @virtual
          */
         vfunc_insert(index: number, part: Object): void;
         /**
          * Removes the specified `part` from `multipart`.
-         * @param part a #GMimeObject
+         * @param part a {@link GMime.Object}
+         * @virtual
          */
         vfunc_remove(part: Object): boolean;
         /**
          * Removes the part at the specified `index` from `multipart`.
          * @param index the 0-based index of the part to remove
+         * @virtual
          */
         vfunc_remove_at(index: number): Object;
         /**
          * Sets `boundary` as the boundary on the multipart. If `boundary` is
-         * %NULL, then a boundary will be auto-generated for you.
-         * @param boundary boundary or %NULL to autogenerate one
+         * `null`, then a boundary will be auto-generated for you.
+         * @param boundary boundary or `null` to autogenerate one
+         * @virtual
          */
         vfunc_set_boundary(boundary: string): void;
 
@@ -5378,7 +5606,7 @@ export namespace GMime {
 
         /**
          * Appends a mime part to `multipart`.
-         * @param part a #GMimeObject
+         * @param part a {@link GMime.Object}
          */
         add(part: Object): void;
         /**
@@ -5387,25 +5615,25 @@ export namespace GMime {
         clear(): void;
         /**
          * Checks if `part` is contained within `multipart`.
-         * @param part a #GMimeObject
-         * @returns %TRUE if @part is a subpart of @multipart or %FALSE otherwise.
+         * @param part a {@link GMime.Object}
+         * @returns `true` if `part` is a subpart of `multipart` or `false` otherwise.
          */
         contains(part: Object): boolean;
         /**
-         * Recursively calls `callback` on each of `multipart'`s subparts.
-         * @param callback function to call for each of @multipart's   subparts.
+         * Recursively calls `callback` on each of `multipart`'s subparts.
+         * @param callback function to call for each of `multipart`'s   subparts.
          */
         foreach(callback: ObjectForeachFunc): void;
         /**
          * Gets the boundary on the multipart. If the internal boundary is
-         * %NULL, then an auto-generated boundary will be set on the multipart
+         * `null`, then an auto-generated boundary will be set on the multipart
          * and returned.
          * @returns the boundary on the multipart.
          */
         get_boundary(): string;
         /**
          * Gets the number of parts contained within `multipart`.
-         * @returns the number of parts contained within @multipart.
+         * @returns the number of parts contained within `multipart`.
          */
         get_count(): number;
         /**
@@ -5416,7 +5644,7 @@ export namespace GMime {
         /**
          * Gets the part at the specified `index` within the multipart.
          * @param index the 0-based index of the part
-         * @returns the part at position @index.
+         * @returns the part at position `index`.
          */
         get_part(index: number): Object;
         /**
@@ -5428,45 +5656,45 @@ export namespace GMime {
          * Gets the mime part with the content-id `content_id` from the
          * multipart `multipart`.
          * @param content_id the content id of the part to look for
-         * @returns the #GMimeObject whose content-id matches the search string, or %NULL if a match cannot be found.
+         * @returns the {@link GMime.Object} whose content-id matches the search string, or `null` if a match cannot be found.
          */
         get_subpart_from_content_id(content_id: string): Object;
         /**
          * Gets the 0-based index of `part` within `multipart`.
-         * @param part a #GMimeObject
-         * @returns the 0-based index of @part within @multipart or %-1 if not found.
+         * @param part a {@link GMime.Object}
+         * @returns the 0-based index of `part` within `multipart` or %-1 if not found.
          */
         index_of(part: Object): number;
         /**
          * Inserts `part` into `multipart` at the specified `index`.
          * @param index the 0-based index to insert the part
-         * @param part a #GMimeObject
+         * @param part a {@link GMime.Object}
          */
         insert(index: number, part: Object): void;
         /**
          * Removes the specified `part` from `multipart`.
-         * @param part a #GMimeObject
-         * @returns %TRUE if the part was removed or %FALSE otherwise.
+         * @param part a {@link GMime.Object}
+         * @returns `true` if the part was removed or `false` otherwise.
          */
         remove(part: Object): boolean;
         /**
          * Removes the part at the specified `index` from `multipart`.
          * @param index the 0-based index of the part to remove
-         * @returns the mime part that was removed or %NULL if the part was not contained within the multipart.
+         * @returns the mime part that was removed or `null` if the part was not contained within the multipart.
          */
         remove_at(index: number): Object;
         /**
          * Replaces the part at the specified `index` within `multipart` with
          * `replacement`.
          * @param index the 0-based index of the part to replace
-         * @param replacement a #GMimeObject to use as the replacement
-         * @returns the part that was replaced or %NULL if the part was not contained within the multipart.
+         * @param replacement a {@link GMime.Object} to use as the replacement
+         * @returns the part that was replaced or `null` if the part was not contained within the multipart.
          */
         replace(index: number, replacement: Object): Object;
         /**
          * Sets `boundary` as the boundary on the multipart. If `boundary` is
-         * %NULL, then a boundary will be auto-generated for you.
-         * @param boundary boundary or %NULL to autogenerate one
+         * `null`, then a boundary will be auto-generated for you.
+         * @param boundary boundary or `null` to autogenerate one
          */
         set_boundary(boundary: string): void;
         /**
@@ -5492,6 +5720,7 @@ export namespace GMime {
 
     /**
      * A multipart/encrypted MIME part.
+     * @gir-type Class
      */
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
@@ -5519,16 +5748,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultipartEncrypted.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultipartEncrypted.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MultipartEncrypted.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5541,11 +5773,11 @@ export namespace GMime {
          * Attempts to encrypt (and conditionally sign) the `entity` MIME part
          * to the public keys of `recipients` using the `ctx` encryption
          * context. If successful, a new multipart/encrypted object is returned.
-         * @param ctx a #GMimeCryptoContext
+         * @param ctx a {@link GMime.CryptoContext}
          * @param entity MIME part to encrypt
-         * @param sign %TRUE if the content should also be signed or %FALSE otherwise
-         * @param userid user id to use for signing (only used if @sign is %TRUE)
-         * @param flags a #GMimeEncryptFlags
+         * @param sign `true` if the content should also be signed or `false` otherwise
+         * @param userid user id to use for signing (only used if `sign` is `true`)
+         * @param flags a {@link GMime.EncryptFlags}
          * @param recipients an array of recipients to encrypt to
          */
         static encrypt(
@@ -5563,18 +5795,18 @@ export namespace GMime {
          * Attempts to decrypt the encrypted MIME part contained within the
          * multipart/encrypted object `encrypted`.
          *
-         * When non-%NULL, `session_key` should be a %NULL-terminated string,
-         * such as the one returned by g_mime_decrypt_result_get_session_key()
+         * When non-`null`, `session_key` should be a `null`-terminated string,
+         * such as the one returned by `g_mime_decrypt_result_get_session_key()`
          * from a previous decryption. If the `session_key` is not valid, decryption
          * will fail.
          *
-         * If `result` is non-%NULL, then on a successful decrypt operation, it will be
-         * updated to point to a newly-allocated #GMimeDecryptResult with signature
+         * If `result` is non-`null`, then on a successful decrypt operation, it will be
+         * updated to point to a newly-allocated {@link GMime.DecryptResult} with signature
          * status information as well as a list of recipients that the part was
          * encrypted to.
-         * @param flags a #GMimeDecryptFlags
-         * @param session_key session key to use or %NULL
-         * @returns the decrypted MIME part on success or %NULL on fail. If the decryption fails, an exception will be set on @err to provide information as to why the failure occurred.
+         * @param flags a {@link GMime.DecryptFlags}
+         * @param session_key session key to use or `null`
+         * @returns the decrypted MIME part on success or `null` on fail. If the decryption fails, an exception will be set on `err` to provide information as to why the failure occurred.
          */
         decrypt(flags: DecryptFlags | null, session_key: string | null): [Object | null, DecryptResult];
     }
@@ -5590,6 +5822,7 @@ export namespace GMime {
 
     /**
      * A multipart/signed MIME part.
+     * @gir-type Class
      */
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
@@ -5617,16 +5850,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultipartSigned.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultipartSigned.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MultipartSigned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5636,10 +5872,10 @@ export namespace GMime {
         // Static methods
 
         /**
-         * Attempts to sign the `content` MIME part with `userid'`s private key
+         * Attempts to sign the `content` MIME part with `userid`'s private key
          * using the `ctx` signing context. If successful, a new multipart/signed
          * object is returned.
-         * @param ctx a #GMimeCryptoContext
+         * @param ctx a {@link GMime.CryptoContext}
          * @param entity MIME part to sign
          * @param userid user id to sign with
          */
@@ -5650,8 +5886,8 @@ export namespace GMime {
         /**
          * Attempts to verify the signed MIME part contained within the
          * multipart/signed object `mps`.
-         * @param flags a #GMimeVerifyFlags
-         * @returns a new #GMimeSignatureList object on success or %NULL on fail. If the verification fails, an exception will be set on @err to provide information as to why the failure occurred.
+         * @param flags a {@link GMime.VerifyFlags}
+         * @returns a new {@link GMime.SignatureList} object on success or `null` on fail. If the verification fails, an exception will be set on `err` to provide information as to why the failure occurred.
          */
         verify(flags: VerifyFlags | null): SignatureList | null;
     }
@@ -5667,6 +5903,7 @@ export namespace GMime {
 
     /**
      * Base class for all MIME parts.
+     * @gir-type Class
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
@@ -5700,16 +5937,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5720,7 +5960,7 @@ export namespace GMime {
 
         /**
          * Registers the object type `object_type` for use with the
-         * g_mime_object_new_type() convenience function.
+         * `g_mime_object_new_type()` convenience function.
          *
          * Note: You may use the wildcard "*" to match any type and/or
          * subtype.
@@ -5736,27 +5976,51 @@ export namespace GMime {
 
         /**
          * Calculates and sets the most efficient Content-Transfer-Encoding
-         * for this #GMimeObject and all child parts based on the `constraint`
+         * for this {@link GMime.Object} and all child parts based on the `constraint`
          * provided.
-         * @param constraint a #GMimeEncodingConstraint
+         * @param constraint a {@link GMime.EncodingConstraint}
+         * @virtual
          */
         vfunc_encode(constraint: EncodingConstraint): void;
         /**
          * Allocates a string buffer containing all of the MIME object's raw
          * headers.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
+         * @virtual
          */
         vfunc_get_headers(options?: FormatOptions | null): string;
+        /**
+         * @param header
+         * @virtual
+         */
         vfunc_header_added(header: Header): void;
+        /**
+         * @param header
+         * @virtual
+         */
         vfunc_header_changed(header: Header): void;
+        /**
+         * @param header
+         * @virtual
+         */
         vfunc_header_removed(header: Header): void;
+        /**
+         * @virtual
+         */
         vfunc_headers_cleared(): void;
         /**
          * Sets the content-type for the specified MIME object and then
          * serializes it to the Content-Type header field.
-         * @param content_type a #GMimeContentType object
+         * @param content_type a {@link GMime.ContentType} object
+         * @virtual
          */
         vfunc_set_content_type(content_type: ContentType): void;
+        /**
+         * @param options
+         * @param content_only
+         * @param stream
+         * @virtual
+         */
         vfunc_write_to_stream(options: FormatOptions, content_only: boolean, stream: Stream): number;
 
         // Methods
@@ -5770,13 +6034,13 @@ export namespace GMime {
         append_header(header: string, value: string, charset?: string | null): void;
         /**
          * Calculates and sets the most efficient Content-Transfer-Encoding
-         * for this #GMimeObject and all child parts based on the `constraint`
+         * for this {@link GMime.Object} and all child parts based on the `constraint`
          * provided.
-         * @param constraint a #GMimeEncodingConstraint
+         * @param constraint a {@link GMime.EncodingConstraint}
          */
         encode(constraint: EncodingConstraint | null): void;
         /**
-         * Creates a new #GMimeAutocryptHeaderList of relevant headers of the
+         * Creates a new {@link GMime.AutocryptHeaderList} of relevant headers of the
          * given type based on the `addresses` of an `mime_part`.
          *
          * Each header in the returned list will:
@@ -5786,7 +6050,7 @@ export namespace GMime {
          *  - be complete
          *
          * If no Autocrypt header is found for an address, no
-         * #GMimeAutocryptHeader will be in the list associated with that e-mail address.
+         * {@link GMime.AutocryptHeader} will be in the list associated with that e-mail address.
          *
          * Note that the following types of Autocrypt headers will not be
          * returned by this function:
@@ -5799,17 +6063,17 @@ export namespace GMime {
          *
          * On error (e.g. if this version of GMime cannot handle the requested
          * Autocrypt type, or if a parameter is missing or malformed), returns
-         * %NULL
+         * `null`
          *
          * The returned Autocrypt headers will have it effective_date set to
          * `effective_date`
          *
          * if `keep_incomplete` isn't set, incompletes are removed
-         * @param effective_date a #GDateTime object
+         * @param effective_date a {@link GLib.DateTime} object
          * @param matchheader the header we want to match
-         * @param addresses a #InternetAddressList
-         * @param keep_incomplete %TRUE if the we should include incompletes
-         * @returns a new #GMimeAutocryptHeaderList object, or %NULL on error.
+         * @param addresses a {@link GMime.InternetAddressList}
+         * @param keep_incomplete `true` if the we should include incompletes
+         * @returns a new {@link GMime.AutocryptHeaderList} object, or `null` on error.
          */
         get_autocrypt_headers(
             effective_date: GLib.DateTime,
@@ -5818,15 +6082,15 @@ export namespace GMime {
             keep_incomplete: boolean,
         ): AutocryptHeaderList | null;
         /**
-         * Gets the #GMimeContentDisposition for the specified MIME object.
-         * @returns the #GMimeContentDisposition set on the MIME object.
+         * Gets the {@link GMime.ContentDisposition} for the specified MIME object.
+         * @returns the {@link GMime.ContentDisposition} set on the MIME object.
          */
         get_content_disposition(): ContentDisposition;
         /**
          * Gets the value of the Content-Disposition parameter specified by
-         * `name,` or %NULL if the parameter does not exist.
+         * `name`, or `null` if the parameter does not exist.
          * @param name parameter name
-         * @returns the value of the requested content-disposition param or %NULL if the param doesn't exist. If the param is set, the returned string will be in UTF-8.
+         * @returns the value of the requested content-disposition param or `null` if the param doesn't exist. If the param is set, the returned string will be in UTF-8.
          */
         get_content_disposition_parameter(name: string): string;
         /**
@@ -5835,8 +6099,8 @@ export namespace GMime {
          */
         get_content_id(): string;
         /**
-         * Gets the #GMimeContentType object for the given MIME object or
-         * %NULL on fail.
+         * Gets the {@link GMime.ContentType} object for the given MIME object or
+         * `null` on fail.
          * @returns the content-type object for the specified MIME object.
          */
         get_content_type(): ContentType;
@@ -5844,29 +6108,29 @@ export namespace GMime {
          * Gets the value of the content-type param `name` set on the MIME part
          * `object`.
          * @param name param name
-         * @returns the value of the requested content-type param or %NULL if the param doesn't exist. If the param is set, the returned string will be in UTF-8.
+         * @returns the value of the requested content-type param or `null` if the param doesn't exist. If the param is set, the returned string will be in UTF-8.
          */
         get_content_type_parameter(name: string): string;
         /**
-         * Gets the MIME object's disposition if set or %NULL otherwise.
+         * Gets the MIME object's disposition if set or `null` otherwise.
          * @returns the disposition string which is probably one of #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE.
          */
         get_disposition(): string;
         /**
          * Gets the value of the first header with the specified name.
          * @param header header name
-         * @returns the value of the requested header if it exists or %NULL otherwise.
+         * @returns the value of the requested header if it exists or `null` otherwise.
          */
         get_header(header: string): string;
         /**
          * Get the header list for `object`.
-         * @returns the #GMimeHeaderList for @object. Do not free this pointer when you are done with it.
+         * @returns the {@link GMime.HeaderList} for `object`. Do not free this pointer when you are done with it.
          */
         get_header_list(): HeaderList;
         /**
          * Allocates a string buffer containing all of the MIME object's raw
          * headers.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @returns an allocated string containing all of the raw MIME headers. Note: The returned string will not be suitable for display.
          */
         get_headers(options?: FormatOptions | null): string;
@@ -5880,13 +6144,13 @@ export namespace GMime {
         /**
          * Removed the specified header if it exists.
          * @param header header name
-         * @returns %TRUE if the header was removed or %FALSE if it could not be found.
+         * @returns `true` if the header was removed or `false` if it could not be found.
          */
         remove_header(header: string): boolean;
         /**
          * Set the content disposition for the specified mime part and then
          * serializes it to the Content-Disposition header field.
-         * @param disposition a #GMimeContentDisposition object
+         * @param disposition a {@link GMime.ContentDisposition} object
          */
         set_content_disposition(disposition: ContentDisposition): void;
         /**
@@ -5906,7 +6170,7 @@ export namespace GMime {
         /**
          * Sets the content-type for the specified MIME object and then
          * serializes it to the Content-Type header field.
-         * @param content_type a #GMimeContentType object
+         * @param content_type a {@link GMime.ContentType} object
          */
         set_content_type(content_type: ContentType): void;
         /**
@@ -5935,20 +6199,20 @@ export namespace GMime {
         set_header(header: string, value: string, charset?: string | null): void;
         /**
          * Allocates a string buffer containing the contents of `object`.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @returns an allocated string containing the contents of the mime object.
          */
         to_string(options?: FormatOptions | null): string;
         /**
          * Write only the content of the MIME object to `stream`.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param stream stream
          * @returns the number of bytes written or %-1 on fail.
          */
         write_content_to_stream(options: FormatOptions | null, stream: Stream): number;
         /**
          * Write the headers and content of the MIME object to `stream`.
-         * @param options a #GMimeFormatOptions or %NULL
+         * @param options a {@link GMime.FormatOptions} or `null`
          * @param stream stream
          * @returns the number of bytes written or %-1 on fail.
          */
@@ -5966,6 +6230,7 @@ export namespace GMime {
 
     /**
      * A parameter name/value pair as used in the Content-Type and Content-Disposition headers.
+     * @gir-type Class
      */
     class Param extends GObject.Object {
         static $gtype: GObject.GType<Param>;
@@ -5996,16 +6261,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Param.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Param.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Param.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Param.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Param.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Param.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6041,12 +6309,12 @@ export namespace GMime {
         get_value(): string;
         /**
          * Sets the parameter charset used for encoding the value.
-         * @param charset the charset or %NULL to use the default
+         * @param charset the charset or `null` to use the default
          */
         set_charset(charset: string): void;
         /**
          * Sets the encoding method used for encoding the value.
-         * @param method a #GMimeParamEncodingMethod
+         * @param method a {@link GMime.ParamEncodingMethod}
          */
         set_encoding_method(method: ParamEncodingMethod | null): void;
         /**
@@ -6072,6 +6340,7 @@ export namespace GMime {
 
     /**
      * A list of Content-Type or Content-Disposition parameters.
+     * @gir-type Class
      */
     class ParamList extends GObject.Object {
         static $gtype: GObject.GType<ParamList>;
@@ -6095,16 +6364,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParamList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParamList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParamList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParamList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParamList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6115,7 +6387,7 @@ export namespace GMime {
 
         /**
          * Parses the input string into a parameter list.
-         * @param options a #GMimeParserOptions or %NULL
+         * @param options a {@link GMime.ParserOptions} or `null`
          * @param str a string to parse
          */
         static parse(options: ParserOptions, str: string): ParamList;
@@ -6127,38 +6399,38 @@ export namespace GMime {
          */
         clear(): void;
         /**
-         * Encodes the parameter list into `str,` folding lines if required.
-         * @param options a #GMimeFormatOptions or %NULL
-         * @param fold %TRUE if the parameter list should be folded; otherwise, %FALSE
+         * Encodes the parameter list into `str`, folding lines if required.
+         * @param options a {@link GMime.FormatOptions} or `null`
+         * @param fold `true` if the parameter list should be folded; otherwise, `false`
          */
         encode(options: FormatOptions | null, fold: boolean): GLib.String;
         /**
-         * Gets the #GMimeParam with the given `name`.
+         * Gets the {@link GMime.Param} with the given `name`.
          * @param name the name of the parameter
-         * @returns the requested #GMimeParam.
+         * @returns the requested {@link GMime.Param}.
          */
         get_parameter(name: string): Param;
         /**
-         * Gets the #GMimeParam at the specified `index`.
+         * Gets the {@link GMime.Param} at the specified `index`.
          * @param index the index of the requested parameter
-         * @returns the #GMimeParam at the specified index.
+         * @returns the {@link GMime.Param} at the specified index.
          */
         get_parameter_at(index: number): Param;
         /**
          * Gets the length of the list.
-         * @returns the number of #GMimeParam items in the list.
+         * @returns the number of {@link GMime.Param} items in the list.
          */
         length(): number;
         /**
-         * Removes a parameter from the #GMimeParamList.
+         * Removes a parameter from the {@link GMime.ParamList}.
          * @param name the name of the parameter
-         * @returns %TRUE if the specified parameter was removed or %FALSE otherwise.
+         * @returns `true` if the specified parameter was removed or `false` otherwise.
          */
         remove(name: string): boolean;
         /**
-         * Removes a #GMimeParam from the #GMimeParamList at the specified index.
+         * Removes a {@link GMime.Param} from the {@link GMime.ParamList} at the specified index.
          * @param index index of the param to remove
-         * @returns %TRUE if a #GMimeParam was removed or %FALSE otherwise.
+         * @returns `true` if a {@link GMime.Param} was removed or `false` otherwise.
          */
         remove_at(index: number): boolean;
         /**
@@ -6180,6 +6452,7 @@ export namespace GMime {
 
     /**
      * A MIME parser context.
+     * @gir-type Class
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
@@ -6210,16 +6483,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Parser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Parser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Parser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6230,19 +6506,19 @@ export namespace GMime {
 
         /**
          * Constructs a MIME message from `parser`.
-         * @param options a #GMimeParserOptions or %NULL
-         * @returns a MIME message or %NULL on fail.
+         * @param options a {@link GMime.ParserOptions} or `null`
+         * @returns a MIME message or `null` on fail.
          */
         construct_message(options?: ParserOptions | null): Message | null;
         /**
          * Constructs a MIME part from `parser`.
-         * @param options a #GMimeParserOptions or %NULL
-         * @returns a MIME part based on @parser or %NULL on fail.
+         * @param options a {@link GMime.ParserOptions} or `null`
+         * @returns a MIME part based on `parser` or `null` on fail.
          */
         construct_part(options?: ParserOptions | null): Object | null;
         /**
-         * Tests the end-of-stream indicator for `parser'`s internal stream.
-         * @returns %TRUE on EOS or %FALSE otherwise.
+         * Tests the end-of-stream indicator for `parser`'s internal stream.
+         * @returns `true` on EOS or `false` otherwise.
          */
         eos(): boolean;
         /**
@@ -6264,59 +6540,59 @@ export namespace GMime {
         get_headers_end(): number;
         /**
          * Gets the mbox-style From-line of the most recently parsed message
-         * (gotten from g_mime_parser_construct_message()).
-         * @returns the mbox-style From-line of the most recently parsed message or %NULL on error.
+         * (gotten from `g_mime_parser_construct_message()`).
+         * @returns the mbox-style From-line of the most recently parsed message or `null` on error.
          */
         get_mbox_marker(): string | null;
         /**
          * Gets the offset of the most recently parsed mbox-style From-line
-         * (gotten from g_mime_parser_construct_message()).
+         * (gotten from `g_mime_parser_construct_message()`).
          * @returns the offset of the most recently parsed mbox-style From-line or %-1 on error.
          */
         get_mbox_marker_offset(): number;
         /**
          * Gets whether or not the underlying stream is persistent.
-         * @returns %TRUE if the @parser will leave the content on disk or %FALSE if it will load the content into memory.
+         * @returns `true` if the `parser` will leave the content on disk or `false` if it will load the content into memory.
          */
         get_persist_stream(): boolean;
         /**
          * Gets whether or not `parser` is set to use Content-Length for
          * determining the offset of the end of the message.
-         * @returns whether or not @parser is set to use Content-Length for determining the offset of the end of the message.
+         * @returns whether or not `parser` is set to use Content-Length for determining the offset of the end of the message.
          */
         get_respect_content_length(): boolean;
         /**
          * Initializes `parser` to use `stream`.
          *
          * WARNING: Initializing a parser with a stream is comparable to
-         * selling your soul (`stream)` to the devil (`parser)`. You are
+         * selling your soul (`stream`) to the devil (`parser`). You are
          * basically giving the parser complete control of the stream, this
          * means that you had better not touch the stream so long as the
          * parser is still using it. This means no reading, writing, seeking,
          * or resetting of the stream. Anything that will/could change the
          * current stream's offset is PROHIBITED.
          *
-         * It is also recommended that you not use g_mime_stream_tell()
+         * It is also recommended that you not use `g_mime_stream_tell()`
          * because it will not necessarily give you the current `parser` offset
          * since `parser` handles its own internal read-ahead buffer. Instead,
-         * it is recommended that you use g_mime_parser_tell() if you have a
+         * it is recommended that you use `g_mime_parser_tell()` if you have a
          * reason to need the current offset of the `parser`.
          * @param stream raw message or part stream
          */
         init_with_stream(stream: Stream): void;
         /**
          * Sets the format that the parser should expect the stream to be in.
-         * @param format a #GMimeFormat
+         * @param format a {@link GMime.Format}
          */
         set_format(format: Format | null): void;
         /**
-         * Sets whether or not the `parser'`s underlying stream is persistent.
+         * Sets whether or not the `parser`'s underlying stream is persistent.
          *
-         * If `persist` is %TRUE, the `parser` will attempt to construct
+         * If `persist` is `true`, the `parser` will attempt to construct
          * messages/parts whose content will remain on disk rather than being
          * loaded into memory so as to reduce memory usage. This is the default.
          *
-         * If `persist` is %FALSE, the `parser` will always load message content
+         * If `persist` is `false`, the `parser` will always load message content
          * into memory.
          *
          * Note: This attribute only serves as a hint to the `parser`. If the
@@ -6336,7 +6612,7 @@ export namespace GMime {
          * http://www.jwz.org/doc/content-length.html for details).
          *
          * By default, this feature is disabled.
-         * @param respect_content_length %TRUE if the parser should use Content-Length headers or %FALSE otherwise.
+         * @param respect_content_length `true` if the parser should use Content-Length headers or `false` otherwise.
          */
         set_respect_content_length(respect_content_length: boolean): void;
         /**
@@ -6357,6 +6633,7 @@ export namespace GMime {
 
     /**
      * A leaf-node MIME part object.
+     * @gir-type Class
      */
     class Part extends Object {
         static $gtype: GObject.GType<Part>;
@@ -6392,16 +6669,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Part.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Part.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Part.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Part.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Part.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Part.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6412,7 +6692,8 @@ export namespace GMime {
 
         /**
          * Sets the content on the mime part.
-         * @param content a #GMimeDataWrapper content object
+         * @param content a {@link GMime.DataWrapper} content object
+         * @virtual
          */
         vfunc_set_content(content: DataWrapper): void;
 
@@ -6421,19 +6702,19 @@ export namespace GMime {
         /**
          * Calculates the most efficient content encoding for the `mime_part`
          * given the `constraint`.
-         * @param constraint a #GMimeEncodingConstraint
+         * @param constraint a {@link GMime.EncodingConstraint}
          * @returns the best content encoding for the specified mime part.
          */
         get_best_content_encoding(constraint: EncodingConstraint | null): ContentEncoding;
         /**
-         * Gets the internal data-wrapper of the specified mime part, or %NULL
+         * Gets the internal data-wrapper of the specified mime part, or `null`
          * on error.
          * @returns the data-wrapper for the mime part's contents.
          */
         get_content(): DataWrapper;
         /**
          * Gets the value of the Content-Description for the specified mime
-         * part if it exists or %NULL otherwise.
+         * part if it exists or `null` otherwise.
          * @returns the content description for the specified mime part.
          */
         get_content_description(): string;
@@ -6444,56 +6725,56 @@ export namespace GMime {
         get_content_encoding(): ContentEncoding;
         /**
          * Gets the content-id of the specified mime part if it exists, or
-         * %NULL otherwise.
+         * `null` otherwise.
          * @returns the content id for the specified mime part.
          */
         get_content_id(): string;
         /**
          * Gets the value of the Content-Location header if it exists, or
-         * %NULL otherwise.
+         * `null` otherwise.
          * @returns the content location for the specified mime part.
          */
         get_content_location(): string;
         /**
          * Gets the md5sum contained in the Content-Md5 header of the
-         * specified mime part if it exists, or %NULL otherwise.
+         * specified mime part if it exists, or `null` otherwise.
          * @returns the content md5 for the specified mime part.
          */
         get_content_md5(): string;
         /**
-         * Gets the filename of the specificed mime part, or %NULL if the
+         * Gets the filename of the specificed mime part, or `null` if the
          * `mime_part` does not have the filename or name parameter set.
-         * @returns the filename of the specified @mime_part or %NULL if neither of the parameters is set. If a file name is set, the returned string will be in UTF-8.
+         * @returns the filename of the specified `mime_part` or `null` if neither of the parameters is set. If a file name is set, the returned string will be in UTF-8.
          */
         get_filename(): string;
         /**
          * Gets whether or not (and what type) of OpenPGP data is contained
-         * within the #GMimePart.
-         * @returns a #GMimeOpenPGPData.
+         * within the {@link GMime.Part}.
+         * @returns a {@link GMime.OpenPGPData}.
          */
         get_openpgp_data(): OpenPGPData;
         /**
          * Determines whether or not the part is an attachment based on the
          * value of the Content-Disposition header.
-         * @returns %TRUE if the part is an attachment, otherwise %FALSE.
+         * @returns `true` if the part is an attachment, otherwise `false`.
          */
         is_attachment(): boolean;
         /**
          * Decrypts the content of the `mime_part` and then replaces the content with
          * the new, decrypted, content.
-         * @param flags a set of #GMimeDecryptFlags
-         * @param session_key the session key to use or %NULL
-         * @returns a #GMimeDecryptResult on success or %NULL on error.
+         * @param flags a set of {@link GMime.DecryptFlags}
+         * @param session_key the session key to use or `null`
+         * @returns a {@link GMime.DecryptResult} on success or `null` on error.
          */
         openpgp_decrypt(flags: DecryptFlags | null, session_key?: string | null): DecryptResult | null;
         /**
          * Encrypts (and optionally signs) the content of the `mime_part` and then replaces
          * the content with the new, encrypted, content.
-         * @param sign %TRUE if the content should also be signed; otherwise, %FALSE
-         * @param userid the key id (or email address) to use when signing (assuming @sign is %TRUE)
-         * @param flags a set of #GMimeEncryptFlags
+         * @param sign `true` if the content should also be signed; otherwise, `false`
+         * @param userid the key id (or email address) to use when signing (assuming `sign` is `true`)
+         * @param flags a set of {@link GMime.EncryptFlags}
          * @param recipients an array of recipient key ids and/or email addresses
-         * @returns %TRUE on success or %FALSE on error.
+         * @returns `true` on success or `false` on error.
          */
         openpgp_encrypt(
             sign: boolean,
@@ -6505,19 +6786,19 @@ export namespace GMime {
          * Signs the content of the `mime_part` and then replaces the content with
          * the new, signed, content.
          * @param userid the key id (or email address) to use for signing
-         * @returns %TRUE on success or %FALSE on error.
+         * @returns `true` on success or `false` on error.
          */
         openpgp_sign(userid: string): boolean;
         /**
          * Verifies the OpenPGP signature of the `mime_part` and then replaces the content
          * with the original, raw, content.
-         * @param flags a set of #GMimeVerifyFlags
-         * @returns a #GMimeSignatureList on success or %NULL on error.
+         * @param flags a set of {@link GMime.VerifyFlags}
+         * @returns a {@link GMime.SignatureList} on success or `null` on error.
          */
         openpgp_verify(flags: VerifyFlags | null): SignatureList | null;
         /**
          * Sets the content on the mime part.
-         * @param content a #GMimeDataWrapper content object
+         * @param content a {@link GMime.DataWrapper} content object
          */
         set_content(content: DataWrapper): void;
         /**
@@ -6527,7 +6808,7 @@ export namespace GMime {
         set_content_description(description: string): void;
         /**
          * Set the content encoding for the specified mime part.
-         * @param encoding a #GMimeContentEncoding
+         * @param encoding a {@link GMime.ContentEncoding}
          */
         set_content_encoding(encoding: ContentEncoding | null): void;
         /**
@@ -6542,7 +6823,7 @@ export namespace GMime {
         set_content_location(content_location: string): void;
         /**
          * Set the content md5 for the specified mime part.
-         * @param content_md5 content md5 or %NULL to generate the md5 digest.
+         * @param content_md5 content md5 or `null` to generate the md5 digest.
          */
         set_content_md5(content_md5: string): void;
         /**
@@ -6555,13 +6836,13 @@ export namespace GMime {
         set_filename(filename: string): void;
         /**
          * Sets whether or not (and what type) of OpenPGP data is contained
-         * within the #GMimePart.
-         * @param data a #GMimeOpenPGPData
+         * within the {@link GMime.Part}.
+         * @param data a {@link GMime.OpenPGPData}
          */
         set_openpgp_data(data: OpenPGPData | null): void;
         /**
          * Verify the content md5 for the specified mime part.
-         * @returns %TRUE if the md5 is valid or %FALSE otherwise. Note: will return %FALSE if the mime part does not contain a Content-MD5.
+         * @returns `true` if the md5 is valid or `false` otherwise. Note: will return `false` if the mime part does not contain a Content-MD5.
          */
         verify_content_md5(): boolean;
     }
@@ -6577,6 +6858,7 @@ export namespace GMime {
 
     /**
      * A PKCS7 crypto context.
+     * @gir-type Class
      */
     class Pkcs7Context extends CryptoContext {
         static $gtype: GObject.GType<Pkcs7Context>;
@@ -6600,16 +6882,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Pkcs7Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Pkcs7Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Pkcs7Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Pkcs7Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Pkcs7Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Pkcs7Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6628,6 +6913,7 @@ export namespace GMime {
 
     /**
      * An object containing useful information about a signature.
+     * @gir-type Class
      */
     class Signature extends GObject.Object {
         static $gtype: GObject.GType<Signature>;
@@ -6659,16 +6945,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Signature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Signature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Signature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Signature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Signature.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Signature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6706,13 +6995,13 @@ export namespace GMime {
          */
         get_expires64(): number;
         /**
-         * Get the signature status as a bitfield of #GMimeSignatureStatus flags.
+         * Get the signature status as a bitfield of {@link GMime.SignatureStatus} flags.
          * @returns the signature status.
          */
         get_status(): SignatureStatus;
         /**
          * Set the signature's certificate.
-         * @param cert a #GMimeCertificate
+         * @param cert a {@link GMime.Certificate}
          */
         set_certificate(cert: Certificate): void;
         /**
@@ -6727,7 +7016,7 @@ export namespace GMime {
         set_expires(expires: number): void;
         /**
          * Set the status on the signature.
-         * @param status a #GMimeSignatureStatus
+         * @param status a {@link GMime.SignatureStatus}
          */
         set_status(status: SignatureStatus | null): void;
     }
@@ -6742,7 +7031,8 @@ export namespace GMime {
     }
 
     /**
-     * A collection of #GMimeSignature objects.
+     * A collection of {@link GMime.Signature} objects.
+     * @gir-type Class
      */
     class SignatureList extends GObject.Object {
         static $gtype: GObject.GType<SignatureList>;
@@ -6770,16 +7060,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SignatureList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SignatureList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SignatureList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SignatureList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SignatureList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SignatureList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6789,9 +7082,9 @@ export namespace GMime {
         // Methods
 
         /**
-         * Adds a #GMimeSignature to the #GMimeSignatureList.
-         * @param sig a #GMimeSignature
-         * @returns the index of the added #GMimeSignature.
+         * Adds a {@link GMime.Signature} to the {@link GMime.SignatureList}.
+         * @param sig a {@link GMime.Signature}
+         * @returns the index of the added {@link GMime.Signature}.
          */
         add(sig: Signature): number;
         /**
@@ -6799,54 +7092,54 @@ export namespace GMime {
          */
         clear(): void;
         /**
-         * Checks whether or not the specified #GMimeSignature is contained within
-         * the #GMimeSignatureList.
-         * @param sig a #GMimeSignature
-         * @returns %TRUE if the specified #GMimeSignature is contained within the specified #GMimeSignatureList or %FALSE otherwise.
+         * Checks whether or not the specified {@link GMime.Signature} is contained within
+         * the {@link GMime.SignatureList}.
+         * @param sig a {@link GMime.Signature}
+         * @returns `true` if the specified {@link GMime.Signature} is contained within the specified {@link GMime.SignatureList} or `false` otherwise.
          */
         contains(sig: Signature): boolean;
         /**
-         * Gets the #GMimeSignature at the specified index.
-         * @param index index of #GMimeSignature to get
-         * @returns the #GMimeSignature at the specified index or %NULL if the index is out of range.
+         * Gets the {@link GMime.Signature} at the specified index.
+         * @param index index of {@link GMime.Signature} to get
+         * @returns the {@link GMime.Signature} at the specified index or `null` if the index is out of range.
          */
         get_signature(index: number): Signature;
         /**
-         * Gets the index of the specified #GMimeSignature inside the
-         * #GMimeSignatureList.
-         * @param sig a #GMimeSignature
-         * @returns the index of the requested #GMimeSignature within the #GMimeSignatureList or %-1 if it is not contained within the #GMimeSignatureList.
+         * Gets the index of the specified {@link GMime.Signature} inside the
+         * {@link GMime.SignatureList}.
+         * @param sig a {@link GMime.Signature}
+         * @returns the index of the requested {@link GMime.Signature} within the {@link GMime.SignatureList} or %-1 if it is not contained within the {@link GMime.SignatureList}.
          */
         index_of(sig: Signature): number;
         /**
-         * Inserts a #GMimeSignature into the #GMimeSignatureList at the specified
+         * Inserts a {@link GMime.Signature} into the {@link GMime.SignatureList} at the specified
          * index.
          * @param index index to insert at
-         * @param sig a #GMimeSignature
+         * @param sig a {@link GMime.Signature}
          */
         insert(index: number, sig: Signature): void;
         /**
          * Gets the length of the list.
-         * @returns the number of #GMimeSignature objects in the list.
+         * @returns the number of {@link GMime.Signature} objects in the list.
          */
         length(): number;
         /**
-         * Removes a #GMimeSignature from the #GMimeSignatureList.
-         * @param sig a #GMimeSignature
-         * @returns %TRUE if the specified #GMimeSignature was removed or %FALSE otherwise.
+         * Removes a {@link GMime.Signature} from the {@link GMime.SignatureList}.
+         * @param sig a {@link GMime.Signature}
+         * @returns `true` if the specified {@link GMime.Signature} was removed or `false` otherwise.
          */
         remove(sig: Signature): boolean;
         /**
-         * Removes a #GMimeSignature from the #GMimeSignatureList at the specified
+         * Removes a {@link GMime.Signature} from the {@link GMime.SignatureList} at the specified
          * index.
          * @param index index to remove
-         * @returns %TRUE if an #GMimeSignature was removed or %FALSE otherwise.
+         * @returns `true` if an {@link GMime.Signature} was removed or `false` otherwise.
          */
         remove_at(index: number): boolean;
         /**
-         * Sets the #GMimeSignature at the specified index to `sig`.
-         * @param index index of #GMimeSignature to set
-         * @param sig a #GMimeSignature
+         * Sets the {@link GMime.Signature} at the specified index to `sig`.
+         * @param index index of {@link GMime.Signature} to set
+         * @param sig a {@link GMime.Signature}
          */
         set_signature(index: number, sig: Signature): void;
     }
@@ -6862,6 +7155,7 @@ export namespace GMime {
 
     /**
      * Abstract I/O stream class.
+     * @gir-type Class
      */
     abstract class Stream extends GObject.Object {
         static $gtype: GObject.GType<Stream>;
@@ -6883,16 +7177,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Stream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Stream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Stream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6903,27 +7200,33 @@ export namespace GMime {
 
         /**
          * Closes the stream.
+         * @virtual
          */
         vfunc_close(): number;
         /**
          * Tests the end-of-stream indicator for `stream`.
+         * @virtual
          */
         vfunc_eos(): boolean;
         /**
          * Sync's the stream to disk.
+         * @virtual
          */
         vfunc_flush(): number;
         /**
          * Gets the length of the stream.
+         * @virtual
          */
         vfunc_length(): number;
         /**
          * Attempts to read up to `len` bytes from `stream` into `buf`.
          * @param buf buffer
+         * @virtual
          */
         vfunc_read(buf: Uint8Array | string): number;
         /**
          * Resets the stream.
+         * @virtual
          */
         vfunc_reset(): number;
         /**
@@ -6941,21 +7244,25 @@ export namespace GMime {
          *     end of the stream (bound_end if non-negative).
          * @param offset positional offset
          * @param whence seek directive
+         * @virtual
          */
         vfunc_seek(offset: number, whence: SeekWhence): number;
         /**
          * Creates a new substream of `stream` with bounds `start` and `end`.
          * @param start start boundary
          * @param end end boundary
+         * @virtual
          */
         vfunc_substream(start: number, end: number): Stream;
         /**
          * Gets the current offset within the stream.
+         * @virtual
          */
         vfunc_tell(): number;
         /**
          * Attempts to write up to `len` bytes of `buf` to `stream`.
          * @param buf buffer
+         * @virtual
          */
         vfunc_write(buf: Uint8Array | string): number;
 
@@ -6968,7 +7275,7 @@ export namespace GMime {
          * the buffer. A '\0' is stored after the last character in the
          * buffer.
          * @param buf line buffer
-         * @returns the number of characters read into @buf on success or %-1 on fail.
+         * @returns the number of characters read into `buf` on success or %-1 on fail.
          */
         buffer_gets(buf: Uint8Array | string): number;
         /**
@@ -6989,7 +7296,7 @@ export namespace GMime {
         construct(start: number, end: number): void;
         /**
          * Tests the end-of-stream indicator for `stream`.
-         * @returns %TRUE on EOS or %FALSE otherwise.
+         * @returns `true` on EOS or `false` otherwise.
          */
         eos(): boolean;
         /**
@@ -7041,7 +7348,7 @@ export namespace GMime {
          * Creates a new substream of `stream` with bounds `start` and `end`.
          * @param start start boundary
          * @param end end boundary
-         * @returns a substream of @stream with bounds @start and @end.
+         * @returns a substream of `stream` with bounds `start` and `end`.
          */
         substream(start: number, end: number): Stream;
         /**
@@ -7069,7 +7376,7 @@ export namespace GMime {
         write_to_stream(dest: Stream): number;
         /**
          * Writes at most `count` blocks described by `vector` to `stream`.
-         * @param vector a #GMimeStreamIOVector
+         * @param vector a {@link GMime.StreamIOVector}
          * @returns the number of bytes written or %-1 on fail.
          */
         writev(vector: StreamIOVector[]): number;
@@ -7085,7 +7392,8 @@ export namespace GMime {
     }
 
     /**
-     * A buffered stream wrapper around any #GMimeStream object.
+     * A buffered stream wrapper around any {@link GMime.Stream} object.
+     * @gir-type Class
      */
     class StreamBuffer extends Stream {
         static $gtype: GObject.GType<StreamBuffer>;
@@ -7119,16 +7427,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7146,7 +7457,8 @@ export namespace GMime {
     }
 
     /**
-     * A concatenation of other #GMimeStream objects.
+     * A concatenation of other {@link GMime.Stream} objects.
+     * @gir-type Class
      */
     class StreamCat extends Stream {
         static $gtype: GObject.GType<StreamCat>;
@@ -7176,16 +7488,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamCat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamCat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamCat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamCat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamCat.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamCat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7212,7 +7527,8 @@ export namespace GMime {
     }
 
     /**
-     * A #GMimeStream wrapper around standard-c FILE pointers.
+     * A {@link GMime.Stream} wrapper around standard-c FILE pointers.
+     * @gir-type Class
      */
     class StreamFile extends Stream {
         static $gtype: GObject.GType<StreamFile>;
@@ -7244,16 +7560,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7263,7 +7582,7 @@ export namespace GMime {
         // Static methods
 
         /**
-         * Creates a new #GMimeStreamFile object for the specified `path`.
+         * Creates a new {@link GMime.StreamFile} object for the specified `path`.
          * @param path the path to a file
          * @param mode as in fopen(3)
          */
@@ -7273,15 +7592,15 @@ export namespace GMime {
 
         /**
          * Gets whether or not `stream` owns the backend FILE pointer.
-         * @returns %TRUE if @stream owns the backend FILE pointer or %FALSE otherwise.
+         * @returns `true` if `stream` owns the backend FILE pointer or `false` otherwise.
          */
         get_owner(): boolean;
         /**
          * Sets whether or not `stream` owns the backend FILE pointer.
          *
-         * Note: `owner` should be %TRUE if the stream should fclose() the
-         * backend FILE pointer when destroyed or %FALSE otherwise.
-         * @param owner %TRUE if this stream should own the FILE pointer or %FALSE otherwise
+         * Note: `owner` should be `true` if the stream should `fclose()` the
+         * backend FILE pointer when destroyed or `false` otherwise.
+         * @param owner `true` if this stream should own the FILE pointer or `false` otherwise
          */
         set_owner(owner: boolean): void;
     }
@@ -7296,7 +7615,8 @@ export namespace GMime {
     }
 
     /**
-     * A #GMimeStream which passes data through any #GMimeFilter objects.
+     * A {@link GMime.Stream} which passes data through any {@link GMime.Filter} objects.
+     * @gir-type Class
      */
     class StreamFilter extends Stream {
         static $gtype: GObject.GType<StreamFilter>;
@@ -7327,16 +7647,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7348,13 +7671,13 @@ export namespace GMime {
         /**
          * Adds `filter` to `stream`. Filters are applied in the same order in
          * which they are added.
-         * @param filter a #GMimeFilter
+         * @param filter a {@link GMime.Filter}
          * @returns an id for the filter.
          */
         add(filter: Filter): number;
         /**
          * Gets whether or not `stream` owns the source stream.
-         * @returns %TRUE if @stream owns the source stream or %FALSE otherwise.
+         * @returns `true` if `stream` owns the source stream or `false` otherwise.
          */
         get_owner(): boolean;
         /**
@@ -7366,9 +7689,9 @@ export namespace GMime {
         /**
          * Sets whether or not `stream` owns the source stream..
          *
-         * Note: `owner` should be %TRUE if the stream should close() the
-         * backend source stream when destroyed or %FALSE otherwise.
-         * @param owner %TRUE if this stream should own the source stream or %FALSE otherwise
+         * Note: `owner` should be `true` if the stream should `close()` the
+         * backend source stream when destroyed or `false` otherwise.
+         * @param owner `true` if this stream should own the source stream or `false` otherwise
          */
         set_owner(owner: boolean): void;
     }
@@ -7383,7 +7706,8 @@ export namespace GMime {
     }
 
     /**
-     * A #GMimeStream wrapper around POSIX file descriptors.
+     * A {@link GMime.Stream} wrapper around POSIX file descriptors.
+     * @gir-type Class
      */
     class StreamFs extends Stream {
         static $gtype: GObject.GType<StreamFs>;
@@ -7418,16 +7742,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamFs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamFs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamFs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7437,7 +7764,7 @@ export namespace GMime {
         // Static methods
 
         /**
-         * Creates a new #GMimeStreamFs object for the specified `path`.
+         * Creates a new {@link GMime.StreamFs} object for the specified `path`.
          * @param path the path to a file
          * @param flags as in open(2)
          * @param mode as in open(2)
@@ -7448,15 +7775,15 @@ export namespace GMime {
 
         /**
          * Gets whether or not `stream` owns the backend file descriptor.
-         * @returns %TRUE if @stream owns the backend file descriptor or %FALSE otherwise.
+         * @returns `true` if `stream` owns the backend file descriptor or `false` otherwise.
          */
         get_owner(): boolean;
         /**
          * Sets whether or not `stream` owns the backend file descriptor.
          *
-         * Note: `owner` should be %TRUE if the stream should close() the
-         * backend file descriptor when destroyed or %FALSE otherwise.
-         * @param owner %TRUE if this stream should own the file descriptor or %FALSE otherwise
+         * Note: `owner` should be `true` if the stream should `close()` the
+         * backend file descriptor when destroyed or `false` otherwise.
+         * @param owner `true` if this stream should own the file descriptor or `false` otherwise
          */
         set_owner(owner: boolean): void;
     }
@@ -7471,7 +7798,8 @@ export namespace GMime {
     }
 
     /**
-     * A #GMimeStream wrapper around GLib's GIO streams.
+     * A {@link GMime.Stream} wrapper around GLib's GIO streams.
+     * @gir-type Class
      */
     class StreamGIO extends Stream {
         static $gtype: GObject.GType<StreamGIO>;
@@ -7508,16 +7836,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamGIO.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamGIO.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamGIO.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamGIO.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamGIO.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamGIO.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7527,16 +7858,16 @@ export namespace GMime {
         // Methods
 
         /**
-         * Gets whether or not `stream` owns the backend #GFile.
-         * @returns %TRUE if @stream owns the backend #GFile or %FALSE otherwise.
+         * Gets whether or not `stream` owns the backend {@link Gio.File}.
+         * @returns `true` if `stream` owns the backend {@link Gio.File} or `false` otherwise.
          */
         get_owner(): boolean;
         /**
          * Sets whether or not `stream` owns the backend GIO pointer.
          *
-         * Note: `owner` should be %TRUE if the stream should close() the
-         * backend file descriptor when destroyed or %FALSE otherwise.
-         * @param owner %TRUE if this stream should own the #GFile or %FALSE otherwise
+         * Note: `owner` should be `true` if the stream should `close()` the
+         * backend file descriptor when destroyed or `false` otherwise.
+         * @param owner `true` if this stream should own the {@link Gio.File} or `false` otherwise
          */
         set_owner(owner: boolean): void;
     }
@@ -7551,7 +7882,8 @@ export namespace GMime {
     }
 
     /**
-     * A memory-backed #GMimeStream.
+     * A memory-backed {@link GMime.Stream}.
+     * @gir-type Class
      */
     class StreamMem extends Stream {
         static $gtype: GObject.GType<StreamMem>;
@@ -7585,16 +7917,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamMem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamMem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamMem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7610,23 +7945,23 @@ export namespace GMime {
         get_byte_array(): Uint8Array;
         /**
          * Gets whether or not `mem` owns the backend memory buffer.
-         * @returns %TRUE if @mem owns the backend memory buffer or %FALSE otherwise.
+         * @returns `true` if `mem` owns the backend memory buffer or `false` otherwise.
          */
         get_owner(): boolean;
         /**
          * Sets the byte array on the memory stream.
          *
          * Note: The memory stream is not responsible for freeing the byte
-         * array. Use g_mime_stream_mem_set_owner() to change this behavior.
+         * array. Use `g_mime_stream_mem_set_owner()` to change this behavior.
          * @param array stream data
          */
         set_byte_array(array: Uint8Array | string): void;
         /**
          * Sets whether or not `mem` owns the backend memory buffer.
          *
-         * Note: `owner` should be %TRUE if the stream should free the backend
-         * memory buffer when destroyed or %FALSE otherwise.
-         * @param owner %TRUE if this stream should own the #GByteArray or %FALSE otherwise
+         * Note: `owner` should be `true` if the stream should free the backend
+         * memory buffer when destroyed or `false` otherwise.
+         * @param owner `true` if this stream should own the {@link GLib.ByteArray} or `false` otherwise
          */
         set_owner(owner: boolean): void;
     }
@@ -7641,7 +7976,8 @@ export namespace GMime {
     }
 
     /**
-     * A memory-mapped #GMimeStream.
+     * A memory-mapped {@link GMime.Stream}.
+     * @gir-type Class
      */
     class StreamMmap extends Stream {
         static $gtype: GObject.GType<StreamMmap>;
@@ -7678,16 +8014,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamMmap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamMmap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamMmap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamMmap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamMmap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamMmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7698,15 +8037,15 @@ export namespace GMime {
 
         /**
          * Gets whether or not `stream` owns the backend file descriptor.
-         * @returns %TRUE if @stream owns the backend file descriptor or %FALSE otherwise.
+         * @returns `true` if `stream` owns the backend file descriptor or `false` otherwise.
          */
         get_owner(): boolean;
         /**
          * Sets whether or not `stream` owns the backend file descriptor.
          *
-         * Note: `owner` should be %TRUE if the stream should close() the
-         * backend file descriptor when destroyed or %FALSE otherwise.
-         * @param owner %TRUE if this stream should own the file descriptor or %FALSE otherwise
+         * Note: `owner` should be `true` if the stream should `close()` the
+         * backend file descriptor when destroyed or `false` otherwise.
+         * @param owner `true` if this stream should own the file descriptor or `false` otherwise
          */
         set_owner(owner: boolean): void;
     }
@@ -7721,7 +8060,8 @@ export namespace GMime {
     }
 
     /**
-     * A #GMimeStream which has no backing store.
+     * A {@link GMime.Stream} which has no backing store.
+     * @gir-type Class
      */
     class StreamNull extends Stream {
         static $gtype: GObject.GType<StreamNull>;
@@ -7752,16 +8092,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamNull.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamNull.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7773,13 +8116,13 @@ export namespace GMime {
         /**
          * Gets whether or not the stream should keep track of the number of newlines
          * encountered.
-         * @returns %TRUE if the stream should count the number of newlines or %FALSE otherwise.
+         * @returns `true` if the stream should count the number of newlines or `false` otherwise.
          */
         get_count_newlines(): boolean;
         /**
          * Sets whether or not the stream should keep track of the number of newlines
          * encountered.
-         * @param count %TRUE if newlines should be counted or %FALSE otherwise
+         * @param count `true` if newlines should be counted or `false` otherwise
          */
         set_count_newlines(count: boolean): void;
     }
@@ -7794,7 +8137,8 @@ export namespace GMime {
     }
 
     /**
-     * A #GMimeStream wrapper around pipes.
+     * A {@link GMime.Stream} wrapper around pipes.
+     * @gir-type Class
      */
     class StreamPipe extends Stream {
         static $gtype: GObject.GType<StreamPipe>;
@@ -7827,16 +8171,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamPipe.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamPipe.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamPipe.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamPipe.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamPipe.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamPipe.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7847,14 +8194,14 @@ export namespace GMime {
 
         /**
          * Gets whether or not `stream` owns the backend pipe descriptor.
-         * @returns %TRUE if @stream owns the backend pipe descriptor or %FALSE otherwise.
+         * @returns `true` if `stream` owns the backend pipe descriptor or `false` otherwise.
          */
         get_owner(): boolean;
         /**
          * Sets whether or not `stream` owns the backend pipe descriptor.
          *
-         * Note: `owner` should be %TRUE if the stream should close() the
-         * backend pipe descriptor when destroyed or %FALSE otherwise.
+         * Note: `owner` should be `true` if the stream should `close()` the
+         * backend pipe descriptor when destroyed or `false` otherwise.
          * @param owner owner
          */
         set_owner(owner: boolean): void;
@@ -7871,6 +8218,7 @@ export namespace GMime {
 
     /**
      * A text MIME part object.
+     * @gir-type Class
      */
     class TextPart extends Part {
         static $gtype: GObject.GType<TextPart>;
@@ -7900,16 +8248,19 @@ export namespace GMime {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextPart.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextPart.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextPart.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextPart.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextPart.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextPart.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7920,7 +8271,7 @@ export namespace GMime {
 
         /**
          * Gets the value of the charset parameter on the Content-Type header.
-         * @returns the value of the charset parameter or %NULL if unavailable.
+         * @returns the value of the charset parameter or `null` if unavailable.
          */
         get_charset(): string;
         /**
@@ -7940,13 +8291,29 @@ export namespace GMime {
         set_text(text: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationPkcs7MimeClass = typeof ApplicationPkcs7Mime;
+    /**
+     * @gir-type Alias
+     */
     type AutocryptHeaderClass = typeof AutocryptHeader;
+    /**
+     * @gir-type Alias
+     */
     type AutocryptHeaderListClass = typeof AutocryptHeaderList;
+    /**
+     * @gir-type Alias
+     */
     type CertificateClass = typeof Certificate;
+    /**
+     * @gir-type Alias
+     */
     type CertificateListClass = typeof CertificateList;
     /**
-     * State used by g_mime_charset_best() and g_mime_charset_best_name().
+     * State used by `g_mime_charset_best()` and `g_mime_charset_best_name()`.
+     * @gir-type Struct
      */
     class Charset {
         static $gtype: GObject.GType<Charset>;
@@ -7977,7 +8344,7 @@ export namespace GMime {
          * Attempts to find a canonical charset name for `charset`.
          *
          * Note: Will normally return the same value as
-         * g_mime_charset_iconv_name() unless the system iconv does not use
+         * `g_mime_charset_iconv_name()` unless the system iconv does not use
          * the canonical ISO charset names (such as using ISO8859-1 rather
          * than the canonical form ISO-8859-1).
          * @param charset charset name
@@ -7997,31 +8364,31 @@ export namespace GMime {
         /**
          * Attempts to find a specific language code that is specific to
          * `charset`. Currently only handles CJK and Russian/Ukranian
-         * charset->lang mapping. Everything else will return %NULL.
+         * charset->lang mapping. Everything else will return `null`.
          * @param charset charset name
          */
         static language(charset: string): string | null;
         /**
          * Gets the user's locale charset (or iso-8859-1 by default).
          *
-         * Note: This function is deprecated. Use g_mime_locale_charset()
+         * Note: This function is deprecated. Use `g_mime_locale_charset()`
          * instead.
          */
         static locale_name(): string;
         /**
          * Initializes character set maps.
          *
-         * Note: g_mime_init() calls this routine for you.
+         * Note: `g_mime_init()` calls this routine for you.
          */
         static map_init(): void;
         /**
-         * Frees internal lookup tables created in g_mime_charset_map_init().
+         * Frees internal lookup tables created in `g_mime_charset_map_init()`.
          */
         static map_shutdown(): void;
         /**
          * Attempts to find an iconv-friendly charset name for `charset`.
          *
-         * Note: This function is deprecated. Use g_mime_charset_iconv_name()
+         * Note: This function is deprecated. Use `g_mime_charset_iconv_name()`
          * instead.
          * @param charset charset name
          */
@@ -8031,15 +8398,15 @@ export namespace GMime {
 
         /**
          * Gets the best charset name based on the charset mask `charset`.
-         * @returns the charset name that best represents the charset mask @charset or %NULL for us-ascii.
+         * @returns the charset name that best represents the charset mask `charset` or `null` for us-ascii.
          */
         best_name(): string | null;
         /**
          * Check to see if the UTF-8 `text` will fit safely within `charset`.
          * @param charset a charset
          * @param text utf-8 text to check
-         * @param len length of @text
-         * @returns %TRUE if it is safe to encode @text into @charset or %FALSE otherwise.
+         * @param len length of `text`
+         * @returns `true` if it is safe to encode `text` into `charset` or `false` otherwise.
          */
         can_encode(charset: string, text: string, len: number): boolean;
         /**
@@ -8049,21 +8416,37 @@ export namespace GMime {
         /**
          * Steps through the input buffer 1 unicode character (glyph) at a
          * time (ie, not necessarily 1 byte at a time). Bitwise 'and' our
-         * `charset->`mask with the mask for each glyph. This has the effect of
-         * limiting what charsets our `charset->`mask can match.
+         * `charset`->mask with the mask for each glyph. This has the effect of
+         * limiting what charsets our `charset`->mask can match.
          * @param inbuf input text buffer (must be in UTF-8)
          * @param inlen input buffer length
          */
         step(inbuf: string, inlen: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContentDispositionClass = typeof ContentDisposition;
+    /**
+     * @gir-type Alias
+     */
     type ContentTypeClass = typeof ContentType;
+    /**
+     * @gir-type Alias
+     */
     type CryptoContextClass = typeof CryptoContext;
+    /**
+     * @gir-type Alias
+     */
     type DataWrapperClass = typeof DataWrapper;
+    /**
+     * @gir-type Alias
+     */
     type DecryptResultClass = typeof DecryptResult;
     /**
      * A context used for encoding or decoding data.
+     * @gir-type Struct
      */
     class Encoding {
         static $gtype: GObject.GType<Encoding>;
@@ -8083,18 +8466,18 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output buffer
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been decoded
          */
         static base64_decode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
         /**
          * Base64 encodes the input stream to the output stream. Call this
-         * when finished encoding data with g_mime_encoding_base64_encode_step()
+         * when finished encoding data with `g_mime_encoding_base64_encode_step()`
          * to flush off the last little bit.
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output buffer
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
         static base64_encode_close(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
@@ -8106,7 +8489,7 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output buffer
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
         static base64_encode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
@@ -8116,18 +8499,18 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output buffer
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been decoded
          */
         static quoted_decode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
         /**
          * Quoted-printable encodes a block of text. Call this when finished
-         * encoding data with g_mime_encoding_quoted_encode_step() to flush off
+         * encoding data with `g_mime_encoding_quoted_encode_step()` to flush off
          * the last little bit.
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output buffer
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
         static quoted_encode_close(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
@@ -8138,7 +8521,7 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output buffer
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
         static quoted_encode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
@@ -8149,18 +8532,18 @@ export namespace GMime {
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output buffer
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been decoded
          */
         static uudecode_step(inbuf: number, inlen: number, outbuf: number, state: number, save: number): number;
         /**
          * Uuencodes a chunk of data. Call this when finished encoding data
-         * with g_mime_encoding_uuencode_step() to flush off the last little bit.
+         * with `g_mime_encoding_uuencode_step()` to flush off the last little bit.
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output buffer
          * @param uubuf temporary buffer of 60 bytes
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
         static uuencode_close(
@@ -8174,13 +8557,13 @@ export namespace GMime {
         /**
          * Uuencodes a chunk of data. Performs an 'encode step', only encodes
          * blocks of 45 characters to the output at a time, saves left-over
-         * state in `uubuf,` `state` and `save` (initialize to 0 on first
+         * state in `uubuf`, `state` and `save` (initialize to 0 on first
          * invocation).
          * @param inbuf input buffer
          * @param inlen input buffer length
          * @param outbuf output stream
          * @param uubuf temporary buffer of 60 bytes
-         * @param state holds the number of bits that are stored in @save
+         * @param state holds the number of bits that are stored in `save`
          * @param save leftover bits that have not yet been encoded
          */
         static uuencode_step(
@@ -8196,69 +8579,118 @@ export namespace GMime {
 
         /**
          * Completes the incremental encode or decode of the input stream (see
-         * g_mime_encoding_step() for details).
+         * `g_mime_encoding_step()` for details).
          * @param inbuf an input buffer to encode or decode
          * @param inlen input buffer length
          * @param outbuf an output buffer
-         * @returns the number of bytes written to @outbuf.
+         * @returns the number of bytes written to `outbuf`.
          */
         flush(inbuf: string, inlen: number, outbuf: string): number;
         /**
-         * Initializes a #GMimeEncoding state machine for decoding from
+         * Initializes a {@link GMime.Encoding} state machine for decoding from
          * `encoding`.
-         * @param encoding a #GMimeContentEncoding to use
+         * @param encoding a {@link GMime.ContentEncoding} to use
          */
         init_decode(encoding: ContentEncoding | null): void;
         /**
-         * Initializes a #GMimeEncoding state machine for encoding to
+         * Initializes a {@link GMime.Encoding} state machine for encoding to
          * `encoding`.
-         * @param encoding a #GMimeContentEncoding to use
+         * @param encoding a {@link GMime.ContentEncoding} to use
          */
         init_encode(encoding: ContentEncoding | null): void;
         /**
-         * Given the input length, `inlen,` calculate the needed output length
+         * Given the input length, `inlen`, calculate the needed output length
          * to perform an encoding or decoding step.
          * @param inlen an input length
-         * @returns the maximum number of bytes needed to encode or decode a buffer of @inlen bytes.
+         * @returns the maximum number of bytes needed to encode or decode a buffer of `inlen` bytes.
          */
         outlen(inlen: number): number;
         /**
-         * Resets the state of the #GMimeEncoding.
+         * Resets the state of the {@link GMime.Encoding}.
          */
         reset(): void;
         /**
-         * Incrementally encodes or decodes (depending on `state)` an input
+         * Incrementally encodes or decodes (depending on `state`) an input
          * stream by 'stepping' through a block of input at a time.
          *
          * You should make sure `outbuf` is large enough by calling
-         * g_mime_encoding_outlen() to find out how large `outbuf` might need
+         * `g_mime_encoding_outlen()` to find out how large `outbuf` might need
          * to be.
          * @param inbuf an input buffer to encode or decode
          * @param inlen input buffer length
          * @param outbuf an output buffer
-         * @returns the number of bytes written to @outbuf.
+         * @returns the number of bytes written to `outbuf`.
          */
         step(inbuf: string, inlen: number, outbuf: string): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FilterBasicClass = typeof FilterBasic;
+    /**
+     * @gir-type Alias
+     */
     type FilterBestClass = typeof FilterBest;
+    /**
+     * @gir-type Alias
+     */
     type FilterCharsetClass = typeof FilterCharset;
+    /**
+     * @gir-type Alias
+     */
     type FilterChecksumClass = typeof FilterChecksum;
+    /**
+     * @gir-type Alias
+     */
     type FilterClass = typeof Filter;
+    /**
+     * @gir-type Alias
+     */
     type FilterDos2UnixClass = typeof FilterDos2Unix;
+    /**
+     * @gir-type Alias
+     */
     type FilterEnrichedClass = typeof FilterEnriched;
+    /**
+     * @gir-type Alias
+     */
     type FilterFromClass = typeof FilterFrom;
+    /**
+     * @gir-type Alias
+     */
     type FilterGZipClass = typeof FilterGZip;
+    /**
+     * @gir-type Alias
+     */
     type FilterHTMLClass = typeof FilterHTML;
+    /**
+     * @gir-type Alias
+     */
     type FilterOpenPGPClass = typeof FilterOpenPGP;
+    /**
+     * @gir-type Alias
+     */
     type FilterSmtpDataClass = typeof FilterSmtpData;
+    /**
+     * @gir-type Alias
+     */
     type FilterStripClass = typeof FilterStrip;
+    /**
+     * @gir-type Alias
+     */
     type FilterUnix2DosClass = typeof FilterUnix2Dos;
+    /**
+     * @gir-type Alias
+     */
     type FilterWindowsClass = typeof FilterWindows;
+    /**
+     * @gir-type Alias
+     */
     type FilterYencClass = typeof FilterYenc;
     /**
      * Format options for serializing various GMime objects.
+     * @gir-type Struct
      */
     class FormatOptions {
         static $gtype: GObject.GType<FormatOptions>;
@@ -8288,19 +8720,19 @@ export namespace GMime {
          */
         clear_hidden_headers(): void;
         /**
-         * Clones a #GMimeFormatOptions.
-         * @returns a newly allocated #GMimeFormatOptions.
+         * Clones a {@link GMime.FormatOptions}.
+         * @returns a newly allocated {@link GMime.FormatOptions}.
          */
         clone(): FormatOptions;
         /**
-         * Creates a #GMimeFilter suitable for converting line-endings to the
+         * Creates a {@link GMime.Filter} suitable for converting line-endings to the
          * currently set new-line format.
-         * @param ensure_newline %TRUE if the output must *always* end with a new line
-         * @returns a #GMimeFilter to convert to the specified new-line format.
+         * @param ensure_newline `true` if the output must *always* end with a new line
+         * @returns a {@link GMime.Filter} to convert to the specified new-line format.
          */
         create_newline_filter(ensure_newline: boolean): Filter;
         /**
-         * Frees a set of #GMimeFormatOptions.
+         * Frees a set of {@link GMime.FormatOptions}.
          */
         free(): void;
         /**
@@ -8314,7 +8746,7 @@ export namespace GMime {
          */
         get_newline_format(): NewLineFormat;
         /**
-         * Gets the parameter encoding method to use for #GMimeParam parameters that do not
+         * Gets the parameter encoding method to use for {@link GMime.Param} parameters that do not
          * already have an encoding method specified.
          * @returns the encoding method that is currently set.
          */
@@ -8322,7 +8754,7 @@ export namespace GMime {
         /**
          * Gets whether or not the specified header should be hidden.
          * @param header the name of a header
-         * @returns %TRUE if the header should be hidden or %FALSE otherwise.
+         * @returns `true` if the header should be hidden or `false` otherwise.
          */
         is_hidden_header(header: string): boolean;
         /**
@@ -8332,7 +8764,7 @@ export namespace GMime {
         remove_hidden_header(header: string): void;
         /**
          * Sets the new-line format that should be used when writing headers and messages.
-         * @param newline a #GMimeNewLineFormat
+         * @param newline a {@link GMime.NewLineFormat}
          */
         set_newline_format(newline: NewLineFormat | null): void;
         /**
@@ -8340,27 +8772,71 @@ export namespace GMime {
          * do not have an encoding method specified.
          *
          * Note: #GMIME_PARAM_ENCODING_METHOD_DEFAULT is not allowed.
-         * @param method a #GMimeParamEncodingMethod
+         * @param method a {@link GMime.ParamEncodingMethod}
          */
         set_param_encoding_method(method: ParamEncodingMethod | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GpgContextClass = typeof GpgContext;
+    /**
+     * @gir-type Alias
+     */
     type HeaderClass = typeof Header;
+    /**
+     * @gir-type Alias
+     */
     type HeaderListClass = typeof HeaderList;
+    /**
+     * @gir-type Alias
+     */
     type InternetAddressClass = typeof InternetAddress;
+    /**
+     * @gir-type Alias
+     */
     type InternetAddressGroupClass = typeof InternetAddressGroup;
+    /**
+     * @gir-type Alias
+     */
     type InternetAddressListClass = typeof InternetAddressList;
+    /**
+     * @gir-type Alias
+     */
     type InternetAddressMailboxClass = typeof InternetAddressMailbox;
+    /**
+     * @gir-type Alias
+     */
     type MessageClass = typeof Message;
+    /**
+     * @gir-type Alias
+     */
     type MessagePartClass = typeof MessagePart;
+    /**
+     * @gir-type Alias
+     */
     type MessagePartialClass = typeof MessagePartial;
+    /**
+     * @gir-type Alias
+     */
     type MultipartClass = typeof Multipart;
+    /**
+     * @gir-type Alias
+     */
     type MultipartEncryptedClass = typeof MultipartEncrypted;
+    /**
+     * @gir-type Alias
+     */
     type MultipartSignedClass = typeof MultipartSigned;
+    /**
+     * @gir-type Alias
+     */
     type ObjectClass = typeof Object;
     /**
      * An OpenPGP marker for use with GMime's internal state machines used for detecting OpenPGP blocks.
+     * @gir-type Struct
+     * @since 3.2
      */
     class OpenPGPMarker {
         static $gtype: GObject.GType<OpenPGPMarker>;
@@ -8374,11 +8850,21 @@ export namespace GMime {
         is_end_marker: boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ParamClass = typeof Param;
+    /**
+     * @gir-type Alias
+     */
     type ParamListClass = typeof ParamList;
+    /**
+     * @gir-type Alias
+     */
     type ParserClass = typeof Parser;
     /**
-     * A set of parser options used by #GMimeParser and various other parsing functions.
+     * A set of parser options used by {@link GMime.Parser} and various other parsing functions.
+     * @gir-type Struct
      */
     class ParserOptions {
         static $gtype: GObject.GType<ParserOptions>;
@@ -8399,12 +8885,12 @@ export namespace GMime {
         // Methods
 
         /**
-         * Clones a #GMimeParserOptions.
-         * @returns a newly allocated #GMimeParserOptions.
+         * Clones a {@link GMime.ParserOptions}.
+         * @returns a newly allocated {@link GMime.ParserOptions}.
          */
         clone(): ParserOptions;
         /**
-         * Frees a set of #GMimeParserOptions.
+         * Frees a set of {@link GMime.ParserOptions}.
          */
         free(): void;
         /**
@@ -8419,7 +8905,7 @@ export namespace GMime {
         /**
          * Gets whether or not the rfc822 address parser should allow addresses without a domain.
          *
-         * In general, you'll probably want this value to be %FALSE (the default) as it allows
+         * In general, you'll probably want this value to be `false` (the default) as it allows
          * maximum interoperability with existing (broken) mail clients and other mail software
          * such as sloppily written perl scripts (aka spambots) that do not properly quote the
          * name when it contains a comma.
@@ -8427,12 +8913,12 @@ export namespace GMime {
          * This option exists in order to allow parsing of mailbox addresses that do not have a
          * domain component. These types of addresses are rare and were typically only used when
          * sending mail to other users on the same UNIX system.
-         * @returns %TRUE if the address parser should allow addresses without a domain.
+         * @returns `true` if the address parser should allow addresses without a domain.
          */
         get_allow_addresses_without_domain(): boolean;
         /**
          * Gets the fallback charsets to try when decoding 8-bit headers.
-         * @returns a %NULL-terminated list of charsets to try when decoding 8-bit headers.
+         * @returns a `null`-terminated list of charsets to try when decoding 8-bit headers.
          */
         get_fallback_charsets(): string[];
         /**
@@ -8464,13 +8950,13 @@ export namespace GMime {
          * Note: Even in #GMIME_RFC_COMPLIANCE_STRICT mode, the address parser is fairly liberal in
          * what it accepts. Setting it to #GMIME_RFC_COMPLIANCE_LOOSE just makes it try harder to
          * deal with garbage input.
-         * @param mode a #GMimeRfcComplianceMode
+         * @param mode a {@link GMime.RfcComplianceMode}
          */
         set_address_compliance_mode(mode: RfcComplianceMode | null): void;
         /**
          * Sets whether the rfc822 address parser should allow addresses without a domain.
          *
-         * In general, you'll probably want this value to be %FALSE (the default) as it allows
+         * In general, you'll probably want this value to be `false` (the default) as it allows
          * maximum interoperability with existing (broken) mail clients and other mail software
          * such as sloppily written perl scripts (aka spambots) that do not properly quote the
          * name when it contains a comma.
@@ -8478,7 +8964,7 @@ export namespace GMime {
          * This option exists in order to allow parsing of mailbox addresses that do not have a
          * domain component. These types of addresses are rare and were typically only used when
          * sending mail to other users on the same UNIX system.
-         * @param allow %TRUE if the parser should allow addresses without a domain or %FALSE otherwise
+         * @param allow `true` if the parser should allow addresses without a domain or `false` otherwise
          */
         set_allow_addresses_without_domain(allow: boolean): void;
         /**
@@ -8486,7 +8972,7 @@ export namespace GMime {
          *
          * Note: It is recommended that the list of charsets start with utf-8
          * and end with iso-8859-1.
-         * @param charsets a %NULL-terminated list of charsets or %NULL for the default list
+         * @param charsets a `null`-terminated list of charsets or `null` for the default list
          */
         set_fallback_charsets(charsets: string): void;
         /**
@@ -8500,7 +8986,7 @@ export namespace GMime {
          * Note: Even in #GMIME_RFC_COMPLIANCE_STRICT mode, the parameter parser is fairly liberal
          * in what it accepts. Setting it to #GMIME_RFC_COMPLIANCE_LOOSE just makes it try harder
          * to deal with garbage input.
-         * @param mode a #GMimeRfcComplianceMode
+         * @param mode a {@link GMime.RfcComplianceMode}
          */
         set_parameter_compliance_mode(mode: RfcComplianceMode | null): void;
         /**
@@ -8513,19 +8999,23 @@ export namespace GMime {
          * Note: Even in #GMIME_RFC_COMPLIANCE_STRICT mode, the parameter parser is fairly liberal
          * in what it accepts. Setting it to #GMIME_RFC_COMPLIANCE_LOOSE just makes it try harder
          * to deal with garbage input.
-         * @param mode a #GMimeRfcComplianceMode
+         * @param mode a {@link GMime.RfcComplianceMode}
          */
         set_rfc2047_compliance_mode(mode: RfcComplianceMode | null): void;
         /**
          * Registers the callback function being called if the parser detects any issues.
-         * @param warning_cb a #GMimeParserWarningFunc or %NULL to clear the callback
+         * @param warning_cb a {@link GMime.ParserWarningFunc} or `null` to clear the callback
          */
         set_warning_callback(warning_cb: ParserWarningFunc): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PartClass = typeof Part;
     /**
      * A MIME part iterator.
+     * @gir-type Struct
      */
     class PartIter {
         static $gtype: GObject.GType<PartIter>;
@@ -8539,71 +9029,71 @@ export namespace GMime {
         // Methods
 
         /**
-         * Clones the `iter,` including its current state.
-         * @returns a new #GMimePartIter that is identical to @iter.
+         * Clones the `iter`, including its current state.
+         * @returns a new {@link GMime.PartIter} that is identical to `iter`.
          */
         clone(): PartIter;
         /**
-         * Frees the memory allocated by g_mime_part_iter_new().
+         * Frees the memory allocated by `g_mime_part_iter_new()`.
          */
         free(): void;
         /**
-         * Gets the #GMimeObject at the current #GMimePartIter position.
-         * @returns the current #GMimeObject or %NULL if the state of @iter is invalid.
+         * Gets the {@link GMime.Object} at the current {@link GMime.PartIter} position.
+         * @returns the current {@link GMime.Object} or `null` if the state of `iter` is invalid.
          */
         get_current(): Object;
         /**
-         * Gets the parent of the #GMimeObject at the current #GMimePartIter
+         * Gets the parent of the {@link GMime.Object} at the current {@link GMime.PartIter}
          * position.
-         * @returns the parent #GMimeObject or %NULL if the state of @iter is invalid.
+         * @returns the parent {@link GMime.Object} or `null` if the state of `iter` is invalid.
          */
         get_parent(): Object;
         /**
-         * Gets the path of the current #GMimeObject in the MIME structure
+         * Gets the path of the current {@link GMime.Object} in the MIME structure
          * used to initialize `iter`.
-         * @returns a newly allocated string representation of the path to the #GMimeObject at the current #GMimePartIter position.
+         * @returns a newly allocated string representation of the path to the {@link GMime.Object} at the current {@link GMime.PartIter} position.
          */
         get_path(): string;
         /**
-         * Gets the toplevel #GMimeObject used to initialize `iter`.
-         * @returns the toplevel #GMimeObject.
+         * Gets the toplevel {@link GMime.Object} used to initialize `iter`.
+         * @returns the toplevel {@link GMime.Object}.
          */
         get_toplevel(): Object;
         /**
          * Checks that the current state of `iter` is valid.
-         * @returns %TRUE if @iter is valid or %FALSE otherwise.
+         * @returns `true` if `iter` is valid or `false` otherwise.
          */
         is_valid(): boolean;
         /**
-         * Updates the state of `iter` to point to the #GMimeObject specified
+         * Updates the state of `iter` to point to the {@link GMime.Object} specified
          * by `path`.
          * @param path a string representing the path to jump to
-         * @returns %TRUE if the #GMimeObject specified by @path exists or %FALSE otherwise.
+         * @returns `true` if the {@link GMime.Object} specified by `path` exists or `false` otherwise.
          */
         jump_to(path: string): boolean;
         /**
          * Advances to the next part in the MIME structure used to initialize
          * `iter`.
-         * @returns %TRUE if successful or %FALSE otherwise.
+         * @returns `true` if successful or `false` otherwise.
          */
         next(): boolean;
         /**
          * Rewinds to the previous part in the MIME structure used to
          * initialize `iter`.
-         * @returns %TRUE if successful or %FALSE otherwise.
+         * @returns `true` if successful or `false` otherwise.
          */
         prev(): boolean;
         /**
-         * Removes the #GMimeObject at the current position from its
+         * Removes the {@link GMime.Object} at the current position from its
          * parent. If successful, `iter` is advanced to the next position
          * (since the current position will become invalid).
-         * @returns %TRUE if the part at the current position was removed or %FALSE otherwise.
+         * @returns `true` if the part at the current position was removed or `false` otherwise.
          */
         remove(): boolean;
         /**
-         * Replaces the #GMimeObject at the current position with `replacement`.
-         * @param replacement a #GMimeObject
-         * @returns %TRUE if the part at the current position was replaced or %FALSE otherwise.
+         * Replaces the {@link GMime.Object} at the current position with `replacement`.
+         * @param replacement a {@link GMime.Object}
+         * @returns `true` if the part at the current position was replaced or `false` otherwise.
          */
         replace(replacement: Object): boolean;
         /**
@@ -8612,10 +9102,14 @@ export namespace GMime {
         reset(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type Pkcs7ContextClass = typeof Pkcs7Context;
     /**
      * A List of references, as per the References or In-Reply-To header
      * fields.
+     * @gir-type Struct
      */
     class References {
         static $gtype: GObject.GType<References>;
@@ -8639,7 +9133,7 @@ export namespace GMime {
         /**
          * Decodes a list of msg-ids as in the References and/or In-Reply-To
          * headers defined in rfc822.
-         * @param options a #GMimeParserOptions or %NULL
+         * @param options a {@link GMime.ParserOptions} or `null`
          * @param text string containing a list of msg-ids
          */
         static parse(options: ParserOptions | null, text: string): References;
@@ -8652,48 +9146,76 @@ export namespace GMime {
          */
         append(msgid: string): void;
         /**
-         * Clears the #GMimeReferences list.
+         * Clears the {@link GMime.References} list.
          */
         clear(): void;
         /**
-         * Copies a #GMimeReferences list.
-         * @returns a new #GMimeReferences list that contains an identical list of items as @refs.
+         * Copies a {@link GMime.References} list.
+         * @returns a new {@link GMime.References} list that contains an identical list of items as `refs`.
          */
         copy(): References;
         /**
-         * Frees the #GMimeReferences list.
+         * Frees the {@link GMime.References} list.
          */
         free(): void;
         /**
-         * Gets the specified Message-Id reference from the #GMimeReferences.
+         * Gets the specified Message-Id reference from the {@link GMime.References}.
          * @param index the index of the message id
-         * @returns the Message-Id reference from the #GMimeReferences.
+         * @returns the Message-Id reference from the {@link GMime.References}.
          */
         get_message_id(index: number): string;
         /**
-         * Gets the length of the #GMimeReferences list.
+         * Gets the length of the {@link GMime.References} list.
          * @returns the number of message ids in the list.
          */
         length(): number;
         /**
-         * Sets the specified Message-Id reference from the #GMimeReferences.
+         * Sets the specified Message-Id reference from the {@link GMime.References}.
          * @param index the index of the message id
          * @param msgid the message id
          */
         set_message_id(index: number, msgid: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SignatureClass = typeof Signature;
+    /**
+     * @gir-type Alias
+     */
     type SignatureListClass = typeof SignatureList;
+    /**
+     * @gir-type Alias
+     */
     type StreamBufferClass = typeof StreamBuffer;
+    /**
+     * @gir-type Alias
+     */
     type StreamCatClass = typeof StreamCat;
+    /**
+     * @gir-type Alias
+     */
     type StreamClass = typeof Stream;
+    /**
+     * @gir-type Alias
+     */
     type StreamFileClass = typeof StreamFile;
+    /**
+     * @gir-type Alias
+     */
     type StreamFilterClass = typeof StreamFilter;
+    /**
+     * @gir-type Alias
+     */
     type StreamFsClass = typeof StreamFs;
+    /**
+     * @gir-type Alias
+     */
     type StreamGIOClass = typeof StreamGIO;
     /**
-     * An I/O vector for use with g_mime_stream_writev().
+     * An I/O vector for use with `g_mime_stream_writev()`.
+     * @gir-type Struct
      */
     class StreamIOVector {
         static $gtype: GObject.GType<StreamIOVector>;
@@ -8713,10 +9235,25 @@ export namespace GMime {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StreamMemClass = typeof StreamMem;
+    /**
+     * @gir-type Alias
+     */
     type StreamMmapClass = typeof StreamMmap;
+    /**
+     * @gir-type Alias
+     */
     type StreamNullClass = typeof StreamNull;
+    /**
+     * @gir-type Alias
+     */
     type StreamPipeClass = typeof StreamPipe;
+    /**
+     * @gir-type Alias
+     */
     type TextPartClass = typeof TextPart;
     /**
      * Name of the imported GIR library

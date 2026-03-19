@@ -28,6 +28,7 @@ export namespace Dmap {
 
     /**
      * Enumeration of connection states.
+     * @gir-type Enum
      */
     enum ConnectionState {
         /**
@@ -72,6 +73,9 @@ export namespace Dmap {
         export const $gtype: GObject.GType<ContentCode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ContentCode {
         CC_INVALID,
         RAW,
@@ -244,6 +248,9 @@ export namespace Dmap {
         export const $gtype: GObject.GType<ControlPlayState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ControlPlayState {
         STOPPED,
         PAUSED,
@@ -254,6 +261,9 @@ export namespace Dmap {
         export const $gtype: GObject.GType<ControlRepeatState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ControlRepeatState {
         NONE,
         SINGLE,
@@ -266,6 +276,7 @@ export namespace Dmap {
 
     /**
      * Special DmapDb ID values.
+     * @gir-type Enum
      */
     enum DbId {
         /**
@@ -276,6 +287,7 @@ export namespace Dmap {
 
     /**
      * Errors inside the libdmapsharing library.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -305,6 +317,9 @@ export namespace Dmap {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MdnsBrowserError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -322,6 +337,9 @@ export namespace Dmap {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MdnsPublisherError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -343,6 +361,9 @@ export namespace Dmap {
         export const $gtype: GObject.GType<MdnsServiceTransportProtocol>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MdnsServiceTransportProtocol {
         TCP,
         UDP,
@@ -355,6 +376,7 @@ export namespace Dmap {
 
     /**
      * Enum values used to specify the service type.
+     * @gir-type Enum
      */
     enum MdnsServiceType {
         /**
@@ -387,6 +409,9 @@ export namespace Dmap {
         export const $gtype: GObject.GType<MediaKind>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MediaKind {
         MUSIC,
         MOVIE,
@@ -398,6 +423,9 @@ export namespace Dmap {
         export const $gtype: GObject.GType<ShareAuthMethod>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ShareAuthMethod {
         NONE,
         NAME_AND_PASSWORD,
@@ -414,6 +442,13 @@ export namespace Dmap {
      */
     function av_record_cmp_by_album(a: any | null, b: any | null, db: Db): number;
     function error_quark(): GLib.Quark;
+    /**
+     * @param version_major
+     * @param url
+     * @param hash_select
+     * @param out
+     * @param request_id
+     */
     function md5_generate(
         version_major: number,
         url: number,
@@ -421,19 +456,48 @@ export namespace Dmap {
         out: number,
         request_id: number,
     ): void;
+    /**
+     * @param context
+     * @param digest
+     */
     function md5_progressive_final(context: HashContext, digest: number): void;
+    /**
+     * @param context
+     */
     function md5_progressive_init(context: HashContext): void;
+    /**
+     * @param digest
+     * @param string
+     */
     function md5_progressive_to_string(digest: number, string: string): void;
+    /**
+     * @param context
+     * @param buffer
+     * @param length
+     */
     function md5_progressive_update(context: HashContext, buffer: number, length: number): void;
     function mdns_browser_error_quark(): GLib.Quark;
     function mdns_publisher_error_quark(): GLib.Quark;
+    /**
+     * @param transcode_mimetype a string representing a MIME type (e.g., "audio/wav").
+     * @returns a string representing the corresponding type  (e.g., "wav").
+     */
     function utils_mime_to_format(transcode_mimetype: string): string;
+    /**
+     * @gir-type Callback
+     */
     interface ConnectionFunc {
         (connection: Connection, result: boolean, reason: string): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface IdContainerRecordFunc {
         (id: number, record: ContainerRecord): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface IdRecordFunc {
         (id: number, record: Record): void;
     }
@@ -459,6 +523,9 @@ export namespace Dmap {
         interface ConstructorProps extends Connection.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AvConnection extends Connection {
         static $gtype: GObject.GType<AvConnection>;
 
@@ -485,16 +552,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AvConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AvConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AvConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AvConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AvConnection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AvConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -521,6 +591,9 @@ export namespace Dmap {
         interface ConstructorProps extends Share.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AvShare extends Share {
         static $gtype: GObject.GType<AvShare>;
 
@@ -553,16 +626,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AvShare.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AvShare.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AvShare.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AvShare.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AvShare.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AvShare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -573,6 +649,9 @@ export namespace Dmap {
     namespace Connection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             authenticate: (
                 arg0: string,
                 arg1: Soup.Session,
@@ -580,10 +659,25 @@ export namespace Dmap {
                 arg3: Soup.Auth,
                 arg4: boolean,
             ) => void;
+            /**
+             * @signal
+             */
             connected: () => void;
+            /**
+             * @signal
+             */
             connecting: (arg0: number, arg1: number) => void;
+            /**
+             * @signal
+             */
             disconnected: () => void;
+            /**
+             * @signal
+             */
             error: (arg0: any | null) => void;
+            /**
+             * @signal
+             */
             'operation-done': () => void;
             'notify::base-uri': (pspec: GObject.ParamSpec) => void;
             'notify::database-id': (pspec: GObject.ParamSpec) => void;
@@ -622,6 +716,9 @@ export namespace Dmap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
 
@@ -672,16 +769,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -690,12 +790,36 @@ export namespace Dmap {
 
         // Virtual methods
 
+        /**
+         * @param name
+         * @virtual
+         */
         vfunc_authenticate(name: string): string;
+        /**
+         * @virtual
+         */
         vfunc_connected(): void;
+        /**
+         * @param state
+         * @param progress
+         * @virtual
+         */
         vfunc_connecting(state: ConnectionState, progress: number): void;
+        /**
+         * @virtual
+         */
         vfunc_disconnected(): void;
+        /**
+         * @virtual
+         */
         vfunc_get_protocol_version_cc(): ContentCode;
+        /**
+         * @virtual
+         */
         vfunc_get_query_metadata(): string;
+        /**
+         * @virtual
+         */
         vfunc_operation_done(): void;
 
         // Methods
@@ -703,18 +827,21 @@ export namespace Dmap {
         /**
          * Attach an authentication credential to a request. This
          * method should be called by a function that is connected to the
-         * #DmapConnection::authenticate signal. The signal will provide the
+         * {@link Dmap.Connection.SignalSignatures.authenticate | Dmap.Connection::authenticate} signal. The signal will provide the
          * connection, session, message and auth to that function. That function
          * should obtain a password and provide it to this method.
-         * @param session A #SoupSession
-         * @param message A #SoupMessage
-         * @param auth A #SoupAuth
+         * @param session A {@link Soup.Session}
+         * @param message A {@link Soup.Message}
+         * @param auth A {@link Soup.Auth}
          * @param password A password
          */
         authenticate_message(session: Soup.Session, message: Soup.Message, auth: Soup.Auth, password: string): void;
+        /**
+         * @param uri
+         */
         get_headers(uri: string): Soup.MessageHeaders;
         /**
-         * Get the playlists associated with a #DmapConnection instance.
+         * Get the playlists associated with a {@link Dmap.Connection} instance.
          * @returns pointer to a list of playlists.
          */
         get_playlists(): Playlist[];
@@ -756,6 +883,9 @@ export namespace Dmap {
         interface ConstructorProps extends Connection.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ControlConnection extends Connection {
         static $gtype: GObject.GType<ControlConnection>;
 
@@ -782,16 +912,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ControlConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ControlConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ControlConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ControlConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ControlConnection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ControlConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -802,10 +935,25 @@ export namespace Dmap {
     namespace ControlShare {
         // Signal signatures
         interface SignalSignatures extends Share.SignalSignatures {
+            /**
+             * @signal
+             */
             'add-guid': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'lookup-guid': (arg0: string) => boolean | void;
+            /**
+             * @signal
+             */
             'remote-found': (arg0: string, arg1: string) => void;
+            /**
+             * @signal
+             */
             'remote-lost': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'remote-paired': (arg0: string, arg1: boolean) => void;
             'notify::library-name': (pspec: GObject.ParamSpec) => void;
             'notify::player': (pspec: GObject.ParamSpec) => void;
@@ -829,6 +977,9 @@ export namespace Dmap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ControlShare extends Share {
         static $gtype: GObject.GType<ControlShare>;
 
@@ -863,16 +1014,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ControlShare.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ControlShare.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ControlShare.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ControlShare.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ControlShare.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ControlShare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -881,10 +1035,32 @@ export namespace Dmap {
 
         // Virtual methods
 
+        /**
+         * @param guid
+         * @virtual
+         */
         vfunc_add_guid(guid: string): void;
+        /**
+         * @param guid
+         * @virtual
+         */
         vfunc_lookup_guid(guid: string): boolean;
+        /**
+         * @param service_name
+         * @param remote_name
+         * @virtual
+         */
         vfunc_remote_found(service_name: string, remote_name: string): void;
+        /**
+         * @param service_name
+         * @virtual
+         */
         vfunc_remote_lost(service_name: string): void;
+        /**
+         * @param service_name
+         * @param connected
+         * @virtual
+         */
         vfunc_remote_paired(service_name: string, connected: boolean): void;
 
         // Methods
@@ -899,8 +1075,8 @@ export namespace Dmap {
         pair(service_name: string, passcode: string): void;
         player_updated(): void;
         /**
-         * Start looking up for DACP remotes. Connect to #DmapControlShare::remote-found signal
-         * to detect new remotes. Be aware that when a #DmapControlShare is created, only
+         * Start looking up for DACP remotes. Connect to {@link Dmap.ControlShare.SignalSignatures.remote_found | Dmap.ControlShare::remote-found} signal
+         * to detect new remotes. Be aware that when a {@link Dmap.ControlShare} is created, only
          * after calling this function is that it starts looking up for Remotes on the
          * network.
          * @returns TRUE on success, else FALSE with error set.
@@ -934,6 +1110,9 @@ export namespace Dmap {
         interface ConstructorProps extends Connection.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ImageConnection extends Connection {
         static $gtype: GObject.GType<ImageConnection>;
 
@@ -960,16 +1139,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ImageConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ImageConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ImageConnection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ImageConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -996,6 +1178,9 @@ export namespace Dmap {
         interface ConstructorProps extends Share.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ImageShare extends Share {
         static $gtype: GObject.GType<ImageShare>;
 
@@ -1028,16 +1213,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ImageShare.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageShare.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ImageShare.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ImageShare.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ImageShare.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ImageShare.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1048,7 +1236,14 @@ export namespace Dmap {
     namespace MdnsBrowser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted each time a service becomes available to `browser`
+             * @signal
+             */
             'service-added': (arg0: MdnsService) => void;
+            /**
+             * @signal
+             */
             'service-removed': (arg0: string) => void;
         }
 
@@ -1057,6 +1252,9 @@ export namespace Dmap {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MdnsBrowser extends GObject.Object {
         static $gtype: GObject.GType<MdnsBrowser>;
 
@@ -1083,16 +1281,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MdnsBrowser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MdnsBrowser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MdnsBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1101,12 +1302,23 @@ export namespace Dmap {
 
         // Virtual methods
 
+        /**
+         * @param service
+         * @virtual
+         */
         vfunc_service_added(service: MdnsService): void;
+        /**
+         * @param service
+         * @virtual
+         */
         vfunc_service_removed(service: MdnsService): void;
 
         // Methods
 
         get_service_type(): MdnsServiceType;
+        /**
+         * @returns services available to `browser`.
+         */
         get_services(): MdnsService[];
         /**
          * Starts a DmapMdnsBrowser.
@@ -1123,7 +1335,13 @@ export namespace Dmap {
     namespace MdnsPublisher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'name-collision': (arg0: string) => void;
+            /**
+             * @signal
+             */
             published: (arg0: string) => void;
         }
 
@@ -1132,6 +1350,9 @@ export namespace Dmap {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MdnsPublisher extends GObject.Object {
         static $gtype: GObject.GType<MdnsPublisher>;
 
@@ -1158,16 +1379,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MdnsPublisher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MdnsPublisher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MdnsPublisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1176,11 +1400,26 @@ export namespace Dmap {
 
         // Virtual methods
 
+        /**
+         * @param name
+         * @virtual
+         */
         vfunc_name_collision(name: string): void;
+        /**
+         * @param name
+         * @virtual
+         */
         vfunc_published(name: string): void;
 
         // Methods
 
+        /**
+         * @param name
+         * @param port
+         * @param type_of_service
+         * @param password_required
+         * @param txt_records
+         */
         publish(
             name: string,
             port: number,
@@ -1188,7 +1427,14 @@ export namespace Dmap {
             password_required: boolean,
             txt_records: string,
         ): boolean;
+        /**
+         * @param port
+         * @param name
+         */
         rename_at_port(port: number, name: string): boolean;
+        /**
+         * @param port
+         */
         withdraw(port: number): boolean;
     }
 
@@ -1220,6 +1466,9 @@ export namespace Dmap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MdnsService extends GObject.Object {
         static $gtype: GObject.GType<MdnsService>;
 
@@ -1267,16 +1516,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MdnsService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MdnsService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MdnsService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MdnsService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MdnsService.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MdnsService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1287,6 +1539,9 @@ export namespace Dmap {
     namespace Share {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             error: (arg0: any | null) => void;
             'notify::auth-method': (pspec: GObject.ParamSpec) => void;
             'notify::container-db': (pspec: GObject.ParamSpec) => void;
@@ -1319,6 +1574,9 @@ export namespace Dmap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Share extends GObject.Object {
         static $gtype: GObject.GType<Share>;
 
@@ -1364,16 +1622,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Share.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Share.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Share.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Share.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Share.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Share.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1390,41 +1651,117 @@ export namespace Dmap {
 
         // Virtual methods
 
+        /**
+         * @param message
+         * @param path
+         * @virtual
+         */
         vfunc_content_codes(message: Soup.ServerMessage, path: string): void;
+        /**
+         * @param message
+         * @param path
+         * @param query
+         * @virtual
+         */
         vfunc_ctrl_int(
             message: Soup.ServerMessage,
             path: string,
             query: { [key: string]: any } | GLib.HashTable<any, any>,
         ): void;
+        /**
+         * @param server
+         * @param message
+         * @param path
+         * @param query
+         * @virtual
+         */
         vfunc_databases(
             server: Soup.Server,
             message: Soup.ServerMessage,
             path: string,
             query: { [key: string]: any } | GLib.HashTable<any, any>,
         ): void;
+        /**
+         * @param msg
+         * @param path
+         * @param query
+         * @virtual
+         */
         vfunc_databases_browse_xxx(
             msg: Soup.ServerMessage,
             path: string,
             query: { [key: string]: any } | GLib.HashTable<any, any>,
         ): void;
+        /**
+         * @param server
+         * @param msg
+         * @param path
+         * @virtual
+         */
         vfunc_databases_items_xxx(server: Soup.Server, msg: Soup.ServerMessage, path: string): void;
+        /**
+         * @virtual
+         */
         vfunc_get_desired_port(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_meta_data_map(): any | null;
+        /**
+         * @virtual
+         */
         vfunc_get_type_of_service(): string;
+        /**
+         * @param message
+         * @param path
+         * @param query
+         * @virtual
+         */
         vfunc_login(
             message: Soup.ServerMessage,
             path: string,
             query: { [key: string]: any } | GLib.HashTable<any, any>,
         ): void;
+        /**
+         * @param message
+         * @param path
+         * @param query
+         * @virtual
+         */
         vfunc_logout(
             message: Soup.ServerMessage,
             path: string,
             query: { [key: string]: any } | GLib.HashTable<any, any>,
         ): void;
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_message_add_standard_headers(msg: Soup.ServerMessage): void;
+        /**
+         * @param publisher
+         * @param name
+         * @virtual
+         */
         vfunc_name_collision(publisher: MdnsPublisher, name: string): void;
+        /**
+         * @param publisher
+         * @param name
+         * @virtual
+         */
         vfunc_published(publisher: MdnsPublisher, name: string): void;
+        /**
+         * @param message
+         * @param path
+         * @virtual
+         */
         vfunc_server_info(message: Soup.ServerMessage, path: string): void;
+        /**
+         * @param message
+         * @param path
+         * @param query
+         * @virtual
+         */
         vfunc_update(
             message: Soup.ServerMessage,
             path: string,
@@ -1455,6 +1792,9 @@ export namespace Dmap {
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TranscodeStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<TranscodeStream>;
 
@@ -1477,16 +1817,19 @@ export namespace Dmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TranscodeStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TranscodeStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TranscodeStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TranscodeStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TranscodeStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TranscodeStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1495,22 +1838,23 @@ export namespace Dmap {
 
         // Virtual methods
 
-        vfunc_kill_pipeline(): void;
-
-        // Inherited methods
         /**
-         * Tests if the stream supports the #GSeekableIface.
-         * @returns %TRUE if @seekable can be seeked. %FALSE otherwise.
+         * @virtual
+         */
+        vfunc_kill_pipeline(): void;
+        /**
+         * Tests if the stream supports the {@link Gio.SeekableIface}.
+         * @returns `true` if `seekable` can be seeked. `false` otherwise.
          */
         can_seek(): boolean;
         /**
          * Tests if the length of the stream can be adjusted with
-         * g_seekable_truncate().
-         * @returns %TRUE if the stream can be truncated, %FALSE otherwise.
+         * `g_seekable_truncate()`.
+         * @returns `true` if the stream can be truncated, `false` otherwise.
          */
         can_truncate(): boolean;
         /**
-         * Seeks in the stream by the given `offset,` modified by `type`.
+         * Seeks in the stream by the given `offset`, modified by `type`.
          *
          * Attempting to seek past the end of the stream will have different
          * results depending on if the stream is fixed-sized or resizable.  If
@@ -1521,13 +1865,13 @@ export namespace Dmap {
          *
          * Any operation that would result in a negative offset will fail.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-         * @param offset a #goffset.
-         * @param type a #GSeekType.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * @param offset a `goffset`.
+         * @param type a {@link GLib.SeekType}.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
         seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1537,30 +1881,32 @@ export namespace Dmap {
         tell(): number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
-         * larger than `offset,` the extra data is discarded. If the stream was
-         * previously shorter than `offset,` it is extended with NUL ('\0') bytes.
+         * larger than `offset`, the extra data is discarded. If the stream was
+         * previously shorter than `offset`, it is extended with NUL ('\0') bytes.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
          * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
-         * @param offset new length for @seekable, in bytes.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
+         * @param offset new length for `seekable`, in bytes.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
         truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Tests if the stream supports the #GSeekableIface.
+         * Tests if the stream supports the {@link Gio.SeekableIface}.
+         * @virtual
          */
         vfunc_can_seek(): boolean;
         /**
          * Tests if the length of the stream can be adjusted with
-         * g_seekable_truncate().
+         * `g_seekable_truncate()`.
+         * @virtual
          */
         vfunc_can_truncate(): boolean;
         /**
-         * Seeks in the stream by the given `offset,` modified by `type`.
+         * Seeks in the stream by the given `offset`, modified by `type`.
          *
          * Attempting to seek past the end of the stream will have different
          * results depending on if the stream is fixed-sized or resizable.  If
@@ -1571,30 +1917,33 @@ export namespace Dmap {
          *
          * Any operation that would result in a negative offset will fail.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-         * @param offset a #goffset.
-         * @param type a #GSeekType.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * @param offset a `goffset`.
+         * @param type a {@link GLib.SeekType}.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
+         * @virtual
          */
         vfunc_tell(): number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
-         * larger than `offset,` the extra data is discarded. If the stream was
-         * previously shorter than `offset,` it is extended with NUL ('\0') bytes.
+         * larger than `offset`, the extra data is discarded. If the stream was
+         * previously shorter than `offset`, it is extended with NUL ('\0') bytes.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
          * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
-         * @param offset new length for @seekable, in bytes.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param offset new length for `seekable`, in bytes.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1610,32 +1959,32 @@ export namespace Dmap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1644,39 +1993,39 @@ export namespace Dmap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1687,13 +2036,16 @@ export namespace Dmap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1701,7 +2053,7 @@ export namespace Dmap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1709,9 +2061,9 @@ export namespace Dmap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1731,9 +2083,9 @@ export namespace Dmap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1747,33 +2099,33 @@ export namespace Dmap {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1806,21 +2158,21 @@ export namespace Dmap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1830,8 +2182,8 @@ export namespace Dmap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1848,10 +2200,10 @@ export namespace Dmap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1866,13 +2218,13 @@ export namespace Dmap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1903,21 +2255,21 @@ export namespace Dmap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1927,33 +2279,34 @@ export namespace Dmap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1962,6 +2315,7 @@ export namespace Dmap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1970,12 +2324,14 @@ export namespace Dmap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1984,20 +2340,22 @@ export namespace Dmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2009,6 +2367,7 @@ export namespace Dmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2038,35 +2397,80 @@ export namespace Dmap {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AvConnectionClass = typeof AvConnection;
+    /**
+     * @gir-type Struct
+     */
     abstract class AvConnectionPrivate {
         static $gtype: GObject.GType<AvConnectionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AvRecordInterface = typeof AvRecord;
+    /**
+     * @gir-type Alias
+     */
     type AvShareClass = typeof AvShare;
+    /**
+     * @gir-type Struct
+     */
     abstract class AvSharePrivate {
         static $gtype: GObject.GType<AvSharePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConnectionClass = typeof Connection;
+    /**
+     * @gir-type Struct
+     */
     abstract class ConnectionPrivate {
         static $gtype: GObject.GType<ConnectionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContainerDbInterface = typeof ContainerDb;
+    /**
+     * @gir-type Alias
+     */
     type ContainerRecordInterface = typeof ContainerRecord;
+    /**
+     * @gir-type Alias
+     */
     type ControlConnectionClass = typeof ControlConnection;
+    /**
+     * @gir-type Struct
+     */
     abstract class ControlConnectionPrivate {
         static $gtype: GObject.GType<ControlConnectionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ControlPlayerInterface = typeof ControlPlayer;
+    /**
+     * @gir-type Alias
+     */
     type ControlShareClass = typeof ControlShare;
+    /**
+     * @gir-type Struct
+     */
     abstract class ControlSharePrivate {
         static $gtype: GObject.GType<ControlSharePrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DbFilterDefinition {
         static $gtype: GObject.GType<DbFilterDefinition>;
 
@@ -2087,7 +2491,13 @@ export namespace Dmap {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DbInterface = typeof Db;
+    /**
+     * @gir-type Struct
+     */
     class HashContext {
         static $gtype: GObject.GType<HashContext>;
 
@@ -2110,32 +2520,68 @@ export namespace Dmap {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ImageConnectionClass = typeof ImageConnection;
+    /**
+     * @gir-type Struct
+     */
     abstract class ImageConnectionPrivate {
         static $gtype: GObject.GType<ImageConnectionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ImageRecordInterface = typeof ImageRecord;
+    /**
+     * @gir-type Alias
+     */
     type ImageShareClass = typeof ImageShare;
+    /**
+     * @gir-type Struct
+     */
     abstract class ImageSharePrivate {
         static $gtype: GObject.GType<ImageSharePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MdnsBrowserClass = typeof MdnsBrowser;
+    /**
+     * @gir-type Struct
+     */
     abstract class MdnsBrowserPrivate {
         static $gtype: GObject.GType<MdnsBrowserPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MdnsPublisherClass = typeof MdnsPublisher;
+    /**
+     * @gir-type Struct
+     */
     abstract class MdnsPublisherPrivate {
         static $gtype: GObject.GType<MdnsPublisherPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MdnsServiceClass = typeof MdnsService;
+    /**
+     * @gir-type Struct
+     */
     abstract class MdnsServicePrivate {
         static $gtype: GObject.GType<MdnsServicePrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MetaDataMap {
         static $gtype: GObject.GType<MetaDataMap>;
 
@@ -2154,6 +2600,9 @@ export namespace Dmap {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MlclBits {
         static $gtype: GObject.GType<MlclBits>;
 
@@ -2163,6 +2612,9 @@ export namespace Dmap {
         share: Share;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Playlist {
         static $gtype: GObject.GType<Playlist>;
 
@@ -2182,14 +2634,32 @@ export namespace Dmap {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RecordFactoryInterface = typeof RecordFactory;
+    /**
+     * @gir-type Alias
+     */
     type RecordInterface = typeof Record;
+    /**
+     * @gir-type Alias
+     */
     type ShareClass = typeof Share;
+    /**
+     * @gir-type Struct
+     */
     abstract class SharePrivate {
         static $gtype: GObject.GType<SharePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TranscodeStreamClass = typeof TranscodeStream;
+    /**
+     * @gir-type Struct
+     */
     abstract class TranscodeStreamPrivate {
         static $gtype: GObject.GType<TranscodeStreamPrivate>;
     }
@@ -2202,7 +2672,13 @@ export namespace Dmap {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_itunes_compat(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_read(): Gio.InputStream;
         }
 
@@ -2249,6 +2725,9 @@ export namespace Dmap {
          */
         cmp_by_album(a: any | null, b: any | null, db: Db): number;
     }
+    /**
+     * @gir-type Interface
+     */
     interface AvRecord extends GObject.Object, AvRecord.Interface {
         // Properties
 
@@ -2303,7 +2782,13 @@ export namespace Dmap {
 
         // Methods
 
+        /**
+         * @returns TRUE if record is compatible with iTunes, else FALSE.
+         */
         itunes_compat(): boolean;
+        /**
+         * @returns A GInputStream that provides read-only access to the data stream associated with record.
+         */
         read(): Gio.InputStream;
     }
 
@@ -2322,14 +2807,23 @@ export namespace Dmap {
             /**
              * Add a record to the database.
              * @param record A record.
+             * @virtual
              */
             vfunc_add(record: ContainerRecord): void;
+            /**
+             * @virtual
+             */
             vfunc_count(): number;
             /**
              * Apply a function to each record in a container database.
              * @param func The function to apply to each record in the database.
+             * @virtual
              */
             vfunc_foreach(func: IdContainerRecordFunc): void;
+            /**
+             * @param id A record ID.
+             * @virtual
+             */
             vfunc_lookup_by_id(id: number): ContainerRecord;
         }
 
@@ -2342,6 +2836,9 @@ export namespace Dmap {
         $gtype: GObject.GType<ContainerDb>;
         prototype: ContainerDb;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ContainerDb extends GObject.Object, ContainerDb.Interface {
         // Methods
 
@@ -2350,12 +2847,19 @@ export namespace Dmap {
          * @param record A record.
          */
         add(record: ContainerRecord): void;
+        /**
+         * @returns the number of records in the database.
+         */
         count(): number;
         /**
          * Apply a function to each record in a container database.
          * @param func The function to apply to each record in the database.
          */
         foreach(func: IdContainerRecordFunc): void;
+        /**
+         * @param id A record ID.
+         * @returns the database record corresponding to `id`. This record should be unrefed when no longer required.
+         */
         lookup_by_id(id: number): ContainerRecord;
     }
 
@@ -2376,10 +2880,20 @@ export namespace Dmap {
              * directly into the database (not copied) and not freed.
              * @param record A DmapRecord.
              * @param id The record's ID.
+             * @virtual
              */
             vfunc_add_entry(record: Record, id: number): void;
+            /**
+             * @virtual
+             */
             vfunc_get_entries(): Db;
+            /**
+             * @virtual
+             */
             vfunc_get_entry_count(): number;
+            /**
+             * @virtual
+             */
             vfunc_get_id(): number;
         }
 
@@ -2394,6 +2908,9 @@ export namespace Dmap {
         $gtype: GObject.GType<ContainerRecord>;
         prototype: ContainerRecord;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ContainerRecord extends GObject.Object, ContainerRecord.Interface {
         // Properties
 
@@ -2409,8 +2926,17 @@ export namespace Dmap {
          * @param id The record's ID.
          */
         add_entry(record: Record, id: number): void;
+        /**
+         * @returns A pointer to a DmapDb containing the entries contained in record.
+         */
         get_entries(): Db;
+        /**
+         * @returns the number of records in the container record.
+         */
         get_entry_count(): number;
+        /**
+         * @returns the ID for the given record.
+         */
         get_id(): number;
     }
 
@@ -2426,13 +2952,41 @@ export namespace Dmap {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_cue_clear(): void;
+            /**
+             * @param records a list of records
+             * @param index an index
+             * @virtual
+             */
             vfunc_cue_play(records: Record[], index: number): void;
+            /**
+             * @virtual
+             */
             vfunc_next_item(): void;
+            /**
+             * @param width width
+             * @param height height
+             * @virtual
+             */
             vfunc_now_playing_artwork(width: number, height: number): string;
+            /**
+             * @virtual
+             */
             vfunc_now_playing_record(): AvRecord;
+            /**
+             * @virtual
+             */
             vfunc_pause(): void;
+            /**
+             * @virtual
+             */
             vfunc_play_pause(): void;
+            /**
+             * @virtual
+             */
             vfunc_prev_item(): void;
         }
 
@@ -2455,6 +3009,9 @@ export namespace Dmap {
         $gtype: GObject.GType<ControlPlayer>;
         prototype: ControlPlayer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ControlPlayer extends GObject.Object, ControlPlayer.Interface {
         // Properties
 
@@ -2480,9 +3037,21 @@ export namespace Dmap {
         // Methods
 
         cue_clear(): void;
+        /**
+         * @param records a list of records
+         * @param index an index
+         */
         cue_play(records: Record[], index: number): void;
         next_item(): void;
+        /**
+         * @param width width
+         * @param height height
+         * @returns artwork for the currently playing record.
+         */
         now_playing_artwork(width: number, height: number): string;
+        /**
+         * @returns the currently playing record.
+         */
         now_playing_record(): AvRecord;
         pause(): void;
         play_pause(): void;
@@ -2504,11 +3073,13 @@ export namespace Dmap {
             /**
              * Add a record to the database.
              * @param record A database record.
+             * @virtual
              */
             vfunc_add(record: Record): number;
             /**
              * Create a record and add it to the database.
              * @param path A path to an appropriate media file.
+             * @virtual
              */
             vfunc_add_path(path: string): number;
             /**
@@ -2516,15 +3087,28 @@ export namespace Dmap {
              * `DMAP_DB_ID_BAD`.
              * @param record A database record.
              * @param id A database record ID.
+             * @virtual
              */
             vfunc_add_with_id(record: Record, id: number): number;
+            /**
+             * @virtual
+             */
             vfunc_count(): number;
             /**
              * Apply a function to each record in a media database.
              * @param func The function to apply to each record in the database.
+             * @virtual
              */
             vfunc_foreach(func: IdRecordFunc): void;
+            /**
+             * @param id A record ID.
+             * @virtual
+             */
             vfunc_lookup_by_id(id: number): Record;
+            /**
+             * @param location A record location.
+             * @virtual
+             */
             vfunc_lookup_id_by_location(location: string): number;
         }
 
@@ -2537,13 +3121,16 @@ export namespace Dmap {
         $gtype: GObject.GType<Db>;
         prototype: Db;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Db extends GObject.Object, Db.Interface {
         // Methods
 
         /**
          * Add a record to the database.
          * @param record A database record.
-         * @returns The ID for the newly added record or @DMAP_DB_ID_BAD on failure. A reference to the record will be retained by the database (if required; an adapter-type implementation might not want to retain a reference as the record data may be placed elsewhere). In all cases, a returned record should be unrefed by the calling code.
+         * @returns The ID for the newly added record or `DMAP_DB_ID_BAD` on failure. A reference to the record will be retained by the database (if required; an adapter-type implementation might not want to retain a reference as the record data may be placed elsewhere). In all cases, a returned record should be unrefed by the calling code.
          */
         add(record: Record): number;
         /**
@@ -2560,14 +3147,29 @@ export namespace Dmap {
          * @returns The ID for the newly added record or DMAP_DB_ID_BAD on failure. See also the notes for dmap_db_add regarding reference counting.
          */
         add_with_id(record: Record, id: number): number;
+        /**
+         * @param filter_def A series of filter definitions.
+         * @returns the records which satisfy a record in `filter_def`.
+         */
         apply_filter(filter_def: DbFilterDefinition[]): GLib.HashTable<number, Record>;
+        /**
+         * @returns the number of records in the database.
+         */
         count(): number;
         /**
          * Apply a function to each record in a media database.
          * @param func The function to apply to each record in the database.
          */
         foreach(func: IdRecordFunc): void;
+        /**
+         * @param id A record ID.
+         * @returns the database record corresponding to `id`. `id` cannot be DMAP_DB_ID_BAD. The returned record should be unrefed by the calling code when no longer required. If you are implementing a full database using this API, then you probably want to increment the reference count before returning a record pointer. On the other hand, if you are implementing an adapter class and the records are stored elsewhere, then you will probably return a transient record. That is, once the user is done using it, the returned record should be free'd because it is a adapter copy of the real record. In this case, the reference count should not be incremented before returning a record pointer.
+         */
         lookup_by_id(id: number): Record;
+        /**
+         * @param location A record location.
+         * @returns the database id for the record corresponding to `path` or DMAP_DB_ID_BAD if such a record does not exist.
+         */
         lookup_id_by_location(location: string): number;
     }
 
@@ -2583,6 +3185,9 @@ export namespace Dmap {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_read(): Gio.InputStream;
         }
 
@@ -2613,6 +3218,9 @@ export namespace Dmap {
         $gtype: GObject.GType<ImageRecord>;
         prototype: ImageRecord;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ImageRecord extends GObject.Object, ImageRecord.Interface {
         // Properties
 
@@ -2653,6 +3261,9 @@ export namespace Dmap {
 
         // Methods
 
+        /**
+         * @returns a GInputStream that provides read-only access to the data stream associated with record.
+         */
         read(): Gio.InputStream;
     }
 
@@ -2668,7 +3279,14 @@ export namespace Dmap {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param blob A byte array representation of a record.
+             * @virtual
+             */
             vfunc_set_from_blob(blob: Uint8Array | string): boolean;
+            /**
+             * @virtual
+             */
             vfunc_to_blob(): Uint8Array;
         }
 
@@ -2681,10 +3299,20 @@ export namespace Dmap {
         $gtype: GObject.GType<Record>;
         prototype: Record;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Record extends GObject.Object, Record.Interface {
         // Methods
 
+        /**
+         * @param blob A byte array representation of a record.
+         * @returns True on success, else false.
+         */
         set_from_blob(blob: Uint8Array | string): boolean;
+        /**
+         * @returns A byte array representation of the record.
+         */
         to_blob(): Uint8Array;
     }
 
@@ -2700,6 +3328,10 @@ export namespace Dmap {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param user_data Some piece of data that may be used to initialize return value.
+             * @virtual
+             */
             vfunc_create(user_data?: any | null): Record;
         }
 
@@ -2712,9 +3344,16 @@ export namespace Dmap {
         $gtype: GObject.GType<RecordFactory>;
         prototype: RecordFactory;
     }
+    /**
+     * @gir-type Interface
+     */
     interface RecordFactory extends GObject.Object, RecordFactory.Interface {
         // Methods
 
+        /**
+         * @param user_data Some piece of data that may be used to initialize return value.
+         * @returns a new DmapRecord, else NULL with error set.
+         */
         create(user_data?: any | null): Record;
     }
 
@@ -2722,6 +3361,9 @@ export namespace Dmap {
         new (): RecordFactory; // This allows `obj instanceof RecordFactory`
     };
 
+    /**
+     * @gir-type Alias
+     */
     type Bits = number;
     /**
      * Name of the imported GIR library

@@ -22,6 +22,7 @@ export namespace Xfconf {
 
     /**
      * An enumeration listing the different kinds of errors under the XFCONF_ERROR domain.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -79,48 +80,48 @@ export namespace Xfconf {
     }
 
     /**
-     * Properly frees a #GPtrArray structure containing a list of
-     * #GValue<!-- -->s.  This will also cause the contents of the
+     * Properly frees a {@link GLib.PtrArray} structure containing a list of
+     * {@link GObject.Value}<!-- -->s.  This will also cause the contents of the
      * values to be freed as well.
-     * @param arr A #GPtrArray of #GValue<!-- -->s.
+     * @param arr A {@link GLib.PtrArray} of {@link GObject.Value}<!-- -->s.
      */
     function array_free(arr: (GObject.Value | any)[]): void;
     function error_quark(): GLib.Quark;
     /**
      * Initializes the Xfconf library.  Can be called multiple times with no
      * adverse effects.
-     * @returns %TRUE if the library was initialized succesfully, %FALSE on          error.  If there is an error @error will be set.
+     * @returns `true` if the library was initialized succesfully, `false` on          error.  If there is an error `error` will be set.
      */
     function init(): boolean;
     /**
      * Lists all channels known in the Xfconf configuration store.
-     * @returns A newly-allocated array of strings.                                                                 Free with g_strfreev() when no longer needed.
+     * @returns A newly-allocated array of strings.                                                                 Free with `g_strfreev()` when no longer needed.
      */
     function list_channels(): string[];
     /**
-     * Registers a named struct for use with xfconf_channel_get_named_struct()
-     * and xfconf_channel_set_named_struct().
+     * Registers a named struct for use with `xfconf_channel_get_named_struct()`
+     * and `xfconf_channel_set_named_struct()`.
      * @param struct_name The unique name of the struct to register.
      * @param n_members The number of data members in the struct.
-     * @param member_types An array of the #GType<!-- -->s of the struct members.
+     * @param member_types An array of the {@link GObject.GType}<!-- -->s of the struct members.
      */
     function named_struct_register(struct_name: string, n_members: number, member_types: GObject.GType): void;
     /**
-     * Binds an Xfconf property to a #GObject property.  If the property
-     * is changed via either the #GObject or Xfconf, the corresponding
+     * Binds an Xfconf property to a {@link GObject.Object} property.  If the property
+     * is changed via either the {@link GObject.Object} or Xfconf, the corresponding
      * property will also be updated. The binding is initialized from the
-     * Xfconf property, i.e. the initial value of the #GObject property is
+     * Xfconf property, i.e. the initial value of the {@link GObject.Object} property is
      * overwritten.
      *
      * Note that `xfconf_property_type` is required since `xfconf_property`
      * may or may not already exist in the Xfconf store.  The type of
      * `object_property` will be determined automatically.  If the two
      * types do not match, a conversion will be attempted.
-     * @param channel An #XfconfChannel.
-     * @param xfconf_property A property on @channel.
-     * @param xfconf_property_type The type of @xfconf_property.
-     * @param object A #GObject.
-     * @param object_property A valid property on @object.
+     * @param channel An {@link Xfconf.Channel}.
+     * @param xfconf_property A property on `channel`.
+     * @param xfconf_property_type The type of `xfconf_property`.
+     * @param object A {@link GObject.Object}.
+     * @param object_property A valid property on `object`.
      * @returns an ID number that can be used to later remove the          binding.
      */
     function property_bind(
@@ -131,11 +132,11 @@ export namespace Xfconf {
         object_property: string,
     ): number;
     /**
-     * Binds an Xfconf property to a #GObject property of type
-     * GDK_TYPE_COLOR (aka a #GdkColor struct).  If the property
-     * is changed via either the #GObject or Xfconf, the corresponding
+     * Binds an Xfconf property to a {@link GObject.Object} property of type
+     * GDK_TYPE_COLOR (aka a `GdkColor` struct).  If the property
+     * is changed via either the {@link GObject.Object} or Xfconf, the corresponding
      * property will also be updated. The binding is initialized from the
-     * Xfconf property, i.e. the initial value of the #GObject property is
+     * Xfconf property, i.e. the initial value of the {@link GObject.Object} property is
      * overwritten.
      *
      * This is a special-case binding; the GdkColor struct is not
@@ -143,10 +144,10 @@ export namespace Xfconf {
      * Xfconf store as four 16-bit unsigned ints (red, green, blue, alpha).
      * Since GdkColor (currently) only supports RGB and not RGBA,
      * the last value will always be set to 0xFFFF.
-     * @param channel An #XfconfChannel.
-     * @param xfconf_property A property on @channel.
-     * @param object A #GObject.
-     * @param object_property A valid property on @object.
+     * @param channel An {@link Xfconf.Channel}.
+     * @param xfconf_property A property on `channel`.
+     * @param object A {@link GObject.Object}.
+     * @param object_property A valid property on `object`.
      * @returns an ID number that can be used to later remove the          binding.
      */
     function property_bind_gdkcolor(
@@ -156,21 +157,22 @@ export namespace Xfconf {
         object_property: string,
     ): number;
     /**
-     * Binds an Xfconf property to a #GObject property of type
-     * GDK_TYPE_RGBA (aka a #GdkRGBA struct).  If the property
-     * is changed via either the #GObject or Xfconf, the corresponding
+     * Binds an Xfconf property to a {@link GObject.Object} property of type
+     * GDK_TYPE_RGBA (aka a `GdkRGBA` struct).  If the property
+     * is changed via either the {@link GObject.Object} or Xfconf, the corresponding
      * property will also be updated. The binding is initialized from the
-     * Xfconf property, i.e. the initial value of the #GObject property is
+     * Xfconf property, i.e. the initial value of the {@link GObject.Object} property is
      * overwritten.
      *
      * This is a special-case binding; the GdkRGBA struct is not
      * ideal as-is for binding to a property, so it is stored in the
      * Xfconf store as four 16-bit unsigned ints (red, green, blue, alpha).
-     * @param channel An #XfconfChannel.
-     * @param xfconf_property A property on @channel.
-     * @param object A #GObject.
-     * @param object_property A valid property on @object.
+     * @param channel An {@link Xfconf.Channel}.
+     * @param xfconf_property A property on `channel`.
+     * @param object A {@link GObject.Object}.
+     * @param object_property A valid property on `object`.
      * @returns an ID number that can be used to later remove the          binding.
+     * @since 4.12.1
      */
     function property_bind_gdkrgba(
         channel: Channel,
@@ -180,26 +182,26 @@ export namespace Xfconf {
     ): number;
     /**
      * Removes an Xfconf/GObject property binding based on the binding
-     * ID number.  See xfconf_g_property_bind().
+     * ID number.  See `xfconf_g_property_bind()`.
      * @param id A binding ID number.
      */
     function property_unbind(id: number): void;
     /**
-     * Unbinds all Xfconf channel bindings (see xfconf_g_property_bind())
-     * to `object`.  If `object` is an #XfconfChannel, it will unbind all
-     * xfconf properties on that channel.  If `object` is a regular #GObject
+     * Unbinds all Xfconf channel bindings (see `xfconf_g_property_bind()`)
+     * to `object`.  If `object` is an {@link Xfconf.Channel}, it will unbind all
+     * xfconf properties on that channel.  If `object` is a regular {@link GObject.Object}
      * with properties bound to a channel, all those bindings will be
      * removed.
-     * @param channel_or_object A #GObject or #XfconfChannel.
+     * @param channel_or_object A {@link GObject.Object} or {@link Xfconf.Channel}.
      */
     function property_unbind_all(channel_or_object?: any | null): void;
     /**
-     * Causes an Xfconf channel previously bound to a #GObject property
-     * (see xfconf_g_property_bind()) to no longer be bound.
-     * @param channel An #XfconfChannel.
-     * @param xfconf_property A bound property on @channel.
-     * @param object A #GObject.
-     * @param object_property A bound property on @object.
+     * Causes an Xfconf channel previously bound to a {@link GObject.Object} property
+     * (see `xfconf_g_property_bind()`) to no longer be bound.
+     * @param channel An {@link Xfconf.Channel}.
+     * @param xfconf_property A bound property on `channel`.
+     * @param object A {@link GObject.Object}.
+     * @param object_property A bound property on `object`.
      */
     function property_unbind_by_property(
         channel: Channel,
@@ -209,43 +211,79 @@ export namespace Xfconf {
     ): void;
     /**
      * Shuts down and frees any resources consumed by the Xfconf library.
-     * If xfconf_init() is called multiple times, xfconf_shutdown() must be
+     * If `xfconf_init()` is called multiple times, `xfconf_shutdown()` must be
      * called an equal number of times to shut down the library.
      */
     function shutdown(): void;
     /**
      * Retrieves a 16-bit signed value from `value`.
-     * @param value A #GValue.
+     * @param value A {@link GObject.Value}.
      * @returns A gint16.
      */
     function value_get_int16(value: GObject.Value | any): number;
     /**
      * Retrieves a 16-bit unsigned value from `value`.
-     * @param value A #GValue.
+     * @param value A {@link GObject.Value}.
      * @returns A guint16.
      */
     function value_get_uint16(value: GObject.Value | any): number;
     /**
      * Sets `value` using a signed 16-bit integer.
-     * @param value A #GValue.
+     * @param value A {@link GObject.Value}.
      * @param v_int16 A gint16.
      */
     function value_set_int16(value: GObject.Value | any, v_int16: number): void;
     /**
      * Sets `value` using an unsigned 16-bit integer.
-     * @param value A #GValue.
+     * @param value A {@link GObject.Value}.
      * @param v_uint16 A guint16.
      */
     function value_set_uint16(value: GObject.Value | any, v_uint16: number): void;
     namespace Channel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted whenever a property on `channel` has changed.  If
+             * the change was caused by the removal of `property`, `value`
+             * will be unset; you should test this with
+             * <informalexample><programlisting>
+             * G_VALUE_TYPE(value) == G_TYPE_INVALID
+             * </programlisting></informalexample>
+             * @signal
+             */
             'property-changed': (arg0: string, arg1: GObject.Value) => void;
             'notify::channel-name': (pspec: GObject.ParamSpec) => void;
             'notify::is-singleton': (pspec: GObject.ParamSpec) => void;
             'notify::property-base': (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted whenever a property on `channel` has changed.  If
+             * the change was caused by the removal of `property`, `value`
+             * will be unset; you should test this with
+             * <informalexample><programlisting>
+             * G_VALUE_TYPE(value) == G_TYPE_INVALID
+             * </programlisting></informalexample>
+             * @signal
+             */
             'property-changed::channel-name': (arg0: string, arg1: GObject.Value) => void;
+            /**
+             * Emitted whenever a property on `channel` has changed.  If
+             * the change was caused by the removal of `property`, `value`
+             * will be unset; you should test this with
+             * <informalexample><programlisting>
+             * G_VALUE_TYPE(value) == G_TYPE_INVALID
+             * </programlisting></informalexample>
+             * @signal
+             */
             'property-changed::is-singleton': (arg0: string, arg1: GObject.Value) => void;
+            /**
+             * Emitted whenever a property on `channel` has changed.  If
+             * the change was caused by the removal of `property`, `value`
+             * will be unset; you should test this with
+             * <informalexample><programlisting>
+             * G_VALUE_TYPE(value) == G_TYPE_INVALID
+             * </programlisting></informalexample>
+             * @signal
+             */
             'property-changed::property-base': (arg0: string, arg1: GObject.Value) => void;
         }
 
@@ -263,6 +301,7 @@ export namespace Xfconf {
 
     /**
      * An opaque structure that holds state about a channel.
+     * @gir-type Class
      */
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
@@ -279,13 +318,13 @@ export namespace Xfconf {
         get channelName(): string;
         /**
          * Identifies the instance of the class as a singleton instance
-         * or not.  This is mainly used internally by #XfconfChannel
+         * or not.  This is mainly used internally by {@link Xfconf.Channel}
          * but may be useful for API users.
          */
         get is_singleton(): boolean;
         /**
          * Identifies the instance of the class as a singleton instance
-         * or not.  This is mainly used internally by #XfconfChannel
+         * or not.  This is mainly used internally by {@link Xfconf.Channel}
          * but may be useful for API users.
          */
         get isSingleton(): boolean;
@@ -321,16 +360,19 @@ export namespace Xfconf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -353,61 +395,61 @@ export namespace Xfconf {
 
         /**
          * Gets an array property on `channel` and returns it as
-         * a #GPtrArray, which can be freed with xfconf_array_free()
+         * a {@link GLib.PtrArray}, which can be freed with `xfconf_array_free()`
          * when no longer needed.
          * @param property A property string.
-         * @returns A newly-allocated #GPtrArray on success, or %NULL on failure.
+         * @returns A newly-allocated {@link GLib.PtrArray} on success, or `null` on failure.
          */
         get_arrayv(property: string): GObject.Value[] | null;
         /**
          * Retrieves the boolean value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The boolean value, or, if @property is not in @channel,          @default_value is returned.
+         * @returns The boolean value, or, if `property` is not in `channel`,          `default_value` is returned.
          */
         get_bool(property: string, default_value: boolean): boolean;
         /**
          * Retrieves the double value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The double value, or, if @property is not in @channel,          @default_value is returned.
+         * @returns The double value, or, if `property` is not in `channel`,          `default_value` is returned.
          */
         get_double(property: string, default_value: number): number;
         /**
          * Retrieves the int value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The int value, or, if @property is not in @channel,          @default_value is returned.
+         * @returns The int value, or, if `property` is not in `channel`,          `default_value` is returned.
          */
         get_int(property: string, default_value: number): number;
         /**
          * Gets a property from `channel` and fills in `value_struct` using
          * the retrieved values.  The `struct_name` parameter is the same
          * name that must have been used to register the struct's layout
-         * with xfconf_named_struct_register().
+         * with `xfconf_named_struct_register()`.
          * @param property A string property name.
          * @param struct_name A string struct name.
          * @param value_struct A pointer to a struct.
-         * @returns %TRUE if the property was retrieved successfully,          %FALSE otherwise.
+         * @returns `true` if the property was retrieved successfully,          `false` otherwise.
          */
         get_named_struct(property: string, struct_name: string, value_struct?: any | null): boolean;
         /**
          * Retrieves multiple properties from `channel` and stores
-         * them in a #GHashTable in which the keys correspond to
+         * them in a {@link GLib.HashTable} in which the keys correspond to
          * the string (gchar *) property names, and the values
          * correspond to variant (GValue *) values.  The keys and
          * values are owned by the hash table and should be copied
          * if needed.  The value of the property specified by
          * `property_base` (if it exists) and all sub-properties are
          * retrieved.  To retrieve all properties in the channel,
-         * specify "/" or %NULL for `property_base`.
+         * specify "/" or `null` for `property_base`.
          * @param property_base The base property name of properties to retrieve.
-         * @returns A newly-allocated #GHashTable, which should be freed with          g_hash_table_destroy() when no longer needed.
+         * @returns A newly-allocated {@link GLib.HashTable}, which should be freed with          `g_hash_table_destroy()` when no longer needed.
          */
         get_properties(property_base: string): GLib.HashTable<string, GObject.Value>;
         /**
          * Gets a property on `channel` and stores it in `value`.  The caller is
-         * responsible for calling g_value_unset() when finished with `value`.
+         * responsible for calling `g_value_unset()` when finished with `value`.
          *
          * This function can be called with an initialized or uninitialized
          * `value`.  If `value` is initialized to a particular type, libxfconf
@@ -418,37 +460,40 @@ export namespace Xfconf {
          * uninitialized, the value in the configuration store will be returned
          * in its native type.
          * @param property A string property name.
-         * @param value A #GValue.
-         * @returns %TRUE if the property was retrieved successfully,          %FALSE otherwise.
+         * @param value A {@link GObject.Value}.
+         * @returns `true` if the property was retrieved successfully,          `false` otherwise.
          */
         get_property(property: string, value: GObject.Value | any): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
          * Retrieves the string value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns A newly-allocated string which should be freed with g_free()          when no longer needed.  If @property is not in @channel,          a g_strdup()ed copy of @default_value is returned.
+         * @returns A newly-allocated string which should be freed with `g_free()`          when no longer needed.  If `property` is not in `channel`,          a `g_strdup()`ed copy of `default_value` is returned.
          */
         get_string(property: string, default_value: string): string;
         /**
          * Retrieves the string list value associated with `property` on `channel`.
          * @param property A property name.
-         * @returns A newly-allocated string list which should be freed with          g_strfreev() when no longer needed.  If @property is not in          @channel, %NULL is returned.
+         * @returns A newly-allocated string list which should be freed with          `g_strfreev()` when no longer needed.  If `property` is not in          `channel`, `null` is returned.
          */
         get_string_list(property: string): string[];
         /**
          * Gets a property on `channel` and stores it as members of the
          * `value_struct` struct.  The `member_types` array should hold
-         * a #GType for each member of the struct.
+         * a {@link GObject.GType} for each member of the struct.
          *
          * Note: Struct members can only be non-pointer types such as int,
          * boolean, double, etc.
          * @param property A string property name.
          * @param value_struct A pointer to a struct in which to store values.
          * @param n_members The number of data members in the struct.
-         * @param member_types An array of @n_members #GType<!-- -->s.
-         * @returns %TRUE if the property was retrieved successfully,          %FALSE oherwise.
+         * @param member_types An array of `n_members` {@link GObject.GType}<!-- -->s.
+         * @returns `true` if the property was retrieved successfully,          `false` oherwise.
          */
         get_structv(
             property: string,
@@ -460,34 +505,34 @@ export namespace Xfconf {
          * Retrieves the unsigned int value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The uint value, or, if @property is not in @channel,          @default_value is returned.
+         * @returns The uint value, or, if `property` is not in `channel`,          `default_value` is returned.
          */
         get_uint(property: string, default_value: number): number;
         /**
          * Retrieves the 64-bit int value associated with `property` on `channel`.
          * @param property A property name.
          * @param default_value A fallback value.
-         * @returns The uint64 value, or, if @property is not in @channel,          @default_value is returned.
+         * @returns The uint64 value, or, if `property` is not in `channel`,          `default_value` is returned.
          */
         get_uint64(property: string, default_value: number): number;
         /**
          * Checks to see if `property` exists on `channel`.
          * @param property A property name.
-         * @returns %TRUE if @property exists, %FALSE otherwise.
+         * @returns `true` if `property` exists, `false` otherwise.
          */
         has_property(property: string): boolean;
         /**
          * Queries whether or not `property` on `channel` is locked by system
          * policy.  If the property is locked, calls to
-         * xfconf_channel_set_property() (or any of the "set" family of functions)
-         * or xfconf_channel_reset_property() will fail.
+         * `xfconf_channel_set_property()` (or any of the "set" family of functions)
+         * or `xfconf_channel_reset_property()` will fail.
          * @param property A property name.
-         * @returns %TRUE if the property is locked, %FALSE otherwise.
+         * @returns `true` if the property is locked, `false` otherwise.
          */
         is_property_locked(property: string): boolean;
         /**
          * Resets properties starting at (and including) `property_base`.
-         * If `recursive` is %TRUE, will also reset all properties that are
+         * If `recursive` is `true`, will also reset all properties that are
          * under `property_base` in the property hierarchy.
          *
          * A bit of an explanation as to what this function actually does:
@@ -497,51 +542,51 @@ export namespace Xfconf {
          * channel provides default values (or even if the backend supports
          * it!), at best it can only reset properties to their default values.
          *
-         * The `property_base` parameter can be %NULL or the empty string (""),
+         * The `property_base` parameter can be `null` or the empty string (""),
          * in which case the channel root ("/") will be assumed.  Of course,
-         * %TRUE must be passed for `recursive` in this case.
+         * `true` must be passed for `recursive` in this case.
          * @param property_base A property tree root or property name.
          * @param recursive Whether to reset properties recursively.
          */
         reset_property(property_base: string, recursive: boolean): void;
         /**
-         * Sets an array property on `channel,` using the values in the
+         * Sets an array property on `channel`, using the values in the
          * provided `values` array.
          * @param property A property string.
-         * @param values A #GPtrArray of #GValue<!-- -->s.
-         * @returns %TRUE if the property was set successfully, %FALSE otherwise.
+         * @param values A {@link GLib.PtrArray} of {@link GObject.Value}<!-- -->s.
+         * @returns `true` if the property was set successfully, `false` otherwise.
          */
         set_arrayv(property: string, values: (GObject.Value | any)[]): boolean;
         /**
          * Sets `value` for `property` on `channel` in the configuration store.
          * @param property A property name.
          * @param value The value to set.
-         * @returns %TRUE on success, %FALSE if an error occured.
+         * @returns `true` on success, `false` if an error occured.
          */
         set_bool(property: string, value: boolean): boolean;
         /**
          * Sets `value` for `property` on `channel` in the configuration store.
          * @param property A property name.
          * @param value The value to set.
-         * @returns %TRUE on success, %FALSE if an error occured.
+         * @returns `true` on success, `false` if an error occured.
          */
         set_double(property: string, value: number): boolean;
         /**
          * Sets `value` for `property` on `channel` in the configuration store.
          * @param property A property name.
          * @param value The value to set.
-         * @returns %TRUE on success, %FALSE if an error occured.
+         * @returns `true` on success, `false` if an error occured.
          */
         set_int(property: string, value: number): boolean;
         /**
          * Sets a property on `channel` using the members of `value_struct`
          * as the array of values.  The `struct_name` parameter is the same
          * name that must have been used to register the struct's layout
-         * with xfconf_named_struct_register().
+         * with `xfconf_named_struct_register()`.
          * @param property A string property name.
          * @param struct_name A string struct name.
          * @param value_struct A pointer to a struct.
-         * @returns %TRUE if the property was set successfully,          %FALSE otherwise.
+         * @returns `true` if the property was set successfully,          `false` otherwise.
          */
         set_named_struct(property: string, struct_name: string, value_struct?: any | null): boolean;
         /**
@@ -550,35 +595,38 @@ export namespace Xfconf {
          * Note: The configuration store backend almost certainly supports
          * only a restricted set of value types.
          * @param property A string property name.
-         * @param value A #GValue.
-         * @returns %TRUE if the property was set successfully, %FALSE otherwise.
+         * @param value A {@link GObject.Value}.
+         * @returns `true` if the property was set successfully, `false` otherwise.
          */
         set_property(property: string, value: GObject.Value | any): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
         /**
          * Sets `value` for `property` on `channel` in the configuration store.
          * @param property A property name.
          * @param value The value to set.
-         * @returns %TRUE on success, %FALSE if an error occured.
+         * @returns `true` on success, `false` if an error occured.
          */
         set_string(property: string, value: string): boolean;
         /**
          * Sets `values` for `property` on `channel` in the configuration store.
          * @param property A property name.
          * @param values The value to set.
-         * @returns %TRUE on success, %FALSE if an error occured.
+         * @returns `true` on success, `false` if an error occured.
          */
         set_string_list(property: string, values: string): boolean;
         /**
          * Sets a property on `channel` using the members of `value_struct`
-         * as a value array.  The `member_types` array should hold a #GType
+         * as a value array.  The `member_types` array should hold a {@link GObject.GType}
          * for each member of the struct.
          * @param property A string property name.
          * @param value_struct A pointer to a struct from which to take values.
          * @param n_members The number of data members in the struct.
-         * @param member_types An array of @n_members #GType<!-- -->s.
-         * @returns %TRUE if the property was set successfully,          %FALSE oherwise.
+         * @param member_types An array of `n_members` {@link GObject.GType}<!-- -->s.
+         * @returns `true` if the property was set successfully,          `false` oherwise.
          */
         set_structv(
             property: string,
@@ -590,14 +638,14 @@ export namespace Xfconf {
          * Sets `value` for `property` on `channel` in the configuration store.
          * @param property A property name.
          * @param value The value to set.
-         * @returns %TRUE on success, %FALSE if an error occured.
+         * @returns `true` on success, `false` if an error occured.
          */
         set_uint(property: string, value: number): boolean;
         /**
          * Sets `value` for `property` on `channel` in the configuration store.
          * @param property A property name.
          * @param value The value to set.
-         * @returns %TRUE on success, %FALSE if an error occured.
+         * @returns `true` on success, `false` if an error occured.
          */
         set_uint64(property: string, value: number): boolean;
     }
@@ -607,6 +655,9 @@ export namespace Xfconf {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Int16 {
         static $gtype: GObject.GType<Int16>;
 
@@ -616,16 +667,19 @@ export namespace Xfconf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Int16.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Int16.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Int16.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Int16.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Int16.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -638,6 +692,9 @@ export namespace Xfconf {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Uint16 {
         static $gtype: GObject.GType<Uint16>;
 
@@ -647,16 +704,19 @@ export namespace Xfconf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Uint16.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Uint16.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Uint16.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Uint16.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Uint16.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Uint16.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never

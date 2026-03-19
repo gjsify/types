@@ -27,6 +27,7 @@ export namespace Msg {
      * The type of Drive
      * <ulink url="https://docs.microsoft.com/en-us/graph/api/resources/drive?view=graph-rest-1.0">
      * objects</ulink>.
+     * @gir-type Enum
      */
     enum DriveType {
         /**
@@ -45,6 +46,7 @@ export namespace Msg {
 
     /**
      * This enumeration can be expanded at a later date.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -62,6 +64,9 @@ export namespace Msg {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MessageMailFolderType {
         INBOX,
         DRAFTS,
@@ -74,6 +79,10 @@ export namespace Msg {
 
     const API_ENDPOINT: string;
     function error_quark(): GLib.Quark;
+    /**
+     * @param object
+     * @param name
+     */
     function json_object_get_string(object: Json.Object, name: string): string;
     namespace Contact {
         // Signal signatures
@@ -88,6 +97,7 @@ export namespace Msg {
      * Handling of contact specific functions.
      *
      * Details: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
+     * @gir-type Class
      */
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
@@ -113,16 +123,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Contact.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Contact.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Contact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -141,6 +154,9 @@ export namespace Msg {
          * @returns identifier
          */
         get_id(): string;
+        /**
+         * @returns name of contact
+         */
         get_name(): string;
         /**
          * Gets surname.
@@ -170,6 +186,9 @@ export namespace Msg {
         interface ConstructorProps extends Service.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ContactService extends Service {
         static $gtype: GObject.GType<ContactService>;
 
@@ -192,16 +211,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContactService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContactService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContactService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContactService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContactService.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContactService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -212,16 +234,16 @@ export namespace Msg {
 
         /**
          * Create new contact #contact and return new contact object.
-         * @param contact a #MsgContact
-         * @param cancellable a #GCancellable
-         * @returns a new #MsgContact
+         * @param contact a {@link Msg.Contact}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a new {@link Msg.Contact}
          */
         create(contact: Contact, cancellable?: Gio.Cancellable | null): Contact;
         /**
          * Delets #contact.
-         * @param contact a #MsgContact
-         * @param cancellable a #GCancellable
-         * @returns %TRUE for succes, else %FALSE
+         * @param contact a {@link Msg.Contact}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` for succes, else `false`
          */
         ['delete'](contact: Contact, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -242,9 +264,10 @@ export namespace Msg {
     }
 
     /**
-     * #MsgDriveService is a subclass of #MsgService for communicating with the MS Graph API.
+     * {@link Msg.DriveService} is a subclass of {@link Msg.Service} for communicating with the MS Graph API.
      *
      * Details: https://learn.microsoft.com/en-us/graph/api/resources/drive?view=graph-rest-1.0
+     * @gir-type Class
      */
     class Drive extends GObject.Object {
         static $gtype: GObject.GType<Drive>;
@@ -270,16 +293,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Drive.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Drive.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Drive.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Drive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -339,6 +365,9 @@ export namespace Msg {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DriveItem extends GObject.Object {
         static $gtype: GObject.GType<DriveItem>;
 
@@ -361,16 +390,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DriveItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DriveItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DriveItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DriveItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DriveItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DriveItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -426,7 +458,7 @@ export namespace Msg {
         get_user(): string;
         /**
          * Gets whether item is shared.
-         * @returns %TRUE if item is shared, otherwise %FALSE
+         * @returns `true` if item is shared, otherwise `false`
          */
         is_shared(): boolean;
         /**
@@ -455,6 +487,9 @@ export namespace Msg {
         interface ConstructorProps extends DriveItem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DriveItemFile extends DriveItem {
         static $gtype: GObject.GType<DriveItemFile>;
 
@@ -479,16 +514,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DriveItemFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DriveItemFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DriveItemFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DriveItemFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DriveItemFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DriveItemFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -518,6 +556,9 @@ export namespace Msg {
         interface ConstructorProps extends DriveItem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DriveItemFolder extends DriveItem {
         static $gtype: GObject.GType<DriveItemFolder>;
 
@@ -542,16 +583,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DriveItemFolder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DriveItemFolder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DriveItemFolder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DriveItemFolder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DriveItemFolder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DriveItemFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -570,6 +614,9 @@ export namespace Msg {
         interface ConstructorProps extends Service.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DriveService extends Service {
         static $gtype: GObject.GType<DriveService>;
 
@@ -592,16 +639,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DriveService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DriveService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DriveService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DriveService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DriveService.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DriveService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -620,10 +670,10 @@ export namespace Msg {
         add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
          * Copy a file async on remote server to a new directory.
-         * @param file source #MsgDriveItem
-         * @param destination destination directory #MsgDriveItem
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if accepted, %FALSE on error
+         * @param file source {@link Msg.DriveItem}
+         * @param destination destination directory {@link Msg.DriveItem}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if accepted, `false` on error
          */
         copy_file(file: DriveItem, destination: DriveItem, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -631,70 +681,70 @@ export namespace Msg {
          * @param parent parent drive item
          * @param name name of new folder
          * @param cancellable a cancellable
-         * @returns a newly created `MsgDriveItem`
+         * @returns a newly created {@link Msg.DriveItem}
          */
         create_folder(parent: DriveItem, name: string, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
          * Deletes item.
-         * @param item a #MsgDriveItem
+         * @param item a {@link Msg.DriveItem}
          * @param cancellable a cancellable
-         * @returns %TRUE when item has been deleted, otherwise %FALSE
+         * @returns `true` when item has been deleted, otherwise `false`
          */
         ['delete'](item: DriveItem, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Download item
-         * @param item a #MsgDriveItem
-         * @param cancellable a #GCancellable
+         * @param item a {@link Msg.DriveItem}
+         * @param cancellable a {@link Gio.Cancellable}
          * @returns input stream of drive item
          */
         download_item(item: DriveItem, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Download url
          * @param url url to download
-         * @param cancellable a #GCancellable
-         * @returns a new `GInputStream` for url
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a new {@link Gio.InputStream} for url
          */
         download_url(url: string, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Queries the Microsoft Graph API for all the drives of the currently logged in user
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @returns all drives the user can access
          */
         get_drives(cancellable?: Gio.Cancellable | null): Drive[];
         /**
          * Get root item of selected drive
-         * @param drive a #MsgDrive
-         * @param cancellable a #GCancellable
+         * @param drive a {@link Msg.Drive}
+         * @param cancellable a {@link Gio.Cancellable}
          * @returns root 'MsgDriveItem'
          */
         get_root(drive: Drive, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
          * Requests all shared with me items
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @returns shared with me list
          */
         get_shared_with_me(cancellable?: Gio.Cancellable | null): DriveItem[];
         /**
          * Get a list of all files in folder item
-         * @param item a #MsgDriveItem
-         * @param cancellable a #GCancellable
+         * @param item a {@link Msg.DriveItem}
+         * @param cancellable a {@link Gio.Cancellable}
          * @returns all items in folder
          */
         list_children(item: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem[];
         /**
          * Move a file async on remote server to a new directory.
-         * @param file source #MsgDriveItem
-         * @param destination destination directory #MsgDriveItem
-         * @param cancellable a #GCancellable
-         * @returns moved #MsgDriveItem
+         * @param file source {@link Msg.DriveItem}
+         * @param destination destination directory {@link Msg.DriveItem}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns moved {@link Msg.DriveItem}
          */
         move_file(file: DriveItem, destination: DriveItem, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
          * Sets a new drive item name
-         * @param item a #MsgDriveItem
+         * @param item a {@link Msg.DriveItem}
          * @param new_name new name of item
-         * @param cancellable a #GCancellable
-         * @returns the renamed `MsgDriveItem`
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns the renamed {@link Msg.DriveItem}
          */
         rename(item: DriveItem, new_name: string, cancellable?: Gio.Cancellable | null): DriveItem;
         /**
@@ -706,10 +756,10 @@ export namespace Msg {
         update(item: DriveItem, cancellable?: Gio.Cancellable | null): Gio.OutputStream;
         /**
          * Finish a update session of given #item.
-         * @param item a #MsgDriveItem
+         * @param item a {@link Msg.DriveItem}
          * @param stream stream where data is store and needs to be transfered
-         * @param cancellable a #GCancellable
-         * @returns a new #MsgDriveItem or %NULL on error.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a new {@link Msg.DriveItem} or `null` on error.
          */
         update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): DriveItem;
     }
@@ -729,8 +779,9 @@ export namespace Msg {
     }
 
     /**
-     * The #MsgGoaAuthorizer structure contains only private data and
+     * The {@link Msg.GoaAuthorizer} structure contains only private data and
      * should only be accessed using the provided API.
+     * @gir-type Class
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
@@ -759,16 +810,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -779,27 +833,25 @@ export namespace Msg {
 
         /**
          * Gets the GOA account used by `self` for authorization.
-         * @returns A #GoaObject. The returned object is owned by #MsgGoaAuthorizer and should not be modified or freed.
+         * @returns A {@link Goa.Object}. The returned object is owned by {@link Msg.GoaAuthorizer} and should not be modified or freed.
          */
         get_goa_object(): Goa.Object;
-
-        // Inherited methods
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it. See msg_authorizer_refresh_authorization_async() for the
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -807,16 +859,18 @@ export namespace Msg {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
+         * @virtual
          */
         vfunc_process_request(message: Soup.Message): void;
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it. See msg_authorizer_refresh_authorization_async() for the
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @virtual
          */
         vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -832,32 +886,32 @@ export namespace Msg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -866,39 +920,39 @@ export namespace Msg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -909,13 +963,16 @@ export namespace Msg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -923,7 +980,7 @@ export namespace Msg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -931,9 +988,9 @@ export namespace Msg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -953,9 +1010,9 @@ export namespace Msg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -969,33 +1026,33 @@ export namespace Msg {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1028,21 +1085,21 @@ export namespace Msg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1052,8 +1109,8 @@ export namespace Msg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1070,10 +1127,10 @@ export namespace Msg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1088,13 +1145,13 @@ export namespace Msg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1125,21 +1182,21 @@ export namespace Msg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1149,33 +1206,34 @@ export namespace Msg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1184,6 +1242,7 @@ export namespace Msg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1192,12 +1251,14 @@ export namespace Msg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1206,20 +1267,22 @@ export namespace Msg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1231,6 +1294,7 @@ export namespace Msg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1269,6 +1333,9 @@ export namespace Msg {
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
 
@@ -1291,16 +1358,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1311,31 +1381,39 @@ export namespace Msg {
 
         /**
          * Gets corresponding SoupMessage
-         * @param stream a #GInputStream
+         * @param stream a {@link Gio.InputStream}
          */
         static get_message(stream: Gio.InputStream): Soup.Message;
+        /**
+         * @param stream
+         * @param io_priority
+         * @param cancellable
+         * @param callback
+         */
         static send_async(
             stream: Gio.InputStream,
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<InputStream> | null,
         ): void;
-        static send_finish(stream: Gio.InputStream, result: Gio.AsyncResult): boolean;
-
-        // Inherited methods
         /**
-         * Tests if the stream supports the #GSeekableIface.
-         * @returns %TRUE if @seekable can be seeked. %FALSE otherwise.
+         * @param stream
+         * @param result
+         */
+        static send_finish(stream: Gio.InputStream, result: Gio.AsyncResult): boolean;
+        /**
+         * Tests if the stream supports the {@link Gio.SeekableIface}.
+         * @returns `true` if `seekable` can be seeked. `false` otherwise.
          */
         can_seek(): boolean;
         /**
          * Tests if the length of the stream can be adjusted with
-         * g_seekable_truncate().
-         * @returns %TRUE if the stream can be truncated, %FALSE otherwise.
+         * `g_seekable_truncate()`.
+         * @returns `true` if the stream can be truncated, `false` otherwise.
          */
         can_truncate(): boolean;
         /**
-         * Seeks in the stream by the given `offset,` modified by `type`.
+         * Seeks in the stream by the given `offset`, modified by `type`.
          *
          * Attempting to seek past the end of the stream will have different
          * results depending on if the stream is fixed-sized or resizable.  If
@@ -1346,13 +1424,13 @@ export namespace Msg {
          *
          * Any operation that would result in a negative offset will fail.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-         * @param offset a #goffset.
-         * @param type a #GSeekType.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * @param offset a `goffset`.
+         * @param type a {@link GLib.SeekType}.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
         seek(offset: number, type: GLib.SeekType | null, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1362,30 +1440,32 @@ export namespace Msg {
         tell(): number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
-         * larger than `offset,` the extra data is discarded. If the stream was
-         * previously shorter than `offset,` it is extended with NUL ('\0') bytes.
+         * larger than `offset`, the extra data is discarded. If the stream was
+         * previously shorter than `offset`, it is extended with NUL ('\0') bytes.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
          * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
-         * @param offset new length for @seekable, in bytes.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error     has occurred, this function will return %FALSE and set @error     appropriately if present.
+         * @param offset new length for `seekable`, in bytes.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
         truncate(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Tests if the stream supports the #GSeekableIface.
+         * Tests if the stream supports the {@link Gio.SeekableIface}.
+         * @virtual
          */
         vfunc_can_seek(): boolean;
         /**
          * Tests if the length of the stream can be adjusted with
-         * g_seekable_truncate().
+         * `g_seekable_truncate()`.
+         * @virtual
          */
         vfunc_can_truncate(): boolean;
         /**
-         * Seeks in the stream by the given `offset,` modified by `type`.
+         * Seeks in the stream by the given `offset`, modified by `type`.
          *
          * Attempting to seek past the end of the stream will have different
          * results depending on if the stream is fixed-sized or resizable.  If
@@ -1396,30 +1476,33 @@ export namespace Msg {
          *
          * Any operation that would result in a negative offset will fail.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
-         * @param offset a #goffset.
-         * @param type a #GSeekType.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * @param offset a `goffset`.
+         * @param type a {@link GLib.SeekType}.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_seek(offset: number, type: GLib.SeekType, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Tells the current position within the stream.
+         * @virtual
          */
         vfunc_tell(): number;
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
-         * larger than `offset,` the extra data is discarded. If the stream was
-         * previously shorter than `offset,` it is extended with NUL ('\0') bytes.
+         * larger than `offset`, the extra data is discarded. If the stream was
+         * previously shorter than `offset`, it is extended with NUL ('\0') bytes.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
          * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
-         * @param offset new length for @seekable, in bytes.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param offset new length for `seekable`, in bytes.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_truncate_fn(offset: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1435,32 +1518,32 @@ export namespace Msg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1469,39 +1552,39 @@ export namespace Msg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1512,13 +1595,16 @@ export namespace Msg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1526,7 +1612,7 @@ export namespace Msg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1534,9 +1620,9 @@ export namespace Msg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1556,9 +1642,9 @@ export namespace Msg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1572,33 +1658,33 @@ export namespace Msg {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1631,21 +1717,21 @@ export namespace Msg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1655,8 +1741,8 @@ export namespace Msg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1673,10 +1759,10 @@ export namespace Msg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1691,13 +1777,13 @@ export namespace Msg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1728,21 +1814,21 @@ export namespace Msg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1752,33 +1838,34 @@ export namespace Msg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1787,6 +1874,7 @@ export namespace Msg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1795,12 +1883,14 @@ export namespace Msg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1809,20 +1899,22 @@ export namespace Msg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1834,6 +1926,7 @@ export namespace Msg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1874,6 +1967,7 @@ export namespace Msg {
 
     /**
      * Handling of mail folder specific functions.
+     * @gir-type Class
      */
     class MailFolder extends GObject.Object {
         static $gtype: GObject.GType<MailFolder>;
@@ -1899,16 +1993,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MailFolder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MailFolder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MailFolder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MailFolder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MailFolder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MailFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1917,8 +2014,17 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * @returns display name of mail folder
+         */
         get_display_name(): string;
+        /**
+         * @returns total item number of mail folder
+         */
         get_total_item_count(): number;
+        /**
+         * @returns unread item number of mail folder
+         */
         get_unread_item_count(): number;
     }
 
@@ -1935,6 +2041,7 @@ export namespace Msg {
      * Handling of message specific functions.
      *
      * Details: https://learn.microsoft.com/en-us/graph/api/resources/message?view=graph-rest-1.0
+     * @gir-type Class
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
@@ -1960,16 +2067,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1978,10 +2088,22 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * @returns body preview of message
+         */
         get_body_preview(): string;
         get_id(): string;
+        /**
+         * @returns subject of message
+         */
         get_subject(): string;
+        /**
+         * @param body
+         */
         set_body(body: string): boolean;
+        /**
+         * @param subject
+         */
         set_subject(subject: string): boolean;
     }
 
@@ -1996,6 +2118,9 @@ export namespace Msg {
         interface ConstructorProps extends Service.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MessageService extends Service {
         static $gtype: GObject.GType<MessageService>;
 
@@ -2018,16 +2143,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MessageService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MessageService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MessageService.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MessageService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2038,34 +2166,34 @@ export namespace Msg {
 
         /**
          * Create new draft message #message and return new message object.
-         * @param message a #MsgMessage
-         * @param cancellable a #GCancellable
-         * @returns a new #MsgMessage
+         * @param message a {@link Msg.Message}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a new {@link Msg.Message}
          */
         create_draft(message: Message, cancellable?: Gio.Cancellable | null): Message;
         /**
          * Delets #message.
-         * @param message a #MsgMessage
-         * @param cancellable a #GCancellable
-         * @returns %TRUE for succes, else &FALSE
+         * @param message a {@link Msg.Message}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` for succes, else &FALSE
          */
         ['delete'](message: Message, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Get a specific mail folder for given service
-         * @param type a #MsgMessageMailFolderType
-         * @param cancellable a #GCancellable
-         * @returns a #MsgMailFolder
+         * @param type a {@link Msg.MessageMailFolderType}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link Msg.MailFolder}
          */
         get_mail_folder(type: MessageMailFolderType | null, cancellable?: Gio.Cancellable | null): MailFolder;
         /**
          * Get all folders for given service
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @returns all mail folders the user can access
          */
         get_mail_folders(cancellable?: Gio.Cancellable | null): MailFolder[];
         /**
          * Get all messages for given service
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @returns all messages the user can access
          */
         get_messages(cancellable?: Gio.Cancellable | null): Message[];
@@ -2091,6 +2219,9 @@ export namespace Msg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OAuth2Authorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<OAuth2Authorizer>;
 
@@ -2124,16 +2255,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuth2Authorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuth2Authorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OAuth2Authorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2142,31 +2276,39 @@ export namespace Msg {
 
         // Static methods
 
+        /**
+         * @param self
+         */
         static test_load_credentials(self: Authorizer): boolean;
+        /**
+         * @param self
+         */
         static test_save_credentials(self: Authorizer): void;
 
         // Methods
 
         build_authentication_uri(): string;
+        /**
+         * @param authorization_code
+         * @param cancellable
+         */
         request_authorization(authorization_code: string, cancellable?: Gio.Cancellable | null): boolean;
-
-        // Inherited methods
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it. See msg_authorizer_refresh_authorization_async() for the
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2174,16 +2316,18 @@ export namespace Msg {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
+         * @virtual
          */
         vfunc_process_request(message: Soup.Message): void;
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it. See msg_authorizer_refresh_authorization_async() for the
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @virtual
          */
         vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2199,32 +2343,32 @@ export namespace Msg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2233,39 +2377,39 @@ export namespace Msg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2276,13 +2420,16 @@ export namespace Msg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2290,7 +2437,7 @@ export namespace Msg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2298,9 +2445,9 @@ export namespace Msg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2320,9 +2467,9 @@ export namespace Msg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2336,33 +2483,33 @@ export namespace Msg {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2395,21 +2542,21 @@ export namespace Msg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2419,8 +2566,8 @@ export namespace Msg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2437,10 +2584,10 @@ export namespace Msg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2455,13 +2602,13 @@ export namespace Msg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2492,21 +2639,21 @@ export namespace Msg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2516,33 +2663,34 @@ export namespace Msg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2551,6 +2699,7 @@ export namespace Msg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2559,12 +2708,14 @@ export namespace Msg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2573,20 +2724,22 @@ export namespace Msg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2598,6 +2751,7 @@ export namespace Msg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2640,6 +2794,9 @@ export namespace Msg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Service extends GObject.Object {
         static $gtype: GObject.GType<Service>;
 
@@ -2664,16 +2821,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2682,6 +2842,12 @@ export namespace Msg {
 
         // Static methods
 
+        /**
+         * @param msg
+         * @param tls_cert
+         * @param tls_errors
+         * @param session
+         */
         static accept_certificate_cb(
             msg: Soup.Message,
             tls_cert: Gio.TlsCertificate,
@@ -2691,7 +2857,7 @@ export namespace Msg {
         static get_https_port(): number;
         /**
          * Get next link
-         * @param object a #JsonObject
+         * @param object a {@link Json.Object}
          */
         static get_next_link(object: Json.Object): string;
         /**
@@ -2705,38 +2871,41 @@ export namespace Msg {
         // Methods
 
         /**
-         * Construct and checks a #SoupMessage for transfer
+         * Construct and checks a {@link Soup.Message} for transfer
          * @param method transfer method
          * @param uri uri to access
          * @param etag an optional etag
          * @param etag_if_match use etag if
-         * @returns a #SoupMessage or NULL on error.
+         * @returns a {@link Soup.Message} or NULL on error.
          */
         build_message(method: string, uri: string, etag: string, etag_if_match: boolean): Soup.Message;
         /**
          * Get related authorizer.
-         * @returns a #MsgAuthorizer
+         * @returns a {@link Msg.Authorizer}
          */
         get_authorizer(): Authorizer;
         /**
          * Get related soup session
-         * @returns a #SoupSession
+         * @returns a {@link Soup.Session}
          */
         get_session(): Soup.Session;
+        /**
+         * @param cancellable
+         */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Adds authorizer information to `message` and send it.
-         * @param message a #SoupMessage
-         * @param cancellable a #GCancellable
-         * @returns a #GInputStream
+         * @param message a {@link Soup.Message}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link Gio.InputStream}
          */
         send(message: Soup.Message, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
          * A combination of `msg_service_send_and_read` and `msg_service_parse_response`
-         * @param message a #SoupMessage
+         * @param message a {@link Soup.Message}
          * @param object
-         * @param cancellable a #GCancellable
-         * @returns a #JsonParser or %NULL on error
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link Json.Parser} or `null` on error
          */
         send_and_parse_response(
             message: Soup.Message,
@@ -2745,9 +2914,9 @@ export namespace Msg {
         ): Json.Parser;
         /**
          * Adds authorizer information to `message` and send it.
-         * @param message a #SoupMessage
-         * @param cancellable a #GCancellable
-         * @returns a #GBytes or %NULL on error.
+         * @param message a {@link Soup.Message}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link GLib.Bytes} or `null` on error.
          */
         send_and_read(message: Soup.Message, cancellable?: Gio.Cancellable | null): GLib.Bytes;
     }
@@ -2763,6 +2932,7 @@ export namespace Msg {
 
     /**
      * Handling of user specific functions.
+     * @gir-type Class
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
@@ -2788,16 +2958,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof User.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof User.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof User.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2806,6 +2979,9 @@ export namespace Msg {
 
         // Methods
 
+        /**
+         * @returns mail of user or `null` if not existing
+         */
         get_mail(): string;
     }
 
@@ -2820,6 +2996,9 @@ export namespace Msg {
         interface ConstructorProps extends Service.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UserService extends Service {
         static $gtype: GObject.GType<UserService>;
 
@@ -2842,16 +3021,19 @@ export namespace Msg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserService.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2862,42 +3044,105 @@ export namespace Msg {
 
         /**
          * Get user information
-         * @param name user name (%NULL for me)
-         * @param cancellable a #GCancellable
+         * @param name user name (`null` for me)
+         * @param cancellable a {@link Gio.Cancellable}
          * @returns request user
          */
         get_user(name: string, cancellable?: Gio.Cancellable | null): User;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthorizerInterface = typeof Authorizer;
+    /**
+     * @gir-type Alias
+     */
     type ContactClass = typeof Contact;
+    /**
+     * @gir-type Alias
+     */
     type ContactServiceClass = typeof ContactService;
+    /**
+     * @gir-type Alias
+     */
     type DriveClass = typeof Drive;
+    /**
+     * @gir-type Alias
+     */
     type DriveItemClass = typeof DriveItem;
+    /**
+     * @gir-type Alias
+     */
     type DriveItemFileClass = typeof DriveItemFile;
+    /**
+     * @gir-type Alias
+     */
     type DriveItemFolderClass = typeof DriveItemFolder;
+    /**
+     * @gir-type Alias
+     */
     type DriveServiceClass = typeof DriveService;
+    /**
+     * @gir-type Alias
+     */
     type GoaAuthorizerClass = typeof GoaAuthorizer;
+    /**
+     * @gir-type Struct
+     */
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InputStreamClass = typeof InputStream;
+    /**
+     * @gir-type Struct
+     */
     abstract class InputStreamPrivate {
         static $gtype: GObject.GType<InputStreamPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MailFolderClass = typeof MailFolder;
+    /**
+     * @gir-type Alias
+     */
     type MessageClass = typeof Message;
+    /**
+     * @gir-type Alias
+     */
     type MessageServiceClass = typeof MessageService;
+    /**
+     * @gir-type Alias
+     */
     type OAuth2AuthorizerClass = typeof OAuth2Authorizer;
+    /**
+     * @gir-type Struct
+     */
     abstract class OAuth2AuthorizerPrivate {
         static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServiceClass = typeof Service;
+    /**
+     * @gir-type Alias
+     */
     type UserClass = typeof User;
+    /**
+     * @gir-type Alias
+     */
     type UserServiceClass = typeof UserService;
+    /**
+     * @gir-type Struct
+     */
     abstract class _DriveItemFileClass {
         static $gtype: GObject.GType<_DriveItemFileClass>;
 
@@ -2906,6 +3151,9 @@ export namespace Msg {
         padding: any[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class _DriveItemFolderClass {
         static $gtype: GObject.GType<_DriveItemFolderClass>;
 
@@ -2927,16 +3175,18 @@ export namespace Msg {
              * can be DELETE, GET and POST.
              *
              * This method modifies `message` in place and is thread safe.
-             * @param message A #SoupMessage.
+             * @param message A {@link Soup.Message}.
+             * @virtual
              */
             vfunc_process_request(message: Soup.Message): void;
             /**
              * Synchronously forces `iface` to refresh any authorization tokens
-             * held by it. See msg_authorizer_refresh_authorization_async() for the
+             * held by it. See `msg_authorizer_refresh_authorization_async()` for the
              * asynchronous version of this call.
              *
              * This method is thread safe.
-             * @param cancellable An optional #GCancellable object, or   %NULL.
+             * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+             * @virtual
              */
             vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         }
@@ -2950,6 +3200,9 @@ export namespace Msg {
         $gtype: GObject.GType<Authorizer>;
         prototype: Authorizer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Authorizer extends GObject.Object, Authorizer.Interface {
         // Methods
 
@@ -2958,17 +3211,17 @@ export namespace Msg {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param message A #SoupMessage.
+         * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it. See msg_authorizer_refresh_authorization_async() for the
+         * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
     }

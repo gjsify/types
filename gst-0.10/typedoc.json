@@ -2,6 +2,8 @@
     "entryPoints": ["./gst-0.10.d.ts"],
     "readme": "./README.md",
     "name": "Gst-0.10",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

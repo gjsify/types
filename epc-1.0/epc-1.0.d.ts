@@ -24,6 +24,7 @@ export namespace Epc {
 
     /**
      * The address family to use for contacting network services.
+     * @gir-type Enum
      */
     enum AddressFamily {
         UNSPEC,
@@ -37,6 +38,7 @@ export namespace Epc {
 
     /**
      * Various strategies for handling service name collisions.
+     * @gir-type Enum
      */
     enum CollisionHandling {
         IGNORE,
@@ -50,6 +52,7 @@ export namespace Epc {
 
     /**
      * The transport protocols supported by libepc.
+     * @gir-type Enum
      */
     enum Protocol {
         UNKNOWN,
@@ -62,37 +65,113 @@ export namespace Epc {
     const TLS_SECONDS_PER_DAY: number;
     const TLS_SECONDS_PER_HOUR: number;
     const TLS_SECONDS_PER_MINUTE: number;
+    /**
+     * @param value
+     */
     function address_family_to_string(value: AddressFamily | null): string;
+    /**
+     * @param value
+     */
     function auth_flags_to_string(value: AuthFlags | null): string;
     function avahi_error_quark(): GLib.Quark;
+    /**
+     * @param value
+     */
     function collision_handling_to_string(value: CollisionHandling | null): string;
     function http_error_quark(): GLib.Quark;
+    /**
+     * @param protocol
+     * @param hostname
+     * @param port
+     * @param path
+     */
     function protocol_build_uri(protocol: Protocol | null, hostname: string, port: number, path: string): string;
+    /**
+     * @param name
+     * @param fallback
+     */
     function protocol_from_name(name: string, fallback: Protocol | null): Protocol;
+    /**
+     * @param protocol
+     */
     function protocol_get_service_type(protocol: Protocol | null): string;
+    /**
+     * @param protocol
+     */
     function protocol_get_uri_scheme(protocol: Protocol | null): string;
+    /**
+     * @param value
+     */
     function protocol_to_string(value: Protocol | null): string;
+    /**
+     * @param type
+     */
     function service_type_get_base(type: string): string;
+    /**
+     * @param service_type
+     */
     function service_type_get_protocol(service_type: string): Protocol;
+    /**
+     * @param protocol
+     * @param application
+     */
     function service_type_new(protocol: Protocol | null, application: string): string;
     function shell_get_debug_level(): number;
     function shell_get_host_name(): string;
+    /**
+     * @param title
+     * @param message
+     */
     function shell_progress_begin(title: string, message: string): void;
     function shell_progress_end(): void;
+    /**
+     * @param percentage
+     * @param message
+     */
     function shell_progress_update(percentage: number, message: string): void;
+    /**
+     * @param strloc
+     */
     function shell_restart_avahi_client(strloc: string): void;
+    /**
+     * @param hooks
+     * @param user_data
+     */
     function shell_set_progress_hooks(hooks: ShellProgressHooks, user_data: any): void;
+    /**
+     * @param id
+     */
     function shell_watch_remove(id: number): void;
     function tls_error_quark(): GLib.Quark;
+    /**
+     * @param hostname
+     */
     function tls_get_certificate_filename(hostname: string): string;
+    /**
+     * @param hostname
+     */
     function tls_get_private_key_filename(hostname: string): string;
+    /**
+     * @param hostname
+     * @param crtfile
+     * @param keyfile
+     */
     function tls_get_server_credentials(hostname: string, crtfile: string, keyfile: string): boolean;
+    /**
+     * @gir-type Callback
+     */
     interface AuthHandler {
         (context: AuthContext, username: string): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ContentsHandler {
         (publisher: Publisher, key: string): Contents;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ContentsReadFunc {
         (contents: Contents, buffer: any, length: number): boolean;
     }
@@ -101,7 +180,8 @@ export namespace Epc {
     }
 
     /**
-     * These flags specify the authentication behaviour of an #EpcPublisher.
+     * These flags specify the authentication behaviour of an {@link Epc.Publisher}.
+     * @gir-type Flags
      */
     enum AuthFlags {
         DEFAULT,
@@ -111,7 +191,13 @@ export namespace Epc {
     namespace Consumer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             authenticate: (arg0: string) => boolean | void;
+            /**
+             * @signal
+             */
             'publisher-resolved': (arg0: Protocol, arg1: string, arg2: number) => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
             'notify::domain': (pspec: GObject.ParamSpec) => void;
@@ -140,7 +226,8 @@ export namespace Epc {
     }
 
     /**
-     * Public fields of the #EpcConsumer class.
+     * Public fields of the {@link Epc.Consumer} class.
+     * @gir-type Class
      */
     class Consumer extends GObject.Object {
         static $gtype: GObject.GType<Consumer>;
@@ -183,16 +270,19 @@ export namespace Epc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Consumer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Consumer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Consumer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Consumer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Consumer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Consumer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -201,7 +291,17 @@ export namespace Epc {
 
         // Virtual methods
 
+        /**
+         * @param realm
+         * @virtual
+         */
         vfunc_authenticate(realm: string): void;
+        /**
+         * @param protocol
+         * @param hostname
+         * @param port
+         * @virtual
+         */
         vfunc_publisher_resolved(protocol: Protocol, hostname: string, port: number): void;
 
         // Methods
@@ -210,9 +310,21 @@ export namespace Epc {
         get_protocol(): Protocol;
         get_username(): string;
         is_publisher_resolved(): boolean;
+        /**
+         * @param timeout
+         */
         resolve_publisher(timeout: number): boolean;
+        /**
+         * @param password
+         */
         set_password(password: string): void;
+        /**
+         * @param protocol
+         */
         set_protocol(protocol: Protocol | null): void;
+        /**
+         * @param username
+         */
         set_username(username: string): void;
     }
 
@@ -235,7 +347,8 @@ export namespace Epc {
     }
 
     /**
-     * Public fields of the #EpcDispatcher class.
+     * Public fields of the {@link Epc.Dispatcher} class.
+     * @gir-type Class
      */
     class Dispatcher extends GObject.Object {
         static $gtype: GObject.GType<Dispatcher>;
@@ -270,16 +383,19 @@ export namespace Epc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dispatcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dispatcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Dispatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -288,14 +404,27 @@ export namespace Epc {
 
         // Methods
 
+        /**
+         * @param type
+         * @param subtype
+         */
         add_service_subtype(type: string, subtype: string): void;
         get_collision_handling(): CollisionHandling;
         get_cookie(): string;
         get_name(): string;
         reset(): void;
         run(): boolean;
+        /**
+         * @param method
+         */
         set_collision_handling(method: CollisionHandling | null): void;
+        /**
+         * @param cookie
+         */
         set_cookie(cookie: string): void;
+        /**
+         * @param name
+         */
         set_name(name: string): void;
     }
 
@@ -339,7 +468,8 @@ export namespace Epc {
     }
 
     /**
-     * Public fields of the #EpcPublisher class.
+     * Public fields of the {@link Epc.Publisher} class.
+     * @gir-type Class
      */
     class Publisher extends GObject.Object {
         static $gtype: GObject.GType<Publisher>;
@@ -402,16 +532,19 @@ export namespace Epc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Publisher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Publisher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Publisher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Publisher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Publisher.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Publisher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -420,45 +553,112 @@ export namespace Epc {
 
         // Static methods
 
+        /**
+         * @param name
+         */
         static expand_name(name: string): string;
 
         // Methods
 
+        /**
+         * @param key
+         * @param data
+         * @param length
+         */
         add(key: string, data: any, length: number): void;
+        /**
+         * @param key
+         * @param label
+         */
         add_bookmark(key: string, label: string): void;
+        /**
+         * @param key
+         * @param filename
+         */
         add_file(key: string, filename: string): void;
+        /**
+         * @param key
+         * @param handler
+         */
         add_handler(key: string, handler: ContentsHandler): void;
         get_auth_flags(): AuthFlags;
         get_certificate_file(): string;
         get_collision_handling(): CollisionHandling;
         get_contents_path(): string;
+        /**
+         * @param key
+         */
         get_path(key: string): string;
         get_private_key_file(): string;
         get_protocol(): Protocol;
         get_service_cookie(): string;
         get_service_domain(): string;
         get_service_name(): string;
+        /**
+         * @param key
+         */
         get_uri(key: string): string;
+        /**
+         * @param key
+         */
         has_key(key: string): boolean;
         quit(): boolean;
+        /**
+         * @param key
+         */
         remove(key: string): boolean;
         run(): boolean;
         run_async(): boolean;
+        /**
+         * @param flags
+         */
         set_auth_flags(flags: AuthFlags | null): void;
+        /**
+         * @param key
+         * @param handler
+         */
         set_auth_handler(key: string, handler: AuthHandler): void;
+        /**
+         * @param method
+         */
         set_collision_handling(method: CollisionHandling | null): void;
+        /**
+         * @param path
+         */
         set_contents_path(path: string): void;
+        /**
+         * @param certfile
+         * @param keyfile
+         */
         set_credentials(certfile: string, keyfile: string): void;
+        /**
+         * @param protocol
+         */
         set_protocol(protocol: Protocol | null): void;
+        /**
+         * @param cookie
+         */
         set_service_cookie(cookie: string): void;
+        /**
+         * @param name
+         */
         set_service_name(name: string): void;
     }
 
     namespace ServiceMonitor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'scanning-done': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'service-found': (arg0: string, arg1: ServiceInfo) => void;
+            /**
+             * @signal
+             */
             'service-removed': (arg0: string, arg1: string) => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
             'notify::domain': (pspec: GObject.ParamSpec) => void;
@@ -479,7 +679,8 @@ export namespace Epc {
     }
 
     /**
-     * Public fields of the #EpcServiceMonitor class.
+     * Public fields of the {@link Epc.ServiceMonitor} class.
+     * @gir-type Class
      */
     class ServiceMonitor extends GObject.Object {
         static $gtype: GObject.GType<ServiceMonitor>;
@@ -514,16 +715,19 @@ export namespace Epc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServiceMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServiceMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -532,31 +736,63 @@ export namespace Epc {
 
         // Virtual methods
 
+        /**
+         * @param type
+         * @virtual
+         */
         vfunc_scanning_done(type: string): void;
+        /**
+         * @param name
+         * @param info
+         * @virtual
+         */
         vfunc_service_found(name: string, info: ServiceInfo): void;
+        /**
+         * @param name
+         * @param type
+         * @virtual
+         */
         vfunc_service_removed(name: string, type: string): void;
 
         // Methods
 
         get_skip_our_own(): boolean;
+        /**
+         * @param setting
+         */
         set_skip_our_own(setting: boolean): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class AuthContext {
         static $gtype: GObject.GType<AuthContext>;
 
         // Methods
 
+        /**
+         * @param password
+         */
         check_password(password: string): boolean;
         get_key(): string;
         get_password(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConsumerClass = typeof Consumer;
+    /**
+     * @gir-type Struct
+     */
     abstract class ConsumerPrivate {
         static $gtype: GObject.GType<ConsumerPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Contents {
         static $gtype: GObject.GType<Contents>;
 
@@ -578,16 +814,31 @@ export namespace Epc {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DispatcherClass = typeof Dispatcher;
+    /**
+     * @gir-type Struct
+     */
     abstract class DispatcherPrivate {
         static $gtype: GObject.GType<DispatcherPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PublisherClass = typeof Publisher;
+    /**
+     * @gir-type Struct
+     */
     abstract class PublisherPrivate {
         static $gtype: GObject.GType<PublisherPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ServiceInfo {
         static $gtype: GObject.GType<ServiceInfo>;
 
@@ -598,6 +849,9 @@ export namespace Epc {
         // Methods
 
         get_address_family(): AddressFamily;
+        /**
+         * @param name
+         */
         get_detail(name: string): string;
         get_host(): string;
         get_interface(): string;
@@ -607,16 +861,23 @@ export namespace Epc {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServiceMonitorClass = typeof ServiceMonitor;
+    /**
+     * @gir-type Struct
+     */
     abstract class ServiceMonitorPrivate {
         static $gtype: GObject.GType<ServiceMonitorPrivate>;
     }
 
     /**
-     * This table is used by #epc_shell_set_progress_hooks to install functions
+     * This table is used by `epc_shell_set_progress_hooks` to install functions
      * allowing the library to provide feedback during processing.
      *
-     * See also: #epc_progress_window_install
+     * See also: `epc_progress_window_install`
+     * @gir-type Struct
      */
     class ShellProgressHooks {
         static $gtype: GObject.GType<ShellProgressHooks>;

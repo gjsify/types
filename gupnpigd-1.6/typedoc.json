@@ -2,6 +2,8 @@
     "entryPoints": ["./gupnpigd-1.6.d.ts"],
     "readme": "./README.md",
     "name": "GUPnPIgd-1.6",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

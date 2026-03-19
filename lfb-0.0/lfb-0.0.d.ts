@@ -26,6 +26,7 @@ export namespace Lfb {
 
     /**
      * Enum values used to indicate why the feedbacks for an event ended.
+     * @gir-type Enum
      */
     enum EventEndReason {
         /**
@@ -54,6 +55,7 @@ export namespace Lfb {
     /**
      * Enum values to indicate the current state of the feedbacks
      * triggered by an event.
+     * @gir-type Enum
      */
     enum EventState {
         /**
@@ -76,25 +78,25 @@ export namespace Lfb {
 
     /**
      * Gets a machine-readable description of the <link linkend="gdbus-interface-org-sigxcpu-Feedback.top_of_page">org.sigxcpu.Feedback</link> D-Bus interface.
-     * @returns A #GDBusInterfaceInfo. Do not free.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
      */
     function gdbus_feedback_interface_info(): Gio.DBusInterfaceInfo;
     /**
-     * Overrides all #GObject properties in the #LfbGdbusFeedback interface for a concrete class.
+     * Overrides all {@link GObject.Object} properties in the {@link Lfb.GdbusFeedback} interface for a concrete class.
      * The properties are overridden in the order they are defined.
-     * @param klass The class structure for a #GObject derived class.
+     * @param klass The class structure for a {@link GObject.Object} derived class.
      * @param property_id_begin The property id to assign to the first overridden property.
      * @returns The last property id.
      */
     function gdbus_feedback_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     /**
-     * Get the application id set via [func`Lfb`.set_app_id].
+     * Get the application id set via {@link Lfb.set_app_id}.
      * @returns the application id.
      */
     function get_app_id(): string;
     /**
      * Gets the currently set feedback profile.
-     * @returns The current profile or %NULL on error.
+     * @returns The current profile or `null` on error.
      */
     function get_feedback_profile(): string;
     /**
@@ -107,12 +109,12 @@ export namespace Lfb {
     /**
      * Initialize libfeedback. This must be called before any other of libfeedback's functions.
      * @param app_id The application id
-     * @returns %TRUE if successful, or %FALSE on error.
+     * @returns `true` if successful, or `false` on error.
      */
     function init(app_id: string): boolean;
     /**
      * Gets whether or not libfeedback is initialized.
-     * @returns %TRUE if libfeedback is initialized, or %FALSE otherwise.
+     * @returns `true` if libfeedback is initialized, or `false` otherwise.
      */
     function is_initted(): boolean;
     /**
@@ -123,7 +125,7 @@ export namespace Lfb {
     /**
      * Sets the active feedback profile to #profile. It is up to the feedback
      * daemon to ignore this request. The new profile might not become active
-     * immediately. You can listen to changes #LfbGdbusFeedback's ::profile
+     * immediately. You can listen to changes {@link Lfb.GdbusFeedback}'s ::profile
      * property to get notified when it takes effect.
      * @param profile The profile to set
      */
@@ -136,6 +138,10 @@ export namespace Lfb {
     namespace Event {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when all feedbacks triggered by the event have ended.
+             * @signal
+             */
             'feedback-ended': () => void;
             'notify::app-id': (pspec: GObject.ParamSpec) => void;
             'notify::end-reason': (pspec: GObject.ParamSpec) => void;
@@ -165,7 +171,7 @@ export namespace Lfb {
     /**
      * An event triggering feedback to the user
      *
-     * #LfbEvent represents an event that should trigger
+     * {@link Lfb.Event} represents an event that should trigger
      * audio, haptic and/or visual feedback to the user by triggering
      * feedback on a feedback daemon. Valid event names are specified
      * in the
@@ -174,9 +180,9 @@ export namespace Lfb {
      * One event can trigger multiple feedbacks at once (e.g. audio and
      * haptic feedback). This is determined by the feedback theme in
      * use (which is not under the appliction's control) and the active
-     * feedback profile (see [func`Lfb`.set_feedback_profile].
+     * feedback profile (see {@link Lfb.set_feedback_profile}.
      *
-     * After initializing the library via [func`Lfb`.init] feedback can be
+     * After initializing the library via {@link Lfb.init} feedback can be
      * triggered like:
      *
      * ```c
@@ -187,9 +193,9 @@ export namespace Lfb {
      *     g_warning ("Failed to trigger feedback: %s", err->message);
      * ```
      *
-     * When all feedback for this event has ended the [signal`LfbEvent:`:feedback-ended]
+     * When all feedback for this event has ended the `Lfb.Event::feedback-ended`
      * signal is emitted. If you want to end the feedback ahead of time use
-     * [method`LfbEvent`.end_feedback]:
+     * {@link LfbEvent.end_feedback}:
      *
      * ```c
      *   if (!lfb_event_end_feedback (event, &err))
@@ -197,7 +203,7 @@ export namespace Lfb {
      * ```
      *
      * Since these methods involve DBus calls there are asynchronous variants
-     * available, e.g. [method`LfbEvent`.trigger_feedback_async]:
+     * available, e.g. {@link LfbEvent.trigger_feedback_async}:
      *
      * ```c
      *   static void
@@ -221,6 +227,7 @@ export namespace Lfb {
      *                                      NULL);
      *   }
      * ```
+     * @gir-type Class
      */
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
@@ -229,13 +236,13 @@ export namespace Lfb {
 
         /**
          * The application id to use for the event.
-         * [method`LfbEvent`.set_feedback_profile] for details.
+         * {@link LfbEvent.set_feedback_profile} for details.
          */
         get app_id(): string;
         set app_id(val: string);
         /**
          * The application id to use for the event.
-         * [method`LfbEvent`.set_feedback_profile] for details.
+         * {@link LfbEvent.set_feedback_profile} for details.
          */
         get appId(): string;
         set appId(val: string);
@@ -247,19 +254,19 @@ export namespace Lfb {
         get event(): string;
         /**
          * The name of the feedback profile to use for this event. See
-         * [method`LfbEvent`.set_feedback_profile] for details.
+         * {@link LfbEvent.set_feedback_profile} for details.
          */
         get feedback_profile(): string;
         set feedback_profile(val: string);
         /**
          * The name of the feedback profile to use for this event. See
-         * [method`LfbEvent`.set_feedback_profile] for details.
+         * {@link LfbEvent.set_feedback_profile} for details.
          */
         get feedbackProfile(): string;
         set feedbackProfile(val: string);
         /**
          * Whether to flag this event as important.
-         * [method`LfbEvent`.set_important] for details.
+         * {@link LfbEvent.set_important} for details.
          */
         get important(): boolean;
         set important(val: boolean);
@@ -267,7 +274,7 @@ export namespace Lfb {
         /**
          * How long feedback should be provided in seconds. The special value
          * %-1 uses the natural length of each feedback while %0 plays each feedback
-         * in a loop until ended explicitly via e.g. [method`LfbEvent`.end_feedback].
+         * in a loop until ended explicitly via e.g. {@link LfbEvent.end_feedback}.
          */
         get timeout(): number;
         set timeout(val: number);
@@ -291,16 +298,19 @@ export namespace Lfb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Event.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Event.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Event.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -312,27 +322,27 @@ export namespace Lfb {
         /**
          * Tells the feedback server to end all feedback for the given event as
          * soon as possible.
-         * @returns %TRUE if successful. On error, this will return %FALSE and set          @error.
+         * @returns `true` if successful. On error, this will return `false` and set          `error`.
          */
         end_feedback(): boolean;
         /**
          * Tells the feedback server to end all feedback for the given event as
          * soon as possible.
-         * @param cancellable A #GCancellable to cancel the operation or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation or `null`.
          */
         end_feedback_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Tells the feedback server to end all feedback for the given event as
          * soon as possible.
-         * @param cancellable A #GCancellable to cancel the operation or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         end_feedback_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Tells the feedback server to end all feedback for the given event as
          * soon as possible.
-         * @param cancellable A #GCancellable to cancel the operation or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         end_feedback_async(
             cancellable?: Gio.Cancellable | null,
@@ -344,16 +354,16 @@ export namespace Lfb {
          * errors which occurred.
          *
          * This does not mean that the feedbacks finished right away. Connect to the
-         * [`signal@`LfbEvent::feedback-ended] signal for this.
-         * @param res Result object passed to the callback of [method@LfbEvent.end_feedback_async]
-         * @returns %TRUE if ending the feedbacks was successful
+         * [`signal`@LfbEvent::feedback-ended] signal for this.
+         * @param res Result object passed to the callback of {@link LfbEvent.end_feedback_async}
+         * @returns `true` if ending the feedbacks was successful
          */
         end_feedback_finish(res: Gio.AsyncResult): boolean;
         /**
          * Returns the app-id for this event. If no app-id has been explicitly
-         * set, %NULL is returned. The event uses the app-id returned by
-         * [func`Lfb`.get_app_id] in this case.
-         * @returns The set app-id for this event or %NULL.
+         * set, `null` is returned. The event uses the app-id returned by
+         * {@link Lfb.get_app_id} in this case.
+         * @returns The set app-id for this event or `null`.
          */
         get_app_id(): string;
         /**
@@ -368,14 +378,14 @@ export namespace Lfb {
         get_event(): string;
         /**
          * Gets the set feedback profile. If no profile was set it returns
-         * %NULL. The event uses the system wide profile in this case.
-         * @returns The set feedback profile to use for this event or %NULL.
+         * `null`. The event uses the system wide profile in this case.
+         * @returns The set feedback profile to use for this event or `null`.
          */
         get_feedback_profile(): string;
         /**
          * Gets the set feedback profile. If no profile was set it returns
-         * %NULL. The event uses the system wide profile in this case.
-         * @returns The set feedback profile to use for this event or %NULL.
+         * `null`. The event uses the system wide profile in this case.
+         * @returns The set feedback profile to use for this event or `null`.
          */
         get_important(): boolean;
         /**
@@ -397,7 +407,7 @@ export namespace Lfb {
          *
          * The functions is usually not used by applications.
          *
-         * A value of %NULL (the default) lets the server pick the profile.
+         * A value of `null` (the default) lets the server pick the profile.
          * @param app_id The application id to use
          */
         set_app_id(app_id: string): void;
@@ -407,7 +417,7 @@ export namespace Lfb {
          * request.  Valid profile names and their 'noisiness' are specified
          * in the [Feedback theme specification](Feedback-theme-spec-0.0.0.html).
          *
-         * A value of %NULL (the default) lets the server pick the profile.
+         * A value of `null` (the default) lets the server pick the profile.
          * @param profile The feedback profile to use
          */
         set_feedback_profile(profile: string): void;
@@ -422,32 +432,32 @@ export namespace Lfb {
          * Tells the feedback server to end feedack after #timeout seconds.
          * The value -1 indicates to not set a timeout and let feedbacks stop
          * on their own while 0 indicates to loop all feedbacks endlessly.
-         * They must be stopped via [method`LfbEvent`.end_feedback] in this case.
+         * They must be stopped via {@link LfbEvent.end_feedback} in this case.
          *
          * It is an error to change the timeout after the feedback has been triggered
-         * via [method`LfbEvent`.trigger_feedback].
+         * via {@link LfbEvent.trigger_feedback}.
          * @param timeout The timeout
          */
         set_timeout(timeout: number): void;
         /**
          * Tells the feedback server to provide proper feedback for the give
          * event to the user.
-         * @returns %TRUE if successful. On error, this will return %FALSE and set          @error.
+         * @returns `true` if successful. On error, this will return `false` and set          `error`.
          */
         trigger_feedback(): boolean;
         /**
          * Tells the feedback server to provide proper feedback for the give
          * event to the user. This is the sync version of
-         * [method`LfbEvent`.trigger_feedback].
-         * @param cancellable A #GCancellable to cancel the operation or %NULL.
+         * {@link LfbEvent.trigger_feedback}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation or `null`.
          */
         trigger_feedback_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Tells the feedback server to provide proper feedback for the give
          * event to the user. This is the sync version of
-         * [method`LfbEvent`.trigger_feedback].
-         * @param cancellable A #GCancellable to cancel the operation or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * {@link LfbEvent.trigger_feedback}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         trigger_feedback_async(
             cancellable: Gio.Cancellable | null,
@@ -456,20 +466,20 @@ export namespace Lfb {
         /**
          * Tells the feedback server to provide proper feedback for the give
          * event to the user. This is the sync version of
-         * [method`LfbEvent`.trigger_feedback].
-         * @param cancellable A #GCancellable to cancel the operation or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * {@link LfbEvent.trigger_feedback}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         trigger_feedback_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finish an async operation started by [method`LfbEvent`.trigger_feedback_async]. You
+         * Finish an async operation started by {@link LfbEvent.trigger_feedback_async}. You
          * must call this function in the callback to free memory and receive any
          * errors which occurred.
-         * @param res Result object passed to the callback of [method@LfbEvent.trigger_feedback_async]
-         * @returns %TRUE if triggering the feedbacks was successful
+         * @param res Result object passed to the callback of {@link LfbEvent.trigger_feedback_async}
+         * @returns `true` if triggering the feedbacks was successful
          */
         trigger_feedback_finish(res: Gio.AsyncResult): boolean;
     }
@@ -501,7 +511,8 @@ export namespace Lfb {
     }
 
     /**
-     * The #LfbGdbusFeedbackProxy structure contains only private data and should only be accessed using the provided API.
+     * The {@link Lfb.GdbusFeedbackProxy} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
      */
     class GdbusFeedbackProxy
         extends Gio.DBusProxy
@@ -555,16 +566,19 @@ export namespace Lfb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GdbusFeedbackProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GdbusFeedbackProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GdbusFeedbackProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -574,18 +588,18 @@ export namespace Lfb {
         // Static methods
 
         /**
-         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-sigxcpu-Feedback.top_of_page">org.sigxcpu.Feedback</link>. See g_dbus_proxy_new() for more details.
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-sigxcpu-Feedback.top_of_page">org.sigxcpu.Feedback</link>. See `g_dbus_proxy_new()` for more details.
          *
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_proxy_new_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_proxy_new_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_proxy_new_sync() for the synchronous, blocking version of this constructor.
-         * @param connection A #GDBusConnection.
-         * @param flags Flags from the #GDBusProxyFlags enumeration.
-         * @param name A bus name (well-known or unique) or %NULL if @connection is not a message bus connection.
+         * See `lfb_gdbus_feedback_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
          * @param object_path An object path.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static ['new'](
             connection: Gio.DBusConnection,
@@ -595,21 +609,24 @@ export namespace Lfb {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<GdbusFeedbackProxy> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
-         * Like lfb_gdbus_feedback_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
+         * Like `lfb_gdbus_feedback_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
          *
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_proxy_new_for_bus_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_proxy_new_for_bus_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
-         * @param bus_type A #GBusType.
-         * @param flags Flags from the #GDBusProxyFlags enumeration.
+         * See `lfb_gdbus_feedback_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
          * @param name A bus name (well-known or unique).
          * @param object_path An object path.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(
             bus_type: Gio.BusType,
@@ -619,100 +636,100 @@ export namespace Lfb {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<GdbusFeedbackProxy> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
-
-        // Inherited properties
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-sigxcpu-Feedback.Profile">"Profile"</link>.
          *
-         * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @category Inherited from Lfb.GdbusFeedback
          */
         get profile(): string;
         set profile(val: string);
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -722,43 +739,43 @@ export namespace Lfb {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -767,60 +784,64 @@ export namespace Lfb {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): GdbusFeedbackProxy;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -829,70 +850,74 @@ export namespace Lfb {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -902,40 +927,40 @@ export namespace Lfb {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -945,32 +970,33 @@ export namespace Lfb {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_end_feedback(
             arg_id: number,
@@ -979,13 +1005,13 @@ export namespace Lfb {
         ): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_end_feedback(
             arg_id: number,
@@ -993,31 +1019,31 @@ export namespace Lfb {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an operation started with lfb_gdbus_feedback_call_end_feedback().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_end_feedback().
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * Finishes an operation started with `lfb_gdbus_feedback_call_end_feedback()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_end_feedback()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_end_feedback_finish(res: Gio.AsyncResult): boolean;
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See lfb_gdbus_feedback_call_end_feedback() for the asynchronous version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback()` for the asynchronous version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_end_feedback_sync(arg_id: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -1028,16 +1054,16 @@ export namespace Lfb {
         ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -1049,16 +1075,16 @@ export namespace Lfb {
         ): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -1069,21 +1095,21 @@ export namespace Lfb {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
-         * Finishes an operation started with lfb_gdbus_feedback_call_trigger_feedback().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_trigger_feedback().
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * Finishes an operation started with `lfb_gdbus_feedback_call_trigger_feedback()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_trigger_feedback()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_trigger_feedback_finish(res: Gio.AsyncResult): [boolean, number];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback() for the asynchronous version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback()` for the asynchronous version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_trigger_feedback_sync(
             arg_app_id: string,
@@ -1093,17 +1119,17 @@ export namespace Lfb {
             cancellable?: Gio.Cancellable | null,
         ): [boolean, number];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_end_feedback(invocation: Gio.DBusMethodInvocation): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param id Parameter to return.
          */
         complete_trigger_feedback(invocation: Gio.DBusMethodInvocation, id: number): void;
@@ -1114,24 +1140,27 @@ export namespace Lfb {
          */
         emit_feedback_ended(arg_id: number, arg_reason: number): void;
         /**
-         * Handler for the #LfbGdbusFeedback::feedback-ended signal.
+         * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.feedback_ended | Lfb.GdbusFeedback::feedback-ended} signal.
          * @param arg_id
          * @param arg_reason
+         * @virtual
          */
         vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
         /**
-         * Handler for the #LfbGdbusFeedback::handle-end-feedback signal.
+         * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.handle_end_feedback | Lfb.GdbusFeedback::handle-end-feedback} signal.
          * @param invocation
          * @param arg_id
+         * @virtual
          */
         vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;
         /**
-         * Handler for the #LfbGdbusFeedback::handle-trigger-feedback signal.
+         * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.handle_trigger_feedback | Lfb.GdbusFeedback::handle-trigger-feedback} signal.
          * @param invocation
          * @param arg_app_id
          * @param arg_event
          * @param arg_hints
          * @param arg_timeout
+         * @virtual
          */
         vfunc_handle_trigger_feedback(
             invocation: Gio.DBusMethodInvocation,
@@ -1153,32 +1182,32 @@ export namespace Lfb {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1187,39 +1216,39 @@ export namespace Lfb {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1230,13 +1259,16 @@ export namespace Lfb {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1244,7 +1276,7 @@ export namespace Lfb {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1252,9 +1284,9 @@ export namespace Lfb {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1274,9 +1306,9 @@ export namespace Lfb {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1290,33 +1322,33 @@ export namespace Lfb {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1349,21 +1381,21 @@ export namespace Lfb {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1373,8 +1405,8 @@ export namespace Lfb {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1391,10 +1423,10 @@ export namespace Lfb {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1409,13 +1441,13 @@ export namespace Lfb {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1446,21 +1478,21 @@ export namespace Lfb {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1470,33 +1502,34 @@ export namespace Lfb {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1505,6 +1538,7 @@ export namespace Lfb {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1513,12 +1547,14 @@ export namespace Lfb {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1527,20 +1563,22 @@ export namespace Lfb {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1552,6 +1590,7 @@ export namespace Lfb {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1598,7 +1637,8 @@ export namespace Lfb {
     }
 
     /**
-     * The #LfbGdbusFeedbackSkeleton structure contains only private data and should only be accessed using the provided API.
+     * The {@link Lfb.GdbusFeedbackSkeleton} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
      */
     class GdbusFeedbackSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusFeedback {
         static $gtype: GObject.GType<GdbusFeedbackSkeleton>;
@@ -1622,16 +1662,19 @@ export namespace Lfb {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GdbusFeedbackSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GdbusFeedbackSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GdbusFeedbackSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1639,70 +1682,70 @@ export namespace Lfb {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-sigxcpu-Feedback.Profile">"Profile"</link>.
          *
-         * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * @category Inherited from Lfb.GdbusFeedback
          */
         get profile(): string;
         set profile(val: string);
-
-        // Inherited methods
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_end_feedback(
             arg_id: number,
@@ -1711,13 +1754,13 @@ export namespace Lfb {
         ): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_end_feedback(
             arg_id: number,
@@ -1725,31 +1768,31 @@ export namespace Lfb {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an operation started with lfb_gdbus_feedback_call_end_feedback().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_end_feedback().
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * Finishes an operation started with `lfb_gdbus_feedback_call_end_feedback()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_end_feedback()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_end_feedback_finish(res: Gio.AsyncResult): boolean;
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See lfb_gdbus_feedback_call_end_feedback() for the asynchronous version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback()` for the asynchronous version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_end_feedback_sync(arg_id: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -1760,16 +1803,16 @@ export namespace Lfb {
         ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -1781,16 +1824,16 @@ export namespace Lfb {
         ): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -1801,21 +1844,21 @@ export namespace Lfb {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
-         * Finishes an operation started with lfb_gdbus_feedback_call_trigger_feedback().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_trigger_feedback().
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * Finishes an operation started with `lfb_gdbus_feedback_call_trigger_feedback()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_trigger_feedback()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_trigger_feedback_finish(res: Gio.AsyncResult): [boolean, number];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback() for the asynchronous version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback()` for the asynchronous version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_trigger_feedback_sync(
             arg_app_id: string,
@@ -1825,17 +1868,17 @@ export namespace Lfb {
             cancellable?: Gio.Cancellable | null,
         ): [boolean, number];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_end_feedback(invocation: Gio.DBusMethodInvocation): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param id Parameter to return.
          */
         complete_trigger_feedback(invocation: Gio.DBusMethodInvocation, id: number): void;
@@ -1846,24 +1889,27 @@ export namespace Lfb {
          */
         emit_feedback_ended(arg_id: number, arg_reason: number): void;
         /**
-         * Handler for the #LfbGdbusFeedback::feedback-ended signal.
+         * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.feedback_ended | Lfb.GdbusFeedback::feedback-ended} signal.
          * @param arg_id
          * @param arg_reason
+         * @virtual
          */
         vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
         /**
-         * Handler for the #LfbGdbusFeedback::handle-end-feedback signal.
+         * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.handle_end_feedback | Lfb.GdbusFeedback::handle-end-feedback} signal.
          * @param invocation
          * @param arg_id
+         * @virtual
          */
         vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;
         /**
-         * Handler for the #LfbGdbusFeedback::handle-trigger-feedback signal.
+         * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.handle_trigger_feedback | Lfb.GdbusFeedback::handle-trigger-feedback} signal.
          * @param invocation
          * @param arg_app_id
          * @param arg_event
          * @param arg_hints
          * @param arg_timeout
+         * @virtual
          */
         vfunc_handle_trigger_feedback(
             invocation: Gio.DBusMethodInvocation,
@@ -1885,32 +1931,32 @@ export namespace Lfb {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1919,39 +1965,39 @@ export namespace Lfb {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1962,13 +2008,16 @@ export namespace Lfb {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1976,7 +2025,7 @@ export namespace Lfb {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1984,9 +2033,9 @@ export namespace Lfb {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2006,9 +2055,9 @@ export namespace Lfb {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2022,33 +2071,33 @@ export namespace Lfb {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2081,21 +2130,21 @@ export namespace Lfb {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2105,8 +2154,8 @@ export namespace Lfb {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2123,10 +2172,10 @@ export namespace Lfb {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2141,13 +2190,13 @@ export namespace Lfb {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2178,21 +2227,21 @@ export namespace Lfb {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2202,33 +2251,34 @@ export namespace Lfb {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2237,6 +2287,7 @@ export namespace Lfb {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2245,12 +2296,14 @@ export namespace Lfb {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2259,20 +2312,22 @@ export namespace Lfb {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2284,6 +2339,7 @@ export namespace Lfb {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2313,14 +2369,32 @@ export namespace Lfb {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EventClass = typeof Event;
+    /**
+     * @gir-type Alias
+     */
     type GdbusFeedbackIface = typeof GdbusFeedback;
+    /**
+     * @gir-type Alias
+     */
     type GdbusFeedbackProxyClass = typeof GdbusFeedbackProxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class GdbusFeedbackProxyPrivate {
         static $gtype: GObject.GType<GdbusFeedbackProxyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GdbusFeedbackSkeletonClass = typeof GdbusFeedbackSkeleton;
+    /**
+     * @gir-type Struct
+     */
     abstract class GdbusFeedbackSkeletonPrivate {
         static $gtype: GObject.GType<GdbusFeedbackSkeletonPrivate>;
     }
@@ -2334,24 +2408,27 @@ export namespace Lfb {
             // Virtual methods
 
             /**
-             * Handler for the #LfbGdbusFeedback::feedback-ended signal.
+             * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.feedback_ended | Lfb.GdbusFeedback::feedback-ended} signal.
              * @param arg_id
              * @param arg_reason
+             * @virtual
              */
             vfunc_feedback_ended(arg_id: number, arg_reason: number): void;
             /**
-             * Handler for the #LfbGdbusFeedback::handle-end-feedback signal.
+             * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.handle_end_feedback | Lfb.GdbusFeedback::handle-end-feedback} signal.
              * @param invocation
              * @param arg_id
+             * @virtual
              */
             vfunc_handle_end_feedback(invocation: Gio.DBusMethodInvocation, arg_id: number): boolean;
             /**
-             * Handler for the #LfbGdbusFeedback::handle-trigger-feedback signal.
+             * Handler for the {@link Lfb.GdbusFeedback.SignalSignatures.handle_trigger_feedback | Lfb.GdbusFeedback::handle-trigger-feedback} signal.
              * @param invocation
              * @param arg_app_id
              * @param arg_event
              * @param arg_hints
              * @param arg_timeout
+             * @virtual
              */
             vfunc_handle_trigger_feedback(
                 invocation: Gio.DBusMethodInvocation,
@@ -2378,20 +2455,24 @@ export namespace Lfb {
          */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-         * Overrides all #GObject properties in the #LfbGdbusFeedback interface for a concrete class.
+         * Overrides all {@link GObject.Object} properties in the {@link Lfb.GdbusFeedback} interface for a concrete class.
          * The properties are overridden in the order they are defined.
-         * @param klass The class structure for a #GObject derived class.
+         * @param klass The class structure for a {@link GObject.Object} derived class.
          * @param property_id_begin The property id to assign to the first overridden property.
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
+    /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-sigxcpu-Feedback.top_of_page">org.sigxcpu.Feedback</link>.
+     * @gir-type Interface
+     */
     interface GdbusFeedback extends GObject.Object, GdbusFeedback.Interface {
         // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-sigxcpu-Feedback.Profile">"Profile"</link>.
          *
-         * Since the D-Bus property for this #GObject property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          */
         get profile(): string;
         set profile(val: string);
@@ -2400,23 +2481,23 @@ export namespace Lfb {
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_end_feedback(arg_id: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_end_feedback(
             arg_id: number,
@@ -2425,13 +2506,13 @@ export namespace Lfb {
         ): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_end_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_end_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_end_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_end_feedback(
             arg_id: number,
@@ -2439,31 +2520,31 @@ export namespace Lfb {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an operation started with lfb_gdbus_feedback_call_end_feedback().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_end_feedback().
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * Finishes an operation started with `lfb_gdbus_feedback_call_end_feedback()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_end_feedback()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_end_feedback_finish(res: Gio.AsyncResult): boolean;
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See lfb_gdbus_feedback_call_end_feedback() for the asynchronous version of this method.
+         * See `lfb_gdbus_feedback_call_end_feedback()` for the asynchronous version of this method.
          * @param arg_id Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_end_feedback_sync(arg_id: number, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -2474,16 +2555,16 @@ export namespace Lfb {
         ): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -2495,16 +2576,16 @@ export namespace Lfb {
         ): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
-         * You can then call lfb_gdbus_feedback_call_trigger_feedback_finish() to get the result of the operation.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `lfb_gdbus_feedback_call_trigger_feedback_finish()` to get the result of the operation.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback_sync() for the synchronous, blocking version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback_sync()` for the synchronous, blocking version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_trigger_feedback(
             arg_app_id: string,
@@ -2515,21 +2596,21 @@ export namespace Lfb {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
-         * Finishes an operation started with lfb_gdbus_feedback_call_trigger_feedback().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to lfb_gdbus_feedback_call_trigger_feedback().
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * Finishes an operation started with `lfb_gdbus_feedback_call_trigger_feedback()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_trigger_feedback()`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_trigger_feedback_finish(res: Gio.AsyncResult): [boolean, number];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See lfb_gdbus_feedback_call_trigger_feedback() for the asynchronous version of this method.
+         * See `lfb_gdbus_feedback_call_trigger_feedback()` for the asynchronous version of this method.
          * @param arg_app_id Argument to pass with the method invocation.
          * @param arg_event Argument to pass with the method invocation.
          * @param arg_hints Argument to pass with the method invocation.
          * @param arg_timeout Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeeded, `false` if `error` is set.
          */
         call_trigger_feedback_sync(
             arg_app_id: string,
@@ -2539,17 +2620,17 @@ export namespace Lfb {
             cancellable?: Gio.Cancellable | null,
         ): [boolean, number];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_end_feedback(invocation: Gio.DBusMethodInvocation): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param id Parameter to return.
          */
         complete_trigger_feedback(invocation: Gio.DBusMethodInvocation, id: number): void;

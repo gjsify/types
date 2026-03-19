@@ -21,6 +21,9 @@ export namespace GSSDP {
      * GSSDP-1.0
      */
 
+    /**
+     * @gir-type Struct
+     */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -28,7 +31,7 @@ export namespace GSSDP {
 
         /**
          * GSSDP could not find a valid IP address of a
-         * #GSSDPClient.
+         * {@link GSSDP.Client}.
          */
         static NO_IP_ADDRESS: number;
         /**
@@ -45,10 +48,17 @@ export namespace GSSDP {
      * SSDP search target for finding all possible resources.
      */
     const ALL_RESOURCES: string;
+    /**
+     * @returns a {@link GLib.Quark} uniquely used by GSSDP's errors.
+     */
     function error_quark(): GLib.Quark;
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Internal signal.
+             * @signal
+             */
             'message-received': (arg0: string, arg1: number, arg2: number, arg3: Soup.MessageHeaders) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
             'notify::host-ip': (pspec: GObject.ParamSpec) => void;
@@ -76,6 +86,9 @@ export namespace GSSDP {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
@@ -118,7 +131,7 @@ export namespace GSSDP {
         /**
          * The network this client is currently connected to. You could set this
          * to anything you want to identify the network this client is
-         * associated with. If you are using #GUPnPContextManager and associated
+         * associated with. If you are using `GUPnPContextManager` and associated
          * interface is a WiFi interface, this property is set to the ESSID of
          * the network. Otherwise, expect this to be the network IP address by
          * default.
@@ -169,16 +182,19 @@ export namespace GSSDP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -187,6 +203,10 @@ export namespace GSSDP {
 
         // Methods
 
+        /**
+         * @param ip_address The host to add to the cache
+         * @param user_agent User agent ot the host to add
+         */
         add_cache_entry(ip_address: string, user_agent: string): void;
         /**
          * Adds a header field to the message sent by this `client`. It is intended to
@@ -200,6 +220,9 @@ export namespace GSSDP {
          * Removes all the headers for this `client`.
          */
         clear_headers(): void;
+        /**
+         * @returns `true` if `client` is active, `false` otherwise.
+         */
         get_active(): boolean;
         /**
          * Get the IP address we advertise ourselves as using.
@@ -217,11 +240,18 @@ export namespace GSSDP {
          * @returns The network identification. This string should not be freed.
          */
         get_network(): string;
+        /**
+         * @returns The server ID.
+         */
         get_server_id(): string;
+        /**
+         * @param ip_address IP address to guess the user-agent for
+         * @returns The user-agent cached for this IP, `null` if none is cached.
+         */
         guess_user_agent(ip_address: string): string;
         /**
          * Removes `name` from the list of headers . If there are multiple values for
-         * `name,` they are all removed.
+         * `name`, they are all removed.
          * @param name Header name
          */
         remove_header(name: string): void;
@@ -235,34 +265,32 @@ export namespace GSSDP {
          * @param server_id The server ID
          */
         set_server_id(server_id: string): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -272,40 +300,40 @@ export namespace GSSDP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -315,11 +343,12 @@ export namespace GSSDP {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -335,32 +364,32 @@ export namespace GSSDP {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -369,39 +398,39 @@ export namespace GSSDP {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -412,13 +441,16 @@ export namespace GSSDP {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -426,7 +458,7 @@ export namespace GSSDP {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -434,9 +466,9 @@ export namespace GSSDP {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -456,9 +488,9 @@ export namespace GSSDP {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -472,33 +504,33 @@ export namespace GSSDP {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -531,21 +563,21 @@ export namespace GSSDP {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -555,8 +587,8 @@ export namespace GSSDP {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -573,10 +605,10 @@ export namespace GSSDP {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -591,13 +623,13 @@ export namespace GSSDP {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -628,21 +660,21 @@ export namespace GSSDP {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -652,33 +684,34 @@ export namespace GSSDP {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -687,6 +720,7 @@ export namespace GSSDP {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -695,12 +729,14 @@ export namespace GSSDP {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -709,20 +745,22 @@ export namespace GSSDP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -734,6 +772,7 @@ export namespace GSSDP {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -766,7 +805,17 @@ export namespace GSSDP {
     namespace ResourceBrowser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::resource-available signal is emitted whenever a new resource
+             * has become available.
+             * @signal
+             */
             'resource-available': (arg0: string, arg1: string[]) => void;
+            /**
+             * The ::resource-unavailable signal is emitted whenever a resource
+             * is not available any more.
+             * @signal
+             */
             'resource-unavailable': (arg0: string) => void;
             'notify::active': (pspec: GObject.ParamSpec) => void;
             'notify::client': (pspec: GObject.ParamSpec) => void;
@@ -784,6 +833,9 @@ export namespace GSSDP {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ResourceBrowser extends GObject.Object {
         static $gtype: GObject.GType<ResourceBrowser>;
 
@@ -795,7 +847,7 @@ export namespace GSSDP {
         get active(): boolean;
         set active(val: boolean);
         /**
-         * The #GSSDPClient to use.
+         * The {@link GSSDP.Client} to use.
          */
         get client(): Client;
         /**
@@ -829,16 +881,19 @@ export namespace GSSDP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResourceBrowser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResourceBrowser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ResourceBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -847,23 +902,39 @@ export namespace GSSDP {
 
         // Virtual methods
 
+        /**
+         * @param usn
+         * @virtual
+         */
         vfunc_resource_unavailable(usn: string): void;
 
         // Methods
 
+        /**
+         * @returns `true` if `resource_browser` is active.
+         */
         get_active(): boolean;
+        /**
+         * @returns The {@link GSSDP.Client} `resource_browser` is associated with.
+         */
         get_client(): Client;
+        /**
+         * @returns The used MX value.
+         */
         get_mx(): number;
+        /**
+         * @returns The browser target.
+         */
         get_target(): string;
         /**
          * Begins discovery if `resource_browser` is active and no discovery is
          * performed. Otherwise does nothing.
-         * @returns %TRUE if rescaning has been started.
+         * @returns `true` if rescaning has been started.
          */
         rescan(): boolean;
         /**
          * (De)activates `resource_browser`.
-         * @param active %TRUE to activate @resource_browser
+         * @param active `true` to activate `resource_browser`
          */
         set_active(active: boolean): void;
         /**
@@ -899,6 +970,9 @@ export namespace GSSDP {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ResourceGroup extends GObject.Object {
         static $gtype: GObject.GType<ResourceGroup>;
 
@@ -910,7 +984,7 @@ export namespace GSSDP {
         get available(): boolean;
         set available(val: boolean);
         /**
-         * The #GSSDPClient to use.
+         * The {@link GSSDP.Client} to use.
          */
         get client(): Client;
         /**
@@ -955,16 +1029,19 @@ export namespace GSSDP {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResourceGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResourceGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ResourceGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -974,16 +1051,16 @@ export namespace GSSDP {
         // Methods
 
         /**
-         * Adds a resource with target `target,` USN `usn,` and locations `locations`
+         * Adds a resource with target `target`, USN `usn`, and locations `locations`
          * to `resource_group`.
          * @param target The resource's target
          * @param usn The resource's USN
-         * @param locations A #GList of the resource's locations
+         * @param locations A {@link GLib.List} of the resource's locations
          * @returns The ID of the added resource.
          */
         add_resource(target: string, usn: string, locations: string[]): number;
         /**
-         * Adds a resource with target `target,` USN `usn,` and location `location`
+         * Adds a resource with target `target`, USN `usn`, and location `location`
          * to `resource_group`.
          * @param target The resource's target
          * @param usn The resource's USN
@@ -991,9 +1068,21 @@ export namespace GSSDP {
          * @returns The ID of the added resource.
          */
         add_resource_simple(target: string, usn: string, location: string): number;
+        /**
+         * @returns TRUE if `resource_group` is available (advertised).
+         */
         get_available(): boolean;
+        /**
+         * @returns The {@link GSSDP.Client} `resource_group` is associated with.
+         */
         get_client(): Client;
+        /**
+         * @returns The number of seconds advertisements are valid.
+         */
         get_max_age(): number;
+        /**
+         * @returns the minimum time between each SSDP message in ms.
+         */
         get_message_delay(): number;
         /**
          * Removes the resource with ID `resource_id` from `resource_group`.
@@ -1001,10 +1090,10 @@ export namespace GSSDP {
          */
         remove_resource(resource_id: number): void;
         /**
-         * Sets `resource_group<`!-- -->s availability to `available`. Changing
-         * `resource_group<`!-- -->s availability causes it to announce its new state
+         * Sets `resource_group`<!-- -->s availability to `available`. Changing
+         * `resource_group`<!-- -->s availability causes it to announce its new state
          * to listening SSDP clients.
-         * @param available %TRUE if @resource_group should be available (advertised)
+         * @param available `true` if `resource_group` should be available (advertised)
          */
         set_available(available: boolean): void;
         /**
@@ -1019,17 +1108,35 @@ export namespace GSSDP {
         set_message_delay(message_delay: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ResourceBrowserClass = typeof ResourceBrowser;
+    /**
+     * @gir-type Struct
+     */
     abstract class ResourceBrowserPrivate {
         static $gtype: GObject.GType<ResourceBrowserPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ResourceGroupClass = typeof ResourceGroup;
+    /**
+     * @gir-type Struct
+     */
     abstract class ResourceGroupPrivate {
         static $gtype: GObject.GType<ResourceGroupPrivate>;
     }

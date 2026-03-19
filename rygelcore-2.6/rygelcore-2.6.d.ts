@@ -29,6 +29,9 @@ export namespace RygelCore {
         export const $gtype: GObject.GType<LogLevel>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LogLevel {
         INVALID,
         ERROR,
@@ -43,6 +46,9 @@ export namespace RygelCore {
         export const $gtype: GObject.GType<ConfigurationEntry>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ConfigurationEntry {
         INTERFACE,
         PORT,
@@ -60,11 +66,17 @@ export namespace RygelCore {
         export const $gtype: GObject.GType<SectionEntry>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SectionEntry {
         TITLE,
         ENABLED,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ConfigurationError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -78,6 +90,9 @@ export namespace RygelCore {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class CmdlineConfigError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -95,6 +110,9 @@ export namespace RygelCore {
         export const $gtype: GObject.GType<PluginCapabilities>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum PluginCapabilities {
         NONE,
         IMAGE_UPLOAD,
@@ -125,6 +143,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ConnectionManager extends GUPnP.Service {
         static $gtype: GObject.GType<ConnectionManager>;
 
@@ -156,16 +177,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConnectionManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConnectionManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ConnectionManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -174,6 +198,9 @@ export namespace RygelCore {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_current_protocol_info(): string;
 
         // Methods
@@ -203,6 +230,9 @@ export namespace RygelCore {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class BasicManagement extends GUPnP.Service {
         static $gtype: GObject.GType<BasicManagement>;
 
@@ -236,16 +266,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BasicManagement.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BasicManagement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BasicManagement.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BasicManagement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BasicManagement.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BasicManagement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -255,6 +288,9 @@ export namespace RygelCore {
         // Methods
 
         get_max_history_size(): number;
+        /**
+         * @param value
+         */
         set_max_history_size(value: number): void;
     }
 
@@ -267,6 +303,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DescriptionFile extends GObject.Object {
         static $gtype: GObject.GType<DescriptionFile>;
 
@@ -291,16 +330,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DescriptionFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DescriptionFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DescriptionFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DescriptionFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DescriptionFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DescriptionFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -309,23 +351,71 @@ export namespace RygelCore {
 
         // Methods
 
+        /**
+         * @param device_type
+         */
         set_device_type(device_type: string): void;
+        /**
+         * @param model_description
+         */
         set_model_description(model_description: string): void;
+        /**
+         * @param model_name
+         */
         set_model_name(model_name: string): void;
+        /**
+         * @param model_number
+         */
         set_model_number(model_number: string): void;
+        /**
+         * @param friendly_name
+         */
         set_friendly_name(friendly_name: string): void;
         get_friendly_name(): string;
+        /**
+         * @param udn
+         */
         set_udn(udn: string): void;
         get_udn(): string | null;
+        /**
+         * @param serial
+         */
         set_serial_number(serial: string): void;
+        /**
+         * @param capabilities
+         */
         set_dlna_caps(capabilities: PluginCapabilities | null): void;
         clear_service_list(): void;
+        /**
+         * @param dlnadoc_xpath
+         * @param dlnadoc_non_xpath
+         * @param dev_cap
+         */
         add_dlna_doc_element(dlnadoc_xpath: string, dlnadoc_non_xpath: string, dev_cap: string): void;
+        /**
+         * @param dlnadoc_xpath
+         */
         remove_dlna_doc_element(dlnadoc_xpath: string): void;
+        /**
+         * @param device_name
+         * @param resource_info
+         */
         add_service(device_name: string, resource_info: ResourceInfo): void;
         clear_icon_list(): void;
+        /**
+         * @param device_name
+         * @param icon_info
+         * @param url
+         */
         add_icon(device_name: string, icon_info: IconInfo, url: string): void;
+        /**
+         * @param old_type
+         * @param new_type
+         */
         modify_service_type(old_type: string, new_type: string): void;
+        /**
+         * @param path
+         */
         save(path: string): void;
     }
 
@@ -334,6 +424,9 @@ export namespace RygelCore {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DLNAProfile {
         static $gtype: GObject.GType<DLNAProfile>;
 
@@ -351,16 +444,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DLNAProfile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DLNAProfile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DLNAProfile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DLNAProfile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DLNAProfile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DLNAProfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -369,6 +465,10 @@ export namespace RygelCore {
 
         // Static methods
 
+        /**
+         * @param a
+         * @param b
+         */
         static compare_by_name(a: DLNAProfile, b: DLNAProfile): number;
     }
 
@@ -390,6 +490,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class EnergyManagement extends GUPnP.Service {
         static $gtype: GObject.GType<EnergyManagement>;
 
@@ -412,16 +515,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EnergyManagement.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EnergyManagement.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EnergyManagement.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EnergyManagement.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EnergyManagement.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EnergyManagement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -455,6 +561,9 @@ export namespace RygelCore {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RootDevice extends GUPnP.RootDevice implements Gio.Initable {
         static $gtype: GObject.GType<RootDevice>;
 
@@ -491,16 +600,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RootDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RootDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -510,34 +622,32 @@ export namespace RygelCore {
         // Methods
 
         get_services(): Gee.ArrayList;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -547,40 +657,40 @@ export namespace RygelCore {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -590,11 +700,12 @@ export namespace RygelCore {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -610,32 +721,32 @@ export namespace RygelCore {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -644,39 +755,39 @@ export namespace RygelCore {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -687,13 +798,16 @@ export namespace RygelCore {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -701,7 +815,7 @@ export namespace RygelCore {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -709,9 +823,9 @@ export namespace RygelCore {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -731,9 +845,9 @@ export namespace RygelCore {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -747,33 +861,33 @@ export namespace RygelCore {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -806,21 +920,21 @@ export namespace RygelCore {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -830,8 +944,8 @@ export namespace RygelCore {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -848,10 +962,10 @@ export namespace RygelCore {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -866,13 +980,13 @@ export namespace RygelCore {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -903,21 +1017,21 @@ export namespace RygelCore {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -927,33 +1041,34 @@ export namespace RygelCore {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -962,6 +1077,7 @@ export namespace RygelCore {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -970,12 +1086,14 @@ export namespace RygelCore {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -984,20 +1102,22 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1009,6 +1129,7 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1051,6 +1172,9 @@ export namespace RygelCore {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RootDeviceFactory extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RootDeviceFactory>;
 
@@ -1077,16 +1201,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RootDeviceFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RootDeviceFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RootDeviceFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RootDeviceFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RootDeviceFactory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RootDeviceFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1095,36 +1222,37 @@ export namespace RygelCore {
 
         // Methods
 
+        /**
+         * @param plugin
+         */
         create(plugin: Plugin): RootDevice;
         get_context(): GUPnP.Context;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1134,40 +1262,40 @@ export namespace RygelCore {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1177,11 +1305,12 @@ export namespace RygelCore {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1197,32 +1326,32 @@ export namespace RygelCore {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1231,39 +1360,39 @@ export namespace RygelCore {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1274,13 +1403,16 @@ export namespace RygelCore {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1288,7 +1420,7 @@ export namespace RygelCore {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1296,9 +1428,9 @@ export namespace RygelCore {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1318,9 +1450,9 @@ export namespace RygelCore {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1334,33 +1466,33 @@ export namespace RygelCore {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1393,21 +1525,21 @@ export namespace RygelCore {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1417,8 +1549,8 @@ export namespace RygelCore {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1435,10 +1567,10 @@ export namespace RygelCore {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1453,13 +1585,13 @@ export namespace RygelCore {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1490,21 +1622,21 @@ export namespace RygelCore {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1514,33 +1646,34 @@ export namespace RygelCore {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1549,6 +1682,7 @@ export namespace RygelCore {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1557,12 +1691,14 @@ export namespace RygelCore {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1571,20 +1707,22 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1596,6 +1734,7 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1634,6 +1773,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LogHandler extends GObject.Object {
         static $gtype: GObject.GType<LogHandler>;
 
@@ -1654,16 +1796,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LogHandler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LogHandler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LogHandler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LogHandler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LogHandler.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LogHandler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1684,6 +1829,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MetaConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<MetaConfig>;
 
@@ -1706,16 +1854,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MetaConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetaConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MetaConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetaConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MetaConfig.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MetaConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1725,10 +1876,11 @@ export namespace RygelCore {
         // Static methods
 
         static get_default(): MetaConfig;
+        /**
+         * @param config
+         */
         static register_configuration(config: Configuration): void;
         static cleanup(): void;
-
-        // Inherited methods
         get_interface(): string;
         get_interfaces(): string[];
         get_port(): number;
@@ -1742,32 +1894,134 @@ export namespace RygelCore {
         get_video_upload_folder(): string | null;
         get_music_upload_folder(): string | null;
         get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         */
         get_enabled(section: string): boolean;
+        /**
+         * @param section
+         */
         get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         */
         get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         */
         get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         */
         get_bool(section: string, key: string): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_interface(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_interfaces(): string[];
+        /**
+         * @virtual
+         */
         vfunc_get_port(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_transcoding(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_upload(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_deletion(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_log_levels(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_plugin_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_engine_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_media_engine(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_video_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_music_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_enabled(section: string): boolean;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         * @virtual
+         */
         vfunc_get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_bool(section: string, key: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1782,32 +2036,32 @@ export namespace RygelCore {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1816,39 +2070,39 @@ export namespace RygelCore {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1859,13 +2113,16 @@ export namespace RygelCore {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1873,7 +2130,7 @@ export namespace RygelCore {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1881,9 +2138,9 @@ export namespace RygelCore {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1903,9 +2160,9 @@ export namespace RygelCore {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1919,33 +2176,33 @@ export namespace RygelCore {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1978,21 +2235,21 @@ export namespace RygelCore {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2002,8 +2259,8 @@ export namespace RygelCore {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2020,10 +2277,10 @@ export namespace RygelCore {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2038,13 +2295,13 @@ export namespace RygelCore {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2075,21 +2332,21 @@ export namespace RygelCore {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2099,33 +2356,34 @@ export namespace RygelCore {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2134,6 +2392,7 @@ export namespace RygelCore {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2142,12 +2401,14 @@ export namespace RygelCore {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2156,20 +2417,22 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2181,6 +2444,7 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2213,6 +2477,9 @@ export namespace RygelCore {
     namespace PluginLoader {
         // Signal signatures
         interface SignalSignatures extends RecursiveModuleLoader.SignalSignatures {
+            /**
+             * @signal
+             */
             'plugin-available': (arg0: Plugin) => void;
             'notify::base-path': (pspec: GObject.ParamSpec) => void;
         }
@@ -2222,6 +2489,9 @@ export namespace RygelCore {
         interface ConstructorProps extends RecursiveModuleLoader.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PluginLoader extends RecursiveModuleLoader {
         static $gtype: GObject.GType<PluginLoader>;
 
@@ -2244,16 +2514,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PluginLoader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PluginLoader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PluginLoader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PluginLoader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PluginLoader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PluginLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2262,8 +2535,17 @@ export namespace RygelCore {
 
         // Methods
 
+        /**
+         * @param name
+         */
         plugin_disabled(name: string): boolean;
+        /**
+         * @param plugin
+         */
         add_plugin(plugin: Plugin): void;
+        /**
+         * @param name
+         */
         get_plugin_by_name(name: string): Plugin | null;
         list_plugins(): Gee.Collection;
     }
@@ -2282,6 +2564,9 @@ export namespace RygelCore {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class RecursiveModuleLoader extends GObject.Object {
         static $gtype: GObject.GType<RecursiveModuleLoader>;
 
@@ -2309,16 +2594,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RecursiveModuleLoader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecursiveModuleLoader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RecursiveModuleLoader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecursiveModuleLoader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecursiveModuleLoader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecursiveModuleLoader.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2329,16 +2617,36 @@ export namespace RygelCore {
 
         // Virtual methods
 
+        /**
+         * @param file
+         * @virtual
+         */
         vfunc_load_module_from_file(file: Gio.File): boolean;
+        /**
+         * @param info
+         * @virtual
+         */
         vfunc_load_module_from_info(info: PluginInformation): boolean;
 
         // Methods
 
         load_modules(): void;
+        /**
+         * @param cancellable
+         */
         load_modules_sync(cancellable?: Gio.Cancellable | null): void;
+        /**
+         * @param file
+         */
         load_module_from_file(file: Gio.File): boolean;
+        /**
+         * @param info
+         */
         load_module_from_info(info: PluginInformation): boolean;
         get_base_path(): string;
+        /**
+         * @param value
+         */
         set_base_path(value: string): void;
     }
 
@@ -2375,6 +2683,9 @@ export namespace RygelCore {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Plugin extends GUPnP.ResourceFactory {
         static $gtype: GObject.GType<Plugin>;
 
@@ -2431,16 +2742,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2449,21 +2763,45 @@ export namespace RygelCore {
 
         // Virtual methods
 
+        /**
+         * @param device
+         * @param description_path
+         * @virtual
+         */
         vfunc_apply_hacks(device: RootDevice, description_path: string): void;
 
         // Methods
 
+        /**
+         * @param resource_info
+         */
         add_resource(resource_info: ResourceInfo): void;
+        /**
+         * @param icon_info
+         */
         add_icon(icon_info: IconInfo): void;
+        /**
+         * @param device
+         * @param description_path
+         */
         apply_hacks(device: RootDevice, description_path: string): void;
         get_capabilities(): PluginCapabilities;
+        /**
+         * @param value
+         */
         set_capabilities(value: PluginCapabilities | null): void;
         get_name(): string;
         get_title(): string;
+        /**
+         * @param value
+         */
         set_title(value: string): void;
         get_description(): string;
         get_desc_path(): string;
         get_active(): boolean;
+        /**
+         * @param value
+         */
         set_active(value: boolean): void;
         get_resource_infos(): Gee.ArrayList;
         get_icon_infos(): Gee.ArrayList;
@@ -2475,6 +2813,9 @@ export namespace RygelCore {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ResourceInfo {
         static $gtype: GObject.GType<ResourceInfo>;
 
@@ -2494,16 +2835,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ResourceInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResourceInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ResourceInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ResourceInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ResourceInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ResourceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2528,6 +2872,9 @@ export namespace RygelCore {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MediaDevice extends GObject.Object {
         static $gtype: GObject.GType<MediaDevice>;
 
@@ -2555,16 +2902,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2573,10 +2923,19 @@ export namespace RygelCore {
 
         // Methods
 
+        /**
+         * @param iface
+         */
         add_interface(iface: string): void;
+        /**
+         * @param iface
+         */
         remove_interface(iface: string): void;
         get_interfaces(): string[];
         get_plugin(): Plugin;
+        /**
+         * @param value
+         */
         set_plugin(value: Plugin): void;
         get_title(): string;
         get_capabilities(): PluginCapabilities;
@@ -2591,6 +2950,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BaseConfiguration extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<BaseConfiguration>;
 
@@ -2613,16 +2975,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BaseConfiguration.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseConfiguration.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BaseConfiguration.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BaseConfiguration.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BaseConfiguration.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BaseConfiguration.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2631,25 +2996,99 @@ export namespace RygelCore {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_interface(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_interfaces(): string[];
+        /**
+         * @virtual
+         */
         vfunc_get_port(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_transcoding(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_upload(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_deletion(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_log_levels(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_plugin_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_engine_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_media_engine(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_video_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_music_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_enabled(section: string): boolean;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         * @virtual
+         */
         vfunc_get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_bool(section: string, key: string): boolean;
 
         // Methods
@@ -2667,15 +3106,41 @@ export namespace RygelCore {
         get_video_upload_folder(): string | null;
         get_music_upload_folder(): string | null;
         get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         */
         get_enabled(section: string): boolean;
+        /**
+         * @param section
+         */
         get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         */
         get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         */
         get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         */
         get_bool(section: string, key: string): boolean;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2689,32 +3154,32 @@ export namespace RygelCore {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2723,39 +3188,39 @@ export namespace RygelCore {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2766,13 +3231,16 @@ export namespace RygelCore {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2780,7 +3248,7 @@ export namespace RygelCore {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2788,9 +3256,9 @@ export namespace RygelCore {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2810,9 +3278,9 @@ export namespace RygelCore {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2826,33 +3294,33 @@ export namespace RygelCore {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2885,21 +3353,21 @@ export namespace RygelCore {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2909,8 +3377,8 @@ export namespace RygelCore {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2927,10 +3395,10 @@ export namespace RygelCore {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2945,13 +3413,13 @@ export namespace RygelCore {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2982,21 +3450,21 @@ export namespace RygelCore {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3006,33 +3474,34 @@ export namespace RygelCore {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3041,6 +3510,7 @@ export namespace RygelCore {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3049,12 +3519,14 @@ export namespace RygelCore {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3063,20 +3535,22 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3088,6 +3562,7 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3126,6 +3601,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CmdlineConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<CmdlineConfig>;
 
@@ -3148,16 +3626,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CmdlineConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CmdlineConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CmdlineConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CmdlineConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CmdlineConfig.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CmdlineConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3167,13 +3648,14 @@ export namespace RygelCore {
         // Static methods
 
         static get_default(): CmdlineConfig;
+        /**
+         * @param args
+         */
         static parse_args(args: string[]): string[];
 
         // Methods
 
         get_config_file(): string;
-
-        // Inherited methods
         get_interface(): string;
         get_interfaces(): string[];
         get_port(): number;
@@ -3187,32 +3669,134 @@ export namespace RygelCore {
         get_video_upload_folder(): string | null;
         get_music_upload_folder(): string | null;
         get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         */
         get_enabled(section: string): boolean;
+        /**
+         * @param section
+         */
         get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         */
         get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         */
         get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         */
         get_bool(section: string, key: string): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_interface(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_interfaces(): string[];
+        /**
+         * @virtual
+         */
         vfunc_get_port(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_transcoding(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_upload(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_deletion(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_log_levels(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_plugin_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_engine_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_media_engine(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_video_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_music_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_enabled(section: string): boolean;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         * @virtual
+         */
         vfunc_get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_bool(section: string, key: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3227,32 +3811,32 @@ export namespace RygelCore {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3261,39 +3845,39 @@ export namespace RygelCore {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3304,13 +3888,16 @@ export namespace RygelCore {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3318,7 +3905,7 @@ export namespace RygelCore {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3326,9 +3913,9 @@ export namespace RygelCore {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3348,9 +3935,9 @@ export namespace RygelCore {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3364,33 +3951,33 @@ export namespace RygelCore {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3423,21 +4010,21 @@ export namespace RygelCore {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3447,8 +4034,8 @@ export namespace RygelCore {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3465,10 +4052,10 @@ export namespace RygelCore {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3483,13 +4070,13 @@ export namespace RygelCore {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3520,21 +4107,21 @@ export namespace RygelCore {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3544,33 +4131,34 @@ export namespace RygelCore {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3579,6 +4167,7 @@ export namespace RygelCore {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3587,12 +4176,14 @@ export namespace RygelCore {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3601,20 +4192,22 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3626,6 +4219,7 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3664,6 +4258,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class EnvironmentConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<EnvironmentConfig>;
 
@@ -3686,16 +4283,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EnvironmentConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EnvironmentConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EnvironmentConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EnvironmentConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EnvironmentConfig.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EnvironmentConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3705,8 +4305,6 @@ export namespace RygelCore {
         // Static methods
 
         static get_default(): EnvironmentConfig;
-
-        // Inherited methods
         get_interface(): string;
         get_interfaces(): string[];
         get_port(): number;
@@ -3720,32 +4318,134 @@ export namespace RygelCore {
         get_video_upload_folder(): string | null;
         get_music_upload_folder(): string | null;
         get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         */
         get_enabled(section: string): boolean;
+        /**
+         * @param section
+         */
         get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         */
         get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         */
         get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         */
         get_bool(section: string, key: string): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_interface(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_interfaces(): string[];
+        /**
+         * @virtual
+         */
         vfunc_get_port(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_transcoding(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_upload(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_deletion(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_log_levels(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_plugin_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_engine_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_media_engine(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_video_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_music_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_enabled(section: string): boolean;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         * @virtual
+         */
         vfunc_get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_bool(section: string, key: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3760,32 +4460,32 @@ export namespace RygelCore {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3794,39 +4494,39 @@ export namespace RygelCore {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3837,13 +4537,16 @@ export namespace RygelCore {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3851,7 +4554,7 @@ export namespace RygelCore {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3859,9 +4562,9 @@ export namespace RygelCore {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3881,9 +4584,9 @@ export namespace RygelCore {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3897,33 +4600,33 @@ export namespace RygelCore {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3956,21 +4659,21 @@ export namespace RygelCore {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3980,8 +4683,8 @@ export namespace RygelCore {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3998,10 +4701,10 @@ export namespace RygelCore {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4016,13 +4719,13 @@ export namespace RygelCore {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4053,21 +4756,21 @@ export namespace RygelCore {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4077,33 +4780,34 @@ export namespace RygelCore {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4112,6 +4816,7 @@ export namespace RygelCore {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4120,12 +4825,14 @@ export namespace RygelCore {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4134,20 +4841,22 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4159,6 +4868,7 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4197,6 +4907,9 @@ export namespace RygelCore {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UserConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<UserConfig>;
 
@@ -4226,16 +4939,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserConfig.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserConfig.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserConfig.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserConfig.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4245,8 +4961,6 @@ export namespace RygelCore {
         // Static methods
 
         static get_default(): UserConfig;
-
-        // Inherited methods
         get_interface(): string;
         get_interfaces(): string[];
         get_port(): number;
@@ -4260,32 +4974,134 @@ export namespace RygelCore {
         get_video_upload_folder(): string | null;
         get_music_upload_folder(): string | null;
         get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         */
         get_enabled(section: string): boolean;
+        /**
+         * @param section
+         */
         get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         */
         get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         */
         get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         */
         get_bool(section: string, key: string): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_interface(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_interfaces(): string[];
+        /**
+         * @virtual
+         */
         vfunc_get_port(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_transcoding(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_upload(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_allow_deletion(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_log_levels(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_plugin_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_engine_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_media_engine(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_video_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_music_upload_folder(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_enabled(section: string): boolean;
+        /**
+         * @param section
+         * @virtual
+         */
         vfunc_get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         * @virtual
+         */
         vfunc_get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @virtual
+         */
         vfunc_get_bool(section: string, key: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -4300,32 +5116,32 @@ export namespace RygelCore {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4334,39 +5150,39 @@ export namespace RygelCore {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4377,13 +5193,16 @@ export namespace RygelCore {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4391,7 +5210,7 @@ export namespace RygelCore {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4399,9 +5218,9 @@ export namespace RygelCore {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4421,9 +5240,9 @@ export namespace RygelCore {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4437,33 +5256,33 @@ export namespace RygelCore {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4496,21 +5315,21 @@ export namespace RygelCore {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4520,8 +5339,8 @@ export namespace RygelCore {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4538,10 +5357,10 @@ export namespace RygelCore {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4556,13 +5375,13 @@ export namespace RygelCore {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4593,21 +5412,21 @@ export namespace RygelCore {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4617,33 +5436,34 @@ export namespace RygelCore {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4652,6 +5472,7 @@ export namespace RygelCore {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4660,12 +5481,14 @@ export namespace RygelCore {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4674,20 +5497,22 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4699,6 +5524,7 @@ export namespace RygelCore {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4745,6 +5571,9 @@ export namespace RygelCore {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class V1Hacks extends GObject.Object {
         static $gtype: GObject.GType<V1Hacks>;
 
@@ -4780,16 +5609,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof V1Hacks.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, V1Hacks.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof V1Hacks.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, V1Hacks.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof V1Hacks.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<V1Hacks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4798,8 +5630,15 @@ export namespace RygelCore {
 
         // Methods
 
+        /**
+         * @param device
+         * @param template_path
+         */
         apply_on_device(device: RootDevice, template_path?: string | null): void;
         get_device_type(): string;
+        /**
+         * @param value
+         */
         set_device_type(value: string): void;
         get_service_types(): string[];
     }
@@ -4809,6 +5648,9 @@ export namespace RygelCore {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class IconInfo {
         static $gtype: GObject.GType<IconInfo>;
 
@@ -4831,16 +5673,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IconInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IconInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IconInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IconInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IconInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IconInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4853,6 +5698,9 @@ export namespace RygelCore {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class XMLUtils {
         static $gtype: GObject.GType<XMLUtils>;
 
@@ -4868,16 +5716,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XMLUtils.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLUtils.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XMLUtils.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLUtils.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XMLUtils.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XMLUtils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4890,6 +5741,9 @@ export namespace RygelCore {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class XMLUtilsIterator {
         static $gtype: GObject.GType<XMLUtilsIterator>;
 
@@ -4905,16 +5759,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XMLUtilsIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLUtilsIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XMLUtilsIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLUtilsIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XMLUtilsIterator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XMLUtilsIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4933,6 +5790,9 @@ export namespace RygelCore {
         interface SignalSignatures extends XMLUtilsIterator.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class XMLUtilsChildIterator extends XMLUtilsIterator {
         static $gtype: GObject.GType<XMLUtilsChildIterator>;
 
@@ -4944,16 +5804,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLUtilsChildIterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLUtilsChildIterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XMLUtilsChildIterator.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4984,6 +5847,9 @@ export namespace RygelCore {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PluginInformation extends GObject.Object {
         static $gtype: GObject.GType<PluginInformation>;
 
@@ -5015,16 +5881,19 @@ export namespace RygelCore {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PluginInformation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PluginInformation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PluginInformation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PluginInformation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PluginInformation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PluginInformation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5033,6 +5902,9 @@ export namespace RygelCore {
 
         // Static methods
 
+        /**
+         * @param file
+         */
         static new_from_file(file: Gio.File): PluginInformation;
 
         // Methods
@@ -5041,132 +5913,291 @@ export namespace RygelCore {
         get_name(): string;
         get_conflicts(): never;
         get_module_loaded(): boolean;
+        /**
+         * @param value
+         */
         set_module_loaded(value: boolean): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConnectionManagerClass = typeof ConnectionManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class ConnectionManagerPrivate {
         static $gtype: GObject.GType<ConnectionManagerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BasicManagementClass = typeof BasicManagement;
+    /**
+     * @gir-type Struct
+     */
     abstract class BasicManagementPrivate {
         static $gtype: GObject.GType<BasicManagementPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DescriptionFileClass = typeof DescriptionFile;
+    /**
+     * @gir-type Struct
+     */
     abstract class DescriptionFilePrivate {
         static $gtype: GObject.GType<DescriptionFilePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DLNAProfileClass = typeof DLNAProfile;
+    /**
+     * @gir-type Struct
+     */
     abstract class DLNAProfilePrivate {
         static $gtype: GObject.GType<DLNAProfilePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EnergyManagementClass = typeof EnergyManagement;
+    /**
+     * @gir-type Struct
+     */
     abstract class EnergyManagementPrivate {
         static $gtype: GObject.GType<EnergyManagementPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RootDeviceClass = typeof RootDevice;
+    /**
+     * @gir-type Struct
+     */
     abstract class RootDevicePrivate {
         static $gtype: GObject.GType<RootDevicePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RootDeviceFactoryClass = typeof RootDeviceFactory;
+    /**
+     * @gir-type Struct
+     */
     abstract class RootDeviceFactoryPrivate {
         static $gtype: GObject.GType<RootDeviceFactoryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LogHandlerClass = typeof LogHandler;
+    /**
+     * @gir-type Struct
+     */
     abstract class LogHandlerPrivate {
         static $gtype: GObject.GType<LogHandlerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MetaConfigClass = typeof MetaConfig;
+    /**
+     * @gir-type Struct
+     */
     abstract class MetaConfigPrivate {
         static $gtype: GObject.GType<MetaConfigPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PluginLoaderClass = typeof PluginLoader;
+    /**
+     * @gir-type Struct
+     */
     abstract class PluginLoaderPrivate {
         static $gtype: GObject.GType<PluginLoaderPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RecursiveModuleLoaderClass = typeof RecursiveModuleLoader;
+    /**
+     * @gir-type Struct
+     */
     abstract class RecursiveModuleLoaderPrivate {
         static $gtype: GObject.GType<RecursiveModuleLoaderPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PluginClass = typeof Plugin;
+    /**
+     * @gir-type Struct
+     */
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ResourceInfoClass = typeof ResourceInfo;
+    /**
+     * @gir-type Struct
+     */
     abstract class ResourceInfoPrivate {
         static $gtype: GObject.GType<ResourceInfoPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaDeviceClass = typeof MediaDevice;
+    /**
+     * @gir-type Struct
+     */
     abstract class MediaDevicePrivate {
         static $gtype: GObject.GType<MediaDevicePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BaseConfigurationClass = typeof BaseConfiguration;
+    /**
+     * @gir-type Struct
+     */
     abstract class BaseConfigurationPrivate {
         static $gtype: GObject.GType<BaseConfigurationPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CmdlineConfigClass = typeof CmdlineConfig;
+    /**
+     * @gir-type Struct
+     */
     abstract class CmdlineConfigPrivate {
         static $gtype: GObject.GType<CmdlineConfigPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EnvironmentConfigClass = typeof EnvironmentConfig;
+    /**
+     * @gir-type Struct
+     */
     abstract class EnvironmentConfigPrivate {
         static $gtype: GObject.GType<EnvironmentConfigPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UserConfigClass = typeof UserConfig;
+    /**
+     * @gir-type Struct
+     */
     abstract class UserConfigPrivate {
         static $gtype: GObject.GType<UserConfigPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type V1HacksClass = typeof V1Hacks;
+    /**
+     * @gir-type Struct
+     */
     abstract class V1HacksPrivate {
         static $gtype: GObject.GType<V1HacksPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IconInfoClass = typeof IconInfo;
+    /**
+     * @gir-type Struct
+     */
     abstract class IconInfoPrivate {
         static $gtype: GObject.GType<IconInfoPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XMLUtilsClass = typeof XMLUtils;
+    /**
+     * @gir-type Struct
+     */
     abstract class XMLUtilsPrivate {
         static $gtype: GObject.GType<XMLUtilsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XMLUtilsIteratorClass = typeof XMLUtilsIterator;
+    /**
+     * @gir-type Struct
+     */
     abstract class XMLUtilsIteratorPrivate {
         static $gtype: GObject.GType<XMLUtilsIteratorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XMLUtilsChildIteratorClass = typeof XMLUtilsChildIterator;
+    /**
+     * @gir-type Struct
+     */
     abstract class XMLUtilsChildIteratorPrivate {
         static $gtype: GObject.GType<XMLUtilsChildIteratorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PluginInformationClass = typeof PluginInformation;
+    /**
+     * @gir-type Struct
+     */
     abstract class PluginInformationPrivate {
         static $gtype: GObject.GType<PluginInformationPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DBusInterfaceIface = typeof DBusInterface;
+    /**
+     * @gir-type Alias
+     */
     type DBusAclProviderIface = typeof DBusAclProvider;
+    /**
+     * @gir-type Alias
+     */
     type ConfigurationIface = typeof Configuration;
+    /**
+     * @gir-type Alias
+     */
     type StateMachineIface = typeof StateMachine;
     namespace DBusInterface {
         /**
@@ -5176,6 +6207,9 @@ export namespace RygelCore {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_shutdown(): void;
         }
 
@@ -5188,6 +6222,9 @@ export namespace RygelCore {
         $gtype: GObject.GType<DBusInterface>;
         prototype: DBusInterface;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DBusInterface extends GObject.Object, DBusInterface.Interface {
         // Methods
 
@@ -5206,6 +6243,15 @@ export namespace RygelCore {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param device
+             * @param service
+             * @param path
+             * @param address
+             * @param agent
+             * @param _callback_
+             * @virtual
+             */
             vfunc_is_allowed(
                 device: { [key: string]: any } | GLib.HashTable<string, string>,
                 service: { [key: string]: any } | GLib.HashTable<string, string>,
@@ -5214,6 +6260,10 @@ export namespace RygelCore {
                 agent?: string | null,
                 _callback_?: Gio.AsyncReadyCallback<this> | null,
             ): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_is_allowed_finish(_res_: Gio.AsyncResult): boolean;
         }
 
@@ -5226,9 +6276,19 @@ export namespace RygelCore {
         $gtype: GObject.GType<DBusAclProvider>;
         prototype: DBusAclProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DBusAclProvider extends GObject.Object, DBusAclProvider.Interface {
         // Methods
 
+        /**
+         * @param device
+         * @param service
+         * @param path
+         * @param address
+         * @param agent
+         */
         is_allowed(
             device: { [key: string]: any } | GLib.HashTable<string, string>,
             service: { [key: string]: any } | GLib.HashTable<string, string>,
@@ -5236,6 +6296,14 @@ export namespace RygelCore {
             address: string,
             agent?: string | null,
         ): globalThis.Promise<boolean>;
+        /**
+         * @param device
+         * @param service
+         * @param path
+         * @param address
+         * @param agent
+         * @param _callback_
+         */
         is_allowed(
             device: { [key: string]: any } | GLib.HashTable<string, string>,
             service: { [key: string]: any } | GLib.HashTable<string, string>,
@@ -5244,6 +6312,14 @@ export namespace RygelCore {
             agent: string | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param device
+         * @param service
+         * @param path
+         * @param address
+         * @param agent
+         * @param _callback_
+         */
         is_allowed(
             device: { [key: string]: any } | GLib.HashTable<string, string>,
             service: { [key: string]: any } | GLib.HashTable<string, string>,
@@ -5252,6 +6328,9 @@ export namespace RygelCore {
             agent?: string | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
+        /**
+         * @param _res_
+         */
         is_allowed_finish(_res_: Gio.AsyncResult): boolean;
     }
 
@@ -5267,25 +6346,99 @@ export namespace RygelCore {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_interface(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_interfaces(): string[];
+            /**
+             * @virtual
+             */
             vfunc_get_port(): number;
+            /**
+             * @virtual
+             */
             vfunc_get_transcoding(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_allow_upload(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_allow_deletion(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_log_levels(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_plugin_path(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_engine_path(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_media_engine(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_video_upload_folder(): string | null;
+            /**
+             * @virtual
+             */
             vfunc_get_music_upload_folder(): string | null;
+            /**
+             * @virtual
+             */
             vfunc_get_picture_upload_folder(): string | null;
+            /**
+             * @param section
+             * @virtual
+             */
             vfunc_get_enabled(section: string): boolean;
+            /**
+             * @param section
+             * @virtual
+             */
             vfunc_get_title(section: string): string;
+            /**
+             * @param section
+             * @param key
+             * @virtual
+             */
             vfunc_get_string(section: string, key: string): string;
+            /**
+             * @param section
+             * @param key
+             * @virtual
+             */
             vfunc_get_string_list(section: string, key: string): Gee.ArrayList;
+            /**
+             * @param section
+             * @param key
+             * @param min
+             * @param max
+             * @virtual
+             */
             vfunc_get_int(section: string, key: string, min: number, max: number): number;
+            /**
+             * @param section
+             * @param key
+             * @virtual
+             */
             vfunc_get_int_list(section: string, key: string): Gee.ArrayList;
+            /**
+             * @param section
+             * @param key
+             * @virtual
+             */
             vfunc_get_bool(section: string, key: string): boolean;
         }
 
@@ -5298,6 +6451,9 @@ export namespace RygelCore {
         $gtype: GObject.GType<Configuration>;
         prototype: Configuration;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Configuration extends GObject.Object, Configuration.Interface {
         // Methods
 
@@ -5314,12 +6470,40 @@ export namespace RygelCore {
         get_video_upload_folder(): string | null;
         get_music_upload_folder(): string | null;
         get_picture_upload_folder(): string | null;
+        /**
+         * @param section
+         */
         get_enabled(section: string): boolean;
+        /**
+         * @param section
+         */
         get_title(section: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string(section: string, key: string): string;
+        /**
+         * @param section
+         * @param key
+         */
         get_string_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         * @param min
+         * @param max
+         */
         get_int(section: string, key: string, min: number, max: number): number;
+        /**
+         * @param section
+         * @param key
+         */
         get_int_list(section: string, key: string): Gee.ArrayList;
+        /**
+         * @param section
+         * @param key
+         */
         get_bool(section: string, key: string): boolean;
     }
 
@@ -5335,9 +6519,24 @@ export namespace RygelCore {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param _callback_
+             * @virtual
+             */
             vfunc_run(_callback_?: Gio.AsyncReadyCallback<this> | null): void;
+            /**
+             * @param _res_
+             * @virtual
+             */
             vfunc_run_finish(_res_: Gio.AsyncResult): void;
+            /**
+             * @virtual
+             */
             vfunc_get_cancellable(): Gio.Cancellable;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_cancellable(value: Gio.Cancellable): void;
         }
 
@@ -5352,6 +6551,9 @@ export namespace RygelCore {
         $gtype: GObject.GType<StateMachine>;
         prototype: StateMachine;
     }
+    /**
+     * @gir-type Interface
+     */
     interface StateMachine extends GObject.Object, StateMachine.Interface {
         // Properties
 
@@ -5361,10 +6563,22 @@ export namespace RygelCore {
         // Methods
 
         run(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         run_finish(_res_: Gio.AsyncResult): void;
         get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         */
         set_cancellable(value: Gio.Cancellable): void;
     }
 

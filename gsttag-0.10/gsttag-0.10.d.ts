@@ -27,6 +27,8 @@ export namespace GstTag {
 
     /**
      * Result values from the parse_tag virtual function.
+     * @gir-type Enum
+     * @since 0.10.15
      */
     enum DemuxResult {
         BROKEN_TAG,
@@ -41,6 +43,8 @@ export namespace GstTag {
     /**
      * Type of image contained in an image tag (specified as field in
      * the image buffer's caps structure)
+     * @gir-type Enum
+     * @since 0.10.9
      */
     enum ImageType {
         NONE,
@@ -77,44 +81,119 @@ export namespace GstTag {
     const MUSICBRAINZ_ARTISTID: string;
     const MUSICBRAINZ_TRACKID: string;
     const MUSICBRAINZ_TRMID: string;
+    /**
+     * @param data
+     * @param size
+     * @param env_vars
+     */
     function freeform_string_to_utf8(data: string, size: number, env_vars: string[]): string;
+    /**
+     * @param id3_tag
+     */
     function from_id3_tag(id3_tag: string): string;
+    /**
+     * @param type
+     * @param id3_user_tag
+     */
     function from_id3_user_tag(type: string, id3_user_tag: string): string;
+    /**
+     * @param vorbis_tag
+     */
     function from_vorbis_tag(vorbis_tag: string): string;
+    /**
+     * @param lang_code
+     */
     function get_language_code_iso_639_1(lang_code: string): string;
+    /**
+     * @param lang_code
+     */
     function get_language_code_iso_639_2B(lang_code: string): string;
+    /**
+     * @param lang_code
+     */
     function get_language_code_iso_639_2T(lang_code: string): string;
     function get_language_codes(): string[];
+    /**
+     * @param language_code
+     */
     function get_language_name(language_code: string): string;
+    /**
+     * @param list
+     * @param tag
+     * @param value
+     */
     function gst_vorbis_tag_add(list: Gst.TagList, tag: string, value: string): void;
     function id3_genre_count(): number;
+    /**
+     * @param id
+     */
     function id3_genre_get(id: number): string;
+    /**
+     * @param image_data
+     * @param image_data_len
+     * @param image_type
+     */
     function image_data_to_image_buffer(
         image_data: number[],
         image_data_len: number,
         image_type: ImageType | null,
     ): Gst.Buffer;
+    /**
+     * @param tag_list
+     * @param image_data
+     * @param image_data_len
+     * @param id3_picture_type
+     */
     function list_add_id3_image(
         tag_list: Gst.TagList,
         image_data: number[],
         image_data_len: number,
         id3_picture_type: number,
     ): boolean;
+    /**
+     * @param buffer
+     * @param id_data
+     * @param id_data_length
+     * @param vendor_string
+     */
     function list_from_vorbiscomment_buffer(
         buffer: Gst.Buffer,
         id_data: number[],
         id_data_length: number,
         vendor_string: string[],
     ): Gst.TagList;
+    /**
+     * @param buffer
+     */
     function list_from_xmp_buffer(buffer: Gst.Buffer): Gst.TagList;
+    /**
+     * @param data
+     */
     function list_new_from_id3v1(data: number[]): Gst.TagList;
+    /**
+     * @param list
+     * @param id_data
+     * @param id_data_length
+     * @param vendor_string
+     */
     function list_to_vorbiscomment_buffer(
         list: Gst.TagList,
         id_data: number[],
         id_data_length: number,
         vendor_string: string,
     ): Gst.Buffer;
+    /**
+     * @param list
+     * @param read_only
+     */
     function list_to_xmp_buffer(list: Gst.TagList, read_only: boolean): Gst.Buffer;
+    /**
+     * @param ext_comment
+     * @param key
+     * @param lang
+     * @param value
+     * @param fail_if_no_key
+     */
     function parse_extended_comment(
         ext_comment: string,
         key: string[],
@@ -123,7 +202,13 @@ export namespace GstTag {
         fail_if_no_key: boolean,
     ): boolean;
     function register_musicbrainz_tags(): void;
+    /**
+     * @param gst_tag
+     */
     function to_id3_tag(gst_tag: string): string;
+    /**
+     * @param gst_tag
+     */
     function to_vorbis_tag(gst_tag: string): string;
     namespace Demux {
         // Signal signatures
@@ -137,7 +222,9 @@ export namespace GstTag {
     }
 
     /**
-     * Opaque #GstTagDemux structure.
+     * Opaque {@link GstTag.Demux} structure.
+     * @gir-type Class
+     * @since 0.10.15
      */
     abstract class Demux extends Gst.Element {
         static $gtype: GObject.GType<Demux>;
@@ -164,16 +251,19 @@ export namespace GstTag {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Demux.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Demux.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Demux.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Demux.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Demux.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Demux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -182,12 +272,34 @@ export namespace GstTag {
 
         // Virtual methods
 
+        /**
+         * @param buffer
+         * @param start_tag
+         * @virtual
+         */
         vfunc_identify_tag(buffer: Gst.Buffer, start_tag: boolean): [boolean, number];
+        /**
+         * @param buffer
+         * @param start_tag
+         * @param tags
+         * @virtual
+         */
         vfunc_parse_tag(buffer: Gst.Buffer, start_tag: boolean, tags: Gst.TagList): [DemuxResult, number];
+        /**
+         * @param start_tags
+         * @param end_tags
+         * @virtual
+         */
         vfunc_merge_tags(start_tags: Gst.TagList, end_tags: Gst.TagList): Gst.TagList;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DemuxClass = typeof Demux;
+    /**
+     * @gir-type Struct
+     */
     class DemuxPrivate {
         static $gtype: GObject.GType<DemuxPrivate>;
     }

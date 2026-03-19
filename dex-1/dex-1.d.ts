@@ -24,12 +24,18 @@ export namespace Dex {
         export const $gtype: GObject.GType<BlockKind>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum BlockKind {
         THEN,
         CATCH,
         FINALLY,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -56,6 +62,9 @@ export namespace Dex {
         export const $gtype: GObject.GType<FutureStatus>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FutureStatus {
         PENDING,
         RESOLVED,
@@ -83,13 +92,14 @@ export namespace Dex {
      */
     function aio_write(aio_context: AioContext, fd: number, buffer: any | null, count: number, offset: number): Future;
     /**
-     * Wrapper for g_bus_get().
+     * Wrapper for `g_bus_get()`.
      * @param bus_type
-     * @returns a #DexFuture that resolves to a #GDBusConnection   or rejects with error.
+     * @returns a {@link Dex.Future} that resolves to a {@link Gio.DBusConnection}   or rejects with error.
+     * @since 0.4
      */
     function bus_get(bus_type: Gio.BusType | null): Future;
     /**
-     * Wrapper for g_dbus_connection_call().
+     * Wrapper for `g_dbus_connection_call()`.
      * @param connection
      * @param bus_name
      * @param object_path
@@ -99,7 +109,8 @@ export namespace Dex {
      * @param reply_type
      * @param flags
      * @param timeout_msec
-     * @returns a #DexFuture that resolves to a #GVariant   or rejects with error.
+     * @returns a {@link Dex.Future} that resolves to a {@link GLib.Variant}   or rejects with error.
+     * @since 0.4
      */
     function dbus_connection_call(
         connection: Gio.DBusConnection,
@@ -113,7 +124,7 @@ export namespace Dex {
         timeout_msec: number,
     ): Future;
     /**
-     * Wrapper for g_dbus_connection_call_with_unix_fd_list().
+     * Wrapper for `g_dbus_connection_call_with_unix_fd_list()`.
      * @param connection
      * @param bus_name
      * @param object_path
@@ -123,8 +134,9 @@ export namespace Dex {
      * @param reply_type
      * @param flags
      * @param timeout_msec
-     * @param fd_list a #GUnixFDList
-     * @returns a #DexFutureSet that resolves to a #GVariant.   The #DexFuture containing the resulting #GUnixFDList can be retrieved   with dex_future_set_get_future_at() with an index of 1.
+     * @param fd_list a {@link Gio.UnixFDList}
+     * @returns a {@link Dex.FutureSet} that resolves to a {@link GLib.Variant}.   The {@link Dex.Future} containing the resulting {@link Gio.UnixFDList} can be retrieved   with `dex_future_set_get_future_at()` with an index of 1.
+     * @since 0.4
      */
     function dbus_connection_call_with_unix_fd_list(
         connection: Gio.DBusConnection,
@@ -139,12 +151,13 @@ export namespace Dex {
         fd_list?: Gio.UnixFDList | null,
     ): Future;
     /**
-     * Wrapper for g_dbus_connection_send_message_with_reply().
-     * @param connection a #GDBusConnection
-     * @param message a #GDBusMessage
-     * @param flags flags for @message
-     * @param timeout_msec timeout in milliseconds, or -1 for default, or %G_MAXINT   for no timeout.
-     * @returns a #DexFuture that will resolve to a #GDBusMessage   or reject with failure.
+     * Wrapper for `g_dbus_connection_send_message_with_reply()`.
+     * @param connection a {@link Gio.DBusConnection}
+     * @param message a {@link Gio.DBusMessage}
+     * @param flags flags for `message`
+     * @param timeout_msec timeout in milliseconds, or -1 for default, or `G_MAXINT`   for no timeout.
+     * @returns a {@link Dex.Future} that will resolve to a {@link Gio.DBusMessage}   or reject with failure.
+     * @since 0.4
      */
     function dbus_connection_send_message_with_reply(
         connection: Gio.DBusConnection,
@@ -154,13 +167,13 @@ export namespace Dex {
     ): [Future, number];
     function error_quark(): GLib.Quark;
     /**
-     * Asynchronously copies a file and returns a #DexFuture which
+     * Asynchronously copies a file and returns a {@link Dex.Future} which
      * can be observed for the result.
-     * @param source a #GFile
-     * @param destination a #GFile
-     * @param flags the #GFileCopyFlags
-     * @param io_priority IO priority such as %G_PRIORITY_DEFAULT
-     * @returns a #DexFuture
+     * @param source a {@link Gio.File}
+     * @param destination a {@link Gio.File}
+     * @param flags the {@link Gio.FileCopyFlags}
+     * @param io_priority IO priority such as `G_PRIORITY_DEFAULT`
+     * @returns a {@link Dex.Future}
      */
     function file_copy(
         source: Gio.File,
@@ -168,26 +181,50 @@ export namespace Dex {
         flags: Gio.FileCopyFlags | null,
         io_priority: number,
     ): Future;
+    /**
+     * @param file
+     * @param attributes
+     * @param flags
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function file_enumerate_children(
         file: Gio.File,
         attributes: string,
         flags: Gio.FileQueryInfoFlags | null,
         io_priority: number,
     ): Future;
+    /**
+     * @param file_enumerator
+     * @param num_files
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function file_enumerator_next_files(
         file_enumerator: Gio.FileEnumerator,
         num_files: number,
         io_priority: number,
     ): Future;
+    /**
+     * @param file
+     * @returns a {@link Dex.Future}
+     */
     function file_load_contents_bytes(file: Gio.File): Future;
     /**
-     * Asynchronously creates a directory and returns #DexFuture which
+     * Asynchronously creates a directory and returns {@link Dex.Future} which
      * can be observed for the result.
-     * @param file a #GFile
-     * @param io_priority IO priority such as %G_PRIORITY_DEFAULT
-     * @returns a #DexFuture
+     * @param file a {@link Gio.File}
+     * @param io_priority IO priority such as `G_PRIORITY_DEFAULT`
+     * @returns a {@link Dex.Future}
      */
     function file_make_directory(file: Gio.File, io_priority: number): Future;
+    /**
+     * @param file
+     * @param attributes
+     * @param flags
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function file_query_info(
         file: Gio.File,
         attributes: string,
@@ -196,11 +233,19 @@ export namespace Dex {
     ): Future;
     /**
      * Asynchronously opens a file for reading.
-     * @param file a #GFile
-     * @param io_priority IO priority such as %G_PRIORITY_DEFAULT
-     * @returns a #DexFuture
+     * @param file a {@link Gio.File}
+     * @param io_priority IO priority such as `G_PRIORITY_DEFAULT`
+     * @returns a {@link Dex.Future}
      */
     function file_read(file: Gio.File, io_priority: number): Future;
+    /**
+     * @param file
+     * @param etag
+     * @param make_backup
+     * @param flags
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function file_replace(
         file: Gio.File,
         etag: string,
@@ -211,77 +256,167 @@ export namespace Dex {
     function get_min_stack_size(): number;
     function get_page_size(): number;
     function init(): void;
+    /**
+     * @param self
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function input_stream_close(self: Gio.InputStream, io_priority: number): Future;
+    /**
+     * @param self
+     * @param buffer
+     * @param count
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function input_stream_read(self: Gio.InputStream, buffer: any | null, count: number, io_priority: number): Future;
+    /**
+     * @param self
+     * @param count
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function input_stream_read_bytes(self: Gio.InputStream, count: number, io_priority: number): Future;
+    /**
+     * @param self
+     * @param count the number of bytes to skip
+     * @param io_priority `G_PRIORITY_DEFAULT` or similar priority value
+     * @returns a {@link Dex.Future}
+     */
     function input_stream_skip(self: Gio.InputStream, count: number, io_priority: number): Future;
+    /**
+     * @param io_stream
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function io_stream_close(io_stream: Gio.IOStream, io_priority: number): Future;
+    /**
+     * @param self
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function output_stream_close(self: Gio.OutputStream, io_priority: number): Future;
+    /**
+     * @param output
+     * @param input
+     * @param flags
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function output_stream_splice(
         output: Gio.OutputStream,
         input: Gio.InputStream,
         flags: Gio.OutputStreamSpliceFlags | null,
         io_priority: number,
     ): Future;
+    /**
+     * @param self
+     * @param buffer
+     * @param count
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function output_stream_write(
         self: Gio.OutputStream,
         buffer: any | null,
         count: number,
         io_priority: number,
     ): Future;
+    /**
+     * @param self
+     * @param bytes
+     * @param io_priority
+     * @returns a {@link Dex.Future}
+     */
     function output_stream_write_bytes(
         self: Gio.OutputStream,
         bytes: GLib.Bytes | Uint8Array,
         io_priority: number,
     ): Future;
+    /**
+     * @param resolver
+     * @param address
+     * @returns a {@link Dex.Future}
+     */
     function resolver_lookup_by_name(resolver: Gio.Resolver, address: string): Future;
+    /**
+     * @param socket_client
+     * @param socket_connectable
+     * @returns a {@link Dex.Future}
+     */
     function socket_client_connect(socket_client: Gio.SocketClient, socket_connectable: Gio.SocketConnectable): Future;
+    /**
+     * @param listener
+     * @returns a {@link Dex.Future}
+     */
     function socket_listener_accept(listener: Gio.SocketListener): Future;
     /**
      * Creates a future that awaits for `subprocess` to complete using
-     * g_subprocess_wait_check_async().
-     * @param subprocess a #GSubprocess
-     * @returns a #DexFuture that will resolve when @subprocess   exits cleanly or reject upon signal or non-successful exit.
+     * `g_subprocess_wait_check_async()`.
+     * @param subprocess a {@link Gio.Subprocess}
+     * @returns a {@link Dex.Future} that will resolve when `subprocess`   exits cleanly or reject upon signal or non-successful exit.
+     * @since 0.4
      */
     function subprocess_wait_check(subprocess: Gio.Subprocess): Future;
     /**
-     * Retrieves the `DexObject` stored inside the given `value`.
-     * @param value a `GValue` initialized with type `DEX_TYPE_OBJECT`
-     * @returns a `DexObject`
+     * Retrieves the {@link Dex.Object} stored inside the given `value`.
+     * @param value a {@link GObject.Value} initialized with type `DEX_TYPE_OBJECT`
+     * @returns a {@link Dex.Object}
+     * @since 0.4
      */
     function value_get_object(value: GObject.Value | any): Object | null;
     /**
-     * Stores the given `DexObject` inside `value`.
+     * Stores the given {@link Dex.Object} inside `value`.
      *
-     * The [struct`GObject`.Value] will acquire a reference to the `object`.
-     * @param value a [struct@GObject.Value] initialized with type `DEX_TYPE_OBJECT`
-     * @param object a `DexObject` or %NULL
+     * The {@link GObject.Value} will acquire a reference to the `object`.
+     * @param value a {@link GObject.Value} initialized with type `DEX_TYPE_OBJECT`
+     * @param object a {@link Dex.Object} or `null`
+     * @since 0.4
      */
     function value_set_object(value: GObject.Value | any, object?: Object | null): void;
     /**
-     * Stores the given `DexObject` inside `value`.
+     * Stores the given {@link Dex.Object} inside `value`.
      *
-     * This function transfers the ownership of the `object` to the `GValue`.
-     * @param value a [struct@GObject.Value] initialized with type `DEX_TYPE_OBJECT`
-     * @param object a `DexObject`
+     * This function transfers the ownership of the `object` to the {@link GObject.Value}.
+     * @param value a {@link GObject.Value} initialized with type `DEX_TYPE_OBJECT`
+     * @param object a {@link Dex.Object}
+     * @since 0.4
      */
     function value_take_object(value: GObject.Value | any, object?: Object | null): void;
+    /**
+     * @gir-type Callback
+     */
     interface FiberFunc {
         (user_data?: any | null): Future | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface FutureCallback {
         (future: Future): Future | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SchedulerFunc {
         (user_data?: any | null): void;
     }
+    /**
+     * @gir-type Alias
+     */
     type FileInfoList = object | null;
+    /**
+     * @gir-type Alias
+     */
     type InetAddressList = object | null;
     namespace AsyncPair {
         // Signal signatures
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AsyncPair extends Future {
         static $gtype: GObject.GType<AsyncPair>;
 
@@ -293,16 +428,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AsyncPair.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AsyncPair.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AsyncPair.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AsyncPair.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AsyncPair.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AsyncPair.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -315,37 +453,46 @@ export namespace Dex {
          * Gets the cancellable for the async pair.
          *
          * If the DexAsyncPair is discarded by it's callers, then it will automatically
-         * be cancelled using g_cancellable_cancel().
-         * @returns a #GCancellable
+         * be cancelled using `g_cancellable_cancel()`.
+         * @returns a {@link Gio.Cancellable}
          */
         get_cancellable(): Gio.Cancellable;
+        /**
+         * @param value
+         */
         return_boolean(value: boolean): void;
         /**
          * Rejects `async_pair` with `error`.
          *
          * This function is meant to be used when manually wrapping
-         * various #GAsyncReadyCallback based API.
+         * various {@link Gio.AsyncReadyCallback} based API.
          *
          * The ownership of `error` is taken when calling this function.
-         * @param error a #GError
+         * @param error a {@link GLib.Error}
          */
         return_error(error: GLib.Error): void;
+        /**
+         * @param value
+         */
         return_int64(value: number): void;
         /**
          * Resolves `async_pair` with a value of `instance`.
          *
          * This function is meant to be used when manually wrapping
-         * various #GAsyncReadyCallback based API.
+         * various {@link Gio.AsyncReadyCallback} based API.
          *
          * The ownership of `instance` is taken when calling this function.
-         * @param instance a #GObject
+         * @param instance a {@link GObject.Object}
          */
         return_object(instance: GObject.Object): void;
         /**
          * Resolves `async_pair` with `value`.
-         * @param value a string or %NULL
+         * @param value a string or `null`
          */
         return_string(value?: string | null): void;
+        /**
+         * @param value
+         */
         return_uint64(value: number): void;
         /**
          * Resolves `async_pair` with `variant`.
@@ -370,6 +517,9 @@ export namespace Dex {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AsyncResult extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<AsyncResult>;
 
@@ -396,16 +546,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AsyncResult.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AsyncResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AsyncResult.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AsyncResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AsyncResult.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AsyncResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -415,15 +568,15 @@ export namespace Dex {
         // Methods
 
         /**
-         * Tracks the result of `future` and uses the value to complete `async_result,`
-         * eventually calling the registered #GAsyncReadyCallback.
-         * @param future a #DexFuture
+         * Tracks the result of `future` and uses the value to complete `async_result`,
+         * eventually calling the registered {@link Gio.AsyncReadyCallback}.
+         * @param future a {@link Dex.Future}
          */
         ['await'](future: Future): void;
         /**
-         * Gets the future for the #DexAsyncResult, or %NULL if a future
+         * Gets the future for the {@link Dex.AsyncResult}, or `null` if a future
          * is not available.
-         * @returns a #DexFuture or %NULL
+         * @returns a {@link Dex.Future} or `null`
          */
         dup_future(): Future | null;
         get_name(): string;
@@ -431,54 +584,64 @@ export namespace Dex {
         propagate_double(): number;
         propagate_int(): number;
         propagate_pointer(): any | null;
-        set_name(name: string): void;
-        set_priority(priority: number): void;
-        set_static_name(name: string): void;
-
-        // Inherited methods
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
-         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
+         * @param name
+         */
+        set_name(name: string): void;
+        /**
+         * @param priority
+         */
+        set_priority(priority: number): void;
+        /**
+         * @param name
+         */
+        set_static_name(name: string): void;
+        /**
+         * Gets the source object from a {@link Gio.AsyncResult}.
+         * @returns a new reference to the source    object for the `res`, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
-         * @returns the user data for @res.
+         * Gets the user data from a {@link Gio.AsyncResult}.
+         * @returns the user data for `res`.
          */
         get_user_data(): any | null;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
+         * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
-         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
+         * {@link Gio.SimpleAsyncResult.propagate_error}. Otherwise it returns
          * `FALSE`.
          *
          * This can be used for legacy error handling in async `*_finish()`
-         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
+         * wrapper functions that traditionally handled {@link Gio.SimpleAsyncResult}
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
+         * This should not be used in new code; {@link Gio.AsyncResult} errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
+         * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * Gets the source object from a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_get_user_data(): any | null;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @virtual
          */
         vfunc_is_tagged(source_tag?: any | null): boolean;
         /**
@@ -494,32 +657,32 @@ export namespace Dex {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -528,39 +691,39 @@ export namespace Dex {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -571,13 +734,16 @@ export namespace Dex {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -585,7 +751,7 @@ export namespace Dex {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -593,9 +759,9 @@ export namespace Dex {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -615,9 +781,9 @@ export namespace Dex {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -631,33 +797,33 @@ export namespace Dex {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -690,21 +856,21 @@ export namespace Dex {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -714,8 +880,8 @@ export namespace Dex {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -732,10 +898,10 @@ export namespace Dex {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -750,13 +916,13 @@ export namespace Dex {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -787,21 +953,21 @@ export namespace Dex {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -811,33 +977,34 @@ export namespace Dex {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -846,6 +1013,7 @@ export namespace Dex {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -854,12 +1022,14 @@ export namespace Dex {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -868,20 +1038,22 @@ export namespace Dex {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -893,6 +1065,7 @@ export namespace Dex {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -927,6 +1100,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Block extends Future {
         static $gtype: GObject.GType<Block>;
 
@@ -936,16 +1112,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Block.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Block.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Block.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Block.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Block.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Block.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -960,12 +1139,12 @@ export namespace Dex {
          * The kind of block relates to what situations the block would be
          * executed such as for handling a future resolution, rejection, or
          * both.
-         * @returns a #DexBlockKind
+         * @returns a {@link Dex.BlockKind}
          */
         get_kind(): BlockKind;
         /**
          * Gets the scheduler to use when executing a block.
-         * @returns a #DexScheduler
+         * @returns a {@link Dex.Scheduler}
          */
         get_scheduler(): Scheduler;
     }
@@ -975,6 +1154,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Cancellable extends Future {
         static $gtype: GObject.GType<Cancellable>;
 
@@ -988,16 +1170,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cancellable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cancellable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Cancellable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1014,6 +1199,9 @@ export namespace Dex {
         interface SignalSignatures extends Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Channel extends Object {
         static $gtype: GObject.GType<Channel>;
 
@@ -1025,16 +1213,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1052,37 +1243,37 @@ export namespace Dex {
          *
          * The resulting future will resolve or reject when an item is available
          * to the channel or when send side has closed (in that order).
-         * @returns a #DexFuture
+         * @returns a {@link Dex.Future}
          */
         receive(): Future;
         /**
-         * Will attempt to receive all items in the channel as a #DexResultSet.
+         * Will attempt to receive all items in the channel as a `DexResultSet`.
          *
          * If the receive side of the channel is closed, then the future will
          * reject with an error.
          *
          * If there are items in the queue, then they will be returned as part
-         * of a #DexResultSet containing each of the futures.
+         * of a `DexResultSet` containing each of the futures.
          *
-         * Otherwise, a #DexFutureSet will be returned which will resolve or
+         * Otherwise, a {@link Dex.FutureSet} will be returned which will resolve or
          * reject when the next item is available in the channel (or the send
          * or receive sides are closed).
-         * @returns a #DexFuture
+         * @returns a {@link Dex.Future}
          */
         receive_all(): Future;
         /**
          * Queues `future` into the channel.
          *
          * The other end of the channel can receive the future (or a future that will
-         * eventually resolve to `future)` using dex_channel_receive().
+         * eventually resolve to `future`) using `dex_channel_receive()`.
          *
-         * This function returns a #DexFuture that will resolve when the channels
+         * This function returns a {@link Dex.Future} that will resolve when the channels
          * capacity is low enough to queue more items.
          *
-         * If the send side of the channel is closed, the returned #DexFuture will be
-         * rejected with %DEX_ERROR_CHANNEL_CLOSED.
-         * @param future a #DexFuture
-         * @returns a #DexFuture
+         * If the send side of the channel is closed, the returned {@link Dex.Future} will be
+         * rejected with {@link Dex.Error.CHANNEL_CLOSED}.
+         * @param future a {@link Dex.Future}
+         * @returns a {@link Dex.Future}
          */
         send(future: Future): Future;
     }
@@ -1092,6 +1283,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Delayed extends Future {
         static $gtype: GObject.GType<Delayed>;
 
@@ -1103,16 +1297,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Delayed.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Delayed.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Delayed.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Delayed.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Delayed.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Delayed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1122,12 +1319,12 @@ export namespace Dex {
         // Methods
 
         /**
-         * Retrieves the delayed future provided to dex_delayed_new().
+         * Retrieves the delayed future provided to `dex_delayed_new()`.
          *
-         * This function can only return a #DexFuture before dex_delayed_release()
+         * This function can only return a {@link Dex.Future} before `dex_delayed_release()`
          * is called. After that, the delayed future is released and this function
-         * will return %NULL.
-         * @returns a #DexFuture or %NULL
+         * will return `null`.
+         * @returns a {@link Dex.Future} or `null`
          */
         dup_future(): Future | null;
         release(): void;
@@ -1138,6 +1335,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Fiber extends Future {
         static $gtype: GObject.GType<Fiber>;
 
@@ -1147,16 +1347,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Fiber.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fiber.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Fiber.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fiber.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Fiber.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Fiber.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1169,6 +1372,9 @@ export namespace Dex {
         interface SignalSignatures extends Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Future extends Object {
         static $gtype: GObject.GType<Future>;
 
@@ -1230,16 +1436,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Future.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Future.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Future.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Future.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Future.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Future.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1249,111 +1458,111 @@ export namespace Dex {
         // Methods
 
         /**
-         * Suspends the current #DexFiber and resumes when `future` has completed.
+         * Suspends the current {@link Dex.Fiber} and resumes when `future` has completed.
          *
          * If `future` is completed when this function is called, the fiber will handle
          * the result immediately.
          *
-         * This function may only be called within a #DexFiber. To do otherwise will
-         * return %FALSE and `error` set to %DEX_ERROR_NO_FIBER.
+         * This function may only be called within a {@link Dex.Fiber}. To do otherwise will
+         * return `false` and `error` set to {@link Dex.Error.NO_FIBER}.
          *
          * It is an error to call this function in a way that would cause
          * intermediate code to become invalid when resuming the stack. For example,
          * if a foreach-style function taking a callback was to suspend from the
          * callback, undefined behavior may occur such as thread-local-storage
          * having changed.
-         * @returns %TRUE if the future resolved, otherwise %FALSE   and @error is set.
+         * @returns `true` if the future resolved, otherwise `false`   and `error` is set.
          */
         ['await'](): boolean;
         /**
          * Awaits on `future` and returns the gboolean result.
          *
-         * If the result is not a #gboolean, `error` is set.
-         * @returns the #gboolean, or %FALSE and @error is set
+         * If the result is not a `gboolean`, `error` is set.
+         * @returns the `gboolean`, or `false` and `error` is set
          */
         await_boolean(): boolean;
         /**
-         * Awaits on `future` and returns the %G_TYPE_BOXED based result.
-         * @returns the boxed result, or %NULL and @error is set.
+         * Awaits on `future` and returns the `G_TYPE_BOXED` based result.
+         * @returns the boxed result, or `null` and `error` is set.
          */
         await_boxed(): any | null;
         /**
          * Awaits on `future` and returns the result as an double.
          *
-         * The resolved value must be of type %G_TYPE_INT or `error` is set.
-         * @returns an double, or 0 in case of failure and @error is set.
+         * The resolved value must be of type `G_TYPE_INT` or `error` is set.
+         * @returns an double, or 0 in case of failure and `error` is set.
          */
         await_double(): number;
         /**
          * Awaits on `future` and returns the enum result.
          *
-         * If the result is not a %G_TYPE_ENUM, `error` is set.
-         * @returns the enum or 0 and @error is set.
+         * If the result is not a `G_TYPE_ENUM`, `error` is set.
+         * @returns the enum or 0 and `error` is set.
          */
         await_enum(): number;
         /**
          * Awaits on `future` and returns the flags result.
          *
-         * If the result is not a %G_TYPE_FLAGS, `error` is set.
-         * @returns the flags or 0 and @error is set.
+         * If the result is not a `G_TYPE_FLAGS`, `error` is set.
+         * @returns the flags or 0 and `error` is set.
          */
         await_flags(): number;
         /**
          * Awaits on `future` and returns the result as an float.
          *
-         * The resolved value must be of type %G_TYPE_INT or `error` is set.
-         * @returns an float, or 0 in case of failure and @error is set.
+         * The resolved value must be of type `G_TYPE_INT` or `error` is set.
+         * @returns an float, or 0 in case of failure and `error` is set.
          */
         await_float(): number;
         /**
          * Awaits on `future` and returns the result as an int.
          *
-         * The resolved value must be of type %G_TYPE_INT or `error` is set.
-         * @returns an int, or 0 in case of failure and @error is set.
+         * The resolved value must be of type `G_TYPE_INT` or `error` is set.
+         * @returns an int, or 0 in case of failure and `error` is set.
          */
         await_int(): number;
         /**
          * Awaits on `future` and returns the result as an int64.
          *
-         * The resolved value must be of type %G_TYPE_INT64 or `error` is set.
-         * @returns an int64, or 0 in case of failure and @error is set.
+         * The resolved value must be of type `G_TYPE_INT64` or `error` is set.
+         * @returns an int64, or 0 in case of failure and `error` is set.
          */
         await_int64(): number;
         /**
-         * Awaits on `future` and returns the #GObject-based result.
-         * @returns the object, or %NULL and @error is set.
+         * Awaits on `future` and returns the {@link GObject.Object}-based result.
+         * @returns the object, or `null` and `error` is set.
          */
         await_object<T = GObject.Object>(): T;
         /**
-         * Calls dex_await() and returns the value of g_value_get_pointer(),
+         * Calls `dex_await()` and returns the value of `g_value_get_pointer()`,
          * otherwise `error` is set if the future rejected.
-         * @returns a pointer or %NULL
+         * @returns a pointer or `null`
          */
         await_pointer(): any | null;
         /**
          * Awaits on `future` and returns the string result.
          *
-         * If the result is not a %G_TYPE_STRING, `error` is set.
-         * @returns the string  or %NULL and @error is set
+         * If the result is not a `G_TYPE_STRING`, `error` is set.
+         * @returns the string  or `null` and `error` is set
          */
         await_string(): string | null;
         /**
          * Awaits on `future` and returns the result as an uint.
          *
-         * The resolved value must be of type %G_TYPE_INT or `error` is set.
-         * @returns an uint, or 0 in case of failure and @error is set.
+         * The resolved value must be of type `G_TYPE_INT` or `error` is set.
+         * @returns an uint, or 0 in case of failure and `error` is set.
          */
         await_uint(): number;
         /**
          * Awaits on `future` and returns the result as an uint64.
          *
-         * The resolved value must be of type %G_TYPE_INT64 or `error` is set.
-         * @returns an uint64, or 0 in case of failure and @error is set.
+         * The resolved value must be of type `G_TYPE_INT64` or `error` is set.
+         * @returns an uint64, or 0 in case of failure and `error` is set.
          */
         await_uint64(): number;
         /**
-         * Awaits on `future` and returns the %G_TYPE_VARIANT based result.
-         * @returns the variant result, or %NULL and @error is set.
+         * Awaits on `future` and returns the `G_TYPE_VARIANT` based result.
+         * @returns the variant result, or `null` and `error` is set.
          */
         await_variant(): GLib.Variant;
         /**
@@ -1371,6 +1580,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FutureSet extends Future {
         static $gtype: GObject.GType<FutureSet>;
 
@@ -1380,16 +1592,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FutureSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FutureSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FutureSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FutureSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FutureSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FutureSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1399,25 +1614,25 @@ export namespace Dex {
         // Methods
 
         /**
-         * Gets a #DexFuture that was used to produce the result of `future_set`.
+         * Gets a {@link Dex.Future} that was used to produce the result of `future_set`.
          *
-         * Use dex_future_set_get_size() to determine the number of #DexFuture that
-         * are contained within the #DexFutureSet.
+         * Use `dex_future_set_get_size()` to determine the number of {@link Dex.Future} that
+         * are contained within the {@link Dex.FutureSet}.
          * @param position
-         * @returns a #DexFuture
+         * @returns a {@link Dex.Future}
          */
         get_future_at(position: number): Future;
         /**
-         * Gets the number of futures associated with the #DexFutureSet. You may
-         * use dex_future_set_get_future_at() to obtain the individual #DexFuture.
-         * @returns the number of #DexFuture in @future_set.
+         * Gets the number of futures associated with the {@link Dex.FutureSet}. You may
+         * use `dex_future_set_get_future_at()` to obtain the individual {@link Dex.Future}.
+         * @returns the number of {@link Dex.Future} in `future_set`.
          */
         get_size(): number;
         /**
-         * Gets the result from a #DexFuture that is part of the
-         * #DexFutureSet.
-         * @param position the #DexFuture position within the set
-         * @returns a #GValue if successful; otherwise %NULL   and @error is set.
+         * Gets the result from a {@link Dex.Future} that is part of the
+         * {@link Dex.FutureSet}.
+         * @param position the {@link Dex.Future} position within the set
+         * @returns a {@link GObject.Value} if successful; otherwise `null`   and `error` is set.
          */
         get_value_at(position: number): unknown;
     }
@@ -1427,6 +1642,9 @@ export namespace Dex {
         interface SignalSignatures extends Scheduler.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MainScheduler extends Scheduler {
         static $gtype: GObject.GType<MainScheduler>;
 
@@ -1436,16 +1654,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MainScheduler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MainScheduler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MainScheduler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MainScheduler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MainScheduler.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MainScheduler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1459,13 +1680,14 @@ export namespace Dex {
     }
 
     /**
-     * `DexObject` is the basic building block of types defined within
+     * {@link Dex.Object} is the basic building block of types defined within
      * libdex. Futures, Schedulers, and Channels all inherit from DexObject
      * which provides features like thread-safe weak pointers and memory
      * management operations.
      *
      * Objects that are integrating with GIO instead inherit from their
      * natural type in GIO.
+     * @gir-type Class
      */
     abstract class Object {
         static $gtype: GObject.GType<Object>;
@@ -1476,16 +1698,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1512,6 +1737,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Promise extends Future {
         static $gtype: GObject.GType<Promise>;
 
@@ -1525,16 +1753,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Promise.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Promise.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Promise.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Promise.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Promise.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Promise.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1544,36 +1775,69 @@ export namespace Dex {
         // Methods
 
         /**
-         * Gets a #GCancellable that will cancel when the promise has
+         * Gets a {@link Gio.Cancellable} that will cancel when the promise has
          * been discarded (and therefore result no longer necessary).
          *
          * This is useful when manually implementing wrappers around various
-         * #GAsyncReadyCallback based API.
+         * {@link Gio.AsyncReadyCallback} based API.
          *
-         * If `promise` was created with dex_promise_new(), then %NULL is returned.
-         * @returns a #GCancellable or %NULL
+         * If `promise` was created with `dex_promise_new()`, then `null` is returned.
+         * @returns a {@link Gio.Cancellable} or `null`
          */
         get_cancellable(): Gio.Cancellable | null;
         /**
          * Marks the promise as rejected, indicating a failure.
-         * @param error a #GError
+         * @param error a {@link GLib.Error}
          */
         reject(error: GLib.Error): void;
         /**
-         * Sets the result for a #DexPromise.
-         * @param value a #GValue containing the resolved value
+         * Sets the result for a {@link Dex.Promise}.
+         * @param value a {@link GObject.Value} containing the resolved value
          */
         resolve(value: GObject.Value | any): void;
+        /**
+         * @param value
+         */
         resolve_boolean(value: boolean): void;
+        /**
+         * @param value
+         */
         resolve_double(value: number): void;
+        /**
+         * @param value
+         */
         resolve_float(value: number): void;
+        /**
+         * @param value
+         */
         resolve_int(value: number): void;
+        /**
+         * @param value
+         */
         resolve_int64(value: number): void;
+        /**
+         * @param value
+         */
         resolve_long(value: number): void;
+        /**
+         * @param object a {@link GObject.Object}
+         */
         resolve_object(object?: any | null): void;
+        /**
+         * @param value a string to use to resolve the promise
+         */
         resolve_string(value: string): void;
+        /**
+         * @param value
+         */
         resolve_uint(value: number): void;
+        /**
+         * @param value
+         */
         resolve_uint64(value: number): void;
+        /**
+         * @param value
+         */
         resolve_ulong(value: number): void;
     }
 
@@ -1582,6 +1846,9 @@ export namespace Dex {
         interface SignalSignatures extends Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Scheduler extends Object {
         static $gtype: GObject.GType<Scheduler>;
 
@@ -1591,16 +1858,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Scheduler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scheduler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Scheduler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scheduler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Scheduler.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Scheduler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1612,7 +1882,7 @@ export namespace Dex {
         /**
          * Gets the default scheduler for the process.
          *
-         * The default scheduler executes tasks within the default #GMainContext.
+         * The default scheduler executes tasks within the default {@link GLib.MainContext}.
          * Typically that is the main thread of the application.
          */
         static get_default(): Scheduler;
@@ -1632,13 +1902,13 @@ export namespace Dex {
          *
          * This may be a different value depending on the calling thread.
          *
-         * For example, calling this on the #DexThreadPoolScheduer from outside
-         * a worker thread may result in getting a shared #GMainContext for the
+         * For example, calling this on the `DexThreadPoolScheduer` from outside
+         * a worker thread may result in getting a shared {@link GLib.MainContext} for the
          * process.
          *
-         * However, calling from a worker thread may give you a #GMainContext
+         * However, calling from a worker thread may give you a {@link GLib.MainContext}
          * specifically for that thread.
-         * @returns a #GMainContext
+         * @returns a {@link GLib.MainContext}
          */
         get_main_context(): GLib.MainContext;
         /**
@@ -1647,7 +1917,7 @@ export namespace Dex {
          */
         push(func: SchedulerFunc): void;
         /**
-         * Request `scheduler` to spawn a #DexFiber.
+         * Request `scheduler` to spawn a {@link Dex.Fiber}.
          *
          * The fiber will have it's own stack and cooperatively schedules among other
          * fibers sharing the schaeduler.
@@ -1655,7 +1925,7 @@ export namespace Dex {
          * If `stack_size` is 0, it will set to a sensible default. Otherwise, it is
          * rounded up to the nearest page size.
          * @param stack_size stack size in bytes or 0
-         * @returns a #DexFuture that will resolve or reject when   @func completes (or it's resulting #DexFuture completes).
+         * @returns a {@link Dex.Future} that will resolve or reject when   `func` completes (or it's resulting {@link Dex.Future} completes).
          */
         spawn(stack_size: number): Future;
     }
@@ -1665,6 +1935,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StaticFuture extends Future {
         static $gtype: GObject.GType<StaticFuture>;
 
@@ -1674,16 +1947,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StaticFuture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StaticFuture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StaticFuture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StaticFuture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StaticFuture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StaticFuture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1696,6 +1972,9 @@ export namespace Dex {
         interface SignalSignatures extends Scheduler.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ThreadPoolScheduler extends Scheduler {
         static $gtype: GObject.GType<ThreadPoolScheduler>;
 
@@ -1707,16 +1986,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ThreadPoolScheduler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ThreadPoolScheduler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ThreadPoolScheduler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ThreadPoolScheduler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ThreadPoolScheduler.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ThreadPoolScheduler.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1742,6 +2024,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Timeout extends Future {
         static $gtype: GObject.GType<Timeout>;
 
@@ -1759,16 +2044,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Timeout.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Timeout.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Timeout.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Timeout.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Timeout.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Timeout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1777,6 +2065,9 @@ export namespace Dex {
 
         // Methods
 
+        /**
+         * @param deadline
+         */
         postpone_until(deadline: number): void;
     }
 
@@ -1785,6 +2076,9 @@ export namespace Dex {
         interface SignalSignatures extends Future.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UnixSignal extends Future {
         static $gtype: GObject.GType<UnixSignal>;
 
@@ -1796,16 +2090,19 @@ export namespace Dex {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UnixSignal.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnixSignal.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UnixSignal.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UnixSignal.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UnixSignal.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UnixSignal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1817,10 +2114,16 @@ export namespace Dex {
         get_signum(): number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class AioContext {
         static $gtype: GObject.GType<AioContext>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class AsyncPairInfo {
         static $gtype: GObject.GType<AsyncPairInfo>;
 
@@ -1831,6 +2134,9 @@ export namespace Dex {
         return_type: GObject.GType;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AsyncResultClass = typeof AsyncResult;
     /**
      * Name of the imported GIR library

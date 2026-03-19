@@ -27,6 +27,7 @@ export namespace Soup {
     /**
      * The type of cache; this affects what kinds of responses will be
      * saved.
+     * @gir-type Enum
      */
     enum CacheType {
         /**
@@ -46,6 +47,7 @@ export namespace Soup {
     /**
      * The policy for accepting or rejecting cookies returned in
      * responses.
+     * @gir-type Enum
      */
     enum CookieJarAcceptPolicy {
         /**
@@ -64,8 +66,8 @@ export namespace Soup {
          *   http://www.third-party.com is loaded from that page reject any cookie that
          *   it could try to set. For libsoup to be able to tell apart first party
          *   cookies from the rest, the application must call
-         *   [method`Message`.set_first_party] on each outgoing [class`Message]`, setting
-         *   the [struct`GLib`.Uri] of the main document. If no first party is set in a
+         *   {@link Message.set_first_party} on each outgoing {@link Message}, setting
+         *   the {@link GLib.Uri} of the main document. If no first party is set in a
          *   message when this policy is in effect, cookies will be assumed to be third
          *   party by default.
          */
@@ -80,8 +82,8 @@ export namespace Soup {
          *   from that page, reject any cookie that it could try to set unless it
          *   already has a cookie in the cookie jar. For libsoup to be able to tell
          *   apart first party cookies from the rest, the application must call
-         *   [method`Message`.set_first_party] on each outgoing [class`Message]`, setting the
-         *   [struct`GLib`.Uri] of the main document. If no first party is set in a
+         *   {@link Message.set_first_party} on each outgoing {@link Message}, setting the
+         *   {@link GLib.Uri} of the main document. If no first party is set in a
          *   message when this policy is in effect, cookies will be assumed to be third
          *   party by default.
          */
@@ -93,12 +95,13 @@ export namespace Soup {
     }
 
     /**
-     * Date formats that [func`date_time_to_string]` can use.
+     * Date formats that {@link date_time_to_string} can use.
      *
      * `SOUP_DATE_HTTP` and `SOUP_DATE_COOKIE` always coerce the time to
      * UTC.
      *
      * This enum may be extended with more values in future releases.
+     * @gir-type Enum
      */
     enum DateFormat {
         /**
@@ -119,6 +122,7 @@ export namespace Soup {
 
     /**
      * How a message body is encoded for transport
+     * @gir-type Enum
      */
     enum Encoding {
         /**
@@ -156,6 +160,7 @@ export namespace Soup {
 
     /**
      * Indicates the HTTP protocol version being used.
+     * @gir-type Enum
      */
     enum HTTPVersion {
         /**
@@ -178,6 +183,7 @@ export namespace Soup {
 
     /**
      * Describes the level of logging output to provide.
+     * @gir-type Enum
      */
     enum LoggerLogLevel {
         /**
@@ -205,6 +211,7 @@ export namespace Soup {
 
     /**
      * The lifetime of the memory being passed.
+     * @gir-type Enum
      */
     enum MemoryUse {
         /**
@@ -215,7 +222,7 @@ export namespace Soup {
         STATIC,
         /**
          * The caller has allocated the memory and libsoup
-         *   will assume ownership of it and free it with [func`GLib`.free].
+         *   will assume ownership of it and free it with {@link GLib.free}.
          */
         TAKE,
         /**
@@ -231,8 +238,9 @@ export namespace Soup {
     }
 
     /**
-     * Value passed to [ctor`MessageHeaders`.new] to set certain default
+     * Value passed to {@link MessageHeaders.new} to set certain default
      * behaviors.
+     * @gir-type Enum
      */
     enum MessageHeadersType {
         /**
@@ -254,8 +262,9 @@ export namespace Soup {
     }
 
     /**
-     * Priorities that can be set on a [class`Message]` to instruct the message queue
+     * Priorities that can be set on a {@link Message} to instruct the message queue
      * to process it before any other message with lower priority.
+     * @gir-type Enum
      */
     enum MessagePriority {
         /**
@@ -265,23 +274,23 @@ export namespace Soup {
         VERY_LOW,
         /**
          * Use this for low priority messages, a
-         *   [class`Message]` with the default priority will be processed first.
+         *   {@link Message} with the default priority will be processed first.
          */
         LOW,
         /**
          * The default priotity, this is the
-         *   priority assigned to the [class`Message]` by default.
+         *   priority assigned to the {@link Message} by default.
          */
         NORMAL,
         /**
-         * High priority, a [class`Message]` with
+         * High priority, a {@link Message} with
          *   this priority will be processed before the ones with the default
          *   priority.
          */
         HIGH,
         /**
          * The highest priority, use this
-         *   for very urgent [class`Message]` as they will be the first ones to be
+         *   for very urgent {@link Message} as they will be the first ones to be
          *   attended.
          */
         VERY_HIGH,
@@ -293,6 +302,7 @@ export namespace Soup {
 
     /**
      * Represents the same-site policies of a cookie.
+     * @gir-type Enum
      */
     enum SameSitePolicy {
         /**
@@ -310,7 +320,8 @@ export namespace Soup {
     }
 
     /**
-     * A [class`Session]` error.
+     * A {@link Session} error.
+     * @gir-type Struct
      */
     class SessionError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -376,6 +387,7 @@ export namespace Soup {
      * Note that no libsoup functions take or return this type directly;
      * any function that works with status codes will accept unrecognized
      * status codes as well.
+     * @gir-type Enum
      */
     enum Status {
         /**
@@ -505,7 +517,7 @@ export namespace Soup {
         PROXY_AUTHENTICATION_REQUIRED,
         /**
          * shorter alias for
-         * %SOUP_STATUS_PROXY_AUTHENTICATION_REQUIRED
+         * {@link Soup.Status.PROXY_AUTHENTICATION_REQUIRED}
          */
         PROXY_UNAUTHORIZED,
         /**
@@ -549,7 +561,7 @@ export namespace Soup {
         REQUESTED_RANGE_NOT_SATISFIABLE,
         /**
          * shorter alias for
-         * %SOUP_STATUS_REQUESTED_RANGE_NOT_SATISFIABLE
+         * {@link Soup.Status.REQUESTED_RANGE_NOT_SATISFIABLE}
          */
         INVALID_RANGE,
         /**
@@ -611,7 +623,8 @@ export namespace Soup {
     }
 
     /**
-     * Error codes for %SOUP_TLD_ERROR.
+     * Error codes for `SOUP_TLD_ERROR`.
+     * @gir-type Struct
      */
     class TLDError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -632,7 +645,7 @@ export namespace Soup {
         /**
          * The passed-in hostname
          *   did not have enough components. Eg, calling
-         *   [func`tld_get_base_domain]` on <literal>"co.uk"</literal>.
+         *   {@link tld_get_base_domain} on <literal>"co.uk"</literal>.
          */
         static NOT_ENOUGH_DOMAINS: number;
         /**
@@ -653,7 +666,7 @@ export namespace Soup {
         // Static methods
 
         /**
-         * Registers error quark for soup_tld_get_base_domain() if needed.
+         * Registers error quark for `soup_tld_get_base_domain()` if needed.
          */
         static quark(): GLib.Quark;
     }
@@ -663,8 +676,9 @@ export namespace Soup {
     }
 
     /**
-     * Enum values passed to [func`uri_copy]` to indicate the components of
+     * Enum values passed to {@link uri_copy} to indicate the components of
      * the URI that should be updated with the given values.
+     * @gir-type Enum
      */
     enum URIComponent {
         /**
@@ -715,10 +729,11 @@ export namespace Soup {
 
     /**
      * Pre-defined close codes that can be passed to
-     * [method`WebsocketConnection`.close] or received from
-     * [method`WebsocketConnection`.get_close_code].
+     * {@link WebsocketConnection.close} or received from
+     * {@link WebsocketConnection.get_close_code}.
      *
      * However, other codes are also allowed.
+     * @gir-type Enum
      */
     enum WebsocketCloseCode {
         /**
@@ -786,7 +801,8 @@ export namespace Soup {
     }
 
     /**
-     * The type of a [class`WebsocketConnection]`.
+     * The type of a {@link WebsocketConnection}.
+     * @gir-type Enum
      */
     enum WebsocketConnectionType {
         /**
@@ -808,7 +824,8 @@ export namespace Soup {
     }
 
     /**
-     * The type of data contained in a [signal`WebsocketConnection:`:message] signal.
+     * The type of data contained in a `Soup.WebsocketConnection::message` signal.
+     * @gir-type Enum
      */
     enum WebsocketDataType {
         /**
@@ -823,6 +840,7 @@ export namespace Soup {
 
     /**
      * WebSocket-related errors.
+     * @gir-type Struct
      */
     class WebsocketError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -867,6 +885,7 @@ export namespace Soup {
 
     /**
      * The state of the WebSocket connection.
+     * @gir-type Enum
      */
     enum WebsocketState {
         /**
@@ -887,25 +906,25 @@ export namespace Soup {
     /**
      * A constant corresponding to 1 day.
      *
-     * For use with [ctor`Cookie`.new] and [method`Cookie`.set_max_age].
+     * For use with {@link Cookie.new} and {@link Cookie.set_max_age}.
      */
     const COOKIE_MAX_AGE_ONE_DAY: number;
     /**
      * A constant corresponding to 1 hour.
      *
-     * For use with [ctor`Cookie`.new] and [method`Cookie`.set_max_age].
+     * For use with {@link Cookie.new} and {@link Cookie.set_max_age}.
      */
     const COOKIE_MAX_AGE_ONE_HOUR: number;
     /**
      * A constant corresponding to 1 week.
      *
-     * For use with [ctor`Cookie`.new] and [method`Cookie`.set_max_age].
+     * For use with {@link Cookie.new} and {@link Cookie.set_max_age}.
      */
     const COOKIE_MAX_AGE_ONE_WEEK: number;
     /**
      * A constant corresponding to 1 year.
      *
-     * For use with [ctor`Cookie`.new] and [method`Cookie`.set_max_age].
+     * For use with {@link Cookie.new} and {@link Cookie.set_max_age}.
      */
     const COOKIE_MAX_AGE_ONE_YEAR: number;
     /**
@@ -925,23 +944,23 @@ export namespace Soup {
      */
     const HSTS_POLICY_MAX_AGE_PAST: number;
     /**
-     * The set of #GUriFlags libsoup expects all #GUri to use.
+     * The set of {@link GLib.UriFlags} libsoup expects all {@link GLib.Uri} to use.
      */
     const HTTP_URI_FLAGS: number;
     /**
-     * Like [func`get_major_version]`, but from the headers used at application
+     * Like {@link get_major_version}, but from the headers used at application
      * compile time, rather than from the library linked against at application run
      * time.
      */
     const MAJOR_VERSION: number;
     /**
-     * Like [func`get_micro_version]`, but from the headers used at
+     * Like {@link get_micro_version}, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
      */
     const MICRO_VERSION: number;
     /**
-     * Like [func`get_minor_version]`, but from the headers used at
+     * Like {@link get_minor_version}, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
      */
@@ -951,19 +970,19 @@ export namespace Soup {
      * `libsoup.h`.
      *
      * The definition should be one of the predefined libsoup
-     * version macros: %SOUP_VERSION_2_24, %SOUP_VERSION_2_26, ...
+     * version macros: `SOUP_VERSION_2_24`, `SOUP_VERSION_2_26`, ...
      *
      * This macro defines the earliest version of libsoup that the package
      * is required to be able to compile against.
      *
      * If the compiler is configured to warn about the use of deprecated
      * functions, then using functions that were deprecated in version
-     * %SOUP_VERSION_MIN_REQUIRED or earlier will cause warnings (but
+     * `SOUP_VERSION_MIN_REQUIRED` or earlier will cause warnings (but
      * using functions deprecated in later releases will not).
      */
     const VERSION_MIN_REQUIRED: number;
     /**
-     * Like [func`CHECK_VERSION]`, but the check for soup_check_version is
+     * Like {@link CHECK_VERSION}, but the check for soup_check_version is
      * at runtime instead of compile time.
      *
      * This is useful for compiling against older versions of libsoup, but using
@@ -971,66 +990,66 @@ export namespace Soup {
      * @param major the major version to check
      * @param minor the minor version to check
      * @param micro the micro version to check
-     * @returns %TRUE if the version of the libsoup currently loaded   is the same as or newer than the passed-in version.
+     * @returns `true` if the version of the libsoup currently loaded   is the same as or newer than the passed-in version.
      */
     function check_version(major: number, minor: number, micro: number): boolean;
     /**
-     * Parses `header` and returns a [struct`Cookie]`.
+     * Parses `header` and returns a {@link Cookie}.
      *
      * If `header` contains multiple cookies, only the first one will be parsed.
      *
      * If `header` does not have "path" or "domain" attributes, they will
-     * be defaulted from `origin`. If `origin` is %NULL, path will default
-     * to "/", but domain will be left as %NULL. Note that this is not a
-     * valid state for a [struct`Cookie]`, and you will need to fill in some
+     * be defaulted from `origin`. If `origin` is `null`, path will default
+     * to "/", but domain will be left as `null`. Note that this is not a
+     * valid state for a {@link Cookie}, and you will need to fill in some
      * appropriate string for the domain if you want to actually make use
      * of the cookie.
      *
      * As of version 3.4.0 the default value of a cookie's same-site-policy
-     * is %SOUP_SAME_SITE_POLICY_LAX.
+     * is {@link Soup.SameSitePolicy.LAX}.
      * @param header a cookie string (eg, the value of a Set-Cookie header)
      * @param origin origin of the cookie
-     * @returns a new #SoupCookie, or %NULL if it could   not be parsed, or contained an illegal "domain" attribute for a   cookie originating from @origin.
+     * @returns a new {@link Soup.Cookie}, or `null` if it could   not be parsed, or contained an illegal "domain" attribute for a   cookie originating from `origin`.
      */
     function cookie_parse(header: string, origin?: GLib.Uri | null): Cookie | null;
     /**
-     * Parses `msg'`s Cookie request header and returns a [struct`GLib`.SList] of
-     * `SoupCookie`s.
+     * Parses `msg`'s Cookie request header and returns a {@link GLib.SList} of
+     * {@link Soup.Cookie}s.
      *
      * As the "Cookie" header, unlike "Set-Cookie", only contains cookie names and
-     * values, none of the other [struct`Cookie]` fields will be filled in. (Thus, you
+     * values, none of the other {@link Cookie} fields will be filled in. (Thus, you
      * can't generally pass a cookie returned from this method directly to
-     * [func`cookies_to_response]`.)
-     * @param msg a #SoupMessage containing a "Cookie" request header
-     * @returns a #GSList of   `SoupCookie`s, which can be freed with [method@Cookie.free].
+     * {@link cookies_to_response}.)
+     * @param msg a {@link Soup.Message} containing a "Cookie" request header
+     * @returns a {@link GLib.SList} of   {@link Soup.Cookie}s, which can be freed with {@link Cookie.free}.
      */
     function cookies_from_request(msg: Message): Cookie[];
     /**
-     * Parses `msg'`s Set-Cookie response headers and returns a [struct`GLib`.SList]
-     * of `SoupCookie`s.
+     * Parses `msg`'s Set-Cookie response headers and returns a {@link GLib.SList}
+     * of {@link Soup.Cookie}s.
      *
      * Cookies that do not specify "path" or "domain" attributes will have their
      * values defaulted from `msg`.
-     * @param msg a #SoupMessage containing a "Set-Cookie" response header
-     * @returns a #GSList of   `SoupCookie`s, which can be freed with [method@Cookie.free].
+     * @param msg a {@link Soup.Message} containing a "Set-Cookie" response header
+     * @returns a {@link GLib.SList} of   {@link Soup.Cookie}s, which can be freed with {@link Cookie.free}.
      */
     function cookies_from_response(msg: Message): Cookie[];
     /**
-     * Serializes a [struct`GLib`.SList] of [struct`Cookie]` into a string suitable for
+     * Serializes a {@link GLib.SList} of {@link Cookie} into a string suitable for
      * setting as the value of the "Cookie" header.
-     * @param cookies a #GSList of [struct@Cookie]
-     * @returns the serialization of @cookies
+     * @param cookies a {@link GLib.SList} of {@link Cookie}
+     * @returns the serialization of `cookies`
      */
     function cookies_to_cookie_header(cookies: Cookie[]): string;
     /**
-     * Adds the name and value of each cookie in `cookies` to `msg'`s
+     * Adds the name and value of each cookie in `cookies` to `msg`'s
      * "Cookie" request.
      *
      * If `msg` already has a "Cookie" request header, these cookies will be appended
      * to the cookies already present. Be careful that you do not append the same
      * cookies twice, eg, when requeuing a message.
-     * @param cookies a #GSList of [struct@Cookie]
-     * @param msg a #SoupMessage
+     * @param cookies a {@link GLib.SList} of {@link Cookie}
+     * @param msg a {@link Soup.Message}
      */
     function cookies_to_request(cookies: Cookie[], msg: Message): void;
     /**
@@ -1039,8 +1058,8 @@ export namespace Soup {
      *
      * This is in addition to any other "Set-Cookie" headers
      * `msg` may already have.
-     * @param cookies a #GSList of [struct@Cookie]
-     * @param msg a #SoupMessage
+     * @param cookies a {@link GLib.SList} of {@link Cookie}
+     * @param msg a {@link Soup.Message}
      */
     function cookies_to_response(cookies: Cookie[], msg: Message): void;
     /**
@@ -1050,14 +1069,14 @@ export namespace Soup {
      * and reasonable approximations thereof. (Eg, it is lenient about whitespace,
      * leading "0"s, etc.)
      * @param date_string The date as a string
-     * @returns a new #GDateTime, or %NULL if @date_string   could not be parsed.
+     * @returns a new {@link GLib.DateTime}, or `null` if `date_string`   could not be parsed.
      */
     function date_time_new_from_http_string(date_string: string): GLib.DateTime | null;
     /**
      * Converts `date` to a string in the format described by `format`.
-     * @param date a #GDateTime
+     * @param date a {@link GLib.DateTime}
      * @param format the format to generate the date in
-     * @returns @date as a string or %NULL
+     * @returns `date` as a string or `null`
      */
     function date_time_to_string(date: GLib.DateTime, format: DateFormat | null): string;
     /**
@@ -1065,7 +1084,7 @@ export namespace Soup {
      *
      * which is an urlencoded dataset as defined in the HTML 4.01 spec.
      * @param encoded_form data of type "application/x-www-form-urlencoded"
-     * @returns a hash   table containing the name/value pairs from @encoded_form, which you   can free with [func@GLib.HashTable.destroy].
+     * @returns a hash   table containing the name/value pairs from `encoded_form`, which you   can free with {@link GLib.HashTable.destroy}.
      */
     function form_decode(encoded_form: string): GLib.HashTable<string, string>;
     /**
@@ -1074,23 +1093,23 @@ export namespace Soup {
      * this is a convenience method for the case when you have a single file upload
      * control in a form. (Or when you don't have any file upload controls, but are
      * still using "multipart/form-data" anyway.) Pass the name of the file upload
-     * control in `file_control_name,` and [func`form_decode_multipart]` will extract
-     * the uploaded file data into `filename,` `content_type,` and `file`. All of the
+     * control in `file_control_name`, and {@link form_decode_multipart} will extract
+     * the uploaded file data into `filename`, `content_type`, and `file`. All of the
      * other form control data will be returned (as strings, as with
-     * [func`form_decode]` in the returned [struct`GLib`.HashTable].
+     * {@link form_decode} in the returned {@link GLib.HashTable}.
      *
-     * You may pass %NULL for `filename,` `content_type` and/or `file` if you do not
-     * care about those fields. [func`form_decode_multipart]` may also
-     * return %NULL in those fields if the client did not provide that
+     * You may pass `null` for `filename`, `content_type` and/or `file` if you do not
+     * care about those fields. {@link form_decode_multipart} may also
+     * return `null` in those fields if the client did not provide that
      * information. You must free the returned filename and content-type
-     * with [func`GLib`.free], and the returned file data with [method`Glib`.Bytes.unref].
+     * with {@link GLib.free}, and the returned file data with {@link Glib.Bytes.unref}.
      *
      * If you have a form with more than one file upload control, you will
-     * need to decode it manually, using [ctor`Multipart`.new_from_message]
-     * and [method`Multipart`.get_part].
-     * @param multipart a #SoupMultipart
+     * need to decode it manually, using {@link Multipart.new_from_message}
+     * and {@link Multipart.get_part}.
+     * @param multipart a {@link Soup.Multipart}
      * @param file_control_name the name of the HTML file upload control
-     * @returns a hash table containing the name/value pairs (other than   @file_control_name) from @msg, which you can free with   [func@GLib.HashTable.destroy]. On error, it will return %NULL.
+     * @returns a hash table containing the name/value pairs (other than   `file_control_name`) from `msg`, which you can free with   {@link GLib.HashTable.destroy}. On error, it will return `null`.
      */
     function form_decode_multipart(
         multipart: Multipart,
@@ -1100,11 +1119,11 @@ export namespace Soup {
      * Encodes `form_data_set` into a value of type
      * "application/x-www-form-urlencoded".
      *
-     * Encodes as defined in the HTML 4.01 spec. Unlike [func`form_encode_hash]`,
+     * Encodes as defined in the HTML 4.01 spec. Unlike {@link form_encode_hash},
      * this preserves the ordering of the form elements, which may be required in
      * some situations.
      *
-     * See also: [ctor`Message`.new_from_encoded_form].
+     * See also: {@link Message.new_from_encoded_form}.
      * @param form_data_set a datalist containing name/value pairs
      * @returns the encoded form
      */
@@ -1118,9 +1137,9 @@ export namespace Soup {
      * Note that the HTML spec states that "The control names/values are
      * listed in the order they appear in the document." Since this method
      * takes a hash table, it cannot enforce that; if you care about the
-     * ordering of the form fields, use [func`form_encode_datalist]`.
+     * ordering of the form fields, use {@link form_encode_datalist}.
      *
-     * See also: [ctor`Message`.new_from_encoded_form].
+     * See also: {@link Message.new_from_encoded_form}.
      * @param form_data_set a hash table containing   name/value pairs (as strings)
      * @returns the encoded form
      */
@@ -1166,18 +1185,18 @@ export namespace Soup {
      * case-insensitively).
      *
      * Note that this can't be used with lists that have qvalues.
-     * @param header An HTTP header suitable for parsing with   [func@header_parse_list]
+     * @param header An HTTP header suitable for parsing with   {@link header_parse_list}
      * @param token a token
-     * @returns whether or not @header contains @token
+     * @returns whether or not `header` contains `token`
      */
     function header_contains(header: string, token: string): boolean;
     /**
      * Frees `param_list`.
-     * @param param_list a #GHashTable returned from   [func@header_parse_param_list] or [func@header_parse_semi_param_list]
+     * @param param_list a {@link GLib.HashTable} returned from   {@link header_parse_param_list} or {@link header_parse_semi_param_list}
      */
     function header_free_param_list(param_list: { [key: string]: any } | GLib.HashTable<string, string>): void;
     /**
-     * Appends something like `name=value` to `string,` taking care to quote `value`
+     * Appends something like `name=value` to `string`, taking care to quote `value`
      * if needed, and if so, to escape any quotes or backslashes in `value`.
      *
      * Alternatively, if `value` is a non-ASCII UTF-8 string, it will be
@@ -1186,19 +1205,19 @@ export namespace Soup {
      * reality, it can only be used portably with the Content-Disposition
      * "filename" parameter.
      *
-     * If `value` is %NULL, this will just append `name` to `string`.
-     * @param string a #GString being used to construct an HTTP header value
+     * If `value` is `null`, this will just append `name` to `string`.
+     * @param string a {@link GLib.String} being used to construct an HTTP header value
      * @param name a parameter name
-     * @param value a parameter value, or %NULL
+     * @param value a parameter value, or `null`
      */
     function header_g_string_append_param(string: GLib.String, name: string, value?: string | null): void;
     /**
      * Appends something like `name="value"` to
-     * `string,` taking care to escape any quotes or backslashes in `value`.
+     * `string`, taking care to escape any quotes or backslashes in `value`.
      *
      * If `value` is (non-ASCII) UTF-8, this will instead use RFC 5987
-     * encoding, just like [func`header_g_string_append_param]`.
-     * @param string a #GString being used to construct an HTTP header value
+     * encoding, just like {@link header_g_string_append_param}.
+     * @param string a {@link GLib.String} being used to construct an HTTP header value
      * @param name a parameter name
      * @param value a parameter value
      */
@@ -1208,7 +1227,7 @@ export namespace Soup {
      *
      * "something" does not itself contain commas, except as part of quoted-strings.
      * @param header a header value
-     * @returns a #GSList of   list elements, as allocated strings
+     * @returns a {@link GLib.SList} of   list elements, as allocated strings
      */
     function header_parse_list(header: string): string[];
     /**
@@ -1216,26 +1235,26 @@ export namespace Soup {
      * `token [ "=" ( token | quoted-string ) ]`.
      *
      * Tokens that don't have an associated value will still be added to
-     * the resulting hash table, but with a %NULL value.
+     * the resulting hash table, but with a `null` value.
      *
      * This also handles RFC5987 encoding (which in HTTP is mostly used
      * for giving UTF8-encoded filenames in the Content-Disposition
      * header).
      * @param header a header value
-     * @returns a   #GHashTable of list elements, which can be freed with   [func@header_free_param_list].
+     * @returns a   {@link GLib.HashTable} of list elements, which can be freed with   {@link header_free_param_list}.
      */
     function header_parse_param_list(header: string): GLib.HashTable<string, string>;
     /**
-     * A strict version of [func`header_parse_param_list]`
+     * A strict version of {@link header_parse_param_list}
      * that bails out if there are duplicate parameters.
      *
      * Note that this function will treat RFC5987-encoded
      * parameters as duplicated if an ASCII version is also
      * present. For header fields that might contain
      * RFC5987-encoded parameters, use
-     * [func`header_parse_param_list]` instead.
+     * {@link header_parse_param_list} instead.
      * @param header a header value
-     * @returns a #GHashTable of list elements, which can be freed with   [func@header_free_param_list] or %NULL if there are duplicate   elements.
+     * @returns a {@link GLib.HashTable} of list elements, which can be freed with   {@link header_free_param_list} or `null` if there are duplicate   elements.
      */
     function header_parse_param_list_strict(header: string): GLib.HashTable<string, string> | null;
     /**
@@ -1243,11 +1262,11 @@ export namespace Soup {
      * "qvalue"s (eg, Accept, Accept-Charset, Accept-Encoding,
      * Accept-Language, TE).
      *
-     * If `unacceptable` is not %NULL, then on return, it will contain the
+     * If `unacceptable` is not `null`, then on return, it will contain the
      * items with qvalue 0. Either way, those items will be removed from
      * the main list.
      * @param header a header value
-     * @returns a #GSList of   acceptable values (as allocated strings), highest-qvalue first.
+     * @returns a {@link GLib.SList} of   acceptable values (as allocated strings), highest-qvalue first.
      */
     function header_parse_quality_list(header: string): [string[], string[] | null];
     /**
@@ -1255,26 +1274,26 @@ export namespace Soup {
      * like: `token [ "=" ( token | quoted-string ) ]`.
      *
      * Tokens that don't have an associated value will still be added to
-     * the resulting hash table, but with a %NULL value.
+     * the resulting hash table, but with a `null` value.
      *
      * This also handles RFC5987 encoding (which in HTTP is mostly used
      * for giving UTF8-encoded filenames in the Content-Disposition
      * header).
      * @param header a header value
-     * @returns a   #GHashTable of list elements, which can be freed with   [func@header_free_param_list].
+     * @returns a   {@link GLib.HashTable} of list elements, which can be freed with   {@link header_free_param_list}.
      */
     function header_parse_semi_param_list(header: string): GLib.HashTable<string, string>;
     /**
-     * A strict version of [func`header_parse_semi_param_list]`
+     * A strict version of {@link header_parse_semi_param_list}
      * that bails out if there are duplicate parameters.
      *
      * Note that this function will treat RFC5987-encoded
      * parameters as duplicated if an ASCII version is also
      * present. For header fields that might contain
      * RFC5987-encoded parameters, use
-     * [func`header_parse_semi_param_list]` instead.
+     * {@link header_parse_semi_param_list} instead.
      * @param header a header value
-     * @returns a #GHashTable of list elements, which can be freed with   [func@header_free_param_list] or %NULL if there are duplicate   elements.
+     * @returns a {@link GLib.HashTable} of list elements, which can be freed with   {@link header_free_param_list} or `null` if there are duplicate   elements.
      */
     function header_parse_semi_param_list_strict(header: string): GLib.HashTable<string, string> | null;
     /**
@@ -1284,22 +1303,22 @@ export namespace Soup {
      * Beware that `dest` may be modified even on failure.
      *
      * This is a low-level method; normally you would use
-     * [func`headers_parse_request]` or [func`headers_parse_response]`.
+     * {@link headers_parse_request} or {@link headers_parse_response}.
      * @param str the header string (including the Request-Line or Status-Line,   but not the trailing blank line)
-     * @param len length of @str
-     * @param dest #SoupMessageHeaders to store the header values in
+     * @param len length of `str`
+     * @param dest {@link Soup.MessageHeaders} to store the header values in
      * @returns success or failure
      */
     function headers_parse(str: string, len: number, dest: MessageHeaders): boolean;
     /**
      * Parses the headers of an HTTP request in `str` and stores the
-     * results in `req_method,` `req_path,` `ver,` and `req_headers`.
+     * results in `req_method`, `req_path`, `ver`, and `req_headers`.
      *
      * Beware that `req_headers` may be modified even on failure.
      * @param str the headers (up to, but not including, the trailing blank line)
-     * @param len length of @str
-     * @param req_headers #SoupMessageHeaders to store the header values in
-     * @returns %SOUP_STATUS_OK if the headers could be parsed, or an   HTTP error to be returned to the client if they could not be.
+     * @param len length of `str`
+     * @param req_headers {@link Soup.MessageHeaders} to store the header values in
+     * @returns {@link Soup.Status.OK} if the headers could be parsed, or an   HTTP error to be returned to the client if they could not be.
      */
     function headers_parse_request(
         str: string,
@@ -1308,12 +1327,12 @@ export namespace Soup {
     ): [number, string, string, HTTPVersion | null];
     /**
      * Parses the headers of an HTTP response in `str` and stores the
-     * results in `ver,` `status_code,` `reason_phrase,` and `headers`.
+     * results in `ver`, `status_code`, `reason_phrase`, and `headers`.
      *
      * Beware that `headers` may be modified even on failure.
      * @param str the headers (up to, but not including, the trailing blank line)
-     * @param len length of @str
-     * @param headers #SoupMessageHeaders to store the header values in
+     * @param len length of `str`
+     * @param headers {@link Soup.MessageHeaders} to store the header values in
      * @returns success or failure.
      */
     function headers_parse_response(
@@ -1322,28 +1341,28 @@ export namespace Soup {
         headers: MessageHeaders,
     ): [boolean, HTTPVersion | null, number, string];
     /**
-     * Parses the HTTP Status-Line string in `status_line` into `ver,`
-     * `status_code,` and `reason_phrase`.
+     * Parses the HTTP Status-Line string in `status_line` into `ver`,
+     * `status_code`, and `reason_phrase`.
      *
      * `status_line` must be terminated by either "\0" or "\r\n".
      * @param status_line an HTTP Status-Line
-     * @returns %TRUE if @status_line was parsed successfully.
+     * @returns `true` if `status_line` was parsed successfully.
      */
     function headers_parse_status_line(status_line: string): [boolean, HTTPVersion | null, number, string];
     /**
      * Initializes `iter` for iterating `hdrs`.
-     * @param hdrs a #SoupMessageHeaders
+     * @param hdrs a {@link Soup.MessageHeaders}
      */
     function message_headers_iter_init(hdrs: MessageHeaders): MessageHeadersIter;
     /**
-     * Yields the next name/value pair in the [struct`MessageHeaders]` being
+     * Yields the next name/value pair in the {@link MessageHeaders} being
      * iterated by `iter`.
      *
      * If `iter` has already yielded the last header, then
-     * [func`MessageHeadersIter`.next] will return %FALSE and `name` and `value`
+     * {@link MessageHeadersIter.next} will return `false` and `name` and `value`
      * will be unchanged.
-     * @param iter a #SoupMessageHeadersIter
-     * @returns %TRUE if another name and value were returned, %FALSE   if the end of the headers has been reached.
+     * @param iter a {@link Soup.MessageHeadersIter}
+     * @returns `true` if another name and value were returned, `false`   if the end of the headers has been reached.
      */
     function message_headers_iter_next(iter: MessageHeadersIter): [boolean, MessageHeadersIter, string, string];
     /**
@@ -1356,15 +1375,15 @@ export namespace Soup {
      *
      * *There is no reason for you to ever use this
      * function.* If you wanted the textual description for the
-     * [property`Message:`status-code] of a given [class`Message]`, you should just
-     * look at the message's [property`Message:`reason-phrase]. However, you
+     * {@link Message.status_code} of a given {@link Message}, you should just
+     * look at the message's {@link Message.reason_phrase}. However, you
      * should only do that for use in debugging messages; HTTP reason
      * phrases are not localized, and are not generally very descriptive
      * anyway, and so they should never be presented to the user directly.
      * Instead, you should create you own error messages based on the
      * status code, and on what you were trying to do.
      * @param status_code an HTTP status code
-     * @returns the (terse, English) description of @status_code
+     * @returns the (terse, English) description of `status_code`
      */
     function status_get_phrase(status_code: number): string;
     /**
@@ -1375,11 +1394,11 @@ export namespace Soup {
      * UTF-8 if it was an IDN. From 2.46 on, the name can be in either
      * UTF-8 or ASCII format.
      * @param domain a domain name
-     * @returns %TRUE if it is a public domain, %FALSE otherwise.
+     * @returns `true` if it is a public domain, `false` otherwise.
      */
     function tld_domain_is_public_suffix(domain: string): boolean;
     /**
-     * Registers error quark for soup_tld_get_base_domain() if needed.
+     * Registers error quark for `soup_tld_get_base_domain()` if needed.
      * @returns Error quark for Soup TLD functions.
      */
     function tld_error_quark(): GLib.Quark;
@@ -1390,7 +1409,7 @@ export namespace Soup {
      * .co.uk, etc) plus the second level domain, for example for
      * myhost.mydomain.com it will return mydomain.com.
      *
-     * Note that %NULL will be returned for private URLs (those not ending
+     * Note that `null` will be returned for private URLs (those not ending
      * with any well known TLD) because choosing a base domain for them
      * would be totally arbitrary.
      *
@@ -1399,20 +1418,20 @@ export namespace Soup {
      * UTF-8 or ASCII format (and the return value will be in the same
      * format).
      * @param hostname a hostname
-     * @returns a pointer to the start of the base domain in @hostname. If   an error occurs, %NULL will be returned and @error set.
+     * @returns a pointer to the start of the base domain in `hostname`. If   an error occurs, `null` will be returned and `error` set.
      */
     function tld_get_base_domain(hostname: string): string;
     /**
      * Decodes the given data URI and returns its contents and `content_type`.
      * @param uri a data URI, in string form
-     * @returns a #GBytes with the contents of @uri,    or %NULL if @uri is not a valid data URI
+     * @returns a {@link GLib.Bytes} with the contents of `uri`,    or `null` if `uri` is not a valid data URI
      */
     function uri_decode_data_uri(uri: string): [GLib.Bytes, string];
     /**
      * Tests whether or not `uri1` and `uri2` are equal in all parts.
-     * @param uri1 a #GUri
-     * @param uri2 another #GUri
-     * @returns %TRUE if equal otherwise %FALSE
+     * @param uri1 a {@link GLib.Uri}
+     * @param uri2 another {@link GLib.Uri}
+     * @returns `true` if equal otherwise `false`
      */
     function uri_equal(uri1: GLib.Uri, uri2: GLib.Uri): boolean;
     /**
@@ -1423,9 +1442,9 @@ export namespace Soup {
      * not modified.
      *
      * This is a low-level function; if you use
-     * [method`Session`.websocket_connect_async] to create a WebSocket connection, it
+     * {@link Session.websocket_connect_async} to create a WebSocket connection, it
      * will call this for you.
-     * @param msg a #SoupMessage
+     * @param msg a {@link Soup.Message}
      * @param origin the "Origin" header to set
      * @param protocols list of   protocols to offer
      * @param supported_extensions list   of supported extension types
@@ -1439,18 +1458,18 @@ export namespace Soup {
     /**
      * Looks at the response status code and headers in `msg` and
      * determines if they contain a valid WebSocket handshake response
-     * (given the handshake request in `msg'`s request headers).
+     * (given the handshake request in `msg`'s request headers).
      *
-     * If `supported_extensions` is non-%NULL, extensions included in the
+     * If `supported_extensions` is non-`null`, extensions included in the
      * response "Sec-WebSocket-Extensions" are verified too. Accepted
-     * extensions are returned in `accepted_extensions` parameter if non-%NULL.
+     * extensions are returned in `accepted_extensions` parameter if non-`null`.
      *
      * This is a low-level function; if you use
-     * [method`Session`.websocket_connect_async] to create a WebSocket
+     * {@link Session.websocket_connect_async} to create a WebSocket
      * connection, it will call this for you.
-     * @param msg #SoupMessage containing both client and server sides of a   WebSocket handshake
+     * @param msg {@link Soup.Message} containing both client and server sides of a   WebSocket handshake
      * @param supported_extensions list   of supported extension types
-     * @returns %TRUE if @msg contains a completed valid WebSocket   handshake, %FALSE and an error if not.
+     * @returns `true` if `msg` contains a completed valid WebSocket   handshake, `false` and an error if not.
      */
     function websocket_client_verify_handshake(
         msg: Message,
@@ -1465,25 +1484,25 @@ export namespace Soup {
      * Examines the method and request headers in `msg` and determines
      * whether `msg` contains a valid handshake request.
      *
-     * If `origin` is non-%NULL, then only requests containing a matching
-     * "Origin" header will be accepted. If `protocols` is non-%NULL, then
+     * If `origin` is non-`null`, then only requests containing a matching
+     * "Origin" header will be accepted. If `protocols` is non-`null`, then
      * only requests containing a compatible "Sec-WebSocket-Protocols"
-     * header will be accepted. If `supported_extensions` is non-%NULL, then
+     * header will be accepted. If `supported_extensions` is non-`null`, then
      * only requests containing valid supported extensions in
      * "Sec-WebSocket-Extensions" header will be accepted.
      *
-     * Normally [func`websocket_server_process_handshake]`
+     * Normally {@link websocket_server_process_handshake}
      * will take care of this for you, and if you use
-     * [method`Server`.add_websocket_handler] to handle accepting WebSocket
+     * {@link Server.add_websocket_handler} to handle accepting WebSocket
      * connections, it will call that for you. However, this function may
      * be useful if you need to perform more complicated validation; eg,
      * accepting multiple different Origins, or handling different protocols
      * depending on the path.
-     * @param msg #SoupServerMessage containing the client side of a WebSocket handshake
+     * @param msg {@link Soup.ServerMessage} containing the client side of a WebSocket handshake
      * @param origin expected Origin header
      * @param protocols allowed WebSocket   protocols.
      * @param supported_extensions list   of supported extension types
-     * @returns %TRUE if @msg contained a valid WebSocket handshake,   %FALSE and an error if not.
+     * @returns `true` if `msg` contained a valid WebSocket handshake,   `false` and an error if not.
      */
     function websocket_server_check_handshake(
         msg: ServerMessage,
@@ -1496,22 +1515,22 @@ export namespace Soup {
      * contains a valid handshake request), fills in the handshake
      * response.
      *
-     * If `expected_origin` is non-%NULL, then only requests containing a matching
-     * "Origin" header will be accepted. If `protocols` is non-%NULL, then
+     * If `expected_origin` is non-`null`, then only requests containing a matching
+     * "Origin" header will be accepted. If `protocols` is non-`null`, then
      * only requests containing a compatible "Sec-WebSocket-Protocols"
-     * header will be accepted. If `supported_extensions` is non-%NULL, then
+     * header will be accepted. If `supported_extensions` is non-`null`, then
      * only requests containing valid supported extensions in
      * "Sec-WebSocket-Extensions" header will be accepted. The accepted extensions
-     * will be returned in `accepted_extensions` parameter if non-%NULL.
+     * will be returned in `accepted_extensions` parameter if non-`null`.
      *
      * This is a low-level function; if you use
-     * [method`Server`.add_websocket_handler] to handle accepting WebSocket
+     * {@link Server.add_websocket_handler} to handle accepting WebSocket
      * connections, it will call this for you.
-     * @param msg #SoupServerMessage containing the client side of a WebSocket handshake
+     * @param msg {@link Soup.ServerMessage} containing the client side of a WebSocket handshake
      * @param expected_origin expected Origin header
      * @param protocols allowed WebSocket   protocols.
      * @param supported_extensions list   of supported extension types
-     * @returns %TRUE if @msg contained a valid WebSocket handshake   request and was updated to contain a handshake response. %FALSE if not.
+     * @returns `true` if `msg` contained a valid WebSocket handshake   request and was updated to contain a handshake response. `false` if not.
      */
     function websocket_server_process_handshake(
         msg: ServerMessage,
@@ -1519,30 +1538,57 @@ export namespace Soup {
         protocols?: string[] | null,
         supported_extensions?: GObject.TypeClass[] | null,
     ): [boolean, WebsocketExtension[] | null];
+    /**
+     * @gir-type Callback
+     */
     interface AuthDomainBasicAuthCallback {
         (domain: AuthDomainBasic, msg: ServerMessage, username: string, password: string): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AuthDomainDigestAuthCallback {
         (domain: AuthDomainDigest, msg: ServerMessage, username: string): string | null;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AuthDomainFilter {
         (domain: AuthDomain, msg: ServerMessage): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AuthDomainGenericAuthCallback {
         (domain: AuthDomain, msg: ServerMessage, username: string): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface LoggerFilter {
         (logger: Logger, msg: Message): LoggerLogLevel;
     }
+    /**
+     * @gir-type Callback
+     */
     interface LoggerPrinter {
         (logger: Logger, level: LoggerLogLevel, direction: number, data: string): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface MessageHeadersForeachFunc {
         (name: string, value: string): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ServerCallback {
         (server: Server, msg: ServerMessage, path: string, query?: GLib.HashTable<string, string> | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ServerWebsocketCallback {
         (server: Server, msg: ServerMessage, path: string, connection: WebsocketConnection): void;
     }
@@ -1552,6 +1598,7 @@ export namespace Soup {
 
     /**
      * Indicates if a message should or shouldn't be cached.
+     * @gir-type Flags
      */
     enum Cacheability {
         /**
@@ -1578,6 +1625,7 @@ export namespace Soup {
 
     /**
      * Represents the parsed value of the "Expect" header.
+     * @gir-type Flags
      */
     enum Expectation {
         /**
@@ -1595,7 +1643,8 @@ export namespace Soup {
     }
 
     /**
-     * Various flags that can be set on a [class`Message]` to alter its behavior.
+     * Various flags that can be set on a {@link Message} to alter its behavior.
+     * @gir-type Flags
      */
     enum MessageFlags {
         /**
@@ -1607,25 +1656,25 @@ export namespace Soup {
          * Requests that the message should be
          *   sent on a newly-created connection, not reusing an existing
          *   persistent connection. Note that messages with non-idempotent
-         *   [property`Message:`method]s behave this way by default, unless
+         *   {@link Message.method}s behave this way by default, unless
          *   #SOUP_MESSAGE_IDEMPOTENT is set.
          */
         NEW_CONNECTION,
         /**
          * The message is considered idempotent,
-         *   regardless its [property`Message:`method], and allows reuse of existing
+         *   regardless its {@link Message.method}, and allows reuse of existing
          *   idle connections, instead of always requiring a new one, unless
          *   #SOUP_MESSAGE_NEW_CONNECTION is set.
          */
         IDEMPOTENT,
         /**
-         * The [class`AuthManager]` should not use
+         * The {@link AuthManager} should not use
          *   the credentials cache for this message, neither to use cached credentials
          *   to automatically authenticate this message nor to cache the credentials
          *   after the message is successfully authenticated. This applies to both server
-         *   and proxy authentication. Note that [signal`Message:`:authenticate] signal will
+         *   and proxy authentication. Note that `Soup.Message::authenticate` signal will
          *   be emitted, if you want to disable authentication for a message use
-         *   [method`Message`.disable_feature] passing #SOUP_TYPE_AUTH_MANAGER instead.
+         *   {@link Message.disable_feature} passing #SOUP_TYPE_AUTH_MANAGER instead.
          */
         DO_NOT_USE_AUTH_CACHE,
         /**
@@ -1639,13 +1688,14 @@ export namespace Soup {
     }
 
     /**
-     * Options to pass to [method`Server`.listen], etc.
+     * Options to pass to {@link Server.listen}, etc.
      *
-     * %SOUP_SERVER_LISTEN_IPV4_ONLY and %SOUP_SERVER_LISTEN_IPV6_ONLY
-     * only make sense with [method`Server`.listen_all] and
-     * [method`Server`.listen_local], not plain [method`Server`.listen] (which
+     * {@link Soup.ServerListenOptions.IPV4_ONLY} and {@link Soup.ServerListenOptions.IPV6_ONLY}
+     * only make sense with {@link Server.listen_all} and
+     * {@link Server.listen_local}, not plain {@link Server.listen} (which
      * simply listens on whatever kind of socket you give it). And you
      * cannot specify both of them in a single call.
+     * @gir-type Flags
      */
     enum ServerListenOptions {
         /**
@@ -1697,8 +1747,9 @@ export namespace Soup {
      * but applications never need to be aware of the specific subclasses being
      * used.
      *
-     * [class`Auth]` objects store the authentication data associated with a given bit
-     * of web space. They are created automatically by [class`Session]`.
+     * {@link Auth} objects store the authentication data associated with a given bit
+     * of web space. They are created automatically by {@link Session}.
+     * @gir-type Class
      */
     abstract class Auth extends GObject.Object {
         static $gtype: GObject.GType<Auth>;
@@ -1769,16 +1820,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Auth.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Auth.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Auth.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Auth.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Auth.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Auth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1794,50 +1848,57 @@ export namespace Soup {
          * authentication info.
          * @param username the username provided by the user or client
          * @param password the password provided by the user or client
+         * @virtual
          */
         vfunc_authenticate(username: string, password: string): void;
         /**
          * Tests if `auth` is able to authenticate by providing credentials to the
-         * [method`Auth`.authenticate].
+         * {@link Auth.authenticate}.
+         * @virtual
          */
         vfunc_can_authenticate(): boolean;
         /**
          * Generates an appropriate "Authorization" header for `msg`.
          *
-         * (The session will only call this if [method`Auth`.is_authenticated] returned
-         * %TRUE.)
-         * @param msg the #SoupMessage to be authorized
+         * (The session will only call this if {@link Auth.is_authenticated} returned
+         * `true`.)
+         * @param msg the {@link Soup.Message} to be authorized
+         * @virtual
          */
         vfunc_get_authorization(msg: Message): string;
         /**
          * Returns a list of paths on the server which `auth` extends over.
          *
          * (All subdirectories of these paths are also assumed to be part
-         * of `auth'`s protection space, unless otherwise discovered not to
+         * of `auth`'s protection space, unless otherwise discovered not to
          * be.)
-         * @param source_uri the URI of the request that @auth was generated in   response to.
+         * @param source_uri the URI of the request that `auth` was generated in   response to.
+         * @virtual
          */
         vfunc_get_protection_space(source_uri: GLib.Uri): string[];
         /**
          * Tests if `auth` has been given a username and password.
+         * @virtual
          */
         vfunc_is_authenticated(): boolean;
         /**
          * Tests if `auth` is ready to make a request for `msg` with.
          *
-         * For most auths, this is equivalent to [method`Auth`.is_authenticated], but for
+         * For most auths, this is equivalent to {@link Auth.is_authenticated}, but for
          * some auth types (eg, NTLM), the auth may be sendable (eg, as an
          * authentication request) even before it is authenticated.
-         * @param msg a #SoupMessage
+         * @param msg a {@link Soup.Message}
+         * @virtual
          */
         vfunc_is_ready(msg: Message): boolean;
         /**
-         * Updates `auth` with the information from `msg` and `auth_header,`
+         * Updates `auth` with the information from `msg` and `auth_header`,
          * possibly un-authenticating it.
          *
-         * As with [ctor`Auth`.new], this is normally only used by [class`Session]`.
-         * @param msg the #SoupMessage @auth is being updated for
+         * As with {@link Auth.new}, this is normally only used by {@link Session}.
+         * @param msg the {@link Soup.Message} `auth` is being updated for
          * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
+         * @virtual
          */
         vfunc_update(msg: Message, auth_header: { [key: string]: any } | GLib.HashTable<any, any>): boolean;
 
@@ -1854,16 +1915,16 @@ export namespace Soup {
         authenticate(username: string, password: string): void;
         /**
          * Tests if `auth` is able to authenticate by providing credentials to the
-         * [method`Auth`.authenticate].
-         * @returns %TRUE if @auth is able to accept credentials.
+         * {@link Auth.authenticate}.
+         * @returns `true` if `auth` is able to accept credentials.
          */
         can_authenticate(): boolean;
         /**
          * Call this on an auth to cancel it.
          *
          * You need to cancel an auth to complete an asynchronous authenticate operation
-         * when no credentials are provided ([method`Auth`.authenticate] is not called).
-         * The [class`Auth]` will be cancelled on dispose if it hasn't been authenticated.
+         * when no credentials are provided ({@link Auth.authenticate} is not called).
+         * The {@link Auth} will be cancelled on dispose if it hasn't been authenticated.
          */
         cancel(): void;
         /**
@@ -1874,16 +1935,16 @@ export namespace Soup {
         /**
          * Generates an appropriate "Authorization" header for `msg`.
          *
-         * (The session will only call this if [method`Auth`.is_authenticated] returned
-         * %TRUE.)
-         * @param msg the #SoupMessage to be authorized
+         * (The session will only call this if {@link Auth.is_authenticated} returned
+         * `true`.)
+         * @param msg the {@link Soup.Message} to be authorized
          * @returns the "Authorization" header, which must be freed.
          */
         get_authorization(msg: Message): string;
         /**
          * Gets an opaque identifier for `auth`.
          *
-         * The identifier can be used as a hash key or the like. [class`Auth]` objects from
+         * The identifier can be used as a hash key or the like. {@link Auth} objects from
          * the same server with the same identifier refer to the same authentication
          * domain (eg, the URLs associated with them take the same usernames and
          * passwords).
@@ -1894,14 +1955,14 @@ export namespace Soup {
          * Returns a list of paths on the server which `auth` extends over.
          *
          * (All subdirectories of these paths are also assumed to be part
-         * of `auth'`s protection space, unless otherwise discovered not to
+         * of `auth`'s protection space, unless otherwise discovered not to
          * be.)
-         * @param source_uri the URI of the request that @auth was generated in   response to.
-         * @returns the list of   paths, which can be freed with [method@Auth.free_protection_space].
+         * @param source_uri the URI of the request that `auth` was generated in   response to.
+         * @returns the list of   paths, which can be freed with {@link Auth.free_protection_space}.
          */
         get_protection_space(source_uri: GLib.Uri): string[];
         /**
-         * Returns `auth'`s realm.
+         * Returns `auth`'s realm.
          *
          * This is an identifier that distinguishes separate authentication spaces on a
          * given server, and may be some string that is meaningful to the user.
@@ -1911,28 +1972,28 @@ export namespace Soup {
         get_realm(): string;
         /**
          * soup_auth_get_scheme_name: (attributes org.gtk.Method.get_property=scheme-name)
-         * Returns `auth'`s scheme name. (Eg, "Basic", "Digest", or "NTLM")
+         * Returns `auth`'s scheme name. (Eg, "Basic", "Digest", or "NTLM")
          * @returns the scheme name
          */
         get_scheme_name(): string;
         /**
          * Tests if `auth` is ready to make a request for `msg` with.
          *
-         * For most auths, this is equivalent to [method`Auth`.is_authenticated], but for
+         * For most auths, this is equivalent to {@link Auth.is_authenticated}, but for
          * some auth types (eg, NTLM), the auth may be sendable (eg, as an
          * authentication request) even before it is authenticated.
-         * @param msg a #SoupMessage
-         * @returns %TRUE if @auth is ready to make a request with.
+         * @param msg a {@link Soup.Message}
+         * @returns `true` if `auth` is ready to make a request with.
          */
         is_ready(msg: Message): boolean;
         /**
-         * Updates `auth` with the information from `msg` and `auth_header,`
+         * Updates `auth` with the information from `msg` and `auth_header`,
          * possibly un-authenticating it.
          *
-         * As with [ctor`Auth`.new], this is normally only used by [class`Session]`.
-         * @param msg the #SoupMessage @auth is being updated for
+         * As with {@link Auth.new}, this is normally only used by {@link Session}.
+         * @param msg the {@link Soup.Message} `auth` is being updated for
          * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
-         * @returns %TRUE if @auth is still a valid (but potentially   unauthenticated) [class@Auth]. %FALSE if something about @auth_params   could not be parsed or incorporated into @auth at all.
+         * @returns `true` if `auth` is still a valid (but potentially   unauthenticated) {@link Auth}. `false` if something about `auth_params`   could not be parsed or incorporated into `auth` at all.
          */
         update(msg: Message, auth_header: string): boolean;
     }
@@ -1956,9 +2017,10 @@ export namespace Soup {
     /**
      * HTTP "Basic" authentication.
      *
-     * [class`Session]`s support this by default; if you want to disable
-     * support for it, call [method`Session`.remove_feature_by_type],
-     * passing %SOUP_TYPE_AUTH_BASIC.
+     * {@link Session}s support this by default; if you want to disable
+     * support for it, call {@link Session.remove_feature_by_type},
+     * passing `SOUP_TYPE_AUTH_BASIC`.
+     * @gir-type Class
      */
     class AuthBasic extends Auth {
         static $gtype: GObject.GType<AuthBasic>;
@@ -1980,16 +2042,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthBasic.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthBasic.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthBasic.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthBasic.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthBasic.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2016,9 +2081,10 @@ export namespace Soup {
     /**
      * HTTP "Digest" authentication.
      *
-     * [class`Session]`s support this by default; if you want to disable
-     * support for it, call [method`Session`.remove_feature_by_type]
-     * passing %SOUP_TYPE_AUTH_DIGEST.
+     * {@link Session}s support this by default; if you want to disable
+     * support for it, call {@link Session.remove_feature_by_type}
+     * passing `SOUP_TYPE_AUTH_DIGEST`.
+     * @gir-type Class
      */
     class AuthDigest extends Auth {
         static $gtype: GObject.GType<AuthDigest>;
@@ -2040,16 +2106,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthDigest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthDigest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthDigest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2086,21 +2155,22 @@ export namespace Soup {
     /**
      * Server-side authentication.
      *
-     * A [class`AuthDomain]` manages authentication for all or part of a
-     * [class`Server]`. To make a server require authentication, first create
-     * an appropriate subclass of [class`AuthDomain]`, and then add it to the
-     * server with [method`Server`.add_auth_domain].
+     * A {@link AuthDomain} manages authentication for all or part of a
+     * {@link Server}. To make a server require authentication, first create
+     * an appropriate subclass of {@link AuthDomain}, and then add it to the
+     * server with {@link Server.add_auth_domain}.
      *
      * In order for an auth domain to have any effect, you must add one or more
-     * paths to it (via [method`AuthDomain`.add_path]). To require authentication for
+     * paths to it (via {@link AuthDomain.add_path}). To require authentication for
      * all ordinary requests, add the path `"/"`. (Note that this does not include
      * the special `"*"` URI (eg, "OPTIONS *"), which must be added as a separate
      * path if you want to cover it.)
      *
      * If you need greater control over which requests should and shouldn't be
      * authenticated, add paths covering everything you *might* want authenticated,
-     * and then use a filter ([method`AuthDomain`.set_filter] to bypass
+     * and then use a filter ({@link AuthDomain.set_filter} to bypass
      * authentication for those requests that don't need it.
+     * @gir-type Class
      */
     abstract class AuthDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthDomain>;
@@ -2108,37 +2178,37 @@ export namespace Soup {
         // Properties
 
         /**
-         * The [callback`AuthDomainFilter]` for the domain.
+         * The {@link AuthDomainFilter} for the domain.
          */
         get filter(): AuthDomainFilter;
         set filter(val: AuthDomainFilter);
         /**
-         * Data to pass to the [callback`AuthDomainFilter]`.
+         * Data to pass to the {@link AuthDomainFilter}.
          */
         get filter_data(): any;
         set filter_data(val: any);
         /**
-         * Data to pass to the [callback`AuthDomainFilter]`.
+         * Data to pass to the {@link AuthDomainFilter}.
          */
         get filterData(): any;
         set filterData(val: any);
         /**
-         * The [callback`AuthDomainGenericAuthCallback]`.
+         * The {@link AuthDomainGenericAuthCallback}.
          */
         get generic_auth_callback(): AuthDomainGenericAuthCallback;
         set generic_auth_callback(val: AuthDomainGenericAuthCallback);
         /**
-         * The [callback`AuthDomainGenericAuthCallback]`.
+         * The {@link AuthDomainGenericAuthCallback}.
          */
         get genericAuthCallback(): AuthDomainGenericAuthCallback;
         set genericAuthCallback(val: AuthDomainGenericAuthCallback);
         /**
-         * The data to pass to the [callback`AuthDomainGenericAuthCallback]`.
+         * The data to pass to the {@link AuthDomainGenericAuthCallback}.
          */
         get generic_auth_data(): any;
         set generic_auth_data(val: any);
         /**
-         * The data to pass to the [callback`AuthDomainGenericAuthCallback]`.
+         * The data to pass to the {@link AuthDomainGenericAuthCallback}.
          */
         get genericAuthData(): any;
         set genericAuthData(val: any);
@@ -2168,16 +2238,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthDomain.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthDomain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthDomain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2186,15 +2259,21 @@ export namespace Soup {
 
         // Virtual methods
 
+        /**
+         * @param msg
+         * @param header
+         * @virtual
+         */
         vfunc_accepts(msg: ServerMessage, header: string): string;
         /**
          * Adds a "WWW-Authenticate" or "Proxy-Authenticate" header to `msg`.
          *
-         * It requests that the client authenticate, and sets `msg'`s status accordingly.
+         * It requests that the client authenticate, and sets `msg`'s status accordingly.
          *
-         * This is used by [class`Server]` internally and is probably of no use to
+         * This is used by {@link Server} internally and is probably of no use to
          * anyone else.
-         * @param msg a #SoupServerMessage
+         * @param msg a {@link Soup.ServerMessage}
+         * @virtual
          */
         vfunc_challenge(msg: ServerMessage): string;
         /**
@@ -2202,10 +2281,11 @@ export namespace Soup {
          * `password`.
          *
          * This would normally be called from a
-         * [callback`AuthDomainGenericAuthCallback]`.
-         * @param msg a #SoupServerMessage
+         * {@link AuthDomainGenericAuthCallback}.
+         * @param msg a {@link Soup.ServerMessage}
          * @param username a username
          * @param password a password
+         * @virtual
          */
         vfunc_check_password(msg: ServerMessage, username: string, password: string): boolean;
 
@@ -2215,32 +2295,32 @@ export namespace Soup {
          * Checks if `msg` contains appropriate authorization for `domain` to
          * accept it.
          *
-         * Mirroring [method`AuthDomain`.covers], this does not check whether or not
+         * Mirroring {@link AuthDomain.covers}, this does not check whether or not
          * `domain` *cares* if `msg` is authorized.
          *
-         * This is used by [class`Server]` internally and is probably of no use to
+         * This is used by {@link Server} internally and is probably of no use to
          * anyone else.
-         * @param msg a #SoupServerMessage
-         * @returns the username that @msg has authenticated   as, if in fact it has authenticated. %NULL otherwise.
+         * @param msg a {@link Soup.ServerMessage}
+         * @returns the username that `msg` has authenticated   as, if in fact it has authenticated. `null` otherwise.
          */
         accepts(msg: ServerMessage): string | null;
         /**
          * Adds `path` to `domain`.
          *
-         * Requests under `path` on `domain'`s server will require authentication (unless
-         * overridden by [method`AuthDomain`.remove_path] or
-         * [method`AuthDomain`.set_filter]).
-         * @param path the path to add to @domain
+         * Requests under `path` on `domain`'s server will require authentication (unless
+         * overridden by {@link AuthDomain.remove_path} or
+         * {@link AuthDomain.set_filter}).
+         * @param path the path to add to `domain`
          */
         add_path(path: string): void;
         /**
          * Adds a "WWW-Authenticate" or "Proxy-Authenticate" header to `msg`.
          *
-         * It requests that the client authenticate, and sets `msg'`s status accordingly.
+         * It requests that the client authenticate, and sets `msg`'s status accordingly.
          *
-         * This is used by [class`Server]` internally and is probably of no use to
+         * This is used by {@link Server} internally and is probably of no use to
          * anyone else.
-         * @param msg a #SoupServerMessage
+         * @param msg a {@link Soup.ServerMessage}
          */
         challenge(msg: ServerMessage): void;
         /**
@@ -2248,8 +2328,8 @@ export namespace Soup {
          * `password`.
          *
          * This would normally be called from a
-         * [callback`AuthDomainGenericAuthCallback]`.
-         * @param msg a #SoupServerMessage
+         * {@link AuthDomainGenericAuthCallback}.
+         * @param msg a {@link Soup.ServerMessage}
          * @param username a username
          * @param password a password
          * @returns whether or not the message is authenticated
@@ -2262,31 +2342,31 @@ export namespace Soup {
          * This does not actually look at whether `msg` *is* authenticated, merely
          * whether or not it needs to be.
          *
-         * This is used by [class`Server]` internally and is probably of no use to
+         * This is used by {@link Server} internally and is probably of no use to
          * anyone else.
-         * @param msg a #SoupServerMessage
-         * @returns %TRUE if @domain requires @msg to be authenticated
+         * @param msg a {@link Soup.ServerMessage}
+         * @returns `true` if `domain` requires `msg` to be authenticated
          */
         covers(msg: ServerMessage): boolean;
         /**
          * Gets the realm name associated with `domain`.
-         * @returns @domain's realm
+         * @returns `domain`'s realm
          */
         get_realm(): string;
         /**
          * Removes `path` from `domain`.
          *
-         * Requests under `path` on `domain'`s server will NOT require
+         * Requests under `path` on `domain`'s server will NOT require
          * authentication.
          *
-         * This is not simply an undo-er for [method`AuthDomain`.add_path]; it
+         * This is not simply an undo-er for {@link AuthDomain.add_path}; it
          * can be used to "carve out" a subtree that does not require
          * authentication inside a hierarchy that does. Note also that unlike
-         * with [method`AuthDomain`.add_path], this cannot be overridden by
+         * with {@link AuthDomain.add_path}, this cannot be overridden by
          * adding a filter, as filters can only bypass authentication that
          * would otherwise be required, not require it where it would
          * otherwise be unnecessary.
-         * @param path the path to remove from @domain
+         * @param path the path to remove from `domain`
          */
         remove_path(path: string): void;
         /**
@@ -2297,34 +2377,34 @@ export namespace Soup {
          * that is too complicated to do via the other methods, or it might check the
          * message's method, and allow GETs but not PUTs.
          *
-         * The filter function returns %TRUE if the request should still
-         * require authentication, or %FALSE if authentication is unnecessary
+         * The filter function returns `true` if the request should still
+         * require authentication, or `false` if authentication is unnecessary
          * for this request.
          *
-         * To help prevent security holes, your filter should return %TRUE by
-         * default, and only return %FALSE under specifically-tested
+         * To help prevent security holes, your filter should return `true` by
+         * default, and only return `false` under specifically-tested
          * circumstances, rather than the other way around. Eg, in the example
          * above, where you want to authenticate PUTs but not GETs, you should
-         * check if the method is GET and return %FALSE in that case, and then
-         * return %TRUE for all other methods (rather than returning %TRUE for
-         * PUT and %FALSE for all other methods). This way if it turned out
+         * check if the method is GET and return `false` in that case, and then
+         * return `true` for all other methods (rather than returning `true` for
+         * PUT and `false` for all other methods). This way if it turned out
          * (now or later) that some paths supported additional methods besides
          * GET and PUT, those methods would default to being NOT allowed for
          * unauthenticated users.
          *
          * You can also set the filter by setting the SoupAuthDomain:filter
-         * and [property`AuthDomain:`filter-data properties], which can also be
+         * and [property@AuthDomain:filter-data properties], which can also be
          * used to set the filter at construct time.
-         * @param filter the auth filter for @domain
+         * @param filter the auth filter for `domain`
          */
         set_filter(filter: AuthDomainFilter): void;
         /**
          * Sets `auth_callback` as an authentication-handling callback for `domain`.
          *
          * Whenever a request comes in to `domain` which cannot be authenticated via a
-         * domain-specific auth callback (eg, [callback`AuthDomainDigestAuthCallback]`),
+         * domain-specific auth callback (eg, {@link AuthDomainDigestAuthCallback}),
          * the generic auth callback will be invoked. See
-         * [callback`AuthDomainGenericAuthCallback]` for information on what the callback
+         * {@link AuthDomainGenericAuthCallback} for information on what the callback
          * should do.
          * @param auth_callback the auth callback
          */
@@ -2357,8 +2437,9 @@ export namespace Soup {
     /**
      * Server-side "Basic" authentication.
      *
-     * [class`AuthDomainBasic]` handles the server side of HTTP "Basic" (ie,
+     * {@link AuthDomainBasic} handles the server side of HTTP "Basic" (ie,
      * cleartext password) authentication.
+     * @gir-type Class
      */
     class AuthDomainBasic extends AuthDomain {
         static $gtype: GObject.GType<AuthDomainBasic>;
@@ -2366,22 +2447,22 @@ export namespace Soup {
         // Properties
 
         /**
-         * The [callback`AuthDomainBasicAuthCallback]`.
+         * The {@link AuthDomainBasicAuthCallback}.
          */
         get auth_callback(): AuthDomainBasicAuthCallback;
         set auth_callback(val: AuthDomainBasicAuthCallback);
         /**
-         * The [callback`AuthDomainBasicAuthCallback]`.
+         * The {@link AuthDomainBasicAuthCallback}.
          */
         get authCallback(): AuthDomainBasicAuthCallback;
         set authCallback(val: AuthDomainBasicAuthCallback);
         /**
-         * The data to pass to the [callback`AuthDomainBasicAuthCallback]`.
+         * The data to pass to the {@link AuthDomainBasicAuthCallback}.
          */
         get auth_data(): any;
         set auth_data(val: any);
         /**
-         * The data to pass to the [callback`AuthDomainBasicAuthCallback]`.
+         * The data to pass to the {@link AuthDomainBasicAuthCallback}.
          */
         get authData(): any;
         set authData(val: any);
@@ -2403,16 +2484,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthDomainBasic.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthDomainBasic.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthDomainBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2426,12 +2510,12 @@ export namespace Soup {
          * requests.
          *
          * For each request containing authorization, `domain` will invoke the callback,
-         * and then either accept or reject the request based on `callback'`s return
+         * and then either accept or reject the request based on `callback`'s return
          * value.
          *
          * You can also set the auth callback by setting the
-         * [property`AuthDomainBasic:`auth-callback] and
-         * [property`AuthDomainBasic:`auth-data] properties, which can also be used to
+         * {@link AuthDomainBasic.auth_callback} and
+         * {@link AuthDomainBasic.auth_data} properties, which can also be used to
          * set the callback at construct time.
          * @param callback the callback
          */
@@ -2464,8 +2548,9 @@ export namespace Soup {
     /**
      * Server-side "Digest" authentication.
      *
-     * [class`AuthDomainDigest]` handles the server side of HTTP "Digest"
+     * {@link AuthDomainDigest} handles the server side of HTTP "Digest"
      * authentication.
+     * @gir-type Class
      */
     class AuthDomainDigest extends AuthDomain {
         static $gtype: GObject.GType<AuthDomainDigest>;
@@ -2473,22 +2558,22 @@ export namespace Soup {
         // Properties
 
         /**
-         * The [callback`AuthDomainDigestAuthCallback]`.
+         * The {@link AuthDomainDigestAuthCallback}.
          */
         get auth_callback(): AuthDomainDigestAuthCallback;
         set auth_callback(val: AuthDomainDigestAuthCallback);
         /**
-         * The [callback`AuthDomainDigestAuthCallback]`.
+         * The {@link AuthDomainDigestAuthCallback}.
          */
         get authCallback(): AuthDomainDigestAuthCallback;
         set authCallback(val: AuthDomainDigestAuthCallback);
         /**
-         * The data to pass to the [callback`AuthDomainDigestAuthCallback]`.
+         * The data to pass to the {@link AuthDomainDigestAuthCallback}.
          */
         get auth_data(): any;
         set auth_data(val: any);
         /**
-         * The data to pass to the [callback`AuthDomainDigestAuthCallback]`.
+         * The data to pass to the {@link AuthDomainDigestAuthCallback}.
          */
         get authData(): any;
         set authData(val: any);
@@ -2510,16 +2595,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthDomainDigest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthDomainDigest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthDomainDigest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2533,9 +2621,9 @@ export namespace Soup {
          * authentication.
          *
          * That is, it returns a stringified MD5 hash of
-         * `username,` `realm,` and `password` concatenated together. This is
+         * `username`, `realm`, and `password` concatenated together. This is
          * the form that is needed as the return value of
-         * [class`AuthDomainDigest]`'s auth handler.
+         * {@link AuthDomainDigest}'s auth handler.
          *
          * For security reasons, you should store the encoded hash, rather
          * than storing the cleartext password itself and calling this method
@@ -2546,7 +2634,7 @@ export namespace Soup {
          * the encoded password stored in an Apache .htdigest file.)
          * @param username a username
          * @param realm an auth realm name
-         * @param password the password for @username in @realm
+         * @param password the password for `username` in `realm`
          */
         static encode_password(username: string, realm: string, password: string): string;
 
@@ -2558,11 +2646,11 @@ export namespace Soup {
          *
          * For each request containing authorization, `domain` will
          * invoke the callback, and then either accept or reject the request
-         * based on `callback'`s return value.
+         * based on `callback`'s return value.
          *
          * You can also set the auth callback by setting the
-         * [property`AuthDomainDigest:`auth-callback] and
-         * [property`AuthDomainDigest:`auth-data] properties, which can also be used to
+         * {@link AuthDomainDigest.auth_callback} and
+         * {@link AuthDomainDigest.auth_data} properties, which can also be used to
          * set the callback at construct time.
          * @param callback the callback
          */
@@ -2581,21 +2669,22 @@ export namespace Soup {
     /**
      * HTTP client-side authentication handler.
      *
-     * [class`AuthManager]` is the [iface`SessionFeature]` that handles HTTP
-     * authentication for a [class`Session]`.
+     * {@link AuthManager} is the {@link SessionFeature} that handles HTTP
+     * authentication for a {@link Session}.
      *
-     * A [class`AuthManager]` is added to the session by default, and normally
+     * A {@link AuthManager} is added to the session by default, and normally
      * you don't need to worry about it at all. However, if you want to
      * disable HTTP authentication, you can remove the feature from the
-     * session with [method`Session`.remove_feature_by_type] or disable it on
-     * individual requests with [method`Message`.disable_feature].
+     * session with {@link Session.remove_feature_by_type} or disable it on
+     * individual requests with {@link Message.disable_feature}.
      *
-     * You can use this with [method`Session`.remove_feature_by_type] or
-     * [method`Message`.disable_feature].
+     * You can use this with {@link Session.remove_feature_by_type} or
+     * {@link Message.disable_feature}.
      *
      * (Although this type has only been publicly visible since libsoup 2.42, it has
      * always existed in the background, and you can use `g_type_from_name
-     * ("SoupAuthManager")` to get its [alias`GObject`.Type] in earlier releases.)
+     * ("SoupAuthManager")` to get its {@link GObject.Type} in earlier releases.)
+     * @gir-type Class
      */
     class AuthManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<AuthManager>;
@@ -2617,16 +2706,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2640,22 +2732,20 @@ export namespace Soup {
          */
         clear_cached_credentials(): void;
         /**
-         * Records that `auth` is to be used under `uri,` as though a
+         * Records that `auth` is to be used under `uri`, as though a
          * WWW-Authenticate header had been received at that URI.
          *
-         * This can be used to "preload" `manager'`s auth cache, to avoid an extra HTTP
+         * This can be used to "preload" `manager`'s auth cache, to avoid an extra HTTP
          * round trip in the case where you know ahead of time that a 401 response will
          * be returned.
          *
          * This is only useful for authentication types where the initial
          * Authorization header does not depend on any additional information
          * from the server. (Eg, Basic or NTLM, but not Digest.)
-         * @param uri the #GUri under which @auth is to be used
-         * @param auth the #SoupAuth to use
+         * @param uri the {@link GLib.Uri} under which `auth` is to be used
+         * @param auth the {@link Soup.Auth} to use
          */
         use_auth(uri: GLib.Uri, auth: Auth): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2669,32 +2759,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2703,39 +2793,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2746,13 +2836,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2760,7 +2853,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2768,9 +2861,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2790,9 +2883,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2806,33 +2899,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2865,21 +2958,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2889,8 +2982,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2907,10 +3000,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2925,13 +3018,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2962,21 +3055,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2986,33 +3079,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3021,6 +3115,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3029,12 +3124,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3043,20 +3140,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3068,6 +3167,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3116,9 +3216,10 @@ export namespace Soup {
     /**
      * HTTP-based NTLM authentication.
      *
-     * [class`Session]`s do not support this type by default; if you want to
-     * enable support for it, call [method`Session`.add_feature_by_type],
-     * passing %SOUP_TYPE_AUTH_NTLM.
+     * {@link Session}s do not support this type by default; if you want to
+     * enable support for it, call {@link Session.add_feature_by_type},
+     * passing `SOUP_TYPE_AUTH_NTLM`.
+     * @gir-type Class
      */
     class AuthNTLM extends Auth {
         static $gtype: GObject.GType<AuthNTLM>;
@@ -3140,16 +3241,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthNTLM.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthNTLM.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthNTLM.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthNTLM.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthNTLM.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthNTLM.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3177,13 +3281,14 @@ export namespace Soup {
      * HTTP-based GSS-Negotiate authentication, as defined by
      * [RFC 4559](https://datatracker.ietf.org/doc/html/rfc4559).
      *
-     * [class`Session]`s do not support this type by default; if you want to
-     * enable support for it, call [method`Session`.add_feature_by_type],
-     * passing %SOUP_TYPE_AUTH_NEGOTIATE.
+     * {@link Session}s do not support this type by default; if you want to
+     * enable support for it, call {@link Session.add_feature_by_type},
+     * passing `SOUP_TYPE_AUTH_NEGOTIATE`.
      *
      * This auth type will only work if libsoup was compiled with GSSAPI
-     * support; you can check [func`AuthNegotiate`.supported] to see if it
+     * support; you can check {@link AuthNegotiate.supported} to see if it
      * was.
+     * @gir-type Class
      */
     class AuthNegotiate extends Auth {
         static $gtype: GObject.GType<AuthNegotiate>;
@@ -3205,16 +3310,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthNegotiate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthNegotiate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthNegotiate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3226,8 +3334,8 @@ export namespace Soup {
         /**
          * Indicates whether libsoup was built with GSSAPI support.
          *
-         * If this is %FALSE, %SOUP_TYPE_AUTH_NEGOTIATE will still be defined and can
-         * still be added to a [class`Session]`, but libsoup will never attempt to
+         * If this is `false`, `SOUP_TYPE_AUTH_NEGOTIATE` will still be defined and can
+         * still be added to a {@link Session}, but libsoup will never attempt to
          * actually use this auth type.
          */
         static supported(): boolean;
@@ -3252,6 +3360,7 @@ export namespace Soup {
 
     /**
      * File-based cache for HTTP resources.
+     * @gir-type Class
      */
     class Cache extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<Cache>;
@@ -3294,16 +3403,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Cache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Cache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Cache.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Cache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3312,6 +3424,10 @@ export namespace Soup {
 
         // Virtual methods
 
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_get_cacheability(msg: Message): Cacheability;
 
         // Methods
@@ -3319,29 +3435,29 @@ export namespace Soup {
         /**
          * Will remove all entries in the `cache` plus all the cache files.
          *
-         * This is not thread safe and must be called only from the thread that created the [class`Cache]`
+         * This is not thread safe and must be called only from the thread that created the {@link Cache}
          */
         clear(): void;
         /**
          * Synchronously writes the cache index out to disk.
          *
-         * Contrast with [method`Cache`.flush], which writes pending cache *entries* to
+         * Contrast with {@link Cache.flush}, which writes pending cache *entries* to
          * disk.
          *
          * You must call this before exiting if you want your cache data to
          * persist between sessions.
          *
-         * This is not thread safe and must be called only from the thread that created the [class`Cache]`
+         * This is not thread safe and must be called only from the thread that created the {@link Cache}
          */
         dump(): void;
         /**
          * Forces all pending writes in the `cache` to be
          * committed to disk.
          *
-         * For doing so it will iterate the [struct`GLib`.MainContext] associated with
-         * `cache'`s session as long as needed.
+         * For doing so it will iterate the {@link GLib.MainContext} associated with
+         * `cache`'s session as long as needed.
          *
-         * Contrast with [method`Cache`.dump], which writes out the cache index file.
+         * Contrast with {@link Cache.dump}, which writes out the cache index file.
          */
         flush(): void;
         /**
@@ -3350,9 +3466,9 @@ export namespace Soup {
          */
         get_max_size(): number;
         /**
-         * Loads the contents of `cache'`s index into memory.
+         * Loads the contents of `cache`'s index into memory.
          *
-         * This is not thread safe and must be called only from the thread that created the [class`Cache]`
+         * This is not thread safe and must be called only from the thread that created the {@link Cache}
          */
         load(): void;
         /**
@@ -3360,8 +3476,6 @@ export namespace Soup {
          * @param max_size the maximum size of the cache, in bytes
          */
         set_max_size(max_size: number): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3375,32 +3489,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3409,39 +3523,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3452,13 +3566,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3466,7 +3583,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3474,9 +3591,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3496,9 +3613,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3512,33 +3629,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3571,21 +3688,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3595,8 +3712,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3613,10 +3730,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3631,13 +3748,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3668,21 +3785,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3692,33 +3809,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3727,6 +3845,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3735,12 +3854,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3749,20 +3870,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3774,6 +3897,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3815,28 +3939,29 @@ export namespace Soup {
     /**
      * Handles decoding of HTTP messages.
      *
-     * [class`ContentDecoder]` handles adding the "Accept-Encoding" header on
+     * {@link ContentDecoder} handles adding the "Accept-Encoding" header on
      * outgoing messages, and processing the "Content-Encoding" header on
      * incoming ones. Currently it supports the "gzip", "deflate", and "br"
      * content codings.
      *
-     * A [class`ContentDecoder]` will automatically be
+     * A {@link ContentDecoder} will automatically be
      * added to the session by default. (You can use
-     * [method`Session`.remove_feature_by_type] if you don't
+     * {@link Session.remove_feature_by_type} if you don't
      * want this.)
      *
-     * If [class`ContentDecoder]` successfully decodes the Content-Encoding,
+     * If {@link ContentDecoder} successfully decodes the Content-Encoding,
      * the message body will contain the decoded data; however, the message headers
      * will be unchanged (and so "Content-Encoding" will still be present,
      * "Content-Length" will describe the original encoded length, etc).
      *
      * If "Content-Encoding" contains any encoding types that
-     * [class`ContentDecoder]` doesn't recognize, then none of the encodings
+     * {@link ContentDecoder} doesn't recognize, then none of the encodings
      * will be decoded.
      *
      * (Note that currently there is no way to (automatically) use
      * Content-Encoding when sending a request body, or to pick specific
      * encoding types to support.)
+     * @gir-type Class
      */
     class ContentDecoder extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentDecoder>;
@@ -3858,23 +3983,24 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentDecoder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentDecoder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContentDecoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3888,32 +4014,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3922,39 +4048,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3965,13 +4091,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3979,7 +4108,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3987,9 +4116,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4009,9 +4138,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4025,33 +4154,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4084,21 +4213,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4108,8 +4237,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4126,10 +4255,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4144,13 +4273,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4181,21 +4310,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4205,33 +4334,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4240,6 +4370,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4248,12 +4379,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4262,20 +4395,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4287,6 +4422,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4328,12 +4464,13 @@ export namespace Soup {
     /**
      * Sniffs the mime type of messages.
      *
-     * A [class`ContentSniffer]` tries to detect the actual content type of
+     * A {@link ContentSniffer} tries to detect the actual content type of
      * the files that are being downloaded by looking at some of the data
-     * before the [class`Message]` emits its [signal`Message:`:got-headers] signal.
-     * [class`ContentSniffer]` implements [iface`SessionFeature]`, so you can add
-     * content sniffing to a session with [method`Session`.add_feature] or
-     * [method`Session`.add_feature_by_type].
+     * before the {@link Message} emits its `Soup.Message::got-headers` signal.
+     * {@link ContentSniffer} implements {@link SessionFeature}, so you can add
+     * content sniffing to a session with {@link Session.add_feature} or
+     * {@link Session.add_feature_by_type}.
+     * @gir-type Class
      */
     class ContentSniffer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentSniffer>;
@@ -4357,16 +4494,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentSniffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentSniffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContentSniffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4378,15 +4518,13 @@ export namespace Soup {
         /**
          * Sniffs `buffer` to determine its Content-Type.
          *
-         * The result may also be influenced by the Content-Type declared in `msg'`s
+         * The result may also be influenced by the Content-Type declared in `msg`'s
          * response headers.
          * @param msg the message to sniff
-         * @param buffer a buffer containing the start of @msg's response body
-         * @returns the sniffed Content-Type of @buffer; this will never be %NULL,   but may be `application/octet-stream`.
+         * @param buffer a buffer containing the start of `msg`'s response body
+         * @returns the sniffed Content-Type of `buffer`; this will never be `null`,   but may be `application/octet-stream`.
          */
         sniff(msg: Message, buffer: GLib.Bytes | Uint8Array): [string, GLib.HashTable<string, string> | null];
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4400,32 +4538,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4434,39 +4572,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4477,13 +4615,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4491,7 +4632,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4499,9 +4640,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4521,9 +4662,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4537,33 +4678,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4596,21 +4737,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4620,8 +4761,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4638,10 +4779,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4656,13 +4797,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4693,21 +4834,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4717,33 +4858,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4752,6 +4894,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4760,12 +4903,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4774,20 +4919,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4799,6 +4946,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4831,6 +4979,18 @@ export namespace Soup {
     namespace CookieJar {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when `jar` changes.
+             *
+             * If a cookie has been added,
+             * `new_cookie` will contain the newly-added cookie and
+             * `old_cookie` will be `null`. If a cookie has been deleted,
+             * `old_cookie` will contain the to-be-deleted cookie and
+             * `new_cookie` will be `null`. If a cookie has been changed,
+             * `old_cookie` will contain its old value, and `new_cookie` its
+             * new value.
+             * @signal
+             */
             changed: (arg0: Cookie | null, arg1: Cookie | null) => void;
             'notify::accept-policy': (pspec: GObject.ParamSpec) => void;
             'notify::read-only': (pspec: GObject.ParamSpec) => void;
@@ -4849,13 +5009,14 @@ export namespace Soup {
     /**
      * Automatic cookie handling for SoupSession.
      *
-     * A [class`CookieJar]` stores [struct`Cookie]`s and arrange for them to be sent with
-     * the appropriate [class`Message]`s. [class`CookieJar]` implements
-     * [iface`SessionFeature]`, so you can add a cookie jar to a session with
-     * [method`Session`.add_feature] or [method`Session`.add_feature_by_type].
+     * A {@link CookieJar} stores {@link Cookie}s and arrange for them to be sent with
+     * the appropriate {@link Message}s. {@link CookieJar} implements
+     * {@link SessionFeature}, so you can add a cookie jar to a session with
+     * {@link Session.add_feature} or {@link Session.add_feature_by_type}.
      *
-     * Note that the base [class`CookieJar]` class does not support any form
+     * Note that the base {@link CookieJar} class does not support any form
      * of long-term cookie persistence.
+     * @gir-type Class
      */
     class CookieJar extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<CookieJar>;
@@ -4900,16 +5061,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CookieJar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CookieJar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CookieJar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CookieJar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CookieJar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CookieJar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4918,11 +5082,20 @@ export namespace Soup {
 
         // Virtual methods
 
+        /**
+         * @param old_cookie
+         * @param new_cookie
+         * @virtual
+         */
         vfunc_changed(old_cookie: Cookie, new_cookie: Cookie): void;
         /**
          * Gets whether `jar` stores cookies persistenly.
+         * @virtual
          */
         vfunc_is_persistent(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_save(): void;
 
         // Methods
@@ -4930,18 +5103,18 @@ export namespace Soup {
         /**
          * Adds `cookie` to `jar`.
          *
-         * Emits the [signal`CookieJar:`:changed] signal if we are modifying
+         * Emits the `Soup.CookieJar::changed` signal if we are modifying
          * an existing cookie or adding a valid new cookie ('valid' means
          * that the cookie's expire date is not in the past).
          *
          * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
-         * @param cookie a #SoupCookie
+         * @param cookie a {@link Soup.Cookie}
          */
         add_cookie(cookie: Cookie): void;
         /**
          * Adds `cookie` to `jar`.
          *
-         * Emits the [signal`CookieJar:`:changed] signal if we are modifying an existing
+         * Emits the `Soup.CookieJar::changed` signal if we are modifying an existing
          * cookie or adding a valid new cookie ('valid' means that the cookie's expire
          * date is not in the past).
          *
@@ -4949,10 +5122,10 @@ export namespace Soup {
          * resources in case such a security policy is set in the `jar`.
          *
          * `uri` will be used to reject setting or overwriting secure cookies
-         * from insecure origins. %NULL is treated as secure.
+         * from insecure origins. `null` is treated as secure.
          *
          * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
-         * @param cookie a #SoupCookie
+         * @param cookie a {@link Soup.Cookie}
          * @param uri the URI setting the cookie
          * @param first_party the URI for the main document
          */
@@ -4960,7 +5133,7 @@ export namespace Soup {
         /**
          * Adds `cookie` to `jar`.
          *
-         * Emits the [signal`CookieJar:`:changed] signal if we are modifying
+         * Emits the `Soup.CookieJar::changed` signal if we are modifying
          * an existing cookie or adding a valid new cookie ('valid' means
          * that the cookie's expire date is not in the past).
          *
@@ -4970,63 +5143,63 @@ export namespace Soup {
          * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
          *
          * For secure cookies to work properly you may want to use
-         * [method`CookieJar`.add_cookie_full].
+         * {@link CookieJar.add_cookie_full}.
          * @param first_party the URI for the main document
-         * @param cookie a #SoupCookie
+         * @param cookie a {@link Soup.Cookie}
          */
         add_cookie_with_first_party(first_party: GLib.Uri, cookie: Cookie): void;
         /**
-         * Constructs a [struct`GLib`.List] with every cookie inside the `jar`.
+         * Constructs a {@link GLib.List} with every cookie inside the `jar`.
          *
          * The cookies in the list are a copy of the original, so
          * you have to free them when you are done with them.
          *
          * For historical reasons this list is in reverse order.
-         * @returns a #GSList   with all the cookies in the @jar.
+         * @returns a {@link GLib.SList}   with all the cookies in the `jar`.
          */
         all_cookies(): Cookie[];
         /**
          * Deletes `cookie` from `jar`.
          *
-         * Emits the [signal`CookieJar:`:changed] signal.
-         * @param cookie a #SoupCookie
+         * Emits the `Soup.CookieJar::changed` signal.
+         * @param cookie a {@link Soup.Cookie}
          */
         delete_cookie(cookie: Cookie): void;
         /**
-         * Gets `jar'`s [enum`CookieJarAcceptPolicy]`.
-         * @returns the #SoupCookieJarAcceptPolicy set in the @jar
+         * Gets `jar`'s {@link CookieJarAcceptPolicy}.
+         * @returns the {@link Soup.CookieJarAcceptPolicy} set in the `jar`
          */
         get_accept_policy(): CookieJarAcceptPolicy;
         /**
          * Retrieves the list of cookies that would be sent with a request to `uri`
-         * as a [struct`GLib`.List] of [struct`Cookie]` objects.
+         * as a {@link GLib.List} of {@link Cookie} objects.
          *
-         * If `for_http` is %TRUE, the return value will include cookies marked
+         * If `for_http` is `true`, the return value will include cookies marked
          * "HttpOnly" (that is, cookies that the server wishes to keep hidden
          * from client-side scripting operations such as the JavaScript
-         * document.cookies property). Since [class`CookieJar]` sets the Cookie
+         * document.cookies property). Since {@link CookieJar} sets the Cookie
          * header itself when making the actual HTTP request, you should
-         * almost certainly be setting `for_http` to %FALSE if you are calling
+         * almost certainly be setting `for_http` to `false` if you are calling
          * this.
-         * @param uri a #GUri
+         * @param uri a {@link GLib.Uri}
          * @param for_http whether or not the return value is being passed directly   to an HTTP operation
-         * @returns a #GSList   with the cookies in the @jar that would be sent with a request to @uri.
+         * @returns a {@link GLib.SList}   with the cookies in the `jar` that would be sent with a request to `uri`.
          */
         get_cookie_list(uri: GLib.Uri, for_http: boolean): Cookie[];
         /**
-         * This is an extended version of [method`CookieJar`.get_cookie_list] that
+         * This is an extended version of {@link CookieJar.get_cookie_list} that
          * provides more information required to use SameSite cookies.
          *
          * See the [SameSite cookies
          * spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00) for
          * more detailed information.
-         * @param uri a #GUri
-         * @param top_level a #GUri for the top level document
-         * @param site_for_cookies a #GUri indicating the origin to get cookies for
+         * @param uri a {@link GLib.Uri}
+         * @param top_level a {@link GLib.Uri} for the top level document
+         * @param site_for_cookies a {@link GLib.Uri} indicating the origin to get cookies for
          * @param for_http whether or not the return value is being passed directly   to an HTTP operation
-         * @param is_safe_method if the HTTP method is safe, as defined by RFC 7231, ignored when @for_http is %FALSE
+         * @param is_safe_method if the HTTP method is safe, as defined by RFC 7231, ignored when `for_http` is `false`
          * @param is_top_level_navigation whether or not the HTTP request is part of   top level navigation
-         * @returns a #GSList   with the cookies in the @jar that would be sent with a request to @uri.
+         * @returns a {@link GLib.SList}   with the cookies in the `jar` that would be sent with a request to `uri`.
          */
         get_cookie_list_with_same_site_info(
             uri: GLib.Uri,
@@ -5040,36 +5213,36 @@ export namespace Soup {
          * Retrieves (in Cookie-header form) the list of cookies that would
          * be sent with a request to `uri`.
          *
-         * If `for_http` is %TRUE, the return value will include cookies marked
+         * If `for_http` is `true`, the return value will include cookies marked
          * "HttpOnly" (that is, cookies that the server wishes to keep hidden
          * from client-side scripting operations such as the JavaScript
-         * document.cookies property). Since [class`CookieJar]` sets the Cookie
+         * document.cookies property). Since {@link CookieJar} sets the Cookie
          * header itself when making the actual HTTP request, you should
-         * almost certainly be setting `for_http` to %FALSE if you are calling
+         * almost certainly be setting `for_http` to `false` if you are calling
          * this.
-         * @param uri a #GUri
+         * @param uri a {@link GLib.Uri}
          * @param for_http whether or not the return value is being passed directly   to an HTTP operation
-         * @returns the cookies, in string form, or %NULL if   there are no cookies for @uri.
+         * @returns the cookies, in string form, or `null` if   there are no cookies for `uri`.
          */
         get_cookies(uri: GLib.Uri, for_http: boolean): string | null;
         /**
          * Gets whether `jar` stores cookies persistenly.
-         * @returns %TRUE if @jar storage is persistent or %FALSE otherwise.
+         * @returns `true` if `jar` storage is persistent or `false` otherwise.
          */
         is_persistent(): boolean;
         /**
          * Sets `policy` as the cookie acceptance policy for `jar`.
-         * @param policy a #SoupCookieJarAcceptPolicy
+         * @param policy a {@link Soup.CookieJarAcceptPolicy}
          */
         set_accept_policy(policy: CookieJarAcceptPolicy | null): void;
         /**
-         * Adds `cookie` to `jar,` exactly as though it had appeared in a
+         * Adds `cookie` to `jar`, exactly as though it had appeared in a
          * Set-Cookie header returned from a request to `uri`.
          *
-         * Keep in mind that if the [enum`CookieJarAcceptPolicy]` set is either
-         * %SOUP_COOKIE_JAR_ACCEPT_NO_THIRD_PARTY or
-         * %SOUP_COOKIE_JAR_ACCEPT_GRANDFATHERED_THIRD_PARTY you'll need to use
-         * [method`CookieJar`.set_cookie_with_first_party], otherwise the jar
+         * Keep in mind that if the {@link CookieJarAcceptPolicy} set is either
+         * {@link Soup.CookieJarAcceptPolicy.NO_THIRD_PARTY} or
+         * {@link Soup.CookieJarAcceptPolicy.GRANDFATHERED_THIRD_PARTY} you'll need to use
+         * {@link CookieJar.set_cookie_with_first_party}, otherwise the jar
          * will have no way of knowing if the cookie is being set by a third
          * party or not.
          * @param uri the URI setting the cookie
@@ -5077,7 +5250,7 @@ export namespace Soup {
          */
         set_cookie(uri: GLib.Uri, cookie: string): void;
         /**
-         * Adds `cookie` to `jar,` exactly as though it had appeared in a
+         * Adds `cookie` to `jar`, exactly as though it had appeared in a
          * Set-Cookie header returned from a request to `uri`.
          *
          * `first_party` will be used to reject cookies coming from third party resources
@@ -5087,8 +5260,6 @@ export namespace Soup {
          * @param cookie the stringified cookie to set
          */
         set_cookie_with_first_party(uri: GLib.Uri, first_party: GLib.Uri, cookie: string): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5102,32 +5273,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5136,39 +5307,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5179,13 +5350,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5193,7 +5367,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5201,9 +5375,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5223,9 +5397,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5239,33 +5413,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5298,21 +5472,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -5322,8 +5496,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5340,10 +5514,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5358,13 +5532,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5395,21 +5569,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5419,33 +5593,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5454,6 +5629,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5462,12 +5638,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5476,20 +5654,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5501,6 +5681,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5548,12 +5729,13 @@ export namespace Soup {
     /**
      * Database-based Cookie Jar.
      *
-     * [class`CookieJarDB]` is a [class`CookieJar]` that reads cookies from and writes
+     * {@link CookieJarDB} is a {@link CookieJar} that reads cookies from and writes
      * them to a sqlite database in the new Mozilla format.
      *
      * (This is identical to `SoupCookieJarSqlite` in
      * libsoup-gnome; it has just been moved into libsoup proper, and
      * renamed to avoid conflicting.)
+     * @gir-type Class
      */
     class CookieJarDB extends CookieJar implements SessionFeature {
         static $gtype: GObject.GType<CookieJarDB>;
@@ -5587,23 +5769,24 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CookieJarDB.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CookieJarDB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CookieJarDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5617,32 +5800,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5651,39 +5834,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5694,13 +5877,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5708,7 +5894,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5716,9 +5902,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5738,9 +5924,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5754,33 +5940,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5813,21 +5999,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -5837,8 +6023,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5855,10 +6041,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5873,13 +6059,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5910,21 +6096,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5934,33 +6120,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5969,6 +6156,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5977,12 +6165,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5991,20 +6181,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6016,6 +6208,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6063,8 +6256,9 @@ export namespace Soup {
     /**
      * Text-file-based ("cookies.txt") Cookie Jar
      *
-     * [class`CookieJarText]` is a [class`CookieJar]` that reads cookies from and writes
+     * {@link CookieJarText} is a {@link CookieJar} that reads cookies from and writes
      * them to a text file in format similar to Mozilla's "cookies.txt".
+     * @gir-type Class
      */
     class CookieJarText extends CookieJar implements SessionFeature {
         static $gtype: GObject.GType<CookieJarText>;
@@ -6098,23 +6292,24 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CookieJarText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CookieJarText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CookieJarText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6128,32 +6323,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6162,39 +6357,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6205,13 +6400,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6219,7 +6417,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6227,9 +6425,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6249,9 +6447,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6265,33 +6463,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6324,21 +6522,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -6348,8 +6546,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6366,10 +6564,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6384,13 +6582,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6421,21 +6619,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6445,33 +6643,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6480,6 +6679,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6488,12 +6688,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6502,20 +6704,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6527,6 +6731,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6559,6 +6764,21 @@ export namespace Soup {
     namespace HSTSEnforcer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when `hsts_enforcer` changes.
+             *
+             * If a policy has been added,
+             * `new_policy` will contain the newly-added policy and
+             * `old_policy` will be `null`. If a policy has been deleted,
+             * `old_policy` will contain the to-be-deleted policy and
+             * `new_policy` will be `null`. If a policy has been changed,
+             * `old_policy` will contain its old value, and `new_policy` its
+             * new value.
+             *
+             * Note that you shouldn't modify the policies from a callback to
+             * this signal.
+             * @signal
+             */
             changed: (arg0: HSTSPolicy, arg1: HSTSPolicy) => void;
         }
 
@@ -6568,28 +6788,29 @@ export namespace Soup {
     }
 
     /**
-     * Automatic HTTP Strict Transport Security enforcing for [class`Session]`.
+     * Automatic HTTP Strict Transport Security enforcing for {@link Session}.
      *
-     * A [class`HSTSEnforcer]` stores HSTS policies and enforces them when
-     * required. [class`HSTSEnforcer]` implements [iface`SessionFeature]`, so you
+     * A {@link HSTSEnforcer} stores HSTS policies and enforces them when
+     * required. {@link HSTSEnforcer} implements {@link SessionFeature}, so you
      * can add an HSTS enforcer to a session with
-     * [method`Session`.add_feature] or [method`Session`.add_feature_by_type].
+     * {@link Session.add_feature} or {@link Session.add_feature_by_type}.
      *
-     * [class`HSTSEnforcer]` keeps track of all the HTTPS destinations that,
+     * {@link HSTSEnforcer} keeps track of all the HTTPS destinations that,
      * when connected to, return the Strict-Transport-Security header with
-     * valid values. [class`HSTSEnforcer]` will forget those destinations
+     * valid values. {@link HSTSEnforcer} will forget those destinations
      * upon expiry or when the server requests it.
      *
-     * When the [class`Session]` the [class`HSTSEnforcer]` is attached to queues or
-     * restarts a message, the [class`HSTSEnforcer]` will rewrite the URI to HTTPS if
+     * When the {@link Session} the {@link HSTSEnforcer} is attached to queues or
+     * restarts a message, the {@link HSTSEnforcer} will rewrite the URI to HTTPS if
      * the destination is a known HSTS host and is contacted over an insecure
-     * transport protocol (HTTP). Users of [class`HSTSEnforcer]` are advised to listen
-     * to changes in the [property`Message:`uri] property in order to be aware of
+     * transport protocol (HTTP). Users of {@link HSTSEnforcer} are advised to listen
+     * to changes in the {@link Message.uri} property in order to be aware of
      * changes in the message URI.
      *
-     * Note that [class`HSTSEnforcer]` does not support any form of long-term
-     * HSTS policy persistence. See [class`HSTSEnforcerDB]` for a persistent
+     * Note that {@link HSTSEnforcer} does not support any form of long-term
+     * HSTS policy persistence. See {@link HSTSEnforcerDB} for a persistent
      * enforcer.
+     * @gir-type Class
      */
     class HSTSEnforcer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<HSTSEnforcer>;
@@ -6613,16 +6834,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HSTSEnforcer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HSTSEnforcer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HSTSEnforcer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6632,18 +6856,21 @@ export namespace Soup {
         // Virtual methods
 
         /**
-         * The class closure for the [signal`HSTSEnforcer:`:changed] signal.
+         * The class closure for the `Soup.HSTSEnforcer::changed` signal.
          * @param old_policy
          * @param new_policy
+         * @virtual
          */
         vfunc_changed(old_policy: HSTSPolicy, new_policy: HSTSPolicy): void;
         /**
          * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
          * @param domain a domain.
+         * @virtual
          */
         vfunc_has_valid_policy(domain: string): boolean;
         /**
          * Gets whether `hsts_enforcer` stores policies persistenly.
+         * @virtual
          */
         vfunc_is_persistent(): boolean;
 
@@ -6652,24 +6879,24 @@ export namespace Soup {
         /**
          * Gets a list of domains for which there are policies in `enforcer`.
          * @param session_policies whether to include session policies
-         * @returns a newly allocated   list of domains. Use [func@GLib.List.free_full] and [func@GLib.free] to free the   list.
+         * @returns a newly allocated   list of domains. Use {@link GLib.List.free_full} and {@link GLib.free} to free the   list.
          */
         get_domains(session_policies: boolean): string[];
         /**
          * Gets a list with the policies in `enforcer`.
          * @param session_policies whether to include session policies
-         * @returns a newly   allocated list of policies. Use [func@GLib.List.free_full] and   [method@HSTSPolicy.free] to free the list.
+         * @returns a newly   allocated list of policies. Use {@link GLib.List.free_full} and   {@link HSTSPolicy.free} to free the list.
          */
         get_policies(session_policies: boolean): HSTSPolicy[];
         /**
          * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
          * @param domain a domain.
-         * @returns %TRUE if access to @domain should happen over HTTPS, false   otherwise.
+         * @returns `true` if access to `domain` should happen over HTTPS, false   otherwise.
          */
         has_valid_policy(domain: string): boolean;
         /**
          * Gets whether `hsts_enforcer` stores policies persistenly.
-         * @returns %TRUE if @hsts_enforcer storage is persistent or %FALSE otherwise.
+         * @returns `true` if `hsts_enforcer` storage is persistent or `false` otherwise.
          */
         is_persistent(): boolean;
         /**
@@ -6678,9 +6905,9 @@ export namespace Soup {
          * If `policy` is expired, any existing HSTS policy for its host will be removed
          * instead. If a policy existed for this host, it will be replaced. Otherwise,
          * the new policy will be inserted. If the policy is a session policy, that is,
-         * one created with [ctor`HSTSPolicy`.new_session_policy], the policy will not
-         * expire and will be enforced during the lifetime of `hsts_enforcer'`s
-         * [class`Session]`.
+         * one created with {@link HSTSPolicy.new_session_policy}, the policy will not
+         * expire and will be enforced during the lifetime of `hsts_enforcer`'s
+         * {@link Session}.
          * @param policy the policy of the HSTS host
          */
         set_policy(policy: HSTSPolicy): void;
@@ -6688,13 +6915,11 @@ export namespace Soup {
          * Sets a session policy for `domain`.
          *
          * A session policy is a policy that is permanent to the lifetime of
-         * `hsts_enforcer'`s [class`Session]` and doesn't expire.
+         * `hsts_enforcer`'s {@link Session} and doesn't expire.
          * @param domain policy domain or hostname
-         * @param include_subdomains %TRUE if the policy applies on sub domains
+         * @param include_subdomains `true` if the policy applies on sub domains
          */
         set_session_policy(domain: string, include_subdomains: boolean): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6708,32 +6933,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6742,39 +6967,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6785,13 +7010,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6799,7 +7027,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6807,9 +7035,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6829,9 +7057,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6845,33 +7073,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6904,21 +7132,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -6928,8 +7156,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6946,10 +7174,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6964,13 +7192,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7001,21 +7229,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7025,33 +7253,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7060,6 +7289,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7068,12 +7298,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7082,20 +7314,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7107,6 +7341,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7152,8 +7387,9 @@ export namespace Soup {
     /**
      * Persistent HTTP Strict Transport Security enforcer.
      *
-     * [class`HSTSEnforcerDB]` is a [class`HSTSEnforcer]` that uses a SQLite
+     * {@link HSTSEnforcerDB} is a {@link HSTSEnforcer} that uses a SQLite
      * database as a backend for persistency.
+     * @gir-type Class
      */
     class HSTSEnforcerDB extends HSTSEnforcer implements SessionFeature {
         static $gtype: GObject.GType<HSTSEnforcerDB>;
@@ -7187,23 +7423,24 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HSTSEnforcerDB.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HSTSEnforcerDB.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HSTSEnforcerDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7217,32 +7454,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7251,39 +7488,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7294,13 +7531,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7308,7 +7548,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7316,9 +7556,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7338,9 +7578,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7354,33 +7594,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7413,21 +7653,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -7437,8 +7677,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7455,10 +7695,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7473,13 +7713,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7510,21 +7750,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7534,33 +7774,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7569,6 +7810,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7577,12 +7819,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7591,20 +7835,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7616,6 +7862,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7664,16 +7911,16 @@ export namespace Soup {
     /**
      * Debug logging support
      *
-     * [class`Logger]` watches a [class`Session]` and logs the HTTP traffic that
+     * {@link Logger} watches a {@link Session} and logs the HTTP traffic that
      * it generates, for debugging purposes. Many applications use an
      * environment variable to determine whether or not to use
-     * [class`Logger]`, and to determine the amount of debugging output.
+     * {@link Logger}, and to determine the amount of debugging output.
      *
-     * To use [class`Logger]`, first create a logger with [ctor`Logger`.new], optionally
-     * configure it with [method`Logger`.set_request_filter],
-     * [method`Logger`.set_response_filter], and [method`Logger`.set_printer], and
+     * To use {@link Logger}, first create a logger with {@link Logger.new}, optionally
+     * configure it with {@link Logger.set_request_filter},
+     * {@link Logger.set_response_filter}, and {@link Logger.set_printer}, and
      * then attach it to a session (or multiple sessions) with
-     * [method`Session`.add_feature].
+     * {@link Session.add_feature}.
      *
      * By default, the debugging output is sent to `stdout`, and looks something
      * like:
@@ -7697,29 +7944,30 @@ export namespace Soup {
      * request was sent, or the response fully received.
      *
      * The `Soup-Debug` line gives further debugging information about the
-     * [class`Session]`, [class`Message]`, and [class`Gio`.Socket] involved; the hex
+     * {@link Session}, {@link Message}, and {@link Gio.Socket} involved; the hex
      * numbers are the addresses of the objects in question (which may be useful if
      * you are running in a debugger). The decimal IDs are simply counters that
-     * uniquely identify objects across the lifetime of the [class`Logger]`. In
+     * uniquely identify objects across the lifetime of the {@link Logger}. In
      * particular, this can be used to identify when multiple messages are sent
      * across the same connection.
      *
      * Currently, the request half of the message is logged just before
      * the first byte of the request gets written to the network (from the
-     * [signal`Message:`:starting] signal).
+     * `Soup.Message::starting` signal).
      *
      * The response is logged just after the last byte of the response body is read
-     * from the network (from the [signal`Message:`:got-body] or
-     * [signal`Message:`:got-informational] signal), which means that the
-     * [signal`Message:`:got-headers] signal, and anything triggered off it (such as
-     * [signal`Message:`:authenticate]) will be emitted *before* the response headers are
+     * from the network (from the `Soup.Message::got-body` or
+     * `Soup.Message::got-informational` signal), which means that the
+     * `Soup.Message::got-headers` signal, and anything triggered off it (such as
+     * `Soup.Message::authenticate`) will be emitted *before* the response headers are
      * actually logged.
      *
-     * If the response doesn't happen to trigger the [signal`Message:`:got-body] nor
-     * [signal`Message:`:got-informational] signals due to, for example, a
+     * If the response doesn't happen to trigger the `Soup.Message::got-body` nor
+     * `Soup.Message::got-informational` signals due to, for example, a
      * cancellation before receiving the last byte of the response body, the
-     * response will still be logged on the event of the [signal`Message:`:finished]
+     * response will still be logged on the event of the `Soup.Message::finished`
      * signal.
+     * @gir-type Class
      */
     class Logger extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<Logger>;
@@ -7732,14 +7980,14 @@ export namespace Soup {
         get level(): LoggerLogLevel;
         set level(val: LoggerLogLevel);
         /**
-         * If [property`Logger:`level] is %SOUP_LOGGER_LOG_BODY, this gives
+         * If {@link Logger.level} is {@link Soup.LoggerLogLevel.BODY}, this gives
          * the maximum number of bytes of the body that will be logged.
          * (-1 means "no limit".)
          */
         get max_body_size(): number;
         set max_body_size(val: number);
         /**
-         * If [property`Logger:`level] is %SOUP_LOGGER_LOG_BODY, this gives
+         * If {@link Logger.level} is {@link Soup.LoggerLogLevel.BODY}, this gives
          * the maximum number of bytes of the body that will be logged.
          * (-1 means "no limit".)
          */
@@ -7765,16 +8013,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Logger.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Logger.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Logger.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Logger.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Logger.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Logger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7805,7 +8056,7 @@ export namespace Soup {
          * For each HTTP request `logger` will invoke `request_filter` to
          * determine how much (if any) of that request to log. (If you do not
          * set a request filter, `logger` will just always log requests at the
-         * level passed to [ctor`Logger`.new].)
+         * level passed to {@link Logger.new}.)
          * @param request_filter the callback for request debugging
          */
         set_request_filter(request_filter: LoggerFilter): void;
@@ -7815,12 +8066,10 @@ export namespace Soup {
          * For each HTTP response `logger` will invoke `response_filter` to
          * determine how much (if any) of that response to log. (If you do not
          * set a response filter, `logger` will just always log responses at
-         * the level passed to [ctor`Logger`.new].)
+         * the level passed to {@link Logger.new}.)
          * @param response_filter the callback for response debugging
          */
         set_response_filter(response_filter: LoggerFilter): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7834,32 +8083,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7868,39 +8117,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7911,13 +8160,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7925,7 +8177,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7933,9 +8185,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7955,9 +8207,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7971,33 +8223,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8030,21 +8282,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -8054,8 +8306,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8072,10 +8324,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8090,13 +8342,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8127,21 +8379,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8151,33 +8403,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8186,6 +8439,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8194,12 +8448,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8208,20 +8464,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8233,6 +8491,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8265,22 +8524,181 @@ export namespace Soup {
     namespace Message {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted during the `msg`'s connection TLS handshake
+             * after an unacceptable TLS certificate has been received.
+             *
+             * You can return `true` to accept `tls_certificate` despite
+             * `tls_errors`.
+             * @signal
+             */
             'accept-certificate': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => boolean | void;
+            /**
+             * Emitted when the message requires authentication.
+             *
+             * If credentials are available call {@link Auth.authenticate} on
+             * `auth`. If these credentials fail, the signal will be emitted again,
+             * with `retrying` set to `true`, which will continue until you return
+             * without calling {@link Auth.authenticate} on `auth`.
+             *
+             * Note that this may be emitted before `msg`'s body has been
+             * fully read.
+             *
+             * You can authenticate `auth` asynchronously by calling
+             * {@link GObject.Object.ref} on `auth` and returning `true`. The operation will
+             * complete once either {@link Auth.authenticate} or
+             * {@link Auth.cancel} are called.
+             * @signal
+             */
             authenticate: (arg0: Auth, arg1: boolean) => boolean | void;
+            /**
+             * This signal is emitted after `Soup.Message::got-headers`.
+             *
+             * If content sniffing is disabled, or no content sniffing will be
+             * performed, due to the sniffer deciding to trust the
+             * Content-Type sent by the server, this signal is emitted
+             * immediately after `Soup.Message::got-headers`, and `type` is
+             * `null`.
+             * @signal
+             */
             'content-sniffed': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            /**
+             * Emitted when all HTTP processing is finished for a message.
+             *
+             * (After `Soup.Message::got_body`).
+             * @signal
+             */
             finished: () => void;
+            /**
+             * Emitted after receiving the complete message response body.
+             * @signal
+             */
             'got-body': () => void;
+            /**
+             * Emitted after reading a portion of the message
+             * body from the network.
+             * @signal
+             * @since 3.4
+             */
             'got-body-data': (arg0: number) => void;
+            /**
+             * Emitted after receiving the Status-Line and response headers.
+             *
+             * See also {@link Message.add_header_handler} and
+             * {@link Message.add_status_code_handler}, which can be used to
+             * connect to a subset of emissions of this signal.
+             *
+             * If you cancel or requeue `msg` while processing this signal,
+             * then the current HTTP I/O will be stopped after this signal
+             * emission finished, and `msg`'s connection will be closed.
+             * (If you need to requeue a message--eg, after handling
+             * authentication or redirection--it is usually better to
+             * requeue it from a `Soup.Message::got-body` handler rather
+             * than a `Soup.Message::got_headers` handler, so that the
+             * existing HTTP connection can be reused.)
+             * @signal
+             */
             'got-headers': () => void;
+            /**
+             * Emitted after receiving a 1xx (Informational) response for
+             * a (client-side) message.
+             *
+             * The response_headers will be filled in with the headers associated
+             * with the informational response; however, those header values will be
+             * erased after this signal is done.
+             *
+             * If you cancel or requeue `msg` while processing this signal,
+             * then the current HTTP I/O will be stopped after this signal
+             * emission finished, and `msg`'s connection will be closed.
+             * @signal
+             */
             'got-informational': () => void;
+            /**
+             * Emitted when {@link HSTSEnforcer} has upgraded the protocol
+             * for `msg` to HTTPS as a result of matching its domain with
+             * a HSTS policy.
+             * @signal
+             */
             'hsts-enforced': () => void;
+            /**
+             * Emitted to indicate that some network-related event
+             * related to `msg` has occurred.
+             *
+             * This essentially proxies the `Gio.SocketClient::event` signal,
+             * but only for events that occur while `msg` "owns" the connection; if
+             * `msg` is sent on an existing persistent connection, then this signal
+             * will not be emitted. (If you want to force the message to be sent on
+             * a new connection, set the {@link Soup.MessageFlags.NEW_CONNECTION} flag on it.)
+             *
+             * See `Gio.SocketClient::event` for more information on what
+             * the different values of `event` correspond to, and what
+             * `connection` will be in each case.
+             * @signal
+             */
             'network-event': (arg0: Gio.SocketClientEvent, arg1: Gio.IOStream) => void;
+            /**
+             * Emitted during the `msg`'s connection TLS handshake when
+             * `tls_connection` requests a certificate from the client.
+             *
+             * You can set the client certificate by calling
+             * {@link Message.set_tls_client_certificate} and returning `true`. It's
+             * possible to handle the request asynchornously by returning `true` and
+             * call {@link Message.set_tls_client_certificate} later once the
+             * certificate is available. Note that this signal is not emitted if
+             * {@link Session.tls_interaction} was set, or if
+             * {@link Message.set_tls_client_certificate} was called before the
+             * connection TLS handshake started.
+             * @signal
+             */
             'request-certificate': (arg0: Gio.TlsClientConnection) => boolean | void;
+            /**
+             * Emitted during the `msg`'s connection TLS handshake when
+             * `tls_connection` requests a certificate password from the client.
+             *
+             * You can set the certificate password on `password`, then call
+             * {@link Message.tls_client_certificate_password_request_complete} and
+             * return `true` to handle the signal synchronously. It's possible to
+             * handle the request asynchornously by calling
+             * {@link GObject.Object.ref} on `password`, then returning `true` and
+             * call
+             * {@link Message.tls_client_certificate_password_request_complete}
+             * later after setting the password on `password`. Note that this signal
+             * is not emitted if {@link Session.tls_interaction} was set.
+             * @signal
+             */
             'request-certificate-password': (arg0: Gio.TlsPassword) => boolean | void;
+            /**
+             * Emitted when a request that was already sent once is now
+             * being sent again.
+             *
+             * e.g. because the first attempt received a
+             * redirection response, or because we needed to use
+             * authentication.
+             * @signal
+             */
             restarted: () => void;
+            /**
+             * Emitted just before a message is sent.
+             * @signal
+             */
             starting: () => void;
+            /**
+             * Emitted immediately after writing the complete body for a
+             * message.
+             * @signal
+             */
             'wrote-body': () => void;
+            /**
+             * Emitted immediately after writing a portion of the message
+             * body to the network.
+             * @signal
+             */
             'wrote-body-data': (arg0: number) => void;
+            /**
+             * Emitted immediately after writing the request headers for a
+             * message.
+             * @signal
+             */
             'wrote-headers': () => void;
             'notify::first-party': (pspec: GObject.ParamSpec) => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
@@ -8343,26 +8761,27 @@ export namespace Soup {
     /**
      * Represents an HTTP message being sent or received.
      *
-     * A [class`Message]` represents an HTTP message that is being sent or
+     * A {@link Message} represents an HTTP message that is being sent or
      * received.
      *
-     * You would create a [class`Message]` with [ctor`Message`.new] or
-     * [ctor`Message`.new_from_uri], set up its fields appropriately, and send it.
+     * You would create a {@link Message} with {@link Message.new} or
+     * {@link Message.new_from_uri}, set up its fields appropriately, and send it.
      *
-     * [property`Message:`status-code] will normally be a [enum`Status]` value, eg,
-     * %SOUP_STATUS_OK, though of course it might actually be an unknown status
-     * code. [property`Message:`reason-phrase] is the actual text returned from the
+     * {@link Message.status_code} will normally be a {@link Status} value, eg,
+     * {@link Soup.Status.OK}, though of course it might actually be an unknown status
+     * code. {@link Message.reason_phrase} is the actual text returned from the
      * server, which may or may not correspond to the "standard" description of
      * `status_code`. At any rate, it is almost certainly not localized, and not very
      * descriptive even if it is in the user's language; you should not use
-     * [property`Message:`reason-phrase] in user-visible messages. Rather, you should
-     * look at [property`Message:`status-code], and determine an end-user-appropriate
+     * {@link Message.reason_phrase} in user-visible messages. Rather, you should
+     * look at {@link Message.status_code}, and determine an end-user-appropriate
      * message based on that and on what you were trying to do.
      *
      * Note that libsoup's terminology here does not quite match the HTTP
      * specification: in RFC 2616, an "HTTP-message" is *either* a Request, *or* a
-     * Response. In libsoup, a [class`Message]` combines both the request and the
+     * Response. In libsoup, a {@link Message} combines both the request and the
      * response.
+     * @gir-type Class
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
@@ -8370,13 +8789,13 @@ export namespace Soup {
         // Properties
 
         /**
-         * The [struct`GLib`.Uri] loaded in the application when the message was
+         * The {@link GLib.Uri} loaded in the application when the message was
          * queued.
          */
         get first_party(): GLib.Uri;
         set first_party(val: GLib.Uri);
         /**
-         * The [struct`GLib`.Uri] loaded in the application when the message was
+         * The {@link GLib.Uri} loaded in the application when the message was
          * queued.
          */
         get firstParty(): GLib.Uri;
@@ -8397,20 +8816,20 @@ export namespace Soup {
         /**
          * Whether the message is an OPTIONS ping.
          *
-         * The [class`Message]` is intended to be used to send
-         * `OPTIONS *` to a server. When set to %TRUE, the
-         * path of [property`Message:`uri] will be ignored and
-         * [property`Message:`method] set to %SOUP_METHOD_OPTIONS.
+         * The {@link Message} is intended to be used to send
+         * `OPTIONS *` to a server. When set to `true`, the
+         * path of {@link Message.uri} will be ignored and
+         * {@link Message.method} set to `SOUP_METHOD_OPTIONS`.
          */
         get is_options_ping(): boolean;
         set is_options_ping(val: boolean);
         /**
          * Whether the message is an OPTIONS ping.
          *
-         * The [class`Message]` is intended to be used to send
-         * `OPTIONS *` to a server. When set to %TRUE, the
-         * path of [property`Message:`uri] will be ignored and
-         * [property`Message:`method] set to %SOUP_METHOD_OPTIONS.
+         * The {@link Message} is intended to be used to send
+         * `OPTIONS *` to a server. When set to `true`, the
+         * path of {@link Message.uri} will be ignored and
+         * {@link Message.method} set to `SOUP_METHOD_OPTIONS`.
          */
         get isOptionsPing(): boolean;
         set isOptionsPing(val: boolean);
@@ -8430,8 +8849,8 @@ export namespace Soup {
         get method(): string;
         set method(val: string);
         /**
-         * Sets the priority of the [class`Message]`. See
-         * [method`Message`.set_priority] for further details.
+         * Sets the priority of the {@link Message}. See
+         * {@link Message.set_priority} for further details.
          */
         get priority(): MessagePriority;
         set priority(val: MessagePriority);
@@ -8444,12 +8863,12 @@ export namespace Soup {
          */
         get reasonPhrase(): string;
         /**
-         * The remote [class`Gio`.SocketAddress] of the connection associated
+         * The remote {@link Gio.SocketAddress} of the connection associated
          * with the message.
          */
         get remote_address(): Gio.SocketAddress;
         /**
-         * The remote [class`Gio`.SocketAddress] of the connection associated
+         * The remote {@link Gio.SocketAddress} of the connection associated
          * with the message.
          */
         get remoteAddress(): Gio.SocketAddress;
@@ -8496,19 +8915,19 @@ export namespace Soup {
          */
         get tlsCiphersuiteName(): string;
         /**
-         * The peer's [class`Gio`.TlsCertificate] associated with the message.
+         * The peer's {@link Gio.TlsCertificate} associated with the message.
          */
         get tls_peer_certificate(): Gio.TlsCertificate;
         /**
-         * The peer's [class`Gio`.TlsCertificate] associated with the message.
+         * The peer's {@link Gio.TlsCertificate} associated with the message.
          */
         get tlsPeerCertificate(): Gio.TlsCertificate;
         /**
-         * The verification errors on [property`Message:`tls-peer-certificate].
+         * The verification errors on {@link Message.tls_peer_certificate}.
          */
         get tls_peer_certificate_errors(): Gio.TlsCertificateFlags;
         /**
-         * The verification errors on [property`Message:`tls-peer-certificate].
+         * The verification errors on {@link Message.tls_peer_certificate}.
          */
         get tlsPeerCertificateErrors(): Gio.TlsCertificateFlags;
         /**
@@ -8552,16 +8971,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8571,12 +8993,12 @@ export namespace Soup {
         // Methods
 
         /**
-         * Adds `flags` to the set of `msg'`s flags.
-         * @param flags a set of #SoupMessageFlags values
+         * Adds `flags` to the set of `msg`'s flags.
+         * @param flags a set of {@link Soup.MessageFlags} values
          */
         add_flags(flags: MessageFlags | null): void;
         /**
-         * Disables the actions of [iface`SessionFeature]`s with the
+         * Disables the actions of {@link SessionFeature}s with the
          * given `feature_type` (or a subclass of that type) on `msg`.
          *
          * `msg` is processed as though the feature(s) hadn't been added to the
@@ -8587,7 +9009,7 @@ export namespace Soup {
          * a message that has already been queued is undefined. In particular,
          * you cannot call this on a message that is being requeued after a
          * redirect or authentication.
-         * @param feature_type the #GType of a [iface@SessionFeature]
+         * @param feature_type the {@link GObject.GType} of a {@link SessionFeature}
          */
         disable_feature(feature_type: GObject.GType): void;
         /**
@@ -8599,8 +9021,8 @@ export namespace Soup {
          */
         get_connection_id(): number;
         /**
-         * Gets `msg'`s first-party [struct`GLib`.Uri].
-         * @returns the @msg's first party #GUri
+         * Gets `msg`'s first-party {@link GLib.Uri}.
+         * @returns the `msg`'s first party {@link GLib.Uri}
          */
         get_first_party(): GLib.Uri;
         /**
@@ -8610,7 +9032,7 @@ export namespace Soup {
         get_flags(): MessageFlags;
         /**
          * Returns whether HTTP/1 version is currently demanded for the `msg` send.
-         * @returns %TRUE, when HTTP/1 is demanded, %FALSE otherwise.
+         * @returns `true`, when HTTP/1 is demanded, `false` otherwise.
          */
         get_force_http1(): boolean;
         /**
@@ -8623,7 +9045,7 @@ export namespace Soup {
         get_http_version(): HTTPVersion;
         /**
          * Gets whether `msg` is intended to be used to send `OPTIONS *` to a server.
-         * @returns %TRUE if the message is options ping, or %FALSE otherwise
+         * @returns `true` if the message is options ping, or `false` otherwise
          */
         get_is_options_ping(): boolean;
         /**
@@ -8635,19 +9057,19 @@ export namespace Soup {
         get_is_top_level_navigation(): boolean;
         /**
          * Returns the method of this message.
-         * @returns A method such as %SOUP_METHOD_GET
+         * @returns A method such as `SOUP_METHOD_GET`
          */
         get_method(): string;
         /**
-         * Get the [struct`MessageMetrics]` of `msg`.
+         * Get the {@link MessageMetrics} of `msg`.
          *
-         * If the flag %SOUP_MESSAGE_COLLECT_METRICS is not enabled for `msg` this will
-         * return %NULL.
-         * @returns a #SoupMessageMetrics
+         * If the flag {@link Soup.MessageFlags.COLLECT_METRICS} is not enabled for `msg` this will
+         * return `null`.
+         * @returns a {@link Soup.MessageMetrics}
          */
         get_metrics(): MessageMetrics | null;
         /**
-         * Retrieves the [enum`MessagePriority]`.
+         * Retrieves the {@link MessagePriority}.
          *
          * If not set this value defaults to #SOUP_MESSAGE_PRIORITY_NORMAL.
          * @returns the priority of the message.
@@ -8659,108 +9081,108 @@ export namespace Soup {
          */
         get_reason_phrase(): string | null;
         /**
-         * Get the remote [class`Gio`.SocketAddress] of the connection associated with
+         * Get the remote {@link Gio.SocketAddress} of the connection associated with
          * the message.
          *
-         * The returned address can be %NULL if the connection hasn't been established
+         * The returned address can be `null` if the connection hasn't been established
          * yet, or the resource was loaded from the disk cache. In case of proxy
-         * connections, the remote address returned is a [class`Gio`.ProxyAddress]. If
-         * [property`Session:`remote-connectable] is set the returned address id for the
+         * connections, the remote address returned is a {@link Gio.ProxyAddress}. If
+         * {@link Session.remote_connectable} is set the returned address id for the
          * connection to the session's remote connectable.
-         * @returns a #GSocketAddress or %NULL if the connection     hasn't been established
+         * @returns a {@link Gio.SocketAddress} or `null` if the connection     hasn't been established
          */
         get_remote_address(): Gio.SocketAddress | null;
         /**
          * Returns the headers sent with the request.
-         * @returns The [struct@MessageHeaders]
+         * @returns The {@link MessageHeaders}
          */
         get_request_headers(): MessageHeaders;
         /**
          * Returns the headers recieved with the response.
-         * @returns The [struct@MessageHeaders]
+         * @returns The {@link MessageHeaders}
          */
         get_response_headers(): MessageHeaders;
         /**
-         * Gets `msg'`s site for cookies #GUri.
-         * @returns the @msg's site for cookies #GUri
+         * Gets `msg`'s site for cookies {@link GLib.Uri}.
+         * @returns the `msg`'s site for cookies {@link GLib.Uri}
          */
         get_site_for_cookies(): GLib.Uri;
         /**
          * Returns the set status of this message.
-         * @returns The #SoupStatus
+         * @returns The {@link Soup.Status}
          */
         get_status(): Status;
         /**
-         * Gets the name of the TLS ciphersuite negotiated for `msg'`s connection.
-         * @returns the name of the TLS ciphersuite,   or %NULL if @msg's connection is not SSL.
+         * Gets the name of the TLS ciphersuite negotiated for `msg`'s connection.
+         * @returns the name of the TLS ciphersuite,   or `null` if `msg`'s connection is not SSL.
          */
         get_tls_ciphersuite_name(): string;
         /**
-         * Gets the peer's [class`Gio`.TlsCertificate] associated with `msg'`s connection.
+         * Gets the peer's {@link Gio.TlsCertificate} associated with `msg`'s connection.
          *
          * Note that this is not set yet during the emission of
-         * [signal`Message:`:accept-certificate] signal.
-         * @returns @msg's TLS peer certificate,   or %NULL if @msg's connection is not SSL.
+         * `Soup.Message::accept-certificate` signal.
+         * @returns `msg`'s TLS peer certificate,   or `null` if `msg`'s connection is not SSL.
          */
         get_tls_peer_certificate(): Gio.TlsCertificate | null;
         /**
-         * Gets the errors associated with validating `msg'`s TLS peer certificate.
+         * Gets the errors associated with validating `msg`'s TLS peer certificate.
          * Note that this is not set yet during the emission of
-         * [signal`Message:`:accept-certificate] signal.
-         * @returns a #GTlsCertificateFlags with @msg's TLS peer certificate errors.
+         * `Soup.Message::accept-certificate` signal.
+         * @returns a {@link Gio.TlsCertificateFlags} with `msg`'s TLS peer certificate errors.
          */
         get_tls_peer_certificate_errors(): Gio.TlsCertificateFlags;
         /**
-         * Gets the TLS protocol version negotiated for `msg'`s connection.
+         * Gets the TLS protocol version negotiated for `msg`'s connection.
          *
-         * If the message connection is not SSL, %G_TLS_PROTOCOL_VERSION_UNKNOWN is returned.
-         * @returns a #GTlsProtocolVersion
+         * If the message connection is not SSL, {@link Gio.TlsProtocolVersion.UNKNOWN} is returned.
+         * @returns a {@link Gio.TlsProtocolVersion}
          */
         get_tls_protocol_version(): Gio.TlsProtocolVersion;
         /**
-         * Gets `msg'`s URI.
-         * @returns the URI @msg is targeted for.
+         * Gets `msg`'s URI.
+         * @returns the URI `msg` is targeted for.
          */
         get_uri(): GLib.Uri;
         /**
-         * Get whether [iface`SessionFeature]`s of the given `feature_type`
+         * Get whether {@link SessionFeature}s of the given `feature_type`
          * (or a subclass of that type) are disabled on `msg`.
          *
-         * See [method`Message`.disable_feature].
-         * @param feature_type the #GType of a [iface@SessionFeature]
-         * @returns %TRUE if feature is disabled, or %FALSE otherwise.
+         * See {@link Message.disable_feature}.
+         * @param feature_type the {@link GObject.GType} of a {@link SessionFeature}
+         * @returns `true` if feature is disabled, or `false` otherwise.
          */
         is_feature_disabled(feature_type: GObject.GType): boolean;
         /**
-         * Determines whether or not `msg'`s connection can be kept alive for
+         * Determines whether or not `msg`'s connection can be kept alive for
          * further requests after processing `msg`.
          *
          * The result is based on the HTTP version, Connection header, etc.
-         * @returns %TRUE or %FALSE.
+         * @returns `true` or `false`.
          */
         is_keepalive(): boolean;
         /**
-         * Queries if `flags` are present in the set of `msg'`s flags.
-         * @param flags a set of #SoupMessageFlags values
-         * @returns %TRUE if @flags are enabled in @msg
+         * Queries if `flags` are present in the set of `msg`'s flags.
+         * @param flags a set of {@link Soup.MessageFlags} values
+         * @returns `true` if `flags` are enabled in `msg`
          */
         query_flags(flags: MessageFlags | null): boolean;
         /**
-         * Removes `flags` from the set of `msg'`s flags.
-         * @param flags a set of #SoupMessageFlags values
+         * Removes `flags` from the set of `msg`'s flags.
+         * @param flags a set of {@link Soup.MessageFlags} values
          */
         remove_flags(flags: MessageFlags | null): void;
         /**
-         * Sets `first_party` as the main document #GUri for `msg`.
+         * Sets `first_party` as the main document {@link GLib.Uri} for `msg`.
          *
          * For details of when and how this is used refer to the documentation for
-         * [enum`CookieJarAcceptPolicy]`.
-         * @param first_party the #GUri for the @msg's first party
+         * {@link CookieJarAcceptPolicy}.
+         * @param first_party the {@link GLib.Uri} for the `msg`'s first party
          */
         set_first_party(first_party: GLib.Uri): void;
         /**
          * Sets the specified flags on `msg`.
-         * @param flags a set of #SoupMessageFlags values
+         * @param flags a set of {@link Soup.MessageFlags} values
          */
         set_flags(flags: MessageFlags | null): void;
         /**
@@ -8774,8 +9196,8 @@ export namespace Soup {
         /**
          * Set whether `msg` is intended to be used to send `OPTIONS *` to a server.
          *
-         * When set to %TRUE, the path of [property`Message:`uri] will be ignored and
-         * [property`Message:`method] set to %SOUP_METHOD_OPTIONS.
+         * When set to `true`, the path of {@link Message.uri} will be ignored and
+         * {@link Message.method} set to `SOUP_METHOD_OPTIONS`.
          * @param is_options_ping the value to set
          */
         set_is_options_ping(is_options_ping: boolean): void;
@@ -8784,11 +9206,11 @@ export namespace Soup {
          *
          * See the [same-site spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
          * for more information.
-         * @param is_top_level_navigation if %TRUE indicate the current request is a top-level navigation
+         * @param is_top_level_navigation if `true` indicate the current request is a top-level navigation
          */
         set_is_top_level_navigation(is_top_level_navigation: boolean): void;
         /**
-         * Set `msg'`s HTTP method to `method`.
+         * Set `msg`'s HTTP method to `method`.
          * @param method the value to set
          */
         set_method(method: string): void;
@@ -8805,71 +9227,71 @@ export namespace Soup {
          * Setting priorities does not currently work with synchronous messages
          * because in the synchronous/blocking case, priority ends up being determined
          * semi-randomly by thread scheduling.
-         * @param priority the #SoupMessagePriority
+         * @param priority the {@link Soup.MessagePriority}
          */
         set_priority(priority: MessagePriority | null): void;
         /**
-         * Set the request body of a [class`Message]`.
+         * Set the request body of a {@link Message}.
          *
-         * If `content_type` is %NULL and `stream` is not %NULL the Content-Type header will
+         * If `content_type` is `null` and `stream` is not `null` the Content-Type header will
          * not be changed if present.
          * The request body needs to be set again in case `msg` is restarted
          * (in case of redirection or authentication).
-         * @param content_type MIME Content-Type of the body, or %NULL if unknown
-         * @param stream a #GInputStream to read the request body from
-         * @param content_length the byte length of @stream or -1 if unknown
+         * @param content_type MIME Content-Type of the body, or `null` if unknown
+         * @param stream a {@link Gio.InputStream} to read the request body from
+         * @param content_length the byte length of `stream` or -1 if unknown
          */
         set_request_body(content_type: string | null, stream: Gio.InputStream | null, content_length: number): void;
         /**
-         * Set the request body of a [class`Message]` from [struct`GLib`.Bytes].
+         * Set the request body of a {@link Message} from {@link GLib.Bytes}.
          *
-         * If `content_type` is %NULL and `bytes` is not %NULL the Content-Type header will
+         * If `content_type` is `null` and `bytes` is not `null` the Content-Type header will
          * not be changed if present.
          * The request body needs to be set again in case `msg` is restarted
          * (in case of redirection or authentication).
-         * @param content_type MIME Content-Type of the body, or %NULL if unknown
-         * @param bytes a #GBytes with the request body data
+         * @param content_type MIME Content-Type of the body, or `null` if unknown
+         * @param bytes a {@link GLib.Bytes} with the request body data
          */
         set_request_body_from_bytes(content_type?: string | null, bytes?: GLib.Bytes | null): void;
         /**
          * Sets `site_for_cookies` as the policy URL for same-site cookies for `msg`.
          *
-         * It is either the URL of the top-level document or %NULL depending on whether
+         * It is either the URL of the top-level document or `null` depending on whether
          * the registrable domain of this document's URL matches the registrable domain
          * of its parent's/opener's URL. For the top-level document it is set to the
          * document's URL.
          *
          * See the [same-site spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
          * for more information.
-         * @param site_for_cookies the #GUri for the @msg's site for cookies
+         * @param site_for_cookies the {@link GLib.Uri} for the `msg`'s site for cookies
          */
         set_site_for_cookies(site_for_cookies?: GLib.Uri | null): void;
         /**
-         * Sets the `certificate` to be used by `msg'`s connection when a
+         * Sets the `certificate` to be used by `msg`'s connection when a
          * client certificate is requested during the TLS handshake.
          *
-         * You can call this as a response to [signal`Message:`:request-certificate]
-         * signal, or before the connection is started. If `certificate` is %NULL
+         * You can call this as a response to `Soup.Message::request-certificate`
+         * signal, or before the connection is started. If `certificate` is `null`
          * the handshake will continue without providing a GTlsCertificate.
-         * Note that the [class`Gio`.TlsCertificate] set by this function will be ignored if
-         * [property`Session:`tls-interaction] is not %NULL.
-         * @param certificate the #GTlsCertificate to set, or %NULL
+         * Note that the {@link Gio.TlsCertificate} set by this function will be ignored if
+         * {@link Session.tls_interaction} is not `null`.
+         * @param certificate the {@link Gio.TlsCertificate} to set, or `null`
          */
         set_tls_client_certificate(certificate?: Gio.TlsCertificate | null): void;
         /**
-         * Sets `msg'`s URI to `uri`.
+         * Sets `msg`'s URI to `uri`.
          *
          * If `msg` has already been sent and you want to re-send it with the new URI,
          * you need to send it again.
-         * @param uri the new #GUri
+         * @param uri the new {@link GLib.Uri}
          */
         set_uri(uri: GLib.Uri): void;
         /**
          * Completes a certificate password request.
          *
          * You must call this as a response to
-         * [signal`Message:`:request-certificate-password] signal, to notify `msg` that
-         * the [class`Gio`.TlsPassword] has already been updated.
+         * `Soup.Message::request-certificate-password` signal, to notify `msg` that
+         * the {@link Gio.TlsPassword} has already been updated.
          */
         tls_client_certificate_password_request_complete(): void;
     }
@@ -8894,14 +9316,15 @@ export namespace Soup {
      * Handles streams of multipart messages.
      *
      * This adds support for the multipart responses. For handling the
-     * multiple parts the user needs to wrap the [class`Gio`.InputStream] obtained by
-     * sending the request with a [class`MultipartInputStream]` and use
-     * [method`MultipartInputStream`.next_part] before reading. Responses
+     * multiple parts the user needs to wrap the {@link Gio.InputStream} obtained by
+     * sending the request with a {@link MultipartInputStream} and use
+     * {@link MultipartInputStream.next_part} before reading. Responses
      * which are not wrapped will be treated like non-multipart responses.
      *
-     * Note that although [class`MultipartInputStream]` is a [class`Gio`.InputStream],
+     * Note that although {@link MultipartInputStream} is a {@link Gio.InputStream},
      * you should not read directly from it, and the results are undefined
      * if you do.
+     * @gir-type Class
      */
     class MultipartInputStream extends Gio.FilterInputStream implements Gio.PollableInputStream {
         static $gtype: GObject.GType<MultipartInputStream>;
@@ -8909,7 +9332,7 @@ export namespace Soup {
         // Properties
 
         /**
-         * The [class`Message]`.
+         * The {@link Message}.
          */
         get message(): Message;
 
@@ -8932,16 +9355,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultipartInputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MultipartInputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MultipartInputStream.SignalSignatures[K]> extends [any, ...infer Q]
@@ -8955,52 +9381,52 @@ export namespace Soup {
         /**
          * Obtains the headers for the part currently being processed.
          *
-         * Note that the [struct`MessageHeaders]` that are returned are owned by the
-         * [class`MultipartInputStream]` and will be replaced when a call is made to
-         * [method`MultipartInputStream`.next_part] or its async counterpart, so if
+         * Note that the {@link MessageHeaders} that are returned are owned by the
+         * {@link MultipartInputStream} and will be replaced when a call is made to
+         * {@link MultipartInputStream.next_part} or its async counterpart, so if
          * keeping the headers is required, a copy must be made.
          *
-         * Note that if a part had no headers at all an empty [struct`MessageHeaders]`
+         * Note that if a part had no headers at all an empty {@link MessageHeaders}
          * will be returned.
-         * @returns a #SoupMessageHeaders   containing the headers for the part currently being processed or   %NULL if the headers failed to parse.
+         * @returns a {@link Soup.MessageHeaders}   containing the headers for the part currently being processed or   `null` if the headers failed to parse.
          */
         get_headers(): MessageHeaders | null;
         /**
          * Obtains an input stream for the next part.
          *
          * When dealing with a multipart response the input stream needs to be wrapped
-         * in a [class`MultipartInputStream]` and this function or its async counterpart
+         * in a {@link MultipartInputStream} and this function or its async counterpart
          * need to be called to obtain the first part for reading.
          *
          * After calling this function,
-         * [method`MultipartInputStream`.get_headers] can be used to obtain the
+         * {@link MultipartInputStream.get_headers} can be used to obtain the
          * headers for the first part. A read of 0 bytes indicates the end of
          * the part; a new call to this function should be done at that point,
          * to obtain the next part.
          *
-         * `error` will only be set if an error happens during a read, %NULL
+         * `error` will only be set if an error happens during a read, `null`
          * is a valid return value otherwise.
-         * @param cancellable a #GCancellable
-         * @returns a new #GInputStream, or   %NULL if there are no more parts
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a new {@link Gio.InputStream}, or   `null` if there are no more parts
          */
         next_part(cancellable?: Gio.Cancellable | null): Gio.InputStream | null;
         /**
-         * Obtains a [class`Gio`.InputStream] for the next request.
+         * Obtains a {@link Gio.InputStream} for the next request.
          *
-         * See [method`MultipartInputStream`.next_part] for details on the workflow.
+         * See {@link MultipartInputStream.next_part} for details on the workflow.
          * @param io_priority the I/O priority for the request.
-         * @param cancellable a #GCancellable.
+         * @param cancellable a {@link Gio.Cancellable}.
          */
         next_part_async(
             io_priority: number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<Gio.InputStream | null>;
         /**
-         * Obtains a [class`Gio`.InputStream] for the next request.
+         * Obtains a {@link Gio.InputStream} for the next request.
          *
-         * See [method`MultipartInputStream`.next_part] for details on the workflow.
+         * See {@link MultipartInputStream.next_part} for details on the workflow.
          * @param io_priority the I/O priority for the request.
-         * @param cancellable a #GCancellable.
+         * @param cancellable a {@link Gio.Cancellable}.
          * @param callback callback to call when request is satisfied.
          */
         next_part_async(
@@ -9009,11 +9435,11 @@ export namespace Soup {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Obtains a [class`Gio`.InputStream] for the next request.
+         * Obtains a {@link Gio.InputStream} for the next request.
          *
-         * See [method`MultipartInputStream`.next_part] for details on the workflow.
+         * See {@link MultipartInputStream.next_part} for details on the workflow.
          * @param io_priority the I/O priority for the request.
-         * @param cancellable a #GCancellable.
+         * @param cancellable a {@link Gio.Cancellable}.
          * @param callback callback to call when request is satisfied.
          */
         next_part_async(
@@ -9023,59 +9449,57 @@ export namespace Soup {
         ): globalThis.Promise<Gio.InputStream | null> | void;
         /**
          * Finishes an asynchronous request for the next part.
-         * @param result a #GAsyncResult.
-         * @returns a newly created   [class@Gio.InputStream] for reading the next part or %NULL if there are no   more parts.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns a newly created   {@link Gio.InputStream} for reading the next part or `null` if there are no   more parts.
          */
         next_part_finish(result: Gio.AsyncResult): Gio.InputStream | null;
-
-        // Inherited methods
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
-         * #GPollableInputStream but have only certain instances of that class
-         * be pollable. If this method returns %FALSE, then the behavior of
-         * other #GPollableInputStream methods is undefined.
+         * {@link Gio.PollableInputStream} but have only certain instances of that class
+         * be pollable. If this method returns `false`, then the behavior of
+         * other {@link Gio.PollableInputStream} methods is undefined.
          *
          * For any given stream, the value returned by this method is constant;
          * a stream cannot switch from pollable to non-pollable or vice versa.
-         * @returns %TRUE if @stream is pollable, %FALSE if not.
+         * @returns `true` if `stream` is pollable, `false` if not.
          */
         can_poll(): boolean;
         /**
-         * Creates a #GSource that triggers when `stream` can be read, or
+         * Creates a {@link GLib.Source} that triggers when `stream` can be read, or
          * `cancellable` is triggered or an error occurs. The callback on the
-         * source is of the #GPollableSourceFunc type.
+         * source is of the {@link Gio.PollableSourceFunc} type.
          *
-         * As with g_pollable_input_stream_is_readable(), it is possible that
+         * As with `g_pollable_input_stream_is_readable()`, it is possible that
          * the stream may not actually be readable even after the source
-         * triggers, so you should use g_pollable_input_stream_read_nonblocking()
-         * rather than g_input_stream_read() from the callback.
+         * triggers, so you should use `g_pollable_input_stream_read_nonblocking()`
+         * rather than `g_input_stream_read()` from the callback.
          *
          * The behaviour of this method is undefined if
-         * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns a new #GSource
+         * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns a new {@link GLib.Source}
          */
         create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
         /**
          * Checks if `stream` can be read.
          *
          * Note that some stream types may not be able to implement this 100%
-         * reliably, and it is possible that a call to g_input_stream_read()
-         * after this returns %TRUE would still block. To guarantee
+         * reliably, and it is possible that a call to `g_input_stream_read()`
+         * after this returns `true` would still block. To guarantee
          * non-blocking behavior, you should always use
-         * g_pollable_input_stream_read_nonblocking(), which will return a
-         * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
+         * `g_pollable_input_stream_read_nonblocking()`, which will return a
+         * {@link Gio.IOErrorEnum.WOULD_BLOCK} error rather than blocking.
          *
          * The behaviour of this method is undefined if
-         * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-         * @returns %TRUE if @stream is readable, %FALSE if not. If an error   has occurred on @stream, this will result in   g_pollable_input_stream_is_readable() returning %TRUE, and the   next attempt to read will return the error.
+         * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
+         * @returns `true` if `stream` is readable, `false` if not. If an error   has occurred on `stream`, this will result in   `g_pollable_input_stream_is_readable()` returning `true`, and the   next attempt to read will return the error.
          */
         is_readable(): boolean;
         /**
-         * Attempts to read up to `count` bytes from `stream` into `buffer,` as
-         * with g_input_stream_read(). If `stream` is not currently readable,
-         * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-         * use g_pollable_input_stream_create_source() to create a #GSource
+         * Attempts to read up to `count` bytes from `stream` into `buffer`, as
+         * with `g_input_stream_read()`. If `stream` is not currently readable,
+         * this will immediately return {@link Gio.IOErrorEnum.WOULD_BLOCK}, and you can
+         * use `g_pollable_input_stream_create_source()` to create a {@link GLib.Source}
          * that will be triggered when `stream` is readable.
          *
          * Note that since this method never blocks, you cannot actually
@@ -9085,55 +9509,58 @@ export namespace Soup {
          * to having been cancelled.
          *
          * The behaviour of this method is undefined if
-         * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns the number of bytes read, or -1 on error (including   %G_IO_ERROR_WOULD_BLOCK).
+         * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns the number of bytes read, or -1 on error (including   {@link Gio.IOErrorEnum.WOULD_BLOCK}).
          */
         read_nonblocking(cancellable?: Gio.Cancellable | null): [number, Uint8Array];
         /**
          * Checks if `stream` is actually pollable. Some classes may implement
-         * #GPollableInputStream but have only certain instances of that class
-         * be pollable. If this method returns %FALSE, then the behavior of
-         * other #GPollableInputStream methods is undefined.
+         * {@link Gio.PollableInputStream} but have only certain instances of that class
+         * be pollable. If this method returns `false`, then the behavior of
+         * other {@link Gio.PollableInputStream} methods is undefined.
          *
          * For any given stream, the value returned by this method is constant;
          * a stream cannot switch from pollable to non-pollable or vice versa.
+         * @virtual
          */
         vfunc_can_poll(): boolean;
         /**
-         * Creates a #GSource that triggers when `stream` can be read, or
+         * Creates a {@link GLib.Source} that triggers when `stream` can be read, or
          * `cancellable` is triggered or an error occurs. The callback on the
-         * source is of the #GPollableSourceFunc type.
+         * source is of the {@link Gio.PollableSourceFunc} type.
          *
-         * As with g_pollable_input_stream_is_readable(), it is possible that
+         * As with `g_pollable_input_stream_is_readable()`, it is possible that
          * the stream may not actually be readable even after the source
-         * triggers, so you should use g_pollable_input_stream_read_nonblocking()
-         * rather than g_input_stream_read() from the callback.
+         * triggers, so you should use `g_pollable_input_stream_read_nonblocking()`
+         * rather than `g_input_stream_read()` from the callback.
          *
          * The behaviour of this method is undefined if
-         * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
-         * @param cancellable a #GCancellable, or %NULL
+         * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @virtual
          */
         vfunc_create_source(cancellable?: Gio.Cancellable | null): GLib.Source;
         /**
          * Checks if `stream` can be read.
          *
          * Note that some stream types may not be able to implement this 100%
-         * reliably, and it is possible that a call to g_input_stream_read()
-         * after this returns %TRUE would still block. To guarantee
+         * reliably, and it is possible that a call to `g_input_stream_read()`
+         * after this returns `true` would still block. To guarantee
          * non-blocking behavior, you should always use
-         * g_pollable_input_stream_read_nonblocking(), which will return a
-         * %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
+         * `g_pollable_input_stream_read_nonblocking()`, which will return a
+         * {@link Gio.IOErrorEnum.WOULD_BLOCK} error rather than blocking.
          *
          * The behaviour of this method is undefined if
-         * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
+         * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
+         * @virtual
          */
         vfunc_is_readable(): boolean;
         /**
-         * Attempts to read up to `count` bytes from `stream` into `buffer,` as
-         * with g_input_stream_read(). If `stream` is not currently readable,
-         * this will immediately return %G_IO_ERROR_WOULD_BLOCK, and you can
-         * use g_pollable_input_stream_create_source() to create a #GSource
+         * Attempts to read up to `count` bytes from `stream` into `buffer`, as
+         * with `g_input_stream_read()`. If `stream` is not currently readable,
+         * this will immediately return {@link Gio.IOErrorEnum.WOULD_BLOCK}, and you can
+         * use `g_pollable_input_stream_create_source()` to create a {@link GLib.Source}
          * that will be triggered when `stream` is readable.
          *
          * Note that since this method never blocks, you cannot actually
@@ -9143,7 +9570,8 @@ export namespace Soup {
          * to having been cancelled.
          *
          * The behaviour of this method is undefined if
-         * g_pollable_input_stream_can_poll() returns %FALSE for `stream`.
+         * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
+         * @virtual
          */
         vfunc_read_nonblocking(): [number, Uint8Array | null];
         /**
@@ -9153,7 +9581,7 @@ export namespace Soup {
         /**
          * Closes the stream, releasing resources related to it.
          *
-         * Once the stream is closed, all other operations will return %G_IO_ERROR_CLOSED.
+         * Once the stream is closed, all other operations will return {@link Gio.IOErrorEnum.CLOSED}.
          * Closing a stream multiple times will not return an error.
          *
          * Streams will be automatically closed when the last reference
@@ -9166,25 +9594,25 @@ export namespace Soup {
          *
          * On failure the first error that happened will be reported, but the close
          * operation will finish as much as possible. A stream that failed to
-         * close will still return %G_IO_ERROR_CLOSED for all operations. Still, it
+         * close will still return {@link Gio.IOErrorEnum.CLOSED} for all operations. Still, it
          * is important to check and report the error to the user.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * Cancelling a close will still leave the stream closed, but some streams
          * can use a faster close that doesn't block to e.g. check errors.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE on success, %FALSE on failure
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` on success, `false` on failure
          */
         close(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_close_finish() to get the result of the
+         * You can then call `g_input_stream_close_finish()` to get the result of the
          * operation.
          *
-         * For behaviour details see g_input_stream_close().
+         * For behaviour details see `g_input_stream_close()`.
          *
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
@@ -9196,17 +9624,17 @@ export namespace Soup {
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_close_finish() to get the result of the
+         * You can then call `g_input_stream_close_finish()` to get the result of the
          * operation.
          *
-         * For behaviour details see g_input_stream_close().
+         * For behaviour details see `g_input_stream_close()`.
          *
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -9216,17 +9644,17 @@ export namespace Soup {
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_close_finish() to get the result of the
+         * You can then call `g_input_stream_close_finish()` to get the result of the
          * operation.
          *
-         * For behaviour details see g_input_stream_close().
+         * For behaviour details see `g_input_stream_close()`.
          *
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         close_async(
             io_priority: number,
@@ -9234,19 +9662,19 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
-         * @param result a #GAsyncResult.
-         * @returns %TRUE if the stream was closed successfully.
+         * Finishes closing a stream asynchronously, started from `g_input_stream_close_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns `true` if the stream was closed successfully.
          */
         close_finish(result: Gio.AsyncResult): boolean;
         /**
          * Checks if an input stream has pending actions.
-         * @returns %TRUE if @stream has pending actions.
+         * @returns `true` if `stream` has pending actions.
          */
         has_pending(): boolean;
         /**
          * Checks if an input stream is closed.
-         * @returns %TRUE if the stream is closed.
+         * @returns `true` if the stream is closed.
          */
         is_closed(): boolean;
         /**
@@ -9254,7 +9682,7 @@ export namespace Soup {
          * `buffer`. Will block during this read.
          *
          * If count is zero returns zero and does nothing. A value of `count`
-         * larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes read into the buffer is returned.
          * It is not an error if this is not the same as the requested size, as it
@@ -9264,14 +9692,14 @@ export namespace Soup {
          * The returned `buffer` is not a nul-terminated string, it can contain nul bytes
          * at any position, and this function doesn't nul-terminate the `buffer`.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
          * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
          *
          * On error -1 is returned and `error` is set accordingly.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Number of bytes read, or -1 on error, or 0 on end of file.
          */
         read(cancellable?: Gio.Cancellable | null): [number, Uint8Array];
@@ -9279,39 +9707,39 @@ export namespace Soup {
          * Tries to read `count` bytes from the stream into the buffer starting at
          * `buffer`. Will block during this read.
          *
-         * This function is similar to g_input_stream_read(), except it tries to
+         * This function is similar to `g_input_stream_read()`, except it tries to
          * read as many bytes as requested, only stopping on an error or end of stream.
          *
          * On a successful read of `count` bytes, or if we reached the end of the
-         * stream,  %TRUE is returned, and `bytes_read` is set to the number of bytes
+         * stream,  `true` is returned, and `bytes_read` is set to the number of bytes
          * read into `buffer`.
          *
-         * If there is an error during the operation %FALSE is returned and `error`
+         * If there is an error during the operation `false` is returned and `error`
          * is set to indicate the error status.
          *
          * As a special exception to the normal conventions for functions that
-         * use #GError, if this function returns %FALSE (and sets `error)` then
+         * use {@link GLib.Error}, if this function returns `false` (and sets `error`) then
          * `bytes_read` will be set to the number of bytes that were successfully
          * read before the error was encountered.  This functionality is only
          * available from C.  If you need it from another language then you must
-         * write your own loop around g_input_stream_read().
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE on success, %FALSE if there was an error
+         * write your own loop around `g_input_stream_read()`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` on success, `false` if there was an error
          */
         read_all(cancellable?: Gio.Cancellable | null): [boolean, Uint8Array, number];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of [method`InputStream`.read_all].
+         * This is the asynchronous equivalent of {@link InputStream.read_all}.
          *
-         * Call [method`InputStream`.read_all_finish] to collect the result.
+         * Call {@link InputStream.read_all_finish} to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
         read_all_async(
             io_priority: number,
@@ -9321,16 +9749,16 @@ export namespace Soup {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of [method`InputStream`.read_all].
+         * This is the asynchronous equivalent of {@link InputStream.read_all}.
          *
-         * Call [method`InputStream`.read_all_finish] to collect the result.
+         * Call {@link InputStream.read_all_finish} to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
@@ -9341,16 +9769,16 @@ export namespace Soup {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of [method`InputStream`.read_all].
+         * This is the asynchronous equivalent of {@link InputStream.read_all}.
          *
-         * Call [method`InputStream`.read_all_finish] to collect the result.
+         * Call {@link InputStream.read_all_finish} to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         read_all_async(
             io_priority: number,
@@ -9359,28 +9787,28 @@ export namespace Soup {
         ): [globalThis.Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
-         * [method`InputStream`.read_all_async].
+         * {@link InputStream.read_all_async}.
          *
          * As a special exception to the normal conventions for functions that
-         * use #GError, if this function returns %FALSE (and sets `error)` then
+         * use {@link GLib.Error}, if this function returns `false` (and sets `error`) then
          * `bytes_read` will be set to the number of bytes that were successfully
          * read before the error was encountered.  This functionality is only
          * available from C.  If you need it from another language then you must
-         * write your own loop around g_input_stream_read_async().
-         * @param result a #GAsyncResult
-         * @returns %TRUE on success, %FALSE if there was an error
+         * write your own loop around `g_input_stream_read_async()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` on success, `false` if there was an error
          */
         read_all_finish(result: Gio.AsyncResult): [boolean, number];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_read_finish() to get the result of the
+         * You can then call `g_input_stream_read_finish()` to get the result of the
          * operation.
          *
-         * During an async request no other sync and async calls are allowed on `stream,` and will
-         * result in %G_IO_ERROR_PENDING errors.
+         * During an async request no other sync and async calls are allowed on `stream`, and will
+         * result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes read into the buffer will be passed to the
          * callback. It is not an error if this is not the same as the requested size, as it
@@ -9390,25 +9818,25 @@ export namespace Soup {
          *
          * Any outstanding i/o request with higher priority (lower numerical value) will
          * be executed before an outstanding request with lower priority. Default
-         * priority is %G_PRIORITY_DEFAULT.
+         * priority is `G_PRIORITY_DEFAULT`.
          *
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         read_async(io_priority: number, cancellable?: Gio.Cancellable | null): [globalThis.Promise<number>, Uint8Array];
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_read_finish() to get the result of the
+         * You can then call `g_input_stream_read_finish()` to get the result of the
          * operation.
          *
-         * During an async request no other sync and async calls are allowed on `stream,` and will
-         * result in %G_IO_ERROR_PENDING errors.
+         * During an async request no other sync and async calls are allowed on `stream`, and will
+         * result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes read into the buffer will be passed to the
          * callback. It is not an error if this is not the same as the requested size, as it
@@ -9418,14 +9846,14 @@ export namespace Soup {
          *
          * Any outstanding i/o request with higher priority (lower numerical value) will
          * be executed before an outstanding request with lower priority. Default
-         * priority is %G_PRIORITY_DEFAULT.
+         * priority is `G_PRIORITY_DEFAULT`.
          *
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -9435,13 +9863,13 @@ export namespace Soup {
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_read_finish() to get the result of the
+         * You can then call `g_input_stream_read_finish()` to get the result of the
          * operation.
          *
-         * During an async request no other sync and async calls are allowed on `stream,` and will
-         * result in %G_IO_ERROR_PENDING errors.
+         * During an async request no other sync and async calls are allowed on `stream`, and will
+         * result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes read into the buffer will be passed to the
          * callback. It is not an error if this is not the same as the requested size, as it
@@ -9451,14 +9879,14 @@ export namespace Soup {
          *
          * Any outstanding i/o request with higher priority (lower numerical value) will
          * be executed before an outstanding request with lower priority. Default
-         * priority is %G_PRIORITY_DEFAULT.
+         * priority is `G_PRIORITY_DEFAULT`.
          *
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         read_async(
             io_priority: number,
@@ -9466,47 +9894,47 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): [globalThis.Promise<number> | void, Uint8Array];
         /**
-         * Like g_input_stream_read(), this tries to read `count` bytes from
+         * Like `g_input_stream_read()`, this tries to read `count` bytes from
          * the stream in a blocking fashion. However, rather than reading into
-         * a user-supplied buffer, this will create a new #GBytes containing
+         * a user-supplied buffer, this will create a new {@link GLib.Bytes} containing
          * the data that was read. This may be easier to use from language
          * bindings.
          *
-         * If count is zero, returns a zero-length #GBytes and does nothing. A
-         * value of `count` larger than %G_MAXSSIZE will cause a
-         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         * If count is zero, returns a zero-length {@link GLib.Bytes} and does nothing. A
+         * value of `count` larger than `G_MAXSSIZE` will cause a
+         * {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
-         * On success, a new #GBytes is returned. It is not an error if the
+         * On success, a new {@link GLib.Bytes} is returned. It is not an error if the
          * size of this object is not the same as the requested size, as it
-         * can happen e.g. near the end of a file. A zero-length #GBytes is
+         * can happen e.g. near the end of a file. A zero-length {@link GLib.Bytes} is
          * returned on end of file (or if `count` is zero), but never
          * otherwise.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
          * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
          *
-         * On error %NULL is returned and `error` is set accordingly.
+         * On error `null` is returned and `error` is set accordingly.
          * @param count maximum number of bytes that will be read from the stream. Common values include 4096 and 8192.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns a new #GBytes, or %NULL on error
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns a new {@link GLib.Bytes}, or `null` on error
          */
         read_bytes(count: number, cancellable?: Gio.Cancellable | null): GLib.Bytes;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
-         * new #GBytes. When the operation is finished `callback` will be
-         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * new {@link GLib.Bytes}. When the operation is finished `callback` will be
+         * called. You can then call `g_input_stream_read_bytes_finish()` to get the
          * result of the operation.
          *
          * During an async request no other sync and async calls are allowed
-         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         * on `stream`, and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a
-         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a
+         * {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
-         * On success, the new #GBytes will be passed to the callback. It is
+         * On success, the new {@link GLib.Bytes} will be passed to the callback. It is
          * not an error if this is smaller than the requested size, as it can
          * happen e.g. near the end of a file, but generally we try to read as
          * many bytes as requested. Zero is returned on end of file (or if
@@ -9514,10 +9942,10 @@ export namespace Soup {
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         read_bytes_async(
             count: number,
@@ -9526,17 +9954,17 @@ export namespace Soup {
         ): globalThis.Promise<GLib.Bytes>;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
-         * new #GBytes. When the operation is finished `callback` will be
-         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * new {@link GLib.Bytes}. When the operation is finished `callback` will be
+         * called. You can then call `g_input_stream_read_bytes_finish()` to get the
          * result of the operation.
          *
          * During an async request no other sync and async calls are allowed
-         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         * on `stream`, and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a
-         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a
+         * {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
-         * On success, the new #GBytes will be passed to the callback. It is
+         * On success, the new {@link GLib.Bytes} will be passed to the callback. It is
          * not an error if this is smaller than the requested size, as it can
          * happen e.g. near the end of a file, but generally we try to read as
          * many bytes as requested. Zero is returned on end of file (or if
@@ -9544,11 +9972,11 @@ export namespace Soup {
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         read_bytes_async(
             count: number,
@@ -9558,17 +9986,17 @@ export namespace Soup {
         ): void;
         /**
          * Request an asynchronous read of `count` bytes from the stream into a
-         * new #GBytes. When the operation is finished `callback` will be
-         * called. You can then call g_input_stream_read_bytes_finish() to get the
+         * new {@link GLib.Bytes}. When the operation is finished `callback` will be
+         * called. You can then call `g_input_stream_read_bytes_finish()` to get the
          * result of the operation.
          *
          * During an async request no other sync and async calls are allowed
-         * on `stream,` and will result in %G_IO_ERROR_PENDING errors.
+         * on `stream`, and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a
-         * %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a
+         * {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
-         * On success, the new #GBytes will be passed to the callback. It is
+         * On success, the new {@link GLib.Bytes} will be passed to the callback. It is
          * not an error if this is smaller than the requested size, as it can
          * happen e.g. near the end of a file, but generally we try to read as
          * many bytes as requested. Zero is returned on end of file (or if
@@ -9576,11 +10004,11 @@ export namespace Soup {
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
-         * priority. Default priority is %G_PRIORITY_DEFAULT.
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param count the number of bytes that will be read from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         read_bytes_async(
             count: number,
@@ -9589,54 +10017,54 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
         /**
-         * Finishes an asynchronous stream read-into-#GBytes operation.
-         * @param result a #GAsyncResult.
-         * @returns the newly-allocated #GBytes, or %NULL on error
+         * Finishes an asynchronous stream read-into-{@link GLib.Bytes} operation.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns the newly-allocated {@link GLib.Bytes}, or `null` on error
          */
         read_bytes_finish(result: Gio.AsyncResult): GLib.Bytes;
         /**
          * Finishes an asynchronous stream read operation.
-         * @param result a #GAsyncResult.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns number of bytes read in, or -1 on error, or 0 on end of file.
          */
         read_finish(result: Gio.AsyncResult): number;
         /**
          * Sets `stream` to have actions pending. If the pending flag is
-         * already set or `stream` is closed, it will return %FALSE and set
+         * already set or `stream` is closed, it will return `false` and set
          * `error`.
-         * @returns %TRUE if pending was previously unset and is now set.
+         * @returns `true` if pending was previously unset and is now set.
          */
         set_pending(): boolean;
         /**
          * Tries to skip `count` bytes from the stream. Will block during the operation.
          *
-         * This is identical to g_input_stream_read(), from a behaviour standpoint,
+         * This is identical to `g_input_stream_read()`, from a behaviour standpoint,
          * but the bytes that are skipped are not returned to the user. Some
          * streams have an implementation that is more efficient than reading the data.
          *
          * This function is optional for inherited classes, as the default implementation
          * emulates it using read.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
          * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
          * @param count the number of bytes that will be skipped from the stream
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Number of bytes skipped, or -1 on error
          */
         skip(count: number, cancellable?: Gio.Cancellable | null): number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_skip_finish() to get the result
+         * You can then call `g_input_stream_skip_finish()` to get the result
          * of the operation.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes skipped will be passed to the callback.
          * It is not an error if this is not the same as the requested size, as it
@@ -9646,14 +10074,14 @@ export namespace Soup {
          *
          * Any outstanding i/o request with higher priority (lower numerical value)
          * will be executed before an outstanding request with lower priority.
-         * Default priority is %G_PRIORITY_DEFAULT.
+         * Default priority is `G_PRIORITY_DEFAULT`.
          *
          * The asynchronous methods have a default fallback that uses threads to
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         skip_async(
             count: number,
@@ -9663,13 +10091,13 @@ export namespace Soup {
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_skip_finish() to get the result
+         * You can then call `g_input_stream_skip_finish()` to get the result
          * of the operation.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes skipped will be passed to the callback.
          * It is not an error if this is not the same as the requested size, as it
@@ -9679,15 +10107,15 @@ export namespace Soup {
          *
          * Any outstanding i/o request with higher priority (lower numerical value)
          * will be executed before an outstanding request with lower priority.
-         * Default priority is %G_PRIORITY_DEFAULT.
+         * Default priority is `G_PRIORITY_DEFAULT`.
          *
          * The asynchronous methods have a default fallback that uses threads to
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         skip_async(
             count: number,
@@ -9698,13 +10126,13 @@ export namespace Soup {
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_skip_finish() to get the result
+         * You can then call `g_input_stream_skip_finish()` to get the result
          * of the operation.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes skipped will be passed to the callback.
          * It is not an error if this is not the same as the requested size, as it
@@ -9714,15 +10142,15 @@ export namespace Soup {
          *
          * Any outstanding i/o request with higher priority (lower numerical value)
          * will be executed before an outstanding request with lower priority.
-         * Default priority is %G_PRIORITY_DEFAULT.
+         * Default priority is `G_PRIORITY_DEFAULT`.
          *
          * The asynchronous methods have a default fallback that uses threads to
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         skip_async(
             count: number,
@@ -9732,24 +10160,25 @@ export namespace Soup {
         ): globalThis.Promise<number> | void;
         /**
          * Finishes a stream skip operation.
-         * @param result a #GAsyncResult.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns the size of the bytes skipped, or `-1` on error.
          */
         skip_finish(result: Gio.AsyncResult): number;
         /**
          * Requests an asynchronous closes of the stream, releasing resources related to it.
          * When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_close_finish() to get the result of the
+         * You can then call `g_input_stream_close_finish()` to get the result of the
          * operation.
          *
-         * For behaviour details see g_input_stream_close().
+         * For behaviour details see `g_input_stream_close()`.
          *
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional cancellable object
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
          */
         vfunc_close_async(
             io_priority: number,
@@ -9757,21 +10186,26 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
-         * @param result a #GAsyncResult.
+         * Finishes closing a stream asynchronously, started from `g_input_stream_close_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_close_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * @param cancellable
+         * @virtual
+         */
         vfunc_close_fn(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Request an asynchronous read of `count` bytes from the stream into the buffer
          * starting at `buffer`. When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_read_finish() to get the result of the
+         * You can then call `g_input_stream_read_finish()` to get the result of the
          * operation.
          *
-         * During an async request no other sync and async calls are allowed on `stream,` and will
-         * result in %G_IO_ERROR_PENDING errors.
+         * During an async request no other sync and async calls are allowed on `stream`, and will
+         * result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes read into the buffer will be passed to the
          * callback. It is not an error if this is not the same as the requested size, as it
@@ -9781,14 +10215,15 @@ export namespace Soup {
          *
          * Any outstanding i/o request with higher priority (lower numerical value) will
          * be executed before an outstanding request with lower priority. Default
-         * priority is %G_PRIORITY_DEFAULT.
+         * priority is `G_PRIORITY_DEFAULT`.
          *
          * The asynchronous methods have a default fallback that uses threads to implement
          * asynchronicity, so they are optional for inheriting classes. However, if you
          * override one you must override all.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
          */
         vfunc_read_async(
             io_priority: number,
@@ -9797,39 +10232,47 @@ export namespace Soup {
         ): Uint8Array | null;
         /**
          * Finishes an asynchronous stream read operation.
-         * @param result a #GAsyncResult.
+         * @param result a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_read_finish(result: Gio.AsyncResult): number;
+        /**
+         * @param buffer
+         * @param count
+         * @param cancellable
+         * @virtual
+         */
         vfunc_read_fn(buffer: any | null, count: number, cancellable?: Gio.Cancellable | null): number;
         /**
          * Tries to skip `count` bytes from the stream. Will block during the operation.
          *
-         * This is identical to g_input_stream_read(), from a behaviour standpoint,
+         * This is identical to `g_input_stream_read()`, from a behaviour standpoint,
          * but the bytes that are skipped are not returned to the user. Some
          * streams have an implementation that is more efficient than reading the data.
          *
          * This function is optional for inherited classes, as the default implementation
          * emulates it using read.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
          * operation was partially finished when the operation was cancelled the
          * partial result will be returned, without an error.
          * @param count the number of bytes that will be skipped from the stream
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_skip(count: number, cancellable?: Gio.Cancellable | null): number;
         /**
          * Request an asynchronous skip of `count` bytes from the stream.
          * When the operation is finished `callback` will be called.
-         * You can then call g_input_stream_skip_finish() to get the result
+         * You can then call `g_input_stream_skip_finish()` to get the result
          * of the operation.
          *
          * During an async request no other sync and async calls are allowed,
-         * and will result in %G_IO_ERROR_PENDING errors.
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
          *
-         * A value of `count` larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+         * A value of `count` larger than `G_MAXSSIZE` will cause a {@link Gio.IOErrorEnum.INVALID_ARGUMENT} error.
          *
          * On success, the number of bytes skipped will be passed to the callback.
          * It is not an error if this is not the same as the requested size, as it
@@ -9839,15 +10282,16 @@ export namespace Soup {
          *
          * Any outstanding i/o request with higher priority (lower numerical value)
          * will be executed before an outstanding request with lower priority.
-         * Default priority is %G_PRIORITY_DEFAULT.
+         * Default priority is `G_PRIORITY_DEFAULT`.
          *
          * The asynchronous methods have a default fallback that uses threads to
          * implement asynchronicity, so they are optional for inheriting classes.
          * However, if you override one, you must override all.
          * @param count the number of bytes that will be skipped from the stream
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
          */
         vfunc_skip_async(
             count: number,
@@ -9857,7 +10301,8 @@ export namespace Soup {
         ): void;
         /**
          * Finishes a stream skip operation.
-         * @param result a #GAsyncResult.
+         * @param result a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_skip_finish(result: Gio.AsyncResult): number;
         /**
@@ -9913,9 +10358,54 @@ export namespace Soup {
     namespace Server {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when processing has failed for a message.
+             *
+             * This could mean either that it could not be read (if
+             * `Soup.Server::request-read` has not been emitted for it yet), or that
+             * the response could not be written back (if `Soup.Server::request-read`
+             * has been emitted but `Soup.Server::request-finished` has not been).
+             *
+             * `message` is in an undefined state when this signal is
+             * emitted; the signal exists primarily to allow the server to
+             * free any state that it may have allocated in
+             * `Soup.Server::request-started`.
+             * @signal
+             */
             'request-aborted': (arg0: ServerMessage) => void;
+            /**
+             * Emitted when the server has finished writing a response to
+             * a request.
+             * @signal
+             */
             'request-finished': (arg0: ServerMessage) => void;
+            /**
+             * Emitted when the server has successfully read a request.
+             *
+             * `message` will have all of its request-side information
+             * filled in, and if the message was authenticated, `client`
+             * will have information about that. This signal is emitted
+             * before any (non-early) handlers are called for the message,
+             * and if it sets the message's `status_code`, then normal
+             * handler processing will be skipped.
+             * @signal
+             */
             'request-read': (arg0: ServerMessage) => void;
+            /**
+             * Emitted when the server has started reading a new request.
+             *
+             * `message` will be completely blank; not even the
+             * Request-Line will have been read yet. About the only thing
+             * you can usefully do with it is connect to its signals.
+             *
+             * If the request is read successfully, this will eventually
+             * be followed by a [signal@Server::request_read signal]. If a
+             * response is then sent, the request processing will end with
+             * a `Soup.Server::request-finished` signal. If a network error
+             * occurs, the processing will instead end with
+             * `Soup.Server::request-aborted`.
+             * @signal
+             */
             'request-started': (arg0: ServerMessage) => void;
             'notify::raw-paths': (pspec: GObject.ParamSpec) => void;
             'notify::server-header': (pspec: GObject.ParamSpec) => void;
@@ -9941,70 +10431,70 @@ export namespace Soup {
     }
 
     /**
-     * [class`Server]` provides a basic implementation of an HTTP server. The
+     * {@link Server} provides a basic implementation of an HTTP server. The
      * recommended usage of this server is for internal use, tasks like
      * a mock server for tests, a private service for IPC, etc. It is not
      * recommended to be exposed to untrusted clients as it may be vulnerable
      * to denial of service attacks or other exploits.
      *
-     * To begin, create a server using [ctor`Server`.new]. Add at least one
-     * handler by calling [method`Server`.add_handler] or
-     * [method`Server`.add_early_handler]; the handler will be called to
+     * To begin, create a server using {@link Server.new}. Add at least one
+     * handler by calling {@link Server.add_handler} or
+     * {@link Server.add_early_handler}; the handler will be called to
      * process any requests underneath the path you pass. (If you want all
-     * requests to go to the same handler, just pass "/" (or %NULL) for
+     * requests to go to the same handler, just pass "/" (or `null`) for
      * the path.)
      *
      * When a new connection is accepted (or a new request is started on
-     * an existing persistent connection), the [class`Server]` will emit
-     * [signal`Server:`:request-started] and then begin processing the request
+     * an existing persistent connection), the {@link Server} will emit
+     * `Soup.Server::request-started` and then begin processing the request
      * as described below, but note that once the message is assigned a
      * status-code, then callbacks after that point will be
      * skipped. Note also that it is not defined when the callbacks happen
-     * relative to various [class`ServerMessage]` signals.
+     * relative to various {@link ServerMessage} signals.
      *
-     * Once the headers have been read, [class`Server]` will check if there is
-     * a [class`AuthDomain]` `(qv)` covering the Request-URI; if so, and if the
+     * Once the headers have been read, {@link Server} will check if there is
+     * a {@link AuthDomain} `(qv)` covering the Request-URI; if so, and if the
      * message does not contain suitable authorization, then the
-     * [class`AuthDomain]` will set a status of %SOUP_STATUS_UNAUTHORIZED on
+     * {@link AuthDomain} will set a status of {@link Soup.Status.UNAUTHORIZED} on
      * the message.
      *
-     * After checking for authorization, [class`Server]` will look for "early"
-     * handlers (added with [method`Server`.add_early_handler]) matching the
+     * After checking for authorization, {@link Server} will look for "early"
+     * handlers (added with {@link Server.add_early_handler}) matching the
      * Request-URI. If one is found, it will be run; in particular, this
      * can be used to connect to signals to do a streaming read of the
      * request body.
      *
      * (At this point, if the request headers contain `Expect:
      * 100-continue`, and a status code has been set, then
-     * [class`Server]` will skip the remaining steps and return the response.
+     * {@link Server} will skip the remaining steps and return the response.
      * If the request headers contain `Expect:
      * 100-continue` and no status code has been set,
-     * [class`Server]` will return a %SOUP_STATUS_CONTINUE status before
+     * {@link Server} will return a {@link Soup.Status.CONTINUE} status before
      * continuing.)
      *
      * The server will then read in the response body (if present). At
      * this point, if there are no handlers at all defined for the
-     * Request-URI, then the server will return %SOUP_STATUS_NOT_FOUND to
+     * Request-URI, then the server will return {@link Soup.Status.NOT_FOUND} to
      * the client.
      *
      * Otherwise (assuming no previous step assigned a status to the
      * message) any "normal" handlers (added with
-     * [method`Server`.add_handler]) for the message's Request-URI will be
+     * {@link Server.add_handler}) for the message's Request-URI will be
      * run.
      *
      * Then, if the path has a WebSocket handler registered (and has
-     * not yet been assigned a status), [class`Server]` will attempt to
+     * not yet been assigned a status), {@link Server} will attempt to
      * validate the WebSocket handshake, filling in the response and
-     * setting a status of %SOUP_STATUS_SWITCHING_PROTOCOLS or
-     * %SOUP_STATUS_BAD_REQUEST accordingly.
+     * setting a status of {@link Soup.Status.SWITCHING_PROTOCOLS} or
+     * {@link Soup.Status.BAD_REQUEST} accordingly.
      *
      * If the message still has no status code at this point (and has not
-     * been paused with [method`ServerMessage`.pause]), then it will be
-     * given a status of %SOUP_STATUS_INTERNAL_SERVER_ERROR (because at
+     * been paused with {@link ServerMessage.pause}), then it will be
+     * given a status of {@link Soup.Status.INTERNAL_SERVER_ERROR} (because at
      * least one handler ran, but returned without assigning a status).
      *
-     * Finally, the server will emit [signal`Server:`:request-finished] (or
-     * [signal`Server:`:request-aborted] if an I/O error occurred before
+     * Finally, the server will emit `Soup.Server::request-finished` (or
+     * `Soup.Server::request-aborted` if an I/O error occurred before
      * handling was completed).
      *
      * If you want to handle the special "*" URI (eg, "OPTIONS *"), you
@@ -10012,21 +10502,22 @@ export namespace Soup {
      * will not be used for that case.
      *
      * If you want to process https connections in addition to (or instead
-     * of) http connections, you can set the [property`Server:`tls-certificate]
+     * of) http connections, you can set the {@link Server.tls_certificate}
      * property.
      *
      * Once the server is set up, make one or more calls to
-     * [method`Server`.listen], [method`Server`.listen_local], or
-     * [method`Server`.listen_all] to tell it where to listen for
-     * connections. (All ports on a [class`Server]` use the same handlers; if
+     * {@link Server.listen}, {@link Server.listen_local}, or
+     * {@link Server.listen_all} to tell it where to listen for
+     * connections. (All ports on a {@link Server} use the same handlers; if
      * you need to handle some ports differently, such as returning
      * different data for http and https, you'll need to create multiple
-     * [class`Server]`s, or else check the passed-in URI in the handler
+     * {@link Server}s, or else check the passed-in URI in the handler
      * function.).
      *
-     * [class`Server]` will begin processing connections as soon as you return
+     * {@link Server} will begin processing connections as soon as you return
      * to (or start) the main loop for the current thread-default
-     * [struct`GLib`.MainContext].
+     * {@link GLib.MainContext}.
+     * @gir-type Class
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
@@ -10034,20 +10525,20 @@ export namespace Soup {
         // Properties
 
         /**
-         * If %TRUE, percent-encoding in the Request-URI path will not be
+         * If `true`, percent-encoding in the Request-URI path will not be
          * automatically decoded.
          */
         get raw_paths(): boolean;
         /**
-         * If %TRUE, percent-encoding in the Request-URI path will not be
+         * If `true`, percent-encoding in the Request-URI path will not be
          * automatically decoded.
          */
         get rawPaths(): boolean;
         /**
          * Server header.
          *
-         * If non-%NULL, the value to use for the "Server" header on
-         * [class`ServerMessage]`s processed by this server.
+         * If non-`null`, the value to use for the "Server" header on
+         * {@link ServerMessage}s processed by this server.
          *
          * The Server header is the server equivalent of the
          * User-Agent header, and provides information about the
@@ -10065,9 +10556,9 @@ export namespace Soup {
          * end up advertising their vulnerability to specific security
          * holes.
          *
-         * As with [property`Session:`user_agent], if you set a
-         * [property`Server:`server-header] property that has trailing
-         * whitespace, [class`Server]` will append its own product token (eg,
+         * As with {@link Session.user_agent}, if you set a
+         * {@link Server.server_header} property that has trailing
+         * whitespace, {@link Server} will append its own product token (eg,
          * `libsoup/2.3.2`) to the end of the header for you.
          */
         get server_header(): string;
@@ -10075,8 +10566,8 @@ export namespace Soup {
         /**
          * Server header.
          *
-         * If non-%NULL, the value to use for the "Server" header on
-         * [class`ServerMessage]`s processed by this server.
+         * If non-`null`, the value to use for the "Server" header on
+         * {@link ServerMessage}s processed by this server.
          *
          * The Server header is the server equivalent of the
          * User-Agent header, and provides information about the
@@ -10094,26 +10585,26 @@ export namespace Soup {
          * end up advertising their vulnerability to specific security
          * holes.
          *
-         * As with [property`Session:`user_agent], if you set a
-         * [property`Server:`server-header] property that has trailing
-         * whitespace, [class`Server]` will append its own product token (eg,
+         * As with {@link Session.user_agent}, if you set a
+         * {@link Server.server_header} property that has trailing
+         * whitespace, {@link Server} will append its own product token (eg,
          * `libsoup/2.3.2`) to the end of the header for you.
          */
         get serverHeader(): string;
         set serverHeader(val: string);
         /**
-         * A [enum`Gio`.TlsAuthenticationMode] for SSL/TLS client authentication.
+         * A {@link Gio.TlsAuthenticationMode} for SSL/TLS client authentication.
          */
         get tls_auth_mode(): Gio.TlsAuthenticationMode;
         set tls_auth_mode(val: Gio.TlsAuthenticationMode);
         /**
-         * A [enum`Gio`.TlsAuthenticationMode] for SSL/TLS client authentication.
+         * A {@link Gio.TlsAuthenticationMode} for SSL/TLS client authentication.
          */
         get tlsAuthMode(): Gio.TlsAuthenticationMode;
         set tlsAuthMode(val: Gio.TlsAuthenticationMode);
         /**
-         * A [class`Gio`.TlsCertificate[] that has a
-         * [property`Gio`.TlsCertificate:private-key] set.
+         * A [class@Gio.TlsCertificate[] that has a
+         * {@link Gio.TlsCertificate.private_key} set.
          *
          * If this is set, then the server will be able to speak
          * https in addition to (or instead of) plain http.
@@ -10121,8 +10612,8 @@ export namespace Soup {
         get tls_certificate(): Gio.TlsCertificate;
         set tls_certificate(val: Gio.TlsCertificate);
         /**
-         * A [class`Gio`.TlsCertificate[] that has a
-         * [property`Gio`.TlsCertificate:private-key] set.
+         * A [class@Gio.TlsCertificate[] that has a
+         * {@link Gio.TlsCertificate.private_key} set.
          *
          * If this is set, then the server will be able to speak
          * https in addition to (or instead of) plain http.
@@ -10130,13 +10621,13 @@ export namespace Soup {
         get tlsCertificate(): Gio.TlsCertificate;
         set tlsCertificate(val: Gio.TlsCertificate);
         /**
-         * A [class`Gio`.TlsDatabase] to use for validating SSL/TLS client
+         * A {@link Gio.TlsDatabase} to use for validating SSL/TLS client
          * certificates.
          */
         get tls_database(): Gio.TlsDatabase;
         set tls_database(val: Gio.TlsDatabase);
         /**
-         * A [class`Gio`.TlsDatabase] to use for validating SSL/TLS client
+         * A {@link Gio.TlsDatabase} to use for validating SSL/TLS client
          * certificates.
          */
         get tlsDatabase(): Gio.TlsDatabase;
@@ -10159,16 +10650,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Server.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Server.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Server.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10177,19 +10671,35 @@ export namespace Soup {
 
         // Virtual methods
 
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_request_aborted(msg: ServerMessage): void;
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_request_finished(msg: ServerMessage): void;
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_request_read(msg: ServerMessage): void;
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_request_started(msg: ServerMessage): void;
 
         // Methods
 
         /**
          * Adds a new client stream to the `server`.
-         * @param stream a #GIOStream
-         * @param local_addr the local #GSocketAddress associated with the   @stream
-         * @param remote_addr the remote #GSocketAddress associated with the   @stream
-         * @returns %TRUE on success, %FALSE if the stream could not be   accepted or any other error occurred (in which case @error will be   set).
+         * @param stream a {@link Gio.IOStream}
+         * @param local_addr the local {@link Gio.SocketAddress} associated with the   `stream`
+         * @param remote_addr the remote {@link Gio.SocketAddress} associated with the   `stream`
+         * @returns `true` on success, `false` if the stream could not be   accepted or any other error occurred (in which case `error` will be   set).
          */
         accept_iostream(
             stream: Gio.IOStream,
@@ -10208,7 +10718,7 @@ export namespace Soup {
          * Unauthorized or 407 Proxy Authentication Required). If the request used the
          * SoupServer:100-continue Expectation, `server` will reject it before the
          * request body is sent.
-         * @param auth_domain a #SoupAuthDomain
+         * @param auth_domain a {@link Soup.AuthDomain}
          */
         add_auth_domain(auth_domain: AuthDomain): void;
         /**
@@ -10220,82 +10730,82 @@ export namespace Soup {
          * (But if you add both handlers at the same path, then both will get run.)
          *
          * For requests under `path` (that have not already been assigned a
-         * status code by a [class`AuthDomain]` or a signal handler), `callback`
+         * status code by a {@link AuthDomain} or a signal handler), `callback`
          * will be invoked after receiving the request headers, but before
          * receiving the request body; the message's method and
          * request-headers properties will be set.
          *
          * Early handlers are generally used for processing requests with request bodies
          * in a streaming fashion. If you determine that the request will contain a
-         * message body, normally you would call [method`MessageBody`.set_accumulate] on
+         * message body, normally you would call {@link MessageBody.set_accumulate} on
          * the message's request-body to turn off request-body accumulation, and connect
-         * to the message's [signal`ServerMessage:`:got-chunk] signal to process each
+         * to the message's `Soup.ServerMessage::got-chunk` signal to process each
          * chunk as it comes in.
          *
          * To complete the message processing after the full message body has
-         * been read, you can either also connect to [signal`ServerMessage:`:got-body],
+         * been read, you can either also connect to `Soup.ServerMessage::got-body`,
          * or else you can register a non-early handler for `path` as well. As
          * long as you have not set the status-code by the time
-         * [signal`ServerMessage:`:got-body] is emitted, the non-early handler will be
+         * `Soup.ServerMessage::got-body` is emitted, the non-early handler will be
          * run as well.
          * @param path the toplevel path for the handler
-         * @param callback callback to invoke for   requests under @path
+         * @param callback callback to invoke for   requests under `path`
          */
         add_early_handler(path: string | null, callback: ServerCallback): void;
         /**
          * Adds a handler to `server` for requests prefixed by `path`.
          *
-         * If `path` is %NULL or "/", then this will be the default handler for all
+         * If `path` is `null` or "/", then this will be the default handler for all
          * requests that don't have a more specific handler. (Note though that if you
          * want to handle requests to the special "*" URI, you must explicitly register
          * a handler for "*"; the default handler will not be used for that case.)
          *
          * For requests under `path` (that have not already been assigned a
-         * status code by a [class`AuthDomain]`, an early server handler, or a
+         * status code by a {@link AuthDomain}, an early server handler, or a
          * signal handler), `callback` will be invoked after receiving the
-         * request body; the [class`ServerMessage]`'s method, request-headers,
+         * request body; the {@link ServerMessage}'s method, request-headers,
          * and request-body properties will be set.
          *
          * After determining what to do with the request, the callback must at a minimum
-         * call [method`ServerMessage`.set_status] on the message to set the response
+         * call {@link ServerMessage.set_status} on the message to set the response
          * status code. Additionally, it may set response headers and/or fill in the
          * response body.
          *
          * If the callback cannot fully fill in the response before returning
          * (eg, if it needs to wait for information from a database, or
-         * another network server), it should call [method`ServerMessage`.pause]
+         * another network server), it should call {@link ServerMessage.pause}
          * to tell `server` to not send the response right away. When the
-         * response is ready, call [method`ServerMessage`.unpause] to cause it
+         * response is ready, call {@link ServerMessage.unpause} to cause it
          * to be sent.
          *
          * To send the response body a bit at a time using "chunked" encoding, first
-         * call [method`MessageHeaders`.set_encoding] to set %SOUP_ENCODING_CHUNKED on
-         * the response-headers. Then call [method`MessageBody`.append] (or
-         * [method`MessageBody`.append_bytes])) to append each chunk as it becomes ready,
-         * and [method`ServerMessage`.unpause] to make sure it's running. (The server
+         * call {@link MessageHeaders.set_encoding} to set {@link Soup.Encoding.CHUNKED} on
+         * the response-headers. Then call {@link MessageBody.append} (or
+         * {@link MessageBody.append_bytes})) to append each chunk as it becomes ready,
+         * and {@link ServerMessage.unpause} to make sure it's running. (The server
          * will automatically pause the message if it is using chunked encoding but no
          * more chunks are available.) When you are done, call
-         * [method`MessageBody`.complete] to indicate that no more chunks are coming.
+         * {@link MessageBody.complete} to indicate that no more chunks are coming.
          * @param path the toplevel path for the handler
-         * @param callback callback to invoke for   requests under @path
+         * @param callback callback to invoke for   requests under `path`
          */
         add_handler(path: string | null, callback: ServerCallback): void;
         /**
          * Add support for a WebSocket extension of the given `extension_type`.
          *
-         * When a WebSocket client requests an extension of `extension_type,`
-         * a new [class`WebsocketExtension]` of type `extension_type` will be created
+         * When a WebSocket client requests an extension of `extension_type`,
+         * a new {@link WebsocketExtension} of type `extension_type` will be created
          * to handle the request.
          *
-         * Note that [class`WebsocketExtensionDeflate]` is supported by default, use
-         * [method`Server`.remove_websocket_extension] if you want to disable it.
-         * @param extension_type a #GType
+         * Note that {@link WebsocketExtensionDeflate} is supported by default, use
+         * {@link Server.remove_websocket_extension} if you want to disable it.
+         * @param extension_type a {@link GObject.GType}
          */
         add_websocket_extension(extension_type: GObject.GType): void;
         /**
          * Adds a WebSocket handler to `server` for requests prefixed by `path`.
          *
-         * If `path` is %NULL or "/", then this will be the default handler for all
+         * If `path` is `null` or "/", then this will be the default handler for all
          * requests that don't have a more specific handler.
          *
          * When a path has a WebSocket handler registered, `server` will check
@@ -10304,17 +10814,17 @@ export namespace Soup {
          * on the message), and update the request's status, response headers,
          * and response body accordingly.
          *
-         * If `origin` is non-%NULL, then only requests containing a matching
-         * "Origin" header will be accepted. If `protocols` is non-%NULL, then
+         * If `origin` is non-`null`, then only requests containing a matching
+         * "Origin" header will be accepted. If `protocols` is non-`null`, then
          * only requests containing a compatible "Sec-WebSocket-Protocols"
          * header will be accepted. More complicated requirements can be
-         * handled by adding a normal handler to `path,` and having it perform
+         * handled by adding a normal handler to `path`, and having it perform
          * whatever checks are needed and
          * setting a failure status code if the handshake should be rejected.
          * @param path the toplevel path for the handler
          * @param origin the origin of the connection
          * @param protocols the protocols   supported by this handler
-         * @param callback callback to invoke for   successful WebSocket requests under @path
+         * @param callback callback to invoke for   successful WebSocket requests under `path`
          */
         add_websocket_handler(
             path: string | null,
@@ -10323,18 +10833,18 @@ export namespace Soup {
             callback: ServerWebsocketCallback,
         ): void;
         /**
-         * Closes and frees `server'`s listening sockets.
+         * Closes and frees `server`'s listening sockets.
          *
-         * Note that if there are currently requests in progress on `server,` that they
-         * will continue to be processed if `server'`s [struct`GLib`.MainContext] is still
+         * Note that if there are currently requests in progress on `server`, that they
+         * will continue to be processed if `server`'s {@link GLib.MainContext} is still
          * running.
          *
-         * You can call [method`Server`.listen], etc, after calling this function
+         * You can call {@link Server.listen}, etc, after calling this function
          * if you want to start listening again.
          */
         disconnect(): void;
         /**
-         * Gets `server'`s list of listening sockets.
+         * Gets `server`'s list of listening sockets.
          *
          * You should treat these sockets as read-only; writing to or
          * modifiying any of these sockets may cause `server` to malfunction.
@@ -10343,17 +10853,17 @@ export namespace Soup {
         get_listeners(): Gio.Socket[];
         /**
          * Gets the `server` SSL/TLS client authentication mode.
-         * @returns a #GTlsAuthenticationMode
+         * @returns a {@link Gio.TlsAuthenticationMode}
          */
         get_tls_auth_mode(): Gio.TlsAuthenticationMode;
         /**
          * Gets the `server` SSL/TLS certificate.
-         * @returns a #GTlsCertificate or %NULL
+         * @returns a {@link Gio.TlsCertificate} or `null`
          */
         get_tls_certificate(): Gio.TlsCertificate | null;
         /**
          * Gets the `server` SSL/TLS database.
-         * @returns a #GTlsDatabase
+         * @returns a {@link Gio.TlsDatabase}
          */
         get_tls_database(): Gio.TlsDatabase | null;
         /**
@@ -10363,33 +10873,33 @@ export namespace Soup {
          * These will contain IP addresses, not hostnames, and will also indicate
          * whether the given listener is http or https.
          *
-         * Note that if you used [method`Server`.listen_all] the returned URIs will use
+         * Note that if you used {@link Server.listen_all} the returned URIs will use
          * the addresses `0.0.0.0` and `::`, rather than actually returning separate
          * URIs for each interface on the system.
-         * @returns a list of [struct@GLib.Uri], which you   must free with each element with [method@GLib.Uri.unref] when you are done with it.
+         * @returns a list of {@link GLib.Uri}, which you   must free with each element with {@link GLib.Uri.unref} when you are done with it.
          */
         get_uris(): GLib.Uri[];
         /**
          * Checks whether `server` is capable of https.
          *
          * In order for a server to run https, you must call
-         * [method`Server`.set_tls_certificate], or set the
-         * [property`Server:`tls-certificate] property, to provide it with a
+         * {@link Server.set_tls_certificate}, or set the
+         * {@link Server.tls_certificate} property, to provide it with a
          * certificate to use.
          *
          * If you are using the deprecated single-listener APIs, then a return value of
-         * %TRUE indicates that the [class`Server]` serves https exclusively. If you are
-         * using [method`Server`.listen], etc, then a %TRUE return value merely indicates
+         * `true` indicates that the {@link Server} serves https exclusively. If you are
+         * using {@link Server.listen}, etc, then a `true` return value merely indicates
          * that the server is *able* to do https, regardless of whether it actually
-         * currently is or not. Use [method`Server`.get_uris] to see if it currently has
+         * currently is or not. Use {@link Server.get_uris} to see if it currently has
          * any https listeners.
-         * @returns %TRUE if @server is configured to serve https.
+         * @returns `true` if `server` is configured to serve https.
          */
         is_https(): boolean;
         /**
          * Attempts to set up `server` to listen for connections on `address`.
          *
-         * If `options` includes %SOUP_SERVER_LISTEN_HTTPS, and `server` has
+         * If `options` includes {@link Soup.ServerListenOptions.HTTPS}, and `server` has
          * been configured for TLS, then `server` will listen for https
          * connections on this port. Otherwise it will listen for plain http.
          *
@@ -10398,14 +10908,14 @@ export namespace Soup {
          * ports, or set up both http and https service.
          *
          * After calling this method, `server` will begin accepting and processing
-         * connections as soon as the appropriate [struct`GLib`.MainContext] is run.
+         * connections as soon as the appropriate {@link GLib.MainContext} is run.
          *
          * Note that this API does not make use of dual IPv4/IPv6 sockets; if
          * `address` is an IPv6 address, it will only accept IPv6 connections.
          * You must configure IPv4 listening separately.
          * @param address the address of the interface to listen on
          * @param options listening options for this server
-         * @returns %TRUE on success, %FALSE if @address could not be   bound or any other error occurred (in which case @error will be   set).
+         * @returns `true` on success, `false` if `address` could not be   bound or any other error occurred (in which case `error` will be   set).
          */
         listen(address: Gio.SocketAddress, options: ServerListenOptions | null): boolean;
         /**
@@ -10413,59 +10923,59 @@ export namespace Soup {
          * on the system.
          *
          * That is, it listens on the addresses `0.0.0.0` and/or `::`, depending on
-         * whether `options` includes %SOUP_SERVER_LISTEN_IPV4_ONLY,
-         * %SOUP_SERVER_LISTEN_IPV6_ONLY, or neither.) If `port` is specified, `server`
+         * whether `options` includes {@link Soup.ServerListenOptions.IPV4_ONLY},
+         * {@link Soup.ServerListenOptions.IPV6_ONLY}, or neither.) If `port` is specified, `server`
          * will listen on that port. If it is 0, `server` will find an unused port to
-         * listen on. (In that case, you can use [method`Server`.get_uris] to find out
+         * listen on. (In that case, you can use {@link Server.get_uris} to find out
          * what port it ended up choosing.
          *
-         * See [method`Server`.listen] for more details.
+         * See {@link Server.listen} for more details.
          * @param port the port to listen on, or 0
          * @param options listening options for this server
-         * @returns %TRUE on success, %FALSE if @port could not be bound   or any other error occurred (in which case @error will be set).
+         * @returns `true` on success, `false` if `port` could not be bound   or any other error occurred (in which case `error` will be set).
          */
         listen_all(port: number, options: ServerListenOptions | null): boolean;
         /**
          * Attempts to set up `server` to listen for connections on "localhost".
          *
          * That is, `127.0.0.1` and/or `::1`, depending on whether `options` includes
-         * %SOUP_SERVER_LISTEN_IPV4_ONLY, %SOUP_SERVER_LISTEN_IPV6_ONLY, or neither). If
+         * {@link Soup.ServerListenOptions.IPV4_ONLY}, {@link Soup.ServerListenOptions.IPV6_ONLY}, or neither). If
          * `port` is specified, `server` will listen on that port. If it is 0, `server`
          * will find an unused port to listen on. (In that case, you can use
-         * [method`Server`.get_uris] to find out what port it ended up choosing.
+         * {@link Server.get_uris} to find out what port it ended up choosing.
          *
-         * See [method`Server`.listen] for more details.
+         * See {@link Server.listen} for more details.
          * @param port the port to listen on, or 0
          * @param options listening options for this server
-         * @returns %TRUE on success, %FALSE if @port could not be bound   or any other error occurred (in which case @error will be set).
+         * @returns `true` on success, `false` if `port` could not be bound   or any other error occurred (in which case `error` will be set).
          */
         listen_local(port: number, options: ServerListenOptions | null): boolean;
         /**
          * Attempts to set up `server` to listen for connections on `socket`.
          *
-         * See [method`Server`.listen] for more details.
-         * @param socket a listening #GSocket
+         * See {@link Server.listen} for more details.
+         * @param socket a listening {@link Gio.Socket}
          * @param options listening options for this server
-         * @returns %TRUE on success, %FALSE if an error occurred (in   which case @error will be set).
+         * @returns `true` on success, `false` if an error occurred (in   which case `error` will be set).
          */
         listen_socket(socket: Gio.Socket, options: ServerListenOptions | null): boolean;
         /**
          * Pauses I/O on `msg`.
          *
          * This can be used when you need to return from the server handler without
-         * having the full response ready yet. Use [method`Server`.unpause_message] to
+         * having the full response ready yet. Use {@link Server.unpause_message} to
          * resume I/O.
          *
-         * This must only be called on a [class`ServerMessage]` which was created by the
-         * [class`Server]` and are currently doing I/O, such as those passed into a
-         * [callback`ServerCallback]` or emitted in a [signal`Server:`:request-read]
+         * This must only be called on a {@link ServerMessage} which was created by the
+         * {@link Server} and are currently doing I/O, such as those passed into a
+         * {@link ServerCallback} or emitted in a `Soup.Server::request-read`
          * signal.
-         * @param msg a #SoupServerMessage associated with @server.
+         * @param msg a {@link Soup.ServerMessage} associated with `server`.
          */
         pause_message(msg: ServerMessage): void;
         /**
          * Removes `auth_domain` from `server`.
-         * @param auth_domain a #SoupAuthDomain
+         * @param auth_domain a {@link Soup.AuthDomain}
          */
         remove_auth_domain(auth_domain: AuthDomain): void;
         /**
@@ -10475,38 +10985,38 @@ export namespace Soup {
         remove_handler(path: string): void;
         /**
          * Removes support for WebSocket extension of type `extension_type` (or any subclass of
-         * `extension_type)` from `server`.
-         * @param extension_type a #GType
+         * `extension_type`) from `server`.
+         * @param extension_type a {@link GObject.GType}
          */
         remove_websocket_extension(extension_type: GObject.GType): void;
         /**
-         * Sets `server'`s #GTlsAuthenticationMode to use for SSL/TLS client authentication.
-         * @param mode a #GTlsAuthenticationMode
+         * Sets `server`'s {@link Gio.TlsAuthenticationMode} to use for SSL/TLS client authentication.
+         * @param mode a {@link Gio.TlsAuthenticationMode}
          */
         set_tls_auth_mode(mode: Gio.TlsAuthenticationMode | null): void;
         /**
          * Sets `server` up to do https, using the given SSL/TLS `certificate`.
-         * @param certificate a #GTlsCertificate
+         * @param certificate a {@link Gio.TlsCertificate}
          */
         set_tls_certificate(certificate: Gio.TlsCertificate): void;
         /**
-         * Sets `server'`s #GTlsDatabase to use for validating SSL/TLS client certificates.
-         * @param tls_database a #GTlsDatabase
+         * Sets `server`'s {@link Gio.TlsDatabase} to use for validating SSL/TLS client certificates.
+         * @param tls_database a {@link Gio.TlsDatabase}
          */
         set_tls_database(tls_database: Gio.TlsDatabase): void;
         /**
          * Resumes I/O on `msg`.
          *
-         * Use this to resume after calling [method`Server`.pause_message], or after
+         * Use this to resume after calling {@link Server.pause_message}, or after
          * adding a new chunk to a chunked response.
          *
          * I/O won't actually resume until you return to the main loop.
          *
-         * This must only be called on a [class`ServerMessage]` which was created by the
-         * [class`Server]` and are currently doing I/O, such as those passed into a
-         * [callback`ServerCallback]` or emitted in a [signal`Server:`:request-read]
+         * This must only be called on a {@link ServerMessage} which was created by the
+         * {@link Server} and are currently doing I/O, such as those passed into a
+         * {@link ServerCallback} or emitted in a `Soup.Server::request-read`
          * signal.
-         * @param msg a #SoupServerMessage associated with @server.
+         * @param msg a {@link Soup.ServerMessage} associated with `server`.
          */
         unpause_message(msg: ServerMessage): void;
     }
@@ -10514,17 +11024,82 @@ export namespace Soup {
     namespace ServerMessage {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted during the `msg`'s connection TLS handshake
+             * after client TLS certificate has been received.
+             * You can return `true` to accept `tls_certificate` despite
+             * `tls_errors`.
+             * @signal
+             */
             'accept-certificate': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => boolean | void;
+            /**
+             * Emitted when the `msg`'s socket is connected and the TLS handshake completed.
+             * @signal
+             */
             connected: () => void;
+            /**
+             * Emitted when the `msg`'s socket is disconnected.
+             * @signal
+             */
             disconnected: () => void;
+            /**
+             * Emitted when all HTTP processing is finished for a message.
+             * (After `Soup.ServerMessage::wrote-body`).
+             * @signal
+             */
             finished: () => void;
+            /**
+             * Emitted after receiving the complete request body.
+             * @signal
+             */
             'got-body': () => void;
+            /**
+             * Emitted after receiving a chunk of a message body.
+             *
+             * Note that "chunk" in this context means any subpiece of the body, not
+             * necessarily the specific HTTP 1.1 chunks sent by the other side.
+             * @signal
+             */
             'got-chunk': (arg0: GLib.Bytes) => void;
+            /**
+             * Emitted after receiving the Request-Line and request headers.
+             * @signal
+             */
             'got-headers': () => void;
+            /**
+             * Emitted immediately after writing the complete response body for a
+             * message.
+             * @signal
+             */
             'wrote-body': () => void;
+            /**
+             * Emitted immediately after writing a portion of the message
+             * body to the network.
+             * @signal
+             */
             'wrote-body-data': (arg0: number) => void;
+            /**
+             * Emitted immediately after writing a body chunk for a message.
+             *
+             * Note that this signal is not parallel to
+             * `Soup.ServerMessage::got-chunk`; it is emitted only when a complete
+             * chunk (added with {@link MessageBody.append} or
+             * {@link MessageBody.append_bytes} has been written. To get
+             * more useful continuous progress information, use
+             * `Soup.ServerMessage::wrote-body-data`.
+             * @signal
+             */
             'wrote-chunk': () => void;
+            /**
+             * Emitted immediately after writing the response headers for a
+             * message.
+             * @signal
+             */
             'wrote-headers': () => void;
+            /**
+             * Emitted immediately after writing a 1xx (Informational) response.
+             * @signal
+             */
             'wrote-informational': () => void;
             'notify::tls-peer-certificate': (pspec: GObject.ParamSpec) => void;
             'notify::tls-peer-certificate-errors': (pspec: GObject.ParamSpec) => void;
@@ -10543,16 +11118,17 @@ export namespace Soup {
     /**
      * An HTTP server request and response pair.
      *
-     * A [class`ServerMessage]` represents an HTTP message that is being sent or
-     * received on a [class`Server]`.
+     * A {@link ServerMessage} represents an HTTP message that is being sent or
+     * received on a {@link Server}.
      *
-     * [class`Server]` will create [class`ServerMessage]`s automatically for
+     * {@link Server} will create {@link ServerMessage}s automatically for
      * incoming requests, which your application will receive via handlers.
      *
      * Note that libsoup's terminology here does not quite match the HTTP
      * specification: in RFC 2616, an "HTTP-message" is *either* a Request, *or* a
-     * Response. In libsoup, a [class`ServerMessage]` combines both the request and the
+     * Response. In libsoup, a {@link ServerMessage} combines both the request and the
      * response.
+     * @gir-type Class
      */
     class ServerMessage extends GObject.Object {
         static $gtype: GObject.GType<ServerMessage>;
@@ -10560,19 +11136,23 @@ export namespace Soup {
         // Properties
 
         /**
-         * The peer's #GTlsCertificate associated with the message
+         * The peer's {@link Gio.TlsCertificate} associated with the message
+         * @since 3.2
          */
         get tls_peer_certificate(): Gio.TlsCertificate;
         /**
-         * The peer's #GTlsCertificate associated with the message
+         * The peer's {@link Gio.TlsCertificate} associated with the message
+         * @since 3.2
          */
         get tlsPeerCertificate(): Gio.TlsCertificate;
         /**
-         * The verification errors on [property`ServerMessage:`tls-peer-certificate]
+         * The verification errors on {@link ServerMessage.tls_peer_certificate}
+         * @since 3.2
          */
         get tls_peer_certificate_errors(): Gio.TlsCertificateFlags;
         /**
-         * The verification errors on [property`ServerMessage:`tls-peer-certificate]
+         * The verification errors on {@link ServerMessage.tls_peer_certificate}
+         * @since 3.2
          */
         get tlsPeerCertificateErrors(): Gio.TlsCertificateFlags;
 
@@ -10593,16 +11173,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServerMessage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServerMessage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServerMessage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServerMessage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServerMessage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServerMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10613,13 +11196,13 @@ export namespace Soup {
 
         /**
          * Get the HTTP version of `msg`.
-         * @returns a #SoupHTTPVersion.
+         * @returns a {@link Soup.HTTPVersion}.
          */
         get_http_version(): HTTPVersion;
         /**
-         * Retrieves the [class`Gio`.SocketAddress] associated with the local end
+         * Retrieves the {@link Gio.SocketAddress} associated with the local end
          * of a connection.
-         * @returns the #GSocketAddress   associated with the local end of a connection, it may be   %NULL if you used [method@Server.accept_iostream].
+         * @returns the {@link Gio.SocketAddress}   associated with the local end of a connection, it may be   `null` if you used {@link Server.accept_iostream}.
          */
         get_local_address(): Gio.SocketAddress | null;
         /**
@@ -10633,39 +11216,39 @@ export namespace Soup {
          */
         get_reason_phrase(): string | null;
         /**
-         * Retrieves the [class`Gio`.SocketAddress] associated with the remote end
+         * Retrieves the {@link Gio.SocketAddress} associated with the remote end
          * of a connection.
-         * @returns the #GSocketAddress   associated with the remote end of a connection, it may be   %NULL if you used [method@Server.accept_iostream].
+         * @returns the {@link Gio.SocketAddress}   associated with the remote end of a connection, it may be   `null` if you used {@link Server.accept_iostream}.
          */
         get_remote_address(): Gio.SocketAddress | null;
         /**
          * Retrieves the IP address associated with the remote end of a
          * connection.
-         * @returns the IP address associated with the remote   end of a connection, it may be %NULL if you used   [method@Server.accept_iostream].
+         * @returns the IP address associated with the remote   end of a connection, it may be `null` if you used   {@link Server.accept_iostream}.
          */
         get_remote_host(): string | null;
         /**
          * Get the request body of `msg`.
-         * @returns a #SoupMessageBody.
+         * @returns a {@link Soup.MessageBody}.
          */
         get_request_body(): MessageBody;
         /**
          * Get the request headers of `msg`.
-         * @returns a #SoupMessageHeaders with the request headers.
+         * @returns a {@link Soup.MessageHeaders} with the request headers.
          */
         get_request_headers(): MessageHeaders;
         /**
          * Get the response body of `msg`.
-         * @returns a #SoupMessageBody.
+         * @returns a {@link Soup.MessageBody}.
          */
         get_response_body(): MessageBody;
         /**
          * Get the response headers of `msg`.
-         * @returns a #SoupMessageHeaders with the response headers.
+         * @returns a {@link Soup.MessageHeaders} with the response headers.
          */
         get_response_headers(): MessageHeaders;
         /**
-         * Retrieves the [class`Gio`.Socket] that `msg` is associated with.
+         * Retrieves the {@link Gio.Socket} that `msg` is associated with.
          *
          * If you are using this method to observe when multiple requests are
          * made on the same persistent HTTP connection (eg, as the ntlm-test
@@ -10673,7 +11256,7 @@ export namespace Soup {
          * destruction as well (eg, by using weak references), so that you do
          * not get fooled when the allocator reuses the memory address of a
          * previously-destroyed socket to represent a new socket.
-         * @returns the #GSocket that @msg is   associated with, %NULL if you used [method@Server.accept_iostream].
+         * @returns the {@link Gio.Socket} that `msg` is   associated with, `null` if you used {@link Server.accept_iostream}.
          */
         get_socket(): Gio.Socket | null;
         /**
@@ -10682,90 +11265,90 @@ export namespace Soup {
          */
         get_status(): number;
         /**
-         * Gets the peer's #GTlsCertificate associated with `msg'`s connection.
+         * Gets the peer's {@link Gio.TlsCertificate} associated with `msg`'s connection.
          * Note that this is not set yet during the emission of
          * SoupServerMessage::accept-certificate signal.
-         * @returns @msg's TLS peer certificate,    or %NULL if @msg's connection is not SSL.
+         * @returns `msg`'s TLS peer certificate,    or `null` if `msg`'s connection is not SSL.
          */
         get_tls_peer_certificate(): Gio.TlsCertificate | null;
         /**
-         * Gets the errors associated with validating `msg'`s TLS peer certificate.
+         * Gets the errors associated with validating `msg`'s TLS peer certificate.
          * Note that this is not set yet during the emission of
          * SoupServerMessage::accept-certificate signal.
-         * @returns a #GTlsCertificateFlags with @msg's TLS peer certificate errors.
+         * @returns a {@link Gio.TlsCertificateFlags} with `msg`'s TLS peer certificate errors.
          */
         get_tls_peer_certificate_errors(): Gio.TlsCertificateFlags;
         /**
-         * Get `msg'`s URI.
-         * @returns a #GUri
+         * Get `msg`'s URI.
+         * @returns a {@link GLib.Uri}
          */
         get_uri(): GLib.Uri;
         /**
          * Gets if `msg` represents an OPTIONS message with the path `*`.
-         * @returns %TRUE if is an OPTIONS ping
+         * @returns `true` if is an OPTIONS ping
          */
         is_options_ping(): boolean;
         /**
          * Pauses I/O on `msg`.
          *
          * This can be used when you need to return from the server handler without
-         * having the full response ready yet. Use [method`ServerMessage`.unpause] to
+         * having the full response ready yet. Use {@link ServerMessage.unpause} to
          * resume I/O.
          */
         pause(): void;
         /**
          * Set the HTTP version of `msg`.
-         * @param version a #SoupHTTPVersion
+         * @param version a {@link Soup.HTTPVersion}
          */
         set_http_version(version: HTTPVersion | null): void;
         /**
-         * Sets `msg'`s status_code to `status_code` and adds a Location header
-         * pointing to `redirect_uri`. Use this from a [class`Server]` when you
+         * Sets `msg`'s status_code to `status_code` and adds a Location header
+         * pointing to `redirect_uri`. Use this from a {@link Server} when you
          * want to redirect the client to another URI.
          *
          * `redirect_uri` can be a relative URI, in which case it is
-         * interpreted relative to `msg'`s current URI. In particular, if
+         * interpreted relative to `msg`'s current URI. In particular, if
          * `redirect_uri` is just a path, it will replace the path
-         * *and query* of `msg'`s URI.
+         * *and query* of `msg`'s URI.
          * @param status_code a 3xx status code
-         * @param redirect_uri the URI to redirect @msg to
+         * @param redirect_uri the URI to redirect `msg` to
          */
         set_redirect(status_code: number, redirect_uri: string): void;
         /**
-         * Convenience function to set the response body of a [class`ServerMessage]`. If
-         * `content_type` is %NULL, the response body must be empty as well.
+         * Convenience function to set the response body of a {@link ServerMessage}. If
+         * `content_type` is `null`, the response body must be empty as well.
          * @param content_type MIME Content-Type of the body
-         * @param resp_use a #SoupMemoryUse describing how to handle @resp_body
+         * @param resp_use a {@link Soup.MemoryUse} describing how to handle `resp_body`
          * @param resp_body a data buffer containing the body of the message response.
          */
         set_response(content_type: string | null, resp_use: MemoryUse | null, resp_body?: Uint8Array | null): void;
         /**
-         * Sets `msg'`s status code to `status_code`.
+         * Sets `msg`'s status code to `status_code`.
          *
-         * If `status_code` is a known value and `reason_phrase` is %NULL, the
+         * If `status_code` is a known value and `reason_phrase` is `null`, the
          * reason_phrase will be set automatically.
          * @param status_code an HTTP status code
          * @param reason_phrase a reason phrase
          */
         set_status(status_code: number, reason_phrase?: string | null): void;
         /**
-         * "Steals" the HTTP connection associated with `msg` from its [class`Server]`. This
+         * "Steals" the HTTP connection associated with `msg` from its {@link Server}. This
          * happens immediately, regardless of the current state of the connection; if
          * the response to `msg` has not yet finished being sent, then it will be
          * discarded; you can steal the connection from a
-         * [signal`ServerMessage:`:wrote-informational] or
-         * [signal`ServerMessage:`:wrote-body] signal handler if you need to wait for
+         * `Soup.ServerMessage::wrote-informational` or
+         * `Soup.ServerMessage::wrote-body` signal handler if you need to wait for
          * part or all of the response to be sent.
          *
          * Note that when calling this function from C, `msg` will most
          * likely be freed as a side effect.
-         * @returns the #GIOStream formerly associated   with @msg (or %NULL if @msg was no longer associated with a   connection). No guarantees are made about what kind of #GIOStream   is returned.
+         * @returns the {@link Gio.IOStream} formerly associated   with `msg` (or `null` if `msg` was no longer associated with a   connection). No guarantees are made about what kind of {@link Gio.IOStream}   is returned.
          */
         steal_connection(): Gio.IOStream;
         /**
          * Resumes I/O on `msg`.
          *
-         * Use this to resume after calling [method`ServerMessage`.pause], or after
+         * Use this to resume after calling {@link ServerMessage.pause}, or after
          * adding a new chunk to a chunked response. I/O won't actually resume until you
          * return to the main loop.
          */
@@ -10775,7 +11358,46 @@ export namespace Soup {
     namespace Session {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when a request is queued on `session`.
+             *
+             * When sending a request, first `Soup.Session::request-queued`
+             * is emitted, indicating that the session has become aware of
+             * the request.
+             *
+             * After a connection is available to send the request various
+             * {@link Message} signals are emitted as the message is
+             * processed. If the message is requeued, it will emit
+             * `Soup.Message::restarted`, which will then be followed by other
+             * {@link Message} signals when the message is re-sent.
+             *
+             * Eventually, the message will emit `Soup.Message::finished`.
+             * Normally, this signals the completion of message
+             * processing. However, it is possible that the application
+             * will requeue the message from the "finished" handler.
+             * In that case the process will loop back.
+             *
+             * Eventually, a message will reach "finished" and not be
+             * requeued. At that point, the session will emit
+             * `Soup.Session::request-unqueued` to indicate that it is done
+             * with the message.
+             *
+             * To sum up: `Soup.Session::request-queued` and
+             * `Soup.Session::request-unqueued` are guaranteed to be emitted
+             * exactly once, but `Soup.Message::finished` (and all of the other
+             * {@link Message} signals) may be invoked multiple times for a given
+             * message.
+             * @signal
+             */
             'request-queued': (arg0: Message) => void;
+            /**
+             * Emitted when a request is removed from `session`'s queue,
+             * indicating that `session` is done with it.
+             *
+             * See `Soup.Session::request-queued` for a detailed description of
+             * the message lifecycle within a session.
+             * @signal
+             */
             'request-unqueued': (arg0: Message) => void;
             'notify::accept-language': (pspec: GObject.ParamSpec) => void;
             'notify::accept-language-auto': (pspec: GObject.ParamSpec) => void;
@@ -10823,38 +11445,39 @@ export namespace Soup {
     /**
      * Soup session state object.
      *
-     * [class`Session]` is the object that controls client-side HTTP. A
-     * [class`Session]` encapsulates all of the state that libsoup is keeping
+     * {@link Session} is the object that controls client-side HTTP. A
+     * {@link Session} encapsulates all of the state that libsoup is keeping
      * on behalf of your program; cached HTTP connections, authentication
      * information, etc. It also keeps track of various global options
      * and features that you are using.
      *
-     * Most applications will only need a single [class`Session]`; the primary
+     * Most applications will only need a single {@link Session}; the primary
      * reason you might need multiple sessions is if you need to have
      * multiple independent authentication contexts. (Eg, you are
      * connecting to a server and authenticating as two different users at
-     * different times; the easiest way to ensure that each [class`Message]`
+     * different times; the easiest way to ensure that each {@link Message}
      * is sent with the authentication information you intended is to use
      * one session for the first user, and a second session for the other
      * user.)
      *
-     * Additional [class`Session]` functionality is provided by
-     * [iface`SessionFeature]` objects, which can be added to a session with
-     * [method`Session`.add_feature] or [method`Session`.add_feature_by_type]
-     * For example, [class`Logger]` provides support for
-     * logging HTTP traffic, [class`ContentDecoder]` provides support for
-     * compressed response handling, and [class`ContentSniffer]` provides
+     * Additional {@link Session} functionality is provided by
+     * {@link SessionFeature} objects, which can be added to a session with
+     * {@link Session.add_feature} or {@link Session.add_feature_by_type}
+     * For example, {@link Logger} provides support for
+     * logging HTTP traffic, {@link ContentDecoder} provides support for
+     * compressed response handling, and {@link ContentSniffer} provides
      * support for HTML5-style response body content sniffing.
-     * Additionally, subtypes of [class`Auth]` can be added
+     * Additionally, subtypes of {@link Auth} can be added
      * as features, to add support for additional authentication types.
      *
-     * All `SoupSession`s are created with a [class`AuthManager]`, and support
-     * for %SOUP_TYPE_AUTH_BASIC and %SOUP_TYPE_AUTH_DIGEST. Additionally,
-     * sessions using the plain [class`Session]` class (rather than one of its deprecated
-     * subtypes) have a [class`ContentDecoder]` by default.
+     * All {@link Soup.Session}s are created with a {@link AuthManager}, and support
+     * for `SOUP_TYPE_AUTH_BASIC` and `SOUP_TYPE_AUTH_DIGEST`. Additionally,
+     * sessions using the plain {@link Session} class (rather than one of its deprecated
+     * subtypes) have a {@link ContentDecoder} by default.
      *
      * Note that all async methods will invoke their callbacks on the thread-default
      * context at the time of the function call.
+     * @gir-type Class
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
@@ -10862,38 +11485,38 @@ export namespace Soup {
         // Properties
 
         /**
-         * If non-%NULL, the value to use for the "Accept-Language" header
-         * on [class`Message]`s sent from this session.
+         * If non-`null`, the value to use for the "Accept-Language" header
+         * on {@link Message}s sent from this session.
          *
-         * Setting this will disable [property`Session:`accept-language-auto].
+         * Setting this will disable {@link Session.accept_language_auto}.
          */
         get accept_language(): string;
         set accept_language(val: string);
         /**
-         * If non-%NULL, the value to use for the "Accept-Language" header
-         * on [class`Message]`s sent from this session.
+         * If non-`null`, the value to use for the "Accept-Language" header
+         * on {@link Message}s sent from this session.
          *
-         * Setting this will disable [property`Session:`accept-language-auto].
+         * Setting this will disable {@link Session.accept_language_auto}.
          */
         get acceptLanguage(): string;
         set acceptLanguage(val: string);
         /**
-         * If %TRUE, [class`Session]` will automatically set the string
-         * for the "Accept-Language" header on every [class`Message]`
-         * sent, based on the return value of [func`GLib`.get_language_names].
+         * If `true`, {@link Session} will automatically set the string
+         * for the "Accept-Language" header on every {@link Message}
+         * sent, based on the return value of {@link GLib.get_language_names}.
          *
          * Setting this will override any previous value of
-         * [property`Session:`accept-language].
+         * {@link Session.accept_language}.
          */
         get accept_language_auto(): boolean;
         set accept_language_auto(val: boolean);
         /**
-         * If %TRUE, [class`Session]` will automatically set the string
-         * for the "Accept-Language" header on every [class`Message]`
-         * sent, based on the return value of [func`GLib`.get_language_names].
+         * If `true`, {@link Session} will automatically set the string
+         * for the "Accept-Language" header on every {@link Message}
+         * sent, based on the return value of {@link GLib.get_language_names}.
          *
          * Setting this will override any previous value of
-         * [property`Session:`accept-language].
+         * {@link Session.accept_language}.
          */
         get acceptLanguageAuto(): boolean;
         set acceptLanguageAuto(val: boolean);
@@ -10903,7 +11526,7 @@ export namespace Soup {
          *
          * Although you can change this property at any time, it will
          * only affect newly-created connections, not currently-open
-         * ones. You can call [method`Session`.abort] after setting this
+         * ones. You can call {@link Session.abort} after setting this
          * if you want to ensure that all future connections will have
          * this timeout value.
          */
@@ -10915,14 +11538,14 @@ export namespace Soup {
          *
          * Although you can change this property at any time, it will
          * only affect newly-created connections, not currently-open
-         * ones. You can call [method`Session`.abort] after setting this
+         * ones. You can call {@link Session.abort} after setting this
          * if you want to ensure that all future connections will have
          * this timeout value.
          */
         get idleTimeout(): number;
         set idleTimeout(val: number);
         /**
-         * Sets the [class`Gio`.InetSocketAddress] to use for the client side of
+         * Sets the {@link Gio.InetSocketAddress} to use for the client side of
          * the connection.
          *
          * Use this property if you want for instance to bind the
@@ -10930,7 +11553,7 @@ export namespace Soup {
          */
         get local_address(): Gio.InetSocketAddress;
         /**
-         * Sets the [class`Gio`.InetSocketAddress] to use for the client side of
+         * Sets the {@link Gio.InetSocketAddress} to use for the client side of
          * the connection.
          *
          * Use this property if you want for instance to bind the
@@ -10956,23 +11579,23 @@ export namespace Soup {
          */
         get maxConnsPerHost(): number;
         /**
-         * A [iface`Gio`.ProxyResolver] to use with this session.
+         * A {@link Gio.ProxyResolver} to use with this session.
          *
          * If no proxy resolver is set, then the default proxy resolver
-         * will be used. See [func`Gio`.ProxyResolver.get_default].
-         * You can set it to %NULL if you don't want to use proxies, or
-         * set it to your own [iface`Gio`.ProxyResolver] if you want to control
+         * will be used. See {@link Gio.ProxyResolver.get_default}.
+         * You can set it to `null` if you don't want to use proxies, or
+         * set it to your own {@link Gio.ProxyResolver} if you want to control
          * what proxies get used.
          */
         get proxy_resolver(): Gio.ProxyResolver;
         set proxy_resolver(val: Gio.ProxyResolver);
         /**
-         * A [iface`Gio`.ProxyResolver] to use with this session.
+         * A {@link Gio.ProxyResolver} to use with this session.
          *
          * If no proxy resolver is set, then the default proxy resolver
-         * will be used. See [func`Gio`.ProxyResolver.get_default].
-         * You can set it to %NULL if you don't want to use proxies, or
-         * set it to your own [iface`Gio`.ProxyResolver] if you want to control
+         * will be used. See {@link Gio.ProxyResolver.get_default}.
+         * You can set it to `null` if you don't want to use proxies, or
+         * set it to your own {@link Gio.ProxyResolver} if you want to control
          * what proxies get used.
          */
         get proxyResolver(): Gio.ProxyResolver;
@@ -10984,7 +11607,7 @@ export namespace Soup {
          * This function is not required for common HTTP usage, but only when connecting
          * to a HTTP service that is not using standard TCP/IP sockets. An example of
          * this is a local service that uses HTTP over UNIX-domain sockets, in that case
-         * a [class`Gio`.UnixSocketAddress] can be passed to this function.
+         * a {@link Gio.UnixSocketAddress} can be passed to this function.
          */
         get remote_connectable(): Gio.SocketConnectable;
         /**
@@ -10994,7 +11617,7 @@ export namespace Soup {
          * This function is not required for common HTTP usage, but only when connecting
          * to a HTTP service that is not using standard TCP/IP sockets. An example of
          * this is a local service that uses HTTP over UNIX-domain sockets, in that case
-         * a [class`Gio`.UnixSocketAddress] can be passed to this function.
+         * a {@link Gio.UnixSocketAddress} can be passed to this function.
          */
         get remoteConnectable(): Gio.SocketConnectable;
         /**
@@ -11004,45 +11627,45 @@ export namespace Soup {
          *
          * Although you can change this property at any time, it will
          * only affect newly-created connections, not currently-open
-         * ones. You can call [method`Session`.abort] after setting this
+         * ones. You can call {@link Session.abort} after setting this
          * if you want to ensure that all future connections will have
          * this timeout value.
          *
-         * Not to be confused with [property`Session:`idle-timeout] (which is
+         * Not to be confused with {@link Session.idle_timeout} (which is
          * the length of time that idle persistent connections will be
          * kept open).
          */
         get timeout(): number;
         set timeout(val: number);
         /**
-         * Sets the [class`Gio`.TlsDatabase] to use for validating SSL/TLS
+         * Sets the {@link Gio.TlsDatabase} to use for validating SSL/TLS
          * certificates.
          *
          * If no certificate database is set, then the default database will be
-         * used. See [method`Gio`.TlsBackend.get_default_database].
+         * used. See {@link Gio.TlsBackend.get_default_database}.
          */
         get tls_database(): Gio.TlsDatabase;
         set tls_database(val: Gio.TlsDatabase);
         /**
-         * Sets the [class`Gio`.TlsDatabase] to use for validating SSL/TLS
+         * Sets the {@link Gio.TlsDatabase} to use for validating SSL/TLS
          * certificates.
          *
          * If no certificate database is set, then the default database will be
-         * used. See [method`Gio`.TlsBackend.get_default_database].
+         * used. See {@link Gio.TlsBackend.get_default_database}.
          */
         get tlsDatabase(): Gio.TlsDatabase;
         set tlsDatabase(val: Gio.TlsDatabase);
         /**
-         * A [class`Gio`.TlsInteraction] object that will be passed on to any
-         * [class`Gio`.TlsConnection]s created by the session.
+         * A {@link Gio.TlsInteraction} object that will be passed on to any
+         * {@link Gio.TlsConnection}s created by the session.
          *
          * This can be used to provide client-side certificates, for example.
          */
         get tls_interaction(): Gio.TlsInteraction;
         set tls_interaction(val: Gio.TlsInteraction);
         /**
-         * A [class`Gio`.TlsInteraction] object that will be passed on to any
-         * [class`Gio`.TlsConnection]s created by the session.
+         * A {@link Gio.TlsInteraction} object that will be passed on to any
+         * {@link Gio.TlsConnection}s created by the session.
          *
          * This can be used to provide client-side certificates, for example.
          */
@@ -11051,8 +11674,8 @@ export namespace Soup {
         /**
          * User-Agent string.
          *
-         * If non-%NULL, the value to use for the "User-Agent" header
-         * on [class`Message]`s sent from this session.
+         * If non-`null`, the value to use for the "User-Agent" header
+         * on {@link Message}s sent from this session.
          *
          * RFC 2616 says: "The User-Agent request-header field
          * contains information about the user agent originating the
@@ -11070,8 +11693,8 @@ export namespace Soup {
          * followed by a version string. You may also put comments,
          * enclosed in parentheses, between or after the tokens.
          *
-         * If you set a [property`Session:`user-agent] property that has trailing
-         * whitespace, [class`Session]` will append its own product token
+         * If you set a {@link Session.user_agent} property that has trailing
+         * whitespace, {@link Session} will append its own product token
          * (eg, `libsoup/2.3.2`) to the end of the
          * header for you.
          */
@@ -11080,8 +11703,8 @@ export namespace Soup {
         /**
          * User-Agent string.
          *
-         * If non-%NULL, the value to use for the "User-Agent" header
-         * on [class`Message]`s sent from this session.
+         * If non-`null`, the value to use for the "User-Agent" header
+         * on {@link Message}s sent from this session.
          *
          * RFC 2616 says: "The User-Agent request-header field
          * contains information about the user agent originating the
@@ -11099,8 +11722,8 @@ export namespace Soup {
          * followed by a version string. You may also put comments,
          * enclosed in parentheses, between or after the tokens.
          *
-         * If you set a [property`Session:`user-agent] property that has trailing
-         * whitespace, [class`Session]` will append its own product token
+         * If you set a {@link Session.user_agent} property that has trailing
+         * whitespace, {@link Session} will append its own product token
          * (eg, `libsoup/2.3.2`) to the end of the
          * header for you.
          */
@@ -11126,16 +11749,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11144,7 +11770,15 @@ export namespace Soup {
 
         // Virtual methods
 
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_request_queued(msg: Message): void;
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_request_unqueued(msg: Message): void;
 
         // Methods
@@ -11155,28 +11789,28 @@ export namespace Soup {
          */
         abort(): void;
         /**
-         * Adds `feature'`s functionality to `session`. You cannot add multiple
-         * features of the same [alias`GObject`.Type] to a session.
+         * Adds `feature`'s functionality to `session`. You cannot add multiple
+         * features of the same {@link GObject.Type} to a session.
          *
-         * See the main [class`Session]` documentation for information on what
+         * See the main {@link Session} documentation for information on what
          * features are present in sessions by default.
-         * @param feature an object that implements #SoupSessionFeature
+         * @param feature an object that implements {@link Soup.SessionFeature}
          */
         add_feature(feature: SessionFeature): void;
         /**
          * If `feature_type` is the type of a class that implements
-         * [iface`SessionFeature]`, this creates a new feature of that type and
-         * adds it to `session` as with [method`Session`.add_feature]. You can use
+         * {@link SessionFeature}, this creates a new feature of that type and
+         * adds it to `session` as with {@link Session.add_feature}. You can use
          * this when you don't need to customize the new feature in any way.
          * Adding multiple features of the same `feature_type` is not allowed.
          *
-         * If `feature_type` is not a [iface`SessionFeature]` type, this gives each
+         * If `feature_type` is not a {@link SessionFeature} type, this gives each
          * existing feature on `session` the chance to accept `feature_type` as
-         * a "subfeature". This can be used to add new [class`Auth]` types, for instance.
+         * a "subfeature". This can be used to add new {@link Auth} types, for instance.
          *
-         * See the main [class`Session]` documentation for information on what
+         * See the main {@link Session} documentation for information on what
          * features are present in sessions by default.
-         * @param feature_type a #GType
+         * @param feature_type a {@link GObject.GType}
          */
         add_feature_by_type(feature_type: GObject.GType): void;
         /**
@@ -11188,29 +11822,29 @@ export namespace Soup {
         /**
          * Gets whether `session` automatically sets the "Accept-Language" header on new
          * requests.
-         * @returns %TRUE if @session sets "Accept-Language" header automatically, or   %FALSE otherwise.
+         * @returns `true` if `session` sets "Accept-Language" header automatically, or   `false` otherwise.
          */
         get_accept_language_auto(): boolean;
         /**
-         * Gets the [class`Message]` of the `result` asynchronous operation This is useful
-         * to get the [class`Message]` of an asynchronous operation started by `session`
-         * from its [callback`Gio`.AsyncReadyCallback].
-         * @param result the #GAsyncResult passed to your callback
-         * @returns a #SoupMessage or   %NULL if @result is not a valid @session async operation result.
+         * Gets the {@link Message} of the `result` asynchronous operation This is useful
+         * to get the {@link Message} of an asynchronous operation started by `session`
+         * from its {@link Gio.AsyncReadyCallback}.
+         * @param result the {@link Gio.AsyncResult} passed to your callback
+         * @returns a {@link Soup.Message} or   `null` if `result` is not a valid `session` async operation result.
          */
         get_async_result_message(result: Gio.AsyncResult): Message | null;
         /**
          * Gets the feature in `session` of type `feature_type`.
-         * @param feature_type the #GType of the feature to get
-         * @returns a #SoupSessionFeature, or %NULL. The   feature is owned by @session.
+         * @param feature_type the {@link GObject.GType} of the feature to get
+         * @returns a {@link Soup.SessionFeature}, or `null`. The   feature is owned by `session`.
          */
         get_feature(feature_type: GObject.GType): SessionFeature | null;
         /**
-         * Gets the feature in `session` of type `feature_type,` provided
+         * Gets the feature in `session` of type `feature_type`, provided
          * that it is not disabled for `msg`.
-         * @param feature_type the #GType of the feature to get
-         * @param msg a #SoupMessage
-         * @returns a #SoupSessionFeature. The feature is   owned by @session.
+         * @param feature_type the {@link GObject.GType} of the feature to get
+         * @param msg a {@link Soup.Message}
+         * @returns a {@link Soup.SessionFeature}. The feature is   owned by `session`.
          */
         get_feature_for_message(feature_type: GObject.GType, msg: Message): SessionFeature | null;
         /**
@@ -11220,9 +11854,9 @@ export namespace Soup {
          */
         get_idle_timeout(): number;
         /**
-         * Get the [class`Gio`.InetSocketAddress] to use for the client side of
+         * Get the {@link Gio.InetSocketAddress} to use for the client side of
          * connections in `session`.
-         * @returns a #GInetSocketAddress
+         * @returns a {@link Gio.InetSocketAddress}
          */
         get_local_address(): Gio.InetSocketAddress | null;
         /**
@@ -11237,13 +11871,13 @@ export namespace Soup {
          */
         get_max_conns_per_host(): number;
         /**
-         * Get the [iface`Gio`.ProxyResolver] currently used by `session`.
-         * @returns a #GProxyResolver or %NULL if proxies   are disabled in @session
+         * Get the {@link Gio.ProxyResolver} currently used by `session`.
+         * @returns a {@link Gio.ProxyResolver} or `null` if proxies   are disabled in `session`
          */
         get_proxy_resolver(): Gio.ProxyResolver | null;
         /**
          * Gets the remote connectable if one set.
-         * @returns the #GSocketConnectable
+         * @returns the {@link Gio.SocketConnectable}
          */
         get_remote_connectable(): Gio.SocketConnectable | null;
         /**
@@ -11253,13 +11887,13 @@ export namespace Soup {
          */
         get_timeout(): number;
         /**
-         * Get the [class`Gio`.TlsDatabase] currently used by `session`.
-         * @returns a #GTlsDatabase
+         * Get the {@link Gio.TlsDatabase} currently used by `session`.
+         * @returns a {@link Gio.TlsDatabase}
          */
         get_tls_database(): Gio.TlsDatabase | null;
         /**
-         * Get the [class`Gio`.TlsInteraction] currently used by `session`.
-         * @returns a #GTlsInteraction
+         * Get the {@link Gio.TlsInteraction} currently used by `session`.
+         * @returns a {@link Gio.TlsInteraction}
          */
         get_tls_interaction(): Gio.TlsInteraction | null;
         /**
@@ -11269,10 +11903,10 @@ export namespace Soup {
         get_user_agent(): string | null;
         /**
          * Tests if `session` has at a feature of type `feature_type` (which can
-         * be the type of either a [iface`SessionFeature]`, or else a subtype of
-         * some class managed by another feature, such as [class`Auth]`).
-         * @param feature_type the #GType of the class of features to check for
-         * @returns %TRUE or %FALSE
+         * be the type of either a {@link SessionFeature}, or else a subtype of
+         * some class managed by another feature, such as {@link Auth}).
+         * @param feature_type the {@link GObject.GType} of the class of features to check for
+         * @returns `true` or `false`
          */
         has_feature(feature_type: GObject.GType): boolean;
         /**
@@ -11287,9 +11921,9 @@ export namespace Soup {
          * a connection error it will be handled by the request).
          *
          * The operation finishes when the connection is done or an error occurred.
-         * @param msg a #SoupMessage
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         preconnect_async(
             msg: Message,
@@ -11308,9 +11942,9 @@ export namespace Soup {
          * a connection error it will be handled by the request).
          *
          * The operation finishes when the connection is done or an error occurred.
-         * @param msg a #SoupMessage
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke when the operation finishes
          */
         preconnect_async(
@@ -11331,9 +11965,9 @@ export namespace Soup {
          * a connection error it will be handled by the request).
          *
          * The operation finishes when the connection is done or an error occurred.
-         * @param msg a #SoupMessage
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke when the operation finishes
          */
         preconnect_async(
@@ -11343,32 +11977,32 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Complete a preconnect async operation started with [method`Session`.preconnect_async].
-         * @param result the #GAsyncResult passed to your callback
-         * @returns %TRUE if the preconnect succeeded, or %FALSE in case of error.
+         * Complete a preconnect async operation started with {@link Session.preconnect_async}.
+         * @param result the {@link Gio.AsyncResult} passed to your callback
+         * @returns `true` if the preconnect succeeded, or `false` in case of error.
          */
         preconnect_finish(result: Gio.AsyncResult): boolean;
         /**
-         * Removes `feature'`s functionality from `session`.
-         * @param feature a feature that has previously been added to @session
+         * Removes `feature`'s functionality from `session`.
+         * @param feature a feature that has previously been added to `session`
          */
         remove_feature(feature: SessionFeature): void;
         /**
          * Removes all features of type `feature_type` (or any subclass of
-         * `feature_type)` from `session`.
-         * @param feature_type a #GType
+         * `feature_type`) from `session`.
+         * @param feature_type a {@link GObject.GType}
          */
         remove_feature_by_type(feature_type: GObject.GType): void;
         /**
          * Synchronously sends `msg` and waits for the beginning of a response.
          *
-         * On success, a [class`Gio`.InputStream] will be returned which you can use to
+         * On success, a {@link Gio.InputStream} will be returned which you can use to
          * read the response body. ("Success" here means only that an HTTP
          * response was received and understood; it does not necessarily mean
          * that a 2xx class status code was received.)
          *
-         * If non-%NULL, `cancellable` can be used to cancel the request;
-         * [method`Session`.send] will return a %G_IO_ERROR_CANCELLED error. Note that
+         * If non-`null`, `cancellable` can be used to cancel the request;
+         * {@link Session.send} will return a {@link Gio.IOErrorEnum.CANCELLED} error. Note that
          * with requests that have side effects (eg, `POST`, `PUT`, `DELETE`) it is
          * possible that you might cancel the request after the server acts on it, but
          * before it returns a response, leaving the remote resource in an unknown
@@ -11376,27 +12010,27 @@ export namespace Soup {
          *
          * If `msg` is requeued due to a redirect or authentication, the
          * initial (`3xx/401/407`) response body will be suppressed, and
-         * [method`Session`.send] will only return once a final response has been
+         * {@link Session.send} will only return once a final response has been
          * received.
          *
-         * Possible error domains include [error`SessionError]`, [error`Gio`.IOErrorEnum],
-         * and [error`Gio`.TlsError] which you may want to specifically handle.
-         * @param msg a #SoupMessage
-         * @param cancellable a #GCancellable
-         * @returns a #GInputStream for reading the   response body, or %NULL on error.
+         * Possible error domains include {@link SessionError}, {@link Gio.IOErrorEnum},
+         * and {@link Gio.TlsError} which you may want to specifically handle.
+         * @param msg a {@link Soup.Message}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link Gio.InputStream} for reading the   response body, or `null` on error.
          */
         send(msg: Message, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Synchronously sends `msg` and reads the response body.
          *
-         * On success, a [struct`GLib`.Bytes] will be returned with the response body.
+         * On success, a {@link GLib.Bytes} will be returned with the response body.
          * This function should only be used when the resource to be retrieved
          * is not too long and can be stored in memory.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
-         * @param cancellable a #GCancellable
-         * @returns a #GBytes, or %NULL on error.
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a {@link GLib.Bytes}, or `null` on error.
          */
         send_and_read(msg: Message, cancellable?: Gio.Cancellable | null): GLib.Bytes;
         /**
@@ -11405,13 +12039,13 @@ export namespace Soup {
          * When `callback` is called, then either `msg` has been sent, and its response
          * body read, or else an error has occurred. This function should only be used
          * when the resource to be retrieved is not too long and can be stored in
-         * memory. Call [method`Session`.send_and_read_finish] to get a
-         * [struct`GLib`.Bytes] with the response body.
+         * memory. Call {@link Session.send_and_read_finish} to get a
+         * {@link GLib.Bytes} with the response body.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         send_and_read_async(
             msg: Message,
@@ -11424,13 +12058,13 @@ export namespace Soup {
          * When `callback` is called, then either `msg` has been sent, and its response
          * body read, or else an error has occurred. This function should only be used
          * when the resource to be retrieved is not too long and can be stored in
-         * memory. Call [method`Session`.send_and_read_finish] to get a
-         * [struct`GLib`.Bytes] with the response body.
+         * memory. Call {@link Session.send_and_read_finish} to get a
+         * {@link GLib.Bytes} with the response body.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
          */
         send_and_read_async(
@@ -11445,13 +12079,13 @@ export namespace Soup {
          * When `callback` is called, then either `msg` has been sent, and its response
          * body read, or else an error has occurred. This function should only be used
          * when the resource to be retrieved is not too long and can be stored in
-         * memory. Call [method`Session`.send_and_read_finish] to get a
-         * [struct`GLib`.Bytes] with the response body.
+         * memory. Call {@link Session.send_and_read_finish} to get a
+         * {@link GLib.Bytes} with the response body.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
          */
         send_and_read_async(
@@ -11461,22 +12095,22 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Bytes> | void;
         /**
-         * Gets the response to a [method`Session`.send_and_read_async].
+         * Gets the response to a {@link Session.send_and_read_async}.
          *
-         * If successful, returns a [struct`GLib`.Bytes] with the response body.
-         * @param result the #GAsyncResult passed to your callback
-         * @returns a #GBytes, or %NULL on error.
+         * If successful, returns a {@link GLib.Bytes} with the response body.
+         * @param result the {@link Gio.AsyncResult} passed to your callback
+         * @returns a {@link GLib.Bytes}, or `null` on error.
          */
         send_and_read_finish(result: Gio.AsyncResult): GLib.Bytes;
         /**
          * Synchronously sends `msg` and splices the response body stream into `out_stream`.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
-         * @param out_stream a #GOutputStream
-         * @param flags a set of #GOutputStreamSpliceFlags
-         * @param cancellable a #GCancellable
-         * @returns a #gssize containing the size of the data spliced, or -1 if an error occurred.
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
+         * @param out_stream a {@link Gio.OutputStream}
+         * @param flags a set of {@link Gio.OutputStreamSpliceFlags}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns a `gssize` containing the size of the data spliced, or -1 if an error occurred.
          */
         send_and_splice(
             msg: Message,
@@ -11489,12 +12123,12 @@ export namespace Soup {
          * When `callback` is called, then either `msg` has been sent and its response body
          * spliced, or else an error has occurred.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
-         * @param out_stream a #GOutputStream
-         * @param flags a set of #GOutputStreamSpliceFlags
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
+         * @param out_stream a {@link Gio.OutputStream}
+         * @param flags a set of {@link Gio.OutputStreamSpliceFlags}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         send_and_splice_async(
             msg: Message,
@@ -11508,12 +12142,12 @@ export namespace Soup {
          * When `callback` is called, then either `msg` has been sent and its response body
          * spliced, or else an error has occurred.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
-         * @param out_stream a #GOutputStream
-         * @param flags a set of #GOutputStreamSpliceFlags
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
+         * @param out_stream a {@link Gio.OutputStream}
+         * @param flags a set of {@link Gio.OutputStreamSpliceFlags}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
          */
         send_and_splice_async(
@@ -11529,12 +12163,12 @@ export namespace Soup {
          * When `callback` is called, then either `msg` has been sent and its response body
          * spliced, or else an error has occurred.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
-         * @param out_stream a #GOutputStream
-         * @param flags a set of #GOutputStreamSpliceFlags
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
+         * @param out_stream a {@link Gio.OutputStream}
+         * @param flags a set of {@link Gio.OutputStreamSpliceFlags}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
          */
         send_and_splice_async(
@@ -11546,9 +12180,9 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
-         * Gets the response to a [method`Session`.send_and_splice_async].
-         * @param result the #GAsyncResult passed to your callback
-         * @returns a #gssize containing the size of the data spliced, or -1 if an error occurred.
+         * Gets the response to a {@link Session.send_and_splice_async}.
+         * @param result the {@link Gio.AsyncResult} passed to your callback
+         * @returns a `gssize` containing the size of the data spliced, or -1 if an error occurred.
          */
         send_and_splice_finish(result: Gio.AsyncResult): number;
         /**
@@ -11556,13 +12190,13 @@ export namespace Soup {
          *
          * When `callback` is called, then either `msg` has been sent, and its response
          * headers received, or else an error has occurred. Call
-         * [method`Session`.send_finish] to get a [class`Gio`.InputStream] for reading the
+         * {@link Session.send_finish} to get a {@link Gio.InputStream} for reading the
          * response body.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         send_async(
             msg: Message,
@@ -11574,13 +12208,13 @@ export namespace Soup {
          *
          * When `callback` is called, then either `msg` has been sent, and its response
          * headers received, or else an error has occurred. Call
-         * [method`Session`.send_finish] to get a [class`Gio`.InputStream] for reading the
+         * {@link Session.send_finish} to get a {@link Gio.InputStream} for reading the
          * response body.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
          */
         send_async(
@@ -11594,13 +12228,13 @@ export namespace Soup {
          *
          * When `callback` is called, then either `msg` has been sent, and its response
          * headers received, or else an error has occurred. Call
-         * [method`Session`.send_finish] to get a [class`Gio`.InputStream] for reading the
+         * {@link Session.send_finish} to get a {@link Gio.InputStream} for reading the
          * response body.
          *
-         * See [method`Session`.send] for more details on the general semantics.
-         * @param msg a #SoupMessage
+         * See {@link Session.send} for more details on the general semantics.
+         * @param msg a {@link Soup.Message}
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
          */
         send_async(
@@ -11610,29 +12244,29 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
-         * Gets the response to a [method`Session`.send_async] call.
+         * Gets the response to a {@link Session.send_async} call.
          *
-         * If successful returns a [class`Gio`.InputStream] that can be used to read the
+         * If successful returns a {@link Gio.InputStream} that can be used to read the
          * response body.
-         * @param result the #GAsyncResult passed to your callback
-         * @returns a #GInputStream for reading the   response body, or %NULL on error.
+         * @param result the {@link Gio.AsyncResult} passed to your callback
+         * @returns a {@link Gio.InputStream} for reading the   response body, or `null` on error.
          */
         send_finish(result: Gio.AsyncResult): Gio.InputStream;
         /**
-         * Set the value to use for the "Accept-Language" header on [class`Message]`s
+         * Set the value to use for the "Accept-Language" header on {@link Message}s
          * sent from `session`.
          *
-         * If `accept_language` is %NULL then no "Accept-Language" will be included in
-         * requests. See [property`Session:`accept-language] for more information.
+         * If `accept_language` is `null` then no "Accept-Language" will be included in
+         * requests. See {@link Session.accept_language} for more information.
          * @param accept_language the languages string
          */
         set_accept_language(accept_language: string): void;
         /**
          * Set whether `session` will automatically set the "Accept-Language" header on
          * requests using a value generated from system languages based on
-         * [func`GLib`.get_language_names].
+         * {@link GLib.get_language_names}.
          *
-         * See [property`Session:`accept-language-auto] for more information.
+         * See {@link Session.accept_language_auto} for more information.
          * @param accept_language_auto the value to set
          */
         set_accept_language_auto(accept_language_auto: boolean): void;
@@ -11640,78 +12274,78 @@ export namespace Soup {
          * Set a timeout in seconds for idle connection lifetime to be used by `session`
          * on new connections.
          *
-         * See [property`Session:`idle-timeout] for more information.
+         * See {@link Session.idle_timeout} for more information.
          * @param timeout a timeout in seconds
          */
         set_idle_timeout(timeout: number): void;
         /**
-         * Set a [iface`Gio`.ProxyResolver] to be used by `session` on new connections.
+         * Set a {@link Gio.ProxyResolver} to be used by `session` on new connections.
          *
-         * If `proxy_resolver` is %NULL then no proxies will be used. See
-         * [property`Session:`proxy-resolver] for more information.
-         * @param proxy_resolver a #GProxyResolver or %NULL
+         * If `proxy_resolver` is `null` then no proxies will be used. See
+         * {@link Session.proxy_resolver} for more information.
+         * @param proxy_resolver a {@link Gio.ProxyResolver} or `null`
          */
         set_proxy_resolver(proxy_resolver?: Gio.ProxyResolver | null): void;
         /**
          * Set a timeout in seconds for socket I/O operations to be used by `session`
          * on new connections.
          *
-         * See [property`Session:`timeout] for more information.
+         * See {@link Session.timeout} for more information.
          * @param timeout a timeout in seconds
          */
         set_timeout(timeout: number): void;
         /**
-         * Set a [class`Gio`.TlsDatabase] to be used by `session` on new connections.
+         * Set a {@link Gio.TlsDatabase} to be used by `session` on new connections.
          *
-         * If `tls_database` is %NULL then certificate validation will always fail. See
-         * [property`Session:`tls-database] for more information.
-         * @param tls_database a #GTlsDatabase
+         * If `tls_database` is `null` then certificate validation will always fail. See
+         * {@link Session.tls_database} for more information.
+         * @param tls_database a {@link Gio.TlsDatabase}
          */
         set_tls_database(tls_database?: Gio.TlsDatabase | null): void;
         /**
-         * Set a [class`Gio`.TlsInteraction] to be used by `session` on new connections.
+         * Set a {@link Gio.TlsInteraction} to be used by `session` on new connections.
          *
-         * If `tls_interaction` is %NULL then client certificate validation will always
+         * If `tls_interaction` is `null` then client certificate validation will always
          * fail.
          *
-         * See [property`Session:`tls-interaction] for more information.
-         * @param tls_interaction a #GTlsInteraction
+         * See {@link Session.tls_interaction} for more information.
+         * @param tls_interaction a {@link Gio.TlsInteraction}
          */
         set_tls_interaction(tls_interaction?: Gio.TlsInteraction | null): void;
         /**
-         * Set the value to use for the "User-Agent" header on [class`Message]`s sent
+         * Set the value to use for the "User-Agent" header on {@link Message}s sent
          * from `session`.
          *
          * If `user_agent` has trailing whitespace, `session` will append its own product
          * token (eg, `libsoup/3.0.0`) to the end of the header for you. If `user_agent`
-         * is %NULL then no "User-Agent" will be included in requests. See
-         * [property`Session:`user-agent] for more information.
+         * is `null` then no "User-Agent" will be included in requests. See
+         * {@link Session.user_agent} for more information.
          * @param user_agent the user agent string
          */
         set_user_agent(user_agent: string): void;
         /**
-         * Asynchronously creates a [class`WebsocketConnection]` to communicate with a
+         * Asynchronously creates a {@link WebsocketConnection} to communicate with a
          * remote server.
          *
-         * All necessary WebSocket-related headers will be added to `msg,` and
+         * All necessary WebSocket-related headers will be added to `msg`, and
          * it will then be sent and asynchronously processed normally
          * (including handling of redirection and HTTP authentication).
          *
-         * If the server returns "101 Switching Protocols", then `msg'`s status
+         * If the server returns "101 Switching Protocols", then `msg`'s status
          * code and response headers will be updated, and then the WebSocket
          * handshake will be completed. On success,
-         * [method`Session`.websocket_connect_finish] will return a new
-         * [class`WebsocketConnection]`. On failure it will return a #GError.
+         * {@link Session.websocket_connect_finish} will return a new
+         * {@link WebsocketConnection}. On failure it will return a {@link GLib.Error}.
          *
          * If the server returns a status other than "101 Switching Protocols", then
          * `msg` will contain the complete response headers and body from the server's
-         * response, and [method`Session`.websocket_connect_finish] will return
-         * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
-         * @param msg #SoupMessage indicating the WebSocket server to connect to
+         * response, and {@link Session.websocket_connect_finish} will return
+         * {@link Soup.WebsocketError.NOT_WEBSOCKET}.
+         * @param msg {@link Soup.Message} indicating the WebSocket server to connect to
          * @param origin origin of the connection
-         * @param protocols a   %NULL-terminated array of protocols supported
+         * @param protocols a   `null`-terminated array of protocols supported
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         websocket_connect_async(
             msg: Message,
@@ -11721,28 +12355,28 @@ export namespace Soup {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<WebsocketConnection>;
         /**
-         * Asynchronously creates a [class`WebsocketConnection]` to communicate with a
+         * Asynchronously creates a {@link WebsocketConnection} to communicate with a
          * remote server.
          *
-         * All necessary WebSocket-related headers will be added to `msg,` and
+         * All necessary WebSocket-related headers will be added to `msg`, and
          * it will then be sent and asynchronously processed normally
          * (including handling of redirection and HTTP authentication).
          *
-         * If the server returns "101 Switching Protocols", then `msg'`s status
+         * If the server returns "101 Switching Protocols", then `msg`'s status
          * code and response headers will be updated, and then the WebSocket
          * handshake will be completed. On success,
-         * [method`Session`.websocket_connect_finish] will return a new
-         * [class`WebsocketConnection]`. On failure it will return a #GError.
+         * {@link Session.websocket_connect_finish} will return a new
+         * {@link WebsocketConnection}. On failure it will return a {@link GLib.Error}.
          *
          * If the server returns a status other than "101 Switching Protocols", then
          * `msg` will contain the complete response headers and body from the server's
-         * response, and [method`Session`.websocket_connect_finish] will return
-         * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
-         * @param msg #SoupMessage indicating the WebSocket server to connect to
+         * response, and {@link Session.websocket_connect_finish} will return
+         * {@link Soup.WebsocketError.NOT_WEBSOCKET}.
+         * @param msg {@link Soup.Message} indicating the WebSocket server to connect to
          * @param origin origin of the connection
-         * @param protocols a   %NULL-terminated array of protocols supported
+         * @param protocols a   `null`-terminated array of protocols supported
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
          */
         websocket_connect_async(
@@ -11754,28 +12388,28 @@ export namespace Soup {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Asynchronously creates a [class`WebsocketConnection]` to communicate with a
+         * Asynchronously creates a {@link WebsocketConnection} to communicate with a
          * remote server.
          *
-         * All necessary WebSocket-related headers will be added to `msg,` and
+         * All necessary WebSocket-related headers will be added to `msg`, and
          * it will then be sent and asynchronously processed normally
          * (including handling of redirection and HTTP authentication).
          *
-         * If the server returns "101 Switching Protocols", then `msg'`s status
+         * If the server returns "101 Switching Protocols", then `msg`'s status
          * code and response headers will be updated, and then the WebSocket
          * handshake will be completed. On success,
-         * [method`Session`.websocket_connect_finish] will return a new
-         * [class`WebsocketConnection]`. On failure it will return a #GError.
+         * {@link Session.websocket_connect_finish} will return a new
+         * {@link WebsocketConnection}. On failure it will return a {@link GLib.Error}.
          *
          * If the server returns a status other than "101 Switching Protocols", then
          * `msg` will contain the complete response headers and body from the server's
-         * response, and [method`Session`.websocket_connect_finish] will return
-         * %SOUP_WEBSOCKET_ERROR_NOT_WEBSOCKET.
-         * @param msg #SoupMessage indicating the WebSocket server to connect to
+         * response, and {@link Session.websocket_connect_finish} will return
+         * {@link Soup.WebsocketError.NOT_WEBSOCKET}.
+         * @param msg {@link Soup.Message} indicating the WebSocket server to connect to
          * @param origin origin of the connection
-         * @param protocols a   %NULL-terminated array of protocols supported
+         * @param protocols a   `null`-terminated array of protocols supported
          * @param io_priority the I/O priority of the request
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
          */
         websocket_connect_async(
@@ -11787,13 +12421,13 @@ export namespace Soup {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<WebsocketConnection> | void;
         /**
-         * Gets the [class`WebsocketConnection]` response to a
-         * [method`Session`.websocket_connect_async] call.
+         * Gets the {@link WebsocketConnection} response to a
+         * {@link Session.websocket_connect_async} call.
          *
-         * If successful, returns a [class`WebsocketConnection]` that can be used to
+         * If successful, returns a {@link WebsocketConnection} that can be used to
          * communicate with the server.
-         * @param result the #GAsyncResult passed to your callback
-         * @returns a new #SoupWebsocketConnection, or   %NULL on error.
+         * @param result the {@link Gio.AsyncResult} passed to your callback
+         * @returns a new {@link Soup.WebsocketConnection}, or   `null` on error.
          */
         websocket_connect_finish(result: Gio.AsyncResult): WebsocketConnection;
     }
@@ -11801,10 +12435,48 @@ export namespace Soup {
     namespace WebsocketConnection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the connection has completely closed.
+             *
+             * This happens either due to an orderly close from the peer, one
+             * initiated via {@link WebsocketConnection.close} or a fatal error
+             * condition that caused a close.
+             *
+             * This signal will be emitted once.
+             * @signal
+             */
             closed: () => void;
+            /**
+             * This signal will be emitted during an orderly close.
+             * @signal
+             */
             closing: () => void;
+            /**
+             * Emitted when an error occurred on the WebSocket.
+             *
+             * This may be fired multiple times. Fatal errors will be followed by
+             * the `Soup.WebsocketConnection::closed` signal being emitted.
+             * @signal
+             */
             error: (arg0: GLib.Error) => void;
+            /**
+             * Emitted when we receive a message from the peer.
+             *
+             * As a convenience, the `message` data will always be
+             * `null`-terminated, but the NUL byte will not be included in
+             * the length count.
+             * @signal
+             */
             message: (arg0: number, arg1: GLib.Bytes) => void;
+            /**
+             * Emitted when we receive a Pong frame (solicited or
+             * unsolicited) from the peer.
+             *
+             * As a convenience, the `message` data will always be
+             * `null`-terminated, but the NUL byte will not be included in
+             * the length count.
+             * @signal
+             */
             pong: (arg0: GLib.Bytes) => void;
             'notify::connection-type': (pspec: GObject.ParamSpec) => void;
             'notify::extensions': (pspec: GObject.ParamSpec) => void;
@@ -11845,22 +12517,23 @@ export namespace Soup {
      * Provides support for the [WebSocket](http://tools.ietf.org/html/rfc6455)
      * protocol.
      *
-     * To connect to a WebSocket server, create a [class`Session]` and call
-     * [method`Session`.websocket_connect_async]. To accept WebSocket
-     * connections, create a [class`Server]` and add a handler to it with
-     * [method`Server`.add_websocket_handler].
+     * To connect to a WebSocket server, create a {@link Session} and call
+     * {@link Session.websocket_connect_async}. To accept WebSocket
+     * connections, create a {@link Server} and add a handler to it with
+     * {@link Server.add_websocket_handler}.
      *
      * (Lower-level support is available via
-     * [func`websocket_client_prepare_handshake]` and
-     * [func`websocket_client_verify_handshake]`, for handling the client side of the
-     * WebSocket handshake, and [func`websocket_server_process_handshake]` for
+     * {@link websocket_client_prepare_handshake} and
+     * {@link websocket_client_verify_handshake}, for handling the client side of the
+     * WebSocket handshake, and {@link websocket_server_process_handshake} for
      * handling the server side.)
      *
-     * [class`WebsocketConnection]` handles the details of WebSocket communication. You
-     * can use [method`WebsocketConnection`.send_text] and
-     * [method`WebsocketConnection`.send_binary] to send data, and the
-     * [signal`WebsocketConnection:`:message] signal to receive data.
-     * ([class`WebsocketConnection]` currently only supports asynchronous I/O.)
+     * {@link WebsocketConnection} handles the details of WebSocket communication. You
+     * can use {@link WebsocketConnection.send_text} and
+     * {@link WebsocketConnection.send_binary} to send data, and the
+     * `Soup.WebsocketConnection::message` signal to receive data.
+     * ({@link WebsocketConnection} currently only supports asynchronous I/O.)
+     * @gir-type Class
      */
     class WebsocketConnection extends GObject.Object {
         static $gtype: GObject.GType<WebsocketConnection>;
@@ -11876,7 +12549,7 @@ export namespace Soup {
          */
         get connectionType(): WebsocketConnectionType;
         /**
-         * List of [class`WebsocketExtension]` objects that are active in the connection.
+         * List of {@link WebsocketExtension} objects that are active in the connection.
          */
         get extensions(): any;
         /**
@@ -11916,6 +12589,7 @@ export namespace Soup {
          *
          * If set to 0 then the absence of pongs from keepalive pings is
          * ignored.
+         * @since 3.6
          */
         get keepalive_pong_timeout(): number;
         set keepalive_pong_timeout(val: number);
@@ -11926,6 +12600,7 @@ export namespace Soup {
          *
          * If set to 0 then the absence of pongs from keepalive pings is
          * ignored.
+         * @since 3.6
          */
         get keepalivePongTimeout(): number;
         set keepalivePongTimeout(val: number);
@@ -11948,7 +12623,7 @@ export namespace Soup {
          */
         get origin(): string;
         /**
-         * The chosen protocol, or %NULL if a protocol was not agreed
+         * The chosen protocol, or `null` if a protocol was not agreed
          * upon.
          */
         get protocol(): string;
@@ -11990,16 +12665,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebsocketConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebsocketConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebsocketConnection.SignalSignatures[K]> extends [any, ...infer Q]
@@ -12013,12 +12691,12 @@ export namespace Soup {
         /**
          * Close the connection in an orderly fashion.
          *
-         * Note that until the [signal`WebsocketConnection:`:closed] signal fires, the connection
+         * Note that until the `Soup.WebsocketConnection::closed` signal fires, the connection
          * is not yet completely closed. The close message is not even sent until the
          * main loop runs.
          *
          * The `code` and `data` are sent to the peer along with the close request.
-         * If `code` is %SOUP_WEBSOCKET_CLOSE_NO_STATUS a close message with no body
+         * If `code` is {@link Soup.WebsocketCloseCode.NO_STATUS} a close message with no body
          * (without code and data) is sent.
          * Note that the `data` must be UTF-8 valid.
          * @param code close code
@@ -12029,8 +12707,8 @@ export namespace Soup {
          * Get the close code received from the WebSocket peer.
          *
          * This only becomes valid once the WebSocket is in the
-         * %SOUP_WEBSOCKET_STATE_CLOSED state. The value will often be in the
-         * [enum`WebsocketCloseCode]` enumeration, but may also be an application
+         * {@link Soup.WebsocketState.CLOSED} state. The value will often be in the
+         * {@link WebsocketCloseCode} enumeration, but may also be an application
          * defined close code.
          * @returns the close code or zero.
          */
@@ -12039,9 +12717,9 @@ export namespace Soup {
          * Get the close data received from the WebSocket peer.
          *
          * This only becomes valid once the WebSocket is in the
-         * %SOUP_WEBSOCKET_STATE_CLOSED state. The data may be freed once
+         * {@link Soup.WebsocketState.CLOSED} state. The data may be freed once
          * the main loop is run, so copy it if you need to keep it around.
-         * @returns the close data or %NULL
+         * @returns the close data or `null`
          */
         get_close_data(): string;
         /**
@@ -12051,7 +12729,7 @@ export namespace Soup {
         get_connection_type(): WebsocketConnectionType;
         /**
          * Get the extensions chosen via negotiation with the peer.
-         * @returns a #GList of #SoupWebsocketExtension objects
+         * @returns a {@link GLib.List} of {@link Soup.WebsocketExtension} objects
          */
         get_extensions(): WebsocketExtension[];
         /**
@@ -12100,7 +12778,7 @@ export namespace Soup {
         /**
          * Send a binary message to the peer.
          *
-         * If `length` is 0, `data` may be %NULL.
+         * If `length` is 0, `data` may be `null`.
          *
          * The message is queued to be sent and will be sent when the main loop
          * is run.
@@ -12109,19 +12787,19 @@ export namespace Soup {
         send_binary(data?: Uint8Array | null): void;
         /**
          * Send a message of the given `type` to the peer. Note that this method,
-         * allows to send text messages containing %NULL characters.
+         * allows to send text messages containing `null` characters.
          *
          * The message is queued to be sent and will be sent when the main loop
          * is run.
          * @param type the type of message contents
-         * @param message the message data as #GBytes
+         * @param message the message data as {@link GLib.Bytes}
          */
         send_message(type: WebsocketDataType | null, message: GLib.Bytes | Uint8Array): void;
         /**
-         * Send a %NULL-terminated text (UTF-8) message to the peer.
+         * Send a `null`-terminated text (UTF-8) message to the peer.
          *
-         * If you need to send text messages containing %NULL characters use
-         * [method`WebsocketConnection`.send_message] instead.
+         * If you need to send text messages containing `null` characters use
+         * {@link WebsocketConnection.send_message} instead.
          *
          * The message is queued to be sent and will be sent when the main loop
          * is run.
@@ -12165,7 +12843,8 @@ export namespace Soup {
     /**
      * A WebSocket extension
      *
-     * [class`WebsocketExtension]` is the base class for WebSocket extension objects.
+     * {@link WebsocketExtension} is the base class for WebSocket extension objects.
+     * @gir-type Class
      */
     abstract class WebsocketExtension extends GObject.Object {
         static $gtype: GObject.GType<WebsocketExtension>;
@@ -12187,16 +12866,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebsocketExtension.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebsocketExtension.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebsocketExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12207,46 +12889,51 @@ export namespace Soup {
 
         /**
          * Configures `extension` with the given `params`.
-         * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
+         * @param connection_type either {@link Soup.WebsocketConnectionType.CLIENT} or {@link Soup.WebsocketConnectionType.SERVER}
          * @param params the parameters
+         * @virtual
          */
         vfunc_configure(connection_type: WebsocketConnectionType, params?: GLib.HashTable<any, any> | null): boolean;
         /**
          * Get the parameters strings to be included in the request header.
          *
          * If the extension doesn't include any parameter in the request, this function
-         * returns %NULL.
+         * returns `null`.
+         * @virtual
          */
         vfunc_get_request_params(): string | null;
         /**
          * Get the parameters strings to be included in the response header.
          *
          * If the extension doesn't include any parameter in the response, this function
-         * returns %NULL.
+         * returns `null`.
+         * @virtual
          */
         vfunc_get_response_params(): string | null;
         /**
          * Process a message after it's received.
          *
          * If the payload isn't changed the given `payload` is just returned, otherwise
-         * [method`GLib`.Bytes.unref] is called on the given `payload` and a new
-         * [struct`GLib`.Bytes] is returned with the new data.
+         * {@link GLib.Bytes.unref} is called on the given `payload` and a new
+         * {@link GLib.Bytes} is returned with the new data.
          *
          * Extensions using reserved bits of the header will reset them in `header`.
          * @param header the message header
          * @param payload the payload data
+         * @virtual
          */
         vfunc_process_incoming_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
         /**
          * Process a message before it's sent.
          *
          * If the payload isn't changed the given `payload` is just returned, otherwise
-         * [method`Glib`.Bytes.unref] is called on the given `payload` and a new
-         * [struct`GLib`.Bytes] is returned with the new data.
+         * {@link Glib.Bytes.unref} is called on the given `payload` and a new
+         * {@link GLib.Bytes} is returned with the new data.
          *
          * Extensions using reserved bits of the header will change them in `header`.
          * @param header the message header
          * @param payload the payload data
+         * @virtual
          */
         vfunc_process_outgoing_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
 
@@ -12254,16 +12941,16 @@ export namespace Soup {
 
         /**
          * Configures `extension` with the given `params`.
-         * @param connection_type either %SOUP_WEBSOCKET_CONNECTION_CLIENT or %SOUP_WEBSOCKET_CONNECTION_SERVER
+         * @param connection_type either {@link Soup.WebsocketConnectionType.CLIENT} or {@link Soup.WebsocketConnectionType.SERVER}
          * @param params the parameters
-         * @returns %TRUE if extension could be configured with the given parameters, or %FALSE otherwise
+         * @returns `true` if extension could be configured with the given parameters, or `false` otherwise
          */
         configure(connection_type: WebsocketConnectionType | null, params?: GLib.HashTable<any, any> | null): boolean;
         /**
          * Get the parameters strings to be included in the request header.
          *
          * If the extension doesn't include any parameter in the request, this function
-         * returns %NULL.
+         * returns `null`.
          * @returns a new allocated string with the parameters
          */
         get_request_params(): string | null;
@@ -12271,7 +12958,7 @@ export namespace Soup {
          * Get the parameters strings to be included in the response header.
          *
          * If the extension doesn't include any parameter in the response, this function
-         * returns %NULL.
+         * returns `null`.
          * @returns a new allocated string with the parameters
          */
         get_response_params(): string | null;
@@ -12279,26 +12966,26 @@ export namespace Soup {
          * Process a message after it's received.
          *
          * If the payload isn't changed the given `payload` is just returned, otherwise
-         * [method`GLib`.Bytes.unref] is called on the given `payload` and a new
-         * [struct`GLib`.Bytes] is returned with the new data.
+         * {@link GLib.Bytes.unref} is called on the given `payload` and a new
+         * {@link GLib.Bytes} is returned with the new data.
          *
          * Extensions using reserved bits of the header will reset them in `header`.
          * @param header the message header
          * @param payload the payload data
-         * @returns the message payload data, or %NULL in case of error
+         * @returns the message payload data, or `null` in case of error
          */
         process_incoming_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
         /**
          * Process a message before it's sent.
          *
          * If the payload isn't changed the given `payload` is just returned, otherwise
-         * [method`Glib`.Bytes.unref] is called on the given `payload` and a new
-         * [struct`GLib`.Bytes] is returned with the new data.
+         * {@link Glib.Bytes.unref} is called on the given `payload` and a new
+         * {@link GLib.Bytes} is returned with the new data.
          *
          * Extensions using reserved bits of the header will change them in `header`.
          * @param header the message header
          * @param payload the payload data
-         * @returns the message payload data, or %NULL in case of error
+         * @returns the message payload data, or `null` in case of error
          */
         process_outgoing_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
     }
@@ -12313,11 +13000,12 @@ export namespace Soup {
     }
 
     /**
-     * A SoupWebsocketExtensionDeflate is a [class`WebsocketExtension]`
+     * A SoupWebsocketExtensionDeflate is a {@link WebsocketExtension}
      * implementing permessage-deflate (RFC 7692).
      *
-     * This extension is used by default in a [class`Session]` when [class`WebsocketExtensionManager]`
-     * feature is present, and always used by [class`Server]`.
+     * This extension is used by default in a {@link Session} when {@link WebsocketExtensionManager}
+     * feature is present, and always used by {@link Server}.
+     * @gir-type Class
      */
     class WebsocketExtensionDeflate extends WebsocketExtension {
         static $gtype: GObject.GType<WebsocketExtensionDeflate>;
@@ -12339,16 +13027,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebsocketExtensionDeflate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebsocketExtensionDeflate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebsocketExtensionDeflate.SignalSignatures[K]> extends [any, ...infer Q]
@@ -12368,14 +13059,15 @@ export namespace Soup {
     }
 
     /**
-     * SoupWebsocketExtensionManager is the [iface`SessionFeature]` that handles WebSockets
-     * extensions for a [class`Session]`.
+     * SoupWebsocketExtensionManager is the {@link SessionFeature} that handles WebSockets
+     * extensions for a {@link Session}.
      *
-     * A [class`WebsocketExtensionManager]` is added to the session by default, and normally
+     * A {@link WebsocketExtensionManager} is added to the session by default, and normally
      * you don't need to worry about it at all. However, if you want to
      * disable WebSocket extensions, you can remove the feature from the
-     * session with [method`Session`.remove_feature_by_type] or disable it on
-     * individual requests with [method`Message`.disable_feature].
+     * session with {@link Session.remove_feature_by_type} or disable it on
+     * individual requests with {@link Message.disable_feature}.
+     * @gir-type Class
      */
     class WebsocketExtensionManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<WebsocketExtensionManager>;
@@ -12397,16 +13089,19 @@ export namespace Soup {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebsocketExtensionManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebsocketExtensionManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebsocketExtensionManager.SignalSignatures[K]> extends [any, ...infer Q]
@@ -12414,8 +13109,6 @@ export namespace Soup {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -12429,32 +13122,32 @@ export namespace Soup {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -12463,39 +13156,39 @@ export namespace Soup {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -12506,13 +13199,16 @@ export namespace Soup {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -12520,7 +13216,7 @@ export namespace Soup {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -12528,9 +13224,9 @@ export namespace Soup {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -12550,9 +13246,9 @@ export namespace Soup {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -12566,33 +13262,33 @@ export namespace Soup {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -12625,21 +13321,21 @@ export namespace Soup {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -12649,8 +13345,8 @@ export namespace Soup {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -12667,10 +13363,10 @@ export namespace Soup {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -12685,13 +13381,13 @@ export namespace Soup {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -12722,21 +13418,21 @@ export namespace Soup {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -12746,33 +13442,34 @@ export namespace Soup {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12781,6 +13478,7 @@ export namespace Soup {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12789,12 +13487,14 @@ export namespace Soup {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12803,20 +13503,22 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -12828,6 +13530,7 @@ export namespace Soup {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -12857,20 +13560,44 @@ export namespace Soup {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthClass = typeof Auth;
+    /**
+     * @gir-type Alias
+     */
     type AuthDomainBasicClass = typeof AuthDomainBasic;
+    /**
+     * @gir-type Alias
+     */
     type AuthDomainClass = typeof AuthDomain;
+    /**
+     * @gir-type Alias
+     */
     type AuthDomainDigestClass = typeof AuthDomainDigest;
+    /**
+     * @gir-type Alias
+     */
     type AuthManagerClass = typeof AuthManager;
+    /**
+     * @gir-type Alias
+     */
     type CacheClass = typeof Cache;
+    /**
+     * @gir-type Alias
+     */
     type ContentDecoderClass = typeof ContentDecoder;
+    /**
+     * @gir-type Alias
+     */
     type ContentSnifferClass = typeof ContentSniffer;
     /**
      * Implements HTTP cookies, as described by
      * [RFC 6265](http://tools.ietf.org/html/rfc6265.txt).
      *
-     * To have a [class`Session]` handle cookies for your appliction
-     * automatically, use a [class`CookieJar]`.
+     * To have a {@link Session} handle cookies for your appliction
+     * automatically, use a {@link CookieJar}.
      *
      * `name` and `value` will be set for all cookies. If the cookie is
      * generated from a string that appears to have no name, then `name`
@@ -12882,14 +13609,15 @@ export namespace Soup {
      * ".", or any hostname that has `domain` as a suffix). Otherwise, it
      * is a hostname and must match exactly.
      *
-     * `expires` will be non-%NULL if the cookie uses either the original
+     * `expires` will be non-`null` if the cookie uses either the original
      * "expires" attribute, or the newer "max-age" attribute. If `expires`
-     * is %NULL, it indicates that neither "expires" nor "max-age" was
+     * is `null`, it indicates that neither "expires" nor "max-age" was
      * specified, and the cookie expires at the end of the session.
      *
      * If `http_only` is set, the cookie should not be exposed to untrusted
      * code (eg, javascript), so as to minimize the danger posed by
      * cross-site scripting attacks.
+     * @gir-type Struct
      */
     class Cookie {
         static $gtype: GObject.GType<Cookie>;
@@ -12903,19 +13631,19 @@ export namespace Soup {
         // Static methods
 
         /**
-         * Parses `header` and returns a [struct`Cookie]`.
+         * Parses `header` and returns a {@link Cookie}.
          *
          * If `header` contains multiple cookies, only the first one will be parsed.
          *
          * If `header` does not have "path" or "domain" attributes, they will
-         * be defaulted from `origin`. If `origin` is %NULL, path will default
-         * to "/", but domain will be left as %NULL. Note that this is not a
-         * valid state for a [struct`Cookie]`, and you will need to fill in some
+         * be defaulted from `origin`. If `origin` is `null`, path will default
+         * to "/", but domain will be left as `null`. Note that this is not a
+         * valid state for a {@link Cookie}, and you will need to fill in some
          * appropriate string for the domain if you want to actually make use
          * of the cookie.
          *
          * As of version 3.4.0 the default value of a cookie's same-site-policy
-         * is %SOUP_SAME_SITE_POLICY_LAX.
+         * is {@link Soup.SameSitePolicy.LAX}.
          * @param header a cookie string (eg, the value of a Set-Cookie header)
          * @param origin origin of the cookie
          */
@@ -12926,25 +13654,25 @@ export namespace Soup {
         /**
          * Tests if `cookie` should be sent to `uri`.
          *
-         * (At the moment, this does not check that `cookie'`s domain matches
-         * `uri,` because it assumes that the caller has already done that.
+         * (At the moment, this does not check that `cookie`'s domain matches
+         * `uri`, because it assumes that the caller has already done that.
          * But don't rely on that; it may change in the future.)
-         * @param uri a #GUri
-         * @returns %TRUE if @cookie should be sent to @uri, %FALSE if not
+         * @param uri a {@link GLib.Uri}
+         * @returns `true` if `cookie` should be sent to `uri`, `false` if not
          */
         applies_to_uri(uri: GLib.Uri): boolean;
         /**
          * Copies `cookie`.
-         * @returns a copy of @cookie
+         * @returns a copy of `cookie`
          */
         copy(): Cookie;
         /**
-         * Checks if the `cookie'`s domain and `host` match.
+         * Checks if the `cookie`'s domain and `host` match.
          *
-         * The domains match if `cookie` should be sent when making a request to `host,`
+         * The domains match if `cookie` should be sent when making a request to `host`,
          * or that `cookie` should be accepted when receiving a response from `host`.
          * @param host a URI
-         * @returns %TRUE if the domains match, %FALSE otherwise
+         * @returns `true` if the domains match, `false` otherwise
          */
         domain_matches(host: string): boolean;
         /**
@@ -12952,7 +13680,7 @@ export namespace Soup {
          *
          * Note that currently, this does not check that the cookie domains
          * match. This may change in the future.
-         * @param cookie2 a #SoupCookie
+         * @param cookie2 a {@link Soup.Cookie}
          * @returns whether the cookies are equal.
          */
         equal(cookie2: Cookie): boolean;
@@ -12961,151 +13689,167 @@ export namespace Soup {
          */
         free(): void;
         /**
-         * Gets `cookie'`s domain.
-         * @returns @cookie's domain
+         * Gets `cookie`'s domain.
+         * @returns `cookie`'s domain
          */
         get_domain(): string;
         /**
-         * Gets `cookie'`s expiration time.
-         * @returns @cookie's expiration time, which is   owned by @cookie and should not be modified or freed.
+         * Gets `cookie`'s expiration time.
+         * @returns `cookie`'s expiration time, which is   owned by `cookie` and should not be modified or freed.
          */
         get_expires(): GLib.DateTime | null;
         /**
-         * Gets `cookie'`s HttpOnly attribute.
-         * @returns @cookie's HttpOnly attribute
+         * Gets `cookie`'s HttpOnly attribute.
+         * @returns `cookie`'s HttpOnly attribute
          */
         get_http_only(): boolean;
         /**
-         * Gets `cookie'`s name.
-         * @returns @cookie's name
+         * Gets `cookie`'s name.
+         * @returns `cookie`'s name
          */
         get_name(): string;
         /**
-         * Gets `cookie'`s path.
-         * @returns @cookie's path
+         * Gets `cookie`'s path.
+         * @returns `cookie`'s path
          */
         get_path(): string;
         /**
          * Returns the same-site policy for this cookie.
-         * @returns a #SoupSameSitePolicy
+         * @returns a {@link Soup.SameSitePolicy}
          */
         get_same_site_policy(): SameSitePolicy;
         /**
-         * Gets `cookie'`s secure attribute.
-         * @returns @cookie's secure attribute
+         * Gets `cookie`'s secure attribute.
+         * @returns `cookie`'s secure attribute
          */
         get_secure(): boolean;
         /**
-         * Gets `cookie'`s value.
-         * @returns @cookie's value
+         * Gets `cookie`'s value.
+         * @returns `cookie`'s value
          */
         get_value(): string;
         /**
-         * Sets `cookie'`s domain to `domain`.
+         * Sets `cookie`'s domain to `domain`.
          * @param domain the new domain
          */
         set_domain(domain: string): void;
         /**
-         * Sets `cookie'`s expiration time to `expires`.
+         * Sets `cookie`'s expiration time to `expires`.
          *
-         * If `expires` is %NULL, `cookie` will be a session cookie and will expire at the
+         * If `expires` is `null`, `cookie` will be a session cookie and will expire at the
          * end of the client's session.
          *
-         * (This sets the same property as [method`Cookie`.set_max_age].)
-         * @param expires the new expiration time, or %NULL
+         * (This sets the same property as {@link Cookie.set_max_age}.)
+         * @param expires the new expiration time, or `null`
          */
         set_expires(expires: GLib.DateTime): void;
         /**
-         * Sets `cookie'`s HttpOnly attribute to `http_only`.
+         * Sets `cookie`'s HttpOnly attribute to `http_only`.
          *
-         * If %TRUE, `cookie` will be marked as "http only", meaning it should not be
+         * If `true`, `cookie` will be marked as "http only", meaning it should not be
          * exposed to web page scripts or other untrusted code.
          * @param http_only the new value for the HttpOnly attribute
          */
         set_http_only(http_only: boolean): void;
         /**
-         * Sets `cookie'`s max age to `max_age`.
+         * Sets `cookie`'s max age to `max_age`.
          *
          * If `max_age` is -1, the cookie is a session cookie, and will expire at the end
          * of the client's session. Otherwise, it is the number of seconds until the
-         * cookie expires. You can use the constants %SOUP_COOKIE_MAX_AGE_ONE_HOUR,
-         * %SOUP_COOKIE_MAX_AGE_ONE_DAY, %SOUP_COOKIE_MAX_AGE_ONE_WEEK and
-         * %SOUP_COOKIE_MAX_AGE_ONE_YEAR (or multiples thereof) to calculate this value.
+         * cookie expires. You can use the constants `SOUP_COOKIE_MAX_AGE_ONE_HOUR`,
+         * `SOUP_COOKIE_MAX_AGE_ONE_DAY`, `SOUP_COOKIE_MAX_AGE_ONE_WEEK` and
+         * `SOUP_COOKIE_MAX_AGE_ONE_YEAR` (or multiples thereof) to calculate this value.
          * (A value of 0 indicates that the cookie should be considered
          * already-expired.)
          *
-         * This sets the same property as [method`Cookie`.set_expires].
+         * This sets the same property as {@link Cookie.set_expires}.
          * @param max_age the new max age
          */
         set_max_age(max_age: number): void;
         /**
-         * Sets `cookie'`s name to `name`.
+         * Sets `cookie`'s name to `name`.
          * @param name the new name
          */
         set_name(name: string): void;
         /**
-         * Sets `cookie'`s path to `path`.
+         * Sets `cookie`'s path to `path`.
          * @param path the new path
          */
         set_path(path: string): void;
         /**
          * When used in conjunction with
-         * [method`CookieJar`.get_cookie_list_with_same_site_info] this sets the policy
+         * {@link CookieJar.get_cookie_list_with_same_site_info} this sets the policy
          * of when this cookie should be exposed.
-         * @param policy a #SoupSameSitePolicy
+         * @param policy a {@link Soup.SameSitePolicy}
          */
         set_same_site_policy(policy: SameSitePolicy | null): void;
         /**
-         * Sets `cookie'`s secure attribute to `secure`.
+         * Sets `cookie`'s secure attribute to `secure`.
          *
-         * If %TRUE, `cookie` will only be transmitted from the client to the server over
+         * If `true`, `cookie` will only be transmitted from the client to the server over
          * secure (https) connections.
          * @param secure the new value for the secure attribute
          */
         set_secure(secure: boolean): void;
         /**
-         * Sets `cookie'`s value to `value`.
+         * Sets `cookie`'s value to `value`.
          * @param value the new value
          */
         set_value(value: string): void;
         /**
          * Serializes `cookie` in the format used by the Cookie header (ie, for
-         * returning a cookie from a [class`Session]` to a server).
+         * returning a cookie from a {@link Session} to a server).
          * @returns the header
          */
         to_cookie_header(): string;
         /**
          * Serializes `cookie` in the format used by the Set-Cookie header.
          *
-         * i.e. for sending a cookie from a [class`Server]` to a client.
+         * i.e. for sending a cookie from a {@link Server} to a client.
          * @returns the header
          */
         to_set_cookie_header(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CookieJarClass = typeof CookieJar;
+    /**
+     * @gir-type Alias
+     */
     type CookieJarDBClass = typeof CookieJarDB;
+    /**
+     * @gir-type Alias
+     */
     type CookieJarTextClass = typeof CookieJarText;
+    /**
+     * @gir-type Alias
+     */
     type HSTSEnforcerClass = typeof HSTSEnforcer;
+    /**
+     * @gir-type Alias
+     */
     type HSTSEnforcerDBClass = typeof HSTSEnforcerDB;
     /**
-     * [struct`HSTSPolicy]` implements HTTP policies, as described by
+     * {@link HSTSPolicy} implements HTTP policies, as described by
      * [RFC 6797](http://tools.ietf.org/html/rfc6797).
      *
      * `domain` represents the host that this policy applies to. The domain
-     * must be IDNA-canonicalized. [ctor`HSTSPolicy`.new] and related methods
+     * must be IDNA-canonicalized. {@link HSTSPolicy.new} and related methods
      * will do this for you.
      *
      * `max_age` contains the 'max-age' value from the Strict Transport
      * Security header and indicates the time to live of this policy,
      * in seconds.
      *
-     * `expires` will be non-%NULL if the policy has been set by the host and
-     * hence has an expiry time. If `expires` is %NULL, it indicates that the
+     * `expires` will be non-`null` if the policy has been set by the host and
+     * hence has an expiry time. If `expires` is `null`, it indicates that the
      * policy is a permanent session policy set by the user agent.
      *
-     * If `include_subdomains` is %TRUE, the Strict Transport Security policy
+     * If `include_subdomains` is `true`, the Strict Transport Security policy
      * must also be enforced on subdomains of `domain`.
+     * @gir-type Struct
      */
     class HSTSPolicy {
         static $gtype: GObject.GType<HSTSPolicy>;
@@ -13131,12 +13875,12 @@ export namespace Soup {
 
         /**
          * Copies `policy`.
-         * @returns a copy of @policy
+         * @returns a copy of `policy`
          */
         copy(): HSTSPolicy;
         /**
          * Tests if `policy1` and `policy2` are equal.
-         * @param policy2 a #SoupHSTSPolicy
+         * @param policy2 a {@link Soup.HSTSPolicy}
          * @returns whether the policies are equal.
          */
         equal(policy2: HSTSPolicy): boolean;
@@ -13145,13 +13889,13 @@ export namespace Soup {
          */
         free(): void;
         /**
-         * Gets `policy'`s domain.
-         * @returns @policy's domain.
+         * Gets `policy`'s domain.
+         * @returns `policy`'s domain.
          */
         get_domain(): string;
         /**
          * Returns the expiration date for `policy`.
-         * @returns A #GDateTime or %NULL if unset
+         * @returns A {@link GLib.DateTime} or `null` if unset
          */
         get_expires(): GLib.DateTime;
         /**
@@ -13161,40 +13905,44 @@ export namespace Soup {
         get_max_age(): number;
         /**
          * Gets whether `policy` include its subdomains.
-         * @returns %TRUE if @policy includes subdomains, %FALSE otherwise.
+         * @returns `true` if `policy` includes subdomains, `false` otherwise.
          */
         includes_subdomains(): boolean;
         /**
          * Gets whether `policy` is expired.
          *
          * Permanent policies never expire.
-         * @returns %TRUE if @policy is expired, %FALSE otherwise.
+         * @returns `true` if `policy` is expired, `false` otherwise.
          */
         is_expired(): boolean;
         /**
          * Gets whether `policy` is a non-permanent, non-expirable session policy.
          *
-         * See [ctor`HSTSPolicy`.new_session_policy] for details.
-         * @returns %TRUE if @policy is permanent, %FALSE otherwise
+         * See {@link HSTSPolicy.new_session_policy} for details.
+         * @returns `true` if `policy` is permanent, `false` otherwise
          */
         is_session_policy(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LoggerClass = typeof Logger;
     /**
-     * [struct`MessageBody]` represents the request or response body of a
-     * [class`Message]`.
+     * {@link MessageBody} represents the request or response body of a
+     * {@link Message}.
      *
      * Note that while `length` always reflects the full length of the
-     * message body, `data` is normally %NULL, and will only be filled in
-     * after [method`MessageBody`.flatten] is called. For client-side
+     * message body, `data` is normally `null`, and will only be filled in
+     * after {@link MessageBody.flatten} is called. For client-side
      * messages, this automatically happens for the response body after it
      * has been fully read. Likewise, for server-side
      * messages, the request body is automatically filled in after being
      * read.
      *
      * As an added bonus, when `data` is filled in, it is always terminated
-     * with a `\0` byte (which is not reflected in `length)`.
+     * with a `\0` byte (which is not reflected in `length`).
+     * @gir-type Struct
      */
     class MessageBody {
         static $gtype: GObject.GType<MessageBody>;
@@ -13219,20 +13967,20 @@ export namespace Soup {
 
         /**
          * Appends `length` bytes from `data` to `body` according to `use`.
-         * @param use how to use @data
+         * @param use how to use `data`
          * @param data data to append
          */
         append(use: MemoryUse | null, data: Uint8Array | string): void;
         /**
          * Appends the data from `buffer` to `body`.
-         * @param buffer a #GBytes
+         * @param buffer a {@link GLib.Bytes}
          */
         append_bytes(buffer: GLib.Bytes | Uint8Array): void;
         /**
          * Appends `length` bytes from `data` to `body`.
          *
-         * This function is exactly equivalent to [method`MessageBody`.append]
-         * with %SOUP_MEMORY_TAKE as second argument; it exists mainly for
+         * This function is exactly equivalent to {@link MessageBody.append}
+         * with {@link Soup.MemoryUse.TAKE} as second argument; it exists mainly for
          * convenience and simplifying language bindings.
          * @param data data to append
          */
@@ -13244,75 +13992,75 @@ export namespace Soup {
          */
         complete(): void;
         /**
-         * Fills in `body'`s data field with a buffer containing all of the
+         * Fills in `body`'s data field with a buffer containing all of the
          * data in `body`.
          *
-         * Adds an additional `\0` byte not counted by `body'`s
+         * Adds an additional `\0` byte not counted by `body`'s
          * length field.
-         * @returns a #GBytes containing the same data as @body.   (You must [method@GLib.Bytes.unref] this if you do not want it.)
+         * @returns a {@link GLib.Bytes} containing the same data as `body`.   (You must {@link GLib.Bytes.unref} this if you do not want it.)
          */
         flatten(): GLib.Bytes;
         /**
          * Gets the accumulate flag on `body`.
          *
-         * See [method`MessageBody`.set_accumulate. for details.
-         * @returns the accumulate flag for @body.
+         * See [method@MessageBody.set_accumulate. for details.
+         * @returns the accumulate flag for `body`.
          */
         get_accumulate(): boolean;
         /**
-         * Gets a [struct`GLib`.Bytes] containing data from `body` starting at `offset`.
+         * Gets a {@link GLib.Bytes} containing data from `body` starting at `offset`.
          *
          * The size of the returned chunk is unspecified. You can iterate
          * through the entire body by first calling
-         * [method`MessageBody`.get_chunk] with an offset of 0, and then on each
+         * {@link MessageBody.get_chunk} with an offset of 0, and then on each
          * successive call, increment the offset by the length of the
          * previously-returned chunk.
          *
-         * If `offset` is greater than or equal to the total length of `body,`
+         * If `offset` is greater than or equal to the total length of `body`,
          * then the return value depends on whether or not
-         * [method`MessageBody`.complete] has been called or not; if it has,
-         * then [method`MessageBody`.get_chunk] will return a 0-length chunk
-         * (indicating the end of `body)`. If it has not, then
-         * [method`MessageBody`.get_chunk] will return %NULL (indicating that
+         * {@link MessageBody.complete} has been called or not; if it has,
+         * then {@link MessageBody.get_chunk} will return a 0-length chunk
+         * (indicating the end of `body`). If it has not, then
+         * {@link MessageBody.get_chunk} will return `null` (indicating that
          * `body` may still potentially have more data, but that data is not
          * currently available).
          * @param offset an offset
-         * @returns a #GBytes
+         * @returns a {@link GLib.Bytes}
          */
         get_chunk(offset: number): GLib.Bytes | null;
         /**
-         * Handles the [struct`MessageBody]` part of receiving a chunk of data from
+         * Handles the {@link MessageBody} part of receiving a chunk of data from
          * the network.
          *
-         * Normally this means appending `chunk` to `body,` exactly as with
-         * [method`MessageBody`.append_bytes], but if you have set `body'`s accumulate
-         * flag to %FALSE, then that will not happen.
+         * Normally this means appending `chunk` to `body`, exactly as with
+         * {@link MessageBody.append_bytes}, but if you have set `body`'s accumulate
+         * flag to `false`, then that will not happen.
          *
          * This is a low-level method which you should not normally need to
          * use.
-         * @param chunk a #GBytes received from the network
+         * @param chunk a {@link GLib.Bytes} received from the network
          */
         got_chunk(chunk: GLib.Bytes | Uint8Array): void;
         /**
          * Atomically increments the reference count of `body` by one.
-         * @returns the passed in #SoupMessageBody
+         * @returns the passed in {@link Soup.MessageBody}
          */
         ref(): MessageBody;
         /**
          * Sets or clears the accumulate flag on `body`.
          *
-         * (The default value is %TRUE.) If set to %FALSE, `body'`s data field will not
+         * (The default value is `true`.) If set to `false`, `body`'s data field will not
          * be filled in after the body is fully sent/received, and the chunks that make
          * up `body` may be discarded when they are no longer needed.
          *
-         * If you set the flag to %FALSE on the [class`Message]` request_body of a
+         * If you set the flag to `false` on the {@link Message} request_body of a
          * client-side message, it will block the accumulation of chunks into
-         * `body'`s data field, but it will not normally cause the chunks to
+         * `body`'s data field, but it will not normally cause the chunks to
          * be discarded after being written like in the server-side
-         * [class`Message]` response_body case, because the request body needs to
+         * {@link Message} response_body case, because the request body needs to
          * be kept around in case the request needs to be sent a second time
          * due to redirection or authentication.
-         * @param accumulate whether or not to accumulate body chunks in @body
+         * @param accumulate whether or not to accumulate body chunks in `body`
          */
         set_accumulate(accumulate: boolean): void;
         /**
@@ -13327,23 +14075,27 @@ export namespace Soup {
          */
         unref(): void;
         /**
-         * Handles the [struct`MessageBody]` part of writing a chunk of data to the
+         * Handles the {@link MessageBody} part of writing a chunk of data to the
          * network.
          *
-         * Normally this is a no-op, but if you have set `body'`s accumulate flag to
-         * %FALSE, then this will cause `chunk` to be discarded to free up memory.
+         * Normally this is a no-op, but if you have set `body`'s accumulate flag to
+         * `false`, then this will cause `chunk` to be discarded to free up memory.
          *
          * This is a low-level method which you should not need to use, and
          * there are further restrictions on its proper use which are not
          * documented here.
-         * @param chunk a #GBytes returned from [method@MessageBody.get_chunk]
+         * @param chunk a {@link GLib.Bytes} returned from {@link MessageBody.get_chunk}
          */
         wrote_chunk(chunk: GLib.Bytes | Uint8Array): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MessageClass = typeof Message;
     /**
      * The HTTP message headers associated with a request or response.
+     * @gir-type Struct
      */
     class MessageHeaders {
         static $gtype: GObject.GType<MessageHeaders>;
@@ -13359,14 +14111,14 @@ export namespace Soup {
         /**
          * Appends a new header with name `name` and value `value` to `hdrs`.
          *
-         * (If there is an existing header with name `name,` then this creates a second
+         * (If there is an existing header with name `name`, then this creates a second
          * one, which is only allowed for list-valued headers; see also
-         * [method`MessageHeaders`.replace].)
+         * {@link MessageHeaders.replace}.)
          *
          * The caller is expected to make sure that `name` and `value` are
          * syntactically correct.
          * @param name the header name to add
-         * @param value the new value of @name
+         * @param value the new value of `name`
          */
         append(name: string, value: string): void;
         /**
@@ -13380,11 +14132,11 @@ export namespace Soup {
         /**
          * Calls `func` once for each header value in `hdrs`.
          *
-         * Beware that unlike [method`MessageHeaders`.get_list], this processes the
+         * Beware that unlike {@link MessageHeaders.get_list}, this processes the
          * headers in exactly the way they were added, rather than
          * concatenating multiple same-named headers into a single value.
          * (This is intentional; it ensures that if you call
-         * [method`MessageHeaders`.append] multiple times with the same name,
+         * {@link MessageHeaders.append} multiple times with the same name,
          * then the I/O code will output multiple copies of the header when
          * sending the message to the remote implementation, which may be
          * required for interoperability in some cases.)
@@ -13394,15 +14146,15 @@ export namespace Soup {
          */
         foreach(func: MessageHeadersForeachFunc): void;
         /**
-         * Frees the array of ranges returned from [method`MessageHeaders`.get_ranges].
-         * @param ranges an array of #SoupRange
+         * Frees the array of ranges returned from {@link MessageHeaders.get_ranges}.
+         * @param ranges an array of {@link Soup.Range}
          */
         free_ranges(ranges: Range): void;
         /**
-         * Looks up the "Content-Disposition" header in `hdrs,` parses it, and
+         * Looks up the "Content-Disposition" header in `hdrs`, parses it, and
          * returns its value in *`disposition` and *`params`.
          *
-         * `params` can be %NULL if you are only interested in the disposition-type.
+         * `params` can be `null` if you are only interested in the disposition-type.
          *
          * In HTTP, the most common use of this header is to set a
          * disposition-type of "attachment", to suggest to the browser that a
@@ -13414,32 +14166,32 @@ export namespace Soup {
          * test this yourself.)
          *
          * Content-Disposition is also used in "multipart/form-data", however
-         * this is handled automatically by [struct`Multipart]` and the associated
+         * this is handled automatically by {@link Multipart} and the associated
          * form methods.
-         * @returns %TRUE if @hdrs contains a "Content-Disposition"   header, %FALSE if not (in which case *@disposition and *@params   will be unchanged).
+         * @returns `true` if `hdrs` contains a "Content-Disposition"   header, `false` if not (in which case *`disposition` and *`params`   will be unchanged).
          */
         get_content_disposition(): [boolean, string, GLib.HashTable<string, string>];
         /**
          * Gets the message body length that `hdrs` declare.
          *
-         * This will only be non-0 if [method`MessageHeaders`.get_encoding] returns
-         * %SOUP_ENCODING_CONTENT_LENGTH.
-         * @returns the message body length declared by @hdrs.
+         * This will only be non-0 if {@link MessageHeaders.get_encoding} returns
+         * {@link Soup.Encoding.CONTENT_LENGTH}.
+         * @returns the message body length declared by `hdrs`.
          */
         get_content_length(): number;
         /**
-         * Parses `hdrs'`s Content-Range header and returns it in `start,`
-         * `end,` and `total_length`. If the total length field in the header
+         * Parses `hdrs`'s Content-Range header and returns it in `start`,
+         * `end`, and `total_length`. If the total length field in the header
          * was specified as "*", then `total_length` will be set to -1.
-         * @returns %TRUE if @hdrs contained a "Content-Range" header   containing a byte range which could be parsed, %FALSE otherwise.
+         * @returns `true` if `hdrs` contained a "Content-Range" header   containing a byte range which could be parsed, `false` otherwise.
          */
         get_content_range(): [boolean, number, number, number];
         /**
-         * Looks up the "Content-Type" header in `hdrs,` parses it, and returns
+         * Looks up the "Content-Type" header in `hdrs`, parses it, and returns
          * its value in *`content_type` and *`params`.
          *
-         * `params` can be %NULL if you are only interested in the content type itself.
-         * @returns a string with the value of the   "Content-Type" header or %NULL if @hdrs does not contain that   header or it cannot be parsed (in which case *@params will be   unchanged).
+         * `params` can be `null` if you are only interested in the content type itself.
+         * @returns a string with the value of the   "Content-Type" header or `null` if `hdrs` does not contain that   header or it cannot be parsed (in which case *`params` will be   unchanged).
          */
         get_content_type(): [string | null, GLib.HashTable<string, string> | null];
         /**
@@ -13448,15 +14200,15 @@ export namespace Soup {
          * This may not always correspond to the encoding used on the wire; eg, a HEAD
          * response may declare a Content-Length or Transfer-Encoding, but it will never
          * actually include a body.
-         * @returns the encoding declared by @hdrs.
+         * @returns the encoding declared by `hdrs`.
          */
         get_encoding(): Encoding;
         /**
-         * Gets the expectations declared by `hdrs'`s "Expect" header.
+         * Gets the expectations declared by `hdrs`'s "Expect" header.
          *
-         * Currently this will either be %SOUP_EXPECTATION_CONTINUE or
-         * %SOUP_EXPECTATION_UNRECOGNIZED.
-         * @returns the contents of @hdrs's "Expect" header
+         * Currently this will either be {@link Soup.Expectation.CONTINUE} or
+         * {@link Soup.Expectation.UNRECOGNIZED}.
+         * @returns the contents of `hdrs`'s "Expect" header
          */
         get_expectations(): Expectation;
         /**
@@ -13469,17 +14221,17 @@ export namespace Soup {
          *
          * Use this for headers whose values are comma-delimited lists, and which are
          * therefore allowed to appear multiple times in the headers. For
-         * non-list-valued headers, use [method`MessageHeaders`.get_one].
+         * non-list-valued headers, use {@link MessageHeaders.get_one}.
          *
-         * If `name` appears multiple times in `hdrs,`
-         * [method`MessageHeaders`.get_list] will concatenate all of the values
+         * If `name` appears multiple times in `hdrs`,
+         * {@link MessageHeaders.get_list} will concatenate all of the values
          * together, separated by commas. This is sometimes awkward to parse
          * (eg, WWW-Authenticate, Set-Cookie), but you have to be able to deal
          * with it anyway, because the HTTP spec explicitly states that this
          * transformation is allowed, and so an upstream proxy could do the
          * same thing.
          * @param name header name
-         * @returns the header's value or %NULL if not found.
+         * @returns the header's value or `null` if not found.
          */
         get_list(name: string): string | null;
         /**
@@ -13487,38 +14239,38 @@ export namespace Soup {
          *
          * Use this for headers whose values are *not* comma-delimited lists, and which
          * therefore can only appear at most once in the headers. For list-valued
-         * headers, use [method`MessageHeaders`.get_list].
+         * headers, use {@link MessageHeaders.get_list}.
          *
          * If `hdrs` does erroneously contain multiple copies of the header, it
          * is not defined which one will be returned. (Ideally, it will return
          * whichever one makes libsoup most compatible with other HTTP
          * implementations.)
          * @param name header name
-         * @returns the header's value or %NULL if not found.
+         * @returns the header's value or `null` if not found.
          */
         get_one(name: string): string | null;
         /**
-         * Parses `hdrs'`s Range header and returns an array of the requested
+         * Parses `hdrs`'s Range header and returns an array of the requested
          * byte ranges.
          *
-         * The returned array must be freed with [method`MessageHeaders`.free_ranges].
+         * The returned array must be freed with {@link MessageHeaders.free_ranges}.
          *
          * If `total_length` is non-0, its value will be used to adjust the
          * returned ranges to have explicit start and end values, and the
          * returned ranges will be sorted and non-overlapping. If
          * `total_length` is 0, then some ranges may have an end value of -1,
-         * as described under [struct`Range]`, and some of the ranges may be
+         * as described under {@link Range}, and some of the ranges may be
          * redundant.
          *
-         * Beware that even if given a `total_length,` this function does not
+         * Beware that even if given a `total_length`, this function does not
          * check that the ranges are satisfiable.
          *
-         * [class`Server]` has built-in handling for range requests. If your
-         * server handler returns a %SOUP_STATUS_OK response containing the
+         * {@link Server} has built-in handling for range requests. If your
+         * server handler returns a {@link Soup.Status.OK} response containing the
          * complete response body (rather than pausing the message and
          * returning some of the response body later), and there is a Range
          * header in the request, then libsoup will automatically convert the
-         * response to a %SOUP_STATUS_PARTIAL_CONTENT response containing only
+         * response to a {@link Soup.Status.PARTIAL_CONTENT} response containing only
          * the range(s) requested by the client.
          *
          * The only time you need to process the Range header yourself is if
@@ -13527,18 +14279,18 @@ export namespace Soup {
          * body available, and only want to generate the parts that were
          * actually requested by the client.
          * @param total_length the total_length of the response body
-         * @returns %TRUE if @hdrs contained a syntactically-valid   "Range" header, %FALSE otherwise (in which case @range and @length   will not be set).
+         * @returns `true` if `hdrs` contained a syntactically-valid   "Range" header, `false` otherwise (in which case `range` and `length`   will not be set).
          */
         get_ranges(total_length: number): [boolean, Range[]];
         /**
-         * Checks whether the list-valued header `name` is present in `hdrs,`
+         * Checks whether the list-valued header `name` is present in `hdrs`,
          * and contains a case-insensitive match for `token`.
          *
-         * (If `name` is present in `hdrs,` then this is equivalent to calling
-         * [func`header_contains]` on its value.)
+         * (If `name` is present in `hdrs`, then this is equivalent to calling
+         * {@link header_contains} on its value.)
          * @param name header name
          * @param token token to look for
-         * @returns %TRUE if the header is present and contains @token,   %FALSE otherwise.
+         * @returns `true` if the header is present and contains `token`,   `false` otherwise.
          */
         header_contains(name: string, token: string): boolean;
         /**
@@ -13546,37 +14298,37 @@ export namespace Soup {
          * (case-insensitively) equal to `value`.
          * @param name header name
          * @param value expected value
-         * @returns %TRUE if the header is present and its value is   @value, %FALSE otherwise.
+         * @returns `true` if the header is present and its value is   `value`, `false` otherwise.
          */
         header_equals(name: string, value: string): boolean;
         /**
          * Atomically increments the reference count of `hdrs` by one.
-         * @returns the passed in #SoupMessageHeaders
+         * @returns the passed in {@link Soup.MessageHeaders}
          */
         ref(): MessageHeaders;
         /**
          * Removes `name` from `hdrs`.
          *
-         * If there are multiple values for `name,` they are all removed.
+         * If there are multiple values for `name`, they are all removed.
          * @param name the header name to remove
          */
         remove(name: string): void;
         /**
          * Replaces the value of the header `name` in `hdrs` with `value`.
          *
-         * See also [method`MessageHeaders`.append].
+         * See also {@link MessageHeaders.append}.
          *
          * The caller is expected to make sure that `name` and `value` are
          * syntactically correct.
          * @param name the header name to replace
-         * @param value the new value of @name
+         * @param value the new value of `name`
          */
         replace(name: string, value: string): void;
         /**
-         * Sets the "Content-Disposition" header in `hdrs` to `disposition,`
+         * Sets the "Content-Disposition" header in `hdrs` to `disposition`,
          * optionally with additional parameters specified in `params`.
          *
-         * See [method`MessageHeaders`.get_content_disposition] for a discussion
+         * See {@link MessageHeaders.get_content_disposition} for a discussion
          * of how Content-Disposition is used in HTTP.
          * @param disposition the disposition-type
          * @param params additional parameters
@@ -13584,28 +14336,28 @@ export namespace Soup {
         set_content_disposition(disposition: string, params?: GLib.HashTable<string, string> | null): void;
         /**
          * Sets the message body length that `hdrs` will declare, and sets
-         * `hdrs'`s encoding to %SOUP_ENCODING_CONTENT_LENGTH.
+         * `hdrs`'s encoding to {@link Soup.Encoding.CONTENT_LENGTH}.
          *
          * You do not normally need to call this; if `hdrs` is set to use
          * Content-Length encoding, libsoup will automatically set its
          * Content-Length header for you immediately before sending the
          * headers. One situation in which this method is useful is when
          * generating the response to a HEAD request; Calling
-         * [method`MessageHeaders`.set_content_length] allows you to put the
+         * {@link MessageHeaders.set_content_length} allows you to put the
          * correct content length into the response without needing to waste
          * memory by filling in a response body which won't actually be sent.
          * @param content_length the message body length
          */
         set_content_length(content_length: number): void;
         /**
-         * Sets `hdrs'`s Content-Range header according to the given values.
+         * Sets `hdrs`'s Content-Range header according to the given values.
          *
          * (Note that `total_length` is the total length of the entire resource
          * that this is a range of, not simply `end` - `start` + 1.)
          *
-         * [class`Server]` has built-in handling for range requests, and you do
+         * {@link Server} has built-in handling for range requests, and you do
          * not normally need to call this function youself. See
-         * [method`MessageHeaders`.get_ranges] for more details.
+         * {@link MessageHeaders.get_ranges} for more details.
          * @param start the start of the range
          * @param end the end of the range
          * @param total_length the total length of the resource, or -1 if unknown
@@ -13624,13 +14376,13 @@ export namespace Soup {
          *
          * In particular, you should use this if you are going to send a request or
          * response in chunked encoding.
-         * @param encoding a #SoupEncoding
+         * @param encoding a {@link Soup.Encoding}
          */
         set_encoding(encoding: Encoding | null): void;
         /**
-         * Sets `hdrs'`s "Expect" header according to `expectations`.
+         * Sets `hdrs`'s "Expect" header according to `expectations`.
          *
-         * Currently %SOUP_EXPECTATION_CONTINUE is the only known expectation
+         * Currently {@link Soup.Expectation.CONTINUE} is the only known expectation
          * value. You should set this value on a request if you are sending a
          * large message body (eg, via POST or PUT), and want to give the
          * server a chance to reject the request after seeing just the headers
@@ -13642,23 +14394,23 @@ export namespace Soup {
          */
         set_expectations(expectations: Expectation | null): void;
         /**
-         * Sets `hdrs'`s Range header to request the indicated range.
+         * Sets `hdrs`'s Range header to request the indicated range.
          *
-         * `start` and `end` are interpreted as in a [struct`Range]`.
+         * `start` and `end` are interpreted as in a {@link Range}.
          *
          * If you need to request multiple ranges, use
-         * [method`MessageHeaders`.set_ranges].
+         * {@link MessageHeaders.set_ranges}.
          * @param start the start of the range to request
          * @param end the end of the range to request
          */
         set_range(start: number, end: number): void;
         /**
-         * Sets `hdrs'`s Range header to request the indicated ranges.
+         * Sets `hdrs`'s Range header to request the indicated ranges.
          *
          * If you only want to request a single range, you can use
-         * [method`MessageHeaders`.set_range].
-         * @param ranges an array of #SoupRange
-         * @param length the length of @range
+         * {@link MessageHeaders.set_range}.
+         * @param ranges an array of {@link Soup.Range}
+         * @param length the length of `range`
          */
         set_ranges(ranges: Range, length: number): void;
         /**
@@ -13671,12 +14423,13 @@ export namespace Soup {
     }
 
     /**
-     * An opaque type used to iterate over a [struct`MessageHeaders]` structure
+     * An opaque type used to iterate over a {@link MessageHeaders} structure
      *
-     * After intializing the iterator with [func`MessageHeadersIter`.init], call
-     * [func`MessageHeadersIter`.next] to fetch data from it.
+     * After intializing the iterator with {@link MessageHeadersIter.init}, call
+     * {@link MessageHeadersIter.next} to fetch data from it.
      *
      * You may not modify the headers while iterating over them.
+     * @gir-type Struct
      */
     class MessageHeadersIter {
         static $gtype: GObject.GType<MessageHeadersIter>;
@@ -13689,36 +14442,37 @@ export namespace Soup {
 
         /**
          * Initializes `iter` for iterating `hdrs`.
-         * @param hdrs a #SoupMessageHeaders
+         * @param hdrs a {@link Soup.MessageHeaders}
          */
         static init(hdrs: MessageHeaders): MessageHeadersIter;
         /**
-         * Yields the next name/value pair in the [struct`MessageHeaders]` being
+         * Yields the next name/value pair in the {@link MessageHeaders} being
          * iterated by `iter`.
          *
          * If `iter` has already yielded the last header, then
-         * [func`MessageHeadersIter`.next] will return %FALSE and `name` and `value`
+         * {@link MessageHeadersIter.next} will return `false` and `name` and `value`
          * will be unchanged.
-         * @param iter a #SoupMessageHeadersIter
+         * @param iter a {@link Soup.MessageHeadersIter}
          */
         static next(iter: MessageHeadersIter): [boolean, MessageHeadersIter, string, string];
     }
 
     /**
-     * Contains metrics collected while loading a [class`Message]` either from the
+     * Contains metrics collected while loading a {@link Message} either from the
      * network or the disk cache.
      *
-     * Metrics are not collected by default for a [class`Message]`, you need to add the
-     * flag %SOUP_MESSAGE_COLLECT_METRICS to enable the feature.
+     * Metrics are not collected by default for a {@link Message}, you need to add the
+     * flag {@link Soup.MessageFlags.COLLECT_METRICS} to enable the feature.
      *
      * Temporal metrics are expressed as a monotonic time and always start with a
      * fetch start event and finish with response end. All other events are optional.
      * An event can be 0 because it hasn't happened yet, because it's optional or
      * because the load failed before the event reached.
      *
-     * Size metrics are expressed in bytes and are updated while the [class`Message]` is
-     * being loaded. You can connect to different [class`Message]` signals to get the
+     * Size metrics are expressed in bytes and are updated while the {@link Message} is
+     * being loaded. You can connect to different {@link Message} signals to get the
      * final result of every value.
+     * @gir-type Struct
      */
     abstract class MessageMetrics {
         static $gtype: GObject.GType<MessageMetrics>;
@@ -13727,7 +14481,7 @@ export namespace Soup {
 
         /**
          * Copies `metrics`.
-         * @returns a copy of @metrics
+         * @returns a copy of `metrics`
          */
         copy(): MessageMetrics;
         /**
@@ -13735,7 +14489,7 @@ export namespace Soup {
          */
         free(): void;
         /**
-         * Get the time immediately after the [class`Message]` completed the
+         * Get the time immediately after the {@link Message} completed the
          * connection to the server. This includes the time for the proxy
          * negotiation and TLS handshake.
          *
@@ -13746,7 +14500,7 @@ export namespace Soup {
          */
         get_connect_end(): number;
         /**
-         * Get the time immediately before the [class`Message]` started to
+         * Get the time immediately before the {@link Message} started to
          * establish the connection to the server.
          *
          * It will be 0 if no network connection was required to fetch the resource (a
@@ -13756,7 +14510,7 @@ export namespace Soup {
          */
         get_connect_start(): number;
         /**
-         * Get the time immediately after the [class`Message]` completed the
+         * Get the time immediately after the {@link Message} completed the
          * domain lookup name for the resource.
          *
          * It will be 0 if no domain lookup was required to fetch the resource (a
@@ -13766,7 +14520,7 @@ export namespace Soup {
          */
         get_dns_end(): number;
         /**
-         * Get the time immediately before the [class`Message]` started the
+         * Get the time immediately before the {@link Message} started the
          * domain lookup name for the resource.
          *
          * It will be 0 if no domain lookup was required to fetch the resource (a
@@ -13776,7 +14530,7 @@ export namespace Soup {
          */
         get_dns_start(): number;
         /**
-         * Get the time immediately before the [class`Message]` started to
+         * Get the time immediately before the {@link Message} started to
          * fetch a resource either from a remote server or local disk cache.
          * @returns the fetch start time
          */
@@ -13786,8 +14540,8 @@ export namespace Soup {
          *
          * This is the size of the body sent, after encodings are applied, so it might
          * be greater than the value returned by
-         * [method`MessageMetrics`.get_request_body_size]. This value is available right
-         * before [signal`Message:`:wrote-body] signal is emitted, but you might get an
+         * {@link MessageMetrics.get_request_body_size}. This value is available right
+         * before `Soup.Message::wrote-body` signal is emitted, but you might get an
          * intermediate value if called before.
          * @returns the request body bytes sent
          */
@@ -13796,7 +14550,7 @@ export namespace Soup {
          * Get the request body size in bytes. This is the size of the original body
          * given to the request before any encoding is applied.
          *
-         * This value is available right before [signal`Message:`:wrote-body] signal is
+         * This value is available right before `Soup.Message::wrote-body` signal is
          * emitted, but you might get an intermediate value if called before.
          * @returns the request body size
          */
@@ -13804,13 +14558,13 @@ export namespace Soup {
         /**
          * Get the number of bytes sent to the network for the request headers.
          *
-         * This value is available right before [signal`Message:`:wrote-headers] signal
+         * This value is available right before `Soup.Message::wrote-headers` signal
          * is emitted, but you might get an intermediate value if called before.
          * @returns the request headers bytes sent
          */
         get_request_header_bytes_sent(): number;
         /**
-         * Get the time immediately before the [class`Message]` started the
+         * Get the time immediately before the {@link Message} started the
          * request of the resource from the server or the local disk cache.
          * @returns the request start time
          */
@@ -13818,7 +14572,7 @@ export namespace Soup {
         /**
          * Get the number of bytes received from the network for the response body.
          *
-         * This value is available right before [signal`Message:`:got-body] signal is
+         * This value is available right before `Soup.Message::got-body` signal is
          * emitted, but you might get an intermediate value if called before. For
          * resources loaded from the disk cache this value is always 0.
          * @returns the response body bytes received
@@ -13829,14 +14583,14 @@ export namespace Soup {
          *
          * This is the size of the body as given to the user after all encodings are
          * applied, so it might be greater than the value returned by
-         * [method`MessageMetrics`.get_response_body_bytes_received]. This value is
-         * available right before [signal`Message:`:got-body] signal is emitted, but you
+         * {@link MessageMetrics.get_response_body_bytes_received}. This value is
+         * available right before `Soup.Message::got-body` signal is emitted, but you
          * might get an intermediate value if called before.
          * @returns the response body size
          */
         get_response_body_size(): number;
         /**
-         * Get the time immediately after the [class`Message]` received the last
+         * Get the time immediately after the {@link Message} received the last
          * bytes of the response from the server or the local disk cache.
          *
          * In case of load failure, this returns the time immediately before the
@@ -13847,20 +14601,20 @@ export namespace Soup {
         /**
          * Get the number of bytes received from the network for the response headers.
          *
-         * This value is available right before [signal`Message:`:got-headers] signal
+         * This value is available right before `Soup.Message::got-headers` signal
          * is emitted, but you might get an intermediate value if called before.
          * For resources loaded from the disk cache this value is always 0.
          * @returns the response headers bytes received
          */
         get_response_header_bytes_received(): number;
         /**
-         * Get the time immediately after the [class`Message]` received the first
+         * Get the time immediately after the {@link Message} received the first
          * bytes of the response from the server or the local disk cache.
          * @returns the response start time
          */
         get_response_start(): number;
         /**
-         * Get the time immediately before the [class`Message]` started the
+         * Get the time immediately before the {@link Message} started the
          * TLS handshake.
          *
          * It will be 0 if no TLS handshake was required to fetch the resource
@@ -13878,12 +14632,13 @@ export namespace Soup {
      * Of particular interest to HTTP are `multipart/byte-ranges` and
      * `multipart/form-data`,
      *
-     * Although the headers of a [struct`Multipart]` body part will contain the
+     * Although the headers of a {@link Multipart} body part will contain the
      * full headers from that body part, libsoup does not interpret them
      * according to MIME rules. For example, each body part is assumed to
      * have "binary" Content-Transfer-Encoding, even if its headers
      * explicitly state otherwise. In other words, don't try to use
-     * [struct`Multipart]` for handling real MIME multiparts.
+     * {@link Multipart} for handling real MIME multiparts.
+     * @gir-type Struct
      */
     class Multipart {
         static $gtype: GObject.GType<Multipart>;
@@ -13903,8 +14658,8 @@ export namespace Soup {
          *
          * Uses "Content-Disposition: form-data", as per the HTML forms specification.
          * @param control_name the name of the control associated with this file
-         * @param filename the name of the file, or %NULL if not known
-         * @param content_type the MIME type of the file, or %NULL if not known
+         * @param filename the name of the file, or `null` if not known
+         * @param content_type the MIME type of the file, or `null` if not known
          * @param body the file data
          */
         append_form_file(
@@ -13917,14 +14672,14 @@ export namespace Soup {
          * Adds a new MIME part containing `data` to `multipart`.
          *
          * Uses "Content-Disposition: form-data", as per the HTML forms specification.
-         * @param control_name the name of the control associated with @data
+         * @param control_name the name of the control associated with `data`
          * @param data the body data
          */
         append_form_string(control_name: string, data: string): void;
         /**
          * Adds a new MIME part to `multipart` with the given headers and body.
          *
-         * (The multipart will make its own copies of `headers` and `body,` so
+         * (The multipart will make its own copies of `headers` and `body`, so
          * you should free your copies if you are not using them for anything
          * else.)
          * @param headers the MIME part headers
@@ -13937,22 +14692,25 @@ export namespace Soup {
         free(): void;
         /**
          * Gets the number of body parts in `multipart`.
-         * @returns the number of body parts in @multipart
+         * @returns the number of body parts in `multipart`
          */
         get_length(): number;
         /**
          * Gets the indicated body part from `multipart`.
          * @param part the part number to get (counting from 0)
-         * @returns %TRUE on success, %FALSE if @part is out of range (in   which case @headers and @body won't be set)
+         * @returns `true` on success, `false` if `part` is out of range (in   which case `headers` and `body` won't be set)
          */
         get_part(part: number): [boolean, MessageHeaders, GLib.Bytes];
         /**
          * Serializes `multipart` to `dest_headers` and `dest_body`.
-         * @param dest_headers the headers of the HTTP message to serialize @multipart to
+         * @param dest_headers the headers of the HTTP message to serialize `multipart` to
          */
         to_message(dest_headers: MessageHeaders): GLib.Bytes;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MultipartInputStreamClass = typeof MultipartInputStream;
     /**
      * Represents a byte range as used in the Range header.
@@ -13969,6 +14727,7 @@ export namespace Soup {
      * If `end` is -1 and `start` is negative, then it represents a "suffix
      * range", referring to the last -`start` bytes of the resource body.
      * (Eg, the last 500 bytes would be `start` = -500 and `end` = -1.)
+     * @gir-type Struct
      */
     class Range {
         static $gtype: GObject.GType<Range>;
@@ -13988,13 +14747,37 @@ export namespace Soup {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServerClass = typeof Server;
+    /**
+     * @gir-type Alias
+     */
     type ServerMessageClass = typeof ServerMessage;
+    /**
+     * @gir-type Alias
+     */
     type SessionClass = typeof Session;
+    /**
+     * @gir-type Alias
+     */
     type SessionFeatureInterface = typeof SessionFeature;
+    /**
+     * @gir-type Alias
+     */
     type WebsocketConnectionClass = typeof WebsocketConnection;
+    /**
+     * @gir-type Alias
+     */
     type WebsocketExtensionClass = typeof WebsocketExtension;
+    /**
+     * @gir-type Alias
+     */
     type WebsocketExtensionDeflateClass = typeof WebsocketExtensionDeflate;
+    /**
+     * @gir-type Alias
+     */
     type WebsocketExtensionManagerClass = typeof WebsocketExtensionManager;
     namespace SessionFeature {
         // Constructor properties interface
@@ -14006,6 +14789,18 @@ export namespace Soup {
         $gtype: GObject.GType<SessionFeature>;
         prototype: SessionFeature;
     }
+    /**
+     * Interface for miscellaneous {@link Session} features.
+     *
+     * {@link SessionFeature} is the interface used by classes that extend
+     * the functionality of a {@link Session}. Some features like HTTP
+     * authentication handling are implemented internally via
+     * {@link SessionFeature}s. Other features can be added to the session
+     * by the application. (Eg, {@link Logger}, {@link CookieJar}.)
+     *
+     * See {@link Session.add_feature}, etc, to add a feature to a session.
+     * @gir-type Interface
+     */
     interface SessionFeature extends GObject.Object {}
 
     export const SessionFeature: SessionFeatureNamespace & {

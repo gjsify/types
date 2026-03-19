@@ -20,6 +20,9 @@ export namespace Passim {
      * Passim-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum Status {
         UNKNOWN,
         STARTING,
@@ -33,14 +36,17 @@ export namespace Passim {
     const DBUS_SERVICE: string;
     /**
      * The item is not active for some reason.
+     * @since 0.1.0
      */
     const ITEM_FLAG_DISABLED: number;
     /**
      * Only register the item when the machine has been rebooted.
+     * @since 0.1.0
      */
     const ITEM_FLAG_NEXT_REBOOT: number;
     /**
      * No item flags are set.
+     * @since 0.1.0
      */
     const ITEM_FLAG_NONE: number;
     /**
@@ -61,6 +67,7 @@ export namespace Passim {
      * This may be different to the *build-time* version if the daemon and library
      * objects somehow get out of sync.
      * @returns version string
+     * @since 0.1.0
      */
     function version_string(): string;
     namespace Client {
@@ -74,6 +81,7 @@ export namespace Passim {
 
     /**
      * A shared client.
+     * @gir-type Class
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
@@ -97,16 +105,19 @@ export namespace Passim {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -127,44 +138,44 @@ export namespace Passim {
         get_download_saving(): number;
         /**
          * Get items currently published by the daemon.
-         * @returns items, or %NULL for error
+         * @returns items, or `null` for error
          */
         get_items(): Item[];
         /**
          * Gets the daemon name.
-         * @returns the name string, or %NULL if unset
+         * @returns the name string, or `null` if unset
          */
         get_name(): string;
         /**
          * Gets the daemon status.
-         * @returns the #PassimStatus
+         * @returns the {@link Passim.Status}
          */
         get_status(): Status;
         /**
          * Gets the daemon URI.
-         * @returns the URI string, or %NULL if unset
+         * @returns the URI string, or `null` if unset
          */
         get_uri(): string;
         /**
          * Gets the daemon version.
-         * @returns the version string, or %NULL if unset
+         * @returns the version string, or `null` if unset
          */
         get_version(): string;
         /**
          * Loads the client from a file on disk.
-         * @returns %TRUE for success
+         * @returns `true` for success
          */
         load(): boolean;
         /**
          * Connects to the remote server.
-         * @param item a #PassimItem
-         * @returns %TRUE for success
+         * @param item a {@link Passim.Item}
+         * @returns `true` for success
          */
         publish(item: Item): boolean;
         /**
          * Unpublish a file from the index.
          * @param hash an item hash value
-         * @returns %TRUE for success
+         * @returns `true` for success
          */
         unpublish(hash: string): boolean;
     }
@@ -180,6 +191,7 @@ export namespace Passim {
 
     /**
      * A shared item.
+     * @gir-type Class
      */
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
@@ -203,16 +215,19 @@ export namespace Passim {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Item.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Item.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -228,7 +243,7 @@ export namespace Passim {
         static flag_from_string(item_flag?: string | null): ItemFlags;
         /**
          * Converts an enumerated item flag to a string.
-         * @param item_flag item flags, e.g. %PASSIM_ITEM_FLAG_NEXT_REBOOT
+         * @param item_flag item flags, e.g. `PASSIM_ITEM_FLAG_NEXT_REBOOT`
          */
         static flag_to_string(item_flag: ItemFlags): string;
         /**
@@ -241,7 +256,7 @@ export namespace Passim {
 
         /**
          * Adds a specific item flag to the item.
-         * @param flag the #PassimItemFlags
+         * @param flag the {@link Passim.ItemFlags}
          */
         add_flag(flag: ItemFlags): void;
         /**
@@ -251,27 +266,27 @@ export namespace Passim {
         get_age(): number;
         /**
          * Gets the basename of the file that was published.
-         * @returns the test basename, or %NULL if unset
+         * @returns the test basename, or `null` if unset
          */
         get_basename(): string;
         /**
          * Gets the local bytes in the cache.
-         * @returns a #GBytes, or %NULL if unset
+         * @returns a {@link GLib.Bytes}, or `null` if unset
          */
         get_bytes(): GLib.Bytes;
         /**
          * Gets the cmdline of the binary that published the item.
-         * @returns the binary name, or %NULL if unset
+         * @returns the binary name, or `null` if unset
          */
         get_cmdline(): string;
         /**
          * Gets the creation time of the file.
-         * @returns the creation time, or %NULL if unset
+         * @returns the creation time, or `null` if unset
          */
         get_ctime(): GLib.DateTime;
         /**
          * Gets the local file in the cache.
-         * @returns a #GFile, or %NULL if unset
+         * @returns a {@link Gio.File}, or `null` if unset
          */
         get_file(): Gio.File;
         /**
@@ -286,7 +301,7 @@ export namespace Passim {
         get_flags_as_string(): string;
         /**
          * Gets the file hash.
-         * @returns the typically in SHA-256 lowercase form, or %NULL if unset
+         * @returns the typically in SHA-256 lowercase form, or `null` if unset
          */
         get_hash(): string;
         /**
@@ -311,13 +326,13 @@ export namespace Passim {
         get_size(): number;
         /**
          * Gets the input stream for the item.
-         * @returns a #GInputStream, or %NULL if unset
+         * @returns a {@link Gio.InputStream}, or `null` if unset
          */
         get_stream(): Gio.InputStream;
         /**
          * Finds if the item has a specific item flag.
          * @param flag a item flag
-         * @returns %TRUE if the flag is set
+         * @returns `true` if the flag is set
          */
         has_flag(flag: ItemFlags): boolean;
         /**
@@ -337,7 +352,7 @@ export namespace Passim {
         set_basename(basename?: string | null): void;
         /**
          * Sets the local bytes in the cache.
-         * @param bytes a #GBytes
+         * @param bytes a {@link GLib.Bytes}
          */
         set_bytes(bytes?: GLib.Bytes | null): void;
         /**
@@ -351,17 +366,17 @@ export namespace Passim {
         set_cmdline(cmdline?: string | null): void;
         /**
          * Sets the creation time of the file.
-         * @param ctime a #GDateTime
+         * @param ctime a {@link GLib.DateTime}
          */
         set_ctime(ctime?: GLib.DateTime | null): void;
         /**
          * Sets the local file in the cache.
-         * @param file a #GFile
+         * @param file a {@link Gio.File}
          */
         set_file(file?: Gio.File | null): void;
         /**
          * Sets the item flags.
-         * @param flags item flags, e.g. %PASSIM_ITEM_FLAG_NEXT_REBOOT
+         * @param flags item flags, e.g. `PASSIM_ITEM_FLAG_NEXT_REBOOT`
          */
         set_flags(flags: number): void;
         /**
@@ -392,24 +407,34 @@ export namespace Passim {
         /**
          * Sets the input stream stream for the item.
          *
-         * NOTE: This *MUST* be a #GUnixInputStream, or subclass thereof.
-         * @param stream a #GInputStream
+         * NOTE: This *MUST* be a `GUnixInputStream`, or subclass thereof.
+         * @param stream a {@link Gio.InputStream}
          */
         set_stream(stream?: Gio.InputStream | null): void;
         /**
          * Builds a text representation of the object.
-         * @returns text, or %NULL for invalid
+         * @returns text, or `null` for invalid
          */
         to_string(): string;
         /**
          * Serialize the item data.
-         * @returns the serialized data, or %NULL for error
+         * @returns the serialized data, or `null` for error
          */
         to_variant(): GLib.Variant;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type ItemClass = typeof Item;
+    /**
+     * Flags used to represent item attributes
+     * @gir-type Alias
+     */
     type ItemFlags = number;
     /**
      * Name of the imported GIR library

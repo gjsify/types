@@ -30,20 +30,21 @@ export namespace Amtk {
      */
 
     /**
-     * A wrapper function for g_action_map_add_action_entries() that checks
+     * A wrapper function for `g_action_map_add_action_entries()` that checks
      * duplicates.
      *
      * This function first checks - for each entry - that the `action_map` doesn't
-     * already contain a #GAction with the same name. A warning is printed if an old
+     * already contain a {@link Gio.Action} with the same name. A warning is printed if an old
      * action will be dropped. In any case, it then calls
-     * g_action_map_add_action_entries() with the same arguments as passed to this
+     * `g_action_map_add_action_entries()` with the same arguments as passed to this
      * function.
      *
      * This function also checks if there are duplicates in the `entries` array
      * itself.
-     * @param action_map a #GActionMap.
-     * @param entries a pointer to           the first item in an array of #GActionEntry structs.
+     * @param action_map a {@link Gio.ActionMap}.
+     * @param entries a pointer to           the first item in an array of {@link Gio.ActionEntry} structs.
      * @param user_data the user data for signal connections.
+     * @since 2.0
      */
     function action_map_add_action_entries_check_dups(
         action_map: Gio.ActionMap,
@@ -56,99 +57,122 @@ export namespace Amtk {
      *
      * It is not mandatory to call this function, it's just to be friendlier to
      * memory debugging tools. This function is meant to be called at the end of
-     * main(). It can be called several times.
+     * `main()`. It can be called several times.
+     * @since 3.0
      */
     function finalize(): void;
     /**
-     * Like g_menu_append_item() but with (transfer full) for the `item` parameter.
-     * @param menu a #GMenu.
-     * @param item a #GMenuItem to append.
+     * Like `g_menu_append_item()` but with (transfer full) for the `item` parameter.
+     * @param menu a {@link Gio.Menu}.
+     * @param item a {@link Gio.MenuItem} to append.
+     * @since 5.0
      */
     function gmenu_append_item(menu: Gio.Menu, item: Gio.MenuItem): void;
     /**
-     * Like g_menu_append_section() but with (transfer full) and a different type
-     * for the `section` parameter, and calls g_menu_freeze() on `section`.
-     * @param menu a #GMenu.
-     * @param label the section label, or %NULL.
-     * @param section a #GMenu with the items of the section.
+     * Like `g_menu_append_section()` but with (transfer full) and a different type
+     * for the `section` parameter, and calls `g_menu_freeze()` on `section`.
+     * @param menu a {@link Gio.Menu}.
+     * @param label the section label, or `null`.
+     * @param section a {@link Gio.Menu} with the items of the section.
+     * @since 5.0
      */
     function gmenu_append_section(menu: Gio.Menu, label: string | null, section: Gio.Menu): void;
     /**
      * Initializes the Amtk library (e.g. for the internationalization).
      *
      * This function can be called several times, but is meant to be called at the
-     * beginning of main(), before any other Amtk function call.
+     * beginning of `main()`, before any other Amtk function call.
+     * @since 3.0
      */
     function init(): void;
+    /**
+     * @param menu_item a {@link Gtk.MenuItem}.
+     * @returns the long description of `menu_item`, previously set with   `amtk_menu_item_set_long_description()`.
+     * @since 2.0
+     */
     function menu_item_get_long_description(menu_item: Gtk.MenuItem): string | null;
     /**
-     * Sets an icon to a #GtkMenuItem.
+     * Sets an icon to a {@link Gtk.MenuItem}.
      *
-     * If the child widget of `item` is already a #GtkBox, all #GtkImage widgets
-     * inside that box are first destroyed. A #GtkImage for `icon_name` is then
+     * If the child widget of `item` is already a {@link Gtk.Box}, all {@link Gtk.Image} widgets
+     * inside that box are first destroyed. A {@link Gtk.Image} for `icon_name` is then
      * inserted to the box.
      *
-     * If the child widget of `item` is not a #GtkBox (it's usually the
-     * #GtkAccelLabel), it is replaced by a new #GtkBox and the initial child widget
-     * is inserted to the #GtkBox, alongside the icon.
+     * If the child widget of `item` is not a {@link Gtk.Box} (it's usually the
+     * {@link Gtk.AccelLabel}), it is replaced by a new {@link Gtk.Box} and the initial child widget
+     * is inserted to the {@link Gtk.Box}, alongside the icon.
      *
-     * As a consequence, if you want to call functions on the #GtkAccelLabel, it's
+     * As a consequence, if you want to call functions on the {@link Gtk.AccelLabel}, it's
      * easier to do it before calling this function.
-     * @param item a #GtkMenuItem.
+     * @param item a {@link Gtk.MenuItem}.
      * @param icon_name an icon name.
+     * @since 2.0
      */
     function menu_item_set_icon_name(item: Gtk.MenuItem, icon_name: string): void;
     /**
      * Sets the long description of `menu_item`. A possible use-case is to display it
-     * in a #GtkStatusbar, or as a tooltip.
-     * @param menu_item a #GtkMenuItem.
-     * @param long_description the long description, or %NULL to unset it.
+     * in a {@link Gtk.Statusbar}, or as a tooltip.
+     * @param menu_item a {@link Gtk.MenuItem}.
+     * @param long_description the long description, or `null` to unset it.
+     * @since 2.0
      */
     function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description?: string | null): void;
+    /**
+     * @param title the {@link Gtk.ShortcutsGroup.title}.
+     * @returns a new {@link Gtk.ShortcutsGroup}.
+     * @since 5.0
+     */
     function shortcuts_group_new(title: string): Gtk.Container;
+    /**
+     * @param title the {@link Gtk.ShortcutsSection.title}.
+     * @returns a new {@link Gtk.ShortcutsSection}.
+     * @since 5.0
+     */
     function shortcuts_section_new(title: string): Gtk.Container;
     /**
-     * Creates a new #GtkShortcutsWindow. The #GtkWindow:modal property is set to
-     * %TRUE.
+     * Creates a new {@link Gtk.ShortcutsWindow}. The {@link Gtk.Window.modal} property is set to
+     * `true`.
      *
-     * It is on purpose that the return type is #GtkShortcutsWindow, not #GtkWidget
+     * It is on purpose that the return type is {@link Gtk.ShortcutsWindow}, not {@link Gtk.Widget}
      * or something else, so in C when you declare the variable as
-     * #GtkShortcutsWindow it's easier to find it later (searching "GtkShortcuts"
+     * {@link Gtk.ShortcutsWindow} it's easier to find it later (searching "GtkShortcuts"
      * will return something in your codebase).
-     * @param parent the #GtkWindow:transient-for.
-     * @returns a new #GtkShortcutsWindow.
+     * @param parent the {@link Gtk.Window.transient_for}.
+     * @returns a new {@link Gtk.ShortcutsWindow}.
+     * @since 5.0
      */
     function shortcuts_window_new(parent: Gtk.Window): Gtk.ShortcutsWindow;
     /**
-     * Utility function to be able to port an application gradually to #GAction,
-     * when #GtkUIManager and #GtkAction are still used. Porting to #GAction should
+     * Utility function to be able to port an application gradually to {@link Gio.Action},
+     * when {@link Gtk.UIManager} and {@link Gtk.Action} are still used. Porting to {@link Gio.Action} should
      * be the first step.
      *
-     * For `detailed_g_action_name_without_prefix,` see the
-     * g_action_parse_detailed_name() function.  The `"app."` or `"win."` prefix (or
-     * any other #GActionMap prefix) must not be included in
+     * For `detailed_g_action_name_without_prefix`, see the
+     * `g_action_parse_detailed_name()` function.  The `"app."` or `"win."` prefix (or
+     * any other {@link Gio.ActionMap} prefix) must not be included in
      * `detailed_g_action_name_without_prefix`. For example a valid
      * `detailed_g_action_name_without_prefix` is `"open"` or
      * `"insert-command::foobar"`.
      *
-     * The same #GAction can be bound to several #GtkAction's (with different
-     * parameter values for the #GAction), but the reverse is not true, one
-     * #GtkAction cannot be bound to several #GAction's.
+     * The same {@link Gio.Action} can be bound to several {@link Gtk.Action}'s (with different
+     * parameter values for the {@link Gio.Action}), but the reverse is not true, one
+     * {@link Gtk.Action} cannot be bound to several {@link Gio.Action}'s.
      *
      * This function:
-     * - Calls g_action_activate() when the #GtkAction #GtkAction::activate signal
+     * - Calls `g_action_activate()` when the {@link Gtk.Action} {@link Gtk.Action.SignalSignatures.activate | Gtk.Action::activate} signal
      *   is emitted.
-     * - Binds the #GAction #GAction:enabled property to the #GtkAction
-     *   #GtkAction:sensitive property. The binding is done with the
-     *   %G_BINDING_BIDIRECTIONAL and %G_BINDING_SYNC_CREATE flags, the source is
-     *   the #GAction and the target is the #GtkAction.
+     * - Binds the {@link Gio.Action} {@link Gio.Action.enabled} property to the {@link Gtk.Action}
+     *   {@link Gtk.Action.sensitive} property. The binding is done with the
+     *   {@link GObject.BindingFlags.BIDIRECTIONAL} and {@link GObject.BindingFlags.SYNC_CREATE} flags, the source is
+     *   the {@link Gio.Action} and the target is the {@link Gtk.Action}.
      *
-     * When using this function, you should set the callback to %NULL in the
-     * corresponding #GtkActionEntry.
-     * @param g_action_map a #GActionMap.
-     * @param detailed_g_action_name_without_prefix a detailed #GAction name without the   #GActionMap prefix; the #GAction must be present in @g_action_map.
-     * @param gtk_action_group a #GtkActionGroup.
-     * @param gtk_action_name a #GtkAction name present in @gtk_action_group.
+     * When using this function, you should set the callback to `null` in the
+     * corresponding {@link Gtk.ActionEntry}.
+     * @param g_action_map a {@link Gio.ActionMap}.
+     * @param detailed_g_action_name_without_prefix a detailed {@link Gio.Action} name without the   {@link Gio.ActionMap} prefix; the {@link Gio.Action} must be present in `g_action_map`.
+     * @param gtk_action_group a {@link Gtk.ActionGroup}.
+     * @param gtk_action_name a {@link Gtk.Action} name present in `gtk_action_group`.
+     * @since 4.0
      */
     function utils_bind_g_action_to_gtk_action(
         g_action_map: Gio.ActionMap,
@@ -157,28 +181,29 @@ export namespace Amtk {
         gtk_action_name: string,
     ): void;
     /**
-     * Utility function to be able to port an application gradually to #GAction and
-     * #AmtkActionInfo, when #GtkUIManager is still used. This function goes one
-     * step further compared to amtk_utils_bind_g_action_to_gtk_action(). With
-     * amtk_utils_bind_g_action_to_gtk_action(), only the #GAction must exist. With
-     * amtk_utils_create_gtk_action(), both the #GAction and #AmtkActionInfo must
-     * exist (so typically you need to convert the #GtkActionEntry's into
-     * #AmtkActionInfoEntry's).
+     * Utility function to be able to port an application gradually to {@link Gio.Action} and
+     * {@link Amtk.ActionInfo}, when {@link Gtk.UIManager} is still used. This function goes one
+     * step further compared to `amtk_utils_bind_g_action_to_gtk_action()`. With
+     * `amtk_utils_bind_g_action_to_gtk_action()`, only the {@link Gio.Action} must exist. With
+     * `amtk_utils_create_gtk_action()`, both the {@link Gio.Action} and {@link Amtk.ActionInfo} must
+     * exist (so typically you need to convert the {@link Gtk.ActionEntry}'s into
+     * {@link Amtk.ActionInfoEntry}'s).
      *
-     * This function creates a #GtkAction from a #GAction plus its corresponding
-     * #AmtkActionInfo.
+     * This function creates a {@link Gtk.Action} from a {@link Gio.Action} plus its corresponding
+     * {@link Amtk.ActionInfo}.
      *
-     * The #GtkAction is created with the information provided by the
-     * #AmtkActionInfo (retrieved with amtk_action_info_central_store_lookup() with
+     * The {@link Gtk.Action} is created with the information provided by the
+     * {@link Amtk.ActionInfo} (retrieved with `amtk_action_info_central_store_lookup()` with
      * `detailed_g_action_name_with_prefix` as argument). Only the first accelerator
      * is taken into account.
      *
-     * Once the #GtkAction is created, it is added to the `gtk_action_group,` and
-     * amtk_utils_bind_g_action_to_gtk_action() is called.
-     * @param g_action_map a #GActionMap.
-     * @param detailed_g_action_name_with_prefix a detailed #GAction name with the   #GActionMap prefix; the #GAction must be present in @g_action_map.
-     * @param gtk_action_group a #GtkActionGroup.
-     * @param gtk_action_name the name of the #GtkAction to create and add to   @gtk_action_group.
+     * Once the {@link Gtk.Action} is created, it is added to the `gtk_action_group`, and
+     * `amtk_utils_bind_g_action_to_gtk_action()` is called.
+     * @param g_action_map a {@link Gio.ActionMap}.
+     * @param detailed_g_action_name_with_prefix a detailed {@link Gio.Action} name with the   {@link Gio.ActionMap} prefix; the {@link Gio.Action} must be present in `g_action_map`.
+     * @param gtk_action_group a {@link Gtk.ActionGroup}.
+     * @param gtk_action_name the name of the {@link Gtk.Action} to create and add to   `gtk_action_group`.
+     * @since 4.0
      */
     function utils_create_gtk_action(
         g_action_map: Gio.ActionMap,
@@ -191,28 +216,31 @@ export namespace Amtk {
      * below its minimum width.
      *
      * A possible use-case: have two applications side-by-side on a single screen.
-     * @param menubar a #GtkMenuBar.
-     * @returns a new widget that contains @menubar.
+     * @param menubar a {@link Gtk.MenuBar}.
+     * @returns a new widget that contains `menubar`.
+     * @since 5.6
      */
     function utils_get_shrinkable_menubar(menubar: Gtk.MenuBar): Gtk.Widget;
     /**
      * Gets the URI of `item`. `item` must be a child of `menu`. `menu` must be a
-     * #GtkRecentChooserMenu.
+     * {@link Gtk.RecentChooserMenu}.
      *
      * This function has been written because the value returned by
-     * gtk_recent_chooser_get_current_uri() is not updated when #GtkMenuItem's of a
-     * #GtkRecentChooserMenu are selected/deselected.
-     * @param menu a #GtkRecentChooserMenu.
-     * @param item a #GtkMenuItem.
-     * @returns the URI of @item. Free with g_free() when no longer needed.
+     * `gtk_recent_chooser_get_current_uri()` is not updated when {@link Gtk.MenuItem}'s of a
+     * {@link Gtk.RecentChooserMenu} are selected/deselected.
+     * @param menu a {@link Gtk.RecentChooserMenu}.
+     * @param item a {@link Gtk.MenuItem}.
+     * @returns the URI of `item`. Free with `g_free()` when no longer needed.
+     * @since 2.0
      */
     function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, item: Gtk.MenuItem): string;
     /**
      * Removes the mnemonics from `str`. Single underscores are removed, and two
      * consecutive underscores are replaced by one underscore (see the documentation
-     * of gtk_label_new_with_mnemonic()).
+     * of `gtk_label_new_with_mnemonic()`).
      * @param str a string.
-     * @returns the new string with the mnemonics removed. Free with g_free() when no longer needed.
+     * @returns the new string with the mnemonics removed. Free with `g_free()` when no longer needed.
+     * @since 5.0
      */
     function utils_remove_mnemonic(str: string): string;
     export namespace FactoryFlags {
@@ -220,8 +248,10 @@ export namespace Amtk {
     }
 
     /**
-     * #AmtkFactoryFlags permits to control how a factory function creates the
+     * {@link Amtk.FactoryFlags} permits to control how a factory function creates the
      * object, to ignore some steps.
+     * @gir-type Flags
+     * @since 3.0
      */
     enum FactoryFlags {
         /**
@@ -230,8 +260,8 @@ export namespace Amtk {
         FLAGS_NONE,
         /**
          * Do not associate the created object with the
-         *   #GAction. For example if the object to create is a #GtkActionable, do not
-         *   call gtk_actionable_set_detailed_action_name().
+         *   {@link Gio.Action}. For example if the object to create is a {@link Gtk.Actionable}, do not
+         *   call `gtk_actionable_set_detailed_action_name()`.
          */
         IGNORE_GACTION,
         /**
@@ -253,12 +283,12 @@ export namespace Amtk {
         /**
          * Ignore the accelerators for
          *   documentation purposes only. For example do not add/configure a
-         *   #GtkAccelLabel.
+         *   {@link Gtk.AccelLabel}.
          */
         IGNORE_ACCELS_FOR_DOC,
         /**
          * Do not call
-         *   gtk_application_set_accels_for_action().
+         *   `gtk_application_set_accels_for_action()`.
          */
         IGNORE_ACCELS_FOR_APP,
     }
@@ -272,6 +302,9 @@ export namespace Amtk {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
 
@@ -292,16 +325,19 @@ export namespace Amtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ActionInfoCentralStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ActionInfoCentralStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ActionInfoCentralStore.SignalSignatures[K]> extends [any, ...infer Q]
@@ -316,6 +352,10 @@ export namespace Amtk {
 
         // Methods
 
+        /**
+         * @param action_name an action name.
+         * @returns the found {@link Amtk.ActionInfo}, or `null`.
+         */
         lookup(action_name: string): ActionInfo;
     }
 
@@ -328,6 +368,9 @@ export namespace Amtk {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
 
@@ -350,16 +393,19 @@ export namespace Amtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ActionInfoStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ActionInfoStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ActionInfoStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -369,27 +415,27 @@ export namespace Amtk {
         // Methods
 
         /**
-         * Inserts `info` into `store` and into the #AmtkActionInfoCentralStore. Both the
+         * Inserts `info` into `store` and into the {@link Amtk.ActionInfoCentralStore}. Both the
          * `store` and central store must <emphasis>not</emphasis> already contain an
-         * #AmtkActionInfo with the same action name. The stores take their own
+         * {@link Amtk.ActionInfo} with the same action name. The stores take their own
          * reference on `info`.
-         * @param info an #AmtkActionInfo.
+         * @param info an {@link Amtk.ActionInfo}.
          */
         add(info: ActionInfo): void;
         /**
-         * Calls amtk_action_info_store_add() for each entry.
+         * Calls `amtk_action_info_store_add()` for each entry.
          *
-         * If `translation_domain` is not %NULL, g_dgettext() is used to translate the
-         * `label` and `tooltip` of each entry before setting them to the #AmtkActionInfo.
+         * If `translation_domain` is not `null`, `g_dgettext()` is used to translate the
+         * `label` and `tooltip` of each entry before setting them to the {@link Amtk.ActionInfo}.
          *
-         * An API similar to g_action_map_add_action_entries().
-         * @param entries a pointer to the first item in an array of #AmtkActionInfoEntry structs.
-         * @param translation_domain a gettext domain, or %NULL.
+         * An API similar to `g_action_map_add_action_entries()`.
+         * @param entries a pointer to the first item in an array of {@link Amtk.ActionInfoEntry} structs.
+         * @param translation_domain a gettext domain, or `null`.
          */
         add_entries(entries: ActionInfoEntry[], translation_domain?: string | null): void;
         /**
-         * Checks for each #AmtkActionInfo of `store` that it has been used (see
-         * amtk_action_info_has_been_used()). If an #AmtkActionInfo has not been used, a
+         * Checks for each {@link Amtk.ActionInfo} of `store` that it has been used (see
+         * `amtk_action_info_has_been_used()`). If an {@link Amtk.ActionInfo} has not been used, a
          * warning is printed and might indicate dead code.
          *
          * You probably want to call this function on the application store after
@@ -397,31 +443,35 @@ export namespace Amtk {
          * by a library, to easily see which actions are not used by the application.
          */
         check_all_used(): void;
+        /**
+         * @param action_name an action name.
+         * @returns the found {@link Amtk.ActionInfo}, or `null`.
+         */
         lookup(action_name: string): ActionInfo;
         /**
-         * Calls gtk_application_set_accels_for_action() for all #AmtkActionInfo's part
-         * of `store` with the accelerators returned by amtk_action_info_get_accels().
-         * This function does *not* call amtk_action_info_mark_as_used(), because if it
+         * Calls `gtk_application_set_accels_for_action()` for all {@link Amtk.ActionInfo}'s part
+         * of `store` with the accelerators returned by `amtk_action_info_get_accels()`.
+         * This function does *not* call `amtk_action_info_mark_as_used()`, because if it
          * did it would not be possible to detect dead code in `store` with
-         * amtk_action_info_store_check_all_used().
+         * `amtk_action_info_store_check_all_used()`.
          *
          * This function is not recommended if `store` is provided by a library, because
          * a future version of the library may add accelerators that are not wanted in
-         * the application. So for a library store, you should let #AmtkFactory call
-         * gtk_application_set_accels_for_action().
+         * the application. So for a library store, you should let {@link Amtk.Factory} call
+         * `gtk_application_set_accels_for_action()`.
          *
          * This function can be convenient for an application store, in combination with
-         * %AMTK_FACTORY_IGNORE_ACCELS_FOR_APP (and/or having a %NULL #GtkApplication in
-         * #AmtkFactory). It has the advantage that
-         * gtk_application_set_accels_for_action() is called only once per action, not
-         * each time that a #GtkApplicationWindow is created.
+         * {@link Amtk.FactoryFlags.IGNORE_ACCELS_FOR_APP} (and/or having a `null` {@link Gtk.Application} in
+         * {@link Amtk.Factory}). It has the advantage that
+         * `gtk_application_set_accels_for_action()` is called only once per action, not
+         * each time that a {@link Gtk.ApplicationWindow} is created.
          *
          * This function can also be useful if – for some actions – the objects are not
-         * created directly with #AmtkFactory on application startup, but are created
-         * later, on demand. For example to create a #GtkShortcutsWindow with
-         * #AmtkFactory, containing information about actions that are not added to any
+         * created directly with {@link Amtk.Factory} on application startup, but are created
+         * later, on demand. For example to create a {@link Gtk.ShortcutsWindow} with
+         * {@link Amtk.Factory}, containing information about actions that are not added to any
          * menu or toolbar.
-         * @param application a #GtkApplication.
+         * @param application a {@link Gtk.Application}.
          */
         set_all_accels_to_app(application: Gtk.Application): void;
     }
@@ -442,21 +492,27 @@ export namespace Amtk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ApplicationWindow extends GObject.Object {
         static $gtype: GObject.GType<ApplicationWindow>;
 
         // Properties
 
         /**
-         * The #GtkApplicationWindow.
+         * The {@link Gtk.ApplicationWindow}.
+         * @since 2.0
          */
         get application_window(): Gtk.ApplicationWindow;
         /**
-         * The #GtkApplicationWindow.
+         * The {@link Gtk.ApplicationWindow}.
+         * @since 2.0
          */
         get applicationWindow(): Gtk.ApplicationWindow;
         /**
-         * The #GtkStatusbar. %NULL by default.
+         * The {@link Gtk.Statusbar}. `null` by default.
+         * @since 2.0
          */
         get statusbar(): Gtk.Statusbar;
         set statusbar(val: Gtk.Statusbar);
@@ -478,16 +534,19 @@ export namespace Amtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -497,71 +556,77 @@ export namespace Amtk {
         // Static methods
 
         /**
-         * Creates the base of a simple and generic #GtkRecentChooserMenu.
+         * Creates the base of a simple and generic {@link Gtk.RecentChooserMenu}.
          *
-         * The #GtkRecentChooser is configured to show files only recently used with the
-         * current application, as returned by g_get_application_name(). If recent files
-         * are added to the default #GtkRecentManager with
-         * gtk_recent_manager_add_item(), the files will normally show up in the
-         * #GtkRecentChooserMenu.
+         * The {@link Gtk.RecentChooser} is configured to show files only recently used with the
+         * current application, as returned by `g_get_application_name()`. If recent files
+         * are added to the default {@link Gtk.RecentManager} with
+         * `gtk_recent_manager_add_item()`, the files will normally show up in the
+         * {@link Gtk.RecentChooserMenu}.
          */
         static create_open_recent_menu_base(): Gtk.RecentChooserMenu;
         /**
-         * Returns the #AmtkApplicationWindow of `gtk_window`. The returned object is
+         * Returns the {@link Amtk.ApplicationWindow} of `gtk_window`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_window`.
-         * @param gtk_window a #GtkApplicationWindow.
+         * @param gtk_window a {@link Gtk.ApplicationWindow}.
          */
         static get_from_gtk_application_window(gtk_window: Gtk.ApplicationWindow): ApplicationWindow;
 
         // Methods
 
         /**
-         * Connects to the #AmtkMenuShell::menu-item-selected and
-         * #AmtkMenuShell::menu-item-deselected signals of `menu_shell` to push/pop the
-         * long description of #GtkMenuItem's to the #AmtkApplicationWindow:statusbar.
+         * Connects to the {@link Amtk.MenuShell.SignalSignatures.menu_item_selected | Amtk.MenuShell::menu-item-selected} and
+         * {@link Amtk.MenuShell.SignalSignatures.menu_item_deselected | Amtk.MenuShell::menu-item-deselected} signals of `menu_shell` to push/pop the
+         * long description of {@link Gtk.MenuItem}'s to the {@link Amtk.ApplicationWindow.statusbar}.
          *
-         * The long description is retrieved with amtk_menu_item_get_long_description().
-         * So amtk_menu_item_set_long_description() must have been called, which is the
-         * case if the #GtkMenuItem has been created with #AmtkFactory.
-         * @param menu_shell a #GtkMenuShell.
+         * The long description is retrieved with `amtk_menu_item_get_long_description()`.
+         * So `amtk_menu_item_set_long_description()` must have been called, which is the
+         * case if the {@link Gtk.MenuItem} has been created with {@link Amtk.Factory}.
+         * @param menu_shell a {@link Gtk.MenuShell}.
          */
         connect_menu_to_statusbar(menu_shell: Gtk.MenuShell): void;
         /**
-         * An alternative to gtk_recent_chooser_set_show_tips(). Shows the full path in
-         * the #AmtkApplicationWindow:statusbar when a #GtkMenuItem of `menu` is
+         * An alternative to `gtk_recent_chooser_set_show_tips()`. Shows the full path in
+         * the {@link Amtk.ApplicationWindow.statusbar} when a {@link Gtk.MenuItem} of `menu` is
          * selected.
          *
          * The full path is retrieved with
-         * amtk_utils_recent_chooser_menu_get_item_uri().
-         * @param menu a #GtkRecentChooserMenu.
+         * `amtk_utils_recent_chooser_menu_get_item_uri()`.
+         * @param menu a {@link Gtk.RecentChooserMenu}.
          */
         connect_recent_chooser_menu_to_statusbar(menu: Gtk.RecentChooserMenu): void;
         /**
-         * This function creates a #GtkRecentChooserMenu with
-         * amtk_application_window_create_open_recent_menu_base(), and setup these
+         * This function creates a {@link Gtk.RecentChooserMenu} with
+         * `amtk_application_window_create_open_recent_menu_base()`, and setup these
          * additional things:
          *
-         * - The #GtkRecentChooserMenu is connected to the statusbar with
-         *   amtk_application_window_connect_recent_chooser_menu_to_statusbar().
+         * - The {@link Gtk.RecentChooserMenu} is connected to the statusbar with
+         *   `amtk_application_window_connect_recent_chooser_menu_to_statusbar()`.
          *
-         * - When the #GtkRecentChooser::item-activated signal is emitted,
-         *   g_application_open() is called (with an empty hint), so the #GApplication
-         *   must have the %G_APPLICATION_HANDLES_OPEN flag set.
-         * @returns a new #GtkRecentChooserMenu.
+         * - When the {@link Gtk.RecentChooser.SignalSignatures.item_activated | Gtk.RecentChooser::item-activated} signal is emitted,
+         *   `g_application_open()` is called (with an empty hint), so the {@link Gio.Application}
+         *   must have the {@link Gio.ApplicationFlags.HANDLES_OPEN} flag set.
+         * @returns a new {@link Gtk.RecentChooserMenu}.
          */
         create_open_recent_menu(): Gtk.Widget;
         /**
-         * Creates a #GtkMenuItem with a simple and generic #GtkRecentChooserMenu as
-         * submenu. The #GtkRecentChooserMenu is created with
-         * amtk_application_window_create_open_recent_menu().
-         * @returns a new #GtkMenuItem.
+         * Creates a {@link Gtk.MenuItem} with a simple and generic {@link Gtk.RecentChooserMenu} as
+         * submenu. The {@link Gtk.RecentChooserMenu} is created with
+         * `amtk_application_window_create_open_recent_menu()`.
+         * @returns a new {@link Gtk.MenuItem}.
          */
         create_open_recent_menu_item(): Gtk.Widget;
+        /**
+         * @returns the {@link Gtk.ApplicationWindow} of `amtk_window`.
+         */
         get_application_window(): Gtk.ApplicationWindow;
+        /**
+         * @returns the {@link Amtk.ApplicationWindow.statusbar}.
+         */
         get_statusbar(): Gtk.Statusbar | null;
         /**
-         * Sets the #AmtkApplicationWindow:statusbar property.
-         * @param statusbar a #GtkStatusbar, or %NULL.
+         * Sets the {@link Amtk.ApplicationWindow.statusbar} property.
+         * @param statusbar a {@link Gtk.Statusbar}, or `null`.
          */
         set_statusbar(statusbar?: Gtk.Statusbar | null): void;
     }
@@ -582,23 +647,29 @@ export namespace Amtk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Factory extends GObject.Object {
         static $gtype: GObject.GType<Factory>;
 
         // Properties
 
         /**
-         * The associated #GtkApplication (it is optional, it can be %NULL).
-         * #AmtkFactory has a weak reference to the #GtkApplication.
+         * The associated {@link Gtk.Application} (it is optional, it can be `null`).
+         * {@link Amtk.Factory} has a weak reference to the {@link Gtk.Application}.
+         * @since 3.0
          */
         get application(): Gtk.Application;
         /**
-         * The default #AmtkFactoryFlags.
+         * The default {@link Amtk.FactoryFlags}.
+         * @since 3.0
          */
         get default_flags(): FactoryFlags;
         set default_flags(val: FactoryFlags);
         /**
-         * The default #AmtkFactoryFlags.
+         * The default {@link Amtk.FactoryFlags}.
+         * @since 3.0
          */
         get defaultFlags(): FactoryFlags;
         set defaultFlags(val: FactoryFlags);
@@ -624,16 +695,19 @@ export namespace Amtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Factory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Factory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Factory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -643,161 +717,167 @@ export namespace Amtk {
         // Methods
 
         /**
-         * Creates a new #GtkCheckMenuItem for `action_name` with the
-         * #AmtkFactory:default-flags.
+         * Creates a new {@link Gtk.CheckMenuItem} for `action_name` with the
+         * {@link Amtk.Factory.default_flags}.
          *
-         * See the documentation of amtk_factory_create_check_menu_item_full() for more
+         * See the documentation of `amtk_factory_create_check_menu_item_full()` for more
          * information.
          * @param action_name an action name.
-         * @returns a new #GtkCheckMenuItem for @action_name.
+         * @returns a new {@link Gtk.CheckMenuItem} for `action_name`.
          */
         create_check_menu_item(action_name: string): Gtk.Widget;
         /**
-         * This function ignores the #AmtkFactory:default-flags property and takes the
+         * This function ignores the {@link Amtk.Factory.default_flags} property and takes the
          * `flags` argument instead.
          *
-         * Note that since it is a #GtkCheckMenuItem the icon is not set, even if it
-         * would be possible with amtk_menu_item_set_icon_name().
+         * Note that since it is a {@link Gtk.CheckMenuItem} the icon is not set, even if it
+         * would be possible with `amtk_menu_item_set_icon_name()`.
          *
          * If the action controls a boolean property, think about using
-         * #GPropertyAction.
+         * {@link Gio.PropertyAction}.
          * @param action_name an action name.
-         * @param flags #AmtkFactoryFlags.
-         * @returns a new #GtkCheckMenuItem for @action_name.
+         * @param flags {@link Amtk.FactoryFlags}.
+         * @returns a new {@link Gtk.CheckMenuItem} for `action_name`.
          */
         create_check_menu_item_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
         /**
-         * Calls amtk_factory_create_gmenu_item_full() with the
-         * #AmtkFactory:default-flags.
+         * Calls `amtk_factory_create_gmenu_item_full()` with the
+         * {@link Amtk.Factory.default_flags}.
          * @param action_name an action name.
-         * @returns a new #GMenuItem for @action_name.
+         * @returns a new {@link Gio.MenuItem} for `action_name`.
          */
         create_gmenu_item(action_name: string): Gio.MenuItem;
         /**
-         * This function ignores the #AmtkFactory:default-flags property and takes the
+         * This function ignores the {@link Amtk.Factory.default_flags} property and takes the
          * `flags` argument instead.
          *
-         * Creates a new #GMenuItem for `action_name`. It ignores the tooltip, i.e. the
-         * return value of amtk_action_info_get_tooltip().
+         * Creates a new {@link Gio.MenuItem} for `action_name`. It ignores the tooltip, i.e. the
+         * return value of `amtk_action_info_get_tooltip()`.
          * @param action_name an action name.
-         * @param flags #AmtkFactoryFlags.
-         * @returns a new #GMenuItem for @action_name.
+         * @param flags {@link Amtk.FactoryFlags}.
+         * @returns a new {@link Gio.MenuItem} for `action_name`.
          */
         create_gmenu_item_full(action_name: string, flags: FactoryFlags | null): Gio.MenuItem;
         /**
-         * Creates a new #GtkMenuItem for `action_name` with the
-         * #AmtkFactory:default-flags.
+         * Creates a new {@link Gtk.MenuItem} for `action_name` with the
+         * {@link Amtk.Factory.default_flags}.
          * @param action_name an action name.
-         * @returns a new #GtkMenuItem for @action_name.
+         * @returns a new {@link Gtk.MenuItem} for `action_name`.
          */
         create_menu_item(action_name: string): Gtk.Widget;
         /**
-         * This function ignores the #AmtkFactory:default-flags property and takes the
+         * This function ignores the {@link Amtk.Factory.default_flags} property and takes the
          * `flags` argument instead.
          * @param action_name an action name.
-         * @param flags #AmtkFactoryFlags.
-         * @returns a new #GtkMenuItem for @action_name.
+         * @param flags {@link Amtk.FactoryFlags}.
+         * @returns a new {@link Gtk.MenuItem} for `action_name`.
          */
         create_menu_item_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
         /**
-         * Creates a new #GtkMenuToolButton for `action_name` with the
-         * #AmtkFactory:default-flags.
+         * Creates a new {@link Gtk.MenuToolButton} for `action_name` with the
+         * {@link Amtk.Factory.default_flags}.
          *
-         * See the documentation of amtk_factory_create_menu_tool_button_full() for more
+         * See the documentation of `amtk_factory_create_menu_tool_button_full()` for more
          * information.
          * @param action_name an action name.
-         * @returns a new #GtkMenuToolButton for @action_name.
+         * @returns a new {@link Gtk.MenuToolButton} for `action_name`.
          */
         create_menu_tool_button(action_name: string): Gtk.MenuToolButton;
         /**
-         * This function ignores the #AmtkFactory:default-flags property and takes the
+         * This function ignores the {@link Amtk.Factory.default_flags} property and takes the
          * `flags` argument instead.
          *
-         * After calling this function, you need to use the #GtkMenuToolButton API to
+         * After calling this function, you need to use the {@link Gtk.MenuToolButton} API to
          * set the menu and also possibly set a tooltip to the arrow.
          * @param action_name an action name.
-         * @param flags #AmtkFactoryFlags.
-         * @returns a new #GtkMenuToolButton for @action_name.
+         * @param flags {@link Amtk.FactoryFlags}.
+         * @returns a new {@link Gtk.MenuToolButton} for `action_name`.
          */
         create_menu_tool_button_full(action_name: string, flags: FactoryFlags | null): Gtk.MenuToolButton;
         /**
-         * Calls amtk_factory_create_shortcut_full() with the
-         * #AmtkFactory:default-flags.
+         * Calls `amtk_factory_create_shortcut_full()` with the
+         * {@link Amtk.Factory.default_flags}.
          * @param action_name an action name.
-         * @returns a new #GtkShortcutsShortcut for @action_name.
+         * @returns a new {@link Gtk.ShortcutsShortcut} for `action_name`.
          */
         create_shortcut(action_name: string): Gtk.Widget;
         /**
-         * This function ignores the #AmtkFactory:default-flags property and takes the
+         * This function ignores the {@link Amtk.Factory.default_flags} property and takes the
          * `flags` argument instead.
          *
-         * This function creates a new #GtkShortcutsShortcut for `action_name`.
+         * This function creates a new {@link Gtk.ShortcutsShortcut} for `action_name`.
          *
-         * For the #GtkShortcutsShortcut:title, the tooltip has the priorioty, with the
-         * label as fallback if the tooltip is %NULL (the mnemonic is removed from the
-         * label with amtk_utils_remove_mnemonic()). This can be controlled with the
-         * %AMTK_FACTORY_IGNORE_TOOLTIP and %AMTK_FACTORY_IGNORE_LABEL flags.
+         * For the {@link Gtk.ShortcutsShortcut.title}, the tooltip has the priorioty, with the
+         * label as fallback if the tooltip is `null` (the mnemonic is removed from the
+         * label with `amtk_utils_remove_mnemonic()`). This can be controlled with the
+         * {@link Amtk.FactoryFlags.IGNORE_TOOLTIP} and {@link Amtk.FactoryFlags.IGNORE_LABEL} flags.
          *
-         * The #GtkShortcutsShortcut:accelerator property is set with only the *first*
-         * accel returned by amtk_action_info_get_accels(). This step can be ignored
-         * with %AMTK_FACTORY_IGNORE_ACCELS or %AMTK_FACTORY_IGNORE_ACCELS_FOR_DOC.
+         * The {@link Gtk.ShortcutsShortcut.accelerator} property is set with only the *first*
+         * accel returned by `amtk_action_info_get_accels()`. This step can be ignored
+         * with {@link Amtk.FactoryFlags.IGNORE_ACCELS} or {@link Amtk.FactoryFlags.IGNORE_ACCELS_FOR_DOC}.
          *
-         * The #GtkShortcutsShortcut:action-name property is set to `action_name` if the
-         * %AMTK_FACTORY_IGNORE_GACTION flag isn't set. Note that with
-         * #GtkShortcutsShortcut:action-name all accelerators are displayed (if set to
-         * the #GtkApplication).
+         * The {@link Gtk.ShortcutsShortcut.action_name} property is set to `action_name` if the
+         * {@link Amtk.FactoryFlags.IGNORE_GACTION} flag isn't set. Note that with
+         * {@link Gtk.ShortcutsShortcut.action_name} all accelerators are displayed (if set to
+         * the {@link Gtk.Application}).
          *
          * So depending on whether you want to show only the first accelerator or all
          * accelerators, you need to set `flags` appropriately.
          * @param action_name an action name.
-         * @param flags #AmtkFactoryFlags.
-         * @returns a new #GtkShortcutsShortcut for @action_name.
+         * @param flags {@link Amtk.FactoryFlags}.
+         * @returns a new {@link Gtk.ShortcutsShortcut} for `action_name`.
          */
         create_shortcut_full(action_name: string, flags: FactoryFlags | null): Gtk.Widget;
         /**
-         * Calls amtk_factory_create_simple_menu_full() with the
-         * #AmtkFactory:default-flags.
-         * @param entries a   pointer to the first item in an array of #AmtkActionInfoEntry structs.
-         * @returns a new simple #GtkMenu for @entries.
+         * Calls `amtk_factory_create_simple_menu_full()` with the
+         * {@link Amtk.Factory.default_flags}.
+         * @param entries a   pointer to the first item in an array of {@link Amtk.ActionInfoEntry} structs.
+         * @returns a new simple {@link Gtk.Menu} for `entries`.
          */
         create_simple_menu(entries: ActionInfoEntry[]): Gtk.Widget;
         /**
-         * This function ignores the #AmtkFactory:default-flags property and takes the
+         * This function ignores the {@link Amtk.Factory.default_flags} property and takes the
          * `flags` argument instead.
          *
          * This function:
-         * - Creates a #GtkMenu;
-         * - For each #AmtkActionInfoEntry action name from `entries,` creates a
-         *   #GtkMenuItem with amtk_factory_create_menu_item_full() with the same `flags`
-         *   as passed in to this function, and appends it to the #GtkMenu, in the same
+         * - Creates a {@link Gtk.Menu};
+         * - For each {@link Amtk.ActionInfoEntry} action name from `entries`, creates a
+         *   {@link Gtk.MenuItem} with `amtk_factory_create_menu_item_full()` with the same `flags`
+         *   as passed in to this function, and appends it to the {@link Gtk.Menu}, in the same
          *   order as provided by the `entries` array.
          *
-         * So this function is useful only if the #GtkMenu contains only simple
-         * #GtkMenuItem's, not #GtkCheckMenuItem's nor #GtkRadioMenuItem's.
-         * @param entries a   pointer to the first item in an array of #AmtkActionInfoEntry structs.
-         * @param flags #AmtkFactoryFlags.
-         * @returns a new simple #GtkMenu for @entries.
+         * So this function is useful only if the {@link Gtk.Menu} contains only simple
+         * {@link Gtk.MenuItem}'s, not {@link Gtk.CheckMenuItem}'s nor {@link Gtk.RadioMenuItem}'s.
+         * @param entries a   pointer to the first item in an array of {@link Amtk.ActionInfoEntry} structs.
+         * @param flags {@link Amtk.FactoryFlags}.
+         * @returns a new simple {@link Gtk.Menu} for `entries`.
          */
         create_simple_menu_full(entries: ActionInfoEntry[], flags: FactoryFlags | null): Gtk.Widget;
         /**
-         * Creates a new #GtkToolButton for `action_name` with the
-         * #AmtkFactory:default-flags.
+         * Creates a new {@link Gtk.ToolButton} for `action_name` with the
+         * {@link Amtk.Factory.default_flags}.
          * @param action_name an action name.
-         * @returns a new #GtkToolButton for @action_name.
+         * @returns a new {@link Gtk.ToolButton} for `action_name`.
          */
         create_tool_button(action_name: string): Gtk.ToolItem;
         /**
-         * This function ignores the #AmtkFactory:default-flags property and takes the
+         * This function ignores the {@link Amtk.Factory.default_flags} property and takes the
          * `flags` argument instead.
          * @param action_name an action name.
-         * @param flags #AmtkFactoryFlags.
-         * @returns a new #GtkToolButton for @action_name.
+         * @param flags {@link Amtk.FactoryFlags}.
+         * @returns a new {@link Gtk.ToolButton} for `action_name`.
          */
         create_tool_button_full(action_name: string, flags: FactoryFlags | null): Gtk.ToolItem;
+        /**
+         * @returns the {@link Amtk.Factory.application}.
+         */
         get_application(): Gtk.Application | null;
+        /**
+         * @returns the {@link Amtk.Factory.default_flags}.
+         */
         get_default_flags(): FactoryFlags;
         /**
-         * Sets the #AmtkFactory:default-flags property.
+         * Sets the {@link Amtk.Factory.default_flags} property.
          * @param default_flags the new value.
          */
         set_default_flags(default_flags: FactoryFlags | null): void;
@@ -806,7 +886,21 @@ export namespace Amtk {
     namespace MenuShell {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::menu-item-deselected signal is emitted when the
+             * {@link Gtk.MenuItem.SignalSignatures.deselect | Gtk.MenuItem::deselect} signal is emitted on a {@link Gtk.MenuItem} belonging
+             * (directly or indirectly through submenus) to `amtk_menu_shell`.
+             * @signal
+             * @since 2.0
+             */
             'menu-item-deselected': (arg0: Gtk.MenuItem) => void;
+            /**
+             * The ::menu-item-selected signal is emitted when the
+             * {@link Gtk.MenuItem.SignalSignatures.select | Gtk.MenuItem::select} signal is emitted on a {@link Gtk.MenuItem} belonging
+             * (directly or indirectly through submenus) to `amtk_menu_shell`.
+             * @signal
+             * @since 2.0
+             */
             'menu-item-selected': (arg0: Gtk.MenuItem) => void;
             'notify::menu-shell': (pspec: GObject.ParamSpec) => void;
         }
@@ -819,17 +913,22 @@ export namespace Amtk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuShell extends GObject.Object {
         static $gtype: GObject.GType<MenuShell>;
 
         // Properties
 
         /**
-         * The #GtkMenuShell.
+         * The {@link Gtk.MenuShell}.
+         * @since 2.0
          */
         get menu_shell(): Gtk.MenuShell;
         /**
-         * The #GtkMenuShell.
+         * The {@link Gtk.MenuShell}.
+         * @since 2.0
          */
         get menuShell(): Gtk.MenuShell;
 
@@ -850,16 +949,19 @@ export namespace Amtk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuShell.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuShell.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuShell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -869,22 +971,36 @@ export namespace Amtk {
         // Static methods
 
         /**
-         * Returns the #AmtkMenuShell of `gtk_menu_shell`. The returned object is
+         * Returns the {@link Amtk.MenuShell} of `gtk_menu_shell`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_menu_shell`.
-         * @param gtk_menu_shell a #GtkMenuShell.
+         * @param gtk_menu_shell a {@link Gtk.MenuShell}.
          */
         static get_from_gtk_menu_shell(gtk_menu_shell: Gtk.MenuShell): MenuShell;
 
         // Virtual methods
 
+        /**
+         * @param menu_item
+         * @virtual
+         */
         vfunc_menu_item_deselected(menu_item: Gtk.MenuItem): void;
+        /**
+         * @param menu_item
+         * @virtual
+         */
         vfunc_menu_item_selected(menu_item: Gtk.MenuItem): void;
 
         // Methods
 
+        /**
+         * @returns the {@link Gtk.MenuShell} of `amtk_menu_shell`.
+         */
         get_menu_shell(): Gtk.MenuShell;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ActionInfo {
         static $gtype: GObject.GType<ActionInfo>;
 
@@ -898,60 +1014,78 @@ export namespace Amtk {
 
         // Methods
 
+        /**
+         * @returns a copy of `info`. The copy will have a reference count of one.
+         */
         copy(): ActionInfo;
         /**
-         * Returns the accelerators. This function never returns %NULL, it always
-         * returns a %NULL-terminated array, to be suitable for
-         * gtk_application_set_accels_for_action().
-         * @returns a %NULL-terminated array of accelerators in the format understood by gtk_accelerator_parse().
+         * Returns the accelerators. This function never returns `null`, it always
+         * returns a `null`-terminated array, to be suitable for
+         * `gtk_application_set_accels_for_action()`.
+         * @returns a `null`-terminated array of accelerators in the format understood by `gtk_accelerator_parse()`.
          */
         get_accels(): string[];
+        /**
+         * @returns the action name, or `null`. Example: `"win.save"`. Can be a detailed action name, see `g_action_parse_detailed_name()`.
+         */
         get_action_name(): string | null;
+        /**
+         * @returns the icon name, or `null`.
+         */
         get_icon_name(): string | null;
         /**
          * Gets the label. The label has normally a mnemonic. To remove the mnemonic,
-         * there is the amtk_utils_remove_mnemonic() function.
-         * @returns the label (i.e. a short description), or %NULL.
+         * there is the `amtk_utils_remove_mnemonic()` function.
+         * @returns the label (i.e. a short description), or `null`.
          */
         get_label(): string | null;
+        /**
+         * @returns the tooltip (i.e. a long description), or `null`.
+         */
         get_tooltip(): string | null;
         /**
-         * Returns whether `info` has been used (for example by an #AmtkFactory
-         * function). See also amtk_action_info_store_check_all_used().
-         * @returns whether @info has been used.
+         * Returns whether `info` has been used (for example by an {@link Amtk.Factory}
+         * function). See also `amtk_action_info_store_check_all_used()`.
+         * @returns whether `info` has been used.
          */
         has_been_used(): boolean;
         /**
-         * Mark `info` as used. An #AmtkFactory function that uses an #AmtkActionInfo
-         * should call this function. See amtk_action_info_store_check_all_used().
+         * Mark `info` as used. An {@link Amtk.Factory} function that uses an {@link Amtk.ActionInfo}
+         * should call this function. See `amtk_action_info_store_check_all_used()`.
          */
         mark_as_used(): void;
         /**
          * Increments the reference count of `info` by one.
-         * @returns the passed in @info.
+         * @returns the passed in `info`.
          */
         ref(): ActionInfo;
         /**
-         * A function similar to gtk_application_set_accels_for_action().
+         * A function similar to `gtk_application_set_accels_for_action()`.
          *
-         * `accels` must not be %NULL, it must be a %NULL-terminated array, to be
-         * consistent with gtk_application_set_accels_for_action().
-         * @param accels a %NULL-terminated array of accelerators in the format understood by gtk_accelerator_parse().
+         * `accels` must not be `null`, it must be a `null`-terminated array, to be
+         * consistent with `gtk_application_set_accels_for_action()`.
+         * @param accels a `null`-terminated array of accelerators in the format understood by `gtk_accelerator_parse()`.
          */
         set_accels(accels: string[]): void;
         /**
          * Sets the action name, for example `"win.save"`. Can be a detailed action
-         * name, see g_action_parse_detailed_name().
+         * name, see `g_action_parse_detailed_name()`.
          * @param action_name the action name.
          */
         set_action_name(action_name: string): void;
+        /**
+         * @param icon_name the icon name, or `null`.
+         */
         set_icon_name(icon_name?: string | null): void;
         /**
          * Sets the label with a mnemonic. To know how to encode the mnemonic, see the
-         * documentation of gtk_label_new_with_mnemonic().
-         * @param label the label (i.e. a short description), or %NULL.
+         * documentation of `gtk_label_new_with_mnemonic()`.
+         * @param label the label (i.e. a short description), or `null`.
          */
         set_label(label?: string | null): void;
+        /**
+         * @param tooltip the tooltip (i.e. a long description), or `null`.
+         */
         set_tooltip(tooltip?: string | null): void;
         /**
          * Decrements the reference count of `info` by one. If the reference count drops
@@ -960,18 +1094,26 @@ export namespace Amtk {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ActionInfoCentralStoreClass = typeof ActionInfoCentralStore;
+    /**
+     * @gir-type Struct
+     */
     abstract class ActionInfoCentralStorePrivate {
         static $gtype: GObject.GType<ActionInfoCentralStorePrivate>;
     }
 
     /**
      * This struct defines a set of information for a single action. It is for use
-     * with amtk_action_info_store_add_entries().
+     * with `amtk_action_info_store_add_entries()`.
      *
-     * Like #GActionEntry, it is permissible to use an incomplete initialiser in
-     * order to leave some of the later values as %NULL. Additional optional fields
+     * Like {@link Gio.ActionEntry}, it is permissible to use an incomplete initialiser in
+     * order to leave some of the later values as `null`. Additional optional fields
      * may be added in the future.
+     * @gir-type Struct
+     * @since 2.0
      */
     class ActionInfoEntry {
         static $gtype: GObject.GType<ActionInfoEntry>;
@@ -997,22 +1139,46 @@ export namespace Amtk {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ActionInfoStoreClass = typeof ActionInfoStore;
+    /**
+     * @gir-type Struct
+     */
     abstract class ActionInfoStorePrivate {
         static $gtype: GObject.GType<ActionInfoStorePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationWindowClass = typeof ApplicationWindow;
+    /**
+     * @gir-type Struct
+     */
     abstract class ApplicationWindowPrivate {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FactoryClass = typeof Factory;
+    /**
+     * @gir-type Struct
+     */
     abstract class FactoryPrivate {
         static $gtype: GObject.GType<FactoryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuShellClass = typeof MenuShell;
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuShellPrivate {
         static $gtype: GObject.GType<MenuShellPrivate>;
     }

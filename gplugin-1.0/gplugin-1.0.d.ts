@@ -24,6 +24,7 @@ export namespace GPlugin {
 
     /**
      * The known states of a plugin.
+     * @gir-type Enum
      */
     enum PluginState {
         /**
@@ -82,31 +83,33 @@ export namespace GPlugin {
      * `gplugin.h` header.
      *
      * The definition should be one of the predefined GPlugin version macros:
-     * %GPLUGIN_VERSION_0_42, %GPLUGIN_VERSION_0_43, ...
+     * `GPLUGIN_VERSION_0_42`, `GPLUGIN_VERSION_0_43`, ...
      *
      * This macro defines the earliest version of GPlugin that the package is
      * required to be able to compile against.
      *
      * If the compiler is configured to warn about the use of deprecated functions,
      * then using functions that were deprecated in version
-     * %GPLUGIN_VERSION_MIN_REQUIRED or earlier will cause warnings (but using
+     * `GPLUGIN_VERSION_MIN_REQUIRED` or earlier will cause warnings (but using
      * functions deprecated in later releases will not).
+     * @since 0.42
      */
     const VERSION_MIN_REQUIRED: number;
     /**
-     * Gets the core flags that were passed to [func`GPlugin`.init].
+     * Gets the core flags that were passed to {@link GPlugin.init}.
      * @returns The core flags that GPlugin was initialized with.
+     * @since 0.34
      */
     function get_flags(): CoreFlags;
     /**
      * Returns an option group for the commandline arguments recognized by GPlugin.
      *
-     * You should add this option group to your [struct`GLib`.OptionContext] with
-     * [method`GLib`.OptionContext.add_group], if you are using
-     * [method`GLib`.OptionContext.parse] to parse your commandline arguments.
+     * You should add this option group to your {@link GLib.OptionContext} with
+     * {@link GLib.OptionContext.add_group}, if you are using
+     * {@link GLib.OptionContext.parse} to parse your commandline arguments.
      *
-     * If [func`GPlugin`.init] has yet to be called before
-     * [method`GLib`.OptionContext.parse] is called, [func`GPlugin`.init] will be
+     * If {@link GPlugin.init} has yet to be called before
+     * {@link GLib.OptionContext.parse} is called, {@link GPlugin.init} will be
      * called automatically.
      * @returns An option group for the commandline arguments          recognized by GPlugin.
      */
@@ -115,16 +118,17 @@ export namespace GPlugin {
      * Initializes the GPlugin library.
      *
      * This function *MUST* be called before interacting with any other GPlugin
-     * API. The one exception is [func`GPlugin`.get_option_group]. Parsing options
-     * with the [struct`GLib`.OptionGroup] from [func`GPlugin`.get_option_group]
-     * internally calls [func`GPlugin`.init].
+     * API. The one exception is {@link GPlugin.get_option_group}. Parsing options
+     * with the {@link GLib.OptionGroup} from {@link GPlugin.get_option_group}
+     * internally calls {@link GPlugin.init}.
      * @param flags The core flags to set.
      */
     function init(flags: CoreFlags | null): void;
     /**
      * Gets a string representation of `state`.
-     * @param state The #GPluginPluginState.
-     * @returns The string representation of @state.
+     * @param state The {@link GPlugin.PluginState}.
+     * @returns The string representation of `state`.
+     * @since 0.32
      */
     function plugin_state_to_string(state: PluginState | null): string;
     /**
@@ -134,8 +138,8 @@ export namespace GPlugin {
     /**
      * Checks that the GPlugin library in use is compatible with the given version.
      *
-     * Generally you would pass in the constants [const`GPlugin`.MAJOR_VERSION],
-     * [const`GPlugin`.MINOR_VERSION], [const`GPlugin`.MICRO_VERSION] as the three
+     * Generally you would pass in the constants {@link GPlugin.MAJOR_VERSION},
+     * {@link GPlugin.MINOR_VERSION}, {@link GPlugin.MICRO_VERSION} as the three
      * arguments to this function; that produces a check that the library in use is
      * compatible with the version of GPlugin the application or module was
      * compiled against.
@@ -147,7 +151,7 @@ export namespace GPlugin {
      * @param major The required major version.
      * @param minor The required minor version.
      * @param micro The required micro version.
-     * @returns %NULL if the GPlugin library is compatible with the given version,          or a string describing the version mismatch. The returned string          is owned by GPlugin and must not be modified or freed.
+     * @returns `null` if the GPlugin library is compatible with the given version,          or a string describing the version mismatch. The returned string          is owned by GPlugin and must not be modified or freed.
      */
     function version_check(major: number, minor: number, micro: number): string;
     /**
@@ -155,9 +159,12 @@ export namespace GPlugin {
      * version.
      * @param v1 The first version to compare.
      * @param v2 The second version to compare.
-     * @returns less than 0 if @v1 is less than @v2, 0 if @v1 is equal to @v1, and          greater than 0 if @v1 is greater than @v2.
+     * @returns less than 0 if `v1` is less than `v2`, 0 if `v1` is equal to `v1`, and          greater than 0 if `v1` is greater than `v2`.
      */
     function version_compare(v1: string, v2: string): number;
+    /**
+     * @gir-type Callback
+     */
     interface ManagerForeachFunc {
         (id: string, plugins: Plugin[], data?: any | null): void;
     }
@@ -167,6 +174,8 @@ export namespace GPlugin {
 
     /**
      * Flags to configure behaviors in GPlugin.
+     * @gir-type Flags
+     * @since 0.31
      */
     enum CoreFlags {
         /**
@@ -198,7 +207,9 @@ export namespace GPlugin {
     }
 
     /**
-     * A [iface`GPlugin`.Source] that will query plugins on disk.
+     * A {@link GPlugin.Source} that will query plugins on disk.
+     * @gir-type Class
+     * @since 0.43
      */
     class FileSource extends GObject.Object implements Source {
         static $gtype: GObject.GType<FileSource>;
@@ -206,7 +217,8 @@ export namespace GPlugin {
         // Properties
 
         /**
-         * The [class`GPlugin`.Manager] that this source is working for.
+         * The {@link GPlugin.Manager} that this source is working for.
+         * @since 0.39
          */
         get manager(): Manager;
 
@@ -227,16 +239,19 @@ export namespace GPlugin {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -246,30 +261,29 @@ export namespace GPlugin {
         // Static methods
 
         /**
-         * Creates a [iface`GPlugin`.Source] that will query plugins on disk using the
+         * Creates a {@link GPlugin.Source} that will query plugins on disk using the
          * paths from `manager`.
-         * @param manager The [class@GPlugin.Manager] instance.
+         * @param manager The {@link GPlugin.Manager} instance.
          */
         static ['new'](manager: Manager): Source;
-
-        // Inherited methods
         /**
-         * This method is called when [method`GPlugin`.Manager.refresh] is running. The
+         * This method is called when {@link GPlugin.Manager.refresh} is running. The
          * source should scan its available sources for plugins. For the filesystem
          * source, this is paths that have been registered with the manager.
          *
          * The implementation should return TRUE if it found a new unqueried plugin,
          * which will tell the manager to continue scanning.
-         * @returns %TRUE if an unqueried plugin was found, %FALSE otherwise.
+         * @returns `true` if an unqueried plugin was found, `false` otherwise.
          */
         scan(): boolean;
         /**
-         * This method is called when [method`GPlugin`.Manager.refresh] is running. The
+         * This method is called when {@link GPlugin.Manager.refresh} is running. The
          * source should scan its available sources for plugins. For the filesystem
          * source, this is paths that have been registered with the manager.
          *
          * The implementation should return TRUE if it found a new unqueried plugin,
          * which will tell the manager to continue scanning.
+         * @virtual
          */
         vfunc_scan(): boolean;
         /**
@@ -285,32 +299,32 @@ export namespace GPlugin {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -319,39 +333,39 @@ export namespace GPlugin {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -362,13 +376,16 @@ export namespace GPlugin {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -376,7 +393,7 @@ export namespace GPlugin {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -384,9 +401,9 @@ export namespace GPlugin {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -406,9 +423,9 @@ export namespace GPlugin {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -422,33 +439,33 @@ export namespace GPlugin {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -481,21 +498,21 @@ export namespace GPlugin {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -505,8 +522,8 @@ export namespace GPlugin {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -523,10 +540,10 @@ export namespace GPlugin {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -541,13 +558,13 @@ export namespace GPlugin {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -578,21 +595,21 @@ export namespace GPlugin {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -602,33 +619,34 @@ export namespace GPlugin {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -637,6 +655,7 @@ export namespace GPlugin {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -645,12 +664,14 @@ export namespace GPlugin {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -659,20 +680,22 @@ export namespace GPlugin {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -684,6 +707,7 @@ export namespace GPlugin {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -728,6 +752,7 @@ export namespace GPlugin {
 
     /**
      * An abstract class that should not be accessed directly.
+     * @gir-type Class
      */
     abstract class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
@@ -736,6 +761,7 @@ export namespace GPlugin {
 
         /**
          * The identifier of the loader.
+         * @since 0.34
          */
         get id(): string;
 
@@ -756,16 +782,19 @@ export namespace GPlugin {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Loader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Loader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Loader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -778,6 +807,7 @@ export namespace GPlugin {
          * The load vfunc is called when the plugin manager wants to load a
          *        plugin that was previously queried by this loader.
          * @param plugin
+         * @virtual
          */
         vfunc_load(plugin: Plugin): boolean;
         /**
@@ -785,6 +815,7 @@ export namespace GPlugin {
          *          a previously loaded plugin from this loader.
          * @param plugin
          * @param shutdown
+         * @virtual
          */
         vfunc_unload(plugin: Plugin, shutdown: boolean): boolean;
 
@@ -792,28 +823,28 @@ export namespace GPlugin {
 
         /**
          * Gets the identifier of `loader`.
-         * @returns The ID of @loader.
+         * @returns The ID of `loader`.
          */
         get_id(): string;
         /**
-         * Returns a [struct`GLib`.SList] of strings containing the extensions that the
+         * Returns a {@link GLib.SList} of strings containing the extensions that the
          * loader supports.  Each extension should not include the dot.  For example:
          * so, dll, py, etc.
-         * @returns A [struct@GLib.SList] of          extensions that the loader supports.
+         * @returns A {@link GLib.SList} of          extensions that the loader supports.
          */
         get_supported_extensions(): string[];
         /**
          * This function is called by the plugin manager to ask `loader` to load
          * `plugin`.
          * @param plugin The plugin instance to load.
-         * @returns %TRUE if @plugin was loaded successfully, %FALSE otherwise.
+         * @returns `true` if `plugin` was loaded successfully, `false` otherwise.
          */
         load_plugin(plugin: Plugin): boolean;
         /**
          * This function is called by the plugin manager to ask `loader` to query
          * `filename` and determine if it's a usable plugin.
          * @param filename The filename to query.
-         * @returns A plugin instance or %NULL on failure.
+         * @returns A plugin instance or `null` on failure.
          */
         query_plugin(filename: string): Plugin;
         /**
@@ -821,7 +852,7 @@ export namespace GPlugin {
          * `plugin`.
          * @param plugin The plugin instance to unload.
          * @param shutdown Whether or not GPlugin is shutting down.
-         * @returns %TRUE if @plugin was unloaded successfully, %FALSE otherwise.
+         * @returns `true` if `plugin` was unloaded successfully, `false` otherwise.
          */
         unload_plugin(plugin: Plugin, shutdown: boolean): boolean;
     }
@@ -829,13 +860,56 @@ export namespace GPlugin {
     namespace Manager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted after a plugin fails to load.
+             * @signal
+             * @since 0.33
+             */
             'load-plugin-failed': (arg0: GObject.Object, arg1: GLib.Error) => void;
+            /**
+             * Emitted after a plugin is loaded.
+             * @signal
+             * @since 0.33
+             */
             'loaded-plugin': (arg0: GObject.Object) => void;
+            /**
+             * Emitted when `loader` has been registered with `manager` via
+             * {@link GPlugin.Manager.register_loader}.
+             * @signal
+             * @since 0.39
+             */
             'loader-registered': (arg0: Loader) => void;
+            /**
+             * Emitted when `loader` has been unregistered from `manager` via
+             * {@link GPlugin.Manager.unregister_loader}.
+             * @signal
+             * @since 0.39
+             */
             'loader-unregistered': (arg0: Loader) => void;
+            /**
+             * Emitted before `plugin` is loaded.
+             * @signal
+             * @since 0.33
+             */
             'loading-plugin': (arg0: GObject.Object, arg1: any | null) => boolean | void;
+            /**
+             * Emitted when `manager` was asked to unload `plugin`, but `plugin` returned
+             * `false` when its unload function was called.
+             * @signal
+             * @since 0.33
+             */
             'unload-plugin-failed': (arg0: GObject.Object, arg1: GLib.Error) => void;
+            /**
+             * emitted after a plugin is successfully unloaded.
+             * @signal
+             * @since 0.33
+             */
             'unloaded-plugin': (arg0: GObject.Object) => void;
+            /**
+             * Emitted before a plugin is unloaded.
+             * @signal
+             * @since 0.33
+             */
             'unloading-plugin': (arg0: GObject.Object, arg1: any | null) => boolean | void;
         }
 
@@ -848,6 +922,8 @@ export namespace GPlugin {
      * The manager is responsible for querying plugins as well as telling loaders
      * when to load and unload plugins. It also keeps track of paths that should be
      * searched for plugins.
+     * @gir-type Class
+     * @since 0.32
      */
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
@@ -869,16 +945,19 @@ export namespace GPlugin {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -922,10 +1001,10 @@ export namespace GPlugin {
         /**
          * Finds the first plugin matching `id`.
          *
-         * This function uses [method`GPlugin`.Manager.find_plugins] and returns the
+         * This function uses {@link GPlugin.Manager.find_plugins} and returns the
          * first plugin in the list.
          * @param id The ID of the plugin to find.
-         * @returns A plugin instance or %NULL if no plugin          matching @id was found.
+         * @returns A plugin instance or `null` if no plugin          matching `id` was found.
          */
         find_plugin(id: string): Plugin;
         /**
@@ -935,31 +1014,31 @@ export namespace GPlugin {
          * id's to identify them, however, sometimes it's necessary to find them by
          * filename.
          * @param filename The filename of the plugin.
-         * @returns The plugin if found, otherwise %NULL.
+         * @returns The plugin if found, otherwise `null`.
          */
         find_plugin_with_filename(filename: string): Plugin | null;
         /**
-         * Calls [method`GPlugin`.Manager.find_plugins] with `id,` and then returns the
-         * plugins with the highest version number or %NULL if no plugins with `id` are
+         * Calls {@link GPlugin.Manager.find_plugins} with `id`, and then returns the
+         * plugins with the highest version number or `null` if no plugins with `id` are
          * found.
          * @param id The ID of the plugin to find.
-         * @returns The plugin with an ID of @id that has the highest          version number, or %NULL if no plugins were found with @id.
+         * @returns The plugin with an ID of `id` that has the highest          version number, or `null` if no plugins were found with `id`.
          */
         find_plugin_with_newest_version(id: string): Plugin;
         /**
          * Finds all plugins matching `id`.
          * @param id The ID of the plugin to find.
-         * @returns A [struct@GLib.SList]          of plugins matching @id.
+         * @returns A {@link GLib.SList}          of plugins matching `id`.
          */
         find_plugins(id: string): Plugin[];
         /**
          * Finds all plugins that currently have a state of `state`.
          * @param state The state to look for.
-         * @returns A [struct@GLib.SList]          of plugins whose state is @state.
+         * @returns A {@link GLib.SList}          of plugins whose state is `state`.
          */
         find_plugins_with_state(state: PluginState | null): Plugin[];
         /**
-         * Similar to [method`GPlugin`.Manager.find_plugins] but only returns plugins
+         * Similar to {@link GPlugin.Manager.find_plugins} but only returns plugins
          * whose versions match `op` and `version`.
          *
          * This is primarily used for dependency loading where a plugin may depend on a
@@ -967,7 +1046,7 @@ export namespace GPlugin {
          * @param id The ID of the plugin to find.
          * @param op one of <, <=, =, ==, >=, >.
          * @param version The version to compare against.
-         * @returns A [struct@GLib.SList]          of plugins matching @id and the version constraint.
+         * @returns A {@link GLib.SList}          of plugins matching `id` and the version constraint.
          */
         find_plugins_with_version(id: string, op: string, version: string): Plugin[];
         /**
@@ -982,20 +1061,20 @@ export namespace GPlugin {
         get_loaders(): Loader[];
         /**
          * Gets the list of paths which will be searched for plugins.
-         * @returns The [type@GLib.List] of paths          which will be searched for plugins.
+         * @returns The {@link GLib.List} of paths          which will be searched for plugins.
          */
         get_paths(): string[];
         /**
          * Returns a list of all the plugins that `plugin` depends on.
          * @param plugin The plugin whose dependencies to get.
-         * @returns A [struct@GLib.SList]          of plugins that @plugin depends on, or %NULL on error with @error          set.
+         * @returns A {@link GLib.SList}          of plugins that `plugin` depends on, or `null` on error with `error`          set.
          */
         get_plugin_dependencies(plugin: Plugin): Plugin[];
         /**
          * Returns a list of all plugin IDs.
          *
          * Each id should be queried directly for more information.
-         * @returns A [struct@GLib.List] of          each unique plugin ID.
+         * @returns A {@link GLib.List} of          each unique plugin ID.
          */
         list_plugins(): string[];
         /**
@@ -1005,7 +1084,7 @@ export namespace GPlugin {
          * However, any other plugins that `plugin` depends on that were loaded from
          * this call, will not be unloaded.
          * @param plugin The plugin instance.
-         * @returns %TRUE if @plugin was loaded successfully or already loaded, %FALSE          otherwise.
+         * @returns `true` if `plugin` was loaded successfully or already loaded, `false`          otherwise.
          */
         load_plugin(plugin: Plugin): boolean;
         /**
@@ -1025,7 +1104,7 @@ export namespace GPlugin {
         /**
          * Registers `loader` as an available loader.
          * @param loader The loader instance to register.
-         * @returns %TRUE if the loader was successfully register, %FALSE otherwise          with @error set.
+         * @returns `true` if the loader was successfully register, `false` otherwise          with `error` set.
          */
         register_loader(loader: Loader): boolean;
         /**
@@ -1042,13 +1121,13 @@ export namespace GPlugin {
          *
          * If `plugin` has dependencies, they are not unloaded.
          * @param plugin The plugin instance.
-         * @returns %TRUE if @plugin was unloaded successfully or not loaded, %FALSE          otherwise.
+         * @returns `true` if `plugin` was unloaded successfully or not loaded, `false`          otherwise.
          */
         unload_plugin(plugin: Plugin): boolean;
         /**
          * Unregisters `loader` as an available loader.
          * @param loader The loader instance to unregister.
-         * @returns %TRUE if the loader was successfully unregistered, %FALSE          otherwise with @error set.
+         * @returns `true` if the loader was successfully unregistered, `false`          otherwise with `error` set.
          */
         unregister_loader(loader: Loader): boolean;
     }
@@ -1120,8 +1199,9 @@ export namespace GPlugin {
     }
 
     /**
-     * #GPluginPluginInfo holds all of the data about a plugin.  It is created when
+     * {@link GPlugin.PluginInfo} holds all of the data about a plugin.  It is created when
      * a plugin is queried.
+     * @gir-type Class
      */
     class PluginInfo extends GObject.Object {
         static $gtype: GObject.GType<PluginInfo>;
@@ -1172,7 +1252,7 @@ export namespace GPlugin {
          * A list of the names and email addresses of the authors.
          *
          * It is recommended to use the RFC 822, 2822 format of:
-         * `"First Last <user`domain`.com>"`.
+         * `"First Last <user@domain.com>"`.
          */
         get authors(): string[];
         /**
@@ -1181,7 +1261,8 @@ export namespace GPlugin {
          * This is used by the loaders and may be useful to your application as
          * well.
          *
-         * Defaults to %FALSE.
+         * Defaults to `false`.
+         * @since 0.39
          */
         get auto_load(): boolean;
         /**
@@ -1190,7 +1271,8 @@ export namespace GPlugin {
          * This is used by the loaders and may be useful to your application as
          * well.
          *
-         * Defaults to %FALSE.
+         * Defaults to `false`.
+         * @since 0.39
          */
         get autoLoad(): boolean;
         /**
@@ -1227,6 +1309,7 @@ export namespace GPlugin {
          * A unique value that can be used to identify plugins with the same id.
          *
          * This is an opaque token and may change in the future.
+         * @since 0.44
          */
         get discriminator(): string;
         /**
@@ -1252,7 +1335,7 @@ export namespace GPlugin {
         /**
          * Whether or not the plugin is considered an "internal" plugin.
          *
-         * Defaults to %FALSE.
+         * Defaults to `false`.
          */
         get internal(): boolean;
         /**
@@ -1305,7 +1388,8 @@ export namespace GPlugin {
          * This is used by the loaders and may be useful to your application as
          * well.
          *
-         * Defaults to %FALSE.
+         * Defaults to `false`.
+         * @deprecated since 0.39.0: Use {@link GPlugin.PluginInfo.auto_load} instead.
          */
         get load_on_query(): boolean;
         /**
@@ -1314,7 +1398,8 @@ export namespace GPlugin {
          * This is used by the loaders and may be useful to your application as
          * well.
          *
-         * Defaults to %FALSE.
+         * Defaults to `false`.
+         * @deprecated since 0.39.0: Use {@link GPlugin.PluginInfo.auto_load} instead.
          */
         get loadOnQuery(): boolean;
         /**
@@ -1326,6 +1411,7 @@ export namespace GPlugin {
          * to use when multiple plugins have the same id or provides. Higher values
          * take precedence over lower values.  If two plugins have the same id and
          * priority, the first one found will be used.
+         * @since 0.32
          */
         get priority(): number;
         /**
@@ -1337,14 +1423,17 @@ export namespace GPlugin {
          * or <literal>&lt;plugin-id&gt;=&lt;plugin-version&gt;</literal>.  The
          * optional version is used to help resolve dependencies that are based
          * on a specific version.
+         * @since 0.32
          */
         get provides(): string[];
         /**
-         * The ID of the [class`Gio`.Settings] schema for the plugin.
+         * The ID of the {@link Gio.Settings} schema for the plugin.
+         * @since 0.39
          */
         get settings_schema(): string;
         /**
-         * The ID of the [class`Gio`.Settings] schema for the plugin.
+         * The ID of the {@link Gio.Settings} schema for the plugin.
+         * @since 0.39
          */
         get settingsSchema(): string;
         /**
@@ -1354,7 +1443,8 @@ export namespace GPlugin {
         get summary(): string;
         /**
          * Sets whether or not a plugin is unloadable. See
-         * [method`GPlugin`.PluginInfo.get_unloadable] for more information.
+         * {@link GPlugin.PluginInfo.get_unloadable} for more information.
+         * @since 0.35
          */
         get unloadable(): boolean;
         /**
@@ -1383,16 +1473,19 @@ export namespace GPlugin {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PluginInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PluginInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PluginInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1404,12 +1497,12 @@ export namespace GPlugin {
         /**
          * Returns the ABI or Application Binary Interface version that the plugin
          * is supposed to work against.
-         * @returns The abi_version from @info.
+         * @returns The abi_version from `info`.
          */
         get_abi_version(): number;
         /**
          * Returns the authors of the plugin as specified in `info`.
-         * @returns The authors from @info.
+         * @returns The authors from `info`.
          */
         get_authors(): string[];
         /**
@@ -1417,28 +1510,28 @@ export namespace GPlugin {
          * useful for internal plugins that are adding functionality and should always
          * be turned on. The plugin loaders use this to make sure all plugins can
          * always be loaded.
-         * @returns %TRUE if the plugin should be loaded when queried, %FALSE          otherwise.
+         * @returns `true` if the plugin should be loaded when queried, `false`          otherwise.
          */
         get_auto_load(): boolean;
         /**
          * This property and therefore function is only used by the native plugin
          * loader.
-         * @returns %TRUE if the plugin has requested to be loaded with its symbols          bound global, %FALSE if they should be bound locally.
+         * @returns `true` if the plugin has requested to be loaded with its symbols          bound global, `false` if they should be bound locally.
          */
         get_bind_global(): boolean;
         /**
          * Returns the category of the plugin as specified in `info`.
-         * @returns The category from @info.
+         * @returns The category from `info`.
          */
         get_category(): string;
         /**
          * Returns the dependencies of the plugins as specified in `info`.
-         * @returns The list of          dependencies from @info.
+         * @returns The list of          dependencies from `info`.
          */
         get_dependencies(): string[];
         /**
          * Returns the description for the plugin as specified in `info`.
-         * @returns The description from @info.
+         * @returns The description from `info`.
          */
         get_description(): string;
         /**
@@ -1448,40 +1541,40 @@ export namespace GPlugin {
         get_discriminator(): string;
         /**
          * Returns the name of the icon for the plugin as specified in `info`.
-         * @returns The icon name from @info.
+         * @returns The icon name from `info`.
          */
         get_icon_name(): string;
         /**
          * Returns the id that the plugin identifies itself as.
-         * @returns The id from @info.
+         * @returns The id from `info`.
          */
         get_id(): string;
         /**
          * Gets the normalized version of the id from `info`.  That is, a version where
          * only alphanumeric and -'s are in the id.
-         * @returns The normalized id of @info.
+         * @returns The normalized id of `info`.
          */
         get_id_normalized(): string;
         /**
          * Returns where or not this plugin is is considered an internal plugin.  An
          * internal plugin would be something like a plugin loader or another plugin
          * that should not be shown to users.
-         * @returns %TRUE if the plugin is internal, %FALSE otherwise.
+         * @returns `true` if the plugin is internal, `false` otherwise.
          */
         get_internal(): boolean;
         /**
          * Returns the liences id for the plugin as specified in `info`.
-         * @returns The license-id from @info.
+         * @returns The license-id from `info`.
          */
         get_license_id(): string;
         /**
          * Returns the license text for the plugin as specified in `info`.
-         * @returns The text of the license from @info.
+         * @returns The text of the license from `info`.
          */
         get_license_text(): string;
         /**
          * Returns the url of the license for the plugin as specified in `info`
-         * @returns The url of the license from @info.
+         * @returns The url of the license from `info`.
          */
         get_license_url(): string;
         /**
@@ -1489,60 +1582,78 @@ export namespace GPlugin {
          * useful for internal plugins that are adding functionality and should always
          * be turned on. The plugin loaders use this to make sure all plugins can
          * always be loaded.
-         * @returns %TRUE if the plugin should be loaded when queried, %FALSE          otherwise.
+         * @returns `true` if the plugin should be loaded when queried, `false`          otherwise.
          */
         get_load_on_query(): boolean;
         /**
          * Returns the name of the plugin as specified in `info`.
-         * @returns The name from @info.
+         * @returns The name from `info`.
          */
         get_name(): string;
         /**
          * Gets the priority of the plugin as specified in `info`.
-         * @returns The priority from @info.
+         * @returns The priority from `info`.
          */
         get_priority(): number;
         /**
          * Gets the provides of the plugin as specified in `info`.
-         * @returns The list of          dependencies from @info.
+         * @returns The list of          dependencies from `info`.
          */
         get_provides(): string[];
         /**
-         * Returns the ID of the [class`Gio`.Settings] schema as specified in `info`.
-         * @returns The schema ID from @info.
+         * Returns the ID of the {@link Gio.Settings} schema as specified in `info`.
+         * @returns The schema ID from `info`.
          */
         get_settings_schema(): string;
         /**
          * Returns the summery for the plugin as specified in `info`.
-         * @returns The summary from @info.
+         * @returns The summary from `info`.
          */
         get_summary(): string;
         /**
          * Gets whether or not the plugin is unloadable. Certain libraries can not be
          * shutdown cleanly and then re-enabled during the life time of a program. A
          * plugin using one of these libraries should set the
-         * [property`GPlugin`.PluginInfo:unloadable] property to %FALSE to tell
-         * [class`GPlugin`.Manager] to not even attempt to unload it.
-         * @returns %TRUE if the plugin is unloadable, otherwise %FALSE.
+         * {@link GPlugin.PluginInfo.unloadable} property to `false` to tell
+         * {@link GPlugin.Manager} to not even attempt to unload it.
+         * @returns `true` if the plugin is unloadable, otherwise `false`.
          */
         get_unloadable(): boolean;
         /**
          * Returns the version of the plugin as specified in `info`.
-         * @returns The version from @info.
+         * @returns The version from `info`.
          */
         get_version(): string;
         /**
          * Returns the website for the plugin as specified in `info`.
-         * @returns The website from @info.
+         * @returns The website from `info`.
          */
         get_website(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FileSourceClass = typeof FileSource;
+    /**
+     * @gir-type Alias
+     */
     type LoaderClass = typeof Loader;
+    /**
+     * @gir-type Alias
+     */
     type ManagerClass = typeof Manager;
+    /**
+     * @gir-type Alias
+     */
     type PluginInfoClass = typeof PluginInfo;
+    /**
+     * @gir-type Alias
+     */
     type PluginInterface = typeof Plugin;
+    /**
+     * @gir-type Alias
+     */
     type SourceInterface = typeof Source;
     namespace Plugin {
         /**
@@ -1553,10 +1664,11 @@ export namespace GPlugin {
             // Virtual methods
 
             /**
-             * The class closure for the #GPluginPlugin::state-changed
+             * The class closure for the {@link GPlugin.Plugin.SignalSignatures.state_changed | GPlugin.Plugin::state-changed}
              *                 signal.
              * @param oldstate
              * @param newstate
+             * @virtual
              */
             vfunc_state_changed(oldstate: PluginState, newstate: PluginState): void;
         }
@@ -1578,6 +1690,11 @@ export namespace GPlugin {
         $gtype: GObject.GType<Plugin>;
         prototype: Plugin;
     }
+    /**
+     * {@link GPlugin.Plugin} is an interface that represents what GPlugin expects for a
+     * plugin.
+     * @gir-type Interface
+     */
     interface Plugin extends GObject.Object, Plugin.Interface {
         // Properties
 
@@ -1586,7 +1703,8 @@ export namespace GPlugin {
          * property, but if a state change failed this will remain set to the state
          * that was attempted.
          *
-         * See [method`GPlugin`.Plugin.get_desired_state] for more information.
+         * See {@link GPlugin.Plugin.get_desired_state} for more information.
+         * @since 0.38
          */
         get desired_state(): PluginState;
         set desired_state(val: PluginState);
@@ -1595,7 +1713,8 @@ export namespace GPlugin {
          * property, but if a state change failed this will remain set to the state
          * that was attempted.
          *
-         * See [method`GPlugin`.Plugin.get_desired_state] for more information.
+         * See {@link GPlugin.Plugin.get_desired_state} for more information.
+         * @since 0.38
          */
         get desiredState(): PluginState;
         set desiredState(val: PluginState);
@@ -1626,7 +1745,7 @@ export namespace GPlugin {
 
         /**
          * Gets the desired state of the plugin. Typically this will hold the same
-         * value of [property`GPlugin`.Plugin:state], but if a state change failed this
+         * value of {@link GPlugin.Plugin.state}, but if a state change failed this
          * will remain set to the state that was attempted.
          *
          * For example, say a user wants to unload a plugin but the plugin can't be
@@ -1640,41 +1759,41 @@ export namespace GPlugin {
          */
         get_desired_state(): PluginState;
         /**
-         * Gets the [struct`GLib`.Error], if any, that the plugin returned during load or
+         * Gets the {@link GLib.Error}, if any, that the plugin returned during load or
          * unload.
-         * @returns The error the plugin returned during load or          unload, or %NULL if no error occurred.
+         * @returns The error the plugin returned during load or          unload, or `null` if no error occurred.
          */
         get_error(): GLib.Error;
         /**
          * Returns the filename that `plugin` was loaded from.
-         * @returns The filename of @plugin.
+         * @returns The filename of `plugin`.
          */
         get_filename(): string;
         /**
          * Returns the plugin info for `plugin`.
-         * @returns The plugin info instance for @plugin.
+         * @returns The plugin info instance for `plugin`.
          */
         get_info(): PluginInfo;
         /**
          * Returns the loader that loaded `plugin`.
-         * @returns The #GPluginLoader that loaded @plugin.
+         * @returns The {@link GPlugin.Loader} that loaded `plugin`.
          */
         get_loader(): Loader;
         /**
          * Gets the current state of `plugin`.
-         * @returns The current state of @plugin.
+         * @returns The current state of `plugin`.
          */
         get_state(): PluginState;
         /**
          * Sets the desired state of the plugin. This shouldn't need to be called by
-         * anyone except [class`GPlugin`.Loader] which manages the state of plugins.
+         * anyone except {@link GPlugin.Loader} which manages the state of plugins.
          * @param state The desired state.
          */
         set_desired_state(state: PluginState | null): void;
         /**
          * Changes the state of `plugin` to `state`.  This function should only be called
          * by loaders.
-         * @param state The new state for @plugin.
+         * @param state The new state for `plugin`.
          */
         set_state(state: PluginState | null): void;
     }
@@ -1692,12 +1811,13 @@ export namespace GPlugin {
             // Virtual methods
 
             /**
-             * This method is called when [method`GPlugin`.Manager.refresh] is running. The
+             * This method is called when {@link GPlugin.Manager.refresh} is running. The
              * source should scan its available sources for plugins. For the filesystem
              * source, this is paths that have been registered with the manager.
              *
              * The implementation should return TRUE if it found a new unqueried plugin,
              * which will tell the manager to continue scanning.
+             * @virtual
              */
             vfunc_scan(): boolean;
         }
@@ -1711,17 +1831,22 @@ export namespace GPlugin {
         $gtype: GObject.GType<Source>;
         prototype: Source;
     }
+    /**
+     * An interface that the manager will call during refresh to query plugins.
+     * @gir-type Interface
+     * @since 0.39
+     */
     interface Source extends GObject.Object, Source.Interface {
         // Methods
 
         /**
-         * This method is called when [method`GPlugin`.Manager.refresh] is running. The
+         * This method is called when {@link GPlugin.Manager.refresh} is running. The
          * source should scan its available sources for plugins. For the filesystem
          * source, this is paths that have been registered with the manager.
          *
          * The implementation should return TRUE if it found a new unqueried plugin,
          * which will tell the manager to continue scanning.
-         * @returns %TRUE if an unqueried plugin was found, %FALSE otherwise.
+         * @returns `true` if an unqueried plugin was found, `false` otherwise.
          */
         scan(): boolean;
     }

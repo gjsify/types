@@ -22,6 +22,9 @@ export namespace Skk {
         export const $gtype: GObject.GType<KanaMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum KanaMode {
         HIRAGANA,
         KATAKANA,
@@ -32,6 +35,9 @@ export namespace Skk {
         export const $gtype: GObject.GType<PeriodStyle>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PeriodStyle {
         JA_JA,
         EN_EN,
@@ -43,6 +49,9 @@ export namespace Skk {
         export const $gtype: GObject.GType<InputMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum InputMode {
         HIRAGANA,
         KATAKANA,
@@ -53,6 +62,9 @@ export namespace Skk {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeyEventFormatError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -66,6 +78,9 @@ export namespace Skk {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RuleParseError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -2164,6 +2179,9 @@ export namespace Skk {
     const KeysymsSinh_luu2: number;
     const KeysymsSinh_kunddaliya: number;
     function init(): void;
+    /**
+     * @gir-type Callback
+     */
     interface GetTime {
         (): number;
     }
@@ -2171,6 +2189,9 @@ export namespace Skk {
         export const $gtype: GObject.GType<ModifierType>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum ModifierType {
         NONE,
         SHIFT_MASK,
@@ -2211,6 +2232,9 @@ export namespace Skk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RomKanaConverter extends GObject.Object {
         static $gtype: GObject.GType<RomKanaConverter>;
 
@@ -2247,16 +2271,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RomKanaConverter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RomKanaConverter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RomKanaConverter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2265,16 +2292,36 @@ export namespace Skk {
 
         // Methods
 
+        /**
+         * @param uc
+         */
         is_valid(uc: string): boolean;
         output_nn_if_any(): boolean;
+        /**
+         * @param text
+         */
         append_text(text: string): void;
+        /**
+         * @param uc
+         */
         append(uc: string): boolean;
+        /**
+         * @param uc
+         * @param preedit_only
+         * @param no_carryover
+         */
         can_consume(uc: string, preedit_only: boolean, no_carryover: boolean): boolean;
         reset(): void;
         ['delete'](): boolean;
         get_kana_mode(): KanaMode;
+        /**
+         * @param value
+         */
         set_kana_mode(value: KanaMode | null): void;
         get_period_style(): PeriodStyle;
+        /**
+         * @param value
+         */
         set_period_style(value: PeriodStyle | null): void;
         get_output(): string;
         get_preedit(): string;
@@ -2294,6 +2341,9 @@ export namespace Skk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Dict extends GObject.Object {
         static $gtype: GObject.GType<Dict>;
 
@@ -2319,16 +2369,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Dict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dict.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Dict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dict.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Dict.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Dict.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2337,22 +2390,69 @@ export namespace Skk {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_reload(): void;
+        /**
+         * @param midasi
+         * @param okuri
+         * @virtual
+         */
         vfunc_lookup(midasi: string, okuri: boolean): Candidate[];
+        /**
+         * @param midasi
+         * @virtual
+         */
         vfunc_complete(midasi: string): string[];
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         * @virtual
+         */
         vfunc_purge_candidate(candidate: Candidate): boolean;
+        /**
+         * @virtual
+         */
         vfunc_save(): void;
+        /**
+         * @virtual
+         */
         vfunc_get_read_only(): boolean;
 
         // Methods
 
+        /**
+         * @param midasi
+         * @param okuri
+         * @param line
+         */
         split_candidates(midasi: string, okuri: boolean, line: string): Candidate[];
+        /**
+         * @param candidates
+         */
         join_candidates(candidates: Candidate[]): string;
         reload(): void;
+        /**
+         * @param midasi
+         * @param okuri
+         */
         lookup(midasi: string, okuri: boolean): Candidate[];
+        /**
+         * @param midasi
+         */
         complete(midasi: string): string[];
+        /**
+         * @param candidate
+         */
         select_candidate(candidate: Candidate): boolean;
+        /**
+         * @param candidate
+         */
         purge_candidate(candidate: Candidate): boolean;
         save(): void;
         get_read_only(): boolean;
@@ -2369,6 +2469,9 @@ export namespace Skk {
         interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class EmptyDict extends Dict {
         static $gtype: GObject.GType<EmptyDict>;
 
@@ -2391,16 +2494,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EmptyDict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EmptyDict.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EmptyDict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EmptyDict.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EmptyDict.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EmptyDict.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2419,6 +2525,9 @@ export namespace Skk {
         interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileDict extends Dict {
         static $gtype: GObject.GType<FileDict>;
 
@@ -2441,16 +2550,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileDict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileDict.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileDict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileDict.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileDict.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileDict.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2469,6 +2581,9 @@ export namespace Skk {
         interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CdbDict extends Dict {
         static $gtype: GObject.GType<CdbDict>;
 
@@ -2491,16 +2606,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CdbDict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CdbDict.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CdbDict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CdbDict.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CdbDict.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CdbDict.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2519,6 +2637,9 @@ export namespace Skk {
         interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class UserDict extends Dict {
         static $gtype: GObject.GType<UserDict>;
 
@@ -2541,16 +2662,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserDict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserDict.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserDict.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserDict.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserDict.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserDict.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2569,6 +2693,9 @@ export namespace Skk {
         interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SkkServ extends Dict {
         static $gtype: GObject.GType<SkkServ>;
 
@@ -2591,16 +2718,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SkkServ.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkkServ.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SkkServ.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkkServ.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SkkServ.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SkkServ.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2625,6 +2755,9 @@ export namespace Skk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class KeyEvent extends GObject.Object {
         static $gtype: GObject.GType<KeyEvent>;
 
@@ -2660,16 +2793,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2680,16 +2816,25 @@ export namespace Skk {
 
         copy(): KeyEvent;
         to_string(): string;
+        /**
+         * @param key
+         */
         base_equal(key: KeyEvent): boolean;
         get_name(): string | null;
         get_code(): string;
         get_modifiers(): ModifierType;
+        /**
+         * @param value
+         */
         set_modifiers(value: ModifierType | null): void;
     }
 
     namespace KeyEventFilter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             forwarded: (arg0: KeyEvent) => void;
         }
 
@@ -2698,6 +2843,9 @@ export namespace Skk {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
 
@@ -2718,16 +2866,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEventFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEventFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyEventFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2736,11 +2887,21 @@ export namespace Skk {
 
         // Virtual methods
 
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_filter_key_event(key: KeyEvent): KeyEvent | null;
+        /**
+         * @virtual
+         */
         vfunc_reset(): void;
 
         // Methods
 
+        /**
+         * @param key
+         */
         filter_key_event(key: KeyEvent): KeyEvent | null;
         reset(): void;
     }
@@ -2758,6 +2919,9 @@ export namespace Skk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Rule extends GObject.Object {
         static $gtype: GObject.GType<Rule>;
 
@@ -2791,16 +2955,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Rule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Rule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Rule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Rule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Rule.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Rule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2809,6 +2976,9 @@ export namespace Skk {
 
         // Static methods
 
+        /**
+         * @param name
+         */
         static find_rule(name: string): RuleMetadata | null;
         static list(): RuleMetadata[];
 
@@ -2820,7 +2990,13 @@ export namespace Skk {
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'retrieve-surrounding-text': (arg0: string, arg1: number) => boolean | void;
+            /**
+             * @signal
+             */
             'delete-surrounding-text': (arg0: number, arg1: number) => boolean | void;
             'notify::candidates': (pspec: GObject.ParamSpec) => void;
             'notify::input-mode': (pspec: GObject.ParamSpec) => void;
@@ -2852,6 +3028,9 @@ export namespace Skk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
@@ -2902,16 +3081,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2920,9 +3102,21 @@ export namespace Skk {
 
         // Methods
 
+        /**
+         * @param dict
+         */
         add_dictionary(dict: Dict): void;
+        /**
+         * @param dict
+         */
         remove_dictionary(dict: Dict): void;
+        /**
+         * @param keyseq
+         */
         process_key_events(keyseq: string): boolean;
+        /**
+         * @param key
+         */
         process_key_event(key: KeyEvent): boolean;
         reset(): void;
         get_output(): string;
@@ -2932,17 +3126,35 @@ export namespace Skk {
         get_preedit_underline(): [number, number];
         save_dictionaries(): void;
         get_dictionaries(): Dict[];
+        /**
+         * @param value
+         */
         set_dictionaries(value: Dict[]): void;
         get_candidates(): CandidateList;
         get_input_mode(): InputMode;
+        /**
+         * @param value
+         */
         set_input_mode(value: InputMode | null): void;
         get_auto_start_henkan_keywords(): string[];
+        /**
+         * @param value
+         */
         set_auto_start_henkan_keywords(value: string[]): void;
         get_egg_like_newline(): boolean;
+        /**
+         * @param value
+         */
         set_egg_like_newline(value: boolean): void;
         get_period_style(): PeriodStyle;
+        /**
+         * @param value
+         */
         set_period_style(value: PeriodStyle | null): void;
         get_typing_rule(): Rule;
+        /**
+         * @param value
+         */
         set_typing_rule(value: Rule): void;
         get_key_event_filter(): KeyEventFilter;
         get_preedit(): string;
@@ -2969,6 +3181,9 @@ export namespace Skk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Candidate extends GObject.Object {
         static $gtype: GObject.GType<Candidate>;
 
@@ -3010,16 +3225,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Candidate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Candidate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Candidate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Candidate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Candidate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Candidate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3032,17 +3250,32 @@ export namespace Skk {
         get_midasi(): string;
         get_okuri(): boolean;
         get_text(): string;
+        /**
+         * @param value
+         */
         set_text(value: string): void;
         get_annotation(): string | null;
+        /**
+         * @param value
+         */
         set_annotation(value?: string | null): void;
         get_output(): string;
+        /**
+         * @param value
+         */
         set_output(value: string): void;
     }
 
     namespace CandidateList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             populated: () => void;
+            /**
+             * @signal
+             */
             selected: (arg0: Candidate) => void;
             'notify::cursor-pos': (pspec: GObject.ParamSpec) => void;
             'notify::size': (pspec: GObject.ParamSpec) => void;
@@ -3066,6 +3299,9 @@ export namespace Skk {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class CandidateList extends GObject.Object {
         static $gtype: GObject.GType<CandidateList>;
 
@@ -3102,16 +3338,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CandidateList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CandidateList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CandidateList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3120,30 +3359,98 @@ export namespace Skk {
 
         // Virtual methods
 
+        /**
+         * @param index
+         * @virtual
+         */
         vfunc_get(index: number): Candidate;
+        /**
+         * @virtual
+         */
         vfunc_clear(): void;
+        /**
+         * @param array
+         * @virtual
+         */
         vfunc_add_candidates(array: Candidate[]): void;
+        /**
+         * @virtual
+         */
         vfunc_add_candidates_end(): void;
+        /**
+         * @virtual
+         */
         vfunc_cursor_up(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_cursor_down(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_page_up(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_page_down(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_next(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_previous(): boolean;
+        /**
+         * @param index_in_page
+         * @virtual
+         */
         vfunc_select_at(index_in_page: number): boolean;
+        /**
+         * @virtual
+         */
         vfunc_select(): void;
+        /**
+         * @virtual
+         */
         vfunc_get_cursor_pos(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_size(): number;
+        /**
+         * @virtual
+         */
         vfunc_get_page_start(): number;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_page_start(value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_page_size(): number;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_page_size(value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_page_visible(): boolean;
 
         // Methods
 
+        /**
+         * @param index
+         */
         get(index: number): Candidate;
         clear(): void;
+        /**
+         * @param array
+         */
         add_candidates(array: Candidate[]): void;
         add_candidates_end(): void;
         cursor_up(): boolean;
@@ -3153,13 +3460,22 @@ export namespace Skk {
         next(): boolean;
         previous(): boolean;
         get_page_start_cursor_pos(): number;
+        /**
+         * @param index_in_page
+         */
         select_at(index_in_page: number): boolean;
         select(): void;
         get_cursor_pos(): number;
         get_size(): number;
         get_page_start(): number;
+        /**
+         * @param value
+         */
         set_page_start(value: number): void;
         get_page_size(): number;
+        /**
+         * @param value
+         */
         set_page_size(value: number): void;
         get_page_visible(): boolean;
     }
@@ -3173,6 +3489,9 @@ export namespace Skk {
         interface ConstructorProps extends KeyEventFilter.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
 
@@ -3206,16 +3525,19 @@ export namespace Skk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NicolaKeyEventFilter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NicolaKeyEventFilter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NicolaKeyEventFilter.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3225,76 +3547,163 @@ export namespace Skk {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RomKanaConverterClass = typeof RomKanaConverter;
+    /**
+     * @gir-type Struct
+     */
     abstract class RomKanaConverterPrivate {
         static $gtype: GObject.GType<RomKanaConverterPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DictClass = typeof Dict;
+    /**
+     * @gir-type Struct
+     */
     abstract class DictPrivate {
         static $gtype: GObject.GType<DictPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EmptyDictClass = typeof EmptyDict;
+    /**
+     * @gir-type Struct
+     */
     abstract class EmptyDictPrivate {
         static $gtype: GObject.GType<EmptyDictPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FileDictClass = typeof FileDict;
+    /**
+     * @gir-type Struct
+     */
     abstract class FileDictPrivate {
         static $gtype: GObject.GType<FileDictPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CdbDictClass = typeof CdbDict;
+    /**
+     * @gir-type Struct
+     */
     abstract class CdbDictPrivate {
         static $gtype: GObject.GType<CdbDictPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UserDictClass = typeof UserDict;
+    /**
+     * @gir-type Struct
+     */
     abstract class UserDictPrivate {
         static $gtype: GObject.GType<UserDictPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SkkServClass = typeof SkkServ;
+    /**
+     * @gir-type Struct
+     */
     abstract class SkkServPrivate {
         static $gtype: GObject.GType<SkkServPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type KeyEventClass = typeof KeyEvent;
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyEventPrivate {
         static $gtype: GObject.GType<KeyEventPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type KeyEventFilterClass = typeof KeyEventFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyEventFilterPrivate {
         static $gtype: GObject.GType<KeyEventFilterPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RuleClass = typeof Rule;
+    /**
+     * @gir-type Struct
+     */
     abstract class RulePrivate {
         static $gtype: GObject.GType<RulePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContextClass = typeof Context;
+    /**
+     * @gir-type Struct
+     */
     abstract class ContextPrivate {
         static $gtype: GObject.GType<ContextPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CandidateClass = typeof Candidate;
+    /**
+     * @gir-type Struct
+     */
     abstract class CandidatePrivate {
         static $gtype: GObject.GType<CandidatePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CandidateListClass = typeof CandidateList;
+    /**
+     * @gir-type Struct
+     */
     abstract class CandidateListPrivate {
         static $gtype: GObject.GType<CandidateListPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NicolaKeyEventFilterClass = typeof NicolaKeyEventFilter;
+    /**
+     * @gir-type Struct
+     */
     abstract class NicolaKeyEventFilterPrivate {
         static $gtype: GObject.GType<NicolaKeyEventFilterPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RuleMetadata {
         static $gtype: GObject.GType<RuleMetadata>;
 
@@ -3320,6 +3729,10 @@ export namespace Skk {
 
         // Methods
 
+        /**
+         * @param type
+         * @param name
+         */
         locate_map_file(type: string, name: string): string | null;
     }
 

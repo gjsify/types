@@ -19,7 +19,8 @@ export namespace GModule {
      */
 
     /**
-     * Errors returned by g_module_open_full().
+     * Errors returned by `g_module_open_full()`.
+     * @gir-type Struct
      */
     class ModuleError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -50,17 +51,18 @@ export namespace GModule {
      * is added to the directory, using the correct separator character.
      *
      * The directory should specify the directory where the module can be found.
-     * It can be %NULL or an empty string to indicate that the module is in a
+     * It can be `null` or an empty string to indicate that the module is in a
      * standard platform-specific directory, though this is not recommended
      * since the wrong module may be found.
      *
-     * For example, calling g_module_build_path() on a Linux system with a
+     * For example, calling `g_module_build_path()` on a Linux system with a
      * `directory` of `/lib` and a `module_name` of "mylibrary" will return
      * `/lib/libmylibrary.so`. On a Windows system, using `\Windows` as the
      * directory it will return `\Windows\mylibrary.dll`.
-     * @param directory the directory where the module is. This can be     %NULL or the empty string to indicate that the standard platform-specific     directories will be used, though that is not recommended
+     * @param directory the directory where the module is. This can be     `null` or the empty string to indicate that the standard platform-specific     directories will be used, though that is not recommended
      * @param module_name the name of the module
      * @returns the complete path of the module, including the standard library     prefix and suffix. This should be freed when no longer needed
+     * @deprecated since 2.76: Use `g_module_open()` instead with `module_name` as the basename of the file_name argument. See `G_MODULE_SUFFIX` for why.
      */
     function module_build_path(directory: string | null, module_name: string): string;
     /**
@@ -71,18 +73,25 @@ export namespace GModule {
     function module_error_quark(): GLib.Quark;
     /**
      * Checks if modules are supported on the current platform.
-     * @returns %TRUE if modules are supported
+     * @returns `true` if modules are supported
      */
     function module_supported(): boolean;
+    /**
+     * @gir-type Callback
+     */
     interface ModuleCheckInit {
         (module: Module): string;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ModuleUnload {
         (module: Module): void;
     }
     /**
-     * Flags passed to g_module_open().
+     * Flags passed to `g_module_open()`.
      * Note that these flags are not supported on all platforms.
+     * @gir-type Flags
      */
     enum ModuleFlags {
         /**
@@ -105,9 +114,10 @@ export namespace GModule {
     }
 
     /**
-     * The #GModule struct is an opaque data structure to represent a
+     * The {@link GModule.Module} struct is an opaque data structure to represent a
      * [dynamically-loaded module][glib-Dynamic-Loading-of-Modules].
      * It should only be accessed via the following functions.
+     * @gir-type Struct
      */
     abstract class Module {
         static $gtype: GObject.GType<Module>;
@@ -120,15 +130,15 @@ export namespace GModule {
          * is added to the directory, using the correct separator character.
          *
          * The directory should specify the directory where the module can be found.
-         * It can be %NULL or an empty string to indicate that the module is in a
+         * It can be `null` or an empty string to indicate that the module is in a
          * standard platform-specific directory, though this is not recommended
          * since the wrong module may be found.
          *
-         * For example, calling g_module_build_path() on a Linux system with a
+         * For example, calling `g_module_build_path()` on a Linux system with a
          * `directory` of `/lib` and a `module_name` of "mylibrary" will return
          * `/lib/libmylibrary.so`. On a Windows system, using `\Windows` as the
          * directory it will return `\Windows\mylibrary.dll`.
-         * @param directory the directory where the module is. This can be     %NULL or the empty string to indicate that the standard platform-specific     directories will be used, though that is not recommended
+         * @param directory the directory where the module is. This can be     `null` or the empty string to indicate that the standard platform-specific     directories will be used, though that is not recommended
          * @param module_name the name of the module
          */
         static build_path(directory: string | null, module_name: string): string;
@@ -146,12 +156,12 @@ export namespace GModule {
 
         /**
          * Closes a module.
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         close(): boolean;
         /**
          * Ensures that a module will never be unloaded.
-         * Any future g_module_close() calls on the module will be ignored.
+         * Any future `g_module_close()` calls on the module will be ignored.
          */
         make_resident(): void;
         /**
@@ -163,9 +173,9 @@ export namespace GModule {
         name(): string;
         /**
          * Gets a symbol pointer from a module, such as one exported
-         * by %G_MODULE_EXPORT. Note that a valid symbol can be %NULL.
+         * by `G_MODULE_EXPORT`. Note that a valid symbol can be `null`.
          * @param symbol_name the name of the symbol to find
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         symbol(symbol_name: string): [boolean, any];
     }

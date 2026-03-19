@@ -39,6 +39,9 @@ export namespace Granite {
      * Granite-7.0
      */
 
+    /**
+     * @gir-type Struct
+     */
     class ServicesContractorError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -55,6 +58,9 @@ export namespace Granite {
         export const $gtype: GObject.GType<SettingsPageStatusType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SettingsPageStatusType {
         ERROR,
         OFFLINE,
@@ -67,21 +73,48 @@ export namespace Granite {
         export const $gtype: GObject.GType<SettingsColorScheme>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SettingsColorScheme {
         NO_PREFERENCE,
         DARK,
         LIGHT,
     }
 
+    /**
+     * @since 7.3.0
+     */
     const SettingsUriLOCATION: string;
+    /**
+     * @since 7.3.0
+     */
     const SettingsUriONLINE_ACCOUNTS: string;
+    /**
+     * @since 7.3.0
+     */
     const SettingsUriNETWORK: string;
+    /**
+     * @since 7.3.0
+     */
     const SettingsUriPERMISSIONS: string;
+    /**
+     * @since 7.3.0
+     */
     const SettingsUriNOTIFICATIONS: string;
+    /**
+     * @since 7.3.0
+     */
     const SettingsUriSOUND_INPUT: string;
+    /**
+     * @since 7.3.0
+     */
     const SettingsUriSHORTCUTS: string;
     const STYLE_CLASS_ACCENT: string;
     const STYLE_CLASS_BACK_BUTTON: string;
+    /**
+     * @since 7.1.0
+     */
     const STYLE_CLASS_BACKGROUND: string;
     const STYLE_CLASS_BADGE: string;
     const STYLE_CLASS_CARD: string;
@@ -91,6 +124,9 @@ export namespace Granite {
     const STYLE_CLASS_DEFAULT_DECORATION: string;
     const STYLE_CLASS_DESTRUCTIVE_ACTION: string;
     const STYLE_CLASS_DIALOG_CONTENT_AREA: string;
+    /**
+     * @since 7.1.0
+     */
     const STYLE_CLASS_FRAME: string;
     const STYLE_CLASS_H1_LABEL: string;
     const STYLE_CLASS_H2_LABEL: string;
@@ -101,6 +137,9 @@ export namespace Granite {
     const STYLE_CLASS_MODE_SWITCH: string;
     const STYLE_CLASS_OSD: string;
     const STYLE_CLASS_ROUNDED: string;
+    /**
+     * @since 7.1.0
+     */
     const STYLE_CLASS_SIDEBAR: string;
     const STYLE_CLASS_SMALL_LABEL: string;
     const STYLE_CLASS_TERMINAL: string;
@@ -114,6 +153,9 @@ export namespace Granite {
     const STYLE_CLASS_ERROR: string;
     const STYLE_CLASS_FLAT: string;
     const STYLE_CLASS_MESSAGE_DIALOG: string;
+    /**
+     * @since 7.1.0
+     */
     const STYLE_CLASS_RICH_LIST: string;
     const STYLE_CLASS_SUGGESTED_ACTION: string;
     const STYLE_CLASS_VIEW: string;
@@ -122,60 +164,156 @@ export namespace Granite {
     const TRANSITION_DURATION_IN_PLACE: number;
     const TRANSITION_DURATION_OPEN: number;
     const TOOLTIP_SECONDARY_TEXT_MARKUP: string;
+    /**
+     * @param is_12h
+     * @param with_second
+     */
     function date_time_get_default_time_format(is_12h: boolean, with_second: boolean): string;
+    /**
+     * @param date_time
+     */
     function date_time_get_relative_datetime(date_time: GLib.DateTime): string;
+    /**
+     * @param day1
+     * @param day2
+     */
     function date_time_is_same_day(day1: GLib.DateTime, day2: GLib.DateTime): boolean;
+    /**
+     * @param with_weekday
+     * @param with_day
+     * @param with_year
+     */
     function date_time_get_default_date_format(with_weekday: boolean, with_day: boolean, with_year: boolean): string;
+    /**
+     * @param seconds
+     */
     function date_time_seconds_to_time(seconds: number): string;
+    /**
+     * @param count
+     */
     function services_application_set_badge(count: number): globalThis.Promise<boolean>;
+    /**
+     * @param count
+     * @param _callback_
+     */
     function services_application_set_badge(count: number, _callback_: Gio.AsyncReadyCallback<number> | null): void;
+    /**
+     * @param count
+     * @param _callback_
+     */
     function services_application_set_badge(
         count: number,
         _callback_?: Gio.AsyncReadyCallback<number> | null,
     ): globalThis.Promise<boolean> | void;
+    /**
+     * @param _res_
+     */
     function services_application_set_badge_finish(_res_: Gio.AsyncResult): boolean;
+    /**
+     * @param visible
+     */
     function services_application_set_badge_visible(visible: boolean): globalThis.Promise<boolean>;
+    /**
+     * @param visible
+     * @param _callback_
+     */
     function services_application_set_badge_visible(
         visible: boolean,
         _callback_: Gio.AsyncReadyCallback<boolean> | null,
     ): void;
+    /**
+     * @param visible
+     * @param _callback_
+     */
     function services_application_set_badge_visible(
         visible: boolean,
         _callback_?: Gio.AsyncReadyCallback<boolean> | null,
     ): globalThis.Promise<boolean> | void;
+    /**
+     * @param _res_
+     */
     function services_application_set_badge_visible_finish(_res_: Gio.AsyncResult): boolean;
+    /**
+     * @param progress
+     */
     function services_application_set_progress(progress: number): globalThis.Promise<boolean>;
+    /**
+     * @param progress
+     * @param _callback_
+     */
     function services_application_set_progress(
         progress: number,
         _callback_: Gio.AsyncReadyCallback<number> | null,
     ): void;
+    /**
+     * @param progress
+     * @param _callback_
+     */
     function services_application_set_progress(
         progress: number,
         _callback_?: Gio.AsyncReadyCallback<number> | null,
     ): globalThis.Promise<boolean> | void;
+    /**
+     * @param _res_
+     */
     function services_application_set_progress_finish(_res_: Gio.AsyncResult): boolean;
+    /**
+     * @param visible
+     */
     function services_application_set_progress_visible(visible: boolean): globalThis.Promise<boolean>;
+    /**
+     * @param visible
+     * @param _callback_
+     */
     function services_application_set_progress_visible(
         visible: boolean,
         _callback_: Gio.AsyncReadyCallback<boolean> | null,
     ): void;
+    /**
+     * @param visible
+     * @param _callback_
+     */
     function services_application_set_progress_visible(
         visible: boolean,
         _callback_?: Gio.AsyncReadyCallback<boolean> | null,
     ): globalThis.Promise<boolean> | void;
+    /**
+     * @param _res_
+     */
     function services_application_set_progress_visible_finish(_res_: Gio.AsyncResult): boolean;
+    /**
+     * @param window
+     * @param color
+     * @param priority
+     */
     function widgets_utils_set_color_primary(
         window: Gtk.Widget,
         color: Gdk.RGBA,
         priority: number,
     ): Gtk.CssProvider | null;
+    /**
+     * @since 7.2.0
+     */
     function init(): void;
+    /**
+     * @param accel
+     */
     function accel_to_string(accel?: string | null): string;
+    /**
+     * @param accels
+     * @param description
+     */
     function markup_accel_tooltip(accels?: string[] | null, description?: string | null): string;
+    /**
+     * @param bg_color
+     */
     function contrasting_foreground_color(bg_color: Gdk.RGBA): Gdk.RGBA;
     namespace ServicesContractorProxy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'contracts-changed': () => void;
         }
 
@@ -184,6 +322,9 @@ export namespace Granite {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ServicesContractorProxy extends GObject.Object {
         static $gtype: GObject.GType<ServicesContractorProxy>;
 
@@ -204,16 +345,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServicesContractorProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServicesContractorProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServicesContractorProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServicesContractorProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServicesContractorProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServicesContractorProxy.SignalSignatures[K]> extends [any, ...infer Q]
@@ -226,9 +370,21 @@ export namespace Granite {
 
         static get_instance(): ServicesContractorProxy;
         static get_all_contracts(): Gee.List;
+        /**
+         * @param mime_type
+         */
         static get_contracts_by_mime(mime_type: string): Gee.List;
+        /**
+         * @param mime_types
+         */
         static get_contracts_by_mimelist(mime_types: string[]): Gee.List;
+        /**
+         * @param file
+         */
         static get_contracts_for_file(file: Gio.File): Gee.List;
+        /**
+         * @param files
+         */
         static get_contracts_for_files(files: Gio.File[]): Gee.List;
     }
 
@@ -241,6 +397,9 @@ export namespace Granite {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ServicesSystem extends GObject.Object {
         static $gtype: GObject.GType<ServicesSystem>;
 
@@ -263,16 +422,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ServicesSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServicesSystem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ServicesSystem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServicesSystem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServicesSystem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServicesSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -351,6 +513,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class SettingsPage extends Gtk.Box {
         static $gtype: GObject.GType<SettingsPage>;
 
@@ -391,16 +556,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingsPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingsPage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingsPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingsPage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingsPage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingsPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -410,16 +578,31 @@ export namespace Granite {
         // Methods
 
         get_status_type(): SettingsPageStatusType;
+        /**
+         * @param value
+         */
         set_status_type(value: SettingsPageStatusType | null): void;
         get_display_widget(): Gtk.Widget | null;
         get_header(): string | null;
         get_status(): string;
+        /**
+         * @param value
+         */
         set_status(value: string): void;
         get_icon_name(): string | null;
+        /**
+         * @param value
+         */
         set_icon_name(value?: string | null): void;
         get_title(): string;
+        /**
+         * @param value
+         */
         set_title(value: string): void;
         get_child(): Gtk.Widget;
+        /**
+         * @param value
+         */
         set_child(value: Gtk.Widget): void;
     }
 
@@ -493,6 +676,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class SimpleSettingsPage extends SettingsPage {
         static $gtype: GObject.GType<SimpleSettingsPage>;
 
@@ -525,16 +711,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SimpleSettingsPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleSettingsPage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SimpleSettingsPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleSettingsPage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SimpleSettingsPage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SimpleSettingsPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -548,6 +737,9 @@ export namespace Granite {
         get_status_switch(): Gtk.Switch | null;
         get_activatable(): boolean;
         get_description(): string;
+        /**
+         * @param value
+         */
         set_description(value: string): void;
     }
 
@@ -609,6 +801,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AccelLabel extends Gtk.Box {
         static $gtype: GObject.GType<AccelLabel>;
 
@@ -649,16 +844,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AccelLabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AccelLabel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AccelLabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AccelLabel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AccelLabel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AccelLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -668,10 +866,19 @@ export namespace Granite {
         // Methods
 
         get_action_name(): string;
+        /**
+         * @param value
+         */
         set_action_name(value: string): void;
         get_accel_string(): string | null;
+        /**
+         * @param value
+         */
         set_accel_string(value?: string | null): void;
         get_label(): string;
+        /**
+         * @param value
+         */
         set_label(value: string): void;
     }
 
@@ -766,6 +973,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DatePicker extends Gtk.Entry implements Gtk.Buildable {
         static $gtype: GObject.GType<DatePicker>;
 
@@ -796,16 +1006,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DatePicker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DatePicker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DatePicker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DatePicker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DatePicker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DatePicker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -816,9 +1029,10 @@ export namespace Granite {
 
         get_format(): string;
         get_date(): GLib.DateTime;
+        /**
+         * @param value
+         */
         set_date(value: GLib.DateTime): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -832,32 +1046,32 @@ export namespace Granite {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -866,39 +1080,39 @@ export namespace Granite {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -909,13 +1123,16 @@ export namespace Granite {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -923,7 +1140,7 @@ export namespace Granite {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -931,9 +1148,9 @@ export namespace Granite {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -953,9 +1170,9 @@ export namespace Granite {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -969,33 +1186,33 @@ export namespace Granite {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1028,21 +1245,21 @@ export namespace Granite {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1052,8 +1269,8 @@ export namespace Granite {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1070,10 +1287,10 @@ export namespace Granite {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1088,13 +1305,13 @@ export namespace Granite {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1125,21 +1342,21 @@ export namespace Granite {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1149,33 +1366,34 @@ export namespace Granite {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1184,6 +1402,7 @@ export namespace Granite {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1192,12 +1411,14 @@ export namespace Granite {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1206,20 +1427,22 @@ export namespace Granite {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1231,6 +1454,7 @@ export namespace Granite {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1332,6 +1556,9 @@ export namespace Granite {
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Dialog extends Gtk.Dialog {
         static $gtype: GObject.GType<Dialog>;
 
@@ -1354,16 +1581,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Dialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dialog.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Dialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dialog.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Dialog.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Dialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1422,6 +1652,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HeaderLabel extends Gtk.Widget {
         static $gtype: GObject.GType<HeaderLabel>;
 
@@ -1429,8 +1662,14 @@ export namespace Granite {
 
         get label(): string;
         set label(val: string);
+        /**
+         * @since 7.1.0
+         */
         get secondary_text(): string;
         set secondary_text(val: string);
+        /**
+         * @since 7.1.0
+         */
         get secondaryText(): string;
         set secondaryText(val: string);
 
@@ -1453,16 +1692,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HeaderLabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HeaderLabel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HeaderLabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HeaderLabel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HeaderLabel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HeaderLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1472,8 +1714,14 @@ export namespace Granite {
         // Methods
 
         get_label(): string;
+        /**
+         * @param value
+         */
         set_label(value: string): void;
         get_secondary_text(): string | null;
+        /**
+         * @param value
+         */
         set_secondary_text(value?: string | null): void;
     }
 
@@ -1543,6 +1791,9 @@ export namespace Granite {
         interface ConstructorProps extends Gtk.TextView.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class HyperTextView extends Gtk.TextView {
         static $gtype: GObject.GType<HyperTextView>;
 
@@ -1565,16 +1816,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HyperTextView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HyperTextView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HyperTextView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HyperTextView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HyperTextView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HyperTextView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1678,6 +1932,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MessageDialog extends Dialog {
         static $gtype: GObject.GType<MessageDialog>;
 
@@ -1741,16 +1998,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MessageDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageDialog.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MessageDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageDialog.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MessageDialog.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MessageDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1760,16 +2020,31 @@ export namespace Granite {
         // Methods
 
         get_primary_text(): string;
+        /**
+         * @param value
+         */
         set_primary_text(value: string): void;
         get_secondary_text(): string;
+        /**
+         * @param value
+         */
         set_secondary_text(value: string): void;
         get_image_icon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_image_icon(value: Gio.Icon): void;
         get_badge_icon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_badge_icon(value: Gio.Icon): void;
         get_primary_label(): Gtk.Label;
         get_secondary_label(): Gtk.Label;
         get_custom_bin(): Gtk.Box;
+        /**
+         * @param error_message
+         */
         show_error_details(error_message: string): void;
     }
 
@@ -1843,6 +2118,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ModeSwitch extends Gtk.Box {
         static $gtype: GObject.GType<ModeSwitch>;
 
@@ -1899,16 +2177,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ModeSwitch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ModeSwitch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ModeSwitch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ModeSwitch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ModeSwitch.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ModeSwitch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1918,18 +2199,39 @@ export namespace Granite {
         // Methods
 
         get_active(): boolean;
+        /**
+         * @param value
+         */
         set_active(value: boolean): void;
         get_primary_icon_gicon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_primary_icon_gicon(value: Gio.Icon): void;
         get_primary_icon_name(): string;
+        /**
+         * @param value
+         */
         set_primary_icon_name(value: string): void;
         get_primary_icon_tooltip_text(): string;
+        /**
+         * @param value
+         */
         set_primary_icon_tooltip_text(value: string): void;
         get_secondary_icon_gicon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_secondary_icon_gicon(value: Gio.Icon): void;
         get_secondary_icon_name(): string;
+        /**
+         * @param value
+         */
         set_secondary_icon_name(value: string): void;
         get_secondary_icon_tooltip_text(): string;
+        /**
+         * @param value
+         */
         set_secondary_icon_tooltip_text(value: string): void;
     }
 
@@ -1985,6 +2287,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OverlayBar extends Gtk.Widget {
         static $gtype: GObject.GType<OverlayBar>;
 
@@ -2015,16 +2320,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OverlayBar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OverlayBar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OverlayBar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OverlayBar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OverlayBar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OverlayBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2035,8 +2343,14 @@ export namespace Granite {
 
         get_overlay(): Gtk.Overlay | null;
         get_label(): string;
+        /**
+         * @param value
+         */
         set_label(value: string): void;
         get_active(): boolean;
+        /**
+         * @param value
+         */
         set_active(value: boolean): void;
     }
 
@@ -2092,6 +2406,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Placeholder extends Gtk.Widget {
         static $gtype: GObject.GType<Placeholder>;
 
@@ -2123,16 +2440,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Placeholder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Placeholder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Placeholder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Placeholder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Placeholder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Placeholder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2142,11 +2462,25 @@ export namespace Granite {
         // Methods
 
         get_title(): string;
+        /**
+         * @param value
+         */
         set_title(value: string): void;
         get_description(): string;
+        /**
+         * @param value
+         */
         set_description(value: string): void;
         get_icon(): Gio.Icon;
+        /**
+         * @param value
+         */
         set_icon(value: Gio.Icon): void;
+        /**
+         * @param icon
+         * @param label
+         * @param description
+         */
         append_button(icon: Gio.Icon, label: string, description: string): Gtk.Button;
     }
 
@@ -2201,6 +2535,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingsSidebar extends Gtk.Widget {
         static $gtype: GObject.GType<SettingsSidebar>;
 
@@ -2231,16 +2568,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingsSidebar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingsSidebar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingsSidebar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingsSidebar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingsSidebar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingsSidebar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2251,6 +2591,9 @@ export namespace Granite {
 
         get_stack(): Gtk.Stack;
         get_visible_child_name(): string | null;
+        /**
+         * @param value
+         */
         set_visible_child_name(value?: string | null): void;
     }
 
@@ -2268,6 +2611,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
@@ -2295,16 +2641,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2378,6 +2727,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SwitchModelButton extends Gtk.ToggleButton {
         static $gtype: GObject.GType<SwitchModelButton>;
 
@@ -2410,16 +2762,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SwitchModelButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SwitchModelButton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SwitchModelButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SwitchModelButton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SwitchModelButton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SwitchModelButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2429,14 +2784,23 @@ export namespace Granite {
         // Methods
 
         get_text(): string;
+        /**
+         * @param value
+         */
         set_text(value: string): void;
         get_description(): string | null;
+        /**
+         * @param value
+         */
         set_description(value?: string | null): void;
     }
 
     namespace TimePicker {
         // Signal signatures
         interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+            /**
+             * @signal
+             */
             'time-changed': () => void;
             'notify::format-12': (pspec: GObject.ParamSpec) => void;
             'notify::format12': (pspec: GObject.ParamSpec) => void;
@@ -2532,6 +2896,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TimePicker extends Gtk.Entry {
         static $gtype: GObject.GType<TimePicker>;
 
@@ -2565,16 +2932,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimePicker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimePicker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimePicker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimePicker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimePicker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimePicker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2586,13 +2956,22 @@ export namespace Granite {
         get_format_12(): string;
         get_format_24(): string;
         get_time(): GLib.DateTime;
+        /**
+         * @param value
+         */
         set_time(value: GLib.DateTime): void;
     }
 
     namespace Toast {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * @signal
+             */
             closed: () => void;
+            /**
+             * @signal
+             */
             'default-action': () => void;
             'notify::title': (pspec: GObject.ParamSpec) => void;
             'notify::can-focus': (pspec: GObject.ParamSpec) => void;
@@ -2639,6 +3018,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Toast extends Gtk.Widget {
         static $gtype: GObject.GType<Toast>;
 
@@ -2666,16 +3048,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Toast.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Toast.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Toast.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Toast.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Toast.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Toast.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2685,7 +3070,13 @@ export namespace Granite {
         // Methods
 
         get_title(): string;
+        /**
+         * @param value
+         */
         set_title(value: string): void;
+        /**
+         * @param label
+         */
         set_default_action(label?: string | null): void;
         send_notification(): void;
     }
@@ -2785,6 +3176,9 @@ export namespace Granite {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ValidatedEntry extends Gtk.Entry {
         static $gtype: GObject.GType<ValidatedEntry>;
 
@@ -2822,16 +3216,19 @@ export namespace Granite {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ValidatedEntry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ValidatedEntry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ValidatedEntry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ValidatedEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ValidatedEntry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ValidatedEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2841,106 +3238,235 @@ export namespace Granite {
         // Methods
 
         get_is_valid(): boolean;
+        /**
+         * @param value
+         */
         set_is_valid(value: boolean): void;
         get_min_length(): number;
+        /**
+         * @param value
+         */
         set_min_length(value: number): void;
         get_regex(): GLib.Regex;
+        /**
+         * @param value
+         */
         set_regex(value: GLib.Regex): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServicesContractorProxyClass = typeof ServicesContractorProxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class ServicesContractorProxyPrivate {
         static $gtype: GObject.GType<ServicesContractorProxyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServicesSystemClass = typeof ServicesSystem;
+    /**
+     * @gir-type Struct
+     */
     abstract class ServicesSystemPrivate {
         static $gtype: GObject.GType<ServicesSystemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServicesContractIface = typeof ServicesContract;
+    /**
+     * @gir-type Alias
+     */
     type ServicesSettingsSerializableIface = typeof ServicesSettingsSerializable;
+    /**
+     * @gir-type Alias
+     */
     type SettingsPageClass = typeof SettingsPage;
+    /**
+     * @gir-type Struct
+     */
     abstract class SettingsPagePrivate {
         static $gtype: GObject.GType<SettingsPagePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SimpleSettingsPageClass = typeof SimpleSettingsPage;
+    /**
+     * @gir-type Struct
+     */
     abstract class SimpleSettingsPagePrivate {
         static $gtype: GObject.GType<SimpleSettingsPagePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AccelLabelClass = typeof AccelLabel;
+    /**
+     * @gir-type Struct
+     */
     abstract class AccelLabelPrivate {
         static $gtype: GObject.GType<AccelLabelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DatePickerClass = typeof DatePicker;
+    /**
+     * @gir-type Struct
+     */
     abstract class DatePickerPrivate {
         static $gtype: GObject.GType<DatePickerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DialogClass = typeof Dialog;
+    /**
+     * @gir-type Struct
+     */
     abstract class DialogPrivate {
         static $gtype: GObject.GType<DialogPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HeaderLabelClass = typeof HeaderLabel;
+    /**
+     * @gir-type Struct
+     */
     abstract class HeaderLabelPrivate {
         static $gtype: GObject.GType<HeaderLabelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HyperTextViewClass = typeof HyperTextView;
+    /**
+     * @gir-type Struct
+     */
     abstract class HyperTextViewPrivate {
         static $gtype: GObject.GType<HyperTextViewPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MessageDialogClass = typeof MessageDialog;
+    /**
+     * @gir-type Struct
+     */
     abstract class MessageDialogPrivate {
         static $gtype: GObject.GType<MessageDialogPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ModeSwitchClass = typeof ModeSwitch;
+    /**
+     * @gir-type Struct
+     */
     abstract class ModeSwitchPrivate {
         static $gtype: GObject.GType<ModeSwitchPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type OverlayBarClass = typeof OverlayBar;
+    /**
+     * @gir-type Struct
+     */
     abstract class OverlayBarPrivate {
         static $gtype: GObject.GType<OverlayBarPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlaceholderClass = typeof Placeholder;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlaceholderPrivate {
         static $gtype: GObject.GType<PlaceholderPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SettingsSidebarClass = typeof SettingsSidebar;
+    /**
+     * @gir-type Struct
+     */
     abstract class SettingsSidebarPrivate {
         static $gtype: GObject.GType<SettingsSidebarPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SettingsClass = typeof Settings;
+    /**
+     * @gir-type Struct
+     */
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SwitchModelButtonClass = typeof SwitchModelButton;
+    /**
+     * @gir-type Struct
+     */
     abstract class SwitchModelButtonPrivate {
         static $gtype: GObject.GType<SwitchModelButtonPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TimePickerClass = typeof TimePicker;
+    /**
+     * @gir-type Struct
+     */
     abstract class TimePickerPrivate {
         static $gtype: GObject.GType<TimePickerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ToastClass = typeof Toast;
+    /**
+     * @gir-type Struct
+     */
     abstract class ToastPrivate {
         static $gtype: GObject.GType<ToastPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ValidatedEntryClass = typeof ValidatedEntry;
+    /**
+     * @gir-type Struct
+     */
     abstract class ValidatedEntryPrivate {
         static $gtype: GObject.GType<ValidatedEntryPrivate>;
     }
@@ -2953,10 +3479,27 @@ export namespace Granite {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_display_name(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_description(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_icon(): Gio.Icon;
+            /**
+             * @param file
+             * @virtual
+             */
             vfunc_execute_with_file(file: Gio.File): void;
+            /**
+             * @param files
+             * @virtual
+             */
             vfunc_execute_with_files(files: Gio.File[]): void;
         }
 
@@ -2969,13 +3512,22 @@ export namespace Granite {
         $gtype: GObject.GType<ServicesContract>;
         prototype: ServicesContract;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ServicesContract extends GObject.Object, ServicesContract.Interface {
         // Methods
 
         get_display_name(): string;
         get_description(): string;
         get_icon(): Gio.Icon;
+        /**
+         * @param file
+         */
         execute_with_file(file: Gio.File): void;
+        /**
+         * @param files
+         */
         execute_with_files(files: Gio.File[]): void;
     }
 
@@ -2991,7 +3543,14 @@ export namespace Granite {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_settings_serialize(): string;
+            /**
+             * @param s
+             * @virtual
+             */
             vfunc_settings_deserialize(s: string): void;
         }
 
@@ -3004,10 +3563,16 @@ export namespace Granite {
         $gtype: GObject.GType<ServicesSettingsSerializable>;
         prototype: ServicesSettingsSerializable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ServicesSettingsSerializable extends GObject.Object, ServicesSettingsSerializable.Interface {
         // Methods
 
         settings_serialize(): string;
+        /**
+         * @param s
+         */
         settings_deserialize(s: string): void;
     }
 

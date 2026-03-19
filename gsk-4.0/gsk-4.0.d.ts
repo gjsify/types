@@ -40,6 +40,7 @@ export namespace Gsk {
      *
      * See <https://www.w3.org/TR/compositing-1/#blending> for more information
      * on blending and blend modes.
+     * @gir-type Enum
      */
     enum BlendMode {
         /**
@@ -116,7 +117,8 @@ export namespace Gsk {
     }
 
     /**
-     * The corner indices used by `GskRoundedRect`.
+     * The corner indices used by {@link Gsk.RoundedRect}.
+     * @gir-type Enum
      */
     enum Corner {
         /**
@@ -154,6 +156,8 @@ export namespace Gsk {
      * is just a description of the rule that is applied.)
      *
      * New entries may be added in future versions.
+     * @gir-type Enum
+     * @since 4.14
      */
     enum FillRule {
         /**
@@ -182,6 +186,8 @@ export namespace Gsk {
      *
      * It defines both what the type is called in the GLSL shader
      * code, and what the corresponding C type is on the Gtk side.
+     * @gir-type Enum
+     * @deprecated since 4.16
      */
     enum GLUniformType {
         /**
@@ -232,11 +238,13 @@ export namespace Gsk {
      *
      * <figure>
      *   <picture>
-     *     <source srcset="caps-dark.png" media="(prefers-color-scheme: dark)">
-     *     <img alt="Line Cap Styles" src="caps-light.png">
+     *     <source srcset="https://docs.gtk.org/gsk4/caps-dark.png" media="(prefers-color-scheme: dark)">
+     *     <img alt="Line Cap Styles" src="https://docs.gtk.org/gsk4/caps-light.png">
      *   </picture>
      *   <figcaption>GSK_LINE_CAP_BUTT, GSK_LINE_CAP_ROUND, GSK_LINE_CAP_SQUARE</figcaption>
      * </figure>
+     * @gir-type Enum
+     * @since 4.14
      */
     enum LineCap {
         /**
@@ -269,11 +277,13 @@ export namespace Gsk {
      *
      * <figure>
      *   <picture>
-     *     <source srcset="join-dark.png" media="(prefers-color-scheme: dark)">
-     *     <img alt="Line Join Styles" src="join-light.png">
+     *     <source srcset="https://docs.gtk.org/gsk4/join-dark.png" media="(prefers-color-scheme: dark)">
+     *     <img alt="Line Join Styles" src="https://docs.gtk.org/gsk4/join-light.png">
      *   </picture>
      *   <figcaption>GSK_LINE_JOINT_MITER, GSK_LINE_JOINT_ROUND, GSK_LINE_JOIN_BEVEL</figcaption>
      * </figure>
+     * @gir-type Enum
+     * @since 4.14
      */
     enum LineJoin {
         /**
@@ -298,6 +308,8 @@ export namespace Gsk {
 
     /**
      * The mask modes available for mask nodes.
+     * @gir-type Enum
+     * @since 4.10
      */
     enum MaskMode {
         /**
@@ -327,14 +339,16 @@ export namespace Gsk {
     /**
      * Used to pick one of the four tangents at a given point on the path.
      *
-     * Note that the directions for `GSK_PATH_FROM_START/``GSK_PATH_TO_END` and
-     * `GSK_PATH_TO_START/``GSK_PATH_FROM_END` will coincide for smooth points.
+     * Note that the directions for `GSK_PATH_FROM_START`/`GSK_PATH_TO_END` and
+     * `GSK_PATH_TO_START`/`GSK_PATH_FROM_END` will coincide for smooth points.
      * Only sharp turns will exhibit four different directions.
      *
      * <picture>
-     *   <source srcset="directions-dark.png" media="(prefers-color-scheme: dark)">
-     *   <img alt="Path Tangents" src="directions-light.png">
+     *   <source srcset="https://docs.gtk.org/gsk4/directions-dark.png" media="(prefers-color-scheme: dark)">
+     *   <img alt="Path Tangents" src="https://docs.gtk.org/gsk4/directions-light.png">
      * </picture>
+     * @gir-type Enum
+     * @since 4.14
      */
     enum PathDirection {
         /**
@@ -364,9 +378,11 @@ export namespace Gsk {
     }
 
     /**
-     * Describes the segments of a `GskPath`.
+     * Describes the segments of a {@link Gsk.Path}.
      *
      * More values may be added in the future.
+     * @gir-type Enum
+     * @since 4.14
      */
     enum PathOperation {
         /**
@@ -409,6 +425,7 @@ export namespace Gsk {
 
     /**
      * The type of a node determines what the node is rendering.
+     * @gir-type Enum
      */
     enum RenderNodeType {
         /**
@@ -452,7 +469,7 @@ export namespace Gsk {
          */
         BORDER_NODE,
         /**
-         * A node drawing a `GdkTexture`
+         * A node drawing a {@link Gdk.Texture}
          */
         TEXTURE_NODE,
         /**
@@ -516,7 +533,7 @@ export namespace Gsk {
          */
         GL_SHADER_NODE,
         /**
-         * A node drawing a `GdkTexture` scaled and filtered.
+         * A node drawing a {@link Gdk.Texture} scaled and filtered.
          */
         TEXTURE_SCALE_NODE,
         /**
@@ -546,6 +563,7 @@ export namespace Gsk {
      *
      * The actual implementation of each filter is deferred to the
      * rendering pipeline.
+     * @gir-type Enum
      */
     enum ScalingFilter {
         /**
@@ -566,6 +584,7 @@ export namespace Gsk {
 
     /**
      * Errors that can happen during (de)serialization.
+     * @gir-type Struct
      */
     class SerializationError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -594,7 +613,7 @@ export namespace Gsk {
         // Static methods
 
         /**
-         * Registers an error quark for [class`Gsk`.RenderNode] errors.
+         * Registers an error quark for {@link Gsk.RenderNode} errors.
          */
         static quark(): GLib.Quark;
     }
@@ -614,6 +633,7 @@ export namespace Gsk {
      * conform to their categories. Otherwise, matrix operations done via
      * multiplication will not worsen categories. So for the matrix
      * multiplication `C = A * B`, `category(C) = MIN (category(A), category(B))`.
+     * @gir-type Enum
      */
     enum TransformCategory {
         /**
@@ -633,7 +653,7 @@ export namespace Gsk {
         '3D',
         /**
          * The matrix is a 2D matrix. This is equivalent
-         *   to graphene_matrix_is_2d() returning %TRUE. In particular, this
+         *   to `graphene_matrix_is_2d()` returning `true`. In particular, this
          *   means that Cairo can deal with the matrix.
          */
         '2D',
@@ -658,7 +678,7 @@ export namespace Gsk {
      *
      * The string is expected to be in (a superset of)
      * [SVG path syntax](https://www.w3.org/TR/SVG11/paths.html#PathData),
-     * as e.g. produced by [method`Gsk`.Path.to_string].
+     * as e.g. produced by {@link Gsk.Path.to_string}.
      *
      * A high-level summary of the syntax:
      *
@@ -679,11 +699,12 @@ export namespace Gsk {
      *
      * The `O` command is an extension that is not supported in SVG.
      * @param string a string
-     * @returns a new `GskPath`, or `NULL` if @string could not be parsed
+     * @returns a new {@link Gsk.Path}, or `NULL` if `string` could not be parsed
+     * @since 4.14
      */
     function path_parse(string: string): Path | null;
     /**
-     * Registers an error quark for [class`Gsk`.RenderNode] errors.
+     * Registers an error quark for {@link Gsk.RenderNode} errors.
      * @returns the error quark
      */
     function serialization_error_quark(): GLib.Quark;
@@ -692,54 +713,65 @@ export namespace Gsk {
      * @param stroke1 the first stroke
      * @param stroke2 the second stroke
      * @returns true if the two strokes are equal, false otherwise
+     * @since 4.14
      */
     function stroke_equal(stroke1?: any | null, stroke2?: any | null): boolean;
     /**
      * Parses a given into a transform.
      *
-     * Strings printed via [method`Gsk`.Transform.to_string]
+     * Strings printed via {@link Gsk.Transform.to_string}
      * can be read in again successfully using this function.
      *
      * If `string` does not describe a valid transform, false
      * is returned and `NULL` is put in `out_transform`.
      * @param string the string to parse
-     * @returns true if @string described a valid transform
+     * @returns true if `string` described a valid transform
      */
     function transform_parse(string: string): [boolean, Transform];
     /**
-     * Retrieves the render node stored inside a `GValue`,
+     * Retrieves the render node stored inside a {@link GObject.Value},
      * and acquires a reference to it.
-     * @param value a [struct@GObject.Value] initialized with type `GSK_TYPE_RENDER_NODE`
+     * @param value a {@link GObject.Value} initialized with type `GSK_TYPE_RENDER_NODE`
      * @returns the render node
+     * @since 4.6
      */
     function value_dup_render_node(value: GObject.Value | any): RenderNode | null;
     /**
-     * Retrieves the render node stored inside a `GValue`.
-     * @param value a `GValue` initialized with type `GSK_TYPE_RENDER_NODE`
+     * Retrieves the render node stored inside a {@link GObject.Value}.
+     * @param value a {@link GObject.Value} initialized with type `GSK_TYPE_RENDER_NODE`
      * @returns the render node
+     * @since 4.6
      */
     function value_get_render_node(value: GObject.Value | any): RenderNode | null;
     /**
-     * Stores the given render node inside a `GValue`.
+     * Stores the given render node inside a {@link GObject.Value}.
      *
-     * The [struct`GObject`.Value] will acquire a reference
+     * The {@link GObject.Value} will acquire a reference
      * to the render node.
-     * @param value a [struct@GObject.Value] initialized with type `GSK_TYPE_RENDER_NODE`
+     * @param value a {@link GObject.Value} initialized with type `GSK_TYPE_RENDER_NODE`
      * @param node a render node
+     * @since 4.6
      */
     function value_set_render_node(value: GObject.Value | any, node: RenderNode): void;
     /**
-     * Stores the given render node inside a `GValue`.
+     * Stores the given render node inside a {@link GObject.Value}.
      *
      * This function transfers the ownership of the
-     * render node to the `GValue`.
-     * @param value a [struct@GObject.Value] initialized with type `GSK_TYPE_RENDER_NODE`
+     * render node to the {@link GObject.Value}.
+     * @param value a {@link GObject.Value} initialized with type `GSK_TYPE_RENDER_NODE`
      * @param node a render node
+     * @since 4.6
      */
     function value_take_render_node(value: GObject.Value | any, node?: RenderNode | null): void;
+    /**
+     * @gir-type Callback
+     */
     interface ParseErrorFunc {
         (start: ParseLocation, end: ParseLocation, error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface PathForeachFunc {
         (op: PathOperation, pts: Graphene.Point, n_pts: number, weight: number): boolean;
     }
@@ -748,13 +780,15 @@ export namespace Gsk {
     }
 
     /**
-     * Flags that can be passed to gsk_path_foreach() to influence what
+     * Flags that can be passed to `gsk_path_foreach()` to influence what
      * kinds of operations the path is decomposed into.
      *
-     * By default, [method`Gsk`.Path.foreach] will only emit a path with all
+     * By default, {@link Gsk.Path.foreach} will only emit a path with all
      * operations flattened to straight lines to allow for maximum compatibility.
      * The only operations emitted will be `GSK_PATH_MOVE`, `GSK_PATH_LINE` and
      * `GSK_PATH_CLOSE`.
+     * @gir-type Flags
+     * @since 4.14
      */
     enum PathForeachFlags {
         /**
@@ -782,6 +816,7 @@ export namespace Gsk {
 
     /**
      * A render node applying a blending function between its two child nodes.
+     * @gir-type Class
      */
     class BlendNode extends RenderNode {
         static $gtype: GObject.GType<BlendNode>;
@@ -794,16 +829,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BlendNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlendNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BlendNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlendNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BlendNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BlendNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -818,12 +856,12 @@ export namespace Gsk {
          */
         get_blend_mode(): BlendMode;
         /**
-         * Retrieves the bottom `GskRenderNode` child of the `node`.
+         * Retrieves the bottom {@link Gsk.RenderNode} child of the `node`.
          * @returns the bottom child node
          */
         get_bottom_child(): RenderNode;
         /**
-         * Retrieves the top `GskRenderNode` child of the `node`.
+         * Retrieves the top {@link Gsk.RenderNode} child of the `node`.
          * @returns the top child node
          */
         get_top_child(): RenderNode;
@@ -836,6 +874,7 @@ export namespace Gsk {
 
     /**
      * A render node applying a blur effect to its single child.
+     * @gir-type Class
      */
     class BlurNode extends RenderNode {
         static $gtype: GObject.GType<BlurNode>;
@@ -848,16 +887,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlurNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlurNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BlurNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -867,7 +909,7 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Retrieves the child `GskRenderNode` of the blur `node`.
+         * Retrieves the child {@link Gsk.RenderNode} of the blur `node`.
          * @returns the blurred child node
          */
         get_child(): RenderNode;
@@ -885,6 +927,7 @@ export namespace Gsk {
 
     /**
      * A render node for a border.
+     * @gir-type Class
      */
     class BorderNode extends RenderNode {
         static $gtype: GObject.GType<BorderNode>;
@@ -897,16 +940,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BorderNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BorderNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BorderNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -917,7 +963,7 @@ export namespace Gsk {
 
         /**
          * Retrieves the colors of the border.
-         * @returns an array of 4 `GdkRGBA`   structs for the top, right, bottom and left color of the border
+         * @returns an array of 4 {@link Gdk.RGBA}   structs for the top, right, bottom and left color of the border
          */
         get_colors(): Gdk.RGBA[];
         /**
@@ -947,7 +993,8 @@ export namespace Gsk {
     /**
      * A Broadway based renderer.
      *
-     * See [class`Gsk`.Renderer].
+     * See {@link Gsk.Renderer}.
+     * @gir-type Class
      */
     class BroadwayRenderer extends Renderer {
         static $gtype: GObject.GType<BroadwayRenderer>;
@@ -971,16 +1018,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BroadwayRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BroadwayRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BroadwayRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -995,6 +1045,7 @@ export namespace Gsk {
 
     /**
      * A render node for a Cairo surface.
+     * @gir-type Class
      */
     class CairoNode extends RenderNode {
         static $gtype: GObject.GType<CairoNode>;
@@ -1007,16 +1058,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CairoNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CairoNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CairoNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CairoNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CairoNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CairoNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1031,7 +1085,7 @@ export namespace Gsk {
          *
          * If no surface exists yet, a surface will be created optimized for
          * rendering to `renderer`.
-         * @returns a Cairo context used for drawing; use   cairo_destroy() when done drawing
+         * @returns a Cairo context used for drawing; use   `cairo_destroy()` when done drawing
          */
         get_draw_context(): cairo.Context;
         /**
@@ -1058,6 +1112,7 @@ export namespace Gsk {
      *
      * Since it is using cairo, this renderer cannot support
      * 3D transformations.
+     * @gir-type Class
      */
     class CairoRenderer extends Renderer {
         static $gtype: GObject.GType<CairoRenderer>;
@@ -1081,16 +1136,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CairoRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CairoRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CairoRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1105,6 +1163,7 @@ export namespace Gsk {
 
     /**
      * A render node applying a rectangular clip to its single child node.
+     * @gir-type Class
      */
     class ClipNode extends RenderNode {
         static $gtype: GObject.GType<ClipNode>;
@@ -1117,16 +1176,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClipNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClipNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClipNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1154,6 +1216,7 @@ export namespace Gsk {
 
     /**
      * A render node controlling the color matrix of its single child node.
+     * @gir-type Class
      */
     class ColorMatrixNode extends RenderNode {
         static $gtype: GObject.GType<ColorMatrixNode>;
@@ -1166,16 +1229,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorMatrixNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorMatrixNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ColorMatrixNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1208,6 +1274,7 @@ export namespace Gsk {
 
     /**
      * A render node for a solid color.
+     * @gir-type Class
      */
     class ColorNode extends RenderNode {
         static $gtype: GObject.GType<ColorNode>;
@@ -1220,16 +1287,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ColorNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1255,6 +1325,7 @@ export namespace Gsk {
 
     /**
      * A render node for a conic gradient.
+     * @gir-type Class
      */
     class ConicGradientNode extends RenderNode {
         static $gtype: GObject.GType<ConicGradientNode>;
@@ -1272,16 +1343,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConicGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConicGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ConicGradientNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1296,7 +1370,7 @@ export namespace Gsk {
          * The angle is starting at the top and going clockwise, as expressed
          * in the css specification:
          *
-         *     angle = 90 - gsk_conic_gradient_node_get_rotation()
+         *     angle = 90 - `gsk_conic_gradient_node_get_rotation()`
          * @returns the angle for the gradient
          */
         get_angle(): number;
@@ -1329,6 +1403,7 @@ export namespace Gsk {
 
     /**
      * A render node that can contain other render nodes.
+     * @gir-type Class
      */
     class ContainerNode extends RenderNode {
         static $gtype: GObject.GType<ContainerNode>;
@@ -1341,16 +1416,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContainerNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContainerNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContainerNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1362,12 +1440,12 @@ export namespace Gsk {
         /**
          * Gets one of the children of `container`.
          * @param idx the position of the child to get
-         * @returns the @idx'th child of @container
+         * @returns the `idx`'th child of `container`
          */
         get_child(idx: number): RenderNode;
         /**
          * Retrieves the number of direct children of `node`.
-         * @returns the number of children of the `GskRenderNode`
+         * @returns the number of children of the {@link Gsk.RenderNode}
          */
         get_n_children(): number;
     }
@@ -1379,6 +1457,7 @@ export namespace Gsk {
 
     /**
      * A render node cross fading between two child nodes.
+     * @gir-type Class
      */
     class CrossFadeNode extends RenderNode {
         static $gtype: GObject.GType<CrossFadeNode>;
@@ -1391,16 +1470,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CrossFadeNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CrossFadeNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CrossFadeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1410,8 +1492,8 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Retrieves the child `GskRenderNode` at the end of the cross-fade.
-         * @returns a `GskRenderNode`
+         * Retrieves the child {@link Gsk.RenderNode} at the end of the cross-fade.
+         * @returns a {@link Gsk.RenderNode}
          */
         get_end_child(): RenderNode;
         /**
@@ -1420,8 +1502,8 @@ export namespace Gsk {
          */
         get_progress(): number;
         /**
-         * Retrieves the child `GskRenderNode` at the beginning of the cross-fade.
-         * @returns a `GskRenderNode`
+         * Retrieves the child {@link Gsk.RenderNode} at the beginning of the cross-fade.
+         * @returns a {@link Gsk.RenderNode}
          */
         get_start_child(): RenderNode;
     }
@@ -1434,6 +1516,7 @@ export namespace Gsk {
     /**
      * A render node that emits a debugging message when drawing its
      * child node.
+     * @gir-type Class
      */
     class DebugNode extends RenderNode {
         static $gtype: GObject.GType<DebugNode>;
@@ -1446,16 +1529,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DebugNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DebugNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DebugNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DebugNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DebugNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DebugNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1466,7 +1552,7 @@ export namespace Gsk {
 
         /**
          * Gets the child node that is getting drawn by the given `node`.
-         * @returns the child `GskRenderNode`
+         * @returns the child {@link Gsk.RenderNode}
          */
         get_child(): RenderNode;
         /**
@@ -1482,8 +1568,10 @@ export namespace Gsk {
     }
 
     /**
-     * A render node filling the area given by [struct`Gsk`.Path]
-     * and [enum`Gsk`.FillRule] with the child node.
+     * A render node filling the area given by {@link Gsk.Path}
+     * and {@link Gsk.FillRule} with the child node.
+     * @gir-type Class
+     * @since 4.14
      */
     class FillNode extends RenderNode {
         static $gtype: GObject.GType<FillNode>;
@@ -1496,16 +1584,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FillNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FillNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FillNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FillNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FillNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FillNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1521,13 +1612,13 @@ export namespace Gsk {
         get_child(): RenderNode;
         /**
          * Retrieves the fill rule used to determine how the path is filled.
-         * @returns a `GskFillRule`
+         * @returns a {@link Gsk.FillRule}
          */
         get_fill_rule(): FillRule;
         /**
          * Retrieves the path used to describe the area filled with the contents of
          * the `node`.
-         * @returns a `GskPath`
+         * @returns a {@link Gsk.Path}
          */
         get_path(): Path;
     }
@@ -1547,7 +1638,9 @@ export namespace Gsk {
     /**
      * Renders a GSK rendernode tree with OpenGL.
      *
-     * See [class`Gsk`.Renderer].
+     * See {@link Gsk.Renderer}.
+     * @gir-type Class
+     * @since 4.2
      */
     class GLRenderer extends Renderer {
         static $gtype: GObject.GType<GLRenderer>;
@@ -1571,16 +1664,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GLRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1613,8 +1709,8 @@ export namespace Gsk {
      * each instance of use). A shader can also receive up to 4
      * textures that it can use as input when producing the pixel data.
      *
-     * `GskGLShader` is usually used with gtk_snapshot_push_gl_shader()
-     * to produce a [class`Gsk`.GLShaderNode] in the rendering hierarchy,
+     * {@link Gsk.GLShader} is usually used with `gtk_snapshot_push_gl_shader()`
+     * to produce a {@link Gsk.GLShaderNode} in the rendering hierarchy,
      * and then its input textures are constructed by rendering the child
      * nodes to textures before rendering the shader node itself. (You can
      * pass texture nodes as children if you want to directly use a texture
@@ -1648,7 +1744,7 @@ export namespace Gsk {
      *
      * Where the input `fragCoord` is the coordinate of the pixel we're
      * currently rendering, relative to the boundary rectangle that was
-     * specified in the `GskGLShaderNode`, and `resolution` is the width and
+     * specified in the {@link Gsk.GLShaderNode}, and `resolution` is the width and
      * height of that rectangle. This is in the typical GTK coordinate
      * system with the origin in the top left. `uv` contains the u and v
      * coordinates that can be used to index a texture at the
@@ -1667,7 +1763,7 @@ export namespace Gsk {
      * you want of types int, uint, bool, float, vec2, vec3 or vec4.
      *
      * All textures sources contain premultiplied alpha colors, but if some
-     * there are outer sources of colors there is a gsk_premultiply() helper
+     * there are outer sources of colors there is a `gsk_premultiply()` helper
      * to compute premultiplication when needed.
      *
      * Note that GTK parses the uniform declarations, so each uniform has to
@@ -1692,7 +1788,7 @@ export namespace Gsk {
      * coordinates, and contains some helper ifdefs to ensure that
      * it works on all OpenGL versions.
      *
-     * You can compile the shader yourself using [method`Gsk`.GLShader.compile],
+     * You can compile the shader yourself using {@link Gsk.GLShader.compile},
      * otherwise the GSK renderer will do it when it handling the glshader
      * node. If errors occurs, the returned `error` will include the glsl
      * sources, so you can see what GSK was passing to the compiler. You
@@ -1716,6 +1812,8 @@ export namespace Gsk {
      *   fragColor = position * source1 + (1.0 - position) * source2;
      * }
      * ```
+     * @gir-type Class
+     * @deprecated since 4.16: This feature was deprecated in GTK 4.16 after the new rendering infrastructure introduced in 4.14 did not support it. The lack of Vulkan integration would have made it a very hard feature to support. If you want to use OpenGL directly, you should look at [GtkGLArea](../gtk4/class.GLArea.html), which uses a different approach and is still well-supported.
      */
     class GLShader extends GObject.Object {
         static $gtype: GObject.GType<GLShader>;
@@ -1726,11 +1824,11 @@ export namespace Gsk {
          * Resource containing the source code for the shader.
          *
          * If the shader source is not coming from a resource, this
-         * will be %NULL.
+         * will be `null`.
          */
         get resource(): string;
         /**
-         * The source code for the shader, as a `GBytes`.
+         * The source code for the shader, as a {@link GLib.Bytes}.
          */
         get source(): GLib.Bytes;
 
@@ -1755,16 +1853,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GLShader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLShader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GLShader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLShader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GLShader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GLShader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1776,7 +1877,7 @@ export namespace Gsk {
         /**
          * Tries to compile the `shader` for the given `renderer`.
          *
-         * If there is a problem, this function returns %FALSE and reports
+         * If there is a problem, this function returns `false` and reports
          * an error. You should use this function before relying on the shader
          * for rendering and use a fallback with a simpler shader or without
          * shaders if it fails.
@@ -1786,12 +1887,12 @@ export namespace Gsk {
          * set up. This means that the widget has to be realized. Commonly you
          * want to call this from the realize signal of a widget, or during
          * widget snapshot.
-         * @param renderer a `GskRenderer`
-         * @returns %TRUE on success, %FALSE if an error occurred
+         * @param renderer a {@link Gsk.Renderer}
+         * @returns `true` on success, `false` if an error occurred
          */
         compile(renderer: Renderer): boolean;
         /**
-         * Looks for a uniform by the name `name,` and returns the index
+         * Looks for a uniform by the name `name`, and returns the index
          * of the uniform, or -1 if it was not found.
          * @param name uniform name
          * @returns The index of the uniform, or -1
@@ -1871,7 +1972,7 @@ export namespace Gsk {
          * This can be used to check that the a passed shader works
          * in your usecase. It is determined by looking at the highest
          * u_textureN value that the shader defines.
-         * @returns The number of texture inputs required by @shader
+         * @returns The number of texture inputs required by `shader`
          */
         get_n_textures(): number;
         /**
@@ -1917,6 +2018,7 @@ export namespace Gsk {
 
     /**
      * A render node using a GL shader when drawing its children nodes.
+     * @gir-type Class
      */
     class GLShaderNode extends RenderNode {
         static $gtype: GObject.GType<GLShaderNode>;
@@ -1934,16 +2036,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLShaderNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLShaderNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GLShaderNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1954,13 +2059,13 @@ export namespace Gsk {
 
         /**
          * Gets args for the node.
-         * @returns A `GBytes` with the uniform arguments
+         * @returns A {@link GLib.Bytes} with the uniform arguments
          */
         get_args(): GLib.Bytes;
         /**
          * Gets one of the children.
          * @param idx the position of the child to get
-         * @returns the @idx'th child of @node
+         * @returns the `idx`'th child of `node`
          */
         get_child(idx: number): RenderNode;
         /**
@@ -1970,7 +2075,7 @@ export namespace Gsk {
         get_n_children(): number;
         /**
          * Gets shader code for the node.
-         * @returns the `GskGLShader` shader
+         * @returns the {@link Gsk.GLShader} shader
          */
         get_shader(): GLShader;
     }
@@ -1982,6 +2087,7 @@ export namespace Gsk {
 
     /**
      * A render node for an inset shadow.
+     * @gir-type Class
      */
     class InsetShadowNode extends RenderNode {
         static $gtype: GObject.GType<InsetShadowNode>;
@@ -2001,16 +2107,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InsetShadowNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InsetShadowNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InsetShadowNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2061,6 +2170,7 @@ export namespace Gsk {
 
     /**
      * A render node for a linear gradient.
+     * @gir-type Class
      */
     class LinearGradientNode extends RenderNode {
         static $gtype: GObject.GType<LinearGradientNode>;
@@ -2078,16 +2188,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinearGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinearGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LinearGradientNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2125,6 +2238,8 @@ export namespace Gsk {
 
     /**
      * A render node masking one child node with another.
+     * @gir-type Class
+     * @since 4.10
      */
     class MaskNode extends RenderNode {
         static $gtype: GObject.GType<MaskNode>;
@@ -2137,16 +2252,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MaskNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MaskNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MaskNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MaskNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MaskNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MaskNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2156,7 +2274,7 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Retrieves the mask `GskRenderNode` child of the `node`.
+         * Retrieves the mask {@link Gsk.RenderNode} child of the `node`.
          * @returns the mask child node
          */
         get_mask(): RenderNode;
@@ -2166,7 +2284,7 @@ export namespace Gsk {
          */
         get_mask_mode(): MaskMode;
         /**
-         * Retrieves the source `GskRenderNode` child of the `node`.
+         * Retrieves the source {@link Gsk.RenderNode} child of the `node`.
          * @returns the source child node
          */
         get_source(): RenderNode;
@@ -2187,7 +2305,8 @@ export namespace Gsk {
     /**
      * A GL based renderer.
      *
-     * See [class`Gsk`.Renderer].
+     * See {@link Gsk.Renderer}.
+     * @gir-type Class
      */
     class NglRenderer extends Renderer {
         static $gtype: GObject.GType<NglRenderer>;
@@ -2211,16 +2330,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NglRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NglRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NglRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2235,6 +2357,7 @@ export namespace Gsk {
 
     /**
      * A render node controlling the opacity of its single child node.
+     * @gir-type Class
      */
     class OpacityNode extends RenderNode {
         static $gtype: GObject.GType<OpacityNode>;
@@ -2247,16 +2370,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OpacityNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OpacityNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OpacityNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2284,6 +2410,7 @@ export namespace Gsk {
 
     /**
      * A render node for an outset shadow.
+     * @gir-type Class
      */
     class OutsetShadowNode extends RenderNode {
         static $gtype: GObject.GType<OutsetShadowNode>;
@@ -2303,16 +2430,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutsetShadowNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutsetShadowNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutsetShadowNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2363,6 +2493,7 @@ export namespace Gsk {
 
     /**
      * A render node for a radial gradient.
+     * @gir-type Class
      */
     class RadialGradientNode extends RenderNode {
         static $gtype: GObject.GType<RadialGradientNode>;
@@ -2383,16 +2514,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RadialGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RadialGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RadialGradientNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2444,7 +2578,7 @@ export namespace Gsk {
     }
 
     /**
-     * The basic block in a scene graph to be rendered using [class`Gsk`.Renderer].
+     * The basic block in a scene graph to be rendered using {@link Gsk.Renderer}.
      *
      * Each node has a parent, except the top-level node; each node may have
      * children nodes.
@@ -2453,9 +2587,10 @@ export namespace Gsk {
      * the rectangle set when creating it.
      *
      * Render nodes are meant to be transient; once they have been associated
-     * to a [class`Gsk`.Renderer] it's safe to release any reference you have on
-     * them. All [class`Gsk`.RenderNode]s are immutable, you can only specify their
+     * to a {@link Gsk.Renderer} it's safe to release any reference you have on
+     * them. All {@link Gsk.RenderNode}s are immutable, you can only specify their
      * properties during construction.
+     * @gir-type Class
      */
     abstract class RenderNode {
         static $gtype: GObject.GType<RenderNode>;
@@ -2466,16 +2601,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RenderNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RenderNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RenderNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2485,7 +2623,7 @@ export namespace Gsk {
         // Static methods
 
         /**
-         * Loads data previously created via [method`Gsk`.RenderNode.serialize].
+         * Loads data previously created via {@link Gsk.RenderNode.serialize}.
          *
          * For a discussion of the supported format, see that function.
          * @param bytes the bytes containing the data
@@ -2500,7 +2638,7 @@ export namespace Gsk {
          *
          * Typically, you'll use this function to implement fallback rendering
          * of render nodes on an intermediate Cairo context, instead of using
-         * the drawing context associated to a [class`Gdk`.Surface]'s rendering buffer.
+         * the drawing context associated to a {@link Gdk.Surface}'s rendering buffer.
          *
          * For advanced nodes that cannot be supported using Cairo, in particular
          * for nodes doing 3D operations, this function may fail.
@@ -2515,7 +2653,7 @@ export namespace Gsk {
         get_bounds(): Graphene.Rect;
         /**
          * Returns the type of the render node.
-         * @returns the type of @node
+         * @returns the type of `node`
          */
         get_node_type(): RenderNodeType;
         /**
@@ -2531,33 +2669,33 @@ export namespace Gsk {
          */
         get_opaque_rect(): [boolean, Graphene.Rect];
         /**
-         * Acquires a reference on the given `GskRenderNode`.
+         * Acquires a reference on the given {@link Gsk.RenderNode}.
          * @returns the render node with an additional reference
          */
         ref(): RenderNode;
         /**
          * Serializes the `node` for later deserialization via
-         * gsk_render_node_deserialize(). No guarantees are made about the format
+         * `gsk_render_node_deserialize()`. No guarantees are made about the format
          * used other than that the same version of GTK will be able to deserialize
-         * the result of a call to gsk_render_node_serialize() and
-         * gsk_render_node_deserialize() will correctly reject files it cannot open
+         * the result of a call to `gsk_render_node_serialize()` and
+         * `gsk_render_node_deserialize()` will correctly reject files it cannot open
          * that were created with previous versions of GTK.
          *
          * The intended use of this functions is testing, benchmarking and debugging.
          * The format is not meant as a permanent storage format.
-         * @returns a `GBytes` representing the node.
+         * @returns a {@link GLib.Bytes} representing the node.
          */
         serialize(): GLib.Bytes;
         /**
-         * Releases a reference on the given `GskRenderNode`.
+         * Releases a reference on the given {@link Gsk.RenderNode}.
          *
          * If the reference was the last, the resources associated to the `node` are
          * freed.
          */
         unref(): void;
         /**
-         * This function is equivalent to calling [method`Gsk`.RenderNode.serialize]
-         * followed by [func`GLib`.file_set_contents].
+         * This function is equivalent to calling {@link Gsk.RenderNode.serialize}
+         * followed by {@link GLib.file_set_contents}.
          *
          * See those two functions for details on the arguments.
          *
@@ -2585,16 +2723,17 @@ export namespace Gsk {
     }
 
     /**
-     * Renders a scene graph defined via a tree of [class`Gsk`.RenderNode] instances.
+     * Renders a scene graph defined via a tree of {@link Gsk.RenderNode} instances.
      *
-     * Typically you will use a `GskRenderer` instance to repeatedly call
-     * [method`Gsk`.Renderer.render] to update the contents of its associated
-     * [class`Gdk`.Surface].
+     * Typically you will use a {@link Gsk.Renderer} instance to repeatedly call
+     * {@link Gsk.Renderer.render} to update the contents of its associated
+     * {@link Gdk.Surface}.
      *
-     * It is necessary to realize a `GskRenderer` instance using
-     * [method`Gsk`.Renderer.realize] before calling [method`Gsk`.Renderer.render],
+     * It is necessary to realize a {@link Gsk.Renderer} instance using
+     * {@link Gsk.Renderer.realize} before calling {@link Gsk.Renderer.render},
      * in order to create the appropriate windowing system resources needed
      * to render the scene.
+     * @gir-type Class
      */
     abstract class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
@@ -2629,16 +2768,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2664,10 +2806,10 @@ export namespace Gsk {
          *
          * Since GTK 4.6, the surface may be `NULL`, which allows using
          * renderers without having to create a surface. Since GTK 4.14,
-         * it is recommended to use [method`Gsk`.Renderer.realize_for_display]
+         * it is recommended to use {@link Gsk.Renderer.realize_for_display}
          * for this case.
          *
-         * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize]
+         * Note that it is mandatory to call {@link Gsk.Renderer.unrealize}
          * before destroying the renderer.
          * @param surface the surface that renderer will be used on
          * @returns whether the renderer was successfully realized
@@ -2676,14 +2818,14 @@ export namespace Gsk {
         /**
          * Creates the resources needed by the renderer.
          *
-         * Note that it is mandatory to call [method`Gsk`.Renderer.unrealize]
+         * Note that it is mandatory to call {@link Gsk.Renderer.unrealize}
          * before destroying the renderer.
          * @param display the display that the renderer will be used on
          * @returns whether the renderer was successfully realized
          */
         realize_for_display(display: Gdk.Display): boolean;
         /**
-         * Renders the scene graph, described by a tree of `GskRenderNode` instances
+         * Renders the scene graph, described by a tree of {@link Gsk.RenderNode} instances
          * to the renderer's surface, ensuring that the given region gets redrawn.
          *
          * If the renderer has no associated surface, this function does nothing.
@@ -2693,28 +2835,28 @@ export namespace Gsk {
          * free to not redraw any pixel outside of `region` if they can guarantee that
          * it didn't change.
          *
-         * The renderer will acquire a reference on the `GskRenderNode` tree while
+         * The renderer will acquire a reference on the {@link Gsk.RenderNode} tree while
          * the rendering is in progress.
          * @param root the render node to render
          * @param region the `cairo_region_t` that must be redrawn or `NULL`   for the whole surface
          */
         render(root: RenderNode, region?: cairo.Region | null): void;
         /**
-         * Renders a scene graph, described by a tree of `GskRenderNode` instances,
+         * Renders a scene graph, described by a tree of {@link Gsk.RenderNode} instances,
          * to a texture.
          *
-         * The renderer will acquire a reference on the `GskRenderNode` tree while
+         * The renderer will acquire a reference on the {@link Gsk.RenderNode} tree while
          * the rendering is in progress.
          *
-         * If you want to apply any transformations to `root,` you should put it into a
+         * If you want to apply any transformations to `root`, you should put it into a
          * transform node and pass that node instead.
          * @param root the render node to render
-         * @param viewport the section to draw or `NULL` to use @root's bounds
-         * @returns a texture with the rendered contents of @root
+         * @param viewport the section to draw or `NULL` to use `root`'s bounds
+         * @returns a texture with the rendered contents of `root`
          */
         render_texture(root: RenderNode, viewport?: Graphene.Rect | null): Gdk.Texture;
         /**
-         * Releases all the resources created by [method`Gsk`.Renderer.realize].
+         * Releases all the resources created by {@link Gsk.Renderer.realize}.
          */
         unrealize(): void;
     }
@@ -2726,6 +2868,7 @@ export namespace Gsk {
 
     /**
      * A render node repeating its single child node.
+     * @gir-type Class
      */
     class RepeatNode extends RenderNode {
         static $gtype: GObject.GType<RepeatNode>;
@@ -2738,16 +2881,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepeatNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepeatNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RepeatNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2758,7 +2904,7 @@ export namespace Gsk {
 
         /**
          * Retrieves the child of `node`.
-         * @returns a `GskRenderNode`
+         * @returns a {@link Gsk.RenderNode}
          */
         get_child(): RenderNode;
         /**
@@ -2775,6 +2921,7 @@ export namespace Gsk {
 
     /**
      * A render node for a repeating linear gradient.
+     * @gir-type Class
      */
     class RepeatingLinearGradientNode extends RenderNode {
         static $gtype: GObject.GType<RepeatingLinearGradientNode>;
@@ -2792,16 +2939,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepeatingLinearGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepeatingLinearGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RepeatingLinearGradientNode.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2818,6 +2968,7 @@ export namespace Gsk {
 
     /**
      * A render node for a repeating radial gradient.
+     * @gir-type Class
      */
     class RepeatingRadialGradientNode extends RenderNode {
         static $gtype: GObject.GType<RepeatingRadialGradientNode>;
@@ -2838,16 +2989,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepeatingRadialGradientNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepeatingRadialGradientNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RepeatingRadialGradientNode.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2864,6 +3018,7 @@ export namespace Gsk {
 
     /**
      * A render node applying a rounded rectangle clip to its single child.
+     * @gir-type Class
      */
     class RoundedClipNode extends RenderNode {
         static $gtype: GObject.GType<RoundedClipNode>;
@@ -2876,16 +3031,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RoundedClipNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RoundedClipNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RoundedClipNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2913,6 +3071,7 @@ export namespace Gsk {
 
     /**
      * A render node drawing one or more shadows behind its single child node.
+     * @gir-type Class
      */
     class ShadowNode extends RenderNode {
         static $gtype: GObject.GType<ShadowNode>;
@@ -2925,16 +3084,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShadowNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShadowNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ShadowNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2944,7 +3106,7 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Retrieves the child `GskRenderNode` of the shadow `node`.
+         * Retrieves the child {@link Gsk.RenderNode} of the shadow `node`.
          * @returns the child render node
          */
         get_child(): RenderNode;
@@ -2968,7 +3130,9 @@ export namespace Gsk {
 
     /**
      * A render node that will fill the area determined by stroking the the given
-     * [struct`Gsk`.Path] using the [struct`Gsk`.Stroke] attributes.
+     * {@link Gsk.Path} using the {@link Gsk.Stroke} attributes.
+     * @gir-type Class
+     * @since 4.14
      */
     class StrokeNode extends RenderNode {
         static $gtype: GObject.GType<StrokeNode>;
@@ -2981,16 +3145,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StrokeNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StrokeNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StrokeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3007,12 +3174,12 @@ export namespace Gsk {
         /**
          * Retrieves the path that will be stroked with the contents of
          * the `node`.
-         * @returns a #GskPath
+         * @returns a {@link Gsk.Path}
          */
         get_path(): Path;
         /**
          * Retrieves the stroke attributes used in this `node`.
-         * @returns a #GskStroke
+         * @returns a {@link Gsk.Stroke}
          */
         get_stroke(): Stroke;
     }
@@ -3024,6 +3191,8 @@ export namespace Gsk {
 
     /**
      * A render node that potentially diverts a part of the scene graph to a subsurface.
+     * @gir-type Class
+     * @since 4.14
      */
     class SubsurfaceNode extends RenderNode {
         static $gtype: GObject.GType<SubsurfaceNode>;
@@ -3034,16 +3203,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SubsurfaceNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SubsurfaceNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SubsurfaceNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3054,7 +3226,7 @@ export namespace Gsk {
 
         /**
          * Gets the child node that is getting drawn by the given `node`.
-         * @returns the child `GskRenderNode`
+         * @returns the child {@link Gsk.RenderNode}
          */
         get_child(): RenderNode;
     }
@@ -3066,6 +3238,7 @@ export namespace Gsk {
 
     /**
      * A render node drawing a set of glyphs.
+     * @gir-type Class
      */
     class TextNode extends RenderNode {
         static $gtype: GObject.GType<TextNode>;
@@ -3078,16 +3251,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3126,7 +3302,7 @@ export namespace Gsk {
         get_offset(): Graphene.Point;
         /**
          * Checks whether the text `node` has color glyphs.
-         * @returns %TRUE if the text node has color glyphs
+         * @returns `true` if the text node has color glyphs
          */
         has_color_glyphs(): boolean;
     }
@@ -3137,7 +3313,8 @@ export namespace Gsk {
     }
 
     /**
-     * A render node for a `GdkTexture`.
+     * A render node for a {@link Gdk.Texture}.
+     * @gir-type Class
      */
     class TextureNode extends RenderNode {
         static $gtype: GObject.GType<TextureNode>;
@@ -3150,16 +3327,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextureNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextureNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextureNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3169,8 +3349,8 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Retrieves the `GdkTexture` used when creating this `GskRenderNode`.
-         * @returns the `GdkTexture`
+         * Retrieves the {@link Gdk.Texture} used when creating this {@link Gsk.RenderNode}.
+         * @returns the {@link Gdk.Texture}
          */
         get_texture(): Gdk.Texture;
     }
@@ -3181,7 +3361,9 @@ export namespace Gsk {
     }
 
     /**
-     * A render node for a `GdkTexture`, with control over scaling.
+     * A render node for a {@link Gdk.Texture}, with control over scaling.
+     * @gir-type Class
+     * @since 4.10
      */
     class TextureScaleNode extends RenderNode {
         static $gtype: GObject.GType<TextureScaleNode>;
@@ -3194,16 +3376,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextureScaleNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextureScaleNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextureScaleNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3213,13 +3398,13 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Retrieves the `GskScalingFilter` used when creating this `GskRenderNode`.
-         * @returns the `GskScalingFilter`
+         * Retrieves the {@link Gsk.ScalingFilter} used when creating this {@link Gsk.RenderNode}.
+         * @returns the {@link Gsk.ScalingFilter}
          */
         get_filter(): ScalingFilter;
         /**
-         * Retrieves the `GdkTexture` used when creating this `GskRenderNode`.
-         * @returns the `GdkTexture`
+         * Retrieves the {@link Gdk.Texture} used when creating this {@link Gsk.RenderNode}.
+         * @returns the {@link Gdk.Texture}
          */
         get_texture(): Gdk.Texture;
     }
@@ -3230,7 +3415,8 @@ export namespace Gsk {
     }
 
     /**
-     * A render node applying a `GskTransform` to its single child node.
+     * A render node applying a {@link Gsk.Transform} to its single child node.
+     * @gir-type Class
      */
     class TransformNode extends RenderNode {
         static $gtype: GObject.GType<TransformNode>;
@@ -3243,16 +3429,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TransformNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TransformNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TransformNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3267,8 +3456,8 @@ export namespace Gsk {
          */
         get_child(): RenderNode;
         /**
-         * Retrieves the `GskTransform` used by the `node`.
-         * @returns a `GskTransform`
+         * Retrieves the {@link Gsk.Transform} used by the `node`.
+         * @returns a {@link Gsk.Transform}
          */
         get_transform(): Transform;
     }
@@ -3289,6 +3478,7 @@ export namespace Gsk {
      * Renders a GSK rendernode tree with Vulkan.
      *
      * This renderer will fail to realize if Vulkan is not supported.
+     * @gir-type Class
      */
     class VulkanRenderer extends Renderer {
         static $gtype: GObject.GType<VulkanRenderer>;
@@ -3312,16 +3502,19 @@ export namespace Gsk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3329,10 +3522,17 @@ export namespace Gsk {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BroadwayRendererClass = typeof BroadwayRenderer;
+    /**
+     * @gir-type Alias
+     */
     type CairoRendererClass = typeof CairoRenderer;
     /**
      * A color stop in a gradient node.
+     * @gir-type Struct
      */
     class ColorStop {
         static $gtype: GObject.GType<ColorStop>;
@@ -3352,10 +3552,17 @@ export namespace Gsk {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GLRendererClass = typeof GLRenderer;
+    /**
+     * @gir-type Alias
+     */
     type GLShaderClass = typeof GLShader;
     /**
      * A location in a parse buffer.
+     * @gir-type Struct
      */
     class ParseLocation {
         static $gtype: GObject.GType<ParseLocation>;
@@ -3387,9 +3594,9 @@ export namespace Gsk {
      * Paths can used for rendering (filling or stroking) and for animations
      * (e.g. as trajectories).
      *
-     * `GskPath` is an immutable, opaque, reference-counted struct.
+     * {@link Gsk.Path} is an immutable, opaque, reference-counted struct.
      * After creation, you cannot change the types it represents. Instead,
-     * new `GskPath` objects have to be created. The [struct`Gsk`.PathBuilder]
+     * new {@link Gsk.Path} objects have to be created. The {@link Gsk.PathBuilder}
      * structure is meant to help in this endeavor.
      *
      * Conceptually, a path consists of zero or more contours (continuous, connected
@@ -3397,9 +3604,11 @@ export namespace Gsk {
      * constructed from Bézier segments.
      *
      * <picture>
-     *   <source srcset="path-dark.png" media="(prefers-color-scheme: dark)">
-     *   <img alt="A Path" src="path-light.png">
+     *   <source srcset="https://docs.gtk.org/gsk4/path-dark.png" media="(prefers-color-scheme: dark)">
+     *   <img alt="A Path" src="https://docs.gtk.org/gsk4/path-light.png">
      * </picture>
+     * @gir-type Struct
+     * @since 4.14
      */
     abstract class Path {
         static $gtype: GObject.GType<Path>;
@@ -3411,7 +3620,7 @@ export namespace Gsk {
          *
          * The string is expected to be in (a superset of)
          * [SVG path syntax](https://www.w3.org/TR/SVG11/paths.html#PathData),
-         * as e.g. produced by [method`Gsk`.Path.to_string].
+         * as e.g. produced by {@link Gsk.Path.to_string}.
          *
          * A high-level summary of the syntax:
          *
@@ -3440,9 +3649,9 @@ export namespace Gsk {
         /**
          * Calls `func` for every operation of the path.
          *
-         * Note that this may only approximate `self,` because paths can contain
+         * Note that this may only approximate `self`, because paths can contain
          * optimizations for various specialized contours, and depending on the
-         * `flags,` the path may be decomposed into simpler curves than the ones
+         * `flags`, the path may be decomposed into simpler curves than the ones
          * that it contained originally.
          *
          * This function serves two purposes:
@@ -3453,7 +3662,7 @@ export namespace Gsk {
          *   an approximation of the path using just the allowed operations.
          * @param flags flags to pass to the foreach function
          * @param func the function to call for operations
-         * @returns false if @func returned false, true otherwise.
+         * @returns false if `func` returned false, true otherwise.
          */
         foreach(flags: PathForeachFlags | null, func: PathForeachFunc): boolean;
         /**
@@ -3468,7 +3677,7 @@ export namespace Gsk {
          * axis-aligned line.
          *
          * If the path is empty, false is returned and `bounds` are set to
-         * graphene_rect_zero(). This is different from the case where the path
+         * `graphene_rect_zero()`. This is different from the case where the path
          * is a single point at the origin, where the `bounds` will also be set to
          * the zero rectangle but true will be returned.
          * @returns true if the path has bounds, false if the path is known   to be empty and have no bounds
@@ -3481,7 +3690,7 @@ export namespace Gsk {
          * false is returned.
          * @param point the point
          * @param threshold maximum allowed distance
-         * @returns true if @point was set to the closest point   on @self, false if no point is closer than @threshold
+         * @returns true if `point` was set to the closest point   on `self`, false if no point is closer than `threshold`
          */
         get_closest_point(point: Graphene.Point, threshold: number): [boolean, PathPoint, number];
         /**
@@ -3489,7 +3698,7 @@ export namespace Gsk {
          *
          * An empty path has no points, so false
          * is returned in this case.
-         * @returns true if @result was filled
+         * @returns true if `result` was filled
          */
         get_end_point(): [boolean, PathPoint];
         /**
@@ -3497,7 +3706,7 @@ export namespace Gsk {
          *
          * An empty path has no points, so false
          * is returned in this case.
-         * @returns true if @result was filled
+         * @returns true if `result` was filled
          */
         get_start_point(): [boolean, PathPoint];
         /**
@@ -3519,7 +3728,7 @@ export namespace Gsk {
          * implicitly closes it.
          * @param point the point to test
          * @param fill_rule the fill rule to follow
-         * @returns true if @point is inside
+         * @returns true if `point` is inside
          */
         in_fill(point: Graphene.Point, fill_rule: FillRule | null): boolean;
         /**
@@ -3537,23 +3746,23 @@ export namespace Gsk {
          *
          * The string is compatible with (a superset of)
          * [SVG path syntax](https://www.w3.org/TR/SVG11/paths.html#PathData),
-         * see [func`Gsk`.Path.parse] for a summary of the syntax.
+         * see {@link Gsk.Path.parse} for a summary of the syntax.
          * @param string the string to print into
          */
         print(string: GLib.String): void;
         /**
          * Increases the reference count of a path by one.
-         * @returns the passed in `GskPath`
+         * @returns the passed in {@link Gsk.Path}
          */
         ref(): Path;
         /**
          * Appends the path to a cairo context for drawing with Cairo.
          *
          * This may cause some suboptimal conversions to be performed as
-         * Cairo does not support all features of `GskPath`.
+         * Cairo does not support all features of {@link Gsk.Path}.
          *
          * This function does not clear the existing Cairo path. Call
-         * cairo_new_path() if you want this.
+         * `cairo_new_path()` if you want this.
          * @param cr a cairo context
          */
         to_cairo(cr: cairo.Context): void;
@@ -3563,9 +3772,9 @@ export namespace Gsk {
          * You can use this function in a debugger to get a quick overview
          * of the path.
          *
-         * This is a wrapper around [method`Gsk`.Path.print], see that function
+         * This is a wrapper around {@link Gsk.Path.print}, see that function
          * for details.
-         * @returns a new string for @self
+         * @returns a new string for `self`
          */
         to_string(): string;
         /**
@@ -3577,7 +3786,7 @@ export namespace Gsk {
     }
 
     /**
-     * Constructs `GskPath` objects.
+     * Constructs {@link Gsk.Path} objects.
      *
      * A path is constructed like this:
      *
@@ -3597,24 +3806,26 @@ export namespace Gsk {
      * Adding contours to the path can be done in two ways.
      * The easiest option is to use the `gsk_path_builder_add_*` group
      * of functions that add predefined contours to the current path,
-     * either common shapes like [method`Gsk`.PathBuilder.add_circle]
-     * or by adding from other paths like [method`Gsk`.PathBuilder.add_path].
+     * either common shapes like {@link Gsk.PathBuilder.add_circle}
+     * or by adding from other paths like {@link Gsk.PathBuilder.add_path}.
      *
      * The `gsk_path_builder_add_*` methods always add complete contours,
      * and do not use or modify the current point.
      *
      * The other option is to define each line and curve manually with
      * the `gsk_path_builder_*_to` group of functions. You start with
-     * a call to [method`Gsk`.PathBuilder.move_to] to set the starting point
+     * a call to {@link Gsk.PathBuilder.move_to} to set the starting point
      * and then use multiple calls to any of the drawing functions to
      * move the pen along the plane. Once you are done, you can call
-     * [method`Gsk`.PathBuilder.close] to close the path by connecting it
+     * {@link Gsk.PathBuilder.close} to close the path by connecting it
      * back with a line to the starting point.
      *
      * This is similar to how paths are drawn in Cairo.
      *
-     * Note that `GskPathBuilder` will reduce the degree of added Bézier
+     * Note that {@link Gsk.PathBuilder} will reduce the degree of added Bézier
      * curves as much as possible, to simplify rendering.
+     * @gir-type Struct
+     * @since 4.14
      */
     class PathBuilder {
         static $gtype: GObject.GType<PathBuilder>;
@@ -3630,7 +3841,7 @@ export namespace Gsk {
         /**
          * Adds a Cairo path to the builder.
          *
-         * You can use cairo_copy_path() to access the path
+         * You can use `cairo_copy_path()` to access the path
          * from a Cairo context.
          * @param path a path
          */
@@ -3680,16 +3891,16 @@ export namespace Gsk {
         /**
          * Adds a segment of a path to the builder.
          *
-         * If `start` is equal to or after `end,` the path will first add the
+         * If `start` is equal to or after `end`, the path will first add the
          * segment from `start` to the end of the path, and then add the segment
          * from the beginning to `end`. If the path is closed, these segments
          * will be connected.
          *
          * Note that this method always adds a path with the given start point
-         * and end point. To add a closed path, use [method`Gsk`.PathBuilder.add_path].
+         * and end point. To add a closed path, use {@link Gsk.PathBuilder.add_path}.
          * @param path the path to take the segment to
-         * @param start the point on @path to start at
-         * @param end the point on @path to end at
+         * @param start the point on `path` to start at
+         * @param end the point on `path` to end at
          */
         add_segment(path: Path, start: PathPoint, end: PathPoint): void;
         /**
@@ -3700,12 +3911,12 @@ export namespace Gsk {
          *
          * Note: Two points and their tangents do not determine
          * a unique ellipse, so GSK just picks one. If you need more
-         * precise control, use [method`Gsk`.PathBuilder.conic_to]
-         * or [method`Gsk`.PathBuilder.svg_arc_to].
+         * precise control, use {@link Gsk.PathBuilder.conic_to}
+         * or {@link Gsk.PathBuilder.svg_arc_to}.
          *
          * <picture>
-         *   <source srcset="arc-dark.png" media="(prefers-color-scheme: dark)">
-         *   <img alt="Arc To" src="arc-light.png">
+         *   <source srcset="https://docs.gtk.org/gsk4/arc-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Arc To" src="https://docs.gtk.org/gsk4/arc-light.png">
          * </picture>
          * @param x1 x coordinate of first control point
          * @param y1 y coordinate of first control point
@@ -3716,7 +3927,7 @@ export namespace Gsk {
         /**
          * Ends the current contour with a line back to the start point.
          *
-         * Note that this is different from calling [method`Gsk`.PathBuilder.line_to]
+         * Note that this is different from calling {@link Gsk.PathBuilder.line_to}
          * with the start point in that the contour will be closed. A closed
          * contour behaves differently from an open one. When stroking, its
          * start and end point are considered connected, so they will be
@@ -3737,8 +3948,8 @@ export namespace Gsk {
          * After this, `x2`, `y2` will be the new current point.
          *
          * <picture>
-         *   <source srcset="conic-dark.png" media="(prefers-color-scheme: dark)">
-         *   <img alt="Conic To" src="conic-light.png">
+         *   <source srcset="https://docs.gtk.org/gsk4/conic-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Conic To" src="https://docs.gtk.org/gsk4/conic-light.png">
          * </picture>
          * @param x1 x coordinate of control point
          * @param y1 y coordinate of control point
@@ -3755,8 +3966,8 @@ export namespace Gsk {
          * After this, `x3`, `y3` will be the new current point.
          *
          * <picture>
-         *   <source srcset="cubic-dark.png" media="(prefers-color-scheme: dark)">
-         *   <img alt="Cubic To" src="cubic-light.png">
+         *   <source srcset="https://docs.gtk.org/gsk4/cubic-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Cubic To" src="https://docs.gtk.org/gsk4/cubic-light.png">
          * </picture>
          * @param x1 x coordinate of first control point
          * @param y1 y coordinate of first control point
@@ -3796,19 +4007,19 @@ export namespace Gsk {
          */
         html_arc_to(x1: number, y1: number, x2: number, y2: number, radius: number): void;
         /**
-         * Draws a line from the current point to `x,` `y` and makes it
+         * Draws a line from the current point to `x`, `y` and makes it
          * the new current point.
          *
          * <picture>
-         *   <source srcset="line-dark.png" media="(prefers-color-scheme: dark)">
-         *   <img alt="Line To" src="line-light.png">
+         *   <source srcset="https://docs.gtk.org/gsk4/line-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Line To" src="https://docs.gtk.org/gsk4/line-light.png">
          * </picture>
          * @param x x coordinate
          * @param y y coordinate
          */
         line_to(x: number, y: number): void;
         /**
-         * Starts a new contour by placing the pen at `x,` `y`.
+         * Starts a new contour by placing the pen at `x`, `y`.
          *
          * If this function is called twice in succession, the first
          * call will result in a contour made up of a single point.
@@ -3824,8 +4035,8 @@ export namespace Gsk {
          * After this, `x2`, `y2` will be the new current point.
          *
          * <picture>
-         *   <source srcset="quad-dark.png" media="(prefers-color-scheme: dark)">
-         *   <img alt="Quad To" src="quad-light.png">
+         *   <source srcset="https://docs.gtk.org/gsk4/quad-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Quad To" src="https://docs.gtk.org/gsk4/quad-light.png">
          * </picture>
          * @param x1 x coordinate of control point
          * @param y1 y coordinate of control point
@@ -3837,7 +4048,7 @@ export namespace Gsk {
          * Acquires a reference on the given builder.
          *
          * This function is intended primarily for language bindings.
-         * `GskPathBuilder` objects should not be kept around.
+         * {@link Gsk.PathBuilder} objects should not be kept around.
          * @returns the given path builder with   its reference count increased
          */
         ref(): PathBuilder;
@@ -3847,7 +4058,7 @@ export namespace Gsk {
          *
          * All coordinates are given relative to the current point.
          *
-         * This is the relative version of [method`Gsk`.PathBuilder.arc_to].
+         * This is the relative version of {@link Gsk.PathBuilder.arc_to}.
          * @param x1 x coordinate of first control point
          * @param y1 y coordinate of first control point
          * @param x2 x coordinate of second control point
@@ -3861,7 +4072,7 @@ export namespace Gsk {
          *
          * All coordinates are given relative to the current point.
          *
-         * This is the relative version of [method`Gsk`.PathBuilder.conic_to].
+         * This is the relative version of {@link Gsk.PathBuilder.conic_to}.
          * @param x1 x offset of control point
          * @param y1 y offset of control point
          * @param x2 x offset of the end of the curve
@@ -3876,7 +4087,7 @@ export namespace Gsk {
          *
          * All coordinates are given relative to the current point.
          *
-         * This is the relative version of [method`Gsk`.PathBuilder.cubic_to].
+         * This is the relative version of {@link Gsk.PathBuilder.cubic_to}.
          * @param x1 x offset of first control point
          * @param y1 y offset of first control point
          * @param x2 x offset of second control point
@@ -3890,7 +4101,7 @@ export namespace Gsk {
          *
          * All coordinates are given relative to the current point.
          *
-         * This is the relative version of [method`Gsk`.PathBuilder.html_arc_to].
+         * This is the relative version of {@link Gsk.PathBuilder.html_arc_to}.
          * @param x1 x coordinate of first control point
          * @param y1 y coordinate of first control point
          * @param x2 x coordinate of second control point
@@ -3900,18 +4111,18 @@ export namespace Gsk {
         rel_html_arc_to(x1: number, y1: number, x2: number, y2: number, radius: number): void;
         /**
          * Draws a line from the current point to a point offset from it
-         * by `x,` `y` and makes it the new current point.
+         * by `x`, `y` and makes it the new current point.
          *
-         * This is the relative version of [method`Gsk`.PathBuilder.line_to].
+         * This is the relative version of {@link Gsk.PathBuilder.line_to}.
          * @param x x offset
          * @param y y offset
          */
         rel_line_to(x: number, y: number): void;
         /**
-         * Starts a new contour by placing the pen at `x,` `y`
+         * Starts a new contour by placing the pen at `x`, `y`
          * relative to the current point.
          *
-         * This is the relative version of [method`Gsk`.PathBuilder.move_to].
+         * This is the relative version of {@link Gsk.PathBuilder.move_to}.
          * @param x x offset
          * @param y y offset
          */
@@ -3922,7 +4133,7 @@ export namespace Gsk {
          *
          * All coordinates are given relative to the current point.
          *
-         * This is the relative version of [method`Gsk`.PathBuilder.quad_to].
+         * This is the relative version of {@link Gsk.PathBuilder.quad_to}.
          * @param x1 x offset of control point
          * @param y1 y offset of control point
          * @param x2 x offset of the end of the curve
@@ -3934,7 +4145,7 @@ export namespace Gsk {
          *
          * All coordinates are given relative to the current point.
          *
-         * This is the relative version of [method`Gsk`.PathBuilder.svg_arc_to].
+         * This is the relative version of {@link Gsk.PathBuilder.svg_arc_to}.
          * @param rx x radius
          * @param ry y radius
          * @param x_axis_rotation the rotation of the ellipsis
@@ -3959,7 +4170,7 @@ export namespace Gsk {
          * [SVG arc_to](https://www.w3.org/TR/SVG11/paths.html#PathDataEllipticalArcCommands)
          * functionality.
          *
-         * After this, `x,` `y` will be the new current point.
+         * After this, `x`, `y` will be the new current point.
          * @param rx x radius
          * @param ry y radius
          * @param x_axis_rotation the rotation of the ellipsis
@@ -3980,12 +4191,12 @@ export namespace Gsk {
         /**
          * Creates a new path from the given builder.
          *
-         * The given `GskPathBuilder` is reset once this function returns;
+         * The given {@link Gsk.PathBuilder} is reset once this function returns;
          * you cannot call this function multiple times on the same builder
          * instance.
          *
          * This function is intended primarily for language bindings.
-         * C code should use [method`Gsk`.PathBuilder.free_to_path].
+         * C code should use {@link Gsk.PathBuilder.free_to_path}.
          * @returns the newly created path   with all the contours added to the builder
          */
         to_path(): Path;
@@ -3999,12 +4210,14 @@ export namespace Gsk {
      * Performs measurements on paths such as determining the length of the path.
      *
      * Many measuring operations require sampling the path length
-     * at intermediate points. Therefore, a `GskPathMeasure` has
+     * at intermediate points. Therefore, a {@link Gsk.PathMeasure} has
      * a tolerance that determines what precision is required
      * for such approximations.
      *
-     * A `GskPathMeasure` struct is a reference counted struct
+     * A {@link Gsk.PathMeasure} struct is a reference counted struct
      * and should be treated as opaque.
+     * @gir-type Struct
+     * @since 4.14
      */
     class PathMeasure {
         static $gtype: GObject.GType<PathMeasure>;
@@ -4023,12 +4236,12 @@ export namespace Gsk {
          * Gets the length of the path being measured.
          *
          * The length is cached, so this function does not do any work.
-         * @returns the length of the path measured by @self
+         * @returns the length of the path measured by `self`
          */
         get_length(): number;
         /**
          * Returns the path that the measure was created for.
-         * @returns the path of @self
+         * @returns the path of `self`
          */
         get_path(): Path;
         /**
@@ -4036,21 +4249,21 @@ export namespace Gsk {
          *
          * An empty path has no points, so false is returned in that case.
          * @param distance the distance
-         * @returns true if @result was set
+         * @returns true if `result` was set
          */
         get_point(distance: number): [boolean, PathPoint];
         /**
          * Returns the tolerance that the measure was created with.
-         * @returns the tolerance of @self
+         * @returns the tolerance of `self`
          */
         get_tolerance(): number;
         /**
-         * Increases the reference count of a `GskPathMeasure` by one.
-         * @returns the passed in `GskPathMeasure`.
+         * Increases the reference count of a {@link Gsk.PathMeasure} by one.
+         * @returns the passed in {@link Gsk.PathMeasure}.
          */
         ref(): PathMeasure;
         /**
-         * Decreases the reference count of a `GskPathMeasure` by one.
+         * Decreases the reference count of a {@link Gsk.PathMeasure} by one.
          *
          * If the resulting reference count is zero, frees the object.
          */
@@ -4063,14 +4276,16 @@ export namespace Gsk {
      * It can be queried for properties of the path at that point,
      * such as its tangent or its curvature.
      *
-     * To obtain a `GskPathPoint`, use [method`Gsk`.Path.get_closest_point],
-     * [method`Gsk`.Path.get_start_point], [method`Gsk`.Path.get_end_point]
-     * or [method`Gsk`.PathMeasure.get_point].
+     * To obtain a {@link Gsk.PathPoint}, use {@link Gsk.Path.get_closest_point},
+     * {@link Gsk.Path.get_start_point}, {@link Gsk.Path.get_end_point}
+     * or {@link Gsk.PathMeasure.get_point}.
      *
-     * Note that `GskPathPoint` structs are meant to be stack-allocated,
+     * Note that {@link Gsk.PathPoint} structs are meant to be stack-allocated,
      * and don't hold a reference to the path object they are obtained from.
      * It is the callers responsibility to keep a reference to the path
-     * as long as the `GskPathPoint` is used.
+     * as long as the {@link Gsk.PathPoint} is used.
+     * @gir-type Struct
+     * @since 4.14
      */
     class PathPoint {
         static $gtype: GObject.GType<PathPoint>;
@@ -4080,7 +4295,7 @@ export namespace Gsk {
         /**
          * Returns whether `point1` is before or after `point2`.
          * @param point2 another path point
-         * @returns -1 if @point1 is before @point2,   1 if @point1 is after @point2,   0 if they are equal
+         * @returns -1 if `point1` is before `point2`,   1 if `point1` is after `point2`,   0 if they are equal
          */
         compare(point2: PathPoint): number;
         /**
@@ -4094,15 +4309,15 @@ export namespace Gsk {
          *
          * Note that the start- and endpoint of a closed contour
          * will compare nonequal according to this definition.
-         * Use [method`Gsk`.Path.is_closed] to find out if the
+         * Use {@link Gsk.Path.is_closed} to find out if the
          * start- and endpoint of a concrete path refer to the
          * same location.
          * @param point2 another path point
-         * @returns true if @point1 and @point2 are equal
+         * @returns true if `point1` and `point2` are equal
          */
         equal(point2: PathPoint): boolean;
         /**
-         * Frees a path point copied by [method`Gsk`.PathPoint.copy].
+         * Frees a path point copied by {@link Gsk.PathPoint.copy}.
          */
         free(): void;
         /**
@@ -4123,10 +4338,10 @@ export namespace Gsk {
          * argument lets you choose which one to get.
          *
          * <picture>
-         *   <source srcset="curvature-dark.png" media="(prefers-color-scheme: dark)">
-         *   <img alt="Osculating circle" src="curvature-light.png">
+         *   <source srcset="https://docs.gtk.org/gsk4/curvature-dark.png" media="(prefers-color-scheme: dark)">
+         *   <img alt="Osculating circle" src="https://docs.gtk.org/gsk4/curvature-light.png">
          * </picture>
-         * @param path the path that @point is on
+         * @param path the path that `point` is on
          * @param direction the direction for which to return the curvature
          * @returns the curvature of the path at the given point
          */
@@ -4135,22 +4350,22 @@ export namespace Gsk {
          * Returns the distance from the beginning of the path
          * to the point.
          * @param measure a path measure for the path
-         * @returns the distance of @point
+         * @returns the distance of `point`
          */
         get_distance(measure: PathMeasure): number;
         /**
          * Gets the position of the point.
-         * @param path the path that @point is on
+         * @param path the path that `point` is on
          */
         get_position(path: Path): Graphene.Point;
         /**
          * Gets the direction of the tangent at a given point.
          *
-         * This is a convenience variant of [method`Gsk`.PathPoint.get_tangent]
+         * This is a convenience variant of {@link Gsk.PathPoint.get_tangent}
          * that returns the angle between the tangent and the X axis. The angle
          * can e.g. be used in
          * [gtk_snapshot_rotate()](../gtk4/method.Snapshot.rotate.html).
-         * @param path the path that @point is on
+         * @param path the path that `point` is on
          * @param direction the direction for which to return the rotation
          * @returns the angle between the tangent and the X axis, in degrees
          */
@@ -4168,29 +4383,33 @@ export namespace Gsk {
          * radius zero), then the tangent is set to `0, 0`.
          *
          * If you want to orient something in the direction of the
-         * path, [method`Gsk`.PathPoint.get_rotation] may be more
+         * path, {@link Gsk.PathPoint.get_rotation} may be more
          * convenient to use.
-         * @param path the path that @point is on
+         * @param path the path that `point` is on
          * @param direction the direction for which to return the tangent
          */
         get_tangent(path: Path, direction: PathDirection | null): Graphene.Vec2;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RendererClass = typeof Renderer;
     /**
      * A rectangular region with rounded corners.
      *
      * Application code should normalize rectangles using
-     * [method`Gsk`.RoundedRect.normalize]; this function will ensure that
+     * {@link Gsk.RoundedRect.normalize}; this function will ensure that
      * the bounds of the rectangle are normalized and ensure that the corner
      * values are positive and the corners do not overlap.
      *
-     * All functions taking a `GskRoundedRect` as an argument will internally
-     * operate on a normalized copy; all functions returning a `GskRoundedRect`
+     * All functions taking a {@link Gsk.RoundedRect} as an argument will internally
+     * operate on a normalized copy; all functions returning a {@link Gsk.RoundedRect}
      * will always return a normalized one.
      *
      * The algorithm used for normalizing corner sizes is described in
      * [the CSS specification](https://drafts.csswg.org/css-backgrounds-3/#border-radius).
+     * @gir-type Struct
      */
     class RoundedRect {
         static $gtype: GObject.GType<RoundedRect>;
@@ -4220,7 +4439,7 @@ export namespace Gsk {
         /**
          * Checks if the given rectangle is contained inside the rounded rectangle.
          * @param rect the rectangle to check
-         * @returns true if the @rect is fully contained inside the rounded rectangle
+         * @returns true if the `rect` is fully contained inside the rounded rectangle
          */
         contains_rect(rect: Graphene.Rect): boolean;
         /**
@@ -4263,15 +4482,15 @@ export namespace Gsk {
          * Checks if part a rectangle is contained
          * inside the rounded rectangle.
          * @param rect the rectangle to check
-         * @returns true if the @rect intersects with the rounded rectangle
+         * @returns true if the `rect` intersects with the rounded rectangle
          */
         intersects_rect(rect: Graphene.Rect): boolean;
         /**
          * Checks if all corners of a rounded rectangle are right angles
          * and the rectangle covers all of its bounds.
          *
-         * This information can be used to decide if [ctor`Gsk`.ClipNode.new]
-         * or [ctor`Gsk`.RoundedClipNode.new] should be called.
+         * This information can be used to decide if {@link Gsk.ClipNode.new}
+         * or {@link Gsk.RoundedClipNode.new} should be called.
          * @returns true if the rounded rectangle is rectilinear
          */
         is_rectilinear(): boolean;
@@ -4301,7 +4520,7 @@ export namespace Gsk {
          * the center of the corner circle intact. This emulates CSS behavior.
          *
          * This function also works for growing rounded rectangles
-         * if you pass negative values for the `top,` `right,` `bottom` or `left`.
+         * if you pass negative values for the `top`, `right`, `bottom` or `left`.
          * @param top how far to move the top side downwards
          * @param right how far to move the right side to the left
          * @param bottom how far to move the bottom side upwards
@@ -4312,7 +4531,9 @@ export namespace Gsk {
     }
 
     /**
-     * Builds the uniforms data for a `GskGLShader`.
+     * Builds the uniforms data for a {@link Gsk.GLShader}.
+     * @gir-type Struct
+     * @deprecated since 4.16
      */
     class ShaderArgsBuilder {
         static $gtype: GObject.GType<ShaderArgsBuilder>;
@@ -4326,8 +4547,8 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Increases the reference count of a `GskShaderArgsBuilder` by one.
-         * @returns the passed in `GskShaderArgsBuilder`
+         * Increases the reference count of a {@link Gsk.ShaderArgsBuilder} by one.
+         * @returns the passed in {@link Gsk.ShaderArgsBuilder}
          */
         ref(): ShaderArgsBuilder;
         /**
@@ -4387,18 +4608,18 @@ export namespace Gsk {
          */
         set_vec4(idx: number, value: Graphene.Vec4): void;
         /**
-         * Creates a new `GBytes` args from the current state of the
+         * Creates a new {@link GLib.Bytes} args from the current state of the
          * given `builder`.
          *
          * Any uniforms of the shader that have not been explicitly set on
          * the `builder` are zero-initialized.
          *
-         * The given `GskShaderArgsBuilder` is reset once this function returns;
+         * The given {@link Gsk.ShaderArgsBuilder} is reset once this function returns;
          * you cannot call this function multiple times on the same `builder` instance.
          *
          * This function is intended primarily for bindings. C code should use
-         * [method`Gsk`.ShaderArgsBuilder.free_to_args].
-         * @returns the newly allocated buffer with   all the args added to @builder
+         * {@link Gsk.ShaderArgsBuilder.free_to_args}.
+         * @returns the newly allocated buffer with   all the args added to `builder`
          */
         to_args(): GLib.Bytes;
         /**
@@ -4411,6 +4632,7 @@ export namespace Gsk {
 
     /**
      * The shadow parameters in a shadow node.
+     * @gir-type Struct
      */
     class Shadow {
         static $gtype: GObject.GType<Shadow>;
@@ -4436,6 +4658,8 @@ export namespace Gsk {
 
     /**
      * Collects the parameters that are needed when stroking a path.
+     * @gir-type Struct
+     * @since 4.14
      */
     class Stroke {
         static $gtype: GObject.GType<Stroke>;
@@ -4458,12 +4682,12 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Creates a copy of a `GskStroke`.
-         * @returns a new `GskStroke`. Use [method@Gsk.Stroke.free] to free it
+         * Creates a copy of a {@link Gsk.Stroke}.
+         * @returns a new {@link Gsk.Stroke}. Use {@link Gsk.Stroke.free} to free it
          */
         copy(): Stroke;
         /**
-         * Frees a `GskStroke`.
+         * Frees a {@link Gsk.Stroke}.
          */
         free(): void;
         /**
@@ -4479,14 +4703,14 @@ export namespace Gsk {
         /**
          * Gets the line cap used.
          *
-         * See [enum`Gsk`.LineCap] for details.
+         * See {@link Gsk.LineCap} for details.
          * @returns the line cap
          */
         get_line_cap(): LineCap;
         /**
          * Gets the line join used.
          *
-         * See [enum`Gsk`.LineJoin] for details.
+         * See {@link Gsk.LineJoin} for details.
          * @returns the line join
          */
         get_line_join(): LineJoin;
@@ -4509,11 +4733,11 @@ export namespace Gsk {
          *
          * Each "on" segment will have caps applied as if the segment were a
          * separate contour. In particular, it is valid to use an "on" length
-         * of 0 with [enum`Gsk`.LineCap.round] or [enum`Gsk`.LineCap.square]
+         * of 0 with {@link Gsk.LineCap.ROUND} or {@link Gsk.LineCap.SQUARE}
          * to draw dots or squares along a path.
          *
          * If `n_dash` is 0, if all elements in `dash` are 0, or if there are
-         * negative values in `dash,` then dashing is disabled.
+         * negative values in `dash`, then dashing is disabled.
          *
          * If `n_dash` is 1, an alternating "on" and "off" pattern with the
          * single dash length provided is assumed.
@@ -4523,7 +4747,7 @@ export namespace Gsk {
          * through the array.
          *
          * You can specify a starting offset into the dash with
-         * [method`Gsk`.Stroke.set_dash_offset].
+         * {@link Gsk.Stroke.set_dash_offset}.
          * @param dash the array of dashes
          */
         set_dash(dash?: number[] | null): void;
@@ -4533,21 +4757,21 @@ export namespace Gsk {
          * This is an offset into the length of the path, not an index into
          * the array values of the dash array.
          *
-         * See [method`Gsk`.Stroke.set_dash] for more details on dashing.
+         * See {@link Gsk.Stroke.set_dash} for more details on dashing.
          * @param offset offset into the dash pattern
          */
         set_dash_offset(offset: number): void;
         /**
          * Sets the line cap to be used when stroking.
          *
-         * See [enum`Gsk`.LineCap] for details.
+         * See {@link Gsk.LineCap} for details.
          * @param line_cap the line cap
          */
         set_line_cap(line_cap: LineCap | null): void;
         /**
          * Sets the line join to be used when stroking.
          *
-         * See [enum`Gsk`.LineJoin] for details.
+         * See {@link Gsk.LineJoin} for details.
          * @param line_join the line join to use
          */
         set_line_join(line_join: LineJoin | null): void;
@@ -4566,14 +4790,14 @@ export namespace Gsk {
          *
          * The limit is specfied in units of line width and must be non-negative.
          *
-         * For joins of type [enum`Gsk`.LineJoin.miter] that exceed the miter limit,
-         * the join gets rendered as if it was of type [enum`Gsk`.LineJoin.bevel].
+         * For joins of type {@link Gsk.LineJoin.MITER} that exceed the miter limit,
+         * the join gets rendered as if it was of type {@link Gsk.LineJoin.BEVEL}.
          * @param limit the miter limit
          */
         set_miter_limit(limit: number): void;
         /**
          * A helper function that sets the stroke parameters
-         * of a cairo context from a `GskStroke`.
+         * of a cairo context from a {@link Gsk.Stroke}.
          * @param cr the cairo context to configure
          */
         to_cairo(cr: cairo.Context): void;
@@ -4582,13 +4806,14 @@ export namespace Gsk {
     /**
      * Describes a 3D transform.
      *
-     * Unlike `graphene_matrix_t`, `GskTransform` retains the steps in how
+     * Unlike `graphene_matrix_t`, {@link Gsk.Transform} retains the steps in how
      * a transform was constructed, and allows inspecting them. It is modeled
      * after the way CSS describes transforms.
      *
-     * `GskTransform` objects are immutable and cannot be changed after creation.
+     * {@link Gsk.Transform} objects are immutable and cannot be changed after creation.
      * This means code can safely expose them as properties of objects without
      * having to worry about others changing them.
+     * @gir-type Struct
      */
     class Transform {
         static $gtype: GObject.GType<Transform>;
@@ -4604,7 +4829,7 @@ export namespace Gsk {
         /**
          * Parses a given into a transform.
          *
-         * Strings printed via [method`Gsk`.Transform.to_string]
+         * Strings printed via {@link Gsk.Transform.to_string}
          * can be read in again successfully using this function.
          *
          * If `string` does not describe a valid transform, false
@@ -4635,7 +4860,7 @@ export namespace Gsk {
          * between those cases, you should check `self` is not `NULL`
          * before calling this function.
          *
-         * This function consumes `self`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `self`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @returns The inverted transform
          */
@@ -4643,9 +4868,9 @@ export namespace Gsk {
         /**
          * Multiplies `next` with the given `matrix`.
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
-         * @param matrix the matrix to multiply @next with
+         * @param matrix the matrix to multiply `next` with
          * @returns The new transform
          */
         matrix(matrix: Graphene.Matrix): Transform;
@@ -4657,7 +4882,7 @@ export namespace Gsk {
          * those with negative Z values towards the origin. Points
          * on the z=0 plane are unchanged.
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param depth distance of the z=0 plane. Lower values give a more   flattened pyramid and therefore a more pronounced   perspective effect.
          * @returns The new transform
@@ -4667,7 +4892,7 @@ export namespace Gsk {
          * Converts the transform into a human-readable representation.
          *
          * The result of this function can later be parsed with
-         * [func`Gsk`.Transform.parse].
+         * {@link Gsk.Transform.parse}.
          * @param string The string to print into
          */
         print(string: GLib.String): void;
@@ -4681,7 +4906,7 @@ export namespace Gsk {
          *
          * The rotation happens around the origin point of (0, 0).
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param angle the rotation angle, in degrees (clockwise)
          * @returns The new transform
@@ -4690,9 +4915,9 @@ export namespace Gsk {
         /**
          * Rotates `next` `angle` degrees around `axis`.
          *
-         * For a rotation in 2D space, use [method`Gsk`.Transform.rotate]
+         * For a rotation in 2D space, use {@link Gsk.Transform.rotate}
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param angle the rotation angle, in degrees (clockwise)
          * @param axis The rotation axis
@@ -4702,9 +4927,9 @@ export namespace Gsk {
         /**
          * Scales `next` in 2-dimensional space by the given factors.
          *
-         * Use [method`Gsk`.Transform.scale_3d] to scale in all 3 dimensions.
+         * Use {@link Gsk.Transform.scale_3d} to scale in all 3 dimensions.
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param factor_x scaling factor on the X axis
          * @param factor_y scaling factor on the Y axis
@@ -4714,7 +4939,7 @@ export namespace Gsk {
         /**
          * Scales `next` by the given factors.
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param factor_x scaling factor on the X axis
          * @param factor_y scaling factor on the Y axis
@@ -4725,7 +4950,7 @@ export namespace Gsk {
         /**
          * Applies a skew transform.
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param skew_x skew factor, in degrees, on the X axis
          * @param skew_y skew factor, in degrees, on the Y axis
@@ -4738,12 +4963,12 @@ export namespace Gsk {
          * `self` must be a 2D transformation. If you are not
          * sure, use
          *
-         *     gsk_transform_get_category() >= GSK_TRANSFORM_CATEGORY_2D
+         *     `gsk_transform_get_category()` >= GSK_TRANSFORM_CATEGORY_2D
          *
          * to check.
          *
          * The returned values are a subset of the full 4x4 matrix that
-         * is computed by [method`Gsk`.Transform.to_matrix] and have the
+         * is computed by {@link Gsk.Transform.to_matrix} and have the
          * following layout:
          *
          * ```
@@ -4752,7 +4977,7 @@ export namespace Gsk {
          *   | dx dy |   | tx ty  1 |
          * ```
          *
-         * This function can be used to convert between a `GskTransform`
+         * This function can be used to convert between a {@link Gsk.Transform}
          * and a matrix type from other 2D drawing libraries, in particular
          * Cairo.
          */
@@ -4773,7 +4998,7 @@ export namespace Gsk {
          *
          * `self` must be a 2D transformation. If you are not sure, use
          *
-         *     gsk_transform_get_category() >= GSK_TRANSFORM_CATEGORY_2D
+         *     `gsk_transform_get_category()` >= GSK_TRANSFORM_CATEGORY_2D
          *
          * to check.
          */
@@ -4793,7 +5018,7 @@ export namespace Gsk {
          * `self` must be a 2D affine transformation. If you are not
          * sure, use
          *
-         *     gsk_transform_get_category() >= GSK_TRANSFORM_CATEGORY_2D_AFFINE
+         *     `gsk_transform_get_category()` >= GSK_TRANSFORM_CATEGORY_2D_AFFINE
          *
          * to check.
          */
@@ -4807,10 +5032,10 @@ export namespace Gsk {
         /**
          * Converts the transform into a human-readable string.
          *
-         * The resulting string can be parsed with [func`Gsk`.Transform.parse].
+         * The resulting string can be parsed with {@link Gsk.Transform.parse}.
          *
-         * This is a wrapper around [method`Gsk`.Transform.print].
-         * @returns A new string for @self
+         * This is a wrapper around {@link Gsk.Transform.print}.
+         * @returns A new string for `self`
          */
         to_string(): string;
         /**
@@ -4819,7 +5044,7 @@ export namespace Gsk {
          * `self` must be a 2D transformation. If you are not
          * sure, use
          *
-         *     gsk_transform_get_category() >= GSK_TRANSFORM_CATEGORY_2D_TRANSLATE
+         *     `gsk_transform_get_category()` >= GSK_TRANSFORM_CATEGORY_2D_TRANSLATE
          *
          * to check.
          */
@@ -4827,7 +5052,7 @@ export namespace Gsk {
         /**
          * Applies all the operations from `other` to `next`.
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param other transform to apply
          * @returns The new transform
@@ -4848,7 +5073,7 @@ export namespace Gsk {
         /**
          * Translates `next` in 2-dimensional space by `point`.
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param point the point to translate the transform by
          * @returns The new transform
@@ -4857,7 +5082,7 @@ export namespace Gsk {
         /**
          * Translates `next` by `point`.
          *
-         * This function consumes `next`. Use [method`Gsk`.Transform.ref] first
+         * This function consumes `next`. Use {@link Gsk.Transform.ref} first
          * if you want to keep it around.
          * @param point the point to translate the transform by
          * @returns The new transform
@@ -4872,6 +5097,9 @@ export namespace Gsk {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanRendererClass = typeof VulkanRenderer;
     /**
      * Name of the imported GIR library

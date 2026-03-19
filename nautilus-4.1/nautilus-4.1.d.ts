@@ -24,18 +24,45 @@ export namespace Nautilus {
         export const $gtype: GObject.GType<OperationResult>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum OperationResult {
         COMPLETE,
         FAILED,
         IN_PROGRESS,
     }
 
+    /**
+     * @param location
+     */
     function file_info_create(location: Gio.File): FileInfo;
+    /**
+     * @param uri
+     */
     function file_info_create_for_uri(uri: string): FileInfo;
+    /**
+     * @param files
+     */
     function file_info_list_copy(files: FileInfo[]): FileInfo[];
+    /**
+     * @param files
+     */
     function file_info_list_free(files: FileInfo[]): void;
+    /**
+     * @param location
+     */
     function file_info_lookup(location: Gio.File): FileInfo;
+    /**
+     * @param uri
+     */
     function file_info_lookup_for_uri(uri: string): FileInfo;
+    /**
+     * @param update_complete
+     * @param provider
+     * @param handle
+     * @param result
+     */
     function info_provider_update_complete_invoke(
         update_complete: GObject.Closure,
         provider: InfoProvider,
@@ -71,6 +98,9 @@ export namespace Nautilus {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
 
@@ -113,16 +143,19 @@ export namespace Nautilus {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Column.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Column.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Column.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Column.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -139,6 +172,9 @@ export namespace Nautilus {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
 
@@ -161,16 +197,19 @@ export namespace Nautilus {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Menu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Menu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Menu.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -179,6 +218,9 @@ export namespace Nautilus {
 
         // Methods
 
+        /**
+         * @param item
+         */
         append_item(item: MenuItem): void;
         get_items(): MenuItem[];
     }
@@ -186,6 +228,9 @@ export namespace Nautilus {
     namespace MenuItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             activate: () => void;
             'notify::icon': (pspec: GObject.ParamSpec) => void;
             'notify::label': (pspec: GObject.ParamSpec) => void;
@@ -209,6 +254,9 @@ export namespace Nautilus {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
 
@@ -247,16 +295,19 @@ export namespace Nautilus {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -265,15 +316,24 @@ export namespace Nautilus {
 
         // Static methods
 
+        /**
+         * @param item_list
+         */
         static list_free(item_list: MenuItem[]): void;
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_activate(): void;
 
         // Methods
 
         activate(): void;
+        /**
+         * @param menu
+         */
         set_submenu(menu: Menu): void;
     }
 
@@ -292,6 +352,9 @@ export namespace Nautilus {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PropertiesItem extends GObject.Object {
         static $gtype: GObject.GType<PropertiesItem>;
 
@@ -319,16 +382,19 @@ export namespace Nautilus {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PropertiesItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PropertiesItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PropertiesItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -356,6 +422,9 @@ export namespace Nautilus {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PropertiesModel extends GObject.Object {
         static $gtype: GObject.GType<PropertiesModel>;
 
@@ -384,16 +453,19 @@ export namespace Nautilus {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PropertiesModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PropertiesModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PropertiesModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -404,49 +476,85 @@ export namespace Nautilus {
 
         get_model(): Gio.ListModel;
         get_title(): string;
+        /**
+         * @param title
+         */
         set_title(title: string): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ColumnClass {
         static $gtype: GObject.GType<ColumnClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ColumnProviderInterface {
         static $gtype: GObject.GType<ColumnProviderInterface>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class FileInfoInterface {
         static $gtype: GObject.GType<FileInfoInterface>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class InfoProviderInterface {
         static $gtype: GObject.GType<InfoProviderInterface>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MenuClass {
         static $gtype: GObject.GType<MenuClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MenuItemClass {
         static $gtype: GObject.GType<MenuItemClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MenuProviderInterface {
         static $gtype: GObject.GType<MenuProviderInterface>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class OperationHandle {
         static $gtype: GObject.GType<OperationHandle>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PropertiesItemClass {
         static $gtype: GObject.GType<PropertiesItemClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PropertiesModelClass {
         static $gtype: GObject.GType<PropertiesModelClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PropertiesModelProviderInterface {
         static $gtype: GObject.GType<PropertiesModelProviderInterface>;
     }
@@ -459,6 +567,9 @@ export namespace Nautilus {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_columns(): Column[];
         }
 
@@ -471,6 +582,9 @@ export namespace Nautilus {
         $gtype: GObject.GType<ColumnProvider>;
         prototype: ColumnProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ColumnProvider extends GObject.Object, ColumnProvider.Interface {
         // Methods
 
@@ -489,24 +603,86 @@ export namespace Nautilus {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param emblem_name
+             * @virtual
+             */
             vfunc_add_emblem(emblem_name: string): void;
+            /**
+             * @param attribute_name
+             * @param value
+             * @virtual
+             */
             vfunc_add_string_attribute(attribute_name: string, value: string): void;
+            /**
+             * @virtual
+             */
             vfunc_can_write(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_activation_uri(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_file_type(): Gio.FileType;
+            /**
+             * @virtual
+             */
             vfunc_get_location(): Gio.File;
+            /**
+             * @virtual
+             */
             vfunc_get_mime_type(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_mount(): Gio.Mount;
+            /**
+             * @virtual
+             */
             vfunc_get_name(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_parent_info(): FileInfo;
+            /**
+             * @virtual
+             */
             vfunc_get_parent_location(): Gio.File;
+            /**
+             * @virtual
+             */
             vfunc_get_parent_uri(): string;
+            /**
+             * @param attribute_name
+             * @virtual
+             */
             vfunc_get_string_attribute(attribute_name: string): string;
+            /**
+             * @virtual
+             */
             vfunc_get_uri(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_uri_scheme(): string;
+            /**
+             * @virtual
+             */
             vfunc_invalidate_extension_info(): void;
+            /**
+             * @virtual
+             */
             vfunc_is_directory(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_is_gone(): boolean;
+            /**
+             * @param mime_type
+             * @virtual
+             */
             vfunc_is_mime_type(mime_type: string): boolean;
         }
 
@@ -519,17 +695,45 @@ export namespace Nautilus {
         $gtype: GObject.GType<FileInfo>;
         prototype: FileInfo;
 
+        /**
+         * @param location
+         */
         create(location: Gio.File): FileInfo;
+        /**
+         * @param uri
+         */
         create_for_uri(uri: string): FileInfo;
+        /**
+         * @param files
+         */
         list_copy(files: FileInfo[]): FileInfo[];
+        /**
+         * @param files
+         */
         list_free(files: FileInfo[]): void;
+        /**
+         * @param location
+         */
         lookup(location: Gio.File): FileInfo;
+        /**
+         * @param uri
+         */
         lookup_for_uri(uri: string): FileInfo;
     }
+    /**
+     * @gir-type Interface
+     */
     interface FileInfo extends GObject.Object, FileInfo.Interface {
         // Methods
 
+        /**
+         * @param emblem_name
+         */
         add_emblem(emblem_name: string): void;
+        /**
+         * @param attribute_name
+         * @param value
+         */
         add_string_attribute(attribute_name: string, value: string): void;
         can_write(): boolean;
         get_activation_uri(): string;
@@ -541,12 +745,18 @@ export namespace Nautilus {
         get_parent_info(): FileInfo;
         get_parent_location(): Gio.File;
         get_parent_uri(): string;
+        /**
+         * @param attribute_name
+         */
         get_string_attribute(attribute_name: string): string;
         get_uri(): string;
         get_uri_scheme(): string;
         invalidate_extension_info(): void;
         is_directory(): boolean;
         is_gone(): boolean;
+        /**
+         * @param mime_type
+         */
         is_mime_type(mime_type: string): boolean;
     }
 
@@ -562,7 +772,16 @@ export namespace Nautilus {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param handle
+             * @virtual
+             */
             vfunc_cancel_update(handle: OperationHandle): void;
+            /**
+             * @param file
+             * @param update_complete
+             * @virtual
+             */
             vfunc_update_file_info(
                 file: FileInfo,
                 update_complete: GObject.Closure,
@@ -578,6 +797,12 @@ export namespace Nautilus {
         $gtype: GObject.GType<InfoProvider>;
         prototype: InfoProvider;
 
+        /**
+         * @param update_complete
+         * @param provider
+         * @param handle
+         * @param result
+         */
         update_complete_invoke(
             update_complete: GObject.Closure,
             provider: InfoProvider,
@@ -585,10 +810,20 @@ export namespace Nautilus {
             result: OperationResult,
         ): void;
     }
+    /**
+     * @gir-type Interface
+     */
     interface InfoProvider extends GObject.Object, InfoProvider.Interface {
         // Methods
 
+        /**
+         * @param handle
+         */
         cancel_update(handle: OperationHandle): void;
+        /**
+         * @param file
+         * @param update_complete
+         */
         update_file_info(file: FileInfo, update_complete: GObject.Closure): [OperationResult, OperationHandle | null];
     }
 
@@ -604,7 +839,15 @@ export namespace Nautilus {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param current_folder
+             * @virtual
+             */
             vfunc_get_background_items(current_folder: FileInfo): MenuItem[];
+            /**
+             * @param files
+             * @virtual
+             */
             vfunc_get_file_items(files: FileInfo[]): MenuItem[];
         }
 
@@ -617,11 +860,20 @@ export namespace Nautilus {
         $gtype: GObject.GType<MenuProvider>;
         prototype: MenuProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MenuProvider extends GObject.Object, MenuProvider.Interface {
         // Methods
 
         emit_items_updated_signal(): void;
+        /**
+         * @param current_folder
+         */
         get_background_items(current_folder: FileInfo): MenuItem[];
+        /**
+         * @param files
+         */
         get_file_items(files: FileInfo[]): MenuItem[];
     }
 
@@ -637,6 +889,10 @@ export namespace Nautilus {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param files
+             * @virtual
+             */
             vfunc_get_models(files: FileInfo[]): PropertiesModel[];
         }
 
@@ -649,9 +905,15 @@ export namespace Nautilus {
         $gtype: GObject.GType<PropertiesModelProvider>;
         prototype: PropertiesModelProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface PropertiesModelProvider extends GObject.Object, PropertiesModelProvider.Interface {
         // Methods
 
+        /**
+         * @param files
+         */
         get_models(files: FileInfo[]): PropertiesModel[];
     }
 

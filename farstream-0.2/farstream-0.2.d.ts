@@ -26,6 +26,7 @@ export namespace Farstream {
 
     /**
      * An enum for the type of candidate used/reported
+     * @gir-type Enum
      */
     enum CandidateType {
         /**
@@ -56,6 +57,7 @@ export namespace Farstream {
 
     /**
      * This enum contains the component IDs defined in ICE-19
+     * @gir-type Enum
      */
     enum ComponentType {
         /**
@@ -74,9 +76,10 @@ export namespace Farstream {
 
     /**
      * An enum that represents the different DTMF event that can be sent to a
-     * #FsSession. The values corresponds those those defined in RFC 4733
+     * {@link Farstream.Session}. The values corresponds those those defined in RFC 4733
      * The rest of the possibles values are in the IANA registry at:
      * http://www.iana.org/assignments/audio-telephone-event-registry
+     * @gir-type Struct
      */
     class DTMFEvent {
         static $gtype: GObject.GType<DTMFEvent>;
@@ -107,6 +110,7 @@ export namespace Farstream {
 
     /**
      * An enum that represents the different ways a DTMF event can be sent
+     * @gir-type Enum
      */
     enum DTMFMethod {
         /**
@@ -123,6 +127,7 @@ export namespace Farstream {
     /**
      * This is the enum of error numbers that will come either on the "error"
      * signal, from the Gst Bus or for error in the FS_ERROR domain in GErrors
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -205,6 +210,7 @@ export namespace Farstream {
 
     /**
      * Enum used to signify the media type of a codec or stream.
+     * @gir-type Enum
      */
     enum MediaType {
         /**
@@ -220,7 +226,7 @@ export namespace Farstream {
          */
         APPLICATION,
         /**
-         * Largest valid #FsMediaType
+         * Largest valid {@link Farstream.MediaType}
          */
         LAST,
     }
@@ -231,6 +237,7 @@ export namespace Farstream {
 
     /**
      * An enum for the base IP protocol
+     * @gir-type Enum
      */
     enum NetworkProtocol {
         /**
@@ -268,6 +275,7 @@ export namespace Farstream {
      * These are the possible states of a stream, a simple multicast stream
      * could only be in "disconnected" or "ready" state.
      * An stream using an ICE transmitter would use all of these.
+     * @gir-type Enum
      */
     enum StreamState {
         /**
@@ -302,12 +310,12 @@ export namespace Farstream {
      */
     const CODEC_FORMAT: string;
     /**
-     * If the id of a #FsCodec is #FS_CODEC_ID_ANY, then it will be replaced
+     * If the id of a {@link Farstream.Codec} is #FS_CODEC_ID_ANY, then it will be replaced
      * with a dynamic payload type at runtime
      */
     const CODEC_ID_ANY: number;
     /**
-     * If the id of a #FsCodec is #FS_CODEC_ID_DISABLE, then this codec will
+     * If the id of a {@link Farstream.Codec} is #FS_CODEC_ID_DISABLE, then this codec will
      * not be used
      */
     const CODEC_ID_DISABLE: number;
@@ -317,27 +325,27 @@ export namespace Farstream {
      */
     const RTP_HEADER_EXTENSION_FORMAT: string;
     /**
-     * Copies a GList of #FsCandidate and its contents
-     * @param candidate_list A GList of #FsCandidate
-     * @returns a new GList of #FsCandidate
+     * Copies a GList of {@link Farstream.Candidate} and its contents
+     * @param candidate_list A GList of {@link Farstream.Candidate}
+     * @returns a new GList of {@link Farstream.Candidate}
      */
     function candidate_list_copy(candidate_list: Codec[]): Codec[];
     /**
      * Verifies if two glist of fscodecs are identical
-     * @param list1 a #GList of #FsCodec
-     * @param list2 a #GList of #FsCodec
-     * @returns %TRUE if they are identical, %FALSE otherwise
+     * @param list1 a {@link GLib.List} of {@link Farstream.Codec}
+     * @param list2 a {@link GLib.List} of {@link Farstream.Codec}
+     * @returns `true` if they are identical, `false` otherwise
      */
     function codec_list_are_equal(list1?: Codec[] | null, list2?: Codec[] | null): boolean;
     /**
-     * Copies a list of #FsCodec structures.
-     * @param codec_list a GList of #FsCodec to copy
+     * Copies a list of {@link Farstream.Codec} structures.
+     * @param codec_list a GList of {@link Farstream.Codec} to copy
      * @returns The new list.
      */
     function codec_list_copy(codec_list: Codec[]): Codec[];
     /**
-     * Reads the content of a #GKeyFile of the following format into
-     * a #GList of #FsCodec structures.
+     * Reads the content of a {@link GLib.KeyFile} of the following format into
+     * a {@link GLib.List} of {@link Farstream.Codec} structures.
      *
      *
      * Example:
@@ -359,8 +367,8 @@ export namespace Farstream {
      * feedback:tfrc=
      * ```
      *
-     * @param filename Name of the #GKeyFile to read the codecs parameters from
-     * @returns The #GList of #FsCodec or %NULL if the keyfile was empty or an error occured.
+     * @param filename Name of the {@link GLib.KeyFile} to read the codecs parameters from
+     * @returns The {@link GLib.List} of {@link Farstream.Codec} or `null` if the keyfile was empty or an error occured.
      */
     function codec_list_from_keyfile(filename: string): Codec[];
     function error_quark(): GLib.Quark;
@@ -373,20 +381,20 @@ export namespace Farstream {
     /**
      * Parses a "farstream-farstream" message and checks if it matches
      * the `object` parameters.
-     * @param object a #GObject to match against the message
-     * @param message a #GstMessage to parse
-     * @returns %TRUE if the message matches the object and is valid.
+     * @param object a {@link GObject.Object} to match against the message
+     * @param message a {@link Gst.Message} to parse
+     * @returns `true` if the message matches the object and is valid.
      */
     function parse_error(object: GObject.Object, message: Gst.Message): [boolean, Error, string];
     /**
-     * Does a deep copy of a #GList of #FsRtpHeaderExtension
-     * @param extensions a #GList of #FsRtpHeaderExtension
-     * @returns a new #GList of #FsRtpHeaderExtension
+     * Does a deep copy of a {@link GLib.List} of {@link Farstream.RtpHeaderExtension}
+     * @param extensions a {@link GLib.List} of {@link Farstream.RtpHeaderExtension}
+     * @returns a new {@link GLib.List} of {@link Farstream.RtpHeaderExtension}
      */
     function rtp_header_extension_list_copy(extensions: RtpHeaderExtension[]): RtpHeaderExtension[];
     /**
-     * Reads the content of a #GKeyFile of the following format into a
-     * #GList of #FsRtpHeaderExtension structures.
+     * Reads the content of a {@link GLib.KeyFile} of the following format into a
+     * {@link GLib.List} of {@link Farstream.RtpHeaderExtension} structures.
      *
      * The groups have a format "rtp-hdrext:audio:XXX" or
      * "rtp-hdrext:video:XXX" where XXX is a unique string (per media type).
@@ -413,9 +421,9 @@ export namespace Farstream {
      * direction=receive
      * ```
      *
-     * @param filename Name of the #GKeyFile to read the RTP Header Extensions from
+     * @param filename Name of the {@link GLib.KeyFile} to read the RTP Header Extensions from
      * @param media_type The media type for which to get header extensions
-     * @returns a #GList of #FsRtpHeaderExtension that must be freed with fs_rtp_header_extension_list_destroy()
+     * @returns a {@link GLib.List} of {@link Farstream.RtpHeaderExtension} that must be freed with `fs_rtp_header_extension_list_destroy()`
      */
     function rtp_header_extension_list_from_keyfile(
         filename: string,
@@ -426,7 +434,7 @@ export namespace Farstream {
      * available in the main GStreamer element repositories.
      * They should be suitable for standards based protocols like SIP or XMPP.
      * @param element Element for which to fetch default codec preferences
-     * @returns The default codec preferences for this plugin. This #GList should be freed with fs_codec_list_destroy()
+     * @returns The default codec preferences for this plugin. This {@link GLib.List} should be freed with `fs_codec_list_destroy()`
      */
     function utils_get_default_codec_preferences(element: Gst.Element): Codec[];
     /**
@@ -434,8 +442,8 @@ export namespace Farstream {
      * that are available in the main GStreamer element repositories.
      * They should be suitable for standards based protocols like SIP or XMPP.
      * @param element Element for which to fetch default RTP Header Extension preferences
-     * @param media_type The #FsMediaType for which to get default RTP Header Extension  preferences
-     * @returns The default rtp header extension preferences for this plugin, this #GList should be freed with fs_codec_list_destroy()
+     * @param media_type The {@link Farstream.MediaType} for which to get default RTP Header Extension  preferences
+     * @returns The default rtp header extension preferences for this plugin, this {@link GLib.List} should be freed with `fs_codec_list_destroy()`
      */
     function utils_get_default_rtp_header_extension_preferences(
         element: Gst.Element,
@@ -447,19 +455,28 @@ export namespace Farstream {
      *
      * This will be obsolete in 0.11 (when all elements use bit/sec for the
      * "bitrate" property.
-     * @param element The #GstElement
+     * @param element The {@link Gst.Element}
      * @param bitrate The bitrate in bits/sec
      */
     function utils_set_bitrate(element: Gst.Element, bitrate: number): void;
     /**
      * This is for the bindings benefit. Works around the limitations of GObject
      * introspection.
-     * @param value a #GValue of type #FS_TYPE_CANDIDATE_LIST
-     * @param candidates A #GList of #FsCandidate
+     * @param value a {@link GObject.Value} of type #FS_TYPE_CANDIDATE_LIST
+     * @param candidates A {@link GLib.List} of {@link Farstream.Candidate}
      */
     function value_set_candidate_list(value: GObject.Value | any, candidates?: Candidate[] | null): void;
+    /**
+     * @gir-type Alias
+     */
     type CandidateList = object | null;
+    /**
+     * @gir-type Alias
+     */
     type CodecGList = object | null;
+    /**
+     * @gir-type Alias
+     */
     type RtpHeaderExtensionGList = object | null;
     export namespace StreamDirection {
         export const $gtype: GObject.GType<StreamDirection>;
@@ -467,6 +484,7 @@ export namespace Farstream {
 
     /**
      * An enum for specifying the direction of a stream
+     * @gir-type Flags
      */
     enum StreamDirection {
         /**
@@ -502,7 +520,8 @@ export namespace Farstream {
     }
 
     /**
-     * The #FsConference structure, all the members are private
+     * The {@link Farstream.Conference} structure, all the members are private
+     * @gir-type Class
      */
     abstract class Conference extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<Conference>;
@@ -524,16 +543,19 @@ export namespace Farstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Conference.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Conference.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Conference.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Conference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -544,11 +566,13 @@ export namespace Farstream {
 
         /**
          * Create a new Farstream Participant for the type of the given conference.
+         * @virtual
          */
         vfunc_new_participant(): Participant;
         /**
          * Create a new Farstream session for the given conference.
-         * @param media_type #FsMediaType of the new session
+         * @param media_type {@link Farstream.MediaType} of the new session
+         * @virtual
          */
         vfunc_new_session(media_type: MediaType): Session;
 
@@ -556,25 +580,23 @@ export namespace Farstream {
 
         /**
          * Create a new Farstream Participant for the type of the given conference.
-         * @returns the new #FsParticipant that has been created. The #FsParticipant is owned by the user and he must unref it when he is done with it.
+         * @returns the new {@link Farstream.Participant} that has been created. The {@link Farstream.Participant} is owned by the user and he must unref it when he is done with it.
          */
         new_participant(): Participant;
         /**
          * Create a new Farstream session for the given conference.
-         * @param media_type #FsMediaType of the new session
-         * @returns the new #FsSession that has been created. The #FsSession must be unref'd by the user when closing the session.
+         * @param media_type {@link Farstream.MediaType} of the new session
+         * @returns the new {@link Farstream.Session} that has been created. The {@link Farstream.Session} must be unref'd by the user when closing the session.
          */
         new_session(media_type: MediaType | null): Session;
-
-        // Inherited methods
         /**
-         * Emits the #GstChildProxy::child-added signal.
+         * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
          * @param child the newly added child
          * @param name the name of the new child
          */
         child_added(child: GObject.Object, name: string): void;
         /**
-         * Emits the #GstChildProxy::child-removed signal.
+         * Emits the {@link Gst.ChildProxy.SignalSignatures.child_removed | Gst.ChildProxy::child-removed} signal.
          * @param child the removed child
          * @param name the name of the old child
          */
@@ -582,30 +604,30 @@ export namespace Farstream {
         /**
          * Fetches a child by its number.
          * @param index the child's position in the child list
-         * @returns the child object or %NULL if     not found (index too high).
+         * @returns the child object or `null` if     not found (index too high).
          */
         get_child_by_index<T = GObject.Object>(index: number): T;
         /**
          * Looks up a child element by the given name.
          *
-         * This virtual method has a default implementation that uses #GstObject
-         * together with gst_object_get_name(). If the interface is to be used with
-         * #GObjects, this methods needs to be overridden.
+         * This virtual method has a default implementation that uses {@link Gst.Object}
+         * together with `gst_object_get_name()`. If the interface is to be used with
+         * `GObjects`, this methods needs to be overridden.
          * @param name the child's name
-         * @returns the child object or %NULL if     not found.
+         * @returns the child object or `null` if     not found.
          */
         get_child_by_name<T = GObject.Object>(name: string): T;
         /**
          * Looks up a child element by the given full-path name.
          *
-         * Similar to gst_child_proxy_get_child_by_name(), this method
+         * Similar to `gst_child_proxy_get_child_by_name()`, this method
          * searches and returns a child given a name. The difference is that
          * this method allows a hierarchical path in the form of
          * child1::child2::child3. In the later example this method would
          * return a reference to child3, if found. The name should be made of
          * element names only and should not contain any property names.
          * @param name the full-path child's name
-         * @returns the child object or %NULL if     not found.
+         * @returns the child object or `null` if     not found.
          */
         get_child_by_name_recurse<T = GObject.Object>(name: string): T;
         /**
@@ -615,52 +637,60 @@ export namespace Farstream {
         get_children_count(): number;
         /**
          * Gets a single property using the GstChildProxy mechanism.
-         * You are responsible for freeing it by calling g_value_unset()
+         * You are responsible for freeing it by calling `g_value_unset()`
          * @param name name of the property
          */
         get_property(name: string): unknown;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
-         * Looks up which object and #GParamSpec would be effected by the given `name`.
+         * Looks up which object and {@link GObject.ParamSpec} would be effected by the given `name`.
          * @param name name of the property to look up
-         * @returns %TRUE if @target and @pspec could be found. %FALSE otherwise. In that case the values for @pspec and @target are not modified. Unref @target after usage. For plain #GObject @target is the same as @object.
+         * @returns `true` if `target` and `pspec` could be found. `false` otherwise. In that case the values for `pspec` and `target` are not modified. Unref `target` after usage. For plain {@link GObject.Object} `target` is the same as `object`.
          */
         lookup(name: string): [boolean, GObject.Object | null, GObject.ParamSpec | null];
         /**
          * Sets a single property using the GstChildProxy mechanism.
          * @param name name of the property to set
-         * @param value new #GValue for the property
+         * @param value new {@link GObject.Value} for the property
          */
         set_property(name: string, value: GObject.Value | any): void;
         /**
-         * Emits the #GstChildProxy::child-added signal.
+         * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
          * @param child the newly added child
          * @param name the name of the new child
+         * @virtual
          */
         vfunc_child_added(child: GObject.Object, name: string): void;
         /**
-         * Emits the #GstChildProxy::child-removed signal.
+         * Emits the {@link Gst.ChildProxy.SignalSignatures.child_removed | Gst.ChildProxy::child-removed} signal.
          * @param child the removed child
          * @param name the name of the old child
+         * @virtual
          */
         vfunc_child_removed(child: GObject.Object, name: string): void;
         /**
          * Fetches a child by its number.
          * @param index the child's position in the child list
+         * @virtual
          */
         vfunc_get_child_by_index<T = GObject.Object>(index: number): T;
         /**
          * Looks up a child element by the given name.
          *
-         * This virtual method has a default implementation that uses #GstObject
-         * together with gst_object_get_name(). If the interface is to be used with
-         * #GObjects, this methods needs to be overridden.
+         * This virtual method has a default implementation that uses {@link Gst.Object}
+         * together with `gst_object_get_name()`. If the interface is to be used with
+         * `GObjects`, this methods needs to be overridden.
          * @param name the child's name
+         * @virtual
          */
         vfunc_get_child_by_name<T = GObject.Object>(name: string): T;
         /**
          * Gets the number of child objects this parent contains.
+         * @virtual
          */
         vfunc_get_children_count(): number;
         /**
@@ -676,32 +706,32 @@ export namespace Farstream {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -710,39 +740,39 @@ export namespace Farstream {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -753,13 +783,16 @@ export namespace Farstream {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -767,7 +800,7 @@ export namespace Farstream {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -775,16 +808,16 @@ export namespace Farstream {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -798,33 +831,33 @@ export namespace Farstream {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -857,23 +890,26 @@ export namespace Farstream {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
+        /**
+         * @param args
+         */
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -883,8 +919,8 @@ export namespace Farstream {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -901,10 +937,10 @@ export namespace Farstream {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -913,13 +949,13 @@ export namespace Farstream {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -950,21 +986,21 @@ export namespace Farstream {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -974,33 +1010,34 @@ export namespace Farstream {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1009,6 +1046,7 @@ export namespace Farstream {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1017,12 +1055,14 @@ export namespace Farstream {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1031,20 +1071,22 @@ export namespace Farstream {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1056,6 +1098,7 @@ export namespace Farstream {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1088,6 +1131,14 @@ export namespace Farstream {
     namespace ElementAddedNotifier {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted when an element is added to a {@link Gst.Bin} that was added
+             * to this object or one of its sub-bins.
+             * Be careful, there is no guarantee that this will be emitted on your
+             * main thread, it will be emitted in the thread that added the element.
+             * The bin may be `null` if this is the top-level bin.
+             * @signal
+             */
             'element-added': (arg0: Gst.Bin, arg1: Gst.Element) => void;
         }
 
@@ -1098,6 +1149,7 @@ export namespace Farstream {
 
     /**
      * All members are private
+     * @gir-type Class
      */
     class ElementAddedNotifier extends GObject.Object {
         static $gtype: GObject.GType<ElementAddedNotifier>;
@@ -1121,16 +1173,19 @@ export namespace Farstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ElementAddedNotifier.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1142,44 +1197,44 @@ export namespace Farstream {
         // Methods
 
         /**
-         * Add a #GstBin to on which the #FsElementAddedNotifier::element-added signal
+         * Add a {@link Gst.Bin} to on which the {@link Farstream.ElementAddedNotifier.SignalSignatures.element_added | Farstream.ElementAddedNotifier::element-added} signal
          * will be called on every element and sub-element present and added in the
          * future.
-         * @param bin A #GstBin to watch to added elements
+         * @param bin A {@link Gst.Bin} to watch to added elements
          */
         add(bin: Gst.Bin): void;
         /**
          * Stop watching the passed bin and its subbins.
-         * @param bin A #GstBin to stop watching
-         * @returns %TRUE if the #GstBin was being watched, %FALSE otherwise
+         * @param bin A {@link Gst.Bin} to stop watching
+         * @returns `true` if the {@link Gst.Bin} was being watched, `false` otherwise
          */
         remove(bin: Gst.Bin): boolean;
         /**
-         * Same as first calling fs_utils_get_default_element_properties() and using
+         * Same as first calling `fs_utils_get_default_element_properties()` and using
          * the result with
-         * fs_element_added_notifier_set_properties_from_keyfile() .
+         * `fs_element_added_notifier_set_properties_from_keyfile()` .
          *
          * This is binding friendly (since GKeyFile doesn't have a boxed type).
          * @param element Element for which to set the default codec   preferences
-         * @returns The id of the signal connection, this can be used to disconnect this property setter using g_signal_handler_disconnect().
+         * @returns The id of the signal connection, this can be used to disconnect this property setter using `g_signal_handler_disconnect()`.
          */
         set_default_properties(element: Gst.Element): number;
         /**
-         * Same as fs_element_added_notifier_set_properties_from_keyfile() but using
-         * the name of the file to load instead of the #GKeyFile directly.
+         * Same as `fs_element_added_notifier_set_properties_from_keyfile()` but using
+         * the name of the file to load instead of the {@link GLib.KeyFile} directly.
          * @param filename The name of the keyfile to use
-         * @returns %TRUE if the file was successfully loaded, %FALSE otherwise
+         * @returns `true` if the file was successfully loaded, `false` otherwise
          */
         set_properties_from_file(filename: string): boolean;
         /**
-         * Using a #GKeyFile where the groups are the element's type or name
+         * Using a {@link GLib.KeyFile} where the groups are the element's type or name
          * and the key=value are the property and its value, this function
          * will set the properties on the elements added to this object after
          * this function has been called.  It will take ownership of the
          * GKeyFile structure. It will first try the group as the element type, if that
          * does not match, it will check its name.
-         * @param keyfile a #GKeyFile
-         * @returns The id of the signal connection, this can be used to disconnect this property setter using g_signal_handler_disconnect().
+         * @param keyfile a {@link GLib.KeyFile}
+         * @returns The id of the signal connection, this can be used to disconnect this property setter using `g_signal_handler_disconnect()`.
          */
         set_properties_from_keyfile(keyfile: GLib.KeyFile): number;
     }
@@ -1195,6 +1250,7 @@ export namespace Farstream {
 
     /**
      * All members are private (access them using the properties)
+     * @gir-type Class
      */
     abstract class Participant extends GObject.Object {
         static $gtype: GObject.GType<Participant>;
@@ -1216,16 +1272,19 @@ export namespace Farstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Participant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Participant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Participant.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Participant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1244,6 +1303,7 @@ export namespace Farstream {
 
     /**
      * This structure represents a plugin, it is opaque.
+     * @gir-type Class
      */
     class Plugin extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Plugin>;
@@ -1265,16 +1325,19 @@ export namespace Farstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Plugin.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1288,15 +1351,13 @@ export namespace Farstream {
          * @param type_suffix Get list of plugins with this type suffix
          */
         static list_available(type_suffix: string): string[];
-
-        // Inherited methods
         /**
          * Calls the `complete_interface_info` function from the
-         * #GTypePluginClass of `plugin`. There should be no need to use this
+         * {@link GObject.TypePluginClass} of `plugin`. There should be no need to use this
          * function outside of the GObject type system itself.
-         * @param instance_type the #GType of an instantiatable type to which the interface  is added
-         * @param interface_type the #GType of the interface whose info is completed
-         * @param info the #GInterfaceInfo to fill in
+         * @param instance_type the {@link GObject.GType} of an instantiatable type to which the interface  is added
+         * @param interface_type the {@link GObject.GType} of the interface whose info is completed
+         * @param info the {@link GObject.InterfaceInfo} to fill in
          */
         complete_interface_info(
             instance_type: GObject.GType,
@@ -1304,26 +1365,29 @@ export namespace Farstream {
             info: GObject.InterfaceInfo,
         ): void;
         /**
-         * Calls the `complete_type_info` function from the #GTypePluginClass of `plugin`.
+         * Calls the `complete_type_info` function from the {@link GObject.TypePluginClass} of `plugin`.
          * There should be no need to use this function outside of the GObject
          * type system itself.
-         * @param g_type the #GType whose info is completed
-         * @param info the #GTypeInfo struct to fill in
-         * @param value_table the #GTypeValueTable to fill in
+         * @param g_type the {@link GObject.GType} whose info is completed
+         * @param info the {@link GObject.TypeInfo} struct to fill in
+         * @param value_table the {@link GObject.TypeValueTable} to fill in
          */
         complete_type_info(g_type: GObject.GType, info: GObject.TypeInfo, value_table: GObject.TypeValueTable): void;
         /**
-         * Calls the `unuse_plugin` function from the #GTypePluginClass of
+         * Calls the `unuse_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         unuse(): void;
         /**
-         * Calls the `use_plugin` function from the #GTypePluginClass of
+         * Calls the `use_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         use(): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
         /**
@@ -1339,32 +1403,32 @@ export namespace Farstream {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1373,39 +1437,39 @@ export namespace Farstream {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1416,13 +1480,16 @@ export namespace Farstream {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1430,7 +1497,7 @@ export namespace Farstream {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1438,9 +1505,9 @@ export namespace Farstream {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1460,9 +1527,9 @@ export namespace Farstream {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1476,33 +1543,33 @@ export namespace Farstream {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1535,21 +1602,21 @@ export namespace Farstream {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1559,8 +1626,8 @@ export namespace Farstream {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1577,10 +1644,10 @@ export namespace Farstream {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1595,13 +1662,13 @@ export namespace Farstream {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1632,21 +1699,21 @@ export namespace Farstream {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1656,33 +1723,34 @@ export namespace Farstream {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1691,6 +1759,7 @@ export namespace Farstream {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1699,12 +1768,14 @@ export namespace Farstream {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1713,20 +1784,22 @@ export namespace Farstream {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1738,6 +1811,7 @@ export namespace Farstream {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1770,6 +1844,11 @@ export namespace Farstream {
     namespace Session {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted in any error condition, it can be emitted on any
+             * thread. Applications should listen to the GstBus for errors.
+             * @signal
+             */
             error: (arg0: GObject.Object, arg1: Error, arg2: string) => void;
             'notify::allowed-sink-caps': (pspec: GObject.ParamSpec) => void;
             'notify::allowed-src-caps': (pspec: GObject.ParamSpec) => void;
@@ -1813,6 +1892,7 @@ export namespace Farstream {
 
     /**
      * All members are private, access them using methods and properties
+     * @gir-type Class
      */
     abstract class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
@@ -1820,25 +1900,25 @@ export namespace Farstream {
         // Properties
 
         /**
-         * These are the #GstCaps that can be fed into the session,
+         * These are the {@link Gst.Caps} that can be fed into the session,
          * they are used to filter the codecs to only those that can
          * accepted those caps as input.
          */
         get allowed_sink_caps(): Gst.Caps;
         /**
-         * These are the #GstCaps that can be fed into the session,
+         * These are the {@link Gst.Caps} that can be fed into the session,
          * they are used to filter the codecs to only those that can
          * accepted those caps as input.
          */
         get allowedSinkCaps(): Gst.Caps;
         /**
-         * These are the #GstCaps that the session can produce,
+         * These are the {@link Gst.Caps} that the session can produce,
          * they are used to filter the codecs to only those that can
          * accepted those caps as output.
          */
         get allowed_src_caps(): Gst.Caps;
         /**
-         * These are the #GstCaps that the session can produce,
+         * These are the {@link Gst.Caps} that the session can produce,
          * they are used to filter the codecs to only those that can
          * accepted those caps as output.
          */
@@ -1846,12 +1926,12 @@ export namespace Farstream {
         /**
          * This is the current preferences list for the local codecs. It is
          * set by the user to specify the codec options and priorities. The user may
-         * change its value with fs_session_set_codec_preferences() at any time
-         * during a session. It is a #GList of #FsCodec.
-         * The user must free this codec list using fs_codec_list_destroy() when done.
+         * change its value with `fs_session_set_codec_preferences()` at any time
+         * during a session. It is a {@link GLib.List} of {@link Farstream.Codec}.
+         * The user must free this codec list using `fs_codec_list_destroy()` when done.
          *
-         * The payload type may be a valid dynamic PT (96-127), %FS_CODEC_ID_DISABLE
-         * or %FS_CODEC_ID_ANY. If the encoding name is "reserve-pt", then the
+         * The payload type may be a valid dynamic PT (96-127), `FS_CODEC_ID_DISABLE`
+         * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
          * dynamically assigned payload type.
          */
@@ -1859,12 +1939,12 @@ export namespace Farstream {
         /**
          * This is the current preferences list for the local codecs. It is
          * set by the user to specify the codec options and priorities. The user may
-         * change its value with fs_session_set_codec_preferences() at any time
-         * during a session. It is a #GList of #FsCodec.
-         * The user must free this codec list using fs_codec_list_destroy() when done.
+         * change its value with `fs_session_set_codec_preferences()` at any time
+         * during a session. It is a {@link GLib.List} of {@link Farstream.Codec}.
+         * The user must free this codec list using `fs_codec_list_destroy()` when done.
          *
-         * The payload type may be a valid dynamic PT (96-127), %FS_CODEC_ID_DISABLE
-         * or %FS_CODEC_ID_ANY. If the encoding name is "reserve-pt", then the
+         * The payload type may be a valid dynamic PT (96-127), `FS_CODEC_ID_DISABLE`
+         * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
          * dynamically assigned payload type.
          */
@@ -1876,21 +1956,21 @@ export namespace Farstream {
          * for the other end to decode the content.
          *
          * It may change when the codec preferences are set, when codecs are set
-         * on a #FsStream in this session, when a #FsStream is destroyed or
+         * on a {@link Farstream.Stream} in this session, when a {@link Farstream.Stream} is destroyed or
          * asynchronously when new config data is discovered.
          *
          * If any configuration parameter needs to be discovered, this property
-         * will be %NULL until they have been discovered. One can always get
-         * the codecs from #FsSession:codecs-without-config.
+         * will be `null` until they have been discovered. One can always get
+         * the codecs from {@link Farstream.Session.codecs_without_config}.
          * The "farstream-codecs-changed" message will be emitted whenever the value
          * of this property changes.
          *
-         * It is a #GList of #FsCodec. User must free this codec list using
-         * fs_codec_list_destroy() when done.
+         * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
+         * `fs_codec_list_destroy()` when done.
          */
         get codecs(): Codec[];
         /**
-         * This is the same list of codecs as #FsSession:codecs without
+         * This is the same list of codecs as {@link Farstream.Session.codecs} without
          * the configuration information that describes the data sent. It is suitable
          * for configurations where a list of codecs is shared by many senders.
          * If one is using codecs such as Theora, Vorbis or H.264 that require
@@ -1898,18 +1978,18 @@ export namespace Farstream {
          * included in the stream and retransmitted regularly.
          *
          * It may change when the codec preferences are set, when codecs are set
-         * on a #FsStream in this session, when a #FsStream is destroyed or
+         * on a {@link Farstream.Stream} in this session, when a {@link Farstream.Stream} is destroyed or
          * asynchronously when new config data is discovered.
          *
          * The "farstream-codecs-changed" message will be emitted whenever the value
          * of this property changes.
          *
-         * It is a #GList of #FsCodec. User must free this codec list using
-         * fs_codec_list_destroy() when done.
+         * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
+         * `fs_codec_list_destroy()` when done.
          */
         get codecs_without_config(): Codec[];
         /**
-         * This is the same list of codecs as #FsSession:codecs without
+         * This is the same list of codecs as {@link Farstream.Session.codecs} without
          * the configuration information that describes the data sent. It is suitable
          * for configurations where a list of codecs is shared by many senders.
          * If one is using codecs such as Theora, Vorbis or H.264 that require
@@ -1917,35 +1997,35 @@ export namespace Farstream {
          * included in the stream and retransmitted regularly.
          *
          * It may change when the codec preferences are set, when codecs are set
-         * on a #FsStream in this session, when a #FsStream is destroyed or
+         * on a {@link Farstream.Stream} in this session, when a {@link Farstream.Stream} is destroyed or
          * asynchronously when new config data is discovered.
          *
          * The "farstream-codecs-changed" message will be emitted whenever the value
          * of this property changes.
          *
-         * It is a #GList of #FsCodec. User must free this codec list using
-         * fs_codec_list_destroy() when done.
+         * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
+         * `fs_codec_list_destroy()` when done.
          */
         get codecsWithoutConfig(): Codec[];
         /**
-         * The #FsConference parent of this session. This property is a
+         * The {@link Farstream.Conference} parent of this session. This property is a
          * construct param and is read-only.
          */
         get conference(): Conference;
         /**
          * Indicates the currently active send codec. A user can change the active
-         * send codec by calling fs_session_set_send_codec(). The send codec could
+         * send codec by calling `fs_session_set_send_codec()`. The send codec could
          * also be automatically changed by Farstream. This property is an
-         * #FsCodec. User must free the codec using fs_codec_destroy() when done.
+         * {@link Farstream.Codec}. User must free the codec using `fs_codec_destroy()` when done.
          * The "farstream-send-codec-changed" message is emitted on the bus when
          * the value of this property changes.
          */
         get current_send_codec(): Codec;
         /**
          * Indicates the currently active send codec. A user can change the active
-         * send codec by calling fs_session_set_send_codec(). The send codec could
+         * send codec by calling `fs_session_set_send_codec()`. The send codec could
          * also be automatically changed by Farstream. This property is an
-         * #FsCodec. User must free the codec using fs_codec_destroy() when done.
+         * {@link Farstream.Codec}. User must free the codec using `fs_codec_destroy()` when done.
          * The "farstream-send-codec-changed" message is emitted on the bus when
          * the value of this property changes.
          */
@@ -2006,16 +2086,19 @@ export namespace Farstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2028,96 +2111,106 @@ export namespace Farstream {
          * Some codec updates need to be reliably transmitted to the other side
          * because they contain important parameters required to decode the media.
          * Other codec updates, caused by user action, don't.
-         * @param old_codecs Codecs previously retrieved from the #FsSession:codecs property
-         * @param new_codecs Codecs recently retrieved from the #FsSession:codecs property
+         * @param old_codecs Codecs previously retrieved from the {@link Farstream.Session.codecs} property
+         * @param new_codecs Codecs recently retrieved from the {@link Farstream.Session.codecs} property
+         * @virtual
          */
         vfunc_codecs_need_resend(old_codecs?: Codec[] | null, new_codecs?: Codec[] | null): Codec[];
         /**
          * Returns the GType of the stream transmitter, bindings can use it
-         * to validate/convert the parameters passed to fs_session_new_stream().
+         * to validate/convert the parameters passed to `fs_session_new_stream()`.
          * @param transmitter The name of the transmitter
+         * @virtual
          */
         vfunc_get_stream_transmitter_type(transmitter: string): GObject.GType;
         /**
          * Get the list of all available transmitters for this session.
+         * @virtual
          */
         vfunc_list_transmitters(): string[];
         /**
          * This function creates a stream for the given participant into the active session.
-         * @param participant #FsParticipant of a participant for the new stream
-         * @param direction #FsStreamDirection describing the direction of the new stream that will be created for this participant
+         * @param participant {@link Farstream.Participant} of a participant for the new stream
+         * @param direction {@link Farstream.StreamDirection} describing the direction of the new stream that will be created for this participant
+         * @virtual
          */
         vfunc_new_stream(participant: Participant, direction: StreamDirection): Stream;
         /**
-         * Sets the allowed caps for the sink and source pads for this #FsSession.
+         * Sets the allowed caps for the sink and source pads for this {@link Farstream.Session}.
          * Only codecs that can take the input specified by the `sink_caps` and
          * can produce output as specified by the `src_caps` will be produced
-         * in the #FsSession:codecs property and so only those will be negotiated.
+         * in the {@link Farstream.Session.codecs} property and so only those will be negotiated.
          *
-         * If %NULL is passed to either `src_caps` or `sink_caps,` it is not changed.
+         * If `null` is passed to either `src_caps` or `sink_caps`, it is not changed.
          *
          * The default is "video/x-raw" for a video stream, "audio/x-raw" for an audio
          * stream and "ANY" for an application stream.
          *
-         * The values can be retrived using the #FsSession:allowed-src-caps and
-         * #FsSession:allowed-sink-caps properties.
-         * @param sink_caps Caps for the sink pad or %NULL
-         * @param src_caps Caps for the src pad or %NULL
+         * The values can be retrived using the {@link Farstream.Session.allowed_src_caps} and
+         * {@link Farstream.Session.allowed_sink_caps} properties.
+         * @param sink_caps Caps for the sink pad or `null`
+         * @param src_caps Caps for the src pad or `null`
+         * @virtual
          */
         vfunc_set_allowed_caps(sink_caps?: Gst.Caps | null, src_caps?: Gst.Caps | null): boolean;
         /**
          * Set the list of desired codec preferences. The user may
          * change this value during an ongoing session. Note that doing this can cause
          * the codecs to change. Therefore this requires the user to fetch
-         * the new codecs and renegotiate them with the peers. It is a #GList
-         * of #FsCodec. The changes are immediately effective.
+         * the new codecs and renegotiate them with the peers. It is a {@link GLib.List}
+         * of {@link Farstream.Codec}. The changes are immediately effective.
          * The function does not take ownership of the list.
          *
-         * The payload type may be a valid dynamic PT (96-127), %FS_CODEC_ID_DISABLE
-         * or %FS_CODEC_ID_ANY. If the encoding name is "reserve-pt", then the
+         * The payload type may be a valid dynamic PT (96-127), `FS_CODEC_ID_DISABLE`
+         * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
          * dynamically assigned payload type.
          *
          * If the list of specifications would invalidate all codecs, an error will
          * be returned.
-         * @param codec_preferences a #GList of #FsCodec with the   desired configuration
+         * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the   desired configuration
+         * @virtual
          */
         vfunc_set_codec_preferences(codec_preferences?: Codec[] | null): boolean;
         /**
          * Sets encryption parameters. The exact parameters depend on the type of
          * plugin being used.
-         * @param parameters a #GstStructure containing the   encryption  parameters or %NULL to disable encryption
+         * @param parameters a {@link Gst.Structure} containing the   encryption  parameters or `null` to disable encryption
+         * @virtual
          */
         vfunc_set_encryption_parameters(parameters?: Gst.Structure | null): boolean;
         /**
          * This function will set the currently being sent codec for all streams in this
-         * session. The given #FsCodec must be taken directly from the #codecs
+         * session. The given {@link Farstream.Codec} must be taken directly from the #codecs
          * property of the session. If the given codec is not in the codecs
-         * list, `error` will be set and %FALSE will be returned. The `send_codec` will be
-         * copied so it must be free'd using fs_codec_destroy() when done.
-         * @param send_codec a #FsCodec representing the codec to send
+         * list, `error` will be set and `false` will be returned. The `send_codec` will be
+         * copied so it must be free'd using `fs_codec_destroy()` when done.
+         * @param send_codec a {@link Farstream.Codec} representing the codec to send
+         * @virtual
          */
         vfunc_set_send_codec(send_codec: Codec): boolean;
         /**
          * This function will start sending a telephony event (such as a DTMF
-         * tone) on the #FsSession. You have to call the function
-         * fs_session_stop_telephony_event() to stop it.
+         * tone) on the {@link Farstream.Session}. You have to call the function
+         * `fs_session_stop_telephony_event()` to stop it.
          *
-         * If this function returns %TRUE, a "farstream-telephony-event-started" will
+         * If this function returns `true`, a "farstream-telephony-event-started" will
          * always be emitted when the event is actually played out.
-         * @param event A #FsStreamDTMFEvent or another number defined at http://www.iana.org/assignments/audio-telephone-event-registry
+         * @param event A `FsStreamDTMFEvent` or another number defined at http://www.iana.org/assignments/audio-telephone-event-registry
          * @param volume The volume in dBm0 without the negative sign. Should be between 0 and 36. Higher values mean lower volume
+         * @virtual
          */
         vfunc_start_telephony_event(event: number, volume: number): boolean;
         /**
          * This function will stop sending a telephony event started by
-         * fs_session_start_telephony_event(). If the event was being sent
+         * `fs_session_start_telephony_event()`. If the event was being sent
          * for less than 50ms, it will be sent for 50ms minimum. If the
          * duration was a positive and the event is not over, it will cut it
          * short.
          *
-         * If this function returns %TRUE, a "farstream-telephony-event-stopped" will
+         * If this function returns `true`, a "farstream-telephony-event-stopped" will
          * always be emitted when the event is actually stopped.
+         * @virtual
          */
         vfunc_stop_telephony_event(): boolean;
 
@@ -2127,15 +2220,15 @@ export namespace Farstream {
          * Some codec updates need to be reliably transmitted to the other side
          * because they contain important parameters required to decode the media.
          * Other codec updates, caused by user action, don't.
-         * @param old_codecs Codecs previously retrieved from the #FsSession:codecs property
-         * @param new_codecs Codecs recently retrieved from the #FsSession:codecs property
-         * @returns A new #GList of  #FsCodec that need to be resent or %NULL if there are none. This  list must be freed with fs_codec_list_destroy().
+         * @param old_codecs Codecs previously retrieved from the {@link Farstream.Session.codecs} property
+         * @param new_codecs Codecs recently retrieved from the {@link Farstream.Session.codecs} property
+         * @returns A new {@link GLib.List} of  {@link Farstream.Codec} that need to be resent or `null` if there are none. This  list must be freed with `fs_codec_list_destroy()`.
          */
         codecs_need_resend(old_codecs?: Codec[] | null, new_codecs?: Codec[] | null): Codec[];
         /**
          * This will cause the session to remove all links to other objects and to
-         * remove itself from the #FsConference, it will also destroy all #FsStream
-         * inside this #FsSession Once a #FsSession has been destroyed, it
+         * remove itself from the {@link Farstream.Conference}, it will also destroy all {@link Farstream.Stream}
+         * inside this {@link Farstream.Session} Once a {@link Farstream.Session} has been destroyed, it
          * can not be used anymore.
          *
          * It is strongly recommended to call this function from the main thread because
@@ -2143,135 +2236,135 @@ export namespace Farstream {
          */
         destroy(): void;
         /**
-         * This function emit the "error" signal on a #FsSession, it should only be
+         * This function emit the "error" signal on a {@link Farstream.Session}, it should only be
          * called by subclasses.
-         * @param error_no The number of the error of type #FsError
+         * @param error_no The number of the error of type {@link Farstream.Error}
          * @param error_msg Error message
          */
         emit_error(error_no: number, error_msg: string): void;
         /**
          * Returns the GType of the stream transmitter, bindings can use it
-         * to validate/convert the parameters passed to fs_session_new_stream().
+         * to validate/convert the parameters passed to `fs_session_new_stream()`.
          * @param transmitter The name of the transmitter
-         * @returns The #GType of the stream transmitter
+         * @returns The {@link GObject.GType} of the stream transmitter
          */
         get_stream_transmitter_type(transmitter: string): GObject.GType;
         /**
          * Get the list of all available transmitters for this session.
-         * @returns a newly-allocagted %NULL terminated array of named of transmitters or %NULL if no transmitter is needed for this type of session. It should be freed with g_strfreev().
+         * @returns a newly-allocagted `null` terminated array of named of transmitters or `null` if no transmitter is needed for this type of session. It should be freed with `g_strfreev()`.
          */
         list_transmitters(): string[];
         /**
          * This function creates a stream for the given participant into the active session.
-         * @param participant #FsParticipant of a participant for the new stream
-         * @param direction #FsStreamDirection describing the direction of the new stream that will be created for this participant
-         * @returns the new #FsStream that has been created. User must unref the #FsStream when the stream is ended. If an error occured, returns NULL.
+         * @param participant {@link Farstream.Participant} of a participant for the new stream
+         * @param direction {@link Farstream.StreamDirection} describing the direction of the new stream that will be created for this participant
+         * @returns the new {@link Farstream.Stream} that has been created. User must unref the {@link Farstream.Stream} when the stream is ended. If an error occured, returns NULL.
          */
         new_stream(participant: Participant, direction: StreamDirection | null): Stream;
         /**
          * Parses a "farstream-codecs-changed" message and checks if it matches
          * the `session` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the session and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the session and is valid.
          */
         parse_codecs_changed(message: Gst.Message): boolean;
         /**
          * Parses a "farstream-send-codec-changed" message and checks if it matches
          * the `session` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the session and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the session and is valid.
          */
         parse_send_codec_changed(message: Gst.Message): [boolean, Codec, Codec[]];
         /**
          * Parses a "farstream-telephony-event-started" message and checks if it matches
          * the `session` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the session and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the session and is valid.
          */
         parse_telephony_event_started(message: Gst.Message): [boolean, DTMFMethod, DTMFEvent, number];
         /**
          * Parses a "farstream-telephony-event-stopped" message and checks if it matches
          * the `session` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the session and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the session and is valid.
          */
         parse_telephony_event_stopped(message: Gst.Message): [boolean, DTMFMethod];
         /**
-         * Sets the allowed caps for the sink and source pads for this #FsSession.
+         * Sets the allowed caps for the sink and source pads for this {@link Farstream.Session}.
          * Only codecs that can take the input specified by the `sink_caps` and
          * can produce output as specified by the `src_caps` will be produced
-         * in the #FsSession:codecs property and so only those will be negotiated.
+         * in the {@link Farstream.Session.codecs} property and so only those will be negotiated.
          *
-         * If %NULL is passed to either `src_caps` or `sink_caps,` it is not changed.
+         * If `null` is passed to either `src_caps` or `sink_caps`, it is not changed.
          *
          * The default is "video/x-raw" for a video stream, "audio/x-raw" for an audio
          * stream and "ANY" for an application stream.
          *
-         * The values can be retrived using the #FsSession:allowed-src-caps and
-         * #FsSession:allowed-sink-caps properties.
-         * @param sink_caps Caps for the sink pad or %NULL
-         * @param src_caps Caps for the src pad or %NULL
-         * @returns %TRUE if the new filter caps were acceptable.
+         * The values can be retrived using the {@link Farstream.Session.allowed_src_caps} and
+         * {@link Farstream.Session.allowed_sink_caps} properties.
+         * @param sink_caps Caps for the sink pad or `null`
+         * @param src_caps Caps for the src pad or `null`
+         * @returns `true` if the new filter caps were acceptable.
          */
         set_allowed_caps(sink_caps?: Gst.Caps | null, src_caps?: Gst.Caps | null): boolean;
         /**
          * Set the list of desired codec preferences. The user may
          * change this value during an ongoing session. Note that doing this can cause
          * the codecs to change. Therefore this requires the user to fetch
-         * the new codecs and renegotiate them with the peers. It is a #GList
-         * of #FsCodec. The changes are immediately effective.
+         * the new codecs and renegotiate them with the peers. It is a {@link GLib.List}
+         * of {@link Farstream.Codec}. The changes are immediately effective.
          * The function does not take ownership of the list.
          *
-         * The payload type may be a valid dynamic PT (96-127), %FS_CODEC_ID_DISABLE
-         * or %FS_CODEC_ID_ANY. If the encoding name is "reserve-pt", then the
+         * The payload type may be a valid dynamic PT (96-127), `FS_CODEC_ID_DISABLE`
+         * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
          * dynamically assigned payload type.
          *
          * If the list of specifications would invalidate all codecs, an error will
          * be returned.
-         * @param codec_preferences a #GList of #FsCodec with the   desired configuration
-         * @returns %TRUE on success, %FALSE on error.
+         * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the   desired configuration
+         * @returns `true` on success, `false` on error.
          */
         set_codec_preferences(codec_preferences?: Codec[] | null): boolean;
         /**
          * Sets encryption parameters. The exact parameters depend on the type of
          * plugin being used.
-         * @param parameters a #GstStructure containing the   encryption  parameters or %NULL to disable encryption
-         * @returns %TRUE if the encryption parameters could be set, %FALSE otherwise
+         * @param parameters a {@link Gst.Structure} containing the   encryption  parameters or `null` to disable encryption
+         * @returns `true` if the encryption parameters could be set, `false` otherwise
          */
         set_encryption_parameters(parameters?: Gst.Structure | null): boolean;
         /**
          * This function will set the currently being sent codec for all streams in this
-         * session. The given #FsCodec must be taken directly from the #codecs
+         * session. The given {@link Farstream.Codec} must be taken directly from the #codecs
          * property of the session. If the given codec is not in the codecs
-         * list, `error` will be set and %FALSE will be returned. The `send_codec` will be
-         * copied so it must be free'd using fs_codec_destroy() when done.
-         * @param send_codec a #FsCodec representing the codec to send
-         * @returns %FALSE if the send codec couldn't be set.
+         * list, `error` will be set and `false` will be returned. The `send_codec` will be
+         * copied so it must be free'd using `fs_codec_destroy()` when done.
+         * @param send_codec a {@link Farstream.Codec} representing the codec to send
+         * @returns `false` if the send codec couldn't be set.
          */
         set_send_codec(send_codec: Codec): boolean;
         /**
          * This function will start sending a telephony event (such as a DTMF
-         * tone) on the #FsSession. You have to call the function
-         * fs_session_stop_telephony_event() to stop it.
+         * tone) on the {@link Farstream.Session}. You have to call the function
+         * `fs_session_stop_telephony_event()` to stop it.
          *
-         * If this function returns %TRUE, a "farstream-telephony-event-started" will
+         * If this function returns `true`, a "farstream-telephony-event-started" will
          * always be emitted when the event is actually played out.
-         * @param event A #FsStreamDTMFEvent or another number defined at http://www.iana.org/assignments/audio-telephone-event-registry
+         * @param event A `FsStreamDTMFEvent` or another number defined at http://www.iana.org/assignments/audio-telephone-event-registry
          * @param volume The volume in dBm0 without the negative sign. Should be between 0 and 36. Higher values mean lower volume
-         * @returns %TRUE if sucessful, it can return %FALSE if the #FsStream does not support this telephony event.
+         * @returns `true` if sucessful, it can return `false` if the {@link Farstream.Stream} does not support this telephony event.
          */
         start_telephony_event(event: number, volume: number): boolean;
         /**
          * This function will stop sending a telephony event started by
-         * fs_session_start_telephony_event(). If the event was being sent
+         * `fs_session_start_telephony_event()`. If the event was being sent
          * for less than 50ms, it will be sent for 50ms minimum. If the
          * duration was a positive and the event is not over, it will cut it
          * short.
          *
-         * If this function returns %TRUE, a "farstream-telephony-event-stopped" will
+         * If this function returns `true`, a "farstream-telephony-event-stopped" will
          * always be emitted when the event is actually stopped.
-         * @returns %TRUE if sucessful, it can return %FALSE if the #FsSession does not support telephony events or if no telephony event is being sent
+         * @returns `true` if sucessful, it can return `false` if the {@link Farstream.Session} does not support telephony events or if no telephony event is being sent
          */
         stop_telephony_event(): boolean;
     }
@@ -2279,7 +2372,22 @@ export namespace Farstream {
     namespace Stream {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted in any error condition
+             * @signal
+             */
             error: (arg0: Error, arg1: string) => void;
+            /**
+             * This signal is emitted when a new gst source pad has been created for a
+             * specific codec being received. There will be a different source pad for
+             * each codec that is received. The user must ref the {@link Gst.Pad} if he wants to
+             * keep it. The user should not modify the {@link Farstream.Codec} and must copy it if he
+             * wants to use it outside the callback scope.
+             *
+             * This signal is not emitted on the main thread, but on GStreamer's streaming
+             * thread!
+             * @signal
+             */
             'src-pad-added': (arg0: Gst.Pad, arg1: Codec) => void;
             'notify::current-recv-codecs': (pspec: GObject.ParamSpec) => void;
             'notify::decryption-parameters': (pspec: GObject.ParamSpec) => void;
@@ -2309,6 +2417,7 @@ export namespace Farstream {
 
     /**
      * All members are private, access them using methods and properties
+     * @gir-type Class
      */
     abstract class Stream extends GObject.Object {
         static $gtype: GObject.GType<Stream>;
@@ -2317,10 +2426,10 @@ export namespace Farstream {
 
         /**
          * This is the list of codecs that have been received by this stream.
-         * The user must free the list if fs_codec_list_destroy().
-         * The "farstream-recv-codecs-changed" message is send on the #GstBus
+         * The user must free the list if `fs_codec_list_destroy()`.
+         * The "farstream-recv-codecs-changed" message is send on the {@link Gst.Bus}
          * when the value of this property changes.
-         * It is normally emitted right after #FsStream::src-pad-added
+         * It is normally emitted right after {@link Farstream.Stream.SignalSignatures.src_pad_added | Farstream.Stream::src-pad-added}
          * only if that codec was not previously received in this stream, but it can
          * also be emitted if the pad already exists, but the source material that
          * will come to it is different.
@@ -2328,10 +2437,10 @@ export namespace Farstream {
         get current_recv_codecs(): Codec[];
         /**
          * This is the list of codecs that have been received by this stream.
-         * The user must free the list if fs_codec_list_destroy().
-         * The "farstream-recv-codecs-changed" message is send on the #GstBus
+         * The user must free the list if `fs_codec_list_destroy()`.
+         * The "farstream-recv-codecs-changed" message is send on the {@link Gst.Bus}
          * when the value of this property changes.
-         * It is normally emitted right after #FsStream::src-pad-added
+         * It is normally emitted right after {@link Farstream.Stream.SignalSignatures.src_pad_added | Farstream.Stream::src-pad-added}
          * only if that codec was not previously received in this stream, but it can
          * also be emitted if the pad already exists, but the source material that
          * will come to it is different.
@@ -2347,46 +2456,46 @@ export namespace Farstream {
         get decryptionParameters(): Gst.Structure;
         /**
          * The direction of the stream. This property is set initially as a parameter
-         * to the fs_session_new_stream() function. It can be changed later if
+         * to the `fs_session_new_stream()` function. It can be changed later if
          * required by setting this property.
          */
         get direction(): StreamDirection;
         set direction(val: StreamDirection);
         /**
          * This is the list of negotiatied codecs, it is the same list as the list
-         * of #FsCodec from the parent #FsSession, except that the codec config data
+         * of {@link Farstream.Codec} from the parent {@link Farstream.Session}, except that the codec config data
          * has been replaced with the data from the remote codecs for this stream.
-         * This is the list of #FsCodec used to receive data from this stream.
-         * It is a #GList of #FsCodec.
+         * This is the list of {@link Farstream.Codec} used to receive data from this stream.
+         * It is a {@link GLib.List} of {@link Farstream.Codec}.
          */
         get negotiated_codecs(): Codec[];
         /**
          * This is the list of negotiatied codecs, it is the same list as the list
-         * of #FsCodec from the parent #FsSession, except that the codec config data
+         * of {@link Farstream.Codec} from the parent {@link Farstream.Session}, except that the codec config data
          * has been replaced with the data from the remote codecs for this stream.
-         * This is the list of #FsCodec used to receive data from this stream.
-         * It is a #GList of #FsCodec.
+         * This is the list of {@link Farstream.Codec} used to receive data from this stream.
+         * It is a {@link GLib.List} of {@link Farstream.Codec}.
          */
         get negotiatedCodecs(): Codec[];
         /**
-         * The #FsParticipant for this stream. This property is a construct param and
+         * The {@link Farstream.Participant} for this stream. This property is a construct param and
          * is read-only construction.
          */
         get participant(): Participant;
         /**
          * This is the list of remote codecs for this stream. They must be set by the
-         * user as soon as they are known using fs_stream_set_remote_codecs()
-         * (generally through external signaling). It is a #GList of #FsCodec.
+         * user as soon as they are known using `fs_stream_set_remote_codecs()`
+         * (generally through external signaling). It is a {@link GLib.List} of {@link Farstream.Codec}.
          */
         get remote_codecs(): Codec[];
         /**
          * This is the list of remote codecs for this stream. They must be set by the
-         * user as soon as they are known using fs_stream_set_remote_codecs()
-         * (generally through external signaling). It is a #GList of #FsCodec.
+         * user as soon as they are known using `fs_stream_set_remote_codecs()`
+         * (generally through external signaling). It is a {@link GLib.List} of {@link Farstream.Codec}.
          */
         get remoteCodecs(): Codec[];
         /**
-         * The #FsSession for this stream. This property is a construct param and
+         * The {@link Farstream.Session} for this stream. This property is a construct param and
          * is read-only construction.
          */
         get session(): Session;
@@ -2408,16 +2517,19 @@ export namespace Farstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Stream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Stream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Stream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2441,36 +2553,41 @@ export namespace Farstream {
          * can be matched with a stream by its source IP address. This is mostly useful
          * if one is using multicast or is behind a muxer server.
          * @param id The id to add to the stream
+         * @virtual
          */
         vfunc_add_id(id: number): void;
         /**
          * This function adds remote candidates. Any new candidates are
          * added to the list. The candidates will be used to establish a connection
          * with the peer. A copy will be made so the user must free the
-         * passed candidate using fs_candidate_destroy() when done.
-         * @param candidates an #GList of #FsCandidate  representing the remote candidates
+         * passed candidate using `fs_candidate_destroy()` when done.
+         * @param candidates an {@link GLib.List} of {@link Farstream.Candidate}  representing the remote candidates
+         * @virtual
          */
         vfunc_add_remote_candidates(candidates: Candidate[]): boolean;
         /**
          * This function forces data to be sent immediately to the selected remote
          * candidate, by-passing any connectivity checks. There should be at most
          * one candidate per component.
-         * @param remote_candidates a #GList of #FsCandidate to force
+         * @param remote_candidates a {@link GLib.List} of {@link Farstream.Candidate} to force
+         * @virtual
          */
         vfunc_force_remote_candidates(remote_candidates: Candidate[]): boolean;
         /**
          * Sets decryption parameters. The exact parameters depend on the type of
          * plugin being used.
-         * @param parameters a #GstStructure containing the decryption  parameters
+         * @param parameters a {@link Gst.Structure} containing the decryption  parameters
+         * @virtual
          */
         vfunc_set_decryption_parameters(parameters: Gst.Structure): boolean;
         /**
          * This function will set the list of remote codecs for this stream. If
          * the given remote codecs couldn't be negotiated with the list of local
-         * codecs or already negotiated codecs for the corresponding #FsSession, `error`
-         * will be set and %FALSE will be returned. The `remote_codecs` list will be
-         * copied so it must be free'd using fs_codec_list_destroy() when done.
-         * @param remote_codecs a #GList of #FsCodec representing   the remote codecs
+         * codecs or already negotiated codecs for the corresponding {@link Farstream.Session}, `error`
+         * will be set and `false` will be returned. The `remote_codecs` list will be
+         * copied so it must be free'd using `fs_codec_list_destroy()` when done.
+         * @param remote_codecs a {@link GLib.List} of {@link Farstream.Codec} representing   the remote codecs
+         * @virtual
          */
         vfunc_set_remote_codecs(remote_codecs: Codec[]): boolean;
         /**
@@ -2480,7 +2597,8 @@ export namespace Farstream {
          * The parameters correspond to the varios GObject properties of the
          * selected stream transmitter.
          * @param transmitter Name of the type of transmitter to use for this stream
-         * @param stream_transmitter_parameters an array of n_parameters #GParameter struct that will be passed   to the newly-create #FsStreamTransmitter
+         * @param stream_transmitter_parameters an array of n_parameters {@link GObject.Parameter} struct that will be passed   to the newly-create {@link Farstream.StreamTransmitter}
+         * @virtual
          */
         vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters?: GObject.Parameter[] | null): boolean;
 
@@ -2507,14 +2625,14 @@ export namespace Farstream {
          * This function adds remote candidates. Any new candidates are
          * added to the list. The candidates will be used to establish a connection
          * with the peer. A copy will be made so the user must free the
-         * passed candidate using fs_candidate_destroy() when done.
-         * @param candidates an #GList of #FsCandidate  representing the remote candidates
+         * passed candidate using `fs_candidate_destroy()` when done.
+         * @param candidates an {@link GLib.List} of {@link Farstream.Candidate}  representing the remote candidates
          * @returns TRUE if the candidate was valid, FALSE otherwise
          */
         add_remote_candidates(candidates: Candidate[]): boolean;
         /**
          * This will cause the stream to remove all links to other objects and to
-         * remove itself from the #FsSession. Once a #FsStream has been destroyed, it
+         * remove itself from the {@link Farstream.Session}. Once a {@link Farstream.Stream} has been destroyed, it
          * can not be used anymore.
          *
          * It is strongly recommended to call this function from the main thread because
@@ -2522,84 +2640,84 @@ export namespace Farstream {
          */
         destroy(): void;
         /**
-         * This function emits the #FsStream::error" signal, it should only be
+         * This function emits the {@link Farstream.Stream.SignalSignatures.error | Farstream.Stream::error}" signal, it should only be
          * called by subclasses.
          * @param error_no The number of the error
          * @param error_msg Error message to be displayed to user
          */
         emit_error(error_no: number, error_msg: string): void;
         /**
-         * Emits the #FsStream::src-pad-added" signal, it should only be
+         * Emits the {@link Farstream.Stream.SignalSignatures.src_pad_added | Farstream.Stream::src-pad-added}" signal, it should only be
          * called by subclasses.
-         * @param pad the #GstPad that this #FsStream has created
-         * @param codec The #FsCodec for this pad
+         * @param pad the {@link Gst.Pad} that this {@link Farstream.Stream} has created
+         * @param codec The {@link Farstream.Codec} for this pad
          */
         emit_src_pad_added(pad: Gst.Pad, codec: Codec): void;
         /**
          * This function forces data to be sent immediately to the selected remote
          * candidate, by-passing any connectivity checks. There should be at most
          * one candidate per component.
-         * @param remote_candidates a #GList of #FsCandidate to force
-         * @returns %TRUE if the candidates could be forced, %FALSE otherwise
+         * @param remote_candidates a {@link GLib.List} of {@link Farstream.Candidate} to force
+         * @returns `true` if the candidates could be forced, `false` otherwise
          */
         force_remote_candidates(remote_candidates: Candidate[]): boolean;
         /**
-         * Creates a #GstIterator that can be used to iterate the src pads of this
-         * stream. These are the pads that were announced by #FsStream:src-pad-added
+         * Creates a {@link Gst.Iterator} that can be used to iterate the src pads of this
+         * stream. These are the pads that were announced by {@link Farstream.Stream.src_pad_added}
          * and are still valid.
-         * @returns The #GstIterator
+         * @returns The {@link Gst.Iterator}
          */
         iterate_src_pads(): Gst.Iterator;
         /**
          * Parses a "farstream-component-state-changed" message and checks if it matches
          * the `stream` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the stream and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the stream and is valid.
          */
         parse_component_state_changed(message: Gst.Message): [boolean, number, StreamState];
         /**
          * Parses a "farstream-local-candidates-prepared" message and checks if it matches
          * the `stream` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the stream and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the stream and is valid.
          */
         parse_local_candidates_prepared(message: Gst.Message): boolean;
         /**
          * Parses a "farstream-new-active-candidate-pair" message and checks
          * if it matches the `stream` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the stream and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the stream and is valid.
          */
         parse_new_active_candidate_pair(message: Gst.Message): [boolean, Candidate, Candidate];
         /**
          * Parses a "farstream-new-local-candidate" message and checks if it matches
          * the `stream` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the stream and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the stream and is valid.
          */
         parse_new_local_candidate(message: Gst.Message): [boolean, Candidate];
         /**
          * Parses a "farstream-recv-codecs-changed" message and checks if it matches
          * the `stream` parameters.
-         * @param message a #GstMessage to parse
-         * @returns %TRUE if the message matches the stream and is valid.
+         * @param message a {@link Gst.Message} to parse
+         * @returns `true` if the message matches the stream and is valid.
          */
         parse_recv_codecs_changed(message: Gst.Message): [boolean, Codec[]];
         /**
          * Sets decryption parameters. The exact parameters depend on the type of
          * plugin being used.
-         * @param parameters a #GstStructure containing the decryption  parameters
-         * @returns %TRUE if the decryption parameters could be set, %FALSE otherwise
+         * @param parameters a {@link Gst.Structure} containing the decryption  parameters
+         * @returns `true` if the decryption parameters could be set, `false` otherwise
          */
         set_decryption_parameters(parameters: Gst.Structure): boolean;
         /**
          * This function will set the list of remote codecs for this stream. If
          * the given remote codecs couldn't be negotiated with the list of local
-         * codecs or already negotiated codecs for the corresponding #FsSession, `error`
-         * will be set and %FALSE will be returned. The `remote_codecs` list will be
-         * copied so it must be free'd using fs_codec_list_destroy() when done.
-         * @param remote_codecs a #GList of #FsCodec representing   the remote codecs
-         * @returns %FALSE if the remote codecs couldn't be set.
+         * codecs or already negotiated codecs for the corresponding {@link Farstream.Session}, `error`
+         * will be set and `false` will be returned. The `remote_codecs` list will be
+         * copied so it must be free'd using `fs_codec_list_destroy()` when done.
+         * @param remote_codecs a {@link GLib.List} of {@link Farstream.Codec} representing   the remote codecs
+         * @returns `false` if the remote codecs couldn't be set.
          */
         set_remote_codecs(remote_codecs: Codec[]): boolean;
         /**
@@ -2609,8 +2727,8 @@ export namespace Farstream {
          * The parameters correspond to the varios GObject properties of the
          * selected stream transmitter.
          * @param transmitter Name of the type of transmitter to use for this stream
-         * @param stream_transmitter_parameters an array of n_parameters #GParameter struct that will be passed   to the newly-create #FsStreamTransmitter
-         * @returns %TRUE if the transmitter could be set, %FALSE otherwise
+         * @param stream_transmitter_parameters an array of n_parameters {@link GObject.Parameter} struct that will be passed   to the newly-create {@link Farstream.StreamTransmitter}
+         * @returns `true` if the transmitter could be set, `false` otherwise
          */
         set_transmitter(transmitter: string, stream_transmitter_parameters?: GObject.Parameter[] | null): boolean;
         /**
@@ -2620,11 +2738,11 @@ export namespace Farstream {
          * The parameters correspond to the varios GObject properties of the
          * selected stream transmitter.
          *
-         * This is the same as fs_stream_set_transmitter() except that the parameters
-         * are passed in a #GHashTable to make it more friendly to GObject introspection
+         * This is the same as `fs_stream_set_transmitter()` except that the parameters
+         * are passed in a {@link GLib.HashTable} to make it more friendly to GObject introspection
          * @param transmitter Name of the type of transmitter to use for this stream
-         * @param stream_transmitter_parameters A #GHashTable of string->GValue containing the parameters.
-         * @returns %TRUE if the transmitter could be set, %FALSE otherwise
+         * @param stream_transmitter_parameters A {@link GLib.HashTable} of string->GValue containing the parameters.
+         * @returns `true` if the transmitter could be set, `false` otherwise
          */
         set_transmitter_ht(
             transmitter: string,
@@ -2635,11 +2753,42 @@ export namespace Farstream {
     namespace StreamTransmitter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted in any error condition
+             * @signal
+             */
             error: (arg0: Error, arg1: string) => void;
+            /**
+             * This signal is emitted when a buffer coming from a confirmed known source
+             * is received.
+             * @signal
+             */
             'known-source-packet-received': (arg0: number, arg1: any) => void;
+            /**
+             * This signal is emitted when all local candidates have been
+             * prepared, an ICE implementation would send its SDP offer or answer.
+             * @signal
+             */
             'local-candidates-prepared': () => void;
+            /**
+             * This signal is emitted when there is a new active chandidate pair that has
+             * been established. This is specially useful for ICE where the active
+             * candidate pair can change automatically due to network conditions. The user
+             * must not modify the candidates and must copy them if he wants to use them
+             * outside the callback scope.
+             * @signal
+             */
             'new-active-candidate-pair': (arg0: Candidate, arg1: Candidate) => void;
+            /**
+             * This signal is emitted when a new local candidate is discovered.
+             * @signal
+             */
             'new-local-candidate': (arg0: Candidate) => void;
+            /**
+             * This signal is emitted when the ICE state (or equivalent) of the component
+             * changes
+             * @signal
+             */
             'state-changed': (arg0: number, arg1: StreamState) => void;
             'notify::associate-on-source': (pspec: GObject.ParamSpec) => void;
             'notify::preferred-local-candidates': (pspec: GObject.ParamSpec) => void;
@@ -2659,6 +2808,7 @@ export namespace Farstream {
 
     /**
      * All members are private, access them using methods and properties
+     * @gir-type Class
      */
     abstract class StreamTransmitter extends GObject.Object {
         static $gtype: GObject.GType<StreamTransmitter>;
@@ -2678,7 +2828,7 @@ export namespace Farstream {
         get preferred_local_candidates(): CandidateList;
         get preferredLocalCandidates(): CandidateList;
         /**
-         * A network source #GstElement to be used by the #FsSession
+         * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          */
         get sending(): boolean;
         set sending(val: boolean);
@@ -2700,16 +2850,19 @@ export namespace Farstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StreamTransmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2720,25 +2873,29 @@ export namespace Farstream {
 
         /**
          * This function is used to add remote candidates to the transmitter
-         * @param candidates a #GList of the remote candidates
+         * @param candidates a {@link GLib.List} of the remote candidates
+         * @virtual
          */
         vfunc_add_remote_candidates(candidates: Candidate[]): boolean;
         /**
          * This function forces data to be sent immediately to the selected remote
          * candidate, by-passing any connectivity checks. There should be at most
          * one candidate per component.
-         * @param remote_candidates a #GList of #FsCandidate to   force
+         * @param remote_candidates a {@link GLib.List} of {@link Farstream.Candidate} to   force
+         * @virtual
          */
         vfunc_force_remote_candidates(remote_candidates: Candidate[]): boolean;
         /**
          * This function tells the transmitter to start gathering local candidates,
          * signals for new candidates and newly active candidates can be emitted
          * during the call to this function.
+         * @virtual
          */
         vfunc_gather_local_candidates(): boolean;
         /**
-         * This functions stops the #FsStreamTransmitter, it must be called before
+         * This functions stops the {@link Farstream.StreamTransmitter}, it must be called before
          * the last reference is dropped.
+         * @virtual
          */
         vfunc_stop(): void;
 
@@ -2746,12 +2903,12 @@ export namespace Farstream {
 
         /**
          * This function is used to add remote candidates to the transmitter
-         * @param candidates a #GList of the remote candidates
-         * @returns TRUE of the candidate could be added, FALSE if it couldnt   (and the #GError will be set)
+         * @param candidates a {@link GLib.List} of the remote candidates
+         * @returns TRUE of the candidate could be added, FALSE if it couldnt   (and the {@link GLib.Error} will be set)
          */
         add_remote_candidates(candidates: Candidate[]): boolean;
         /**
-         * This function emit the "error" signal on a #FsStreamTransmitter, it should
+         * This function emit the "error" signal on a {@link Farstream.StreamTransmitter}, it should
          * only be called by subclasses.
          * @param error_no The number of the error
          * @param error_msg Error message (for the programmer)
@@ -2761,19 +2918,19 @@ export namespace Farstream {
          * This function forces data to be sent immediately to the selected remote
          * candidate, by-passing any connectivity checks. There should be at most
          * one candidate per component.
-         * @param remote_candidates a #GList of #FsCandidate to   force
-         * @returns %TRUE if the candidates could be forced, %FALSE otherwise
+         * @param remote_candidates a {@link GLib.List} of {@link Farstream.Candidate} to   force
+         * @returns `true` if the candidates could be forced, `false` otherwise
          */
         force_remote_candidates(remote_candidates: Candidate[]): boolean;
         /**
          * This function tells the transmitter to start gathering local candidates,
          * signals for new candidates and newly active candidates can be emitted
          * during the call to this function.
-         * @returns %TRUE if it succeeds (or is not implemented), %FALSE otherwise
+         * @returns `true` if it succeeds (or is not implemented), `false` otherwise
          */
         gather_local_candidates(): boolean;
         /**
-         * This functions stops the #FsStreamTransmitter, it must be called before
+         * This functions stops the {@link Farstream.StreamTransmitter}, it must be called before
          * the last reference is dropped.
          */
         stop(): void;
@@ -2782,6 +2939,10 @@ export namespace Farstream {
     namespace Transmitter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted in any error condition
+             * @signal
+             */
             error: (arg0: Error, arg1: string) => void;
             'notify::components': (pspec: GObject.ParamSpec) => void;
             'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
@@ -2806,6 +2967,7 @@ export namespace Farstream {
 
     /**
      * All members are private, access them using methods and properties
+     * @gir-type Class
      */
     abstract class Transmitter extends GObject.Object {
         static $gtype: GObject.GType<Transmitter>;
@@ -2829,7 +2991,7 @@ export namespace Farstream {
         get doTimestamp(): boolean;
         set doTimestamp(val: boolean);
         /**
-         * A network source #GstElement to be used by the #FsSession
+         * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          * These element's sink must have async=FALSE
          * This element MUST provide a pad named "sink_\%u" per component.
          * These pads number must start at 1 (the \%u corresponds to the component
@@ -2838,7 +3000,7 @@ export namespace Farstream {
          */
         get gst_sink(): Gst.Element;
         /**
-         * A network source #GstElement to be used by the #FsSession
+         * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          * These element's sink must have async=FALSE
          * This element MUST provide a pad named "sink_\%u" per component.
          * These pads number must start at 1 (the \%u corresponds to the component
@@ -2847,7 +3009,7 @@ export namespace Farstream {
          */
         get gstSink(): Gst.Element;
         /**
-         * A network source #GstElement to be used by the #FsSession
+         * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          * This element MUST provide a source pad named "src_%u" per component.
          * These pads number must start at 1 (the %u corresponds to the component
          * number).
@@ -2855,7 +3017,7 @@ export namespace Farstream {
          */
         get gst_src(): Gst.Element;
         /**
-         * A network source #GstElement to be used by the #FsSession
+         * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          * This element MUST provide a source pad named "src_%u" per component.
          * These pads number must start at 1 (the %u corresponds to the component
          * number).
@@ -2887,16 +3049,19 @@ export namespace Farstream {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Transmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2916,14 +3081,16 @@ export namespace Farstream {
          * This function returns the GObject type for the stream transmitter.
          * This is meant for bindings that need to introspect the type of arguments
          * that can be passed to the _new_stream_transmitter.
+         * @virtual
          */
         vfunc_get_stream_transmitter_type(): GObject.GType;
         /**
-         * This function will create a new #FsStreamTransmitter element for a
-         * specific participant for this #FsTransmitter
-         * @param participant the #FsParticipant for which the #FsStream using this new #FsStreamTransmitter is created
-         * @param n_parameters The number of parameters to pass to the newly created #FsStreamTransmitter
-         * @param parameters an array of #GParameter
+         * This function will create a new {@link Farstream.StreamTransmitter} element for a
+         * specific participant for this {@link Farstream.Transmitter}
+         * @param participant the {@link Farstream.Participant} for which the {@link Farstream.Stream} using this new {@link Farstream.StreamTransmitter} is created
+         * @param n_parameters The number of parameters to pass to the newly created {@link Farstream.StreamTransmitter}
+         * @param parameters an array of {@link GObject.Parameter}
+         * @virtual
          */
         vfunc_new_stream_transmitter(
             participant: Participant,
@@ -2934,7 +3101,7 @@ export namespace Farstream {
         // Methods
 
         /**
-         * This function emit the "error" signal on a #FsTransmitter, it should
+         * This function emit the "error" signal on a {@link Farstream.Transmitter}, it should
          * only be called by subclasses.
          * @param error_no The number of the error
          * @param error_msg Error message to be displayed to user
@@ -2944,16 +3111,16 @@ export namespace Farstream {
          * This function returns the GObject type for the stream transmitter.
          * This is meant for bindings that need to introspect the type of arguments
          * that can be passed to the _new_stream_transmitter.
-         * @returns the #GType
+         * @returns the {@link GObject.GType}
          */
         get_stream_transmitter_type(): GObject.GType;
         /**
-         * This function will create a new #FsStreamTransmitter element for a
-         * specific participant for this #FsTransmitter
-         * @param participant the #FsParticipant for which the #FsStream using this new #FsStreamTransmitter is created
-         * @param n_parameters The number of parameters to pass to the newly created #FsStreamTransmitter
-         * @param parameters an array of #GParameter
-         * @returns a new #FsStreamTransmitter, or NULL if there is an  error
+         * This function will create a new {@link Farstream.StreamTransmitter} element for a
+         * specific participant for this {@link Farstream.Transmitter}
+         * @param participant the {@link Farstream.Participant} for which the {@link Farstream.Stream} using this new {@link Farstream.StreamTransmitter} is created
+         * @param n_parameters The number of parameters to pass to the newly created {@link Farstream.StreamTransmitter}
+         * @param parameters an array of {@link GObject.Parameter}
+         * @returns a new {@link Farstream.StreamTransmitter}, or NULL if there is an  error
          */
         new_stream_transmitter(
             participant: Participant,
@@ -2964,6 +3131,7 @@ export namespace Farstream {
 
     /**
      * Struct to hold information about ICE-19 compliant candidates
+     * @gir-type Struct
      */
     class Candidate {
         static $gtype: GObject.GType<Candidate>;
@@ -3021,14 +3189,15 @@ export namespace Farstream {
         // Methods
 
         /**
-         * Copies a #FsCandidate and its contents.
-         * @returns a new #FsCandidate
+         * Copies a {@link Farstream.Candidate} and its contents.
+         * @returns a new {@link Farstream.Candidate}
          */
         copy(): Candidate;
     }
 
     /**
      * This structure reprensents one codec that can be offered or received
+     * @gir-type Struct
      */
     class Codec {
         static $gtype: GObject.GType<Codec>;
@@ -3053,38 +3222,38 @@ export namespace Farstream {
         // Methods
 
         /**
-         * This function adds an new feedback parameter to a #FsCodec
+         * This function adds an new feedback parameter to a {@link Farstream.Codec}
          * @param type The type of the feedback parameter
          * @param subtype The subtype of the feedback parameter
          * @param extra_params The extra_params of the feeback parameter
          */
         add_feedback_parameter(type: string, subtype: string, extra_params: string): void;
         /**
-         * This function adds an new optional parameter to a #FsCodec
+         * This function adds an new optional parameter to a {@link Farstream.Codec}
          * @param name The name of the optional parameter
          * @param value The extra_params of the optional parameter
          */
         add_optional_parameter(name: string, value: string): void;
         /**
          * Compare two codecs, it will declare two codecs to be identical even
-         * if their optional parameters are in a different order. %NULL encoding names
+         * if their optional parameters are in a different order. `null` encoding names
          * are ignored.
          * @param codec2 Second codec
-         * @returns %TRUE of the codecs are identical, %FALSE otherwise
+         * @returns `true` of the codecs are identical, `false` otherwise
          */
         are_equal(codec2: Codec): boolean;
         /**
-         * Copies a #FsCodec structure.
+         * Copies a {@link Farstream.Codec} structure.
          * @returns a copy of the codec
          */
         copy(): Codec;
         /**
-         * Finds the #FsFeedbackParameter in the #FsCodec that has the requested
+         * Finds the {@link Farstream.FeedbackParameter} in the {@link Farstream.Codec} that has the requested
          * subtype, type and extra_params. One of which must be non-NULL;
-         * @param type The subtype of the parameter to search for or %NULL for any type
-         * @param subtype The subtype of the parameter to search for or %NULL for any subtype
-         * @param extra_params The extra_params of the parameter to search for or %NULL for any extra_params
-         * @returns the #FsFeedbackParameter from the #FsCodec or %NULL
+         * @param type The subtype of the parameter to search for or `null` for any type
+         * @param subtype The subtype of the parameter to search for or `null` for any subtype
+         * @param extra_params The extra_params of the parameter to search for or `null` for any extra_params
+         * @returns the {@link Farstream.FeedbackParameter} from the {@link Farstream.Codec} or `null`
          */
         get_feedback_parameter(
             type?: string | null,
@@ -3092,25 +3261,25 @@ export namespace Farstream {
             extra_params?: string | null,
         ): FeedbackParameter;
         /**
-         * Finds the #FsCodecParameter in the #FsCodec that has the requested name
-         * and, if not %NULL, the requested value
+         * Finds the {@link Farstream.CodecParameter} in the {@link Farstream.Codec} that has the requested name
+         * and, if not `null`, the requested value
          * @param name The name of the parameter to search for
-         * @param value The value of the parameter to search for or %NULL for any value
-         * @returns the #FsCodecParameter from the #FsCodec or %NULL
+         * @param value The value of the parameter to search for or `null` for any value
+         * @returns the {@link Farstream.CodecParameter} from the {@link Farstream.Codec} or `null`
          */
         get_optional_parameter(name: string, value?: string | null): CodecParameter;
         /**
          * Removes an optional parameter from a codec.
          *
          * NULL param will do nothing.
-         * @param item a pointer to the #GList element to remove that contains a #FsFeedbackParameter
+         * @param item a pointer to the {@link GLib.List} element to remove that contains a {@link Farstream.FeedbackParameter}
          */
         remove_feedback_parameter(item: FeedbackParameter[]): void;
         /**
          * Removes an optional parameter from a codec.
          *
          * NULL param will do nothing.
-         * @param param a pointer to the #FsCodecParameter to remove
+         * @param param a pointer to the {@link Farstream.CodecParameter} to remove
          */
         remove_optional_parameter(param: CodecParameter): void;
         /**
@@ -3122,6 +3291,7 @@ export namespace Farstream {
 
     /**
      * Used to store arbitary parameters for a codec
+     * @gir-type Struct
      */
     class CodecParameter {
         static $gtype: GObject.GType<CodecParameter>;
@@ -3143,24 +3313,34 @@ export namespace Farstream {
         // Methods
 
         /**
-         * Makes a copy of a #FsCodecParameter
-         * @returns a newly allocated #FsCodecParameter
+         * Makes a copy of a {@link Farstream.CodecParameter}
+         * @returns a newly allocated {@link Farstream.CodecParameter}
          */
         copy(): CodecParameter;
         /**
-         * Frees a #FsCodecParameter
+         * Frees a {@link Farstream.CodecParameter}
          */
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConferenceClass = typeof Conference;
+    /**
+     * @gir-type Alias
+     */
     type ElementAddedNotifierClass = typeof ElementAddedNotifier;
+    /**
+     * @gir-type Struct
+     */
     abstract class ElementAddedNotifierPrivate {
         static $gtype: GObject.GType<ElementAddedNotifierPrivate>;
     }
 
     /**
      * Use to store feedback parameters
+     * @gir-type Struct
      */
     class FeedbackParameter {
         static $gtype: GObject.GType<FeedbackParameter>;
@@ -3184,29 +3364,42 @@ export namespace Farstream {
         // Methods
 
         /**
-         * Makes a copy of a #FsFeedbackParameter
-         * @returns a newly allocated #FsFeedbackParameter
+         * Makes a copy of a {@link Farstream.FeedbackParameter}
+         * @returns a newly allocated {@link Farstream.FeedbackParameter}
          */
         copy(): FeedbackParameter;
         /**
-         * Frees a #FsFeedbackParameter
+         * Frees a {@link Farstream.FeedbackParameter}
          */
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ParticipantClass = typeof Participant;
+    /**
+     * @gir-type Struct
+     */
     abstract class ParticipantPrivate {
         static $gtype: GObject.GType<ParticipantPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PluginClass = typeof Plugin;
+    /**
+     * @gir-type Struct
+     */
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
     }
 
     /**
      * Defines a RTP header extension with its negotiated identifier, direction
-     * and URI. They should only be created with fs_rtp_header_extension_new().
+     * and URI. They should only be created with `fs_rtp_header_extension_new()`.
+     * @gir-type Struct
      */
     class RtpHeaderExtension {
         static $gtype: GObject.GType<RtpHeaderExtension>;
@@ -3226,29 +3419,53 @@ export namespace Farstream {
         // Methods
 
         /**
-         * Compares two #FsRtpHeaderExtension structures
-         * @param extension2 The second #FsRtpHeaderExtension
-         * @returns %TRUE if they are identical, %FALSE otherwise
+         * Compares two {@link Farstream.RtpHeaderExtension} structures
+         * @param extension2 The second {@link Farstream.RtpHeaderExtension}
+         * @returns `true` if they are identical, `false` otherwise
          */
         are_equal(extension2: RtpHeaderExtension): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SessionClass = typeof Session;
+    /**
+     * @gir-type Struct
+     */
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StreamClass = typeof Stream;
+    /**
+     * @gir-type Struct
+     */
     abstract class StreamPrivate {
         static $gtype: GObject.GType<StreamPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StreamTransmitterClass = typeof StreamTransmitter;
+    /**
+     * @gir-type Struct
+     */
     abstract class StreamTransmitterPrivate {
         static $gtype: GObject.GType<StreamTransmitterPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TransmitterClass = typeof Transmitter;
+    /**
+     * @gir-type Struct
+     */
     abstract class TransmitterPrivate {
         static $gtype: GObject.GType<TransmitterPrivate>;
     }

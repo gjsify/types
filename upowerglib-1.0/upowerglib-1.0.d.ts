@@ -22,6 +22,7 @@ export namespace UPowerGlib {
 
     /**
      * The device type.
+     * @gir-type Enum
      */
     enum DeviceKind {
         UNKNOWN,
@@ -41,6 +42,7 @@ export namespace UPowerGlib {
 
     /**
      * The warning level of a battery.
+     * @gir-type Enum
      */
     enum DeviceLevel {
         UNKNOWN,
@@ -54,6 +56,7 @@ export namespace UPowerGlib {
 
     /**
      * The device state.
+     * @gir-type Enum
      */
     enum DeviceState {
         UNKNOWN,
@@ -68,6 +71,7 @@ export namespace UPowerGlib {
 
     /**
      * The device technology.
+     * @gir-type Enum
      */
     enum DeviceTechnology {
         UNKNOWN,
@@ -88,39 +92,39 @@ export namespace UPowerGlib {
     const MINOR_VERSION: number;
     /**
      * Gets a machine-readable description of the <link linkend="gdbus-interface-org-freedesktop-UPower.top_of_page">org.freedesktop.UPower</link> D-Bus interface.
-     * @returns A #GDBusInterfaceInfo. Do not free.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
      */
     function client_glue_interface_info(): Gio.DBusInterfaceInfo;
     /**
-     * Overrides all #GObject properties in the #UpClientGlue interface for a concrete class.
+     * Overrides all {@link GObject.Object} properties in the {@link UPowerGlib.ClientGlue} interface for a concrete class.
      * The properties are overridden in the order they are defined.
-     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param klass The class structure for a {@link GObject.Object}<!-- -->-derived class.
      * @param property_id_begin The property id to assign to the first overridden property.
      * @returns The last property id.
      */
     function client_glue_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     /**
      * Gets a machine-readable description of the <link linkend="gdbus-interface-org-freedesktop-UPower-Device.top_of_page">org.freedesktop.UPower.Device</link> D-Bus interface.
-     * @returns A #GDBusInterfaceInfo. Do not free.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
      */
     function device_glue_interface_info(): Gio.DBusInterfaceInfo;
     /**
-     * Overrides all #GObject properties in the #UpDeviceGlue interface for a concrete class.
+     * Overrides all {@link GObject.Object} properties in the {@link UPowerGlib.DeviceGlue} interface for a concrete class.
      * The properties are overridden in the order they are defined.
-     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param klass The class structure for a {@link GObject.Object}<!-- -->-derived class.
      * @param property_id_begin The property id to assign to the first overridden property.
      * @returns The last property id.
      */
     function device_glue_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     /**
      * Gets a machine-readable description of the <link linkend="gdbus-interface-org-freedesktop-UPower-Wakeups.top_of_page">org.freedesktop.UPower.Wakeups</link> D-Bus interface.
-     * @returns A #GDBusInterfaceInfo. Do not free.
+     * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
      */
     function wakeups_glue_interface_info(): Gio.DBusInterfaceInfo;
     /**
-     * Overrides all #GObject properties in the #UpWakeupsGlue interface for a concrete class.
+     * Overrides all {@link GObject.Object} properties in the {@link UPowerGlib.WakeupsGlue} interface for a concrete class.
      * The properties are overridden in the order they are defined.
-     * @param klass The class structure for a #GObject<!-- -->-derived class.
+     * @param klass The class structure for a {@link GObject.Object}<!-- -->-derived class.
      * @param property_id_begin The property id to assign to the first overridden property.
      * @returns The last property id.
      */
@@ -128,7 +132,17 @@ export namespace UPowerGlib {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::device-added signal is emitted when a power device is added.
+             * @signal
+             * @since 0.9.0
+             */
             'device-added': (arg0: Device) => void;
+            /**
+             * The ::device-removed signal is emitted when a power device is removed.
+             * @signal
+             * @since 1.0
+             */
             'device-removed': (arg0: string) => void;
             'notify::daemon-version': (pspec: GObject.ParamSpec) => void;
             'notify::lid-is-closed': (pspec: GObject.ParamSpec) => void;
@@ -150,6 +164,9 @@ export namespace UPowerGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
@@ -157,34 +174,42 @@ export namespace UPowerGlib {
 
         /**
          * The daemon version.
+         * @since 0.9.0
          */
         get daemon_version(): string;
         /**
          * The daemon version.
+         * @since 0.9.0
          */
         get daemonVersion(): string;
         /**
          * If the laptop lid is closed.
+         * @since 0.9.0
          */
         get lid_is_closed(): boolean;
         /**
          * If the laptop lid is closed.
+         * @since 0.9.0
          */
         get lidIsClosed(): boolean;
         /**
          * If a laptop lid is present.
+         * @since 0.9.0
          */
         get lid_is_present(): boolean;
         /**
          * If a laptop lid is present.
+         * @since 0.9.0
          */
         get lidIsPresent(): boolean;
         /**
          * If the computer is on battery power.
+         * @since 0.9.0
          */
         get on_battery(): boolean;
         /**
          * If the computer is on battery power.
+         * @since 0.9.0
          */
         get onBattery(): boolean;
 
@@ -207,16 +232,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -225,7 +253,15 @@ export namespace UPowerGlib {
 
         // Virtual methods
 
+        /**
+         * @param device
+         * @virtual
+         */
         vfunc_device_added(device: Device): void;
+        /**
+         * @param object_path
+         * @virtual
+         */
         vfunc_device_removed(object_path: string): void;
 
         // Methods
@@ -233,7 +269,7 @@ export namespace UPowerGlib {
         /**
          * Gets a string representing the configured critical action,
          * depending on availability.
-         * @returns the action name, or %NULL on error.
+         * @returns the action name, or `null` on error.
          */
         get_critical_action(): string;
         /**
@@ -243,27 +279,27 @@ export namespace UPowerGlib {
         get_daemon_version(): string;
         /**
          * Get a copy of the device objects.
-         * @returns an array of #UpDevice objects, free with g_ptr_array_unref()
+         * @returns an array of {@link UPowerGlib.Device} objects, free with `g_ptr_array_unref()`
          */
         get_devices(): Device[];
         /**
          * Get the composite display device.
-         * @returns a #UpClient object, or %NULL on error.
+         * @returns a {@link UPowerGlib.Client} object, or `null` on error.
          */
         get_display_device(): Device;
         /**
          * Get whether the laptop lid is closed.
-         * @returns %TRUE if lid is closed or %FALSE otherwise.
+         * @returns `true` if lid is closed or `false` otherwise.
          */
         get_lid_is_closed(): boolean;
         /**
          * Get whether a laptop lid is present on this machine.
-         * @returns %TRUE if the machine has a laptop lid
+         * @returns `true` if the machine has a laptop lid
          */
         get_lid_is_present(): boolean;
         /**
          * Get whether the system is running on battery power.
-         * @returns %TRUE if the system is currently running on battery, %FALSE otherwise.
+         * @returns `true` if the system is currently running on battery, `false` otherwise.
          */
         get_on_battery(): boolean;
     }
@@ -298,7 +334,8 @@ export namespace UPowerGlib {
     }
 
     /**
-     * The #UpClientGlueProxy structure contains only private data and should only be accessed using the provided API.
+     * The {@link UPowerGlib.ClientGlueProxy} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
      */
     class ClientGlueProxy
         extends Gio.DBusProxy
@@ -352,16 +389,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientGlueProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientGlueProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientGlueProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -371,18 +411,18 @@ export namespace UPowerGlib {
         // Static methods
 
         /**
-         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower.top_of_page">org.freedesktop.UPower</link>. See g_dbus_proxy_new() for more details.
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower.top_of_page">org.freedesktop.UPower</link>. See `g_dbus_proxy_new()` for more details.
          *
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_proxy_new_finish() to get the result of the operation.
+         * You can then call `up_client_glue_proxy_new_finish()` to get the result of the operation.
          *
-         * See up_client_glue_proxy_new_sync() for the synchronous, blocking version of this constructor.
-         * @param connection A #GDBusConnection.
-         * @param flags Flags from the #GDBusProxyFlags enumeration.
-         * @param name A bus name (well-known or unique) or %NULL if @connection is not a message bus connection.
+         * See `up_client_glue_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
          * @param object_path An object path.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static ['new'](
             connection: Gio.DBusConnection,
@@ -392,21 +432,24 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<ClientGlueProxy> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
-         * Like up_client_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
+         * Like `up_client_glue_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
          *
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_proxy_new_for_bus_finish() to get the result of the operation.
+         * You can then call `up_client_glue_proxy_new_for_bus_finish()` to get the result of the operation.
          *
-         * See up_client_glue_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
-         * @param bus_type A #GBusType.
-         * @param flags Flags from the #GDBusProxyFlags enumeration.
+         * See `up_client_glue_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
          * @param name A bus name (well-known or unique).
          * @param object_path An object path.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(
             bus_type: Gio.BusType,
@@ -416,149 +459,156 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<ClientGlueProxy> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
-
-        // Inherited properties
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get daemon_version(): string;
         set daemon_version(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get daemonVersion(): string;
         set daemonVersion(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get lid_is_closed(): boolean;
         set lid_is_closed(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get lidIsClosed(): boolean;
         set lidIsClosed(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get lid_is_present(): boolean;
         set lid_is_present(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get lidIsPresent(): boolean;
         set lidIsPresent(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get on_battery(): boolean;
         set on_battery(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get onBattery(): boolean;
         set onBattery(val: boolean);
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -568,43 +618,43 @@ export namespace UPowerGlib {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -613,60 +663,64 @@ export namespace UPowerGlib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): ClientGlueProxy;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -675,70 +729,74 @@ export namespace UPowerGlib {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -748,40 +806,40 @@ export namespace UPowerGlib {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -791,30 +849,31 @@ export namespace UPowerGlib {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_enumerate_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enumerate_devices(
             cancellable: Gio.Cancellable | null,
@@ -823,47 +882,47 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enumerate_devices(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_enumerate_devices().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_enumerate_devices()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_enumerate_devices()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_enumerate_devices_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_enumerate_devices() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_enumerate_devices()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_enumerate_devices_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_critical_action(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_critical_action(
             cancellable: Gio.Cancellable | null,
@@ -872,47 +931,47 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_critical_action(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_get_critical_action().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_get_critical_action()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_get_critical_action()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_critical_action_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_get_critical_action() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_get_critical_action()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_critical_action_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_display_device(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_display_device(
             cancellable: Gio.Cancellable | null,
@@ -921,51 +980,51 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_display_device(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_get_display_device().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_get_display_device()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_get_display_device()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_display_device_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_get_display_device() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_get_display_device()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_display_device_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param devices Parameter to return.
          */
         complete_enumerate_devices(invocation: Gio.DBusMethodInvocation, devices: string): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param action Parameter to return.
          */
         complete_get_critical_action(invocation: Gio.DBusMethodInvocation, action: string): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param device Parameter to return.
          */
         complete_get_display_device(invocation: Gio.DBusMethodInvocation, device: string): void;
@@ -979,10 +1038,30 @@ export namespace UPowerGlib {
          * @param arg_device Argument to pass with the signal.
          */
         emit_device_removed(arg_device: string): void;
+        /**
+         * @param arg_device
+         * @virtual
+         */
         vfunc_device_added(arg_device: string): void;
+        /**
+         * @param arg_device
+         * @virtual
+         */
         vfunc_device_removed(arg_device: string): void;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_enumerate_devices(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_get_critical_action(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_get_display_device(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -997,32 +1076,32 @@ export namespace UPowerGlib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1031,39 +1110,39 @@ export namespace UPowerGlib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1074,13 +1153,16 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1088,7 +1170,7 @@ export namespace UPowerGlib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1096,9 +1178,9 @@ export namespace UPowerGlib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1118,9 +1200,9 @@ export namespace UPowerGlib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1134,33 +1216,33 @@ export namespace UPowerGlib {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1193,21 +1275,21 @@ export namespace UPowerGlib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1217,8 +1299,8 @@ export namespace UPowerGlib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1235,10 +1317,10 @@ export namespace UPowerGlib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1253,13 +1335,13 @@ export namespace UPowerGlib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1290,21 +1372,21 @@ export namespace UPowerGlib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1314,33 +1396,34 @@ export namespace UPowerGlib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1349,6 +1432,7 @@ export namespace UPowerGlib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1357,12 +1441,14 @@ export namespace UPowerGlib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1371,20 +1457,22 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1396,6 +1484,7 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1445,7 +1534,8 @@ export namespace UPowerGlib {
     }
 
     /**
-     * The #UpClientGlueSkeleton structure contains only private data and should only be accessed using the provided API.
+     * The {@link UPowerGlib.ClientGlueSkeleton} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
      */
     class ClientGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ClientGlue {
         static $gtype: GObject.GType<ClientGlueSkeleton>;
@@ -1469,132 +1559,142 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientGlueSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get daemon_version(): string;
         set daemon_version(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get daemonVersion(): string;
         set daemonVersion(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get lid_is_closed(): boolean;
         set lid_is_closed(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get lidIsClosed(): boolean;
         set lidIsClosed(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get lid_is_present(): boolean;
         set lid_is_present(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get lidIsPresent(): boolean;
         set lidIsPresent(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get on_battery(): boolean;
         set on_battery(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.ClientGlue
          */
         get onBattery(): boolean;
         set onBattery(val: boolean);
-
-        // Inherited methods
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_enumerate_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enumerate_devices(
             cancellable: Gio.Cancellable | null,
@@ -1603,47 +1703,47 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enumerate_devices(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_enumerate_devices().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_enumerate_devices()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_enumerate_devices()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_enumerate_devices_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_enumerate_devices() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_enumerate_devices()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_enumerate_devices_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_critical_action(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_critical_action(
             cancellable: Gio.Cancellable | null,
@@ -1652,47 +1752,47 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_critical_action(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_get_critical_action().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_get_critical_action()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_get_critical_action()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_critical_action_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_get_critical_action() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_get_critical_action()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_critical_action_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_display_device(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_display_device(
             cancellable: Gio.Cancellable | null,
@@ -1701,51 +1801,51 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_display_device(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_get_display_device().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_get_display_device()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_get_display_device()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_display_device_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_get_display_device() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_get_display_device()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_display_device_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param devices Parameter to return.
          */
         complete_enumerate_devices(invocation: Gio.DBusMethodInvocation, devices: string): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param action Parameter to return.
          */
         complete_get_critical_action(invocation: Gio.DBusMethodInvocation, action: string): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param device Parameter to return.
          */
         complete_get_display_device(invocation: Gio.DBusMethodInvocation, device: string): void;
@@ -1759,10 +1859,30 @@ export namespace UPowerGlib {
          * @param arg_device Argument to pass with the signal.
          */
         emit_device_removed(arg_device: string): void;
+        /**
+         * @param arg_device
+         * @virtual
+         */
         vfunc_device_added(arg_device: string): void;
+        /**
+         * @param arg_device
+         * @virtual
+         */
         vfunc_device_removed(arg_device: string): void;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_enumerate_devices(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_get_critical_action(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_get_display_device(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1777,32 +1897,32 @@ export namespace UPowerGlib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1811,39 +1931,39 @@ export namespace UPowerGlib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1854,13 +1974,16 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1868,7 +1991,7 @@ export namespace UPowerGlib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1876,9 +1999,9 @@ export namespace UPowerGlib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1898,9 +2021,9 @@ export namespace UPowerGlib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1914,33 +2037,33 @@ export namespace UPowerGlib {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1973,21 +2096,21 @@ export namespace UPowerGlib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1997,8 +2120,8 @@ export namespace UPowerGlib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2015,10 +2138,10 @@ export namespace UPowerGlib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2033,13 +2156,13 @@ export namespace UPowerGlib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2070,21 +2193,21 @@ export namespace UPowerGlib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2094,33 +2217,34 @@ export namespace UPowerGlib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2129,6 +2253,7 @@ export namespace UPowerGlib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2137,12 +2262,14 @@ export namespace UPowerGlib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2151,20 +2278,22 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2176,6 +2305,7 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2287,6 +2417,9 @@ export namespace UPowerGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
@@ -2295,83 +2428,99 @@ export namespace UPowerGlib {
         /**
          * The percentage capacity of the device where 100% means the device has
          * the same charge potential as when it was manufactured.
+         * @since 0.9.0
          */
         get capacity(): number;
         set capacity(val: number);
         /**
          * The energy left in the device. Measured in mWh.
+         * @since 0.9.0
          */
         get energy(): number;
         set energy(val: number);
         /**
          * The energy the device will have when it is empty. This is usually zero.
          * Measured in mWh.
+         * @since 0.9.0
          */
         get energy_empty(): number;
         set energy_empty(val: number);
         /**
          * The energy the device will have when it is empty. This is usually zero.
          * Measured in mWh.
+         * @since 0.9.0
          */
         get energyEmpty(): number;
         set energyEmpty(val: number);
         /**
          * The amount of energy when the device is fully charged. Measured in mWh.
+         * @since 0.9.0
          */
         get energy_full(): number;
         set energy_full(val: number);
         /**
          * The amount of energy when the device is fully charged. Measured in mWh.
+         * @since 0.9.0
          */
         get energyFull(): number;
         set energyFull(val: number);
         /**
          * The amount of energy when the device was brand new. Measured in mWh.
+         * @since 0.9.0
          */
         get energy_full_design(): number;
         set energy_full_design(val: number);
         /**
          * The amount of energy when the device was brand new. Measured in mWh.
+         * @since 0.9.0
          */
         get energyFullDesign(): number;
         set energyFullDesign(val: number);
         /**
          * The rate of discharge or charge. Measured in mW.
+         * @since 0.9.0
          */
         get energy_rate(): number;
         set energy_rate(val: number);
         /**
          * The rate of discharge or charge. Measured in mW.
+         * @since 0.9.0
          */
         get energyRate(): number;
         set energyRate(val: number);
         /**
          * If the device has history data that might be useful.
+         * @since 0.9.0
          */
         get has_history(): boolean;
         set has_history(val: boolean);
         /**
          * If the device has history data that might be useful.
+         * @since 0.9.0
          */
         get hasHistory(): boolean;
         set hasHistory(val: boolean);
         /**
          * If the device has statistics data that might be useful.
+         * @since 0.9.0
          */
         get has_statistics(): boolean;
         set has_statistics(val: boolean);
         /**
          * If the device has statistics data that might be useful.
+         * @since 0.9.0
          */
         get hasStatistics(): boolean;
         set hasStatistics(val: boolean);
         /**
          * The icon name, following the Icon Naming Speficiation
+         * @since 1.0
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * The icon name, following the Icon Naming Speficiation
+         * @since 1.0
          */
         get iconName(): string;
         set iconName(val: string);
@@ -2379,6 +2528,7 @@ export namespace UPowerGlib {
          * If the device is present, as some devices like laptop batteries
          * can be removed, leaving an empty bay that is still technically a
          * device.
+         * @since 0.9.0
          */
         get is_present(): boolean;
         set is_present(val: boolean);
@@ -2386,131 +2536,157 @@ export namespace UPowerGlib {
          * If the device is present, as some devices like laptop batteries
          * can be removed, leaving an empty bay that is still technically a
          * device.
+         * @since 0.9.0
          */
         get isPresent(): boolean;
         set isPresent(val: boolean);
         /**
          * If the device has a rechargable battery.
+         * @since 0.9.0
          */
         get is_rechargeable(): boolean;
         set is_rechargeable(val: boolean);
         /**
          * If the device has a rechargable battery.
+         * @since 0.9.0
          */
         get isRechargeable(): boolean;
         set isRechargeable(val: boolean);
         /**
-         * The device kind, e.g. %UP_DEVICE_KIND_KEYBOARD.
+         * The device kind, e.g. {@link UPowerGlib.DeviceKind.KEYBOARD}.
+         * @since 0.9.0
          */
         get kind(): number;
         set kind(val: number);
         /**
          * The current luminosity of the device.
+         * @since 0.9.19
          */
         get luminosity(): number;
         set luminosity(val: number);
         /**
          * The model of the device.
+         * @since 0.9.0
          */
         get model(): string;
         set model(val: string);
         /**
          * The native path of the device, useful for direct device access.
+         * @since 0.9.0
          */
         get native_path(): string;
         set native_path(val: string);
         /**
          * The native path of the device, useful for direct device access.
+         * @since 0.9.0
          */
         get nativePath(): string;
         set nativePath(val: string);
         /**
          * If the device is online, i.e. connected.
+         * @since 0.9.0
          */
         get online(): boolean;
         set online(val: boolean);
         /**
          * The percentage charge of the device.
+         * @since 0.9.0
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * If the device is powering the system.
+         * @since 0.9.0
          */
         get power_supply(): boolean;
         set power_supply(val: boolean);
         /**
          * If the device is powering the system.
+         * @since 0.9.0
          */
         get powerSupply(): boolean;
         set powerSupply(val: boolean);
         /**
          * The serial number of the device.
+         * @since 0.9.0
          */
         get serial(): string;
         set serial(val: string);
         /**
-         * The state the device is in at this time, e.g. %UP_DEVICE_STATE_EMPTY.
+         * The state the device is in at this time, e.g. {@link UPowerGlib.DeviceState.EMPTY}.
+         * @since 0.9.0
          */
         get state(): number;
         set state(val: number);
         /**
-         * The battery technology e.g. %UP_DEVICE_TECHNOLOGY_LITHIUM_ION.
+         * The battery technology e.g. {@link UPowerGlib.DeviceTechnology.LITHIUM_ION}.
+         * @since 0.9.0
          */
         get technology(): number;
         set technology(val: number);
         /**
          * The temperature of the device in degrees Celsius.
+         * @since 0.9.22
          */
         get temperature(): number;
         set temperature(val: number);
         /**
          * The amount of time until the device is empty.
+         * @since 0.9.0
          */
         get time_to_empty(): number;
         set time_to_empty(val: number);
         /**
          * The amount of time until the device is empty.
+         * @since 0.9.0
          */
         get timeToEmpty(): number;
         set timeToEmpty(val: number);
         /**
          * The amount of time until the device is fully charged.
+         * @since 0.9.0
          */
         get time_to_full(): number;
         set time_to_full(val: number);
         /**
          * The amount of time until the device is fully charged.
+         * @since 0.9.0
          */
         get timeToFull(): number;
         set timeToFull(val: number);
         /**
          * The last time the device was updated.
+         * @since 0.9.0
          */
         get update_time(): number;
         set update_time(val: number);
         /**
          * The last time the device was updated.
+         * @since 0.9.0
          */
         get updateTime(): number;
         set updateTime(val: number);
         /**
          * The vendor of the device.
+         * @since 0.9.0
          */
         get vendor(): string;
         set vendor(val: string);
         /**
          * The current voltage of the device.
+         * @since 0.9.0
          */
         get voltage(): number;
         set voltage(val: number);
         /**
-         * The warning level e.g. %UP_DEVICE_LEVEL_WARNING.
+         * The warning level e.g. `UP_DEVICE_LEVEL_WARNING`.
+         * @since 1.0
          */
         get warning_level(): number;
         set warning_level(val: number);
         /**
-         * The warning level e.g. %UP_DEVICE_LEVEL_WARNING.
+         * The warning level e.g. `UP_DEVICE_LEVEL_WARNING`.
+         * @since 1.0
          */
         get warningLevel(): number;
         set warningLevel(val: number);
@@ -2534,16 +2710,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2553,42 +2732,42 @@ export namespace UPowerGlib {
         // Static methods
 
         /**
-         * Converts a string to a #UpDeviceKind.
+         * Converts a string to a {@link UPowerGlib.DeviceKind}.
          * @param type
          */
         static kind_from_string(type: string): DeviceKind;
         /**
-         * Converts a #UpDeviceKind to a string.
+         * Converts a {@link UPowerGlib.DeviceKind} to a string.
          * @param type_enum
          */
         static kind_to_string(type_enum: DeviceKind): string;
         /**
-         * Converts a string to a #UpDeviceLevel.
+         * Converts a string to a {@link UPowerGlib.DeviceLevel}.
          * @param level
          */
         static level_from_string(level: string): DeviceLevel;
         /**
-         * Converts a #UpDeviceLevel to a string.
+         * Converts a {@link UPowerGlib.DeviceLevel} to a string.
          * @param level_enum
          */
         static level_to_string(level_enum: DeviceLevel): string;
         /**
-         * Converts a string to a #UpDeviceState.
+         * Converts a string to a {@link UPowerGlib.DeviceState}.
          * @param state
          */
         static state_from_string(state: string): DeviceState;
         /**
-         * Converts a #UpDeviceState to a string.
+         * Converts a {@link UPowerGlib.DeviceState} to a string.
          * @param state_enum
          */
         static state_to_string(state_enum: DeviceState): string;
         /**
-         * Converts a string to a #UpDeviceTechnology.
+         * Converts a string to a {@link UPowerGlib.DeviceTechnology}.
          * @param technology
          */
         static technology_from_string(technology: string): DeviceTechnology;
         /**
-         * Converts a #UpDeviceTechnology to a string.
+         * Converts a {@link UPowerGlib.DeviceTechnology} to a string.
          * @param technology_enum
          */
         static technology_to_string(technology_enum: DeviceTechnology): string;
@@ -2600,8 +2779,8 @@ export namespace UPowerGlib {
          * @param type The type of history, known values are "rate" and "charge".
          * @param timespec the amount of time to look back into time.
          * @param resolution the resolution of data.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns an array of #UpHistoryItem's, with the most               recent one being first; %NULL if @error is set or @device is               invalid
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns an array of {@link UPowerGlib.HistoryItem}'s, with the most               recent one being first; `null` if `error` is set or `device` is               invalid
          */
         get_history_sync(
             type: string,
@@ -2611,33 +2790,33 @@ export namespace UPowerGlib {
         ): HistoryItem[];
         /**
          * Gets the object path for the device.
-         * @returns the object path, or %NULL
+         * @returns the object path, or `null`
          */
         get_object_path(): string;
         /**
          * Gets the device current statistics.
          * @param type the type of statistics.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns an array of #UpStatsItem's, else #NULL and @error is used
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns an array of {@link UPowerGlib.StatsItem}'s, else `NULL` and `error` is used
          */
         get_statistics_sync(type: string, cancellable?: Gio.Cancellable | null): StatsItem[];
         /**
          * Refreshes properties on the device.
          * This function is normally not required.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns #TRUE for success, else #FALSE and @error is used
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
         refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Sets the object path of the object and fills up initial properties.
          * @param object_path The UPower object path.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns #TRUE for success, else #FALSE and @error is used
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
         set_object_path_sync(object_path: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Converts the device to a string description.
-         * @returns text representation of #UpDevice
+         * @returns text representation of {@link UPowerGlib.Device}
          */
         to_text(): string;
     }
@@ -2696,7 +2875,8 @@ export namespace UPowerGlib {
     }
 
     /**
-     * The #UpDeviceGlueProxy structure contains only private data and should only be accessed using the provided API.
+     * The {@link UPowerGlib.DeviceGlueProxy} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
      */
     class DeviceGlueProxy
         extends Gio.DBusProxy
@@ -2750,16 +2930,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceGlueProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceGlueProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceGlueProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2769,18 +2952,18 @@ export namespace UPowerGlib {
         // Static methods
 
         /**
-         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Device.top_of_page">org.freedesktop.UPower.Device</link>. See g_dbus_proxy_new() for more details.
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Device.top_of_page">org.freedesktop.UPower.Device</link>. See `g_dbus_proxy_new()` for more details.
          *
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_proxy_new_finish() to get the result of the operation.
+         * You can then call `up_device_glue_proxy_new_finish()` to get the result of the operation.
          *
-         * See up_device_glue_proxy_new_sync() for the synchronous, blocking version of this constructor.
-         * @param connection A #GDBusConnection.
-         * @param flags Flags from the #GDBusProxyFlags enumeration.
-         * @param name A bus name (well-known or unique) or %NULL if @connection is not a message bus connection.
+         * See `up_device_glue_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
          * @param object_path An object path.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static ['new'](
             connection: Gio.DBusConnection,
@@ -2790,21 +2973,24 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<DeviceGlueProxy> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
-         * Like up_device_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
+         * Like `up_device_glue_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
          *
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_proxy_new_for_bus_finish() to get the result of the operation.
+         * You can then call `up_device_glue_proxy_new_for_bus_finish()` to get the result of the operation.
          *
-         * See up_device_glue_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
-         * @param bus_type A #GBusType.
-         * @param flags Flags from the #GDBusProxyFlags enumeration.
+         * See `up_device_glue_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
          * @param name A bus name (well-known or unique).
          * @param object_path An object path.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(
             bus_type: Gio.BusType,
@@ -2814,394 +3000,436 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<DeviceGlueProxy> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
-
-        // Inherited properties
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Capacity">"Capacity"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get capacity(): number;
         set capacity(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Energy">"Energy"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy(): number;
         set energy(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyEmpty">"EnergyEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy_empty(): number;
         set energy_empty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyEmpty">"EnergyEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energyEmpty(): number;
         set energyEmpty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy_full(): number;
         set energy_full(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energyFull(): number;
         set energyFull(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy_full_design(): number;
         set energy_full_design(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energyFullDesign(): number;
         set energyFullDesign(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy_rate(): number;
         set energy_rate(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energyRate(): number;
         set energyRate(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get has_history(): boolean;
         set has_history(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get hasHistory(): boolean;
         set hasHistory(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get has_statistics(): boolean;
         set has_statistics(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get hasStatistics(): boolean;
         set hasStatistics(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get is_present(): boolean;
         set is_present(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get isPresent(): boolean;
         set isPresent(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get is_rechargeable(): boolean;
         set is_rechargeable(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get isRechargeable(): boolean;
         set isRechargeable(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Luminosity">"Luminosity"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get luminosity(): number;
         set luminosity(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Model">"Model"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get model(): string;
         set model(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.NativePath">"NativePath"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get native_path(): string;
         set native_path(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.NativePath">"NativePath"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get nativePath(): string;
         set nativePath(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Online">"Online"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get online(): boolean;
         set online(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Percentage">"Percentage"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.PowerSupply">"PowerSupply"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get power_supply(): boolean;
         set power_supply(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.PowerSupply">"PowerSupply"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get powerSupply(): boolean;
         set powerSupply(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Serial">"Serial"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get serial(): string;
         set serial(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.State">"State"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get state(): number;
         set state(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Technology">"Technology"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get technology(): number;
         set technology(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Temperature">"Temperature"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get temperature(): number;
         set temperature(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToEmpty">"TimeToEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get time_to_empty(): number;
         set time_to_empty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToEmpty">"TimeToEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get timeToEmpty(): number;
         set timeToEmpty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get time_to_full(): number;
         set time_to_full(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get timeToFull(): number;
         set timeToFull(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Type">"Type"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get type(): number;
         set type(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.UpdateTime">"UpdateTime"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get update_time(): number;
         set update_time(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.UpdateTime">"UpdateTime"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get updateTime(): number;
         set updateTime(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Vendor">"Vendor"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get vendor(): string;
         set vendor(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Voltage">"Voltage"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get voltage(): number;
         set voltage(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.WarningLevel">"WarningLevel"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get warning_level(): number;
         set warning_level(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.WarningLevel">"WarningLevel"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get warningLevel(): number;
         set warningLevel(val: number);
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -3211,43 +3439,43 @@ export namespace UPowerGlib {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -3256,60 +3484,64 @@ export namespace UPowerGlib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): DeviceGlueProxy;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -3318,70 +3550,74 @@ export namespace UPowerGlib {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3391,40 +3627,40 @@ export namespace UPowerGlib {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3434,23 +3670,24 @@ export namespace UPowerGlib {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -3461,14 +3698,14 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -3480,14 +3717,14 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -3497,20 +3734,20 @@ export namespace UPowerGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_get_history().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_get_history()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_get_history()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_history_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_get_history() for the asynchronous version of this method.
+         * See `up_device_glue_call_get_history()` for the asynchronous version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_history_sync(
             arg_type: string,
@@ -3521,22 +3758,22 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_statistics(
             arg_type: string,
@@ -3546,12 +3783,12 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_statistics(
             arg_type: string,
@@ -3559,96 +3796,112 @@ export namespace UPowerGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_get_statistics().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_get_statistics()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_get_statistics()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_statistics_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_get_statistics() for the asynchronous version of this method.
+         * See `up_device_glue_call_get_statistics()` for the asynchronous version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_statistics_sync(arg_type: string, cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_refresh(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_refresh().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_refresh()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_refresh()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_refresh_finish(res: Gio.AsyncResult): boolean;
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_refresh() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_device_glue_call_refresh()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_history(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_statistics(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_refresh(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * @param invocation
+         * @param arg_type
+         * @param arg_timespan
+         * @param arg_resolution
+         * @virtual
+         */
         vfunc_handle_get_history(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_timespan: number,
             arg_resolution: number,
         ): boolean;
+        /**
+         * @param invocation
+         * @param arg_type
+         * @virtual
+         */
         vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_refresh(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3663,32 +3916,32 @@ export namespace UPowerGlib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3697,39 +3950,39 @@ export namespace UPowerGlib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3740,13 +3993,16 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3754,7 +4010,7 @@ export namespace UPowerGlib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3762,9 +4018,9 @@ export namespace UPowerGlib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3784,9 +4040,9 @@ export namespace UPowerGlib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3800,33 +4056,33 @@ export namespace UPowerGlib {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3859,21 +4115,21 @@ export namespace UPowerGlib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3883,8 +4139,8 @@ export namespace UPowerGlib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3901,10 +4157,10 @@ export namespace UPowerGlib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3919,13 +4175,13 @@ export namespace UPowerGlib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3956,21 +4212,21 @@ export namespace UPowerGlib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3980,33 +4236,34 @@ export namespace UPowerGlib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4015,6 +4272,7 @@ export namespace UPowerGlib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4023,12 +4281,14 @@ export namespace UPowerGlib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4037,20 +4297,22 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4062,6 +4324,7 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4135,7 +4398,8 @@ export namespace UPowerGlib {
     }
 
     /**
-     * The #UpDeviceGlueSkeleton structure contains only private data and should only be accessed using the provided API.
+     * The {@link UPowerGlib.DeviceGlueSkeleton} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
      */
     class DeviceGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DeviceGlue {
         static $gtype: GObject.GType<DeviceGlueSkeleton>;
@@ -4159,370 +4423,415 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceGlueSkeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Capacity">"Capacity"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get capacity(): number;
         set capacity(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Energy">"Energy"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy(): number;
         set energy(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyEmpty">"EnergyEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy_empty(): number;
         set energy_empty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyEmpty">"EnergyEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energyEmpty(): number;
         set energyEmpty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy_full(): number;
         set energy_full(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energyFull(): number;
         set energyFull(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy_full_design(): number;
         set energy_full_design(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energyFullDesign(): number;
         set energyFullDesign(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energy_rate(): number;
         set energy_rate(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get energyRate(): number;
         set energyRate(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get has_history(): boolean;
         set has_history(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get hasHistory(): boolean;
         set hasHistory(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get has_statistics(): boolean;
         set has_statistics(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get hasStatistics(): boolean;
         set hasStatistics(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get is_present(): boolean;
         set is_present(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get isPresent(): boolean;
         set isPresent(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get is_rechargeable(): boolean;
         set is_rechargeable(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get isRechargeable(): boolean;
         set isRechargeable(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Luminosity">"Luminosity"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get luminosity(): number;
         set luminosity(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Model">"Model"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get model(): string;
         set model(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.NativePath">"NativePath"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get native_path(): string;
         set native_path(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.NativePath">"NativePath"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get nativePath(): string;
         set nativePath(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Online">"Online"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get online(): boolean;
         set online(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Percentage">"Percentage"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.PowerSupply">"PowerSupply"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get power_supply(): boolean;
         set power_supply(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.PowerSupply">"PowerSupply"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get powerSupply(): boolean;
         set powerSupply(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Serial">"Serial"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get serial(): string;
         set serial(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.State">"State"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get state(): number;
         set state(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Technology">"Technology"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get technology(): number;
         set technology(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Temperature">"Temperature"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get temperature(): number;
         set temperature(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToEmpty">"TimeToEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get time_to_empty(): number;
         set time_to_empty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToEmpty">"TimeToEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get timeToEmpty(): number;
         set timeToEmpty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get time_to_full(): number;
         set time_to_full(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get timeToFull(): number;
         set timeToFull(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Type">"Type"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get type(): number;
         set type(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.UpdateTime">"UpdateTime"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get update_time(): number;
         set update_time(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.UpdateTime">"UpdateTime"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get updateTime(): number;
         set updateTime(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Vendor">"Vendor"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get vendor(): string;
         set vendor(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Voltage">"Voltage"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get voltage(): number;
         set voltage(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.WarningLevel">"WarningLevel"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get warning_level(): number;
         set warning_level(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.WarningLevel">"WarningLevel"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.DeviceGlue
          */
         get warningLevel(): number;
         set warningLevel(val: number);
-
-        // Inherited methods
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -4533,14 +4842,14 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -4552,14 +4861,14 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -4569,20 +4878,20 @@ export namespace UPowerGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_get_history().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_get_history()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_get_history()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_history_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_get_history() for the asynchronous version of this method.
+         * See `up_device_glue_call_get_history()` for the asynchronous version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_history_sync(
             arg_type: string,
@@ -4593,22 +4902,22 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_statistics(
             arg_type: string,
@@ -4618,12 +4927,12 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_statistics(
             arg_type: string,
@@ -4631,96 +4940,112 @@ export namespace UPowerGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_get_statistics().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_get_statistics()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_get_statistics()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_statistics_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_get_statistics() for the asynchronous version of this method.
+         * See `up_device_glue_call_get_statistics()` for the asynchronous version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_statistics_sync(arg_type: string, cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_refresh(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_refresh().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_refresh()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_refresh()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_refresh_finish(res: Gio.AsyncResult): boolean;
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_refresh() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_device_glue_call_refresh()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_history(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_statistics(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_refresh(invocation: Gio.DBusMethodInvocation): void;
+        /**
+         * @param invocation
+         * @param arg_type
+         * @param arg_timespan
+         * @param arg_resolution
+         * @virtual
+         */
         vfunc_handle_get_history(
             invocation: Gio.DBusMethodInvocation,
             arg_type: string,
             arg_timespan: number,
             arg_resolution: number,
         ): boolean;
+        /**
+         * @param invocation
+         * @param arg_type
+         * @virtual
+         */
         vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_refresh(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -4735,32 +5060,32 @@ export namespace UPowerGlib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4769,39 +5094,39 @@ export namespace UPowerGlib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4812,13 +5137,16 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4826,7 +5154,7 @@ export namespace UPowerGlib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4834,9 +5162,9 @@ export namespace UPowerGlib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4856,9 +5184,9 @@ export namespace UPowerGlib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4872,33 +5200,33 @@ export namespace UPowerGlib {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4931,21 +5259,21 @@ export namespace UPowerGlib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4955,8 +5283,8 @@ export namespace UPowerGlib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4973,10 +5301,10 @@ export namespace UPowerGlib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4991,13 +5319,13 @@ export namespace UPowerGlib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5028,21 +5356,21 @@ export namespace UPowerGlib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5052,33 +5380,34 @@ export namespace UPowerGlib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5087,6 +5416,7 @@ export namespace UPowerGlib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5095,12 +5425,14 @@ export namespace UPowerGlib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5109,20 +5441,22 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5134,6 +5468,7 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5180,15 +5515,27 @@ export namespace UPowerGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HistoryItem extends GObject.Object {
         static $gtype: GObject.GType<HistoryItem>;
 
         // Properties
 
+        /**
+         * @since 0.9.0
+         */
         get state(): number;
         set state(val: number);
+        /**
+         * @since 0.9.0
+         */
         get time(): number;
         set time(val: number);
+        /**
+         * @since 0.9.0
+         */
         get value(): number;
         set value(val: number);
 
@@ -5211,16 +5558,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HistoryItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HistoryItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HistoryItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5286,13 +5636,22 @@ export namespace UPowerGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StatsItem extends GObject.Object {
         static $gtype: GObject.GType<StatsItem>;
 
         // Properties
 
+        /**
+         * @since 0.9.0
+         */
         get accuracy(): number;
         set accuracy(val: number);
+        /**
+         * @since 0.9.0
+         */
         get value(): number;
         set value(val: number);
 
@@ -5315,16 +5674,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StatsItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StatsItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StatsItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StatsItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StatsItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StatsItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5377,23 +5739,47 @@ export namespace UPowerGlib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WakeupItem extends GObject.Object {
         static $gtype: GObject.GType<WakeupItem>;
 
         // Properties
 
+        /**
+         * @since 0.9.0
+         */
         get cmdline(): string;
         set cmdline(val: string);
+        /**
+         * @since 0.9.0
+         */
         get details(): string;
         set details(val: string);
+        /**
+         * @since 0.9.0
+         */
         get id(): number;
         set id(val: number);
+        /**
+         * @since 0.9.0
+         */
         get is_userspace(): boolean;
         set is_userspace(val: boolean);
+        /**
+         * @since 0.9.0
+         */
         get isUserspace(): boolean;
         set isUserspace(val: boolean);
+        /**
+         * @since 0.9.0
+         */
         get old(): number;
         set old(val: number);
+        /**
+         * @since 0.9.0
+         */
         get value(): number;
         set value(val: number);
 
@@ -5416,16 +5802,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WakeupItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WakeupItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WakeupItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5499,7 +5888,13 @@ export namespace UPowerGlib {
     namespace Wakeups {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'data-changed': () => void;
+            /**
+             * @signal
+             */
             'total-changed': (arg0: number) => void;
         }
 
@@ -5508,6 +5903,9 @@ export namespace UPowerGlib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Wakeups extends GObject.Object {
         static $gtype: GObject.GType<Wakeups>;
 
@@ -5530,16 +5928,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Wakeups.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Wakeups.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Wakeups.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Wakeups.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Wakeups.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Wakeups.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5548,31 +5949,38 @@ export namespace UPowerGlib {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_data_changed(): void;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_total_changed(value: number): void;
 
         // Methods
 
         /**
          * Gets the wakeups data from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of %UpWakeupItem's
          */
         get_data_sync(cancellable?: Gio.Cancellable | null): WakeupItem[];
         /**
          * Returns if the daemon supports getting the wakeup data.
-         * @returns %TRUE if supported
+         * @returns `true` if supported
          */
         get_has_capability(): boolean;
         /**
          * Gets properties from the daemon about wakeup data.
-         * @param cancellable a #GCancellable or %NULL
-         * @returns %TRUE if supported
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @returns `true` if supported
          */
         get_properties_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Gets the the total number of wakeups per second from the daemon.
-         * @param cancellable a #GCancellable or %NULL
+         * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns number of wakeups per second.
          */
         get_total_sync(cancellable?: Gio.Cancellable | null): number;
@@ -5605,7 +6013,8 @@ export namespace UPowerGlib {
     }
 
     /**
-     * The #UpWakeupsGlueProxy structure contains only private data and should only be accessed using the provided API.
+     * The {@link UPowerGlib.WakeupsGlueProxy} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
      */
     class WakeupsGlueProxy
         extends Gio.DBusProxy
@@ -5659,16 +6068,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WakeupsGlueProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WakeupsGlueProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WakeupsGlueProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5678,18 +6090,18 @@ export namespace UPowerGlib {
         // Static methods
 
         /**
-         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Wakeups.top_of_page">org.freedesktop.UPower.Wakeups</link>. See g_dbus_proxy_new() for more details.
+         * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Wakeups.top_of_page">org.freedesktop.UPower.Wakeups</link>. See `g_dbus_proxy_new()` for more details.
          *
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_proxy_new_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_proxy_new_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_proxy_new_sync() for the synchronous, blocking version of this constructor.
-         * @param connection A #GDBusConnection.
-         * @param flags Flags from the #GDBusProxyFlags enumeration.
-         * @param name A bus name (well-known or unique) or %NULL if @connection is not a message bus connection.
+         * See `up_wakeups_glue_proxy_new_sync()` for the synchronous, blocking version of this constructor.
+         * @param connection A {@link Gio.DBusConnection}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
+         * @param name A bus name (well-known or unique) or `null` if `connection` is not a message bus connection.
          * @param object_path An object path.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static ['new'](
             connection: Gio.DBusConnection,
@@ -5699,21 +6111,24 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<WakeupsGlueProxy> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
         /**
-         * Like up_wakeups_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
+         * Like `up_wakeups_glue_proxy_new()` but takes a {@link Gio.BusType} instead of a {@link Gio.DBusConnection}.
          *
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_proxy_new_for_bus_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_proxy_new_for_bus_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
-         * @param bus_type A #GBusType.
-         * @param flags Flags from the #GDBusProxyFlags enumeration.
+         * See `up_wakeups_glue_proxy_new_for_bus_sync()` for the synchronous, blocking version of this constructor.
+         * @param bus_type A {@link Gio.BusType}.
+         * @param flags Flags from the {@link Gio.DBusProxyFlags} enumeration.
          * @param name A bus name (well-known or unique).
          * @param object_path An object path.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         static new_for_bus(
             bus_type: Gio.BusType,
@@ -5723,107 +6138,108 @@ export namespace UPowerGlib {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<WakeupsGlueProxy> | null,
         ): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_for_bus
         static new_for_bus(...args: never[]): any;
-
-        // Inherited properties
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.WakeupsGlue
          */
         get has_capability(): boolean;
         set has_capability(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.WakeupsGlue
          */
         get hasCapability(): boolean;
         set hasCapability(val: boolean);
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -5833,43 +6249,43 @@ export namespace UPowerGlib {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -5878,60 +6294,64 @@ export namespace UPowerGlib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): WakeupsGlueProxy;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -5940,70 +6360,74 @@ export namespace UPowerGlib {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -6013,40 +6437,40 @@ export namespace UPowerGlib {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -6056,118 +6480,119 @@ export namespace UPowerGlib {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_data(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_data(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_data(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_wakeups_glue_call_get_data().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_wakeups_glue_call_get_data()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_wakeups_glue_call_get_data()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_data_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_wakeups_glue_call_get_data() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_wakeups_glue_call_get_data()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_data_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_total(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_total(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_total(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
-         * Finishes an operation started with up_wakeups_glue_call_get_total().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_wakeups_glue_call_get_total()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_wakeups_glue_call_get_total()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_total_finish(res: Gio.AsyncResult): [boolean, number];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_wakeups_glue_call_get_total() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_wakeups_glue_call_get_total()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_total_sync(cancellable?: Gio.Cancellable | null): [boolean, number];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_data(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param value Parameter to return.
          */
         complete_get_total(invocation: Gio.DBusMethodInvocation, value: number): void;
@@ -6180,9 +6605,24 @@ export namespace UPowerGlib {
          * @param arg_value Argument to pass with the signal.
          */
         emit_total_changed(arg_value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_data_changed(): void;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_get_data(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_get_total(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * @param arg_value
+         * @virtual
+         */
         vfunc_total_changed(arg_value: number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6197,32 +6637,32 @@ export namespace UPowerGlib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6231,39 +6671,39 @@ export namespace UPowerGlib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6274,13 +6714,16 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6288,7 +6731,7 @@ export namespace UPowerGlib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6296,9 +6739,9 @@ export namespace UPowerGlib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6318,9 +6761,9 @@ export namespace UPowerGlib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6334,33 +6777,33 @@ export namespace UPowerGlib {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6393,21 +6836,21 @@ export namespace UPowerGlib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -6417,8 +6860,8 @@ export namespace UPowerGlib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6435,10 +6878,10 @@ export namespace UPowerGlib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6453,13 +6896,13 @@ export namespace UPowerGlib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6490,21 +6933,21 @@ export namespace UPowerGlib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6514,33 +6957,34 @@ export namespace UPowerGlib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6549,6 +6993,7 @@ export namespace UPowerGlib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6557,12 +7002,14 @@ export namespace UPowerGlib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6571,20 +7018,22 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6596,6 +7045,7 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6642,7 +7092,8 @@ export namespace UPowerGlib {
     }
 
     /**
-     * The #UpWakeupsGlueSkeleton structure contains only private data and should only be accessed using the provided API.
+     * The {@link UPowerGlib.WakeupsGlueSkeleton} structure contains only private data and should only be accessed using the provided API.
+     * @gir-type Class
      */
     class WakeupsGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, WakeupsGlue {
         static $gtype: GObject.GType<WakeupsGlueSkeleton>;
@@ -6666,16 +7117,19 @@ export namespace UPowerGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WakeupsGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WakeupsGlueSkeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WakeupsGlueSkeleton.SignalSignatures[K]> extends [any, ...infer Q]
@@ -6683,163 +7137,164 @@ export namespace UPowerGlib {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.WakeupsGlue
          */
         get has_capability(): boolean;
         set has_capability(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * @category Inherited from UPowerGlib.WakeupsGlue
          */
         get hasCapability(): boolean;
         set hasCapability(val: boolean);
-
-        // Inherited methods
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_data(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_data(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_data(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_wakeups_glue_call_get_data().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_wakeups_glue_call_get_data()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_wakeups_glue_call_get_data()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_data_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_wakeups_glue_call_get_data() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_wakeups_glue_call_get_data()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_data_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_total(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_total(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_total(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
-         * Finishes an operation started with up_wakeups_glue_call_get_total().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_wakeups_glue_call_get_total()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_wakeups_glue_call_get_total()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_total_finish(res: Gio.AsyncResult): [boolean, number];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_wakeups_glue_call_get_total() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_wakeups_glue_call_get_total()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_total_sync(cancellable?: Gio.Cancellable | null): [boolean, number];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_data(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param value Parameter to return.
          */
         complete_get_total(invocation: Gio.DBusMethodInvocation, value: number): void;
@@ -6852,9 +7307,24 @@ export namespace UPowerGlib {
          * @param arg_value Argument to pass with the signal.
          */
         emit_total_changed(arg_value: number): void;
+        /**
+         * @virtual
+         */
         vfunc_data_changed(): void;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_get_data(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * @param invocation
+         * @virtual
+         */
         vfunc_handle_get_total(invocation: Gio.DBusMethodInvocation): boolean;
+        /**
+         * @param arg_value
+         * @virtual
+         */
         vfunc_total_changed(arg_value: number): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6869,32 +7339,32 @@ export namespace UPowerGlib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6903,39 +7373,39 @@ export namespace UPowerGlib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6946,13 +7416,16 @@ export namespace UPowerGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6960,7 +7433,7 @@ export namespace UPowerGlib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6968,9 +7441,9 @@ export namespace UPowerGlib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6990,9 +7463,9 @@ export namespace UPowerGlib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7006,33 +7479,33 @@ export namespace UPowerGlib {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7065,21 +7538,21 @@ export namespace UPowerGlib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -7089,8 +7562,8 @@ export namespace UPowerGlib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7107,10 +7580,10 @@ export namespace UPowerGlib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7125,13 +7598,13 @@ export namespace UPowerGlib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7162,21 +7635,21 @@ export namespace UPowerGlib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7186,33 +7659,34 @@ export namespace UPowerGlib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7221,6 +7695,7 @@ export namespace UPowerGlib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7229,12 +7704,14 @@ export namespace UPowerGlib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7243,20 +7720,22 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7268,6 +7747,7 @@ export namespace UPowerGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7297,71 +7777,148 @@ export namespace UPowerGlib {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type ClientGlueIface = typeof ClientGlue;
+    /**
+     * @gir-type Alias
+     */
     type ClientGlueProxyClass = typeof ClientGlueProxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClientGlueProxyPrivate {
         static $gtype: GObject.GType<ClientGlueProxyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientGlueSkeletonClass = typeof ClientGlueSkeleton;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClientGlueSkeletonPrivate {
         static $gtype: GObject.GType<ClientGlueSkeletonPrivate>;
     }
 
     /**
-     * Private #UpClient data
+     * Private {@link UPowerGlib.Client} data
+     * @gir-type Struct
      */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
+    /**
+     * @gir-type Alias
+     */
     type DeviceGlueIface = typeof DeviceGlue;
+    /**
+     * @gir-type Alias
+     */
     type DeviceGlueProxyClass = typeof DeviceGlueProxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class DeviceGlueProxyPrivate {
         static $gtype: GObject.GType<DeviceGlueProxyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeviceGlueSkeletonClass = typeof DeviceGlueSkeleton;
+    /**
+     * @gir-type Struct
+     */
     abstract class DeviceGlueSkeletonPrivate {
         static $gtype: GObject.GType<DeviceGlueSkeletonPrivate>;
     }
 
     /**
-     * Private #PkDevice data
+     * Private `PkDevice` data
+     * @gir-type Struct
      */
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HistoryItemClass = typeof HistoryItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class HistoryItemPrivate {
         static $gtype: GObject.GType<HistoryItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StatsItemClass = typeof StatsItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class StatsItemPrivate {
         static $gtype: GObject.GType<StatsItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WakeupItemClass = typeof WakeupItem;
+    /**
+     * @gir-type Struct
+     */
     abstract class WakeupItemPrivate {
         static $gtype: GObject.GType<WakeupItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WakeupsClass = typeof Wakeups;
+    /**
+     * @gir-type Alias
+     */
     type WakeupsGlueIface = typeof WakeupsGlue;
+    /**
+     * @gir-type Alias
+     */
     type WakeupsGlueProxyClass = typeof WakeupsGlueProxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class WakeupsGlueProxyPrivate {
         static $gtype: GObject.GType<WakeupsGlueProxyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WakeupsGlueSkeletonClass = typeof WakeupsGlueSkeleton;
+    /**
+     * @gir-type Struct
+     */
     abstract class WakeupsGlueSkeletonPrivate {
         static $gtype: GObject.GType<WakeupsGlueSkeletonPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class WakeupsPrivate {
         static $gtype: GObject.GType<WakeupsPrivate>;
     }
@@ -7374,10 +7931,30 @@ export namespace UPowerGlib {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param arg_device
+             * @virtual
+             */
             vfunc_device_added(arg_device: string): void;
+            /**
+             * @param arg_device
+             * @virtual
+             */
             vfunc_device_removed(arg_device: string): void;
+            /**
+             * @param invocation
+             * @virtual
+             */
             vfunc_handle_enumerate_devices(invocation: Gio.DBusMethodInvocation): boolean;
+            /**
+             * @param invocation
+             * @virtual
+             */
             vfunc_handle_get_critical_action(invocation: Gio.DBusMethodInvocation): boolean;
+            /**
+             * @param invocation
+             * @virtual
+             */
             vfunc_handle_get_display_device(invocation: Gio.DBusMethodInvocation): boolean;
         }
 
@@ -7404,69 +7981,73 @@ export namespace UPowerGlib {
          */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-         * Overrides all #GObject properties in the #UpClientGlue interface for a concrete class.
+         * Overrides all {@link GObject.Object} properties in the {@link UPowerGlib.ClientGlue} interface for a concrete class.
          * The properties are overridden in the order they are defined.
-         * @param klass The class structure for a #GObject<!-- -->-derived class.
+         * @param klass The class structure for a {@link GObject.Object}<!-- -->-derived class.
          * @param property_id_begin The property id to assign to the first overridden property.
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
+    /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower.top_of_page">org.freedesktop.UPower</link>.
+     * @gir-type Interface
+     */
     interface ClientGlue extends GObject.Object, ClientGlue.Interface {
         // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get daemon_version(): string;
         set daemon_version(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.DaemonVersion">"DaemonVersion"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get daemonVersion(): string;
         set daemonVersion(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get lid_is_closed(): boolean;
         set lid_is_closed(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsClosed">"LidIsClosed"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get lidIsClosed(): boolean;
         set lidIsClosed(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get lid_is_present(): boolean;
         set lid_is_present(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.LidIsPresent">"LidIsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get lidIsPresent(): boolean;
         set lidIsPresent(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get on_battery(): boolean;
         set on_battery(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower.OnBattery">"OnBattery"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get onBattery(): boolean;
         set onBattery(val: boolean);
@@ -7476,20 +8057,20 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_enumerate_devices(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enumerate_devices(
             cancellable: Gio.Cancellable | null,
@@ -7498,47 +8079,47 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_enumerate_devices_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_enumerate_devices_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_enumerate_devices_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_enumerate_devices_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_enumerate_devices(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_enumerate_devices().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_enumerate_devices().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_enumerate_devices()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_enumerate_devices()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_enumerate_devices_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_enumerate_devices() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_enumerate_devices()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_enumerate_devices_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_critical_action(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_critical_action(
             cancellable: Gio.Cancellable | null,
@@ -7547,47 +8128,47 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_critical_action_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_critical_action_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_critical_action_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_critical_action_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_critical_action(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_get_critical_action().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_critical_action().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_get_critical_action()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_get_critical_action()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_critical_action_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_get_critical_action() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_get_critical_action()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_critical_action_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_display_device(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_display_device(
             cancellable: Gio.Cancellable | null,
@@ -7596,51 +8177,51 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_client_glue_call_get_display_device_finish() to get the result of the operation.
+         * You can then call `up_client_glue_call_get_display_device_finish()` to get the result of the operation.
          *
-         * See up_client_glue_call_get_display_device_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_client_glue_call_get_display_device_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_display_device(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with up_client_glue_call_get_display_device().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_client_glue_call_get_display_device().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_client_glue_call_get_display_device()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_client_glue_call_get_display_device()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_display_device_finish(res: Gio.AsyncResult): [boolean, string];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_client_glue_call_get_display_device() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_client_glue_call_get_display_device()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_display_device_sync(cancellable?: Gio.Cancellable | null): [boolean, string];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.EnumerateDevices">EnumerateDevices()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param devices Parameter to return.
          */
         complete_enumerate_devices(invocation: Gio.DBusMethodInvocation, devices: string): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param action Parameter to return.
          */
         complete_get_critical_action(invocation: Gio.DBusMethodInvocation, action: string): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param device Parameter to return.
          */
         complete_get_display_device(invocation: Gio.DBusMethodInvocation, device: string): void;
@@ -7668,13 +8249,29 @@ export namespace UPowerGlib {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param invocation
+             * @param arg_type
+             * @param arg_timespan
+             * @param arg_resolution
+             * @virtual
+             */
             vfunc_handle_get_history(
                 invocation: Gio.DBusMethodInvocation,
                 arg_type: string,
                 arg_timespan: number,
                 arg_resolution: number,
             ): boolean;
+            /**
+             * @param invocation
+             * @param arg_type
+             * @virtual
+             */
             vfunc_handle_get_statistics(invocation: Gio.DBusMethodInvocation, arg_type: string): boolean;
+            /**
+             * @param invocation
+             * @virtual
+             */
             vfunc_handle_refresh(invocation: Gio.DBusMethodInvocation): boolean;
         }
 
@@ -7736,314 +8333,318 @@ export namespace UPowerGlib {
          */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-         * Overrides all #GObject properties in the #UpDeviceGlue interface for a concrete class.
+         * Overrides all {@link GObject.Object} properties in the {@link UPowerGlib.DeviceGlue} interface for a concrete class.
          * The properties are overridden in the order they are defined.
-         * @param klass The class structure for a #GObject<!-- -->-derived class.
+         * @param klass The class structure for a {@link GObject.Object}<!-- -->-derived class.
          * @param property_id_begin The property id to assign to the first overridden property.
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
+    /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Device.top_of_page">org.freedesktop.UPower.Device</link>.
+     * @gir-type Interface
+     */
     interface DeviceGlue extends GObject.Object, DeviceGlue.Interface {
         // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Capacity">"Capacity"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get capacity(): number;
         set capacity(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Energy">"Energy"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energy(): number;
         set energy(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyEmpty">"EnergyEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energy_empty(): number;
         set energy_empty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyEmpty">"EnergyEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energyEmpty(): number;
         set energyEmpty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energy_full(): number;
         set energy_full(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFull">"EnergyFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energyFull(): number;
         set energyFull(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energy_full_design(): number;
         set energy_full_design(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyFullDesign">"EnergyFullDesign"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energyFullDesign(): number;
         set energyFullDesign(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energy_rate(): number;
         set energy_rate(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.EnergyRate">"EnergyRate"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get energyRate(): number;
         set energyRate(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get has_history(): boolean;
         set has_history(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasHistory">"HasHistory"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get hasHistory(): boolean;
         set hasHistory(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get has_statistics(): boolean;
         set has_statistics(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.HasStatistics">"HasStatistics"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get hasStatistics(): boolean;
         set hasStatistics(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get icon_name(): string;
         set icon_name(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IconName">"IconName"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get iconName(): string;
         set iconName(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get is_present(): boolean;
         set is_present(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsPresent">"IsPresent"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get isPresent(): boolean;
         set isPresent(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get is_rechargeable(): boolean;
         set is_rechargeable(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.IsRechargeable">"IsRechargeable"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get isRechargeable(): boolean;
         set isRechargeable(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Luminosity">"Luminosity"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get luminosity(): number;
         set luminosity(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Model">"Model"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get model(): string;
         set model(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.NativePath">"NativePath"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get native_path(): string;
         set native_path(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.NativePath">"NativePath"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get nativePath(): string;
         set nativePath(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Online">"Online"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get online(): boolean;
         set online(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Percentage">"Percentage"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get percentage(): number;
         set percentage(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.PowerSupply">"PowerSupply"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get power_supply(): boolean;
         set power_supply(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.PowerSupply">"PowerSupply"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get powerSupply(): boolean;
         set powerSupply(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Serial">"Serial"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get serial(): string;
         set serial(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.State">"State"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get state(): number;
         set state(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Technology">"Technology"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get technology(): number;
         set technology(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Temperature">"Temperature"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get temperature(): number;
         set temperature(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToEmpty">"TimeToEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get time_to_empty(): number;
         set time_to_empty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToEmpty">"TimeToEmpty"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get timeToEmpty(): number;
         set timeToEmpty(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get time_to_full(): number;
         set time_to_full(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.TimeToFull">"TimeToFull"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get timeToFull(): number;
         set timeToFull(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Type">"Type"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get type(): number;
         set type(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.UpdateTime">"UpdateTime"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get update_time(): number;
         set update_time(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.UpdateTime">"UpdateTime"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get updateTime(): number;
         set updateTime(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Vendor">"Vendor"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get vendor(): string;
         set vendor(val: string);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.Voltage">"Voltage"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get voltage(): number;
         set voltage(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.WarningLevel">"WarningLevel"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get warning_level(): number;
         set warning_level(val: number);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Device.WarningLevel">"WarningLevel"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get warningLevel(): number;
         set warningLevel(val: number);
@@ -8053,13 +8654,13 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -8070,14 +8671,14 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -8089,14 +8690,14 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_history_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_history_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_history_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_history_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_history(
             arg_type: string,
@@ -8106,20 +8707,20 @@ export namespace UPowerGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_get_history().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_get_history()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_get_history()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_history_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_get_history() for the asynchronous version of this method.
+         * See `up_device_glue_call_get_history()` for the asynchronous version of this method.
          * @param arg_type Argument to pass with the method invocation.
          * @param arg_timespan Argument to pass with the method invocation.
          * @param arg_resolution Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_history_sync(
             arg_type: string,
@@ -8130,22 +8731,22 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_statistics(arg_type: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_statistics(
             arg_type: string,
@@ -8155,12 +8756,12 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_get_statistics_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_get_statistics_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_get_statistics_sync() for the synchronous, blocking version of this method.
+         * See `up_device_glue_call_get_statistics_sync()` for the synchronous, blocking version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_statistics(
             arg_type: string,
@@ -8168,87 +8769,87 @@ export namespace UPowerGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_get_statistics().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_get_statistics()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_get_statistics()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_statistics_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_get_statistics() for the asynchronous version of this method.
+         * See `up_device_glue_call_get_statistics()` for the asynchronous version of this method.
          * @param arg_type Argument to pass with the method invocation.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_statistics_sync(arg_type: string, cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_refresh(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_device_glue_call_refresh_finish() to get the result of the operation.
+         * You can then call `up_device_glue_call_refresh_finish()` to get the result of the operation.
          *
-         * See up_device_glue_call_refresh_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_device_glue_call_refresh_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_refresh(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an operation started with up_device_glue_call_refresh().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_refresh().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_device_glue_call_refresh()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_device_glue_call_refresh()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_refresh_finish(res: Gio.AsyncResult): boolean;
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_device_glue_call_refresh() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_device_glue_call_refresh()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_refresh_sync(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetHistory">GetHistory()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_history(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_statistics(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          */
         complete_refresh(invocation: Gio.DBusMethodInvocation): void;
     }
@@ -8265,9 +8866,24 @@ export namespace UPowerGlib {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_data_changed(): void;
+            /**
+             * @param invocation
+             * @virtual
+             */
             vfunc_handle_get_data(invocation: Gio.DBusMethodInvocation): boolean;
+            /**
+             * @param invocation
+             * @virtual
+             */
             vfunc_handle_get_total(invocation: Gio.DBusMethodInvocation): boolean;
+            /**
+             * @param arg_value
+             * @virtual
+             */
             vfunc_total_changed(arg_value: number): void;
         }
 
@@ -8288,27 +8904,31 @@ export namespace UPowerGlib {
          */
         interface_info(): Gio.DBusInterfaceInfo;
         /**
-         * Overrides all #GObject properties in the #UpWakeupsGlue interface for a concrete class.
+         * Overrides all {@link GObject.Object} properties in the {@link UPowerGlib.WakeupsGlue} interface for a concrete class.
          * The properties are overridden in the order they are defined.
-         * @param klass The class structure for a #GObject<!-- -->-derived class.
+         * @param klass The class structure for a {@link GObject.Object}<!-- -->-derived class.
          * @param property_id_begin The property id to assign to the first overridden property.
          */
         override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     }
+    /**
+     * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Wakeups.top_of_page">org.freedesktop.UPower.Wakeups</link>.
+     * @gir-type Interface
+     */
     interface WakeupsGlue extends GObject.Object, WakeupsGlue.Interface {
         // Properties
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get has_capability(): boolean;
         set has_capability(val: boolean);
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-UPower-Wakeups.HasCapability">"HasCapability"</link>.
          *
-         * Since the D-Bus property for this #GObject property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
+         * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
         get hasCapability(): boolean;
         set hasCapability(val: boolean);
@@ -8318,108 +8938,108 @@ export namespace UPowerGlib {
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_data(cancellable?: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_data(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_data_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_data_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_data_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_data_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_data(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Finishes an operation started with up_wakeups_glue_call_get_data().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_data().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_wakeups_glue_call_get_data()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_wakeups_glue_call_get_data()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_data_finish(res: Gio.AsyncResult): [boolean, GLib.Variant];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_wakeups_glue_call_get_data() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_wakeups_glue_call_get_data()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_data_sync(cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
         call_get_total(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_total(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`.
          * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
-         * You can then call up_wakeups_glue_call_get_total_finish() to get the result of the operation.
+         * You can then call `up_wakeups_glue_call_get_total_finish()` to get the result of the operation.
          *
-         * See up_wakeups_glue_call_get_total_sync() for the synchronous, blocking version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
+         * See `up_wakeups_glue_call_get_total_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
         call_get_total(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
-         * Finishes an operation started with up_wakeups_glue_call_get_total().
-         * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_wakeups_glue_call_get_total().
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * Finishes an operation started with `up_wakeups_glue_call_get_total()`.
+         * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `up_wakeups_glue_call_get_total()`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_total_finish(res: Gio.AsyncResult): [boolean, number];
         /**
          * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
          *
-         * See up_wakeups_glue_call_get_total() for the asynchronous version of this method.
-         * @param cancellable A #GCancellable or %NULL.
-         * @returns %TRUE if the call succeded, %FALSE if @error is set.
+         * See `up_wakeups_glue_call_get_total()` for the asynchronous version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @returns `true` if the call succeded, `false` if `error` is set.
          */
         call_get_total_sync(cancellable?: Gio.Cancellable | null): [boolean, number];
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetData">GetData()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param data Parameter to return.
          */
         complete_get_data(invocation: Gio.DBusMethodInvocation, data: GLib.Variant): void;
         /**
-         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+         * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower-Wakeups.GetTotal">GetTotal()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
          *
-         * This method will free `invocation,` you cannot use it afterwards.
-         * @param invocation A #GDBusMethodInvocation.
+         * This method will free `invocation`, you cannot use it afterwards.
+         * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param value Parameter to return.
          */
         complete_get_total(invocation: Gio.DBusMethodInvocation, value: number): void;

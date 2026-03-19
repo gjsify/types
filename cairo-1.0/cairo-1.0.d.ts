@@ -22,6 +22,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<Status>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Status {
         SUCCESS,
         NO_MEMORY,
@@ -68,6 +71,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<Content>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Content {
         COLOR,
         ALPHA,
@@ -78,6 +84,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<Operator>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Operator {
         CLEAR,
         SOURCE,
@@ -114,6 +123,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<Antialias>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Antialias {
         DEFAULT,
         NONE,
@@ -128,6 +140,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<FillRule>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FillRule {
         WINDING,
         EVEN_ODD,
@@ -137,6 +152,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<LineCap>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LineCap {
         BUTT,
         ROUND,
@@ -147,6 +165,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<LineJoin>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LineJoin {
         MITER,
         ROUND,
@@ -157,6 +178,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<TextClusterFlags>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TextClusterFlags {
         BACKWARD,
     }
@@ -165,6 +189,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<FontSlant>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FontSlant {
         NORMAL,
         ITALIC,
@@ -175,6 +202,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<FontWeight>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FontWeight {
         NORMAL,
         BOLD,
@@ -184,6 +214,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<SubpixelOrder>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SubpixelOrder {
         DEFAULT,
         RGB,
@@ -196,6 +229,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<HintStyle>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum HintStyle {
         DEFAULT,
         NONE,
@@ -208,6 +244,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<HintMetrics>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum HintMetrics {
         DEFAULT,
         OFF,
@@ -218,6 +257,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<FontType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FontType {
         TOY,
         FT,
@@ -230,6 +272,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<PathDataType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PathDataType {
         MOVE_TO,
         LINE_TO,
@@ -241,6 +286,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<DeviceType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DeviceType {
         DRM,
         GL,
@@ -257,6 +305,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<SurfaceType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SurfaceType {
         IMAGE,
         PDF,
@@ -289,6 +340,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<Format>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Format {
         INVALID,
         ARGB32,
@@ -303,6 +357,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<PatternType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PatternType {
         SOLID,
         SURFACE,
@@ -316,6 +373,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<Extend>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Extend {
         NONE,
         REPEAT,
@@ -327,6 +387,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<Filter>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Filter {
         FAST,
         GOOD,
@@ -340,6 +403,9 @@ export namespace cairo {
         export const $gtype: GObject.GType<RegionOverlap>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum RegionOverlap {
         IN,
         OUT,
@@ -347,46 +413,79 @@ export namespace cairo {
     }
 
     function image_surface_create(): void;
+    /**
+     * @gir-type Foreign Struct
+     */
     class Context {
         static $gtype: GObject.GType<Context>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class Device {
         static $gtype: GObject.GType<Device>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class Surface {
         static $gtype: GObject.GType<Surface>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class Matrix {
         static $gtype: GObject.GType<Matrix>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class Pattern {
         static $gtype: GObject.GType<Pattern>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class Region {
         static $gtype: GObject.GType<Region>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class FontOptions {
         static $gtype: GObject.GType<FontOptions>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class FontFace {
         static $gtype: GObject.GType<FontFace>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class ScaledFont {
         static $gtype: GObject.GType<ScaledFont>;
     }
 
+    /**
+     * @gir-type Foreign Struct
+     */
     class Path {
         static $gtype: GObject.GType<Path>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
@@ -409,6 +508,9 @@ export namespace cairo {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RectangleInt {
         static $gtype: GObject.GType<RectangleInt>;
 

@@ -17,6 +17,9 @@ export namespace AvahiCore {
      * AvahiCore-0.6
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum Protocol {
         INET,
         INET6,
@@ -24,6 +27,9 @@ export namespace AvahiCore {
     }
 
     function server_get_host_name(): string;
+    /**
+     * @gir-type Flags
+     */
     enum PublishFlags {
         UNIQUE,
         NO_PROBE,
@@ -36,18 +42,30 @@ export namespace AvahiCore {
         USE_MULTICAST,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class StringList {
         static $gtype: GObject.GType<StringList>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Address {
         static $gtype: GObject.GType<Address>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Client {
         static $gtype: GObject.GType<Client>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IfIndex = number;
     /**
      * Name of the imported GIR library

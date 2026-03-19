@@ -29,6 +29,9 @@ export namespace GstClapper {
         export const $gtype: GObject.GType<ClapperColorBalanceType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClapperColorBalanceType {
         /**
          * hue or color balance.
@@ -49,6 +52,9 @@ export namespace GstClapper {
         CONTRAST,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ClapperError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -67,7 +73,7 @@ export namespace GstClapper {
 
         /**
          * Gets a string representing the given error.
-         * @param error a #GstClapperError
+         * @param error a {@link GstClapper.ClapperError}
          */
         static get_name(error: ClapperError): string;
         static quark(): GLib.Quark;
@@ -77,6 +83,9 @@ export namespace GstClapper {
         export const $gtype: GObject.GType<ClapperSeekMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClapperSeekMode {
         /**
          * default seek method (flush only).
@@ -92,6 +101,9 @@ export namespace GstClapper {
         FAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClapperSnapshotFormat {
         /**
          * RAW Native.
@@ -119,6 +131,9 @@ export namespace GstClapper {
         export const $gtype: GObject.GType<ClapperState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClapperState {
         /**
          * clapper is stopped.
@@ -140,40 +155,79 @@ export namespace GstClapper {
 
     /**
      * Gets a string representing the given color balance type.
-     * @param type a #GstClapperColorBalanceType
+     * @param type a {@link GstClapper.ClapperColorBalanceType}
      * @returns a string with the name of the color balance type.
      */
     function clapper_color_balance_type_get_name(type: ClapperColorBalanceType | null): string;
     /**
      * Gets a string representing the given error.
-     * @param error a #GstClapperError
+     * @param error a {@link GstClapper.ClapperError}
      * @returns a string with the given error.
      */
     function clapper_error_get_name(error: ClapperError | null): string;
     function clapper_error_quark(): GLib.Quark;
     /**
      * Gets a string representing the given state.
-     * @param state a #GstClapperState
+     * @param state a {@link GstClapper.ClapperState}
      * @returns a string with the name of the state.
      */
     function clapper_state_get_name(state: ClapperState | null): string;
+    /**
+     * @gir-type Callback
+     */
     interface ClapperSignalDispatcherFunc {
         (data?: any | null): void;
     }
     namespace Clapper {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'audio-decoder-changed': (arg0: string) => void;
+            /**
+             * @signal
+             */
             buffering: (arg0: number) => void;
+            /**
+             * @signal
+             */
             'duration-changed': (arg0: number) => void;
+            /**
+             * @signal
+             */
             'end-of-stream': () => void;
+            /**
+             * @signal
+             */
             error: (arg0: GLib.Error) => void;
+            /**
+             * @signal
+             */
             'media-info-updated': (arg0: ClapperMediaInfo) => void;
+            /**
+             * @signal
+             */
             'position-updated': (arg0: number) => void;
+            /**
+             * @signal
+             */
             'state-changed': (arg0: ClapperState) => void;
+            /**
+             * @signal
+             */
             'uri-loaded': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'video-decoder-changed': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'video-dimensions-changed': (arg0: number, arg1: number) => void;
+            /**
+             * @signal
+             */
             warning: (arg0: GLib.Error) => void;
             'notify::audio-video-offset': (pspec: GObject.ParamSpec) => void;
             'notify::current-audio-track': (pspec: GObject.ParamSpec) => void;
@@ -244,6 +298,9 @@ export namespace GstClapper {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Clapper extends Gst.Object {
         static $gtype: GObject.GType<Clapper>;
 
@@ -324,16 +381,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Clapper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Clapper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Clapper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Clapper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Clapper.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Clapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -345,7 +405,7 @@ export namespace GstClapper {
         /**
          * Automatically initializes GStreamer library if this was not done by the user yet
          * and tweaks some of its defaults to our liking. It is recommended to use this
-         * function instead of plain gst_init().
+         * function instead of plain `gst_init()`.
          *
          * This also allows usage of GstClapper API alone without importing GStreamer
          * on the implementation side.
@@ -353,8 +413,8 @@ export namespace GstClapper {
          */
         static gst_init(argv?: string[] | null): string[] | null;
         /**
-         * Frees a %NULL terminated array of #GstClapperVisualization.
-         * @param viss a %NULL terminated array of #GstClapperVisualization to free
+         * Frees a `null` terminated array of {@link GstClapper.ClapperVisualization}.
+         * @param viss a `null` terminated array of {@link GstClapper.ClapperVisualization} to free
          */
         static visualizations_free(viss: ClapperVisualization): void;
         static visualizations_get(): ClapperVisualization[];
@@ -368,25 +428,28 @@ export namespace GstClapper {
         get_audio_video_offset(): number;
         /**
          * Retrieve the current value of the indicated `type`.
-         * @param type #GstClapperColorBalanceType
-         * @returns The current value of @type, between [0,1]. In case of   error -1 is returned.
+         * @param type {@link GstClapper.ClapperColorBalanceType}
+         * @returns The current value of `type`, between [0,1]. In case of   error -1 is returned.
          */
         get_color_balance(type: ClapperColorBalanceType | null): number;
         /**
-         * A Function to get current audio #GstClapperAudioInfo instance.
-         * @returns current audio track. The caller should free it with g_object_unref()
+         * A Function to get current audio {@link GstClapper.ClapperAudioInfo} instance.
+         * @returns current audio track. The caller should free it with `g_object_unref()`
          */
         get_current_audio_track(): ClapperAudioInfo;
         /**
-         * A Function to get current subtitle #GstClapperSubtitleInfo instance.
-         * @returns current subtitle track. The caller should free it with g_object_unref()
+         * A Function to get current subtitle {@link GstClapper.ClapperSubtitleInfo} instance.
+         * @returns current subtitle track. The caller should free it with `g_object_unref()`
          */
         get_current_subtitle_track(): ClapperSubtitleInfo;
         /**
-         * A Function to get current video #GstClapperVideoInfo instance.
-         * @returns current video track. The caller should free it with g_object_unref()
+         * A Function to get current video {@link GstClapper.ClapperVideoInfo} instance.
+         * @returns current video track. The caller should free it with `g_object_unref()`
          */
         get_current_video_track(): ClapperVideoInfo;
+        /**
+         * @returns Name of the currently enabled visualization.   `g_free()` after usage.
+         */
         get_current_visualization(): string;
         /**
          * Retrieves the duration of the media stream that self represents.
@@ -394,34 +457,52 @@ export namespace GstClapper {
          */
         get_duration(): Gst.ClockTime;
         /**
-         * A Function to get the current media info #GstClapperMediaInfo instance.
-         * @returns media info instance. The caller should free it with g_object_unref()
+         * A Function to get the current media info {@link GstClapper.ClapperMediaInfo} instance.
+         * @returns media info instance. The caller should free it with `g_object_unref()`
          */
         get_media_info(): ClapperMediaInfo;
         /**
-         * A Function to get the #GstClapperMpris instance.
-         * @returns mpris instance. The caller should free it with g_object_unref()
+         * A Function to get the {@link GstClapper.ClapperMpris} instance.
+         * @returns mpris instance. The caller should free it with `g_object_unref()`
          */
         get_mpris(): ClapperMpris;
         /**
          * Retrieve the current value of the indicated `type`.
-         * @returns The current value of @type, Default: 0x00000000 "none
+         * @returns The current value of `type`, Default: 0x00000000 "none
          */
         get_multiview_flags(): GstVideo.VideoMultiviewFlags;
         /**
          * Retrieve the current value of the indicated `type`.
-         * @returns The current value of @type, Default: -1 "none"
+         * @returns The current value of `type`, Default: -1 "none"
          */
         get_multiview_mode(): GstVideo.VideoMultiviewFramePacking;
+        /**
+         * @returns `true` if the currently-playing stream is muted.
+         */
         get_mute(): boolean;
+        /**
+         * @returns The internal playbin instance. The caller should free it with `g_object_unref()`
+         */
         get_pipeline(): Gst.Element;
+        /**
+         * @returns the absolute position time, in nanoseconds, of the currently-playing stream.
+         */
         get_position(): Gst.ClockTime;
+        /**
+         * @returns current playback rate
+         */
         get_rate(): number;
+        /**
+         * @returns The currently used seek mode, Default: 0 "default"
+         */
         get_seek_mode(): ClapperSeekMode;
+        /**
+         * @returns Current player state
+         */
         get_state(): ClapperState;
         /**
          * current subtitle URI
-         * @returns URI of the current external subtitle.   g_free() after usage.
+         * @returns URI of the current external subtitle.   `g_free()` after usage.
          */
         get_subtitle_uri(): string;
         /**
@@ -431,7 +512,7 @@ export namespace GstClapper {
         get_subtitle_video_offset(): number;
         /**
          * Gets the URI of the currently-playing stream.
-         * @returns a string containing the URI of the currently-playing stream. g_free() after usage.
+         * @returns a string containing the URI of the currently-playing stream. `g_free()` after usage.
          */
         get_uri(): string;
         /**
@@ -443,7 +524,7 @@ export namespace GstClapper {
          *  Except for GST_CLAPPER_THUMBNAIL_RAW_NATIVE format, if no config is set, pixel-aspect-ratio would be 1/1
          * @param format output format of the video snapshot
          * @param config Additional configuration
-         * @returns Current video snapshot sample or %NULL on failure
+         * @returns Current video snapshot sample or `null` on failure
          */
         get_video_snapshot(format: ClapperSnapshotFormat | null, config?: Gst.Structure | null): Gst.Sample;
         /**
@@ -453,7 +534,7 @@ export namespace GstClapper {
         get_volume(): number;
         /**
          * Checks whether the `clapper` has color balance support available.
-         * @returns %TRUE if @clapper has color balance support. Otherwise,   %FALSE.
+         * @returns `true` if `clapper` has color balance support. Otherwise,   `false`.
          */
         has_color_balance(): boolean;
         /**
@@ -476,6 +557,10 @@ export namespace GstClapper {
          * @param offset offset from current position to seek to in nanoseconds
          */
         seek_offset(offset: Gst.ClockTime): void;
+        /**
+         * @param stream_index stream index
+         * @returns `true` or `false` Sets the audio track `stream_idex`.
+         */
         set_audio_track(stream_index: number): boolean;
         /**
          * Enable or disable the current audio track.
@@ -484,30 +569,30 @@ export namespace GstClapper {
         set_audio_track_enabled(enabled: boolean): void;
         /**
          * Sets audio-video-offset property by value of `offset`
-         * @param offset #gint64 in nanoseconds
+         * @param offset `gint64` in nanoseconds
          */
         set_audio_video_offset(offset: number): void;
         /**
          * Sets the current value of the indicated channel `type` to the passed
          * value.
-         * @param type #GstClapperColorBalanceType
-         * @param value The new value for the @type, ranged [0,1]
+         * @param type {@link GstClapper.ClapperColorBalanceType}
+         * @param value The new value for the `type`, ranged [0,1]
          */
         set_color_balance(type: ClapperColorBalanceType | null, value: number): void;
         /**
          * Sets the current value of the indicated mode `type` to the passed
          * value.
-         * @param flags The new value for the @type
+         * @param flags The new value for the `type`
          */
         set_multiview_flags(flags: GstVideo.VideoMultiviewFlags | null): void;
         /**
          * Sets the current value of the indicated mode `type` to the passed
          * value.
-         * @param mode The new value for the @type
+         * @param mode The new value for the `type`
          */
         set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking | null): void;
         /**
-         * %TRUE if the currently-playing stream should be muted.
+         * `true` if the currently-playing stream should be muted.
          * @param val Mute state the should be set
          */
         set_mute(val: boolean): void;
@@ -518,9 +603,13 @@ export namespace GstClapper {
         set_rate(rate: number): void;
         /**
          * Changes currently used clapper seek mode to the one of `mode`
-         * @param mode #GstClapperSeekMode
+         * @param mode {@link GstClapper.ClapperSeekMode}
          */
         set_seek_mode(mode: ClapperSeekMode | null): void;
+        /**
+         * @param stream_index stream index
+         * @returns `true` or `false` Sets the subtitle stack `stream_index`.
+         */
         set_subtitle_track(stream_index: number): boolean;
         /**
          * Enable or disable the current subtitle track.
@@ -529,14 +618,14 @@ export namespace GstClapper {
         set_subtitle_track_enabled(enabled: boolean): void;
         /**
          * Sets the external subtitle URI. This should be combined with a call to
-         * gst_clapper_set_subtitle_track_enabled(`clapper,` TRUE) so the subtitles are actually
+         * gst_clapper_set_subtitle_track_enabled(`clapper`, TRUE) so the subtitles are actually
          * rendered.
          * @param uri subtitle URI
          */
         set_subtitle_uri(uri: string): void;
         /**
          * Sets subtitle-video-offset property by value of `offset`
-         * @param offset #gint64 in nanoseconds
+         * @param offset `gint64` in nanoseconds
          */
         set_subtitle_video_offset(offset: number): void;
         /**
@@ -544,12 +633,20 @@ export namespace GstClapper {
          * @param uri next URI to play.
          */
         set_uri(uri: string): void;
+        /**
+         * @param stream_index stream index
+         * @returns `true` or `false` Sets the video track `stream_index`.
+         */
         set_video_track(stream_index: number): boolean;
         /**
          * Enable or disable the current video track.
          * @param enabled TRUE or FALSE
          */
         set_video_track_enabled(enabled: boolean): void;
+        /**
+         * @param name visualization element obtained from `gst_clapper_visualizations_get`()
+         * @returns `true` if the visualizations was set correctly. Otherwise, `false`.
+         */
         set_visualization(name: string): boolean;
         /**
          * Enable or disable the visualization.
@@ -584,7 +681,8 @@ export namespace GstClapper {
     }
 
     /**
-     * #GstClapperStreamInfo specific to audio streams.
+     * {@link GstClapper.ClapperStreamInfo} specific to audio streams.
+     * @gir-type Class
      */
     class ClapperAudioInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperAudioInfo>;
@@ -606,16 +704,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperAudioInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperAudioInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperAudioInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperAudioInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperAudioInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperAudioInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -624,10 +725,25 @@ export namespace GstClapper {
 
         // Methods
 
+        /**
+         * @returns the audio bitrate in {@link GstClapper.ClapperAudioInfo}.
+         */
         get_bitrate(): number;
+        /**
+         * @returns the number of audio channels in {@link GstClapper.ClapperAudioInfo}.
+         */
         get_channels(): number;
+        /**
+         * @returns the language of the stream, or NULL if unknown.
+         */
         get_language(): string;
+        /**
+         * @returns the audio maximum bitrate in {@link GstClapper.ClapperAudioInfo}.
+         */
         get_max_bitrate(): number;
+        /**
+         * @returns the audio sample rate in {@link GstClapper.ClapperAudioInfo}.
+         */
         get_sample_rate(): number;
     }
 
@@ -645,6 +761,9 @@ export namespace GstClapper {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClapperGMainContextSignalDispatcher extends GObject.Object implements ClapperSignalDispatcher {
         static $gtype: GObject.GType<ClapperGMainContextSignalDispatcher>;
 
@@ -670,16 +789,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperGMainContextSignalDispatcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperGMainContextSignalDispatcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperGMainContextSignalDispatcher.SignalSignatures[K]> extends [
@@ -694,13 +816,16 @@ export namespace GstClapper {
         // Static methods
 
         /**
-         * Creates a new GstClapperSignalDispatcher that uses `application_context,`
-         * or the thread default one if %NULL is used. See gst_clapper_new().
-         * @param application_context GMainContext to use or %NULL
+         * Creates a new GstClapperSignalDispatcher that uses `application_context`,
+         * or the thread default one if `null` is used. See `gst_clapper_new()`.
+         * @param application_context GMainContext to use or `null`
          */
         static ['new'](application_context?: GLib.MainContext | null): ClapperSignalDispatcher;
-
-        // Inherited methods
+        /**
+         * @param clapper
+         * @param emitter
+         * @virtual
+         */
         vfunc_dispatch(clapper: Clapper, emitter: ClapperSignalDispatcherFunc): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -715,32 +840,32 @@ export namespace GstClapper {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -749,39 +874,39 @@ export namespace GstClapper {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -792,13 +917,16 @@ export namespace GstClapper {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -806,7 +934,7 @@ export namespace GstClapper {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -814,9 +942,9 @@ export namespace GstClapper {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -836,9 +964,9 @@ export namespace GstClapper {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -852,33 +980,33 @@ export namespace GstClapper {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -911,21 +1039,21 @@ export namespace GstClapper {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -935,8 +1063,8 @@ export namespace GstClapper {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -953,10 +1081,10 @@ export namespace GstClapper {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -971,13 +1099,13 @@ export namespace GstClapper {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1008,21 +1136,21 @@ export namespace GstClapper {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1032,33 +1160,34 @@ export namespace GstClapper {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1067,6 +1196,7 @@ export namespace GstClapper {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1075,12 +1205,14 @@ export namespace GstClapper {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1089,20 +1221,22 @@ export namespace GstClapper {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1114,6 +1248,7 @@ export namespace GstClapper {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1158,7 +1293,8 @@ export namespace GstClapper {
     }
 
     /**
-     * Opaque #GstClapperGtk4Plugin object
+     * Opaque {@link GstClapper.ClapperGtk4Plugin} object
+     * @gir-type Class
      */
     class ClapperGtk4Plugin extends GObject.Object {
         static $gtype: GObject.GType<ClapperGtk4Plugin>;
@@ -1187,16 +1323,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperGtk4Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperGtk4Plugin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperGtk4Plugin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperGtk4Plugin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperGtk4Plugin.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperGtk4Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1215,6 +1354,7 @@ export namespace GstClapper {
 
     /**
      * Structure containing the media information of a URI.
+     * @gir-type Class
      */
     class ClapperMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperMediaInfo>;
@@ -1236,16 +1376,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperMediaInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperMediaInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperMediaInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperMediaInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperMediaInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperMediaInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1254,8 +1397,17 @@ export namespace GstClapper {
 
         // Methods
 
+        /**
+         * @returns A {@link GLib.List} of matching {@link GstClapper.ClapperAudioInfo}.
+         */
         get_audio_streams(): ClapperAudioInfo[];
+        /**
+         * @returns the container format.
+         */
         get_container_format(): string;
+        /**
+         * @returns duration of the media.
+         */
         get_duration(): Gst.ClockTime;
         /**
          * Function to get the image (or preview-image) stored in taglist.
@@ -1263,18 +1415,57 @@ export namespace GstClapper {
          * @returns GstSample or NULL.
          */
         get_image_sample(): Gst.Sample;
+        /**
+         * @returns number of audio streams.
+         */
         get_number_of_audio_streams(): number;
+        /**
+         * @returns number of total streams.
+         */
         get_number_of_streams(): number;
+        /**
+         * @returns number of subtitle streams.
+         */
         get_number_of_subtitle_streams(): number;
+        /**
+         * @returns number of video streams.
+         */
         get_number_of_video_streams(): number;
+        /**
+         * @returns A {@link GLib.List} of matching {@link GstClapper.ClapperStreamInfo}.
+         */
         get_stream_list(): ClapperStreamInfo[];
+        /**
+         * @returns A {@link GLib.List} of matching {@link GstClapper.ClapperSubtitleInfo}.
+         */
         get_subtitle_streams(): ClapperSubtitleInfo[];
+        /**
+         * @returns the tags contained in media info.
+         */
         get_tags(): Gst.TagList;
+        /**
+         * @returns the media title. When metadata does not contain title, returns title parsed from URI.
+         */
         get_title(): string;
+        /**
+         * @returns the toc contained in media info.
+         */
         get_toc(): Gst.Toc;
+        /**
+         * @returns the URI associated with {@link GstClapper.ClapperMediaInfo}.
+         */
         get_uri(): string;
+        /**
+         * @returns A {@link GLib.List} of matching {@link GstClapper.ClapperVideoInfo}.
+         */
         get_video_streams(): ClapperVideoInfo[];
+        /**
+         * @returns `true` if the media is live.
+         */
         is_live(): boolean;
+        /**
+         * @returns `true` if the media is seekable.
+         */
         is_seekable(): boolean;
     }
 
@@ -1305,6 +1496,9 @@ export namespace GstClapper {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClapperMpris extends GObject.Object {
         static $gtype: GObject.GType<ClapperMpris>;
 
@@ -1347,16 +1541,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperMpris.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperMpris.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperMpris.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperMpris.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperMpris.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperMpris.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1376,7 +1573,8 @@ export namespace GstClapper {
     /**
      * Base structure for information concerning a media stream. Depending on
      * the stream type, one can find more media-specific information in
-     * #GstClapperVideoInfo, #GstClapperAudioInfo, #GstClapperSubtitleInfo.
+     * {@link GstClapper.ClapperVideoInfo}, {@link GstClapper.ClapperAudioInfo}, {@link GstClapper.ClapperSubtitleInfo}.
+     * @gir-type Class
      */
     abstract class ClapperStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperStreamInfo>;
@@ -1398,16 +1596,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperStreamInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperStreamInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperStreamInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperStreamInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperStreamInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperStreamInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1416,14 +1617,17 @@ export namespace GstClapper {
 
         // Methods
 
+        /**
+         * @returns the {@link Gst.Caps} of the stream.
+         */
         get_caps(): Gst.Caps;
         /**
-         * A string describing codec used in #GstClapperStreamInfo.
+         * A string describing codec used in {@link GstClapper.ClapperStreamInfo}.
          * @returns codec string or NULL on unknown.
          */
         get_codec(): string;
         /**
-         * Function to get stream index from #GstClapperStreamInfo instance.
+         * Function to get stream index from {@link GstClapper.ClapperStreamInfo} instance.
          * @returns the stream index of this stream.
          */
         get_index(): number;
@@ -1433,6 +1637,9 @@ export namespace GstClapper {
          * @returns a human readable name
          */
         get_stream_type(): string;
+        /**
+         * @returns the tags contained in this stream.
+         */
         get_tags(): Gst.TagList;
     }
 
@@ -1446,7 +1653,8 @@ export namespace GstClapper {
     }
 
     /**
-     * #GstClapperStreamInfo specific to subtitle streams.
+     * {@link GstClapper.ClapperStreamInfo} specific to subtitle streams.
+     * @gir-type Class
      */
     class ClapperSubtitleInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperSubtitleInfo>;
@@ -1468,16 +1676,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperSubtitleInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperSubtitleInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperSubtitleInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperSubtitleInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperSubtitleInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperSubtitleInfo.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1488,7 +1699,13 @@ export namespace GstClapper {
 
         // Methods
 
+        /**
+         * @returns the language of the stream, or NULL if unknown.
+         */
         get_language(): string;
+        /**
+         * @returns the title of the stream, or NULL if unknown.
+         */
         get_title(): string;
     }
 
@@ -1502,7 +1719,8 @@ export namespace GstClapper {
     }
 
     /**
-     * #GstClapperStreamInfo specific to video streams.
+     * {@link GstClapper.ClapperStreamInfo} specific to video streams.
+     * @gir-type Class
      */
     class ClapperVideoInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperVideoInfo>;
@@ -1524,16 +1742,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperVideoInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperVideoInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperVideoInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperVideoInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperVideoInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperVideoInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1542,14 +1763,26 @@ export namespace GstClapper {
 
         // Methods
 
+        /**
+         * @returns the current bitrate of video in {@link GstClapper.ClapperVideoInfo}.
+         */
         get_bitrate(): number;
         get_framerate(): [number, number];
+        /**
+         * @returns the height of video in {@link GstClapper.ClapperVideoInfo}.
+         */
         get_height(): number;
+        /**
+         * @returns the maximum bitrate of video in {@link GstClapper.ClapperVideoInfo}.
+         */
         get_max_bitrate(): number;
         /**
          * Returns the pixel aspect ratio in `par_n` and `par_d`
          */
         get_pixel_aspect_ratio(): [number, number];
+        /**
+         * @returns the width of video in {@link GstClapper.ClapperVideoInfo}.
+         */
         get_width(): number;
     }
 
@@ -1570,6 +1803,9 @@ export namespace GstClapper {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClapperVideoOverlayVideoRenderer extends GObject.Object implements ClapperVideoRenderer {
         static $gtype: GObject.GType<ClapperVideoOverlayVideoRenderer>;
 
@@ -1601,16 +1837,19 @@ export namespace GstClapper {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClapperVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperVideoOverlayVideoRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClapperVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClapperVideoOverlayVideoRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClapperVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClapperVideoOverlayVideoRenderer.SignalSignatures[K]> extends [
@@ -1624,7 +1863,14 @@ export namespace GstClapper {
 
         // Static methods
 
+        /**
+         * @param window_handle Window handle to use or `null`
+         */
         static ['new'](window_handle?: any | null): ClapperVideoRenderer;
+        /**
+         * @param window_handle Window handle to use or `null`
+         * @param video_sink the custom video_sink element to be set for the video renderer
+         */
         static new_with_sink(window_handle: any | null, video_sink: Gst.Element): ClapperVideoRenderer;
 
         // Methods
@@ -1635,18 +1881,21 @@ export namespace GstClapper {
          */
         expose(): void;
         /**
-         * Return the currently configured render rectangle. See gst_clapper_video_overlay_video_renderer_set_render_rectangle()
+         * Return the currently configured render rectangle. See `gst_clapper_video_overlay_video_renderer_set_render_rectangle()`
          * for details.
          */
         get_render_rectangle(): [number, number, number, number];
+        /**
+         * @returns The currently set, platform specific window handle
+         */
         get_window_handle(): any | null;
         /**
          * Configure a subregion as a video target within the window set by
-         * gst_clapper_video_overlay_video_renderer_set_window_handle(). If this is not
+         * `gst_clapper_video_overlay_video_renderer_set_window_handle()`. If this is not
          * used or not supported the video will fill the area of the window set as the
          * overlay to 100%. By specifying the rectangle, the video can be overlaid to
          * a specific region of that window only. After setting the new rectangle one
-         * should call gst_clapper_video_overlay_video_renderer_expose() to force a
+         * should call `gst_clapper_video_overlay_video_renderer_expose()` to force a
          * redraw. To unset the region pass -1 for the `width` and `height` parameters.
          *
          * This method is needed for non fullscreen video overlay in UI toolkits that
@@ -1663,8 +1912,6 @@ export namespace GstClapper {
          * @param window_handle handle referencing to the platform specific window
          */
         set_window_handle(window_handle?: any | null): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1678,32 +1925,32 @@ export namespace GstClapper {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1712,39 +1959,39 @@ export namespace GstClapper {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1755,13 +2002,16 @@ export namespace GstClapper {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1769,7 +2019,7 @@ export namespace GstClapper {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1777,9 +2027,9 @@ export namespace GstClapper {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1799,9 +2049,9 @@ export namespace GstClapper {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1815,33 +2065,33 @@ export namespace GstClapper {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1874,21 +2124,21 @@ export namespace GstClapper {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1898,8 +2148,8 @@ export namespace GstClapper {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1916,10 +2166,10 @@ export namespace GstClapper {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1934,13 +2184,13 @@ export namespace GstClapper {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1971,21 +2221,21 @@ export namespace GstClapper {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1995,33 +2245,34 @@ export namespace GstClapper {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2030,6 +2281,7 @@ export namespace GstClapper {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2038,12 +2290,14 @@ export namespace GstClapper {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2052,20 +2306,22 @@ export namespace GstClapper {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2077,6 +2333,7 @@ export namespace GstClapper {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2106,20 +2363,57 @@ export namespace GstClapper {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClapperAudioInfoClass = typeof ClapperAudioInfo;
+    /**
+     * @gir-type Alias
+     */
     type ClapperClass = typeof Clapper;
+    /**
+     * @gir-type Alias
+     */
     type ClapperGMainContextSignalDispatcherClass = typeof ClapperGMainContextSignalDispatcher;
+    /**
+     * @gir-type Alias
+     */
     type ClapperGtk4PluginClass = typeof ClapperGtk4Plugin;
+    /**
+     * @gir-type Alias
+     */
     type ClapperMediaInfoClass = typeof ClapperMediaInfo;
+    /**
+     * @gir-type Alias
+     */
     type ClapperMprisClass = typeof ClapperMpris;
+    /**
+     * @gir-type Alias
+     */
     type ClapperSignalDispatcherInterface = typeof ClapperSignalDispatcher;
+    /**
+     * @gir-type Alias
+     */
     type ClapperStreamInfoClass = typeof ClapperStreamInfo;
+    /**
+     * @gir-type Alias
+     */
     type ClapperSubtitleInfoClass = typeof ClapperSubtitleInfo;
+    /**
+     * @gir-type Alias
+     */
     type ClapperVideoInfoClass = typeof ClapperVideoInfo;
+    /**
+     * @gir-type Alias
+     */
     type ClapperVideoOverlayVideoRendererClass = typeof ClapperVideoOverlayVideoRenderer;
+    /**
+     * @gir-type Alias
+     */
     type ClapperVideoRendererInterface = typeof ClapperVideoRenderer;
     /**
-     * A #GstClapperVisualization descriptor.
+     * A {@link GstClapper.ClapperVisualization} descriptor.
+     * @gir-type Struct
      */
     class ClapperVisualization {
         static $gtype: GObject.GType<ClapperVisualization>;
@@ -2141,13 +2435,13 @@ export namespace GstClapper {
         // Methods
 
         /**
-         * Makes a copy of the #GstClapperVisualization. The result must be
-         * freed using gst_clapper_visualization_free().
-         * @returns an allocated copy of @vis.
+         * Makes a copy of the {@link GstClapper.ClapperVisualization}. The result must be
+         * freed using `gst_clapper_visualization_free()`.
+         * @returns an allocated copy of `vis`.
          */
         copy(): ClapperVisualization;
         /**
-         * Frees a #GstClapperVisualization.
+         * Frees a {@link GstClapper.ClapperVisualization}.
          */
         free(): void;
     }
@@ -2160,6 +2454,11 @@ export namespace GstClapper {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param clapper
+             * @param emitter
+             * @virtual
+             */
             vfunc_dispatch(clapper: Clapper, emitter: ClapperSignalDispatcherFunc): void;
         }
 
@@ -2172,6 +2471,9 @@ export namespace GstClapper {
         $gtype: GObject.GType<ClapperSignalDispatcher>;
         prototype: ClapperSignalDispatcher;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ClapperSignalDispatcher extends GObject.Object, ClapperSignalDispatcher.Interface {}
 
     export const ClapperSignalDispatcher: ClapperSignalDispatcherNamespace & {
@@ -2188,6 +2490,9 @@ export namespace GstClapper {
         $gtype: GObject.GType<ClapperVideoRenderer>;
         prototype: ClapperVideoRenderer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ClapperVideoRenderer extends GObject.Object {}
 
     export const ClapperVideoRenderer: ClapperVideoRendererNamespace & {

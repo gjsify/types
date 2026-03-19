@@ -46,52 +46,76 @@ export namespace GstAllocators {
      * feature should not be used. This allows scalers, color converts and any image
      * processing filters to work directly on the dma buffer.
      * In this case the importer element should check all incoming memory using
-     * gst_is_dmabuf_memory().
+     * `gst_is_dmabuf_memory()`.
+     * @since 1.12
      */
     const CAPS_FEATURE_MEMORY_DMABUF: string;
     /**
      * Return the file descriptor associated with `mem`.
      * @param mem the memory to get the file descriptor
      * @returns the file descriptor associated with the memory, or -1.  The file     descriptor is still owned by the GstMemory.  Use dup to take a copy     if you intend to use it beyond the lifetime of this GstMemory.
+     * @since 1.2
      */
     function dmabuf_memory_get_fd(mem: Gst.Memory): number;
     /**
      * Exports a DMABuf from the DRM Bumb buffer object. One can check if this
-     * feature is supported using gst_drm_dumb_allocator_has_prime_export();
+     * feature is supported using `gst_drm_dumb_allocator_has_prime_export()`;
      * @param mem the memory to export from
-     * @returns a #GstMemory from #GstDmaBufAllocator wrapping the exported dma-buf    file descriptor.
+     * @returns a {@link Gst.Memory} from {@link GstAllocators.DmaBufAllocator} wrapping the exported dma-buf    file descriptor.
+     * @since 1.24
      */
     function drm_dumb_memory_export_dmabuf(mem: Gst.Memory): Gst.Memory;
     /**
      * Return the DRM buffer object handle associated with `mem`.
      * @param mem the memory to get the handle from
      * @returns the DRM buffer object handle associated with the memory, or 0.     The handle is still owned by the GstMemory and cannot be used     beyond the lifetime of this GstMemory unless it is being passed     to DRM driver, which does handle a refcount internally.
+     * @since 1.24
      */
     function drm_dumb_memory_get_handle(mem: Gst.Memory): number;
     /**
-     * Get the fd from `mem`. Call gst_is_fd_memory() to check if `mem` has
+     * Get the fd from `mem`. Call `gst_is_fd_memory()` to check if `mem` has
      * an fd.
-     * @param mem #GstMemory
-     * @returns the fd of @mem or -1 when there is no fd on @mem
+     * @param mem {@link Gst.Memory}
+     * @returns the fd of `mem` or -1 when there is no fd on `mem`
+     * @since 1.6
      */
     function fd_memory_get_fd(mem: Gst.Memory): number;
     /**
      * Check if `mem` is dmabuf memory.
      * @param mem the memory to be check
-     * @returns %TRUE if @mem is dmabuf memory, otherwise %FALSE
+     * @returns `true` if `mem` is dmabuf memory, otherwise `false`
+     * @since 1.2
      */
     function is_dmabuf_memory(mem: Gst.Memory): boolean;
+    /**
+     * @param mem the memory to be checked
+     * @returns `true` if `mem` is DRM Dumb memory, otherwise `false`
+     * @since 1.24
+     */
     function is_drm_dumb_memory(mem: Gst.Memory): boolean;
     /**
      * Check if `mem` is memory backed by an fd
-     * @param mem #GstMemory
-     * @returns %TRUE when @mem has an fd that can be retrieved with gst_fd_memory_get_fd().
+     * @param mem {@link Gst.Memory}
+     * @returns `true` when `mem` has an fd that can be retrieved with `gst_fd_memory_get_fd()`.
+     * @since 1.6
      */
     function is_fd_memory(mem: Gst.Memory): boolean;
+    /**
+     * @param mem a {@link Gst.Memory}
+     * @returns whether the memory at `mem` is backed by physical memory
+     * @since 1.14
+     */
     function is_phys_memory(mem: Gst.Memory): boolean;
+    /**
+     * @param mem a {@link Gst.Memory}
+     * @returns Physical memory address that is backing `mem`, or 0 if none
+     * @since 1.14
+     */
     function phys_memory_get_phys_addr(mem: Gst.Memory): never;
     /**
      * Various flags to control the operation of the fd backed memory.
+     * @gir-type Flags
+     * @since 1.6
      */
     enum FdMemoryFlags {
         /**
@@ -135,16 +159,30 @@ export namespace GstAllocators {
     }
 
     /**
-     * Private intance object for #GstDRMDumbAllocator.
+     * Private intance object for {@link GstAllocators.DRMDumbAllocator}.
+     * @gir-type Class
+     * @since 1.24
      */
     class DRMDumbAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<DRMDumbAllocator>;
 
         // Properties
 
+        /**
+         * @since 1.24
+         */
         get drm_device_path(): string;
+        /**
+         * @since 1.24
+         */
         get drmDevicePath(): string;
+        /**
+         * @since 1.24
+         */
         get drm_fd(): number;
+        /**
+         * @since 1.24
+         */
         get drmFd(): number;
 
         /**
@@ -168,16 +206,19 @@ export namespace GstAllocators {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DRMDumbAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DRMDumbAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DRMDumbAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DRMDumbAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DRMDumbAllocator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DRMDumbAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -187,21 +228,24 @@ export namespace GstAllocators {
         // Methods
 
         /**
-         * Allocated a DRM buffer object for the specific `drm_fourcc,` `width` and
+         * Allocated a DRM buffer object for the specific `drm_fourcc`, `width` and
          * `height`. Note that the DRM Dumb allocation interface is agnostic to the
          * pixel format. This `drm_fourcc` is converted into a bpp (bit-per-pixel)
          * number and the height is scaled according to the sub-sampling.
          * @param drm_fourcc the DRM format to allocate for
          * @param width padded width for this allocation
          * @param height padded height for this allocation
-         * @returns a new DRM Dumb #GstMemory. Use gst_memory_unref()   to release the memory after usage.
+         * @returns a new DRM Dumb {@link Gst.Memory}. Use `gst_memory_unref()`   to release the memory after usage.
          */
         alloc(drm_fourcc: number, width: number, height: number): [Gst.Memory, number];
+        /**
+         * @param args
+         */
         // Conflicted with Gst.Allocator.alloc
         alloc(...args: never[]): any;
         /**
          * This function allow verifying if the driver support dma-buf exportation.
-         * @returns %TRUE if the allocator support exporting dma-buf.
+         * @returns `true` if the allocator support exporting dma-buf.
          */
         has_prime_export(): boolean;
     }
@@ -220,6 +264,8 @@ export namespace GstAllocators {
 
     /**
      * Base class for allocators with dmabuf-backed memory
+     * @gir-type Class
+     * @since 1.12
      */
     class DmaBufAllocator extends FdAllocator {
         static $gtype: GObject.GType<DmaBufAllocator>;
@@ -243,16 +289,19 @@ export namespace GstAllocators {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DmaBufAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DmaBufAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DmaBufAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DmaBufAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DmaBufAllocator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DmaBufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -273,7 +322,7 @@ export namespace GstAllocators {
          * @param allocator allocator to be used for this memory
          * @param fd dmabuf file descriptor
          * @param size memory size
-         * @param flags extra #GstFdMemoryFlags
+         * @param flags extra {@link GstAllocators.FdMemoryFlags}
          */
         static alloc_with_flags(
             allocator: Gst.Allocator,
@@ -297,6 +346,8 @@ export namespace GstAllocators {
 
     /**
      * Base class for allocators with fd-backed memory
+     * @gir-type Class
+     * @since 1.6
      */
     class FdAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<FdAllocator>;
@@ -320,16 +371,19 @@ export namespace GstAllocators {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FdAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FdAllocator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FdAllocator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FdAllocator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FdAllocator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FdAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -343,14 +397,26 @@ export namespace GstAllocators {
          * @param allocator allocator to be used for this memory
          * @param fd file descriptor
          * @param size memory size
-         * @param flags extra #GstFdMemoryFlags
+         * @param flags extra {@link GstAllocators.FdMemoryFlags}
          */
         static alloc(allocator: Gst.Allocator, fd: number, size: number, flags: FdMemoryFlags): Gst.Memory | null;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DRMDumbAllocatorClass = typeof DRMDumbAllocator;
+    /**
+     * @gir-type Alias
+     */
     type DmaBufAllocatorClass = typeof DmaBufAllocator;
+    /**
+     * @gir-type Alias
+     */
     type FdAllocatorClass = typeof FdAllocator;
+    /**
+     * @gir-type Alias
+     */
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
     namespace PhysMemoryAllocator {
         /**
@@ -360,6 +426,10 @@ export namespace GstAllocators {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param mem
+             * @virtual
+             */
             vfunc_get_phys_addr(mem: Gst.Memory): never;
         }
 
@@ -372,6 +442,10 @@ export namespace GstAllocators {
         $gtype: GObject.GType<PhysMemoryAllocator>;
         prototype: PhysMemoryAllocator;
     }
+    /**
+     * @gir-type Interface
+     * @since 1.14
+     */
     interface PhysMemoryAllocator extends Gst.Allocator, PhysMemoryAllocator.Interface {}
 
     export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace & {

@@ -26,7 +26,33 @@ export namespace CoglGst {
     namespace VideoSink {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
+            /**
+             * The sink will emit this signal whenever there are new textures
+             * available for a new frame of the video. After this signal is
+             * emitted, an application can call `cogl_gst_video_sink_get_pipeline()`
+             * to get a pipeline suitable for rendering the frame. If the
+             * application is using a custom pipeline it can alternatively call
+             * `cogl_gst_video_sink_attach_frame()` to attach the textures.
+             * @signal
+             * @since 1.16
+             */
             'new-frame': () => void;
+            /**
+             * The sink will emit this signal as soon as it has gathered enough
+             * information from the video to configure a pipeline. If the
+             * application wants to do some customized rendering, it can setup its
+             * pipeline after this signal is emitted. The application's pipeline
+             * will typically either be a copy of the one returned by
+             * `cogl_gst_video_sink_get_pipeline()` or it can be a completely custom
+             * pipeline which is setup using `cogl_gst_video_sink_setup_pipeline()`.
+             *
+             * Note that it is an error to call either of those functions before
+             * this signal is emitted. The {@link CoglGst.VideoSink.SignalSignatures.new_frame | CoglGst.VideoSink::new-frame} signal
+             * will only be emitted after the pipeline is ready so the application
+             * could also create its pipeline in the handler for that.
+             * @signal
+             * @since 1.16
+             */
             'pipeline-ready': () => void;
             'notify::update-priority': (pspec: GObject.ParamSpec) => void;
             'notify::async': (pspec: GObject.ParamSpec) => void;
@@ -55,8 +81,10 @@ export namespace CoglGst {
     }
 
     /**
-     * The #CoglGstVideoSink structure contains only private data and
+     * The {@link CoglGst.VideoSink} structure contains only private data and
      * should be accessed using the provided API.
+     * @gir-type Class
+     * @since 1.16
      */
     class VideoSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<VideoSink>;
@@ -87,16 +115,19 @@ export namespace CoglGst {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -105,7 +136,13 @@ export namespace CoglGst {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_new_frame(): void;
+        /**
+         * @virtual
+         */
         vfunc_pipeline_ready(): void;
 
         // Methods
@@ -114,11 +151,11 @@ export namespace CoglGst {
          * Updates the given pipeline with the textures for the current frame.
          * This can be used if the application wants to customize the
          * rendering using its own pipeline. Typically this would be called in
-         * response to the #CoglGstVideoSink::new-frame signal which is
+         * response to the {@link CoglGst.VideoSink.SignalSignatures.new_frame | CoglGst.VideoSink::new-frame} signal which is
          * emitted whenever the new textures are available. The application
          * would then make a copy of its template pipeline and call this to
          * set the textures.
-         * @param pln A #CoglPipeline
+         * @param pln A {@link Cogl.Pipeline}
          */
         attach_frame(pln: Cogl.Pipeline): void;
         /**
@@ -145,7 +182,7 @@ export namespace CoglGst {
         get_aspect(): number;
         /**
          * This can be used when doing specialised rendering of the video by
-         * customizing the pipeline. #CoglGstVideoSink may use up to three
+         * customizing the pipeline. {@link CoglGst.VideoSink} may use up to three
          * private layers on the pipeline in order to attach the textures of
          * the video frame. This function will return the index of the next
          * available unused layer after the sink's internal layers. This can
@@ -157,8 +194,8 @@ export namespace CoglGst {
         /**
          * Calculates a suitable output height for a specific output `width`
          * that will maintain the video's aspect ratio.
-         * @param width A specific output @width
-         * @returns An output height for the given output @width.
+         * @param width A specific output `width`
+         * @returns An output height for the given output `width`.
          */
         get_height_for_width(width: number): number;
         /**
@@ -214,47 +251,50 @@ export namespace CoglGst {
          * pipeline and modify it for custom rendering.
          *
          * Note: it is considered an error to call this function before the
-         * #CoglGstVideoSink::pipeline-ready signal is emitted.
+         * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal is emitted.
          * @returns the pipeline for rendering the   current frame
          */
         get_pipeline(): Cogl.Pipeline;
         /**
          * Calculates a suitable output width for a specific output `height`
          * that will maintain the video's aspect ratio.
-         * @param height A specific output @height
-         * @returns An output width for the given output @height.
+         * @param height A specific output `height`
+         * @returns An output width for the given output `height`.
          */
         get_width_for_height(height: number): number;
         /**
          * Returns whether the pipeline is ready and so
-         * cogl_gst_video_sink_get_pipeline() and
-         * cogl_gst_video_sink_setup_pipeline() can be called without causing error.
+         * `cogl_gst_video_sink_get_pipeline()` and
+         * `cogl_gst_video_sink_setup_pipeline()` can be called without causing error.
          *
          * Note: Normally an application will wait until the
-         * #CoglGstVideoSink::pipeline-ready signal is emitted instead of
+         * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal is emitted instead of
          * polling the ready status with this api, but sometimes when a sink
          * is passed between components that didn't have an opportunity to
          * connect a signal handler this can be useful.
-         * @returns %TRUE if the sink is ready, else %FALSE
+         * @returns `true` if the sink is ready, else `false`
          */
         is_ready(): Cogl.Bool;
         /**
-         * Sets the #CoglContext that the video sink should use for creating
+         * Sets the {@link Cogl.Context} that the video sink should use for creating
          * any resources. This function would normally only be used if the
-         * sink was constructed via gst_element_factory_make() instead of
-         * cogl_gst_video_sink_new().
-         * @param ctx The #CoglContext for the sink to use
+         * sink was constructed via `gst_element_factory_make()` instead of
+         * `cogl_gst_video_sink_new()`.
+         * @param ctx The {@link Cogl.Context} for the sink to use
          */
         set_context(ctx: Cogl.Context): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gst.Element.set_context
         set_context(...args: never[]): any;
         /**
          * By default the pipeline generated by
-         * cogl_gst_video_sink_setup_pipeline() and
-         * cogl_gst_video_sink_get_pipeline() will have a layer with a shader
+         * `cogl_gst_video_sink_setup_pipeline()` and
+         * `cogl_gst_video_sink_get_pipeline()` will have a layer with a shader
          * snippet that automatically samples the video. If the application
          * wants to sample the video in a completely custom way using its own
-         * shader snippet it can set `default_sample` to %FALSE to avoid this
+         * shader snippet it can set `default_sample` to `false` to avoid this
          * default snippet being added. In that case the application's snippet
          * can call cogl_gst_sample_video0 to sample the texture itself.
          * @param default_sample Whether to add the default sampling
@@ -279,17 +319,18 @@ export namespace CoglGst {
          * video for the `sink`. This should only be used if the application
          * wants to perform some custom rendering using its own pipeline.
          * Typically an application will call this in response to the
-         * #CoglGstVideoSink::pipeline-ready signal.
+         * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal.
          *
          * Note: it is considered an error to call this function before the
-         * #CoglGstVideoSink::pipeline-ready signal is emitted.
-         * @param pipeline A #CoglPipeline
+         * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal is emitted.
+         * @param pipeline A {@link Cogl.Pipeline}
          */
         setup_pipeline(pipeline: Cogl.Pipeline): void;
     }
 
     /**
      * Describes a rectangle that can be used for video output.
+     * @gir-type Struct
      */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
@@ -313,7 +354,13 @@ export namespace CoglGst {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VideoSinkClass = typeof VideoSink;
+    /**
+     * @gir-type Struct
+     */
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
     }

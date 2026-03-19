@@ -27,6 +27,7 @@ export namespace GstTag {
 
     /**
      * Result values from the parse_tag virtual function.
+     * @gir-type Enum
      */
     enum TagDemuxResult {
         /**
@@ -49,12 +50,13 @@ export namespace GstTag {
 
     /**
      * Type of image contained in an image tag (specified as "image-type" field in
-     * the info structure in the image's #GstSample)
+     * the info structure in the image's {@link Gst.Sample})
+     * @gir-type Enum
      */
     enum TagImageType {
         /**
          * No image type. Can be used to
-         *      tell functions such as gst_tag_image_data_to_image_sample() that no
+         *      tell functions such as `gst_tag_image_data_to_image_sample()` that no
          *      image type should be set.
          */
         NONE,
@@ -138,10 +140,12 @@ export namespace GstTag {
 
     /**
      * AcoustID Fingerprint (Chromaprint)
+     * @since 1.18
      */
     const TAG_ACOUSTID_FINGERPRINT: string;
     /**
      * AcoustID Identifier
+     * @since 1.18
      */
     const TAG_ACOUSTID_ID: string;
     /**
@@ -207,6 +211,7 @@ export namespace GstTag {
     const TAG_CAPTURING_FOCAL_LENGTH: string;
     /**
      * 35 mm equivalent focal length used when capturing an image, in mm. (double)
+     * @since 1.10
      */
     const TAG_CAPTURING_FOCAL_LENGTH_35_MM: string;
     /**
@@ -332,7 +337,7 @@ export namespace GstTag {
     const TAG_CMML_STREAM: string;
     /**
      * ID3V2 header size considered minimum input for some functions such as
-     * gst_tag_list_from_id3v2_tag() and gst_tag_get_id3v2_tag_size() for example.
+     * `gst_tag_list_from_id3v2_tag()` and `gst_tag_get_id3v2_tag_size()` for example.
      */
     const TAG_ID3V2_HEADER_SIZE: number;
     /**
@@ -351,6 +356,7 @@ export namespace GstTag {
      * Off key is represented with an "o" only.
      * This notation might be extended in the future to support non-minor/major
      * keys.
+     * @since 1.2
      */
     const TAG_MUSICAL_KEY: string;
     /**
@@ -367,10 +373,12 @@ export namespace GstTag {
     const TAG_MUSICBRAINZ_ARTISTID: string;
     /**
      * MusicBrainz Release Group ID
+     * @since 1.18
      */
     const TAG_MUSICBRAINZ_RELEASEGROUPID: string;
     /**
      * MusicBrainz Release Track ID
+     * @since 1.18
      */
     const TAG_MUSICBRAINZ_RELEASETRACKID: string;
     /**
@@ -389,7 +397,7 @@ export namespace GstTag {
      * tag) or a free-form language name descriptor (which should be put into a
      * #GST_TAG_LANGUAGE_NAME tag instead).
      * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
-     * @returns TRUE if the two- or three-letter language code in @lang_code     is a valid ISO-639 language code.
+     * @returns TRUE if the two- or three-letter language code in `lang_code`     is a valid ISO-639 language code.
      */
     function tag_check_language_code(lang_code: string): boolean;
     /**
@@ -398,7 +406,7 @@ export namespace GstTag {
      * If not it tries to detect byte-order-mark for UTF-16/32 cases and use that.
      * Otherwise, the environment will be searched for a number of environment
      * variables (whose names are specified in the NULL-terminated string array
-     * `env_vars)` containing a list of character encodings to try/use. If none
+     * `env_vars`) containing a list of character encodings to try/use. If none
      * are specified, the current locale will be tried. If that also doesn't work,
      * WINDOWS-1252/ISO-8859-1 is assumed (which will almost always succeed).
      * @param data string data
@@ -440,7 +448,7 @@ export namespace GstTag {
      *
      * Language codes are case-sensitive and expected to be lower case.
      * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
-     * @returns two-letter ISO-639-1 language code string that maps to @lang_code,     or NULL if no mapping is known. The returned string must not be     modified or freed.
+     * @returns two-letter ISO-639-1 language code string that maps to `lang_code`,     or NULL if no mapping is known. The returned string must not be     modified or freed.
      */
     function tag_get_language_code_iso_639_1(lang_code: string): string | null;
     /**
@@ -454,7 +462,7 @@ export namespace GstTag {
      *
      * Language codes are case-sensitive and expected to be lower case.
      * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
-     * @returns three-letter ISO-639-2 language code string that maps to @lang_code,     or NULL if no mapping is known. The returned string must not be     modified or freed.
+     * @returns three-letter ISO-639-2 language code string that maps to `lang_code`,     or NULL if no mapping is known. The returned string must not be     modified or freed.
      */
     function tag_get_language_code_iso_639_2B(lang_code: string): string | null;
     /**
@@ -468,7 +476,7 @@ export namespace GstTag {
      *
      * Language codes are case-sensitive and expected to be lower case.
      * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
-     * @returns three-letter ISO-639-2 language code string that maps to @lang_code,     or NULL if no mapping is known. The returned string must not be     modified or freed.
+     * @returns three-letter ISO-639-2 language code string that maps to `lang_code`,     or NULL if no mapping is known. The returned string must not be     modified or freed.
      */
     function tag_get_language_code_iso_639_2T(lang_code: string): string | null;
     /**
@@ -476,7 +484,7 @@ export namespace GstTag {
      * codes). This is useful for UIs to build a list of available languages for
      * tagging purposes (e.g. to tag an audio track appropriately in a video or
      * audio editor).
-     * @returns NULL-terminated string array with two-letter     language codes. Free with g_strfreev() when no longer needed.
+     * @returns NULL-terminated string array with two-letter     language codes. Free with `g_strfreev()` when no longer needed.
      */
     function tag_get_language_codes(): string[];
     /**
@@ -487,7 +495,7 @@ export namespace GstTag {
      *
      * Language codes are case-sensitive and expected to be lower case.
      * @param language_code two or three-letter ISO-639 language code
-     * @returns language name in UTF-8 format, or NULL if @language_code could     not be mapped to a language name. The returned string must not be     modified and does not need to freed; it will stay valid until the     application is terminated.
+     * @returns language name in UTF-8 format, or NULL if `language_code` could     not be mapped to a language name. The returned string must not be     modified and does not need to freed; it will stay valid until the     application is terminated.
      */
     function tag_get_language_name(language_code: string): string | null;
     /**
@@ -541,7 +549,7 @@ export namespace GstTag {
      * useful for UIs to build a list of available licenses for tagging purposes
      * (e.g. to tag an audio track appropriately in a video or audio editor, or
      * an image in a camera application).
-     * @returns NULL-terminated array of license strings. Free     with g_strfreev() when no longer needed.
+     * @returns NULL-terminated array of license strings. Free     with `g_strfreev()` when no longer needed.
      */
     function tag_get_licenses(): string[];
     /**
@@ -557,8 +565,8 @@ export namespace GstTag {
      */
     function tag_id3_genre_get(id: number): string | null;
     /**
-     * Helper function for tag-reading plugins to create a #GstSample suitable to
-     * add to a #GstTagList as an image tag (such as #GST_TAG_IMAGE or
+     * Helper function for tag-reading plugins to create a {@link Gst.Sample} suitable to
+     * add to a {@link Gst.TagList} as an image tag (such as #GST_TAG_IMAGE or
      * #GST_TAG_PREVIEW_IMAGE) from the encoded image data and an (optional) image
      * type.
      *
@@ -569,10 +577,10 @@ export namespace GstTag {
      * back cover, artist, etc.). The image data may also be an URI to the image
      * rather than the image itself.
      *
-     * In GStreamer, image tags are #GstSample<!-- -->s containing the raw image
+     * In GStreamer, image tags are {@link Gst.Sample}<!-- -->s containing the raw image
      * data, with the sample caps describing the content type of the image
      * (e.g. image/jpeg, image/png, text/uri-list). The sample info may contain
-     * an additional 'image-type' field of #GstTagImageType to describe
+     * an additional 'image-type' field of {@link GstTag.TagImageType} to describe
      * the type of image (front cover, back cover etc.). #GST_TAG_PREVIEW_IMAGE
      * tags should not carry an image type, their type is already indicated via
      * the special tag name.
@@ -589,12 +597,12 @@ export namespace GstTag {
     ): Gst.Sample | null;
     /**
      * Adds an image from an ID3 APIC frame (or similar, such as used in FLAC)
-     * to the given tag list. Also see gst_tag_image_data_to_image_sample() for
+     * to the given tag list. Also see `gst_tag_image_data_to_image_sample()` for
      * more information on image tags in GStreamer.
      * @param tag_list a tag list
      * @param image_data the (encoded) image
      * @param id3_picture_type picture type as per the ID3 (v2.4.0) specification for    the APIC frame (0 = unknown/other)
-     * @returns %TRUE if the image was processed, otherwise %FALSE
+     * @returns `true` if the image was processed, otherwise `false`
      */
     function tag_list_add_id3_image(
         tag_list: Gst.TagList,
@@ -622,7 +630,7 @@ export namespace GstTag {
      * Creates a new tag list that contains the information parsed out of a
      * ID3 tag.
      * @param buffer buffer to convert
-     * @returns A new #GstTagList with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
+     * @returns A new {@link Gst.TagList} with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
      */
     function tag_list_from_id3v2_tag(buffer: Gst.Buffer): Gst.TagList | null;
     /**
@@ -630,7 +638,7 @@ export namespace GstTag {
      * vorbiscomment packet.
      * @param data data to convert
      * @param id_data identification data at start of stream
-     * @returns A new #GstTagList with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
+     * @returns A new {@link Gst.TagList} with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
      */
     function tag_list_from_vorbiscomment(
         data: Uint8Array | string,
@@ -641,7 +649,7 @@ export namespace GstTag {
      * vorbiscomment packet.
      * @param buffer buffer to convert
      * @param id_data identification data at start of stream
-     * @returns A new #GstTagList with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
+     * @returns A new {@link Gst.TagList} with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
      */
     function tag_list_from_vorbiscomment_buffer(
         buffer: Gst.Buffer,
@@ -650,11 +658,11 @@ export namespace GstTag {
     /**
      * Parse a xmp packet into a taglist.
      * @param buffer buffer
-     * @returns new taglist or %NULL, free the list when done
+     * @returns new taglist or `null`, free the list when done
      */
     function tag_list_from_xmp_buffer(buffer: Gst.Buffer): Gst.TagList | null;
     /**
-     * Parses the data containing an ID3v1 tag and returns a #GstTagList from the
+     * Parses the data containing an ID3v1 tag and returns a {@link Gst.TagList} from the
      * parsed data.
      * @param data 128 bytes of data containing the ID3v1 tag
      * @returns A new tag list or NULL if the data was not an ID3v1 tag.
@@ -681,7 +689,7 @@ export namespace GstTag {
      * @param list tag list to convert
      * @param id_data identification data at start of stream
      * @param vendor_string string that describes the vendor string or NULL
-     * @returns A new #GstBuffer containing a vorbiscomment buffer with all tags          that could be converted from the given tag list.
+     * @returns A new {@link Gst.Buffer} containing a vorbiscomment buffer with all tags          that could be converted from the given tag list.
      */
     function tag_list_to_vorbiscomment_buffer(
         list: Gst.TagList,
@@ -690,20 +698,20 @@ export namespace GstTag {
     ): Gst.Buffer;
     /**
      * Formats a taglist as a xmp packet using only the selected
-     * schemas. An empty list (%NULL) means that all schemas should
+     * schemas. An empty list (`null`) means that all schemas should
      * be used
      * @param list tags
      * @param read_only does the container forbid inplace editing
-     * @param schemas %NULL terminated array of schemas to be used on serialization
-     * @returns new buffer or %NULL, unref the buffer when done
+     * @param schemas `null` terminated array of schemas to be used on serialization
+     * @returns new buffer or `null`, unref the buffer when done
      */
     function tag_list_to_xmp_buffer(list: Gst.TagList, read_only: boolean, schemas: string[]): Gst.Buffer | null;
     /**
      * Convenience function to parse a GST_TAG_EXTENDED_COMMENT string and
      * separate it into its components.
      *
-     * If successful, `key,` `lang` and/or `value` will be set to newly allocated
-     * strings that you need to free with g_free() when done. `key` and `lang`
+     * If successful, `key`, `lang` and/or `value` will be set to newly allocated
+     * strings that you need to free with `g_free()` when done. `key` and `lang`
      * may also be set to NULL by this function if there is no key or no language
      * code in the extended comment string.
      * @param ext_comment an extended comment string, see #GST_TAG_EXTENDED_COMMENT
@@ -729,9 +737,9 @@ export namespace GstTag {
     /**
      * Creates a new tag list that contains the information parsed out of a
      * vorbiscomment packet.
-     * @param list a #GstTagList
+     * @param list a {@link Gst.TagList}
      * @param tag a GStreamer tag identifier, such as #GST_TAG_ARTIST
-     * @returns A #GList of newly-allocated     key=value strings. Free with g_list_foreach (list, (GFunc) g_free, NULL)     plus g_list_free (list)
+     * @returns A {@link GLib.List} of newly-allocated     key=value strings. Free with g_list_foreach (list, (GFunc) g_free, NULL)     plus g_list_free (list)
      */
     function tag_to_vorbis_comments(list: Gst.TagList, tag: string): string[];
     /**
@@ -742,17 +750,17 @@ export namespace GstTag {
     function tag_to_vorbis_tag(gst_tag: string): string | null;
     /**
      * Gets the list of supported schemas in the xmp lib
-     * @returns a %NULL terminated array of strings with the     schema names
+     * @returns a `null` terminated array of strings with the     schema names
      */
     function tag_xmp_list_schemas(): string[];
     /**
-     * Convenience function using gst_tag_from_vorbis_tag(), parsing
+     * Convenience function using `gst_tag_from_vorbis_tag()`, parsing
      * a vorbis comment string into the right type and adding it to the
      * given taglist `list`.
      *
      * Unknown vorbiscomment tags will be added to the tag list in form
      * of a #GST_TAG_EXTENDED_COMMENT.
-     * @param list a #GstTagList
+     * @param list a {@link Gst.TagList}
      * @param tag a vorbiscomment tag string (key in key=value), must be valid UTF-8
      * @param value a vorbiscomment value string (value in key=value), must be valid UTF-8
      */
@@ -763,6 +771,7 @@ export namespace GstTag {
 
     /**
      * See http://creativecommons.org/ns for more information.
+     * @gir-type Flags
      */
     enum TagLicenseFlags {
         /**
@@ -883,6 +892,7 @@ export namespace GstTag {
      *  for the identify function to decide whether the stream has a supported tag
      *  or not. A class parsing ID3v1 tags, for example, would set min_end_size to
      *  128 bytes.
+     * @gir-type Class
      */
     abstract class TagDemux extends Gst.Element {
         static $gtype: GObject.GType<TagDemux>;
@@ -908,16 +918,19 @@ export namespace GstTag {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TagDemux.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TagDemux.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TagDemux.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TagDemux.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TagDemux.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TagDemux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -926,8 +939,26 @@ export namespace GstTag {
 
         // Virtual methods
 
+        /**
+         * @param buffer
+         * @param start_tag
+         * @param tag_size
+         * @virtual
+         */
         vfunc_identify_tag(buffer: Gst.Buffer, start_tag: boolean, tag_size: number): boolean;
+        /**
+         * @param start_tags
+         * @param end_tags
+         * @virtual
+         */
         vfunc_merge_tags(start_tags: Gst.TagList, end_tags: Gst.TagList): Gst.TagList;
+        /**
+         * @param buffer
+         * @param start_tag
+         * @param tag_size
+         * @param tags
+         * @virtual
+         */
         vfunc_parse_tag(buffer: Gst.Buffer, start_tag: boolean, tag_size: number, tags: Gst.TagList): TagDemuxResult;
     }
 
@@ -958,6 +989,7 @@ export namespace GstTag {
      *    GST_TAG_MUX_CLASS(mux_klass)->render_start_tag and/or
      *    GST_TAG_MUX_CLASS(mux_klass)->render_end_tag vfuncs and set up a render
      *    function.
+     * @gir-type Class
      */
     abstract class TagMux extends Gst.Element implements Gst.TagSetter {
         static $gtype: GObject.GType<TagMux>;
@@ -983,16 +1015,19 @@ export namespace GstTag {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TagMux.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TagMux.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TagMux.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TagMux.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TagMux.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TagMux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1001,10 +1036,16 @@ export namespace GstTag {
 
         // Virtual methods
 
+        /**
+         * @param tag_list
+         * @virtual
+         */
         vfunc_render_end_tag(tag_list: Gst.TagList): Gst.Buffer;
+        /**
+         * @param tag_list
+         * @virtual
+         */
         vfunc_render_start_tag(tag_list: Gst.TagList): Gst.Buffer;
-
-        // Inherited methods
         /**
          * Adds the given tag / GValue pair on the setter using the given merge mode.
          * @param mode the mode to use
@@ -1017,7 +1058,7 @@ export namespace GstTag {
          * modified or freed.
          *
          * This function is not thread-safe.
-         * @returns a current snapshot of the          taglist used in the setter or %NULL if none is used.
+         * @returns a current snapshot of the          taglist used in the setter or `null` if none is used.
          */
         get_tag_list(): Gst.TagList | null;
         /**
@@ -1055,25 +1096,35 @@ export namespace GstTag {
          */
         abort_state(): void;
         /**
-         * Adds a pad (link point) to `element`. `pad'`s parent will be set to `element;`
-         * see gst_object_set_parent() for refcounting information.
+         * Adds a pad (link point) to `element`. `pad`'s parent will be set to `element`;
+         * see `gst_object_set_parent()` for refcounting information.
          *
          * Pads are automatically activated when added in the PAUSED or PLAYING
          * state.
          *
          * The pad and the element should be unlocked when calling this function.
          *
-         * This function will emit the #GstElement::pad-added signal on the element.
-         * @param pad the #GstPad to add to the element.
-         * @returns %TRUE if the pad could be added. This function can fail when a pad with the same name already existed or the pad already had another parent. MT safe.
+         * This function will emit the {@link Gst.Element.SignalSignatures.pad_added | Gst.Element::pad-added} signal on the element.
+         * @param pad the {@link Gst.Pad} to add to the element.
+         * @returns `true` if the pad could be added. This function can fail when a pad with the same name already existed or the pad already had another parent. MT safe.
          */
         add_pad(pad: Gst.Pad): boolean;
+        /**
+         * @param property_name name of property to watch for changes, or     NULL to watch all properties
+         * @param include_value whether to include the new property value in the message
+         * @returns a watch id, which can be used in connection with     `gst_element_remove_property_notify_watch()` to remove the watch again.
+         */
         add_property_deep_notify_watch(property_name: string | null, include_value: boolean): number;
+        /**
+         * @param property_name name of property to watch for changes, or     NULL to watch all properties
+         * @param include_value whether to include the new property value in the message
+         * @returns a watch id, which can be used in connection with     `gst_element_remove_property_notify_watch()` to remove the watch again.
+         */
         add_property_notify_watch(property_name: string | null, include_value: boolean): number;
         /**
          * Calls `func` from another thread and passes `user_data` to it. This is to be
          * used for cases when a state change has to be performed from a streaming
-         * thread, directly via gst_element_set_state() or indirectly e.g. via SEEK
+         * thread, directly via `gst_element_set_state()` or indirectly e.g. via SEEK
          * events.
          *
          * Calling those functions directly from the streaming thread will cause
@@ -1090,7 +1141,7 @@ export namespace GstTag {
          * This function must be called with STATE_LOCK held and is mainly used
          * internally.
          * @param transition the requested transition
-         * @returns the #GstStateChangeReturn of the state transition.
+         * @returns the {@link Gst.StateChangeReturn} of the state transition.
          */
         change_state(transition: Gst.StateChange | null): Gst.StateChangeReturn;
         /**
@@ -1098,7 +1149,7 @@ export namespace GstTag {
          * pending state if any. This function is used
          * by elements that do asynchronous state changes.
          * The core will normally call this method automatically when an
-         * element returned %GST_STATE_CHANGE_SUCCESS from the state change function.
+         * element returned {@link Gst.StateChangeReturn.SUCCESS} from the state change function.
          *
          * If after calling this method the element still has not reached
          * the pending state, the next state change is performed.
@@ -1114,7 +1165,7 @@ export namespace GstTag {
         /**
          * Creates a pad for each pad template that is always available.
          * This function is only useful during object initialization of
-         * subclasses of #GstElement.
+         * subclasses of {@link Gst.Element}.
          */
         create_all_pads(): void;
         /**
@@ -1132,40 +1183,40 @@ export namespace GstTag {
          * should be printed with a fixed number of characters, preceded by 0's, such as
          * by using the format \%03u instead of \%u.
          * @param stream_id The stream-id
-         * @returns A stream-id for @element.
+         * @returns A stream-id for `element`.
          */
         decorate_stream_id(stream_id: string): string;
         /**
-         * Call `func` with `user_data` for each of `element'`s pads. `func` will be called
+         * Call `func` with `user_data` for each of `element`'s pads. `func` will be called
          * exactly once for each pad that exists at the time of this call, unless
-         * one of the calls to `func` returns %FALSE in which case we will stop
+         * one of the calls to `func` returns `false` in which case we will stop
          * iterating pads and return early. If new pads are added or pads are removed
          * while pads are being iterated, this will not be taken into account until
          * next time this function is used.
          * @param func function to call for each pad
-         * @returns %FALSE if @element had no pads or if one of the calls to @func   returned %FALSE.
+         * @returns `false` if `element` had no pads or if one of the calls to `func`   returned `false`.
          */
         foreach_pad(func: Gst.ElementForeachPadFunc): boolean;
         /**
-         * Call `func` with `user_data` for each of `element'`s sink pads. `func` will be
+         * Call `func` with `user_data` for each of `element`'s sink pads. `func` will be
          * called exactly once for each sink pad that exists at the time of this call,
-         * unless one of the calls to `func` returns %FALSE in which case we will stop
+         * unless one of the calls to `func` returns `false` in which case we will stop
          * iterating pads and return early. If new sink pads are added or sink pads
          * are removed while the sink pads are being iterated, this will not be taken
          * into account until next time this function is used.
          * @param func function to call for each sink pad
-         * @returns %FALSE if @element had no sink pads or if one of the calls to @func   returned %FALSE.
+         * @returns `false` if `element` had no sink pads or if one of the calls to `func`   returned `false`.
          */
         foreach_sink_pad(func: Gst.ElementForeachPadFunc): boolean;
         /**
-         * Call `func` with `user_data` for each of `element'`s source pads. `func` will be
+         * Call `func` with `user_data` for each of `element`'s source pads. `func` will be
          * called exactly once for each source pad that exists at the time of this call,
-         * unless one of the calls to `func` returns %FALSE in which case we will stop
+         * unless one of the calls to `func` returns `false` in which case we will stop
          * iterating pads and return early. If new source pads are added or source pads
          * are removed while the source pads are being iterated, this will not be taken
          * into account until next time this function is used.
          * @param func function to call for each source pad
-         * @returns %FALSE if @element had no source pads or if one of the calls   to @func returned %FALSE.
+         * @returns `false` if `element` had no source pads or if one of the calls   to `func` returned `false`.
          */
         foreach_src_pad(func: Gst.ElementForeachPadFunc): boolean;
         /**
@@ -1177,18 +1228,18 @@ export namespace GstTag {
          */
         get_base_time(): Gst.ClockTime;
         /**
-         * Returns the bus of the element. Note that only a #GstPipeline will provide a
+         * Returns the bus of the element. Note that only a {@link Gst.Pipeline} will provide a
          * bus for the application.
-         * @returns the element's #GstBus. unref after usage. MT safe.
+         * @returns the element's {@link Gst.Bus}. unref after usage. MT safe.
          */
         get_bus(): Gst.Bus | null;
         /**
          * Gets the currently configured clock of the element. This is the clock as was
-         * last set with gst_element_set_clock().
+         * last set with `gst_element_set_clock()`.
          *
          * Elements in a pipeline will only have their clock set when the
          * pipeline is in the PLAYING state.
-         * @returns the #GstClock of the element. unref after usage. MT safe.
+         * @returns the {@link Gst.Clock} of the element. unref after usage. MT safe.
          */
         get_clock(): Gst.Clock | null;
         /**
@@ -1199,16 +1250,16 @@ export namespace GstTag {
          * This function will first attempt to find a compatible unlinked ALWAYS pad,
          * and if none can be found, it will request a compatible REQUEST pad by looking
          * at the templates of `element`.
-         * @param pad the #GstPad to find a compatible one for.
-         * @param caps the #GstCaps to use as a filter.
-         * @returns the #GstPad to which a link   can be made, or %NULL if one cannot be found. gst_object_unref()   after usage.
+         * @param pad the {@link Gst.Pad} to find a compatible one for.
+         * @param caps the {@link Gst.Caps} to use as a filter.
+         * @returns the {@link Gst.Pad} to which a link   can be made, or `null` if one cannot be found. `gst_object_unref()`   after usage.
          */
         get_compatible_pad(pad: Gst.Pad, caps?: Gst.Caps | null): Gst.Pad | null;
         /**
          * Retrieves a pad template from `element` that is compatible with `compattempl`.
          * Pads from compatible templates can be linked together.
-         * @param compattempl the #GstPadTemplate to find a compatible     template for
-         * @returns a compatible #GstPadTemplate,   or %NULL if none was found. No unreferencing is necessary.
+         * @param compattempl the {@link Gst.PadTemplate} to find a compatible     template for
+         * @returns a compatible {@link Gst.PadTemplate},   or `null` if none was found. No unreferencing is necessary.
          */
         get_compatible_pad_template(compattempl: Gst.PadTemplate): Gst.PadTemplate | null;
         /**
@@ -1216,20 +1267,20 @@ export namespace GstTag {
          *
          * MT safe.
          * @param context_type a name of a context to retrieve
-         * @returns A #GstContext or NULL
+         * @returns A {@link Gst.Context} or NULL
          */
         get_context(context_type: string): Gst.Context | null;
         /**
          * Gets the context with `context_type` set on the element or NULL.
          * @param context_type a name of a context to retrieve
-         * @returns A #GstContext or NULL
+         * @returns A {@link Gst.Context} or NULL
          */
         get_context_unlocked(context_type: string): Gst.Context | null;
         /**
          * Gets the contexts set on the element.
          *
          * MT safe.
-         * @returns List of #GstContext
+         * @returns List of {@link Gst.Context}
          */
         get_contexts(): Gst.Context[];
         /**
@@ -1247,33 +1298,33 @@ export namespace GstTag {
         get_current_running_time(): Gst.ClockTime;
         /**
          * Retrieves the factory that was used to create this element.
-         * @returns the #GstElementFactory used for creating this     element or %NULL if element has not been registered (static element). no refcounting is needed.
+         * @returns the {@link Gst.ElementFactory} used for creating this     element or `null` if element has not been registered (static element). no refcounting is needed.
          */
         get_factory(): Gst.ElementFactory | null;
         /**
          * Get metadata with `key` in `klass`.
          * @param key the key to get
-         * @returns the metadata for @key.
+         * @returns the metadata for `key`.
          */
         get_metadata(key: string): string;
         /**
          * Retrieves a padtemplate from `element` with the given name.
-         * @param name the name of the #GstPadTemplate to get.
-         * @returns the #GstPadTemplate with the     given name, or %NULL if none was found. No unreferencing is     necessary.
+         * @param name the name of the {@link Gst.PadTemplate} to get.
+         * @returns the {@link Gst.PadTemplate} with the     given name, or `null` if none was found. No unreferencing is     necessary.
          */
         get_pad_template(name: string): Gst.PadTemplate | null;
         /**
          * Retrieves a list of the pad templates associated with `element`. The
          * list must not be modified by the calling code.
-         * @returns the #GList of     pad templates.
+         * @returns the {@link GLib.List} of     pad templates.
          */
         get_pad_template_list(): Gst.PadTemplate[];
         /**
          * The name of this function is confusing to people learning GStreamer.
-         * gst_element_request_pad_simple() aims at making it more explicit it is
-         * a simplified gst_element_request_pad().
-         * @param name the name of the request #GstPad to retrieve.
-         * @returns requested #GstPad if found,     otherwise %NULL.  Release after usage.
+         * `gst_element_request_pad_simple()` aims at making it more explicit it is
+         * a simplified `gst_element_request_pad()`.
+         * @param name the name of the request {@link Gst.Pad} to retrieve.
+         * @returns requested {@link Gst.Pad} if found,     otherwise `null`.  Release after usage.
          */
         get_request_pad(name: string): Gst.Pad | null;
         /**
@@ -1281,7 +1332,7 @@ export namespace GstTag {
          * running time of the clock when this element was last put to PAUSED.
          *
          * Usually the start_time is managed by a toplevel element such as
-         * #GstPipeline.
+         * {@link Gst.Pipeline}.
          *
          * MT safe.
          * @returns the start time of the element.
@@ -1291,32 +1342,32 @@ export namespace GstTag {
          * Gets the state of the element.
          *
          * For elements that performed an ASYNC state change, as reported by
-         * gst_element_set_state(), this function will block up to the
+         * `gst_element_set_state()`, this function will block up to the
          * specified timeout value for the state change to complete.
          * If the element completes the state change or goes into
          * an error, this function returns immediately with a return value of
-         * %GST_STATE_CHANGE_SUCCESS or %GST_STATE_CHANGE_FAILURE respectively.
+         * {@link Gst.StateChangeReturn.SUCCESS} or {@link Gst.StateChangeReturn.FAILURE} respectively.
          *
-         * For elements that did not return %GST_STATE_CHANGE_ASYNC, this function
+         * For elements that did not return {@link Gst.StateChangeReturn.ASYNC}, this function
          * returns the current and pending state immediately.
          *
-         * This function returns %GST_STATE_CHANGE_NO_PREROLL if the element
+         * This function returns {@link Gst.StateChangeReturn.NO_PREROLL} if the element
          * successfully changed its state but is not able to provide data yet.
          * This mostly happens for live sources that only produce data in
-         * %GST_STATE_PLAYING. While the state change return is equivalent to
-         * %GST_STATE_CHANGE_SUCCESS, it is returned to the application to signal that
+         * {@link Gst.State.PLAYING}. While the state change return is equivalent to
+         * {@link Gst.StateChangeReturn.SUCCESS}, it is returned to the application to signal that
          * some sink elements might not be able to complete their state change because
          * an element is not producing data to complete the preroll. When setting the
          * element to playing, the preroll will complete and playback will start.
-         * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
-         * @returns %GST_STATE_CHANGE_SUCCESS if the element has no more pending state          and the last state change succeeded, %GST_STATE_CHANGE_ASYNC if the          element is still performing a state change or          %GST_STATE_CHANGE_FAILURE if the last state change failed. MT safe.
+         * @param timeout a {@link Gst.ClockTime} to specify the timeout for an async           state change or `GST_CLOCK_TIME_NONE` for infinite timeout.
+         * @returns {@link Gst.StateChangeReturn.SUCCESS} if the element has no more pending state          and the last state change succeeded, {@link Gst.StateChangeReturn.ASYNC} if the          element is still performing a state change or          {@link Gst.StateChangeReturn.FAILURE} if the last state change failed. MT safe.
          */
         get_state(timeout: Gst.ClockTime): [Gst.StateChangeReturn, Gst.State | null, Gst.State | null];
         /**
          * Retrieves a pad from `element` by name. This version only retrieves
          * already-existing (i.e. 'static') pads.
-         * @param name the name of the static #GstPad to retrieve.
-         * @returns the requested #GstPad if     found, otherwise %NULL.  unref after usage. MT safe.
+         * @param name the name of the static {@link Gst.Pad} to retrieve.
+         * @returns the requested {@link Gst.Pad} if     found, otherwise `null`.  unref after usage. MT safe.
          */
         get_static_pad(name: string): Gst.Pad | null;
         /**
@@ -1327,33 +1378,33 @@ export namespace GstTag {
          * state before changing the state from #GST_STATE_NULL.
          *
          * MT safe.
-         * @returns %TRUE, if the element's state is locked.
+         * @returns `true`, if the element's state is locked.
          */
         is_locked_state(): boolean;
         /**
-         * Retrieves an iterator of `element'`s pads. The iterator should
+         * Retrieves an iterator of `element`'s pads. The iterator should
          * be freed after usage. Also more specialized iterators exists such as
-         * gst_element_iterate_src_pads() or gst_element_iterate_sink_pads().
+         * `gst_element_iterate_src_pads()` or `gst_element_iterate_sink_pads()`.
          *
          * The order of pads returned by the iterator will be the order in which
          * the pads were added to the element.
-         * @returns the #GstIterator of #GstPad. MT safe.
+         * @returns the {@link Gst.Iterator} of {@link Gst.Pad}. MT safe.
          */
         iterate_pads(): Gst.Iterator;
         /**
-         * Retrieves an iterator of `element'`s sink pads.
+         * Retrieves an iterator of `element`'s sink pads.
          *
          * The order of pads returned by the iterator will be the order in which
          * the pads were added to the element.
-         * @returns the #GstIterator of #GstPad. MT safe.
+         * @returns the {@link Gst.Iterator} of {@link Gst.Pad}. MT safe.
          */
         iterate_sink_pads(): Gst.Iterator;
         /**
-         * Retrieves an iterator of `element'`s source pads.
+         * Retrieves an iterator of `element`'s source pads.
          *
          * The order of pads returned by the iterator will be the order in which
          * the pads were added to the element.
-         * @returns the #GstIterator of #GstPad. MT safe.
+         * @returns the {@link Gst.Iterator} of {@link Gst.Pad}. MT safe.
          */
         iterate_src_pads(): Gst.Iterator;
         /**
@@ -1364,9 +1415,9 @@ export namespace GstTag {
          * If multiple links are possible, only one is established.
          *
          * Make sure you have added your elements to a bin or pipeline with
-         * gst_bin_add() before trying to link them.
-         * @param dest the #GstElement containing the destination pad.
-         * @returns %TRUE if the elements could be linked, %FALSE otherwise.
+         * `gst_bin_add()` before trying to link them.
+         * @param dest the {@link Gst.Element} containing the destination pad.
+         * @returns `true` if the elements could be linked, `false` otherwise.
          */
         link(dest: Gst.Element): boolean;
         /**
@@ -1377,10 +1428,10 @@ export namespace GstTag {
          * If multiple links are possible, only one is established.
          *
          * Make sure you have added your elements to a bin or pipeline with
-         * gst_bin_add() before trying to link them.
-         * @param dest the #GstElement containing the destination pad.
-         * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
-         * @returns %TRUE if the pads could be linked, %FALSE otherwise.
+         * `gst_bin_add()` before trying to link them.
+         * @param dest the {@link Gst.Element} containing the destination pad.
+         * @param filter the {@link Gst.Caps} to filter the link,     or `null` for no filter.
+         * @returns `true` if the pads could be linked, `false` otherwise.
          */
         link_filtered(dest: Gst.Element, filter?: Gst.Caps | null): boolean;
         /**
@@ -1388,22 +1439,22 @@ export namespace GstTag {
          * Side effect is that if one of the pads has no parent, it becomes a
          * child of the parent of the other element.  If they have different
          * parents, the link fails.
-         * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
-         * @param dest the #GstElement containing the destination pad.
-         * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
-         * @returns %TRUE if the pads could be linked, %FALSE otherwise.
+         * @param srcpadname the name of the {@link Gst.Pad} in source element     or `null` for any pad.
+         * @param dest the {@link Gst.Element} containing the destination pad.
+         * @param destpadname the name of the {@link Gst.Pad} in destination element, or `null` for any pad.
+         * @returns `true` if the pads could be linked, `false` otherwise.
          */
         link_pads(srcpadname: string | null, dest: Gst.Element, destpadname?: string | null): boolean;
         /**
          * Links the two named pads of the source and destination elements. Side effect
          * is that if one of the pads has no parent, it becomes a child of the parent of
          * the other element. If they have different parents, the link fails. If `caps`
-         * is not %NULL, makes sure that the caps of the link is a subset of `caps`.
-         * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
-         * @param dest the #GstElement containing the destination pad.
-         * @param destpadname the name of the #GstPad in destination element     or %NULL for any pad.
-         * @param filter the #GstCaps to filter the link,     or %NULL for no filter.
-         * @returns %TRUE if the pads could be linked, %FALSE otherwise.
+         * is not `null`, makes sure that the caps of the link is a subset of `caps`.
+         * @param srcpadname the name of the {@link Gst.Pad} in source element     or `null` for any pad.
+         * @param dest the {@link Gst.Element} containing the destination pad.
+         * @param destpadname the name of the {@link Gst.Pad} in destination element     or `null` for any pad.
+         * @param filter the {@link Gst.Caps} to filter the link,     or `null` for no filter.
+         * @returns `true` if the pads could be linked, `false` otherwise.
          */
         link_pads_filtered(
             srcpadname: string | null,
@@ -1417,16 +1468,16 @@ export namespace GstTag {
          * child of the parent of the other element.  If they have different
          * parents, the link fails.
          *
-         * Calling gst_element_link_pads_full() with `flags` == %GST_PAD_LINK_CHECK_DEFAULT
-         * is the same as calling gst_element_link_pads() and the recommended way of
+         * Calling `gst_element_link_pads_full()` with `flags` == {@link Gst.PadLinkCheck.DEFAULT}
+         * is the same as calling `gst_element_link_pads()` and the recommended way of
          * linking pads with safety checks applied.
          *
-         * This is a convenience function for gst_pad_link_full().
-         * @param srcpadname the name of the #GstPad in source element     or %NULL for any pad.
-         * @param dest the #GstElement containing the destination pad.
-         * @param destpadname the name of the #GstPad in destination element, or %NULL for any pad.
-         * @param flags the #GstPadLinkCheck to be performed when linking pads.
-         * @returns %TRUE if the pads could be linked, %FALSE otherwise.
+         * This is a convenience function for `gst_pad_link_full()`.
+         * @param srcpadname the name of the {@link Gst.Pad} in source element     or `null` for any pad.
+         * @param dest the {@link Gst.Element} containing the destination pad.
+         * @param destpadname the name of the {@link Gst.Pad} in destination element, or `null` for any pad.
+         * @param flags the {@link Gst.PadLinkCheck} to be performed when linking pads.
+         * @returns `true` if the pads could be linked, `false` otherwise.
          */
         link_pads_full(
             srcpadname: string | null,
@@ -1437,14 +1488,14 @@ export namespace GstTag {
         /**
          * Brings the element to the lost state. The current state of the
          * element is copied to the pending state so that any call to
-         * gst_element_get_state() will return %GST_STATE_CHANGE_ASYNC.
+         * `gst_element_get_state()` will return {@link Gst.StateChangeReturn.ASYNC}.
          *
          * An ASYNC_START message is posted. If the element was PLAYING, it will
          * go to PAUSED. The element will be restored to its PLAYING state by
          * the parent pipeline when it prerolls again.
          *
          * This is mostly used for elements that lost their preroll buffer
-         * in the %GST_STATE_PAUSED or %GST_STATE_PLAYING state after a flush,
+         * in the {@link Gst.State.PAUSED} or {@link Gst.State.PLAYING} state after a flush,
          * they will go to their pending state again when a new preroll buffer is
          * queued. This function can only be called when the element is currently
          * not in error or an async state change.
@@ -1460,11 +1511,11 @@ export namespace GstTag {
          * #GST_MESSAGE_INFO.
          *
          * MT safe.
-         * @param type the #GstMessageType
+         * @param type the {@link Gst.MessageType}
          * @param domain the GStreamer GError domain this message belongs to
          * @param code the GError code belonging to the domain
-         * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
-         * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+         * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or `null`
+         * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or `null`
          * @param file the source code file where the error was generated
          * @param _function the source code function where the error was generated
          * @param line the source code line where the error was generated
@@ -1484,11 +1535,11 @@ export namespace GstTag {
          *
          * `type` must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
          * #GST_MESSAGE_INFO.
-         * @param type the #GstMessageType
+         * @param type the {@link Gst.MessageType}
          * @param domain the GStreamer GError domain this message belongs to
          * @param code the GError code belonging to the domain
-         * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or %NULL
-         * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or %NULL
+         * @param text an allocated text string to be used            as a replacement for the default message connected to code,            or `null`
+         * @param debug an allocated debug message to be            used as a replacement for the default debugging information,            or `null`
          * @param file the source code file where the error was generated
          * @param _function the source code function where the error was generated
          * @param line the source code line where the error was generated
@@ -1512,24 +1563,24 @@ export namespace GstTag {
          * pad templates use this in combination with autopluggers to figure out that
          * the element is done initializing its pads.
          *
-         * This function emits the #GstElement::no-more-pads signal.
+         * This function emits the {@link Gst.Element.SignalSignatures.no_more_pads | Gst.Element::no-more-pads} signal.
          *
          * MT safe.
          */
         no_more_pads(): void;
         /**
-         * Post a message on the element's #GstBus. This function takes ownership of the
+         * Post a message on the element's {@link Gst.Bus}. This function takes ownership of the
          * message; if you want to access the message after this call, you should add an
          * additional reference before calling.
-         * @param message a #GstMessage to post
-         * @returns %TRUE if the message was successfully posted. The function returns %FALSE if the element did not have a bus. MT safe.
+         * @param message a {@link Gst.Message} to post
+         * @returns `true` if the message was successfully posted. The function returns `false` if the element did not have a bus. MT safe.
          */
         post_message(message: Gst.Message): boolean;
         /**
          * Get the clock provided by the given element.
          * > An element is only required to provide a clock in the PAUSED
          * > state. Some elements can provide a clock in other states.
-         * @returns the GstClock provided by the element or %NULL if no clock could be provided.  Unref after usage. MT safe.
+         * @returns the GstClock provided by the element or `null` if no clock could be provided.  Unref after usage. MT safe.
          */
         provide_clock(): Gst.Clock | null;
         /**
@@ -1540,16 +1591,16 @@ export namespace GstTag {
          * random linked sinkpad of this element.
          *
          * Please note that some queries might need a running pipeline to work.
-         * @param query the #GstQuery.
-         * @returns %TRUE if the query could be performed. MT safe.
+         * @param query the {@link Gst.Query}.
+         * @returns `true` if the query could be performed. MT safe.
          */
         query(query: Gst.Query): boolean;
         /**
          * Queries an element to convert `src_val` in `src_format` to `dest_format`.
-         * @param src_format a #GstFormat to convert from.
+         * @param src_format a {@link Gst.Format} to convert from.
          * @param src_val a value to convert.
-         * @param dest_format the #GstFormat to convert to.
-         * @returns %TRUE if the query could be performed.
+         * @param dest_format the {@link Gst.Format} to convert to.
+         * @returns `true` if the query could be performed.
          */
         query_convert(
             src_format: Gst.Format | null,
@@ -1565,8 +1616,8 @@ export namespace GstTag {
          * If the duration changes for some reason, you will get a DURATION_CHANGED
          * message on the pipeline bus, in which case you should re-query the duration
          * using this function.
-         * @param format the #GstFormat requested
-         * @returns %TRUE if the query could be performed.
+         * @param format the {@link Gst.Format} requested
+         * @returns `true` if the query could be performed.
          */
         query_duration(format: Gst.Format | null): [boolean, number];
         /**
@@ -1578,78 +1629,81 @@ export namespace GstTag {
          * bus when that is the case.
          *
          * If one repeatedly calls this function one can also create a query and reuse
-         * it in gst_element_query().
-         * @param format the #GstFormat requested
-         * @returns %TRUE if the query could be performed.
+         * it in `gst_element_query()`.
+         * @param format the {@link Gst.Format} requested
+         * @returns `true` if the query could be performed.
          */
         query_position(format: Gst.Format | null): [boolean, number];
         /**
          * Makes the element free the previously requested pad as obtained
-         * with gst_element_request_pad().
+         * with `gst_element_request_pad()`.
          *
          * This does not unref the pad. If the pad was created by using
-         * gst_element_request_pad(), gst_element_release_request_pad() needs to be
-         * followed by gst_object_unref() to free the `pad`.
+         * `gst_element_request_pad()`, `gst_element_release_request_pad()` needs to be
+         * followed by `gst_object_unref()` to free the `pad`.
          *
          * MT safe.
-         * @param pad the #GstPad to release.
+         * @param pad the {@link Gst.Pad} to release.
          */
         release_request_pad(pad: Gst.Pad): void;
         /**
          * Removes `pad` from `element`. `pad` will be destroyed if it has not been
-         * referenced elsewhere using gst_object_unparent().
+         * referenced elsewhere using `gst_object_unparent()`.
          *
          * This function is used by plugin developers and should not be used
          * by applications. Pads that were dynamically requested from elements
-         * with gst_element_request_pad() should be released with the
-         * gst_element_release_request_pad() function instead.
+         * with `gst_element_request_pad()` should be released with the
+         * `gst_element_release_request_pad()` function instead.
          *
          * Pads are not automatically deactivated so elements should perform the needed
          * steps to deactivate the pad in case this pad is removed in the PAUSED or
-         * PLAYING state. See gst_pad_set_active() for more information about
+         * PLAYING state. See `gst_pad_set_active()` for more information about
          * deactivating pads.
          *
          * The pad and the element should be unlocked when calling this function.
          *
-         * This function will emit the #GstElement::pad-removed signal on the element.
-         * @param pad the #GstPad to remove from the element.
-         * @returns %TRUE if the pad could be removed. Can return %FALSE if the pad does not belong to the provided element. MT safe.
+         * This function will emit the {@link Gst.Element.SignalSignatures.pad_removed | Gst.Element::pad-removed} signal on the element.
+         * @param pad the {@link Gst.Pad} to remove from the element.
+         * @returns `true` if the pad could be removed. Can return `false` if the pad does not belong to the provided element. MT safe.
          */
         remove_pad(pad: Gst.Pad): boolean;
+        /**
+         * @param watch_id watch id to remove
+         */
         remove_property_notify_watch(watch_id: number): void;
         /**
          * Retrieves a request pad from the element according to the provided template.
          * Pad templates can be looked up using
-         * gst_element_factory_get_static_pad_templates().
+         * `gst_element_factory_get_static_pad_templates()`.
          *
-         * The pad should be released with gst_element_release_request_pad().
-         * @param templ a #GstPadTemplate of which we want a pad of.
-         * @param name the name of the request #GstPad to retrieve. Can be %NULL.
-         * @param caps the caps of the pad we want to request. Can be %NULL.
-         * @returns requested #GstPad if found,     otherwise %NULL.  Release after usage.
+         * The pad should be released with `gst_element_release_request_pad()`.
+         * @param templ a {@link Gst.PadTemplate} of which we want a pad of.
+         * @param name the name of the request {@link Gst.Pad} to retrieve. Can be `null`.
+         * @param caps the caps of the pad we want to request. Can be `null`.
+         * @returns requested {@link Gst.Pad} if found,     otherwise `null`.  Release after usage.
          */
         request_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null;
         /**
          * Retrieves a pad from the element by name (e.g. "src_\%d"). This version only
          * retrieves request pads. The pad should be released with
-         * gst_element_release_request_pad().
+         * `gst_element_release_request_pad()`.
          *
          * This method is slower than manually getting the pad template and calling
-         * gst_element_request_pad() if the pads should have a specific name (e.g.
+         * `gst_element_request_pad()` if the pads should have a specific name (e.g.
          * `name` is "src_1" instead of "src_\%u").
          *
          * Note that this function was introduced in GStreamer 1.20 in order to provide
-         * a better name to gst_element_get_request_pad(). Prior to 1.20, users
-         * should use gst_element_get_request_pad() which provides the same
+         * a better name to `gst_element_get_request_pad()`. Prior to 1.20, users
+         * should use `gst_element_get_request_pad()` which provides the same
          * functionality.
-         * @param name the name of the request #GstPad to retrieve.
-         * @returns requested #GstPad if found,     otherwise %NULL.  Release after usage.
+         * @param name the name of the request {@link Gst.Pad} to retrieve.
+         * @returns requested {@link Gst.Pad} if found,     otherwise `null`.  Release after usage.
          */
         request_pad_simple(name: string): Gst.Pad | null;
         /**
-         * Sends a seek event to an element. See gst_event_new_seek() for the details of
+         * Sends a seek event to an element. See `gst_event_new_seek()` for the details of
          * the parameters. The seek event is sent to the element using
-         * gst_element_send_event().
+         * `gst_element_send_event()`.
          *
          * MT safe.
          * @param rate The new playback rate
@@ -1659,7 +1713,7 @@ export namespace GstTag {
          * @param start The value of the new start position
          * @param stop_type The type and flags for the new stop position
          * @param stop The value of the new stop position
-         * @returns %TRUE if the event was handled. Flushing seeks will trigger a preroll, which will emit %GST_MESSAGE_ASYNC_DONE.
+         * @returns `true` if the event was handled. Flushing seeks will trigger a preroll, which will emit {@link Gst.MessageType.ASYNC_DONE}.
          */
         seek(
             rate: number,
@@ -1675,20 +1729,20 @@ export namespace GstTag {
          * to the given position relative to the start of the stream. For more complex
          * operations like segment seeks (e.g. for looping) or changing the playback
          * rate or seeking relative to the last configured playback segment you should
-         * use gst_element_seek().
+         * use `gst_element_seek()`.
          *
          * In a completely prerolled PAUSED or PLAYING pipeline, seeking is always
-         * guaranteed to return %TRUE on a seekable media type or %FALSE when the media
+         * guaranteed to return `true` on a seekable media type or `false` when the media
          * type is certainly not seekable (such as a live stream).
          *
          * Some elements allow for seeking in the READY state, in this
          * case they will store the seek event and execute it when they are put to
-         * PAUSED. If the element supports seek in READY, it will always return %TRUE when
+         * PAUSED. If the element supports seek in READY, it will always return `true` when
          * it receives the event in the READY state.
-         * @param format a #GstFormat to execute the seek in, such as #GST_FORMAT_TIME
+         * @param format a {@link Gst.Format} to execute the seek in, such as #GST_FORMAT_TIME
          * @param seek_flags seek options; playback applications will usually want to use            GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT here
          * @param seek_pos position to seek to (relative to the start); if you are doing            a seek in #GST_FORMAT_TIME this value is in nanoseconds -            multiply with #GST_SECOND to convert seconds to nanoseconds or            with #GST_MSECOND to convert milliseconds to nanoseconds.
-         * @returns %TRUE if the seek operation succeeded. Flushing seeks will trigger a preroll, which will emit %GST_MESSAGE_ASYNC_DONE.
+         * @returns `true` if the seek operation succeeded. Flushing seeks will trigger a preroll, which will emit {@link Gst.MessageType.ASYNC_DONE}.
          */
         seek_simple(format: Gst.Format | null, seek_flags: Gst.SeekFlags | null, seek_pos: number): boolean;
         /**
@@ -1697,15 +1751,15 @@ export namespace GstTag {
          * downstream events or a random linked source pad for upstream events.
          *
          * This function takes ownership of the provided event so you should
-         * gst_event_ref() it if you want to reuse the event after this call.
+         * `gst_event_ref()` it if you want to reuse the event after this call.
          *
          * MT safe.
-         * @param event the #GstEvent to send to the element.
-         * @returns %TRUE if the event was handled. Events that trigger a preroll (such as flushing seeks and steps) will emit %GST_MESSAGE_ASYNC_DONE.
+         * @param event the {@link Gst.Event} to send to the element.
+         * @returns `true` if the event was handled. Events that trigger a preroll (such as flushing seeks and steps) will emit {@link Gst.MessageType.ASYNC_DONE}.
          */
         send_event(event: Gst.Event): boolean;
         /**
-         * Set the base time of an element. See gst_element_get_base_time().
+         * Set the base time of an element. See `gst_element_get_base_time()`.
          *
          * MT safe.
          * @param time the base time to set.
@@ -1716,22 +1770,22 @@ export namespace GstTag {
          * For internal use only, unless you're testing elements.
          *
          * MT safe.
-         * @param bus the #GstBus to set.
+         * @param bus the {@link Gst.Bus} to set.
          */
         set_bus(bus?: Gst.Bus | null): void;
         /**
          * Sets the clock for the element. This function increases the
          * refcount on the clock. Any previously set clock on the object
          * is unreffed.
-         * @param clock the #GstClock to set for the element.
-         * @returns %TRUE if the element accepted the clock. An element can refuse a clock when it, for example, is not able to slave its internal clock to the @clock or when it requires a specific clock to operate. MT safe.
+         * @param clock the {@link Gst.Clock} to set for the element.
+         * @returns `true` if the element accepted the clock. An element can refuse a clock when it, for example, is not able to slave its internal clock to the `clock` or when it requires a specific clock to operate. MT safe.
          */
         set_clock(clock?: Gst.Clock | null): boolean;
         /**
          * Sets the context of the element. Increases the refcount of the context.
          *
          * MT safe.
-         * @param context the #GstContext to set.
+         * @param context the {@link Gst.Context} to set.
          */
         set_context(context: Gst.Context): void;
         /**
@@ -1743,8 +1797,8 @@ export namespace GstTag {
          * next step proceed to change the child element's state.
          *
          * MT safe.
-         * @param locked_state %TRUE to lock the element's state
-         * @returns %TRUE if the state was changed, %FALSE if bad parameters were given or the elements state-locking needed no change.
+         * @param locked_state `true` to lock the element's state
+         * @returns `true` if the state was changed, `false` if bad parameters were given or the elements state-locking needed no change.
          */
         set_locked_state(locked_state: boolean): boolean;
         /**
@@ -1752,7 +1806,7 @@ export namespace GstTag {
          * running time of the element when it last went to the PAUSED state. In READY
          * or after a flushing seek, it is set to 0.
          *
-         * Toplevel elements like #GstPipeline will manage the start_time and
+         * Toplevel elements like {@link Gst.Pipeline} will manage the start_time and
          * base_time on its children. Setting the start_time to #GST_CLOCK_TIME_NONE
          * on such a toplevel element will disable the distribution of the base_time to
          * the children and can be useful if the application manages the base_time
@@ -1771,38 +1825,38 @@ export namespace GstTag {
          * This function can return #GST_STATE_CHANGE_ASYNC, in which case the
          * element will perform the remainder of the state change asynchronously in
          * another thread.
-         * An application can use gst_element_get_state() to wait for the completion
-         * of the state change or it can wait for a %GST_MESSAGE_ASYNC_DONE or
-         * %GST_MESSAGE_STATE_CHANGED on the bus.
+         * An application can use `gst_element_get_state()` to wait for the completion
+         * of the state change or it can wait for a {@link Gst.MessageType.ASYNC_DONE} or
+         * {@link Gst.MessageType.STATE_CHANGED} on the bus.
          *
-         * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
+         * State changes to {@link Gst.State.READY} or {@link Gst.State.NULL} never return
          * #GST_STATE_CHANGE_ASYNC.
-         * @param state the element's new #GstState.
-         * @returns Result of the state change using #GstStateChangeReturn. MT safe.
+         * @param state the element's new {@link Gst.State}.
+         * @returns Result of the state change using {@link Gst.StateChangeReturn}. MT safe.
          */
         set_state(state: Gst.State | null): Gst.StateChangeReturn;
         /**
          * Tries to change the state of the element to the same as its parent.
-         * If this function returns %FALSE, the state of element is undefined.
-         * @returns %TRUE, if the element's state could be synced to the parent's state. MT safe.
+         * If this function returns `false`, the state of element is undefined.
+         * @returns `true`, if the element's state could be synced to the parent's state. MT safe.
          */
         sync_state_with_parent(): boolean;
         /**
          * Unlinks all source pads of the source element with all sink pads
          * of the sink element to which they are linked.
          *
-         * If the link has been made using gst_element_link(), it could have created an
-         * requestpad, which has to be released using gst_element_release_request_pad().
-         * @param dest the sink #GstElement to unlink.
+         * If the link has been made using `gst_element_link()`, it could have created an
+         * requestpad, which has to be released using `gst_element_release_request_pad()`.
+         * @param dest the sink {@link Gst.Element} to unlink.
          */
         unlink(dest: Gst.Element): void;
         /**
          * Unlinks the two named pads of the source and destination elements.
          *
-         * This is a convenience function for gst_pad_unlink().
-         * @param srcpadname the name of the #GstPad in source element.
-         * @param dest a #GstElement containing the destination pad.
-         * @param destpadname the name of the #GstPad in destination element.
+         * This is a convenience function for `gst_pad_unlink()`.
+         * @param srcpadname the name of the {@link Gst.Pad} in source element.
+         * @param dest a {@link Gst.Element} containing the destination pad.
+         * @param destpadname the name of the {@link Gst.Pad} in destination element.
          */
         unlink_pads(srcpadname: string, dest: Gst.Element, destpadname: string): void;
         /**
@@ -1811,30 +1865,32 @@ export namespace GstTag {
          * This function must be called with STATE_LOCK held and is mainly used
          * internally.
          * @param transition the requested transition
+         * @virtual
          */
         vfunc_change_state(transition: Gst.StateChange): Gst.StateChangeReturn;
         /**
          * Gets the state of the element.
          *
          * For elements that performed an ASYNC state change, as reported by
-         * gst_element_set_state(), this function will block up to the
+         * `gst_element_set_state()`, this function will block up to the
          * specified timeout value for the state change to complete.
          * If the element completes the state change or goes into
          * an error, this function returns immediately with a return value of
-         * %GST_STATE_CHANGE_SUCCESS or %GST_STATE_CHANGE_FAILURE respectively.
+         * {@link Gst.StateChangeReturn.SUCCESS} or {@link Gst.StateChangeReturn.FAILURE} respectively.
          *
-         * For elements that did not return %GST_STATE_CHANGE_ASYNC, this function
+         * For elements that did not return {@link Gst.StateChangeReturn.ASYNC}, this function
          * returns the current and pending state immediately.
          *
-         * This function returns %GST_STATE_CHANGE_NO_PREROLL if the element
+         * This function returns {@link Gst.StateChangeReturn.NO_PREROLL} if the element
          * successfully changed its state but is not able to provide data yet.
          * This mostly happens for live sources that only produce data in
-         * %GST_STATE_PLAYING. While the state change return is equivalent to
-         * %GST_STATE_CHANGE_SUCCESS, it is returned to the application to signal that
+         * {@link Gst.State.PLAYING}. While the state change return is equivalent to
+         * {@link Gst.StateChangeReturn.SUCCESS}, it is returned to the application to signal that
          * some sink elements might not be able to complete their state change because
          * an element is not producing data to complete the preroll. When setting the
          * element to playing, the preroll will complete and playback will start.
-         * @param timeout a #GstClockTime to specify the timeout for an async           state change or %GST_CLOCK_TIME_NONE for infinite timeout.
+         * @param timeout a {@link Gst.ClockTime} to specify the timeout for an async           state change or `GST_CLOCK_TIME_NONE` for infinite timeout.
+         * @virtual
          */
         vfunc_get_state(timeout: Gst.ClockTime): [Gst.StateChangeReturn, Gst.State | null, Gst.State | null];
         /**
@@ -1844,24 +1900,35 @@ export namespace GstTag {
          * pad templates use this in combination with autopluggers to figure out that
          * the element is done initializing its pads.
          *
-         * This function emits the #GstElement::no-more-pads signal.
+         * This function emits the {@link Gst.Element.SignalSignatures.no_more_pads | Gst.Element::no-more-pads} signal.
          *
          * MT safe.
+         * @virtual
          */
         vfunc_no_more_pads(): void;
+        /**
+         * @param pad
+         * @virtual
+         */
         vfunc_pad_added(pad: Gst.Pad): void;
+        /**
+         * @param pad
+         * @virtual
+         */
         vfunc_pad_removed(pad: Gst.Pad): void;
         /**
-         * Post a message on the element's #GstBus. This function takes ownership of the
+         * Post a message on the element's {@link Gst.Bus}. This function takes ownership of the
          * message; if you want to access the message after this call, you should add an
          * additional reference before calling.
-         * @param message a #GstMessage to post
+         * @param message a {@link Gst.Message} to post
+         * @virtual
          */
         vfunc_post_message(message: Gst.Message): boolean;
         /**
          * Get the clock provided by the given element.
          * > An element is only required to provide a clock in the PAUSED
          * > state. Some elements can provide a clock in other states.
+         * @virtual
          */
         vfunc_provide_clock(): Gst.Clock | null;
         /**
@@ -1872,23 +1939,26 @@ export namespace GstTag {
          * random linked sinkpad of this element.
          *
          * Please note that some queries might need a running pipeline to work.
-         * @param query the #GstQuery.
+         * @param query the {@link Gst.Query}.
+         * @virtual
          */
         vfunc_query(query: Gst.Query): boolean;
         /**
          * called when a request pad is to be released
          * @param pad
+         * @virtual
          */
         vfunc_release_pad(pad: Gst.Pad): void;
         /**
          * Retrieves a request pad from the element according to the provided template.
          * Pad templates can be looked up using
-         * gst_element_factory_get_static_pad_templates().
+         * `gst_element_factory_get_static_pad_templates()`.
          *
-         * The pad should be released with gst_element_release_request_pad().
-         * @param templ a #GstPadTemplate of which we want a pad of.
-         * @param name the name of the request #GstPad to retrieve. Can be %NULL.
-         * @param caps the caps of the pad we want to request. Can be %NULL.
+         * The pad should be released with `gst_element_release_request_pad()`.
+         * @param templ a {@link Gst.PadTemplate} of which we want a pad of.
+         * @param name the name of the request {@link Gst.Pad} to retrieve. Can be `null`.
+         * @param caps the caps of the pad we want to request. Can be `null`.
+         * @virtual
          */
         vfunc_request_new_pad(templ: Gst.PadTemplate, name?: string | null, caps?: Gst.Caps | null): Gst.Pad | null;
         /**
@@ -1897,10 +1967,11 @@ export namespace GstTag {
          * downstream events or a random linked source pad for upstream events.
          *
          * This function takes ownership of the provided event so you should
-         * gst_event_ref() it if you want to reuse the event after this call.
+         * `gst_event_ref()` it if you want to reuse the event after this call.
          *
          * MT safe.
-         * @param event the #GstEvent to send to the element.
+         * @param event the {@link Gst.Event} to send to the element.
+         * @virtual
          */
         vfunc_send_event(event: Gst.Event): boolean;
         /**
@@ -1908,21 +1979,24 @@ export namespace GstTag {
          * For internal use only, unless you're testing elements.
          *
          * MT safe.
-         * @param bus the #GstBus to set.
+         * @param bus the {@link Gst.Bus} to set.
+         * @virtual
          */
         vfunc_set_bus(bus?: Gst.Bus | null): void;
         /**
          * Sets the clock for the element. This function increases the
          * refcount on the clock. Any previously set clock on the object
          * is unreffed.
-         * @param clock the #GstClock to set for the element.
+         * @param clock the {@link Gst.Clock} to set for the element.
+         * @virtual
          */
         vfunc_set_clock(clock?: Gst.Clock | null): boolean;
         /**
          * Sets the context of the element. Increases the refcount of the context.
          *
          * MT safe.
-         * @param context the #GstContext to set.
+         * @param context the {@link Gst.Context} to set.
+         * @virtual
          */
         vfunc_set_context(context: Gst.Context): void;
         /**
@@ -1933,13 +2007,14 @@ export namespace GstTag {
          * This function can return #GST_STATE_CHANGE_ASYNC, in which case the
          * element will perform the remainder of the state change asynchronously in
          * another thread.
-         * An application can use gst_element_get_state() to wait for the completion
-         * of the state change or it can wait for a %GST_MESSAGE_ASYNC_DONE or
-         * %GST_MESSAGE_STATE_CHANGED on the bus.
+         * An application can use `gst_element_get_state()` to wait for the completion
+         * of the state change or it can wait for a {@link Gst.MessageType.ASYNC_DONE} or
+         * {@link Gst.MessageType.STATE_CHANGED} on the bus.
          *
-         * State changes to %GST_STATE_READY or %GST_STATE_NULL never return
+         * State changes to {@link Gst.State.READY} or {@link Gst.State.NULL} never return
          * #GST_STATE_CHANGE_ASYNC.
-         * @param state the element's new #GstState.
+         * @param state the element's new {@link Gst.State}.
+         * @virtual
          */
         vfunc_set_state(state: Gst.State): Gst.StateChangeReturn;
         /**
@@ -1947,20 +2022,36 @@ export namespace GstTag {
          * @param oldstate
          * @param newstate
          * @param pending
+         * @virtual
          */
         vfunc_state_changed(oldstate: Gst.State, newstate: Gst.State, pending: Gst.State): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TagDemuxClass = typeof TagDemux;
+    /**
+     * @gir-type Struct
+     */
     abstract class TagDemuxPrivate {
         static $gtype: GObject.GType<TagDemuxPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TagMuxClass = typeof TagMux;
+    /**
+     * @gir-type Struct
+     */
     abstract class TagMuxPrivate {
         static $gtype: GObject.GType<TagMuxPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TagXmpWriterInterface = typeof TagXmpWriter;
     namespace TagXmpWriter {
         // Constructor properties interface
@@ -1972,6 +2063,15 @@ export namespace GstTag {
         $gtype: GObject.GType<TagXmpWriter>;
         prototype: TagXmpWriter;
     }
+    /**
+     * This interface is implemented by elements that are able to do XMP serialization. Examples for
+     * such elements are #jifmux and #qtmux.
+     *
+     * Applications can use this interface to configure which XMP schemas should be used when serializing
+     * tags into XMP. Schemas are represented by their names, a full list of the supported schemas can be
+     * obtained from `gst_tag_xmp_list_schemas()`. By default, all schemas are used.
+     * @gir-type Interface
+     */
     interface TagXmpWriter extends Gst.Element {
         // Methods
 
@@ -1988,7 +2088,7 @@ export namespace GstTag {
         /**
          * Checks if `schema` is going to be used
          * @param schema the schema to test
-         * @returns %TRUE if it is going to be used
+         * @returns `true` if it is going to be used
          */
         has_schema(schema: string): boolean;
         /**
@@ -2002,6 +2102,10 @@ export namespace GstTag {
          * @param schema the schema to remove
          */
         remove_schema(schema: string): void;
+        /**
+         * @param taglist
+         * @param read_only
+         */
         tag_list_to_xmp_buffer(taglist: Gst.TagList, read_only: boolean): Gst.Buffer;
     }
 

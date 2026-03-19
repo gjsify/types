@@ -26,6 +26,7 @@ export namespace GWeather {
 
     /**
      * The current or forecasted significant phenomenon.
+     * @gir-type Enum
      */
     enum ConditionPhenomenon {
         /**
@@ -67,12 +68,13 @@ export namespace GWeather {
     }
 
     /**
-     * An additional modifier applied to a #GWeatherConditionPhenomenon to
+     * An additional modifier applied to a {@link GWeather.ConditionPhenomenon} to
      * describe the current or forecasted weather conditions.
      *
      * The exact meaning of each qualifier is described at
      * http://www.weather.com/glossary/ and
      * http://www.crh.noaa.gov/arx/wx.tbl.php
+     * @gir-type Enum
      */
     enum ConditionQualifier {
         /**
@@ -103,17 +105,17 @@ export namespace GWeather {
         HEAVY,
         /**
          * shallow fog (only valid with
-         *   %GWEATHER_PHENOMENON_FOG)
+         *   {@link GWeather.ConditionPhenomenon.FOG})
          */
         SHALLOW,
         /**
          * patches of fog (only valid with
-         *   %GWEATHER_PHENOMENON_FOG)
+         *   {@link GWeather.ConditionPhenomenon.FOG})
          */
         PATCHES,
         /**
          * partial fog (only valid with
-         *   %GWEATHER_PHENOMENON_FOG)
+         *   {@link GWeather.ConditionPhenomenon.FOG})
          */
         PARTIAL,
         /**
@@ -123,8 +125,8 @@ export namespace GWeather {
         THUNDERSTORM,
         /**
          * phenomenon is blowing (valid with
-         *   %GWEATHER_PHENOMENON_SNOW, %GWEATHER_PHENOMENON_SAND,
-         *   %GWEATHER_PHENOMENON_SPRAY, %GWEATHER_PHENOMENON_DUST)
+         *   {@link GWeather.ConditionPhenomenon.SNOW}, {@link GWeather.ConditionPhenomenon.SAND},
+         *   {@link GWeather.ConditionPhenomenon.SPRAY}, {@link GWeather.ConditionPhenomenon.DUST})
          */
         BLOWING,
         /**
@@ -133,7 +135,7 @@ export namespace GWeather {
         SHOWERS,
         /**
          * phenomenon is moving across (valid with
-         *   %GWEATHER_PHENOMENON_SAND and %GWEATHER_PHENOMENON_DUST)
+         *   {@link GWeather.ConditionPhenomenon.SAND} and {@link GWeather.ConditionPhenomenon.DUST})
          */
         DRIFTING,
         /**
@@ -152,7 +154,8 @@ export namespace GWeather {
 
     /**
      * The measure unit to use for sky visibility values, when retrieved
-     * by gweather_info_get_value_visibility().
+     * by `gweather_info_get_value_visibility()`.
+     * @gir-type Enum
      */
     enum DistanceUnit {
         /**
@@ -182,7 +185,7 @@ export namespace GWeather {
     }
 
     /**
-     * The size/scope of a particular [class`GWeather`.Location].
+     * The size/scope of a particular {@link GWeather.Location}.
      *
      * Locations form a hierarchy, with a `GWEATHER_LOCATION_WORLD` location
      * at the top, divided into regions or countries, and so on.
@@ -192,8 +195,9 @@ export namespace GWeather {
      * possibly several, weather stations inside it. Weather stations will
      * never appear outside of cities.
      *
-     * Building a database with [func`GWeather`.Location.get_world] will never
+     * Building a database with {@link GWeather.Location.get_world} will never
      * create detached instances, but deserializing might.
+     * @gir-type Enum
      */
     enum LocationLevel {
         /**
@@ -244,7 +248,8 @@ export namespace GWeather {
 
     /**
      * The measure unit to use for atmospheric pressure values, when
-     * retrieved by gweather_info_get_value_pressure().
+     * retrieved by `gweather_info_get_value_pressure()`.
+     * @gir-type Enum
      */
     enum PressureUnit {
         /**
@@ -265,7 +270,7 @@ export namespace GWeather {
          */
         HPA,
         /**
-         * millibars; same as %GWEATHER_PRESSURE_UNIT_HPA
+         * millibars; same as {@link GWeather.PressureUnit.HPA}
          */
         MB,
         /**
@@ -289,8 +294,9 @@ export namespace GWeather {
     /**
      * The sky and cloud visibility. In general it is discouraged to
      * use this value directly to compute the forecast icon: applications
-     * should instead use gweather_info_get_icon_name() or
-     * gweather_info_get_symbolic_icon_name().
+     * should instead use `gweather_info_get_icon_name()` or
+     * `gweather_info_get_symbolic_icon_name()`.
+     * @gir-type Enum
      */
     enum Sky {
         /**
@@ -329,7 +335,8 @@ export namespace GWeather {
 
     /**
      * The measure unit to use for wind speed values, when retrieved by
-     * gweather_info_get_value_wind().
+     * `gweather_info_get_value_wind()`.
+     * @gir-type Enum
      */
     enum SpeedUnit {
         /**
@@ -368,7 +375,8 @@ export namespace GWeather {
 
     /**
      * The measure unit to use for temperature values, when retrieved by
-     * the gweather_info_get_value_temp() family of functions.
+     * the `gweather_info_get_value_temp()` family of functions.
+     * @gir-type Enum
      */
     enum TemperatureUnit {
         /**
@@ -401,6 +409,7 @@ export namespace GWeather {
      * The direction of the prevailing wind. Composite values
      * such as north-north-east indicate a direction between the
      * two component value (north and north-east).
+     * @gir-type Enum
      */
     enum WindDirection {
         /**
@@ -484,25 +493,42 @@ export namespace GWeather {
     /**
      * Returns the location level as a string, useful for debugging
      * purposes.
-     * @param level a #GWeatherLocationLevel
+     * @param level a {@link GWeather.LocationLevel}
      * @returns a string
      */
     function location_level_to_string(level: LocationLevel | null): string;
+    /**
+     * @param sky
+     */
     function sky_to_string(sky: Sky | null): string;
+    /**
+     * @param sky
+     * @param options
+     */
     function sky_to_string_full(sky: Sky | null, options: FormatOptions | null): string;
     /**
      * Creates a human-readable, localized representation of `unit`
-     * @param unit a speed unit, or %GWEATHER_SPEED_UNIT_DEFAULT
+     * @param unit a speed unit, or {@link GWeather.SpeedUnit.DEFAULT}
      */
     function speed_unit_to_string(unit: SpeedUnit | null): string;
     /**
      * Resolve `unit` into a real temperature unit, potentially considering
      * locale defaults.
-     * @param unit a tempeature unit, or %GWEATHER_TEMP_UNIT_DEFAULT
+     * @param unit a tempeature unit, or {@link GWeather.TemperatureUnit.DEFAULT}
      */
     function temperature_unit_to_real(unit: TemperatureUnit | null): TemperatureUnit;
+    /**
+     * @param wind
+     */
     function wind_direction_to_string(wind: WindDirection | null): string;
+    /**
+     * @param wind
+     * @param options
+     */
     function wind_direction_to_string_full(wind: WindDirection | null, options: FormatOptions | null): string;
+    /**
+     * @gir-type Callback
+     */
     interface FilterFunc {
         (location: Location): boolean;
     }
@@ -513,6 +539,7 @@ export namespace GWeather {
     /**
      * Format options to influence the text returned by the
      * `gweather_*_to_string_full()` functions.
+     * @gir-type Flags
      */
     enum FormatOptions {
         /**
@@ -535,6 +562,9 @@ export namespace GWeather {
         export const $gtype: GObject.GType<Provider>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum Provider {
         /**
          * no provider, no weather information available
@@ -569,6 +599,12 @@ export namespace GWeather {
     namespace Info {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted after the initial fetch of the weather
+             * data from upstream services, and after every successful call
+             * to {@link GWeather.Info.update}.
+             * @signal
+             */
             updated: () => void;
             'notify::application-id': (pspec: GObject.ParamSpec) => void;
             'notify::contact-info': (pspec: GObject.ParamSpec) => void;
@@ -590,12 +626,13 @@ export namespace GWeather {
     }
 
     /**
-     * `GWeatherInfo` provides a handy way to access weather conditions
-     * and forecasts from a [class`GWeather`.Location], aggregating multiple
+     * {@link GWeather.Info} provides a handy way to access weather conditions
+     * and forecasts from a {@link GWeather.Location}, aggregating multiple
      * different web services.
      *
      * It includes also astronomical data such as sunrise times and
      * moon phases.
+     * @gir-type Class
      */
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
@@ -667,16 +704,19 @@ export namespace GWeather {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Info.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Info.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Info.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -688,7 +728,7 @@ export namespace GWeather {
         /**
          * Ensures that any data cached from the network is stored to disk.
          * Calling this is not necessary, as the cache will be saved when
-         * the last reference to a #GWeatherInfo will be dropped.
+         * the last reference to a {@link GWeather.Info} will be dropped.
          * On the other hand, it must be called if there is any chance that
          * the application will be closed without unreffing all objects, such
          * as when using a language binding that employs a GC.
@@ -710,7 +750,7 @@ export namespace GWeather {
          * data to include an attribution text, possibly including links
          * to the service website.
          * This must be shown prominently toghether with the data.
-         * @returns the required attribution text, in Pango          markup form, or %NULL if not required
+         * @returns the required attribution text, in Pango          markup form, or `null` if not required
          */
         get_attribution(): string;
         get_conditions(): string;
@@ -721,10 +761,13 @@ export namespace GWeather {
         get_contact_info(): string;
         get_dew(): string;
         /**
-         * Gets the bitmask of enabled #GWeatherProvider weather
+         * Gets the bitmask of enabled {@link GWeather.Provider} weather
          * providers.
          */
         get_enabled_providers(): Provider;
+        /**
+         * @returns list of GWeatherInfo* objects for the forecast. The list is owned by the 'info' object thus is alive as long as the 'info'. The 'update' property is the date/time when the forecast info is used for.
+         */
         get_forecast_list(): Info[];
         get_humidity(): string;
         get_icon_name(): string;
@@ -739,37 +782,87 @@ export namespace GWeather {
         get_temp_max(): string;
         get_temp_min(): string;
         get_temp_summary(): string;
+        /**
+         * @param phases
+         */
         get_upcoming_moonphases(phases: number): boolean;
         get_update(): string;
+        /**
+         * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
+         * @returns TRUE is `value` is valid, FALSE otherwise.
+         */
         get_value_apparent(unit: TemperatureUnit | null): [boolean, number];
         /**
          * Fills out `phenomenon` and `qualifier` with current weather conditions.
          * @returns TRUE is out arguments are valid, FALSE otherwise.
          */
         get_value_conditions(): [boolean, ConditionPhenomenon, ConditionQualifier];
+        /**
+         * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
+         * @returns TRUE is `value` is valid, FALSE otherwise.
+         */
         get_value_dew(unit: TemperatureUnit | null): [boolean, number];
+        /**
+         * @returns TRUE is `value` is valid, FALSE otherwise.
+         */
         get_value_moonphase(): [boolean, MoonPhase, MoonLatitude];
+        /**
+         * @param unit the desired unit, as a {@link GWeather.PressureUnit}
+         * @returns TRUE if `value` is valid, FALSE otherwise.
+         */
         get_value_pressure(unit: PressureUnit | null): [boolean, number];
         /**
          * Fills out `sky` with current sky conditions.
-         * @returns TRUE is @sky is valid, FALSE otherwise.
+         * @returns TRUE is `sky` is valid, FALSE otherwise.
          */
         get_value_sky(): [boolean, Sky];
+        /**
+         * @returns TRUE is `value` is valid, FALSE otherwise.
+         */
         get_value_sunrise(): [boolean, number];
+        /**
+         * @returns TRUE is `value` is valid, FALSE otherwise.
+         */
         get_value_sunset(): [boolean, number];
+        /**
+         * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
+         * @returns TRUE is `value` is valid, FALSE otherwise.
+         */
         get_value_temp(unit: TemperatureUnit | null): [boolean, number];
+        /**
+         * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
+         * @returns TRUE is `value` is valid, FALSE otherwise.
+         */
         get_value_temp_max(unit: TemperatureUnit | null): [boolean, number];
+        /**
+         * @param unit the desired unit, as a {@link GWeather.TemperatureUnit}
+         * @returns TRUE is `value` is valid, FALSE otherwise.
+         */
         get_value_temp_min(unit: TemperatureUnit | null): [boolean, number];
         /**
          * Note that `value` may be 0 if `info` has not yet been updated.
-         * @returns TRUE is @value is valid, FALSE otherwise.
+         * @returns TRUE is `value` is valid, FALSE otherwise.
          */
         get_value_update(): [boolean, number];
+        /**
+         * @param unit the desired unit, as a {@link GWeather.DistanceUnit}
+         * @returns TRUE if `value` is valid, FALSE otherwise.
+         */
         get_value_visibility(unit: DistanceUnit | null): [boolean, number];
+        /**
+         * @param unit the desired unit, as a {@link GWeather.SpeedUnit}
+         * @returns TRUE if `speed` and `direction` are valid, FALSE otherwise.
+         */
         get_value_wind(unit: SpeedUnit | null): [boolean, number, WindDirection];
         get_visibility(): string;
+        /**
+         * @returns a summary for current weather conditions.
+         */
         get_weather_summary(): string;
         get_wind(): string;
+        /**
+         * @returns Whether it is daytime (that is, if the sun is visible)   or not at the location and the point of time referred by `info`.   This is mostly equivalent to comparing the return value   of `gweather_info_get_value_sunrise()` and   `gweather_info_get_value_sunset()`, but it accounts also   for midnight sun and polar night, for locations within   the Artic and Antartic circles.
+         */
         is_daytime(): boolean;
         is_valid(): boolean;
         network_error(): boolean;
@@ -779,7 +872,7 @@ export namespace GWeather {
          * of the application fetching the weather. It is a requirement
          * for using any of the online weather providers.
          *
-         * If the application uses #GApplication, then the application ID
+         * If the application uses {@link Gio.Application}, then the application ID
          * will be automatically filled in.
          * @param application_id the application ID to set
          */
@@ -804,14 +897,14 @@ export namespace GWeather {
          *
          * Online providers will not be enabled if the application ID is
          * not set to a valid value.
-         * @param providers a bitmask of #GWeatherProvider
+         * @param providers a bitmask of {@link GWeather.Provider}
          */
         set_enabled_providers(providers: Provider | null): void;
         /**
          * Changes the location of the weather report.
          *
          * Note that this will clear any forecast or current conditions, and
-         * you must call [method`GWeather`.Info.update] to obtain the new data.
+         * you must call {@link GWeather.Info.update} to obtain the new data.
          * @param location a location for which weather is desired
          */
         set_location(location?: Location | null): void;
@@ -819,9 +912,9 @@ export namespace GWeather {
          * Requests a reload of weather conditions and forecast data from
          * enabled network services.
          * This call does no synchronous IO: rather, the result is delivered
-         * by emitting the #GWeatherInfo::updated signal.
+         * by emitting the {@link GWeather.Info.SignalSignatures.updated | GWeather.Info::updated} signal.
          * Note that if no network services are enabled, the signal will not
-         * be emitted. See #GWeatherInfo:enabled-providers for details.
+         * be emitted. See {@link GWeather.Info.enabled_providers} for details.
          */
         update(): void;
     }
@@ -836,12 +929,13 @@ export namespace GWeather {
     }
 
     /**
-     * A `GWeatherLocation` represents a "location" of some type known to
+     * A {@link GWeather.Location} represents a "location" of some type known to
      * libgweather; anything from a single weather station to the entire
      * world.
      *
-     * See [enum`GWeather`.LocationLevel] for information about how the
+     * See {@link GWeather.LocationLevel} for information about how the
      * hierarchy of locations works.
+     * @gir-type Class
      */
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
@@ -865,16 +959,19 @@ export namespace GWeather {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -889,7 +986,7 @@ export namespace GWeather {
          */
         static detect_nearest_city_finish(result: Gio.AsyncResult): Location;
         /**
-         * Obtains the shared `GWeatherLocation` of type `GWEATHER_LOCATION_WORLD`,
+         * Obtains the shared {@link GWeather.Location} of type `GWEATHER_LOCATION_WORLD`,
          * representing a hierarchy containing all of the locations from the
          * location data.
          */
@@ -898,21 +995,21 @@ export namespace GWeather {
         // Methods
 
         /**
-         * This call undoes the effect of gweather_location_serialize(), that
-         * is, it turns a #GVariant into a #GWeatherLocation. The conversion
+         * This call undoes the effect of `gweather_location_serialize()`, that
+         * is, it turns a {@link GLib.Variant} into a {@link GWeather.Location}. The conversion
          * happens in the context of `world` (i.e, for a city or weather station,
          * the resulting location will be attached to a administrative division,
          * country and region as appropriate).
-         * @param serialized the #GVariant representing the #GWeatherLocation
+         * @param serialized the {@link GLib.Variant} representing the {@link GWeather.Location}
          * @returns the deserialized location.
          */
         deserialize(serialized: GLib.Variant): Location;
         /**
-         * Initializes geocode reversing to find place for (`lat,` `lon)` coordinates.
+         * Initializes geocode reversing to find place for (`lat`, `lon`) coordinates.
          *
          * Calls the callback function passed by user when the result is ready.
          *
-         * The given location must be at most a %GWEATHER_LOCATION_ADM1 location; this
+         * The given location must be at most a {@link GWeather.LocationLevel.ADM1} location; this
          * restriction may be lifted in a future version.
          * @param lat Latitude, in degrees
          * @param lon Longitude, in degrees
@@ -926,7 +1023,7 @@ export namespace GWeather {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Compares two #GWeatherLocation and sees if they represent the same
+         * Compares two {@link GWeather.Location} and sees if they represent the same
          * place.
          * It is only legal to call this for cities, weather stations or
          * detached locations.
@@ -935,15 +1032,15 @@ export namespace GWeather {
          * locations belong to different worlds (in which case care must be
          * taken when passing them GWeatherLocationEntry and GWeatherInfo), or
          * if one is them is detached it could have a custom name.
-         * @param two another #GWeatherLocation
-         * @returns %TRUE if the two locations represent the same place as          far as libgweather can tell, and %FALSE otherwise.
+         * @param two another {@link GWeather.Location}
+         * @returns `true` if the two locations represent the same place as          far as libgweather can tell, and `false` otherwise.
          */
         equal(two: Location): boolean;
         /**
          * Retrieves the country identified by the specified ISO 3166 code,
          * if present in the database.
          * @param country_code a country code
-         * @returns a country level #GWeatherLocation, or %NULL.
+         * @returns a country level {@link GWeather.Location}, or `null`.
          */
         find_by_country_code(country_code: string): Location;
         /**
@@ -953,7 +1050,7 @@ export namespace GWeather {
          * in the database, and this function will return any of them, so this
          * not usually what you want.
          *
-         * See [method`GWeather`.Location.deserialize] to recover a stored location.
+         * See {@link GWeather.Location.deserialize} to recover a stored location.
          * @param station_code a 4 letter METAR code
          * @returns a weather station level location   for the given station code, or `NULL` if none exists in the database
          */
@@ -962,14 +1059,14 @@ export namespace GWeather {
          * Finds the nearest city to the passed latitude and
          * longitude, among the descendants of `loc`.
          *
-         * The given location must be at most a %GWEATHER_LOCATION_ADM1 location.
+         * The given location must be at most a {@link GWeather.LocationLevel.ADM1} location.
          * This restriction may be lifted in a future version.
          *
-         * Note that this function does not check if (`lat,` `lon)` fall inside
-         * `loc,` or are in the same region and time zone as the return value.
+         * Note that this function does not check if (`lat`, `lon`) fall inside
+         * `loc`, or are in the same region and time zone as the return value.
          * @param lat Latitude, in degrees
          * @param lon Longitude, in degrees
-         * @returns the city closest to (@lat, @lon), in the   region or administrative district of @loc.
+         * @returns the city closest to (`lat`, `lon`), in the   region or administrative district of `loc`.
          */
         find_nearest_city(lat: number, lon: number): Location;
         /**
@@ -980,28 +1077,28 @@ export namespace GWeather {
          *
          * Geocoding should be done on the application side if needed.
          *
-         * `loc` must be at most a %GWEATHER_LOCATION_ADM1 location.
+         * `loc` must be at most a {@link GWeather.LocationLevel.ADM1} location.
          * This restriction may be lifted in a future version.
          * @param lat Latitude, in degrees
          * @param lon Longitude, in degrees
          * @param func a function to iterate   over the locations; the function must return `TRUE` to continue checking   for the location, and `FALSE` to filter the location out
-         * @returns the city closest to (@lat, @lon), in the   region or administrative district of @loc with validation of   filter function
+         * @returns the city closest to (`lat`, `lon`), in the   region or administrative district of `loc` with validation of   filter function
          */
         find_nearest_city_full(lat: number, lon: number, func?: FilterFunc | null): Location;
         /**
          * Frees the array of timezones returned by
-         * gweather_location_get_timezones().
-         * @param zones an array of timezones   returned by [method@GWeather.Location.get_timezones]
+         * `gweather_location_get_timezones()`.
+         * @param zones an array of timezones   returned by {@link GWeather.Location.get_timezones}
          */
         free_timezones(zones: GLib.TimeZone[]): void;
         /**
          * Retrieves the city name for the given location.
          *
          * For a `GWEATHER_LOCATION_CITY` or `GWEATHER_LOCATION_DETACHED` location,
-         * this method is equivalent to [method`GWeather`.Location.get_name].
+         * this method is equivalent to {@link GWeather.Location.get_name}.
          *
          * For a `GWEATHER_LOCATION_WEATHER_STATION` location, this is equivalent to
-         * calling [method`GWeather`.Location.get_name] on the location's parent.
+         * calling {@link GWeather.Location.get_name} on the location's parent.
          *
          * For other locations this method will return `NULL`.
          * @returns the city name of the location
@@ -1014,9 +1111,9 @@ export namespace GWeather {
          */
         get_code(): string | null;
         /**
-         * Gets `loc'`s coordinates.
+         * Gets `loc`'s coordinates.
          *
-         * You must call [method`GWeather`.Location.has_coords] before calling
+         * You must call {@link GWeather.Location.has_coords} before calling
          * this function.
          */
         get_coords(): [number, number];
@@ -1032,7 +1129,7 @@ export namespace GWeather {
          * Retrieves the country name for the given location.
          *
          * For a `GWEATHER_LOCATION_COUNTRY` location, this is equivalent to
-         * [method`GWeather`.Location.get_name].
+         * {@link GWeather.Location.get_name}.
          *
          * For a `GWEATHER_LOCATION_REGION` and `GWEATHER_LOCATION_WORLD` location,
          * this method will return `NULL`.
@@ -1044,8 +1141,8 @@ export namespace GWeather {
         get_country_name(): string | null;
         /**
          * Determines the distance in kilometers between `loc` and `loc2`.
-         * @param loc2 a second #GWeatherLocation
-         * @returns the distance between @loc and @loc2.
+         * @param loc2 a second {@link GWeather.Location}
+         * @returns the distance between `loc` and `loc2`.
          */
         get_distance(loc2: Location): number;
         /**
@@ -1056,17 +1153,17 @@ export namespace GWeather {
         /**
          * Gets the location's name, in a representation useful for comparisons.
          *
-         * The "sort name" is the location's name after having g_utf8_normalize()
-         * (with `G_NORMALIZE_ALL`) and g_utf8_casefold() called on it. You can
+         * The "sort name" is the location's name after having `g_utf8_normalize()`
+         * (with `G_NORMALIZE_ALL`) and `g_utf8_casefold()` called on it. You can
          * use this to sort locations, or to comparing user input against a
          * location name.
          * @returns the sort name of the location
          */
         get_english_sort_name(): string | null;
         /**
-         * Gets `loc'`s level, from %GWEATHER_LOCATION_WORLD, to
-         * %GWEATHER_LOCATION_WEATHER_STATION.
-         * @returns @loc's level
+         * Gets `loc`'s level, from {@link GWeather.LocationLevel.WORLD}, to
+         * {@link GWeather.LocationLevel.WEATHER_STATION}.
+         * @returns `loc`'s level
          */
         get_level(): LocationLevel;
         /**
@@ -1083,20 +1180,20 @@ export namespace GWeather {
          * Gets the location's name, localized into the current language,
          * in a representation useful for comparisons.
          *
-         * The "sort name" is the location's name after having g_utf8_normalize()
-         * (with `G_NORMALIZE_ALL`) and g_utf8_casefold() called on it. You can
+         * The "sort name" is the location's name after having `g_utf8_normalize()`
+         * (with `G_NORMALIZE_ALL`) and `g_utf8_casefold()` called on it. You can
          * use this to sort locations, or to comparing user input against a
          * location name.
          * @returns the sort name of the location
          */
         get_sort_name(): string | null;
         /**
-         * Gets the timezone associated with `loc,` if known.
+         * Gets the timezone associated with `loc`, if known.
          * @returns the location's timezone
          */
         get_timezone(): GLib.TimeZone | null;
         /**
-         * Gets the timezone associated with `loc,` if known, as a string.
+         * Gets the timezone associated with `loc`, if known, as a string.
          * @returns the location's timezone as   a string
          */
         get_timezone_str(): string | null;
@@ -1104,13 +1201,13 @@ export namespace GWeather {
          * Gets an array of all timezones associated with any location under
          * `loc`.
          *
-         * Use gweather_location_free_timezones() to free this array.
+         * Use `gweather_location_free_timezones()` to free this array.
          * @returns the timezones   associated with the location
          */
         get_timezones(): GLib.TimeZone[];
         /**
          * Checks if `loc` has valid latitude and longitude.
-         * @returns %TRUE if @loc has valid latitude and longitude.
+         * @returns `true` if `loc` has valid latitude and longitude.
          */
         has_coords(): boolean;
         /**
@@ -1138,16 +1235,16 @@ export namespace GWeather {
          */
         next_child(child?: Location | null): Location | null;
         /**
-         * Transforms a #GWeatherLocation into a #GVariant, in a way that
-         * calling gweather_location_deserialize() will hold an equivalent
-         * #GWeatherLocation.
+         * Transforms a {@link GWeather.Location} into a {@link GLib.Variant}, in a way that
+         * calling `gweather_location_deserialize()` will hold an equivalent
+         * {@link GWeather.Location}.
          * The resulting variant can then be stored into GSettings or on disk.
          * This call is only valid for cities, weather stations and detached
          * locations.
-         * The format of the resulting #GVariant is private to libgweather,
+         * The format of the resulting {@link GLib.Variant} is private to libgweather,
          * and it is subject to change. You should use the "v" format in GSettings,
          * to ensure maximum compatibility with future versions of the library.
-         * @returns the serialization of @location.
+         * @returns the serialization of `location`.
          */
         serialize(): GLib.Variant;
     }
@@ -1156,12 +1253,13 @@ export namespace GWeather {
      * A convenient way to describe the current or forecast
      * weather phenomenon, if significant, and its associated
      * modifier. If the value is not significant, the weather conditions
-     * are described by gweather_info_get_sky() instead.
+     * are described by `gweather_info_get_sky()` instead.
      *
      * In general it is discouraged to use this value directly to compute
      * the forecast icon: applications should instead use
-     * gweather_info_get_icon_name() or
-     * gweather_info_get_symbolic_icon_name().
+     * `gweather_info_get_icon_name()` or
+     * `gweather_info_get_symbolic_icon_name()`.
+     * @gir-type Struct
      */
     class Conditions {
         static $gtype: GObject.GType<Conditions>;
@@ -1175,12 +1273,30 @@ export namespace GWeather {
         // Methods
 
         to_string(): string;
+        /**
+         * @param options
+         */
         to_string_full(options: FormatOptions | null): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InfoClass = typeof Info;
+    /**
+     * @gir-type Alias
+     */
     type LocationClass = typeof Location;
+    /**
+     * The moon declension, in degrees.
+     * @gir-type Alias
+     */
     type MoonLatitude = number;
+    /**
+     * The current phase of the moon, represented as degrees,
+     * where 0 is the new moon, 90 is the first quarter, etc.
+     * @gir-type Alias
+     */
     type MoonPhase = number;
     /**
      * Name of the imported GIR library

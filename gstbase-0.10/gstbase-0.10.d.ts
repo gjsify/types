@@ -29,19 +29,45 @@ export namespace GstBase {
 
     const TRANSFORM_SINK_NAME: string;
     const TRANSFORM_SRC_NAME: string;
+    /**
+     * @param src
+     * @param size
+     */
     function gst_type_find_helper(src: Gst.Pad, size: number): Gst.Caps;
+    /**
+     * @param obj
+     * @param buf
+     * @param prob
+     */
     function gst_type_find_helper_for_buffer(
         obj: Gst.Object,
         buf: Gst.Buffer,
         prob: Gst.TypeFindProbability | null,
     ): Gst.Caps;
+    /**
+     * @param obj
+     * @param extension
+     */
     function gst_type_find_helper_for_extension(obj: Gst.Object, extension: string): Gst.Caps;
+    /**
+     * @param obj
+     * @param func
+     * @param size
+     * @param prob
+     */
     function gst_type_find_helper_get_range(
         obj: Gst.Object,
         func: Gst.TypeFindHelperGetRangeFunction,
         size: number,
         prob: Gst.TypeFindProbability | null,
     ): Gst.Caps;
+    /**
+     * @param obj
+     * @param func
+     * @param size
+     * @param extension
+     * @param prob
+     */
     function gst_type_find_helper_get_range_ext(
         obj: Gst.Object,
         func: Gst.TypeFindHelperGetRangeFunction,
@@ -49,29 +75,51 @@ export namespace GstBase {
         extension: string,
         prob: Gst.TypeFindProbability | null,
     ): Gst.Caps;
+    /**
+     * @gir-type Callback
+     */
     interface GstCollectDataDestroyNotify {
         (data: Gst.CollectData): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface GstCollectPadsClipFunction {
         (pads: Gst.CollectPads, data: Gst.CollectData, buffer: Gst.Buffer): Gst.Buffer;
     }
+    /**
+     * @gir-type Callback
+     */
     interface GstCollectPadsFunction {
         (pads: Gst.CollectPads): Gst.FlowReturn;
     }
+    /**
+     * @gir-type Callback
+     */
     interface GstDataQueueCheckFullFunction {
         (queue: Gst.DataQueue, visible: number, bytes: number, time: number, checkdata: any): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface GstDataQueueEmptyCallback {
         (queue: Gst.DataQueue, checkdata: any): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface GstDataQueueFullCallback {
         (queue: Gst.DataQueue, checkdata: any): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface GstTypeFindHelperGetRangeFunction {
         (obj: Gst.Object, offset: number, length: number, buffer: Gst.Buffer): Gst.FlowReturn;
     }
     /**
-     * The #GstElement flags that a basesrc element may have.
+     * The {@link Gst.Element} flags that a basesrc element may have.
+     * @gir-type Flags
      */
     enum SrcFlags {
         STARTED,
@@ -88,7 +136,8 @@ export namespace GstBase {
     }
 
     /**
-     * The opaque #GstAdapter data structure.
+     * The opaque {@link GstBase.GstAdapter} data structure.
+     * @gir-type Class
      */
     class GstAdapter extends GObject.Object {
         static $gtype: GObject.GType<GstAdapter>;
@@ -123,16 +172,19 @@ export namespace GstBase {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GstAdapter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GstAdapter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GstAdapter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GstAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GstAdapter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GstAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -142,16 +194,48 @@ export namespace GstBase {
         // Methods
 
         clear(): void;
+        /**
+         * @param buf
+         */
         push(buf: Gst.Buffer): void;
+        /**
+         * @param size
+         */
         peek(size: number): number[];
+        /**
+         * @param dest
+         * @param offset
+         * @param size
+         */
         copy(dest: number[], offset: number, size: number): void;
+        /**
+         * @param flush
+         */
         flush(flush: number): void;
+        /**
+         * @param nbytes
+         */
         take(nbytes: number): number[];
+        /**
+         * @param nbytes
+         */
         take_buffer(nbytes: number): Gst.Buffer;
         available(): number;
         available_fast(): number;
         prev_timestamp(): [Gst.ClockTime, number];
+        /**
+         * @param mask
+         * @param pattern
+         * @param offset
+         * @param size
+         */
         masked_scan_uint32(mask: number, pattern: number, offset: number, size: number): number;
+        /**
+         * @param mask
+         * @param pattern
+         * @param offset
+         * @param size
+         */
         masked_scan_uint32_peek(mask: number, pattern: number, offset: number, size: number): [number, number];
     }
 
@@ -168,8 +252,9 @@ export namespace GstBase {
 
     /**
      * Collectpads object.
-     * Note that `data` doesn't contain the complete #GstCollectData list
+     * Note that `data` doesn't contain the complete {@link GstBase.GstCollectData} list
      * at all times and should not be used for iterating them.
+     * @gir-type Class
      */
     class GstCollectPads extends Gst.Object {
         static $gtype: GObject.GType<GstCollectPads>;
@@ -205,16 +290,19 @@ export namespace GstBase {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GstCollectPads.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GstCollectPads.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GstCollectPads.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GstCollectPads.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GstCollectPads.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GstCollectPads.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -223,30 +311,88 @@ export namespace GstBase {
 
         // Methods
 
+        /**
+         * @param func
+         * @param user_data
+         */
         set_function(func: Gst.CollectPadsFunction, user_data: any): void;
+        /**
+         * @param clipfunc
+         * @param user_data
+         */
         set_clip_function(clipfunc: Gst.CollectPadsClipFunction, user_data: any): void;
+        /**
+         * @param pad
+         * @param size
+         */
         add_pad(pad: Gst.Pad, size: number): Gst.CollectData;
+        /**
+         * @param pad
+         * @param size
+         * @param destroy_notify
+         */
         add_pad_full(pad: Gst.Pad, size: number, destroy_notify: Gst.CollectDataDestroyNotify): Gst.CollectData;
+        /**
+         * @param pad
+         */
         remove_pad(pad: Gst.Pad): boolean;
+        /**
+         * @param pad
+         */
         is_active(pad: Gst.Pad): boolean;
         collect(): Gst.FlowReturn;
+        /**
+         * @param offset
+         * @param length
+         */
         collect_range(offset: number, length: number): Gst.FlowReturn;
         start(): void;
         stop(): void;
+        /**
+         * @param flushing
+         */
         set_flushing(flushing: boolean): void;
+        /**
+         * @param data
+         */
         peek(data: Gst.CollectData): Gst.Buffer;
+        /**
+         * @param data
+         */
         pop(data: Gst.CollectData): Gst.Buffer;
         available(): number;
+        /**
+         * @param data
+         * @param size
+         */
         read(data: Gst.CollectData, size: number): [number, number];
+        /**
+         * @param data
+         * @param size
+         */
         read_buffer(data: Gst.CollectData, size: number): Gst.Buffer;
+        /**
+         * @param data
+         * @param size
+         */
         take_buffer(data: Gst.CollectData, size: number): Gst.Buffer;
+        /**
+         * @param data
+         * @param size
+         */
         flush(data: Gst.CollectData, size: number): number;
     }
 
     namespace GstDataQueue {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             empty: () => void;
+            /**
+             * @signal
+             */
             full: () => void;
             'notify::current-level-bytes': (pspec: GObject.ParamSpec) => void;
             'notify::current-level-time': (pspec: GObject.ParamSpec) => void;
@@ -266,7 +412,8 @@ export namespace GstBase {
     }
 
     /**
-     * Opaque #GstDataQueue structure.
+     * Opaque {@link GstBase.GstDataQueue} structure.
+     * @gir-type Class
      */
     class GstDataQueue extends GObject.Object {
         static $gtype: GObject.GType<GstDataQueue>;
@@ -316,16 +463,19 @@ export namespace GstBase {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GstDataQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GstDataQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GstDataQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GstDataQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GstDataQueue.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GstDataQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -334,13 +484,28 @@ export namespace GstBase {
 
         // Methods
 
+        /**
+         * @param item
+         */
         push(item: Gst.DataQueueItem): boolean;
+        /**
+         * @param item
+         */
         pop(item: Gst.DataQueueItem): boolean;
         flush(): void;
+        /**
+         * @param flushing
+         */
         set_flushing(flushing: boolean): void;
+        /**
+         * @param type
+         */
         drop_head(type: GObject.GType): boolean;
         is_full(): boolean;
         is_empty(): boolean;
+        /**
+         * @param level
+         */
         get_level(level: Gst.DataQueueSize): void;
         limits_changed(): void;
     }
@@ -361,7 +526,8 @@ export namespace GstBase {
     }
 
     /**
-     * The opaque #GstPushSrc data structure.
+     * The opaque {@link GstBase.GstPushSrc} data structure.
+     * @gir-type Class
      */
     class GstPushSrc extends Src {
         static $gtype: GObject.GType<GstPushSrc>;
@@ -383,16 +549,19 @@ export namespace GstBase {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GstPushSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GstPushSrc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GstPushSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GstPushSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GstPushSrc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GstPushSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -439,7 +608,8 @@ export namespace GstBase {
     }
 
     /**
-     * The opaque #GstBaseSink data structure.
+     * The opaque {@link GstBase.Sink} data structure.
+     * @gir-type Class
      */
     abstract class Sink extends Gst.Element {
         static $gtype: GObject.GType<Sink>;
@@ -517,16 +687,19 @@ export namespace GstBase {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Sink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Sink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Sink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Sink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -535,28 +708,67 @@ export namespace GstBase {
 
         // Methods
 
+        /**
+         * @param obj
+         */
         do_preroll(obj: Gst.MiniObject): Gst.FlowReturn;
         wait_preroll(): Gst.FlowReturn;
+        /**
+         * @param sync
+         */
         set_sync(sync: boolean): void;
         get_sync(): boolean;
+        /**
+         * @param max_lateness
+         */
         set_max_lateness(max_lateness: number): void;
         get_max_lateness(): number;
+        /**
+         * @param enabled
+         */
         set_qos_enabled(enabled: boolean): void;
         is_qos_enabled(): boolean;
+        /**
+         * @param enabled
+         */
         set_async_enabled(enabled: boolean): void;
         is_async_enabled(): boolean;
+        /**
+         * @param offset
+         */
         set_ts_offset(offset: Gst.ClockTimeDiff): void;
         get_ts_offset(): Gst.ClockTimeDiff;
         get_last_buffer(): Gst.Buffer;
+        /**
+         * @param enable
+         */
         set_last_buffer_enabled(enable: boolean): void;
         is_last_buffer_enabled(): boolean;
+        /**
+         * @param min_latency
+         * @param max_latency
+         */
         query_latency(min_latency: Gst.ClockTime, max_latency: Gst.ClockTime): [boolean, boolean, boolean];
         get_latency(): Gst.ClockTime;
+        /**
+         * @param delay
+         */
         set_render_delay(delay: Gst.ClockTime): void;
         get_render_delay(): Gst.ClockTime;
+        /**
+         * @param blocksize
+         */
         set_blocksize(blocksize: number): void;
         get_blocksize(): number;
+        /**
+         * @param time
+         * @param jitter
+         */
         wait_clock(time: Gst.ClockTime, jitter: Gst.ClockTimeDiff): Gst.ClockReturn;
+        /**
+         * @param time
+         * @param jitter
+         */
         wait_eos(time: Gst.ClockTime, jitter: Gst.ClockTimeDiff): Gst.FlowReturn;
     }
 
@@ -583,7 +795,8 @@ export namespace GstBase {
     }
 
     /**
-     * The opaque #GstBaseSrc data structure.
+     * The opaque {@link GstBase.Src} data structure.
+     * @gir-type Class
      */
     abstract class Src extends Gst.Element {
         static $gtype: GObject.GType<Src>;
@@ -636,16 +849,19 @@ export namespace GstBase {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Src.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Src.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Src.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Src.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Src.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Src.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -655,14 +871,35 @@ export namespace GstBase {
         // Methods
 
         wait_playing(): Gst.FlowReturn;
+        /**
+         * @param live
+         */
         set_live(live: boolean): void;
         is_live(): boolean;
+        /**
+         * @param format
+         */
         set_format(format: Gst.Format | null): void;
+        /**
+         * @param min_latency
+         * @param max_latency
+         */
         query_latency(min_latency: Gst.ClockTime, max_latency: Gst.ClockTime): [boolean, boolean];
+        /**
+         * @param blocksize
+         */
         set_blocksize(blocksize: number): void;
         get_blocksize(): number;
+        /**
+         * @param timestamp
+         */
         set_do_timestamp(timestamp: boolean): void;
         get_do_timestamp(): boolean;
+        /**
+         * @param start
+         * @param stop
+         * @param position
+         */
         new_seamless_segment(start: number, stop: number, position: number): boolean;
     }
 
@@ -681,7 +918,8 @@ export namespace GstBase {
     }
 
     /**
-     * The opaque #GstBaseTransform data structure.
+     * The opaque {@link GstBase.Transform} data structure.
+     * @gir-type Class
      */
     abstract class Transform extends Gst.Element {
         static $gtype: GObject.GType<Transform>;
@@ -723,16 +961,19 @@ export namespace GstBase {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Transform.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Transform.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Transform.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Transform.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Transform.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Transform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -741,25 +982,53 @@ export namespace GstBase {
 
         // Methods
 
+        /**
+         * @param passthrough
+         */
         set_passthrough(passthrough: boolean): void;
         is_passthrough(): boolean;
+        /**
+         * @param in_place
+         */
         set_in_place(in_place: boolean): void;
         is_in_place(): boolean;
+        /**
+         * @param proportion
+         * @param diff
+         * @param timestamp
+         */
         update_qos(proportion: number, diff: Gst.ClockTimeDiff, timestamp: Gst.ClockTime): void;
+        /**
+         * @param enabled
+         */
         set_qos_enabled(enabled: boolean): void;
         is_qos_enabled(): boolean;
+        /**
+         * @param gap_aware
+         */
         set_gap_aware(gap_aware: boolean): void;
+        /**
+         * @param caps
+         * @param size
+         */
         suggest(caps: Gst.Caps, size: number): void;
         reconfigure(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GstAdapterClass = typeof GstAdapter;
+    /**
+     * @gir-type Struct
+     */
     class GstAdapterPrivate {
         static $gtype: GObject.GType<GstAdapterPrivate>;
     }
 
     /**
      * A bit reader instance.
+     * @gir-type Struct
      */
     class GstBitReader {
         static $gtype: GObject.GType<GstBitReader>;
@@ -789,26 +1058,66 @@ export namespace GstBase {
         // Methods
 
         free(): void;
+        /**
+         * @param data
+         * @param size
+         */
         init(data: number[], size: number): void;
+        /**
+         * @param buffer
+         */
         init_from_buffer(buffer: Gst.Buffer): void;
+        /**
+         * @param pos
+         */
         set_pos(pos: number): boolean;
         get_pos(): number;
         get_remaining(): number;
         get_size(): number;
+        /**
+         * @param nbits
+         */
         skip(nbits: number): boolean;
         skip_to_byte(): boolean;
+        /**
+         * @param val
+         * @param nbits
+         */
         get_bits_uint8(val: number[], nbits: number): boolean;
+        /**
+         * @param nbits
+         */
         get_bits_uint16(nbits: number): [boolean, number];
+        /**
+         * @param nbits
+         */
         get_bits_uint32(nbits: number): [boolean, number];
+        /**
+         * @param nbits
+         */
         get_bits_uint64(nbits: number): [boolean, number];
+        /**
+         * @param val
+         * @param nbits
+         */
         peek_bits_uint8(val: number[], nbits: number): boolean;
+        /**
+         * @param nbits
+         */
         peek_bits_uint16(nbits: number): [boolean, number];
+        /**
+         * @param nbits
+         */
         peek_bits_uint32(nbits: number): [boolean, number];
+        /**
+         * @param nbits
+         */
         peek_bits_uint64(nbits: number): [boolean, number];
     }
 
     /**
      * A byte reader instance.
+     * @gir-type Struct
      */
     class GstByteReader {
         static $gtype: GObject.GType<GstByteReader>;
@@ -836,13 +1145,29 @@ export namespace GstBase {
         // Methods
 
         free(): void;
+        /**
+         * @param data
+         * @param size
+         */
         init(data: number[], size: number): void;
+        /**
+         * @param buffer
+         */
         init_from_buffer(buffer: Gst.Buffer): void;
+        /**
+         * @param pos
+         */
         set_pos(pos: number): boolean;
         get_pos(): number;
         get_remaining(): number;
         get_size(): number;
+        /**
+         * @param nbytes
+         */
         skip(nbytes: number): boolean;
+        /**
+         * @param val
+         */
         get_uint8(val: number[]): boolean;
         get_int8(): [boolean, number];
         get_uint16_le(): [boolean, number];
@@ -861,6 +1186,9 @@ export namespace GstBase {
         get_int64_le(): [boolean, number];
         get_uint64_be(): [boolean, number];
         get_int64_be(): [boolean, number];
+        /**
+         * @param val
+         */
         peek_uint8(val: number[]): boolean;
         peek_int8(): [boolean, number];
         peek_uint16_le(): [boolean, number];
@@ -887,22 +1215,47 @@ export namespace GstBase {
         peek_float32_be(): [boolean, number];
         peek_float64_le(): [boolean, number];
         peek_float64_be(): [boolean, number];
+        /**
+         * @param size
+         */
         dup_data(size: number): [boolean, number];
+        /**
+         * @param size
+         */
         get_data(size: number): [boolean, number];
+        /**
+         * @param size
+         */
         peek_data(size: number): [boolean, number];
+        /**
+         * @param str
+         */
         dup_string_utf8(str: string[]): boolean;
         dup_string_utf16(): [boolean, number];
         dup_string_utf32(): [boolean, number];
         skip_string_utf8(): boolean;
         skip_string_utf16(): boolean;
         skip_string_utf32(): boolean;
+        /**
+         * @param str
+         */
         get_string_utf8(str: string[]): boolean;
+        /**
+         * @param str
+         */
         peek_string_utf8(str: string[]): boolean;
+        /**
+         * @param mask
+         * @param pattern
+         * @param offset
+         * @param size
+         */
         masked_scan_uint32(mask: number, pattern: number, offset: number, size: number): number;
     }
 
     /**
      * A byte writer instance.
+     * @gir-type Struct
      */
     class GstByteWriter {
         static $gtype: GObject.GType<GstByteWriter>;
@@ -935,8 +1288,21 @@ export namespace GstBase {
         // Methods
 
         init(): void;
+        /**
+         * @param size
+         * @param fixed
+         */
         init_with_size(size: number, fixed: boolean): void;
+        /**
+         * @param data
+         * @param size
+         * @param initialized
+         */
         init_with_data(data: number[], size: number, initialized: boolean): void;
+        /**
+         * @param buffer
+         * @param initialized
+         */
         init_with_buffer(buffer: Gst.Buffer, initialized: boolean): void;
         free(): void;
         free_and_get_data(): number[];
@@ -945,31 +1311,111 @@ export namespace GstBase {
         reset_and_get_data(): number[];
         reset_and_get_buffer(): Gst.Buffer;
         get_remaining(): number;
+        /**
+         * @param size
+         */
         ensure_free_space(size: number): boolean;
+        /**
+         * @param val
+         */
         put_uint8(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int8(val: number): boolean;
+        /**
+         * @param val
+         */
         put_uint16_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_uint16_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int16_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int16_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_uint24_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_uint24_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int24_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int24_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_uint32_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_uint32_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int32_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int32_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_uint64_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_uint64_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int64_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_int64_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_float32_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_float32_le(val: number): boolean;
+        /**
+         * @param val
+         */
         put_float64_be(val: number): boolean;
+        /**
+         * @param val
+         */
         put_float64_le(val: number): boolean;
+        /**
+         * @param data
+         * @param size
+         */
         put_data(data: number[], size: number): boolean;
+        /**
+         * @param value
+         * @param size
+         */
         fill(value: number, size: number): boolean;
+        /**
+         * @param data
+         */
         put_string_utf8(data: string): boolean;
         put_string_utf16(): [boolean, number];
         put_string_utf32(): [boolean, number];
@@ -977,6 +1423,7 @@ export namespace GstBase {
 
     /**
      * Structure used by the collect_pads.
+     * @gir-type Struct
      */
     class GstCollectData {
         static $gtype: GObject.GType<GstCollectData>;
@@ -989,15 +1436,25 @@ export namespace GstBase {
         pos: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GstCollectPadsClass = typeof GstCollectPads;
+    /**
+     * @gir-type Struct
+     */
     class GstCollectPadsPrivate {
         static $gtype: GObject.GType<GstCollectPadsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GstDataQueueClass = typeof GstDataQueue;
     /**
-     * Structure used by #GstDataQueue. You can supply a different structure, as
+     * Structure used by {@link GstBase.GstDataQueue}. You can supply a different structure, as
      * long as the top of the structure is identical to this structure.
+     * @gir-type Struct
      */
     class GstDataQueueItem {
         static $gtype: GObject.GType<GstDataQueueItem>;
@@ -1013,6 +1470,7 @@ export namespace GstBase {
 
     /**
      * Structure describing the size of a queue.
+     * @gir-type Struct
      */
     class GstDataQueueSize {
         static $gtype: GObject.GType<GstDataQueueSize>;
@@ -1034,18 +1492,39 @@ export namespace GstBase {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GstPushSrcClass = typeof GstPushSrc;
+    /**
+     * @gir-type Alias
+     */
     type SinkClass = typeof Sink;
+    /**
+     * @gir-type Struct
+     */
     class SinkPrivate {
         static $gtype: GObject.GType<SinkPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SrcClass = typeof Src;
+    /**
+     * @gir-type Struct
+     */
     class SrcPrivate {
         static $gtype: GObject.GType<SrcPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TransformClass = typeof Transform;
+    /**
+     * @gir-type Struct
+     */
     class TransformPrivate {
         static $gtype: GObject.GType<TransformPrivate>;
     }

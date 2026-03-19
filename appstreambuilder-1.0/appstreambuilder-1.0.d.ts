@@ -24,6 +24,7 @@ export namespace AppStreamBuilder {
 
     /**
      * The flags to use when saving resources.
+     * @gir-type Enum
      */
     enum AppSaveFlags {
         /**
@@ -40,6 +41,9 @@ export namespace AppStreamBuilder {
         SCREENSHOTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PackageKind {
         DEFAULT,
         BUNDLE,
@@ -47,6 +51,9 @@ export namespace AppStreamBuilder {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PackageLogLevel {
         NONE,
         DEBUG,
@@ -66,6 +73,7 @@ export namespace AppStreamBuilder {
     const PACKAGE_ENSURE_VCS: number;
     /**
      * The flags to use when processing the context.
+     * @gir-type Flags
      */
     enum ContextFlags {
         /**
@@ -139,6 +147,9 @@ export namespace AppStreamBuilder {
         interface ConstructorProps extends AppStreamGlib.App.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class App extends AppStreamGlib.App {
         static $gtype: GObject.GType<App>;
 
@@ -164,16 +175,19 @@ export namespace AppStreamBuilder {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof App.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof App.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof App.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -189,8 +203,8 @@ export namespace AppStreamBuilder {
         get_package(): Package;
         /**
          * Saves to disk any resources set for the application.
-         * @param save_flags #AsbAppSaveFlags, e.g. %ASB_APP_SAVE_FLAG_SCREENSHOTS
-         * @returns %TRUE for success, %FALSE otherwise
+         * @param save_flags {@link AppStreamBuilder.AppSaveFlags}, e.g. {@link AppStreamBuilder.AppSaveFlags.SCREENSHOTS}
+         * @returns `true` for success, `false` otherwise
          */
         save_resources(save_flags: AppSaveFlags | null): boolean;
         /**
@@ -200,7 +214,7 @@ export namespace AppStreamBuilder {
         set_hidpi_enabled(hidpi_enabled: boolean): void;
         /**
          * Sets the package that backs the application.
-         * @param pkg A #AsbPackage
+         * @param pkg A {@link AppStreamBuilder.Package}
          */
         set_package(pkg: Package): void;
     }
@@ -214,6 +228,9 @@ export namespace AppStreamBuilder {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
 
@@ -236,16 +253,19 @@ export namespace AppStreamBuilder {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -256,31 +276,34 @@ export namespace AppStreamBuilder {
 
         /**
          * Adds an application to the context.
-         * @param app A #AsbApp
+         * @param app A {@link AppStreamBuilder.App}
          */
         add_app(app: App): void;
+        /**
+         * @param pkg
+         */
         add_app_ignore(pkg: Package): void;
         /**
          * Adds a filename to the list of packages to be processed
          * @param filename package filename
-         * @returns %TRUE for success, %FALSE otherwise
+         * @returns `true` for success, `false` otherwise
          */
         add_filename(filename: string): boolean;
         /**
          * Adds a package to the list of packages to be processed
-         * @param pkg A #AsbPackage
+         * @param pkg A {@link AppStreamBuilder.Package}
          */
         add_package(pkg: Package): void;
         /**
          * Find a package from its name.
          * @param pkgname a package name
-         * @returns a #AsbPackage, or %NULL for not found.
+         * @returns a {@link AppStreamBuilder.Package}, or `null` for not found.
          */
         find_by_pkgname(pkgname: string): Package;
         /**
          * This function used to find an application in the cache, and now does nothing.
          * @param filename cache-id
-         * @returns always %FALSE
+         * @returns always `false`
          */
         find_in_cache(filename: string): boolean;
         /**
@@ -295,13 +318,13 @@ export namespace AppStreamBuilder {
         get_cache_dir(): string;
         /**
          * Gets one specific build flag.
-         * @param flag A #AsbContextFlags
-         * @returns %TRUE if the flag was set
+         * @param flag A {@link AppStreamBuilder.ContextFlags}
+         * @returns `true` if the flag was set
          */
         get_flag(flag: ContextFlags | null): boolean;
         /**
          * Gets the build flags.
-         * @returns #AsbContextFlags
+         * @returns {@link AppStreamBuilder.ContextFlags}
          */
         get_flags(): ContextFlags;
         /**
@@ -321,7 +344,7 @@ export namespace AppStreamBuilder {
         get_temp_dir(): string;
         /**
          * Processes all the packages that have been added to the context.
-         * @returns %TRUE for success, %FALSE otherwise
+         * @returns `true` for success, `false` otherwise
          */
         process(): boolean;
         /**
@@ -341,7 +364,7 @@ export namespace AppStreamBuilder {
         set_cache_dir(cache_dir: string): void;
         /**
          * Sets flags to be used when building the metadata.
-         * @param flags #AsbContextFlags, e.g. %ASB_CONTEXT_FLAG_NO_NETWORK
+         * @param flags {@link AppStreamBuilder.ContextFlags}, e.g. {@link AppStreamBuilder.ContextFlags.NO_NETWORK}
          */
         set_flags(flags: ContextFlags | null): void;
         /**
@@ -368,7 +391,7 @@ export namespace AppStreamBuilder {
         /**
          * Sets the filename location of the old metadata file.
          * This function now has no affect as no cache ID is available.
-         * @param old_metadata filename, or %NULL
+         * @param old_metadata filename, or `null`
          */
         set_old_metadata(old_metadata: string): void;
         /**
@@ -381,6 +404,9 @@ export namespace AppStreamBuilder {
          * @param output_dir directory
          */
         set_output_dir(output_dir: string): void;
+        /**
+         * @param screenshot_dir
+         */
         set_screenshot_dir(screenshot_dir: string): void;
         /**
          * Sets the temporary directory to use when building metadata.
@@ -389,7 +415,7 @@ export namespace AppStreamBuilder {
         set_temp_dir(temp_dir: string): void;
         /**
          * Sets up the context ready for use.
-         * @returns %TRUE for success, %FALSE otherwise
+         * @returns `true` for success, `false` otherwise
          */
         setup(): boolean;
     }
@@ -403,6 +429,9 @@ export namespace AppStreamBuilder {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
 
@@ -425,16 +454,19 @@ export namespace AppStreamBuilder {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Package.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -445,29 +477,34 @@ export namespace AppStreamBuilder {
 
         /**
          * Closes a package, which can be re-opened if required.
+         * @virtual
          */
         vfunc_close(): boolean;
         /**
          * Compares one package with another.
-         * @param pkg2 A #AsbPackage
+         * @param pkg2 A {@link AppStreamBuilder.Package}
+         * @virtual
          */
         vfunc_compare(pkg2: Package): number;
         /**
          * Ensures data exists.
-         * @param flags #AsbPackageEnsureFlags
+         * @param flags {@link AppStreamBuilder.PackageEnsureFlags}
+         * @virtual
          */
         vfunc_ensure(flags: PackageEnsureFlags): boolean;
         /**
          * Decompresses a package into a directory, optionally using a glob list.
          * @param dir directory to explode into
-         * @param glob the glob list, or %NULL
+         * @param glob the glob list, or `null`
+         * @virtual
          */
         vfunc_explode(dir: string, glob: string[]): boolean;
         /**
          * Opens a package and parses the contents.
          * As little i/o should be done at this point, and implementations
-         * should rely on asb_package_ensure() to set data.
+         * should rely on `asb_package_ensure()` to set data.
          * @param filename package filename
+         * @virtual
          */
         vfunc_open(filename: string): boolean;
 
@@ -486,31 +523,31 @@ export namespace AppStreamBuilder {
         add_release(version: string, release: AppStreamGlib.Release): void;
         /**
          * Deallocates previously ensured data.
-         * @param flags #AsbPackageEnsureFlags
+         * @param flags {@link AppStreamBuilder.PackageEnsureFlags}
          */
         clear(flags: PackageEnsureFlags): void;
         /**
          * Closes a package, which can be re-opened if required.
-         * @returns %TRUE for success, %FALSE otherwise
+         * @returns `true` for success, `false` otherwise
          */
         close(): boolean;
         /**
          * Compares one package with another.
-         * @param pkg2 A #AsbPackage
-         * @returns +1 for @pkg1 newer, 0 for the same and -1 if @pkg2 is newer
+         * @param pkg2 A {@link AppStreamBuilder.Package}
+         * @returns +1 for `pkg1` newer, 0 for the same and -1 if `pkg2` is newer
          */
         compare(pkg2: Package): number;
         /**
          * Ensures data exists.
-         * @param flags #AsbPackageEnsureFlags
-         * @returns %TRUE for success, %FALSE otherwise
+         * @param flags {@link AppStreamBuilder.PackageEnsureFlags}
+         * @returns `true` for success, `false` otherwise
          */
         ensure(flags: PackageEnsureFlags): boolean;
         /**
          * Decompresses a package into a directory, optionally using a glob list.
          * @param dir directory to explode into
-         * @param glob the glob list, or %NULL
-         * @returns %TRUE for success, %FALSE otherwise
+         * @param glob the glob list, or `null`
+         * @returns `true` for success, `false` otherwise
          */
         explode(dir: string, glob: string[]): boolean;
         /**
@@ -541,7 +578,7 @@ export namespace AppStreamBuilder {
         get_enabled(): boolean;
         /**
          * Gets the epoch of the package.
-         * @returns a #AsbPackageKind
+         * @returns a {@link AppStreamBuilder.PackageKind}
          */
         get_epoch(): number;
         /**
@@ -561,7 +598,7 @@ export namespace AppStreamBuilder {
         get_filename(): string;
         /**
          * Gets the kind of the package.
-         * @returns a #AsbPackageKind
+         * @returns a {@link AppStreamBuilder.PackageKind}
          */
         get_kind(): PackageKind;
         /**
@@ -587,7 +624,7 @@ export namespace AppStreamBuilder {
         /**
          * Gets the release for a specific version.
          * @param version package version
-         * @returns an #AsRelease, or %NULL for not found
+         * @returns an {@link AppStreamGlib.Release}, or `null` for not found
          */
         get_release(version: string): AppStreamGlib.Release;
         /**
@@ -627,7 +664,7 @@ export namespace AppStreamBuilder {
         get_version(): string;
         /**
          * Flushes the log queue.
-         * @returns %TRUE for success, %FALSE otherwise
+         * @returns `true` for success, `false` otherwise
          */
         log_flush(): boolean;
         /**
@@ -637,9 +674,9 @@ export namespace AppStreamBuilder {
         /**
          * Opens a package and parses the contents.
          * As little i/o should be done at this point, and implementations
-         * should rely on asb_package_ensure() to set data.
+         * should rely on `asb_package_ensure()` to set data.
          * @param filename package filename
-         * @returns %TRUE for success, %FALSE otherwise
+         * @returns `true` for success, `false` otherwise
          */
         open(filename: string): boolean;
         /**
@@ -675,7 +712,7 @@ export namespace AppStreamBuilder {
         set_filename(filename: string): void;
         /**
          * Sets the package kind.
-         * @param kind A #AsbPackageKind
+         * @param kind A {@link AppStreamBuilder.PackageKind}
          */
         set_kind(kind: PackageKind | null): void;
         /**
@@ -731,6 +768,9 @@ export namespace AppStreamBuilder {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
 
@@ -753,16 +793,19 @@ export namespace AppStreamBuilder {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Task.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Task.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Task.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Task.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -773,20 +816,35 @@ export namespace AppStreamBuilder {
 
         /**
          * Processes the task.
-         * @returns %TRUE for success, %FALSE otherwise
+         * @returns `true` for success, `false` otherwise
          */
         process(): boolean;
         /**
          * Sets the package used for the task.
-         * @param pkg A #AsbPackage
+         * @param pkg A {@link AppStreamBuilder.Package}
          */
         set_package(pkg: Package): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AppClass = typeof App;
+    /**
+     * @gir-type Alias
+     */
     type ContextClass = typeof Context;
+    /**
+     * @gir-type Alias
+     */
     type PackageClass = typeof Package;
+    /**
+     * @gir-type Alias
+     */
     type TaskClass = typeof Task;
+    /**
+     * @gir-type Alias
+     */
     type PackageEnsureFlags = number;
     /**
      * Name of the imported GIR library

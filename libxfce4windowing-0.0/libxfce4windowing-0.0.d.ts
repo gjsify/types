@@ -32,7 +32,9 @@ export namespace Libxfce4windowing {
     /**
      * The type of the application.
      *
-     * See #xfw_set_client_type() for details.
+     * See `xfw_set_client_type`() for details.
+     * @gir-type Enum
+     * @since 4.19.3
      */
     enum ClientType {
         /**
@@ -53,6 +55,7 @@ export namespace Libxfce4windowing {
      * Represents a direction, either of position ("This workspace is to the left
      * of the current workspace") or movement ("Move this window to the workspace to
      * the right of its current workspace").
+     * @gir-type Enum
      */
     enum Direction {
         /**
@@ -75,6 +78,7 @@ export namespace Libxfce4windowing {
 
     /**
      * An error code enum describing possible errors returned by this library.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -101,6 +105,7 @@ export namespace Libxfce4windowing {
 
     /**
      * Enumeration describing the windows type or function.
+     * @gir-type Enum
      */
     enum WindowType {
         /**
@@ -141,6 +146,7 @@ export namespace Libxfce4windowing {
     /**
      * Represents the windowing environment that is currently running.  Note that
      * for an application running on XWayland, this will return #XFW_WINDOWING_X11.
+     * @gir-type Enum
      */
     enum Windowing {
         /**
@@ -196,10 +202,18 @@ export namespace Libxfce4windowing {
      * @param required_major the required major version.
      * @param required_minor the required minor version.
      * @param required_micro the required micro version.
-     * @returns %NULL if the library is compatible with the given version, or a string describing the version mismatch. The returned string is owned by the library and must not be freed or modified by the caller.
+     * @returns `null` if the library is compatible with the given version, or a string describing the version mismatch. The returned string is owned by the library and must not be freed or modified by the caller.
      */
     function check_version(required_major: number, required_minor: number, required_micro: number): string | null;
     function error_quark(): GLib.Quark;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function marshal_VOID__FLAGS_FLAGS(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -209,8 +223,8 @@ export namespace Libxfce4windowing {
         marshal_data?: any | null,
     ): void;
     /**
-     * Retrieves the #XfwScreen instance corresponding to the default #GdkScreen.
-     * @returns an #XfwScreen instance, with a reference owned by the caller.
+     * Retrieves the {@link Libxfce4windowing.Screen} instance corresponding to the default {@link Gdk.Screen}.
+     * @returns an {@link Libxfce4windowing.Screen} instance, with a reference owned by the caller.
      */
     function screen_get_default(): Screen;
     /**
@@ -222,20 +236,30 @@ export namespace Libxfce4windowing {
      * application like a pager or dock.
      *
      * This does nothing on Wayland, but is safe to call under a Wayland session.
-     * @param client_type A #XfwClientType
+     * @param client_type A {@link Libxfce4windowing.ClientType}
+     * @since 4.19.3
      */
     function set_client_type(client_type: ClientType | null): void;
     /**
      * Determines the windowing environment that is currently active.
-     * @returns A value from the #XfwWindowing enum.
+     * @returns A value from the {@link Libxfce4windowing.Windowing} enum.
      */
     function windowing_get(): Windowing;
+    /**
+     * @gir-type Callback
+     */
     interface CreateWorkspaceFunc {
         (group: WorkspaceGroup, name: string): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface MoveViewportFunc {
         (group: WorkspaceGroup, x: number, y: number): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SetLayoutFunc {
         (group: WorkspaceGroup, rows: number, columns: number): boolean;
     }
@@ -245,6 +269,7 @@ export namespace Libxfce4windowing {
 
     /**
      * Flags bitfield that describes actions that can be taken on the window.
+     * @gir-type Flags
      */
     enum WindowCapabilities {
         /**
@@ -325,6 +350,7 @@ export namespace Libxfce4windowing {
 
     /**
      * A flags bitfield representing various states the window can hold.
+     * @gir-type Flags
      */
     enum WindowState {
         /**
@@ -385,6 +411,7 @@ export namespace Libxfce4windowing {
     /**
      * Flags enum representing a bitfield of actions that can be performed on this
      * workspace.
+     * @gir-type Flags
      */
     enum WorkspaceCapabilities {
         /**
@@ -408,6 +435,7 @@ export namespace Libxfce4windowing {
     /**
      * Flags enum representing a bitfield of actions that can be performed on this
      * workspace group.
+     * @gir-type Flags
      */
     enum WorkspaceGroupCapabilities {
         /**
@@ -438,6 +466,7 @@ export namespace Libxfce4windowing {
 
     /**
      * Flags enum representing a bitfield that describes the workspace's state.
+     * @gir-type Flags
      */
     enum WorkspaceState {
         /**
@@ -467,6 +496,10 @@ export namespace Libxfce4windowing {
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when `app`'s icon changes.
+             * @signal
+             */
             'icon-changed': () => void;
             'notify::class-id': (pspec: GObject.ParamSpec) => void;
             'notify::gicon': (pspec: GObject.ParamSpec) => void;
@@ -487,6 +520,9 @@ export namespace Libxfce4windowing {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
@@ -494,18 +530,20 @@ export namespace Libxfce4windowing {
 
         /**
          * The application class id.
+         * @since 4.19.3
          */
         get class_id(): string;
         /**
          * The application class id.
+         * @since 4.19.3
          */
         get classId(): string;
         /**
-         * The #GIcon that represents this application.
+         * The {@link Gio.Icon} that represents this application.
          */
         get gicon(): Gio.Icon;
         /**
-         * The list of #XfwApplicationInstance belonging to the application.
+         * The list of {@link Libxfce4windowing.ApplicationInstance} belonging to the application.
          */
         get instances(): any;
         /**
@@ -513,7 +551,7 @@ export namespace Libxfce4windowing {
          */
         get name(): string;
         /**
-         * The list of #XfwWindow belonging to the application.
+         * The list of {@link Libxfce4windowing.Window} belonging to the application.
          */
         get windows(): any;
 
@@ -534,16 +572,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -557,52 +598,52 @@ export namespace Libxfce4windowing {
          * the [WM_CLASS property](https://x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html#wm_class_property).
          * On Wayland, it's the [application ID](https://wayland.app/protocols/wlr-foreign-toplevel-management-unstable-v1#zwlr_foreign_toplevel_handle_v1:event:app_id),
          * which should correspond to the basename of the application's desktop file.
-         * @returns A UTF-8 formatted string, owned by @app.
+         * @returns A UTF-8 formatted string, owned by `app`.
          */
         get_class_id(): string;
         /**
-         * Fetches `app'`s icon as a size-independent #GIcon.  If an icon cannot be
-         * found, a #GIcon representing a fallback icon will be returned.  Whether or
+         * Fetches `app`'s icon as a size-independent {@link Gio.Icon}.  If an icon cannot be
+         * found, a {@link Gio.Icon} representing a fallback icon will be returned.  Whether or
          * not the returned icon is a fallback icon can be determined using
-         * #xfw_application_icon_is_fallback().
-         * @returns a #GIcon, owned by @app.
+         * `xfw_application_icon_is_fallback`().
+         * @returns a {@link Gio.Icon}, owned by `app`.
          */
         get_gicon(): Gio.Icon;
         /**
-         * Fetches `app'`s icon.  If `app` has no icon, a fallback icon may be
+         * Fetches `app`'s icon.  If `app` has no icon, a fallback icon may be
          * returned.  Whether or not the returned icon is a fallback icon can be
-         * determined using #xfw_application_icon_is_fallback().
+         * determined using `xfw_application_icon_is_fallback`().
          * @param size the desired icon size.
          * @param scale the UI scale factor.
-         * @returns a #GdkPixbuf, owned by @app, or %NULL if @app has no icon and a fallback cannot be rendered.
+         * @returns a {@link GdkPixbuf.Pixbuf}, owned by `app`, or `null` if `app` has no icon and a fallback cannot be rendered.
          */
         get_icon(size: number, scale: number): GdkPixbuf.Pixbuf | null;
         /**
-         * Finds the #XfwApplicationInstance to which `window` belongs.
+         * Finds the {@link Libxfce4windowing.ApplicationInstance} to which `window` belongs.
          * @param window the application window you want to get the instance of.
-         * @returns The #XfwApplicationInstance to which @window belongs, or %NULL if @window does not belong to @app, or if listing instances is not supported on the windowing environment in use. The returned #XfwApplicationInstance is owned by @app.
+         * @returns The {@link Libxfce4windowing.ApplicationInstance} to which `window` belongs, or `null` if `window` does not belong to `app`, or if listing instances is not supported on the windowing environment in use. The returned {@link Libxfce4windowing.ApplicationInstance} is owned by `app`.
          */
         get_instance(window: Window): ApplicationInstance | null;
         /**
          * Lists all instances of the application.
-         * @returns The list of #XfwApplicationInstance of @app, or %NULL if listing instances is not supported on the windowing environment in use. The list and its contents are owned by @app.
+         * @returns The list of {@link Libxfce4windowing.ApplicationInstance} of `app`, or `null` if listing instances is not supported on the windowing environment in use. The list and its contents are owned by `app`.
          */
         get_instances(): ApplicationInstance[] | null;
         /**
          * Fetches this application's human-readable name.
-         * @returns A UTF-8 formatted string, owned by @app.
+         * @returns A UTF-8 formatted string, owned by `app`.
          */
         get_name(): string;
         /**
          * Lists all windows belonging to the application.
-         * @returns The list of #XfwWindow belonging to @app. The list and its contents are owned by @app.
+         * @returns The list of {@link Libxfce4windowing.Window} belonging to `app`. The list and its contents are owned by `app`.
          */
         get_windows(): Window[];
         /**
          * Determines if `app` does not have an icon, and thus a fallback icon
-         * will be returned from #xfw_application_get_icon() and
-         * #xfw_application_get_gicon().
-         * @returns %TRUE or %FALSE, depending on if @app's icon uses a fallback icon or not.
+         * will be returned from `xfw_application_get_icon`() and
+         * `xfw_application_get_gicon`().
+         * @returns `true` or `false`, depending on if `app`'s icon uses a fallback icon or not.
          */
         icon_is_fallback(): boolean;
     }
@@ -626,6 +667,9 @@ export namespace Libxfce4windowing {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ApplicationWayland extends Application {
         static $gtype: GObject.GType<ApplicationWayland>;
 
@@ -651,16 +695,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ApplicationWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -683,6 +730,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends Application.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ApplicationX11 extends Application {
         static $gtype: GObject.GType<ApplicationX11>;
 
@@ -703,16 +753,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ApplicationX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -734,6 +787,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Screen.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScreenWayland extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenWayland>;
 
@@ -754,93 +810,102 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScreenWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScreenWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScreenWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The currently-active window.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get active_window(): Window;
         /**
          * The currently-active window.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get activeWindow(): Window;
         /**
-         * The #GdkScreen instance used to construct this #XfwScreen.
+         * The {@link Gdk.Screen} instance used to construct this {@link Libxfce4windowing.Screen}.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get screen(): Gdk.Screen;
         /**
          * Whether or not to show the desktop.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get show_desktop(): boolean;
         set show_desktop(val: boolean);
         /**
          * Whether or not to show the desktop.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get showDesktop(): boolean;
         set showDesktop(val: boolean);
         /**
-         * The #XfwWorkspaceManager that manages and describes workspace groups
+         * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get workspace_manager(): WorkspaceManager;
         /**
-         * The #XfwWorkspaceManager that manages and describes workspace groups
+         * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get workspaceManager(): WorkspaceManager;
-
-        // Inherited methods
         /**
          * Retrieves the window on `screen` that is currently active.
-         * @returns an #XfwWindow, or %NULL if no window is active on @screen.
+         * @returns an {@link Libxfce4windowing.Window}, or `null` if no window is active on `screen`.
          */
         get_active_window(): Window | null;
+        /**
+         * @returns `true` if the desktop is shown, `false` otherwise.
+         */
         get_show_desktop(): boolean;
         /**
          * Retrieves the list of windows currently displayed on `screen`.
          *
          * The list and its contents are owned by `screen`.
-         * @returns the list of #XfwWindow on @screen, or %NULL if there are no windows.  The list and its contents are owned by @screen.
+         * @returns the list of {@link Libxfce4windowing.Window} on `screen`, or `null` if there are no windows.  The list and its contents are owned by `screen`.
          */
         get_windows(): Window[] | null;
         /**
-         * Retrieves the list of windows currently displayed on `screen,` in stacking
+         * Retrieves the list of windows currently displayed on `screen`, in stacking
          * order, with the bottom-most window first in the returned list.
-         * @returns the list of #XfwWindow on @screen, in stacking order, or %NULL if there are no windows.  The list and its contents are owned by @screen.
+         * @returns the list of {@link Libxfce4windowing.Window} on `screen`, in stacking order, or `null` if there are no windows.  The list and its contents are owned by `screen`.
          */
         get_windows_stacked(): Window[] | null;
         /**
-         * Retrieves this screen's #XfwWorkspaceManager instance, which can be used
-         * to inspect and interact with `screen'`s workspace groups and workspaces.
-         * @returns a #XfwWorkspaceManager instance.  This instance is a singleton and is owned by @screen.
+         * Retrieves this screen's {@link Libxfce4windowing.WorkspaceManager} instance, which can be used
+         * to inspect and interact with `screen`'s workspace groups and workspaces.
+         * @returns a {@link Libxfce4windowing.WorkspaceManager} instance.  This instance is a singleton and is owned by `screen`.
          */
         get_workspace_manager(): WorkspaceManager;
         /**
          * Showing the desktop minimizes the windows not minimized at the time of the query.
          * The reverse process unminimizes those same windows, if they have not already been
          * unminimized or destroyed. The desktop show state can be tracked via
-         * #XfwScreen:show-desktop.
+         * {@link Libxfce4windowing.Screen.show_desktop}.
          *
          * The state of the previously active window is always restored upon unminimization,
          * but there is no guarantee for the rest of the window stacking order on Wayland.
          *
          * A request to switch to the current state is silently ignored.
-         * @param show %TRUE to show the desktop, %FALSE to restore the previous state.
+         * @param show `true` to show the desktop, `false` to restore the previous state.
          */
         set_show_desktop(show: boolean): void;
         /**
@@ -856,32 +921,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -890,39 +955,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -933,13 +998,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -947,7 +1015,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -955,9 +1023,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -977,9 +1045,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -993,33 +1061,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1052,21 +1120,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1076,8 +1144,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1094,10 +1162,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1112,13 +1180,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1149,21 +1217,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1173,33 +1241,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1208,6 +1277,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1216,12 +1286,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1230,20 +1302,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1255,6 +1329,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1298,6 +1373,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Screen.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScreenX11 extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenX11>;
 
@@ -1318,93 +1396,102 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScreenX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScreenX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScreenX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScreenX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScreenX11.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScreenX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The currently-active window.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get active_window(): Window;
         /**
          * The currently-active window.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get activeWindow(): Window;
         /**
-         * The #GdkScreen instance used to construct this #XfwScreen.
+         * The {@link Gdk.Screen} instance used to construct this {@link Libxfce4windowing.Screen}.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get screen(): Gdk.Screen;
         /**
          * Whether or not to show the desktop.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get show_desktop(): boolean;
         set show_desktop(val: boolean);
         /**
          * Whether or not to show the desktop.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get showDesktop(): boolean;
         set showDesktop(val: boolean);
         /**
-         * The #XfwWorkspaceManager that manages and describes workspace groups
+         * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get workspace_manager(): WorkspaceManager;
         /**
-         * The #XfwWorkspaceManager that manages and describes workspace groups
+         * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
+         * @category Inherited from Libxfce4windowing.Screen
          */
         get workspaceManager(): WorkspaceManager;
-
-        // Inherited methods
         /**
          * Retrieves the window on `screen` that is currently active.
-         * @returns an #XfwWindow, or %NULL if no window is active on @screen.
+         * @returns an {@link Libxfce4windowing.Window}, or `null` if no window is active on `screen`.
          */
         get_active_window(): Window | null;
+        /**
+         * @returns `true` if the desktop is shown, `false` otherwise.
+         */
         get_show_desktop(): boolean;
         /**
          * Retrieves the list of windows currently displayed on `screen`.
          *
          * The list and its contents are owned by `screen`.
-         * @returns the list of #XfwWindow on @screen, or %NULL if there are no windows.  The list and its contents are owned by @screen.
+         * @returns the list of {@link Libxfce4windowing.Window} on `screen`, or `null` if there are no windows.  The list and its contents are owned by `screen`.
          */
         get_windows(): Window[] | null;
         /**
-         * Retrieves the list of windows currently displayed on `screen,` in stacking
+         * Retrieves the list of windows currently displayed on `screen`, in stacking
          * order, with the bottom-most window first in the returned list.
-         * @returns the list of #XfwWindow on @screen, in stacking order, or %NULL if there are no windows.  The list and its contents are owned by @screen.
+         * @returns the list of {@link Libxfce4windowing.Window} on `screen`, in stacking order, or `null` if there are no windows.  The list and its contents are owned by `screen`.
          */
         get_windows_stacked(): Window[] | null;
         /**
-         * Retrieves this screen's #XfwWorkspaceManager instance, which can be used
-         * to inspect and interact with `screen'`s workspace groups and workspaces.
-         * @returns a #XfwWorkspaceManager instance.  This instance is a singleton and is owned by @screen.
+         * Retrieves this screen's {@link Libxfce4windowing.WorkspaceManager} instance, which can be used
+         * to inspect and interact with `screen`'s workspace groups and workspaces.
+         * @returns a {@link Libxfce4windowing.WorkspaceManager} instance.  This instance is a singleton and is owned by `screen`.
          */
         get_workspace_manager(): WorkspaceManager;
         /**
          * Showing the desktop minimizes the windows not minimized at the time of the query.
          * The reverse process unminimizes those same windows, if they have not already been
          * unminimized or destroyed. The desktop show state can be tracked via
-         * #XfwScreen:show-desktop.
+         * {@link Libxfce4windowing.Screen.show_desktop}.
          *
          * The state of the previously active window is always restored upon unminimization,
          * but there is no guarantee for the rest of the window stacking order on Wayland.
          *
          * A request to switch to the current state is silently ignored.
-         * @param show %TRUE to show the desktop, %FALSE to restore the previous state.
+         * @param show `true` to show the desktop, `false` to restore the previous state.
          */
         set_show_desktop(show: boolean): void;
         /**
@@ -1420,32 +1507,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1454,39 +1541,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1497,13 +1584,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1511,7 +1601,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1519,9 +1609,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1541,9 +1631,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1557,33 +1647,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1616,21 +1706,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -1640,8 +1730,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1658,10 +1748,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1676,13 +1766,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1713,21 +1803,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1737,33 +1827,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1772,6 +1863,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1780,12 +1872,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1794,20 +1888,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1819,6 +1915,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1851,14 +1948,51 @@ export namespace Libxfce4windowing {
     namespace Window {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when `window`'s capabilities change.
+             * @signal
+             */
             'capabilities-changed': (arg0: WindowCapabilities, arg1: WindowCapabilities) => void;
+            /**
+             * Emitted when at least one of the `window`'s class ids changes.
+             * @signal
+             * @since 4.19.3
+             */
             'class-changed': () => void;
+            /**
+             * Emitted when `window` is closed.
+             * @signal
+             */
             closed: () => void;
+            /**
+             * Emitted when `window`'s position or size changes.
+             * @signal
+             */
             'geometry-changed': () => void;
+            /**
+             * Emitted when `window`'s icon changes.
+             * @signal
+             */
             'icon-changed': () => void;
+            /**
+             * Emitted when `window`'s name/title changes.
+             * @signal
+             */
             'name-changed': () => void;
+            /**
+             * Emitted when `window`'s state changes.
+             * @signal
+             */
             'state-changed': (arg0: WindowState, arg1: WindowState) => void;
+            /**
+             * Emitted when `window`'s type changes.
+             * @signal
+             */
             'type-changed': (arg0: WindowType) => void;
+            /**
+             * Emitted when `window` is moved to a different worksapce.
+             * @signal
+             */
             'workspace-changed': () => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
             'notify::capabilities': (pspec: GObject.ParamSpec) => void;
@@ -1889,13 +2023,16 @@ export namespace Libxfce4windowing {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
 
         // Properties
 
         /**
-         * The #XfwApplication that owns this window.
+         * The {@link Libxfce4windowing.Application} that owns this window.
          */
         get application(): Application;
         /**
@@ -1904,14 +2041,16 @@ export namespace Libxfce4windowing {
         get capabilities(): WindowCapabilities;
         /**
          * The window's class ids.
+         * @since 4.19.3
          */
         get class_ids(): string[];
         /**
          * The window's class ids.
+         * @since 4.19.3
          */
         get classIds(): string[];
         /**
-         * The #GIcon that represents this window.
+         * The {@link Gio.Icon} that represents this window.
          */
         get gicon(): Gio.Icon;
         /**
@@ -1923,7 +2062,7 @@ export namespace Libxfce4windowing {
          */
         get name(): string;
         /**
-         * The #XfwScreen instances that owns this window.
+         * The {@link Libxfce4windowing.Screen} instances that owns this window.
          */
         get screen(): Screen;
         /**
@@ -1953,16 +2092,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Window.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Window.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Window.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1971,115 +2113,164 @@ export namespace Libxfce4windowing {
 
         // Methods
 
+        /**
+         * @param event_timestamp
+         */
         activate(event_timestamp: number): boolean;
+        /**
+         * @param event_timestamp
+         */
         close(event_timestamp: number): boolean;
         /**
-         * Fetches `window'`s application.
-         * @returns An #XfwApplication instance, with a reference owned by @window.
+         * Fetches `window`'s application.
+         * @returns An {@link Libxfce4windowing.Application} instance, with a reference owned by `window`.
          */
         get_application(): Application;
         /**
-         * Fetches `window'`s capabilities bitfield.
-         * @returns a bitfield with zero or more bits from #XfwWindowCapabilities set.
+         * Fetches `window`'s capabilities bitfield.
+         * @returns a bitfield with zero or more bits from {@link Libxfce4windowing.WindowCapabilities} set.
          */
         get_capabilities(): WindowCapabilities;
         /**
-         * Fetches `window'`s class ids. On X11 this should contain the class and instance
+         * Fetches `window`'s class ids. On X11 this should contain the class and instance
          * names of the [WM_CLASS property](https://x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html#wm_class_property).
          * On Wayland, it's likely to be limited to the [application ID](https://wayland.app/protocols/wlr-foreign-toplevel-management-unstable-v1#zwlr_foreign_toplevel_handle_v1:event:app_id),
          * which should correspond to the basename of the application's desktop file.
-         * @returns a %NULL-terminated array of strings owned by the #XfwWindow.
+         * @returns a `null`-terminated array of strings owned by the {@link Libxfce4windowing.Window}.
          */
         get_class_ids(): string[];
         /**
-         * Fetches `window'`s position and size.
-         * @returns A #GdkRectangle representing @window's geometry, which should not be modified or freed.
+         * Fetches `window`'s position and size.
+         * @returns A {@link Gdk.Rectangle} representing `window`'s geometry, which should not be modified or freed.
          */
         get_geometry(): Gdk.Rectangle;
         /**
-         * Fetches `window'`s icon as a size-independent #GIcon.  If an icon cannot be
-         * found, a #GIcon representing a fallback icon will be returned.  Whether or
+         * Fetches `window`'s icon as a size-independent {@link Gio.Icon}.  If an icon cannot be
+         * found, a {@link Gio.Icon} representing a fallback icon will be returned.  Whether or
          * not the returned icon is a fallback icon can be determined using
-         * #xfw_window_icon_is_fallback().
-         * @returns a #GIcon, owned by @window.
+         * `xfw_window_icon_is_fallback`().
+         * @returns a {@link Gio.Icon}, owned by `window`.
          */
         get_gicon(): Gio.Icon;
         /**
-         * Fetches `window'`s icon.  If `window` has no icon, a fallback icon may be
+         * Fetches `window`'s icon.  If `window` has no icon, a fallback icon may be
          * returned.  Whether or not the returned icon is a fallback icon can be
-         * determined using #xfw_window_icon_is_fallback().
+         * determined using `xfw_window_icon_is_fallback`().
          * @param size the desired icon size.
          * @param scale the UI scale factor.
-         * @returns a #GdkPixbuf, owned by @window, or %NULL if @window has no icon and a fallback cannot be rendered.
+         * @returns a {@link GdkPixbuf.Pixbuf}, owned by `window`, or `null` if `window` has no icon and a fallback cannot be rendered.
          */
         get_icon(size: number, scale: number): GdkPixbuf.Pixbuf | null;
         /**
          * Fetches the list of monitors `window` is displayed on, if any.
-         * @returns A list of #GdkMonitor instances, or %NULL.  The list and its contents are owned by @window and should not be modified or freed.
+         * @returns A list of {@link Gdk.Monitor} instances, or `null`.  The list and its contents are owned by `window` and should not be modified or freed.
          */
         get_monitors(): Gdk.Monitor[] | null;
         /**
-         * Fetches `window'`s name/title.
-         * @returns a window title, or %NULL if there is no title.  The returned title should not be modified or freed.
+         * Fetches `window`'s name/title.
+         * @returns a window title, or `null` if there is no title.  The returned title should not be modified or freed.
          */
         get_name(): string | null;
         /**
-         * Fetches the #XfwScreen instance that owns `window`.
-         * @returns A #XfwScreen instance, with a reference owned by @window.
+         * Fetches the {@link Libxfce4windowing.Screen} instance that owns `window`.
+         * @returns A {@link Libxfce4windowing.Screen} instance, with a reference owned by `window`.
          */
         get_screen(): Screen;
         /**
-         * Fetches `window'`s state bitfield.
-         * @returns a bitfield with zero or more bits from #XfwWindowState set.
+         * Fetches `window`'s state bitfield.
+         * @returns a bitfield with zero or more bits from {@link Libxfce4windowing.WindowState} set.
          */
         get_state(): WindowState;
         get_window_type(): WindowType;
         /**
-         * Fetches `window'`s workspace, if any.  This may return %NULL if `window` is
+         * Fetches `window`'s workspace, if any.  This may return `null` if `window` is
          * not on a workspace, or is pinned to all workspaces.
-         * @returns A #XfwWorkspace instance, with a reference owned by @window, or %NULL.
+         * @returns A {@link Libxfce4windowing.Workspace} instance, with a reference owned by `window`, or `null`.
          */
         get_workspace(): Workspace | null;
         /**
          * Determines if `window` does not have an icon, and thus a fallback icon
-         * will be returned from #xfw_window_get_icon() and #xfw_window_get_gicon().
-         * @returns %TRUE or %FALSE, depending on if @window's icon uses a fallback icon or not.
+         * will be returned from `xfw_window_get_icon`() and `xfw_window_get_gicon`().
+         * @returns `true` or `false`, depending on if `window`'s icon uses a fallback icon or not.
          */
         icon_is_fallback(): boolean;
         is_above(): boolean;
         is_active(): boolean;
         is_below(): boolean;
         is_fullscreen(): boolean;
+        /**
+         * @param workspace
+         */
         is_in_viewport(workspace: Workspace): boolean;
         is_maximized(): boolean;
         is_minimized(): boolean;
+        /**
+         * @param workspace
+         */
         is_on_workspace(workspace: Workspace): boolean;
         is_pinned(): boolean;
         is_shaded(): boolean;
         is_skip_pager(): boolean;
         is_skip_tasklist(): boolean;
         is_urgent(): boolean;
+        /**
+         * @param workspace
+         */
         move_to_workspace(workspace: Workspace): boolean;
+        /**
+         * @param is_above
+         */
         set_above(is_above: boolean): boolean;
+        /**
+         * @param is_below
+         */
         set_below(is_below: boolean): boolean;
+        /**
+         * @param relative_to
+         * @param rect
+         */
         set_button_geometry(relative_to: Gdk.Window, rect: Gdk.Rectangle): boolean;
+        /**
+         * @param is_fullscreen
+         */
         set_fullscreen(is_fullscreen: boolean): boolean;
+        /**
+         * @param rect
+         */
         set_geometry(rect: Gdk.Rectangle): boolean;
+        /**
+         * @param is_maximized
+         */
         set_maximized(is_maximized: boolean): boolean;
+        /**
+         * @param is_minimized
+         */
         set_minimized(is_minimized: boolean): boolean;
+        /**
+         * @param is_pinned
+         */
         set_pinned(is_pinned: boolean): boolean;
+        /**
+         * @param is_shaded
+         */
         set_shaded(is_shaded: boolean): boolean;
+        /**
+         * @param is_skip_pager
+         */
         set_skip_pager(is_skip_pager: boolean): boolean;
+        /**
+         * @param is_skip_tasklist
+         */
         set_skip_tasklist(is_skip_tasklist: boolean): boolean;
         start_move(): boolean;
         start_resize(): boolean;
         /**
-         * On X11, returns the platform-specific #Window handle to the underlying
+         * On X11, returns the platform-specific {@link Libxfce4windowing.Window} handle to the underlying
          * window.
          *
          * It is an error to call this function if the application is not currently
          * running on X11.
-         * @returns An X11 #Window handle.
+         * @returns An X11 {@link Libxfce4windowing.Window} handle.
          */
         x11_get_xid(): xlib.Window;
     }
@@ -2107,6 +2298,9 @@ export namespace Libxfce4windowing {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WindowWayland extends Window {
         static $gtype: GObject.GType<WindowWayland>;
 
@@ -2131,16 +2325,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WindowWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2168,6 +2365,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends Window.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WindowX11 extends Window {
         static $gtype: GObject.GType<WindowX11>;
 
@@ -2188,16 +2388,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WindowX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WindowX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WindowX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WindowX11.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WindowX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2224,6 +2427,9 @@ export namespace Libxfce4windowing {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WnckIcon extends GObject.Object implements Gio.Icon, Gio.Initable, Gio.LoadableIcon {
         static $gtype: GObject.GType<WnckIcon>;
 
@@ -2249,111 +2455,116 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WnckIcon.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WnckIcon.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WnckIcon.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WnckIcon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WnckIcon.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WnckIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
-         * @returns %TRUE if @icon1 is equal to @icon2. %FALSE otherwise.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
         equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
-         * @returns a #guint containing a hash for the @icon, suitable for   use in a #GHashTable or similar data structure.
+         * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
          */
         hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
-         * @returns a #GVariant, or %NULL when serialization fails. The #GVariant will not be floating.
+         * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
          */
         serialize(): GLib.Variant | null;
         /**
          * Generates a textual representation of `icon` that can be used for
          * serialization such as when passing `icon` to a different process or
-         * saving it to persistent storage. Use g_icon_new_for_string() to
+         * saving it to persistent storage. Use `g_icon_new_for_string()` to
          * get `icon` back from the returned string.
          *
-         * The encoding of the returned string is proprietary to #GIcon except
+         * The encoding of the returned string is proprietary to {@link Gio.Icon} except
          * in the following two cases
          *
-         * - If `icon` is a #GFileIcon, the returned string is a native path
+         * - If `icon` is a {@link Gio.FileIcon}, the returned string is a native path
          *   (such as `/path/to/my icon.png`) without escaping
-         *   if the #GFile for `icon` is a native file.  If the file is not
-         *   native, the returned string is the result of g_file_get_uri()
+         *   if the {@link Gio.File} for `icon` is a native file.  If the file is not
+         *   native, the returned string is the result of `g_file_get_uri()`
          *   (such as `sftp://path/to/my%20icon.png`).
          *
-         * - If `icon` is a #GThemedIcon with exactly one name and no fallbacks,
+         * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
-         * @returns An allocated NUL-terminated UTF8 string or %NULL if @icon can't be serialized. Use g_free() to free.
+         * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
          */
         to_string(): string | null;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @virtual
          */
         vfunc_equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
+         * @virtual
          */
         vfunc_hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant | null;
         /**
          * Serializes the `icon` into string tokens.
-         * This is can be invoked when g_icon_new_for_string() is called.
+         * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2363,40 +2574,40 @@ export namespace Libxfce4windowing {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2406,36 +2617,37 @@ export namespace Libxfce4windowing {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns a #GInputStream to read the icon from.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -2444,11 +2656,11 @@ export namespace Libxfce4windowing {
         ): void;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -2456,25 +2668,27 @@ export namespace Libxfce4windowing {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
-         * @returns a #GInputStream to read the icon from.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
          */
         vfunc_load_async(
             size: number,
@@ -2482,8 +2696,9 @@ export namespace Libxfce4windowing {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
@@ -2499,32 +2714,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2533,39 +2748,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2576,13 +2791,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2590,7 +2808,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2598,9 +2816,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2620,9 +2838,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2636,33 +2854,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2695,21 +2913,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -2719,8 +2937,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2737,10 +2955,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2755,13 +2973,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2792,21 +3010,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2816,33 +3034,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2851,6 +3070,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2859,12 +3079,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2873,20 +3095,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2898,6 +3122,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2945,6 +3170,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Workspace.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceDummy extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceDummy>;
 
@@ -2965,74 +3193,83 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceDummy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceDummy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceDummy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The #XfwWorkspaceCapabilities bitfield for this workspace.
+         * The {@link Libxfce4windowing.WorkspaceCapabilities} bitfield for this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
         /**
-         * The #XfwWorkspaceGroup that this workspace is a member of, if any.
+         * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get id(): string;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_column(): number;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutColumn(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_row(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutRow(): number;
         /**
          * The human-readable name of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get name(): string;
         set name(val: string);
         /**
          * The ordinal number of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get number(): number;
         /**
-         * The #XfwWorkspaceState bitfield for this workspace.
+         * The {@link Libxfce4windowing.WorkspaceState} bitfield for this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get state(): WorkspaceState;
         set state(val: WorkspaceState);
-
-        // Inherited methods
         /**
          * Attempts to set `workspace` as the active workspace in its group.
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @returns %TRUE if workspace activation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace activation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         activate(): boolean;
         /**
@@ -3040,28 +3277,28 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @param group an #XfwWorkspaceGroup.
-         * @returns %TRUE if workspace assignment succeeded, %FALSE otherwise. If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using g_error_free().
+         * @param group an {@link Libxfce4windowing.WorkspaceGroup}.
+         * @returns `true` if workspace assignment succeeded, `false` otherwise. If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free()`.
          */
         assign_to_workspace_group(group: WorkspaceGroup): boolean;
         /**
          * Fetches this workspace's capabilities bitfield.
          *
          * The bitfield describes what operations are available on this workspace.
-         * @returns a #XfwWorkspaceCapabilities bitfield.
+         * @returns a {@link Libxfce4windowing.WorkspaceCapabilities} bitfield.
          */
         get_capabilities(): WorkspaceCapabilities;
         /**
          * Fetches the position and size of the workspace in screen coordinates.
          *
-         * The values in the returned #GdkRectangle are owned by `workspace` and should
+         * The values in the returned {@link Gdk.Rectangle} are owned by `workspace` and should
          * not be modified.
-         * @returns a #GdkRectangle, owned by @workspace.
+         * @returns a {@link Gdk.Rectangle}, owned by `workspace`.
          */
         get_geometry(): Gdk.Rectangle;
         /**
          * Fetches this workspace's opaque ID.
-         * @returns A UTF-8 formatted string, owned by @workspace.
+         * @returns A UTF-8 formatted string, owned by `workspace`.
          */
         get_id(): string;
         /**
@@ -3082,15 +3319,15 @@ export namespace Libxfce4windowing {
         get_layout_row(): number;
         /**
          * Fetches this workspace's human-readable name.
-         * @returns A UTF-8 formatted string, owned by @workspace.
+         * @returns A UTF-8 formatted string, owned by `workspace`.
          */
         get_name(): string;
         /**
-         * Fetches the workspace that resides in `direction` from the `workspace,` if
+         * Fetches the workspace that resides in `direction` from the `workspace`, if
          * any.  If workspace is on the edge of the layout, and `direction` points off
-         * the edge of the layout, will return %NULL.
-         * @param direction an #XfwDirection.
-         * @returns a #XfwWorkspace, owned by the parent @group, or %NULL if no workspace exists in @direction.
+         * the edge of the layout, will return `null`.
+         * @param direction an {@link Libxfce4windowing.Direction}.
+         * @returns a {@link Libxfce4windowing.Workspace}, owned by the parent `group`, or `null` if no workspace exists in `direction`.
          */
         get_neighbor(direction: Direction | null): Workspace | null;
         /**
@@ -3107,12 +3344,12 @@ export namespace Libxfce4windowing {
         get_number(): number;
         /**
          * Fetches this workspace's state bitfield.
-         * @returns a #XfwWorkspaceState bitfield.
+         * @returns a {@link Libxfce4windowing.WorkspaceState} bitfield.
          */
         get_state(): WorkspaceState;
         /**
          * Fetches the group this workspace belongs to, if any.
-         * @returns a #XfwWorkspaceGroup instance, owned by @workspace, or %NULL if the workspace is not a member of any groups.
+         * @returns a {@link Libxfce4windowing.WorkspaceGroup} instance, owned by `workspace`, or `null` if the workspace is not a member of any groups.
          */
         get_workspace_group(): WorkspaceGroup | null;
         /**
@@ -3120,7 +3357,7 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @returns %TRUE if workspace removal succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace removal succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         remove(): boolean;
         /**
@@ -3136,32 +3373,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3170,39 +3407,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3213,13 +3450,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3227,7 +3467,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3235,9 +3475,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3257,9 +3497,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3273,33 +3513,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3332,21 +3572,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3356,8 +3596,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3374,10 +3614,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3392,13 +3632,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3429,21 +3669,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3453,33 +3693,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3488,6 +3729,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3496,12 +3738,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3510,20 +3754,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3535,6 +3781,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3589,6 +3836,9 @@ export namespace Libxfce4windowing {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceGroupDummy extends GObject.Object implements WorkspaceGroup {
         static $gtype: GObject.GType<WorkspaceGroupDummy>;
 
@@ -3624,16 +3874,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceGroupDummy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceGroupDummy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceGroupDummy.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3641,39 +3894,42 @@ export namespace Libxfce4windowing {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The active #XfwWorkspace on this #XfwWorkspaceGroup, or %NULL.
+         * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get active_workspace(): Workspace;
         /**
-         * The active #XfwWorkspace on this #XfwWorkspaceGroup, or %NULL.
+         * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get activeWorkspace(): Workspace;
         /**
-         * The list of #GdkMonitor this #XfwWorkspaceGroup is displayed on.
+         * The list of {@link Gdk.Monitor} this {@link Libxfce4windowing.WorkspaceGroup} is displayed on.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get monitors(): any;
         /**
-         * The #GdkScreen used when creating the #XfwScreen that owns this
-         * #XfwWorkspaceGroup.
+         * The {@link Gdk.Screen} used when creating the {@link Libxfce4windowing.Screen} that owns this
+         * {@link Libxfce4windowing.WorkspaceGroup}.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get screen(): Gdk.Screen;
         /**
-         * The #XfwWorkspaceManager instance that manages this #XfwWorkspaceGroup.
+         * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspace_manager(): WorkspaceManager;
         /**
-         * The #XfwWorkspaceManager instance that manages this #XfwWorkspaceGroup.
+         * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspaceManager(): WorkspaceManager;
         /**
-         * The list of #XfwWorkspace in this #XfwWorkspaceGroup.
+         * The list of {@link Libxfce4windowing.Workspace} in this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspaces(): any;
-
-        // Inherited methods
         /**
          * Attempts to create a new workspace on `group`.  Typically, the new workspace
          * will be appended to the existing list of workspaces.
@@ -3681,22 +3937,22 @@ export namespace Libxfce4windowing {
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
          * @param name a name for the new workspace.
-         * @returns %TRUE if workspace creation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace creation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         create_workspace(name: string): boolean;
         /**
-         * Gets the active workspace on `group,` if there is one.
-         * @returns an #XfwWorkspace, or %NULL if there is no active workspace.
+         * Gets the active workspace on `group`, if there is one.
+         * @returns an {@link Libxfce4windowing.Workspace}, or `null` if there is no active workspace.
          */
         get_active_workspace(): Workspace | null;
         /**
          * Returns a bitfield describing operations allowed on this `group`.
-         * @returns an #XfwWorkspaceGroupCapabilities bitfield.
+         * @returns an {@link Libxfce4windowing.WorkspaceGroupCapabilities} bitfield.
          */
         get_capabilities(): WorkspaceGroupCapabilities;
         /**
          * Lists the physical monitors that this workspace group displays on.
-         * @returns A list of #GdkMonitor, or %NULL if @group is not displayed on any monitors.  The list and its contents are owned by @group.
+         * @returns A list of {@link Gdk.Monitor}, or `null` if `group` is not displayed on any monitors.  The list and its contents are owned by `group`.
          */
         get_monitors(): Gdk.Monitor[] | null;
         /**
@@ -3705,13 +3961,13 @@ export namespace Libxfce4windowing {
          */
         get_workspace_count(): number;
         /**
-         * Fetches the #XfwWorkspaceManager instance that owns `group`.
-         * @returns a #XfwWorkspaceManager, owned by @group.
+         * Fetches the {@link Libxfce4windowing.WorkspaceManager} instance that owns `group`.
+         * @returns a {@link Libxfce4windowing.WorkspaceManager}, owned by `group`.
          */
         get_workspace_manager(): WorkspaceManager;
         /**
          * Lists the workspaces in `group`.
-         * @returns the list of #XfwWorkspace in @group, or %NULL if there are no workspaces. The list and its contents are owned by @group.
+         * @returns the list of {@link Libxfce4windowing.Workspace} in `group`, or `null` if there are no workspaces. The list and its contents are owned by `group`.
          */
         list_workspaces(): Workspace[] | null;
         /**
@@ -3721,7 +3977,7 @@ export namespace Libxfce4windowing {
          * that occurred.
          * @param x a coordinate in the horizontal direction.
          * @param y a coordinate in the vertical direction.
-         * @returns %TRUE if moving the workspace group succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if moving the workspace group succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         move_viewport(x: number, y: number): boolean;
         /**
@@ -3734,7 +3990,7 @@ export namespace Libxfce4windowing {
          * that occurred.
          * @param rows the new numbers of rows.
          * @param columns the new number of columns.
-         * @returns %TRUE if changing the layout of @group succeede, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if changing the layout of `group` succeede, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         set_layout(rows: number, columns: number): boolean;
         /**
@@ -3750,32 +4006,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3784,39 +4040,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3827,13 +4083,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3841,7 +4100,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3849,9 +4108,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3871,9 +4130,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3887,33 +4146,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3946,21 +4205,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -3970,8 +4229,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3988,10 +4247,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4006,13 +4265,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4043,21 +4302,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4067,33 +4326,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4102,6 +4362,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4110,12 +4371,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4124,20 +4387,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4149,6 +4414,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4181,6 +4447,9 @@ export namespace Libxfce4windowing {
     namespace WorkspaceGroupWayland {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             destroyed: () => void;
             'notify::active-workspace': (pspec: GObject.ParamSpec) => void;
             'notify::monitors': (pspec: GObject.ParamSpec) => void;
@@ -4194,6 +4463,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps, WorkspaceGroup.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceGroupWayland extends GObject.Object implements WorkspaceGroup {
         static $gtype: GObject.GType<WorkspaceGroupWayland>;
 
@@ -4214,16 +4486,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceGroupWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceGroupWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceGroupWayland.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4231,39 +4506,42 @@ export namespace Libxfce4windowing {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The active #XfwWorkspace on this #XfwWorkspaceGroup, or %NULL.
+         * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get active_workspace(): Workspace;
         /**
-         * The active #XfwWorkspace on this #XfwWorkspaceGroup, or %NULL.
+         * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get activeWorkspace(): Workspace;
         /**
-         * The list of #GdkMonitor this #XfwWorkspaceGroup is displayed on.
+         * The list of {@link Gdk.Monitor} this {@link Libxfce4windowing.WorkspaceGroup} is displayed on.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get monitors(): any;
         /**
-         * The #GdkScreen used when creating the #XfwScreen that owns this
-         * #XfwWorkspaceGroup.
+         * The {@link Gdk.Screen} used when creating the {@link Libxfce4windowing.Screen} that owns this
+         * {@link Libxfce4windowing.WorkspaceGroup}.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get screen(): Gdk.Screen;
         /**
-         * The #XfwWorkspaceManager instance that manages this #XfwWorkspaceGroup.
+         * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspace_manager(): WorkspaceManager;
         /**
-         * The #XfwWorkspaceManager instance that manages this #XfwWorkspaceGroup.
+         * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspaceManager(): WorkspaceManager;
         /**
-         * The list of #XfwWorkspace in this #XfwWorkspaceGroup.
+         * The list of {@link Libxfce4windowing.Workspace} in this {@link Libxfce4windowing.WorkspaceGroup}.
+         * @category Inherited from Libxfce4windowing.WorkspaceGroup
          */
         get workspaces(): any;
-
-        // Inherited methods
         /**
          * Attempts to create a new workspace on `group`.  Typically, the new workspace
          * will be appended to the existing list of workspaces.
@@ -4271,22 +4549,22 @@ export namespace Libxfce4windowing {
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
          * @param name a name for the new workspace.
-         * @returns %TRUE if workspace creation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace creation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         create_workspace(name: string): boolean;
         /**
-         * Gets the active workspace on `group,` if there is one.
-         * @returns an #XfwWorkspace, or %NULL if there is no active workspace.
+         * Gets the active workspace on `group`, if there is one.
+         * @returns an {@link Libxfce4windowing.Workspace}, or `null` if there is no active workspace.
          */
         get_active_workspace(): Workspace | null;
         /**
          * Returns a bitfield describing operations allowed on this `group`.
-         * @returns an #XfwWorkspaceGroupCapabilities bitfield.
+         * @returns an {@link Libxfce4windowing.WorkspaceGroupCapabilities} bitfield.
          */
         get_capabilities(): WorkspaceGroupCapabilities;
         /**
          * Lists the physical monitors that this workspace group displays on.
-         * @returns A list of #GdkMonitor, or %NULL if @group is not displayed on any monitors.  The list and its contents are owned by @group.
+         * @returns A list of {@link Gdk.Monitor}, or `null` if `group` is not displayed on any monitors.  The list and its contents are owned by `group`.
          */
         get_monitors(): Gdk.Monitor[] | null;
         /**
@@ -4295,13 +4573,13 @@ export namespace Libxfce4windowing {
          */
         get_workspace_count(): number;
         /**
-         * Fetches the #XfwWorkspaceManager instance that owns `group`.
-         * @returns a #XfwWorkspaceManager, owned by @group.
+         * Fetches the {@link Libxfce4windowing.WorkspaceManager} instance that owns `group`.
+         * @returns a {@link Libxfce4windowing.WorkspaceManager}, owned by `group`.
          */
         get_workspace_manager(): WorkspaceManager;
         /**
          * Lists the workspaces in `group`.
-         * @returns the list of #XfwWorkspace in @group, or %NULL if there are no workspaces. The list and its contents are owned by @group.
+         * @returns the list of {@link Libxfce4windowing.Workspace} in `group`, or `null` if there are no workspaces. The list and its contents are owned by `group`.
          */
         list_workspaces(): Workspace[] | null;
         /**
@@ -4311,7 +4589,7 @@ export namespace Libxfce4windowing {
          * that occurred.
          * @param x a coordinate in the horizontal direction.
          * @param y a coordinate in the vertical direction.
-         * @returns %TRUE if moving the workspace group succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if moving the workspace group succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         move_viewport(x: number, y: number): boolean;
         /**
@@ -4324,7 +4602,7 @@ export namespace Libxfce4windowing {
          * that occurred.
          * @param rows the new numbers of rows.
          * @param columns the new number of columns.
-         * @returns %TRUE if changing the layout of @group succeede, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if changing the layout of `group` succeede, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         set_layout(rows: number, columns: number): boolean;
         /**
@@ -4340,32 +4618,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4374,39 +4652,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4417,13 +4695,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4431,7 +4712,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4439,9 +4720,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4461,9 +4742,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4477,33 +4758,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4536,21 +4817,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -4560,8 +4841,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4578,10 +4859,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4596,13 +4877,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4633,21 +4914,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4657,33 +4938,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4692,6 +4974,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4700,12 +4983,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4714,20 +4999,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4739,6 +5026,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4779,6 +5067,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps, WorkspaceManager.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceManagerDummy extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerDummy>;
 
@@ -4799,16 +5090,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceManagerDummy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceManagerDummy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceManagerDummy.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4816,23 +5110,20 @@ export namespace Libxfce4windowing {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The #GdkScreen instance used to construct the #XfwScreen that owns this
+         * The {@link Gdk.Screen} instance used to construct the {@link Libxfce4windowing.Screen} that owns this
          * workspace manager.
+         * @category Inherited from Libxfce4windowing.WorkspaceManager
          */
         get screen(): Gdk.Screen;
-
-        // Inherited methods
         /**
          * Lists all workspace groups known to the workspace manager.
-         * @returns the list of #XfwWorkspaceGroup managed by @manager, or %NULL if there are no workspace groups.  The list and its contents are owned by @manager.
+         * @returns the list of {@link Libxfce4windowing.WorkspaceGroup} managed by `manager`, or `null` if there are no workspace groups.  The list and its contents are owned by `manager`.
          */
         list_workspace_groups(): WorkspaceGroup[] | null;
         /**
          * List all workspaces known to the workspace manager.
-         * @returns the list of #XfwWorkspace managed by @manager, or %NULL if there are no workspaces.  The list and its contents are owned by @manager.
+         * @returns the list of {@link Libxfce4windowing.Workspace} managed by `manager`, or `null` if there are no workspaces.  The list and its contents are owned by `manager`.
          */
         list_workspaces(): Workspace[] | null;
         /**
@@ -4848,32 +5139,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4882,39 +5173,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4925,13 +5216,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4939,7 +5233,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4947,9 +5241,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4969,9 +5263,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4985,33 +5279,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5044,21 +5338,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -5068,8 +5362,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5086,10 +5380,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5104,13 +5398,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5141,21 +5435,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5165,33 +5459,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5200,6 +5495,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5208,12 +5504,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5222,20 +5520,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5247,6 +5547,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5294,6 +5595,9 @@ export namespace Libxfce4windowing {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceManagerWayland extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerWayland>;
 
@@ -5321,16 +5625,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceManagerWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceManagerWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceManagerWayland.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5338,23 +5645,20 @@ export namespace Libxfce4windowing {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The #GdkScreen instance used to construct the #XfwScreen that owns this
+         * The {@link Gdk.Screen} instance used to construct the {@link Libxfce4windowing.Screen} that owns this
          * workspace manager.
+         * @category Inherited from Libxfce4windowing.WorkspaceManager
          */
         get screen(): Gdk.Screen;
-
-        // Inherited methods
         /**
          * Lists all workspace groups known to the workspace manager.
-         * @returns the list of #XfwWorkspaceGroup managed by @manager, or %NULL if there are no workspace groups.  The list and its contents are owned by @manager.
+         * @returns the list of {@link Libxfce4windowing.WorkspaceGroup} managed by `manager`, or `null` if there are no workspace groups.  The list and its contents are owned by `manager`.
          */
         list_workspace_groups(): WorkspaceGroup[] | null;
         /**
          * List all workspaces known to the workspace manager.
-         * @returns the list of #XfwWorkspace managed by @manager, or %NULL if there are no workspaces.  The list and its contents are owned by @manager.
+         * @returns the list of {@link Libxfce4windowing.Workspace} managed by `manager`, or `null` if there are no workspaces.  The list and its contents are owned by `manager`.
          */
         list_workspaces(): Workspace[] | null;
         /**
@@ -5370,32 +5674,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5404,39 +5708,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5447,13 +5751,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5461,7 +5768,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5469,9 +5776,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5491,9 +5798,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5507,33 +5814,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5566,21 +5873,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -5590,8 +5897,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5608,10 +5915,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5626,13 +5933,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5663,21 +5970,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5687,33 +5994,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5722,6 +6030,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5730,12 +6039,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5744,20 +6055,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5769,6 +6082,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5809,6 +6123,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps, WorkspaceManager.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceManagerX11 extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerX11>;
 
@@ -5829,16 +6146,19 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceManagerX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceManagerX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceManagerX11.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5846,23 +6166,20 @@ export namespace Libxfce4windowing {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The #GdkScreen instance used to construct the #XfwScreen that owns this
+         * The {@link Gdk.Screen} instance used to construct the {@link Libxfce4windowing.Screen} that owns this
          * workspace manager.
+         * @category Inherited from Libxfce4windowing.WorkspaceManager
          */
         get screen(): Gdk.Screen;
-
-        // Inherited methods
         /**
          * Lists all workspace groups known to the workspace manager.
-         * @returns the list of #XfwWorkspaceGroup managed by @manager, or %NULL if there are no workspace groups.  The list and its contents are owned by @manager.
+         * @returns the list of {@link Libxfce4windowing.WorkspaceGroup} managed by `manager`, or `null` if there are no workspace groups.  The list and its contents are owned by `manager`.
          */
         list_workspace_groups(): WorkspaceGroup[] | null;
         /**
          * List all workspaces known to the workspace manager.
-         * @returns the list of #XfwWorkspace managed by @manager, or %NULL if there are no workspaces.  The list and its contents are owned by @manager.
+         * @returns the list of {@link Libxfce4windowing.Workspace} managed by `manager`, or `null` if there are no workspaces.  The list and its contents are owned by `manager`.
          */
         list_workspaces(): Workspace[] | null;
         /**
@@ -5878,32 +6195,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5912,39 +6229,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5955,13 +6272,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5969,7 +6289,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5977,9 +6297,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5999,9 +6319,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6015,33 +6335,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6074,21 +6394,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -6098,8 +6418,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6116,10 +6436,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6134,13 +6454,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6171,21 +6491,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6195,33 +6515,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6230,6 +6551,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6238,12 +6560,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6252,20 +6576,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6277,6 +6603,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6309,6 +6636,9 @@ export namespace Libxfce4windowing {
     namespace WorkspaceWayland {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             destroyed: () => void;
             'notify::handle': (pspec: GObject.ParamSpec) => void;
             'notify::capabilities': (pspec: GObject.ParamSpec) => void;
@@ -6328,6 +6658,9 @@ export namespace Libxfce4windowing {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceWayland extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceWayland>;
 
@@ -6352,74 +6685,83 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The #XfwWorkspaceCapabilities bitfield for this workspace.
+         * The {@link Libxfce4windowing.WorkspaceCapabilities} bitfield for this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
         /**
-         * The #XfwWorkspaceGroup that this workspace is a member of, if any.
+         * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get id(): string;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_column(): number;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutColumn(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_row(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutRow(): number;
         /**
          * The human-readable name of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get name(): string;
         set name(val: string);
         /**
          * The ordinal number of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get number(): number;
         /**
-         * The #XfwWorkspaceState bitfield for this workspace.
+         * The {@link Libxfce4windowing.WorkspaceState} bitfield for this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get state(): WorkspaceState;
         set state(val: WorkspaceState);
-
-        // Inherited methods
         /**
          * Attempts to set `workspace` as the active workspace in its group.
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @returns %TRUE if workspace activation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace activation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         activate(): boolean;
         /**
@@ -6427,28 +6769,28 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @param group an #XfwWorkspaceGroup.
-         * @returns %TRUE if workspace assignment succeeded, %FALSE otherwise. If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using g_error_free().
+         * @param group an {@link Libxfce4windowing.WorkspaceGroup}.
+         * @returns `true` if workspace assignment succeeded, `false` otherwise. If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free()`.
          */
         assign_to_workspace_group(group: WorkspaceGroup): boolean;
         /**
          * Fetches this workspace's capabilities bitfield.
          *
          * The bitfield describes what operations are available on this workspace.
-         * @returns a #XfwWorkspaceCapabilities bitfield.
+         * @returns a {@link Libxfce4windowing.WorkspaceCapabilities} bitfield.
          */
         get_capabilities(): WorkspaceCapabilities;
         /**
          * Fetches the position and size of the workspace in screen coordinates.
          *
-         * The values in the returned #GdkRectangle are owned by `workspace` and should
+         * The values in the returned {@link Gdk.Rectangle} are owned by `workspace` and should
          * not be modified.
-         * @returns a #GdkRectangle, owned by @workspace.
+         * @returns a {@link Gdk.Rectangle}, owned by `workspace`.
          */
         get_geometry(): Gdk.Rectangle;
         /**
          * Fetches this workspace's opaque ID.
-         * @returns A UTF-8 formatted string, owned by @workspace.
+         * @returns A UTF-8 formatted string, owned by `workspace`.
          */
         get_id(): string;
         /**
@@ -6469,15 +6811,15 @@ export namespace Libxfce4windowing {
         get_layout_row(): number;
         /**
          * Fetches this workspace's human-readable name.
-         * @returns A UTF-8 formatted string, owned by @workspace.
+         * @returns A UTF-8 formatted string, owned by `workspace`.
          */
         get_name(): string;
         /**
-         * Fetches the workspace that resides in `direction` from the `workspace,` if
+         * Fetches the workspace that resides in `direction` from the `workspace`, if
          * any.  If workspace is on the edge of the layout, and `direction` points off
-         * the edge of the layout, will return %NULL.
-         * @param direction an #XfwDirection.
-         * @returns a #XfwWorkspace, owned by the parent @group, or %NULL if no workspace exists in @direction.
+         * the edge of the layout, will return `null`.
+         * @param direction an {@link Libxfce4windowing.Direction}.
+         * @returns a {@link Libxfce4windowing.Workspace}, owned by the parent `group`, or `null` if no workspace exists in `direction`.
          */
         get_neighbor(direction: Direction | null): Workspace | null;
         /**
@@ -6494,12 +6836,12 @@ export namespace Libxfce4windowing {
         get_number(): number;
         /**
          * Fetches this workspace's state bitfield.
-         * @returns a #XfwWorkspaceState bitfield.
+         * @returns a {@link Libxfce4windowing.WorkspaceState} bitfield.
          */
         get_state(): WorkspaceState;
         /**
          * Fetches the group this workspace belongs to, if any.
-         * @returns a #XfwWorkspaceGroup instance, owned by @workspace, or %NULL if the workspace is not a member of any groups.
+         * @returns a {@link Libxfce4windowing.WorkspaceGroup} instance, owned by `workspace`, or `null` if the workspace is not a member of any groups.
          */
         get_workspace_group(): WorkspaceGroup | null;
         /**
@@ -6507,7 +6849,7 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @returns %TRUE if workspace removal succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace removal succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         remove(): boolean;
         /**
@@ -6523,32 +6865,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6557,39 +6899,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6600,13 +6942,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6614,7 +6959,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6622,9 +6967,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6644,9 +6989,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6660,33 +7005,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6719,21 +7064,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -6743,8 +7088,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6761,10 +7106,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6779,13 +7124,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6816,21 +7161,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6840,33 +7185,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6875,6 +7221,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6883,12 +7230,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6897,20 +7246,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6922,6 +7273,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6969,6 +7321,9 @@ export namespace Libxfce4windowing {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Workspace.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkspaceX11 extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceX11>;
 
@@ -6989,74 +7344,83 @@ export namespace Libxfce4windowing {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceX11.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkspaceX11.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkspaceX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The #XfwWorkspaceCapabilities bitfield for this workspace.
+         * The {@link Libxfce4windowing.WorkspaceCapabilities} bitfield for this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
         /**
-         * The #XfwWorkspaceGroup that this workspace is a member of, if any.
+         * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get group(): WorkspaceGroup;
         /**
          * The opaque ID of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get id(): string;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_column(): number;
         /**
          * The y-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutColumn(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layout_row(): number;
         /**
          * The x-coordinate of the workspace on a 2D grid.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get layoutRow(): number;
         /**
          * The human-readable name of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get name(): string;
         set name(val: string);
         /**
          * The ordinal number of this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get number(): number;
         /**
-         * The #XfwWorkspaceState bitfield for this workspace.
+         * The {@link Libxfce4windowing.WorkspaceState} bitfield for this workspace.
+         * @category Inherited from Libxfce4windowing.Workspace
          */
         get state(): WorkspaceState;
         set state(val: WorkspaceState);
-
-        // Inherited methods
         /**
          * Attempts to set `workspace` as the active workspace in its group.
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @returns %TRUE if workspace activation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace activation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         activate(): boolean;
         /**
@@ -7064,28 +7428,28 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @param group an #XfwWorkspaceGroup.
-         * @returns %TRUE if workspace assignment succeeded, %FALSE otherwise. If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using g_error_free().
+         * @param group an {@link Libxfce4windowing.WorkspaceGroup}.
+         * @returns `true` if workspace assignment succeeded, `false` otherwise. If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free()`.
          */
         assign_to_workspace_group(group: WorkspaceGroup): boolean;
         /**
          * Fetches this workspace's capabilities bitfield.
          *
          * The bitfield describes what operations are available on this workspace.
-         * @returns a #XfwWorkspaceCapabilities bitfield.
+         * @returns a {@link Libxfce4windowing.WorkspaceCapabilities} bitfield.
          */
         get_capabilities(): WorkspaceCapabilities;
         /**
          * Fetches the position and size of the workspace in screen coordinates.
          *
-         * The values in the returned #GdkRectangle are owned by `workspace` and should
+         * The values in the returned {@link Gdk.Rectangle} are owned by `workspace` and should
          * not be modified.
-         * @returns a #GdkRectangle, owned by @workspace.
+         * @returns a {@link Gdk.Rectangle}, owned by `workspace`.
          */
         get_geometry(): Gdk.Rectangle;
         /**
          * Fetches this workspace's opaque ID.
-         * @returns A UTF-8 formatted string, owned by @workspace.
+         * @returns A UTF-8 formatted string, owned by `workspace`.
          */
         get_id(): string;
         /**
@@ -7106,15 +7470,15 @@ export namespace Libxfce4windowing {
         get_layout_row(): number;
         /**
          * Fetches this workspace's human-readable name.
-         * @returns A UTF-8 formatted string, owned by @workspace.
+         * @returns A UTF-8 formatted string, owned by `workspace`.
          */
         get_name(): string;
         /**
-         * Fetches the workspace that resides in `direction` from the `workspace,` if
+         * Fetches the workspace that resides in `direction` from the `workspace`, if
          * any.  If workspace is on the edge of the layout, and `direction` points off
-         * the edge of the layout, will return %NULL.
-         * @param direction an #XfwDirection.
-         * @returns a #XfwWorkspace, owned by the parent @group, or %NULL if no workspace exists in @direction.
+         * the edge of the layout, will return `null`.
+         * @param direction an {@link Libxfce4windowing.Direction}.
+         * @returns a {@link Libxfce4windowing.Workspace}, owned by the parent `group`, or `null` if no workspace exists in `direction`.
          */
         get_neighbor(direction: Direction | null): Workspace | null;
         /**
@@ -7131,12 +7495,12 @@ export namespace Libxfce4windowing {
         get_number(): number;
         /**
          * Fetches this workspace's state bitfield.
-         * @returns a #XfwWorkspaceState bitfield.
+         * @returns a {@link Libxfce4windowing.WorkspaceState} bitfield.
          */
         get_state(): WorkspaceState;
         /**
          * Fetches the group this workspace belongs to, if any.
-         * @returns a #XfwWorkspaceGroup instance, owned by @workspace, or %NULL if the workspace is not a member of any groups.
+         * @returns a {@link Libxfce4windowing.WorkspaceGroup} instance, owned by `workspace`, or `null` if the workspace is not a member of any groups.
          */
         get_workspace_group(): WorkspaceGroup | null;
         /**
@@ -7144,7 +7508,7 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @returns %TRUE if workspace removal succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace removal succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         remove(): boolean;
         /**
@@ -7160,32 +7524,32 @@ export namespace Libxfce4windowing {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7194,39 +7558,39 @@ export namespace Libxfce4windowing {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7237,13 +7601,16 @@ export namespace Libxfce4windowing {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
          * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7251,7 +7618,7 @@ export namespace Libxfce4windowing {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7259,9 +7626,9 @@ export namespace Libxfce4windowing {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7281,9 +7648,9 @@ export namespace Libxfce4windowing {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7297,33 +7664,33 @@ export namespace Libxfce4windowing {
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
          * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7356,21 +7723,21 @@ export namespace Libxfce4windowing {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
+         * Increase the reference count of `object`, and possibly remove the
          * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
@@ -7380,8 +7747,8 @@ export namespace Libxfce4windowing {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7398,10 +7765,10 @@ export namespace Libxfce4windowing {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7416,13 +7783,13 @@ export namespace Libxfce4windowing {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7453,21 +7820,21 @@ export namespace Libxfce4windowing {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7477,33 +7844,34 @@ export namespace Libxfce4windowing {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7512,6 +7880,7 @@ export namespace Libxfce4windowing {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7520,12 +7889,14 @@ export namespace Libxfce4windowing {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7534,20 +7905,22 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7559,6 +7932,7 @@ export namespace Libxfce4windowing {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7588,9 +7962,13 @@ export namespace Libxfce4windowing {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationClass = typeof Application;
     /**
-     * An opaque structure representing an instance of an #XfwApplication.
+     * An opaque structure representing an instance of an {@link Libxfce4windowing.Application}.
+     * @gir-type Struct
      */
     abstract class ApplicationInstance {
         static $gtype: GObject.GType<ApplicationInstance>;
@@ -7598,110 +7976,224 @@ export namespace Libxfce4windowing {
         // Methods
 
         /**
-         * Fetches `instance'`s name, which can often be the same as the application name.
-         * @returns A string owned by @instance.
+         * Fetches `instance`'s name, which can often be the same as the application name.
+         * @returns A string owned by `instance`.
          */
         get_name(): string;
         /**
-         * Fetches `instance'`s PID.
-         * @returns The process ID of @instance, or 0 if none is available.
+         * Fetches `instance`'s PID.
+         * @returns The process ID of `instance`, or 0 if none is available.
          */
         get_pid(): number;
         /**
          * Lists all windows belonging to the application instance.
-         * @returns The list of #XfwWindow belonging to @instance. The list and its contents are owned by @instance.
+         * @returns The list of {@link Libxfce4windowing.Window} belonging to `instance`. The list and its contents are owned by `instance`.
          */
         get_windows(): Window[];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationWaylandClass = typeof ApplicationWayland;
+    /**
+     * @gir-type Struct
+     */
     abstract class ApplicationWaylandPrivate {
         static $gtype: GObject.GType<ApplicationWaylandPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationX11Class = typeof ApplicationX11;
+    /**
+     * @gir-type Struct
+     */
     abstract class ApplicationX11Private {
         static $gtype: GObject.GType<ApplicationX11Private>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScreenIface = typeof Screen;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScreenInterface {
         static $gtype: GObject.GType<ScreenInterface>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScreenWaylandClass = typeof ScreenWayland;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScreenWaylandPrivate {
         static $gtype: GObject.GType<ScreenWaylandPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScreenX11Class = typeof ScreenX11;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScreenX11Private {
         static $gtype: GObject.GType<ScreenX11Private>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WindowClass = typeof Window;
+    /**
+     * @gir-type Alias
+     */
     type WindowWaylandClass = typeof WindowWayland;
+    /**
+     * @gir-type Struct
+     */
     abstract class WindowWaylandPrivate {
         static $gtype: GObject.GType<WindowWaylandPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WindowX11Class = typeof WindowX11;
+    /**
+     * @gir-type Struct
+     */
     abstract class WindowX11Private {
         static $gtype: GObject.GType<WindowX11Private>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WnckIconClass = typeof WnckIcon;
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceDummyClass = typeof WorkspaceDummy;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceDummyPrivate {
         static $gtype: GObject.GType<WorkspaceDummyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceGroupDummyClass = typeof WorkspaceGroupDummy;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceGroupDummyPrivate {
         static $gtype: GObject.GType<WorkspaceGroupDummyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceGroupIface = typeof WorkspaceGroup;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceGroupInterface {
         static $gtype: GObject.GType<WorkspaceGroupInterface>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceGroupWaylandClass = typeof WorkspaceGroupWayland;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceGroupWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceGroupWaylandPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceIface = typeof Workspace;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceInterface {
         static $gtype: GObject.GType<WorkspaceInterface>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceManagerDummyClass = typeof WorkspaceManagerDummy;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceManagerDummyPrivate {
         static $gtype: GObject.GType<WorkspaceManagerDummyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceManagerIface = typeof WorkspaceManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceManagerInterface {
         static $gtype: GObject.GType<WorkspaceManagerInterface>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceManagerWaylandClass = typeof WorkspaceManagerWayland;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceManagerWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceManagerWaylandPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceManagerX11Class = typeof WorkspaceManagerX11;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceManagerX11Private {
         static $gtype: GObject.GType<WorkspaceManagerX11Private>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceWaylandClass = typeof WorkspaceWayland;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceWaylandPrivate {
         static $gtype: GObject.GType<WorkspaceWaylandPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkspaceX11Class = typeof WorkspaceX11;
+    /**
+     * @gir-type Struct
+     */
     abstract class WorkspaceX11Private {
         static $gtype: GObject.GType<WorkspaceX11Private>;
     }
@@ -7725,10 +8217,13 @@ export namespace Libxfce4windowing {
         prototype: Screen;
 
         /**
-         * Retrieves the #XfwScreen instance corresponding to the default #GdkScreen.
+         * Retrieves the {@link Libxfce4windowing.Screen} instance corresponding to the default {@link Gdk.Screen}.
          */
         get_default(): Screen;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Screen extends GObject.Object {
         // Properties
 
@@ -7741,7 +8236,7 @@ export namespace Libxfce4windowing {
          */
         get activeWindow(): Window;
         /**
-         * The #GdkScreen instance used to construct this #XfwScreen.
+         * The {@link Gdk.Screen} instance used to construct this {@link Libxfce4windowing.Screen}.
          */
         get screen(): Gdk.Screen;
         /**
@@ -7755,12 +8250,12 @@ export namespace Libxfce4windowing {
         get showDesktop(): boolean;
         set showDesktop(val: boolean);
         /**
-         * The #XfwWorkspaceManager that manages and describes workspace groups
+         * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
          */
         get workspace_manager(): WorkspaceManager;
         /**
-         * The #XfwWorkspaceManager that manages and describes workspace groups
+         * The {@link Libxfce4windowing.WorkspaceManager} that manages and describes workspace groups
          * and workspaces on this screen instance.
          */
         get workspaceManager(): WorkspaceManager;
@@ -7769,40 +8264,43 @@ export namespace Libxfce4windowing {
 
         /**
          * Retrieves the window on `screen` that is currently active.
-         * @returns an #XfwWindow, or %NULL if no window is active on @screen.
+         * @returns an {@link Libxfce4windowing.Window}, or `null` if no window is active on `screen`.
          */
         get_active_window(): Window | null;
+        /**
+         * @returns `true` if the desktop is shown, `false` otherwise.
+         */
         get_show_desktop(): boolean;
         /**
          * Retrieves the list of windows currently displayed on `screen`.
          *
          * The list and its contents are owned by `screen`.
-         * @returns the list of #XfwWindow on @screen, or %NULL if there are no windows.  The list and its contents are owned by @screen.
+         * @returns the list of {@link Libxfce4windowing.Window} on `screen`, or `null` if there are no windows.  The list and its contents are owned by `screen`.
          */
         get_windows(): Window[] | null;
         /**
-         * Retrieves the list of windows currently displayed on `screen,` in stacking
+         * Retrieves the list of windows currently displayed on `screen`, in stacking
          * order, with the bottom-most window first in the returned list.
-         * @returns the list of #XfwWindow on @screen, in stacking order, or %NULL if there are no windows.  The list and its contents are owned by @screen.
+         * @returns the list of {@link Libxfce4windowing.Window} on `screen`, in stacking order, or `null` if there are no windows.  The list and its contents are owned by `screen`.
          */
         get_windows_stacked(): Window[] | null;
         /**
-         * Retrieves this screen's #XfwWorkspaceManager instance, which can be used
-         * to inspect and interact with `screen'`s workspace groups and workspaces.
-         * @returns a #XfwWorkspaceManager instance.  This instance is a singleton and is owned by @screen.
+         * Retrieves this screen's {@link Libxfce4windowing.WorkspaceManager} instance, which can be used
+         * to inspect and interact with `screen`'s workspace groups and workspaces.
+         * @returns a {@link Libxfce4windowing.WorkspaceManager} instance.  This instance is a singleton and is owned by `screen`.
          */
         get_workspace_manager(): WorkspaceManager;
         /**
          * Showing the desktop minimizes the windows not minimized at the time of the query.
          * The reverse process unminimizes those same windows, if they have not already been
          * unminimized or destroyed. The desktop show state can be tracked via
-         * #XfwScreen:show-desktop.
+         * {@link Libxfce4windowing.Screen.show_desktop}.
          *
          * The state of the previously active window is always restored upon unminimization,
          * but there is no guarantee for the rest of the window stacking order on Wayland.
          *
          * A request to switch to the current state is silently ignored.
-         * @param show %TRUE to show the desktop, %FALSE to restore the previous state.
+         * @param show `true` to show the desktop, `false` to restore the previous state.
          */
         set_show_desktop(show: boolean): void;
     }
@@ -7832,16 +8330,19 @@ export namespace Libxfce4windowing {
         $gtype: GObject.GType<Workspace>;
         prototype: Workspace;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Workspace extends GObject.Object {
         // Properties
 
         /**
-         * The #XfwWorkspaceCapabilities bitfield for this workspace.
+         * The {@link Libxfce4windowing.WorkspaceCapabilities} bitfield for this workspace.
          */
         get capabilities(): WorkspaceCapabilities;
         set capabilities(val: WorkspaceCapabilities);
         /**
-         * The #XfwWorkspaceGroup that this workspace is a member of, if any.
+         * The {@link Libxfce4windowing.WorkspaceGroup} that this workspace is a member of, if any.
          */
         get group(): WorkspaceGroup;
         /**
@@ -7874,7 +8375,7 @@ export namespace Libxfce4windowing {
          */
         get number(): number;
         /**
-         * The #XfwWorkspaceState bitfield for this workspace.
+         * The {@link Libxfce4windowing.WorkspaceState} bitfield for this workspace.
          */
         get state(): WorkspaceState;
         set state(val: WorkspaceState);
@@ -7886,7 +8387,7 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @returns %TRUE if workspace activation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace activation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         activate(): boolean;
         /**
@@ -7894,28 +8395,28 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @param group an #XfwWorkspaceGroup.
-         * @returns %TRUE if workspace assignment succeeded, %FALSE otherwise. If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using g_error_free().
+         * @param group an {@link Libxfce4windowing.WorkspaceGroup}.
+         * @returns `true` if workspace assignment succeeded, `false` otherwise. If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free()`.
          */
         assign_to_workspace_group(group: WorkspaceGroup): boolean;
         /**
          * Fetches this workspace's capabilities bitfield.
          *
          * The bitfield describes what operations are available on this workspace.
-         * @returns a #XfwWorkspaceCapabilities bitfield.
+         * @returns a {@link Libxfce4windowing.WorkspaceCapabilities} bitfield.
          */
         get_capabilities(): WorkspaceCapabilities;
         /**
          * Fetches the position and size of the workspace in screen coordinates.
          *
-         * The values in the returned #GdkRectangle are owned by `workspace` and should
+         * The values in the returned {@link Gdk.Rectangle} are owned by `workspace` and should
          * not be modified.
-         * @returns a #GdkRectangle, owned by @workspace.
+         * @returns a {@link Gdk.Rectangle}, owned by `workspace`.
          */
         get_geometry(): Gdk.Rectangle;
         /**
          * Fetches this workspace's opaque ID.
-         * @returns A UTF-8 formatted string, owned by @workspace.
+         * @returns A UTF-8 formatted string, owned by `workspace`.
          */
         get_id(): string;
         /**
@@ -7936,15 +8437,15 @@ export namespace Libxfce4windowing {
         get_layout_row(): number;
         /**
          * Fetches this workspace's human-readable name.
-         * @returns A UTF-8 formatted string, owned by @workspace.
+         * @returns A UTF-8 formatted string, owned by `workspace`.
          */
         get_name(): string;
         /**
-         * Fetches the workspace that resides in `direction` from the `workspace,` if
+         * Fetches the workspace that resides in `direction` from the `workspace`, if
          * any.  If workspace is on the edge of the layout, and `direction` points off
-         * the edge of the layout, will return %NULL.
-         * @param direction an #XfwDirection.
-         * @returns a #XfwWorkspace, owned by the parent @group, or %NULL if no workspace exists in @direction.
+         * the edge of the layout, will return `null`.
+         * @param direction an {@link Libxfce4windowing.Direction}.
+         * @returns a {@link Libxfce4windowing.Workspace}, owned by the parent `group`, or `null` if no workspace exists in `direction`.
          */
         get_neighbor(direction: Direction | null): Workspace | null;
         /**
@@ -7961,12 +8462,12 @@ export namespace Libxfce4windowing {
         get_number(): number;
         /**
          * Fetches this workspace's state bitfield.
-         * @returns a #XfwWorkspaceState bitfield.
+         * @returns a {@link Libxfce4windowing.WorkspaceState} bitfield.
          */
         get_state(): WorkspaceState;
         /**
          * Fetches the group this workspace belongs to, if any.
-         * @returns a #XfwWorkspaceGroup instance, owned by @workspace, or %NULL if the workspace is not a member of any groups.
+         * @returns a {@link Libxfce4windowing.WorkspaceGroup} instance, owned by `workspace`, or `null` if the workspace is not a member of any groups.
          */
         get_workspace_group(): WorkspaceGroup | null;
         /**
@@ -7974,7 +8475,7 @@ export namespace Libxfce4windowing {
          *
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
-         * @returns %TRUE if workspace removal succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace removal succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         remove(): boolean;
     }
@@ -8001,36 +8502,39 @@ export namespace Libxfce4windowing {
         $gtype: GObject.GType<WorkspaceGroup>;
         prototype: WorkspaceGroup;
     }
+    /**
+     * @gir-type Interface
+     */
     interface WorkspaceGroup extends GObject.Object {
         // Properties
 
         /**
-         * The active #XfwWorkspace on this #XfwWorkspaceGroup, or %NULL.
+         * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
          */
         get active_workspace(): Workspace;
         /**
-         * The active #XfwWorkspace on this #XfwWorkspaceGroup, or %NULL.
+         * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
          */
         get activeWorkspace(): Workspace;
         /**
-         * The list of #GdkMonitor this #XfwWorkspaceGroup is displayed on.
+         * The list of {@link Gdk.Monitor} this {@link Libxfce4windowing.WorkspaceGroup} is displayed on.
          */
         get monitors(): any;
         /**
-         * The #GdkScreen used when creating the #XfwScreen that owns this
-         * #XfwWorkspaceGroup.
+         * The {@link Gdk.Screen} used when creating the {@link Libxfce4windowing.Screen} that owns this
+         * {@link Libxfce4windowing.WorkspaceGroup}.
          */
         get screen(): Gdk.Screen;
         /**
-         * The #XfwWorkspaceManager instance that manages this #XfwWorkspaceGroup.
+         * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
          */
         get workspace_manager(): WorkspaceManager;
         /**
-         * The #XfwWorkspaceManager instance that manages this #XfwWorkspaceGroup.
+         * The {@link Libxfce4windowing.WorkspaceManager} instance that manages this {@link Libxfce4windowing.WorkspaceGroup}.
          */
         get workspaceManager(): WorkspaceManager;
         /**
-         * The list of #XfwWorkspace in this #XfwWorkspaceGroup.
+         * The list of {@link Libxfce4windowing.Workspace} in this {@link Libxfce4windowing.WorkspaceGroup}.
          */
         get workspaces(): any;
 
@@ -8043,22 +8547,22 @@ export namespace Libxfce4windowing {
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
          * @param name a name for the new workspace.
-         * @returns %TRUE if workspace creation succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if workspace creation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         create_workspace(name: string): boolean;
         /**
-         * Gets the active workspace on `group,` if there is one.
-         * @returns an #XfwWorkspace, or %NULL if there is no active workspace.
+         * Gets the active workspace on `group`, if there is one.
+         * @returns an {@link Libxfce4windowing.Workspace}, or `null` if there is no active workspace.
          */
         get_active_workspace(): Workspace | null;
         /**
          * Returns a bitfield describing operations allowed on this `group`.
-         * @returns an #XfwWorkspaceGroupCapabilities bitfield.
+         * @returns an {@link Libxfce4windowing.WorkspaceGroupCapabilities} bitfield.
          */
         get_capabilities(): WorkspaceGroupCapabilities;
         /**
          * Lists the physical monitors that this workspace group displays on.
-         * @returns A list of #GdkMonitor, or %NULL if @group is not displayed on any monitors.  The list and its contents are owned by @group.
+         * @returns A list of {@link Gdk.Monitor}, or `null` if `group` is not displayed on any monitors.  The list and its contents are owned by `group`.
          */
         get_monitors(): Gdk.Monitor[] | null;
         /**
@@ -8067,13 +8571,13 @@ export namespace Libxfce4windowing {
          */
         get_workspace_count(): number;
         /**
-         * Fetches the #XfwWorkspaceManager instance that owns `group`.
-         * @returns a #XfwWorkspaceManager, owned by @group.
+         * Fetches the {@link Libxfce4windowing.WorkspaceManager} instance that owns `group`.
+         * @returns a {@link Libxfce4windowing.WorkspaceManager}, owned by `group`.
          */
         get_workspace_manager(): WorkspaceManager;
         /**
          * Lists the workspaces in `group`.
-         * @returns the list of #XfwWorkspace in @group, or %NULL if there are no workspaces. The list and its contents are owned by @group.
+         * @returns the list of {@link Libxfce4windowing.Workspace} in `group`, or `null` if there are no workspaces. The list and its contents are owned by `group`.
          */
         list_workspaces(): Workspace[] | null;
         /**
@@ -8083,7 +8587,7 @@ export namespace Libxfce4windowing {
          * that occurred.
          * @param x a coordinate in the horizontal direction.
          * @param y a coordinate in the vertical direction.
-         * @returns %TRUE if moving the workspace group succeeded, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if moving the workspace group succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         move_viewport(x: number, y: number): boolean;
         /**
@@ -8096,7 +8600,7 @@ export namespace Libxfce4windowing {
          * that occurred.
          * @param rows the new numbers of rows.
          * @param columns the new number of columns.
-         * @returns %TRUE if changing the layout of @group succeede, %FALSE otherwise.  If %FALSE, and @error is non-%NULL, an error will be returned that must be freed using #g_error_free().
+         * @returns `true` if changing the layout of `group` succeede, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
          */
         set_layout(rows: number, columns: number): boolean;
     }
@@ -8117,11 +8621,14 @@ export namespace Libxfce4windowing {
         $gtype: GObject.GType<WorkspaceManager>;
         prototype: WorkspaceManager;
     }
+    /**
+     * @gir-type Interface
+     */
     interface WorkspaceManager extends GObject.Object {
         // Properties
 
         /**
-         * The #GdkScreen instance used to construct the #XfwScreen that owns this
+         * The {@link Gdk.Screen} instance used to construct the {@link Libxfce4windowing.Screen} that owns this
          * workspace manager.
          */
         get screen(): Gdk.Screen;
@@ -8130,12 +8637,12 @@ export namespace Libxfce4windowing {
 
         /**
          * Lists all workspace groups known to the workspace manager.
-         * @returns the list of #XfwWorkspaceGroup managed by @manager, or %NULL if there are no workspace groups.  The list and its contents are owned by @manager.
+         * @returns the list of {@link Libxfce4windowing.WorkspaceGroup} managed by `manager`, or `null` if there are no workspace groups.  The list and its contents are owned by `manager`.
          */
         list_workspace_groups(): WorkspaceGroup[] | null;
         /**
          * List all workspaces known to the workspace manager.
-         * @returns the list of #XfwWorkspace managed by @manager, or %NULL if there are no workspaces.  The list and its contents are owned by @manager.
+         * @returns the list of {@link Libxfce4windowing.Workspace} managed by `manager`, or `null` if there are no workspaces.  The list and its contents are owned by `manager`.
          */
         list_workspaces(): Workspace[] | null;
     }
