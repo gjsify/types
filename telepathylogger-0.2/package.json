@@ -6,51 +6,57 @@
     "module": "telepathylogger-0.2.js",
     "main": "telepathylogger-0.2.js",
     "exports": {
-      "./ambient": {
-        "types": "./telepathylogger-0.2-ambient.d.ts",
-        "import": "./telepathylogger-0.2-ambient.js",
-        "default": "./telepathylogger-0.2-ambient.js"
-      },
-      "./import": {
-        "types": "./telepathylogger-0.2-import.d.ts",
-        "import": "./telepathylogger-0.2-import.js",
-        "default": "./telepathylogger-0.2-import.js"
-      },
-      "./telepathylogger-0.2": {
-        "types": "./telepathylogger-0.2.d.ts",
-        "import": "./telepathylogger-0.2.js",
-        "default": "./telepathylogger-0.2.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./telepathylogger-0.2-ambient.d.ts",
+            "import": "./telepathylogger-0.2-ambient.js",
+            "default": "./telepathylogger-0.2-ambient.js"
+        },
+        "./import": {
+            "types": "./telepathylogger-0.2-import.d.ts",
+            "import": "./telepathylogger-0.2-import.js",
+            "default": "./telepathylogger-0.2-import.js"
+        },
+        "./telepathylogger-0.2": {
+            "types": "./telepathylogger-0.2.d.ts",
+            "import": "./telepathylogger-0.2.js",
+            "default": "./telepathylogger-0.2.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",
-      "@girs/telepathyglib-0.12": "workspace:^",
-      "@girs/gio-2.0": "workspace:^",
-      "@girs/gobject-2.0": "workspace:^",
-      "@girs/glib-2.0": "workspace:^",
-      "@girs/gmodule-2.0": "workspace:^"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/telepathyglib-0.12": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "TelepathyLogger-0.2"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "TelepathyLogger-0.2"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/telepathylogger-0.2#readme"
 }
-
-

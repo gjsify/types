@@ -6,61 +6,67 @@
     "module": "xdpgtk4-1.0.js",
     "main": "xdpgtk4-1.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./xdpgtk4-1.0-ambient.d.ts",
-        "import": "./xdpgtk4-1.0-ambient.js",
-        "default": "./xdpgtk4-1.0-ambient.js"
-      },
-      "./import": {
-        "types": "./xdpgtk4-1.0-import.d.ts",
-        "import": "./xdpgtk4-1.0-import.js",
-        "default": "./xdpgtk4-1.0-import.js"
-      },
-      "./xdpgtk4-1.0": {
-        "types": "./xdpgtk4-1.0.d.ts",
-        "import": "./xdpgtk4-1.0.js",
-        "default": "./xdpgtk4-1.0.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./xdpgtk4-1.0-ambient.d.ts",
+            "import": "./xdpgtk4-1.0-ambient.js",
+            "default": "./xdpgtk4-1.0-ambient.js"
+        },
+        "./import": {
+            "types": "./xdpgtk4-1.0-import.d.ts",
+            "import": "./xdpgtk4-1.0-import.js",
+            "default": "./xdpgtk4-1.0-import.js"
+        },
+        "./xdpgtk4-1.0": {
+            "types": "./xdpgtk4-1.0.d.ts",
+            "import": "./xdpgtk4-1.0.js",
+            "default": "./xdpgtk4-1.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",
-      "@girs/xdp-1.0": "workspace:^",
-      "@girs/gio-2.0": "workspace:^",
-      "@girs/gobject-2.0": "workspace:^",
-      "@girs/glib-2.0": "workspace:^",
-      "@girs/gmodule-2.0": "workspace:^",
-      "@girs/gtk-4.0": "workspace:^",
-      "@girs/gsk-4.0": "workspace:^",
-      "@girs/graphene-1.0": "workspace:^",
-      "@girs/gdk-4.0": "workspace:^",
-      "@girs/cairo-1.0": "workspace:^",
-      "@girs/pangocairo-1.0": "workspace:^",
-      "@girs/pango-1.0": "workspace:^",
-      "@girs/harfbuzz-0.0": "workspace:^",
-      "@girs/freetype2-2.0": "workspace:^",
-      "@girs/gdkpixbuf-2.0": "workspace:^"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/cairo-1.0": "workspace:^",
+        "@girs/freetype2-2.0": "workspace:^",
+        "@girs/gdk-4.0": "workspace:^",
+        "@girs/gdkpixbuf-2.0": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/graphene-1.0": "workspace:^",
+        "@girs/gsk-4.0": "workspace:^",
+        "@girs/gtk-4.0": "workspace:^",
+        "@girs/harfbuzz-0.0": "workspace:^",
+        "@girs/pango-1.0": "workspace:^",
+        "@girs/pangocairo-1.0": "workspace:^",
+        "@girs/xdp-1.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "XdpGtk4-1.0"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "XdpGtk4-1.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/xdpgtk4-1.0#readme"
 }
-
-

@@ -6,47 +6,53 @@
     "module": "gobject-2.0.js",
     "main": "gobject-2.0.js",
     "exports": {
-      "./ambient": {
-        "types": "./gobject-2.0-ambient.d.ts",
-        "import": "./gobject-2.0-ambient.js",
-        "default": "./gobject-2.0-ambient.js"
-      },
-      "./import": {
-        "types": "./gobject-2.0-import.d.ts",
-        "import": "./gobject-2.0-import.js",
-        "default": "./gobject-2.0-import.js"
-      },
-      "./gobject-2.0": {
-        "types": "./gobject-2.0.d.ts",
-        "import": "./gobject-2.0.js",
-        "default": "./gobject-2.0.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./gobject-2.0-ambient.d.ts",
+            "import": "./gobject-2.0-ambient.js",
+            "default": "./gobject-2.0-ambient.js"
+        },
+        "./import": {
+            "types": "./gobject-2.0-import.d.ts",
+            "import": "./gobject-2.0-import.js",
+            "default": "./gobject-2.0-import.js"
+        },
+        "./gobject-2.0": {
+            "types": "./gobject-2.0.d.ts",
+            "import": "./gobject-2.0.js",
+            "default": "./gobject-2.0.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",
-      "@girs/glib-2.0": "workspace:^"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GObject-2.0"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "GObject-2.0"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gobject-2.0#readme"
 }
-
-

@@ -6,57 +6,63 @@
     "module": "vgsl-1.js",
     "main": "vgsl-1.js",
     "exports": {
-      "./ambient": {
-        "types": "./vgsl-1-ambient.d.ts",
-        "import": "./vgsl-1-ambient.js",
-        "default": "./vgsl-1-ambient.js"
-      },
-      "./import": {
-        "types": "./vgsl-1-import.d.ts",
-        "import": "./vgsl-1-import.js",
-        "default": "./vgsl-1-import.js"
-      },
-      "./vgsl-1": {
-        "types": "./vgsl-1.d.ts",
-        "import": "./vgsl-1.js",
-        "default": "./vgsl-1.js"
-      },
-      ".": {
-        "types": "./index.d.ts",
-        "import": "./index.js",
-        "default": "./index.js"
-      }
+        "./ambient": {
+            "types": "./vgsl-1-ambient.d.ts",
+            "import": "./vgsl-1-ambient.js",
+            "default": "./vgsl-1-ambient.js"
+        },
+        "./import": {
+            "types": "./vgsl-1-import.d.ts",
+            "import": "./vgsl-1-import.js",
+            "default": "./vgsl-1-import.js"
+        },
+        "./vgsl-1": {
+            "types": "./vgsl-1.d.ts",
+            "import": "./vgsl-1.js",
+            "default": "./vgsl-1.js"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.js",
+            "default": "./index.js"
+        }
     },
     "scripts": {
-      "test": "tsc --project tsconfig.json"
+        "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "workspace:^",
-      "@girs/vgda-1": "workspace:^",
-      "@girs/vda-1": "workspace:^",
-      "@girs/gcalc-2": "workspace:^",
-      "@girs/gio-2.0": "workspace:^",
-      "@girs/gobject-2.0": "workspace:^",
-      "@girs/glib-2.0": "workspace:^",
-      "@girs/gmodule-2.0": "workspace:^",
-      "@girs/gee-0.8": "workspace:^",
-      "@girs/json-1.0": "workspace:^",
-      "@girs/gxml-0.20": "workspace:^",
-      "@girs/libxml2-2.0": "workspace:^"    },
-    "devDependencies": {
-      "typescript": "*"
+        "@girs/gcalc-2": "workspace:^",
+        "@girs/gee-0.8": "workspace:^",
+        "@girs/gio-2.0": "workspace:^",
+        "@girs/gjs": "workspace:^",
+        "@girs/glib-2.0": "workspace:^",
+        "@girs/gmodule-2.0": "workspace:^",
+        "@girs/gobject-2.0": "workspace:^",
+        "@girs/gxml-0.20": "workspace:^",
+        "@girs/json-1.0": "workspace:^",
+        "@girs/libxml2-2.0": "workspace:^",
+        "@girs/vda-1": "workspace:^",
+        "@girs/vgda-1": "workspace:^"
     },
-    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Vgsl-1"],
+    "devDependencies": {
+        "typescript": "*"
+    },
+    "keywords": [
+        "Gir",
+        "TypeScript",
+        "types",
+        "GObject-Introspection",
+        "GJS",
+        "Vgsl-1"
+    ],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/gjsify/types.git"
+        "type": "git",
+        "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-      "url": "https://github.com/gjsify/ts-for-gir/issues"
+        "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/vgsl-1#readme"
 }
-
-
